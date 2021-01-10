@@ -11,7 +11,7 @@ According it we can flexibly adapt and maintain mutable functionality of app.
 
 <details>
 <summary>
-  <a href="https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9">By Oleg Isonen (kof) - from React Berlin Talk</a>
+  <a href="https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9">💥<b>By Oleg Isonen (kof) - from React Berlin Talk</b></a>
 </summary>
 
 - [YouTube Talk](https://www.youtube.com/watch?v=BWAeYuWFHhs)
