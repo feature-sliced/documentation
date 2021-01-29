@@ -66,13 +66,10 @@ According it we can flexibly adapt and maintain mutable functionality of app.
 - **Integration tests** - other tests can't cover all app logic, but integration tests is difficult to create and maintain (more meaningful an easy way)
 
 ## Concepts
-<details>
-  <summary>
-    <a href="#decentralization">Decentralization</a> - organize app by explicit abstractions, no interconnected monolith (app ⇒ pages ⇒ features ⇒ shared)
-  </summary>
-  
-  [notion](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)
-</details>
+<!--TODO: add link anchors -->
+<!--TODO: add sections (by <details/>)
+
+- <span id="decentralization">[Decentralization](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)</span> - organize app by explicit abstractions, no interconnected monolith (app ⇒ pages ⇒ features ⇒ shared)
 
 - **[Explicit sharing](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - explicit rules for managing shared (common used) modules
 - **[Co-location](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - normalized structure for better project navigation (app, pages, features, shared)
