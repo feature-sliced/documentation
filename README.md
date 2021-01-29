@@ -66,15 +66,20 @@ According it we can flexibly adapt and maintain mutable functionality of app.
 - **Integration tests** - other tests can't cover all app logic, but integration tests is difficult to create and maintain (more meaningful an easy way)
 
 ## Concepts
-<!-- https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9 -->
-- [**Decentralization**](#decentralization) - organize app by explicit abstractions, no interconnected monolith (app ⇒ pages ⇒ features ⇒ shared)
+<details>
+  <summary>
+    <a id="decentralization">Decentralization - organize app by explicit abstractions, no interconnected monolith (app ⇒ pages ⇒ features ⇒ shared)</a>
+  </summary>
+  
+  [notion](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)
+</details>
+
 - **[Explicit sharing](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - explicit rules for managing shared (common used) modules
 - **[Co-location](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - normalized structure for better project navigation (app, pages, features, shared)
 - **[Decoupling & Isolation](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - every abstraction should be isolated at most
 - **[Disposability](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - every abstraction should be optimized for remove, not modify
 
 ## App structure
-
 ```bash
 └── src/
     ├── app/
