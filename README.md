@@ -67,11 +67,14 @@ According it we can flexibly adapt and maintain mutable functionality of app.
 
 ## Concepts
 
-- **[Decentralization](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - organize app by explicit abstractions, no interconnected monolith (app ⇒ pages ⇒ features ⇒ shared)
-- **[Explicit sharing](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - explicit rules for managing shared (common used) modules
-- **[Co-location](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - normalized structure for better project navigation (app, pages, features, shared)
-- **[Decoupling & Isolation](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - every abstraction should be isolated at most
-- **[Disposability](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)** - every abstraction should be optimized for remove, not modify
+<!--TODO: add details sections -->
+<!-- TODO: normalize notion links && anchors -->
+
+- <b id="decentralization">[Decentralization](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)</b> - organize app by explicit abstractions, no interconnected monolith (app ⇒ pages ⇒ features ⇒ shared)
+- <b id="explicit-sharing">[Explicit sharing](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)</b> - explicit rules for managing shared (common used) modules
+- <b id="co-location">[Co-location](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)</b> - normalized structure for better project navigation (app, pages, features, shared)
+- <b id="decoupling">[Decoupling & Isolation](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)</b> - every abstraction should be isolated at most
+- <b id="dispisability">[Disposability](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)</b> - every abstraction should be optimized for remove, not modify
 
 ## App structure
 
