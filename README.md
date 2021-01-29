@@ -68,7 +68,7 @@ According it we can flexibly adapt and maintain mutable functionality of app.
 ## Concepts
 <details>
   <summary>
-    <a href="decentralization">Decentralization</a> - organize app by explicit abstractions, no interconnected monolith (app ⇒ pages ⇒ features ⇒ shared)
+    <a href="#decentralization">Decentralization</a> - organize app by explicit abstractions, no interconnected monolith (app ⇒ pages ⇒ features ⇒ shared)
   </summary>
   
   [notion](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)
