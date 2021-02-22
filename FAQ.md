@@ -1,5 +1,8 @@
 # Frequently Asked Questions
 
+## What is feature?
+
+
 ## Features cross-communication
 - features dependenicies
 - features reactivity and behavior organizin on page
@@ -28,6 +31,14 @@ Look at discussion with [kof](https://github.com/kof/feature-driven-architecture
 ## Nested features
 > TODO: Will be filled soon
 
+## User/Details, User/List or UserDetails, UserList?
+> Another words - how to split by feature bound and sense?
+> TODO: Will be filled soon
+
+## Could it save my projects?
+> TODO: Will be filles soon
+> TL;DR: No, its'not silver bullet. But it can help you if your app need some such
+
 ## Interpretations
 - [kof (our base)](https://github.com/kof/feature-driven-architecture)
 - [feature-u](https://feature-u.js.org/)
@@ -44,4 +55,4 @@ Look at discussion with [kof](https://github.com/kof/feature-driven-architecture
    - [eslint-config](https://github.com/feature-driven/eslint-config)
 - [CRA template](https://github.com/feature-driven/cra-template)
 - [Real examples for differend stacks](https://github.com/ani-team/github-client)
->  `{React, Vue, ...} + {Redux, Effector, Storeon, Graphql, ...}`
+   >  `{React, Vue, ...} + {Redux, Effector, Storeon, Graphql, ...}`
