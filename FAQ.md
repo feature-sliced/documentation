@@ -2,6 +2,25 @@
 > Some of them discussed with kof [here](https://github.com/kof/feature-driven-architecture/issues/11) and [here](https://github.com/kof/feature-driven-architecture/issues/) 
 
 ## What is feature?
+**`Feature`** - self-contained, user-facing, reusable, complex, with specific logic module.
+
+> - *self-contained* - contains everything it needs
+> - *user-facing* - we define feature based on user-facing functionality
+> - *reusable* - can be used on different pages or screens
+> - *complex* - more high-level abstraction than a component
+> - *with specific logic* - module, that is responsible for specific part of app business logic
+
+## What is based on?
+See in readme or look at [notes from kof's (Oleg Isonen) Berlin React Talk](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)
+
+> TL;DR:
+> - **Goals**: `Discoverability`, `Work parallesisation`, `Control shared abstractions`, `Refactoring`, `AB Tests`, `Integration tests`
+> - **Principles**: `Decentralization`, `Explicit sharing`, `Co-location`, `Isolation`, `Disposability`
+
+## How to structure?
+- Real [example-react-graphql](https://github.com/ani-team/github-client)
+- Here [approximate description](https://github.com/martis-git/learn-frontend/blob/master/about/react_structure.md)
+  > little bit old
 
 ## Features cross-communication
 - features dependenicies
