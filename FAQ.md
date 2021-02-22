@@ -1,7 +1,7 @@
 # Frequently Asked Questions
 > Some of them discussed with kof [here](https://github.com/kof/feature-driven-architecture/issues/11) and [here](https://github.com/kof/feature-driven-architecture/issues/) 
 
-## What is feature?
+## Feature: what is?
 > [kof's discussions](https://github.com/kof/feature-driven-architecture/issues/1)
 
 **`Feature`** - self-contained, user-facing, reusable, complex, with specific logic module.
@@ -12,7 +12,7 @@
 > - *complex* - more high-level abstraction than a component
 > - *with specific logic* - module, that is responsible for specific part of app business logic
 
-## What is based on?
+## What rules are based on?
 See in readme or look at [notes from kof's (Oleg Isonen) Berlin React Talk](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)
 
 > TL;DR:
@@ -137,7 +137,7 @@ Look at discussion with [kof](https://github.com/kof/feature-driven-architecture
 > `TODO:` Will be filled soon
 
 ## Could it save my projects?
-> `TODO:` Will be filles soon
+> `TODO:` Will be filled soon
 > 
 > `TL;DR:` No, its'not silver bullet. But it can help you if your app need some such
 
