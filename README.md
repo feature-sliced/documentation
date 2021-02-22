@@ -93,3 +93,6 @@ There aren't lot projects examples that totally follow defined above rules.
 Its caused by **very idealistic** but **hard for impl** principles
 
 There is not one approved opinion how to do it (the same problem with DDD approach)
+
+## Also
+> See at [FAQ](./FAQ.md)
