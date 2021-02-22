@@ -2,6 +2,8 @@
 > Some of them discussed with kof [here](https://github.com/kof/feature-driven-architecture/issues/11) and [here](https://github.com/kof/feature-driven-architecture/issues/) 
 
 ## What is feature?
+> [kof's discussions](https://github.com/kof/feature-driven-architecture/issues/1)
+
 **`Feature`** - self-contained, user-facing, reusable, complex, with specific logic module.
 
 > - *self-contained* - contains everything it needs
@@ -95,10 +97,17 @@ See in readme or look at [notes from kof's (Oleg Isonen) Berlin React Talk](http
 
 
 ## Features cross-communication
+> [kof's discussions](https://github.com/kof/feature-driven-architecture/issues/9)
+
 - features dependenicies
-- features reactivity and behavior organizin on page
+- [features reactivity](https://github.com/kof/feature-driven-architecture/issues/10) and behavior organizing on page
    - hooks / middlewares
-- cluster approach
+- [cluster approach](https://github.com/kof/feature-driven-architecture/issues/9#issuecomment-456537920)
+
+## Feature: isolate or not to isolate?
+> `TODO:` Will be filled soon (see also [kof's discussions](https://github.com/kof/feature-driven-architecture/issues/7))
+> 
+> `TL;DR:` Yeap, but it obviously that sometimes is hard to implement
 
 ## FDD vs DDD
 Look at discussion with [kof](https://github.com/kof/feature-driven-architecture/issues/13)
