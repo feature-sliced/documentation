@@ -156,5 +156,5 @@ Look at discussion with [kof](https://github.com/kof/feature-driven-architecture
    - [eslint-plugin](https://github.com/feature-driven/eslint-plugin)
    - [eslint-config](https://github.com/feature-driven/eslint-config)
 - [CRA template](https://github.com/feature-driven/cra-template)
-- [Real examples for differend stacks](https://github.com/ani-team/github-client)
+- [Real examples for different stacks](https://github.com/ani-team/github-client)
    >  `{React, Vue, ...} + {Redux, Effector, Storeon, Graphql, ...}`
