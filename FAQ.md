@@ -18,9 +18,81 @@ See in readme or look at [notes from kof's (Oleg Isonen) Berlin React Talk](http
 > - **Principles**: `Decentralization`, `Explicit sharing`, `Co-location`, `Isolation`, `Disposability`
 
 ## How to structure?
-- Real [example-react-graphql](https://github.com/ani-team/github-client)
-- Here [approximate description](https://github.com/martis-git/learn-frontend/blob/master/about/react_structure.md)
-  > little bit old
+```sh
+ └── src/                            # Source files
+     ├── app/                        # Base resources of app (with init logic)
+     ├── features/                   # Primary functional of app (splitted by features)
+     ├── pages/                      # App's pages (builded by features and shared)
+     ├── shared/                     # Common used modules
+     ├── index.tsx                   # Entrypoint of App
+     └── (models.ts)                 # (Optional) File for accessing to models
+```
+
+<details>
+  <summary>/app/</summary>
+  
+  ```sh
+  └── app/
+    ├── store/                      # Init store
+    ├── styles/                     # Init styles
+    ├── hocs/                       # Init app (HOC-wrappers)
+    ├── {...}                       #
+    ├── index.scss                  # Add root styles
+    └── index.tsx                   # Entrypoint of app
+  ```
+</details>
+
+<details>
+  <summary>/pages/</summary>
+  
+  ```sh
+  └── pages/
+    ├── {page}/                 # Page resources
+    |    ├── index.tsx          #   Page UI (with features composition)
+    |    ├── index.scss         #   Page styles
+    |    └── (effects.ts) /     #   (Optional) Page side-effects 
+    |        (middlewares.ts)   #   (for features reactivity)
+    └── index.tsx               # Entrypoint with composed routing
+  ```
+</details>
+
+<details>
+  <summary>/features/</summary>
+  
+  ```sh
+  └── features/
+      └── feature-name/
+              ├── components/            # UI components (`React`, `Canvas`)
+              ├── {store/}               # (optional) Store of feature (redux)
+              ├── {context/}             # (optional) Store of feature (context)
+              ├── {**.gql}               # (optional) Feature request (graphql)
+              ├── {**.gen.ts}            # (optional) Feature request (apollo hook generated)
+              ├── {...}/                 # (optional) Potentially, you can locate here and other **required** modules (but without fanaticism)
+              └── index.ts               # Feature's `entry-point` (with declared public feature's API)
+  ```
+</details>
+
+<details>
+  <summary>/shared/</summary>
+  
+  ```sh
+  └── shared/
+     ├── components/             #   **Common used** React components
+     ├── helpers/                #   **Common used** Helpers
+     ├── hocs/                   #   **Common used** React HOCs
+     ├── hooks/                  #   **Common used** React Hooks
+     ├── fixtures/               #   **Common used** data helpers / dataSets
+     ├── get-env                 #   Module with **env**-vars
+     ├── mixins.scss             #   **Common used** SCSS mixins
+     └── consts.scss             #   **Common used** SCSS consts (not colors)
+  ```
+</details>
+  
+> See also:
+> - **Real [example-react-graphql](https://github.com/ani-team/github-client) with [structure description](https://github.com/ani-team/github-client/wiki/Project-Structure)**
+> - Here [approximate description](https://github.com/martis-git/learn-frontend/blob/master/about/react_structure.md) (but little bit old)
+
+
 
 ## Features cross-communication
 - features dependenicies
