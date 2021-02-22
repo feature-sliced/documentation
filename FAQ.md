@@ -122,7 +122,7 @@ Look at discussion with [kof](https://github.com/kof/feature-driven-architecture
 ## How to integrate in project and convince teammates?
 > `TODO:` Will be filled soon
 
-## One-used features
+## One-time-used features
 > `TODO:` Will be filled soon
 
 ## Dependent from other feature store
@@ -137,7 +137,7 @@ Look at discussion with [kof](https://github.com/kof/feature-driven-architecture
 > `TODO:` Will be filled soon
 
 ## Could it save my projects?
-> `TODO:` Will be filled soon
+> `TODO:` Will be filled soon (see also [kof's opinion](https://github.com/kof/feature-driven-architecture/issues/12#issuecomment-727906844))
 > 
 > `TL;DR:` No, its'not silver bullet. But it can help you if your app need some such
 
