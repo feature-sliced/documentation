@@ -124,10 +124,12 @@ Look at discussion with [kof](https://github.com/kof/feature-driven-architecture
 
 ## User/Details, User/List or UserDetails, UserList?
 > Another words - how to split by feature bound and sense?
+> 
 > `TODO:` Will be filled soon
 
 ## Could it save my projects?
 > `TODO:` Will be filles soon
+> 
 > `TL;DR:` No, its'not silver bullet. But it can help you if your app need some such
 
 ## Interpretations
