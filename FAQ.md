@@ -1,7 +1,7 @@
 # Frequently Asked Questions
+> Some of them discussed with kof [here](https://github.com/kof/feature-driven-architecture/issues/11) and [here](https://github.com/kof/feature-driven-architecture/issues/) 
 
 ## What is feature?
-
 
 ## Features cross-communication
 - features dependenicies
@@ -50,7 +50,7 @@ Look at discussion with [kof](https://github.com/kof/feature-driven-architecture
 - [CLI](https://github.com/feature-driven/cli)
    - generators (features, pages, shared)
    - app initialization with correct structure
-- Static analyze
+- Static analyze ([linting](https://github.com/kof/feature-driven-architecture/issues/12))
    - [eslint-plugin](https://github.com/feature-driven/eslint-plugin)
    - [eslint-config](https://github.com/feature-driven/eslint-config)
 - [CRA template](https://github.com/feature-driven/cra-template)
