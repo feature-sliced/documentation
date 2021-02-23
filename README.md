@@ -43,7 +43,6 @@ According it we can flexibly adapt and maintain mutable functionality of app.
 - [telegram](https://t.me/feature_slices)
 - [Atomic Design](https://atomicdesign.bradfrost.com/table-of-contents/)
   - [https://bradfrost.com/blog/post/extending-atomic-design/](https://bradfrost.com/blog/post/extending-atomic-design/)
-
 - jsunderhood (twitter)
     - [https://twitter.com/jsunderhood/status/1277515984501460992](https://twitter.com/jsunderhood/status/1277515984501460992)
     - [https://twitter.com/jsunderhood/status/1277938445353091074](https://twitter.com/jsunderhood/status/1277938445353091074)
