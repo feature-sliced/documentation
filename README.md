@@ -16,7 +16,6 @@ According it we can flexibly adapt and maintain mutable functionality of app.
 
 - [YouTube Talk](https://www.youtube.com/watch?v=BWAeYuWFHhs)
 - [github](https://github.com/kof/feature-driven-architecture)
-- [github org](https://github.com/feature-driven)
 - [Summary - "Feature Driven Architecture" talk](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)
 </details>
 
