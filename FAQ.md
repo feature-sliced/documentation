@@ -13,11 +13,27 @@
 > - *with specific logic* - module, that is responsible for specific part of app business logic
 
 ## What rules are based on?
-See in readme or look at [notes from kof's (Oleg Isonen) Berlin React Talk](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)
+> See also in readme or look at [notes from kof's (Oleg Isonen) Berlin React Talk](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)
 
-> TL;DR:
-> - **Goals**: `Discoverability`, `Work parallesisation`, `Control shared abstractions`, `Refactoring`, `AB Tests`, `Integration tests`
-> - **Principles**: `Decentralization`, `Explicit sharing`, `Co-location`, `Isolation`, `Disposability`
+- **Goals**: `Discoverability`, `Work parallesisation`, `Control shared abstractions`, `Refactoring`, `AB Tests`, `Integration tests`
+- **Principles**: `Decentralization`, `Explicit sharing`, `Co-location`, `Isolation`, `Disposability`
+ 
+<details>
+ <summary>More details...</summary>
+
+ - low coupling
+    - **feature** should not depend from **other features**
+    - **page** should not depend from **other pages**
+    - **shared resources** should not depend from **each other**
+- all **needed** resources (store / async effects / components) - locate in `features/` dir
+- all **common used**  resources (components / helpers / fixtures) - locate in `shared/` dir
+- about **pre-optimization**
+    - not need to strive to optimize modules for *changing*
+        - because of we can't predict future
+    - instead of this - *it's desirable* to optimize their for *deleting*
+        - because of it's only one thing we know - that all code transform to chaos =)
+        - and it's easier to refactor **totally (clean up)** only few modules, instead of one app totally
+</details>
 
 ## How to structure?
 ```sh
