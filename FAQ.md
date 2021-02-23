@@ -4,7 +4,7 @@
 ## Feature: what is?
 > [kof's discussions](https://github.com/kof/feature-driven-architecture/issues/1)
 
-**`Feature`** - self-contained, user-facing, reusable, complex, with specific logic module.
+**`Feature`** - self-contained, user-facing, (maybe) reusable, complex, with specific logic module.
 
 > - *self-contained* - contains everything it needs
 > - *user-facing* - we define feature based on user-facing functionality
