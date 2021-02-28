@@ -57,7 +57,7 @@ According it we can flexibly adapt and maintain mutable functionality of app.
 ## [Benefits](https://www.notion.so/Summary-Feature-Driven-Architecture-talk-b8609fd4452b41f499703c841e56b8e9)
 
 - **Discoverability -** discover how your software works
-- **Work parallesisation** - to dev software by teams, not alone
+- **Work parallelisation** - to dev software by teams, not alone
 - **Controlling shared abstractions -** controlling abstractions, for preventing bugs and controlling software
 - **Refactoring -** we can be sure what user-facing functionality we will affect
 - **AB Tests** - more controllable experiments, with quikly manipulating (many-ifs hell)
