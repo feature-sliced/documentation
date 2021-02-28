@@ -1,3 +1,7 @@
+> `BREAKING CHANGES:` We've collabed into [@feature-slices](https://github.com/feature-slices) and about closest future - there are a lot of ambitious plans =)
+> 
+> **Keep in touch!**
+
 # [Feature Driven Architecture](https://www.notion.so/Feature-Driven-Architecture-dfe306d664ae4780bcf999ccdd15e532)
 
 <img src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8e5f7905-b3c0-4720-a9a4-37820e337acd%2Ffeatures_(1).jpg?table=block&id=dfe306d6-64ae-4780-bcf9-99ccdd15e532&width=3720&userId=1cb8fbb1-ebee-4a7d-9598-16e80bdc4be1&cache=v2" />
