@@ -17,8 +17,10 @@
 - Фиче-локаторы
 - App.register(feature-name)
 
-## (2018) Feature Slices
+## (2018-2020) Feature Slices
 > by Sergey Sova
 
-## (2018) Feature Driven
+## (2018-2020) Feature Driven
 > by Oleg Isonen, later - by Ilya Azin
+
+## (2021) Feature-Sliced - Мержимся
