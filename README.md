@@ -1,4 +1,4 @@
-# [feature-sliced](http://featureslices.dev/)
+# feature-sliced
 
 <!-- 🏅 Add badges -->
 
