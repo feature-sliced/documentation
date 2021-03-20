@@ -144,7 +144,7 @@
 - [О методологии](./about/readme.md)
 - [Об архитектуре](./about/architecture.md)
 - [Об истории методологии](./about/history.md)
-- [О мотивации](./about/motivation.md)
+- `NEW:` [О мотивации создания методологии](./about/motivation.md)
 - [Дискуссии по методологии](https://github.com/feature-sliced/wiki/discussions)
   > **Здесь обсуждаются и разбираются рельные примеры применения, вопросы, проблемы, идеи методологии**
   >
