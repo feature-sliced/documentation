@@ -38,6 +38,8 @@ export { FeatureView, FeatureAnotherView } from './ui';
 
 - При использовании модуля нельзя опираться на его внутреннуюю структуру и реализацию
 
+<details>
+
 **Плохо:** перемещение или переименование этого компонента внутри фичи приведет к необходимости рефакторить импорты во всех местах использования компонента.
 ```diff
 - import { Form } from "features/auth-form/ui/form"
@@ -47,9 +49,13 @@ export { FeatureView, FeatureAnotherView } from './ui';
 + import { AuthForm } from "features/auth-form"
 ```
 
+</details>
+
 ## Удобство интерфейса в использовании
 
 - Интерфейс модуля должен быть устойчив к возможным коллизиям имен
+
+<details>
 
 **Плохо:** будет коллизия имен
 ```diff
@@ -63,7 +69,11 @@ export { FeatureView, FeatureAnotherView } from './ui';
 + import { AuthForm, postFormStore } from "features/post-form"
 ```
 
+</details>
+
 - Интерфейс модуля должен быть удобен для использования
+
+<details>
 
 **Плохо:** неудобно писать, неудобно читать, "пользователь" фичи страдает
 ```diff
@@ -76,4 +86,4 @@ export { FeatureView, FeatureAnotherView } from './ui';
 + import { authFormStore } from "features/auth-form"
 + dispatch(authFormStore.actions.updateUserDetails(...))
 ```
-
+</details>
