@@ -62,3 +62,18 @@ export { FeatureView, FeatureAnotherView } from './ui';
 + import { AuthForm, authFormStore } from "features/auth-form"
 + import { AuthForm, postFormStore } from "features/post-form"
 ```
+
+- Интерфейс модуля должен быть удобен для использования
+
+**Плохо:** неудобно писать, неудобно читать, "пользователь" фичи страдает
+```diff
+- import { storeActionUpdateUserDetails } from "features/auth-form"
+- dispatch(storeActionUpdateUserDetails(...))
+```
+
+**Хорошо:** "пользователь" фичи получает доступ к нужным вещам итеративно и гибко
+```diff
++ import { authFormStore } from "features/auth-form"
++ dispatch(authFormStore.actions.updateUserDetails(...))
+```
+
