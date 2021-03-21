@@ -95,3 +95,8 @@ export * as authFormStore from "./model"
 + dispatch(authFormStore.actions.updateUserDetails(...))
 ```
 </details>
+
+## 📑 См. также
+- [*Обсуждение* "Public API абстракции"](https://github.com/feature-sliced/wiki/discussions/41)
+- [Принципы **SOLID**](https://ru.wikipedia.org/wiki/SOLID)
+- [Паттерны **GRASP**](https://ru.wikipedia.org/wiki/GRASP)
