@@ -75,25 +75,37 @@
 
 3. Public API должен способствовать **легкой и гибкой интеграции**
    - Должен быть удобен для использования остальными частями приложения, в частности, решать проблему коллизии имен
-   - Коллизия имен должна решаться на уровне публичного интерфейса, а не реализации
-   <details>
+    <details>
 
    > **Плохо:** будет коллизия имен
+   ```js
+   // features/auth-form/index.ts
+   export { Form } from "./ui"
+   export * as store from "./model"
+   
+   // features/post-form/index.ts
+   export { Form } from "./ui"
+   export * as store from "./model"
+   ```
    ```diff
    - import { Form, store } from "features/auth-form"
    - import { Form, store } from "features/post-form"
    ```
 
    > **Хорошо:** коллизия решена на уровне интерфейса
-   ```diff
-   + import { AuthForm, authFormStore } from "features/auth-form"
-   + import { AuthForm, postFormStore } from "features/post-form"
-   ```
 
    ```js
    // features/auth-form/index.ts
    export { Form as AuthForm } from "./ui"
    export * as authFormStore from "./model"
+   
+   // features/post-form/index.ts
+   export { Form as PostForm } from "./ui"
+   export * as postFormStore from "./model"
+   ```
+   ```diff
+   + import { AuthForm, authFormStore } from "features/auth-form"
+   + import { PostForm, postFormStore } from "features/post-form"
    ```
    ---
    > **Плохо:** неудобно писать, неудобно читать, "пользователь" фичи страдает
@@ -109,6 +121,38 @@
    ```
    </details>
 
+   - Коллизия имен должна решаться на уровне публичного интерфейса, а не реализации
+   <details>
+
+      > **Плохо:** - коллизия имен решается на уровне реализации
+
+      ```js
+      // features/auth-form/index.ts
+      export { AuthForm } from "./ui"
+      export { authFormActions, authFormReducer } from "model"
+
+      // features/post-form/index.ts
+      export { PostForm } from "./ui"
+      export { postFormActions, postFormReducer } from "model"
+      ```
+
+     > **Хорошо:** - коллизия имен решается на уровне интерфейса
+
+      ```js
+      // features/auth-form/model.ts
+      export { actions, reducer }
+      // features/auth-form/index.ts
+      export { Form as AuthForm } from "./ui"
+      export * as authFormStore from "./model"
+      
+      // features/post-form/model.ts
+      export { actions, reducer }
+      // features/post-form/index.ts
+      export { Form as PostForm } from "./ui"
+      export * as postFormStore from "./model"
+      ```
+   </details>
+  
 Выполнение этих требований позволяет свести взаимодействие с модулем к **выполнению публичного интерфейса-контракта** и, тем самым, достичь надежности и удобства в использовании модуля.
 
 ## О реэкспортах
