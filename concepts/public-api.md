@@ -12,26 +12,26 @@
 
 Достичь этих целей позволяет введение публичного интерфейса (Public API), представляющего собой единую точку доступа к возможностям модуля и определяющего "контракт" взаимодействия модуля с внешним миром.
 
-<details>
+   <details>
 
-> Структура сущности должна иметь единую точку входа, предоставляющую публичный интерфейс
+   > Структура сущности должна иметь единую точку входа, предоставляющую публичный интерфейс
 
 
-```sh
-└── features/                        # 
-  └── feature-name/                  # Внутренняя структура фичи
-          ├── ui/                    #
-          ├── model/                 #
-          ├── {...}/                 #
-          └── index.ts               # Энтрипоинт фичи с ее публичным API
-```
+   ```sh
+   └── features/                        # 
+     └── feature-name/                  # Внутренняя структура фичи
+             ├── ui/                    #
+             ├── model/                 #
+             ├── {...}/                 #
+             └── index.ts               # Энтрипоинт фичи с ее публичным API
+   ```
 
-```js
-// index.ts
-export { Form as AuthForm } from "./ui"
-export * as authFormStore from "./model"
-```
-</details>
+   ```js
+   // index.ts
+   export { Form as AuthForm } from "./ui"
+   export * as authFormStore from "./model"
+   ```
+   </details>
 
 
 ## Требования к публичному API
@@ -60,69 +60,69 @@ export * as authFormStore from "./model"
    - Ломающие изменения поведения модуля отражаются в изменении Public API
    > Например, изменение внутренней структуры не должно приводить к изменению Public API
 
-<details>
+   <details>
 
-> **Плохо:** перемещение или переименование этого компонента внутри фичи приведет к необходимости рефакторить импорты во всех местах использования компонента.
-```diff
-- import { Form } from "features/auth-form/ui/form"
-```
-> **Хорошо:** интерфейс фичи не отображает её внутреннуюю структуру, внешние "пользователи" фичи не пострадают от перемещения или переименования компонента внутри фичи
-```diff
-+ import { AuthForm } from "features/auth-form"
-```
+      > **Плохо:** перемещение или переименование этого компонента внутри фичи приведет к необходимости рефакторить импорты во всех местах использования компонента.
+      ```diff
+      - import { Form } from "features/auth-form/ui/form"
+      ```
+      > **Хорошо:** интерфейс фичи не отображает её внутреннуюю структуру, внешние "пользователи" фичи не пострадают от перемещения или переименования компонента внутри фичи
+      ```diff
+      + import { AuthForm } from "features/auth-form"
+      ```
 
-</details>
+   </details>
 
 3. Public API должен способствовать **легкой и гибкой интеграции**
    - Должен быть удобен для использования остальными частями приложения, в частности, решать проблему коллизии имен
    - Коллизия имен должна решаться на уровне публичного интерфейса, а не реализации
-<details>
+   <details>
 
-> **Плохо:** будет коллизия имен
-```diff
-- import { Form, store } from "features/auth-form"
-- import { Form, store } from "features/post-form"
-```
+   > **Плохо:** будет коллизия имен
+   ```diff
+   - import { Form, store } from "features/auth-form"
+   - import { Form, store } from "features/post-form"
+   ```
 
-> **Хорошо:** коллизия решена на уровне интерфейса
-```diff
-+ import { AuthForm, authFormStore } from "features/auth-form"
-+ import { AuthForm, postFormStore } from "features/post-form"
-```
+   > **Хорошо:** коллизия решена на уровне интерфейса
+   ```diff
+   + import { AuthForm, authFormStore } from "features/auth-form"
+   + import { AuthForm, postFormStore } from "features/post-form"
+   ```
 
-```js
-// features/auth-form/index.ts
-export { Form as AuthForm } from "./ui"
-export * as authFormStore from "./model"
-```
+   ```js
+   // features/auth-form/index.ts
+   export { Form as AuthForm } from "./ui"
+   export * as authFormStore from "./model"
+   ```
 
-</details>
+   </details>
 
-<details>
+   <details>
 
-> **Плохо:** неудобно писать, неудобно читать, "пользователь" фичи страдает
-```diff
-- import { storeActionUpdateUserDetails } from "features/auth-form"
-- dispatch(storeActionUpdateUserDetails(...))
-```
+   > **Плохо:** неудобно писать, неудобно читать, "пользователь" фичи страдает
+   ```diff
+   - import { storeActionUpdateUserDetails } from "features/auth-form"
+   - dispatch(storeActionUpdateUserDetails(...))
+   ```
 
-> **Хорошо:** "пользователь" фичи получает доступ к нужным вещам итеративно и гибко
-```diff
-+ import { authFormStore } from "features/auth-form"
-+ dispatch(authFormStore.actions.updateUserDetails(...))
-```
-</details>
+   > **Хорошо:** "пользователь" фичи получает доступ к нужным вещам итеративно и гибко
+   ```diff
+   + import { authFormStore } from "features/auth-form"
+   + dispatch(authFormStore.actions.updateUserDetails(...))
+   ```
+   </details>
 
 Выполнение этих требований позволяет свести взаимодействие с модулем к **выполнению публичного интерфейса-контракта** и, тем самым, достичь надежности и удобства в использовании модуля.
 
 ## О реэкспортах
 В JavaScript публичный интерфейс модуля создается с помощью реэкспорта сущностей изнутри модуля в `index.js` файле:
 
-```js
-// index.ts
-export { Form as AuthForm } from "./ui"
-export * as authStore from "./model"
-```
+   ```js
+   // index.ts
+   export { Form as AuthForm } from "./ui"
+   export * as authStore from "./model"
+   ```
 
 Файлы-реэкспорты имеют ряд недостатков:
 
