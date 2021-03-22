@@ -145,6 +145,7 @@
 - [Об архитектуре](./about/architecture.md)
 - [Об истории методологии](./about/history.md)
 - `NEW:` [О мотивации создания методологии](./about/motivation.md)
+- `NEW:` [О понимании потребностей и формулировке задач](./concepts/understanding-needs.md)
 - [Дискуссии по методологии](https://github.com/feature-sliced/wiki/discussions)
   > **Здесь обсуждаются и разбираются рельные примеры применения, вопросы, проблемы, идеи методологии**
   >
