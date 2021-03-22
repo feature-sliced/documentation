@@ -95,11 +95,7 @@
    export { Form as AuthForm } from "./ui"
    export * as authFormStore from "./model"
    ```
-
-   </details>
-
-   <details>
-
+   ---
    > **Плохо:** неудобно писать, неудобно читать, "пользователь" фичи страдает
    ```diff
    - import { storeActionUpdateUserDetails } from "features/auth-form"
