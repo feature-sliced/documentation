@@ -46,3 +46,12 @@
 </details>
 
 <!-- TODO: добавить ссылку на документацию тулинга / пункт адаптация нейминга -->
+
+## 📑 См. также
+<!-- TODO: Возможно позже надо вынести в md-var -->
+- [*Обсуждение* "Адаптивность нейминга"](https://github.com/feature-sliced/wiki/discussions/16)
+- *Обсуждения по неймингу сущностей*:
+    - [Опрос по неймингу](https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-464894)
+    - [`processes` vs `flows` vs ...](https://github.com/feature-sliced/wiki/discussions/20)
+    - [`model` vs `store` vs ...](https://github.com/feature-sliced/wiki/discussions/68)
+
