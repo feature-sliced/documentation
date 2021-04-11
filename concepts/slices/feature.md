@@ -30,9 +30,10 @@
 
 ```bash
 feature-name/
-    ├── model/      # logic
-    ├── ui/         # UI
-    └── index.ts    # entry point
+    ├── lib/
+    ├── model/
+    ├── ui/
+    └── index.ts
 ```
 
 ## Правила
