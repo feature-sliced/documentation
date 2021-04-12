@@ -27,8 +27,11 @@
 ## Overview
 `feature-sliced` - структурная методология для JavaScript фронтенд проектов
 
-Главная идея - разделить логику приложения не по типам, **а по функциональности приложения, т.е. согласно бизнес-ценностям**
-> См. также `separation of concerns`
+Основные идеи: 
+- разделить логику приложения не по типам, **а по функциональности приложения, т.е. согласно бизнес-ценностям**
+  > См. также `separation of concerns`, `vertical-slices`, `feature-based`
+- **группировать слайсы БЛ** по ярусам и скоупу влияния
+  > `app` > `*processes` > `pages` > `features` > `entities` > `shared`
 
 <!-- > TODO: будет дополняться позже -->
 
@@ -38,39 +41,39 @@
 
 ```sh
 └── src/
-    ├── app/                    # Slice: Приложение
+    ├── app/                    # Tier: Приложение
     |                           #
-    ├── processes/              # Slice: Процесс (опционален)
-    |   ├── {some-process}/     #   Domain: (н-р процесс CartPayment)
-    |   |   ├── lib/            #       Type: Инфраструктурная-логика (хелперы)
-    |   |   └── model/          #       Type: Бизнес-логика
+    ├── processes/              # Tier: Процессы (опционален)
+    |   ├── {some-process}/     #   Slice: (н-р процесс CartPayment)
+    |   |   ├── lib/            #       Layer: Инфраструктурная-логика (хелперы)
+    |   |   └── model/          #       Layer: Бизнес-логика
     |   ...                     #
     |                           #
-    ├── pages/                  # Slice: Страница
-    |   ├── {some-page}/        #   Domain: (н-р страница ProfilePage)
-    |   |   ├── lib/            #       Type: Инфраструктурная-логика (хелперы)
-    |   |   ├── model/          #       Type: Бизнес-логика
-    |   |   └── ui/             #       Type: UI-логика
+    ├── pages/                  # Tier: Страницы
+    |   ├── {some-page}/        #   Slice: (н-р страница ProfilePage)
+    |   |   ├── lib/            #       Layer: Инфраструктурная-логика (хелперы)
+    |   |   ├── model/          #       Layer: Бизнес-логика
+    |   |   └── ui/             #       Layer: UI-логика
     |   ...                     #
     |                           #
-    ├── features/               # Slice: Фича
-    |   ├── {some-feature}/     #   Domain: (н-р фича AuthByPhone)
-    |   |   ├── lib/            #       Type: Инфраструктурная-логика (хелперы)
-    |   |   ├── model/          #       Type: Бизнес-логика
-    |   |   └── ui/             #       Type: UI-логика
+    ├── features/               # Tier: Фичи
+    |   ├── {some-feature}/     #   Slice: (н-р фича AuthByPhone)
+    |   |   ├── lib/            #       Layer: Инфраструктурная-логика (хелперы)
+    |   |   ├── model/          #       Layer: Бизнес-логика
+    |   |   └── ui/             #       Layer: UI-логика
     |   ...                     #
     |                           #
-    ├── entities/               # Slice: Бизнес-сущность
-    |   ├── {some-entity}/      #   Domain: (н-р сущность User)
-    |   |   ├── lib/            #       Type: Инфраструктурная-логика (хелперы)
-    |   |   ├── model/          #       Type: Бизнес-логика
-    |   |   └── ui/             #       Type: UI-логика
+    ├── entities/               # Tier: Бизнес-сущности
+    |   ├── {some-entity}/      #   Slice: (н-р сущность User)
+    |   |   ├── lib/            #       Layer: Инфраструктурная-логика (хелперы)
+    |   |   ├── model/          #       Layer: Бизнес-логика
+    |   |   └── ui/             #       Layer: UI-логика
     |   ...                     #
     |                           #
-    ├── shared/                 # Slice: Переиспользуемые ресурсы
-    |   ├── api/                #       Type: Логика запросов к API
-    |   ├── lib/                #       Type: Инфраструктурная-логика (хелперы)
-    |   └── ui/                 #       Type: UI-логика
+    ├── shared/                 # Tier: Переиспользуемые ресурсы
+    |   ├── api/                #       Layer: Логика запросов к API
+    |   ├── lib/                #       Layer: Инфраструктурная-логика (хелперы)
+    |   └── ui/                 #       Layer: UI-логика
     |   ...                     #
     |                           #
     └── index.tsx/              #
