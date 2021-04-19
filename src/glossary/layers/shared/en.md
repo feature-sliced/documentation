@@ -1,4 +1,4 @@
-# The `shared` domain
+# The `Shared` layer
 
 ## Description
 
