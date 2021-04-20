@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-russian",
+    "davidanson.vscode-markdownlint",
+    "docsmsft.docs-markdown"
+  ]
+}
