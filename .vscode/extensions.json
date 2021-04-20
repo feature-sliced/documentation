@@ -3,6 +3,9 @@
     "streetsidesoftware.code-spell-checker",
     "streetsidesoftware.code-spell-checker-russian",
     "davidanson.vscode-markdownlint",
-    "docsmsft.docs-markdown"
+    "docsmsft.docs-markdown",
+    "aaron-bond.better-comments",
+    "gruntfuggly.todo-tree",
+    "bierner.markdown-preview-github-styles"
   ]
 }
