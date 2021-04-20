@@ -4,7 +4,8 @@
 
 ### Code spell checker
 
-[Marketplace link](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+[Main extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+[Russian dictionary](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-russian)
 
 ### Markdown linter
 
