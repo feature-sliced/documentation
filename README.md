@@ -168,7 +168,7 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
     > **Важно любое содействие** - от *фидбека* до *участия в самой разработке!*
 
 
-<div style="display:flex;justify-content:space-around">
+<div align="center">
 <a href="https://t.me/feature_sliced">
     <img src="./assets/social_tg.png" alt="tg" height=48 />
 </a>
