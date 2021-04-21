@@ -153,9 +153,9 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
     - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
     - [Доклад React SPB Meetup#1 - Feature Slices](https://t.me/feature_slices)
     - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
-    - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](./about/old/feature-driven/readme.md)*
+    - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](./about/old/feature-driven/README.md)*
 
----
+<br/>
 
 - `Discussions` [Дискуссии по методологии](https://github.com/feature-sliced/wiki/discussions)
   > **Здесь обсуждаются и разбираются рельные примеры применения, вопросы, проблемы, идеи методологии**
@@ -191,7 +191,7 @@ FIXME: Не удалось нормально justify-content:space-around пр�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!-- TODO: Добавить ссыль, как доработаем ютуб -->
 <a href="#wip" title="YouTube канал (в процессе)">
-    <img src="./assets/social_youtube.png" alt="open-collective" height=48 />
+    <img src="./assets/social_youtube.png" alt="youtube" height=48 />
 </a>
 </div>
 
