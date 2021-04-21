@@ -178,7 +178,7 @@ FIXME: Не удалось нормально justify-content:space-around пр�
     <img src="./assets/social_tg.png" alt="tg" height=48 />
 </a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<!-- TODO: Добавить ссыль, как доработаем твиттер профиль -->
+<!-- TODO: Добавить ссыль, как доработаем твиттер -->
 <a href="#wip" title="Twitter (в процессе)">
     <img src="./assets/social_twitter.png" alt="twitter" height=48 />
 </a>
@@ -187,7 +187,7 @@ FIXME: Не удалось нормально justify-content:space-around пр�
     <img src="./assets/social_opencollective.png" alt="open-collective" height=48 />
 </a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<!-- TODO: Добавить ссыль, как доработаем ютуб канал -->
+<!-- TODO: Добавить ссыль, как доработаем ютуб -->
 <a href="#wip" title="YouTube канал (в процессе)">
     <img src="./assets/social_youtube.png" alt="open-collective" height=48 />
 </a>
