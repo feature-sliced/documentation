@@ -30,7 +30,7 @@
 Основные идеи: 
 - разделить логику приложения не по типам, **а по функциональности приложения, т.е. согласно бизнес-ценностям**
   > См. также `separation of concerns`, `vertical-slices`, `feature-based`
-- **группировать слайсы БЛ** по ярусам и скоупу влияния
+- **группировать слайсы БЛ** по слоям и скоупу влияния
   > `app` > `*processes` > `pages` > `features` > `entities` > `shared`
 
 <!-- > TODO: будет дополняться позже -->
@@ -39,41 +39,43 @@
 
 > См. также ["Абстракции методологии"](./intro/abstractions.md) и ["Разбиение приложения"](./concepts/app-splitting.md)
 
+> `WIP:` Нейминг групп временный, и будет определен окончательно ближе к релизу MVP
+
 ```sh
 └── src/
-    ├── app/                    # Tier: Приложение
+    ├── app/                    # Layer: Приложение
     |                           #
-    ├── processes/              # Tier: Процессы (опционален)
-    |   ├── {some-process}/     #   Slice: (н-р процесс CartPayment)
-    |   |   ├── lib/            #       Layer: Инфраструктурная-логика (хелперы)
-    |   |   └── model/          #       Layer: Бизнес-логика
+    ├── processes/              # Layer: Процессы (опционален)
+    |   ├── {some-process}/     #     Slice: (н-р процесс CartPayment)
+    |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
+    |   |   └── model/          #         Segment: Бизнес-логика
     |   ...                     #
     |                           #
-    ├── pages/                  # Tier: Страницы
-    |   ├── {some-page}/        #   Slice: (н-р страница ProfilePage)
-    |   |   ├── lib/            #       Layer: Инфраструктурная-логика (хелперы)
-    |   |   ├── model/          #       Layer: Бизнес-логика
-    |   |   └── ui/             #       Layer: UI-логика
+    ├── pages/                  # Layer: Страницы
+    |   ├── {some-page}/        #     Slice: (н-р страница ProfilePage)
+    |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
+    |   |   ├── model/          #         Segment: Бизнес-логика
+    |   |   └── ui/             #         Segment: UI-логика
     |   ...                     #
     |                           #
-    ├── features/               # Tier: Фичи
-    |   ├── {some-feature}/     #   Slice: (н-р фича AuthByPhone)
-    |   |   ├── lib/            #       Layer: Инфраструктурная-логика (хелперы)
-    |   |   ├── model/          #       Layer: Бизнес-логика
-    |   |   └── ui/             #       Layer: UI-логика
+    ├── features/               # Layer: Фичи
+    |   ├── {some-feature}/     #     Slice: (н-р фича AuthByPhone)
+    |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
+    |   |   ├── model/          #         Segment: Бизнес-логика
+    |   |   └── ui/             #         Segment: UI-логика
     |   ...                     #
     |                           #
-    ├── entities/               # Tier: Бизнес-сущности
-    |   ├── {some-entity}/      #   Slice: (н-р сущность User)
-    |   |   ├── lib/            #       Layer: Инфраструктурная-логика (хелперы)
-    |   |   ├── model/          #       Layer: Бизнес-логика
-    |   |   └── ui/             #       Layer: UI-логика
+    ├── entities/               # Layer: Бизнес-сущности
+    |   ├── {some-entity}/      #     Slice: (н-р сущность User)
+    |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
+    |   |   ├── model/          #         Segment: Бизнес-логика
+    |   |   └── ui/             #         Segment: UI-логика
     |   ...                     #
     |                           #
-    ├── shared/                 # Tier: Переиспользуемые ресурсы
-    |   ├── api/                #       Layer: Логика запросов к API
-    |   ├── lib/                #       Layer: Инфраструктурная-логика (хелперы)
-    |   └── ui/                 #       Layer: UI-логика
+    ├── shared/                 # Layer: Переиспользуемые ресурсы
+    |   ├── api/                #         Segment: Логика запросов к API
+    |   ├── lib/                #         Segment: Инфраструктурная-логика (хелперы)
+    |   └── ui/                 #         Segment: UI-логика
     |   ...                     #
     |                           #
     └── index.tsx/              #
