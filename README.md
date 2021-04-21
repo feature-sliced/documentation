@@ -146,6 +146,15 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
 
 - `Get started` [Введение в методологию](./intro/readme.md)
 - `About` [О методологии](./about/readme.md)
+- `Misc` Прочие материалы
+    - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
+    - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
+    - [How to Organize Your React + Redux Codebase](https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase)
+    - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
+    - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](./about/old/feature-driven/readme.md)*
+
+---
+
 - `Discussions` [Дискуссии по методологии](https://github.com/feature-sliced/wiki/discussions)
   > **Здесь обсуждаются и разбираются рельные примеры применения, вопросы, проблемы, идеи методологии**
   >
