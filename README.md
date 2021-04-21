@@ -168,22 +168,27 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
     > **Важно любое содействие** - от *фидбека* до *участия в самой разработке!*
 
 
+<!-- 
+FIXME: Не удалось нормально justify-content:space-around применить в md
+Если есть варики как лучше отступы расставить - welcome :)
+-->
+
 <div align="center">
-<a href="https://t.me/feature_sliced">
+<a href="https://t.me/feature_sliced" title="Телеграм-чат">
     <img src="./assets/social_tg.png" alt="tg" height=48 />
 </a>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!-- TODO: Добавить ссыль, как доработаем твиттер профиль -->
-<a href="#wip">
+<a href="#wip" title="Twitter (в процессе)">
     <img src="./assets/social_twitter.png" alt="twitter" height=48 />
 </a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://opencollective.com/feature-sliced">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://opencollective.com/feature-sliced" title="OpenCollective профиль">
     <img src="./assets/social_opencollective.png" alt="open-collective" height=48 />
 </a>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!-- TODO: Добавить ссыль, как доработаем ютуб канал -->
-<a href="#wip">
+<a href="#wip" title="YouTube канал (в процессе)">
     <img src="./assets/social_youtube.png" alt="open-collective" height=48 />
 </a>
 </div>
