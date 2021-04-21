@@ -1,4 +1,5 @@
 [src-disc]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-451507
+[refs-motivation]: ../about/motivation.md
 [refs-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [refs-medium]: https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1
 [refs-ryanlanciaux]: https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/
@@ -121,7 +122,7 @@ TODO Возможно даже имеет смысл вынести в отде�
 Но увы - на данный момент в мире фронтенда нет каких-то устоявшихся подходов, которые бы встречались из проекта в проект
 > Да, у нас есть принципы `Separation of Concerns`, есть `DDD`, есть `SOLID` и т.д.
 > 
-> И даже их каждый интерпретирует *по-своему* - и это еще одна *проблема*
+> И даже их каждый [интерпретирует *по-своему*][refs-motivation] - и это еще одна *проблема*
 
 **Однако если отбросить детали - можно условно выделить два базисных подхода к структуризации**
 
