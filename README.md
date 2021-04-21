@@ -166,3 +166,22 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
     > Или если по-вашему этот проект должен развиваться дальше
   - 💫 Ознакомьтесь с нашим [contributing](./CONTRIBUTING.md) гайдом
     > **Важно любое содействие** - от *фидбека* до *участия в самой разработке!*
+
+
+<div style="display:flex;justify-content:space-around">
+<a href="https://t.me/feature_sliced">
+    <img src="./assets/social_tg.png" alt="tg" height=48 />
+</a>
+<!-- TODO: Добавить ссыль, как доработаем твиттер профиль -->
+<a href="#wip">
+    <img src="./assets/social_twitter.png" alt="twitter" height=48 />
+</a>
+<a href="https://opencollective.com/feature-sliced">
+    <img src="./assets/social_opencollective.png" alt="open-collective" height=48 />
+</a>
+<!-- TODO: Добавить ссыль, как доработаем ютуб канал -->
+<a href="#wip">
+    <img src="./assets/social_youtube.png" alt="open-collective" height=48 />
+</a>
+</div>
+
