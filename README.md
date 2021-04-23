@@ -175,23 +175,15 @@ FIXME: Не удалось нормально justify-content:space-around пр�
 Если есть варики как лучше отступы расставить - welcome :)
 -->
 
-<div align="center">
-<a href="https://t.me/feature_sliced" title="Телеграм-чат">
-    <img src="./assets/social_tg.png" alt="tg" height=48 />
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<!-- TODO: Добавить ссыль, как доработаем твиттер -->
-<a href="#wip" title="Twitter (в процессе)">
-    <img src="./assets/social_twitter.png" alt="twitter" height=48 />
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://opencollective.com/feature-sliced" title="OpenCollective профиль">
-    <img src="./assets/social_opencollective.png" alt="open-collective" height=48 />
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<!-- TODO: Добавить ссыль, как доработаем ютуб -->
-<a href="#wip" title="YouTube канал (в процессе)">
-    <img src="./assets/social_youtube.png" alt="youtube" height=48 />
-</a>
-</div>
+<!-- TODO: Добавить ссылкии, как доработаем ютуб и твиттер -->
 
+<div align="center">
+
+[![tg](./assets/social_tg.png)](https://t.me/feature_sliced "Телеграм-чат")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![twitter](./assets/social_twitter.png)](#wip "Twitter (в процессе)")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![open-collective](./assets/social_opencollective.png)](https://opencollective.com/feature-sliced "OpenCollective профиль")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![youtube](./assets/social_youtube.png)](#wip "YouTube канал (в процессе)")
+</div>
