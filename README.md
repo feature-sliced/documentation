@@ -13,7 +13,6 @@
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/OWNER/REPO?style=flat-square)](https://github.com/OWNER/REPO/commits)
 -->
 
-
 <!-- 🖼️ Add logo / primary image -->
 <img src="https://avatars.githubusercontent.com/u/60469024?s=120" align="right" width=120>
 
@@ -25,6 +24,7 @@
 - Обеспечивает [**адаптивность под проекты**](https://github.com/feature-sliced/wiki/blob/master/about/architecture.md#adaptivity-%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D0%BA%D0%B0%D1%81%D1%82%D0%BE%D0%BC%D0%B8%D0%B7%D0%B8%D1%80%D1%83%D0%B5%D0%BC%D0%BE%D1%81%D1%82%D1%8C)
 
 ## Overview
+
 `feature-sliced` - структурная методология для JavaScript фронтенд проектов
 
 Главная идея - разделить логику приложения не по типам, **а по функциональности приложения, т.е. согласно бизнес-ценностям**
@@ -47,7 +47,6 @@
     ├── shared/       # Переиспользуемые модули
     └── index.tsx/    # Энтрипоинт приложения
 ```
-
 
 <details>
   <summary>/app/</summary>
@@ -130,6 +129,7 @@
 </details>
 
 ## P.S. **Это не "серебряная пуля"**
+
 Не так много примеров проектов, которые полностью следуют правилам и принципам методологии, с сохранением преимуществ
 
 Это связано с тем, что принципы вырисовывают **очень идеальную** архитектуру в теории, но сложную в реализации
@@ -147,13 +147,13 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
 - `Get started` [Введение в методологию](./intro/readme.md)
 - `About` [О методологии](./about/readme.md)
 - `Misc` Прочие материалы
-    - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
-    - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
-    - [How to Organize Your React + Redux Codebase](https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase)
-    - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
-    - [Доклад React SPB Meetup#1 - Feature Slices](https://t.me/feature_slices)
-    - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
-    - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](./about/old/feature-driven/README.md)*
+  - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
+  - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
+  - [How to Organize Your React + Redux Codebase](https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase)
+  - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
+  - [Доклад React SPB Meetup#1 - Feature Slices](https://t.me/feature_slices)
+  - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
+  - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](./about/old/feature-driven/README.md)*
 
 <br/>
 
@@ -168,7 +168,6 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
     > Или если по-вашему этот проект должен развиваться дальше
   - 💫 Ознакомьтесь с нашим [contributing](./CONTRIBUTING.md) гайдом
     > **Важно любое содействие** - от *фидбека* до *участия в самой разработке!*
-
 
 <!-- 
 FIXME: Не удалось нормально justify-content:space-around применить в md
