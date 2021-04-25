@@ -13,7 +13,6 @@
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/OWNER/REPO?style=flat-square)](https://github.com/OWNER/REPO/commits)
 -->
 
-
 <!-- 🖼️ Add logo / primary image -->
 <img src="https://avatars.githubusercontent.com/u/60469024?s=120" align="right" width=120>
 
@@ -93,6 +92,7 @@
 ```
 
 ## P.S. **Это не "серебряная пуля"**
+
 Не так много примеров проектов, которые полностью следуют правилам и принципам методологии, с сохранением преимуществ
 
 Это связано с тем, что принципы вырисовывают **очень идеальную** архитектуру в теории, но сложную в реализации
@@ -101,23 +101,53 @@
 
 ## См. также
 
-<!-- TODO: Если ссылок будет потом оч много - вынести в переменные -->
-<!-- TODO: Пока что упоминаем здесь все существующие статьи - после того как их количество вырастет - сделаем более структурированную навигацию -->
+<!--
+TODO: Если ссылок будет потом оч много - вынести в переменные
+-->
 
-- [О методологии](./about/readme.md)
-- [Об архитектуре](./about/architecture.md)
-- [Об истории методологии](./about/history.md)
-- `NEW:` `HOT:` [Про абстракции методологии](./intro/abstractions.md)
-- `NEW:` [О мотивации создания методологии](./about/motivation.md)
-- `NEW:` [О понимании потребностей и формулировке задач](./concepts/understanding-needs.md)
-- [Дискуссии по методологии](https://github.com/feature-sliced/wiki/discussions)
+<!-- 
+TODO: Перенести ссылки на референсы в /src/readme.md, как Карина добьет свой PR
+-->
+
+- `Get started` [Введение в методологию](./intro/readme.md)
+- `About` [О методологии](./about/readme.md)
+- `Misc` Прочие материалы
+  - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
+  - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
+  - [How to Organize Your React + Redux Codebase](https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase)
+  - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
+  - [Доклад React SPB Meetup#1 - Feature Slices](https://t.me/feature_slices)
+  - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
+  - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](./about/old/feature-driven/README.md)*
+
+<br/>
+
+- `Discussions` [Дискуссии по методологии](https://github.com/feature-sliced/wiki/discussions)
   > **Здесь обсуждаются и разбираются рельные примеры применения, вопросы, проблемы, идеи методологии**
   >
   > Все это в совокупности влияет на спецификацию, тулкит и в целом - на дальнейшее видение и развитие методологии
+  >
   > *Т.е. все, чего пока нет в спецификации/тулките - так или иначе обсуждается в github-discussions*
-- `NEW:` [О Public API сущностей](./concepts/public-api.md)
-- **Как можно помочь?**
+- `Contributing` **Как можно помочь?**
   - ⭐ Оцените нас на GitHub, если у вас остались положительные впечатления
     > Или если по-вашему этот проект должен развиваться дальше
   - 💫 Ознакомьтесь с нашим [contributing](./CONTRIBUTING.md) гайдом
-    > **Важно любое содействие** - от *фидбека* до *участия в самой разработке*!
+    > **Важно любое содействие** - от *фидбека* до *участия в самой разработке!*
+
+<!-- 
+FIXME: Не удалось нормально justify-content:space-around применить в md
+Если есть варики как лучше отступы расставить - welcome :)
+-->
+
+<!-- TODO: Добавить ссылкии, как доработаем ютуб и твиттер -->
+
+<div align="center">
+
+[![tg](./assets/social_tg.png)](https://t.me/feature_sliced "Телеграм-чат")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![twitter](./assets/social_twitter.png)](#wip "Twitter (в процессе)")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![open-collective](./assets/social_opencollective.png)](https://opencollective.com/feature-sliced "OpenCollective профиль")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![youtube](./assets/social_youtube.png)](#wip "YouTube канал (в процессе)")
+</div>
