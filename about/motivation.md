@@ -2,7 +2,6 @@
 [discussions]: https://github.com/feature-sliced/wiki/discussions
 [refs-about]: ./readme.md
 [refs-about--goals]: ./readme.md#-цели
-[refs-klimov]: https://youtu.be/4xyb_tA-uw0?t=249
 
 # Motivation
 
