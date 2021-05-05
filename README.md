@@ -52,10 +52,13 @@
 [`Public API`](./concepts/public-api.md), [`Isolation`](./concepts/cross-communication.md), ...
 
 ## Структура
-
-> См. также ["Абстракции методологии"](./intro/abstractions.md) и ["Разбиение приложения"](./concepts/app-splitting.md)
-
 > `WIP:` Нейминг групп временный, и будет определен окончательно ближе к релизу MVP
+
+<details>
+<summary>Визуальная схема</summary>
+
+![visual_schema](./assets/visual_schema.jpg)
+</details>
 
 ```sh
 └── src/
@@ -96,6 +99,8 @@
     |                           #
     └── index.tsx/              #
 ```
+
+> См. также ["Абстракции методологии"](./intro/abstractions.md) и ["Разбиение приложения"](./concepts/app-splitting.md)
 
 ## P.S. **Это не "серебряная пуля"**
 
