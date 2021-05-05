@@ -23,7 +23,7 @@
 <img src="https://avatars.githubusercontent.com/u/60469024?s=120" align="right" width=120>
 
 <!-- ⚡ Add primary information & features about your repository -->
-Методология, помогающая определять в проектах разбиение модулей и связи между ними.
+Методология, помогающая определять в Frontend проектах разбиение модулей и связи между ними.
 
 [refs-arch]: ./about/architecture.md
 [refs-arch-req]: ./about/architecture.md#-требования
@@ -55,10 +55,13 @@
 [`Public API`](./concepts/public-api.md), [`Isolation`](./concepts/cross-communication.md), ...
 
 ## Структура
-> `WIP:` Нейминг групп временный, и будет определен окончательно ближе к релизу MVP
+
+> `WIP:` Нейминг групп временный, и будет определен окончательно ближе к релизу
 
 <details>
 <summary>Визуальная схема</summary>
+
+> `WIP:` Схема - представляет лишь **примерное** разбиение проекта по модулям и будет определена окончательно ближе к релизу
 
 ![visual_schema](./assets/visual_schema.jpg)
 </details>
