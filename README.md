@@ -29,10 +29,12 @@
 [refs-arch-req]: ./about/architecture.md#-требования
 [refs-motivation]: ./about/motivation.md
 [refs-motivation-why]: ./about/motivation.md#-почему-не-хватает-существующих-решений
+[refs-ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 
 - Обеспечивает [**понятность, контролируемость и адаптивность**][refs-arch-req] архитектуры
 - Основана на [**проверенных временем**][refs-motivation-why] практиках проектирования
     > `SOLID`, `GRASP`, `DDD`, `Vertical Slices`
+- Предлагает разделять проект согласно [**бизнес-юнитам**][refs-ext-ubiq-lang]
 
 ## Overview
 
