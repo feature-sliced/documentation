@@ -23,7 +23,7 @@
 <img src="https://avatars.githubusercontent.com/u/60469024?s=120" align="right" width=120>
 
 <!-- ⚡ Add primary information & features about your repository -->
-Методология для проектирования *frontend проектов*, помогающая **разбиению и композиции модулей согласно областям ответственности.**
+Методология для проектирования *frontend проектов*, нацеленная [**на разделение приложения согласно бизнес-логике и областям ответственности.**](concepts/app-splitting.md)
 
 [refs-arch]: ./about/architecture.md
 [refs-arch-req]: ./about/architecture.md#-требования
