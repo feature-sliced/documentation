@@ -33,7 +33,7 @@
 
 - Обеспечивает [**понятность, контролируемость и адаптивность**][refs-arch-req] архитектуры
 - Основана на [**проверенных временем**][refs-motivation-why] практиках проектирования и концепциях
-    > `SOLID`, `GRASP`, `DDD`, `Vertical Slices`
+    > `SOLID`, `GRASP`, `DDD`, `Vertical Slices`, `Public API`, `Isolation`
 - Предлагает разделять проект согласно [**бизнес-юнитам**][refs-ext-ubiq-lang]
 
 ## Overview
