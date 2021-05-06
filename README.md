@@ -118,7 +118,7 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
   - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
   - [Доклад React SPB Meetup#1 - Feature Slices](https://t.me/feature_slices)
   - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
-  - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](./docs/about/old/feature-driven/README.md)*
+  - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](https://github.com/feature-sliced/wiki/tree/rc/feature-driven)*
 
 <br/>
 
