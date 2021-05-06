@@ -47,7 +47,7 @@
 
 ## Структура
 
-> См. также ["Абстракции методологии"](./intro/abstractions.md) и ["Разбиение приложения"](./concepts/app-splitting.md)
+> См. также ["Абстракции методологии"](./references/abstractions.md) и ["Разбиение приложения"](./concepts/app-splitting.md)
 
 > `WIP:` Нейминг групп временный, и будет определен окончательно ближе к релизу MVP
 
@@ -109,7 +109,7 @@ TODO: Если ссылок будет потом оч много - вынест
 TODO: Перенести ссылки на референсы в /src/readme.md, как Карина добьет свой PR
 -->
 
-- `Get started` [Введение в методологию](./intro/readme.md)
+- `Get started` [Введение в методологию](./get-started/readme.md)
 - `About` [О методологии](./about/readme.md)
 - `Misc` Прочие материалы
   - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
