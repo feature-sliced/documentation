@@ -1,6 +1,6 @@
 [src-disc]: https://github.com/feature-sliced/wiki/discussions/43
 [src-tg]: https://t.me/atomicdesign/18972
-[refs-arch--adaptability]: ../about/architecture.md#adaptability-адаптивностькастомизируемость
+[refs-arch--adaptability]: ./architecture.md#adaptability-адаптивностькастомизируемость
 [refs-medium-article]: https://alexmngn.medium.com/how-to-better-organize-your-react-applications-2fd3ea1920f1
 [discussions]: https://github.com/feature-sliced/wiki/discussions
 

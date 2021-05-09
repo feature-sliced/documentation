@@ -38,17 +38,17 @@
 
 ## Motivation
 
-Обычно, подходы построения архитектуры фронтенда от проекта к проекту - [переизобретаются с нуля](./about/motivation.md), пополняя тем самым ["проектные знания"](./references/knowledge-types.md)
+Обычно, подходы построения архитектуры фронтенда от проекта к проекту - [переизобретаются с нуля](./docs/about/motivation.md), пополняя тем самым ["проектные знания"](./docs/references/knowledge-types.md)
 
 > Несмотря на то, что специфика фронтенд-проектов отличается не так значительно
 
-При этом, неверно принятые решения зачастую приводят [к проблемам масштабируемости проекта и команды](./about/architecture.md#%EF%B8%8F-проблемы).
+При этом, неверно принятые решения зачастую приводят [к проблемам масштабируемости проекта и команды](./docs/about/architecture.md#%EF%B8%8F-проблемы).
 
 И поэтому - вместо того, чтобы придумывать и документировать это каждый раз - хочется **обобщить опыт и сформировать рабочую, проверенную и задокументированную методологию** для проектирования архитектуры фронтенда.
 
 > Да, практик и паттернов - много *(`SOLID`, `GRASP`, `DDD`, ...)*
 >
-> Но [крайне трудно найти](./about/motivation.md) устоявшиеся и конкретные подходы для фронтенда
+> Но [крайне трудно найти](./docs/about/motivation.md) устоявшиеся и конкретные подходы для фронтенда
 
 ## Overview
 
@@ -58,7 +58,7 @@
 
 ## Concepts
 
-[`Public API`](./concepts/public-api.md), [`Isolation`](./concepts/cross-communication.md), ...
+[`Public API`](./docs/concepts/public-api.md), [`Isolation`](./docs/concepts/cross-communication.md), ...
 
 ## Structure
 
@@ -124,10 +124,10 @@ TODO: Если ссылок будет потом оч много - вынест
 TODO: Перенести ссылки на референсы в /src/readme.md, как Карина добьет свой PR
 -->
 
-- `Get started` [Введение в методологию](./intro/readme.md)
-- `About` [О методологии](./about/readme.md)
+- `Get started` [Введение в методологию](./docs/get-started/readme.md)
+- `About` [О методологии](./docs/about/readme.md)
 - `Misc` Прочие материалы
-  - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](./about/old/feature-driven/README.md)*
+  - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](https://github.com/feature-sliced/wiki/tree/rc/feature-driven)*
   - [Доклад React SPB Meetup#1 - Feature Slices](https://t.me/feature_slices)
   - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
   - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
