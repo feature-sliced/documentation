@@ -19,23 +19,23 @@
 <!-- ⚡ Add primary information & features about your repository -->
 Методология, помогающая определять разбиение модулей и связи между ними в приложении
 
-- Обеспечивает [**понятность и явность архитектуры**](https://github.com/feature-sliced/wiki/blob/master/about/architecture.md#explicit-%D0%BF%D0%BE%D0%BD%D1%8F%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D1%8F%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
-- Обеспечивает [**контроль и изоляцию модулей**](https://github.com/feature-sliced/wiki/blob/master/about/architecture.md#control-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
-- Обеспечивает [**адаптивность под проекты**](https://github.com/feature-sliced/wiki/blob/master/about/architecture.md#adaptivity-%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D0%BA%D0%B0%D1%81%D1%82%D0%BE%D0%BC%D0%B8%D0%B7%D0%B8%D1%80%D1%83%D0%B5%D0%BC%D0%BE%D1%81%D1%82%D1%8C)
+- Обеспечивает [**понятность и явность архитектуры**](/docs/concepts/architecture.md#explicit-%D0%BF%D0%BE%D0%BD%D1%8F%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D1%8F%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
+- Обеспечивает [**контроль и изоляцию модулей**](/docs/concepts/architecture.md#control-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
+- Обеспечивает [**адаптивность под проекты**](/docs/concepts/architecture.md#adaptivity-%D0%B0%D0%B4%D0%B0%D0%BF%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D0%BA%D0%B0%D1%81%D1%82%D0%BE%D0%BC%D0%B8%D0%B7%D0%B8%D1%80%D1%83%D0%B5%D0%BC%D0%BE%D1%81%D1%82%D1%8C)
 
 ## Motivation
 
-Обычно, подходы построения архитектуры фронтенда от проекта к проекту - [переизобретаются с нуля](./about/motivation.md), пополняя тем самым ["проектные знания"](./references/knowledge-types.md)
+Обычно, подходы построения архитектуры фронтенда от проекта к проекту - [переизобретаются с нуля](./docs/about/motivation.md), пополняя тем самым ["проектные знания"](./docs/references/knowledge-types.md)
 
 > Несмотря на то, что специфика фронтенд-проектов отличается не так значительно
 
-При этом, неверно принятые решения зачастую приводят [к проблемам масштабируемости проекта и команды](./about/architecture.md#%EF%B8%8F-проблемы).
+При этом, неверно принятые решения зачастую приводят [к проблемам масштабируемости проекта и команды](./docs/about/architecture.md#%EF%B8%8F-проблемы).
 
 И поэтому - вместо того, чтобы придумывать и документировать это каждый раз - хочется **обобщить опыт и сформировать рабочую, проверенную и задокументированную методологию** для проектирования архитектуры фронтенда.
 
 > Да, практик и паттернов - много *(`SOLID`, `GRASP`, `DDD`, ...)*
 >
-> Но [крайне трудно найти](./about/motivation.md) устоявшиеся и конкретные подходы для фронтенда
+> Но [крайне трудно найти](./docs/about/motivation.md) устоявшиеся и конкретные подходы для фронтенда
 
 ## Overview
 
@@ -43,15 +43,13 @@
 
 В соответствие с ней, становится проще поддерживать и адаптировать изменяющуюся функциональность приложений.
 
-> См. также ["Требования к архитектуре"](./about/architecture.md)
-
 ## Concepts
 
-[`Public API`](./concepts/public-api.md), [`Isolation`](./concepts/cross-communication.md), ...
+[`Public API`](./docs/concepts/public-api.md), [`Isolation`](./docs/concepts/cross-communication.md), ...
 
 ## Structure
 
-> См. также ["Абстракции методологии"](./intro/abstractions.md) и ["Разбиение приложения"](./concepts/app-splitting.md)
+> См. также ["Абстракции методологии"](./docs/references/abstractions.md) и ["Разбиение приложения"](./docs/concepts/app-splitting.md)
 
 > `WIP:` Нейминг групп временный, и будет определен окончательно ближе к релизу MVP
 
@@ -105,8 +103,8 @@ TODO: Если ссылок будет потом оч много - вынест
 TODO: Перенести ссылки на референсы в /src/readme.md, как Карина добьет свой PR
 -->
 
-- `Get started` [Введение в методологию](./intro/readme.md)
-- `About` [О методологии](./about/readme.md)
+- `Get started` [Введение в методологию](./docs/get-started/readme.md)
+- `About` [О методологии](./docs/about/readme.md)
 - `Misc` Прочие материалы
   - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
   - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
@@ -114,7 +112,7 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
   - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
   - [Доклад React SPB Meetup#1 - Feature Slices](https://t.me/feature_slices)
   - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
-  - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](./about/old/feature-driven/README.md)*
+  - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](https://github.com/feature-sliced/wiki/tree/rc/feature-driven)*
 
 <br/>
 
