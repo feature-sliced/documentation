@@ -129,7 +129,7 @@ TODO: Перенести ссылки на референсы в /src/readme.md,
 - `About` [О методологии](./docs/about/readme.md)
 - `Misc` Прочие материалы
   - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven](https://github.com/feature-sliced/wiki/tree/rc/feature-driven)*
-  - [Доклад React SPB Meetup#1 - Feature Slices](https://t.me/feature_slices)
+  - [Доклад React SPB Meetup #1 - Feature Slices](https://t.me/feature_slices)
   - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
   - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
   - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
