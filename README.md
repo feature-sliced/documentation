@@ -113,7 +113,7 @@
     └── index.tsx/              #
 ```
 
-> Подробнее - ["Абстракции методологии"](./intro/abstractions.md) и ["Разбиение приложения"](./concepts/app-splitting.md)
+Подробнее в ["Абстракции методологии"](./intro/abstractions.md) и ["Разбиение приложения"](./concepts/app-splitting.md)
 
 ## Further reading
 
