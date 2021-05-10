@@ -31,15 +31,17 @@
 ```bash
 features/
     ├── feature-name/
-            ├── lib/
-            ├── model/
-            ├── ui/
-            └── index.ts
+    │        ├── lib/
+    │        ├── model/
+    │        ├── ui/
+    │        └── index.ts
+    │
     ├── another-feature-name/
-            ├── lib/
-            ├── model/
-            ├── ui/
-            └── index.ts
+    │        ├── lib/
+    │        ├── model/
+    │        ├── ui/
+    │        └── index.ts
+    │
     ├──        
     ...
 ```
