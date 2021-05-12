@@ -14,6 +14,50 @@
 
 ## Entity
 
+**Бизнес-сущность пользователя**
+
+```sh
+├── entities/user                # Layer: Бизнес-сущности
+|         |                      #     Slice: Текущий пользователь
+|         ├── ui/                #         Segment: UI-логика (компоненты)
+|         ├── lib/               #         Segment: Инфраструктурная-логика (хелперы)
+|         └── model/             #         Segment: Бизнес-логика
+|   ...           
+```
+
+### `ui`
+
+Здесь могут содержаться компоненты, относящиеся не к конкретной странице/фиче, а напрямую к сущности пользователя
+
+> Например, у вас здесь может быть описан компонент `<UserCard/>`, который использует под собой `<Card/>` из *shared/ui*
+
+### `model`
+
+На этом уровне обычно инициализируется сущность текущего пользователя, с реэкспортом хуков/контрактов/селектора для доступа вышележащим слоям
+
+```ts
+// effector
+export const $userStore = createStore(...);
+// redux (+ toolkit)
+export const userSlice = createSlice(...)
+```
+
+```ts
+// effector
+export const useViewer = () => {
+    return useStore($userStore)
+}
+// redux (+ toolkit)
+export const useViewer = () => {
+    return useSelector((store) => store.entities.userSlice);
+}
+```
+
+Также тут может быть реализована и прочая логика
+- `updateUserDetails` 
+- `logoutUser` 
+- ...
+
 ## Feature
 
 ## Page
