@@ -12,12 +12,18 @@
 
 Рассмотрим их подробнее ниже с примерами
 
-## Entity
+> **Примечание:** Названия директория внутри сегментов (ui, model) могут отличаться от проекта к проекту
+> 
+> *Методология пока не распространяет правила на этот уровень вложенности*
+
+## Entities
 
 **Бизнес-сущность пользователя**
+- Представляет собой наиболее атомарную абстракцию для проектирования
+- Здесь образуется контекст авторизации, на который потом обычно полагается все вышележащие слои приложения
 
 ```sh
-├── entities/user                # Layer: Бизнес-сущности
+├── entities/viewer              # Layer: Бизнес-сущности
 |         |                      #     Slice: Текущий пользователь
 |         ├── ui/                #         Segment: UI-логика (компоненты)
 |         ├── lib/               #         Segment: Инфраструктурная-логика (хелперы)
@@ -25,6 +31,33 @@
 |   ...           
 ```
 
+> Стоит понимать, что нередко в приложении есть публичный "внешний" пользователь (т.е. `user`), а есть авторизованный "внутренний" пользователь (т.е. `viewer`)
+>
+> *Не забывайте учитывать эту разницу при проектировании архитектуры и логики*
+
+### `index.ts`
+
+Обычный Public API модуля
+
+```ts
+// ui.ts
+export { ViewerCard } from "./card";
+export { ViewerThumb } from "./thumb";
+...
+```
+
+```ts
+// model.ts
+export * from "./hooks";
+export * as events from "./events";
+export * as stores from "./stores";
+```
+
+```ts
+// index.ts
+export * from "./ui"
+export * as viewerModel from "./model";
+```
 ### `ui`
 
 Здесь могут содержаться компоненты, относящиеся не к конкретной странице/фиче, а напрямую к сущности пользователя
@@ -58,11 +91,82 @@ export const useViewer = () => {
 - `logoutUser` 
 - ...
 
-## Feature
+## Features
 
-## Page
+**Фичи, завязанные на текущем пользователе**
+- Использует в реализации бизнес-сущности (зачастую - `entities/viewer`) и shared ресурсы
+- Фичи могут не быть напрямую связаны с вьювером, но при этом использовать его контекст при реализации логики
 
-## Process
+```sh
+├── features/auth                # Layer: Бизнес-фичи
+|        |                       #    Slice Group: Структурная группа "Авторизация пользователя"
+|        ├── by-phone            #        Slice: Фича "Авторизация по телефону"
+|        |     ├── ui/           #            Segment: UI-логика (компоненты)
+|        |     ├── lib/          #            Segment: Инфраструктурная-логика (хелперы)
+|        |     └── model/        #            Segment: Бизнес-логика
+|        |
+|        ├── by-oauth            #        Slice: Фича "Авторизация по внешнему ресурсу"
+|   ...           
+```
+
+### `ui`
+
+- Авторизация по внешнему ресурсу
+```ts
+import { viewerModel } from "entities/viewer";
+
+export const AuthByOAuth = () => {
+    return (
+        <OAuth
+            domain={...}
+            scope={...}
+            ...
+            // для redux - дополнительно нужен dispatch
+            onSuccess=((user) => viewerModel.setUser(user))
+        />
+    )
+}
+```
+
+- Использование контекста пользователя в фичах
+```ts
+import { viewerModel } from "entities/viewer";
+
+export const Wallet = () => {
+    const viewer = viewerModel.useViewer();
+    const { moneyCount } = wallet;
+    
+    ...
+}
+```
+
+- Использование компонентов вьювера
+
+```ts
+import { ViewerThumb } from "entities/viewer";
+
+export const Header = () => {
+    ...
+    return (
+        <Layout.Header>
+            ...
+            <ViewerThumb
+                onClick={...}
+                onLogout={...}
+                ...
+            />
+        </Layout.Header>
+    )
+}
+```
+
+### `model`
+
+> `TBD`
+
+## Pages
+
+## Processes
 
 
 ## См. также
