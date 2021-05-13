@@ -12,6 +12,7 @@
 [refs-arch-problems]: /docs/concepts/architecture.md#%EF%B8%8F-проблемы
 [refs-splitting]: /docs/concepts/app-splitting.md
 [refs-public-api]: /docs/concepts/public-api.md
+[refs-adaptability]: /docs/concepts/naming-adaptability.md
 [refs-isolation]: /docs/concepts/cross-communication.md
 [refs-needs-driven]: /docs/concepts/understanding-needs.md
 
@@ -123,9 +124,20 @@
 
 - Включает в себя также разбиение структуры по бизнес-доменам
 
-## Splitting
+## Abstractions
 
-Для разбиения проектов, методология предлагает оперировать привычными абстракциями, но в более консистентном и последовательном порядке.
+Для проектирования архитектуры, методология предлагает оперировать [привычными абстракциями][refs-adaptability], но в более консистентном и последовательном порядке.
+
+<details>
+<summary>Визуальная схема</summary>
+
+> `WIP:` Схема - представляет лишь **примерное** разбиение проекта по модулям и будет определена окончательно ближе к релизу
+
+![visual_schema](./assets/visual_schema.jpg)
+
+</details>
+
+> Подробнее в ["Абстракции методологии"][refs-abstractions] и ["Разбиение приложения"][refs-splitting]
 
 ### `Layers`
 
@@ -152,20 +164,9 @@
 - *(shared)* `api` - API приложения
 - *(shared)* `config` - модуль конфигурации приложения (env-vars, ...)
 
-> Подробнее в ["Абстракции методологии"][refs-abstractions] и ["Разбиение приложения"][refs-splitting]
-
 ## Structure
 
 > `WIP:` Нейминг групп временный, и будет определен окончательно ближе к релизу
-
-<details>
-<summary>Визуальная схема</summary>
-
-> `WIP:` Схема - представляет лишь **примерное** разбиение проекта по модулям и будет определена окончательно ближе к релизу
-
-![visual_schema](./assets/visual_schema.jpg)
-
-</details>
 
 ```sh
 └── src/
@@ -200,8 +201,9 @@
     |                           #
     ├── shared/                 # Layer: Переиспользуемые ресурсы
     |   ├── api/                #         Segment: Логика запросов к API
-    |   ├── lib/                #         Segment: Инфраструктурная-логика (хелперы)
-    |   └── ui/                 #         Segment: UI-логика
+    |   ├── config/             #         Segment: Конфигурация приложения
+    |   ├── lib/                #         Segment: Инфраструктурная-логика приложения
+    |   └── ui/                 #         Segment: UIKit приложения
     |   ...                     #
     |                           #
     └── index.tsx/              #
