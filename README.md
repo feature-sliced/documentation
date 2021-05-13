@@ -144,12 +144,12 @@
 ### [`Layers`][refs-abstractions-layers]
 
 Первый уровень абстрагирования - **согласно скоупу влияния**
-- `app` - уровень инициализации приложения *(init, styles, providers, ...)*
-- `processes` - уровень бизнес-процессов приложения *(payment, auth, ...)*
-- `pages` - уровень страниц *(user-page, ...)*
-- `features` - уровень фич, частей функциональности приложения  *(auth-by-oauth, ...)*
-- `entities` - уровень бизнес-сущностей *(viewer, order, ...)*
-- `shared` - уровень переиспользуемого инфраструктурного кода *(UIKit, libs, API, ...)*
+- `app` - инициализация приложения *(init, styles, providers, ...)*
+- `processes` - бизнес-процессы приложения *(payment, auth, ...)*
+- `pages` - страницы приложения *(user-page, ...)*
+- `features` - части функциональности приложения  *(auth-by-oauth, ...)*
+- `entities` - бизнес-сущности *(viewer, order, ...)*
+- `shared` - переиспользуемый инфраструктурный код *(UIKit, libs, API, ...)*
 
 ### [`Slices`][refs-abstractions-slices]
 
