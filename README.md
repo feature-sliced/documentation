@@ -1,10 +1,10 @@
 [refs-contributing]: /CONTRIBUTING.md
 
 [refs-about]: /docs/about/readme.md
-[refs-motivation]: /docs/about/motivation.md
-[refs-motivation-why]: /docs/about/motivation.md#-почему-не-хватает-существующих-решений
 
 [refs-getstarted]: /docs/get-started/readme.md
+[refs-motivation]: /docs/get-started/motivation.md
+[refs-motivation-why]: /docs/get-started/motivation.md#-почему-не-хватает-существующих-решений
 
 [refs-concepts]: /docs/concepts/readme.md
 [refs-arch]: /docs/concepts/architecture.md
