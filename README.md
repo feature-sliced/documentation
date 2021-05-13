@@ -19,6 +19,8 @@
 [refs-abstractions]: /docs/references/abstractions.md
 [refs-abstractions-layers]: /docs/references/abstractions.md#-group-layers
 
+[refs-migration-v1]: /docs/guides/migration-from-v1.md
+
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
 [ext-discussions]: https://github.com/feature-sliced/wiki/discussions
@@ -169,6 +171,7 @@
 ## Further reading
 
 - `Get started` [Введение в методологию][refs-getstarted]
+- [`Migration` Миграция с feature-slices@v1][refs-migration-v1]
 - `About` [О методологии][refs-about]
 - `Misc` Прочие материалы
   - *Предыдущие* ответвления методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven][ext-fdd]*
