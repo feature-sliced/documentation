@@ -19,6 +19,8 @@
 [refs-knowledges]: /docs/references/knowledge-types.md
 [refs-abstractions]: /docs/references/abstractions.md
 [refs-abstractions-layers]: /docs/references/abstractions.md#-group-layers
+[refs-abstractions-slices]: /docs/references/abstractions.md#-group-slices
+[refs-abstractions-segments]: /docs/references/abstractions.md#%EF%B8%8F-group-segments
 
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
@@ -128,7 +130,7 @@
 
 ## Abstractions
 
-Для проектирования архитектуры, методология предлагает оперировать [привычными абстракциями][refs-adaptability], но в более консистентном и последовательном порядке.
+Для [проектирования архитектуры][refs-splitting], методология предлагает оперировать [привычными абстракциями][refs-adaptability], но в более консистентном и последовательном порядке.
 
 <details>
 <summary>Визуальная схема</summary>
@@ -139,9 +141,7 @@
 
 </details>
 
-> Подробнее в ["Абстракции методологии"][refs-abstractions] и ["Разбиение приложения"][refs-splitting]
-
-### `Layers`
+### [`Layers`][refs-abstractions-layers]
 
 Первый уровень абстрагирования - **согласно скоупу влияния**
 - `app` - уровень инициализации приложения *(init, styles, providers, ...)*
@@ -151,13 +151,13 @@
 - `entities` - уровень бизнес-сущностей *(viewer, order, ...)*
 - `shared` - уровень переиспользуемого инфраструктурного кода *(UIKit, libs, API, ...)*
 
-### `Slices`
+### [`Slices`][refs-abstractions-slices]
 
 Второй уровень абстрагирования - **согласно бизнес-домену**
 
 Правила на этот уровень *зависят от конкретного проекта*, и не определяются методологией.
 
-### `Segments`
+### [`Segments`][refs-abstractions-segments]
 Третий уровень абстрагирования - **согласно назначению в реализации**
 
 - `ui` - UI-представление модуля *(components, widgets, canvas, ...)*
