@@ -16,7 +16,7 @@
 [refs-isolation]: /docs/concepts/cross-communication.md
 [refs-needs-driven]: /docs/concepts/understanding-needs.md
 
-[refs-knowledges]: /docs/references/knowledge-types.md
+[refs-knowledge]: /docs/references/knowledge-types.md
 [refs-abstractions]: /docs/references/abstractions.md
 [refs-abstractions-layers]: /docs/references/abstractions.md#-group-layers
 [refs-abstractions-slices]: /docs/references/abstractions.md#-group-slices
@@ -62,7 +62,7 @@
 
 ## Motivation
 
-Обычно, подходы построения архитектуры фронтенда от проекта к проекту - [переизобретаются с нуля][refs-motivation], пополняя тем самым ["проектные знания"][refs-knowledges]
+Обычно, подходы построения архитектуры фронтенда от проекта к проекту - [переизобретаются с нуля][refs-motivation], пополняя тем самым ["проектные знания"][refs-knowledge]
 
 > Несмотря на то, что специфика фронтенд-проектов отличается не так значительно
 
