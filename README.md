@@ -2,14 +2,14 @@
 
 [refs-about]: /docs/about/readme.md
 [refs-motivation]: /docs/about/motivation.md
-[refs-motivation-why]: /docs/about/motivation.md#-почему-не-хватает-существующих-решений
+[refs-motivation-why]: /docs/about/motivation.md#почему-не-хватает-существующих-решений
 
 [refs-getstarted]: /docs/get-started/readme.md
 
 [refs-concepts]: /docs/concepts/readme.md
 [refs-arch]: /docs/concepts/architecture.md
-[refs-arch-req]: /docs/concepts/architecture.md#-требования
-[refs-arch-problems]: /docs/concepts/architecture.md#%EF%B8%8F-проблемы
+[refs-arch-req]: /docs/concepts/architecture.md#требования
+[refs-arch-problems]: /docs/concepts/architecture.md#проблемы
 [refs-splitting]: /docs/concepts/app-splitting.md
 [refs-public-api]: /docs/concepts/public-api.md
 [refs-isolation]: /docs/concepts/cross-communication.md
@@ -17,7 +17,7 @@
 
 [refs-knowledges]: /docs/references/knowledge-types.md
 [refs-abstractions]: /docs/references/abstractions.md
-[refs-abstractions-layers]: /docs/references/abstractions.md#-group-layers
+[refs-abstractions-layers]: /docs/references/abstractions.md#group-layers
 
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
