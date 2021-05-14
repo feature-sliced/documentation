@@ -174,7 +174,7 @@
 **Возможные пути решения**
 - `webpack` позволяет отметить файлы-реэкспорты как [**side effects free**](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free) - это разрешает `webpack` использовать более агрессивные оптимизации при работе с таким файлом
 
-## 📑 См. также
+## См. также
 - [*Обсуждение* "Public API абстракции"](https://github.com/feature-sliced/wiki/discussions/41)
 - [Принципы **SOLID**](https://ru.wikipedia.org/wiki/SOLID)
 - [Паттерны **GRASP**](https://ru.wikipedia.org/wiki/GRASP)
