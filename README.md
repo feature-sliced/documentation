@@ -27,6 +27,7 @@
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
 [ext-discussions]: https://github.com/feature-sliced/wiki/discussions
 [ext-disc-api]: https://github.com/feature-sliced/wiki/discussions/66
+[ext-module]: https://learn.javascript.ru/modules-intro
 
 
 > `WIP:` Работа над методологией в процессе и окончательный вид *может поменяться*
@@ -82,6 +83,8 @@
 Методология призвана **упростить и стандартизировать декомпозицию логики для больших и долгоживужих проектов.**
 
 Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-abstractions], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
+
+> **Примечание:** [Модуль][ext-module] - структурная единица проекта
 
 ### Явная бизнес-логика
 
