@@ -1,5 +1,6 @@
 [refs-contributing]: /CONTRIBUTING.md
 
+[refs-docs]: /docs/readme.md
 [refs-about]: /docs/about/readme.md
 [refs-motivation]: /docs/about/motivation.md
 [refs-motivation-why]: /docs/about/motivation.md#-почему-не-хватает-существующих-решений
@@ -25,6 +26,8 @@
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
 [ext-discussions]: https://github.com/feature-sliced/wiki/discussions
+[ext-disc-api]: https://github.com/feature-sliced/wiki/discussions/66
+
 
 > `WIP:` Работа над методологией в процессе и окончательный вид *может поменяться*
 >
@@ -167,7 +170,7 @@
 - *`api` - логика взаимодействия с API*
 - *`config` - модуль конфигурации приложения и его окружения*
 
-> **Примечание:** В большинстве случаев рекомендуется располагать `api` и `config` только на shared-слое
+> **Примечание:** В большинстве случаев [рекомендуется][ext-disc-api] располагать `api` и `config` только на shared-слое
 
 ## Structure
 
@@ -216,7 +219,7 @@
 
 ## Further reading
 
-- **[Документация методологии](docs/readme.md)**
+- **[Документация методологии][refs-docs]**
     > *Get-Started, Concepts, Guides, References, About*
 - **Прочие материалы**
   - Предыдущие версии методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven][ext-fdd]*
