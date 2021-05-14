@@ -61,13 +61,13 @@
 ```ts
 // ui.ts
 export { ViewerCard } from "./card";
-export { ViewerThumb } from "./thumb";
+export { ViewerAvatar } from "./avatar";
 ...
 ```
 
 ```ts
 // model.ts
-export * from "./hooks";
+export * as selectors from "./selectors";
 export * as events from "./events";
 export * as stores from "./stores";
 ...
@@ -86,7 +86,7 @@ export * as viewerModel from "./model";
 ```tsx
 import { Card } from "shared/ui/card";
 
-// Считается хорошей практикой - не связывать напрямую ui-компоненты из entitites
+// Считается хорошей практикой - не связывать напрямую с моделью ui-компоненты из entitites
 // Чтобы можно было использовать не только для текущей модели,
 // Но и для поступивших извне пропсов
 
@@ -196,14 +196,14 @@ export const Wallet = () => {
 
 - Использование компонентов вьювера
 ```tsx
-import { ViewerThumb } from "entities/viewer";
+import { ViewerAvatar } from "entities/viewer";
 ...
 export const Header = () => {
     ...
     return (
         <Layout.Header>
             ...
-            <ViewerThumb
+            <ViewerAvatar
                 onClick={...}
                 onLogout={...}
                 ...
