@@ -35,6 +35,10 @@
 >
 > *Не забывайте учитывать эту разницу при проектировании архитектуры и логики*
 
+### Примеры
+- `entities/viewer` - сущность текущего пользователя *(Session / Principle)*
+- `entities/user` - сущность публичного пользователя *(не обязательно связанное с текущим)*
+
 ### `index.ts`
 
 Обычный Public API модуля
@@ -70,7 +74,7 @@ export * as viewerModel from "./model";
 
 ```ts
 // effector
-export const $userStore = createStore(...);
+export const $user = createStore(...);
 // redux (+ toolkit)
 export const userSlice = createSlice(...)
 ```
@@ -78,7 +82,7 @@ export const userSlice = createSlice(...)
 ```ts
 // effector
 export const useViewer = () => {
-    return useStore($userStore)
+    return useStore($user)
 }
 // redux (+ toolkit)
 export const useViewer = () => {
@@ -95,7 +99,7 @@ export const useViewer = () => {
 
 **Фичи, завязанные на текущем пользователе**
 - Использует в реализации бизнес-сущности (зачастую - `entities/viewer`) и shared ресурсы
-- Фичи могут не быть напрямую связаны с вьювером, но при этом использовать его контекст при реализации логики
+- Фичи могут не быть напрямую связаны с вьювером, но при этом могут использовать его контекст при реализации логики
 
 ```sh
 ├── features/auth                # Layer: Бизнес-фичи
@@ -109,10 +113,13 @@ export const useViewer = () => {
 |   ...           
 ```
 
+### Примеры
+- `features/auth/{by-phone, by-oauth, logout ...}` - **структурная** группа фич авторизации *(по телефону, по внешнему ресурсу, выход из системы, ...)*
+- `features/wallet/{add-funds, ...}` - **структурная** группа фич по работе со внутренним счетом пользователя *(пополнение счета, ...)*
 ### `ui`
 
 - Авторизация по внешнему ресурсу
-```ts
+```tsx
 import { viewerModel } from "entities/viewer";
 
 export const AuthByOAuth = () => {
@@ -129,7 +136,7 @@ export const AuthByOAuth = () => {
 ```
 
 - Использование контекста пользователя в фичах
-```ts
+```tsx
 import { viewerModel } from "entities/viewer";
 
 export const Wallet = () => {
@@ -141,10 +148,9 @@ export const Wallet = () => {
 ```
 
 - Использование компонентов вьювера
-
-```ts
+```tsx
 import { ViewerThumb } from "entities/viewer";
-
+...
 export const Header = () => {
     ...
     return (
@@ -160,14 +166,63 @@ export const Header = () => {
 }
 ```
 
-### `model`
-
-> `TBD`
-
 ## Pages
+
+**Страницы, так или иначе связанные с текущим пользователем**
+- Могут как напрямую затрагивать функциональность вьювера
+- Так и использовать его косвенно (в том числе - и его контекст / фичи)
+
+### Примеры
+- `pages/viewer/profile` - страница ЛК пользователя
+- `pages/viewer/settings` - страница настроек аккаунта пользователя
+- `pages/user` - страница пользователя (не обязательно текущего)
+- `pages/auth/{sign-in, sign-up, reset}` - **структурная** группа страниц авторизации *(вход в систему / регистрация / восстановление пароля)*
+
+### `ui`
+
+- Использование компонентов вьювера и вьювер-фич на страницах
+```tsx
+import { Wallet } from "features/wallet";
+import { ViewerCard } from "entities/viewer";
+...
+export const UserPage = () => {
+    ...
+    return (
+        <Layout>
+            <Header
+                extra={<Wallet.AddFunds />}
+            />
+            ...
+            <ViewerCard />
+        </Layout>
+    )
+}
+```
+
+- Использование контекста вьювера
+```tsx
+import { viewerModel } from "entities/viewer";
+...
+export const SomePage = () => {
+    ...
+    return (
+        <Layout>
+            ...
+            <Settings onSave={(payload) => viewerModel.events.saveChanges(payload)} />
+        </Layout>
+    )
+}
+```
 
 ## Processes
 
+**Бизнес-процессы, затрагивающие текущего пользователя**
+- Затрагивает юзкейсы, пронизывающие страницы системы
+- В силу специфики слоя, используется не всегда - лишь только когда логика размывается в страницах и нужно отдельное управление логикой на сразу нескольких страницах
+
+### Примеры
+- `processes/auth` - бизнес-процесс авторизации пользователя
+- `processes/quick-tour` - бизнес-процесс для ознакомления пользователя с системой *(~ UserOnboard)*
 
 ## См. также
 - [Дискуссия "Применимость feature-sliced в бою"](https://github.com/feature-sliced/wiki/discussions/65) (*внутри также есть примеры с viewer*)
