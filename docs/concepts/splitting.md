@@ -8,12 +8,12 @@
 [disc-usability]: https://github.com/feature-sliced/wiki/discussions/65
 
 [tg-description]: https://t.me/atomicdesign/18951
-[ref-app-splitting]: ../concepts/app-splitting.md
-[ref-naming-adaptability]: ../concepts/naming-adaptability.md
+[ref-app-splitting]: app-splitting.md
+[ref-naming-adaptability]: naming-adaptability.md
 
-# Абстракции
+# Разбиение
 
-> Про абстракции в методологии и их назначение в проекте
+> Про разбиение приложения согласно методологии
 
 ---
 ## Group: `Layers`
