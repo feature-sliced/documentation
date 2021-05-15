@@ -9,19 +9,18 @@
 
 [refs-concepts]: /docs/concepts/readme.md
 [refs-arch]: /docs/concepts/architecture.md
-[refs-arch-req]: /docs/concepts/architecture.md#-требования
-[refs-arch-problems]: /docs/concepts/architecture.md#%EF%B8%8F-проблемы
-[refs-splitting]: /docs/concepts/app-splitting.md
+[refs-arch-req]: /docs/concepts/architecture.md#требования
+[refs-arch-problems]: /docs/concepts/architecture.md#проблемы
 [refs-public-api]: /docs/concepts/public-api.md
 [refs-adaptability]: /docs/concepts/naming-adaptability.md
 [refs-isolation]: /docs/concepts/cross-communication.md
 [refs-needs-driven]: /docs/concepts/understanding-needs.md
 
 [refs-knowledge]: /docs/references/knowledge-types.md
-[refs-abstractions]: /docs/references/abstractions.md
-[refs-abstractions-layers]: /docs/references/abstractions.md#-group-layers
-[refs-abstractions-slices]: /docs/references/abstractions.md#-group-slices
-[refs-abstractions-segments]: /docs/references/abstractions.md#%EF%B8%8F-group-segments
+[refs-splitting]: /docs/references/abstractions.md
+[refs-splitting-layers]: /docs/references/abstractions.md#group-layers
+[refs-splitting-slices]: /docs/references/abstractions.md#group-slices
+[refs-splitting-segments]: /docs/references/abstractions.md#group-segments
 
 [refs-migration-v1]: /docs/guides/migration-from-v1.md
 
@@ -82,7 +81,7 @@
 
 Методология призвана **упростить и стандартизировать декомпозицию логики для больших и долгоживужих проектов.**
 
-Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-abstractions], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
+Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-splitting], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
 
 > **Примечание:** Модуль - структурная единица проекта (файл / директория)
 
@@ -112,7 +111,7 @@
 
 ### Контролируемое переиспользование логики
 
-Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-abstractions-layers]
+Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-splitting-layers]
 
 Благодаря этому *сохраняется баланс между соблюдением принципа `DRY` и возможности кастомизировать логику модуля без оверхедных переопределений*
 
@@ -148,7 +147,7 @@
 
 </details>
 
-### [`Layers`][refs-abstractions-layers]
+### [`Layers`][refs-splitting-layers]
 
 Первый уровень абстрагирования - **согласно скоупу влияния**
 - `app` - инициализация приложения *(init, styles, providers, ...)*
@@ -158,13 +157,13 @@
 - `entities` - бизнес-сущности *(viewer, order, ...)*
 - `shared` - переиспользуемый инфраструктурный код *(UIKit, libs, API, ...)*
 
-### [`Slices`][refs-abstractions-slices]
+### [`Slices`][refs-splitting-slices]
 
 Второй уровень абстрагирования - **согласно бизнес-домену**
 
 Правила, по которым код разделяется на слайсы, *зависят от конкретного проекта и его бизнес-правил* и не определяются методологией
 
-### [`Segments`][refs-abstractions-segments]
+### [`Segments`][refs-splitting-segments]
 Третий уровень абстрагирования - **согласно назначению в реализации**
 
 - `ui` - UI-представление модуля *(components, widgets, canvas, ...)*
