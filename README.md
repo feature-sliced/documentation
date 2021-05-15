@@ -13,7 +13,7 @@
 [refs-splitting]: /docs/concepts/app-splitting.md
 [refs-public-api]: /docs/concepts/public-api.md
 [refs-isolation]: /docs/concepts/cross-communication.md
-[refs-needs-driven]: /docs/concepts/understanding-needs.md
+[refs-needs-driven]: /docs/concepts/needs-driven.md
 
 [refs-knowledges]: /docs/references/knowledge-types.md
 [refs-splitting]: /docs/concepts/app-splitting.md

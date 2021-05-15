@@ -1,7 +1,7 @@
 [src-disc]: https://github.com/feature-sliced/wiki/discussions/43
 [src-tg]: https://t.me/atomicdesign/18972
 [refs-arch--adaptability]: ./architecture.md#adaptability-адаптивностькастомизируемость
-[refs-medium-article]: https://alexmngn.medium.com/how-to-better-organize-your-react-applications-2fd3ea1920f1
+[refs-medium]: https://alexmngn.medium.com/how-to-better-organize-your-react-applications-2fd3ea1920f1
 [discussions]: https://github.com/feature-sliced/wiki/discussions
 
 # О понимании потребностей и формулировке задач
@@ -202,4 +202,4 @@
 ## См. также
 - [*Обсуждение* "Стимуляция к четкой формулировке задач"][src-disc]
 - [*Начало обсуждения* "Как разбить функциональность и что из себя она представляет"][src-tg]
-- [*Статья* "How to better organize your applications"][refs-medium-article]
+- [*Статья* "How to better organize your applications"][refs-medium]
