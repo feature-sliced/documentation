@@ -50,4 +50,4 @@ TODO После накопления опыта работы с методоло
 ## См. также
 - [(Обсуждение) Entities в методологии и их связность](https://github.com/feature-sliced/wiki/discussions/49)
 - [(Обсуждение) Про cross-импорты и анализ зависимостей](https://github.com/feature-sliced/wiki/discussions/65#discussioncomment-480822)
-- [Паттерны **GRASP**](https://bool.dev/blog/detail/grasp-printsipy)
+- [Паттерны **GRASP**](https://ru.wikipedia.org/wiki/GRASP)
