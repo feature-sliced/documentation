@@ -1,8 +1,15 @@
 [refs-motivation]: /docs/about/motivation.md
+
 [refs-splitting]: /docs/concepts/app-splitting.md
 [refs-concepts]: /docs/concepts/readme.md
+
 [refs-abstractions]: /docs/references/abstractions.md
 [refs-abstractions-layers]: /docs/references/abstractions.md#-group-layers
+[refs-module]: /docs/references/glossary.md#module
+
+[refs-low-coupling]: /docs/guides/low-coupling.md
+[refs-migration-v1]: /docs/guides/migration-from-v1.md
+[refs-examples]: /docs/guides/examples/readme.md
 
 # Overview
 
@@ -10,7 +17,7 @@
 
 Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-abstractions], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
 
-> **Примечание:** Модуль - структурная единица проекта (файл / директория)
+> **Примечание:** [Модуль][refs-module] - структурная единица проекта (файл / директория)
 
 ### Явная бизнес-логика
 
@@ -46,3 +53,7 @@
 ## См. также
 
 - [Причины создания методологии][refs-motivation]
+- [(Гайд) Как привести модули к низкой связности][refs-low-coupling]
+- [Примеры применения методологии][refs-examples]
+- [(Гайд) Миграция с feature-slices (v1)][refs-migration-v1]
+    - *Содержит также сравнение двух версий и причины создания v2
