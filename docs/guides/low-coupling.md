@@ -41,7 +41,9 @@ const List: Component<ListProps> = ({ Header, Items }) => (
 
 ```ts
 <List Header={<FancyHeader />} Items={<ToDoItems />} />
+
 <List Items={<CartItems />} />
+
 <List Header={<FancyHeaderV2 color="red" />} Items={<FancyItems />} />
 
 ```
