@@ -1,340 +1,264 @@
+[refs-motivation]: /docs/about/motivation.md
+
+[refs-app]: /docs/references/layers/readme.md#app
+[refs-pages]: /docs/references/layers/readme.md#pages
+[refs-features]: /docs/references/layers/readme.md#features
+[refs-entities]: /docs/references/layers/readme.md#entities
+[refs-shared]: /docs/references/layers/readme.md#shared
+
+[ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
+[ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure
+
 # Quick start.
 
-Рассмотрим начало нового проекта с помощью Feature-Sliced на примере todo-list с использованием React.
+Рассмотрим применение **feature-Sliced** на примере TodoApp с использованием `React + Effector`
 
-0) Hello world. Подготовка необходимых директорий и файлов для старта приложения. Вся работа будет происходить в
-   директории src.
-  - pages
-  - routes
-  - constants
-  - ui
-  - libs
+> **Примечание:** Туториал призван **раскрыть практическую идею самой методологии**. Поэтому описанные здесь практики - во многом подойдут *и для других фреймворков и стейт-менеджеров.*
 
-`npm i react-router-dom history react-router-config`
-```
-./app.tsx
-  import React from 'react'
-  import { renderRoutes } from 'react-router-config'
-  import { Router } from 'react-router-dom'
-  import { history } from './libs/history'
-  import { routes } from './routes'
-  
-  function App() {
-    return <Router history={history}>{renderRoutes(routes)}</Router>
-  }
+> `WIP:` Позже будет добавлена ссылка на codesandbox с примером
 
-  export default App
-```
-```
-./libs/history.ts
-  import { createBrowserHistory } from 'history'
+## 1. Инициализируем проект
 
-  export const history = createBrowserHistory()
+На данный момент имеется множество способов сгенерировать и запустить шаблон проекта
+
+Не будем акцентироваться сильно на этом шаге, но для быстрой инициализации можно  воспользоваться [CRA (для React)](https://create-react-app.dev/docs/getting-started):
+
+```cmd
+$ npx create-react-app todo-app --template typescript
 ```
+
+## 2. Подготавливаем структуру
+
+Получили следующую заготовку под проект
+
+```sh
+└── src/
+    ├── App.css
+    ├── App.test.tsx
+    ├── App.tsx
+    ├── index.css
+    ├── index.ts
+    ├── logo.svg
+    ├── react-app-env.d.ts
+    ├── reportWebVitals.ts
+    ├── setupTests.ts
+    └── index.tsx/
 ```
-./routes/index.ts
-  import { RouteConfig } from 'react-router-config'
-  import { paths } from '../constants'
-  import { HomePage } from '../pages/home/page'
-  
-  export const routes: RouteConfig[] = [
-    { exact: true, path: paths.home(), component: HomePage },
-  ]
+
+### Как это обычно происходит
+
+И обычно большинство проектов на данном этапе [превращаются в примерно такое][ext-pluralsight--flat]:
+
+```sh
+└── src/
+    ├── api/
+    ├── components/
+    ├── containers/
+    ├── helpers/
+    ├── pages/
+    ├── routes/
+    ├── store/
+    ├── App.tsx
+    └── index.tsx/
 ```
+
+*Они могут как сразу стать такими, так и по прошествии долгой разработки*
+
+При этом, если мы заглянем внутрь, как правило обнаружим:
+- Сильно ветвистые по вложенности директории
+- Сильно связные друг с другом компоненты
+- Огромное количество разнородных компонентов/контейнеров в соответствующих папках, связанные "абы как"
+
+### Как это можно делать иначе
+
+Каждый, кто хоть сколько давно разрабатывал фронтенд-проекты, примерно понимает преимущества и недостатки данного подхода.
+
+Однако все еще большинство реакт-проектов представляют из себя нечто такое, поскольку **нет проверенной опытом гибкой и расширяемой альтернативы**
+
+Помножим это на вольные адаптации структуры под каждый проект, без запрета со стороны фреймворка - и [получим "уникальные как снежинки проекты"][refs-motivation]
+
+**Цель данного туториала** - показать другой взгляд на привычные практики при проектировании
+
+### Адаптируем структуру к нужному виду
+
+```sh
+└── src/
+    ├── app/                    # Инициализирующая логика приложения
+    |    ├── index.tsx          #    Энтрипоинт для подключения приложения (бывший App.tsx)
+    |    └── styles.module.scss #    Глобальные стили приложения
+    ├── pages/                  #
+    ├── features/               #
+    ├── entities/               #
+    ├── shared/                 #
+    └── index.tsx               # Подключение и рендеринг приложения
 ```
-./constants/paths.ts
-  export const paths = {
-    home: () => '/',
-  }
-```
-```
-./pages/home/page.tsx
-  export function HomePage() {
+
+Возможно, на первый взгляд, такая структура покажется непривычной, но по прошествии некоторого времени вы сами заметите, что **используете привычные вам абстракции, но в консистентном и упорядоченном виде.**
+
+### [`app`][refs-app]
+
+Как можно заметить - мы перенесли всю базовую логику в директорию `app/`
+
+Именно там, согласно методологии, стоит располагать всю подготовительную логику:
+- подключение глобальных стилей (`/app/styles/**` + `/app/index.css`)
+- провайдеры и HOCs с инициализирующей логикой (`/app/hocs/**`)
+
+Пока что перенесем туда всю существующую логику, а другие директории оставим пустыми, как на схеме выше.
+
+```js
+import styles from "./styles.module.scss";
+
+const App = () => {
     return (
-      <div>Hello world!</div>
-    )
-  }
+        <div className={styles.root}>
+            <header className={styles.header}>
+                TodoApp
+            </header>
+        </div>
+    );
+}
+
+export default App;
 ```
 
-1. Создадим элементы, которые нам понадобятся для нашего приложения. Для начала это будет только кнопка и текст филд.
-```
-./ui/atoms/button/button.tsx
-  import React from 'react'
-  import classes from './button.module.css'
-  
-  type ButtonProps = {
-    onClick?: (e: React.MouseEvent) => void
-    isDisabled?: boolean
-  }
-  export const Button: React.FC<ButtonProps> = ({ children, isDisabled, onClick }) => (
-    <button onClick={onClick} disabled={isDisabled} className={classes.button}>
-      {children}
-    </button>
-  )
+> Также на этом этапе можно поставить sass препроцессор, либо любой другой, который поддерживает импорты
 
-./ui/atoms/button/button.module.css
-  .button {
-    color: white;
-    background-color: darkblue;
-    font-size: 1.5rem;
-  }
+## Подключим глобальные стили
 
-./ui/atoms/button/index.ts
-  export { Button } from './button'
+```scss
+// app/styles/vars.scss
+:root {
+    --color-dark: #242424;
+    --color-primary: #108ee9;
+    ...
+}
+
+// app/styles/normalize.scss
+html {
+    scroll-behavior: smooth;
+}
+...
+
+// app/styles.index.scss
+@import "./normalize.scss";
+@import "./vars.scss";
+...
+
+// app/index.scss
+@import "./styles/index.scss";
 ```
+
+```js
+// app/index.tsx
+import "./index.scss"
+
+const App = () => {...}
 ```
-./ui/atoms/text-field/text-field.tsx
-  import React from 'react'
-  import classes from './text-field.module.css'
-  
-  type TextFieldProps = {
-    value?: string
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-    label?: string
-  }
-  export const TextField = ({ onChange, value, label }: TextFieldProps) => {
+
+## Добавим роутинг
+
+### Добавим HOC для инициализации роутера
+```tsx
+// app/hocs/with-router.ts
+import { Suspense } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+
+export const withRouter = (component: () => React.ReactNode) => () => (
+    <BrowserRouter>
+        <Suspense fallback="Loading...">
+            {component()}
+        </Suspense>
+    </BrowserRouter>
+);
+// app/hocs/index.ts
+import compose from "compose-function";
+import withRouter from "./with-router";
+
+export const withHocs = compose(withRouter);
+```
+
+```tsx
+// app/index.tsx
+import { withHocs } from "./hocs";
+...
+
+const App = () => {...}
+
+export default withHocs(App);
+```
+
+### Добавим реальные страницы
+
+```tsx
+// pages/tasks-list/index.tsx
+export const TasksListPage = () => {
+    return <div>Tasks List</div>;
+};
+// pages/task-details/index.tsx
+type Props = RouteChildrenProps<{ ... }>;
+
+export const TasksDetailsPage = (props: Props) => {
+    const taskId = Number(props.match?.params.taskId);
+    return <div>Task#{taskId}</div>;
+};
+```
+
+```tsx
+// pages/index.tsx
+import { Suspense, lazy } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+
+const TasksListPage = lazy(() => import("./tasks-list"));
+const TaskDetailsPage = lazy(() => import("./task-details"));
+
+const Routing = () => {
     return (
-      <label className={classes.label}>
-        {label}
-        <input onChange={onChange} value={value} />
-      </label>
-    )
-  }
+        <Switch>
+            <Route exact path="/" component={TasksListPage} />
+            <Route exact path="/:taskId" component={TaskDetailsPage} />
+            <Redirect to="/" />
+        </Switch>
+    );
+};
 
-./ui/atoms/text-field/text-field.module.css
-  .label {
-    color: darkblue;
-  }
-
-
-./ui/atoms/text-field/index.ts
-export { TextField } from './text-field'
+export default Routing;
 ```
+
+```tsx
+// app/index.tsx
+import Routing from "pages";
+
+const App = () => (
+    <Routing />
+)
+...
 ```
-./ui/atoms/index.ts
-  export { Button } from './button'
-  export { TextField } from './text-field'
-  
-./ui/index.ts
-  export * from './atoms'
+
+## См. также
+- [(Обзор) How to Organize Your React + Redux Codebase][ext-pluralsight]
+    - Разбор нескольких подходов к структуризации React проектов
 ```
-Проверка, что всё создалось корректно
+
+```js
+// app/index.tsx
+import "./index.scss"
+
+function App() {
 ```
-./pages/home/page.tsx
-  import { Button, TextField } from '../../ui'
 
-  export function HomePage() {
-    const handleClick = () => {
-      console.log('hello')
-    }
-    return (
-      <div>
-        <TextField label={'Enter new todo:'} />
-        <Button onClick={handleClick}>Create</Button>
-      </div>
-    )
-  }
-```
-Если видим инпут и кнопку — двигаемся дальше.
+## Добавим фич
 
-2. Рядом со страницей создадим модель, чтобы было с чем работать. В данном примере используется эффектор для упрощения,
-чтобы узнать как применить другие стейт-менеджеры, можно перейти в раздел [how-to гайдов](https://google.com).
+> `TBD`
 
-```npm i effector effector-react```
-```
-./pages/home/model.ts
-  import { createEvent, createStore, restore, sample } from 'effector'
-  
-  export const newTodoTextChanged = createEvent<string>()
-  export const $newTodoText = restore(newTodoTextChanged, '')
-  
-  export const todoCreated = createEvent()
-  
-  type Todo = {
-    title: string
-    isDone: boolean
-  }
-  export const $todoList = createStore<Todo[]>([])
-  
-  const todoCreationConfirmed = sample({
-    clock: todoCreated,
-    source: $newTodoText,
-  })
-  
-  $todoList.on(todoCreationConfirmed, (prev, newTodoTitle) => [
-    ...prev,
-    { title: newTodoTitle, isDone: false },
-  ])
-  
-  todoCreationConfirmed.watch((newTodoTitle) => {
-    alert(`new todo was created with title ${newTodoTitle}`)
-  })
-```
-```
-./pages/home/page.tsx
-  import { useStore } from 'effector-react'
-  import { $newTodoText, newTodoTextChanged, todoCreated } from './model'
-  export function HomePage() {
-    const value = useStore($newTodoText)
-  
-    const handleClick = () => {
-      todoCreated()
-    }
-  
-    return (
-      <div>
-        <TextField
-          label={'Enter new todo:'}
-          value={value}
-          onChange={(e) => newTodoTextChanged(e.target.value)}
-        />
-        <Button onClick={handleClick}>Create</Button>
-      </div>
-    )
-  }
-```
-Попробуем проверить — ввести что-то в инпуте и нажать "Create". Если появился алерт с этим значением — Вы на верном
-пути, и новый элемент создаётся. Выведем его.
-```
-./pages/home/page.tsx
-  const todoList = useStore($todoList)
-  ...
-  <Button onClick={handleClick}>Create</Button>
-  <ul>
-    {todoList.map((todo) => (
-      <li>{todo.title}</li>
-    ))}
-  </ul>
-```
-3. Отлично, todo лист выводится, наведём немного порядок в коде.
-```
-./features/todo/atoms/todo-item/index.ts
-  export { TodoItem } from './todo-item'
+## Добавим сущностей
 
-./features/todo/atoms/todo-item/todo-item.module.css
-  .todoItem {
-    background-color: inherit;
-  }
-  .todoTitle[data-is-done="true"] {
-    text-decoration: line-through;
-  }
+> `TBD`
 
+## Итого
 
-./features/todo/atoms/todo-item/todo-item.tsx
-  import { todoCompleted, todoRemoved } from '../../model'
-  import { Todo } from '../../types'
-  import classes from './todo-item.module.css'
-  
-  export const TodoItem = ({ todo }: { todo: Todo }) => {
-    const handleDone = () => todoCompleted(todo.id)
-    const handleRemove = () => todoRemoved(todo.id)
-    
-    console.log(classes)
-    return (
-      <li
-        data-is-done={todo.isDone}
-        className={classes.todoTitle}
-      >
-        <span>{todo.title}</span>
-        <button className={classes.todoItem} onClick={handleDone}>
-          {todo.isDone ? 'Undone' : 'Done'}
-        </button>
-        <button className={classes.todoItem} onClick={handleRemove}>
-          Remove
-        </button>
-      </li>
-    )
-  }
+> `TBD`
 
-./features/todo/atoms/index.tsx
-  export { TodoItem } from './todo-item'
+## См. также
+- [(Обзор) How to Organize Your React + Redux Codebase][ext-pluralsight]
+    - Разбор нескольких подходов к структуризации React проектов
 
-./features/todo/molecules/create-todo-form.tsx
-  import { useStore } from 'effector-react'
-  import React from 'react'
-  import { Button, TextField } from '../../../ui'
-  import { $newTodoText, newTodoTextChanged, todoCreated } from '../model'
-  
-  export const CreateTodoForm = () => {
-    const value = useStore($newTodoText)
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault()
-      todoCreated()
-    }
-    return (
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label={'Enter new todo:'}
-          value={value}
-          onChange={(e) => newTodoTextChanged(e.target.value)}
-        />
-        <Button type="submit">Create</Button>
-      </form>
-    )
-  }
-
-./features/todo/molecules/index.tsx
-  export { CreateTodoForm } from './create-todo-form'
-  export { TodoList } from './todo-list'
-
-./features/todo/molecules/todo-list.tsx
-  import { useStore } from 'effector-react'
-  import { TodoItem } from '../atoms'
-  import { $todoList } from '../model'
-  
-  export const TodoList = () => {
-    const todoList = useStore($todoList)
-    return (
-      <ul>
-        {todoList.map((todo) => <TodoItem todo={todo} key={todo.id} />)}
-      </ul>
-    )
-  }
-
-./features/todo/model.ts
-  import { createEvent, createStore, restore, sample } from 'effector'
-  import { Todo } from './types'
-  
-  export const newTodoTextChanged = createEvent<string>()
-  export const $newTodoText = restore(newTodoTextChanged, '')
-  
-  export const todoCreated = createEvent()
-  
-  export const $todoList = createStore<Todo[]>([])
-  
-  const $nextTodoId = createStore(0);
-  
-  const todoCreationConfirmed = sample({
-    clock: todoCreated,
-    source: { title: $newTodoText, id: $nextTodoId },
-  })
-  
-  $todoList.on(todoCreationConfirmed, (prev, { title, id }) => [
-    ...prev,
-    { title, isDone: false, id },
-  ])
-  $newTodoText.reset(todoCreationConfirmed)
-  $nextTodoId.on(todoCreationConfirmed, (prev) => prev + 1)
-  
-  export const todoCompleted = createEvent<number>()
-  $todoList.on(todoCompleted, (prev, id) => prev.map((todo) => {
-    if (todo.id !== id) return todo
-    return {
-      ...todo,
-      isDone: !todo.isDone,
-    }
-  }))
-  
-  export const todoRemoved = createEvent<number>()
-  $todoList.on(todoRemoved, (prev, id) => prev.filter((todo) => todo.id !== id ))
-
-./features/todo/types.ts
-  export type Todo = {
-    title: string
-    isDone: boolean
-    id: number
-  }
-
-./features/todo/index.ts
-  export { CreateTodoForm, TodoList } from './molecules';
-```
