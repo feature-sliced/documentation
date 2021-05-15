@@ -14,7 +14,6 @@
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
 [ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
 [ext-v2]: https://github.com/feature-sliced/wiki
-[ext-about]: ../about/readme.md
 [ext-kof]: https://github.com/kof
 [ext-kof-fdd]: https://www.youtube.com/watch?v=BWAeYuWFHhs
 [ext-tg-v2-draft]: https://t.me/atomicdesign/18708
