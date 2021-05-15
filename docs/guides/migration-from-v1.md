@@ -4,10 +4,10 @@
 
 ---
 
-[refs-adaptability]: ../concepts/naming-adaptability.md
-[refs-abstractions]: ../references/abstractions.md
-[refs-abstractions-layers]: ../references/abstractions.md#-group-layers
-[refs-abstractions-segments]: ../references/abstractions.md#%EF%B8%8F-group-segments
+[refs-adaptability]: /docs/concepts/naming-adaptability.md
+[refs-abstractions]: /docs/concepts/app-splitting.md
+[refs-abstractions-layers]: /docs/concepts/app-splitting.md#group-layers
+[refs-abstractions-segments]: /docs/concepts/app-splitting.md#group-segments
 
 [ext-v1]: https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0.md
 [ext-tg-spb]: https://t.me/feature_slices

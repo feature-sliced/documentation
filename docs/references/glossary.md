@@ -1,4 +1,4 @@
-[refs-splitting]: /docs/references/abstractions.md
+[refs-splitting]: /docs/concepts/app-splitting.md
 [refs-layers]: layers/readme.md
 [refs-segments]: segments/readme.md
 

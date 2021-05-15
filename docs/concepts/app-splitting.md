@@ -8,8 +8,6 @@
 [disc-usability]: https://github.com/feature-sliced/wiki/discussions/65
 
 [tg-description]: https://t.me/atomicdesign/18951
-[ref-app-splitting]: app-splitting.md
-[ref-naming-adaptability]: naming-adaptability.md
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-medium]: https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1

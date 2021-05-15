@@ -17,10 +17,10 @@
 [refs-needs-driven]: /docs/concepts/needs-driven.md
 
 [refs-knowledge]: /docs/references/knowledge-types.md
-[refs-splitting]: /docs/references/abstractions.md
-[refs-splitting-layers]: /docs/references/abstractions.md#group-layers
-[refs-splitting-slices]: /docs/references/abstractions.md#group-slices
-[refs-splitting-segments]: /docs/references/abstractions.md#group-segments
+[refs-splitting]: /docs/concepts/app-splitting.md
+[refs-splitting-layers]: /docs/concepts/app-splitting.md#group-layers
+[refs-splitting-slices]: /docs/concepts/app-splitting.md#group-slices
+[refs-splitting-segments]: /docs/concepts/app-splitting.md#group-segments
 
 [refs-migration-v1]: /docs/guides/migration-from-v1.md
 
