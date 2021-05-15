@@ -108,7 +108,7 @@ export const SomeForm = () => (
 ### Примеры
 
 ```ts
-// **/**
+// **/**/api/user.ts
 export class UserApi {
     constructor(config) {...}
     getList(params: GetListParams): Promise<User[]> {...}
