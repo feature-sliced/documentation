@@ -41,9 +41,9 @@
 ## Атрибуция
 
 Данный Кодекс Поведения составлен на основе [Соглашения о Контрибьюторах][homepage], версия 1.4,
-доступного по ссылке: https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+доступного по ссылке: <https://www.contributor-covenant.org/version/1/4/code-of-conduct.html>
 
 [homepage]: https://www.contributor-covenant.org
 
 Ответы на наиболее частые вопросы, касающиеся данного Кодекса Поведения, можно найти по ссылке:
-https://www.contributor-covenant.org/faq
+<https://www.contributor-covenant.org/faq>
