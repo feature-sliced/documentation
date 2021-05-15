@@ -8,5 +8,5 @@
 - [Об архитектуре](architecture.md)
 - [Взаимодействие модулей приложения](cross-communication.md)
 - [Адаптивность нейминга](naming-adaptability.md)
-- [О понимании потребностей и формулировке задач](needs-driven.md)
+- [О понимании потребностей и формулировке задач](understanding-needs.md)
 - [Публичное API модуля приложения](public-api.md)
