@@ -4,7 +4,7 @@
 
 ## Содержание
 
-- [Разбиение приложения](/docs/concepts/app-splitting.md)
+- [Разбиение приложения](app-splitting.md)
 - [Об архитектуре](architecture.md)
 - [Взаимодействие модулей приложения](cross-communication.md)
 - [Адаптивность нейминга](naming-adaptability.md)
