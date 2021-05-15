@@ -16,8 +16,8 @@
 [refs-needs-driven]: /docs/concepts/understanding-needs.md
 
 [refs-knowledges]: /docs/references/knowledge-types.md
-[refs-abstractions]: /docs/references/abstractions.md
-[refs-abstractions-layers]: /docs/references/abstractions.md#group-layers
+[refs-splitting]: /docs/concepts/app-splitting.md
+[refs-splitting-layers]: /docs/concepts/app-splitting.md#group-layers
 
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
@@ -73,7 +73,7 @@
 
 Методология призвана **упростить и стандартизировать декомпозицию логики для больших и долгоживужих проектов.**
 
-Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-abstractions], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
+Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-splitting], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
 
 ### Явная бизнес-логика
 
@@ -101,7 +101,7 @@
 
 ### Контролируемое переиспользование логики
 
-Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-abstractions-layers]
+Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-splitting-layers]
 
 Благодаря этому *сохраняется баланс между соблюдением принципа `DRY` и возможности кастомизировать логику модуля без оверхедных переопределений*
 
@@ -164,7 +164,7 @@
     └── index.tsx/              #
 ```
 
-Подробнее в ["Абстракции методологии"][refs-abstractions] и ["Разбиение приложения"][refs-splitting]
+Подробнее в ["Абстракции методологии"][refs-splitting] и ["Разбиение приложения"][refs-splitting]
 
 ## Further reading
 
