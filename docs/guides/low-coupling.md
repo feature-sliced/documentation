@@ -1,4 +1,5 @@
 # Слабая зацепленность и сильная связность
+
 Модули приложения должны проектироваться как обладающие **сильной связностью** (направленные на решение одной четкой задачи) и **слабой зацепленностью** (как можно менее зависимые от других модулей)
 
 В рамках методологии это достигается через:
@@ -81,7 +82,9 @@ const List: Component<ListProps> = ({ Header, Items }) => (
 />
 ```
 
-2. Модель данных страницы будет организована как **композиция фич и сущностей**
+2. Модель данных страницы будет организована как **композиция фич и сущностей**, в рамках этого примера фичи будут реализованы как фабрики и получать доступ к интерфейсу сущностей через параметры этих фабрик.
+
+> Однако, реализация в виде фабрики необязательна - фича может зависеть от нижележащих слоев и напрямую
 
 ```ts
 //pages/main/model.ts
@@ -92,6 +95,8 @@ import { contactStore } from "entities/contact"
 import { createMessageInput } from "features/message-input"
 import { createConversationSwitch } from "features/conversation-switch"
 
+import { beautifiy } from "shared/lib/beautify-text"
+
 export const { allConversations, setConversation } = createConversationSwitch({
     contacts: contactStore.allContacts,
     setConversation: conversationStore.setConversation,
@@ -101,6 +106,13 @@ export const { allConversations, setConversation } = createConversationSwitch({
 
 export const { sendMessage, attachFile } = createMessageInput({
     author: userStore.currentUser
-    send: conversationStore.sendMessage
+    send: conversationStore.sendMessage,
+    formatMessage: beautify
 })
 ```
+
+### Итого
+
+1. Модули должны обладать **сильной связностью** (иметь одну ответственность, решать одну конкретную задачу) и предоставлять [**публичный интерфейс**](../concepts/public-api.md) доступа
+2. **Слабая зацепленность** достигается через композицию элементов - компонентов UI, фич и сущностей
+3. Также, для снижения зацепленности, модули **должны зависеть друг от друга только через публичные интерфейсы** - так достигается независимость модулей от внутренней реализации друг друга
