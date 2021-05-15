@@ -234,18 +234,6 @@ const App = () => (
 ...
 ```
 
-## См. также
-- [(Обзор) How to Organize Your React + Redux Codebase][ext-pluralsight]
-    - Разбор нескольких подходов к структуризации React проектов
-```
-
-```js
-// app/index.tsx
-import "./index.scss"
-
-function App() {
-```
-
 ## Добавим фич
 
 > `TBD`
