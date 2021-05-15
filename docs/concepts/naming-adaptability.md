@@ -1,6 +1,6 @@
 [refs-layers]: /docs/concepts/app-splitting.md#group-layers
 [refs-segments]: /docs/concepts/app-splitting.md#group-segments
-[refs-reference]: /docs/references/readme.md
+[refs-reference]: /docs/reference/readme.md
 
 [disc-src]: https://github.com/feature-sliced/wiki/discussions/16
 [disc-naming]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-464894

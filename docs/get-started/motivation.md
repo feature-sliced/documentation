@@ -1,7 +1,7 @@
 
 [refs-mission]: /docs/about/mission.md
 [refs-mission--goals]: /docs/about/mission.md#цели
-[refs-knowledge]: /docs/references/knowledge-types.md
+[refs-knowledge]: /docs/reference/knowledge-types.md
 
 [disc-src]: https://github.com/feature-sliced/wiki/discussions/27
 [ext-discussions]: https://github.com/feature-sliced/wiki/discussions

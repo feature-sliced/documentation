@@ -13,7 +13,7 @@
 [refs-isolation]: /docs/concepts/cross-communication.md
 [refs-needs-driven]: /docs/concepts/needs-driven.md
 
-[refs-knowledge]: /docs/references/knowledge-types.md
+[refs-knowledge]: /docs/reference/knowledge-types.md
 [refs-splitting]: /docs/concepts/app-splitting.md
 [refs-splitting-layers]: /docs/concepts/app-splitting.md#group-layers
 [refs-splitting-slices]: /docs/concepts/app-splitting.md#group-slices

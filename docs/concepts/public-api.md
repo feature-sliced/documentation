@@ -1,4 +1,4 @@
-[refs-glossary]: /docs/references/glossary.md
+[refs-glossary]: /docs/reference/glossary.md
 
 [disc-src]: https://github.com/feature-sliced/wiki/discussions/41
 [ext-solid]: https://ru.wikipedia.org/wiki/SOLID
