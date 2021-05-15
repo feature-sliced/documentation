@@ -10,14 +10,13 @@
 [refs-arch]: /docs/concepts/architecture.md
 [refs-arch-req]: /docs/concepts/architecture.md#требования
 [refs-arch-problems]: /docs/concepts/architecture.md#проблемы
-[refs-splitting]: /docs/concepts/abstractions.md
 [refs-public-api]: /docs/concepts/public-api.md
 [refs-isolation]: /docs/concepts/cross-communication.md
 [refs-needs-driven]: /docs/concepts/needs-driven.md
 
 [refs-knowledges]: /docs/references/knowledge-types.md
-[refs-splitting]: /docs/concepts/abstractions.md
-[refs-splitting-layers]: /docs/concepts/abstractions.md#group-layers
+[refs-splitting]: /docs/references/abstractions.md
+[refs-splitting-layers]: /docs/references/abstractions.md#group-layers
 
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven

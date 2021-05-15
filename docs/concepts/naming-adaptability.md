@@ -1,5 +1,5 @@
-[refs-layers]: abstractions.md#group-layers
-[refs-segments]: abstractions.md#group-segments
+[refs-layers]: /docs/references/abstractions.md#group-layers
+[refs-segments]: /docs/references/abstractions.md#group-segments
 [refs-reference]: /docs/references/readme.md
 
 [disc-src]: https://github.com/feature-sliced/wiki/discussions/16

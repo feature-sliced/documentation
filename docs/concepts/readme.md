@@ -4,7 +4,7 @@
 
 ## Содержание
 
-- [Разбиение приложения](abstractions.md)
+- [Разбиение приложения](/docs/references/abstractions.md)
 - [Об архитектуре](architecture.md)
 - [Взаимодействие модулей приложения](cross-communication.md)
 - [Адаптивность нейминга](naming-adaptability.md)
