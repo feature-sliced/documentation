@@ -1,5 +1,5 @@
-[refs-layers]: app-splitting.md#group-layers
-[refs-segments]: app-splitting.md#group-segments
+[refs-layers]: abstractions.md#group-layers
+[refs-segments]: abstractions.md#group-segments
 [refs-reference]: /docs/references/readme.md
 
 [disc-src]: https://github.com/feature-sliced/wiki/discussions/16
