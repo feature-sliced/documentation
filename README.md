@@ -14,7 +14,7 @@
 [refs-public-api]: /docs/concepts/public-api.md
 [refs-adaptability]: /docs/concepts/naming-adaptability.md
 [refs-isolation]: /docs/concepts/cross-communication.md
-[refs-needs-driven]: /docs/concepts/understanding-needs.md
+[refs-needs-driven]: /docs/concepts/needs-driven.md
 
 [refs-knowledge]: /docs/references/knowledge-types.md
 [refs-splitting]: /docs/references/abstractions.md

@@ -1,5 +1,5 @@
 [refs-naming-adaptability]: /docs/concepts/naming-adaptability.md
-[refs-needs]: /docs/concepts/understanding-needs.md
+[refs-needs]: /docs/concepts/needs-driven.md
 
 [refs-low-coupling]: /docs/guides/low-coupling.md
 [refs-example-viewer]: /docs/guides/examples/viewer.md
