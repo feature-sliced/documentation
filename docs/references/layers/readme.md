@@ -1,6 +1,15 @@
 [refs-naming-adaptability]: /docs/concepts/naming-adaptability.md
 [refs-example-viewer]: /docs/guides/examples/viewer.md
 
+[refs-segments]: ../segments/readme.md
+[refs-segments--ui]: ../segments/readme.md#ui
+[refs-segments--model]: ../segments/readme.md#model
+[refs-segments--lib]: ../segments/readme.md#lib
+[refs-segments--api]: ../segments/readme.md#api
+[refs-segments--config]: ../segments/readme.md#config
+
+[disc-sharing]: https://github.com/feature-sliced/wiki/discussions/14
+
 # Layers
 
 `Layers` - первый уровень разбиения приложения, согласно **скоупу влияния** модуля
@@ -31,7 +40,7 @@
 #### Инициализация роутера
 
 ```tsx
-// /app/hocs/withRouter.tsx
+// app/hocs/withRouter.tsx
 export const withRouter = (component: Component) => () => (
     <Router>
         <Suspense fallback={<Spin overlay />}>
@@ -46,16 +55,16 @@ export const withRouter = (component: Component) => () => (
 #### Инициализация внешних библиотек
 
 ```tsx
-// /app/hocs/withAntd.tsx
+// app/hocs/withAntd.tsx
 export const withAntd = (component: Component) => () => (
-    <ConfigProvider getPopupContainer={({ parentElement }) => parentElement || document.body}>
+    <ConfigProvider getPopupContainer={...}>
         {component()}
     </ConfigProvider>
 );
 ```
 
 ```tsx
-// /app/hocs/withApollo.tsx
+// app/hocs/withApollo.tsx
 const client = new ApolloClient({ ... });
 
 export const withApollo = (component: Component) => () => (
@@ -69,7 +78,7 @@ export const withApollo = (component: Component) => () => (
 *Здесь показан лишь один из способов, если вы используете HOCs для провайдеров и инициализации логики*
 
 ```tsx
-// /app/hocs/index.ts
+// app/hocs/index.ts
 import compose from "compose-function";
 import { withRouter } from "./with-router";
 import { withAntd } from "./with-antd";
@@ -83,7 +92,7 @@ export const withHocs = compose(withRouter, withAntd, ...);
 ```
 
 ```tsx
-// /app/index.tsx
+// app/index.tsx
 import { withHocs } from "./hocs";
 ...
 
@@ -94,23 +103,116 @@ export default withHocs(App);
 
 ## `processes`
 
-(Опц.) Процессы приложения, протекающие над страницами
+**(Опц.) Процессы приложения, протекающие над страницами**
+
+```sh
+└── processes/{slice}
+          ├── index.ts
+          ├── lib.ts
+          └── model.ts
+```
 
 ## `pages`
 
-Страницы приложения
+**Страницы приложения**
+
+```sh
+└── pages/{slice}
+          ├── index.ts
+          ├── lib.ts
+          ├── model.ts
+          └── ui.tsx
+```
 
 ## `features`
 
-Ключевой функционал приложения
+**Ключевой функционал приложения**
+
+```sh
+└── features/{slice}
+          ├── lib/
+          ├── model/
+          ├── ui/
+          └── index.ts
+```
 
 ## `entities`
+
+```sh
+└── entities/{slice}
+          ├── lib/
+          ├── model/
+          ├── ui/
+          └── index.ts
+```
 
 Бизнес-сущности
 
 ## `shared`
 
-Переиспользуемые модули
+**Переиспользуемые модули, без привязки к бизнес-логике**
+
+```sh
+└── shared/
+      ├── api/
+      ├── config/
+      ├── lib/
+      └── ui/
+```
+
+Здесь обычно находятся:
+- общий **UIKit** приложения (если такой есть)
+    - *[Segment][refs-segments]: `shared/ui`*
+- общие **вспомогательные библиотеки**
+    - *[Segment][refs-segments]: `shared/lib`*
+- общий модуль по **работе с API**
+    - *[Segment][refs-segments]: `shared/api`*
+- модуль **конфигурации приложения** и его окружения
+    - *[Segment][refs-segments]: `shared/config`*
+    - *env-переменные, которые могут использоваться в коде вышележащих слоев*
+
+### Примеры
+
+#### Использование UIKit
+
+```tsx
+// shared/ui/button/index.tsx
+export const Button = () => {...}
+
+// shared/ui/card/index.tsx
+export const Card = () => {...}
+```
+
+```tsx
+// **/**/index.tsx
+import { Button } from "shared/ui/button";
+import { Card } from "shared/ui/card";
+// Или в крайних случаях
+// import { Button, Card } from "shared/ui";
+```
+
+#### Использование переменных окружения
+
+*Реализация зависит от проекта и команды, здесь приведен лишь один из вариантов*
+
+```ts
+// shared/config/index.ts
+export const isDevEnv = NODE_ENV === "development";
+export const OAUTH_TOKEN = getEnvVar("REACT_APP_OAUTH_TOKEN");
+```
+
+```ts
+// **/**/index.tsx
+import { OAUTH_TOKEN, isDevEnv } from "shared/config";
+
+export const OAuthProvider = () => (
+    <OAuth
+        debug={isDevEnv}
+        token={OAUTH_TOKEN}
+        ...
+    />
+)
+```
 
 ## См. также
 
@@ -121,3 +223,4 @@ export default withHocs(App);
 - [Адаптивность нейминга][refs-naming-adaptability]
 - [Example: Viewer][refs-example-viewer]
     - *Пример распределения логики по слоям: от `shared` до `app`*
+- [(Дискуссия) Про переиспользуемые модули][disc-sharing]
