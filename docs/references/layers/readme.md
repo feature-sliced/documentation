@@ -138,6 +138,8 @@ export default withHocs(App);
 
 ## `entities`
 
+**Бизнес-сущности**
+
 ```sh
 └── entities/{slice}
           ├── lib/
@@ -146,7 +148,51 @@ export default withHocs(App);
           └── index.ts
 ```
 
-Бизнес-сущности
+Здесь обычно находятся:
+- бизнес-сущности, для построения бизнес-логики приложения
+    > *Например: `user`, `order`, `post`, `journal`, `i18n`, `navigation`, ...*
+- компоненты сущностей, для построения UI вышележащих слоев
+    > *Например: `UserCard`, `LocalePicker`, ...*
+
+### Примеры
+
+#### Использование модели сущностей
+
+```tsx
+// **/**/index.tsx
+import { viewerModel } from "entities/viewer";
+
+export const Wallet = () => {
+    const viewer = viewerModel.useViewer();
+    const { moneyCount } = wallet;
+    
+    ...
+}
+```
+
+#### Использование компонентов сущностей
+
+```ts
+// entities/book/index.ts
+export { BookCard, ... } from "./ui";
+export * as bookModel from "./model";
+```
+
+```tsx
+// pages/**/index.tsx
+import { BookCard } from "entities/book";
+
+export const CatalogPage = () => {
+    const bookQuery = ...;
+    return (
+        ...
+        {bookQuery.map((book) => (
+            <Book key={book.id} data={book} />
+        ))}
+        ...
+    )
+}
+```
 
 ## `shared`
 
