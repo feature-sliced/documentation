@@ -2,10 +2,10 @@
 
 [refs-docs]: /docs/readme.md
 [refs-about]: /docs/about/readme.md
-[refs-motivation]: /docs/about/motivation.md
-[refs-motivation-why]: /docs/about/motivation.md#-почему-не-хватает-существующих-решений
 
 [refs-getstarted]: /docs/get-started/readme.md
+[refs-motivation]: /docs/get-started/motivation.md
+[refs-motivation-why]: /docs/get-started/motivation.md#-почему-не-хватает-существующих-решений
 
 [refs-concepts]: /docs/concepts/readme.md
 [refs-arch]: /docs/concepts/architecture.md
@@ -22,6 +22,8 @@
 [refs-abstractions-layers]: /docs/references/abstractions.md#-group-layers
 [refs-abstractions-slices]: /docs/references/abstractions.md#-group-slices
 [refs-abstractions-segments]: /docs/references/abstractions.md#%EF%B8%8F-group-segments
+
+[refs-migration-v1]: /docs/guides/migration-from-v1.md
 
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
@@ -222,6 +224,7 @@
 
 - **[Документация методологии][refs-docs]**
     > *Get-Started, Concepts, Guides, References, About*
+- **[Миграция с feature-slices@v1][refs-migration-v1]**
 - **Прочие материалы**
   - Предыдущие версии методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven][ext-fdd]*
   - [Доклад React SPB Meetup #1 - Feature Slices](https://t.me/feature_slices)
