@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import styles from './sections.module.css';
 import { featureList, conceptsList } from "./fixtures";
+import styles from './styles.module.css';
 
 function Feature({Svg, title, description, size}) {
   return (

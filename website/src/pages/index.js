@@ -3,10 +3,10 @@ import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import styles from './index.module.css';
-import { Concepts, Features } from '../components/sections';
+import { Concepts, Features } from '../components';
+import styles from './styles.module.css';
 
-function HomepageHeader() {
+function Header() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
@@ -31,7 +31,7 @@ export default function Home() {
     <Layout
       title="Welcome"
       description="Structural pattern and methodology for frontend projects">
-      <HomepageHeader />
+      <Header />
       <main>
         <Features />
         <Concepts />
