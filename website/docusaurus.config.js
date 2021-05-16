@@ -143,7 +143,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'feature-sliced', // Usually your GitHub org/user name.
-  projectName: 'wiki', // Usually your repo name.
+  projectName: 'documentation', // Usually your repo name.
   themeConfig: {
     navbar,
     footer,
