@@ -1,5 +1,4 @@
 [refs-arch--adaptability]: architecture.md#adaptability
-[refs-reference-layers]: /docs/reference/layers/readme.md
 
 [ext-medium]: https://alexmngn.medium.com/how-to-better-organize-your-react-applications-2fd3ea1920f1
 [disc-src]: https://t.me/sergeysova/318
