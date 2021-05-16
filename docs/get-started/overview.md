@@ -1,16 +1,3 @@
-[refs-motivation]: /docs/get-started/motivation.md
-
-[refs-splitting]: /docs/concepts/app-splitting.md
-[refs-concepts]: /docs/concepts/readme.md
-
-[refs-abstractions]: /docs/reference/abstractions.md
-[refs-abstractions-layers]: /docs/reference/abstractions.md#-group-layers
-[refs-module]: /docs/reference/glossary.md#module
-
-[refs-low-coupling]: /docs/guides/low-coupling.md
-[refs-migration-v1]: /docs/guides/migration-from-v1.md
-[refs-examples]: /docs/guides/examples/readme.md
-
 # Overview
 
 Методология призвана **упростить и стандартизировать декомпозицию логики для больших и долгоживужих проектов.**
@@ -56,3 +43,16 @@
 - [Примеры применения методологии][refs-examples]
 - [(Гайд) Миграция с feature-slices (v1)][refs-migration-v1]
   - *Содержит также сравнение двух версий и причины создания v2
+
+[refs-motivation]: /docs/get-started/motivation.md
+
+[refs-splitting]: /docs/concepts/app-splitting.md
+[refs-concepts]: /docs/concepts/readme.md
+
+[refs-abstractions]: /docs/reference/abstractions.md
+[refs-abstractions-layers]: /docs/reference/abstractions.md#-group-layers
+[refs-module]: /docs/reference/glossary.md#module
+
+[refs-low-coupling]: /docs/guides/low-coupling.md
+[refs-migration-v1]: /docs/guides/migration-from-v1.md
+[refs-examples]: /docs/guides/examples/readme.md
