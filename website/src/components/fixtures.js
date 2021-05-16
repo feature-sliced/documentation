@@ -1,10 +1,19 @@
 
 import React from "react";
+import { 
+  LoginOutlined,
+  FileProtectOutlined,
+  EyeOutlined,
+  BlockOutlined,
+  ApiOutlined,
+  LikeOutlined,
+  BuildOutlined,
+} from '@ant-design/icons';
 
 export const featureList = [
     {
       title: 'Явная бизнес-логика',
-      Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+      Svg: EyeOutlined,
       description: (
         <>
           <p>Модули распределяются согласно <b>скоупу влияния, бизнес-ответственности и техническому назначению</b></p>
@@ -15,7 +24,7 @@ export const featureList = [
     },
     {
       title: 'Адаптация к новым условиям',
-      Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+      Svg: LoginOutlined,
       description: (
         <>
           <p>Каждый компонент архитектуры имеет свое назначение и не влияет на другие</p>
@@ -26,7 +35,7 @@ export const featureList = [
     },
     {
       title: 'Техдолг и рефакторинг',
-      Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+      Svg: FileProtectOutlined,
       description: (
         <>
           <p>Каждый модуль является независимым и самодостаточным</p>
@@ -37,7 +46,7 @@ export const featureList = [
     },
     {
       title: 'Контролируемое переиспользование логики',
-      Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+      Svg: BuildOutlined,
       description: (
         <>
           <p>Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно своему слою</p>
@@ -52,7 +61,7 @@ export const featureList = [
 export const conceptsList = [
   {
     title: 'Public API',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: ApiOutlined,
     description: (
       <>
         Каждый модуль должен иметь на верхнем уровне декларацию <b>своего публичного API</b>
@@ -61,7 +70,7 @@ export const conceptsList = [
   },
   {
     title: 'Isolation',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    Svg: BlockOutlined,
     description: (
       <>
         Модуль не должен <b>зависеть напрямую</b> от других модулей того же слоя или вышележаших слоев
@@ -70,7 +79,7 @@ export const conceptsList = [
   },
   {
     title: 'Needs driven',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    Svg: LikeOutlined,
     description: (
       <>
         Ориентирование <b>на потребности бизнеса и пользователя</b>

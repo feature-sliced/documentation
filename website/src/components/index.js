@@ -21,7 +21,7 @@ export const Features = () => {
   return (
     <section className={styles.features}>
       <div className="container">
-        <h2 className="text--center">Features</h2>
+        <h2 className={styles.title}>Features</h2>
         <div className="row">
           {featureList.map((props, idx) => (
             <Feature key={idx} {...props} size={3} />
@@ -36,7 +36,7 @@ export function Concepts() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <h2 className="text--center">Concepts</h2>
+        <h2 className={styles.title}>Concepts</h2>
         <div className="row">
           {conceptsList.map((props, idx) => (
             <Feature key={idx} {...props} size={4} />

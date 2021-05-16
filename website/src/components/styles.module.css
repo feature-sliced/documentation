@@ -7,7 +7,14 @@
   width: 100%;
 }
 
+.title {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  /* height: 120px; */
+  margin: 20px 0;
+  /* width: 200px; */
+  font-size: 80px;
 }
