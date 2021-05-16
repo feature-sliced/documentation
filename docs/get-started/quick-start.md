@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Quick start
 
 Рассмотрим применение **feature-sliced** на примере TodoApp

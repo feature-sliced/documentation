@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Миграция с v1
 
 > Миграция с feature-slices (v1)
