@@ -257,6 +257,6 @@ FIXME: Не удалось нормально justify-content:space-around пр�
 [refs-migration-v1]: /docs/guides/migration-from-v1.md
 
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
-[ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
-[ext-discussions]: https://github.com/feature-sliced/wiki/discussions
-[ext-disc-api]: https://github.com/feature-sliced/wiki/discussions/66
+[ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
+[ext-discussions]: https://github.com/feature-sliced/documentation/discussions
+[ext-disc-api]: https://github.com/feature-sliced/documentation/discussions/66

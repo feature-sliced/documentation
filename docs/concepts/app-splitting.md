@@ -148,14 +148,14 @@ sidebar_label: App splitting
 - [(Статья) Про организацию кодовой базы *с полным сравнением нескольких подходов*][ext-pluralsight]
 - [(Статья) Про модуляризацию проектов][ext-medium]
 
-[disc-src]: https://github.com/feature-sliced/wiki/discussions/31
+[disc-src]: https://github.com/feature-sliced/documentation/discussions/31
 
-[disc-list]: https://github.com/feature-sliced/wiki/discussions/
-[disc-poll]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-464894
-[disc-api]: https://github.com/feature-sliced/wiki/discussions/66
-[disc-processes]: https://github.com/feature-sliced/wiki/discussions/20
-[disc-model]: https://github.com/feature-sliced/wiki/discussions/68
-[disc-usability]: https://github.com/feature-sliced/wiki/discussions/65
+[disc-list]: https://github.com/feature-sliced/documentation/discussions/
+[disc-poll]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894
+[disc-api]: https://github.com/feature-sliced/documentation/discussions/66
+[disc-processes]: https://github.com/feature-sliced/documentation/discussions/20
+[disc-model]: https://github.com/feature-sliced/documentation/discussions/68
+[disc-usability]: https://github.com/feature-sliced/documentation/discussions/65
 
 [tg-description]: https://t.me/atomicdesign/18951
 

@@ -353,7 +353,7 @@ export const SomePage = () => {
 
 ## См. также
 
-- [Дискуссия "Применимость feature-sliced в бою"](https://github.com/feature-sliced/wiki/discussions/65) (*внутри также есть примеры с viewer*)
+- [Дискуссия "Применимость feature-sliced в бою"](https://github.com/feature-sliced/documentation/discussions/65) (*внутри также есть примеры с viewer*)
 - [Вопрос про профиль и сущность пользователя (community-chat)](https://t.me/feature_sliced/342)
 - [Пояснение про UIKIT#Card и User#Card (community-chat)](https://t.me/feature_sliced/552)
 

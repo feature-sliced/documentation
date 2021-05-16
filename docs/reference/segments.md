@@ -177,4 +177,4 @@ export const OAuthProvider = () => (
 
 [refs-naming-adaptability]: /docs/concepts/naming-adaptability
 
-[disc-api]: https://github.com/feature-sliced/wiki/discussions/66
+[disc-api]: https://github.com/feature-sliced/documentation/discussions/66

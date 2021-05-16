@@ -150,5 +150,5 @@ sidebar_position: 3
 [refs-mission--goals]: /docs/about/mission#цели
 [refs-knowledge]: /docs/reference/knowledge-types
 
-[disc-src]: https://github.com/feature-sliced/wiki/discussions/27
-[ext-discussions]: https://github.com/feature-sliced/wiki/discussions
+[disc-src]: https://github.com/feature-sliced/documentation/discussions/27
+[ext-discussions]: https://github.com/feature-sliced/documentation/discussions

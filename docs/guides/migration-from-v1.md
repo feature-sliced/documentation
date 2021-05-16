@@ -16,9 +16,9 @@ sidebar_label: Migration from v1
 
 [ext-v1]: https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0
 [ext-tg-spb]: https://t.me/feature_slices
-[ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
+[ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
 [ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
-[ext-v2]: https://github.com/feature-sliced/wiki
+[ext-v2]: https://github.com/feature-sliced/documentation
 [ext-kof]: https://github.com/kof
 [ext-kof-fdd]: https://www.youtube.com/watch?v=BWAeYuWFHhs
 [ext-tg-v2-draft]: https://t.me/atomicdesign/18708
@@ -127,14 +127,14 @@ sidebar_label: Migration from v1
 
 Теперь определены [конкретные абстракции][refs-abstractions] и [четкие рекоммендации для их нейминга][refs-adaptability]
 
-[disc-process]: https://github.com/feature-sliced/wiki/discussions/20
-[disc-features]: https://github.com/feature-sliced/wiki/discussions/23
-[disc-entities]: https://github.com/feature-sliced/wiki/discussions/18#discussioncomment-422649
-[disc-shared]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-453020
+[disc-process]: https://github.com/feature-sliced/documentation/discussions/20
+[disc-features]: https://github.com/feature-sliced/documentation/discussions/23
+[disc-entities]: https://github.com/feature-sliced/documentation/discussions/18#discussioncomment-422649
+[disc-shared]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-453020
 
-[disc-ui]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-453132
-[disc-model]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-472645
-[disc-api]: https://github.com/feature-sliced/wiki/discussions/66
+[disc-ui]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-453132
+[disc-model]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-472645
+[disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 
 #### [`Layers`][refs-abstractions-layers]
 
@@ -176,4 +176,4 @@ sidebar_label: Migration from v1
 - [React Berlin Talk - Oleg Isonen "Feature Driven Architecture"][ext-kof-fdd]
 - [Сравнение с v1 (community-chat)](https://t.me/feature_sliced/493)
 - [Новые идеи v2 с пояснениями (atomicdesign-chat)][ext-tg-v2-draft]
-- [Обсуждение абстракций и нейминга для новой версии методологии (v2)](https://github.com/feature-sliced/wiki/discussions/31)
+- [Обсуждение абстракций и нейминга для новой версии методологии (v2)](https://github.com/feature-sliced/documentation/discussions/31)

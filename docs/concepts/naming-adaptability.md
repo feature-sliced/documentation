@@ -60,7 +60,7 @@ sidebar_label: Naming adaptability
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-reference]: /docs/reference/glossary
 
-[disc-src]: https://github.com/feature-sliced/wiki/discussions/16
-[disc-naming]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-464894
-[disc-processes]: https://github.com/feature-sliced/wiki/discussions/20
-[disc-model]: https://github.com/feature-sliced/wiki/discussions/68
+[disc-src]: https://github.com/feature-sliced/documentation/discussions/16
+[disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894
+[disc-processes]: https://github.com/feature-sliced/documentation/discussions/20
+[disc-model]: https://github.com/feature-sliced/documentation/discussions/68

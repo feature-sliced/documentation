@@ -393,4 +393,4 @@ export const OAuthProvider = () => (
 [refs-segments--api]: segments#api
 [refs-segments--config]: segments#config
 
-[disc-sharing]: https://github.com/feature-sliced/wiki/discussions/14
+[disc-sharing]: https://github.com/feature-sliced/documentation/discussions/14

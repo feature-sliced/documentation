@@ -1,6 +1,6 @@
 const DOMAIN = 'https://feature-sliced.design/';
 const GITHUB_ORG = 'https://github.com/feature-sliced'
-const GITHUB_DOCS = 'https://github.com/feature-sliced/wiki';
+const GITHUB_DOCS = 'https://github.com/feature-sliced/documentation';
 
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
 
