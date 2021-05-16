@@ -36,3 +36,7 @@
 .justifyCenter {
   justify-content: center;
 }
+
+html[data-theme='dark'] .scheme {
+    filter: invert(0.905) brightness(1.0) grayscale(100%) opacity(0.5);
+}
