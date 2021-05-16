@@ -1,4 +1,8 @@
-# Feature-Sliced Docs
+---
+sidebar_position: 1
+---
+
+# Intro
 
 - [Знакомство с методологией](get-started)
 - [Фундаментальные концепции](concepts)
