@@ -48,17 +48,17 @@ sidebar_position: 2
 - [(Гайд) Миграция с feature-slices (v1)][refs-migration-v1]
   - *Содержит также сравнение двух версий и причины создания v2
 
-[refs-motivation]: /docs/get-started/motivation.md
+[refs-motivation]: /docs/get-started/motivation
 
-[refs-splitting]: /docs/concepts/app-splitting.md
+[refs-splitting]: /docs/concepts/app-splitting
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-concepts]: /docs/concepts/architecture.md
+[refs-concepts]: /docs/concepts/architecture
 
-[refs-abstractions]: /docs/reference/abstractions.md
-[refs-abstractions-layers]: /docs/reference/abstractions.md#-group-layers
-[refs-module]: /docs/reference/glossary.md#module
+[refs-abstractions]: /docs/reference/abstractions
+[refs-abstractions-layers]: /docs/reference/abstractions#-group-layers
+[refs-module]: /docs/reference/glossary#module
 
-[refs-low-coupling]: /docs/guides/low-coupling.md
-[refs-migration-v1]: /docs/guides/migration-from-v1.md
+[refs-low-coupling]: /docs/guides/low-coupling
+[refs-migration-v1]: /docs/guides/migration-from-v1
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-examples]: /docs/guides/examples/viewer.md
+[refs-examples]: /docs/guides/examples/viewer

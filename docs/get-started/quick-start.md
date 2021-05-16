@@ -612,22 +612,22 @@ export const TaskDetailsPage = (props: Props) => {
 - [Про разбиение приложения][refs-splitting]
 - [Справочный материал по методологии][refs-reference]
 
-[refs-motivation]: /docs/get-started/motivation.md
+[refs-motivation]: /docs/get-started/motivation
 
-[refs-needs]: /docs/concepts/needs-driven.md
-[refs-public-api]: /docs/concepts/public-api.md
-[refs-splitting]: /docs/concepts/app-splitting.md
+[refs-needs]: /docs/concepts/needs-driven
+[refs-public-api]: /docs/concepts/public-api
+[refs-splitting]: /docs/concepts/app-splitting
 
-[refs-low-coupling]: /docs/guides/low-coupling.md
+[refs-low-coupling]: /docs/guides/low-coupling
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-guides]: /docs/guides/migration-from-v1.md
+[refs-guides]: /docs/guides/migration-from-v1
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-reference]: /docs/reference/glossary.md
-[refs-app]: /docs/reference/layers.md#app
-[refs-pages]: /docs/reference/layers.md#pages
-[refs-features]: /docs/reference/layers.md#features
-[refs-entities]: /docs/reference/layers.md#entities
-[refs-shared]: /docs/reference/layers.md#shared
+[refs-reference]: /docs/reference/glossary
+[refs-app]: /docs/reference/layers#app
+[refs-pages]: /docs/reference/layers#pages
+[refs-features]: /docs/reference/layers#features
+[refs-entities]: /docs/reference/layers#entities
+[refs-shared]: /docs/reference/layers#shared
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure

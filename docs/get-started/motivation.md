@@ -146,9 +146,9 @@ sidebar_position: 3
 - [О миссии методологии: цели и ограничения][refs-mission]
 - [Типы знаний в проекте][refs-knowledge]
 
-[refs-mission]: /docs/about/mission.md
-[refs-mission--goals]: /docs/about/mission.md#цели
-[refs-knowledge]: /docs/reference/knowledge-types.md
+[refs-mission]: /docs/about/mission
+[refs-mission--goals]: /docs/about/mission#цели
+[refs-knowledge]: /docs/reference/knowledge-types
 
 [disc-src]: https://github.com/feature-sliced/wiki/discussions/27
 [ext-discussions]: https://github.com/feature-sliced/wiki/discussions

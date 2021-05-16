@@ -9,12 +9,12 @@ sidebar_label: Migration from v1
 
 ---
 
-[refs-adaptability]: /docs/concepts/naming-adaptability.md
-[refs-abstractions]: /docs/concepts/app-splitting.md
-[refs-abstractions-layers]: /docs/concepts/app-splitting.md#group-layers
-[refs-abstractions-segments]: /docs/concepts/app-splitting.md#group-segments
+[refs-adaptability]: /docs/concepts/naming-adaptability
+[refs-abstractions]: /docs/concepts/app-splitting
+[refs-abstractions-layers]: /docs/concepts/app-splitting#group-layers
+[refs-abstractions-segments]: /docs/concepts/app-splitting#group-segments
 
-[ext-v1]: https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0.md
+[ext-v1]: https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0
 [ext-tg-spb]: https://t.me/feature_slices
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
 [ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
@@ -166,7 +166,7 @@ sidebar_label: Migration from v1
 
 ### `REFINED` Low coupling
 
-Теперь гораздо проще [соблюдать принцип низкой связности](low-coupling.md) между модулями, благодаря новым слоям.
+Теперь гораздо проще [соблюдать принцип низкой связности](low-coupling) между модулями, благодаря новым слоям.
 
 *При этом по-прежнему рекоммендуется максимально избегать случаев, где крайне трудно "расцепить" модули*
 

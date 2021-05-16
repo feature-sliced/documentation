@@ -175,6 +175,6 @@ export const OAuthProvider = () => (
 - [Адаптивность нейминга][refs-naming-adaptability]
 - [(Обсуждение) Где должен лежать API][disc-api]
 
-[refs-naming-adaptability]: /docs/concepts/naming-adaptability.md
+[refs-naming-adaptability]: /docs/concepts/naming-adaptability
 
 [disc-api]: https://github.com/feature-sliced/wiki/discussions/66

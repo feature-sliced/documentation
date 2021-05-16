@@ -370,8 +370,8 @@ export const OAuthProvider = () => (
 
 > `WIP:` Со временем будут появляться статьи по каждой абстракции
 
-<!-- FIXME: rename to features.md -->
-- [Layer: Features](feature.md)
+<!-- FIXME: rename to features -->
+- [Layer: Features](feature)
 - [Адаптивность нейминга][refs-naming-adaptability]
 - [Example: Viewer][refs-example-viewer]
   - *Пример распределения логики по слоям: от `shared` до `app`*
@@ -380,17 +380,17 @@ export const OAuthProvider = () => (
 - [(Дискуссия) Про переиспользуемые модули][disc-sharing]
   - *Для понимания слоя `shared`*
 
-[refs-naming-adaptability]: /docs/concepts/naming-adaptability.md
-[refs-needs]: /docs/concepts/needs-driven.md
+[refs-naming-adaptability]: /docs/concepts/naming-adaptability
+[refs-needs]: /docs/concepts/needs-driven
 
-[refs-low-coupling]: /docs/guides/low-coupling.md
-[refs-example-viewer]: /docs/guides/examples/viewer.md
+[refs-low-coupling]: /docs/guides/low-coupling
+[refs-example-viewer]: /docs/guides/examples/viewer
 
-[refs-segments]: segments.md
-[refs-segments--ui]: segments.md#ui
-[refs-segments--model]: segments.md#model
-[refs-segments--lib]: segments.md#lib
-[refs-segments--api]: segments.md#api
-[refs-segments--config]: segments.md#config
+[refs-segments]: segments
+[refs-segments--ui]: segments#ui
+[refs-segments--model]: segments#model
+[refs-segments--lib]: segments#lib
+[refs-segments--api]: segments#api
+[refs-segments--config]: segments#config
 
 [disc-sharing]: https://github.com/feature-sliced/wiki/discussions/14

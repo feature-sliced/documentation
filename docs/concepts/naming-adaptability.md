@@ -55,10 +55,10 @@ sidebar_label: Naming adaptability
   - [`processes` vs `flows` vs ...][disc-processes]
   - [`model` vs `store` vs ...][disc-model]
 
-[refs-layers]: /docs/concepts/app-splitting.md#group-layers
-[refs-segments]: /docs/concepts/app-splitting.md#group-segments
+[refs-layers]: /docs/concepts/app-splitting#group-layers
+[refs-segments]: /docs/concepts/app-splitting#group-segments
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-reference]: /docs/reference/glossary.md
+[refs-reference]: /docs/reference/glossary
 
 [disc-src]: https://github.com/feature-sliced/wiki/discussions/16
 [disc-naming]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-464894

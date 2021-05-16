@@ -101,6 +101,6 @@ sidebar_position: 1
 - [Layers в методологии][refs-layers]
 - [Segments в методологии][refs-segments]
 
-[refs-splitting]: /docs/concepts/app-splitting.md
-[refs-layers]: layers.md
-[refs-segments]: segments.md
+[refs-splitting]: /docs/concepts/app-splitting
+[refs-layers]: layers
+[refs-segments]: segments

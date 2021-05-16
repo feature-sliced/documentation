@@ -155,7 +155,7 @@ Frontend занимается разработкой приложений и и�
 - [(Обсуждение) Как разбить функциональность и что из себя она представляет][tg-src]
 - [(Статья) "How to better organize your applications"][ext-medium]
 
-[refs-arch--adaptability]: architecture.md#adaptability
+[refs-arch--adaptability]: architecture#adaptability
 
 [ext-medium]: https://alexmngn.medium.com/how-to-better-organize-your-react-applications-2fd3ea1920f1
 [disc-src]: https://t.me/sergeysova/318
