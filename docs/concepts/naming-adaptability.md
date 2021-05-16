@@ -1,5 +1,6 @@
 ---
 sidebar_position: 6
+sidebar_label: Naming adaptability
 ---
 
 # Адаптивность нейминга
