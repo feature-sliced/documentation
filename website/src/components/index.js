@@ -53,8 +53,8 @@ export function Scheme() {
     <section className={styles.section}>
       <div className="container">
         <h2 className={styles.title}>Scheme</h2>
-        <div className="row">
-          <img className={styles.scheme} src={imgScheme} alt="feature-sliced-scheme" />
+        <div className={clsx("row", styles.justifyCenter)}>
+          <img className={styles.scheme} src={imgScheme} alt="feature-sliced-scheme" width={'60%'} />
         </div>
       </div>
     </section>
