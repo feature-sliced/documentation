@@ -51,7 +51,8 @@ sidebar_position: 2
 [refs-motivation]: /docs/get-started/motivation.md
 
 [refs-splitting]: /docs/concepts/app-splitting.md
-[refs-concepts]: /docs/concepts/readme.md
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-concepts]: /docs/concepts/architecture.md
 
 [refs-abstractions]: /docs/reference/abstractions.md
 [refs-abstractions-layers]: /docs/reference/abstractions.md#-group-layers
@@ -59,4 +60,5 @@ sidebar_position: 2
 
 [refs-low-coupling]: /docs/guides/low-coupling.md
 [refs-migration-v1]: /docs/guides/migration-from-v1.md
-[refs-examples]: /docs/guides/examples/readme.md
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-examples]: /docs/guides/examples/viewer.md
