@@ -1,31 +1,3 @@
-[refs-contributing]: CONTRIBUTING.md
-
-[refs-docs]: /docs/readme.md
-
-[refs-motivation]: /docs/get-started/motivation.md
-[refs-motivation-why]: /docs/get-started/motivation.md#-почему-не-хватает-существующих-решений
-
-[refs-concepts]: /docs/concepts/readme.md
-[refs-arch-req]: /docs/concepts/architecture.md#требования
-[refs-arch-problems]: /docs/concepts/architecture.md#проблемы
-[refs-public-api]: /docs/concepts/public-api.md
-[refs-adaptability]: /docs/concepts/naming-adaptability.md
-[refs-isolation]: /docs/concepts/cross-communication.md
-[refs-needs-driven]: /docs/concepts/needs-driven.md
-
-[refs-knowledge]: /docs/reference/knowledge-types.md
-[refs-splitting]: /docs/concepts/app-splitting.md
-[refs-splitting-layers]: /docs/concepts/app-splitting.md#group-layers
-[refs-splitting-slices]: /docs/concepts/app-splitting.md#group-slices
-[refs-splitting-segments]: /docs/concepts/app-splitting.md#group-segments
-
-[refs-migration-v1]: /docs/guides/migration-from-v1.md
-
-[ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
-[ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
-[ext-discussions]: https://github.com/feature-sliced/wiki/discussions
-[ext-disc-api]: https://github.com/feature-sliced/wiki/discussions/66
-
 # feature-sliced
 
 > `WIP:` Работа над методологией в процессе и окончательный вид *может поменяться*
@@ -132,7 +104,7 @@
 
 Ориентирование **на потребности бизнеса и пользователя**
 
-- Включает в себя также разбиение структуры по бизнес-доменам *(т.н. ["слайсам"][refs-abstractions-slices])*
+- Включает в себя также разбиение структуры по бизнес-доменам *(т.н. ["слайсам"][refs-splitting-slices])*
 
 ## Abstractions
 
@@ -260,3 +232,31 @@ FIXME: Не удалось нормально justify-content:space-around пр�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![youtube](./assets/social_youtube.png)](#wip "YouTube канал (в процессе)")
 </div>
+
+[refs-contributing]: CONTRIBUTING.md
+
+[refs-docs]: https://feature-sliced.design/docs/intro
+
+[refs-motivation]: https://feature-sliced.design/docs/get-started/motivation
+[refs-motivation-why]: https://feature-sliced.design/docs/get-started/motivation#-почему-не-хватает-существующих-решений
+
+[refs-concepts]: https://feature-sliced.design/docs/concepts/architecture
+[refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#требования
+[refs-arch-problems]: https://feature-sliced.design/docs/concepts/architecture#проблемы
+[refs-public-api]: https://feature-sliced.design/docs/concepts/public-api
+[refs-adaptability]: https://feature-sliced.design/docs/concepts/naming-adaptability
+[refs-isolation]: https://feature-sliced.design/docs/concepts/cross-communication
+[refs-needs-driven]: https://feature-sliced.design/docs/concepts/needs-driven
+
+[refs-knowledge]: https://feature-sliced.design/docs/reference/knowledge-types
+[refs-splitting]: https://feature-sliced.design/docs/concepts/app-splitting
+[refs-splitting-layers]: https://feature-sliced.design/docs/concepts/app-splitting#group-layers
+[refs-splitting-slices]: https://feature-sliced.design/docs/concepts/app-splitting#group-slices
+[refs-splitting-segments]: https://feature-sliced.design/docs/concepts/app-splitting#group-segments
+
+[refs-migration-v1]: https://feature-sliced.design/docs/guides/migration-from-v1
+
+[ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
+[ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
+[ext-discussions]: https://github.com/feature-sliced/wiki/discussions
+[ext-disc-api]: https://github.com/feature-sliced/wiki/discussions/66
