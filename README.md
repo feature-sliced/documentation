@@ -1,4 +1,4 @@
-[refs-contributing]: /CONTRIBUTING.md
+[refs-contributing]: CONTRIBUTING.md
 
 [refs-docs]: /docs/readme.md
 
