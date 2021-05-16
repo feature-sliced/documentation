@@ -33,7 +33,7 @@
 Не будем акцентироваться сильно на этом шаге, но для быстрой инициализации можно  воспользоваться [CRA (для React)](https://create-react-app.dev/docs/getting-started):
 
 ```cmd
-npx create-react-app todo-app --template typescript
+$ npx create-react-app todo-app --template typescript
 ```
 
 ## 2. Подготавливаем структуру
@@ -175,8 +175,8 @@ const App = () => {...}
 ### Установим зависимости
 
 ```cmd
-npm i react-router react-router-dom
-npm i -D @types/react-router @types/react-router-dom
+$ npm i react-router react-router-dom
+$ npm i -D @types/react-router @types/react-router-dom
 ```
 
 ### Добавим HOC для инициализации роутера
