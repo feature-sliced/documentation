@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import imgScheme from "../../../assets/visual_schema.jpg";
 import { featureList, conceptsList } from "./fixtures";
 import styles from './styles.module.css';
 
@@ -47,3 +48,15 @@ export function Concepts() {
   );
 }
 
+export function Scheme() {
+  return (
+    <section className={styles.section}>
+      <div className="container">
+        <h2 className={styles.title}>Scheme</h2>
+        <div className="row">
+          <img className={styles.scheme} src={imgScheme} alt="feature-sliced-scheme" />
+        </div>
+      </div>
+    </section>
+  )
+}

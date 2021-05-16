@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { Concepts, Features } from '../components';
+import { Concepts, Features, Scheme } from '../components';
 import styles from './styles.module.css';
 
 function Header() {
@@ -30,11 +30,13 @@ export default function Home() {
   return (
     <Layout
       title="Welcome"
-      description="Structural pattern and methodology for frontend projects">
+      description="Structural pattern and methodology for frontend projects"
+    >
       <Header />
       <main>
         <Features />
         <Concepts />
+        <Scheme />
       </main>
     </Layout>
   );
