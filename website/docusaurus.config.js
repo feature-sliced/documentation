@@ -7,7 +7,7 @@ module.exports = {
   title: 'feature-sliced',
   // tagline: 'Методология для проектирования frontend проектов, нацеленная на разделение приложения согласно бизнес-логике и областям ответственности.',
   tagline: 'Structural pattern and methodology for frontend projects',
-  url: 'https://github.com/feature-sliced/wiki',
+  url: 'https://feature-sliced.design',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
