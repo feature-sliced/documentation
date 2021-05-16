@@ -1,5 +1,10 @@
 /* stylelint-disable docusaurus/copyright-header */
 
+[role=banner] {
+  height: 40px;
+  line-height: 30px;
+}
+
 /**
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
