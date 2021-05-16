@@ -234,6 +234,7 @@
   - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
   - [How to Organize Your React + Redux Codebase](https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase)
   - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
+<!-- divider -->
 - **[Дискуссии по методологии][ext-discussions]**
   - **Здесь обсуждаются и разбираются реальные примеры применения, вопросы, проблемы, идеи методологии**
   - Все это в совокупности влияет на спецификацию, тулкит и в целом - на дальнейшее видение и развитие методологии
