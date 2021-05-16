@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
-import HomepageFeatures from '../components/HomepageFeatures';
+import { Concepts, Features } from '../components/sections';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -33,7 +33,8 @@ export default function Home() {
       description="Structural pattern and methodology for frontend projects">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <Features />
+        <Concepts />
       </main>
     </Layout>
   );
