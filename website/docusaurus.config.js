@@ -1,5 +1,5 @@
 const DOMAIN = 'https://feature-sliced.design/';
-const GITHUB_ORG = 'https://github.com/feature-sliced/wiki'
+const GITHUB_ORG = 'https://github.com/feature-sliced'
 const GITHUB_DOCS = 'https://github.com/feature-sliced/wiki';
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
@@ -7,7 +7,7 @@ module.exports = {
   title: 'feature-sliced',
   // tagline: 'Методология для проектирования frontend проектов, нацеленная на разделение приложения согласно бизнес-логике и областям ответственности.',
   tagline: 'Structural pattern and methodology for frontend projects',
-  url: 'https://github.com/feature-sliced/wiki',
+  url: DOMAIN,
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
