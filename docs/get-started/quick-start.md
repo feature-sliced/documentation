@@ -2,11 +2,11 @@
 [refs-needs]: /docs/concepts/needs-driven.md
 [refs-public-api]: /docs/concepts/public-api.md
 
-[refs-app]: /docs/references/layers/readme.md#app
-[refs-pages]: /docs/references/layers/readme.md#pages
-[refs-features]: /docs/references/layers/readme.md#features
-[refs-entities]: /docs/references/layers/readme.md#entities
-[refs-shared]: /docs/references/layers/readme.md#shared
+[refs-app]: /docs/reference/layers/readme.md#app
+[refs-pages]: /docs/reference/layers/readme.md#pages
+[refs-features]: /docs/reference/layers/readme.md#features
+[refs-entities]: /docs/reference/layers/readme.md#entities
+[refs-shared]: /docs/reference/layers/readme.md#shared
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure

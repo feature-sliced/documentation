@@ -224,7 +224,7 @@
 ## Further reading
 
 - **[Документация методологии][refs-docs]**
-    > *Get-Started, Concepts, Guides, References, About*
+    > *Get-Started, Concepts, Guides, Reference, About*
 - **[Миграция с feature-slices@v1][refs-migration-v1]**
 - **Прочие материалы**
   - Предыдущие версии методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven][ext-fdd]*

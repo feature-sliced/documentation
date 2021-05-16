@@ -3,9 +3,9 @@
 [refs-splitting]: /docs/concepts/app-splitting.md
 [refs-concepts]: /docs/concepts/readme.md
 
-[refs-abstractions]: /docs/references/abstractions.md
-[refs-abstractions-layers]: /docs/references/abstractions.md#-group-layers
-[refs-module]: /docs/references/glossary.md#module
+[refs-abstractions]: /docs/reference/abstractions.md
+[refs-abstractions-layers]: /docs/reference/abstractions.md#-group-layers
+[refs-module]: /docs/reference/glossary.md#module
 
 [refs-low-coupling]: /docs/guides/low-coupling.md
 [refs-migration-v1]: /docs/guides/migration-from-v1.md
@@ -28,7 +28,7 @@
 ### Адаптация к новым условиям
 
 Каждый компонент архитектуры имеет свое назначение и не влияет на другие
-    
+
 Благодаря этому *под новые требования можно независимо модифицировать функциональность приложения без непредвиденных последствий*
 
 ### Техдолг и рефакторинг
@@ -49,11 +49,10 @@
 
 Благодаря этому *сохраняется баланс между соблюдением принципа `DRY` и возможности кастомизировать логику модуля без оверхедных переопределений*
 
-
 ## См. также
 
 - [Причины создания методологии][refs-motivation]
 - [(Гайд) Как привести модули к низкой связности][refs-low-coupling]
 - [Примеры применения методологии][refs-examples]
 - [(Гайд) Миграция с feature-slices (v1)][refs-migration-v1]
-    - *Содержит также сравнение двух версий и причины создания v2
+  - *Содержит также сравнение двух версий и причины создания v2
