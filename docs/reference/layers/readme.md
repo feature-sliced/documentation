@@ -1,18 +1,3 @@
-[refs-naming-adaptability]: /docs/concepts/naming-adaptability.md
-[refs-needs]: /docs/concepts/needs-driven.md
-
-[refs-low-coupling]: /docs/guides/low-coupling.md
-[refs-example-viewer]: /docs/guides/examples/viewer.md
-
-[refs-segments]: ../segments/readme.md
-[refs-segments--ui]: ../segments/readme.md#ui
-[refs-segments--model]: ../segments/readme.md#model
-[refs-segments--lib]: ../segments/readme.md#lib
-[refs-segments--api]: ../segments/readme.md#api
-[refs-segments--config]: ../segments/readme.md#config
-
-[disc-sharing]: https://github.com/feature-sliced/wiki/discussions/14
-
 # Layers
 
 **Layers** - первый уровень разбиения приложения, согласно **скоупу влияния** модуля
@@ -390,3 +375,18 @@ export const OAuthProvider = () => (
   - *Для понимания слоя `features`*
 - [(Дискуссия) Про переиспользуемые модули][disc-sharing]
   - *Для понимания слоя `shared`*
+
+[refs-naming-adaptability]: /docs/concepts/naming-adaptability.md
+[refs-needs]: /docs/concepts/needs-driven.md
+
+[refs-low-coupling]: /docs/guides/low-coupling.md
+[refs-example-viewer]: /docs/guides/examples/viewer.md
+
+[refs-segments]: ../segments/readme.md
+[refs-segments--ui]: ../segments/readme.md#ui
+[refs-segments--model]: ../segments/readme.md#model
+[refs-segments--lib]: ../segments/readme.md#lib
+[refs-segments--api]: ../segments/readme.md#api
+[refs-segments--config]: ../segments/readme.md#config
+
+[disc-sharing]: https://github.com/feature-sliced/wiki/discussions/14

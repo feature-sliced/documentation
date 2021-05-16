@@ -1,10 +1,3 @@
-[refs-arch--adaptability]: architecture.md#adaptability
-
-[ext-medium]: https://alexmngn.medium.com/how-to-better-organize-your-react-applications-2fd3ea1920f1
-[disc-src]: https://t.me/sergeysova/318
-[tg-src]: https://t.me/atomicdesign/18972
-[ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
-
 # О понимании потребностей и о формулировке задач
 
 > О задачах пользователей, бизнеса, построении функциональности и как в этом помогает методология
@@ -156,3 +149,10 @@ Frontend занимается разработкой приложений и и�
     > ***Текущая статья** является адаптацией этого обсуждения, по ссылке можно ознакомиться с полной неурезанной версией*
 - [(Обсуждение) Как разбить функциональность и что из себя она представляет][tg-src]
 - [(Статья) "How to better organize your applications"][ext-medium]
+
+[refs-arch--adaptability]: architecture.md#adaptability
+
+[ext-medium]: https://alexmngn.medium.com/how-to-better-organize-your-react-applications-2fd3ea1920f1
+[disc-src]: https://t.me/sergeysova/318
+[tg-src]: https://t.me/atomicdesign/18972
+[ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language

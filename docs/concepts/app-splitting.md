@@ -1,17 +1,3 @@
-[disc-src]: https://github.com/feature-sliced/wiki/discussions/31
-
-[disc-list]: https://github.com/feature-sliced/wiki/discussions/
-[disc-poll]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-464894
-[disc-api]: https://github.com/feature-sliced/wiki/discussions/66
-[disc-processes]: https://github.com/feature-sliced/wiki/discussions/20
-[disc-model]: https://github.com/feature-sliced/wiki/discussions/68
-[disc-usability]: https://github.com/feature-sliced/wiki/discussions/65
-
-[tg-description]: https://t.me/atomicdesign/18951
-
-[ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
-[ext-medium]: https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1
-
 # Разбиение приложения
 
 > Про разбиение приложения согласно методологии
@@ -156,3 +142,17 @@
 - [Первичное описание абстракций][tg-description]
 - [(Статья) Про организацию кодовой базы *с полным сравнением нескольких подходов*][ext-pluralsight]
 - [(Статья) Про модуляризацию проектов][ext-medium]
+
+[disc-src]: https://github.com/feature-sliced/wiki/discussions/31
+
+[disc-list]: https://github.com/feature-sliced/wiki/discussions/
+[disc-poll]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-464894
+[disc-api]: https://github.com/feature-sliced/wiki/discussions/66
+[disc-processes]: https://github.com/feature-sliced/wiki/discussions/20
+[disc-model]: https://github.com/feature-sliced/wiki/discussions/68
+[disc-usability]: https://github.com/feature-sliced/wiki/discussions/65
+
+[tg-description]: https://t.me/atomicdesign/18951
+
+[ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
+[ext-medium]: https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1

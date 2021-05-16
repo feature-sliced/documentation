@@ -1,5 +1,3 @@
-[refs-architecture--problems]: /docs/concepts/architecture#проблемы
-
 # Mission
 
 > Цели и ограничения применимости методологии - которыми мы руководствуемся при разработке методологии
@@ -46,3 +44,5 @@
 ## См. также
 
 - [Проблемы архитектуры][refs-architecture--problems]
+
+[refs-architecture--problems]: /docs/concepts/architecture#проблемы

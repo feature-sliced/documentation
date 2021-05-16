@@ -1,5 +1,3 @@
-[refs-public-api]: /docs/concepts/public-api.md
-
 # Viewer
 
 > Работа с авторизованным пользователем согласно методологии
@@ -358,3 +356,5 @@ export const SomePage = () => {
 - [Дискуссия "Применимость feature-sliced в бою"](https://github.com/feature-sliced/wiki/discussions/65) (*внутри также есть примеры с viewer*)
 - [Вопрос про профиль и сущность пользователя (community-chat)](https://t.me/feature_sliced/342)
 - [Пояснение про UIKIT#Card и User#Card (community-chat)](https://t.me/feature_sliced/552)
+
+[refs-public-api]: /docs/concepts/public-api.md

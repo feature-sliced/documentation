@@ -1,11 +1,3 @@
-
-[refs-mission]: /docs/about/mission.md
-[refs-mission--goals]: /docs/about/mission.md#цели
-[refs-knowledge]: /docs/reference/knowledge-types.md
-
-[disc-src]: https://github.com/feature-sliced/wiki/discussions/27
-[ext-discussions]: https://github.com/feature-sliced/wiki/discussions
-
 # Motivation
 
 > Причины создания методологии
@@ -148,3 +140,10 @@
 - [(Обсуждение) Методология не нужна?][disc-src]
 - [О миссии методологии: цели и ограничения][refs-mission]
 - [Типы знаний в проекте][refs-knowledge]
+
+[refs-mission]: /docs/about/mission.md
+[refs-mission--goals]: /docs/about/mission.md#цели
+[refs-knowledge]: /docs/reference/knowledge-types.md
+
+[disc-src]: https://github.com/feature-sliced/wiki/discussions/27
+[ext-discussions]: https://github.com/feature-sliced/wiki/discussions

@@ -1,9 +1,3 @@
-[refs-glossary]: /docs/reference/glossary.md
-
-[disc-src]: https://github.com/feature-sliced/wiki/discussions/41
-[ext-solid]: https://ru.wikipedia.org/wiki/SOLID
-[ext-grasp]: https://ru.wikipedia.org/wiki/GRASP
-
 # Публичное API модуля приложения
 
 Каждая сущность методологии проектируется как **удобный в использовании и интеграции** [модуль][refs-glossary].
@@ -205,3 +199,9 @@ export * as authModel from "./model"
 - [(Обсуждение) Public API абстракции][disc-src]
 - [Принципы **SOLID**][ext-solid]
 - [Паттерны **GRASP**][ext-grasp]
+
+[refs-glossary]: /docs/reference/glossary.md
+
+[disc-src]: https://github.com/feature-sliced/wiki/discussions/41
+[ext-solid]: https://ru.wikipedia.org/wiki/SOLID
+[ext-grasp]: https://ru.wikipedia.org/wiki/GRASP
