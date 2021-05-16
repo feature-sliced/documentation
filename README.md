@@ -1,31 +1,3 @@
-[refs-contributing]: CONTRIBUTING.md
-
-[refs-docs]: /docs/readme.md
-
-[refs-motivation]: /docs/get-started/motivation.md
-[refs-motivation-why]: /docs/get-started/motivation.md#-почему-не-хватает-существующих-решений
-
-[refs-concepts]: /docs/concepts/readme.md
-[refs-arch-req]: /docs/concepts/architecture.md#требования
-[refs-arch-problems]: /docs/concepts/architecture.md#проблемы
-[refs-public-api]: /docs/concepts/public-api.md
-[refs-adaptability]: /docs/concepts/naming-adaptability.md
-[refs-isolation]: /docs/concepts/cross-communication.md
-[refs-needs-driven]: /docs/concepts/needs-driven.md
-
-[refs-knowledge]: /docs/reference/knowledge-types.md
-[refs-splitting]: /docs/concepts/app-splitting.md
-[refs-splitting-layers]: /docs/concepts/app-splitting.md#group-layers
-[refs-splitting-slices]: /docs/concepts/app-splitting.md#group-slices
-[refs-splitting-segments]: /docs/concepts/app-splitting.md#group-segments
-
-[refs-migration-v1]: /docs/guides/migration-from-v1.md
-
-[ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
-[ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
-[ext-discussions]: https://github.com/feature-sliced/wiki/discussions
-[ext-disc-api]: https://github.com/feature-sliced/wiki/discussions/66
-
 # feature-sliced
 
 > `WIP:` Работа над методологией в процессе и окончательный вид *может поменяться*
@@ -260,3 +232,31 @@ FIXME: Не удалось нормально justify-content:space-around пр�
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![youtube](./assets/social_youtube.png)](#wip "YouTube канал (в процессе)")
 </div>
+
+[refs-contributing]: CONTRIBUTING.md
+
+[refs-docs]: /docs/readme.md
+
+[refs-motivation]: /docs/get-started/motivation.md
+[refs-motivation-why]: /docs/get-started/motivation.md#-почему-не-хватает-существующих-решений
+
+[refs-concepts]: /docs/concepts/readme.md
+[refs-arch-req]: /docs/concepts/architecture.md#требования
+[refs-arch-problems]: /docs/concepts/architecture.md#проблемы
+[refs-public-api]: /docs/concepts/public-api.md
+[refs-adaptability]: /docs/concepts/naming-adaptability.md
+[refs-isolation]: /docs/concepts/cross-communication.md
+[refs-needs-driven]: /docs/concepts/needs-driven.md
+
+[refs-knowledge]: /docs/reference/knowledge-types.md
+[refs-splitting]: /docs/concepts/app-splitting.md
+[refs-splitting-layers]: /docs/concepts/app-splitting.md#group-layers
+[refs-splitting-slices]: /docs/concepts/app-splitting.md#group-slices
+[refs-splitting-segments]: /docs/concepts/app-splitting.md#group-segments
+
+[refs-migration-v1]: /docs/guides/migration-from-v1.md
+
+[ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
+[ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
+[ext-discussions]: https://github.com/feature-sliced/wiki/discussions
+[ext-disc-api]: https://github.com/feature-sliced/wiki/discussions/66
