@@ -7,7 +7,7 @@ function Feature({Svg, title, description, size}) {
   return (
     <div className={clsx('col', `col--${size}`)}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} alt={title} />
+        <Svg className={styles.icon} alt={title} />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
@@ -19,7 +19,7 @@ function Feature({Svg, title, description, size}) {
 
 export const Features = () => {
   return (
-    <section className={styles.features}>
+    <section className={styles.section}>
       <div className="container">
         <h2 className={styles.title}>Features</h2>
         <div className="row">
@@ -34,7 +34,7 @@ export const Features = () => {
 
 export function Concepts() {
   return (
-    <section className={styles.features}>
+    <section className={clsx(styles.section, styles.sectionAlt)}>
       <div className="container">
         <h2 className={styles.title}>Concepts</h2>
         <div className="row">
