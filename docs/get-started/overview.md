@@ -1,4 +1,4 @@
-[refs-motivation]: /docs/about/motivation.md
+[refs-motivation]: /docs/get-started/motivation.md
 
 [refs-splitting]: /docs/concepts/app-splitting.md
 [refs-concepts]: /docs/concepts/readme.md

@@ -1,4 +1,4 @@
-[refs-motivation]: /docs/about/motivation.md
+[refs-motivation]: /docs/get-started/motivation.md
 [refs-needs]: /docs/concepts/needs-driven.md
 [refs-public-api]: /docs/concepts/public-api.md
 
@@ -33,7 +33,7 @@
 Не будем акцентироваться сильно на этом шаге, но для быстрой инициализации можно  воспользоваться [CRA (для React)](https://create-react-app.dev/docs/getting-started):
 
 ```cmd
-$ npx create-react-app todo-app --template typescript
+npx create-react-app todo-app --template typescript
 ```
 
 ## 2. Подготавливаем структуру
