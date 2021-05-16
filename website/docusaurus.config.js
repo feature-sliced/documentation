@@ -13,15 +13,25 @@ const navbar = {
     src: 'img/logo.png',
   },
   items: [
+    // left
     {
       type: 'doc',
       docId: 'readme',
       position: 'left',
-      label: 'Документация',
+      label: 'Docs',
     },
+    // right
+    { label: 'Getting Started', to: 'docs/get-started/quick-start', position: 'left' },
+    { label: 'Concepts', to: 'docs/concepts/architecture', position: 'left' },
+    { label: 'Guides', to: 'docs/guides/migration-from-v1', position: 'left' },
+    { label: 'Reference', to: 'docs/reference/glossary', position: 'left' },
     {
       href: GITHUB_DOCS,
       label: 'GitHub',
+      position: 'right',
+    },
+    {
+      type: 'localeDropdown',
       position: 'right',
     },
   ],
@@ -118,6 +128,15 @@ module.exports = {
     navbar,
     footer,
     hideableSidebar: true,
+  },
+  i18n: {
+    defaultLocale: 'ru',
+    locales: ['ru'],
+    localeConfigs: {
+      'ru': {
+        label: 'Русский'
+      }
+    },
   },
   presets,
 };
