@@ -239,8 +239,8 @@ FIXME: Не удалось нормально justify-content:space-around пр�
 
 [refs-motivation]: /docs/get-started/motivation.md
 [refs-motivation-why]: /docs/get-started/motivation.md#-почему-не-хватает-существующих-решений
-
-[refs-concepts]: /docs/concepts/readme.md
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-concepts]: /docs/concepts/architecture.md
 [refs-arch-req]: /docs/concepts/architecture.md#требования
 [refs-arch-problems]: /docs/concepts/architecture.md#проблемы
 [refs-public-api]: /docs/concepts/public-api.md
