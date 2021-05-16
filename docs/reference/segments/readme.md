@@ -1,6 +1,6 @@
 [refs-naming-adaptability]: /docs/concepts/naming-adaptability.md
 
-[disc-api]: https://github.com/feature-sliced/wiki/discussions/66
+[disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 
 # Segments
 

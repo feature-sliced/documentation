@@ -1,4 +1,4 @@
-[disc-src]: https://github.com/feature-sliced/wiki/discussions/31#discussioncomment-45150-src7
+[disc-src]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-45150-src7
 [ref-motivation]: /docs/get-started/motivation.md
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-medium]: https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1

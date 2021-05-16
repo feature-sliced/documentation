@@ -11,7 +11,7 @@
 [refs-segments--api]: ../segments/readme.md#api
 [refs-segments--config]: ../segments/readme.md#config
 
-[disc-sharing]: https://github.com/feature-sliced/wiki/discussions/14
+[disc-sharing]: https://github.com/feature-sliced/documentation/discussions/14
 
 # Layers
 

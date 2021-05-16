@@ -1,6 +1,6 @@
 [refs-glossary]: /docs/reference/glossary.md
 
-[disc-src]: https://github.com/feature-sliced/wiki/discussions/41
+[disc-src]: https://github.com/feature-sliced/documentation/discussions/41
 [ext-solid]: https://ru.wikipedia.org/wiki/SOLID
 [ext-grasp]: https://ru.wikipedia.org/wiki/GRASP
 

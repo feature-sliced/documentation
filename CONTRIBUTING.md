@@ -4,13 +4,13 @@
 
 ## Как я могу посодействовать?
 
-[issues]: https://github.com/feature-sliced/wiki/issues
-[issues-new]: https://github.com/feature-sliced/wiki/issues/new
-[pr]: https://github.com/feature-sliced/wiki/pulls
-[pr-new]: https://github.com/feature-sliced/wiki/compare
-[disc]: https://github.com/feature-sliced/wiki/discussions
-[fork]: https://github.com/feature-sliced/wiki/fork
-[actions]: https://github.com/feature-sliced/wiki/actions
+[issues]: https://github.com/feature-sliced/documentation/issues
+[issues-new]: https://github.com/feature-sliced/documentation/issues/new
+[pr]: https://github.com/feature-sliced/documentation/pulls
+[pr-new]: https://github.com/feature-sliced/documentation/compare
+[disc]: https://github.com/feature-sliced/documentation/discussions
+[fork]: https://github.com/feature-sliced/documentation/fork
+[actions]: https://github.com/feature-sliced/documentation/actions
 
 <!-- Other emojis: 👁️, ✍️, 🔍 -->
 
