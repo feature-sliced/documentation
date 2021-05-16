@@ -48,6 +48,10 @@ const footer = {
           label: 'Документация',
           to: '/docs/intro',
         },
+        {
+          label: 'Обсуждения',
+          to: `${GITHUB_DOCS}/discussions`,
+        },
       ],
     },
     {
