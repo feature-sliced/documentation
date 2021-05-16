@@ -46,7 +46,7 @@ const footer = {
       items: [
         {
           label: 'Документация',
-          to: '/docs/readme',
+          to: '/docs/intro',
         },
       ],
     },
