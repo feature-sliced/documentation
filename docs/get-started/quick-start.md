@@ -1,8 +1,14 @@
 [refs-motivation]: /docs/get-started/motivation.md
+
 [refs-needs]: /docs/concepts/needs-driven.md
 [refs-public-api]: /docs/concepts/public-api.md
-[refs-low-coupling]: /docs/guides/low-coupling.md
+[refs-splitting]: /docs/concepts/app-splitting.md
 
+[refs-low-coupling]: /docs/guides/low-coupling.md
+[refs-migration-v1]: /docs/guides/migration-from-v1.md
+[refs-guides]: /docs/guides/readme.md
+
+[refs-reference]: /docs/reference/readme.md
 [refs-app]: /docs/reference/layers/readme.md#app
 [refs-pages]: /docs/reference/layers/readme.md#pages
 [refs-features]: /docs/reference/layers/readme.md#features
@@ -618,3 +624,7 @@ export const TaskDetailsPage = (props: Props) => {
 
 - [(Обзор) How to Organize Your React + Redux Codebase][ext-pluralsight]
   - Разбор нескольких подходов к структуризации React проектов
+- [Гайды и примеры применения методологии][refs-guides]
+  - [(Гайд) Миграция с feature-slices@v1][refs-migration-v1]
+- [Про разбиение приложения][refs-splitting]
+- [Справочный материал по методологии][refs-reference]
