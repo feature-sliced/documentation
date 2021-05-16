@@ -88,6 +88,11 @@ const footer = {
       ],
     },
   ],
+  logo: {
+    alt: 'feature-sliced - Structural pattern for Frontend projects',
+    src: 'img/logo.png',
+    href: GITHUB_ORG,
+  },
   copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced`,
 };
 
@@ -121,7 +126,7 @@ const presets = [
 module.exports = {
   title: 'feature-sliced',
   // tagline: 'Методология для проектирования frontend проектов, нацеленная на разделение приложения согласно бизнес-логике и областям ответственности.',
-  tagline: 'Structural pattern and methodology for frontend projects',
+  tagline: 'Structural pattern for Frontend projects',
   url: DOMAIN,
   baseUrl: '/',
   onBrokenLinks: 'throw',
