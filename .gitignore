@@ -1,3 +1,6 @@
 /.vscode/settings.json
-node_modules
+/website/node_modules/**
+/website/.docusaurus/**
+/website/build/**
+/node_modules/
 .idea

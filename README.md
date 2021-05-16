@@ -235,26 +235,26 @@ FIXME: Не удалось нормально justify-content:space-around пр�
 
 [refs-contributing]: CONTRIBUTING.md
 
-[refs-docs]: /docs/readme.md
+[refs-docs]: https://feature-sliced.design/docs/intro
 
-[refs-motivation]: /docs/get-started/motivation.md
-[refs-motivation-why]: /docs/get-started/motivation.md#-почему-не-хватает-существующих-решений
-<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-concepts]: /docs/concepts/architecture.md
-[refs-arch-req]: /docs/concepts/architecture.md#требования
-[refs-arch-problems]: /docs/concepts/architecture.md#проблемы
-[refs-public-api]: /docs/concepts/public-api.md
-[refs-adaptability]: /docs/concepts/naming-adaptability.md
-[refs-isolation]: /docs/concepts/cross-communication.md
-[refs-needs-driven]: /docs/concepts/needs-driven.md
+[refs-motivation]: https://feature-sliced.design/docs/get-started/motivation
+[refs-motivation-why]: https://feature-sliced.design/docs/get-started/motivation#-почему-не-хватает-существующих-решений
 
-[refs-knowledge]: /docs/reference/knowledge-types.md
-[refs-splitting]: /docs/concepts/app-splitting.md
-[refs-splitting-layers]: /docs/concepts/app-splitting.md#group-layers
-[refs-splitting-slices]: /docs/concepts/app-splitting.md#group-slices
-[refs-splitting-segments]: /docs/concepts/app-splitting.md#group-segments
+[refs-concepts]: https://feature-sliced.design/docs/concepts/architecture
+[refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#требования
+[refs-arch-problems]: https://feature-sliced.design/docs/concepts/architecture#проблемы
+[refs-public-api]: https://feature-sliced.design/docs/concepts/public-api
+[refs-adaptability]: https://feature-sliced.design/docs/concepts/naming-adaptability
+[refs-isolation]: https://feature-sliced.design/docs/concepts/cross-communication
+[refs-needs-driven]: https://feature-sliced.design/docs/concepts/needs-driven
 
-[refs-migration-v1]: /docs/guides/migration-from-v1.md
+[refs-knowledge]: https://feature-sliced.design/docs/reference/knowledge-types
+[refs-splitting]: https://feature-sliced.design/docs/concepts/app-splitting
+[refs-splitting-layers]: https://feature-sliced.design/docs/concepts/app-splitting#group-layers
+[refs-splitting-slices]: https://feature-sliced.design/docs/concepts/app-splitting#group-slices
+[refs-splitting-segments]: https://feature-sliced.design/docs/concepts/app-splitting#group-segments
+
+[refs-migration-v1]: https://feature-sliced.design/docs/guides/migration-from-v1
 
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [ext-fdd]: https://github.com/feature-sliced/wiki/tree/rc/feature-driven
