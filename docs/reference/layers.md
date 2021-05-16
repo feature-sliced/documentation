@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Layers
 
 **Layers** - первый уровень разбиения приложения, согласно **скоупу влияния** модуля
@@ -382,11 +386,11 @@ export const OAuthProvider = () => (
 [refs-low-coupling]: /docs/guides/low-coupling.md
 [refs-example-viewer]: /docs/guides/examples/viewer.md
 
-[refs-segments]: ../segments/readme.md
-[refs-segments--ui]: ../segments/readme.md#ui
-[refs-segments--model]: ../segments/readme.md#model
-[refs-segments--lib]: ../segments/readme.md#lib
-[refs-segments--api]: ../segments/readme.md#api
-[refs-segments--config]: ../segments/readme.md#config
+[refs-segments]: segments.md
+[refs-segments--ui]: segments.md#ui
+[refs-segments--model]: segments.md#model
+[refs-segments--lib]: segments.md#lib
+[refs-segments--api]: segments.md#api
+[refs-segments--config]: segments.md#config
 
 [disc-sharing]: https://github.com/feature-sliced/wiki/discussions/14

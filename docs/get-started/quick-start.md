@@ -623,11 +623,11 @@ export const TaskDetailsPage = (props: Props) => {
 [refs-guides]: /docs/guides/migration-from-v1.md
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-reference]: /docs/reference/glossary.md
-[refs-app]: /docs/reference/layers/readme.md#app
-[refs-pages]: /docs/reference/layers/readme.md#pages
-[refs-features]: /docs/reference/layers/readme.md#features
-[refs-entities]: /docs/reference/layers/readme.md#entities
-[refs-shared]: /docs/reference/layers/readme.md#shared
+[refs-app]: /docs/reference/layers.md#app
+[refs-pages]: /docs/reference/layers.md#pages
+[refs-features]: /docs/reference/layers.md#features
+[refs-entities]: /docs/reference/layers.md#entities
+[refs-shared]: /docs/reference/layers.md#shared
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure
