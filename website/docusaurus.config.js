@@ -20,11 +20,12 @@ const navbar = {
       position: 'left',
       label: 'Docs',
     },
-    // right
     { label: 'Getting Started', to: 'docs/get-started/quick-start', position: 'left' },
     { label: 'Concepts', to: 'docs/concepts/architecture', position: 'left' },
     { label: 'Guides', to: 'docs/guides/migration-from-v1', position: 'left' },
     { label: 'Reference', to: 'docs/reference/glossary', position: 'left' },
+    { label: 'About', to: 'docs/about/mission', position: 'left' },
+    // right
     {
       href: GITHUB_DOCS,
       label: 'GitHub',

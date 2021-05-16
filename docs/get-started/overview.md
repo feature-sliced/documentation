@@ -6,7 +6,7 @@ sidebar_position: 2
 
 Методология призвана **упростить и стандартизировать декомпозицию логики для больших и долгоживужих проектов.**
 
-Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-abstractions], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
+Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-splitting], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
 
 > **Примечание:** [Модуль][refs-module] - структурная единица проекта (файл / директория)
 
@@ -36,7 +36,7 @@ sidebar_position: 2
 
 ### Контролируемое переиспользование логики
 
-Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-abstractions-layers]
+Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-splitting--layers]
 
 Благодаря этому *сохраняется баланс между соблюдением принципа `DRY` и возможности кастомизировать логику модуля без оверхедных переопределений*
 
@@ -51,11 +51,10 @@ sidebar_position: 2
 [refs-motivation]: /docs/get-started/motivation
 
 [refs-splitting]: /docs/concepts/app-splitting
+[refs-splitting--layers]: /docs/concepts/app-splitting#-group-layers
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-concepts]: /docs/concepts/architecture
 
-[refs-abstractions]: /docs/reference/abstractions
-[refs-abstractions-layers]: /docs/reference/abstractions#-group-layers
 [refs-module]: /docs/reference/glossary#module
 
 [refs-low-coupling]: /docs/guides/low-coupling
