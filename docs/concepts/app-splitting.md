@@ -100,8 +100,8 @@ sidebar_label: App splitting
     |   ├── ui/                     # UI-логика (components, ui-widgets, ...)
     |   ├── model/                  # Бизнес-логика (store, actions, effects, reducers, ...)
     |   ├── lib/                    # Инфраструктурная логика (utils/helpers)
-    |   ├── config*/                 # Конфигурация (проекта / слайса)
-    |   └── api*/                    # Логика запросов к API (api instances, requests, ...)
+    |   ├── config*/                # Конфигурация (проекта / слайса)
+    |   └── api*/                   # Логика запросов к API (api instances, requests, ...)
 ```
 
 *При этом, каждый сегмент может быть представлен **как в виде файла, так и в виде отдельной директории** - в зависимости от сложности и размеров*
