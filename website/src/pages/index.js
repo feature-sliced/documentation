@@ -20,6 +20,13 @@ function Header() {
             Get Started
           </Link>
         </div>
+        <div className="margin-top--md">
+          <Link
+              className={styles.link}
+              to="https://featureslices.dev/">
+              Предыдущая версия (feature-slices@v1)
+          </Link>
+        </div>
       </div>
     </header>
   );
