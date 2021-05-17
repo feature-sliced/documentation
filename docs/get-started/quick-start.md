@@ -102,7 +102,7 @@ $ npx create-react-app todo-app --template typescript
 
 Пока что перенесем туда всю существующую логику, а другие директории оставим пустыми, как на схеме выше.
 
-```ts title=app/index.tsx
+```tsx title=app/index.tsx
 import "./index.scss";
 
 const App = () => {
@@ -114,8 +114,6 @@ const App = () => {
         </div>
     );
 }
-
-export default App;
 ```
 
 ## 3. Подключим глобальные стили
@@ -208,6 +206,13 @@ export default withHocs(App);
 
 ### Добавим реальные страницы
 
+Это лишь одна из реализаций роутинга
+
+- Можно объявлять его декларативно либо через список роутов (+ react-router-config)
+- Можно объявлять его на уровне pages либо app
+
+Пока что методология никак регламентирует реализацию этой логики
+
 #### Временная страница, только для проверки роутинга
 
 Ее можно удалить позднее
@@ -220,20 +225,13 @@ export const TestPage = () => {
 
 #### Сформируем роуты
 
-Это лишь одна из реализаций роутинга
-
-- Можно объявлять его декларативно либо через список роутов (+ react-router-config)
-- Можно объявлять его на уровне pages либо app
-
-Пока что методология никак регламентирует реализацию этой логики
-
 ```tsx title=pages/index.tsx
 import { Suspense, lazy } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 const TestPage = lazy(() => import("./test"));
 
-const Routing = () => {
+export const Routing = () => {
     return (
         <Switch>
             <Route exact path="/" component={TestPage} />
@@ -241,14 +239,12 @@ const Routing = () => {
         </Switch>
     );
 };
-
-export default Routing;
 ```
 
 #### Подключаем роутинг к приложению
 
 ```tsx title=app/index.tsx
-import Routing from "pages";
+import { Routing } from "pages";
 
 const App = () => (
     <Routing />
