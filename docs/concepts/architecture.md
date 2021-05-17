@@ -1,10 +1,7 @@
-[ext-kof-not-modification]: https://youtu.be/BWAeYuWFHhs?t=1631
-[ext-kof-but-removing]: https://youtu.be/BWAeYuWFHhs?t=1666
-
-[ext-slices-spb]: https://t.me/feature_slices
-[ext-kof]: https://youtu.be/BWAeYuWFHhs
-[ext-medium]: https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1
-[ext-ryanlanciaux]: https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/
+---
+sidebar_position: 1
+sidebar_label: About architecture
+---
 
 # Об архитектуре
 
@@ -55,7 +52,7 @@
 
 Поэтому кажется логичным предъявить желаемые *требования к идеальной архитектуре:*
 
-> **Примечание:** Везде где говорится "легко", подразумевается "относительно легко для широкого круга разработчиков", т.к. ясно, что [не получится сделать идеального решения для абсолютно всех](/docs/about/mission.md#ограничения)
+> **Примечание:** Везде где говорится "легко", подразумевается "относительно легко для широкого круга разработчиков", т.к. ясно, что [не получится сделать идеального решения для абсолютно всех](/docs/about/mission#ограничения)
 
 ### Explicitness
 
@@ -91,3 +88,11 @@
 - [(React SPB Meetup #1) Sergey Sova - Feature Slices][ext-slices-spb]
 - [(Статья) Про модуляризацию проектов][ext-medium]
 - [(Статья) Про Separation of Concerns и структурирование по фичам][ext-ryanlanciaux]
+
+[ext-kof-not-modification]: https://youtu.be/BWAeYuWFHhs?t=1631
+[ext-kof-but-removing]: https://youtu.be/BWAeYuWFHhs?t=1666
+
+[ext-slices-spb]: https://t.me/feature_slices
+[ext-kof]: https://youtu.be/BWAeYuWFHhs
+[ext-medium]: https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1
+[ext-ryanlanciaux]: https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/

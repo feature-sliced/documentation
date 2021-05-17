@@ -1,17 +1,6 @@
-[refs-naming-adaptability]: /docs/concepts/naming-adaptability.md
-[refs-needs]: /docs/concepts/needs-driven.md
-
-[refs-low-coupling]: /docs/guides/low-coupling.md
-[refs-example-viewer]: /docs/guides/examples/viewer.md
-
-[refs-segments]: ../segments/readme.md
-[refs-segments--ui]: ../segments/readme.md#ui
-[refs-segments--model]: ../segments/readme.md#model
-[refs-segments--lib]: ../segments/readme.md#lib
-[refs-segments--api]: ../segments/readme.md#api
-[refs-segments--config]: ../segments/readme.md#config
-
-[disc-sharing]: https://github.com/feature-sliced/documentation/discussions/14
+---
+sidebar_position: 2
+---
 
 # Layers
 
@@ -381,8 +370,8 @@ export const OAuthProvider = () => (
 
 > `WIP:` Со временем будут появляться статьи по каждой абстракции
 
-<!-- FIXME: rename to features.md -->
-- [Layer: Features](feature.md)
+<!-- FIXME: rename to features -->
+- [Layer: Features](feature)
 - [Адаптивность нейминга][refs-naming-adaptability]
 - [Example: Viewer][refs-example-viewer]
   - *Пример распределения логики по слоям: от `shared` до `app`*
@@ -390,3 +379,18 @@ export const OAuthProvider = () => (
   - *Для понимания слоя `features`*
 - [(Дискуссия) Про переиспользуемые модули][disc-sharing]
   - *Для понимания слоя `shared`*
+
+[refs-naming-adaptability]: /docs/concepts/naming-adaptability
+[refs-needs]: /docs/concepts/needs-driven
+
+[refs-low-coupling]: /docs/guides/low-coupling
+[refs-example-viewer]: /docs/guides/examples/viewer
+
+[refs-segments]: segments
+[refs-segments--ui]: segments#ui
+[refs-segments--model]: segments#model
+[refs-segments--lib]: segments#lib
+[refs-segments--api]: segments#api
+[refs-segments--config]: segments#config
+
+[disc-sharing]: https://github.com/feature-sliced/documentation/discussions/14

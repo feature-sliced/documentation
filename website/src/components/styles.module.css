@@ -1,0 +1,42 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+.section {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+  /* height: 450px; */
+}
+
+.sectionAlt {
+  /* background-color: var(--ifm-color-primary); */
+  background-color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-base-inverse);
+}
+
+.title {
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.icon {
+  /* height: 120px; */
+  margin: 20px 0;
+  /* width: 200px; */
+  font-size: 80px;
+}
+
+.scheme {
+  /* margin-left: 120px; */
+  margin-left: 7rem;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+html[data-theme='dark'] .scheme {
+    filter: invert(0.905) brightness(1.0) grayscale(100%) opacity(0.5);
+}

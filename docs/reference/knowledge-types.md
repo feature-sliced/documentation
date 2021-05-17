@@ -1,4 +1,7 @@
-[ext-klimov]: https://youtu.be/4xyb_tA-uw0?t=249
+---
+sidebar_position: 10
+sidebar_label: Knowledge types
+---
 
 # Типы знаний в проекте
 
@@ -27,3 +30,5 @@
 ## См. также
 
 - [Илья Климов - О типах знаний][ext-klimov]
+
+[ext-klimov]: https://youtu.be/4xyb_tA-uw0?t=249

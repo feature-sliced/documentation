@@ -3,3 +3,4 @@
 /website/.docusaurus/**
 /website/build/**
 /node_modules/
+.idea

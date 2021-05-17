@@ -1,6 +1,6 @@
-[refs-splitting]: /docs/concepts/app-splitting.md
-[refs-layers]: layers/readme.md
-[refs-segments]: segments/readme.md
+---
+sidebar_position: 1
+---
 
 # Glossary
 
@@ -100,3 +100,7 @@
 - [Уровни абстракций по методологии][refs-splitting]
 - [Layers в методологии][refs-layers]
 - [Segments в методологии][refs-segments]
+
+[refs-splitting]: /docs/concepts/app-splitting
+[refs-layers]: layers
+[refs-segments]: segments

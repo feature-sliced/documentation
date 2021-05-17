@@ -1,11 +1,7 @@
-[refs-layers]: /docs/concepts/app-splitting.md#group-layers
-[refs-segments]: /docs/concepts/app-splitting.md#group-segments
-[refs-reference]: /docs/reference/readme.md
-
-[disc-src]: https://github.com/feature-sliced/documentation/discussions/16
-[disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894
-[disc-processes]: https://github.com/feature-sliced/documentation/discussions/20
-[disc-model]: https://github.com/feature-sliced/documentation/discussions/68
+---
+sidebar_position: 6
+sidebar_label: Naming adaptability
+---
 
 # Адаптивность нейминга
 
@@ -41,7 +37,7 @@
 - `feature-sliced#page` vs страница журнала
 - `feature-sliced#model` vs модель автомобиля
 
-<!-- TODO: подумать над примерами для других терминов -->  
+<!-- TODO: подумать над примерами для других терминов -->
 
 Такие коллизии имен могут негативно отразится на процессе разработки.
 
@@ -58,3 +54,13 @@
   - [Опрос по неймингу][disc-naming]
   - [`processes` vs `flows` vs ...][disc-processes]
   - [`model` vs `store` vs ...][disc-model]
+
+[refs-layers]: /docs/concepts/app-splitting#group-layers
+[refs-segments]: /docs/concepts/app-splitting#group-segments
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-reference]: /docs/reference/glossary
+
+[disc-src]: https://github.com/feature-sliced/documentation/discussions/16
+[disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894
+[disc-processes]: https://github.com/feature-sliced/documentation/discussions/20
+[disc-model]: https://github.com/feature-sliced/documentation/discussions/68

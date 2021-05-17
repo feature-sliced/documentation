@@ -1,21 +1,12 @@
-[refs-motivation]: /docs/get-started/motivation.md
-
-[refs-splitting]: /docs/concepts/app-splitting.md
-[refs-concepts]: /docs/concepts/readme.md
-
-[refs-abstractions]: /docs/reference/abstractions.md
-[refs-abstractions-layers]: /docs/reference/abstractions.md#-group-layers
-[refs-module]: /docs/reference/glossary.md#module
-
-[refs-low-coupling]: /docs/guides/low-coupling.md
-[refs-migration-v1]: /docs/guides/migration-from-v1.md
-[refs-examples]: /docs/guides/examples/readme.md
+---
+sidebar_position: 2
+---
 
 # Overview
 
 Методология призвана **упростить и стандартизировать декомпозицию логики для больших и долгоживужих проектов.**
 
-Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-abstractions], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
+Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-splitting], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
 
 > **Примечание:** [Модуль][refs-module] - структурная единица проекта (файл / директория)
 
@@ -45,7 +36,7 @@
 
 ### Контролируемое переиспользование логики
 
-Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-abstractions-layers]
+Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-splitting--layers]
 
 Благодаря этому *сохраняется баланс между соблюдением принципа `DRY` и возможности кастомизировать логику модуля без оверхедных переопределений*
 
@@ -56,3 +47,17 @@
 - [Примеры применения методологии][refs-examples]
 - [(Гайд) Миграция с feature-slices (v1)][refs-migration-v1]
   - *Содержит также сравнение двух версий и причины создания v2
+
+[refs-motivation]: /docs/get-started/motivation
+
+[refs-splitting]: /docs/concepts/app-splitting
+[refs-splitting--layers]: /docs/concepts/app-splitting#-group-layers
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-concepts]: /docs/concepts/architecture
+
+[refs-module]: /docs/reference/glossary#module
+
+[refs-low-coupling]: /docs/guides/low-coupling
+[refs-migration-v1]: /docs/guides/migration-from-v1
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-examples]: /docs/guides/examples/viewer

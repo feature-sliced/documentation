@@ -1,32 +1,16 @@
-[refs-motivation]: /docs/get-started/motivation.md
-
-[refs-needs]: /docs/concepts/needs-driven.md
-[refs-public-api]: /docs/concepts/public-api.md
-[refs-splitting]: /docs/concepts/app-splitting.md
-
-[refs-low-coupling]: /docs/guides/low-coupling.md
-[refs-migration-v1]: /docs/guides/migration-from-v1.md
-[refs-guides]: /docs/guides/readme.md
-
-[refs-reference]: /docs/reference/readme.md
-[refs-app]: /docs/reference/layers/readme.md#app
-[refs-pages]: /docs/reference/layers/readme.md#pages
-[refs-features]: /docs/reference/layers/readme.md#features
-[refs-entities]: /docs/reference/layers/readme.md#entities
-[refs-shared]: /docs/reference/layers/readme.md#shared
-
-[ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
-[ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure
+---
+sidebar_position: 1
+---
 
 # Quick start
+
+> `WIP:` Статья будет позже дополняться, также будет добавлена ссылка на codesandbox с самим проектом
 
 Рассмотрим применение **feature-sliced** на примере TodoApp
 
 **Стек**: React, Effector, TypeScript, Sass
 
 > **Примечание:** Туториал призван **раскрыть практическую идею самой методологии**. Поэтому описанные здесь практики - во многом подойдут *и для других фреймворков и стейт-менеджеров.*
-
-> `WIP:` Статья будет позже дополняться, также будет добавлена ссылка на codesandbox с самим проектом
 
 ## 1. Инициализируем проект
 
@@ -624,7 +608,26 @@ export const TaskDetailsPage = (props: Props) => {
 
 - [(Обзор) How to Organize Your React + Redux Codebase][ext-pluralsight]
   - Разбор нескольких подходов к структуризации React проектов
-- [Гайды и примеры применения методологии][refs-guides]
-  - [(Гайд) Миграция с feature-slices@v1][refs-migration-v1]
+- [Гайды и примеры применения методологии (+ Миграция с v1)][refs-guides]
 - [Про разбиение приложения][refs-splitting]
 - [Справочный материал по методологии][refs-reference]
+
+[refs-motivation]: /docs/get-started/motivation
+
+[refs-needs]: /docs/concepts/needs-driven
+[refs-public-api]: /docs/concepts/public-api
+[refs-splitting]: /docs/concepts/app-splitting
+
+[refs-low-coupling]: /docs/guides/low-coupling
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-guides]: /docs/guides/migration-from-v1
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-reference]: /docs/reference/glossary
+[refs-app]: /docs/reference/layers#app
+[refs-pages]: /docs/reference/layers#pages
+[refs-features]: /docs/reference/layers#features
+[refs-entities]: /docs/reference/layers#entities
+[refs-shared]: /docs/reference/layers#shared
+
+[ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
+[ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure

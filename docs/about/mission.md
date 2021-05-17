@@ -1,4 +1,6 @@
-[refs-architecture--problems]: /docs/concepts/architecture#проблемы
+---
+sidebar_position: 1
+---
 
 # Mission
 
@@ -46,3 +48,5 @@
 ## См. также
 
 - [Проблемы архитектуры][refs-architecture--problems]
+
+[refs-architecture--problems]: /docs/concepts/architecture#проблемы

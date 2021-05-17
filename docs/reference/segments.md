@@ -1,6 +1,6 @@
-[refs-naming-adaptability]: /docs/concepts/naming-adaptability.md
-
-[disc-api]: https://github.com/feature-sliced/documentation/discussions/66
+---
+sidebar_position: 3
+---
 
 # Segments
 
@@ -174,3 +174,7 @@ export const OAuthProvider = () => (
 
 - [Адаптивность нейминга][refs-naming-adaptability]
 - [(Обсуждение) Где должен лежать API][disc-api]
+
+[refs-naming-adaptability]: /docs/concepts/naming-adaptability
+
+[disc-api]: https://github.com/feature-sliced/documentation/discussions/66
