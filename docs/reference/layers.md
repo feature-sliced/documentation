@@ -320,7 +320,9 @@ export const CatalogPage = () => {
 
 ```tsx title=shared/ui/button/index.tsx
 export const Button = () => {...}
- title=shared/ui/card/index.tsx
+```
+
+```tsx title=shared/ui/card/index.tsx
 export const Card = () => {...}
 ```
 
