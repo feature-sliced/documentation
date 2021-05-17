@@ -408,7 +408,7 @@ import { taskModel } from "entities/task";
 import { Checkbox } from "shared/ui/checkbox";
 
 export const ToggleTask = ({ taskId }: Props) => {
-    const { status, checked } = taskMode.selectors.useTask(taskId);
+    const { status, checked } = taskModel.selectors.useTask(taskId);
     // resolve / unresolve
     return (
         <Checkbox 
