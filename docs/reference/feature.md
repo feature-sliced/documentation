@@ -86,4 +86,4 @@ features/order/           # Группа фич
 
 > См. также ["Гайд по избавлению от кросс-импортов"](/docs/guides/low-coupling)
 
-[refs-entity]: layers#entities
+[refs-entity]: /docs/reference/layers#entities

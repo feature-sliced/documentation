@@ -140,7 +140,8 @@ module.exports = {
   url: DOMAIN,
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'error',
+  onDuplicateRoutes: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'feature-sliced', // Usually your GitHub org/user name.
   projectName: 'documentation', // Usually your repo name.

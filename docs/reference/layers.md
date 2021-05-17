@@ -371,7 +371,7 @@ export const OAuthProvider = () => (
 > `WIP:` Со временем будут появляться статьи по каждой абстракции
 
 <!-- FIXME: rename to features -->
-- [Layer: Features](feature)
+- [Layer: Features][refs-feature]
 - [Адаптивность нейминга][refs-naming-adaptability]
 - [Example: Viewer][refs-example-viewer]
   - *Пример распределения логики по слоям: от `shared` до `app`*
@@ -386,11 +386,13 @@ export const OAuthProvider = () => (
 [refs-low-coupling]: /docs/guides/low-coupling
 [refs-example-viewer]: /docs/guides/examples/viewer
 
-[refs-segments]: segments
-[refs-segments--ui]: segments#ui
-[refs-segments--model]: segments#model
-[refs-segments--lib]: segments#lib
-[refs-segments--api]: segments#api
-[refs-segments--config]: segments#config
+[refs-feature]: /docs/reference/feature
+
+[refs-segments]: /docs/reference/segments
+[refs-segments--ui]: /docs/reference/segments#ui
+[refs-segments--model]: /docs/reference/segments#model
+[refs-segments--lib]: /docs/reference/segments#lib
+[refs-segments--api]: /docs/reference/segments#api
+[refs-segments--config]: /docs/reference/segments#config
 
 [disc-sharing]: https://github.com/feature-sliced/documentation/discussions/14
