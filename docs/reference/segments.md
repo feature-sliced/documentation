@@ -57,8 +57,7 @@ sidebar_position: 3
     |   └── index.tsx/
 ```
 
-```tsx
-// {layer}/{slice}/ui/index.tsx
+```tsx title={layer}/{slice}/ui/index.tsx
 import Toolbar from "./toolbar";
 import Content from "./content";
 import styles from "./styles.module.scss";
@@ -115,8 +114,7 @@ export const SomeForm = () => (
 
 ### Примеры
 
-```ts
-// **/**/api/user.ts
+```ts title=**/**/api/user.ts
 export class UserApi {
     constructor(config) {...}
     getList(params: GetListParams): Promise<User[]> {...}
@@ -124,7 +122,7 @@ export class UserApi {
 }
 ```
 
-```ts
+```ts title=**/**/model/thunks.ts
 import { userApi } from "shared/api"
 
 // Создание инстансов API может происходить
@@ -149,14 +147,12 @@ export const getUserListThunk = createAsyncThunk("...", (params) => {
 
 *Реализация зависит от проекта и команды, здесь приведен лишь один из вариантов*
 
-```ts
-// shared/config/index.ts
+```ts title=shared/config/index.ts
 export const isDevEnv = NODE_ENV === "development";
 export const OAUTH_TOKEN = getEnvVar("REACT_APP_OAUTH_TOKEN");
 ```
 
-```ts
-// **/**/index.tsx
+```tsx title=**/**/index.tsx
 import { OAUTH_TOKEN, isDevEnv } from "shared/config";
 
 export const OAuthProvider = () => (

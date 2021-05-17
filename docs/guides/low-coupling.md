@@ -80,8 +80,7 @@ const List: Component<ListProps> = ({ Header, Items }) => (
 
 1. Свяжем всё это вместе. В приложении, для начала, будет одна страница, интерфейс будет основан на слегка модифицированном компоненте из первого примера
 
-```tsx
-// page/main/ui.tsx
+```tsx title=page/main/ui.tsx
 <List
     Header={<ConversationSwitch />}
     Items={<Messages />}
@@ -93,8 +92,7 @@ const List: Component<ListProps> = ({ Header, Items }) => (
 
 > Однако, реализация в виде фабрики необязательна - фича может зависеть от нижележащих слоев и напрямую
 
-```ts
-//pages/main/model.ts
+```ts title=pages/main/model.ts
 import { userStore } from "entitites/user"
 import { conversationStore } from "entities/conversation"
 import { contactStore } from "entities/contact"

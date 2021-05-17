@@ -41,8 +41,7 @@ sidebar_position: 2
 
 #### Инициализация роутера
 
-```tsx
-// app/hocs/withRouter.tsx
+```tsx title=app/hocs/withRouter.tsx
 export const withRouter = (component: Component) => () => (
     <Router>
         <Suspense fallback={<Spin overlay />}>
@@ -56,8 +55,7 @@ export const withRouter = (component: Component) => () => (
 
 #### Инициализация внешних библиотек
 
-```tsx
-// app/hocs/withAntd.tsx
+```tsx title=app/hocs/withAntd.tsx
 export const withAntd = (component: Component) => () => (
     <ConfigProvider getPopupContainer={...}>
         {component()}
@@ -65,8 +63,7 @@ export const withAntd = (component: Component) => () => (
 );
 ```
 
-```tsx
-// app/hocs/withApollo.tsx
+```tsx title=app/hocs/withApollo.tsx
 const client = new ApolloClient({ ... });
 
 export const withApollo = (component: Component) => () => (
@@ -80,8 +77,7 @@ export const withApollo = (component: Component) => () => (
 
 *Здесь показан лишь один из способов, если вы используете HOCs для провайдеров и инициализации логики*
 
-```tsx
-// app/hocs/index.ts
+```tsx title=app/hocs/index.ts
 import compose from "compose-function";
 import { withRouter } from "./with-router";
 import { withAntd } from "./with-antd";
@@ -94,8 +90,7 @@ import { withAntd } from "./with-antd";
 export const withHocs = compose(withRouter, withAntd, ...);
 ```
 
-```tsx
-// app/index.tsx
+```tsx title=app/index.tsx
 import { withHocs } from "./hocs";
 ...
 
@@ -159,8 +154,7 @@ export default withHocs(App);
 
 *Реализация БЛ заказа очень зависит от вашего проекта, где-то порой это может регулироваться и процессами. Поэтому здесь приведена лишь одна из имплементаций*
 
-```tsx
-// pages/**/index.tsx
+```tsx title=pages/**/index.tsx
 import { Order } from "features/order";
 import { ProductCard } from "entities/product";
 import { orderModel } from "entities/order";
@@ -221,7 +215,7 @@ export const CartPage = () => {
 
 #### Авторизация по телефону
 
-```tsx
+```tsx title=features/auth/by-phone/ui.tsx
 import { viewerModel } from "entities/viewer";
 
 export const AuthByPhone = () => {
@@ -263,8 +257,7 @@ export const AuthByPhone = () => {
 
 #### Использование модели сущностей
 
-```tsx
-// **/**/index.tsx
+```tsx title=**/**/index.tsx
 import { viewerModel } from "entities/viewer";
 
 export const Wallet = () => {
@@ -277,14 +270,12 @@ export const Wallet = () => {
 
 #### Использование компонентов сущностей
 
-```ts
-// entities/book/index.ts
+```ts title=entities/book/index.ts
 export { BookCard, ... } from "./ui";
 export * as bookModel from "./model";
 ```
 
-```tsx
-// pages/**/index.tsx
+```tsx title=pages/**/index.tsx
 import { BookCard } from "entities/book";
 
 export const CatalogPage = () => {
@@ -327,16 +318,13 @@ export const CatalogPage = () => {
 
 #### Использование UIKit
 
-```tsx
-// shared/ui/button/index.tsx
+```tsx title=shared/ui/button/index.tsx
 export const Button = () => {...}
-
-// shared/ui/card/index.tsx
+ title=shared/ui/card/index.tsx
 export const Card = () => {...}
 ```
 
-```tsx
-// **/**/index.tsx
+```tsx title=**/**/index.tsx
 import { Button } from "shared/ui/button";
 import { Card } from "shared/ui/card";
 // Или в крайних случаях
@@ -347,14 +335,12 @@ import { Card } from "shared/ui/card";
 
 *Реализация зависит от проекта и команды, здесь приведен лишь один из вариантов*
 
-```ts
-// shared/config/index.ts
+```ts title=shared/config/index.ts
 export const isDevEnv = NODE_ENV === "development";
 export const OAUTH_TOKEN = getEnvVar("REACT_APP_OAUTH_TOKEN");
 ```
 
-```ts
-// **/**/index.tsx
+```ts title=**/**/index.tsx
 import { OAUTH_TOKEN, isDevEnv } from "shared/config";
 
 export const OAuthProvider = () => (

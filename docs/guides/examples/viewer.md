@@ -59,23 +59,20 @@
 
 *Во многом повторяет декларацию API и для описанных ниже слоев*
 
-```ts
-// ui.ts
+```ts title=entities/user/ui/index.ts
 export { ViewerCard } from "./card";
 export { ViewerAvatar } from "./avatar";
 ...
 ```
 
-```ts
-// model.ts
+```ts title=entities/user/model/index.ts
 export * as selectors from "./selectors";
 export * as events from "./events";
 export * as stores from "./stores";
 ...
 ```
 
-```ts
-// index.ts
+```ts title=entities/user/index.ts
 export * from "./ui"
 export * as viewerModel from "./model";
 ```
@@ -84,7 +81,7 @@ export * as viewerModel from "./model";
 
 Здесь могут содержаться компоненты, относящиеся не к конкретной странице/фиче, а напрямую к сущности пользователя
 
-```tsx
+```tsx title=entities/user/ui/card/index.tsx
 import { Card } from "shared/ui/card";
 
 // Считается хорошей практикой - не связывать напрямую с моделью ui-компоненты из entitites
@@ -112,14 +109,14 @@ export const UserCard = ({ data, ... }: UserCardProps) => {
 
 На этом уровне обычно создается сущность текущего пользователя, с реэкспортом хуков/контрактов/селекторов для использования вышележащими слоями
 
-```ts
+```ts title=entities/user/model/stores.ts
 // effector
 export const $user = createStore(...);
 // redux (+ toolkit)
 export const userSlice = createSlice(...)
 ```
 
-```ts
+```ts title=entities/user/model/selectors.ts
 // effector
 export const useViewer = () => {
     return useStore($user)
@@ -170,7 +167,7 @@ export const useViewer = () => {
 
 - Авторизация по внешнему ресурсу
 
-```tsx
+```tsx title=features/auth/by-oauth/ui.tsx
 import { viewerModel } from "entities/viewer";
 
 export const AuthByOAuth = () => {
@@ -188,7 +185,7 @@ export const AuthByOAuth = () => {
 
 - Использование контекста пользователя в фичах
 
-```tsx
+```tsx title=features/wallet/ui.tsx
 import { viewerModel } from "entities/viewer";
 
 export const Wallet = () => {
@@ -201,7 +198,7 @@ export const Wallet = () => {
 
 - Использование компонентов вьювера
 
-```tsx
+```tsx title=features/header/ui.tsx
 import { ViewerAvatar } from "entities/viewer";
 ...
 export const Header = () => {
@@ -255,7 +252,7 @@ export const Header = () => {
 
 - Использование компонентов вьювера и *viewer-based* фич на страницах
 
-```tsx
+```tsx title=pages/user/ui.tsx
 import { Wallet } from "features/wallet";
 import { ViewerCard } from "entities/viewer";
 ...
@@ -275,7 +272,7 @@ export const UserPage = () => {
 
 - Использование модели вьювера
 
-```tsx
+```tsx title=pages/some/ui.tsx
 import { viewerModel } from "entities/viewer";
 ...
 export const SomePage = () => {
