@@ -14,7 +14,7 @@ sidebar_label: Migration from v1
 [refs-abstractions-layers]: /docs/concepts/app-splitting#group-layers
 [refs-abstractions-segments]: /docs/concepts/app-splitting#group-segments
 
-[ext-v1]: https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0
+[ext-v1]: https://featureslices.dev/v1.0.html
 [ext-tg-spb]: https://t.me/feature_slices
 [ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
 [ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
