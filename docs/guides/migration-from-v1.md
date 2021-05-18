@@ -14,7 +14,7 @@ sidebar_label: Migration from v1
 [refs-abstractions-layers]: /docs/concepts/app-splitting#group-layers
 [refs-abstractions-segments]: /docs/concepts/app-splitting#group-segments
 
-[ext-v1]: https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0
+[ext-v1]: https://featureslices.dev/v1.0.html
 [ext-tg-spb]: https://t.me/feature_slices
 [ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
 [ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
@@ -34,7 +34,7 @@ sidebar_label: Migration from v1
 - Использование *стандартизированной* структуры фронтенд-проектов
 - Разбиение приложения в первую очередь - согласно *бизнес-логике*
 - Использование *изолированных фичей*, для предотвращения неявных сайд-эффектов и циклических зависимостей
-- Использование *`Public API`* с запретом лезть "во внутренности" модуля
+- Использование `Public API` с запретом лезть "во внутренности" модуля
 
 При этом, в прежней версии методологии все равно **оставались слабые места**, которые
 
@@ -95,10 +95,10 @@ sidebar_label: Migration from v1
 - Такой подход позволяет [явно задать правила для слоев][ext-tg-v2-draft]:
   - Чем **выше расположен слой** модуля - тем большим **контекстом** он располагает
 
-        *(иными словами - каждый модуль слоя - может импортировать только **модули нижележащих слоев**, но не выше)*
+    *(иными словами - каждый модуль слоя - может импортировать только модули нижележащих слоев, но не выше)*
   - Чем **ниже расположен слой** модуля - тем больше **опасности и ответственности**, чтобы внести в него изменения
 
-        *(потому что, как правило - более переиспользуемыми являются именно нижележащие слои)*
+    *(потому что, как правило - более переиспользуемыми являются именно нижележащие слои)*
 
 ### `BREAKING` Shared
 

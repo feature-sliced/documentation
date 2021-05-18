@@ -19,7 +19,7 @@ sidebar_position: 2
 ### Общие правила
 
 - Слой располагается только на самом верхнем уровне, и не может встречаться еще раз на другом уровне вложенности
-  - ***Плохо:** `pages/../features/..`*
+  - **Плохо:** `pages/../features/..`
 - Каждый слой может импортировать только нижележащие слои (сверху-вниз)
   - `app` > `processes` > `pages` > `features` > `entities` > `shared`
 - Чем ниже расположен слой - тем больше опасности вносить в него изменения
@@ -41,8 +41,7 @@ sidebar_position: 2
 
 #### Инициализация роутера
 
-```tsx
-// app/hocs/withRouter.tsx
+```tsx title=app/hocs/withRouter.tsx
 export const withRouter = (component: Component) => () => (
     <Router>
         <Suspense fallback={<Spin overlay />}>
@@ -56,8 +55,7 @@ export const withRouter = (component: Component) => () => (
 
 #### Инициализация внешних библиотек
 
-```tsx
-// app/hocs/withAntd.tsx
+```tsx title=app/hocs/withAntd.tsx
 export const withAntd = (component: Component) => () => (
     <ConfigProvider getPopupContainer={...}>
         {component()}
@@ -65,8 +63,7 @@ export const withAntd = (component: Component) => () => (
 );
 ```
 
-```tsx
-// app/hocs/withApollo.tsx
+```tsx title=app/hocs/withApollo.tsx
 const client = new ApolloClient({ ... });
 
 export const withApollo = (component: Component) => () => (
@@ -80,8 +77,7 @@ export const withApollo = (component: Component) => () => (
 
 *Здесь показан лишь один из способов, если вы используете HOCs для провайдеров и инициализации логики*
 
-```tsx
-// app/hocs/index.ts
+```tsx title=app/hocs/index.ts
 import compose from "compose-function";
 import { withRouter } from "./with-router";
 import { withAntd } from "./with-antd";
@@ -94,8 +90,7 @@ import { withAntd } from "./with-antd";
 export const withHocs = compose(withRouter, withAntd, ...);
 ```
 
-```tsx
-// app/index.tsx
+```tsx title=app/index.tsx
 import { withHocs } from "./hocs";
 ...
 
@@ -121,7 +116,7 @@ export default withHocs(App);
   - *Например: `checkout`, `auth`*
 - логика, которая излишне бы усложняла код страниц и размывалась бы в них
 
-*В процессах не должна располагаться логика отображения (ui), поскольку роль процессов - **управлять поведением страниц и нижележащих слоев, но не отображать что-либо самостоятельно***
+В процессах не должна располагаться логика отображения (ui), поскольку роль процессов - **управлять поведением страниц и нижележащих слоев, но не отображать что-либо самостоятельно**
 
 ## `pages`
 
@@ -159,8 +154,7 @@ export default withHocs(App);
 
 *Реализация БЛ заказа очень зависит от вашего проекта, где-то порой это может регулироваться и процессами. Поэтому здесь приведена лишь одна из имплементаций*
 
-```tsx
-// pages/**/index.tsx
+```tsx title=pages/**/index.tsx
 import { Order } from "features/order";
 import { ProductCard } from "entities/product";
 import { orderModel } from "entities/order";
@@ -221,7 +215,7 @@ export const CartPage = () => {
 
 #### Авторизация по телефону
 
-```tsx
+```tsx title=features/auth/by-phone/ui.tsx
 import { viewerModel } from "entities/viewer";
 
 export const AuthByPhone = () => {
@@ -263,8 +257,7 @@ export const AuthByPhone = () => {
 
 #### Использование модели сущностей
 
-```tsx
-// **/**/index.tsx
+```tsx title=**/**/index.tsx
 import { viewerModel } from "entities/viewer";
 
 export const Wallet = () => {
@@ -277,14 +270,12 @@ export const Wallet = () => {
 
 #### Использование компонентов сущностей
 
-```ts
-// entities/book/index.ts
+```ts title=entities/book/index.ts
 export { BookCard, ... } from "./ui";
 export * as bookModel from "./model";
 ```
 
-```tsx
-// pages/**/index.tsx
+```tsx title=pages/**/index.tsx
 import { BookCard } from "entities/book";
 
 export const CatalogPage = () => {
@@ -327,16 +318,15 @@ export const CatalogPage = () => {
 
 #### Использование UIKit
 
-```tsx
-// shared/ui/button/index.tsx
+```tsx title=shared/ui/button/index.tsx
 export const Button = () => {...}
+```
 
-// shared/ui/card/index.tsx
+```tsx title=shared/ui/card/index.tsx
 export const Card = () => {...}
 ```
 
-```tsx
-// **/**/index.tsx
+```tsx title=**/**/index.tsx
 import { Button } from "shared/ui/button";
 import { Card } from "shared/ui/card";
 // Или в крайних случаях
@@ -347,14 +337,12 @@ import { Card } from "shared/ui/card";
 
 *Реализация зависит от проекта и команды, здесь приведен лишь один из вариантов*
 
-```ts
-// shared/config/index.ts
+```ts title=shared/config/index.ts
 export const isDevEnv = NODE_ENV === "development";
 export const OAUTH_TOKEN = getEnvVar("REACT_APP_OAUTH_TOKEN");
 ```
 
-```ts
-// **/**/index.tsx
+```ts title=**/**/index.tsx
 import { OAUTH_TOKEN, isDevEnv } from "shared/config";
 
 export const OAuthProvider = () => (
@@ -371,7 +359,7 @@ export const OAuthProvider = () => (
 > `WIP:` Со временем будут появляться статьи по каждой абстракции
 
 <!-- FIXME: rename to features -->
-- [Layer: Features](feature)
+- [Layer: Features][refs-feature]
 - [Адаптивность нейминга][refs-naming-adaptability]
 - [Example: Viewer][refs-example-viewer]
   - *Пример распределения логики по слоям: от `shared` до `app`*
@@ -386,11 +374,13 @@ export const OAuthProvider = () => (
 [refs-low-coupling]: /docs/guides/low-coupling
 [refs-example-viewer]: /docs/guides/examples/viewer
 
-[refs-segments]: segments
-[refs-segments--ui]: segments#ui
-[refs-segments--model]: segments#model
-[refs-segments--lib]: segments#lib
-[refs-segments--api]: segments#api
-[refs-segments--config]: segments#config
+[refs-feature]: /docs/reference/feature
+
+[refs-segments]: /docs/reference/segments
+[refs-segments--ui]: /docs/reference/segments#ui
+[refs-segments--model]: /docs/reference/segments#model
+[refs-segments--lib]: /docs/reference/segments#lib
+[refs-segments--api]: /docs/reference/segments#api
+[refs-segments--config]: /docs/reference/segments#config
 
 [disc-sharing]: https://github.com/feature-sliced/documentation/discussions/14

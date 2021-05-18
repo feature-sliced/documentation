@@ -63,14 +63,13 @@ const footer = {
           href: 'https://t.me/feature_sliced',
         },
         {
+          label: 'Twitter',
+          href: 'https://twitter.com/feature_sliced',
+        },
+        {
           label: 'Open Collective',
           href: 'https://opencollective.com/feature-sliced',
         },
-        // TODO: Добавить ссыль на twitter позднее (как доработаем)
-        // {
-        //   label: 'Twitter',
-        //   href: 'https://twitter.com/docusaurus',
-        // },
       ],
     },
     {
@@ -140,7 +139,8 @@ module.exports = {
   url: DOMAIN,
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'error',
+  onDuplicateRoutes: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'feature-sliced', // Usually your GitHub org/user name.
   projectName: 'documentation', // Usually your repo name.

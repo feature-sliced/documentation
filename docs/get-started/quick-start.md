@@ -102,7 +102,7 @@ $ npx create-react-app todo-app --template typescript
 
 Пока что перенесем туда всю существующую логику, а другие директории оставим пустыми, как на схеме выше.
 
-```js
+```tsx title=app/index.tsx
 import "./index.scss";
 
 const App = () => {
@@ -114,8 +114,6 @@ const App = () => {
         </div>
     );
 }
-
-export default App;
 ```
 
 ## 3. Подключим глобальные стили
@@ -132,8 +130,7 @@ $ npm i dart-sass
 
 #### Для css-переменных
 
-```scss
-// app/styles/vars.scss
+```scss title=app/styles/vars.scss
 :root {
     --color-dark: #242424;
     --color-primary: #108ee9;
@@ -143,8 +140,7 @@ $ npm i dart-sass
 
 #### Для нормализации стилей
 
-```scss
-// app/styles/normalize.scss
+```scss title=app/styles/normalize.scss
 html {
     scroll-behavior: smooth;
 }
@@ -153,18 +149,16 @@ html {
 
 #### Подключаем все стили
 
-```scss
-// app/styles/index.scss
+```scss title=app/styles/index.scss
 @import "./normalize.scss";
 @import "./vars.scss";
 ...
 
-// app/index.scss
+```scss title=app/index.scss
 @import "./styles/index.scss";
 ```
 
-```tsx
-// app/index.tsx
+```tsx title=app/index.tsx
 import "./index.scss"
 
 const App = () => {...}
@@ -181,8 +175,7 @@ $ npm i -D @types/react-router @types/react-router-dom
 
 ### Добавим HOC для инициализации роутера
 
-```tsx
-// app/hocs/with-router.ts
+```tsx title=app/hocs/with-router.ts
 import { Suspense } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
@@ -193,15 +186,16 @@ export const withRouter = (component: () => React.ReactNode) => () => (
         </Suspense>
     </BrowserRouter>
 );
-// app/hocs/index.ts
+```
+
+```ts title=app/hocs/index.ts
 import compose from "compose-function";
 import withRouter from "./with-router";
 
 export const withHocs = compose(withRouter);
 ```
 
-```tsx
-// app/index.tsx
+```tsx title=app/index.tsx
 import { withHocs } from "./hocs";
 ...
 
@@ -212,19 +206,6 @@ export default withHocs(App);
 
 ### Добавим реальные страницы
 
-#### Временная страница, только для проверки роутинга
-
-Ее можно удалить позднее
-
-```tsx
-// pages/test/index.tsx
-export const TestPage = () => {
-    return <div>Test Page</div>;
-};
-```
-
-#### Сформируем роуты
-
 Это лишь одна из реализаций роутинга
 
 - Можно объявлять его декларативно либо через список роутов (+ react-router-config)
@@ -232,14 +213,25 @@ export const TestPage = () => {
 
 Пока что методология никак регламентирует реализацию этой логики
 
-```tsx
-// pages/index.tsx
+#### Временная страница, только для проверки роутинга
+
+Ее можно удалить позднее
+
+```tsx title=pages/test/index.tsx
+export const TestPage = () => {
+    return <div>Test Page</div>;
+};
+```
+
+#### Сформируем роуты
+
+```tsx title=pages/index.tsx
 import { Suspense, lazy } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 const TestPage = lazy(() => import("./test"));
 
-const Routing = () => {
+export const Routing = () => {
     return (
         <Switch>
             <Route exact path="/" component={TestPage} />
@@ -247,15 +239,12 @@ const Routing = () => {
         </Switch>
     );
 };
-
-export default Routing;
 ```
 
 #### Подключаем роутинг к приложению
 
-```tsx
-// app/index.tsx
-import Routing from "pages";
+```tsx title=app/index.tsx
+import { Routing } from "pages";
 
 const App = () => (
     <Routing />
@@ -356,8 +345,7 @@ const App = () => (
 
 Каждый модуль должен предоставлять к использованию свой [публичный интерфейс][refs-public-api]:
 
-```ts
-// {layer}/foo/index.ts
+```ts title={layer}/foo/index.ts
 import { FooCard, FooThumbnail, ... } from "./ui";
 import * as fooModel from "./model"; 
 ```
@@ -366,8 +354,7 @@ import * as fooModel from "./model";
 
 #### Карточка задачи
 
-```tsx
-// entities/task/ui.tsx
+```tsx title=entities/task/ui.tsx
 import { Card } from "shared/ui/card";
 
 export const TaskCard = ({ data, children, ...cardProps }: Props) => (
@@ -383,8 +370,7 @@ export const TaskCard = ({ data, children, ...cardProps }: Props) => (
 
 #### Эффекты для взаимодействия с API задач
 
-```ts
-// entities/task/model/effects.ts
+```ts title=entities/task/model/effects.ts
 import { taskApi } from "shared/api";
 
 const getTasksListFx = createEffect((params) => {
@@ -402,8 +388,7 @@ const getTaskByIdFx = createEffect((taskId: number) => {
 
 #### Чекбокс для переключения статуса задачи
 
-```tsx
-// features/toggle-task/ui.tsx
+```tsx title=features/toggle-task/ui.tsx
 import { taskModel } from "entities/task";
 import { Checkbox } from "shared/ui/checkbox";
 
@@ -423,8 +408,7 @@ export const ToggleTask = ({ taskId }: Props) => {
 
 #### Фильтры для списка задач
 
-```tsx
-// features/tasks-filters/ui.tsx
+```tsx title=features/tasks-filters/ui.tsx
 import { taskModel } from "entities/task";
 import { Button } from "shared/ui/button";
 import { Row } from "shared/ui/row";
@@ -462,8 +446,7 @@ export const TasksFilters = () => {
 
 #### Страница "Список задач"
 
-```tsx
-// pages/tasks-list/index.tsx
+```tsx title=pages/tasks-list/index.tsx
 import { TasksFilters } from "features/tasks-filters";
 import { ToggleTask } from "features/toggle-task";
 import { TaskCard, taskModel } from "entities/task";
@@ -497,8 +480,7 @@ export const TasksListPage = () => {
 
 #### Страница "Карточка задачи"
 
-```tsx
-// pages/task-details/index.tsx
+```tsx title=pages/task-details/index.tsx
 import { Link } from "react-router-dom";
 
 import { ToggleTask } from "features/toggle-task";
