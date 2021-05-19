@@ -153,9 +153,11 @@ html {
 @import "./normalize.scss";
 @import "./vars.scss";
 ...
+```
 
 ```scss title=app/index.scss
 @import "./styles/index.scss";
+...
 ```
 
 ```tsx title=app/index.tsx
