@@ -152,11 +152,10 @@ html {
 ```scss title=app/styles/index.scss
 @import "./normalize.scss";
 @import "./vars.scss";
-```
+...
 
-```scss
+```scss title=app/index.scss
 @import "./styles/index.scss";
-
 ```
 
 ```tsx title=app/index.tsx
@@ -600,3 +599,17 @@ export const TaskDetailsPage = (props: Props) => {
 [refs-needs]: /docs/concepts/needs-driven
 [refs-public-api]: /docs/concepts/public-api
 [refs-splitting]: /docs/concepts/app-splitting
+
+[refs-low-coupling]: /docs/guides/low-coupling
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-guides]: /docs/guides/migration-from-v1
+<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+[refs-reference]: /docs/reference/glossary
+[refs-app]: /docs/reference/layers#app
+[refs-pages]: /docs/reference/layers#pages
+[refs-features]: /docs/reference/layers#features
+[refs-entities]: /docs/reference/layers#entities
+[refs-shared]: /docs/reference/layers#shared
+
+[ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
+[ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure
