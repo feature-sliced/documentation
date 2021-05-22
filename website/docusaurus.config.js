@@ -114,7 +114,7 @@ const presets = [
       //     `${GITHUB_DOCS}/edit/master/website/blog/`,
       // },
       theme: {
-        customCss: require.resolve('./src/css/custom.css'),
+        customCss: require.resolve('./src/app/index.css'),
       },
     },
   ],
@@ -135,7 +135,7 @@ const announcementBar = {
 module.exports = {
   title: 'feature-sliced',
   // tagline: 'Методология для проектирования frontend проектов, нацеленная на разделение приложения согласно бизнес-логике и областям ответственности.',
-  tagline: 'Structural pattern for Frontend projects',
+  tagline: 'Structural methodology for frontend projects',
   url: DOMAIN,
   baseUrl: '/',
   onBrokenLinks: 'throw',

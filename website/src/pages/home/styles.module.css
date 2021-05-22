@@ -1,0 +1,13 @@
+.scheme {
+    justify-content: center;
+}
+
+.schemeImg {
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+}
+
+/* FIXME: hardcoded */
+html[data-theme='dark'] .schemeImg {
+    filter: invert(0.905) brightness(1.0) grayscale(100%) opacity(0.5);
+}
