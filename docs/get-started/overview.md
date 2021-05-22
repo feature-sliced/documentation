@@ -46,7 +46,7 @@ sidebar_position: 2
 - [(Гайд) Как привести модули к низкой связности][refs-low-coupling]
 - [Примеры применения методологии][refs-examples]
 - [(Гайд) Миграция с feature-slices (v1)][refs-migration-v1]
-  - *Содержит также сравнение двух версий и причины создания v2
+  - *Содержит также сравнение двух версий и причины создания v2*
 
 [refs-motivation]: /docs/get-started/motivation
 
