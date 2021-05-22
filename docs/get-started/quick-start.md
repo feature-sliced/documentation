@@ -10,7 +10,7 @@ sidebar_position: 1
 
 **Стек**: React, Effector, TypeScript, Sass
 
-> **Примечание:** Туториал призван **раскрыть практическую идею самой методологии**. Поэтому описанные здесь практики - во многом подойдут *и для других фреймворков и стейт-менеджеров.*
+> **Примечание:** Туториал призван **раскрыть практическую идею самой методологии**. Поэтому описанные здесь практики - во многом подойдут *и для других технологических стеков фронтенд-проектов*
 
 ## 1. Инициализируем проект
 
@@ -177,7 +177,7 @@ $ npm i -D @types/react-router @types/react-router-dom
 
 ### Добавим HOC для инициализации роутера
 
-```tsx title=app/hocs/with-router.ts
+```tsx title=app/hocs/with-router.tsx
 import { Suspense } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
@@ -213,7 +213,7 @@ export default withHocs(App);
 - Можно объявлять его декларативно либо через список роутов (+ react-router-config)
 - Можно объявлять его на уровне pages либо app
 
-Пока что методология никак регламентирует реализацию этой логики
+Пока что методология никак не регламентирует реализацию этой логики
 
 #### Временная страница, только для проверки роутинга
 
@@ -228,7 +228,8 @@ export const TestPage = () => {
 #### Сформируем роуты
 
 ```tsx title=pages/index.tsx
-import { Suspense, lazy } from "react";
+import { lazy } from "react";
+// Либо использовать @loadable/component, в рамках туториала - некритично
 import { Route, Switch, Redirect } from "react-router-dom";
 
 const TestPage = lazy(() => import("./test"));
@@ -274,12 +275,12 @@ const App = () => (
 1. `TasksListPage` - страница "Список задач"
     - Смотреть список задач
     - Переходить к странице конкретной задачи
-    - **Помечать выполненной/невыполненной конкретную задачу**
+    - *Помечать выполненной/невыполненной конкретную задачу*
     - Задавать фильтрацию по выполненным/невыполненным задачам
 
 2. `TaskDetailsPage` - страница "Карточка задачи"
     - Смотреть информацию по задаче
-    - **Помечать выполненной/невыполненной конкретную задачу**
+    - *Помечать выполненной/невыполненной конкретную задачу*
     - Возвращаться к списку задач
 
 Каждая из описанных возможностей - представляет из себя часть функциональности, т.е. [фичу][refs-features].
@@ -348,9 +349,24 @@ const App = () => (
 Каждый модуль должен предоставлять к использованию свой [публичный интерфейс][refs-public-api]:
 
 ```ts title={layer}/foo/index.ts
+export { FooCard, FooThumbnail, ... } from "./ui";
+export * as fooModel from "./model"; 
+```
+
+:::note
+
+Если вам нужны именованные экспорты неймспейсов для декларации Public API, можно посмотреть в сторону [@babel/plugin-proposal-export-namespace-from](https://babeljs.io/docs/en/babel-plugin-proposal-export-namespace-from)
+
+Либо же, как альтернатива, использовать более развернутую конструкцию
+
+```ts title={layer}/foo/index.ts
 import { FooCard, FooThumbnail, ... } from "./ui";
 import * as fooModel from "./model"; 
+
+export { FooCard, FooThumbnail, fooModel };
 ```
+
+:::
 
 ### Композиция: `entities` <= `shared`
 
@@ -497,7 +513,7 @@ export const TaskDetailsPage = (props: Props) => {
     const task = taskModel.selectors.useTask(taskId);
 
     if (!task) {
-        return <Error type="404" message="Задача не найдена">
+        return <Error type="404" message="Задача не найдена" />
     }
 
     return (
@@ -535,7 +551,7 @@ export const TaskDetailsPage = (props: Props) => {
 
     - **Какие есть страницы?** => `TasksList`, `TaskDetails`
     - **Какие есть фичи? Что может пользователь?** => `ToggleTask`, `TasksFilters`
-    - **Какие есть бизнес-сущности? С чем ведется работа?** => `Task`
+    - **Какие есть бизнес-сущности? С чем ведется работа?** => `Task (TaskCard, ...)`
     - **Что можно переиспользовать из вспомогательного?** => `UIKit (Card, ...)`, `API (tasksApi)`
 
 ### Конечная структура
@@ -545,7 +561,7 @@ export const TaskDetailsPage = (props: Props) => {
     ├── app/
     |    ├── hocs/
     |    |    ├── index.ts
-    |    |    └── with-router.ts
+    |    |    └── with-router.tsx
     |    ├── styles/
     |    |    ├── index.scss
     |    |    ├── normalize.scss
@@ -554,13 +570,13 @@ export const TaskDetailsPage = (props: Props) => {
     |    └── index.scss
     ├── pages/
     |    ├── tasks-list/
-    |    |        └── index.tsx
+    |    |    └── index.tsx
     |    └── task-details/
-    |             └── index.tsx
+    |         └── index.tsx
     ├── features/
     |    ├── toggle-task/
-    |         ├── index.ts
-    |         └── ui.tsx
+    |    |    ├── index.ts
+    |    |    └── ui.tsx
     |    └── tasks-filters/
     |         ├── index.ts
     |         └── ui.tsx
