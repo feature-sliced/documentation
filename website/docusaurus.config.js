@@ -123,8 +123,7 @@ const presets = [
 /** @type {Config["themeConfig"]["announcementBar"]} */
 const announcementBar = {
   id: 'wip', // Any value that will identify this message.
-  content: `<b>WIP:</b> Работа над методологией в процессе и окончательный вид <i>может поменяться</i>.
-  Пока что <b>применять текущую версию</b> в рабочих проектах стоит крайне осторожно`,
+  content: `<b>WIP:</b> Текущая версия методологии находится на стадии разработки и некоторые детали <i>могут измениться</i>`,
   backgroundColor: '#e6a700', // As caution by docusaurus (defaults was `#fff`)
   textColor: "#fff",
   // textColor: '#091E42', // Defaults to `#000`.
