@@ -27,6 +27,9 @@ sidebar_position: 2
 
 ## `app`
 
+> - *`Can use:` shared, entities, features, pages, processes*
+> - *`Used by:` -*
+
 **Инициализирующая логика приложения**
 
 Здесь обычно происходит:
@@ -101,6 +104,9 @@ export default withHocs(App);
 
 ## `processes`
 
+> - *`Can use:` shared, entities, features, pages*
+> - *`Used by:` app*
+
 **Бизнес-процессы приложения, управляющие страницами**
 
 ```sh
@@ -119,6 +125,9 @@ export default withHocs(App);
 В процессах не должна располагаться логика отображения (ui), поскольку роль процессов - **управлять поведением страниц и нижележащих слоев, но не отображать что-либо самостоятельно**
 
 ## `pages`
+
+> - *`Can use:` shared, entities, features*
+> - *`Used by:` processes, app*
 
 > `WIP:` На данный момент ведутся активные обсуждения касаемо этого слоя:
 >
@@ -186,6 +195,9 @@ export const CartPage = () => {
 
 ## `features`
 
+> - *`Can use:` shared, entities*
+> - *`Used by:` pages, processes, app*
+
 **Части функциональности приложения**
 
 ```sh
@@ -235,6 +247,9 @@ export const AuthByPhone = () => {
 ```
 
 ## `entities`
+
+> - *`Can use:` shared*
+> - *`Used by:` features, pages, processes, app*
 
 **Бизнес-сущности**
 
@@ -291,6 +306,9 @@ export const CatalogPage = () => {
 ```
 
 ## `shared`
+
+> - *`Can use:` -*
+> - *`Used by:` entities, features, pages, processes, app*
 
 **Переиспользуемые модули, без привязки к бизнес-логике**
 
