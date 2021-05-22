@@ -9,20 +9,6 @@ sidebar_label: Migration from v1
 
 ---
 
-[refs-adaptability]: /docs/concepts/naming-adaptability
-[refs-abstractions]: /docs/concepts/app-splitting
-[refs-abstractions-layers]: /docs/concepts/app-splitting#group-layers
-[refs-abstractions-segments]: /docs/concepts/app-splitting#group-segments
-
-[ext-v1]: https://featureslices.dev/v1.0.html
-[ext-tg-spb]: https://t.me/feature_slices
-[ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
-[ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
-[ext-v2]: https://github.com/feature-sliced/documentation
-[ext-kof]: https://github.com/kof
-[ext-kof-fdd]: https://www.youtube.com/watch?v=BWAeYuWFHhs
-[ext-tg-v2-draft]: https://t.me/atomicdesign/18708
-
 ## Зачем `v2`?
 
 > Опционально к прочтению
@@ -166,7 +152,7 @@ sidebar_label: Migration from v1
 
 ### `REFINED` Low coupling
 
-Теперь гораздо проще [соблюдать принцип низкой связности](low-coupling) между модулями, благодаря новым слоям.
+Теперь гораздо проще [соблюдать принцип низкой связности][refs-low-coupling] между модулями, благодаря новым слоям.
 
 *При этом по-прежнему рекоммендуется максимально избегать случаев, где крайне трудно "расцепить" модули*
 
@@ -177,3 +163,18 @@ sidebar_label: Migration from v1
 - [Сравнение с v1 (community-chat)](https://t.me/feature_sliced/493)
 - [Новые идеи v2 с пояснениями (atomicdesign-chat)][ext-tg-v2-draft]
 - [Обсуждение абстракций и нейминга для новой версии методологии (v2)](https://github.com/feature-sliced/documentation/discussions/31)
+
+[refs-low-coupling]: /docs/guides/low-coupling
+[refs-adaptability]: /docs/concepts/naming-adaptability
+[refs-abstractions]: /docs/concepts/app-splitting
+[refs-abstractions-layers]: /docs/concepts/app-splitting#group-layers
+[refs-abstractions-segments]: /docs/concepts/app-splitting#group-segments
+
+[ext-v1]: https://featureslices.dev/v1.0.html
+[ext-tg-spb]: https://t.me/feature_slices
+[ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
+[ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
+[ext-v2]: https://github.com/feature-sliced/documentation
+[ext-kof]: https://github.com/kof
+[ext-kof-fdd]: https://www.youtube.com/watch?v=BWAeYuWFHhs
+[ext-tg-v2-draft]: https://t.me/atomicdesign/18708
