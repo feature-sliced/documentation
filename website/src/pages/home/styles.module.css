@@ -5,9 +5,16 @@
 .schemeImg {
     padding-top: 1rem;
     padding-bottom: 4rem;
+    width: 80%;
 }
 
 /* FIXME: hardcoded */
 html[data-theme='dark'] .schemeImg {
     filter: invert(0.905) brightness(1.0) grayscale(100%) opacity(0.5);
+}
+
+@media screen and (max-width: 966px) {
+    .schemeImg {
+        width: 100%;
+    }
 }

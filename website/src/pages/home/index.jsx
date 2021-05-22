@@ -34,7 +34,7 @@ export function HomePage() {
             NOTE: Set fixed height for correct alignment from mobile devices
             @see https://t.me/c/1463227827/197935
           */}
-          <img className={styles.schemeImg} src={imgScheme} alt="feature-sliced-scheme" height="500px" />
+          <img className={styles.schemeImg} src={imgScheme} alt="feature-sliced-scheme" />
         </Section>
       </main>
     </Layout>
