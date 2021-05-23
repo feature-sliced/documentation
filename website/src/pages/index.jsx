@@ -4,13 +4,15 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 // NOTE: import from root level, because same image is used at main README.md
-import imgScheme from "../../../../assets/visual_schema.jpg";
-import { Header } from "../../features/header";
-import { Card, Section } from "../../shared/ui";
-import { features, concepts } from "./config";
+import imgScheme from "../../../assets/visual_schema.jpg";
+import { Header } from "../features/header";
+import { Card, Section } from "../shared/ui";
+// NOTE: Locate at index before of specific route-mapping while Node/SSR building
+// "_" for excluding file from routing
+import { features, concepts } from "./_config";
 import styles from "./styles.module.css";
 
-export function HomePage() {
+export default function HomePage() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
