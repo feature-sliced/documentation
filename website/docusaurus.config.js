@@ -32,6 +32,29 @@ const navbar = {
       position: 'right',
     },
     {
+      type: 'docsVersionDropdown',
+      position: 'right',
+      dropdownActiveClassDisabled: true,
+      dropdownItemsAfter: [
+        {
+          to: 'https://featureslices.dev/v1.0.html',
+          label: 'v1.0',
+        },
+        {
+          to: 'https://featureslices.dev/v0.1.html',
+          label: 'v0.1',
+        },
+        {
+          to: 'https://github.com/feature-sliced/documentation/tree/rc/feature-driven',
+          label: 'feature-driven',
+        },
+        {
+          to: '/versions',
+          label: 'All versions',
+        },
+      ],
+    },
+    {
       type: 'localeDropdown',
       position: 'right',
     },
@@ -110,6 +133,11 @@ const presets = [
         // Equivalent to `enableUpdateTime`.
         // FIXME: convert DD/MM/YYYY format
         showLastUpdateTime: true,
+        versions: {
+          current: {
+            label: `v2.0-beta`,
+          },
+        },
       },
       // blog: {
       //   showReadingTime: true,
