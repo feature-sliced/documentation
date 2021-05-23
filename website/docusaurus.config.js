@@ -116,6 +116,12 @@ const presets = [
       theme: {
         customCss: require.resolve('./src/app/index.css'),
       },
+      // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap
+      sitemap: {
+        changefreq: 'weekly',
+        priority: 0.5,
+        trailingSlash: false,
+      },
     },
   ],
 ];
@@ -132,15 +138,6 @@ const plugins = [
           to: '/docs/intro',
         },
       ],
-    },
-  ],
-  // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap
-  [
-    '@docusaurus/plugin-sitemap',
-    {
-      changefreq: 'weekly',
-      priority: 0.5,
-      trailingSlash: false,
     },
   ],
 ];
