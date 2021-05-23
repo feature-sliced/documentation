@@ -122,6 +122,7 @@ const presets = [
 
 /** @type {Config["plugins"]} */
 const plugins = [
+  // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
   [
     '@docusaurus/plugin-client-redirects',
     {
@@ -131,6 +132,15 @@ const plugins = [
           to: '/docs/intro',
         },
       ],
+    },
+  ],
+  // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap
+  [
+    '@docusaurus/plugin-sitemap',
+    {
+      changefreq: 'weekly',
+      priority: 0.5,
+      trailingSlash: false,
     },
   ],
 ];
