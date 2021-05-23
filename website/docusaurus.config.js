@@ -135,7 +135,7 @@ const presets = [
         showLastUpdateTime: true,
         versions: {
           current: {
-            label: `v2.0-beta`,
+            label: `v2.0-beta 🍰`,
           },
         },
       },
