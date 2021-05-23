@@ -104,8 +104,12 @@ const presets = [
         path: '../docs',
         sidebarPath: require.resolve('./sidebars.js'),
         // Please change this to your repo.
-        editUrl:
-          `${GITHUB_DOCS}/edit/master/website/`,
+        editUrl: `${GITHUB_DOCS}/edit/master/website/`,
+        // // Equivalent to `enableUpdateBy`.
+        // showLastUpdateAuthor: true,
+        // Equivalent to `enableUpdateTime`.
+        // FIXME: convert DD/MM/YYYY format
+        showLastUpdateTime: true,
       },
       // blog: {
       //   showReadingTime: true,
