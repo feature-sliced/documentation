@@ -120,6 +120,21 @@ const presets = [
   ],
 ];
 
+/** @type {Config["plugins"]} */
+const plugins = [
+  [
+    '@docusaurus/plugin-client-redirects',
+    {
+      redirects: [
+        {
+          from: ['/docs'],
+          to: '/docs/intro',
+        },
+      ],
+    },
+  ],
+];
+
 /** @type {Config["themeConfig"]["announcementBar"]} */
 const announcementBar = {
   id: 'wip', // Any value that will identify this message.
@@ -159,4 +174,5 @@ module.exports = {
     },
   },
   presets,
+  plugins,
 };
