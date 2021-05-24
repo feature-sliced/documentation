@@ -174,15 +174,6 @@ const plugins = [
   ],
 ];
 
-/** @type {Config["themeConfig"]["algolia"]} */
-const algolia = {
-  apiKey: 'DUMMY',
-  indexName: 'feature-sliced',
-
-  // Optional: see doc section below
-  contextualSearch: true,
-};
-
 /** @type {Config["themeConfig"]["announcementBar"]} */
 const announcementBar = {
   id: 'wip', // Any value that will identify this message.
@@ -210,7 +201,6 @@ module.exports = {
     navbar,
     footer,
     announcementBar,
-    algolia,
     hideableSidebar: true,
   },
   i18n: {
