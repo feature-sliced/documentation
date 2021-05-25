@@ -190,7 +190,7 @@ import { viewerModel } from "entities/viewer";
 
 export const Wallet = () => {
     const viewer = viewerModel.useViewer();
-    const { moneyCount } = wallet;
+    const { moneyCount } = viewer;
     
     ...
 }

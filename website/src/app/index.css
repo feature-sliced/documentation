@@ -35,3 +35,28 @@
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+/* Inherited from docusaurus scrollbar stylesheets for inner containers */
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: var(--ifm-scrollbar-size);
+  height: var(--ifm-scrollbar-size);
+  background-color: transparent;
+}
+  
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--ifm-scrollbar-thumb-background-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #ffffff;
+}

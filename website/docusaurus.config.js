@@ -32,6 +32,29 @@ const navbar = {
       position: 'right',
     },
     {
+      type: 'docsVersionDropdown',
+      position: 'right',
+      dropdownActiveClassDisabled: true,
+      dropdownItemsAfter: [
+        {
+          to: 'https://featureslices.dev/v1.0.html',
+          label: 'v1.0',
+        },
+        {
+          to: 'https://featureslices.dev/v0.1.html',
+          label: 'v0.1',
+        },
+        {
+          to: 'https://github.com/feature-sliced/documentation/tree/rc/feature-driven',
+          label: 'feature-driven',
+        },
+        {
+          to: '/versions',
+          label: 'All versions',
+        },
+      ],
+    },
+    {
       type: 'localeDropdown',
       position: 'right',
     },
@@ -104,8 +127,17 @@ const presets = [
         path: '../docs',
         sidebarPath: require.resolve('./sidebars.js'),
         // Please change this to your repo.
-        editUrl:
-          `${GITHUB_DOCS}/edit/master/website/`,
+        editUrl: `${GITHUB_DOCS}/edit/master/website/`,
+        // // Equivalent to `enableUpdateBy`.
+        // showLastUpdateAuthor: true,
+        // Equivalent to `enableUpdateTime`.
+        // FIXME: convert DD/MM/YYYY format
+        showLastUpdateTime: true,
+        versions: {
+          current: {
+            label: `v2.0-beta 🍰`,
+          },
+        },
       },
       // blog: {
       //   showReadingTime: true,
@@ -114,8 +146,30 @@ const presets = [
       //     `${GITHUB_DOCS}/edit/master/website/blog/`,
       // },
       theme: {
-        customCss: require.resolve('./src/css/custom.css'),
+        customCss: require.resolve('./src/app/index.css'),
       },
+      // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap
+      sitemap: {
+        changefreq: 'weekly',
+        priority: 0.5,
+        trailingSlash: false,
+      },
+    },
+  ],
+];
+
+/** @type {Config["plugins"]} */
+const plugins = [
+  // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
+  [
+    '@docusaurus/plugin-client-redirects',
+    {
+      redirects: [
+        {
+          from: ['/docs'],
+          to: '/docs/intro',
+        },
+      ],
     },
   ],
 ];
@@ -123,9 +177,8 @@ const presets = [
 /** @type {Config["themeConfig"]["announcementBar"]} */
 const announcementBar = {
   id: 'wip', // Any value that will identify this message.
-  content: `<b>WIP:</b> Работа над методологией в процессе и окончательный вид <i>может поменяться</i>.
-  Пока <b>не рекомендуется применять текущую версию</b> в рабочих проектах <i>(только на свой страх и риск)</i>`,
-  backgroundColor: '#af272b', // Defaults to `#fff`.
+  content: `<b>WIP:</b> Текущая версия методологии находится на стадии разработки и некоторые детали <i>могут измениться</i>`,
+  backgroundColor: '#e6a700', // As caution by docusaurus (defaults was `#fff`)
   textColor: "#fff",
   // textColor: '#091E42', // Defaults to `#000`.
   isCloseable: false, // Defaults to `true`.
@@ -135,7 +188,7 @@ const announcementBar = {
 module.exports = {
   title: 'feature-sliced',
   // tagline: 'Методология для проектирования frontend проектов, нацеленная на разделение приложения согласно бизнес-логике и областям ответственности.',
-  tagline: 'Structural pattern for Frontend projects',
+  tagline: 'Structural methodology for frontend projects',
   url: DOMAIN,
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -160,4 +213,5 @@ module.exports = {
     },
   },
   presets,
+  plugins,
 };

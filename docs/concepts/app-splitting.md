@@ -147,6 +147,11 @@ sidebar_label: App splitting
 - [Первичное описание абстракций][tg-description]
 - [(Статья) Про организацию кодовой базы *с полным сравнением нескольких подходов*][ext-pluralsight]
 - [(Статья) Про модуляризацию проектов][ext-medium]
+- [Reference: Layers][ref-layers]
+- [Reference: Segments][ref-segments]
+
+[ref-layers]: /docs/reference/layers
+[ref-segments]: /docs/reference/segments
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31
 
