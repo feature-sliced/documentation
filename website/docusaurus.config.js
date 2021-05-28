@@ -2,6 +2,35 @@ const DOMAIN = 'https://feature-sliced.design/';
 const GITHUB_ORG = 'https://github.com/feature-sliced'
 const GITHUB_DOCS = 'https://github.com/feature-sliced/documentation';
 
+// Конкретные страницы нужны, т.к. отдельно секции доки не индексируются
+// FIXME: Будет исправлено позднее
+const SECTIONS = {
+  INTRO: {
+    shortPath: '/docs',
+    fullPath: '/docs/intro',
+  },
+  GET_STARTED: {
+    shortPath: '/docs/get-started',
+    fullPath: '/docs/get-started/quick-start',
+  },
+  CONCEPTS: {
+    shortPath: '/docs/concepts',
+    fullPath: '/docs/concepts/architecture',
+  },
+  GUIDES: {
+    shortPath: '/docs/guides',
+    fullPath: '/docs/guides/migration-from-v1',
+  },
+  REFERENCE: {
+    shortPath: '/docs/reference',
+    fullPath: '/docs/reference/glossary',
+  },
+  ABOUT: {
+    shortPath: '/docs/about',
+    fullPath: '/docs/about/mission',
+  },
+}
+
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
 
 /** @type {Config["themeConfig"]["navbar"]} */
@@ -14,17 +43,12 @@ const navbar = {
   },
   items: [
     // left
-    {
-      type: 'doc',
-      docId: 'readme',
-      position: 'left',
-      label: 'Docs',
-    },
-    { label: 'Getting Started', to: 'docs/get-started/quick-start', position: 'left' },
-    { label: 'Concepts', to: 'docs/concepts/architecture', position: 'left' },
-    { label: 'Guides', to: 'docs/guides/migration-from-v1', position: 'left' },
-    { label: 'Reference', to: 'docs/reference/glossary', position: 'left' },
-    { label: 'About', to: 'docs/about/mission', position: 'left' },
+    { label: 'Docs', to: SECTIONS.INTRO.fullPath, position: 'left' },
+    { label: 'Getting Started', to: SECTIONS.GET_STARTED.fullPath, position: 'left' },
+    { label: 'Concepts', to: SECTIONS.CONCEPTS.fullPath, position: 'left' },
+    { label: 'Guides', to: SECTIONS.GUIDES.fullPath, position: 'left' },
+    { label: 'Reference', to: SECTIONS.REFERENCE.fullPath, position: 'left' },
+    { label: 'About', to: SECTIONS.ABOUT.fullPath, position: 'left' },
     // right
     {
       href: GITHUB_DOCS,
@@ -166,8 +190,32 @@ const plugins = [
     {
       redirects: [
         {
-          from: ['/docs'],
-          to: '/docs/intro',
+          from: [SECTIONS.INTRO.shortPath],
+          to: SECTIONS.INTRO.fullPath,
+        },
+        // NOTE: Редиректы работают при прямом переходе по ссылке в адресной строке
+        // Если же переходить чисто по ссылкам, то редиректа не будет (только при обновлении страницы)
+        // TODO: Сделать позже, чтоб редирект работал и при переходе с внутренних ссылок
+        // И убрать хардкод с доки и конфига
+        {
+          from: [SECTIONS.GET_STARTED.shortPath],
+          to: SECTIONS.GET_STARTED.fullPath,
+        },
+        {
+          from: [SECTIONS.CONCEPTS.shortPath],
+          to: SECTIONS.CONCEPTS.fullPath,
+        },
+        {
+          from: [SECTIONS.GUIDES.shortPath],
+          to: SECTIONS.GUIDES.fullPath,
+        },
+        {
+          from: [SECTIONS.REFERENCE.shortPath],
+          to: SECTIONS.REFERENCE.fullPath,
+        },
+        {
+          from: [SECTIONS.ABOUT.shortPath],
+          to: SECTIONS.ABOUT.fullPath,
         },
       ],
     },
