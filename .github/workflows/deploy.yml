@@ -8,6 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-18.04
+    env:
+      ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
 
     steps:
       - uses: actions/checkout@v2
