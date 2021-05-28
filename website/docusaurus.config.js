@@ -174,6 +174,14 @@ const plugins = [
   ],
 ];
 
+/** @type {Config["themeConfig"]["algolia"]} */
+const algolia = {
+  apiKey: process.env.ALGOLIA_KEY,
+  indexName: 'feature-sliced',
+  // Для поиска с учетом версий (на будущее)
+  contextualSearch: true,
+};
+
 /** @type {Config["themeConfig"]["announcementBar"]} */
 const announcementBar = {
   id: 'wip', // Any value that will identify this message.
@@ -201,6 +209,7 @@ module.exports = {
     navbar,
     footer,
     announcementBar,
+    algolia,
     hideableSidebar: true,
   },
   i18n: {
@@ -215,3 +224,7 @@ module.exports = {
   presets,
   plugins,
 };
+
+if (!process.env.ALGOLIA_KEY) {
+  delete module.exports.themeConfig.algolia;
+}
