@@ -228,8 +228,8 @@ export const TestPage = () => {
 #### Сформируем роуты
 
 ```tsx title=pages/index.tsx
-import { lazy } from "react";
 // Либо использовать @loadable/component, в рамках туториала - некритично
+import { lazy } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 const TestPage = lazy(() => import("./test"));
