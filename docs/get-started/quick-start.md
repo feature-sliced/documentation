@@ -98,7 +98,7 @@ $ npx create-react-app todo-app --template typescript
 Именно там, согласно методологии, стоит располагать всю подготовительную логику:
 
 - подключение глобальных стилей (`/app/styles/**` + `/app/index.css`)
-- провайдеры и HOCs с инициализирующей логикой (`/app/hocs/**`)
+- провайдеры и HOCs с инициализирующей логикой (`/app/providers/**`)
 
 Пока что перенесем туда всю существующую логику, а другие директории оставим пустыми, как на схеме выше.
 
@@ -177,7 +177,7 @@ $ npm i -D @types/react-router @types/react-router-dom
 
 ### Добавим HOC для инициализации роутера
 
-```tsx title=app/hocs/with-router.tsx
+```tsx title=app/providers/with-router.tsx
 import { Suspense } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
@@ -190,20 +190,20 @@ export const withRouter = (component: () => React.ReactNode) => () => (
 );
 ```
 
-```ts title=app/hocs/index.ts
+```ts title=app/providers/index.ts
 import compose from "compose-function";
 import withRouter from "./with-router";
 
-export const withHocs = compose(withRouter);
+export const withProviders = compose(withRouter);
 ```
 
 ```tsx title=app/index.tsx
-import { withHocs } from "./hocs";
+import { withProviders } from "./providers";
 ...
 
 const App = () => {...}
 
-export default withHocs(App);
+export default withProviders(App);
 ```
 
 ### Добавим реальные страницы
@@ -559,7 +559,7 @@ export const TaskDetailsPage = (props: Props) => {
 ```sh
 └── src/
     ├── app/
-    |    ├── hocs/
+    |    ├── providers/
     |    |    ├── index.ts
     |    |    └── with-router.tsx
     |    ├── styles/
