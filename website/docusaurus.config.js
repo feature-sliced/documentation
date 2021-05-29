@@ -78,7 +78,7 @@ const navbar = {
         },
         {
           to: '/versions',
-          label: `${process.env.DEBUG_KEY} (2)`,
+          label: `${process.env.DEBUG_KEY} (3)`,
         },
       ],
     },
@@ -230,8 +230,6 @@ const plugins = [
 const algolia = {
   apiKey: process.env.ALGOLIA_KEY,
   indexName: 'feature-sliced',
-  // Для поиска с учетом версий (на будущее)
-  contextualSearch: true,
 };
 
 /** @type {Config["themeConfig"]["announcementBar"]} */
