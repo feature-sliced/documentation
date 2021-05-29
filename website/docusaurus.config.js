@@ -76,10 +76,6 @@ const navbar = {
           to: '/versions',
           label: 'All versions',
         },
-        {
-          to: '/versions',
-          label: `${process.env.DEBUG_KEY} (4)`,
-        },
       ],
     },
     {
@@ -230,6 +226,9 @@ const plugins = [
 const algolia = {
   apiKey: process.env.ALGOLIA_KEY,
   indexName: 'feature-sliced',
+  // FIXME: При включении отрубает поиск (исправить поздней)
+  // // Для поиска с учетом версий (на будущее)
+  // contextualSearch: true,
 };
 
 /** @type {Config["themeConfig"]["announcementBar"]} */
@@ -275,6 +274,6 @@ module.exports = {
   plugins,
 };
 
-// if (!process.env.ALGOLIA_KEY) {
-//   delete module.exports.themeConfig.algolia;
-// }
+if (!process.env.ALGOLIA_KEY) {
+  delete module.exports.themeConfig.algolia;
+}
