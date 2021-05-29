@@ -51,11 +51,6 @@ const navbar = {
     { label: 'About', to: SECTIONS.ABOUT.fullPath, position: 'left' },
     // right
     {
-      href: GITHUB_DOCS,
-      label: 'GitHub',
-      position: 'right',
-    },
-    {
       type: 'docsVersionDropdown',
       position: 'right',
       dropdownActiveClassDisabled: true,
@@ -81,6 +76,12 @@ const navbar = {
     {
       type: 'localeDropdown',
       position: 'right',
+    },
+    {
+      href: GITHUB_DOCS,
+      position: 'right',
+      className: 'header-github-link',
+      'aria-label': 'GitHub repository',
     },
   ],
 };
