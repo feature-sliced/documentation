@@ -78,7 +78,7 @@ const navbar = {
         },
         {
           to: '/versions',
-          label: `${process.env.DEBUG_KEY} (3)`,
+          label: `${process.env.DEBUG_KEY} (4)`,
         },
       ],
     },
