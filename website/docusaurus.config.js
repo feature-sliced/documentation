@@ -78,7 +78,7 @@ const navbar = {
         },
         {
           to: '/versions',
-          label: process.env.DEBUG_KEY,
+          label: `${process.env.DEBUG_KEY} (2)`,
         },
       ],
     },
@@ -277,6 +277,6 @@ module.exports = {
   plugins,
 };
 
-if (!process.env.ALGOLIA_KEY) {
-  delete module.exports.themeConfig.algolia;
-}
+// if (!process.env.ALGOLIA_KEY) {
+//   delete module.exports.themeConfig.algolia;
+// }
