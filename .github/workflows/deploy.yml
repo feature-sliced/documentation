@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
+      DEBUG_KEY: ${{ secrets.DEBUG_KEY }}
 
     steps:
       - uses: actions/checkout@v2

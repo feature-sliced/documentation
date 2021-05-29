@@ -273,6 +273,10 @@ module.exports = {
   plugins,
 };
 
+window.__fsdebug__ = () => {
+  return process.env.DEBUG_KEY;
+}
+
 if (!process.env.ALGOLIA_KEY) {
   delete module.exports.themeConfig.algolia;
 }
