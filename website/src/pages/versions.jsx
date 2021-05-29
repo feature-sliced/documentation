@@ -40,6 +40,9 @@ function Version() {
                   <td>
                     <Link to="/docs/intro">Documentation</Link>
                   </td>
+                  <td>
+                    <Link to="/docs/guides/migration-from-v1">Migration from v1</Link>
+                  </td>
                 </Table.Row>
             </Table>
           </div>
