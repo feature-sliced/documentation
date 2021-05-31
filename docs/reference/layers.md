@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# Layers
+# Layer
 
-**Layers** - первый уровень разбиения приложения, согласно **скоупу влияния** модуля
+**Layer** - первый уровень разбиения приложения, согласно **скоупу влияния** модуля
 
 ```sh
 └── src/
@@ -44,7 +44,7 @@ sidebar_position: 2
 
 #### Инициализация роутера
 
-```tsx title=app/hocs/withRouter.tsx
+```tsx title=app/providers/withRouter.tsx
 export const withRouter = (component: Component) => () => (
     <Router>
         <Suspense fallback={<Spin overlay />}>
@@ -58,7 +58,7 @@ export const withRouter = (component: Component) => () => (
 
 #### Инициализация внешних библиотек
 
-```tsx title=app/hocs/withAntd.tsx
+```tsx title=app/providers/withAntd.tsx
 export const withAntd = (component: Component) => () => (
     <ConfigProvider getPopupContainer={...}>
         {component()}
@@ -66,7 +66,7 @@ export const withAntd = (component: Component) => () => (
 );
 ```
 
-```tsx title=app/hocs/withApollo.tsx
+```tsx title=app/providers/withApollo.tsx
 const client = new ApolloClient({ ... });
 
 export const withApollo = (component: Component) => () => (
@@ -76,11 +76,11 @@ export const withApollo = (component: Component) => () => (
 );
 ```
 
-#### Подключение HOCs
+#### Подключение инициализации
 
-*Здесь показан лишь один из способов, если вы используете HOCs для провайдеров и инициализации логики*
+*Здесь показан лишь один из способов, если вы используете HOC для провайдеров и инициализации логики*
 
-```tsx title=app/hocs/index.ts
+```tsx title=app/providers/index.ts
 import compose from "compose-function";
 import { withRouter } from "./with-router";
 import { withAntd } from "./with-antd";
@@ -90,16 +90,16 @@ import { withAntd } from "./with-antd";
 // н-р: `import { compose } from "redux"
 // 2. Стоит учитывать порядок подключения HOCs
 // н-р: withHOC2 не может быть запущен, пока не будет обертки withHOC1 и т.п.
-export const withHocs = compose(withRouter, withAntd, ...);
+export const withProviders = compose(withRouter, withAntd, ...);
 ```
 
 ```tsx title=app/index.tsx
-import { withHocs } from "./hocs";
+import { withProviders } from "./providers";
 ...
 
 const App = () => { ... }
 
-export default withHocs(App);
+export default withProviders(App);
 ```
 
 ## `processes`

@@ -5,13 +5,7 @@ sidebar_label: Migration from v1
 
 # Миграция с v1
 
-> Миграция с feature-slices (v1)
-
----
-
 ## Зачем `v2`?
-
-> Опционально к прочтению
 
 Изначальная концепция `feature-slices` [была заявлена][ext-tg-spb] еще в 2018 году.
 

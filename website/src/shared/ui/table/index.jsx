@@ -5,10 +5,10 @@ function TableRow({ href, hrefTitle, th, children }) {
         <tr>
             <th>{th}</th>
             {/* FIXME: hardcoded */}
-            {children}
             <td>
                 <a href={href}>{hrefTitle}</a>
             </td>
+            {children}
         </tr>
     )
 }
