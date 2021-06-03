@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Glossary
 
-## `Module`
+## Module
 
 Структурная единица проекта
 
@@ -16,11 +16,11 @@ sidebar_position: 1
 - *модуль экшенов в модели сущности*
 - *и т.д.*
 
-## [`Layer`][refs-layers]
+## [Layer][refs-layers]
 
 Каждая из директорий, находящихся на самом верхнем уровне приложения.
 
-- **Представители**: `app`, `processes`, `pages`, `features`, `entities`, `shared`
+- **Представители**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
 
 ```sh
 └── src/
@@ -32,7 +32,7 @@ sidebar_position: 1
     └── shared/                 # Переиспользуемые модули
 ```
 
-## `Slice`
+## Slice
 
 Каждый из элементов, находящихся на верхнем уровне слоёв
 
@@ -74,11 +74,11 @@ sidebar_position: 1
 |    #   т.к. здесь только переиспользуемые модули, без привязки к БЛ
 ```
 
-## [`Segments`][refs-segments]
+## [Segment][refs-segments]
 
 Каждый из модулей, находящийся на верхнем уровне каждого слайса
 
-- **Представители**: `ui`, `model`, `lib`, `api`, `config`
+- **Представители**: [`ui`][refs-segments-ui], [`model`][refs-segments-model], [`lib`][refs-segments-lib], [`api`][refs-segments-api], [`config`][refs-segments-config]
 
 ```sh
 {layer}/
@@ -103,4 +103,15 @@ sidebar_position: 1
 
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-layers]: /docs/reference/layers
+[refs-layers-app]: /docs/reference/layers#app
+[refs-layers-processes]: /docs/reference/layers#processes
+[refs-layers-pages]: /docs/reference/layers#pages
+[refs-layers-features]: /docs/reference/layers#features
+[refs-layers-entities]: /docs/reference/layers#entities
+[refs-layers-shared]: /docs/reference/layers#shared
 [refs-segments]: /docs/reference/segments
+[refs-segments-ui]: /docs/reference/segments#ui
+[refs-segments-model]: /docs/reference/segments#model
+[refs-segments-lib]: /docs/reference/segments#lib
+[refs-segments-api]: /docs/reference/segments#api
+[refs-segments-config]: /docs/reference/segments#config
