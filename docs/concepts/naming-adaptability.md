@@ -19,8 +19,8 @@ sidebar_label: Naming adaptability
 
 Методология оперирует такими терминами, как
 
-- `app`, `process`, `page`, `feature`, `entity`, `shared` *(by [layers][refs-layers])*
-- `ui`, `model`, `lib`, `api` *(by [segments][refs-segments])*
+- `app`, `process`, `page`, `feature`, `entity`, `shared` - *[layers][refs-layers]*
+- `ui`, `model`, `lib`, `api` - *[segments][refs-segments]*
 
 В рамках методологии, каждый из этих терминов имеет [четкое определение][refs-reference]
 
