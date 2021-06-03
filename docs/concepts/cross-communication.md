@@ -5,14 +5,14 @@ sidebar_label: Cross-communication
 
 # Взаимодействие модулей приложения
 
-В рамках методологии все модули [**распределены по слоям (слайсам)**](app-splitting#group-slices) - зонам ответственности.
+В рамках методологии все модули распределены по зонам ответственности [(layer, slice, segment)][refs-splitting]
 
 Слои, в свою очередь, организованы вертикально:
 
 - "внизу" находятся переиспользуемые модули (ui-kit, внутренние библиотеки проекта), как наиболее абстрактные
 - а по мере продвижения "вверх" располагаются более специфичные модули.
 
-Независимо от принадлежности к какому-либо слайсу каждый модуль [**обязан предоставлять публичный интерфейс доступа**](public-api).
+Независимо от принадлежности к какому-либо слайсу каждый модуль [**обязан предоставлять публичный интерфейс доступа**][refs-public-api].
 
 ## Требования
 
@@ -55,6 +55,11 @@ TODO После накопления опыта работы с методоло
 
 ## См. также
 
+- [(Гайд) Про достижение низкой связанности][refs-low-coupling]
 - [(Обсуждение) Entities в методологии и их связность](https://github.com/feature-sliced/documentation/discussions/49)
 - [(Обсуждение) Про cross-импорты и анализ зависимостей](https://github.com/feature-sliced/documentation/discussions/65#discussioncomment-480822)
 - [Паттерны **GRASP**](https://ru.wikipedia.org/wiki/GRASP)
+
+[refs-public-api]: /docs/concepts/public-api
+[refs-splitting]: /docs/concepts/app-splitting
+[refs-low-coupling]: /docs/guides/low-coupling
