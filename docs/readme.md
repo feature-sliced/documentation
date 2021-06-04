@@ -12,7 +12,7 @@ slug: intro
     > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
 - Предлагает разделять проект согласно [**бизнес-юнитам**][ext-ubiq-lang]
 
-:::note Примечание
+:::note
 
 Методология не привязана к конкретному стеку и применима *к любым фронтенд-проектам* в целом.
 
