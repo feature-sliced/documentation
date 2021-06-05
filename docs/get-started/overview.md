@@ -55,7 +55,7 @@ sidebar_position: 1
 [refs-motivation]: /docs/get-started/motivation
 
 [refs-splitting]: /docs/concepts/app-splitting
-[refs-splitting--layers]: /docs/concepts/app-splitting#-group-layers
+[refs-splitting--layers]: /docs/concepts/app-splitting#group-layers
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-concepts]: /docs/concepts/architecture
 
