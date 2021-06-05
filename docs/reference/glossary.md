@@ -20,6 +20,8 @@ sidebar_position: 1
 
 Каждая из директорий, находящихся на самом верхнем уровне приложения.
 
+Этот уровень определяет [скоуп ответственности модулей][refs-split-layers], а также уровень опасности изменений
+
 - **Представители**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
 
 ```sh
@@ -36,9 +38,9 @@ sidebar_position: 1
 
 Каждый из элементов, находящихся на верхнем уровне слоёв
 
-*Наиболее применимо для `processes`, `features`, `entities`*
+Этот уровень [слабо регламентируется][refs-split-slices] методологией, однако многое зависит от конкретного проекта, стека и команды
 
-*Этот уровень не определяется методологией, поскольку он специфичен для каждого проекта и команды*
+- **Представители (от каждого слоя)** [`process`][refs-layers-processes], [`page`][refs-layers-pages], [`feature`][refs-layers-features], [`entity`][refs-layers-entities]
 
 ```sh
 ├── app/
@@ -77,6 +79,8 @@ sidebar_position: 1
 
 Каждый из модулей, находящийся на верхнем уровне каждого слайса
 
+Этот уровень определяет [назначение модулей в коде и реализации][refs-split-segments], согласно классическим моделям проектирования
+
 - **Представители**: [`ui`][refs-segments-ui], [`model`][refs-segments-model], [`lib`][refs-segments-lib], [`api`][refs-segments-api], [`config`][refs-segments-config]
 
 ```sh
@@ -100,11 +104,15 @@ sidebar_position: 1
 
 ## См. также
 
-- [Уровни абстракций по методологии][refs-splitting]
+- [Уровни абстракций по методологии][refs-split]
 - [Layers в методологии][refs-layers]
 - [Segments в методологии][refs-segments]
 
-[refs-splitting]: /docs/concepts/app-splitting
+[refs-split]: /docs/concepts/app-splitting
+[refs-split-layers]: /docs/concepts/app-splitting#group-layers
+[refs-split-slices]: /docs/concepts/app-splitting#group-slices
+[refs-split-segments]: /docs/concepts/app-splitting#group-segments
+
 [refs-layers]: /docs/reference/layers
 [refs-layers-app]: /docs/reference/layers#app
 [refs-layers-processes]: /docs/reference/layers#processes

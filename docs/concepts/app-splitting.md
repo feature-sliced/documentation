@@ -49,7 +49,7 @@ sidebar_label: App splitting
 
 Второй уровень разделения: по **конкретной функциональности БЛ**
 
-*Методология не влияет на этот уровень и все крайне зависит [от конкретного проекта][disc-usability]*
+*Методология почти не влияет на этот уровень и многое зависит [от конкретного проекта][disc-usability]*
 
 :::note Самопроверка
 
@@ -91,6 +91,74 @@ sidebar_label: App splitting
 |    # Не имеет конкретных слайсов
 |    # Представляет собой скорее набор общеиспользуемых сегментов, без привязки к БЛ
 ```
+
+### Правила
+
+Поскольку слайс представляет собой конкретный уровень абстракции, то методология обязана наложить на него определенные правила
+
+#### Low Coupling & High Cohesion
+
+Слайсы одного слоя [не могут использовать друг друга напрямую][ref-low-coupling], а их взаимодействие и композиция должны определяться на более верхнем слое, относительно их текущего
+
+```js title=features/baz/ui.tsx
+// Плохо: фича импортит другую фичу (слайсы одного слоя)
+import { Bar } from "features/bar"
+
+function Baz({ foo, ...barProps}) {
+    ...
+    <Bar {...barProps} />
+}
+```
+
+```js title=pages/foo/ui.tsx
+// Хорошо: фичи компонуются на странице (вышележащий слой)
+import { Baz } from "features/baz"
+import { Bar } from "features/bar"
+
+function Foo() {
+    ...
+    <Baz {...fooProps}>
+        <Bar {...barProps} />
+    </Baz>
+}
+```
+
+#### Grouping
+
+- В большинстве случаев следует избегать вложенности в слайсах, а использовать лишь [структурную группировку по папкам][ref-grouping], без дополнительной связующей логики
+
+    ```diff
+    features/order/           # Группа фич
+       ├── add-to-cart        # Полноценная фича
+       ├── total-info         # Полноценная фича
+    -  ├── model.ts           # Общая логика для группы
+    -  ├── hooks.ts           # Общие хуки для группы
+       └── index.ts           # Публичный API с реэкспортом фич
+    ```
+
+- При этом некоторые слои (например pages), изначально требуют вложенности из-за требований проекта / фреймворка
+
+    ```sh
+    pages/
+       ├── order/
+       |    ├── cart/
+       |    ├── checkout/
+       |    |    ├── delivery/
+       |    |    └── payment/
+       |    ├── result/
+       |    └── index.tsx
+       ├── auth/
+       |    ├── sign-in/
+       |    └── sign-up/
+       ├── home/
+       ├── catalog/
+    ```
+
+:::caution Важно
+
+Следует по-максимуму избегать вложенных слайсов, но даже если приходится их использовать (например для pages) нужно связывать их явным образом, во избежание непредвиденных последствий
+
+:::
 
 ## Group: `Segments`
 
@@ -155,6 +223,8 @@ sidebar_label: App splitting
 
 [ref-layers]: /docs/reference/layers
 [ref-segments]: /docs/reference/segments
+[ref-low-coupling]: /docs/guides/low-coupling
+[ref-grouping]: /docs/reference/feature#структурная-группировка-фич
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31
 
