@@ -7,6 +7,8 @@ sidebar_label: Low coupling
 
 Модули приложения должны проектироваться как обладающие **сильной связностью** (направленные на решение одной четкой задачи) и **слабой зацепленностью** (как можно менее зависимые от других модулей)
 
+![coupling-cohesion-themed](../../assets/coupling.png)
+
 В рамках методологии это достигается через:
 
 * [Разбиение приложения][refs-splitting] на слои и слайсы - модули, реализующие конкретную функциональность.
@@ -133,7 +135,10 @@ export const { sendMessage, attachFile } = createMessageInput({
 
 ## См. также
 
+* [(Статья) Про Low Coupling и High Cohesion наглядно](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
+  * *Схема в начале вдохновлена именно этой статьей*
 * [(Статья) Low Coupling и High Cohesion. Закон Деметры](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
+* [(Презентация) Про принципы проектирования (включая Low Coupling & High Cohesion)](https://www.slideshare.net/cristalngo/software-design-principles-57388843)
 
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-public-api]: /docs/concepts/public-api
