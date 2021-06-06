@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Overview
@@ -8,7 +8,11 @@ sidebar_position: 2
 
 Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-splitting], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
 
-> **Примечание:** [Модуль][refs-module] - структурная единица проекта (файл / директория)
+:::info
+
+[Модуль][refs-module] - структурная единица проекта (файл / директория)
+
+:::
 
 ### Явная бизнес-логика
 
@@ -51,7 +55,7 @@ sidebar_position: 2
 [refs-motivation]: /docs/get-started/motivation
 
 [refs-splitting]: /docs/concepts/app-splitting
-[refs-splitting--layers]: /docs/concepts/app-splitting#-group-layers
+[refs-splitting--layers]: /docs/concepts/app-splitting#group-layers
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-concepts]: /docs/concepts/architecture
 

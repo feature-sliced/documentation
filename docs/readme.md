@@ -12,7 +12,7 @@ slug: intro
     > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
 - Предлагает разделять проект согласно [**бизнес-юнитам**][ext-ubiq-lang]
 
-:::note Примечание
+:::note
 
 Методология не привязана к конкретному стеку и применима *к любым фронтенд-проектам* в целом.
 
@@ -22,8 +22,14 @@ slug: intro
 
 ![feature-sliced-banner](../assets/banner.jpg)
 
-[Знакомство с методологией](get-started/quick-start) | [Фундаментальные концепции](concepts/architecture) | [Практические гайды по применению](guides/migration-from-v1) | [Справочный материал](reference/glossary) | [О методолологии](about/mission)
+[Знакомство с методологией][refs-getstarted] | [Фундаментальные концепции][refs-concepts] | [Практические гайды по применению][refs-guides] | [Справочный материал][refs-reference] | [О методолологии][refs-about]
 |---|---|---|---|---|
+
+[refs-getstarted]: /docs/get-started/overview
+[refs-concepts]: /docs/concepts/architecture
+[refs-guides]: /docs/guides/migration-from-v1
+[refs-reference]: /docs/reference/glossary
+[refs-about]: /docs/about/mission
 
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#требования

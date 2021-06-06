@@ -22,13 +22,19 @@ sidebar_position: 2
   - **Плохо:** `pages/../features/..`
 - Каждый слой может импортировать только нижележащие слои (сверху-вниз)
   - `app` > `processes` > `pages` > `features` > `entities` > `shared`
-- Чем ниже расположен слой - тем больше опасности вносить в него изменения
+- Чем ниже расположен слой - тем больше опасности вносить в него изменения (снизу вверх)
   - `shared` > `entities` > `features` > `pages` > `processes` > `app`
 
-## `app`
+| Layer     |                         Can use                        |                    Can be used by                   |
+|-----------|:------------------------------------------------------:|:---------------------------------------------------:|
+| app       | `shared`, `entities`, `features`, `pages`, `processes` |                          -                          |
+| processes |        `shared`, `entities`, `features`, `pages`       |                        `app`                        |
+| pages     |            `shared`, `entities`, `features`            |                  `processes`, `app`                 |
+| features  |                  `shared`, `entities`                  |             `pages`, `processes`, `app`             |
+| entities  |                        `shared`                        |       `features`, `pages`, `processes`, `app`       |
+| shared    |                            -                           | `entities`, `features`, `pages`, `processes`, `app` |
 
-> - *`Can use:` shared, entities, features, pages, processes*
-> - *`Used by:` -*
+## `app`
 
 **Инициализирующая логика приложения**
 
@@ -104,9 +110,6 @@ export default withProviders(App);
 
 ## `processes`
 
-> - *`Can use:` shared, entities, features, pages*
-> - *`Used by:` app*
-
 **Бизнес-процессы приложения, управляющие страницами**
 
 ```sh
@@ -125,9 +128,6 @@ export default withProviders(App);
 В процессах не должна располагаться логика отображения (ui), поскольку роль процессов - **управлять поведением страниц и нижележащих слоев, но не отображать что-либо самостоятельно**
 
 ## `pages`
-
-> - *`Can use:` shared, entities, features*
-> - *`Used by:` processes, app*
 
 > `WIP:` На данный момент ведутся активные обсуждения касаемо этого слоя:
 >
@@ -195,9 +195,6 @@ export const CartPage = () => {
 
 ## `features`
 
-> - *`Can use:` shared, entities*
-> - *`Used by:` pages, processes, app*
-
 **Части функциональности приложения**
 
 ```sh
@@ -247,9 +244,6 @@ export const AuthByPhone = () => {
 ```
 
 ## `entities`
-
-> - *`Can use:` shared*
-> - *`Used by:` features, pages, processes, app*
 
 **Бизнес-сущности**
 
@@ -306,9 +300,6 @@ export const CatalogPage = () => {
 ```
 
 ## `shared`
-
-> - *`Can use:` -*
-> - *`Used by:` entities, features, pages, processes, app*
 
 **Переиспользуемые модули, без привязки к бизнес-логике**
 

@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Glossary
 
-## `Module`
+## Module
 
 Структурная единица проекта
 
@@ -16,11 +16,13 @@ sidebar_position: 1
 - *модуль экшенов в модели сущности*
 - *и т.д.*
 
-## [`Layer`][refs-layers]
+## [Layer][refs-layers]
 
 Каждая из директорий, находящихся на самом верхнем уровне приложения.
 
-- **Представители**: `app`, `processes`, `pages`, `features`, `entities`, `shared`
+Этот уровень определяет [скоуп ответственности модулей][refs-split-layers], а также уровень опасности изменений
+
+- **Представители**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
 
 ```sh
 └── src/
@@ -32,18 +34,18 @@ sidebar_position: 1
     └── shared/                 # Переиспользуемые модули
 ```
 
-## `Slice`
+## Slice
 
 Каждый из элементов, находящихся на верхнем уровне слоёв
 
-*Наиболее применимо для `processes`, `features`, `entities`*
+Этот уровень [слабо регламентируется][refs-split-slices] методологией, однако многое зависит от конкретного проекта, стека и команды
 
-*Этот уровень не определяется методологией, поскольку он специфичен для каждого проекта и команды*
+- **Представители (от каждого слоя)** [`process`][refs-layers-processes], [`page`][refs-layers-pages], [`feature`][refs-layers-features], [`entity`][refs-layers-entities]
 
 ```sh
 ├── app/
 |   # Не имеет конкретных слайсов, 
-|   #   т.к. там содержится мета-логика над проектом
+|   # Т.к. там содержится мета-логика над проектом и его инициализации
 ├── processes/
 |   # Слайсы для реализации процессов на страницах
 |   ├── payment
@@ -51,9 +53,8 @@ sidebar_position: 1
 |   ├── quick-tour
 |   └── ...
 ├── pages/
-|   # "Полу-слайсы" для реализации страниц приложения
-|   # "Полу" - потому что скорее всего могут вкладываться друг в друга
-|   # Но этот момент пока еще обговаривается
+|   # Слайсы для реализации страниц приложения
+|   # При этом, в силу специфики роутинга - могут вкладываться друг в друга
 |   ├── profile
 |   ├── sign-up
 |   ├── feed
@@ -70,15 +71,17 @@ sidebar_position: 1
 |   ├── i18n
 |   └── ...
 ├── shared/
-|    # Сам по себе представляет слайс, 
-|    #   т.к. здесь только переиспользуемые модули, без привязки к БЛ
+|    # Не имеет конкретных слайсов
+|    # Представляет собой скорее набор общеиспользуемых сегментов, без привязки к БЛ
 ```
 
-## [`Segments`][refs-segments]
+## [Segment][refs-segments]
 
 Каждый из модулей, находящийся на верхнем уровне каждого слайса
 
-- **Представители**: `ui`, `model`, `lib`, `api`, `config`
+Этот уровень определяет [назначение модулей в коде и реализации][refs-split-segments], согласно классическим моделям проектирования
+
+- **Представители**: [`ui`][refs-segments-ui], [`model`][refs-segments-model], [`lib`][refs-segments-lib], [`api`][refs-segments-api], [`config`][refs-segments-config]
 
 ```sh
 {layer}/
@@ -90,17 +93,36 @@ sidebar_position: 1
     |   └── api/                    # Логика запросов к API (api instances, requests, ...)
 ```
 
-> **Примечание:** Поскольку не каждый из слоев в явном виде использует слайсы (app, pages, shared)
->
-> - Сегменты могут располагаться по своим правилам *(shared/ui, shared/api)*
-> - Или не использоваться совсем *(app/providers, app/styles)*
+:::note
+
+Поскольку не каждый из слоев в явном виде использует слайсы (app, shared)
+
+- Сегменты могут располагаться по своим правилам `shared/{api, config}`
+- Или не использоваться совсем `app/{providers, styles}`
+
+:::
 
 ## См. также
 
-- [Уровни абстракций по методологии][refs-splitting]
+- [Уровни абстракций по методологии][refs-split]
 - [Layers в методологии][refs-layers]
 - [Segments в методологии][refs-segments]
 
-[refs-splitting]: /docs/concepts/app-splitting
+[refs-split]: /docs/concepts/app-splitting
+[refs-split-layers]: /docs/concepts/app-splitting#group-layers
+[refs-split-slices]: /docs/concepts/app-splitting#group-slices
+[refs-split-segments]: /docs/concepts/app-splitting#group-segments
+
 [refs-layers]: /docs/reference/layers
+[refs-layers-app]: /docs/reference/layers#app
+[refs-layers-processes]: /docs/reference/layers#processes
+[refs-layers-pages]: /docs/reference/layers#pages
+[refs-layers-features]: /docs/reference/layers#features
+[refs-layers-entities]: /docs/reference/layers#entities
+[refs-layers-shared]: /docs/reference/layers#shared
 [refs-segments]: /docs/reference/segments
+[refs-segments-ui]: /docs/reference/segments#ui
+[refs-segments-model]: /docs/reference/segments#model
+[refs-segments-lib]: /docs/reference/segments#lib
+[refs-segments-api]: /docs/reference/segments#api
+[refs-segments-config]: /docs/reference/segments#config

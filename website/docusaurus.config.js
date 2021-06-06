@@ -11,7 +11,7 @@ const SECTIONS = {
   },
   GET_STARTED: {
     shortPath: '/docs/get-started',
-    fullPath: '/docs/get-started/quick-start',
+    fullPath: '/docs/get-started/overview',
   },
   CONCEPTS: {
     shortPath: '/docs/concepts',

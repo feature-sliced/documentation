@@ -5,22 +5,20 @@ sidebar_label: Naming adaptability
 
 # Адаптивность нейминга
 
-> О строгости нейминга, и когда стоит заменять принятые в методологии названия
-
 ## Проблема
 
 В силу того, что у каждого разработчика свой опыт и контекст разработки - [мы по-разному привыкли называть одни и те же сущности][disc-src], что может привести к недопониманию внутри команды.
 
-- *компоненты для отображения - `ui` / `components` / `ui-kit` / `views` / ...*
-- *код переиспользуемый во всех частя приложения - `core`/ `shared` / `app`*
-- *код бизнес логики - `store` / `model`*
+- *Компоненты для отображения - `ui` / `components` / `ui-kit` / `views` / ...*
+- *Код переиспользуемый во всех частя приложения - `core`/ `shared` / `app` / ...*
+- *Код бизнес логики - `store` / `model` / `state` / ...*
 
 ## Нейминг в feature-sliced
 
 Методология оперирует такими терминами, как
 
-- `app`, `process`, `page`, `feature`, `entity`, `shared` *(by [layers][refs-layers])*
-- `ui`, `model`, `lib`, `api` *(by [segments][refs-segments])*
+- `app`, `process`, `page`, `feature`, `entity`, `shared` - *[layers][refs-layers]*
+- `ui`, `model`, `lib`, `api` - *[segments][refs-segments]*
 
 В рамках методологии, каждый из этих терминов имеет [четкое определение][refs-reference]
 
@@ -49,7 +47,7 @@ sidebar_label: Naming adaptability
 
 ## См. также
 
-- [Обсуждение "Адаптивность нейминга"][disc-src]
+- [(Обсуждение) Адаптивность нейминга][disc-src]
 - **Обсуждения по неймингу сущностей**:
   - [Опрос по неймингу][disc-naming]
   - [`processes` vs `flows` vs ...][disc-processes]
