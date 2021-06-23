@@ -42,6 +42,12 @@ html[data-theme='dark'] .schemeImg {
     font-style: italic;
 }
 
+/* Protected from dark mode (and flickering) */
+.companiesContainer {
+    background: #fff;
+    color: #1c1e21;
+}
+
 @media screen and (max-width: 966px) {
     .companies {
       --logoCardSize: 150px;
