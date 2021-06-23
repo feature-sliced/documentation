@@ -65,6 +65,11 @@ export const companies = [
   {
     url: "https://kode.ru/",
     src: "kode.png",
-    alt: "kode",
+    alt: "KODE",
+  },
+  {
+    url: "https://uptarget.co/",
+    src: "uptarget.png",
+    alt: "Uptarget",
   },
 ];
