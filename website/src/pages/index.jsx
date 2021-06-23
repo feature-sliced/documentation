@@ -42,7 +42,7 @@ export default function HomePage() {
         <Section title="Компании, использующие методологию" className={styles.companiesContainer}>
           <div className={styles.companies}>
             {companies.map(({url, src, alt}) => (
-                <a key={src} href={url} target="_blank" rel="noopener noreferrer">
+                <a key={src} className={styles.companiesItem} href={url} target="_blank" rel="noopener noreferrer">
                   <img 
                     className={styles.companiesItemImg}
                     // It's utility, not hook =)

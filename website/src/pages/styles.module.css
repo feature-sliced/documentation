@@ -21,7 +21,7 @@ html[data-theme='dark'] .schemeImg {
 
 .companies {
   /* Set later to "220px" when companies amound will be increased */
-  --logoCardSize: 320px;
+  --logoCardSize: 220px;
   --logoCardGap: 2rem;
 
   display: grid;
@@ -29,6 +29,11 @@ html[data-theme='dark'] .schemeImg {
   padding: 40px 20%;
   grid-template-columns: repeat(auto-fill, minmax(var(--logoCardSize), 1fr));
   grid-gap: var(--logoCardGap);
+}
+
+/* FIXME: fix later */
+.companiesItem {
+    align-self: center;
 }
 
 .companiesItemImg {
