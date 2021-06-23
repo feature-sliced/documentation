@@ -20,7 +20,6 @@ html[data-theme='dark'] .schemeImg {
 }
 
 .companies {
-  /* Set later to "220px" when companies amound will be increased */
   --logoCardSize: 220px;
   --logoCardGap: 2rem;
 
