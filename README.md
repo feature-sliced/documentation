@@ -217,17 +217,15 @@ FIXME: Не удалось нормально justify-content:space-around пр�
 Если есть варики как лучше отступы расставить - welcome :)
 -->
 
-<!-- TODO: Добавить ссылки, как доработаем ютуб и твиттер -->
-
 <div align="center">
 
 [![tg](./assets/social_tg.png)](https://t.me/feature_sliced "Телеграм-чат")
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![twitter](./assets/social_twitter.png)](#wip "Twitter (в процессе)")
+[![twitter](./assets/social_twitter.png)](https://twitter.com/feature_sliced)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![open-collective](./assets/social_opencollective.png)](https://opencollective.com/feature-sliced "OpenCollective профиль")
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![youtube](./assets/social_youtube.png)](#wip "YouTube канал (в процессе)")
+[![youtube](./assets/social_youtube.png)](https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A)
 </div>
 
 [refs-contributing]: CONTRIBUTING.md

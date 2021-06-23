@@ -118,6 +118,10 @@ const footer = {
           label: 'Open Collective',
           href: 'https://opencollective.com/feature-sliced',
         },
+        {
+          label: 'YouTube',
+          href: 'https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A',
+        },
       ],
     },
     {
