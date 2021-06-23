@@ -50,3 +50,21 @@ export const concepts = [
     description: <>Ориентирование <b>на потребности бизнеса и пользователя</b></>,
   },
 ];
+
+/**
+ * Companies using feature-sliced
+ * @see https://github.com/feature-sliced/documentation/issues/131
+ * @see website/static/img/companies
+ */
+export const companies = [
+  {
+    url: "https://redmadrobot.com/",
+    src: "red_mad_robot.png",
+    alt: "red_mad_robot",
+  },
+  {
+    url: "https://kode.ru/",
+    src: "kode.png",
+    alt: "kode",
+  },
+];

@@ -18,3 +18,33 @@ html[data-theme='dark'] .schemeImg {
         width: 100%;
     }
 }
+
+.companies {
+  /* Set later to "220px" when companies amound will be increased */
+  --logoCardSize: 320px;
+  --logoCardGap: 2rem;
+
+  display: grid;
+  width: 100%;
+  padding: 40px 20%;
+  grid-template-columns: repeat(auto-fill, minmax(var(--logoCardSize), 1fr));
+  grid-gap: var(--logoCardGap);
+}
+
+.companiesItemImg {
+    width: 100%;
+}
+
+.companiesSubtitle {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    font-style: italic;
+}
+
+@media screen and (max-width: 966px) {
+    .companies {
+      --logoCardSize: 150px;
+      --logoCardGap: 1rem;
+    }
+}
