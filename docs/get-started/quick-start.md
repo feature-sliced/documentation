@@ -425,168 +425,335 @@ export { FooCard, FooThumbnail, fooModel };
 
 Постараемся сконцентрироваться не на реализации каждого модуля, а на последовательной композиции логики
 
-### Композиция: `entities` ❮ `shared`
+### 8.1 Отобразим базово список задач
 
-#### Карточка задачи
+#### (entities) Карточка задачи
 
-```tsx title=entities/task/ui.tsx
-import { Card } from "shared/ui/card";
+```tsx title=entities/task/ui/task-row/index.tsx
+import { Link } from "react-router-dom";
+import cn from "classnames"; // Можно смело использовать аналоги
+import { Row } from "antd"; // ~ "shared/ui/row"
 
-export const TaskCard = ({ data, children, ...cardProps }: Props) => (
-    <Card 
-        title={data.name} 
-        description={data.description}
-        {...cardProps}
-    >
-        {children}
-    </Card>
-)
-```
-
-#### Эффекты для взаимодействия с API задач
-
-```ts title=entities/task/model/effects.ts
-import { taskApi } from "shared/api";
-
-const getTasksListFx = createEffect((params) => {
-    // Здесь также может быть доп. обработка эффекта
-    return taskApi.getTasksList(params);
-});
-
-const getTaskByIdFx = createEffect((taskId: number) => {
-    // Здесь также может быть доп. обработка эффекта
-    return taskApi.getTaskById(taskId);
-});
-```
-
-### Композиция: `features` ❮ `entities` `shared`
-
-#### Чекбокс для переключения статуса задачи
-
-```tsx title=features/toggle-task/ui.tsx
-import { taskModel } from "entities/task";
-import { Checkbox } from "shared/ui/checkbox";
-
-export const ToggleTask = ({ taskId }: Props) => {
-    const { status, checked } = taskModel.selectors.useTask(taskId);
-    // resolve / unresolve
+export const TaskRow = ({ data, before, titleHref }: TaskRowProps) => {
     return (
-        <Checkbox 
-            onClick={() => taskModel.events.toggleTask(taskId)} 
-            checked={checked}
-        >
-            {status}
-        </Checkbox>
-    )
-}
-```
-
-#### Фильтры для списка задач
-
-```tsx title=features/tasks-filters/ui.tsx
-import { taskModel } from "entities/task";
-import { Button } from "shared/ui/button";
-import { Row } from "shared/ui/row";
-// Либо можно сразу обращаться к shared/ui
-// Если не так критичен размер бандла
-// import { Row, Button } from "shared/ui";
-
-type Filter = {
-    id: number;
-    title: string;
-}
-
-// Описываем здесь датасет фильтров "Закрытые" / "Открытые" и т.п.
-const filters: Filter[] = [...];
-
-export const TasksFilters = () => {
-    const { activeFilters } = taskModel.selectors.useFilters();
-    return (
-        <Row display="flex">
-            {filters.map(({ title, id }) => (
-                <Button 
-                    key={id} 
-                    onClick={() => taskModel.events.toggleFilter(id)}
-                    toggled={activeFilters.includes(id)}
-                >
-                    {title}
-                </Button>
-            ))}
+        <Row className={cn(styles.root, { [styles.completed]: data.completed })}>
+            {before}
+            {titleHref ? <Link to={titleHref}>{data.title}</Link> : data.title}
         </Row>
     )
 }
 ```
 
-### Композиция: `pages` ❮ `features` `entities` `shared`
+#### (entities) Подгрузка списка задач
 
-#### Страница "Список задач"
+Можно разбивать по типу сущности, либо хранить все в duck-modular-стиле
+
+```ts title=entities/task/model/index.ts
+import { createStore, combine, createEffect, createEvent } from "effector";
+import { useStore } from "effector-react";
+
+import { typicodeApi } from "shared/api";
+import type { Task } from "shared/api";
+
+// В каждом эффекте так же может быть своя доп. обработка
+const getTasksListFx = createEffect((params?: typicodeApi.tasks.GetTasksListParams) => {
+  // Здесь также может быть доп. обработка эффекта
+  return typicodeApi.tasks.getTasksList(params);
+});
+
+// Можно хранить и в нормализованном виде
+export const $tasks = createStore<Task[]>([])
+  .on(getTasksListFx.doneData, (_, payload) => ...)
+
+export const $tasksList = combine($tasks, (tasks) => Object.values(tasks));
+// Можно промаппить и другие вещи вроде `isEmpty`, `isLoading`, ...
+```
+
+#### (pages) Соединим всю логику на странице
+
+```tsx title=pages/tasks-list/index.tsx
+import { useEffect } from "react";
+// Если чувствуете себя уверенно с @effector/reflect - можете сразу использовать его
+// В рамках quick-start некритично
+import { useStore } from "effector";
+import { Layout, Row, Col, Typography, Spin, Empty } from "antd"; // ~ "shared/ui/{...}"
+
+import { TaskRow, taskModel } from "entities/task";
+import styles from "./styles.module.scss";
+
+const TasksListPage = () => {
+  const tasks = useStore(taskModel.$tasksList);
+  const isLoading = useStore(taskModel.$tasksListLoading);
+  const isEmpty = useStore(taskModel.$tasksListEmpty);
+
+  // Запрашиваем данные при загрузке страницы
+  useEffect(() => taskModel.effects.getTasksListFx(), []);
+
+  return (
+    <Layout className={styles.root}>
+      <Layout.Toolbar className={styles.toolbar}>
+        <Row justify="center">
+          <Typography.Title level={1}>Tasks List</Typography.Title>
+        </Row>
+        {/* TODO: TasksFilters */}
+      </Layout.Toolbar>
+      <Layout.Content className={styles.content}>
+        <Row gutter={[0, 20]} justify="center">
+          {isLoading && <Spin size="large" />}
+          {!isLoading && tasks.map((task) => (
+            <Col key={task.id} span={24}>
+              <TaskRow
+                data={task}
+                titleHref={`/${task.id}`}
+                // TODO: Add ToggleTaskCheckbox
+              />
+            </Col>
+          ))}
+          {!isLoading && isEmpty && <Empty description="No tasks found" />}
+        </Row>
+      </Layout.Content>
+    </Layout>
+  );
+};
+```
+
+### 8.2 Добавим переключение статуса задач
+
+#### (entities) Переключение статуса задачи
+
+```ts title=entities/task/model/index.ts
+export const toggleTask = createEvent<number>();
+
+export const $tasks = createStore<Task[]>(...)
+  ...
+  .on(toggleTask, (state, taskId) => produce(state, draft => {
+    const task = draft[taskId];
+    task.completed = !task.completed;
+    console.log(1, { taskId, state, draft: draft[taskId].completed });
+  }))
+
+
+// Делаем хуком, чтобы завязаться на обновления react
+export const useTask = (taskId: number): import("shared/api").Task | undefined => {
+  return useStore($tasks)[taskId];
+};
+```
+
+:::tip
+
+Для более удобного публичного API моделей можно отдельными объектами экспортировать селекторы/хуки/события и т.п.
+
+**Но главное**, чтобы это не подрывало [анти-хрупкость][refs-public-api] модуля
+
+```ts
+export const events = { toggleTask, setQueryConfig };
+export const effects = { getTaskByIdFx, getTasksListFx };
+export const selectors = { useTask };
+```
+
+```ts
+const task = taskModel.selectors.useTask(taskId);
+taskModel.events.toggleTask(taskId)
+```
+
+:::
+
+#### (features) Чекбокс для задачи
+
+```tsx title=features/toggle-task/ui.tsx
+import { Checkbox } from "antd"; // ~ "shared/ui/checkbox"
+import { taskModel } from "entities/task";
+
+// resolve / unresolve
+export const ToggleTask = ({ taskId }: ToggleTaskProps) => {
+    const task = taskModel.useTask(taskId);
+    if (!task) return null;
+
+    return (
+        <Checkbox 
+            onClick={() => taskModel.toggleTask(taskId)} 
+            checked={task.completed}
+        />
+    )
+}
+```
+
+#### (pages) Внедряем чекбокс в страницу
+
+Что примечательно - карточка задачи совсем не знает не про страницу где используется, не про то, какие кнопки-действия в нее могут вставляться (то же самое можно сказать и про саму фичу)
+
+Такой подход позволяет одновременно **грамотно разделять ответственность** и **гибко переиспользовать логику при реализации**
+
+```tsx title=pages/tasks-list/index.tsx
+import { ToggleTask } from "features/toggle-task";
+...
+<Col key={task.id} span={24}>
+      <TaskRow
+        ...
+        before={<ToggleTask taskId={task.id} withStatus={false} />}
+      />
+</Col>
+```
+
+### 8.3 Добавим фильтрацию задач
+
+#### (entities) Фильтрация на уровне данных
+
+```ts title=entities/task/model/index.ts
+export type QueryConfig = { completed?: boolean };
+
+const setQueryConfig = createEvent<QueryConfig>();
+
+// Можно вынести в отдельную директорию (для хранения нескольких моделей)
+export const $queryConfig = createStore<QueryConfig>({})
+  .on(setQueryConfig, (_, payload) => payload)
+
+/**
+ * Отфильтрованные таски
+ * @remark Можно разруливать на уровне эффектов - но тогда нужно подключать дополнительную логику в стор
+ * > Например скрывать/показывать таск при `toggleTask` событии
+ */
+export const $tasksFiltered = combine(
+  $tasksList,
+  $queryConfig,
+  (tasksList, config) => {
+    return tasksList.filter(task => (
+      config.completed === undefined ||
+      task.completed === config.completed
+  ))},
+);
+```
+
+#### (features) UI-контролы для фильтров
+
+```tsx title=features/tasks-filters/ui.tsx
+// Если чувствуете себя уверенно с @effector/reflect - можете сразу использовать его
+// В рамках quick-start некритично
+import { useStore } from "effector";
+import { Radio } from "antd"; // ~ "shared/ui/radio"
+
+import { taskModel } from "entities/task";
+import { filtersList, getFilterById, DEFAULT_FILTER } from "./config";
+
+export const const TasksFilters = () => {
+  const isLoading = useStore($tasksListLoading);
+
+  return (
+    <Radio.Group defaultValue={DEFAULT_FILTER} buttonStyle="solid">
+      {filtersList.map(({ title, id }) => (
+        <Radio.Button
+          key={id}
+          onClick={() => taskModel.setQueryConfig(getFilterById(id).config)}
+          value={id}
+          disabled={isLoading}
+        >
+          {title}
+        </Radio.Button>
+      ))}
+    </Radio.Group>
+  );
+};
+```
+
+#### (pages) Внедряем фильтрацию в страницу
+
+И мы снова реализовали логику, особо не задаваясь вопросами:
+
+- А куда положить логику фильтрации?
+- А могут ли эти фильтры переиспользоваться в будущем?
+- А могут ли фильтры знать про контекст страницы?
+
+Мы просто разделили логику согласно слоям, т.е. зонам ответственности
 
 ```tsx title=pages/tasks-list/index.tsx
 import { TasksFilters } from "features/tasks-filters";
-import { ToggleTask } from "features/toggle-task";
-import { TaskCard, taskModel } from "entities/task";
-import { Layout } from "shared/ui/layout";
 
-export const TasksListPage = () => {
-    const tasks = taskModel.selectors.useTasks();
-
-    return (
-        <Layout>
-            <Layout.Toolbar>
-                <TasksFilters />
-            </Layout.Toolbar>
-            <Layout.Content>
-                {tasks.map((task) => (
-                    <TaskCard 
-                        data={task}
-                        titleHref={`/${task.id}`}
-                        direction="horizontal"
-                        size="small"
-                        hoverable
-                    >
-                        <ToggleTask taskId={task.id} />
-                    </TaskCard>
-                ))}
-            </Layout.Content>
-        </Layout>
-    )
-}
+<Layout.Toolbar className={styles.toolbar}>
+    ...
+    <Row justify="center">
+        <TasksFilters />
+    </Row>
+</Layout.Toolbar>
 ```
 
-#### Страница "Карточка задачи"
+:::note
+
+К текущему этапу, такое разбиение может показаться излишним - "Почему бы не положить все сразу на уровне страницы / фичи"?
+
+Но тогда мы можем задать себе вопрос:
+
+- А где гарантии, что сложность страницы не увеличится в будущем настолько, что все аспекты логики сильно будут переплетены?
+- А где гарантии, что новый человек, пришедший в команду (или даже вы, если на полгода забудете про проект) - поймет, что здесь происходит?
+- А как построить логику, чтобы не нарушить поток данных / реактивность с другими фичами?
+- А что, если эта логика фильтрации настолько сильно прикрепится к контексту страницы, что ее будет невозможно использовать на других страницах?
+
+Именно по этому мы и **разбиваем ответственность**, чтобы каждый слой занимался только одной задачей, и чтобы это понимал каждый из разработчиков
+
+:::
+
+### 8.4 Страница задачи
+
+Аналогичным образом реализуем страницу задачи:
+
+- Выделяем shared логику
+- Выделяем entities логику
+- Выделяем features логику
+- Выделяем pages логику
+
+#### (pages) Страница "Карточка задачи"
 
 ```tsx title=pages/task-details/index.tsx
-import { Link } from "react-router-dom";
-
 import { ToggleTask } from "features/toggle-task";
 import { TaskCard, taskModel } from "entities/task";
-import { Layout } from "shared/ui/layout";
-import { Error } from "shared/ui/error";
+import { Layout, Button } from "antd"; // ~ "shared/ui/{...}"
+import styles from "./styles.module.scss";
 
-type Props = RouteChildrenProps<{ ... }>;
+type Props = import("react-router-dom").RouteChildrenProps<{...}>;
 
-export const TaskDetailsPage = (props: Props) => {
-    const taskId = Number(props.match?.params.taskId);
-    const task = taskModel.selectors.useTask(taskId);
+const TaskDetailsPage = ({ match, isLoading }: Props) => {
+    const taskId = Number(match?.params.taskId);
+    const task = taskModel.useTask(taskId);
+    const isLoading = useStore(taskModel.$taskDetailsLoading);
 
-    if (!task) {
-        return <Error type="404" message="Задача не найдена" />
+    useEffect(() => taskModel.getTaskByIdFx({ taskId }), [taskId]);
+
+    // Можно часть логики перенести в entity/task/card (как контейнер)
+    if (!task && !isLoading) {
+        return ...
     }
 
     return (
-        <Layout>
-            <Layout.Toolbar>
-                <Link to="/">К списку задач</Link>
-            </Layout.Toolbar>
-            <Layout.Content>
-                <TaskCard data={task} size="large">
-                    <ToggleTask taskId={task.id} />
-                </TaskCard>
+        <Layout className={styles.root}>
+            <Layout.Content className={styles.content}>
+                <TaskCard
+                    data={task}
+                    size="default"
+                    loading={isLoading}
+                    className={styles.card}
+                    bodyStyle={{ height: 400 }}
+                    extra={<Link to="/">Back to TasksList</Link>}
+                    actions={[
+                        <ToggleTask key="toggle" taskId={taskId} />
+                    ]}
+                />
             </Layout.Content>
         </Layout>
     )
-}
+};
 ```
+
+### 8.5 Что дальше?
+
+А дальше поступают новые задачи, выявляются новые требования
+
+При этом старая кодовая база не требует значительных переработок:
+
+- Появилась функциональность, завязанная на пользователе?
+  - => Добавляем `entities/user`
+- Понадобилось поменять логику фильтрации?
+  - => Меняем обработку на `entities` или `pages` уровне, в зависимости от масштабности
+- Нужно добавить больше фичей в карточку задачи, но при этом, чтобы ее можно было использовать по-старому?
+  - => Добавляем фичи и вставляем их в карточку только на нужной **странице**
 
 ## Итого
 
