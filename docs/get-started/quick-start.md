@@ -196,15 +196,15 @@ const App = () => {...}
 ### Установим зависимости
 
 ```cmd
-$ npm i react-router react-router-dom
-$ npm i -D @types/react-router @types/react-router-dom
+$ npm i react-router react-router-dom compose-function
+$ npm i -D @types/react-router @types/react-router-dom @types/compose-function
 ```
 
 ### Добавим HOC для инициализации роутера
 
 ```tsx title=app/providers/with-router.tsx
 import { Suspense } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 export const withRouter = (component: () => React.ReactNode) => () => (
     <BrowserRouter>
@@ -217,7 +217,7 @@ export const withRouter = (component: () => React.ReactNode) => () => (
 
 ```ts title=app/providers/index.ts
 import compose from "compose-function";
-import withRouter from "./with-router";
+import { withRouter } from "./with-router";
 
 export const withProviders = compose(withRouter);
 ```
@@ -249,9 +249,11 @@ export default withProviders(App);
 Ее можно удалить позднее
 
 ```tsx title=pages/test/index.tsx
-export const TestPage = () => {
+const TestPage = () => {
     return <div>Test Page</div>;
 };
+
+export default TestPage;
 ```
 
 #### Сформируем роуты
@@ -279,6 +281,9 @@ export const Routing = () => {
 import { Routing } from "pages";
 
 const App = () => (
+    // Потенциально сюда можно вставить 
+    // Единый на все приложение хедер
+    // Либо же делать это на отдельных страницах
     <Routing />
 )
 ...
