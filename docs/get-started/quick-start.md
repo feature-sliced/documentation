@@ -95,6 +95,24 @@ $ npx create-react-app todo-app --template typescript
 
 Возможно, на первый взгляд, такая структура покажется непривычной, но со временем вы сами заметите, что **используете знакомые вам абстракции, но в консистентном и упорядоченном виде.**
 
+**Также, подключаем поддержку абсолютных импортов для удобства**
+
+```ts title=tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    // Либо же альясы, если так удобнее
+```
+
+Вот, как это поможет нам в будущем
+
+```diff
+- import App from "../app"
+- import Button from "../../shared/ui/button";
++ import App from "app"
++ import Button from "shared/ui/button";
+```
+
 ### Layers: app
 
 Как можно заметить - мы перенесли всю базовую логику в директорию [`app/`][refs-app]
