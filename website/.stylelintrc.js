@@ -11,7 +11,6 @@ module.exports = {
     rules: {
         "indentation": 4,
         "color-hex-length": "long",
-        "at-rule-no-unknown": null,
-        "scss/at-rule-no-unknown": true
+        "at-rule-no-unknown": true,
     },
 }

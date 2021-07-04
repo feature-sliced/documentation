@@ -3,14 +3,14 @@
 }
 
 .schemeImg {
+    width: 80%;
     padding-top: 1rem;
     padding-bottom: 4rem;
-    width: 80%;
 }
 
 /* FIXME: hardcoded */
 html[data-theme='dark'] .schemeImg {
-    filter: invert(0.905) brightness(1.0) grayscale(100%) opacity(0.5);
+    filter: invert(0.905) brightness(1) grayscale(100%) opacity(0.5);
 }
 
 @media screen and (max-width: 966px) {
@@ -20,14 +20,14 @@ html[data-theme='dark'] .schemeImg {
 }
 
 .companies {
-  --logoCardSize: 220px;
-  --logoCardGap: 2rem;
+    --logoCardSize: 220px;
+    --logoCardGap: 2rem;
 
-  display: grid;
-  width: 100%;
-  padding: 40px 20%;
-  grid-template-columns: repeat(auto-fill, minmax(var(--logoCardSize), 1fr));
-  grid-gap: var(--logoCardGap);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--logoCardSize), 1fr));
+    grid-gap: var(--logoCardGap);
+    width: 100%;
+    padding: 40px 20%;
 }
 
 /* FIXME: fix later */
@@ -41,20 +41,20 @@ html[data-theme='dark'] .schemeImg {
 
 .companiesSubtitle {
     width: 100%;
-    text-align: center;
     font-size: 12px;
     font-style: italic;
+    text-align: center;
 }
 
 /* Protected from dark mode (and flickering) */
 .companiesContainer {
-    background: #fff;
     color: #1c1e21;
+    background: #ffffff;
 }
 
 @media screen and (max-width: 966px) {
     .companies {
-      --logoCardSize: 150px;
-      --logoCardGap: 1rem;
+        --logoCardSize: 150px;
+        --logoCardGap: 1rem;
     }
 }
