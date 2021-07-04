@@ -5,6 +5,7 @@ export const VERSIONS = {
     V2: 'v2',
 };
 
+// Website/Source - are optional but recommended
 export const examples = [
     {
         title: 'Cardbox',
