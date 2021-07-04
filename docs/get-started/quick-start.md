@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Quick start
 
-> `WIP:` Статья будет позже дополняться, также будет добавлена ссылка на codesandbox с самим проектом
+> `WIP:` Статья будет дополняться
 
 Рассмотрим применение **feature-sliced** на примере TodoApp
 
@@ -566,55 +566,11 @@ export const TaskDetailsPage = (props: Props) => {
     - Что можно переиспользовать из вспомогательного?
         - `UIKit (Card, ...)` `API (tasksApi)`
 
-### Конечная структура
+### Пример
 
-```sh
-└── src/
-    ├── app/
-    |    ├── providers/
-    |    |    ├── index.ts
-    |    |    └── with-router.tsx
-    |    ├── styles/
-    |    |    ├── index.scss
-    |    |    ├── normalize.scss
-    |    |    └── vars.scss
-    |    ├── index.tsx
-    |    └── index.scss
-    ├── pages/
-    |    ├── tasks-list/
-    |    |    └── index.tsx
-    |    └── task-details/
-    |         └── index.tsx
-    ├── features/
-    |    ├── toggle-task/
-    |    |    ├── index.ts
-    |    |    └── ui.tsx
-    |    └── tasks-filters/
-    |         ├── index.ts
-    |         └── ui.tsx
-    ├── entities/
-    |    └── tasks/
-    |         ├── model/
-    |         |    ├── effects.ts
-    |         |    ├── events.ts
-    |         |    ├── index.ts
-    |         |    ├── selectors.ts
-    |         |    └── stores.ts
-    |         ├── ui.tsx
-    |         └── index.ts/
-    ├── shared/
-    |    ├── ui/
-    |    |    ├── button/
-    |    |    ├── card/
-    |    |    ├── checkbox/
-    |    |    ├── error/
-    |    |    ├── layout/
-    |    |    └── row/
-    |    ├── api/
-    |    |    ├── tasks/
-    |    |    └── index.ts
-    └── index.tsx
-```
+Ниже в [Codesandbox](https://codesandbox.io/s/github/feature-sliced/examples/tree/master/todo-app) представлен пример получившегося TodoApp, где можно подробно изучить финальную структуру приложения
+
+<iframe class="codesandbox" src="https://codesandbox.io/embed/github/feature-sliced/examples/tree/master/todo-app?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&codemirror=1" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
 ## См. также
 
