@@ -91,7 +91,7 @@ html[data-theme='dark'] img[alt*="themed"] {
     While absolutely inverting, but later for alphaless images 
     maybe will be changed to 0.9 (for more soft inverting)
   */
-  filter: invert(1);
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .codesandbox {
