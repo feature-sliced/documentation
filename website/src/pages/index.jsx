@@ -5,7 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 // NOTE: import from root level, because same image is used at main README.md
-import imgScheme from "../../../assets/visual_schemax.jpg";
+import imgScheme from "../../../assets/visual_schema.jpg";
 import { Header } from "@site/src/features/header";
 import { Card, Section } from "@site/src/shared/ui";
 // NOTE: Locate at index before of specific route-mapping while Node/SSR building
