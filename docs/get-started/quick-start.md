@@ -96,7 +96,7 @@ $ npx create-react-app todo-app --template typescript
 └── src/
     ├── app/                    # Инициализирующая логика приложения
     |    ├── index.tsx          #    Энтрипоинт для подключения приложения (бывший App.tsx)
-    |    └── index.scss         #    Глобальные стили приложения
+    |    └── index.css         #    Глобальные стили приложения
     ├── pages/                  #
     ├── features/               #
     ├── entities/               #
@@ -136,7 +136,7 @@ $ npx create-react-app todo-app --template typescript
 Пока что перенесем туда всю существующую логику, а другие директории оставим пустыми, как на схеме выше.
 
 ```tsx title=app/index.tsx
-import "./index.scss";
+import "./index.css";
 
 const App = () => {...}
 ```
@@ -148,7 +148,7 @@ const App = () => {...}
 В туториале устанавливаем sass, но можно взять и любой другой препроцессор, поддерживающий импорты
 
 ```cmd
-$ npm i dart-sass
+$ npm i sass
 ```
 
 ### Заводим файлы для стилей
