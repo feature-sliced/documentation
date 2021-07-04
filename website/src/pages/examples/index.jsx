@@ -6,7 +6,7 @@ import { examples } from './_config';
 
 const TITLE = 'Examples';
 const DESCRIPTION = 'List of websites people are building with Feature Sliced';
-const EDIT_URL = 'https://github.com/facebook/docusaurus/edit/master/website/src/pages/examples/_config.js';
+const EDIT_URL = 'https://github.com/feature-sliced/documentation/edit/master/website/src/pages/examples/_config.js';
 const EXAMPLES_URL = 'https://github.com/feature-sliced/examples';
  
 function ExamplesPage() {
