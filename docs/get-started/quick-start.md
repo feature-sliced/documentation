@@ -6,6 +6,11 @@ sidebar_position: 4
 
 Рассмотрим применение **feature-sliced** на примере TodoApp
 
+- Сначала разберем *подготовительные аспекты создания приложения*
+- А затем - как концепции методологии помогают *гибко и эффективно проектировать бизнес-логику* без лишних затрат
+
+> В конце статьи есть [codesandbox-вставка с финальным решением][ext-sandbox], которое может помочь для уточнения деталей реализации
+
 **Стек**: React, Effector, TypeScript, Sass, AntDesign
 
 :::note
@@ -786,7 +791,7 @@ const TaskDetailsPage = ({ match, isLoading }: Props) => {
 
 ### Пример
 
-Ниже в [Codesandbox](https://codesandbox.io/s/github/feature-sliced/examples/tree/master/todo-app) представлен пример получившегося TodoApp, где можно подробно изучить финальную структуру приложения
+Ниже в [Codesandbox][ext-sandbox] представлен пример получившегося TodoApp, где можно подробно изучить финальную структуру приложения
 
 <iframe class="codesandbox" src="https://codesandbox.io/embed/github/feature-sliced/examples/tree/master/todo-app?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&codemirror=1" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
@@ -818,3 +823,4 @@ const TaskDetailsPage = ({ match, isLoading }: Props) => {
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure
+[ext-sandbox]: https://codesandbox.io/s/github/feature-sliced/examples/tree/master/todo-app
