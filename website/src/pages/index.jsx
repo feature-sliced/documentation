@@ -1,6 +1,7 @@
 import React from "react";
-import Layout from "@theme/Layout";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+// eslint-disable-next-line import/no-unresolved
+import Layout from "@theme/Layout";
 
 // NOTE: import from root level, because same image is used at main README.md
 import { Header } from "@site/src/features/header";
@@ -29,10 +30,10 @@ export default function HomePage() {
                     ))}
                 </Section>
                 <Section title="Схема" rowClass={styles.scheme}>
-                    {/* 
-            NOTE: Set fixed height for correct alignment from mobile devices
-            @see https://t.me/c/1463227827/197935
-          */}
+                    {/*
+                     * NOTE: Set fixed height for correct alignment from mobile devices
+                     * @see https://t.me/c/1463227827/197935
+                     */}
                     <img className={styles.schemeImg} src={imgScheme} alt="feature-sliced-scheme" />
                 </Section>
                 <Section

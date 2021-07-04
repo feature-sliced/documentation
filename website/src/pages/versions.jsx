@@ -1,8 +1,9 @@
 import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
+// eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
-
+// eslint-disable-next-line import/no-unresolved
 import { useVersions, useLatestVersion } from "@theme/hooks/useDocs";
 import { Table } from "@site/src/shared/ui/table";
 
