@@ -5,7 +5,20 @@ export const VERSIONS = {
     V2: 'v2',
 };
 
-// Website/Source - are optional but recommended
+/**
+ * List of site examples
+ * @remark Add site here only if you're sure that its allowed to share website link / codebase
+ * @example How to add new site?
+ * 1. Add new item in `examples` const
+ * 2. Set title (should be unique)
+ * 3. Give short description
+ * 4. Add your website preview 
+ *  - `/pages/examples/img/{YOUR_SITE}.[png|jpg|jpeg]`
+ * 5. Prepare links for your site - `website`, `source`
+ *  - Website/Source - are optional but recommended
+ * 6. Select feature-sliced version which implemented in your codebase
+ * 7. Profit!
+ */ 
 export const examples = [
     {
         title: 'Cardbox',
@@ -35,7 +48,6 @@ export const examples = [
         title: 'Sharead (WIP)',
         description: 'Book Marketplace',
         website: 'https://dev-sharead.netlify.app/',
-        // source: 'https://github.com/select-name/sharead-front',
         preview: require('./img/sharead.png'),
         version: VERSIONS.V2,
     },
@@ -43,7 +55,6 @@ export const examples = [
         title: 'Projentry (WIP)',
         description: 'Assistant for your projects',
         website: 'https://projentry.netlify.app/',
-        // source: 'WIP',
         preview: require('./img/projentry.png'),
         version: VERSIONS.V2,
     },
