@@ -6,6 +6,10 @@ module.exports = {
     },
     extends: ["@eslint-kit/patch", "@eslint-kit/base", "@eslint-kit/react", "@eslint-kit/prettier"],
     parser: "babel-eslint",
+    rules: {
+        // Sometime harmful =(
+        "react/jsx-props-no-spreading": 0,
+    },
     settings: {
         "import/resolver": {
             alias: {

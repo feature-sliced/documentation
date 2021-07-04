@@ -4,19 +4,19 @@ import Link from "@docusaurus/Link";
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
 // eslint-disable-next-line import/no-unresolved
-import { useVersions, useLatestVersion } from "@theme/hooks/useDocs";
+import { useLatestVersion } from "@theme/hooks/useDocs";
 import { Table } from "@site/src/shared/ui/table";
 
 // @see https://github.com/facebook/docusaurus/blob/master/website/src/pages/versions.js (reference)
 function Version() {
     const { siteConfig } = useDocusaurusContext();
-    const versions = useVersions();
     const latestVersion = useLatestVersion();
-    console.log(versions);
-    const currentVersion = versions.find((version) => version.name === "current");
-    const pastVersions = versions.filter(
-        (version) => version !== latestVersion && version.name !== "current",
-    );
+    // TODO: implement later
+    // const versions = useVersions();
+    // const currentVersion = versions.find((version) => version.name === "current");
+    // const pastVersions = versions.filter(
+    //     (version) => version !== latestVersion && version.name !== "current",
+    // );
     const repoUrl = `https://github.com/${siteConfig.organizationName}/${siteConfig.projectName}`;
 
     return (

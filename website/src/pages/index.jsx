@@ -1,5 +1,6 @@
 import React from "react";
-import useBaseUrl from "@docusaurus/useBaseUrl";
+// It's utility, not hook =)
+import getBaseUrl from "@docusaurus/useBaseUrl";
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
 
@@ -51,8 +52,7 @@ export default function HomePage() {
                             >
                                 <img
                                     className={styles.companiesItemImg}
-                                    // It's utility, not hook =)
-                                    src={useBaseUrl(`img/companies/${src}`)}
+                                    src={getBaseUrl(`img/companies/${src}`)}
                                     title={alt}
                                     alt={alt}
                                 />
