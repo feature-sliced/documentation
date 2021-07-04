@@ -1,0 +1,26 @@
+name: Run tests
+
+on: [push]
+
+jobs:
+  test-build:
+    runs-on: ubuntu-18.04
+    env:
+      ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@master
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        working-directory: ./website
+
+      - name: Build static
+        run: yarn build
+        working-directory: ./website
