@@ -8,6 +8,7 @@ export function ExampleCard({ className, data }) {
     return (
         <article className={clsx('card', styles.root, className)}>
             <div className={clsx('card__image', styles.preview)}>
+                <div className={clsx(styles.ribbon)}>{data.version}</div>
                 <Image img={data.preview} alt={data.title} />
             </div>
             <div className={clsx('card__body', styles.content)}>
