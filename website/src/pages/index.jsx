@@ -1,7 +1,5 @@
 import React from "react";
-import clsx from "clsx";
 import Layout from "@theme/Layout";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 // NOTE: import from root level, because same image is used at main README.md
@@ -14,7 +12,8 @@ import { features, concepts, companies } from "./_config";
 import styles from "./styles.module.css";
 
 export default function HomePage() {
-    const { siteConfig } = useDocusaurusContext();
+    // NOTE: use siteConfig for getting config
+    //   const { siteConfig } = useDocusaurusContext()
     return (
         <Layout title="Welcome" description="Structural methodology for frontend projects">
             <Header />
