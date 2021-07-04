@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React from 'react';
 
 import clsx from 'clsx';
 import Image from '@theme/IdealImage';
