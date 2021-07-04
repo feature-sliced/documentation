@@ -21,6 +21,24 @@ jobs:
         run: yarn install --frozen-lockfile
         working-directory: ./website
 
-      - name: Build static
+      - name: Check build
         run: yarn build
+        working-directory: ./website
+  test-lint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@master
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        working-directory: ./website
+
+      - name: Check linting
+        run: yarn run test:lint
         working-directory: ./website
