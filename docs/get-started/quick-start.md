@@ -325,7 +325,7 @@ import { Card } from "antd"; // ~ "shared/ui/card"
 
 Прежде чем приступать к коду, надо определиться - [какую ценность мы хотим донести конечному пользователю][refs-needs]
 
-Для этого, декомпозируем нашу функциональность *(по слоям)*
+Для этого, декомпозируем нашу функциональность *по зонам ответственности [(слоям)][refs-layers]*
 
 ![layers-flow-themed](../../assets/layers_flow.png)
 
@@ -390,7 +390,7 @@ import { Card } from "antd"; // ~ "shared/ui/card"
 
 #### [Shared][refs-shared]
 
-Переиспользуемый инфраструктурный код
+Переиспользуемые общие модули, без привязки к предметной области
 
 - `<Card />` - (компонент) UIKit компонент
   - *При этом можно как реализовывать собственный UIKit под проект, так воспользоваться готовым*
@@ -684,7 +684,7 @@ export const const TasksFilters = () => {
 
 ```tsx title=pages/tasks-list/index.tsx
 import { TasksFilters } from "features/tasks-filters";
-
+...
 <Layout.Toolbar className={styles.toolbar}>
     ...
     <Row justify="center">
@@ -700,7 +700,7 @@ import { TasksFilters } from "features/tasks-filters";
 Но тогда попробуем задать себе вопросы:
 
 - А где гарантии, что сложность страницы не увеличится в будущем настолько, что все аспекты логики сильно будут переплетены? Как при этом без лишних затрат добавлять новую функциональность?
-- А где гарантии, что новый человек, пришедший в команду (или даже вы, если на полгода забудете про проект) - поймет, что здесь происходит?
+- А где гарантии, что новый человек, пришедший в команду (или даже вы, если на полгода отойдете от проекта) - поймет, что здесь происходит?
 - А как построить логику, чтобы не нарушить поток данных / реактивность с другими фичами?
 - А что, если эта логика фильтрации настолько сильно прикрепится к контексту страницы, что ее будет невозможно использовать на других страницах?
 
@@ -725,10 +725,8 @@ import { TaskCard, taskModel } from "entities/task";
 import { Layout, Button } from "antd"; // ~ "shared/ui/{...}"
 import styles from "./styles.module.scss";
 
-type Props = import("react-router-dom").RouteChildrenProps<{...}>;
-
-const TaskDetailsPage = ({ match, isLoading }: Props) => {
-    const taskId = Number(match?.params.taskId);
+const TaskDetailsPage = (props: Props) => {
+    const taskId = Number(props.match?.params.taskId);
     const task = taskModel.useTask(taskId);
     const isLoading = useStore(taskModel.$taskDetailsLoading);
 
