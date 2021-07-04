@@ -44,7 +44,7 @@ export const examples = [
         description: 'Assistant for your projects',
         website: 'https://projentry.netlify.app/',
         // source: 'WIP',
-        preview: require('./img/sharead.png'),
+        preview: require('./img/projentry.png'),
         version: VERSIONS.V2,
     },
 ]
