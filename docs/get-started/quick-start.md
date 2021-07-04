@@ -4,15 +4,26 @@ sidebar_position: 4
 
 # Quick start
 
-> `WIP:` Статья будет дополняться
-
 Рассмотрим применение **feature-sliced** на примере TodoApp
 
-**Стек**: React, Effector, TypeScript, Sass
+**Стек**: React, Effector, TypeScript, Sass, AntDesign
 
 :::note
 
 Туториал призван **раскрыть практическую идею самой методологии**. Поэтому описанные здесь практики - во многом подойдут и для других технологических стеков фронтенд-проектов
+
+:::
+
+:::tip
+
+Для упрощения туториала, мы используем готовый UIKit от [AntDesign](https://ant.design/components/overview/)
+
+Но вы можете использовать **любой другой UIKit** или же **создать собственный**, расположив компоненты в `shared/ui` - именно там рекомендуется хранить UIKit приложения:
+
+```ts
+import { Checkbox } from "antd"; // ~ "shared/ui/checkbox"
+import { Card } from "antd"; // ~ "shared/ui/card"
+```
 
 :::
 
