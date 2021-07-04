@@ -29,6 +29,10 @@ const SECTIONS = {
     shortPath: '/docs/about',
     fullPath: '/docs/about/mission',
   },
+  EXAMPLES: {
+    shortPath: '/examples',
+    fullPath: '/examples',
+  },
 }
 
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
@@ -43,12 +47,23 @@ const navbar = {
   },
   items: [
     // left
-    { label: 'Docs', to: SECTIONS.INTRO.fullPath, position: 'left' },
-    { label: 'Getting Started', to: SECTIONS.GET_STARTED.fullPath, position: 'left' },
-    { label: 'Concepts', to: SECTIONS.CONCEPTS.fullPath, position: 'left' },
-    { label: 'Guides', to: SECTIONS.GUIDES.fullPath, position: 'left' },
-    { label: 'Reference', to: SECTIONS.REFERENCE.fullPath, position: 'left' },
-    { label: 'About', to: SECTIONS.ABOUT.fullPath, position: 'left' },
+    {
+      label: 'Docs',
+      to: SECTIONS.INTRO.fullPath,
+      position: 'left',
+      items: [
+        { label: 'Getting Started', to: SECTIONS.GET_STARTED.fullPath, position: 'left' },
+        { label: 'Concepts', to: SECTIONS.CONCEPTS.fullPath, position: 'left' },
+        { label: 'Guides', to: SECTIONS.GUIDES.fullPath, position: 'left' },
+        { label: 'Reference', to: SECTIONS.REFERENCE.fullPath, position: 'left' },
+        { label: 'About', to: SECTIONS.ABOUT.fullPath, position: 'left' },
+      ],
+    },
+    {
+      label: 'Examples',
+      to: SECTIONS.EXAMPLES.fullPath,
+      position: 'left',
+    },
     // right
     {
       type: 'docsVersionDropdown',
