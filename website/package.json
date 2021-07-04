@@ -7,6 +7,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
+    "test:lint": "eslint --fix \"src/**/*.{ts,tsx,js,jsx}\"",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
@@ -39,9 +40,9 @@
     ]
   },
   "devDependencies": {
-    "@eslint-kit/eslint-config-base": "^5.0.0",
+    "@eslint-kit/eslint-config-base": "4.1.0",
     "@eslint-kit/eslint-config-patch": "^1.0.0",
-    "@eslint-kit/eslint-config-prettier": "^4.0.0",
+    "@eslint-kit/eslint-config-prettier": "3.0.0",
     "@eslint-kit/eslint-config-react": "^3.0.0",
     "babel-eslint": "10.1.0",
     "eslint": "7.10.0",
