@@ -7,6 +7,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
+    "test": "yarn test:lint && yarn run build",
     "test:lint": "eslint './**/*.{ts,tsx,js,jsx}' && stylelint **/*.css",
     "test:lint:fix": "eslint --fix './**/*.{ts,tsx,js,jsx}' && stylelint **/*.css --fix",
     "deploy": "docusaurus deploy",
