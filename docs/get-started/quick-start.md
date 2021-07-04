@@ -462,6 +462,8 @@ export const TaskRow = ({ data, titleHref }: TaskRowProps) => {
 
 Можно разбивать по типу сущности, либо хранить все в duck-modular-стиле
 
+> Более подробно с реализацией API по туториалу можно ознакомиться [здесь][ext-source-api]
+
 ```ts title=entities/task/model/index.ts
 import { createStore, combine, createEffect, createEvent } from "effector";
 import { useStore } from "effector-react";
@@ -777,7 +779,7 @@ const TaskDetailsPage = ({ match, isLoading }: Props) => {
 
 #### Какой-то модуль стал слишком сложным для поддержки?
 
- => Благодаря заложенной архитектуре, мы можем изолированно отрефакторить только этот модуль (даже написать с нуля)
+ => Благодаря заложенной архитектуре, мы можем изолированно отрефакторить только этот модуль - без неявных сайд-эффектов для других [(и даже переписать с нуля)](https://youtu.be/BWAeYuWFHhs?t=1625)
 
 ## Итого
 
@@ -841,3 +843,4 @@ const TaskDetailsPage = ({ match, isLoading }: Props) => {
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure
 [ext-sandbox]: https://codesandbox.io/s/github/feature-sliced/examples/tree/master/todo-app
+[ext-source-api]: https://github.com/feature-sliced/examples/tree/master/todo-app/src/shared/api
