@@ -109,15 +109,7 @@ $ npx create-react-app todo-app --template typescript
 ```tsx title=app/index.tsx
 import "./index.scss";
 
-const App = () => {
-    return (
-        <div>
-            <header>
-                TodoApp
-            </header>
-        </div>
-    );
-}
+const App = () => {...}
 ```
 
 ## 3. Подключим глобальные стили
