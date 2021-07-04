@@ -1,0 +1,12 @@
+.root {
+  height: 100%;
+}
+
+.preview {
+  max-height: 175px;
+  overflow: hidden;
+}
+
+.title {
+  font-weight: 600;
+}
