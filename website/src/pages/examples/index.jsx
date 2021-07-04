@@ -24,6 +24,11 @@ function ExamplesPage() {
                     Examples Repository
                 </a>
             </div>
+            <div className="margin-top--sm">
+                <a href="/versions">
+                    See also versions list
+                </a>
+            </div>
         </div>
          <section className="container margin-top--lg">
             <div className="margin-top--lg">
