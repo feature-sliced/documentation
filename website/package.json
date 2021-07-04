@@ -48,6 +48,10 @@
     "babel-eslint": "10.1.0",
     "eslint": "7.10.0",
     "eslint-import-resolver-alias": "1.1.2",
-    "prettier": "2.3.0"
+    "prettier": "2.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recess-order": "^2.4.0",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-config-standard": "^22.0.0"
   }
 }
