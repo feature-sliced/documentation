@@ -1,9 +1,0 @@
-{
-  "extends": [
-    "@eslint-kit/patch",
-    "@eslint-kit/base",
-    "@eslint-kit/react",
-    "@eslint-kit/prettier"
-  ],
-  "parser": "babel-eslint"
-}
