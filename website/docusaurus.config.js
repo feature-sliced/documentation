@@ -1,6 +1,7 @@
 const DOMAIN = 'https://feature-sliced.design/';
 const GITHUB_ORG = 'https://github.com/feature-sliced'
 const GITHUB_DOCS = 'https://github.com/feature-sliced/documentation';
+const TELEGRAM = 'https://t.me/feature_sliced';
 
 // Конкретные страницы нужны, т.к. отдельно секции доки не индексируются
 // FIXME: Будет исправлено позднее
@@ -93,9 +94,15 @@ const navbar = {
       position: 'right',
     },
     {
+      href: TELEGRAM,
+      position: 'right',
+      className: 'ext-link telegram',
+      'aria-label': 'Telegram community chat',
+    },
+    {
       href: GITHUB_DOCS,
       position: 'right',
-      className: 'header-github-link',
+      className: 'ext-link github',
       'aria-label': 'GitHub repository',
     },
   ],
@@ -123,7 +130,7 @@ const footer = {
       items: [
         {
           label: 'Telegram',
-          href: 'https://t.me/feature_sliced',
+          href: TELEGRAM,
         },
         {
           label: 'Twitter',
