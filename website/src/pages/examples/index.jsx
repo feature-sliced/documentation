@@ -1,8 +1,11 @@
 import React, {useState, useMemo, useCallback, useEffect} from 'react';
+import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import {ExampleCard} from '@site/src/entities/example';
 
 import { examples } from './_config';
+import styles from "./styles.module.css";
+
 
 const TITLE = 'Examples';
 const DESCRIPTION = 'List of websites people are building with Feature Sliced';
@@ -16,11 +19,11 @@ function ExamplesPage() {
         <div className="text--center">
             <h1>{TITLE}</h1>
             <p>{DESCRIPTION}</p>
-            <div className='button-group'>
-                <a className={'button button--primary'} href={EDIT_URL} target={'_blank'}>
+            <div className={clsx('button-group', styles.buttonGroup)}>
+                <a className={clsx('button','button--primary', styles.buttonGroupItem)} href={EDIT_URL} target={'_blank'}>
                     🙏 Add your site now!
                 </a>
-                <a className={'button button--secondary'} href={EXAMPLES_URL} target={'_blank'}>
+                <a className={clsx('button','button--secondary', styles.buttonGroupItem)} href={EXAMPLES_URL} target={'_blank'}>
                     Examples Repository
                 </a>
             </div>
