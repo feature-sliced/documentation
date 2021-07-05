@@ -11,12 +11,18 @@ export function Header() {
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
+          <div className="button-group">
             <Link
-              className="button button--secondary button--lg"
+              className="button button--primary button--lg text--secondary"
               to="/docs/intro"
             >
               Get Started
+            </Link>
+            <Link
+              className="button button--secondary button--lg"
+              to="/examples"
+            >
+              Examples
             </Link>
           </div>
           <div className="margin-top--md">

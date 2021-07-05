@@ -20,14 +20,8 @@
 
 @media screen and (max-width: 966px) {
     .heroBanner {
-    padding: 2rem;
+        padding: 2rem;
     }
-}
-
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .link {
