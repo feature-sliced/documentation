@@ -9,6 +9,7 @@ module.exports = {
     rules: {
         // Sometime harmful =(
         "react/jsx-props-no-spreading": 0,
+        "linebreak-style": [2, "unix"],
     },
     settings: {
         "import/resolver": {
