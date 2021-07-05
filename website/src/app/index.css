@@ -118,3 +118,17 @@ html[data-theme='dark'] img[alt*="themed"] {
   overflow: hidden;
   background-color: #F0F2F5;
 }
+
+/* media */
+/* TODO: connect as file */
+
+@media screen and (max-width: 450px) {
+  .button-group {
+      display: block;   
+  }
+
+  .button-group .button {
+      border-radius: var(--ifm-button-border-radius) !important;
+      margin: 2px;
+  }
+}
