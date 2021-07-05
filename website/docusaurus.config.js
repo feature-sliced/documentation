@@ -76,37 +76,16 @@ const navbar = {
                     label: "v1.0",
                 },
                 {
-                    type: "docsVersionDropdown",
-                    position: "right",
-                    dropdownActiveClassDisabled: true,
-                    dropdownItemsAfter: [
-                        {
-                            to: "https://featureslices.dev/v1.0.html",
-                            label: "v1.0",
-                        },
-                        {
-                            to: "https://featureslices.dev/v0.1.html",
-                            label: "v0.1",
-                        },
-                        {
-                            to: "https://github.com/feature-sliced/documentation/tree/rc/feature-driven",
-                            label: "feature-driven",
-                        },
-                        {
-                            to: "/versions",
-                            label: "All versions",
-                        },
-                    ],
+                    to: "https://featureslices.dev/v0.1.html",
+                    label: "v0.1",
                 },
                 {
-                    type: "localeDropdown",
-                    position: "right",
+                    to: "https://github.com/feature-sliced/documentation/tree/rc/feature-driven",
+                    label: "feature-driven",
                 },
                 {
-                    "href": GITHUB_DOCS,
-                    "position": "right",
-                    "className": "header-github-link",
-                    "aria-label": "GitHub repository",
+                    to: "/versions",
+                    label: "All versions",
                 },
             ],
         },
