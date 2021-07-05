@@ -2,6 +2,9 @@ const DOMAIN = "https://feature-sliced.design/";
 const GITHUB_ORG = "https://github.com/feature-sliced";
 const GITHUB_DOCS = "https://github.com/feature-sliced/documentation";
 const TELEGRAM = "https://t.me/feature_sliced";
+const YOUTUBE = "https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A";
+const TWITTER = "https://twitter.com/feature_sliced";
+const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
 
 // Конкретные страницы нужны, т.к. отдельно секции доки не индексируются
 // FIXME: Будет исправлено позднее
@@ -123,42 +126,17 @@ const footer = {
             title: "Community",
             items: [
                 { label: "Telegram", href: TELEGRAM },
-                {
-                    title: "Docs",
-                    items: [
-                        { label: "Документация", to: "/docs/intro" },
-                        { label: "Обсуждения", to: `${GITHUB_DOCS}/discussions` },
-                    ],
-                },
-                {
-                    title: "Community",
-                    items: [
-                        { label: "Telegram", href: TELEGRAM },
-                        { label: "Twitter", href: "https://twitter.com/feature_sliced" },
-                        {
-                            label: "Open Collective",
-                            href: "https://opencollective.com/feature-sliced",
-                        },
-                        {
-                            label: "YouTube",
-                            href: "https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A",
-                        },
-                    ],
-                },
-                {
-                    title: "More",
-                    items: [
-                        // TODO: Добавить ссыль на dev.to позднее (как доработаем)
-                        // {
-                        //   label: 'Blog',
-                        //   to: '/blog',
-                        // },
-                        {
-                            label: "GitHub",
-                            href: GITHUB_ORG,
-                        },
-                    ],
-                },
+                { label: "Twitter", href: TWITTER },
+                { label: "Open Collective", href: OPEN_COLLECTIVE },
+                { label: "YouTube", href: YOUTUBE },
+            ],
+        },
+        {
+            title: "More",
+            items: [
+                // TODO: Добавить ссыль на dev.to позднее (как доработаем)
+                // { label: 'Blog', to: '/blog' },
+                { label: "GitHub", href: GITHUB_ORG },
             ],
         },
     ],
