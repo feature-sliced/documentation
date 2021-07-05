@@ -27,12 +27,6 @@
     }
 }
 
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .link {
     /* White also for dark-theme */
     color: #ffffff;
