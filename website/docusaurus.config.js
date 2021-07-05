@@ -273,7 +273,7 @@ const announcementBar = {
   id: 'bar', // Any value that will identify this message.
   // content: `<b>WIP:</b> Текущая версия методологии находится на стадии разработки и некоторые детали <i>могут измениться</i>`,
   // backgroundColor: '#e6a700', // As caution by docusaurus (defaults was `#fff`)
-  content: `Если вы используете методологию <a href="/versions">(v0 / v1 / v2)</a> по работе, то можете <a href="https://github.com/feature-sliced/documentation/issues/131" target="_blank" rel="noreferrer noopener">указать свою компанию здесь</a>`,
+  content: `Если вы используете методологию <a href="/versions">(v0 / v1 / v2)</a> по работе или в личных проектах, то <a href="https://github.com/feature-sliced/documentation/issues/131" target="_blank" rel="noreferrer noopener">расскажите нам!</a>`,
   backgroundColor: '#5c9cb5', // As primary theme
   textColor: "#fff", // Defaults to `#000`.
   isCloseable: false, // Defaults to `true`.
