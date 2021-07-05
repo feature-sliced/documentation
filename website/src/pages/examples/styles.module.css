@@ -1,10 +1,10 @@
 @media screen and (max-width: 450px) {
     .buttonGroup {
-        display: block;   
+        display: block;
     }
 
     .buttonGroupItem {
-        border-radius: var(--ifm-button-border-radius) !important;
         margin: 2px;
+        border-radius: var(--ifm-button-border-radius) !important;
     }
 }

@@ -3,7 +3,7 @@ import React from "react";
 import getBaseUrl from "@docusaurus/useBaseUrl";
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
-
+// eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
 // NOTE: import from root level, because same image is used at main README.md
 import { Header } from "@site/src/features/header";
