@@ -23,7 +23,6 @@ export const examples = [
     {
         title: 'Cardbox',
         description: 'The best solutions from developers in one place',
-        website: 'https://cardbox.sova.dev/',
         source: 'https://github.com/cardbox/frontend',
         preview: require('./img/cardbox.png'),
         version: VERSIONS.V1,
