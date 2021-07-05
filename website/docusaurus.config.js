@@ -1,6 +1,7 @@
 const DOMAIN = 'https://feature-sliced.design/';
 const GITHUB_ORG = 'https://github.com/feature-sliced'
 const GITHUB_DOCS = 'https://github.com/feature-sliced/documentation';
+const TELEGRAM = 'https://t.me/feature_sliced';
 
 // Конкретные страницы нужны, т.к. отдельно секции доки не индексируются
 // FIXME: Будет исправлено позднее
@@ -29,6 +30,10 @@ const SECTIONS = {
     shortPath: '/docs/about',
     fullPath: '/docs/about/mission',
   },
+  EXAMPLES: {
+    shortPath: '/examples',
+    fullPath: '/examples',
+  },
 }
 
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
@@ -43,12 +48,23 @@ const navbar = {
   },
   items: [
     // left
-    { label: 'Docs', to: SECTIONS.INTRO.fullPath, position: 'left' },
-    { label: 'Getting Started', to: SECTIONS.GET_STARTED.fullPath, position: 'left' },
-    { label: 'Concepts', to: SECTIONS.CONCEPTS.fullPath, position: 'left' },
-    { label: 'Guides', to: SECTIONS.GUIDES.fullPath, position: 'left' },
-    { label: 'Reference', to: SECTIONS.REFERENCE.fullPath, position: 'left' },
-    { label: 'About', to: SECTIONS.ABOUT.fullPath, position: 'left' },
+    {
+      label: 'Docs',
+      to: SECTIONS.INTRO.fullPath,
+      position: 'left',
+      items: [
+        { label: 'Getting Started', to: SECTIONS.GET_STARTED.fullPath, position: 'left' },
+        { label: 'Concepts', to: SECTIONS.CONCEPTS.fullPath, position: 'left' },
+        { label: 'Guides', to: SECTIONS.GUIDES.fullPath, position: 'left' },
+        { label: 'Reference', to: SECTIONS.REFERENCE.fullPath, position: 'left' },
+        { label: 'About', to: SECTIONS.ABOUT.fullPath, position: 'left' },
+      ],
+    },
+    {
+      label: 'Examples',
+      to: SECTIONS.EXAMPLES.fullPath,
+      position: 'left',
+    },
     // right
     {
       type: 'docsVersionDropdown',
@@ -78,9 +94,15 @@ const navbar = {
       position: 'right',
     },
     {
+      href: TELEGRAM,
+      position: 'right',
+      className: 'ext-link telegram',
+      'aria-label': 'Telegram community chat',
+    },
+    {
       href: GITHUB_DOCS,
       position: 'right',
-      className: 'header-github-link',
+      className: 'ext-link github',
       'aria-label': 'GitHub repository',
     },
   ],
@@ -108,7 +130,7 @@ const footer = {
       items: [
         {
           label: 'Telegram',
-          href: 'https://t.me/feature_sliced',
+          href: TELEGRAM,
         },
         {
           label: 'Twitter',
@@ -223,6 +245,16 @@ const plugins = [
           to: SECTIONS.ABOUT.fullPath,
         },
       ],
+    },
+  ],
+  // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image
+  [
+    '@docusaurus/plugin-ideal-image',
+    {
+      quality: 70,
+      max: 1030, // max resized image's size.
+      min: 640, // min resized image's size. if original is lower, use that size.
+      steps: 2, // the max number of images generated between min and max (inclusive)
     },
   ],
 ];

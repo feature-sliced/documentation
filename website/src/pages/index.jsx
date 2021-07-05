@@ -4,6 +4,7 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+import Image from '@theme/IdealImage';
 // NOTE: import from root level, because same image is used at main README.md
 import imgScheme from "../../../assets/visual_schema.jpg";
 import { Header } from "@site/src/features/header";
@@ -36,8 +37,9 @@ export default function HomePage() {
           {/* 
             NOTE: Set fixed height for correct alignment from mobile devices
             @see https://t.me/c/1463227827/197935
+            NOTE: Cannot be used as native img because of ideal-image plugin preprocessing
           */}
-          <img className={styles.schemeImg} src={imgScheme} alt="feature-sliced-scheme" />
+          <Image className={styles.schemeImg} img={imgScheme} alt="feature-sliced-scheme" />
         </Section>
         <Section title="Компании, использующие методологию" className={styles.companiesContainer}>
           <div className={styles.companies}>
