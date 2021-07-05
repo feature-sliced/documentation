@@ -502,7 +502,11 @@ const TasksListPage = () => {
   const isLoading = useStore(taskModel.$tasksListLoading);
   const isEmpty = useStore(taskModel.$tasksListEmpty);
 
-  // Запрашиваем данные при загрузке страницы
+  /**
+   * Запрашиваем данные при загрузке страницы
+   * @remark Является плохой практикой в мире effector и представлено здесь - лишь для наглядной демонстрации
+   * Как более лучшая альтернатива - фетчить через event.pageMounted или reflect
+   */
   useEffect(() => taskModel.effects.getTasksListFx(), []);
 
   return (
@@ -730,6 +734,11 @@ const TaskDetailsPage = (props: Props) => {
     const task = taskModel.useTask(taskId);
     const isLoading = useStore(taskModel.$taskDetailsLoading);
 
+  /**
+   * Запрашиваем данные по задаче
+   * @remark Является плохой практикой в мире effector и представлено здесь - лишь для наглядной демонстрации
+   * Как более лучшая альтернатива - фетчить через event.pageMounted или reflect
+   */
     useEffect(() => taskModel.getTaskByIdFx({ taskId }), [taskId]);
 
     // Можно часть логики перенести в entity/task/card (как контейнер)
