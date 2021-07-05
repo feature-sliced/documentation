@@ -4,6 +4,7 @@ import getBaseUrl from "@docusaurus/useBaseUrl";
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
 
+import Image from "@theme/IdealImage";
 // NOTE: import from root level, because same image is used at main README.md
 import { Header } from "@site/src/features/header";
 import { Card, Section } from "@site/src/shared/ui";
@@ -15,7 +16,7 @@ import styles from "./styles.module.css";
 
 export default function HomePage() {
     // NOTE: use siteConfig for getting config
-    //   const { siteConfig } = useDocusaurusContext()
+    // const {siteConfig} = useDocusaurusContext();
     return (
         <Layout title="Welcome" description="Structural methodology for frontend projects">
             <Header />
@@ -31,11 +32,16 @@ export default function HomePage() {
                     ))}
                 </Section>
                 <Section title="Схема" rowClass={styles.scheme}>
-                    {/*
-                     * NOTE: Set fixed height for correct alignment from mobile devices
-                     * @see https://t.me/c/1463227827/197935
-                     */}
-                    <img className={styles.schemeImg} src={imgScheme} alt="feature-sliced-scheme" />
+                    {/* 
+            NOTE: Set fixed height for correct alignment from mobile devices
+            @see https://t.me/c/1463227827/197935
+            NOTE: Cannot be used as native img because of ideal-image plugin preprocessing
+          */}
+                    <Image
+                        className={styles.schemeImg}
+                        img={imgScheme}
+                        alt="feature-sliced-scheme"
+                    />
                 </Section>
                 <Section
                     title="Компании, использующие методологию"
@@ -52,6 +58,7 @@ export default function HomePage() {
                             >
                                 <img
                                     className={styles.companiesItemImg}
+                                    // It's utility, not hook =)
                                     src={getBaseUrl(`img/companies/${src}`)}
                                     title={alt}
                                     alt={alt}

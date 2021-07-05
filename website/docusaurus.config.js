@@ -1,55 +1,80 @@
-const DOMAIN = "https://feature-sliced.design/";
-const GITHUB_ORG = "https://github.com/feature-sliced";
-const GITHUB_DOCS = "https://github.com/feature-sliced/documentation";
+const DOMAIN = 'https://feature-sliced.design/';
+const GITHUB_ORG = 'https://github.com/feature-sliced'
+const GITHUB_DOCS = 'https://github.com/feature-sliced/documentation';
+const TELEGRAM = 'https://t.me/feature_sliced';
 
 // Конкретные страницы нужны, т.к. отдельно секции доки не индексируются
 // FIXME: Будет исправлено позднее
 const SECTIONS = {
-    INTRO: {
-        shortPath: "/docs",
-        fullPath: "/docs/intro",
-    },
-    GET_STARTED: {
-        shortPath: "/docs/get-started",
-        fullPath: "/docs/get-started/overview",
-    },
-    CONCEPTS: {
-        shortPath: "/docs/concepts",
-        fullPath: "/docs/concepts/architecture",
-    },
-    GUIDES: {
-        shortPath: "/docs/guides",
-        fullPath: "/docs/guides/migration-from-v1",
-    },
-    REFERENCE: {
-        shortPath: "/docs/reference",
-        fullPath: "/docs/reference/glossary",
-    },
-    ABOUT: {
-        shortPath: "/docs/about",
-        fullPath: "/docs/about/mission",
-    },
-};
+  INTRO: {
+    shortPath: '/docs',
+    fullPath: '/docs/intro',
+  },
+  GET_STARTED: {
+    shortPath: '/docs/get-started',
+    fullPath: '/docs/get-started/overview',
+  },
+  CONCEPTS: {
+    shortPath: '/docs/concepts',
+    fullPath: '/docs/concepts/architecture',
+  },
+  GUIDES: {
+    shortPath: '/docs/guides',
+    fullPath: '/docs/guides/migration-from-v1',
+  },
+  REFERENCE: {
+    shortPath: '/docs/reference',
+    fullPath: '/docs/reference/glossary',
+  },
+  ABOUT: {
+    shortPath: '/docs/about',
+    fullPath: '/docs/about/mission',
+  },
+  EXAMPLES: {
+    shortPath: '/examples',
+    fullPath: '/examples',
+  },
+}
 
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
 
 /** @type {Config["themeConfig"]["navbar"]} */
 const navbar = {
-    title: "feature-sliced",
-    logo: {
-        alt: "logo",
-        // FIXME: Сделать под SVG позднее
-        src: "img/logo.png",
+  title: 'feature-sliced',
+  logo: {
+    alt: 'logo',
+    // FIXME: Сделать под SVG позднее
+    src: 'img/logo.png',
+  },
+  items: [
+    // left
+    {
+      label: 'Docs',
+      to: SECTIONS.INTRO.fullPath,
+      position: 'left',
+      items: [
+        { label: 'Getting Started', to: SECTIONS.GET_STARTED.fullPath, position: 'left' },
+        { label: 'Concepts', to: SECTIONS.CONCEPTS.fullPath, position: 'left' },
+        { label: 'Guides', to: SECTIONS.GUIDES.fullPath, position: 'left' },
+        { label: 'Reference', to: SECTIONS.REFERENCE.fullPath, position: 'left' },
+        { label: 'About', to: SECTIONS.ABOUT.fullPath, position: 'left' },
+      ],
     },
-    items: [
-        // left
-        { label: "Docs", to: SECTIONS.INTRO.fullPath, position: "left" },
-        { label: "Getting Started", to: SECTIONS.GET_STARTED.fullPath, position: "left" },
-        { label: "Concepts", to: SECTIONS.CONCEPTS.fullPath, position: "left" },
-        { label: "Guides", to: SECTIONS.GUIDES.fullPath, position: "left" },
-        { label: "Reference", to: SECTIONS.REFERENCE.fullPath, position: "left" },
-        { label: "About", to: SECTIONS.ABOUT.fullPath, position: "left" },
-        // right
+    {
+      label: 'Examples',
+      to: SECTIONS.EXAMPLES.fullPath,
+      position: 'left',
+    },
+    // right
+    {
+      type: 'docsVersionDropdown',
+      position: 'right',
+      dropdownActiveClassDisabled: true,
+      dropdownItemsAfter: [
+        {
+          to: 'https://featureslices.dev/v1.0.html',
+          label: 'v1.0',
+        },
         {
             type: "docsVersionDropdown",
             position: "right",
@@ -83,13 +108,51 @@ const navbar = {
             "className": "header-github-link",
             "aria-label": "GitHub repository",
         },
-    ],
+      ],
+    },
+    {
+      type: 'localeDropdown',
+      position: 'right',
+    },
+    {
+      href: TELEGRAM,
+      position: 'right',
+      className: 'ext-link telegram',
+      'aria-label': 'Telegram community chat',
+    },
+    {
+      href: GITHUB_DOCS,
+      position: 'right',
+      className: 'ext-link github',
+      'aria-label': 'GitHub repository',
+    },
+  ],
 };
 
 /** @type {Config["themeConfig"]["footer"]} */
 const footer = {
-    style: "dark",
-    links: [
+  style: 'dark',
+  links: [
+    {
+      title: 'Docs',
+      items: [
+        {
+          label: 'Документация',
+          to: '/docs/intro',
+        },
+        {
+          label: 'Обсуждения',
+          to: `${GITHUB_DOCS}/discussions`,
+        },
+      ],
+    },
+    {
+      title: 'Community',
+      items: [
+        {
+          label: 'Telegram',
+          href: TELEGRAM,
+        },
         {
             title: "Docs",
             items: [
@@ -224,7 +287,19 @@ const plugins = [
                 },
             ],
         },
-    ],
+      ],
+    },
+  ],
+  // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image
+  [
+    '@docusaurus/plugin-ideal-image',
+    {
+      quality: 70,
+      max: 1030, // max resized image's size.
+      min: 640, // min resized image's size. if original is lower, use that size.
+      steps: 2, // the max number of images generated between min and max (inclusive)
+    },
+  ],
 ];
 
 /** @type {Config["themeConfig"]["algolia"]} */
