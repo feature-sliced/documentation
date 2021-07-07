@@ -56,7 +56,7 @@ export default function HomePage() {
             ))}
           </div>
           <span className={styles.companiesSubtitle}>
-            Хотите попасть в этот список?{' '}
+            Методология используется в Вашей компании?{' '}
             <a href="https://github.com/feature-sliced/documentation/issues/131" target="_blank" rel="noopener noreferrer">
               Сообщите нам
             </a>
