@@ -32,11 +32,11 @@ export default function HomePage() {
                     ))}
                 </Section>
                 <Section title="Схема" rowClass={styles.scheme}>
-                    {/* 
-            NOTE: Set fixed height for correct alignment from mobile devices
-            @see https://t.me/c/1463227827/197935
-            NOTE: Cannot be used as native img because of ideal-image plugin preprocessing
-          */}
+                    {/**
+                     *  NOTE: Set fixed height for correct alignment from mobile devices
+                     *  @see https://t.me/c/1463227827/197935
+                     *  NOTE: Cannot be used as native img because of ideal-image plugin preprocessing
+                     */}
                     <Image
                         className={styles.schemeImg}
                         img={imgScheme}
@@ -67,7 +67,7 @@ export default function HomePage() {
                         ))}
                     </div>
                     <span className={styles.companiesSubtitle}>
-                        Хотите попасть в этот список?{" "}
+                        Методология используется в Вашей компании?{" "}
                         <a
                             href="https://github.com/feature-sliced/documentation/issues/131"
                             target="_blank"

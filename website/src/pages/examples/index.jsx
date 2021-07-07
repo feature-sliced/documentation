@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
 import { ExampleCard } from "@site/src/entities/example";
