@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 function TableRow({ href, hrefTitle, th, children }) {
     return (
@@ -10,17 +10,15 @@ function TableRow({ href, hrefTitle, th, children }) {
             </td>
             {children}
         </tr>
-    )
+    );
 }
 
 export function Table({ children }) {
     return (
         <table>
-              <tbody>
-                {children}
-              </tbody>
+            <tbody>{children}</tbody>
         </table>
-    )
+    );
 }
 
 Table.Row = TableRow;

@@ -1,27 +1,27 @@
 .root {
-  height: 100%;
+    height: 100%;
 }
 
 .preview {
-  max-height: 175px;
-  overflow: hidden;
-  position: relative;
+    position: relative;
+    max-height: 175px;
+    overflow: hidden;
 }
 
 .ribbon {
-  background: var(--ifm-color-primary);
-  position: absolute;
-  right: 0;
-  top: 20px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  padding: 4px 10px;
-  min-width: 50px;
-  text-align: center;
-  z-index: 1;
-  color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    z-index: 1;
+    min-width: 50px;
+    padding: 4px 10px;
+    color: #ffffff;
+    text-align: center;
+    background: var(--ifm-color-primary);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .title {
-  font-weight: 600;
+    font-weight: 600;
 }

@@ -1,4 +1,5 @@
 /* stylelint-disable docusaurus/copyright-header */
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -7,128 +8,132 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  /* Default colors */
-  /* --ifm-color-primary: #25c2a0;
+    /* Default colors */
+
+    /* --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
   --ifm-color-primary-darkest: rgb(26, 136, 112);
   --ifm-color-primary-light: rgb(70, 203, 174);
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208); */
-  --ifm-code-font-size: 95%;
+    --ifm-code-font-size: 95%;
 
-  /* https://docusaurus.io/docs/styling-layout */
-  --ifm-color-primary: #5c9cb5;
-  --ifm-color-primary-dark: #4d8fa9;
-  --ifm-color-primary-darker: #4887a0;
-  --ifm-color-primary-darkest: #3c6f83;
-  --ifm-color-primary-light: #6fa7be;
-  --ifm-color-primary-lighter: #78adc2;
-  --ifm-color-primary-lightest: #94becf;
-
-  --ifm-h2-font-size: 1.75rem;
+    /* https://docusaurus.io/docs/styling-layout */
+    --ifm-color-primary: #5c9cb5;
+    --ifm-color-primary-dark: #4d8fa9;
+    --ifm-color-primary-darker: #4887a0;
+    --ifm-color-primary-darkest: #3c6f83;
+    --ifm-color-primary-light: #6fa7be;
+    --ifm-color-primary-lighter: #78adc2;
+    --ifm-color-primary-lightest: #94becf;
+    --ifm-h2-font-size: 1.75rem;
 }
 
 .docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+    display: block;
+    padding: 0 var(--ifm-pre-padding);
+    margin: 0 calc(-1 * var(--ifm-pre-padding));
+    background-color: rgb(72, 77, 91);
 }
 
 /* Inherited from docusaurus scrollbar stylesheets for inner containers */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar {
-  width: var(--ifm-scrollbar-size);
-  height: var(--ifm-scrollbar-size);
-  background-color: transparent;
-}
-  
-::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 10px;
+html::-webkit-scrollbar {
+    width: var(--ifm-scrollbar-size);
+    height: var(--ifm-scrollbar-size);
+    background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--ifm-scrollbar-thumb-background-color);
-  border-radius: 10px;
+html::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
 }
 
-::-webkit-scrollbar-corner {
-  background-color: #ffffff;
+html::-webkit-scrollbar-thumb {
+    background-color: var(--ifm-scrollbar-thumb-background-color);
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-corner {
+    background-color: #ffffff;
 }
 
 /**
  * External community links
  */
 .ext-link {
-  --ifm-navbar-item-padding-horizontal: 0.5rem;
-  transition: 0.25s;
-};
+    --ifm-navbar-item-padding-horizontal: 0.5rem;
 
-/* FIXME: Some weird bug, 
+    transition: 0.25s;
+}
+
+/* FIXME: Some weird bug,
   If we try to delete one of this selectors
   Then `:hover` styles wont'be applied
  */
 .ext-link:hover {
-  opacity: 0.6;
+    opacity: 0.6;
 }
+/* stylelint-disable-next-line no-duplicate-selectors */
 .ext-link:hover {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
-.ext-link:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
+.ext-link::before {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    content: '';
 }
 
-.github.ext-link:before {
-  background: url(assets/github.svg) no-repeat;
-}
-.telegram.ext-link:before {
-  background: url(assets/telegram.svg) no-repeat;
+.github.ext-link::before {
+    background: url(assets/github.svg) no-repeat;
 }
 
-html[data-theme='dark'] .ext-link:before {
-  /* NOTE: Maybe should be colorize explicitly with background-color or by svg#currentColor */
-  filter: invert(1);
+.telegram.ext-link::before {
+    background: url(assets/telegram.svg) no-repeat;
+}
+
+html[data-theme='dark'] .ext-link::before {
+    /* NOTE: Maybe should be colorize explicitly with background-color or by svg#currentColor */
+    filter: invert(1);
 }
 
 /*
   Dark theme for images
 */
 html[data-theme='dark'] img[alt*="themed"] {
-  /* 
-    While absolutely inverting, but later for alphaless images 
+    /*
+    While absolutely inverting, but later for alphaless images
     maybe will be changed to 0.9 (for more soft inverting)
   */
-  filter: invert(1) hue-rotate(180deg);
+    filter: invert(1) hue-rotate(180deg);
 }
 
 .codesandbox {
-  width: 100%;
-  height: 700px;
-  border: 0;
-  border-radius: 4px;
-  overflow: hidden;
-  background-color: #F0F2F5;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    background-color: #f0f2f5;
+    border: 0;
+    border-radius: 4px;
 }
 
 /* media */
+
 /* TODO: connect as file */
 
 @media screen and (max-width: 450px) {
-  .button-group {
-      display: block;   
-  }
+    .button-group {
+        display: block;
+    }
 
-  .button-group .button {
-      border-radius: var(--ifm-button-border-radius) !important;
-      margin: 2px;
-  }
+    .button-group .button {
+        margin: 2px;
+        border-radius: var(--ifm-button-border-radius) !important;
+    }
 }

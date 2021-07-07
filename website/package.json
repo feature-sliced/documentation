@@ -7,6 +7,9 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
+    "test": "yarn test:lint && yarn run build",
+    "test:lint": "eslint './**/*.{ts,tsx,js,jsx}' && stylelint **/*.css",
+    "test:lint:fix": "eslint --fix './**/*.{ts,tsx,js,jsx}' && stylelint **/*.css --fix",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
@@ -38,5 +41,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@eslint-kit/eslint-config-base": "4.1.0",
+    "@eslint-kit/eslint-config-patch": "^1.0.0",
+    "@eslint-kit/eslint-config-prettier": "3.0.0",
+    "@eslint-kit/eslint-config-react": "^3.0.0",
+    "babel-eslint": "10.1.0",
+    "eslint": "7.10.0",
+    "eslint-import-resolver-alias": "1.1.2",
+    "prettier": "2.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-recess-order": "^2.4.0",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-config-standard": "^22.0.0"
   }
 }
