@@ -15,64 +15,78 @@ sidebar_position: 1
     ├── app/                    # Инициализирующая логика приложения
     ├── processes/              # (Опц.) Процессы приложения, протекающие над страницами
     ├── pages/                  # Страницы приложения
+    ├── widgets/                # (Опц.) Самостоятельные виджеты
     ├── features/               # Ключевая функциональность приложения
     ├── entities/               # Бизнес-сущности
     └── shared/                 # Переиспользуемые модули
 ```
 
-## Ограничения
+## Правила
 
 - Каждый слой располагается только на самом верхнем уровне, и не может встречаться еще раз на другом уровне вложенности
-  - **Плохо:** `pages/../features/..`
-- Каждый слой может использовать (импортировать) только нижележащие слои (сверху-вниз)
-  - `app` > `processes` > `pages` > `features` > `entities` > `shared`
-- Чем ниже расположен слой - тем больше опасности вносить в него изменения (снизу вверх)
-  - `shared` > `entities` > `features` > `pages` > `processes` > `app`
 
-| Layer     |                         Can use                        |                    Can be used by                   |
-|-----------|:------------------------------------------------------:|:---------------------------------------------------:|
-| app       | `shared`, `entities`, `features`, `pages`, `processes` |                          -                          |
-| processes |        `shared`, `entities`, `features`, `pages`       |                        `app`                        |
-| pages     |            `shared`, `entities`, `features`            |                  `processes`, `app`                 |
-| features  |                  `shared`, `entities`                  |             `pages`, `processes`, `app`             |
-| entities  |                        `shared`                        |       `features`, `pages`, `processes`, `app`       |
-| shared    |                            -                           | `entities`, `features`, `pages`, `processes`, `app` |
+    ```diff
+    // Плохо
+    - pages/../features/..
+    - features/../entities/..
+    // Хорошо
+    + pages/**
+    + features/**
+    ```
+
+- Каждый слой может использовать (импортировать) только нижележащие слои
+- Чем выше расположен слой, тем выше уровень его ответственности и знаний о других слоях (сверху-вниз)
+  - `app` > (`processes`) > `pages` > (`widgets`) > `features` > `entities` > `shared`
+- Чем ниже расположен слой - тем он больше используется в верхних слоях, а значит и тем больше опасности вносить в него изменения (снизу вверх)
+  - `shared` > `entities` > `features` > (`widgets`) > `pages` > (`processes`) > `app`
+
+| Layer     |                              Can use                              |                         Can be used by                         |
+|-----------|:-----------------------------------------------------------------:|:--------------------------------------------------------------:|
+| app       | `shared`, `entities`, `features`, `widgets`, `pages`, `processes` |                                -                               |
+| processes |        `shared`, `entities`, `features`, `widgets`, `pages`       |                              `app`                             |
+| pages     |            `shared`, `entities`, `features`, `widgets`            |                       `processes`, `app`                       |
+| widgets   |                  `shared`, `entities`, `features`                 |                   `pages`, `processes`, `app`                  |
+| features  |                        `shared`, `entities`                       |             `widgets`, `pages`, `processes`, `app`             |
+| entities  |                              `shared`                             |       `features`, `widgets`, `pages`, `processes`, `app`       |
+| shared    |                                 -                                 | `entities`, `features`, `widgets`, `pages`, `processes`, `app` |
 
 ## Представители
 
-### `app`
+<!-- Оставил фразы в комментариях, на случай, если решим их вернуть -->
+
+### [`app`][refs-app]
 
 <!-- **Инициализирующая логика приложения** -->
 
 ![app-themed-bordered](/img/layers/app.png)
 
-### `processes`
+### [`processes`][refs-processes]
 
 <!-- **Бизнес-процессы приложения, управляющие страницами** -->
 
 ![processes-themed-bordered](/img/layers/processes.png)
 
-### `pages`
+### [`pages`][refs-pages]
 
 ![pages-themed-bordered](/img/layers/pages.png)
 
-### `widgets`
+### [`widgets`][refs-widgets]
 
 ![widgets-themed-bordered](/img/layers/widgets.png)
 
-### `features`
+### [`features`][refs-features]
 
 <!-- **Части функциональности приложения** -->
 
 ![features-themed-bordered](/img/layers/features.png)
 
-### `entities`
+### [`entities`][refs-entities]
 
 <!-- **Бизнес-сущности** -->
 
 ![entities-themed-bordered](/img/layers/entities.png)
 
-### `shared`
+### [`shared`][refs-shared]
 
 <!-- **Переиспользуемые модули, без привязки к бизнес-логике** -->
 
@@ -80,10 +94,6 @@ sidebar_position: 1
 
 ## См. также
 
-> `WIP:` Со временем будут появляться статьи по каждой абстракции
-
-<!-- FIXME: rename to features -->
-- [Layer: Features][refs-feature]
 - [Адаптивность нейминга][refs-naming-adaptability]
 - [Example: Viewer][refs-example-viewer]
   - *Пример распределения логики по слоям: от `shared` до `app`*
@@ -98,7 +108,13 @@ sidebar_position: 1
 [refs-low-coupling]: /docs/guides/low-coupling
 [refs-example-viewer]: /docs/guides/examples/viewer
 
-[refs-feature]: /docs/reference/feature
+[refs-app]: /docs/reference/layer/app
+[refs-processes]: /docs/reference/layer/processes
+[refs-pages]: /docs/reference/layer/pages
+[refs-widgets]: /docs/reference/layer/widgets
+[refs-features]: /docs/reference/layer/features
+[refs-entities]: /docs/reference/layer/entities
+[refs-shared]: /docs/reference/layer/shared
 
 [refs-segments]: /docs/reference/segments
 [refs-segments--ui]: /docs/reference/segments#ui
