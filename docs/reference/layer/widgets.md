@@ -84,7 +84,7 @@ export const AnotherPage = () => (
 
 ### Карточка твита
 
-```tsx title=widgets/tweet-item
+```tsx title=widgets/tweet-item/ui.tsx
 import { ShareTweet } from "features/tweets/share";
 import { LikeTweet } from "features/tweets/like";
 import { TweetCard } from "entities/tweet";
