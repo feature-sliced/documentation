@@ -841,11 +841,11 @@ const TaskDetailsPage = (props: Props) => {
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-reference]: /docs/reference/glossary
 [refs-layers]: /docs/reference/layers
-[refs-app]: /docs/reference/layers#app
-[refs-pages]: /docs/reference/layers#pages
-[refs-features]: /docs/reference/layers#features
-[refs-entities]: /docs/reference/layers#entities
-[refs-shared]: /docs/reference/layers#shared
+[refs-app]: /docs/reference/layers/app
+[refs-pages]: /docs/reference/layers/pages
+[refs-features]: /docs/reference/layers/features
+[refs-entities]: /docs/reference/layers/entities
+[refs-shared]: /docs/reference/layers/shared
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure

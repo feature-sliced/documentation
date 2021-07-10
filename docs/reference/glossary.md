@@ -22,7 +22,7 @@ sidebar_position: 1
 
 Этот уровень определяет [скоуп ответственности модулей][refs-split-layers], а также уровень опасности изменений
 
-- **Представители**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
+- **Представители**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`widgets`][refs-layers-widgets], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
 
 ```sh
 └── src/
@@ -40,7 +40,7 @@ sidebar_position: 1
 
 Этот уровень [слабо регламентируется][refs-split-slices] методологией, однако многое зависит от конкретного проекта, стека и команды
 
-- **Представители (от каждого слоя)** [`process`][refs-layers-processes], [`page`][refs-layers-pages], [`feature`][refs-layers-features], [`entity`][refs-layers-entities]
+- **Представители (от каждого слоя)** [`process`][refs-layers-processes], [`page`][refs-layers-pages], [`widget`][refs-layers-widgets], [`feature`][refs-layers-features], [`entity`][refs-layers-entities]
 
 ```sh
 ├── app/
@@ -114,12 +114,13 @@ sidebar_position: 1
 [refs-split-segments]: /docs/concepts/app-splitting#group-segments
 
 [refs-layers]: /docs/reference/layers
-[refs-layers-app]: /docs/reference/layers#app
-[refs-layers-processes]: /docs/reference/layers#processes
-[refs-layers-pages]: /docs/reference/layers#pages
-[refs-layers-features]: /docs/reference/layers#features
-[refs-layers-entities]: /docs/reference/layers#entities
-[refs-layers-shared]: /docs/reference/layers#shared
+[refs-layers-app]: /docs/reference/layers/app
+[refs-layers-processes]: /docs/reference/layers/processes
+[refs-layers-pages]: /docs/reference/layers/pages
+[refs-layers-widgets]: /docs/reference/layers/widgets
+[refs-layers-features]: /docs/reference/layers/features
+[refs-layers-entities]: /docs/reference/layers/entities
+[refs-layers-shared]: /docs/reference/layers/shared
 [refs-segments]: /docs/reference/segments
 [refs-segments-ui]: /docs/reference/segments#ui
 [refs-segments-model]: /docs/reference/segments#model

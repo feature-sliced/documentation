@@ -114,13 +114,13 @@ sidebar_position: 1
 [refs-low-coupling]: /docs/guides/low-coupling
 [refs-example-viewer]: /docs/guides/examples/viewer
 
-[refs-app]: /docs/reference/layer/app
-[refs-processes]: /docs/reference/layer/processes
-[refs-pages]: /docs/reference/layer/pages
-[refs-widgets]: /docs/reference/layer/widgets
-[refs-features]: /docs/reference/layer/features
-[refs-entities]: /docs/reference/layer/entities
-[refs-shared]: /docs/reference/layer/shared
+[refs-app]: /docs/reference/layers/app
+[refs-processes]: /docs/reference/layers/processes
+[refs-pages]: /docs/reference/layers/pages
+[refs-widgets]: /docs/reference/layers/widgets
+[refs-features]: /docs/reference/layers/features
+[refs-entities]: /docs/reference/layers/entities
+[refs-shared]: /docs/reference/layers/shared
 
 [refs-segments]: /docs/reference/segments
 [refs-segments--ui]: /docs/reference/segments#ui

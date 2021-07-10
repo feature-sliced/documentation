@@ -125,4 +125,4 @@ export const AuthByPhone = () => {
   - Для понимания слоя `features`
 - [(Тред) Про фичи и сущности наглядно](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
 
-[refs-entity]: /docs/reference/layers#entities
+[refs-entity]: /docs/reference/layers/entities

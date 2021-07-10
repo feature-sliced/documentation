@@ -30,8 +30,8 @@ const SECTIONS = {
         fullPath: "/docs/reference/glossary",
     },
     LAYERS: {
-        shortPath: "/docs/reference/layer",
-        fullPath: "/docs/reference/layer/overview",
+        shortPath: "/docs/reference/layers",
+        fullPath: "/docs/reference/layers/overview",
     },
     ABOUT: {
         shortPath: "/docs/about",
