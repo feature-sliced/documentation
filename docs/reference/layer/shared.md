@@ -69,3 +69,5 @@ export const OAuthProvider = () => (
     />
 )
 ```
+
+[refs-segments]: /docs/reference/segments

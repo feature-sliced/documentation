@@ -6,6 +6,8 @@ sidebar_position: 7
 
 ![entities-themed-bordered](/img/layers/entities.png)
 
+## Описание
+
 Здесь обычно находятся:
 
 - бизнес-сущности, для построения бизнес-логики приложения
