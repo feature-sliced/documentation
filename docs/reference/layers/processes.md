@@ -4,7 +4,9 @@ sidebar_position: 3
 
 # Processes
 
-`OPTIONAL`
+:::note OPTIONAL
+Слой опционален, и нужен только если того требует сложность проекта
+:::
 
 ![processes-themed-bordered](/img/layers/processes.png)
 

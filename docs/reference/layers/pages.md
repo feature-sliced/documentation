@@ -4,8 +4,6 @@ sidebar_position: 4
 
 # Pages
 
-![pages-themed-bordered](/img/layers/pages.png)
-
 :::caution
 
 На данный момент ведутся активные обсуждения касаемо этого слоя:
@@ -17,6 +15,8 @@ sidebar_position: 4
 Поэтому здесь приведены общие сведения по этому слою
 
 :::
+
+![pages-themed-bordered](/img/layers/pages.png)
 
 ## Описание
 
