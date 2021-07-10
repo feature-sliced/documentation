@@ -6,6 +6,10 @@ sidebar_position: 1
 
 **Layer** - первый уровень разбиения приложения, согласно **скоупу влияния** модуля
 
+![layers-flow-themed](/img/layers_flow.png)
+
+## Структура
+
 ```sh
 └── src/
     ├── app/                    # Инициализирующая логика приложения
@@ -16,11 +20,11 @@ sidebar_position: 1
     └── shared/                 # Переиспользуемые модули
 ```
 
-### Общие правила
+## Ограничения
 
-- Слой располагается только на самом верхнем уровне, и не может встречаться еще раз на другом уровне вложенности
+- Каждый слой располагается только на самом верхнем уровне, и не может встречаться еще раз на другом уровне вложенности
   - **Плохо:** `pages/../features/..`
-- Каждый слой может импортировать только нижележащие слои (сверху-вниз)
+- Каждый слой может использовать (импортировать) только нижележащие слои (сверху-вниз)
   - `app` > `processes` > `pages` > `features` > `entities` > `shared`
 - Чем ниже расположен слой - тем больше опасности вносить в него изменения (снизу вверх)
   - `shared` > `entities` > `features` > `pages` > `processes` > `app`
@@ -34,39 +38,41 @@ sidebar_position: 1
 | entities  |                        `shared`                        |       `features`, `pages`, `processes`, `app`       |
 | shared    |                            -                           | `entities`, `features`, `pages`, `processes`, `app` |
 
-## `app`
+## Представители
+
+### `app`
 
 <!-- **Инициализирующая логика приложения** -->
 
 ![app-themed-bordered](/img/layers/app.png)
 
-## `processes`
+### `processes`
 
 <!-- **Бизнес-процессы приложения, управляющие страницами** -->
 
 ![processes-themed-bordered](/img/layers/processes.png)
 
-## `pages`
+### `pages`
 
 ![pages-themed-bordered](/img/layers/pages.png)
 
-## `widgets`
+### `widgets`
 
 ![widgets-themed-bordered](/img/layers/widgets.png)
 
-## `features`
+### `features`
 
 <!-- **Части функциональности приложения** -->
 
 ![features-themed-bordered](/img/layers/features.png)
 
-## `entities`
+### `entities`
 
 <!-- **Бизнес-сущности** -->
 
 ![entities-themed-bordered](/img/layers/entities.png)
 
-## `shared`
+### `shared`
 
 <!-- **Переиспользуемые модули, без привязки к бизнес-логике** -->
 
