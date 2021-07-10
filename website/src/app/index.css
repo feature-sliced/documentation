@@ -103,15 +103,20 @@ html[data-theme='dark'] .ext-link::before {
     filter: invert(1);
 }
 
-/*
-  Dark theme for images
-*/
+/**
+ * Dark theme for images
+ */
 html[data-theme='dark'] img[alt*="themed"] {
-    /*
-    While absolutely inverting, but later for alphaless images
-    maybe will be changed to 0.9 (for more soft inverting)
-  */
+    /**
+     * While absolutely inverting, but later for alphaless images
+     * maybe will be changed to 0.9 (for more soft inverting)
+     */
     filter: invert(1) hue-rotate(180deg);
+}
+
+html img[alt*="bordered"] {
+    border: 1px solid rgb(211, 213, 216);
+    border-radius: 16px;
 }
 
 .codesandbox {
