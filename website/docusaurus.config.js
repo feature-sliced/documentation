@@ -29,6 +29,10 @@ const SECTIONS = {
         shortPath: "/docs/reference",
         fullPath: "/docs/reference/glossary",
     },
+    LAYERS: {
+        shortPath: "/docs/reference/layers",
+        fullPath: "/docs/reference/layers/overview",
+    },
     ABOUT: {
         shortPath: "/docs/about",
         fullPath: "/docs/about/mission",
@@ -194,36 +198,17 @@ const plugins = [
     [
         "@docusaurus/plugin-client-redirects",
         {
-            redirects: [
-                {
-                    from: [SECTIONS.INTRO.shortPath],
-                    to: SECTIONS.INTRO.fullPath,
-                },
-                // NOTE: Редиректы работают при прямом переходе по ссылке в адресной строке
-                // Если же переходить чисто по ссылкам, то редиректа не будет (только при обновлении страницы)
-                // TODO: Сделать позже, чтоб редирект работал и при переходе с внутренних ссылок
-                // И убрать хардкод с доки и конфига
-                {
-                    from: [SECTIONS.GET_STARTED.shortPath],
-                    to: SECTIONS.GET_STARTED.fullPath,
-                },
-                {
-                    from: [SECTIONS.CONCEPTS.shortPath],
-                    to: SECTIONS.CONCEPTS.fullPath,
-                },
-                {
-                    from: [SECTIONS.GUIDES.shortPath],
-                    to: SECTIONS.GUIDES.fullPath,
-                },
-                {
-                    from: [SECTIONS.REFERENCE.shortPath],
-                    to: SECTIONS.REFERENCE.fullPath,
-                },
-                {
-                    from: [SECTIONS.ABOUT.shortPath],
-                    to: SECTIONS.ABOUT.fullPath,
-                },
-            ],
+            // NOTE: Редиректы работают при прямом переходе по ссылке в адресной строке
+            // Если же переходить чисто по ссылкам, то редиректа не будет (только при обновлении страницы)
+            // TODO: Сделать позже, чтоб редирект работал и при переходе с внутренних ссылок
+            // И убрать хардкод с доки и конфига
+            redirects: Object.values(SECTIONS)
+                // Иначе выбрасывает ошибку
+                .filter(({ shortPath, fullPath }) => shortPath !== fullPath)
+                .map(({ shortPath, fullPath }) => ({
+                    from: shortPath,
+                    to: fullPath,
+                })),
         },
     ],
     // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image

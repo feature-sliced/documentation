@@ -143,5 +143,5 @@ export const { sendMessage, attachFile } = createMessageInput({
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-public-api]: /docs/concepts/public-api
 [refs-cross-communication]: /docs/concepts/cross-communication
-[refs-features]: /docs/reference/layers#features
-[refs-entities]: /docs/reference/layers#entities
+[refs-features]: /docs/reference/layers/features
+[refs-entities]: /docs/reference/layers/entities

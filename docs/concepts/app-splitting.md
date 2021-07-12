@@ -224,7 +224,7 @@ function Foo() {
 [ref-layers]: /docs/reference/layers
 [ref-segments]: /docs/reference/segments
 [ref-low-coupling]: /docs/guides/low-coupling
-[ref-grouping]: /docs/reference/feature#структурная-группировка-фич
+[ref-grouping]: /docs/reference/layers/features#структурная-группировка-фич
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31
 
