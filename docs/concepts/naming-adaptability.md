@@ -53,7 +53,7 @@ sidebar_label: Naming adaptability
   - [`processes` vs `flows` vs ...][disc-processes]
   - [`model` vs `store` vs ...][disc-model]
 
-[refs-layers]: /docs/reference/layers
+[refs-layers]: /docs/reference/layers/overview
 [refs-segments]: /docs/reference/segments
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-reference]: /docs/reference/glossary

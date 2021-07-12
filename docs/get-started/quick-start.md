@@ -840,7 +840,7 @@ const TaskDetailsPage = (props: Props) => {
 [refs-guides]: /docs/guides/migration-from-v1
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-reference]: /docs/reference/glossary
-[refs-layers]: /docs/reference/layers
+[refs-layers]: /docs/reference/layers/overview
 [refs-app]: /docs/reference/layers/app
 [refs-pages]: /docs/reference/layers/pages
 [refs-features]: /docs/reference/layers/features

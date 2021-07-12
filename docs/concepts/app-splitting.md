@@ -221,7 +221,7 @@ function Foo() {
 - [(Reference) Layers][ref-layers]
 - [(Reference) Segments][ref-segments]
 
-[ref-layers]: /docs/reference/layers
+[ref-layers]: /docs/reference/layers/overview
 [ref-segments]: /docs/reference/segments
 [ref-low-coupling]: /docs/guides/low-coupling
 [ref-grouping]: /docs/reference/layers/features#структурная-группировка-фич

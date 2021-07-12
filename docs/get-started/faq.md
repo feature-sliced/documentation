@@ -34,9 +34,9 @@ sidebar_position: 5
 
 *В ближайшее время список будет пополняться и будет вынесен в отдельный раздел*
 
-- https://github.com/accesso-app
-- https://github.com/cardbox 
-- https://github.com/ani-team/github-client
+- <https://github.com/accesso-app>
+- <https://github.com/cardbox>
+- <https://github.com/ani-team/github-client>
 
 *Пока что же - можно ознакомиться с нашими [гайдами](/docs/guides/migration-from-v1) и [туториалами](/docs/get-started/quick-start)*
 
@@ -65,7 +65,7 @@ sidebar_position: 5
 - `Feature` - бизнесовая фича, **действие над сущностью**
   - create-blog-post / login-by-oauth / edit-account / publish-video / ...
 
-См. также [справочную информацию по сравнению](/docs/reference/layers), [реализация viewer логики по слоям](/docs/guides/examples/viewer)
+См. также [справочную информацию по сравнению](/docs/reference/layers/overview), [реализация viewer логики по слоям](/docs/guides/examples/viewer)
 
 ### Где хранить layout/template страниц?
 
@@ -76,6 +76,7 @@ sidebar_position: 5
 Будет, на данный момент - в разработке =)
 
 > Пока что, для сортировки / запрета импортов можно воспользоваться
+>
 > - `eslint-plugin-import`
 > - `eslint-plugin-simple-import-sort`
 > - `eslint-plugin-boundaries`

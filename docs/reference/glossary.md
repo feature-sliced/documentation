@@ -113,7 +113,7 @@ sidebar_position: 1
 [refs-split-slices]: /docs/concepts/app-splitting#group-slices
 [refs-split-segments]: /docs/concepts/app-splitting#group-segments
 
-[refs-layers]: /docs/reference/layers
+[refs-layers]: /docs/reference/layers/overview
 [refs-layers-app]: /docs/reference/layers/app
 [refs-layers-processes]: /docs/reference/layers/processes
 [refs-layers-pages]: /docs/reference/layers/pages
