@@ -82,7 +82,7 @@ sidebar_position: 5
 > - `eslint-plugin-boundaries`
 > - `dependency-cruiser`
 >
-> См. [базовый пример конфига](https://gist.github.com/martis-git/4cb940a1d4a3e05ef47e15aa18a9ecc5)
+> См. [базовый пример конфига](https://gist.github.com/azinit/4cb940a1d4a3e05ef47e15aa18a9ecc5)
 
 ### Могу ли я хранить фичи используемые на одной странице прямо в директории страницы?
 
