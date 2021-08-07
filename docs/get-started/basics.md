@@ -67,7 +67,7 @@ sidebar_position: 3
 
 :::note
 
-В большинстве случаев [рекомендуется][ext-disc-api] располагать `api` и `config` только на shared-слое
+В большинстве случаев [рекомендуется][ext-disc-api] располагать `api` и `config` только в shared-слое
 
 :::
 

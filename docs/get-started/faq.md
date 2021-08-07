@@ -48,7 +48,7 @@ sidebar_position: 5
 
 Ответили [здесь](/docs/concepts/app-splitting#group-slices)
 
-### Как мне работать с контекстом авторизации
+### Как мне работать с контекстом авторизации?
 
 Ответили [здесь](/docs/guides/examples/viewer)
 
