@@ -505,7 +505,7 @@ const TasksListPage = () => {
   /**
    * Запрашиваем данные при загрузке страницы
    * @remark Является плохой практикой в мире effector и представлено здесь - лишь для наглядной демонстрации
-   * Как более лучшая альтернатива - фетчить через event.pageMounted или reflect
+   * Лучше фетчить через event.pageMounted или reflect
    */
   useEffect(() => taskModel.effects.getTasksListFx(), []);
 
@@ -737,7 +737,7 @@ const TaskDetailsPage = (props: Props) => {
   /**
    * Запрашиваем данные по задаче
    * @remark Является плохой практикой в мире effector и представлено здесь - лишь для наглядной демонстрации
-   * Как более лучшая альтернатива - фетчить через event.pageMounted или reflect
+   * Лучше фетчить через event.pageMounted или reflect
    */
     useEffect(() => taskModel.getTaskByIdFx({ taskId }), [taskId]);
 
