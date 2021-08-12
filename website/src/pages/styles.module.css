@@ -33,6 +33,11 @@ html[data-theme='dark'] .schemeImg {
 /* FIXME: fix later */
 .companiesItem {
     align-self: center;
+    transition: 0.25s;
+}
+
+.companiesItem:hover {
+    opacity: 0.7;
 }
 
 .companiesItemImg {
