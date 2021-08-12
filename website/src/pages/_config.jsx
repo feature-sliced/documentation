@@ -101,4 +101,14 @@ export const companies = [
         src: "uptarget.png",
         alt: "Uptarget",
     },
+    {
+        url: "https://www.fxdd.com/",
+        src: "fxdd.svg",
+        alt: "FXDD",
+    },
+    {
+        url: "https://foxford.ru/",
+        src: "foxford.svg",
+        alt: "Foxford",
+    },
 ];
