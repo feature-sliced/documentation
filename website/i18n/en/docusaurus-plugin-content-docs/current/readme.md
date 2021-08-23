@@ -5,24 +5,24 @@ slug: intro
 
 # Intro
 
-Методология для проектирования *frontend проектов*, нацеленная [**на разделение приложения согласно бизнес-логике и областям ответственности.**][refs-splitting]
+Methodology for designing *frontend projects*, aimed [**at splitting the application according to business logic and areas of responsibility.**][refs-splitting]
 
-- Обеспечивает [**понятность, контролируемость и адаптивность**][refs-arch-req] архитектуры
-- Основана на [**проверенных временем**][refs-motivation-why] практиках проектирования и концепциях
-    > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
-- Предлагает разделять проект согласно [**бизнес-юнитам**][ext-ubiq-lang]
+- Provides [**clarity, controllability and adaptability**][refs-arch-req] architecture
+- Based on [**time-tested**][refs-motivation-why] design practices and concepts
+    > `SOLID`,`GRASP`, `DDD`,`Separation of Concerns`, `Vertical Slices`,`Public API`, `Isolation`
+- Suggests to split the project according to [**business units**][ext-ubiq-lang]
 
 :::note
 
-Методология не привязана к конкретному стеку и применима *к любым фронтенд-проектам* в целом.
+The methodology is not tied to a specific stack and is applicable *to any front-end projects* in general.
 
-Но текущая версия приводит примеры и проработана на базе связки `JavaScript` + `React`
+But the current version provides examples and is developed on the basis of the `JavaScript` + `React` bundle
 
 :::
 
 ![feature-sliced-banner](/img/banner.jpg)
 
-[Знакомство с методологией][refs-getstarted] | [Фундаментальные концепции][refs-concepts] | [Практические гайды по применению][refs-guides] | [Справочный материал][refs-reference] | [О методолологии][refs-about]
+[Get Started][refs-getstarted] | [Fundamental Concepts][refs-concepts] | [Guides & Examples][refs-guides] | [Reference][refs-reference] | [About][refs-about]
 |---|---|---|---|---|
 
 [refs-getstarted]: /docs/get-started/overview
