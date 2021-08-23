@@ -4,36 +4,36 @@ sidebar_position: 4
 
 # Quick start
 
-Рассмотрим применение **feature-sliced** на примере TodoApp
+Let's consider the application of **feature-sliced** on the example of TodoApp
 
-- Сначала разберем *подготовительные аспекты создания приложения*
-- А затем - как концепции методологии помогают *гибко и эффективно проектировать бизнес-логику* без лишних затрат
+- First, we will analyze *the preparatory aspects of creating an application*
+- And then - how the concepts of the methodology help *flexibly and effectively design business logic* without unnecessary costs
 
-> В конце статьи есть [codesandbox-вставка с финальным решением][ext-sandbox], которое может помочь для уточнения деталей реализации
+> At the end of the article there is [codesandbox-insert with the final solution][ext-sandbox], which can help to clarify the implementation details
 
-**Стек**: React, Effector, TypeScript, Sass, AntDesign
+**Stack**: React, Effector, TypeScript, Sass, AntDesign
 
 :::note
 
-Туториал призван **раскрыть практическую идею самой методологии**. Поэтому описанные здесь практики - во многом подойдут и для других технологических стеков фронтенд-проектов
+The tutorial is designed to **reveal the practical idea of the methodology itself**. Therefore, the practices described here are largely suitable for other technological stacks of frontend projects
 
 :::
 
-## 1. Подготовительные моменты
+## 1. Preparatory moments
 
-### 1.1 Инициализируем проект
+### 1.1 Initializing the project
 
-На данный момент имеется множество способов сгенерировать и запустить шаблон проекта
+At the moment, there are many ways to generate and run a project template
 
-Не будем акцентироваться сильно на этом шаге, но для быстрой инициализации можно  воспользоваться [CRA (для React)](https://create-react-app.dev/docs/getting-started):
+We will not focus too much on this step, but for quick initialization, you can use [CRA (for React)](https://create-react-app.dev/docs/getting-started):
 
 ```cmd
 $ npx create-react-app todo-app --template typescript
 ```
 
-### 1.2 Подготавливаем структуру
+### 1.2 Preparing the structure
 
-Получили следующую заготовку под проект
+We received the following blank for the project
 
 ```sh
 └── src/
@@ -49,9 +49,9 @@ $ npx create-react-app todo-app --template typescript
     └── index.tsx/
 ```
 
-#### Как это обычно происходит
+#### How it usually happens
 
-И обычно большинство проектов на данном этапе [превращаются в примерно такое][ext-pluralsight--flat]:
+And usually most projects at this stage [turn into something like this][ext-pluralsight--flat]:
 
 ```sh
 └── src/
@@ -66,50 +66,50 @@ $ npx create-react-app todo-app --template typescript
     └── index.tsx/
 ```
 
-*Они могут как сразу стать такими, так и по прошествии долгой разработки*
+*They can become such immediately, or after a long development*
 
-При этом, если мы заглянем внутрь, как правило обнаружим:
+At the same time, if we look inside, as a rule, we will find:
 
-- Сильно ветвистые по вложенности директории
-- Сильно связные друг с другом компоненты
-- Огромное количество разнородных компонентов/контейнеров в соответствующих папках, связанные "абы как"
+- Highly branched directories by nesting
+- Strongly connected components with each other
+- A huge number of dissimilar components / containers in their respective folders, linked thoughtlessly
 
-#### Как это можно делать иначе
+#### How can it be done otherwise
 
-Каждый, кто хоть сколько давно разрабатывал фронтенд-проекты, примерно понимает преимущества и недостатки такого подхода.
+Anyone who has been developing frontend projects for at least a long time understands the advantages and disadvantages of this approach.
 
-Однако все еще большинство фронтенд-проектов представляют из себя нечто такое, поскольку **нет проверенной опытом гибкой и расширяемой альтернативы**
+However, most frontend projects are still something like this, since **there is no proven flexible and extensible alternative**
 
-*Помножим это на вольные адаптации структуры под каждый проект, без запрета со стороны фреймворка - и [получим "уникальные как снежинки проекты"][refs-motivation]*
+*Multiply this by the free adaptations of the structure for each project, without a ban from the framework-and [we get "projects as unique as snowflakes"][refs-motivation]*
 
-**Цель данного туториала** - показать другой взгляд на привычные практики при проектировании
+**The purpose of this tutorial** is to show a different view of the usual practices in designing
 
-#### Адаптируем структуру к нужному виду
+#### Adapting the structure to the desired view
 
 ```sh
 └── src/
-    ├── app/                    # Инициализирующая логика приложения
-    |    ├── index.tsx          #    Энтрипоинт для подключения приложения (бывший App.tsx)
-    |    └── index.css         #    Глобальные стили приложения
+    ├── app/                    # Initializing application logic
+    |    ├── index.tsx          #    Entrypoint for connecting the application (formerly App. tsx)
+    |    └── index.css          #    Global application styles
     ├── pages/                  #
     ├── features/               #
     ├── entities/               #
     ├── shared/                 #
-    └── index.tsx               # Подключение и рендеринг приложения
+    └── index.tsx               # Connecting and rendering the application
 ```
 
-Возможно, на первый взгляд, такая структура покажется непривычной, но со временем вы сами заметите, что **используете знакомые вам абстракции, но в консистентном и упорядоченном виде.**
+Perhaps, at first glance, such a structure will seem unusual, but over time you will notice that **you use familiar abstractions, but in a consistent and ordered form.**
 
-**Также, подключаем поддержку абсолютных импортов для удобства**
+**Also, we enable support for absolute imports for convenience**
 
 ```ts title=tsconfig.json
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    // Либо же альясы, если так удобнее
+    // Or aliases, if it's more convenient
 ```
 
-Вот, как это поможет нам в будущем
+Here's how it will help us in the future
 
 ```diff
 - import App from "../app"
@@ -120,14 +120,14 @@ $ npx create-react-app todo-app --template typescript
 
 #### Layers: app
 
-Как можно заметить - мы перенесли всю базовую логику в директорию [`app/`][refs-app]
+As you can see , we have moved all the basic logic to the [`app/`][refs-app] directory
 
-Именно там, согласно методологии, стоит располагать всю подготовительную логику:
+It is there, according to the methodology, that all the preparatory logic should be placed:
 
-- подключение глобальных стилей (`/app/styles/**` + `/app/index.css`)
-- провайдеры и HOCs с инициализирующей логикой (`/app/providers/**`)
+- connecting global styles (`/app/styles/**` + `/app/index.css`)
+- providers and HOCs with initializing logic (`/app/providers/**`)
 
-Пока что перенесем туда всю существующую логику, а другие директории оставим пустыми, как на схеме выше.
+For now, we will transfer all the existing logic there, and leave the other directories empty, as in the diagram above.
 
 ```tsx title=app/index.tsx
 import "./index.css";
@@ -135,19 +135,19 @@ import "./index.css";
 const App = () => {...}
 ```
 
-### 1.3 Подключим глобальные стили
+### 1.3 Enabling global styles
 
-#### Установим зависимости
+#### Install dependencies
 
-В туториале устанавливаем sass, но можно взять и любой другой препроцессор, поддерживающий импорты
+In the tutorial, we install sass, but you can also take any other preprocessor that supports imports
 
 ```cmd
 $ npm i sass
 ```
 
-#### Заводим файлы для стилей
+#### Creating files for styles
 
-##### Для css-переменных
+##### For css variables
 
 ```scss title=app/styles/vars.scss
 :root {
@@ -157,7 +157,7 @@ $ npm i sass
 }
 ```
 
-##### Для нормализации стилей
+##### To normalize styles
 
 ```scss title=app/styles/normalize.scss
 html {
@@ -166,7 +166,7 @@ html {
 ...
 ```
 
-##### Подключаем все стили
+##### Connecting all styles
 
 ```scss title=app/styles/index.scss
 @import "./normalize.scss";
@@ -185,16 +185,16 @@ import "./index.scss"
 const App = () => {...}
 ```
 
-### 1.4 Добавим роутинг
+### 1.4 Adding routing
 
-#### Установим зависимости
+#### Install dependencies
 
 ```cmd
 $ npm i react-router react-router-dom compose-function
 $ npm i -D @types/react-router @types/react-router-dom @types/compose-function
 ```
 
-#### Добавим HOC для инициализации роутера
+#### Add HOC to initialize the router
 
 ```tsx title=app/providers/with-router.tsx
 import { Suspense } from "react";
@@ -225,22 +225,22 @@ const App = () => {...}
 export default withProviders(App);
 ```
 
-#### Добавим реальные страницы
+#### Let's add real pages
 
 :::note
 
-Это лишь одна из реализаций роутинга
+This is just one of the routing implementations
 
-- Можно объявлять его декларативно либо через список роутов (+ react-router-config)
-- Можно объявлять его на уровне pages либо app
+- You can declare it declaratively or through the list of routes (+ react-router-config)
+- You can declare it at the pages or app level
 
-Методология пока никак не регламентирует реализацию этой логики
+The methodology does not yet regulate the implementation of this logic in any way
 
 :::
 
-##### Временная страница, только для проверки роутинга
+##### Temporary page, only for checking the routing
 
-Ее можно удалить позднее
+You can delete it later
 
 ```tsx title=pages/test/index.tsx
 const TestPage = () => {
@@ -250,10 +250,10 @@ const TestPage = () => {
 export default TestPage;
 ```
 
-##### Сформируем роуты
+##### Let's form the routes
 
 ```tsx title=pages/index.tsx
-// Либо использовать @loadable/component, в рамках туториала - некритично
+// Or use @loadable/component, as part of the tutorial - uncritically
 import { lazy } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
@@ -269,15 +269,15 @@ export const Routing = () => {
 };
 ```
 
-##### Подключаем роутинг к приложению
+##### Connecting the routing to the application
 
 ```tsx title=app/index.tsx
 import { Routing } from "pages";
 
 const App = () => (
-    // Потенциально сюда можно вставить 
-    // Единый на все приложение хедер
-    // Либо же делать это на отдельных страницах
+    // Potentially you can insert here 
+    // A single header for the entire application
+    // Or do it on separate pages
     <Routing />
 )
 ...
@@ -285,14 +285,14 @@ const App = () => (
 
 #### Layers: app, pages
 
-Здесь мы использовали сразу несколько слоев:
+Here we used several layers at once:
 
-- [`app`][refs-app] - для инициализации роутера *(HOC: withRouter)*
-- [`pages`][refs-pages] - для хранения модулей страниц
+- [`app`][refs-app] - to initialize the router *(HOC: withRouter)*
+- [`pages`][refs-pages] - for storing page modules
 
-### 1.5 Подключим UIKit
+### 1.5 Let's connect UIKit
 
-Для упрощения туториала, заиспользуем готовый UIKit от [AntDesign](https://ant.design/components/overview/)
+To simplify the tutorial, we will use the ready-made UIKit from [AntDesign](https://ant.design/components/overview/)
 
 ```cmd
 $ npm i antd @ant-design/icons
@@ -304,7 +304,7 @@ $ npm i antd @ant-design/icons
 
 :::tip
 
-Но вы можете использовать **любой другой UIKit** или же **создать собственный**, расположив компоненты в `shared/ui` - именно там рекомендуется хранить UIKit приложения:
+But you can use **any other UIKit** or **create your own** by placing the components in `shared/ui` - this is where it is recommended to store UIKit applications:
 
 ```ts
 import { Checkbox } from "antd"; // ~ "shared/ui/checkbox"
@@ -313,112 +313,114 @@ import { Card } from "antd"; // ~ "shared/ui/card"
 
 :::
 
-## 2. Реализация бизнес-логики
+## 2. Implementing business logic
 
 :::note
 
-Постараемся сконцентрироваться не на реализации каждого модуля, а на их последовательной композиции
+We will try to focus not on the implementation of each module, but on their sequential composition
 
 :::
 
-### 2.1 Проанализируем функциональность
+### 2.1 Let's analyze the functionality
 
-Прежде чем приступать к коду, надо определиться - [какую ценность мы хотим донести конечному пользователю][refs-needs]
+Before starting the code, we need to decide - [what value we want to convey to the end user][refs-needs]
 
-Для этого, декомпозируем нашу функциональность *по зонам ответственности [(слоям)][refs-layers]*
+To do this, we decompose our functionality *by responsibility zones [(layers)][refs-layers]*
 
 ![layers-flow-themed](/img/layers_flow.png)
 
-> **Примечание:** на схеме представлен *экспериментальный слой "Виджетов"*, который излишен в рамках туториала и спецификация которого скоро добавится
+> **Note:** the diagram shows *an experimental layer of "Widgets"*, which is unnecessary in the framework of the tutorial and the specification of which will be added soon
 
 #### [Pages][refs-pages]
 
-Набросаем базово необходимые страницы, и пользовательские ожидания от них:
+We will outline the basic necessary pages, and user expectations from them:
 
-1. `TasksListPage` - страница "Список задач"
-    - Смотреть список задач
-    - Переходить к странице конкретной задачи
-    - *Помечать выполненной/невыполненной конкретную задачу*
-    - Задавать фильтрацию по выполненным/невыполненным задачам
+1. `TasksListPage` - the "Task List" page
 
-2. `TaskDetailsPage` - страница "Карточка задачи"
-    - Смотреть информацию по задаче
-    - *Помечать выполненной/невыполненной конкретную задачу*
-    - Возвращаться к списку задач
+    - View the task list
+    - Go to the page of a specific task
+    - *Mark a specific task completed/unfulfilled*
+    - Set filtering by completed / unfulfilled tasks
 
-Каждая из описанных возможностей - представляет из себя часть функциональности
+2. `TaskDetailsPage` - page "Task card"
 
-##### Обычный подход
+    - View information about the task
+    - *Mark a specific task as completed/unfulfilled*
+    - Go back to the task list
 
-И есть большой соблазн
+Each of the described features is a part of the functionality
 
-- либо всю логику реализовать в директории каждой конкретной страницы.
-- либо все "возможно переиспользуемые" модули вынести в общую папку `src/components` или подобную
+##### The usual approach
 
-Но если для маленького и недолгоживущего проекта такое решение подошло бы, то в реальной корпоративной разработке, оно **может поставить крест** на дальнейшем развитии проекта, превратив его в **"еще одно дремучее легаси"**
+And there is a great temptation
 
-Обусловлено это обычными условиями развития проекта:
+- or implement all the logic in the directory of each specific page.
+- or put all" possibly reused "modules in the shared folder `src/components` or similar
 
-- требования меняются достаточно часто
-- появляются новые обстоятельства
-- техдолг копится с каждым днем и все сложнее добавлять новые фичи
-- нужно масштабировать как сам проект, так и его команду
+But if such a solution would be suitable for a small and short-lived project, then in real corporate development, it **can put an end** to the further development of the project, turning it into **"another dense legacy"**
 
-##### Альтернативный подход
+This is due to the usual conditions of the project development:
 
-Даже при базовом разбиении мы видим, что:
+- requirements change quite often
+- there are new circumstances
+- the technical debt is accumulating every day and it is becoming more difficult to add new features
+- it is necessary to scale both the project itself and its team
 
-- между страницами есть общие [сущности][refs-entities] и их отображение *(Task)*
-- между страницами есть общие [фичи][refs-features] *(Помечать задачу выполненной / невыполненной)*
+##### Alternative approach
 
-Соответственно, кажется логичным продолжать декомпозировать задачу, но уже исходя из перечисленных выше возможностей для пользователя.
+Even with the basic partitioning, we see that:
+
+- there are common [entities][refs-entities] between the pages and their display *(Task)*
+- there are common [features][refs-features] *between the pages (Mark the task completed / unfulfilled)*
+
+Accordingly, it seems logical to continue to decompose the task, but already based on the above-mentioned features for the user.
 
 #### [Features][refs-features]
 
-Части функциональности, несущие ценность пользователю
+Parts of functionality that bring value to the user
 
-- `<ToggleTask />` - (компонент) Пометить задачу выполненной / невыполненной
-- `<TasksFilters/>` - (компонент) Задать фильтрацию для списка задач
+- `<ToggleTask />` - (component) Mark a task as completed / unfulfilled
+- `<TasksFilters/>` - (component) Set filtering for the task list
 
 #### [Entities][refs-entities]
 
-Бизнес-сущности, на которых будет строится более высокоуровневая логика
+Business entities on which a higher-level logic will be built
 
-- `<TaskCard />` - (компонент) Карточка задачи, с отображением информации
-- `getTasksListFx({ filters })` - (effect) Подгрузка списка задач с параметрами
-- `getTaskByIdFx(taskId: number)`- (effect) Подгрузка задачи по ID
+- `<TaskCard />` - (component) Task card, with information display
+- `getTasksListFx({ filters })` - (effect) Loading the task list with parameters
+- `getTaskByIdFx(taskId: number)`- (effect) Uploading a task by ID
 
 #### [Shared][refs-shared]
 
-Переиспользуемые общие модули, без привязки к предметной области
+Reused shared modules, without binding to the subject area
 
-- `<Card />` - (компонент) UIKit компонент
-  - *При этом можно как реализовывать собственный UIKit под проект, так воспользоваться готовым*
-- `getTasksList({ filters })` - (api) Подгрузка списка задач с параметрами
-- `getTaskById(taskId: number)`- (api) Подгрузка задачи по ID
+- `<Card />` - (component) UIKit component
+  - *At the same time, you can either implement your own UIKit for the project, or use a ready-made one*
+- `getTasksList({ filters })` - (api) Loading the task list with parameters
+- `getTaskById(taskId: number)` - (api) Loading a task by ID
 
-#### В чем профит?
+#### What is the profit?
 
-Теперь все модули можно проектировать со [слабой связностью][refs-low-coupling] и [со своей зоной ответственности][refs-layers], а также распределить по команде без конфликтов при разработке
+Now all modules can be designed with [weak connectivity][refs-low-coupling] and [with their own area of responsibility][refs-layers], as well as distributed across the team without conflicts during development
 
-*А самое главное - теперь каждый модуль служит для построения конкретной бизнес-ценности, что снижает риски для создания ["фич ради фич"][refs-needs]*
+*And most importantly, now each module serves to build a specific business value, which reduces the risks for creating ["features for the sake of features"][refs-needs]*
 
-### 2.2 Про что еще стоит помнить
+### 2.2 What else is worth remembering
 
-#### Слои и ответственность
+#### Layers and responsibilities
 
-Как было описано выше, благодаря слоистой структуре мы можем **предсказуемо распреледять сложность приложения** согласно [зонам ответственности, т.е. слоям][refs-layers].
+As described above, thanks to the layered structure, we can **predictably distribute the complexity of the application** according to [areas of responsibility, i.e. layers][refs-layers].
 
-При этом более высокоуровневая логика строится на основание нижележащих слоев:
+At the same time, a higher-level logic is built on the basis of the underlying layers:
 
 ```tsx
 // (shared)         => (entities)  + (features)     => (pages)
 <Card> + <Checkbox> => <TaskCard/> + <ToggleTask/>  => <TaskPage/>
 ```
 
-#### Подготовка модулей к использованию
+#### Preparing modules for use
 
-Каждый реализуемый модуль должен предоставлять к использованию свой [публичный интерфейс][refs-public-api]:
+Each implemented module must provide its own [public interface][refs-public-api] for use:
 
 ```ts title={layer}/foo/index.ts
 export { FooCard, FooThumbnail, ... } from "./ui";
@@ -427,9 +429,9 @@ export * as fooModel from "./model";
 
 :::info
 
-Если вам нужны именованные экспорты неймспейсов для декларации Public API, можно посмотреть в сторону [@babel/plugin-proposal-export-namespace-from](https://babeljs.io/docs/en/babel-plugin-proposal-export-namespace-from)
+If you need named namespace exports for the Public API declaration, you can look aside [@babel/plugin-proposal-export-namespace-from](https://babeljs.io/docs/en/babel-plugin-proposal-export-namespace-from)
 
-Либо же, как альтернатива, использовать более развернутую конструкцию
+Or, as an alternative, use a more detailed design
 
 ```ts title={layer}/foo/index.ts
 import { FooCard, FooThumbnail, ... } from "./ui";
@@ -440,13 +442,13 @@ export { FooCard, FooThumbnail, fooModel };
 
 :::
 
-### 2.3 Отобразим базово список задач
+### 2.3 Let's display the basic task list
 
-#### (entities) Карточка задачи
+#### (entities) Task card
 
 ```tsx title=entities/task/ui/task-row/index.tsx
 import { Link } from "react-router-dom";
-import cn from "classnames"; // Можно смело использовать аналоги
+import cn from "classnames"; // we can safely use the analogy 
 import { Row } from "antd"; // ~ "shared/ui/row"
 
 export const TaskRow = ({ data, titleHref }: TaskRowProps) => {
@@ -458,11 +460,11 @@ export const TaskRow = ({ data, titleHref }: TaskRowProps) => {
 }
 ```
 
-#### (entities) Подгрузка списка задач
+#### (entities) Loading the task list
 
-Можно разбивать по типу сущности, либо хранить все в duck-modular-стиле
+You can split it by the type of entity, or store everything in the duck-modular style
 
-> Более подробно с реализацией API по туториалу можно ознакомиться [здесь][ext-source-api]
+> For more information about the implementation of the API according to the tutorial, see [here][ext-source-api]
 
 ```ts title=entities/task/model/index.ts
 import { createStore, combine, createEffect, createEvent } from "effector";
@@ -471,26 +473,26 @@ import { useStore } from "effector-react";
 import { typicodeApi } from "shared/api";
 import type { Task } from "shared/api";
 
-// В каждом эффекте так же может быть своя доп. обработка
+// Each effect can also have its own additional. processing
 const getTasksListFx = createEffect((params?: typicodeApi.tasks.GetTasksListParams) => {
-  // Здесь также может быть доп. обработка эффекта
+  // There may also be an additional processing the effect
   return typicodeApi.tasks.getTasksList(params);
 });
 
-// Можно хранить и в нормализованном виде
+// Can also be stored in a normalized form
 export const $tasks = createStore<Task[]>([])
   .on(getTasksListFx.doneData, (_, payload) => ...)
 
 export const $tasksList = combine($tasks, (tasks) => Object.values(tasks));
-// Можно промаппить и другие вещи вроде `isEmpty`, `isLoading`, ...
+// You can also add other things like `isEmpty`, `isLoading`, ...
 ```
 
-#### (pages) Соединим всю логику на странице
+#### (pages) Let's connect all the logic on the page
 
 ```tsx title=pages/tasks-list/index.tsx
 import { useEffect } from "react";
-// Если чувствуете себя уверенно с @effector/reflect - можете сразу использовать его
-// В рамках quick-start некритично
+// If you feel confident with @effector/reflect - can use it 
+// Within the quick-start non-critical 
 import { useStore } from "effector";
 import { Layout, Row, Col, Typography, Spin, Empty } from "antd"; // ~ "shared/ui/{...}"
 
@@ -503,9 +505,9 @@ const TasksListPage = () => {
   const isEmpty = useStore(taskModel.$tasksListEmpty);
 
   /**
-   * Запрашиваем данные при загрузке страницы
-   * @remark Является плохой практикой в мире effector и представлено здесь - лишь для наглядной демонстрации
-   * Лучше фетчить через event.pageMounted или reflect
+   * Requesting data when loading the page
+   * @remark is a bad practice in the effector world and is presented here-just for a visual demonstration
+   * It is better to fetch via event.pageMounted or reflect
    */
   useEffect(() => taskModel.effects.getTasksListFx(), []);
 
@@ -537,9 +539,9 @@ const TasksListPage = () => {
 };
 ```
 
-### 2.4 Добавим переключение статуса задач
+### 2.4 Adding task status switching
 
-#### (entities) Переключение статуса задачи
+#### (entities) Switching the task status
 
 ```ts title=entities/task/model/index.ts
 export const toggleTask = createEvent<number>();
@@ -553,7 +555,7 @@ export const $tasks = createStore<Task[]>(...)
   }))
 
 
-// Делаем хуком, чтобы завязаться на обновления react
+// We make a hook to get involved in updates react
 export const useTask = (taskId: number): import("shared/api").Task | undefined => {
   return useStore($tasks)[taskId];
 };
@@ -561,9 +563,9 @@ export const useTask = (taskId: number): import("shared/api").Task | undefined =
 
 :::tip
 
-Для более удобного публичного API моделей можно отдельными объектами экспортировать селекторы/хуки/события и т.п.
+For a more convenient public API of models, you can export selectors/hooks/events, etc. as separate objects.
 
-**Но главное**, чтобы это не подрывало [анти-хрупкость][refs-public-api] модуля
+**But the main thing** is that this does not undermine [the anti-fragility][refs-public-api] of the module
 
 ```ts
 export const events = { toggleTask, setQueryConfig };
@@ -578,7 +580,7 @@ taskModel.events.toggleTask(taskId)
 
 :::
 
-#### (features) Чекбокс для задачи
+#### (features) Checkbox for the task
 
 ```tsx title=features/toggle-task/ui.tsx
 import { Checkbox } from "antd"; // ~ "shared/ui/checkbox"
@@ -598,11 +600,11 @@ export const ToggleTask = ({ taskId }: ToggleTaskProps) => {
 }
 ```
 
-#### (pages) Внедряем чекбокс в страницу
+#### (pages) Embedding the checkbox in the page
 
-Что примечательно - карточка задачи совсем не знает ни про страницу где используется, ни про то, какие кнопки-действия в нее могут вставляться (то же самое можно сказать и про саму фичу)
+What is noteworthy is that the task card does not know at all about the page where it is used, nor about what action buttons can be inserted into it (the same can be said about the feature itself)
 
-Такой подход позволяет одновременно **грамотно разделять ответственность** и **гибко переиспользовать логику при реализации**
+This approach allows you to simultaneously **competently share responsibility** and **flexibly reuse logic during implementation**
 
 ```tsx title=pages/tasks-list/index.tsx
 import { ToggleTask } from "features/toggle-task";
@@ -616,23 +618,23 @@ import { TaskRow, taskModel } from "entities/task";
 </Col>
 ```
 
-### 2.5 Добавим фильтрацию задач
+### 2.5 Adding task filtering
 
-#### (entities) Фильтрация на уровне данных
+#### (entities) Filtering at the data level
 
 ```ts title=entities/task/model/index.ts
 export type QueryConfig = { completed?: boolean };
 
 const setQueryConfig = createEvent<QueryConfig>();
 
-// Можно вынести в отдельную директорию (для хранения нескольких моделей)
+// Can be moved to a separate directory (for storing multiple models)
 export const $queryConfig = createStore<QueryConfig>({})
   .on(setQueryConfig, (_, payload) => payload)
 
 /**
- * Отфильтрованные таски
- * @remark Можно разруливать на уровне эффектов - но тогда нужно подключать дополнительную логику в стор
- * > Например скрывать/показывать таск при `toggleTask` событии
+ * Filtered Tasks
+ * @remark Can be handled at the effects level - but then you need to connect additional logic to the store
+ * > For example, hide / show the task at the `toggleTask` event
  */
 export const $tasksFiltered = combine(
   $tasksList,
@@ -645,11 +647,11 @@ export const $tasksFiltered = combine(
 );
 ```
 
-#### (features) UI-контролы для фильтров
+#### (features) UI controls for filters
 
 ```tsx title=features/tasks-filters/ui.tsx
-// Если чувствуете себя уверенно с @effector/reflect - можете сразу использовать его
-// В рамках quick-start некритично
+// If you feel confident with @effector/reflect, you can immediately use it
+// As part of quick-start uncritically
 import { useStore } from "effector";
 import { Radio } from "antd"; // ~ "shared/ui/radio"
 
@@ -676,15 +678,15 @@ export const const TasksFilters = () => {
 };
 ```
 
-#### (pages) Внедряем фильтрацию в страницу
+#### (pages) Implementing filtering in the page
 
-И мы снова реализовали логику, особо не задаваясь вопросами:
+And we implemented the logic again, without asking too many questions:
 
-- А куда положить логику фильтрации?
-- А могут ли эти фильтры переиспользоваться в будущем?
-- А могут ли фильтры знать про контекст страницы?
+- And where to put the filtering logic?
+- Can these filters be reused in the future?
+- Can filters know about the page context?
 
-Мы просто разделили логику согласно зонам ответственности (слоям)
+We just divided the logic according to the areas of responsibility (layers)
 
 ```tsx title=pages/tasks-list/index.tsx
 import { TasksFilters } from "features/tasks-filters";
@@ -699,29 +701,29 @@ import { TasksFilters } from "features/tasks-filters";
 
 :::note
 
-**К текущему этапу, такое разбиение может показаться излишним - "Почему бы не положить все сразу на уровне страницы / фичи"?**
+**At the current stage, such a division may seem superfluous - "Why not put everything at once at the page / feature level"?**
 
-Но тогда попробуем задать себе вопросы:
+But then let's try to ask ourselves questions:
 
-- А где гарантии, что сложность страницы не увеличится в будущем настолько, что все аспекты логики сильно будут переплетены? Как при этом без лишних затрат добавлять новую функциональность?
-- А где гарантии, что новый человек, пришедший в команду (или даже вы, если на полгода отойдете от проекта) - поймет, что здесь происходит?
-- А как построить логику, чтобы не нарушить поток данных / реактивность с другими фичами?
-- А что, если эта логика фильтрации настолько сильно прикрепится к контексту страницы, что ее будет невозможно использовать на других страницах?
+- And where are the guarantees that the complexity of the page will not increase in the future so much that all aspects of logic will be strongly intertwined? How can I add new functionality at no extra cost?
+- And where are the guarantees that a new person who has joined the team (or even you, if you leave the project for six months) will understand what is happening here?
+- And how to build logic so as not to disrupt the data flow / reactivity with other features?
+- What if this filtering logic is so strongly attached to the context of the page that it will be impossible to use it on other pages?
 
-Именно по этому мы и **разбиваем ответственность**, чтобы каждый слой занимался только одной задачей, и чтобы это понимал каждый из разработчиков
+This is why we **divide the responsibility** so that each layer is engaged in only one task, and so that each of the developers understands this
 
 :::
 
-### 2.6 Страница задачи
+### 2.6 Task Page
 
-Аналогичным образом реализуем страницу задачи:
+We implement the task page in the same way:
 
-- Выделяем shared логику
-- Выделяем entities логику
-- Выделяем features логику
-- Выделяем pages логику
+- We highlight the shared logic
+- We highlight the entities logic
+- We highlight the features logic
+- We highlight the pages logic
 
-#### (pages) Страница "Карточка задачи"
+#### (pages) The"Task Card" page
 
 ```tsx title=pages/task-details/index.tsx
 import { ToggleTask } from "features/toggle-task";
@@ -735,13 +737,13 @@ const TaskDetailsPage = (props: Props) => {
     const isLoading = useStore(taskModel.$taskDetailsLoading);
 
   /**
-   * Запрашиваем данные по задаче
-   * @remark Является плохой практикой в мире effector и представлено здесь - лишь для наглядной демонстрации
-   * Лучше фетчить через event.pageMounted или reflect
+   * Requesting data on the task
+   * @remark is a bad practice in the effector world and is presented here-just for a visual demonstration
+   * It is better to fetch via event.pageMounted or reflect
    */
     useEffect(() => taskModel.getTaskByIdFx({ taskId }), [taskId]);
 
-    // Можно часть логики перенести в entity/task/card (как контейнер)
+    // You can transfer part of the logic to entity/task/card (as a container)
     if (!task && !isLoading) {
         return ...
     }
@@ -766,68 +768,68 @@ const TaskDetailsPage = (props: Props) => {
 };
 ```
 
-### 2.7 Что дальше?
+### 2.7 What's next?
 
-А дальше поступают новые задачи, выявляются новые требования
+And then new tasks arrive, new requirements are identified
 
-При этом старая кодовая база не требует значительных переработок
+At the same time, the old code base does not require significant rework
 
-#### Появилась функциональность, завязанная на пользователе?
+#### Has the functionality tied to the user appeared?
 
-=> Добавляем `entities/user`
+=> Adding `entities/user`
 
-#### Понадобилось поменять логику фильтрации?
+#### Did you need to change the filtering logic?
 
-=> Меняем обработку на `entities` или `pages` уровне, в зависимости от масштабности
+=> Changing the processing at the `entities` or `pages` level, depending on the scale
 
-#### Нужно добавить больше фичей в карточку задачи, но при этом, чтобы ее можно было использовать по-старому?
+#### Do you need to add more features to the task card, but at the same time, so that it can be used in the old way?
 
-=> Добавляем фичи и вставляем их в карточку только на нужной **странице**
+=> Add features and insert them into the card only on the desired **page**
 
-#### Какой-то модуль стал слишком сложным для поддержки?
+#### Has a module become too complex to support?
 
- => Благодаря заложенной архитектуре, мы можем изолированно отрефакторить только этот модуль - без неявных сайд-эффектов для других [(и даже переписать с нуля)](https://youtu.be/BWAeYuWFHhs?t=1625)
+ => Thanks to the embedded architecture, we can only factor this module in isolation-without implicit side effects for others [(and even rewrite it from scratch)](https://youtu.be/BWAeYuWFHhs?t=1625)
 
-## Итого
+## Total
 
-### Мы научились применять методологию для базовых случаев
+### We have learned how to apply the methodology for basic cases
 
-Понятно, что мир гораздо сложнее, но уже здесь мы зацепились за некоторые спорные моменты и разрешили их таким образом, чтобы проект оставался поддерживаемым и расширяемым.
+It is clear that the world is much more complicated, but already here we have caught on to some controversial points and resolved them in such a way that the project remains supported and extensible.
 
-### Мы получили масштабируемую и гибкую кодобазу
+### We got a scalable and flexible codebase
 
-1. Переиспользуемые и расширяемые модули
+1. Reused and expandable modules
 
     - *shared, features, entities*
 
-1. Равномерное и предсказуемое распределение логики
+1. Uniform and predictable distribution of logic
 
-    - *Поскольку композиция у нас идет в одном направлении (вышележащие слои используют нижележащие) - мы можем предсказуемо ее отслеживать и модифицировать, не боясь непредвиденных последствий*
+    - *Since the composition goes in the same direction (the overlying layers use the underlying ones) , we can predictably track and modify it without fear of unforeseen consequences*
 
-1. Структуру приложения, которая рассказывает о бизнес логике сама за себя
+1. The structure of the application, which tells about the business logic for itself
 
-    - Какие есть страницы?
+    - What pages are there?
         - `TasksList`, `TaskDetails`
-    - Какие есть фичи? Что может пользователь?
+    - What features are there? What can the user do?
         - `ToggleTask` `TasksFilters`
-    - Какие есть бизнес-сущности? С чем ведется работа?
+    - What are the business entities? What is the work being done with?
         - `Task (TaskCard, ...)`
-    - Что можно переиспользовать из вспомогательного?
+    - What can be reused from the auxiliary?
         - `UIKit (Card, ...)` `API (tasksApi)`
 
-### Пример
+### Example
 
-Ниже в [Codesandbox][ext-sandbox] представлен пример получившегося TodoApp, где можно подробно изучить финальную структуру приложения
+Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, where you can study in detail the final structure of the application
 
 <iframe class="codesandbox" src="https://codesandbox.io/embed/github/feature-sliced/examples/tree/master/todo-app?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&codemirror=1" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
 
-## См. также
+## See also
 
-- [(Обзор) How to Organize Your React + Redux Codebase][ext-pluralsight]
-  - Разбор нескольких подходов к структуризации React проектов
-- [Гайды и примеры применения методологии (+ Миграция с v1)][refs-guides]
-- [Про разбиение приложения][refs-splitting]
-- [Справочный материал по методологии][refs-reference]
+- [(Overview) How to Organize Your React + Redux Codebase][ext-pluralsight]
+  - Analysis of several approaches to structuring React projects
+- [Guides and examples of the methodology application (+ Migration from v1)][refs-guides]
+- [About splitting the application][refs-splitting]
+- [Reference material on the methodology][refs-reference]
 
 [refs-motivation]: /docs/get-started/motivation
 
