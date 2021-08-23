@@ -104,7 +104,7 @@
     "description": "Feature Sliced versions"
   },
   "pages.versions.current": {
-    "message": "The documentation for the currently published version of {of} can be found here",
+    "message": "The documentation for the currently published version can be found here",
     "description": "Description for current version"
   },
   "pages.versions.legacy": {

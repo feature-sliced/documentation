@@ -84,7 +84,7 @@
     "description": "Page title"
   },
   "pages.examples.subtitle": {
-    "message": "Список сайтов, построенных людьми с FeatureSliced",
+    "message": "Список сайтов, сделанных людьми с FeatureSliced",
     "description": "Page subtitle"
   },
   "pages.examples.add_me.title": {
@@ -104,7 +104,7 @@
     "description": "Feature Sliced versions"
   },
   "pages.versions.current": {
-    "message": "Здесь можно найти документацию для текущей опубликованной версии {of}",
+    "message": "Здесь можно найти документацию для текущей опубликованной версии",
     "description": "Description for current version"
   },
   "pages.versions.legacy": {
