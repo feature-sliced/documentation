@@ -5,6 +5,7 @@ const TELEGRAM = "https://t.me/feature_sliced";
 const YOUTUBE = "https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A";
 const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
+const DEFAULT_LOCALE = "ru";
 
 // Конкретные страницы нужны, т.к. отдельно секции доки не индексируются
 // FIXME: Будет исправлено позднее
@@ -158,7 +159,7 @@ const presets = [
         "@docusaurus/preset-classic",
         {
             docs: {
-                path: "i18n/en/docusaurus-plugin-content-docs/current",
+                path: `i18n/${DEFAULT_LOCALE}/docusaurus-plugin-content-docs/current`,
                 sidebarPath: require.resolve("./sidebars.js"),
                 // Please change this to your repo.
                 editUrl: `${GITHUB_DOCS}/edit/master/website/`,
@@ -264,14 +265,14 @@ module.exports = {
         hideableSidebar: true,
     },
     i18n: {
-        defaultLocale: "en",
+        defaultLocale: DEFAULT_LOCALE,
         locales: ["ru", "en"],
         localeConfigs: {
             ru: {
                 label: "Русский",
             },
             en: {
-                label: "English",
+                label: "English (NOT_READY)",
             },
         },
     },
