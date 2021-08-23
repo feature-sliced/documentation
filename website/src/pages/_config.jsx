@@ -8,75 +8,46 @@ import {
     LikeOutlined,
     BuildOutlined,
 } from "@ant-design/icons";
+import Translate, { translate } from "@docusaurus/Translate";
 
 export const features = [
     {
-        title: "Explicit business-logic",
+        title: translate({ id: "pages.home.features.logic.title" }),
         Icon: EyeOutlined,
-        description: (
-            <>
-                Архитектуру <b>легко осваивать</b>, поскольку она состоит из доменных модулей
-            </>
-        ),
+        description: <Translate id="pages.home.features.logic.description" />,
     },
     {
-        title: "Adaptability",
+        title: translate({ id: "pages.home.features.adaptability.title" }),
         Icon: LoginOutlined,
-        description: (
-            <>
-                Компоненты архитектуры можно <b>гибко заменять, добавлять под новые условия</b>
-            </>
-        ),
+        description: <Translate id="pages.home.features.adaptability.description" />,
     },
     {
-        title: "Tech debt & Refactoring",
+        title: translate({ id: "pages.home.features.debt.title" }),
         Icon: FileProtectOutlined,
-        description: (
-            <>
-                Каждый модуль можно <b>независимо</b> модифицировать / переписать{" "}
-                <b>без сайд-эффектов</b>
-            </>
-        ),
+        description: <Translate id="pages.home.features.debt.description" />,
     },
     {
-        title: "Explicit sharing",
+        title: translate({ id: "pages.home.features.shared.title" }),
         Icon: BuildOutlined,
-        description: (
-            <>
-                Сохраняется баланс между <b>DRY и локальной кастомизацией</b>
-            </>
-        ),
+        description: <Translate id="pages.home.features.shared.description" />,
     },
 ];
 
 export const concepts = [
     {
-        title: "Public API",
+        title: translate({ id: "pages.home.concepts.public.title" }),
         Icon: ApiOutlined,
-        description: (
-            <>
-                Каждый модуль должен иметь на верхнем уровне декларацию <b>своего публичного API</b>
-            </>
-        ),
+        description: <Translate id="pages.home.concepts.public.description" />,
     },
     {
-        title: "Isolation",
+        title: translate({ id: "pages.home.concepts.isolation.title" }),
         Icon: BlockOutlined,
-        description: (
-            <>
-                Модуль не должен <b>зависеть напрямую</b> от других модулей того же слоя или
-                вышележаших слоев
-            </>
-        ),
+        description: <Translate id="pages.home.concepts.isolation.description" />,
     },
     {
-        title: "Needs driven",
+        title: translate({ id: "pages.home.concepts.needs.title" }),
         Icon: LikeOutlined,
-        description: (
-            <>
-                Ориентирование <b>на потребности бизнеса и пользователя</b>
-            </>
-        ),
+        description: <Translate id="pages.home.concepts.needs.description" />,
     },
 ];
 
