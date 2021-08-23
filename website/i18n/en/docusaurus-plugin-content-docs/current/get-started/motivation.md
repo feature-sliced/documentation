@@ -4,144 +4,144 @@ sidebar_position: 2
 
 # Motivation
 
-Главная идея **feature-sliced** - облегчить и удешевить разработку комплексных и развивающихся проектов, на основании [объединения результатов исследований, обсуждения опыта разного рода широкого круга разработчиков][ext-discussions].
+The main idea of **feature-sliced** is to facilitate and reduce the cost of developing complex and developing projects, based on [combining research results, discussing the experience of various kinds of a wide range of developers][ext-discussions].
 
-Очевидно, что это не будет серебряной пулей, и само собой, у методологии будут свои [границы применимости][refs-mission].
+Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability] [refs-mission].
 
-Тем не менее, возникают резонные вопросы, касаемо *целесообразности такой методологии в целом*
+Nevertheless, there are reasonable questions regarding *the feasibility of such a methodology as a whole*
 
 :::note
 
-Более подробно [обсудили в дискуссии][disc-src]
+More details [discussed in the discussion][disc-src]
 
 :::
 
-## Почему не хватает существующих решений?
+## Why are there not enough existing solutions?
 <!--TODO: #existing-solutions -->
-> Речь обычно о таких аргументах:
+> It usually, these arguments:
 >
-> - *"Зачем нужна отдельная новая методология, если уже есть давно зарекомендовавшие себя подходы и принципы проектирования `SOLID`, `KISS`, `YAGNI`, `DDD`, `GRASP`, `DRY` и т.д."*
-> - *"Все проблемы проекта решаются хорошей документацией, тестами и выстроенными процессами"*
-> - *"Проблем бы и не было - если бы все разработчики следовали всему выше перечисленному"*
-> - *"Все придумано уже до вас, вы просто не можете этим пользоваться"*
-> - *"Возьмите {FRAMEWORK_NAME} - там решено уже все за вас"*
+> - *"Why you need some new methodology, if you already have long-established approaches and principles of design `SOLID`, `KISS`, `YAGNI`, `DDD`, `GRASP`, `DRY`, etc."*
+> - *"All the problems are solved by good project documentation, tests, and structured processes"*
+> - *"Problems would not have happened if all developers are following all the above"*
+> - *"Everything was invented before you, you just can't use it"*
+> - *"Take {FRAMEWORK_NAME} - everything has already been decided for you there"*
 
-### Одних принципов недостаточно
+### Principles alone are not enough
 
-**Только существования принципов недостаточно для проектирования хорошей архитектуры**
+**The existence of principles alone is not enough to design a good architecture**
 
-Не все их знают до конца, еще меньше правильно понимают и применяют
+Not everyone knows them completely, even fewer understand and apply them correctly
 
-*Принципы проектирования слишком общие, и не дают конкретного ответа на вопрос: "А как спроектировать структуру и архитектуру масштабируемого и гибкого приложения?"*
+*The design principles are too general, and do not give a specific answer to the question: "How to design the structure and architecture of a scalable and flexible application?"*
 
-### Процессы не всегда работают
+### Processes don't always work
 
-*Документация/Тесты/Процессы* - это, конечно, хорошо, но увы, даже при больших затратах на них - **они не всегда решают поставленных проблем по архитектуре и внедрению новых людей в проект**
+*Documentation/Tests/Processes* are, of course, good, but alas, even at high costs for them - **they do not always solve the problems posed by the architecture and the introduction of new people into the project**
 
-- Время входа каждого разработчика в проект не сильно уменьшается, т.к. документация чаще всего выйдет огромной / устаревшей
-- Постоянно следить за тем, что каждый понимает архитектуру одинаково - требует также колоссального количества ресурсов
-- Не забываем и про bus-factor
+- The time of entry of each developer into the project is not greatly reduced, because the documentation will most often come out huge / outdated
+- Constantly make sure that everyone understands architecture in the same way-it also requires a huge amount of resources
+- Do not forget about the bus-factor
 
-### Существующие фреймворки не везде могут быть применены
+### Existing frameworks cannot be applied everywhere
 
-- Имеющиеся решения, как правило, имеют высокий порог входа, из-за чего сложно найти новых разработчиков
-- Также, чаще всего, выбор технологии уже определен до наступления серьезных проблем в проекте, а потому нужно уметь "работать с тем что есть" - **не привязываясь к технологии**
+- Existing solutions, as a rule, have a high entry threshold, which makes it difficult to find new developers
+- Also, most often, the choice of technology has already been determined before the onset of serious problems in the project, and therefore you need to be able to "work with what is" - **without being tied to the technology**
 
-> Q: *"У меня в проекте `React/Vue/Redux/Effector/Mobx/{YOUR_TECH}` - как мне лучше выстроить структуру сущностей и связи между ними?"*
+> Q: *"In my project `React/Vue/Redux/Effector/Mobx/{YOUR_TECH}` - how can I better build the structure of entities and the relationships between them?"*
 
-### По итогу
+### As a result
 
-Получаем *"уникальные как снежинки"* проекты, каждый из которых требует длительного погружения сотрудника, и знания, которые вряд ли будут применимы на другом проекте
+We get *"unique as snowflakes"* projects, each of which requires a long immersion of the employee, and knowledge that is unlikely to be applicable on another project
 
-> @sergeysova: *"Это ровно та ситуация, которая сейчас есть в нашей сфере frontend разработки: каждый лид напридумает себе различных архитектур и структур проекта, при этом не факт, что эти структуры пройдут проверку временем, в итоге кроме него развивать проект могут максимум два человека и каждого нового разработчика нужно погружать снова."*
+> @sergeysova: *"This is exactly the situation that currently exists in our field of frontend development: each lead will invent different architectures and project structures, while it is not a fact that these structures will pass the test of time, as a result, a maximum of two people can develop the project besides him, and each new developer needs to be immersed again."*
 
-## Зачем методология разработчикам?
+## Why do developers need the methodology?
 
-### Концентрация на бизнес-фичах, а не на проблемах архитектуры
+### Focus on business features, not on architecture problems
 
-Методология позволяет экономить ресурсы на проектировании масштабируемой и гибкой архитектуры, вместо этого направляя внимание разработчиков на разработку основной функциональности. При этом стандартизируются и сами архитектурные решения из проекта в проект.
+The methodology allows you to save resources on designing a scalable and flexible architecture, instead directing the attention of developers to the development of the main functionality. At the same time, the architectural solutions themselves are standardized from project to project.
 
-*Отдельный вопрос, что методология должна заслужить доверие комьюнити, чтобы другой разработчик мог в имеющиеся у него сроки ознакомиться и положиться на нее при решении проблем своего проекта*
+*A separate question is that the methodology should earn the trust of the community, so that another developer can get acquainted with it and rely on it in solving the problems of his project within the time available to him*
 
-### Проверенное опытом решение
+### An experience-proven solution
 
-Методология рассчитана на разработчиков, нацеленных на *проверенное опытом решение по проектированию комплексной бизнес-логики*
+The methodology is designed for developers who are aimed at *a proven solution for designing complex business logic*
 
-*Однако ясно, что методология - это в целом про набор best-practices, статьи, рассматривающие определенные проблемы и кейсы при разработке. Поэтому - польза от методологии будет и для остального круга разработчиков - кто так или иначе сталкивается с проблемами при разработке и проектировании*
+*However, it is clear that the methodology is generally about a set of best-practices, articles that address certain problems and cases during development. Therefore, the methodology will also be useful for the rest of the developers-who somehow face problems during development and design*
 
-### Здоровье проекта
+### Project Health
 
-Методология позволит *заблаговременно решать и отслеживать проблемы проекта, не требуя огромного количества ресурсов*
+The methodology will allow *to solve and track the problems of the project in advance, without requiring a huge amount of resources*
 
-**Чаще всего тех.долг копится и копится со временем, и ответственность за его разрешение лежит и на лиде, и на команде**
+**Most often, technical debt accumulates and accumulates over time, and the responsibility for its resolution lies on both the lead and the team**
 
-Методология же позволит *заранее предупреждать* возможные проблемы при масштабировании и развитии проекта
+The methodology will allow you to *warn* possible problems in the scaling and development of the project in advance
 
-## Зачем методология бизнесу?
+## Why does a business need a methodology?
 
-### Быстрый onboarding
+### Fast onboarding
 
-С методологией можно нанять человека в проект, который **уже предварительно знаком с таким подходом, а не обучать заново**
+With the methodology, you can hire a person to the project who **is already previously familiar with this approach, and not train again**
 
-*Люди начинают быстрее вникать и приносить пользу проекту, а также появляются дополнительные гарантии найти людей на следующие итерации проекта*
+*People start to understand and benefit the project faster, and there are additional guarantees to find people for the next iterations of the project*
 
-### Проверенное опытом решение
+### An experience-proven solution
 
-С методологией бизнес получит *решение для большинства вопросов, возникающих при разработке систем*
+With the methodology, the business will get *a solution for most of the issues that arise during the development of systems*
 
-Поскольку чаще всего бизнес хочет получить фреймворк/решение, которое бы решало львиную долю проблем при развитии проекта
+Since most often a business wants to get a framework / solution that would solve the lion's share of problems during the development of the project
 
-### Применимость для разных стадий проекта
+### Applicability for different stages of the project
 
-Методология может принести пользу проекту *как на этапе поддержки и развития проекта, так и на этапе MVP*
+The methodology can benefit the project *both at the stage of project support and development, and at the MVP stage*
 
-Да, на MVP чаще всего важнее *"фичи, а не заложенная на будущее архитектура"*. Но даже в условиях ограниченных сроков, зная best-practices из методологии - можно *"обойтись малой кровью"*, при проектировании MVP-версии системы, находя разумный компромисс
-(нежели лепить фичи "как попало")
+Yes, the most important thing for MVP is *"features, not the architecture laid down for the future"*. But even in conditions of limited deadlines, knowing the best-practices from the methodology, you can *"do with little blood"*, when designing the MVP version of the system, finding a reasonable compromise
+(rather than modeling features "at random")
 
-*То же самое можно сказать и про тестирование*
+*The same can be said about testing*
 
-## Когда наша методология не нужна?
+## When is our methodology not needed?
 
-- Если проект будет жить короткое время
-- Если проект не нуждается в поддерживаемой архитектуре
-- Если бизнес не воспринимает связь кодовой базы и скорости деливеринга фич
-- Если бизнесу важнее поскорей закрыть заказы, без дальнейшей поддержки
+- If the project will live for a short time
+- If the project does not need a supported architecture
+- If the business does not perceive the connection between the code base and the speed of feature delivery
+- If it is more important for the business to close orders as soon as possible, without further support
 
-### Размеры бизнеса
+### Business Size
 
-- **Малый бизнес** - чаще всего нуждается в готовом и очень быстром решении. Только при росте бизнеса (хотя бы до почти среднего), он понимает - чтобы клиенты продолжали пользоваться, нужно в том числе уделить время качеству и стабильности разрабатываемых решений
-- **Средний бизнес** - обычно понимает все проблемы разработки, и даже если приходится *"устраивать гонку за фичами"*, он все равно уделяет время на доработки по качеству, рефакторинг и тесты (и само собой - на расширяемую архитектуру)
-- **Большой бизнес** - обычно уже имеет обширную аудиторию, штат сотрудников, и гораздо более обширный набор своих практик, и наверное даже - свой подход к архитектуре, поэтому идея взять чужую - им приходит не так часто
+- **Small business** - most often needs a ready-made and very fast solution. Only when the business grows (at least to almost average), he understands that in order for customers to continue using, it is necessary, among other things, to devote time to the quality and stability of the solutions being developed
+- **Medium-sized business** - usually understands all the problems of development, and even if it is necessary to *"arrange a race for features"*, he still spends time on quality improvements, refactoring and tests (and of course-on an extensible architecture)
+- **Big business** - usually already has an extensive audience, staff, and a much more extensive set of its practices, and probably even its own approach to architecture, so the idea of taking someone else's comes to them not so often
 
-## Планы
+## Plans
 
-Основная часть целей [изложена здесь][refs-mission--goals], но помимо этого, стоит проговорить и наши ожидания от методологии в будущем
+The main part of the goals [is set out here][refs-mission--goals], but in addition, it is worth talking about our expectations from the methodology in the future
 
-### Объединение опыта
+### Combining experience
 
-Сейчас мы пытаемся объединить весь наш разнородный опыт `core-team`, и получить по итогу закаленную практикой методологию
+Now we are trying to combine all our diverse experience of the `core-team`, and get a methodology hardened by practice as a result
 
-Конечно, мы можем получить по итогу Angular 3.0., но гораздо важней здесь - **исследовать саму проблему проектирования архитектуры сложных систем**
+Of course, we can get Angular 3.0 as a result, but it is much more important here to **investigate the very problem of designing the architecture of complex systems**
 
-*И да - у нас есть претензии и к текущей версии методологии, но мы хотим общими усилиями прийти к единому и оптимальному решению (учитывая, в том числе, и опыт комьюнити)*
+*And yes - we have complaints about the current version of the methodology, but we want to work together to come to a single and optimal solution (taking into account, among other things, the experience of the community)*
 
-### Жизнь вне спецификации
+### Life outside the specification
 
-Если все сложится хорошо, то методология не будет ограничиваться только спецификацией и тулкитом
+If everything goes well, then the methodology will not be limited only to the specification and the toolkit
 
-- Возможно будут и доклады, статьи
-- Возможно будут `CODE_MODEs` для миграций на другие технологии проектов, написанных согласно методологии
-- Не исключено, что по итогу сможем дойти и до мейнтейнеров крупных технологических решений
-  - *Особенно для React, по сравнению с другими фреймворками - это главная проблема, т.к. он не говорит как решать определенные проблемы*
+- Perhaps there will be reports, articles
+- There may be `CODE_MODEs` for migrations to other technologies of projects written according to the methodology
+- It is possible that as a result we will be able to reach the maintainers of large technological solutions
+  - *Especially for React, compared to other frameworks - this is the main problem, because it does not say how to solve certain problems*
 
-## См. также
+## See also
 
-- [(Обсуждение) Методология не нужна?][disc-src]
-- [О миссии методологии: цели и ограничения][refs-mission]
-- [Типы знаний в проекте][refs-knowledge]
+- [(Discussion) Don't need a methodology?][disc-src]
+- [About the methodology's mission: goals and limitations][refs-mission]
+- [Types of knowledge in the project][refs-knowledge]
 
 [refs-mission]: /docs/about/mission
-[refs-mission--goals]: /docs/about/mission#цели
+[refs-mission--goals]: /docs/about/mission#goals
 [refs-knowledge]: /docs/reference/knowledge-types
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/27
