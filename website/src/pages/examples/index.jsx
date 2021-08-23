@@ -1,8 +1,8 @@
 import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
-import { ExampleCard } from "@site/src/entities/example";
 import { translate } from "@docusaurus/Translate";
+import { ExampleCard } from "@site/src/entities/example";
 
 import { examples } from "./_config";
 

@@ -5,9 +5,8 @@ import getBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
 // eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
-// NOTE: import from root level, because same image is used at main README.md
-import { Header } from "@site/src/features/header";
 import { translate } from "@docusaurus/Translate";
+import { Header } from "@site/src/features/header";
 import { Card, Section } from "@site/src/shared/ui";
 import imgScheme from "@site/static/img/visual_schema.jpg";
 // NOTE: Locate at index before of specific route-mapping while Node/SSR building
