@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-sidebar_label: Needs driven
+sidebar_label: Понимание потребностей
 ---
 
 # О понимании потребностей и о формулировке задач

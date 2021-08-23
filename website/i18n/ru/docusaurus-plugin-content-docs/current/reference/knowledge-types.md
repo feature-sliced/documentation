@@ -1,6 +1,5 @@
 ---
 sidebar_position: 10
-sidebar_label: Knowledge types
 ---
 
 # Типы знаний в проекте
