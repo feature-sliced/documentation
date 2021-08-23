@@ -160,6 +160,7 @@ const presets = [
         {
             docs: {
                 path: `i18n/${DEFAULT_LOCALE}/docusaurus-plugin-content-docs/current`,
+                editLocalizedFiles: true,
                 sidebarPath: require.resolve("./sidebars.js"),
                 // Please change this to your repo.
                 editUrl: `${GITHUB_DOCS}/edit/master/website/`,
