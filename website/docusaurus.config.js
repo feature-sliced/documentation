@@ -158,7 +158,7 @@ const presets = [
         "@docusaurus/preset-classic",
         {
             docs: {
-                path: "../docs",
+                path: "i18n/en/docusaurus-plugin-content-docs/current",
                 sidebarPath: require.resolve("./sidebars.js"),
                 // Please change this to your repo.
                 editUrl: `${GITHUB_DOCS}/edit/master/website/`,
@@ -264,11 +264,14 @@ module.exports = {
         hideableSidebar: true,
     },
     i18n: {
-        defaultLocale: "ru",
-        locales: ["ru"],
+        defaultLocale: "en",
+        locales: ["ru", "en"],
         localeConfigs: {
             ru: {
                 label: "Русский",
+            },
+            en: {
+                label: "English",
             },
         },
     },
