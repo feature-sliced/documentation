@@ -6,101 +6,101 @@ sidebar_position: 4
 
 ## Group: `Layers`
 
-Первый уровень разделения: по **скоупу влияния** модуля
+The first level of separation: according to the **scope of the influence** of the module
 
-:::note Самопроверка
+:::note Self-test
 
-"К какому слою приложения относится модуль?"
+"Which application layer does the module belong to?"
 
 :::
 
 ```sh
 └── src/
-    ├── app/                    # Инициализирующая логика приложения
-    ├── processes/              # (Опц.) Процессы приложения, протекающие над страницами
-    ├── pages/                  # Страницы приложения
-    ├── features/               # Ключевая функциональность приложения
-    ├── entities/               # Бизнес-сущности
-    └── shared/                 # Переиспользуемые модули
+    ├── app/                    # Initializing application logic
+    ├── processes/              # (Optional) Application processes running over pages
+    ├── pages/                  # Application Pages
+    ├── features/               # Key functionality of the application
+    ├── entities/               # Business entities
+    └── shared/                 # Reused modules
 ```
 
-### Порядок слоев
+### Layer order
 
-Если посмотреть на порядок слоев - то можно выделить две закономерности:
+If you look at the order of the layers , you can distinguish two patterns:
 
-#### По уровню знания/ответственности
+#### By the level of knowledge/responsibility
 
 `app` > `processes` > `pages` > `features` > `entities` > `shared`
 
-Модуль "знает" только про себя и нижележащие модули, но не выше лежащие
+The module "knows" only about itself and the underlying modules, but not the ones lying above
 
-*Это же влияет и на разрешенные импорты*
+*This also affects the allowed imports*
 
-#### По уровню опасности изменений
+#### By the level of danger of changes
 
 `shared` > `entities` > `features` > `pages` > `processes` > `app`
 
-Чем ниже расположен модуль - тем опаснее вносить в него изменения
+The lower the module is located , the more dangerous it is to make changes to it
 
-*Т.к. скорее всего он заиспользован во многих вышележащих слоях*
+*Because most likely it is used in many overlying layers*
 
 ## Group: `Slices`
 
-Второй уровень разделения: по **конкретной функциональности БЛ**
+The second level of separation: by **specific BL functionality**
 
-*Методология почти не влияет на этот уровень и многое зависит [от конкретного проекта][disc-usability]*
+*The methodology has almost no effect on this level and much depends [on the specific project][disc-usability]*
 
-:::note Самопроверка
+:::note Self-test
 
-"Какую область БЛ затрагивает модуль?"
+"What area of BL does the module affect?"
 
-*До этого - надо определится со скоупом влияния (layer)*
+*Before that , it is necessary to determine the scope of influence (layer)*
 
 :::
 
 ```sh
 ├── app/
-|   # Не имеет конкретных слайсов, 
-|   # Т.к. там содержится мета-логика над проектом и его инициализации
+|   # Does not have specific slices, 
+|   # Because it contains meta-logic on the project and its initialization
 ├── processes/
-|   # Слайсы для реализации процессов на страницах
+|   # Slices for implementing processes on pages
 |   ├── payment
 |   ├── auth
 |   ├── quick-tour
 |   └── ...
 ├── pages/
-|   # Слайсы для реализации страниц приложения
-|   # При этом, в силу специфики роутинга - могут вкладываться друг в друга
+|   # Slices for implementing application pages
+|   # At the same time, due to the specifics of routing, they can be invested in each other
 |   ├── profile
 |   ├── sign-up
 |   ├── feed
 |   └── ...
 ├── features/
-|   # Слайсы для реализации конкретной функциональности на страницах
+|   # Slices for implementing specific functionality on pages
 |   ├── auth-by-phone
 |   ├── inline-post
 |   └── ...
 ├── entities/
-|   # Слайсы бизнес-сущностей для реализации более сложной БЛ
+|   # Slices of business entities for implementing a more complex BL
 |   ├── viewer
 |   ├── posts
 |   ├── i18n
 |   └── ...
 ├── shared/
-|    # Не имеет конкретных слайсов
-|    # Представляет собой скорее набор общеиспользуемых сегментов, без привязки к БЛ
+|    # Does not have specific slices
+|    # is rather a set of commonly used segments, without binding to the BL
 ```
 
-### Правила
+### Rules
 
-Поскольку слайс представляет собой конкретный уровень абстракции, то методология обязана наложить на него определенные правила
+Since a slice is a specific level of abstraction, the methodology is obliged to impose certain rules on it
 
 #### Low Coupling & High Cohesion
 
-Слайсы одного слоя [не могут использовать друг друга напрямую][ref-low-coupling], а их взаимодействие и композиция должны определяться на более верхнем слое, относительно их текущего
+Slices of the same layer [cannot use each other directly][ref-low-coupling], and their interaction and composition should be determined on the upper layer, relative to their current one
 
 ```js title=features/baz/ui.tsx
-// Плохо: фича импортит другую фичу (слайсы одного слоя)
+// Bad: the feature imports another feature (slices of the same layer)
 import { Bar } from "features/bar"
 
 function Baz({ foo, ...barProps}) {
@@ -110,7 +110,7 @@ function Baz({ foo, ...barProps}) {
 ```
 
 ```js title=pages/foo/ui.tsx
-// Хорошо: фичи компонуются на странице (вышележащий слой)
+// Good: features are compiled on the page (overlying layer)
 import { Baz } from "features/baz"
 import { Bar } from "features/bar"
 
@@ -124,18 +124,18 @@ function Foo() {
 
 #### Grouping
 
-- В большинстве случаев следует избегать вложенности в слайсах, а использовать лишь [структурную группировку по папкам][ref-grouping], без дополнительной связующей логики
+* In most cases, you should avoid nesting in slices, and use only [structural grouping by folders][ref-grouping], without additional linking logic
 
     ```diff
-    features/order/           # Группа фич
-       ├── add-to-cart        # Полноценная фича
-       ├── total-info         # Полноценная фича
-    -  ├── model.ts           # Общая логика для группы
-    -  ├── hooks.ts           # Общие хуки для группы
-       └── index.ts           # Публичный API с реэкспортом фич
+    features/order/           # Feature group
+       ├── add-to-cart        # Full-fledged feature
+       ├── total-info         # Full-fledged feature
+    -  ├── model.ts           # General logic for the group
+    -  ├── hooks.ts           # General hooks for the group
+       └── index.ts           # Public API with feature re-export
     ```
 
-- При этом некоторые слои (например pages), изначально требуют вложенности из-за требований проекта / фреймворка
+* At the same time, some layers (for example, pages) initially require nesting due to the requirements of the project / framework
 
     ```sh
     pages/
@@ -153,77 +153,80 @@ function Foo() {
        ├── catalog/
     ```
 
-:::caution Важно
+:::caution Important
 
-Следует по-максимуму избегать вложенных слайсов, но даже если приходится их использовать (например для pages) нужно [связывать их явным образом][ref-low-coupling], во избежание непредвиденных последствий
+Nested slices should be avoided as much as possible, but even if you have to use them (for example, for pages), you need to [link them explicitly][ref-low-coupling], to avoid unforeseen consequences
 
 :::
 
 ## Group: `Segments`
 
-Третий уровень разделения: по **назначению модуля в коде и реализации**
+The third level of separation: by **the purpose of the module in the code and implementation**
 
-:::note Самопроверка
+:::note Self-test
 
-"Какую часть тех. реализации логики затрагивает модуль?"
+"What part of the technical implementation of the logic affects the module?"
 
-*До этого - надо определится со скоупом влияния (слой) и доменной принадлежностью (слайсом)*
+*Before that, it is necessary to determine the scope of influence (layer) and domain affiliation (slice)*
 
 :::
 
 ```sh
 {layer}/
     ├── {slice}/
-    |   ├── ui/                     # UI-логика (components, ui-widgets, ...)
-    |   ├── model/                  # Бизнес-логика (store, actions, effects, reducers, ...)
-    |   ├── lib/                    # Инфраструктурная логика (utils/helpers)
-    |   ├── config*/                # Конфигурация (проекта / слайса)
-    |   └── api*/                   # Логика запросов к API (api instances, requests, ...)
+    |   ├── ui/                     # UI-logic (components, ui-widgets,...)
+    |   ├── model/                  # Business logic (store, actions, effects, reducers,...)
+    |   ├── lib/                    # Infrastructure logic (utils/helpers)
+    |   ├── config*/                # Configuration (of the project / slice)
+    |   └── api*/                   # Logic of API requests (api instances, requests,...)
 ```
 
-*При этом, каждый сегмент может быть представлен **как в виде файла, так и в виде отдельной директории** - в зависимости от сложности и размеров*
+*At the same time, each segment can be represented **as a file, or as a separate directory** - depending on the complexity and size*
 
-### Ограничения
+### Restrictions
 
-Методология разрабатывалась с целью - не ограничивать и не утруждать разработчиков правилами выбора абстракций *(хотелось, чтобы **любой из сегментов можно было использовать в любом слое**)*
+The methodology was developed with the aim of not limiting and not bothering developers with the rules for choosing abstractions *(I wanted **any of the segments to be used in any layer**)*
 
-Однако в результате [дискуссий и анализа обширного опыта][disc-list] - было определено, что лучше и практичнее **ограничить каждый слой на используемые внутри сегменты**.
+However, as a result of [discussions and analysis of extensive experience][disc-list] - it was determined that it is better and more practical **to limit each layer to segments used internally**.
 
-#### Общие правила
+#### General rules
 
-1. Чем **выше расположен** слой - тем больше он знает про БЛ приложения и наоборот
-2. API логику [рекомендуется][disc-api] класть в `shared`, чтобы логика не распылялась по проекту
-    - Как правило - она общая и представлена в виде единых инстансов
-    - *Edge-case "exceptions"*: *GraphQL*, *react-query hooks*
+1. The**higher** the layer is located , the more it knows about the BL of the application and vice versa
+2. API logic [recommended][disc-api] should be put in `shared` so that the logic is not scattered around the project
 
-#### Применение для слоев
+* As a rule, it is common and presented as single instances
+  * *Edge-case "exceptions"*: *GraphQL*, *react-query hooks*
 
-| Слой      	| Содержимое                                                                                      	| Разрешенные сегменты                                                                                                                                                      	|
-|-----------	|-----------------------------------------------------------------------------------------------	|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| **app**       	| Не включает в себя слайсы и содержит логику инициализации                                     	| Имеющиеся сегменты не совсем подходят, а потому используются обычно `/providers` (`/hoc`, ...), `/styles` и т.д. Очень зависит от проекта и вряд ли решается методологией 	|
-| **processes** 	| Слайсы внутри включают в себя только бизнес-логику, без отображения (1)                       	| `lib` `model` (`api`)                                                                                                                                                     	|
-| **pages**     	| Слайсы внутри включают в себя ui- и model- композицию различных фичей для конкретной страницы 	| `ui` `lib` `model` (`api`)                                                                                                                                            	|
-| **features**  	| Слайсы внутри включают в себя композицию сущностей и реализацию БЛ в модели + отображение     	| `ui` `lib` `model` (`api`)                                                                                                                                            	|
-| **entities**  	| Слайсы внутри представляют разрозненный набор подмодулей для использования                    	| `ui` `lib` `model` (`api`)                                                                                                                                            	|
-| **shared**    	| Содержит только инфраструктурную логику без БЛ (1)                                            	| `ui` `lib` `api`                                                                                                                                                        	|
+#### Application for layers
 
-## См. также
+<!-- use: https://www.tablesgenerator.com/markdown_tables# -->
 
-- [(Обсуждение) Абстракции методологии, их цели и нейминг][disc-src]
-- Обсуждения по неймингу сущностей
-  - [Опрос по неймингу][disc-poll]
-  - [`processes` vs `flows` vs ...][disc-processes]
-  - [`model` vs `store` vs ...][disc-model]
-- [Первичное описание абстракций][tg-description]
-- [(Статья) Про организацию кодовой базы *с полным сравнением нескольких подходов*][ext-pluralsight]
-- [(Статья) Про модуляризацию проектов][ext-medium]
-- [(Reference) Layers][ref-layers]
-- [(Reference) Segments][ref-segments]
+| Layer         | Content                                                                                                   | Allowed Segments                                                                                                                                                                                        |
+|---------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **app**       | Does not include slices and contains initialization logic                                                 | The existing segments are not quite suitable, and therefore /providers (/hoc, ...), /styles, etc. are usually used. It depends very much on the project and is unlikely to be solved by the methodology |
+| **processes** | The slices inside include only business logic, without displaying (1)                                     | `ui` `lib` `model` (`api`)                                                                                                                                                                              |
+| **pages**     | The slices inside include a ui and model composition of various features for a specific page              | `ui` `lib` `model` (`api`)                                                                                                                                                                              |
+| **features**  | The slices inside include the composition of entities and the implementation of BL in the model + display | `ui` `lib` `model` (`api`)                                                                                                                                                                              |
+| **entities**  | The slices inside represent a disparate set of submodules for using                                       | `ui` `lib` `model` (`api`)                                                                                                                                                                              |
+| **shared**    | Contains only infrastructure logic without BL (1)                                                         | `ui` `lib` `api`                                                                                                                                                                                        |
+
+## See also
+
+* [(Discussion) Methodology abstractions, their goals and naming][disc-src]
+* Discussions on naming entities
+  * [Naming survey][disc-poll]
+* [`processes` vs `flows` vs ...][disc-processes]
+  * [`model` vs `store` vs ...][disc-model]
+* [Primary description of abstractions][tg-description]
+* [(Article) About the organization of the code base *with a complete comparison of several approaches*][ext-pluralsight]
+* [(Article) About project modularization][ext-medium]
+* [(Reference) Layers][ref-layers]
+* [(Reference) Segments][ref-segments]
 
 [ref-layers]: /docs/reference/layers/overview
 [ref-segments]: /docs/reference/segments
 [ref-low-coupling]: /docs/guides/low-coupling
-[ref-grouping]: /docs/reference/layers/features#структурная-группировка-фич
+[ref-grouping]: /docs/reference/layers/features#structural-grouping-features
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31
 
