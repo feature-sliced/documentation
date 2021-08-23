@@ -264,14 +264,11 @@ module.exports = {
         hideableSidebar: true,
     },
     i18n: {
-        defaultLocale: "en",
-        locales: ["ru", "en"],
+        defaultLocale: "ru",
+        locales: ["ru"],
         localeConfigs: {
             ru: {
                 label: "Русский",
-            },
-            en: {
-                label: "English",
             },
         },
     },

@@ -2,6 +2,11 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
+## i18n
+
+- [Russian docs version](i18n/ru)
+- [English docs version](../docs)
+
 ## Installation
 
 ```console
