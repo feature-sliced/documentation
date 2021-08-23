@@ -1,9 +1,8 @@
 ---
 sidebar_position: 4
-sidebar_label: App splitting
 ---
 
-# Разбиение приложения
+# App splitting
 
 ## Group: `Layers`
 

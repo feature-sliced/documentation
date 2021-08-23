@@ -3,7 +3,7 @@ sidebar_position: 10
 sidebar_label: Knowledge types
 ---
 
-# Типы знаний в проекте
+# Project Knowledge types
 
 В любом проекте можно выделить следующие "типы знаний"
 
