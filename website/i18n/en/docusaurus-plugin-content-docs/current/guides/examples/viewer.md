@@ -1,64 +1,64 @@
 # Viewer
 
-Во всех приложениях так или иначе есть бизнес-логика, завязанная **на текущем авторизованном пользователе.**
+All applications somehow have business logic tied **to the current authorized user.**
 
-> Обычно такая сущность называется `Viewer` / `Principle` / `Session` - но в рамках статьи, остановимся именно на `viewer`, но все зависит от вашего проекта и команды
+> Usually such an entity is called `Viewer` / `Principle` / `Session` - but within the framework of the article, we will focus on `viewer`, but it all depends on your project and team
 
-Также, это один из показательных примеров, когда бизнес-сущность порождает за собой бизнес-фичи, затем страницы, и даже бизнес-процессы
+Also, this is one of the illustrative examples when a business entity generates business features, then pages, and even business processes
 
-Рассмотрим их подробнее ниже с примерами
+Let's look at them in more detail below with examples
 
 :::note
 
-1. Названия директорий внутри сегментов (ui, model) могут отличаться от проекта к проекту
+1. The names of the directories inside the segments (ui, model) may differ from project to project
 
-    *Методология пока никак не регламентирует этот уровень вложенности*
+    *The methodology does not regulate this level of nesting in any way yet*
 
-2. Стоит также понимать, что приведенные ниже примеры - абстрактны и синтетичны, и сформированы точкой зрения и опытом автора
+2. It should also be understood that the examples given below are abstract and synthetic, and are formed by the author's point of view and experience
 
-    *Реализация в ваших проектах может отличаться, методология, опять же, никак не регламентирует эти аспекты*
+    *The implementation in your projects may differ, the methodology, again, does not regulate these aspects in any way*
 
 :::
 
 ## Entities
 
-**Бизнес-сущность пользователя**
+**The business entity of the user**
 
-- Представляет собой наиболее атомарную абстракцию для проектирования
-- Здесь формируется контекст авторизации, на который потом обычно полагаются все вышележащие слои приложения
+- Represents the most atomic abstraction for design
+- Here the authorization context is formed, which is then usually relied on by all the overlying layers of the application
 
 :::info
 
-Стоит понимать, что нередко в приложении есть публичный "внешний" пользователь (user), а есть авторизованный "внутренний" пользователь (viewer)
+It should be understood that often there is a public "external" user (user) in the application, and there is an authorized "internal" user (viewer)
 
-*Не забывайте учитывать эту разницу при проектировании архитектуры и логики*
+*Do not forget to take this difference into account when designing architecture and logic*
 
 :::
 
-### Примеры
+### Examples
 
 ```sh
-# Сегменты могут быть как файлами, так и директориями
+# Segments can be both files and directories
 |
-├── entities/viewer              # Layer: Бизнес-сущности
-|         |                      #     Slice: Текущий пользователь
-|         ├── ui/                #      Segment: UI-логика (компоненты)
-|         ├── lib/               #      Segment: Инфраструктурная-логика (хелперы)
-|         ├── model/             #      Segment: Бизнес-логика
-|         └── index.ts           #      [Декларация Public API]
+├── entities/viewer              # Layer: Business entities
+|         |                      #     Slice: Current user
+|         ├── ui/                #      Segment: UI-logic (components)
+|         ├── lib/               #      Segment: Infrastructure-logic (helpers)
+|         ├── model/             #      Segment: Business Logic
+|         └── index.ts           #      [Public API Declaration]
 |   ...           
 ```
 
-- `entities/viewer` - сущность текущего пользователя *(Session / Principle)*
-- `entities/user` - сущность публичного пользователя *(не обязательно связанная с текущим)*
-  - *В зависимости от сложности приложения - можно использовать и `user` для нейминга текущего пользователя*
-  - *Но это может вызвать серьезные проблемы, когда/если придется разделять логику обычного пользователя и текущего, который зашел в систему*
+- `entities/viewer` - the entity of the current user *(Session / Principle)*
+- `entities/user` - the essence of public user *(not necessarily associated with the current)*
+  - *Depending on the complexity of your application - you can use the `user` for naming the current user*
+  - *But it can cause serious problems when/if I have to separate the logic of a normal user and current, who came into the system*
 
 ### `index.ts`
 
-Обычный [Public API модуля][refs-public-api]
+The usual [Public API of the module][refs-public-api]
 
-*Во многом повторяет декларацию API и для описанных ниже слоев*
+*Largely repeats the API declaration for the layers described below*
 
 ```ts title=entities/user/ui/index.ts
 export { ViewerCard } from "./card";
@@ -80,19 +80,19 @@ export * as viewerModel from "./model";
 
 ### `ui`
 
-Здесь могут содержаться компоненты, относящиеся не к конкретной странице/фиче, а напрямую к сущности пользователя
+It may contain components that are not related to a specific page/feature, but directly to the user's entity
 
 ```tsx title=entities/user/ui/card/index.tsx
 import { Card } from "shared/ui/card";
 
-// Считается хорошей практикой - не связывать напрямую с моделью ui-компоненты из entitites
-// Чтобы можно было использовать не только для текущей модели,
-// Но и для поступивших извне пропсов
+// It is considered a good practice not to link ui components from entitites directly to the model
+// So that it can be used not only for the current model,
+// But also for externally received props
 
 export type UserCardProps = {
     data: User;
     className?: string;
-    // И прочие card-пропсы
+    // And other card-props
 };
 
 export const UserCard = ({ data, ... }: UserCardProps) => {
@@ -108,7 +108,7 @@ export const UserCard = ({ data, ... }: UserCardProps) => {
 
 ### `model`
 
-На этом уровне обычно создается сущность текущего пользователя, с реэкспортом хуков/контрактов/селекторов для использования вышележащими слоями
+At this level, the entity of the current user is usually created, with the re-export of hooks/contracts/selectors for use by the overlying layers
 
 ```ts title=entities/user/model/stores.ts
 // effector
@@ -128,7 +128,7 @@ export const useViewer = () => {
 }
 ```
 
-Также тут может быть реализована и другая логика
+Also, other logic can be implemented here
 
 - `updateUserDetails`
 - `logoutUser`
@@ -136,34 +136,34 @@ export const useViewer = () => {
 
 ## Features
 
-**Фичи, завязанные на текущем пользователе**
+**Features tied to the current user**
 
-- Использует в реализации бизнес-сущности (зачастую - `entities/viewer`) и shared ресурсы
-- Фичи могут не быть напрямую связаны с вьювером, но при этом могут использовать его контекст при реализации логики
+- Uses business entities (often `entities/viewer`) and shared resources in the implementation
+- Features may not be directly related to the viewer, but they can use its context when implementing logic
 
-### Примеры
+### Examples
 
 ```sh
-# Сегменты могут быть как файлами, так и директориями
+# Segments can be both files and directories
 |
-├── features/auth                # Layer: Бизнес-фичи
-|        |                       #    Slice Group: Структурная группа "Авторизация пользователя"
-|        ├── by-phone/           #      Slice: Фича "Авторизация по телефону"
-|        |     ├── ui/           #         Segment: UI-логика (компоненты)
-|        |     ├── lib/          #         Segment: Инфраструктурная-логика (хелперы)
-|        |     ├── model/        #         Segment: Бизнес-логика
-|        |     └── index.ts      #         [Декларация Public API]
+├── features/auth                # Layer: Business features
+|        |                       #    Slice Group: The structural group "User authorization"
+|        ├── by-phone/           #      Slice: Feature "Authorization by phone"
+|        |     ├── ui/           #         Segment: UI-logic (components)
+|        |     ├── lib/          #         Segment: Infrastructure-logic (helpers)
+|        |     ├── model/        #         Segment: Business Logic
+|        |     └── index.ts      #         [Public API Declaration]
 |        |
-|        ├── by-oauth/           #      Slice: Фича "Авторизация по внешнему ресурсу"
+|        ├── by-oauth/           #      Slice: Feature "Authorization by an external resource"
 |   ...           
 ```
 
-- `features/auth/{by-phone, by-oauth, logout ...}` - **структурная** группа фич авторизации *(по телефону, по внешнему ресурсу, выход из системы, ...)*
-- `features/wallet/{add-funds, ...}` - **структурная** группа фич по работе со внутренним счетом пользователя *(пополнение счета, ...)*
+- `features/auth/{by-phone, by-oauth, logout ...}` - **structural** group of authorization features *(by phone, by external resource, logout,...)*
+- `features/wallet/{add-funds,...}` - **structural** group of features for working with the user's internal account *(adding funds to the account,...)*
 
 ### `ui`
 
-- Авторизация по внешнему ресурсу
+- Authorization by an external resource
 
 ```tsx title=features/auth/by-oauth/ui.tsx
 import { viewerModel } from "entities/viewer";
@@ -174,14 +174,14 @@ export const AuthByOAuth = () => {
             domain={...}
             scope={...}
             ...
-            // для redux - дополнительно нужен dispatch
-            onSuccess=((user) => viewerModel.setUser(user))
+            // for redux, you additionally need dispatch
+            onSuccess={(user) => viewerModel.setUser(user)}
         />
     )
 }
 ```
 
-- Использование контекста пользователя в фичах
+- Using the user's context in features
 
 ```tsx title=features/wallet/ui.tsx
 import { viewerModel } from "entities/viewer";
@@ -194,7 +194,7 @@ export const Wallet = () => {
 }
 ```
 
-- Использование компонентов вьювера
+- Using the viewer components
 
 ```tsx title=features/header/ui.tsx
 import { ViewerAvatar } from "entities/viewer";
@@ -216,36 +216,36 @@ export const Header = () => {
 
 ## Pages
 
-**Страницы, так или иначе связанные с текущим пользователем**
+**Pages related to the current user in one way or another**
 
-- Могут как напрямую затрагивать функциональность вьювера
-- Так и использовать его косвенно (в том числе - и его контекст / фичи)
+- They can both directly affect the functionality of the viewer
+- And use it indirectly (including its context / features)
 
-### Примеры
+### Examples
 
 ```sh
-# Сегменты могут быть как файлами, так и директориями
+# Segments can be both files and directories
 |
-├── pages/viewer                 # Layer: Страницы приложения
-|        |                       #    Slice Group: Структурная группа "Текущий пользователь"
-|        ├── profile/            #     Slice: Страница профиля вьювера
-|        |     ├── ui.tsx        #         Segment: UI-логика (компоненты)
-|        |     ├── lib.ts        #         Segment: Инфраструктурная-логика (хелперы)
-|        |     ├── model.ts      #         Segment: Бизнес-логика
-|        |     └── index.ts      #         [Декларация Public API]
+├── pages/viewer                 # Layer: Application pages
+|        |                       #    Slice Group: The "Current User" structural group
+|        ├── profile/            #     Slice: The viewer profile page
+|        |     ├── ui.tsx        #         Segment: UI-logic (components)
+|        |     ├── lib.ts        #         Segment: Infrastructure-logic (helpers)
+|        |     ├── model.ts      #         Segment: Business Logic
+|        |     └── index.ts      #         [Public API Declaration]
 |        |
-|        ├── settings/           #     Slice: Страница настроек аккаунта вьювера
+|        ├── settings/           #     Slice: The viewer account settings page
 |   ...           
 ```
 
-- `pages/viewer/profile` - страница ЛК пользователя
-- `pages/viewer/settings` - страница настроек аккаунта пользователя
-- `pages/user` - страница пользователя (не обязательно текущего)
-- `pages/auth/{sign-in, sign-up, reset}` - **структурная** группа страниц авторизации *(вход в систему / регистрация / восстановление пароля)*
+- `pages/viewer/profile` - the user's LC page
+- `pages/viewer/settings` - user account settings page
+- `pages/user` - the user's page (not necessarily the current one)
+- `pages/auth/{sign-in, sign-up, reset}` **structural** group of authorization pages *(login / registration / password recovery)*
 
 ### `ui`
 
-- Использование компонентов вьювера и *viewer-based* фич на страницах
+- Using the viewer components and *viewer-based* features on the pages
 
 ```tsx title=pages/user/ui.tsx
 import { Wallet } from "features/wallet";
@@ -265,7 +265,7 @@ export const UserPage = () => {
 }
 ```
 
-- Использование модели вьювера
+- Using the viewer model
 
 ```tsx title=pages/some/ui.tsx
 import { viewerModel } from "entities/viewer";
@@ -283,64 +283,64 @@ export const SomePage = () => {
 
 ## Processes
 
-**Бизнес-процессы, затрагивающие текущего пользователя**
+**Business processes affecting the current user**
 
-- Затрагивает юзкейсы, пронизывающие страницы системы
-- **Слой процессов - опционален**, и обычно используется *только когда логика разрастается в страницах* и нужно *отдельное управление контекстом* на сразу нескольких страницах
+- Affects user cases that permeate the pages of the system
+- **The process layer is optional**, and is usually used *only when the logic grows in pages* and you need *separate context management* on several pages at once
 
-### Примеры
+### Examples
 
 ```sh
-# Сегменты могут быть как файлами, так и директориями
+# Segments can be both files and directories
 |
-├── processes                    # Layer: Бизнес процессы
-|        ├── auth/               #     Slice: Процесс авторизации пользователя
-|        |     ├── lib.ts        #         Segment: Инфраструктурная-логика (хелперы)
-|        |     ├── model.ts      #         Segment: Бизнес-логика
-|        |     └── index.ts      #         [Декларация Public API]
+├── processes                    # Layer: Business processes
+|        ├── auth/               #     Slice: User authorization process
+|        |     ├── lib.ts        #         Segment: Infrastructure-logic (helpers)
+|        |     ├── model.ts      #         Segment: Business Logic
+|        |     └── index.ts      #         [Public API Declaration]
 |        |
-|        ├── quick-tour/         #     Slice: Процесс онбординга нового пользователя
+|        ├── quick-tour/         #     Slice: The process of onboarding a new user
 |   ...           
 ```
 
-- `processes/auth` - бизнес-процесс авторизации пользователя
-- `processes/quick-tour` - бизнес-процесс для ознакомления пользователя с системой *(~ UserOnboard)*
+- `processes/auth` - the business process of user authorization
+- `processes/quick-tour` - a business process for familiarizing the user with the system *(~ UserOnboard)*
 
 ## App
 
-**Инициализация данных по учетной записи пользователя**
+**Initialization of user account data**
 
-- Как правило, здесь проходит проверка на то, **был ли уже авторизован пользователь** до того, как зашел в сервис
-  - **Если да** - провайдер пополняет контекст пользователя, для дальнейшего использования в системе
-  - **Если нет** - запускается процесс авторизации или меняется контекст вьювера, чтобы страница авторизации предприняла нужные действия
+- As a rule, there is a check on whether the user **was already logged in** before he entered the service
+  - **If yes** - the provider replenishes the user's context for further use in the system
+  - **If not** - the authorization process is started or the context of the viewer is changed so that the authorization page takes the necessary actions
 
-### Примеры
+### Examples
 
 ```sh
-# Структура `app` уникальна для каждого проекта и не регламентируется методологией
+# The `app` structure is unique for each project and is not regulated by the methodology
 |
-├── app/providers                # Layer: Инициализация приложения (HOCs провайдеры)
-|        ├── withAuth.tsx        #    HOC: Инициализация контекста авторизации
+├── app/providers                # Layer: Initializing the application (HOCs providers)
+|        ├── withAuth.tsx        #    HOC: Initializing the authorization context
 |        |   ...                 #
 |   ...           
 ```
 
-- `app/providers/withAuth` - HOC для авторизации пользователя
-  - Используется **только на верхнем уровне, как провайдер** с инициализацией логики, к которому имеет доступ только *`app`-слой*
-  - **Не путать с хуком `useViewer`**, к которому идет обращение всех остальных слоев *(processes / pages / features)*
+- `app/providers/withAuth` - HOC for user authorization
+  - Used **only at the top level, as a provider** with logic initialization, to which only *`app`-layer*
+- **Not to be confused with the `useViewer` hook**, which is accessed by all other layers *(processes / pages / features)*
 
-## Выводы
+## Conclusions
 
-Как мы видим на примерах выше - **вся бизнес-логика начинает строится от одной сущности, и может распространится до самого верхнего слоя.**
+As we can see in the examples above - **all business logic begins to be built from a single entity, and can spread to the very top layer.**
 
-Поэтому нужно уметь **грамотно выделять скоуп влияния модуля**, и в зависимости от этого выбирать подходящий слой для расположения логики.
+Therefore, you need to be able to **correctly allocate the scope of the module's influence**, and depending on this, choose the appropriate layer for the location of the logic.
 
-*Таким образом - мы получим наибоолее поддерживаемый, читаемый и переиспользуемый код.*
+*Thus, we will get the most supported, readable and reused code.*
 
-## См. также
+## See also
 
-- [Дискуссия "Применимость feature-sliced в бою"](https://github.com/feature-sliced/documentation/discussions/65) (*внутри также есть примеры с viewer*)
-- [Вопрос про профиль и сущность пользователя (community-chat)](https://t.me/feature_sliced/342)
-- [Пояснение про UIKIT#Card и User#Card (community-chat)](https://t.me/feature_sliced/552)
+- [Discussion "The applicability of feature-sliced in combat"](https://github.com/feature-sliced/documentation/discussions/65) (*there are also examples with viewer* inside)
+- [Question about the user's profile and identity (community-chat)](https://t.me/feature_sliced/342)
+- [Explanation about UIKIT#Card and User#Card (community-chat)](https://t.me/feature_sliced/552)
 
 [refs-public-api]: /docs/concepts/public-api
