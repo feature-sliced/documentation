@@ -71,7 +71,7 @@ export default function HomePage() {
                         ))}
                     </div>
                     <span className={styles.companiesSubtitle}>
-                        {translate({ id: "pages.home.companies.want_to_appear" })}{" "}
+                        {translate({ id: "pages.home.companies.add_me" })}{" "}
                         <a
                             href="https://github.com/feature-sliced/documentation/issues/131"
                             target="_blank"

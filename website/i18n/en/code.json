@@ -71,13 +71,33 @@
     "message": "Companies using methodology",
     "description": "Companies using methodology"
   },
-  "pages.home.companies.want_to_appear": {
+  "pages.home.companies.add_me": {
     "message": "Methodology is used in your company?",
     "description": "Methodology is used in your company?"
   },
   "pages.home.companies.tell_us": {
     "message": "Tell us",
     "description": "Tell us"
+  },
+  "pages.examples.title": {
+    "message": "Examples",
+    "description": "Page title"
+  },
+  "pages.examples.subtitle": {
+    "message": "List of websites people are building with Feature Sliced",
+    "description": "Page subtitle"
+  },
+  "pages.examples.add_me.title": {
+    "message": "Add example",
+    "description": "Request to add example"
+  },
+  "pages.examples.repo.title": {
+    "message": "Repository",
+    "description": "Examples repository label"
+  },
+  "pages.examples.versions": {
+    "message": "See also versions list",
+    "description": "Versions reminder"
   },
   "features.hero.tagline": {
     "message": "Structural methodology for frontend projects",

@@ -71,13 +71,33 @@
     "message": "Компании, использующие методологию",
     "description": "Companies using methodology"
   },
-  "pages.home.companies.want_to_appear": {
+  "pages.home.companies.add_me": {
     "message": "Методология используется в Вашей компании?",
     "description": "Methodology is used in your company?"
   },
   "pages.home.companies.tell_us": {
     "message": "Сообщите нам",
     "description": "Tell us"
+  },
+  "pages.examples.title": {
+    "message": "Примеры",
+    "description": "Page title"
+  },
+  "pages.examples.subtitle": {
+    "message": "Список сайтов, построенных людьми с FeatureSliced",
+    "description": "Page subtitle"
+  },
+  "pages.examples.add_me.title": {
+    "message": "Добавить пример",
+    "description": "Request to add example"
+  },
+  "pages.examples.repo.title": {
+    "message": "Репозиторий",
+    "description": "Examples repository label"
+  },
+  "pages.examples.versions": {
+    "message": "См. также список версий",
+    "description": "Versions reminder"
   },
   "features.hero.tagline": {
     "message": "Структурная методология для фронтенд проектов",
