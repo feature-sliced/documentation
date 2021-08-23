@@ -99,6 +99,18 @@
     "message": "См. также список версий",
     "description": "Versions reminder"
   },
+  "pages.versions.title": {
+    "message": "Версии Feature Sliced",
+    "description": "Feature Sliced versions"
+  },
+  "pages.versions.current": {
+    "message": "Здесь можно найти документацию для текущей опубликованной версии {of}",
+    "description": "Description for current version"
+  },
+  "pages.versions.legacy": {
+    "message": "Здесь можно найти документацию для старых версий {of}",
+    "description": "Description for legacy version"
+  },
   "features.hero.tagline": {
     "message": "Структурная методология для фронтенд проектов",
     "description": "Structural methodology for frontend projects"
