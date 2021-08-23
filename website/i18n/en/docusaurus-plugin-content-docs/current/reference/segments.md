@@ -4,38 +4,38 @@ sidebar_position: 3
 
 # Segment
 
-**Segment** - третий уровень разбиения приложения, согласно **назначению модуля в коде и реализации**
+**Segment** - the third level of application partitioning, according to the **purpose of the module in the code and implementation**
 
 ```sh
 {layer}/
     ├── {slice}/
-    |   ├── ui/                     # UI-логика (components, ui-widgets, ...)
-    |   ├── model/                  # Бизнес-логика (store, actions, effects, reducers, ...)
-    |   ├── lib/                    # Инфраструктурная логика (utils/helpers)
-    |   ├── config/                 # Конфигурация приложения (env-vars, ...)
-    |   └── api/                    # Логика запросов к API (api instances, requests, ...)
+    |   ├── ui/                     # UI-logic (components, ui-widgets, ...)
+    |   ├── model/                  # Business logic (store, actions, effects, reducers, ...)
+    |   ├── lib/                    # Infrastructure logic (utils/helpers)
+    |   ├── config/                 # Application configuration (env-vars, ...)
+    |   └── api/                    # Logic of API requests (api instances, requests, ...)
 ```
 
-## Общие правила
+## General rules
 
-Каждый из приведенных сегментов, представляет привычные нам уровни абстракций, при разработке ПО.
+Each of the above segments represents the levels of abstractions that are familiar to us when developing software.
 
-Каждый из сегментов отвечает за свою область, но при этом все вместе - **они формируют единый образ данного слайса и его логики**, а конкретно:
+Each of the segments is responsible for its own area, but all together - **they form a single image of this slice and its logic**, specifically:
 
-- его визуальное отображение (ui)
-- его бизнес-логику (model)
-- его вспомогательные модули (lib)
+- its visual display (ui)
+- its business logic (model)
+- its auxiliary modules (lib)
 
-Также, в редких случаях, затрагивая:
+Also, in rare cases, affecting:
 
-- его конфигурацию (config)
-- его логику работы с API-запросами (api)
+- its configuration (config)
+- its logic for working with API requests (api)
 
 :::tip
 
-**Каждый сегмент может быть как файлом, так и директорией** - в зависимости от сложности реализуемого слайса
+**Each segment can be either a file or a directory** - depending on the complexity of the slice being implemented
 
-Т.е. вполне допустимы и такие варианты:
+That is, such options are also quite acceptable:
 
 ```sh
 features/wallet/add-funds
@@ -54,17 +54,17 @@ pages/home/
 
 ## `ui`
 
-**UI-представление модуля**
+**UI representation of the module**
 
-Может содержать внутри:
+It can contain inside:
 
-- Компоненты вашего UI-фреймворка (React, Vue, Angular, ...)
-- Canvas-виджеты
-- *(любые другие модули ui-представления)*
+- Components of your UI framework (React, Vue, Angular, ...)
+- Canvas-Widgets
+- *(any other ui view modules)*
 
-### Примеры
+### Examples
 
-#### Комплексный UI для слоя
+#### Complex UI for the layer
 
 ```sh
 {layer}/{slice}/
@@ -93,47 +93,47 @@ export const SomeForm = () => (
 
 ## `model`
 
-**Бизнес-логика модуля**
+**Business logic of the module**
 
-Может содержать:
+May contain:
 
-- Логику создания и обновления мини-стора под этот слайс
-  - *В мире effector: `createStore` + `createDomain`*
-  - *В мире redux: `createSlice`*
-- Список событий, обрабатываемых моделью родительского слайса, и обновляющих его состояние
-  - *В мире effector: `events`*
-  - *В мире redux: `actions` + `dispatch`*
-- Список асинхронных сайд-эффектов, для подгрузки данных и прочих асинхронных операций
-  - *В мире effector: `effects`*
-  - *В мире redux: `thunks` / `sagas` / `epics`*
-- Список селекторов/контрактов/хуков для использования состояния слайса
-  - *В мире effector: `useStore`, ...*
-  - *В мире redux: `useSelector`, `selectors`*
+- The logic of creating and updating a mini-store for this slice
+  - *In the effector world: `createStore` + `createDomain`*
+  - *In the redux world: `createSlice`*
+- A list of events processed by the parent slice model and updating its state
+  - *In the effector world: `events`*
+  - *In the redux world: `actions` + `dispatch`*
+- List of asynchronous side effects, for loading data and other asynchronous operations
+  - *In the effector world: `effects`*
+  - *In the redux world: `thunks` / `sagas` / `epics`*
+- List of selectors/contracts/hooks for using the slice state
+  - *In the effector world: `useStore`, ...*
+  - *In the redux world: `useSelector`, `selectors`*
 
 ## `lib`
 
-**Вспомогательные библиотеки**
+**Auxiliary libraries**
 
-Обычно содержит набор утилит, помогающих написанию логики и распределенных по группам, т.е. отдельным библиотекам.
+It usually contains a set of utilities that help writing logic and are distributed in groups, i.e. separate libraries.
 
 ## `api`
 
-**Логика взаимодействия с API**
+**Logic of interaction with the API**
 
-Обычно содержит
+Usually contains
 
-- инстансы для работы с разными внешними API
-- методы / фабрики для вызова конкретных эндпоинтов
+- instances for working with different external APIs
+- methods / factories for calling specific endpoints
 
-*В редких случаях (react-query / graphql) сами запросы могут лежать рядом с местом использования*
+*In rare cases (react-query / graphql), the queries themselves may lie near the place of use*
 
-- *Но чаще всего [рекоммендуется][disc-api] располагать API-сегмент в `shared`-слое, чтобы снизить количество переплетений логики*
+- *But most often [recommended][disc-api] place the API segment in the 'shared' layer to reduce the number of logic entanglements*
 
-При этом, данный сегмент может как писаться вручную, так и генерироваться с помощью схемы API
+At the same time, this segment can be written manually or generated using the API scheme
 
-- *Например с помощью `openapi-generator`, `swagger-codegen`*
+- *For example, using `openapi-generator`, `swagger-codegen`*
 
-### Примеры
+### Examples
 
 ```ts title=**/**/api/user.ts
 export class UserApi {
@@ -146,8 +146,8 @@ export class UserApi {
 ```ts title=**/**/model/thunks.ts
 import { userApi } from "shared/api"
 
-// Создание инстансов API может происходить
-// как на месте использования, так и в самом API-сегменте
+// API instances can be created
+// both at the place of use and in the API segment itself
 //
 // const userApi = new UserApi();
 
@@ -158,15 +158,15 @@ export const getUserListThunk = createAsyncThunk("...", (params) => {
 
 ## `config`
 
-**Модуль конфигурации приложения и его окружения**
+**Application configuration module and its environment**
 
-Обычно содержит конфигурацию приложения и методы, для работы с ним
+It usually contains the application configuration and methods for working with it
 
-### Примеры
+### Examples
 
-#### Использование переменных окружения
+#### Using environment variables
 
-*Реализация зависит от проекта и команды, здесь приведен лишь один из вариантов*
+*The implementation depends on the project and the team, here is just one of the options*
 
 ```ts title=shared/config/index.ts
 export const isDevEnv = NODE_ENV === "development";
@@ -185,12 +185,12 @@ export const OAuthProvider = () => (
 )
 ```
 
-## См. также
+## See also
 
-> `WIP:` Со временем будут появляться статьи по каждой абстракции
+> `WIP:` Over time, articles on each abstraction will appear
 
-- [Адаптивность нейминга][refs-naming-adaptability]
-- [(Обсуждение) Где должен лежать API][disc-api]
+- [Naming adaptability][refs-naming-adaptability]
+- [(Discussion) Where the API should be located][disc-api]
 
 [refs-naming-adaptability]: /docs/concepts/naming-adaptability
 
