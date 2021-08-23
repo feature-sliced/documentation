@@ -2,6 +2,11 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
+## i18n
+
+- [Russian docs version](i18n/ru)
+- [English docs version](i18n/en)
+
 ## Installation
 
 ```console
@@ -10,9 +15,13 @@ yarn install
 
 ## Local Development
 
-```console
-yarn start
+```bash
+yarn start       # for default locale
+yarn start:ru    # for RU locale
+yarn start:en    # for EN locale
 ```
+
+> About [docusaurus/i18n commands](https://docusaurus.io/docs/i18n/git#translate-the-files)
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 

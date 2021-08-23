@@ -20,7 +20,7 @@ slug: intro
 
 :::
 
-![feature-sliced-banner](../assets/banner.jpg)
+![feature-sliced-banner](/img/banner.jpg)
 
 [Знакомство с методологией][refs-getstarted] | [Фундаментальные концепции][refs-concepts] | [Практические гайды по применению][refs-guides] | [Справочный материал][refs-reference] | [О методолологии][refs-about]
 |---|---|---|---|---|
