@@ -4,57 +4,57 @@ sidebar_position: 6
 
 # Naming adaptability
 
-## Проблема
+## Problem
 
-В силу того, что у каждого разработчика свой опыт и контекст разработки - [мы по-разному привыкли называть одни и те же сущности][disc-src], что может привести к недопониманию внутри команды.
+Due to the fact that each developer has his own experience and development context - [we are used to calling the same entities differently][disc-src], which can lead to misunderstandings within the team.
 
-- *Компоненты для отображения - `ui` / `components` / `ui-kit` / `views` / ...*
-- *Код переиспользуемый во всех частя приложения - `core`/ `shared` / `app` / ...*
-- *Код бизнес логики - `store` / `model` / `state` / ...*
+- *Components to be displayed - `ui` / `components` / `ui-kit` / `views` / ...*
+- *Code reusable in all parts of the application - the `core`/ `shared` / `app` / ...*
+- *Code business logic `store` / `model` / `state` / ...*
 
-## Нейминг в feature-sliced
+## Naming in feature-sliced
 
-Методология оперирует такими терминами, как
+The methodology uses such terms as
 
 - `app`, `process`, `page`, `feature`, `entity`, `shared` - *[layers][refs-layers]*
 - `ui`, `model`, `lib`, `api` - *[segments][refs-segments]*
 
-В рамках методологии, каждый из этих терминов имеет [четкое определение][refs-reference]
+Within the framework of the methodology, each of these terms has a [clear definition] [refs-reference]
 
-Разрабатывая проект по методологии **feature-sliced** очень важно [придерживаться оригинального нейминга, во избежание недопонимания][disc-src] как среди членов команды, так и за её пределами.
+When developing a project using the **feature-sliced** methodology, it is very important [to adhere to the original naming, in order to avoid misunderstandings][disc-src] both among the team members and outside of it.
 
-- Если на проект приходит новый разработчик знакомый с методологией, **он должен видеть уже знакомые ему термины**
-- Обращаясь за помощью в комьюнити, вы быстрее получите ответ на ваш вопрос, **если будете использовать туже терминологию**
+- If a new developer comes to the project who is familiar with the methodology, **he should see the terms already familiar to him**
+- If you ask for help in the community, you will get an answer to your question faster, **if you use the same terminology**
 
-## Когда нейминг может помешать?
+## When can naming interfere?
 
-Разрабатывая проект, для отображения/построения/моделирования каких либо процессов, или разрабатывая приложение для верстки страниц журнала, вы можете столкнуться с проблемой, что **термины используемые в методологии пересекаются с терминами которыми оперирует ваш бизнес**.
+When developing a project for displaying/building/modeling any processes, or developing an application for the layout of magazine pages, you may face the problem that **the terms used in the methodology overlap with the terms that your business operates**.
 
-- `feature-sliced#process` vs моделируемый процесс в вашем приложении
-- `feature-sliced#page` vs страница журнала
-- `feature-sliced#model` vs модель автомобиля
+- `feature-sliced#process` vs simulated process in your application
+- `feature-sliced#page` vs magazine page
+- `feature-sliced#model` vs car model
 
-<!-- TODO: подумать над примерами для других терминов -->
+<!-- TODO: think about examples for other terms -->
 
-Такие коллизии имен могут негативно отразится на процессе разработки.
+Such name collisions can negatively affect the development process.
 
-- Разработчик видя слово `процесс` в коде, будет тратить лишнее время на понимание, о каком процессе идет речь
+- The developer, seeing the word `process` in the code, will spend extra time understanding which process is being discussed
 
-- Общаясь внутри команды разработчиков, говоря слово `процесс`, все участники разговора должны четко понимать о чем идет речь, о процессе как бизнес сущности или о процессе из **feature-sliced**.
+- When communicating within the development team, saying the word `process`, all participants in the conversation should clearly understand what is being discussed, about the process as a business entity or about the process from **feature-sliced**.
   
-- Общаясь с бизнесом, разработчики иногда употребляют технические термины с которыми бизнес не знаком. Так разработчик, употребив термин `процесс`, имея в виду процесс из **feature-sliced**, внесет непонимание в разговор, что может потребовать дополнительного времени на разъяснение
+- When communicating with business, developers sometimes use technical terms that the business is not familiar with. So the developer, using the term `process`, referring to the process from **feature-sliced**, will introduce a misunderstanding into the conversation, which may require additional time for clarification
 
-## См. также
+## See also
 
-- [(Обсуждение) Адаптивность нейминга][disc-src]
-- **Обсуждения по неймингу сущностей**:
-  - [Опрос по неймингу][disc-naming]
+- [(Discussion) Naming adaptability][disc-src]
+- **Discussions on naming entities**:
+  - [Naming survey][disc-naming]
   - [`processes` vs `flows` vs ...][disc-processes]
   - [`model` vs `store` vs ...][disc-model]
 
 [refs-layers]: /docs/reference/layers/overview
 [refs-segments]: /docs/reference/segments
-<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+<!-- FIXME: Refer to the root later, not to the first element -->
 [refs-reference]: /docs/reference/glossary
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/16
