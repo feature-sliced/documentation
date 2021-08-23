@@ -265,10 +265,13 @@ module.exports = {
     },
     i18n: {
         defaultLocale: "ru",
-        locales: ["ru"],
+        locales: ["ru", "en"],
         localeConfigs: {
             ru: {
                 label: "Русский",
+            },
+            en: {
+                label: "Английский",
             },
         },
     },
