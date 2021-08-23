@@ -15,9 +15,13 @@ yarn install
 
 ## Local Development
 
-```console
-yarn start
+```bash
+yarn start       # for default locale
+yarn start:ru    # for RU locale
+yarn start:en    # for EN locale
 ```
+
+> About [docusaurus/i18n commands](https://docusaurus.io/docs/i18n/git#translate-the-files)
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
