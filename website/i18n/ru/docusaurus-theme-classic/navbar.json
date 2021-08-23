@@ -4,31 +4,31 @@
     "description": "The title in the navbar"
   },
   "item.label.Docs": {
-    "message": "Docs",
+    "message": "Документация",
     "description": "Navbar item with label Docs"
   },
   "item.label.Examples": {
-    "message": "Examples",
+    "message": "Примеры",
     "description": "Navbar item with label Examples"
   },
   "item.label.Getting Started": {
-    "message": "Getting Started",
+    "message": "Ознакомление",
     "description": "Navbar item with label Getting Started"
   },
   "item.label.Concepts": {
-    "message": "Concepts",
+    "message": "Концепции",
     "description": "Navbar item with label Concepts"
   },
   "item.label.Guides": {
-    "message": "Guides",
+    "message": "Гайды",
     "description": "Navbar item with label Guides"
   },
   "item.label.Reference": {
-    "message": "Reference",
+    "message": "Справочный материал",
     "description": "Navbar item with label Reference"
   },
   "item.label.About": {
-    "message": "About",
+    "message": "О методологии",
     "description": "Navbar item with label About"
   }
 }
