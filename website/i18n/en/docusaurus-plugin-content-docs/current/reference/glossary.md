@@ -6,107 +6,107 @@ sidebar_position: 1
 
 ## Module
 
-Структурная единица проекта
+Structural unit of the project
 
-Под модулем обычно подразумевается определенный файл или директория *(абстракция в контексте структуры)*
+A module usually means a specific file or directory *(an abstraction in the context of a structure)*
 
-- *модуль авторизации*
-- *модуль страниц*
-- *модуль компонента в фиче*
-- *модуль экшенов в модели сущности*
-- *и т.д.*
+- *authorization module*
+- *page module*
+- *the module of the component in the feature*
+- *action module in the entity model*
+- *etc.*
 
 ## [Layer][refs-layers]
 
-Каждая из директорий, находящихся на самом верхнем уровне приложения.
+Each of the directories located at the topmost level of the application.
 
-Этот уровень определяет [скоуп ответственности модулей][refs-split-layers], а также уровень опасности изменений
+This level defines the [scope of responsibility of modules][refs-split-layers], as well as the level of danger of changes
 
-- **Представители**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`widgets`][refs-layers-widgets], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
+- **Representatives**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`widgets`][refs-layers-widgets], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
 
 ```sh
 └── src/
-    ├── app/                    # Инициализирующая логика приложения
-    ├── processes/              # (Опц.) Процессы приложения, протекающие над страницами
-    ├── pages/                  # Страницы приложения
-    ├── features/               # Ключевая функциональность приложения
-    ├── entities/               # Бизнес-сущности
-    └── shared/                 # Переиспользуемые модули
+    ├── app/                    # Initializing application logic
+    ├── processes/              # (Optional) Application processes running over pages
+    ├── pages/                  # Application Pages
+    ├── features/               # Key functionality of the application
+    ├── entities/               # Business entities
+    └── shared/                 # Reused modules
 ```
 
 ## Slice
 
-Каждый из элементов, находящихся на верхнем уровне слоёв
+Each of the elements located at the top level of the layers
 
-Этот уровень [слабо регламентируется][refs-split-slices] методологией, однако многое зависит от конкретного проекта, стека и команды
+This level is [poorly regulated][refs-split-slices] is a methodology, but a lot depends on the specific project, stack and team
 
-- **Представители (от каждого слоя)** [`process`][refs-layers-processes], [`page`][refs-layers-pages], [`widget`][refs-layers-widgets], [`feature`][refs-layers-features], [`entity`][refs-layers-entities]
+- **Representatives (from each layer)** [`process`][refs-layers-processes], [`page`][refs-layers-pages], [`widget`][refs-layers-widgets], [`feature`][refs-layers-features], [`entity`][refs-layers-entities]
 
 ```sh
 ├── app/
-|   # Не имеет конкретных слайсов, 
-|   # Т.к. там содержится мета-логика над проектом и его инициализации
+|   # Does not have specific slices, 
+|   # Because it contains meta-logic on the project and its initialization
 ├── processes/
-|   # Слайсы для реализации процессов на страницах
+|   # Slices for implementing processes on pages
 |   ├── payment
 |   ├── auth
 |   ├── quick-tour
 |   └── ...
 ├── pages/
-|   # Слайсы для реализации страниц приложения
-|   # При этом, в силу специфики роутинга - могут вкладываться друг в друга
+|   # Slices for implementing application pages
+|   # At the same time, due to the specifics of routing, they can be invested in each other
 |   ├── profile
 |   ├── sign-up
 |   ├── feed
 |   └── ...
 ├── features/
-|   # Слайсы для реализации конкретной функциональности на страницах
+|   # Slices for implementing specific functionality on pages
 |   ├── auth-by-phone
 |   ├── inline-post
 |   └── ...
 ├── entities/
-|   # Слайсы бизнес-сущностей для реализации более сложной БЛ
+|   # Slices of business entities for implementing a more complex BL
 |   ├── viewer
 |   ├── posts
 |   ├── i18n
 |   └── ...
 ├── shared/
-|    # Не имеет конкретных слайсов
-|    # Представляет собой скорее набор общеиспользуемых сегментов, без привязки к БЛ
+|   # Does not have specific slices
+|   # is rather a set of commonly used segments, without binding to the BL
 ```
 
 ## [Segment][refs-segments]
 
-Каждый из модулей, находящийся на верхнем уровне каждого слайса
+Each of the modules located at the top level of each slice
 
-Этот уровень определяет [назначение модулей в коде и реализации][refs-split-segments], согласно классическим моделям проектирования
+This level determines [the purpose of modules in the code and implementation][refs-split-segments], according to classical design models
 
-- **Представители**: [`ui`][refs-segments-ui], [`model`][refs-segments-model], [`lib`][refs-segments-lib], [`api`][refs-segments-api], [`config`][refs-segments-config]
+- **Representatives**: [`ui`][refs-segments-ui], [`model`][refs-segments-model], [`lib`][refs-segments-lib], [`api`][refs-segments-api], [`config`][refs-segments-config]
 
 ```sh
 {layer}/
     ├── {slice}/
-    |   ├── ui/                     # UI-логика (components, ui-widgets, ...)
-    |   ├── model/                  # Бизнес-логика (store, actions, effects, reducers, ...)
-    |   ├── lib/                    # Инфраструктурная логика (utils/helpers)
-    |   ├── config/                 # Конфигурация приложения (env-vars, ...)
-    |   └── api/                    # Логика запросов к API (api instances, requests, ...)
+    |   ├── ui/                     # UI-logic (components, ui-widgets, ...)
+    |   ├── model/                  # Business logic (store, actions, effects, reducers, ...)
+    |   ├── lib/                    # Infrastructure logic (utils/helpers)
+    |   ├── config/                 # Application configuration (env-vars, ...)
+    |   └── api/                    # Logic of API requests (api instances, requests, ...)
 ```
 
 :::note
 
-Поскольку не каждый из слоев в явном виде использует слайсы (app, shared)
+Since not every layer explicitly uses slices (app, shared)
 
-- Сегменты могут располагаться по своим правилам `shared/{api, config}`
-- Или не использоваться совсем `app/{providers, styles}`
+- Segments can be arranged according to their own rules `shared/{api, config}`
+- Or not to use `app/{providers, styles}` at all
 
 :::
 
-## См. также
+## See also
 
-- [Уровни абстракций по методологии][refs-split]
-- [Layers в методологии][refs-layers]
-- [Segments в методологии][refs-segments]
+- [Abstraction levels by methodology][refs-split]
+- [Layers in the methodology][refs-layers]
+- [Segments in the methodology][refs-segments]
 
 [refs-split]: /docs/concepts/app-splitting
 [refs-split-layers]: /docs/concepts/app-splitting#group-layers
