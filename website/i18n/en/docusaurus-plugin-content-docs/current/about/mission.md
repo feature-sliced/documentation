@@ -4,47 +4,49 @@ sidebar_position: 1
 
 # Mission
 
-Здесь описаны цели и ограничения применимости методологии - которыми мы руководствуемся при разработке методологии
+Here we describe the goals and limitations of the applicability of the methodology-which we are guided by when developing the methodology
 
-- Мы видим нашу цель, как баланс между идеологией и простотой
-- Мы не сможем сделать серебряную пулю, которая подходит всем
+- We see our goal as a balance between ideology and simplicity
+- We won't be able to make a silver bullet that fits everyone
 
-**Тем не менее, хотелось бы, чтобы методология была близка и доступна достаточно обширному кругу разработчиков**
+**Nevertheless, I would like the methodology to be close and accessible to a fairly wide range of developers**
 
-## Цели
+## Goals
 
-### Интуитивная понятность для широкого круга разработчиков
+### Intuitive clarity for a wide range of developers
 
-Методология должна быть доступна - большей части команды в проектах
+The methodology should be available - for most of the team in projects
 
-*Т.к. даже со всем будущим инструментарием - будет недостаточно того, чтобы методологию понимали только проженные сеньоры/лиды*
+*Because even with all the future tools , it will not be enough for only experienced seniors/leads to understand the methodology*
 
-### Решение повседневных проблем
+### Solving everyday problems
 
-В методологии должны быть изложены причины и решения наших повседневных проблем при разработке проектов
+The methodology should set out the reasons and solutions to our everyday problems when developing projects
 
-**А также - приложить ко всему этому инструментарий (cli, линтеры)**
-Чтобы разработчики могли использовать *выверенный опытом* подход, позволяющий обходить давние проблемы архитектуры и разработки
+**And also-attach tools to all this (cli, linters)**
 
-> *@sergeysova: Представьте - разработчик пишет код в рамках методологии и у него проблемы возникают раз в 10 реже, просто потому, что другие люди продумали решение многих проблем.*
+So that developers can use a *proven experience* approach that allows them to bypass long-standing problems of architecture and development
 
-## Ограничения
+> *@sergeysova: Imagine-a developer writes code within the framework of the methodology and he has problems 10 times less often, simply because other people have thought out the solution to many problems.*
 
-Мы не хотим *навязывать нашу точку зрения*, и одновременно понимаем - что *многие наши привычки, как разработчиков, мешают изо дня в день*
+## Restrictions
 
-У всех свой уровень опыта проектирования и разработки систем, **поэтому стоит понимать следующее:**
+We do not want to *impose our point of view*, and at the same time we understand that *many of our habits, as developers, interfere from day to day*
 
-- **Не выйдет**: очень просто, очень понятно, для всех
-    > *@sergeysova: Некоторые концепции невозможно интуитивно понять, пока не столкнешься с проблемами и не проведешь за решением годы.*
+Everyone has their own level of experience in designing and developing systems, **therefore, it is worth understanding the following:**
+
+- **Will not work**: very simple, very clear, for everyone
+    > *@sergeysova: Some concepts cannot be intuitively understood until you encounter problems and spend years solving them.*
     >
-    > - *Пример из математики — теория графов.*
-    > - *Пример из физики — квантовая механика.*
-    > - *Пример из программирования — архитектура приложений.*
+    > - *An example from mathematics is graph theory.*
     >
-- **Возможны и желательны**: простота, расширяемость
+    > - *Example from physics-quantum mechanics.*
+    > - *Example from programming-application architecture.*
+    >
+- **Possible and desirable**: simplicity, extensibility
 
-## См. также
+## See also
 
-- [Проблемы архитектуры][refs-architecture--problems]
+- [Architecture problems][refs-architecture--problems]
 
-[refs-architecture--problems]: /docs/concepts/architecture#проблемы
+[refs-architecture--problems]: /docs/concepts/architecture#problems
