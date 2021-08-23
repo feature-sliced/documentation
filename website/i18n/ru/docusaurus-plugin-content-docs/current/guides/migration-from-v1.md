@@ -120,7 +120,7 @@ sidebar_position: 2
 - `/app` — **слой инициализации приложения**
   - *Прежние варианты: `app`, `core`, `init`, `src/index` (и такое бывает)*
 - `/processes` — [**слой бизнес-процессов**][disc-process]
-  - *Прежние варианты: `processes`, `flows`, `worfklows`*
+  - *Прежние варианты: `processes`, `flows`, `workflows`*
 - `/pages` — **слой страниц приложения**
   - *Прежние варианты: `pages`, `screens`, `views`, `layouts`, `components`, `containers`*
 - `/features` — [**слой частей функциональности**][disc-features]
