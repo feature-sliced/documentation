@@ -121,10 +121,10 @@ const footer = {
     style: "dark",
     links: [
         {
-            title: "Docs",
+            title: "Specs",
             items: [
-                { label: "Документация", to: "/docs/intro" },
-                { label: "Обсуждения", to: `${GITHUB_DOCS}/discussions` },
+                { label: "Documentation", to: "/docs/intro" },
+                { label: "Discussions", to: `${GITHUB_DOCS}/discussions` },
             ],
         },
         {
