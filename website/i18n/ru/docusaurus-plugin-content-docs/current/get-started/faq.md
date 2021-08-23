@@ -4,7 +4,11 @@ sidebar_position: 5
 
 # FAQ
 
+:::info
+
 Свой вопрос можно задать в [telegram-чате](https://t.me/feature_sliced) / [github-issues](https://github.com/feature-sliced/documentation/issues) / [github-discussions](https://github.com/feature-sliced/documentation/discussions)
+
+:::
 
 ### Структура = Архитектура?
 
