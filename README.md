@@ -15,7 +15,7 @@
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/OWNER/REPO?style=flat-square)](https://github.com/OWNER/REPO/commits)
 -->
 
-![feature-sliced-banner](assets/banner.jpg)
+![feature-sliced-banner](/website/static/img/banner.jpg)
 
 <!-- ⚡ Add primary information & features about your repository -->
 Методология для проектирования *frontend проектов*, нацеленная [**на разделение приложения согласно бизнес-логике и областям ответственности.**][refs-splitting]
