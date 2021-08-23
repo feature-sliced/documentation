@@ -3,32 +3,32 @@ sidebar_position: 10
 sidebar_label: Knowledge types
 ---
 
-# Project Knowledge types
+# Types of knowledge in the project
 
-В любом проекте можно выделить следующие "типы знаний"
+In any project, the following "types of knowledge"can be distinguished
 
-## Фундаментальные знания
+## Fundamental knowledge
 
-**Знания, практически не меняющиеся с течением времени.**
+**Knowledge that practically does not change over time.**
 
-*Алгоритмы, computer science, механизмы работы ЯП и его API и т.д.*
+*Algorithms, computer science, the mechanisms of the YAP and its API, etc.*
 
-## Технологический стек
+## Technology stack
 
-**Знания о наборе технических решений, применяющихся в проекте.**
+**Knowledge about the set of technical solutions used in the project.**
 
-*Языки программирования, фреймворки, библиотеки и т.д.*
+*Programming languages, frameworks, libraries, etc.*
 
-## Проектные знания
+## Project knowledge
 
-**Знания, применимые исключительно в рамках текущего проекта.**
+**Knowledge that is applicable exclusively within the framework of the current project.**
 
-*Они никак не переносятся во внешний мир и, уйдя с этого проекта, можно об этих знаниях забыть.*
+*They are not transferred to the outside world in any way and, having left this project, you can forget about this knowledge.*
 
-*Естественно, в обратную сторону это тоже работает — чтобы добавить нового человека на текущий проект, нужно обучить его **определенному минимальному объёму этих проектных знаний** - без которых новый участник не сможет выполнять полезную работу*
+*Naturally, this also works in the opposite direction — to add a new person to the current project, you need to train him **a certain minimum amount of this project knowledge** - without which a new participant will not be able to perform useful work*
 
-## См. также
+## See also
 
-- [Илья Климов - О типах знаний][ext-klimov]
+- [Ilya Klimov - About types of knowledge][ext-klimov]
 
 [ext-klimov]: https://youtu.be/4xyb_tA-uw0?t=249
