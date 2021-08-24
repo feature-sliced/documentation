@@ -15,7 +15,7 @@ Here we describe the goals and limitations of the applicability of the methodolo
 
 ### Intuitive clarity for a wide range of developers
 
-The methodology should be available - for most of the team in projects
+The methodology should be accessible - for most of the team in projects
 
 *Because even with all the future tools , it will not be enough for only experienced seniors/leads to understand the methodology*
 
