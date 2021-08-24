@@ -20,7 +20,7 @@
 <!-- ⚡ Add primary information & features about your repository -->
 A methodology for designing *frontend projects*, aimed [**at dividing the application according to business logic and areas of responsibility.**][refs-splitting]
 
-- Provides [**explicitness, controllability and adaptability**][refs-arch-req] architecture
+- Provides [**explicitness, controllability and adaptability**][refs-arch-req] of architecture
 - Based on [**experience-checked**][refs-motivation-why] design practices and concepts
     > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
 - Suggests dividing the project according to [**business units**][ext-ubiq-lang]
