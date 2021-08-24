@@ -101,6 +101,12 @@ const navbar = {
         {
             type: "localeDropdown",
             position: "right",
+            dropdownItemsAfter: [
+                {
+                    href: "https://github.com/feature-sliced/documentation/issues/244",
+                    label: "Help Us Translate",
+                },
+            ],
         },
         {
             "href": TELEGRAM,
@@ -275,7 +281,7 @@ module.exports = {
                 label: "Русский",
             },
             en: {
-                label: "English (NOT_READY)",
+                label: "English (WIP)",
             },
         },
     },
