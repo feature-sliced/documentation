@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The main idea of **feature-sliced** is to facilitate and reduce the cost of developing complex and developing projects, based on [combining research results, discussing the experience of various kinds of a wide range of developers][ext-discussions].
 
-Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability] [refs-mission].
+Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability][refs-mission].
 
 Nevertheless, there are reasonable questions regarding *the feasibility of such a methodology as a whole*
 
@@ -20,7 +20,7 @@ More details [discussed in the discussion][disc-src]
 <!--TODO: #existing-solutions -->
 > It usually, these arguments:
 >
-> - *"Why you need some new methodology, if you already have long-established approaches and principles of design `SOLID`, `KISS`, `YAGNI`, `DDD`, `GRASP`, `DRY`, etc."*
+> - *"Why you need some new methodology, if you already have long-established approaches and principles of design such as `SOLID`, `KISS`, `YAGNI`, `DDD`, `GRASP`, `DRY`, etc."*
 > - *"All the problems are solved by good project documentation, tests, and structured processes"*
 > - *"Problems would not have happened if all developers are following all the above"*
 > - *"Everything was invented before you, you just can't use it"*

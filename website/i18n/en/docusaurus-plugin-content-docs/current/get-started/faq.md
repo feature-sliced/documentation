@@ -12,9 +12,9 @@ You can ask your question in [telegram chat](https://t.me/feature_sliced) / [git
 
 ### Structure = Architecture?
 
-Architecture-about abstractions and building links between them (shared/features/pages/...)
+Architecture defines abstractions and relations between them (shared/features/pages/...)
 
-*But without a proper structure, you can't make a good architecture*
+*But without a proper structure, it's difficult to design a good architecture*
 
 ### Do I need a methodology only for "understanding and clarity" of what is happening in the project?
 
@@ -38,11 +38,14 @@ There are only such ones in the public domain so far, not all of them have been 
 
 *In the near future, the list will be updated and will be placed in a separate section*
 
-- <https://github.com/accesso-app>
-- <https://github.com/cardbox>
-- <https://github.com/ani-team/github-client>
+- [Internal Examples](https://github.com/feature-sliced/examples)
+- [External Examples](/examples)
 
-*In the meantime, you can get acquainted with our [guides](/docs/guides/migration-from-v1) and [tutorials](/docs/get-started/quick-start)*
+*Also, you can get acquainted with our [guides](/docs/guides/migration-from-v1) and [tutorials](/docs/get-started/quick-start)*
+
+### Are there some useful resources / articles / etc about FeatureSliced and related things?
+
+<https://github.com/feature-sliced/awesome>
 
 ### The project is written on feature-slices v1, how to update and is it worth it?
 
@@ -94,6 +97,6 @@ The methodology strongly recommends against doing this, since [each module has a
 
 Otherwise , there is a risk of complicating the project's code base
 
-> *"Today, the feature can only be used on one page. Next week - on three. And in a month - it may not be at all. We cannot predict the future, and we need to refrain from premature optimizations every time"*
+> *"Today, the feature can only be used on one page. Next week - on three. And in a month - it may be removed at all. We cannot predict the future, and we need to refrain from premature optimizations every time"*
 
 *See also the example from [quick-start](/docs/get-started/quick-start#normal-approach)*

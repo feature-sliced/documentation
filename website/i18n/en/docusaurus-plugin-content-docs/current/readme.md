@@ -8,7 +8,7 @@ slug: intro
 A methodology for designing *frontend projects*, aimed [**at dividing the application according to business logic and areas of responsibility.**][refs-splitting]
 
 - Provides [**clarity, controllability and adaptability**][refs-arch-req] architecture
-- Based on [**time-tested**] [refs-motivation-why] design practices and concepts
+- Based on [**time-tested**][refs-motivation-why] design practices and concepts
     > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
 - Suggests dividing the project according to [**business units**][ext-ubiq-lang]
 

@@ -128,7 +128,7 @@ export const { sendMessage, attachFile } = createMessageInput({
 
 ## Total
 
-1. Modules must have **strong connectivity** (have one responsibility, solve one specific task) and provide [**public interface**] [refs-public-api] access
+1. Modules must have **strong connectivity** (have one responsibility, solve one specific task) and provide [**public interface**][refs-public-api] access
 2. **Weak engagement** is achieved through the composition of elements-UI components, features and entities
 3. Also, to reduce entanglement, modules **should depend on each other only through public interfaces** - this is how the independence of modules from each other's internal implementation is achieved
 

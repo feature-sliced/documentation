@@ -19,7 +19,7 @@ The methodology uses such terms as
 - `app`, `process`, `page`, `feature`, `entity`, `shared` - *[layers][refs-layers]*
 - `ui`, `model`, `lib`, `api` - *[segments][refs-segments]*
 
-Within the framework of the methodology, each of these terms has a [clear definition] [refs-reference]
+Within the framework of the methodology, each of these terms has a [clear definition][refs-reference]
 
 When developing a project using the **feature-sliced** methodology, it is very important [to adhere to the original naming, in order to avoid misunderstandings][disc-src] both among the team members and outside of it.
 

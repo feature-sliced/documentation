@@ -32,7 +32,7 @@ The module should not **depend directly** on other modules of the same layer or 
 
 Orientation **to the needs of the business and the user**
 
-- Also includes splitting the structure by business domains *(["layers"] [refs-splitting-layers] and ["slices"] [refs-splitting-slices])*
+- Also includes splitting the structure by business domains *(["layers"][refs-splitting-layers] and ["slices"][refs-splitting-slices])*
 
 ## Abstractions
 

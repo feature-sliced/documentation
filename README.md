@@ -1,6 +1,6 @@
 # feature-sliced
 
-> `WIP:` The current version of the methodology is under development and some details *may change*
+> `WIP:` The current version of the methodology is under development and some details *can be changed*
 
 <!-- 🏅 Add badges -->
 
@@ -18,30 +18,30 @@
 ![feature-sliced-banner](/website/static/img/banner.jpg)
 
 <!-- ⚡ Add primary information & features about your repository -->
-A methodology for designing *frontend projects*, aimed [**at dividing the application according to business logic and areas of responsibility.**][refs-splitting]
+A methodology for designing *frontend projects*, aimed [**at dividing the application according to business logic and scopes of responsibility.**][refs-splitting]
 
 - Provides [**explicitness, controllability and adaptability**][refs-arch-req] of architecture
 - Based on [**experience-checked**][refs-motivation-why] design practices and concepts
     > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
 - Suggests dividing the project according to [**business units**][ext-ubiq-lang]
 
-> **Note:** The methodology is not tied to a specific stack and is applicable *to any frontend projects* in general.
+> **Note:** The methodology is not tied to a specific tech stack and is applicable *to any frontend projects* in general.
 >
 > But the current version gives examples and is developed on the basis of a bunch of `JavaScript` + `React`
 
 ## Motivation
 
-Usually, the approaches to building the frontend architecture from project to project are [re-invented from scratch][refs-motivation], thereby adding ["project knowledge"][refs-knowledge]
+Usually, approaches to building the frontend architecture from project to project are [re-invented from scratch][refs-motivation], thereby adding ["project knowledge"][refs-knowledge]
 
 > Despite the fact that the specifics of frontend projects do not differ so much
 
 At the same time, incorrectly made decisions often lead [to problems of scalability of the project and the team][refs-arch-problems].
 
-And therefore, instead of inventing and documenting it every time, it is better to **summarize the experience and form a working, proven and documented methodology** for designing the frontend architecture.
+And therefore, instead of inventing and documenting it every time, it is better to **summarize the experience and form a working, battle-tested and documented methodology** for designing the frontend architecture.
 
 *Yes, there are many practices and patterns (`SOLID`, `GRASP`, `DDD`, ...)*
 
-*But for the frontend [it is extremely difficult to find][refs-motivation] well-established and specific approaches*
+*But for the frontend [it is highly difficult to find][refs-motivation] well-established and specific approaches*
 
 ## Overview
 
@@ -49,7 +49,7 @@ The methodology is designed to **simplify and standardize the decomposition of l
 
 To do this, it introduces a number of [concepts][refs-concepts] and [abstractions][refs-splitting], on which the architecture *can be based* from project to project - from here we get *a number of advantages*
 
-> **Note:** Module - the structural unit of the project (file / directory)
+> **Note:** [Module][refs-module] - the structural unit of the project (file / directory)
 
 ### Explicit business logic
 
@@ -137,7 +137,7 @@ The rules by which the code is divided into slices *depend on the specific proje
 
 The third level of abstraction is **according to the purpose in the implementation**
 
-- `ui` - UI - representation of the module *(components, widgets, canvas, ...)*
+- `ui` - UI-representation of the module *(components, widgets, canvas, ...)*
 - `model` - business logic of the module *(store, effects/actions, hooks/contracts, ...)*
 - `lib` - auxiliary libraries
 - `api` - the logic of interaction with the API
@@ -146,8 +146,6 @@ The third level of abstraction is **according to the purpose in the implementati
 > **Note:** In most cases, [it is recommended][ext-disc-api] to place `api` and `config` only in the shared layer
 
 ## Structure
-
-> `WIP:` The naming of the groups is temporary, and will be determined definitively closer to the release
 
 ```sh
 └── src/
@@ -196,7 +194,7 @@ The third level of abstraction is **according to the purpose in the implementati
     > *Get-Started, Concepts, Guides, Reference, About*
 - **[Migration from feature-slices@v1][refs-migration-v1]**
 - **Other materials**
-  - Previous versions of the methodology: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven][ext-fdd]*
+  - Another versions of the methodology: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven][ext-fdd]*
   - [React SPB Meetup Report #1 - Feature Slices](https://t.me/feature_slices)
   - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
   - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
@@ -243,6 +241,7 @@ If there are variations, how best to place indents-welcome:)
 [refs-isolation]: https://feature-sliced.design/docs/concepts/cross-communication
 [refs-needs-driven]: https://feature-sliced.design/docs/concepts/needs-driven
 
+[refs-module]: https://feature-sliced.design/docs/reference/glossary#module
 [refs-knowledge]: https://feature-sliced.design/docs/reference/knowledge-types
 [refs-splitting]: https://feature-sliced.design/docs/concepts/app-splitting
 [refs-splitting-layers]: https://feature-sliced.design/docs/concepts/app-splitting#group-layers

@@ -6,7 +6,7 @@ sidebar_position: 1
 
 The methodology is designed to **simplify and standardize the decomposition of logic for large and long-lived projects.**
 
-To do this, it introduces a number of [concepts][refs-concepts] and [abstractions][refs-splitting], on which *the architecture can be based* from project to project - from here we get *a number of advantages*
+To do this, it introduces a number of [concepts][refs-concepts] and [abstractions][refs-splitting], on which the architecture *can be based* from project to project - from here we get *a number of advantages*
 
 :::info
 
