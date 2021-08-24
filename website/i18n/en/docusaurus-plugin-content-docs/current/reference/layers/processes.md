@@ -5,22 +5,22 @@ sidebar_position: 3
 # Processes
 
 :::note OPTIONAL
-Слой опционален, и нужен только если того требует сложность проекта
+The layer is optional, and is needed only if the complexity of the project requires it
 :::
 
 ![processes-themed-bordered](/img/layers/processes.png)
 
-## Описание
+## Description
 
-*Слой опционален*, но обычно здесь располагается:
+*The layer is optional*, but it is usually located here:
 
-- логика, затрагивающая сразу несколько страниц
-  - *Например: `checkout`, `auth`*
-- логика, которая излишне бы усложняла код страниц и размывалась бы в них
+- logic that affects several pages at once
+  - *For example: `checkout`, `auth`*
+- logic that would unnecessarily complicate the code of the pages and would be blurred in them
 
-В процессах не должна располагаться логика отображения (ui), поскольку роль процессов - **управлять поведением страниц и нижележащих слоев, но не отображать что-либо самостоятельно**
+Processes should not contain display logic (ui), since the role of processes is **to control the behavior of pages and underlying layers, but not to display anything independently**
 
-## Структура
+## Structure
 
 ```sh
 └── processes/{slice}
@@ -29,8 +29,8 @@ sidebar_position: 3
           └── model.ts
 ```
 
-## Примеры
+## Examples
 
-- Авторизация пользователя
-- Оформление заказа
-- Onboarding нового пользователя сервиса
+- User authorization
+- Making an order
+- Onboarding a new user of the service
