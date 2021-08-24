@@ -5,44 +5,44 @@ sidebar_position: 5
 # Widgets
 
 :::caution EXPERIMENTAL
-Слой экспериментальный, будьте аккуратны при использовании
+The layer is experimental, be careful when using it
 :::
 
 :::note OPTIONAL
-Слой опционален, и нужен только если того требует сложность проекта
+The layer is optional, and is needed only if the complexity of the project requires it
 :::
 
 ![widgets-themed-bordered](/img/layers/widgets.png)
 
-## Описание
+## Description
 
-Здесь обычно располагаются самостоятельные и комплексные виджеты страниц, композирующие нижележащие слои
+This is usually where independent and complex page widgets are located, composing the underlying layers
 
-> Слой введен как экспериментальный, чтобы решить сложившиеся проблемы при использовании других слоев
+> The layer was introduced as an experimental one to solve the existing problems when using other layers
 >
-> Пока что для этого слоя не выработано лучших практик (помимо тех, что действуют для других слоев), поэтому используйте его только при необходимости и осознанно
+> So far, no best practices have been developed for this layer (apart from those that apply to other layers), so use it only if necessary and consciously
 
-## Примеры
+## Examples
 
-### Хедер приложения
+### Application header
 
-**Хедер** - довольно обыденная часть веб-приложений
+**Header** is a fairly common part of web applications
 
-При этом все чаще на практике встречаются примеры, когда у нас не "один единый хедер на все приложение", а отличается от страницы к странице
+At the same time, more and more often in practice there are examples when we do not have "one single header for the entire application", but differs from page to page
 
-И если первый вариант прост в реализации, то со вторым все становится не так тривиально:
+And if the first option is easy to implement, then everything becomes not so trivial with the second one:
 
-- Либо переиспользуемый компонент хедера распологают не в том месте структуры, что вызывает кросс-импорты
-- Либо же дублируют реализацию хедера на каждой странице (особенно когда в половине страниц используется один хедер, а в другой половине - второй)
+- Or the reused component of the header is located in the wrong place of the structure, which causes cross-imports
+- Or they duplicate the implementation of the header on each page (especially when one header is used in half of the pages, and the second one is used in the other half)
 
-**Слой виджетов призван как раз помочь с этим кейсом**
+**The widget layer is designed to help with this case**
 
 ```tsx title=widgets/header/ui.tsx
 import { SearchBar } from "features/search-bar";
 import { Layout } from "shared/ui";
 
-// Хедер может отличаться от страницы к странице
-// При этом где-то должна композироваться эта логика
+// The header may differ from page to page
+// At the same time, this logic must be composed somewhere
 export const Header = ({ theme, withSearch, withNav ...}: Props) => (
     <Layout.Header theme={theme}>
         {withSearch && <SearchBar ... />}
@@ -58,7 +58,7 @@ import { Layout } from "shared/ui";
 
 export const SomePage = () => (
     <Layout>
-        {/* Хедер#1 на одной странице */}
+        {/* Header#1 on one page */}
         <Header sticky={true} />
         <Layout.Content>
             ...
@@ -73,7 +73,7 @@ import { Layout } from "shared/ui";
 
 export const AnotherPage = () => (
     <Layout>
-        {/* Хедер#2 на другой странице */}
+        {/* Header#2 on another page */}
         <Header extra={...} theme={...} />
         <Layout.Content>
             ...
@@ -82,7 +82,7 @@ export const AnotherPage = () => (
 )
 ```
 
-### Карточка твита
+### Tweet Card
 
 ```tsx title=widgets/tweet-item/ui.tsx
 import { ShareTweet } from "features/tweets/share";
@@ -90,19 +90,19 @@ import { LikeTweet } from "features/tweets/like";
 import { TweetCard } from "entities/tweet";
 import { UserThumbnail } from "entities/user";
 
-// Компонент использует шаблон для твитов из entities-слоя
-// При этом снабжает его определенными фичами-действиями, 
-// про который не положено знать entities-слою из-за своей зоны ответственности
-// 
-// Также здесь используются другие фичи и сущности (например AuthorThumbnail)
+// The component uses a template for tweets from the entities layer
+// At the same time it provides it with certain features-actions,
+// which the entities layer is not supposed to know about because of its area of responsibility
+//
+// Other features and entities are also used here (for example, AuthorThumbnail)
 
-// При этом если обычно такая композиция проводилась на уровне страницы, 
-// Теперь, такая логика становится переиспользуемой 
-// и забирает часть ответственности со страниц
-// 
-// Из-за чего страницы содержат лишь самую необходимую логику 
-// (и становятся тонкими благодаря такому подходу)
-export const TweetItem = ({ data, ...}: Props) => (
+// At the same time, if such a composition was usually carried out at the page level,
+// Now, such logic becomes reused
+// and takes away some of the responsibility from the pages
+//
+// Because of which the pages contain only the most necessary logic 
+// (and become thin thanks to this approach)
+export const TweetItem = ({ data,...}: Props) => (
     <TweetCard
         before={<UserThumbnail withPopup={true} />}
         data={data}
@@ -115,6 +115,6 @@ export const TweetItem = ({ data, ...}: Props) => (
 );
 ```
 
-### Карточка товара
+### Product card
 
-Аналогично карточке твита
+Similar to the tweet card
