@@ -9,7 +9,7 @@ Here we describe the goals and limitations of the applicability of the methodolo
 - We see our goal as a balance between ideology and simplicity
 - We won't be able to make a silver bullet that fits everyone
 
-**Nevertheless, I would like the methodology to be close and accessible to a fairly wide range of developers**
+**Nevertheless, the methodology should be close and accessible to a fairly wide range of developers**
 
 ## Goals
 
