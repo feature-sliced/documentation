@@ -94,7 +94,7 @@ import { UserThumbnail } from "entities/user";
 // At the same time it provides it with certain features-actions,
 // which the entities layer is not supposed to know about because of its scope of responsibility
 //
-// Other features and entities are also used here (for example, AuthorThumbnail)
+// Other features and entities are also used here (e.g., AuthorThumbnail)
 
 // At the same time, if such a composition was usually carried out at the page level,
 // Now, such logic becomes reused

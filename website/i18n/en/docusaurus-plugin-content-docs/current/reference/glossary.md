@@ -29,7 +29,7 @@ This level defines the [scope of responsibility of modules][refs-split-layers], 
     ├── app/                    # Initializing application logic
     ├── processes/              # (Optional) Application processes running over pages
     ├── pages/                  # Application Pages
-    ├── features/               # Key functionality of the application
+    ├── features/               # Crucial functionality of the application
     ├── entities/               # Business entities
     └── shared/                 # Reused modules
 ```

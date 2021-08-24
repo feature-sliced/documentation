@@ -16,7 +16,7 @@ sidebar_position: 1
     ├── processes/              # (Optional) Application processes running over pages
     ├── pages/                  # Application Pages
     ├── widgets/                # (Optional) Independent widgets
-    ├── features/               # Key functionality of the application
+    ├── features/               # Crucial functionality of the application
     ├── entities/               # Business entities
     └── shared/                 # Reused modules
 ```

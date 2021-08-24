@@ -8,7 +8,7 @@ sidebar_position: 4
 
 The first level of separation: according to the **scope of responsibility** of the module
 
-:::note Self-test
+:::note Self-check
 
 "Which application layer does the module belong to?"
 
@@ -19,14 +19,14 @@ The first level of separation: according to the **scope of responsibility** of t
     ├── app/                    # Initializing application logic
     ├── processes/              # (Optional) Application processes running over pages
     ├── pages/                  # Application Pages
-    ├── features/               # Key functionality of the application
+    ├── features/               # Crucial functionality of the application
     ├── entities/               # Business entities
     └── shared/                 # Reused modules
 ```
 
 ### Layer order
 
-If you look at the order of the layers , you can distinguish two patterns:
+If you look at the order of the layers , you can distinguish two general patterns:
 
 #### By the level of knowledge/responsibility
 
@@ -46,11 +46,11 @@ The lower the module is located , the more dangerous it is to make changes to it
 
 ## Group: `Slices`
 
-The second level of separation: by **specific BL functionality**
+The second level of separation is by **specific BL functionality**
 
 *The methodology has almost no effect on this level and much depends [on the specific project][disc-usability]*
 
-:::note Self-test
+:::note Self-check
 
 "What scope of BL does the module affect?"
 
@@ -124,7 +124,7 @@ function Foo() {
 
 #### Grouping
 
-* In most cases, you should avoid nesting in slices, and use only [structural grouping by folders][ref-grouping], without additional linking logic
+* In most cases, you should avoid nesting in slices, and use only [structural grouping by folders][ref-grouping], without additional coupling logic
 
     ```diff
     features/order/           # Feature group
@@ -135,7 +135,7 @@ function Foo() {
        └── index.ts           # Public API with feature re-export
     ```
 
-* At the same time, some layers (for example, pages) initially require nesting due to the requirements of the project / framework
+* At the same time, some layers (e.g., pages) initially require nesting due to the requirements of the project / framework
 
     ```sh
     pages/
@@ -163,7 +163,7 @@ Nested slices should be avoided as much as possible, but even if you have to use
 
 The third level of separation: by **the purpose of the module in the code and implementation**
 
-:::note Self-test
+:::note Self-check
 
 "What part of the technical implementation of the logic affects the module?"
 
@@ -185,13 +185,13 @@ The third level of separation: by **the purpose of the module in the code and im
 
 ### Restrictions
 
-The methodology was developed with the aim of not limiting and not bothering developers with the rules for choosing abstractions *(I wanted **any of the segments to be used in any layer**)*
+The methodology was developed with the aim of not limiting and not bothering developers with the rules for choosing abstractions *(it's desirable to use **any segment in any layer**)*
 
 However, as a result of [discussions and analysis of extensive experience][disc-list] - it was determined that it is better and more practical **to limit each layer to segments used internally**.
 
 #### General rules
 
-1. The**higher** the layer is located , the more it knows about the BL of the application and vice versa
+1. The **higher** the layer is located , the more it knows about the BL of the application and vice versa
 2. API logic [recommended][disc-api] should be put in `shared` so that the logic is not scattered around the project
 
 * Usually, it is common and presented as single instances
@@ -203,7 +203,7 @@ However, as a result of [discussions and analysis of extensive experience][disc-
 
 | Layer         | Content                                                                                                   | Allowed Segments                                                                                                                                                                                        |
 |---------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **app**       | Does not include slices and contains initialization logic                                                 | The existing segments are not quite suitable, and therefore /providers (/hoc, ...), /styles, etc. are usually used. It depends very much on the project and is unlikely to be solved by the methodology |
+| **app**       | Does not include slices and contains initialization logic                                                 | The existing segments are not quite suitable, and therefore `/providers (/hoc, ...)`, `/styles`, etc. are usually used. It depends very much on the project and is unlikely to be solved by the methodology |
 | **processes** | The slices inside include only business logic, without displaying (1)                                     | `ui` `lib` `model` (`api`)                                                                                                                                                                              |
 | **pages**     | The slices inside include a ui and model composition of various features for a specific page              | `ui` `lib` `model` (`api`)                                                                                                                                                                              |
 | **features**  | The slices inside include the composition of entities and the implementation of BL in the model + display | `ui` `lib` `model` (`api`)                                                                                                                                                                              |

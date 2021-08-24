@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Public API
 
-Each entity of the methodology is designed as a **user-friendly and integrated [module][refs-glossary].**
+Each entity of the methodology is designed as a **user-friendly and integrable [module][refs-glossary].**
 
 ## Goals
 
@@ -76,7 +76,7 @@ The public API should be **anti-fragile** - resistant to changes inside the modu
 
 Changing the internal structure should not lead to a change in the Public API
 
-- **Badly:** moving or renaming this component inside the feature will lead to the need to refactor imports in all places where the component is used.
+- **Bad:** moving or renaming this component inside the feature will lead to the need to refactor imports in all places where the component is used.
 
     ```diff
     - import { Form } from "features/auth-form/ui/form"
@@ -98,7 +98,7 @@ The public API should facilitate **easy and flexible integration**
 
 ##### Name collision
 
-- **Badly:** there will be a name collision
+- **Bad:** there will be a name collision
 
     ```ts title=features/auth-form/index.ts
     export { Form } from "./ui"
@@ -134,14 +134,14 @@ The public API should facilitate **easy and flexible integration**
 
 ##### Flexible use
 
-- **Badly:** it is inconvenient to write, it is inconvenient to read, the" user " of the feature suffers
+- **Bad:** it is inconvenient to write, it is inconvenient to read, the" user " of the feature suffers
 
     ```diff
     - import { storeActionUpdateUserDetails } from "features/auth-form"
     - dispatch(storeActionUpdateUserDetails(...))
     ```
 
-- **Good:** the" user " of the feature gets access to the necessary things iteratively and flexibly
+- **Good:** the "user" of the feature gets access to the necessary things iteratively and flexibly
 
     ```diff
     + import { authFormStore } from "features/auth-form"
@@ -152,7 +152,7 @@ The public API should facilitate **easy and flexible integration**
 
 Name collisions should be resolved at the level of the public interface, not the implementation
 
-- **Badly:** name collisions are resolved at the implementation level
+- **Bad:** name collisions are resolved at the implementation level
 
     ```ts title=features/auth-form/index.ts
     export { AuthForm } from "./ui"
@@ -195,7 +195,7 @@ export * as authModel from "./model"
 
 ### Disadvantages
 
-- In most popular bundlers, due to re-exports**, the code-splitting** works worse, because [tree-shaking](https://webpack.js.org/guides/tree-shaking/) with this approach, it is safe to discard only the entire module, but not part of it.
+- In most popular bundlers, due to re-exports, **the code-splitting works worse**, because [tree-shaking](https://webpack.js.org/guides/tree-shaking/) with this approach, it is safe to discard only the entire module, but not part of it.
    > For example, importing `authModel` into the page model will cause the `AuthForm` component to get into the chunk of this page, even if this component is not used there.
 
 - As a result, initialization of the chunk becomes more expensive, because the browser must process all the modules in it, including those that got into the bundle "for the company"
@@ -207,7 +207,7 @@ export * as authModel from "./model"
 ## See also
 
 - [(Discussion) Public Abstraction API][disc-src]
-- [Principles * * SOLID**][ext-solid]
+- [Principles **SOLID**][ext-solid]
 - [Patterns **GRASP**][ext-grasp]
 
 [refs-glossary]: /docs/reference/glossary

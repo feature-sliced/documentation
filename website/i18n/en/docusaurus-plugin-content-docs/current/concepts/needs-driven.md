@@ -21,7 +21,7 @@ To choose a clear name for an entity and understand its components, **you need t
 
 > *@sergeysova: During development, we try to give each entity or function a name that clearly reflects the intentions and meaning of the code being executed.*
 
-* After all, without understanding the task, it is impossible to write the right tests that cover the most important cases, put down errors that help the user in the right places, even it is banal not to interrupt the user's flow because of fixable non-critical errors.*
+*After all, without understanding the task, it is impossible to write the right tests that cover the most important cases, put down errors that help the user in the right places, even it is banal not to interrupt the user's flow because of fixable non-critical errors.*
 
 ## What tasks are we talking about?
 
@@ -75,7 +75,7 @@ As soon as we were able to get to the basic needs or pains, we can go back and f
 
 Any new task in your tracker is aimed at solving business problems, and the business tries to solve the user's tasks at the same time earning money on it. This means that each task has certain goals, even if they are not spelled out in the description text.
 
-_**The developer must clearly understand what goal this or that task is pursuing**, but not every company can afford to build processes perfectly, although this is a separate conversation, nevertheless, the developer may well "ping" the right managers himself to find out this and do his part of the work effectively.*_
+_**The developer must clearly understand what goal this or that task is pursuing**, but not every company can afford to build processes perfectly, although this is a separate conversation, nevertheless, the developer may well "ping" the right managers himself to find out this and do his part of the work effectively._
 
 ## And what is the benefit?
 
@@ -101,9 +101,9 @@ With the understanding of tasks comes **a clear structure both in the head and i
 * There can be no "map-office" feature
   * But `booking-meeting-on-the-map`, `search-for-an-employee`, `change-of-workplace` - **yes**
 
-> * @sergeysova: The point is that*the feature contains only code that implements the functionality itself*, without unnecessary details and internal solutions (ideally)*
+> *@sergeysova: The point is that the feature contains only code that implements the functionality itself*, without unnecessary details and internal solutions (ideally)*
 >
-> * Open the feature code **and see only what relates to the task** - no more*
+> *Open the feature code **and see only what relates to the task** - no more*
 
 ### 4. Profit
 

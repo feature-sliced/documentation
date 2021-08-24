@@ -34,12 +34,12 @@ It is difficult to reuse/modify existing logic
 
 At the same time, there are usually [two extremes](https://github.com/feature-sliced/documentation/discussions/14):
 
-- Or the logic is written completely from scratch for each module *(with possible repetitions in the existing codebase)*
-- Or there is a tendency to transfer all-all implemented modules to `shared` folders, thereby creating a large dump of modules *from it (where most are used only in one place)*
+- Either the logic is written completely from scratch for each module *(with possible repetitions in the existing codebase)*
+- Either there is a tendency to transfer all-all implemented modules to `shared` folders, thereby creating a large dump of modules *from it (where most are used only in one place)*
 
 **Examples:**
 
-- *"I have n implementations of the same business logic in my project, for which I have to pay daily"*
+- *"I have **N** implementations of the same business logic in my project, for which I still pay"*
 - *"There are 6 different components of the button/pop-up/... In the project"*
 - *"Dump of helpers"*
 
