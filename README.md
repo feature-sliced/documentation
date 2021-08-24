@@ -1,6 +1,6 @@
 # feature-sliced
 
-> `WIP:` Текущая версия методологии находится на стадии разработки и некоторые детали *могут измениться*
+> `WIP:` The current version of the methodology is under development and some details *may change*
 
 <!-- 🏅 Add badges -->
 
@@ -18,99 +18,99 @@
 ![feature-sliced-banner](/website/static/img/banner.jpg)
 
 <!-- ⚡ Add primary information & features about your repository -->
-Методология для проектирования *frontend проектов*, нацеленная [**на разделение приложения согласно бизнес-логике и областям ответственности.**][refs-splitting]
+A methodology for designing *frontend projects*, aimed [**at dividing the application according to business logic and areas of responsibility.**][refs-splitting]
 
-- Обеспечивает [**понятность, контролируемость и адаптивность**][refs-arch-req] архитектуры
-- Основана на [**проверенных временем**][refs-motivation-why] практиках проектирования и концепциях
+- Provides [**explicitness, controllability and adaptability**][refs-arch-req] architecture
+- Based on [**experience-checked**][refs-motivation-why] design practices and concepts
     > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
-- Предлагает разделять проект согласно [**бизнес-юнитам**][ext-ubiq-lang]
+- Suggests dividing the project according to [**business units**][ext-ubiq-lang]
 
-> **Примечание:** Методология не привязана к конкретному стеку и применима *к любым фронтенд-проектам* в целом.
+> **Note:** The methodology is not tied to a specific stack and is applicable *to any frontend projects* in general.
 >
-> Но текущая версия приводит примеры и проработана на базе связки `JavaScript` + `React`
+> But the current version gives examples and is developed on the basis of a bunch of `JavaScript` + `React`
 
 ## Motivation
 
-Обычно, подходы построения архитектуры фронтенда от проекта к проекту [переизобретаются с нуля][refs-motivation], пополняя тем самым ["проектные знания"][refs-knowledge]
+Usually, the approaches to building the frontend architecture from project to project are [re-invented from scratch][refs-motivation], thereby adding ["project knowledge"][refs-knowledge]
 
-> Несмотря на то, что специфика фронтенд-проектов отличается не так значительно
+> Despite the fact that the specifics of frontend projects do not differ so much
 
-При этом, неверно принятые решения зачастую приводят [к проблемам масштабируемости проекта и команды][refs-arch-problems].
+At the same time, incorrectly made decisions often lead [to problems of scalability of the project and the team][refs-arch-problems].
 
-И поэтому, вместо того, чтобы придумывать и документировать это каждый раз, хочется **обобщить опыт и сформировать рабочую, проверенную и задокументированную методологию** для проектирования архитектуры фронтенда.
+And therefore, instead of inventing and documenting it every time, I want to **summarize the experience and form a working, proven and documented methodology** for designing the frontend architecture.
 
-*Да, практик и паттернов много (`SOLID`, `GRASP`, `DDD`, ...)*
+*Yes, there are many practices and patterns (`SOLID`, `GRASP`, `DDD`, ...)*
 
-*Но для фронтенда [крайне трудно найти][refs-motivation] устоявшиеся и конкретные подходы*
+*But for the frontend [it is extremely difficult to find][refs-motivation] well-established and specific approaches*
 
 ## Overview
 
-Методология призвана **упростить и стандартизировать декомпозицию логики для больших и долгоживужих проектов.**
+The methodology is designed to **simplify and standardize the decomposition of logic for large and long-lived projects.**
 
-Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-splitting], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
+To do this, it introduces a number of [concepts][refs-concepts] and [abstractions][refs-splitting], on which the architecture *can be based* from project to project - from here we get *a number of advantages*
 
-> **Примечание:** Модуль - структурная единица проекта (файл / директория)
+> **Note:** Module - the structural unit of the project (file / directory)
 
-### Явная бизнес-логика
+### Explicit business logic
 
-Модули распределяются согласно [скоупу влияния, бизнес-ответственности и техническому назначению][refs-splitting]
+Modules are distributed according to [scope of influence, business responsibility and technical purpose][refs-splitting]
 
-Благодаря этому *архитектура стандартизируется и становится более простой для ознакомления*
+Thanks to this, *the architecture is standardized and becomes easier to read*
 
-### Адаптация к новым условиям
+### Adaptation to new conditions
 
-Каждый компонент архитектуры имеет свое назначение и не влияет на другие
+Each component of the architecture has its own purpose and does not affect the others
 
-Благодаря этому *под новые требования можно независимо модифицировать функциональность приложения без непредвиденных последствий*
+Thanks to this *it is possible to independently modify the functionality of the application to meet new requirements without unforeseen consequences*
 
-### Техдолг и рефакторинг
+### Technical debt and refactoring
 
-Каждый модуль является независимым и самодостаточным
+Each module is independent and self-sufficient
 
-Благодаря этому *можно переписать его с нуля без неожиданных сайд-эффектов*
+Thanks to this *you can rewrite it from scratch without unexpected side effects*
 
-### Масштабирование проекта и команды
+### Scaling the project and the team
 
-Увеличение функциональности ведет к значительно меньшему усложнению проекта, т.к. вся логика распределена детерминированно и изолированно
+The increase in functionality leads to significantly less complexity of the project, since all the logic is distributed deterministically and in isolation
 
-Благодаря этому *легко добавлять и онбордить новых людей в команду, а также расширять функциональность проекта*
+Thanks to this *it is easy to add and onboard new people to the team, as well as expand the functionality of the project*
 
-### Контролируемое переиспользование логики
+### Controlled reuse of logic
 
-Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-splitting-layers]
+Each module has its own limitations and recommendations for reuse according to [its layer][refs-splitting-layers]
 
-Благодаря этому *сохраняется баланс между соблюдением принципа `DRY` и возможности кастомизировать логику модуля без оверхедных переопределений*
+Thanks to this, *a balance is maintained between compliance with the `DRY` principle and the ability to customize the module logic without overhead overrides*
 
 ## Concepts
 
 ### [`Public API`][refs-public-api]
 
-Каждый модуль должен иметь на верхнем уровне **декларацию своего публичного API**
+Each module must have a **declaration of its public API** at the top level
 
-- Для подключения в другие модули, без нужды обращаться к внутренней структуре данного модуля
-- Для изоляции деталей реализации от модулей-потребителей
-- Также Public API должен защищать интерфейс модуля после рефакторинга - во избежание непредвиденных последствий
+- To connect to other modules, without the need to refer to the internal structure of this module
+- To isolate the implementation details from the consumer modules
+- Also, the Public API should protect the module interface after refactoring - in order to avoid unforeseen consequences
 
 ### [`Isolation`][refs-isolation]
 
-Модуль не должен **зависеть напрямую** от других модулей того же слоя или вышележаших слоев
+The module should not **depend directly** on other modules of the same layer or overlying layers
 
-- Концепция известна также как `Low Coupling & High Cohesion` - для предотвращения неявных связей / сайд-эффектов при разработке и рефакторинге
+- The concept is also known as `Low Coupling & High Cohesion` - to prevent implicit connections / side effects during development and refactoring
 
 ### [`Needs driven`][refs-needs-driven]
 
-Ориентирование **на потребности бизнеса и пользователя**
+Orientation **to the needs of the business and the user**
 
-- Включает в себя также разбиение структуры по бизнес-доменам *(т.н. ["слайсам"][refs-splitting-slices])*
+- Also includes splitting the structure by business domains *(so-called ["slices"][refs-splitting-slices])*
 
 ## Abstractions
 
-Для [проектирования архитектуры][refs-splitting] методология предлагает оперировать [привычными абстракциями][refs-adaptability], но в более консистентном и последовательном порядке.
+For [architecture design][refs-splitting] the methodology suggests operating with [familiar abstractions][refs-adaptability], but in a more consistent and consistent order.
 
 <details>
-<summary>Визуальная схема</summary>
+<summary>Visual diagram</summary>
 
-> `WIP:` Схема - представляет лишь **примерное** разбиение проекта по модулям и будет определена окончательно ближе к релизу
+> `WIP:` The scheme-represents only an **approximate** division of the project into modules and will be determined definitively closer to the release
 
 ![visual_schema](website/static/img/visual_schema.jpg)
 
@@ -118,73 +118,73 @@
 
 ### [`Layers`][refs-splitting-layers]
 
-Первый уровень абстрагирования - **согласно скоупу влияния**
+The first level of abstraction is **according to the scope of influence**
 
-- `app` - инициализация приложения *(init, styles, providers, ...)*
-- `processes` - бизнес-процессы приложения управляющие страницами *(payment, auth, ...)*
-- `pages` - страницы приложения *(user-page, ...)*
-- `features` - части функциональности приложения  *(auth-by-oauth, ...)*
-- `entities` - бизнес-сущности *(viewer, order, ...)*
-- `shared` - переиспользуемый инфраструктурный код *(UIKit, libs, API, ...)*
+- `app` - application initialization *(init, styles, providers, ...)*
+- `processes` - application business processes that manage pages *(payment, auth, ...)*
+- `pages` - application pages *(user-page, ...)*
+- `features` - parts of the application functionality *(auth-by-oauth, ...)*
+- `entities` - business entities *(viewer, order, ...)*
+- `shared` - reused infrastructure code *(UIKit, libs, API, ...)*
 
 ### [`Slices`][refs-splitting-slices]
 
-Второй уровень абстрагирования - **согласно бизнес-домену**
+The second level of abstraction is **according to the business domain**
 
-Правила, по которым код разделяется на слайсы, *зависят от конкретного проекта и его бизнес-правил* и не определяются методологией
+The rules by which the code is divided into slices *depend on the specific project and its business rules* and are not determined by the methodology
 
 ### [`Segments`][refs-splitting-segments]
 
-Третий уровень абстрагирования - **согласно назначению в реализации**
+The third level of abstraction is **according to the purpose in the implementation**
 
-- `ui` - UI-представление модуля *(components, widgets, canvas, ...)*
-- `model` - бизнес-логика модуля *(store, effects/actions, hooks/contracts, ...)*
-- `lib` - вспомогательные библиотеки
-- `api` - логика взаимодействия с API
-- `config` - модуль конфигурации приложения и его окружения
+- `ui` - UI - representation of the module *(components, widgets, canvas, ...)*
+- `model` - business logic of the module *(store, effects/actions, hooks/contracts, ...)*
+- `lib` - auxiliary libraries
+- `api` - the logic of interaction with the API
+- `config` - the configuration module of the application and its environment
 
-> **Примечание:** В большинстве случаев [рекомендуется][ext-disc-api] располагать `api` и `config` только в shared-слое
+> **Note:** In most cases, [it is recommended][ext-disc-api] to place `api` and `config` only in the shared layer
 
 ## Structure
 
-> `WIP:` Нейминг групп временный, и будет определен окончательно ближе к релизу
+> `WIP:` The naming of the groups is temporary, and will be determined definitively closer to the release
 
 ```sh
 └── src/
-    ├── app/                    # Layer: Приложение
+    ├── app/                    # Layer: Application
     |                           #
-    ├── processes/              # Layer: Процессы (опционально)
-    |   ├── {some-process}/     #     Slice: (н-р процесс CartPayment)
-    |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
-    |   |   └── model/          #         Segment: Бизнес-логика
+    ├── processes/              # Layer: Processes (optional)
+    |   ├── {some-process}/     #     Slice: (e.g. CartPayment process)
+    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers)
+    |   |   └── model/          #         Segment: Business Logic
     |   ...                     #
     |                           #
-    ├── pages/                  # Layer: Страницы
-    |   ├── {some-page}/        #     Slice: (н-р страница ProfilePage)
-    |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
-    |   |   ├── model/          #         Segment: Бизнес-логика
-    |   |   └── ui/             #         Segment: UI-логика
+    ├── pages/                  # Layer: Pages
+    |   ├── {some-page}/        #     Slice: (e.g. ProfilePage page)
+    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers)
+    |   |   ├── model/          #         Segment: Business Logic
+    |   |   └── ui/             #         Segment: UI logic
     |   ...                     #
     |                           #
-    ├── features/               # Layer: Фичи
-    |   ├── {some-feature}/     #     Slice: (н-р фича AuthByPhone)
-    |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
-    |   |   ├── model/          #         Segment: Бизнес-логика
-    |   |   └── ui/             #         Segment: UI-логика
+    ├── features/               # Layer: Features
+    |   ├── {some-feature}/     #     Slice: (e.g. AuthByPhone feature)
+    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers)
+    |   |   ├── model/          #         Segment: Business Logic
+    |   |   └── ui/             #         Segment: UI logic
     |   ...                     #
     |                           #
-    ├── entities/               # Layer: Бизнес-сущности
-    |   ├── {some-entity}/      #     Slice: (н-р сущность User)
-    |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
-    |   |   ├── model/          #         Segment: Бизнес-логика
-    |   |   └── ui/             #         Segment: UI-логика
+    ├── entities/               # Layer: Business entities
+    |   ├── {some-entity}/      #     Slice: (e.g. entity User)
+    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers)
+    |   |   ├── model/          #         Segment: Business Logic
+    |   |   └── ui/             #         Segment: UI logic
     |   ...                     #
     |                           #
-    ├── shared/                 # Layer: Переиспользуемые ресурсы
-    |   ├── api/                #         Segment: Логика запросов к API
+    ├── shared/                 # Layer: Reused resources
+    |   ├── api/                #         Segment: Logic of API requests
     |   ├── config/             #         Segment: Конфигурация приложения
-    |   ├── lib/                #         Segment: Инфраструктурная-логика приложения
-    |   └── ui/                 #         Segment: UIKit приложения
+    |   ├── lib/                #         Segment: Infrastructure-application logic
+    |   └── ui/                 #         Segment: UIKit of the application
     |   ...                     #
     |                           #
     └── index.tsx/              #
@@ -192,29 +192,29 @@
 
 ## Further reading
 
-- **[Документация методологии][refs-docs]**
+- **[Methodology documentation][refs-docs]**
     > *Get-Started, Concepts, Guides, Reference, About*
-- **[Миграция с feature-slices@v1][refs-migration-v1]**
-- **Прочие материалы**
-  - Предыдущие версии методологии: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven][ext-fdd]*
-  - [Доклад React SPB Meetup #1 - Feature Slices](https://t.me/feature_slices)
+- **[Migration from feature-slices@v1][refs-migration-v1]**
+- **Other materials**
+  - Previous versions of the methodology: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven][ext-fdd]*
+  - [React SPB Meetup Report #1 - Feature Slices](https://t.me/feature_slices)
   - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
   - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
   - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
   - [How to Organize Your React + Redux Codebase](https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase)
   - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
 <!-- divider -->
-- **[Дискуссии по методологии][ext-discussions]**
-  - **Здесь обсуждаются и разбираются реальные примеры применения, вопросы, проблемы, идеи методологии**
-  - Все это в совокупности влияет на спецификацию, тулкит и в целом - на дальнейшее видение и развитие методологии
-  - *Т.е. все, чего пока нет в спецификации/тулките, так или иначе обсуждается в github-discussions*
-- **[Как можно помочь?][refs-contributing]**
-  - ⭐ Оцените нас на GitHub
-  - 💫 **Важно любое содействие** - от *фидбека* до *участия в развитии методологии!*
+- **[Discussions on the methodology][ext-discussions]**
+  - **Real application examples, questions, problems, ideas of the methodology are discussed and analyzed here**
+  - All this together affects the specification, the toolkit and, in general, the further vision and development of the methodology
+  - *That is, everything that is not yet in the specification/toolkit is somehow discussed in github-discussions*
+- **[How can I help?][refs-contributing]**
+  - ⭐ Rate us on GitHub
+  - 💫 **Any assistance is important** - from *feedback* to *participation in the development of the methodology!*
 
 <!-- 
-FIXME: Не удалось нормально justify-content:space-around применить в md
-Если есть варики как лучше отступы расставить - welcome :)
+FIXME: It was not possible to properly justify-content:space-around to apply in md
+If there are variations, how best to place indents-welcome:)
 -->
 
 <div align="center">
