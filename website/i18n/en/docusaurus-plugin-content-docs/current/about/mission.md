@@ -27,7 +27,7 @@ The methodology should set out the reasons and solutions to our everyday problem
 
 So that developers can use a *battle-tested* approach that allows them to bypass long-standing problems of architecture and development
 
-> *@sergeysova: Imagine-a developer writes code within the framework of the methodology and he has problems 10 times less often, simply because other people have thought out the solution to many problems.*
+> *@sergeysova: Imagine, that a developer writes code within the framework of the methodology and he has problems 10 times less often, simply because other people have thought out the solution to many problems.*
 
 ## Restrictions
 
@@ -38,11 +38,10 @@ Everyone has their own level of experience in designing and developing systems, 
 - **Will not work**: very simple, very clear, for everyone
     > *@sergeysova: Some concepts cannot be intuitively understood until you encounter problems and spend years solving them.*
     >
-    > - *An example from mathematics is graph theory.*
-    >
-    > - *Example from physics-quantum mechanics.*
-    > - *Example from programming-application architecture.*
-    >
+    > - *In math world: is graph theory.*
+    > - *In physics: quantum mechanics.*
+    > - *In programming: application architecture.*
+
 - **Possible and desirable**: simplicity, extensibility
 
 ## See also
