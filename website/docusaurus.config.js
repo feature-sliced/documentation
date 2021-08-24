@@ -5,6 +5,7 @@ const TELEGRAM = "https://t.me/feature_sliced";
 const YOUTUBE = "https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A";
 const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
+const DEFAULT_LOCALE = "ru";
 
 // Конкретные страницы нужны, т.к. отдельно секции доки не индексируются
 // FIXME: Будет исправлено позднее
@@ -92,6 +93,7 @@ const navbar = {
                 },
                 {
                     to: "/versions",
+                    // TODO: (i18n) Add translation
                     label: "All versions",
                 },
             ],
@@ -120,10 +122,10 @@ const footer = {
     style: "dark",
     links: [
         {
-            title: "Docs",
+            title: "Specs",
             items: [
-                { label: "Документация", to: "/docs/intro" },
-                { label: "Обсуждения", to: `${GITHUB_DOCS}/discussions` },
+                { label: "Documentation", to: "/docs/intro" },
+                { label: "Discussions", to: `${GITHUB_DOCS}/discussions` },
             ],
         },
         {
@@ -158,7 +160,8 @@ const presets = [
         "@docusaurus/preset-classic",
         {
             docs: {
-                path: "../docs",
+                path: `i18n/${DEFAULT_LOCALE}/docusaurus-plugin-content-docs/current`,
+                editLocalizedFiles: true,
                 sidebarPath: require.resolve("./sidebars.js"),
                 // Please change this to your repo.
                 editUrl: `${GITHUB_DOCS}/edit/master/website/`,
@@ -237,7 +240,8 @@ const announcementBar = {
     id: "bar", // Any value that will identify this message.
     // content: `<b>WIP:</b> Текущая версия методологии находится на стадии разработки и некоторые детали <i>могут измениться</i>`,
     // backgroundColor: '#e6a700', // As caution by docusaurus (defaults was `#fff`)
-    content: `Если вы используете методологию <a href="/versions">(v0 / v1 / v2)</a> по работе или в личных проектах, то <a href="https://github.com/feature-sliced/documentation/issues/131" target="_blank" rel="noreferrer noopener">расскажите нам!</a>`,
+    // FIXME: (i18n) translate by locale later (how to?)
+    content: `If you are using the methodology <a href="/versions">(v0 / v1 / v2)</a> at work or in personal projects, <a href="https://github.com/feature-sliced/documentation/issues/131" target="_blank" rel="noreferrer noopener">tell, us!</a>`,
     backgroundColor: "#5c9cb5", // As primary theme
     textColor: "#fff", // Defaults to `#000`.
     isCloseable: false, // Defaults to `true`.
@@ -264,11 +268,14 @@ module.exports = {
         hideableSidebar: true,
     },
     i18n: {
-        defaultLocale: "ru",
-        locales: ["ru"],
+        defaultLocale: DEFAULT_LOCALE,
+        locales: ["ru", "en"],
         localeConfigs: {
             ru: {
                 label: "Русский",
+            },
+            en: {
+                label: "English (NOT_READY)",
             },
         },
     },

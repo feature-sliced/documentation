@@ -5,10 +5,10 @@ import getBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
 // eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
-// NOTE: import from root level, because same image is used at main README.md
+import { translate } from "@docusaurus/Translate";
 import { Header } from "@site/src/features/header";
 import { Card, Section } from "@site/src/shared/ui";
-import imgScheme from "../../../assets/visual_schema.jpg";
+import imgScheme from "@site/static/img/visual_schema.jpg";
 // NOTE: Locate at index before of specific route-mapping while Node/SSR building
 // "_" for excluding file from routing
 import { features, concepts, companies } from "./_config";
@@ -21,17 +21,20 @@ export default function HomePage() {
         <Layout title="Welcome" description="Structural methodology for frontend projects">
             <Header />
             <main>
-                <Section title="Преимущества">
+                <Section title={translate({ id: "pages.home.features.title" })}>
                     {features.map((feature) => (
                         <Card key={feature.title} size={12 / features.length} {...feature} />
                     ))}
                 </Section>
-                <Section title="Концепции" withAltBg>
+                <Section title={translate({ id: "pages.home.concepts.title" })} withAltBg>
                     {concepts.map((concept) => (
                         <Card key={concept.title} size={12 / concepts.length} {...concept} />
                     ))}
                 </Section>
-                <Section title="Схема" rowClass={styles.scheme}>
+                <Section
+                    title={translate({ id: "pages.home.scheme.title" })}
+                    rowClass={styles.scheme}
+                >
                     {/**
                      *  NOTE: Set fixed height for correct alignment from mobile devices
                      *  @see https://t.me/c/1463227827/197935
@@ -44,7 +47,7 @@ export default function HomePage() {
                     />
                 </Section>
                 <Section
-                    title="Компании, использующие методологию"
+                    title={translate({ id: "pages.home.companies.using" })}
                     className={styles.companiesContainer}
                 >
                     <div className={styles.companies}>
@@ -67,13 +70,13 @@ export default function HomePage() {
                         ))}
                     </div>
                     <span className={styles.companiesSubtitle}>
-                        Методология используется в Вашей компании?{" "}
+                        {translate({ id: "pages.home.companies.add_me" })}{" "}
                         <a
                             href="https://github.com/feature-sliced/documentation/issues/131"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Сообщите нам
+                            {translate({ id: "pages.home.companies.tell_us" })}
                         </a>
                     </span>
                 </Section>

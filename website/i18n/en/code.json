@@ -1,0 +1,286 @@
+{
+  "pages.home.features.title": {
+    "message": "Features",
+    "description": "Features"
+  },
+  "pages.home.features.logic.title": {
+    "message": "Explicit business-logic",
+    "description": "Feature title"
+  },
+  "pages.home.features.logic.description": {
+    "message": "Easy discoverable architecture becaus of domain scopes",
+    "description": "Feature description"
+  },
+  "pages.home.features.adaptability.title": {
+    "message": "Adaptability",
+    "description": "Feature title"
+  },
+  "pages.home.features.adaptability.description": {
+    "message": "Architecture components can be flexibly replaced, additives for new conditions",
+    "description": "Feature description"
+  },
+  "pages.home.features.debt.title": {
+    "message": "Tech debt & Refactoring",
+    "description": "Feature title"
+  },
+  "pages.home.features.debt.description": {
+    "message": "Each module can be independently modified / rewritten without side effects",
+    "description": "Feature description"
+  },
+  "pages.home.features.shared.title": {
+    "message": "Explicit sharing",
+    "description": "Feature title"
+  },
+  "pages.home.features.shared.description": {
+    "message": "Maintains a balance between DRY and local customization",
+    "description": "Feature description"
+  },
+  "pages.home.concepts.title": {
+    "message": "Concepts",
+    "description": "Concepts"
+  },
+  "pages.home.concepts.public.title": {
+    "message": "Public API",
+    "description": "Concept title"
+  },
+  "pages.home.concepts.public.description": {
+    "message": "Each module must have a declaration of its public API at the top level",
+    "description": "Concept description"
+  },
+  "pages.home.concepts.isolation.title": {
+    "message": "Isolation",
+    "description": "Concept title"
+  },
+  "pages.home.concepts.isolation.description": {
+    "message": "The module should not depend directly on other modules of the same layer or overlying layers",
+    "description": "Concept description"
+  },
+  "pages.home.concepts.needs.title": {
+    "message": "Needs Driven",
+    "description": "Concept title"
+  },
+  "pages.home.concepts.needs.description": {
+    "message": "Orientation to business and user needs",
+    "description": "Concept description"
+  },
+  "pages.home.scheme.title": {
+    "message": "Scheme",
+    "description": "Scheme"
+  },
+  "pages.home.companies.using": {
+    "message": "Companies using methodology",
+    "description": "Companies using methodology"
+  },
+  "pages.home.companies.add_me": {
+    "message": "Methodology is used in your company?",
+    "description": "Methodology is used in your company?"
+  },
+  "pages.home.companies.tell_us": {
+    "message": "Tell us",
+    "description": "Tell us"
+  },
+  "pages.examples.title": {
+    "message": "Examples",
+    "description": "Page title"
+  },
+  "pages.examples.subtitle": {
+    "message": "List of websites people are building with Feature Sliced",
+    "description": "Page subtitle"
+  },
+  "pages.examples.add_me.title": {
+    "message": "Add example",
+    "description": "Request to add example"
+  },
+  "pages.examples.repo.title": {
+    "message": "Repository",
+    "description": "Examples repository label"
+  },
+  "pages.examples.versions": {
+    "message": "See also versions list",
+    "description": "Versions reminder"
+  },
+  "pages.versions.title": {
+    "message": "Feature Sliced versions",
+    "description": "Feature Sliced versions"
+  },
+  "pages.versions.current": {
+    "message": "The documentation for the currently published version can be found here",
+    "description": "Description for current version"
+  },
+  "pages.versions.legacy": {
+    "message": "Documentation for older versions of {of} can be found here ",
+    "description": "Description for legacy version"
+  },
+  "features.hero.tagline": {
+    "message": "Structural methodology for frontend projects",
+    "description": "Structural methodology for frontend projects"
+  },
+  "features.hero.get_started": {
+    "message": "Get Started",
+    "description": "Get Started"
+  },
+  "features.hero.examples": {
+    "message": "Examples",
+    "description": "Examples"
+  },
+  "features.hero.previous": {
+    "message": "Previous version",
+    "description": "Previous version"
+  },
+  "theme.NotFound.title": {
+    "message": "Page Not Found",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "We could not find what you were looking for.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Please contact the owner of the site that linked you to the original URL and let them know their link is broken.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Close",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Blog list page navigation",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Newer Entries",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Older Entries",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "One min read|{readingTime} min read",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Tags:",
+    "description": "The label alongside a tag list"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Read More",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Blog post page navigation",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Newer Post",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Older Post",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "theme.blog.post.plurals": {
+    "message": "One post|{count} posts",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} tagged with \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "View All Tags",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Copy code to clipboard",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Copied",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Copy",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Docs pages navigation",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Previous",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Next",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.responsiveCloseButtonLabel": {
+    "message": "Close menu",
+    "description": "The ARIA label for close button of mobile doc sidebar"
+  },
+  "theme.docs.sidebar.responsiveOpenButtonLabel": {
+    "message": "Open menu",
+    "description": "The ARIA label for open button of mobile doc sidebar"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "This is unreleased documentation for {siteTitle} {versionLabel} version.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "This is documentation for {siteTitle} {versionLabel}, which is no longer actively maintained.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "For up-to-date documentation, see the {latestVersionLink} ({versionLabel}).",
+    "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "latest version",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "Edit this page",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Direct link to heading",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " on {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " by {user}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Last updated{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Skip to main content",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  }
+}

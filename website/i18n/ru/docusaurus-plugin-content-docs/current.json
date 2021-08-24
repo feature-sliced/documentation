@@ -1,0 +1,34 @@
+{
+  "version.label": {
+    "message": "v2.0-beta 🍰",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Get Started": {
+    "message": "Ознакомление",
+    "description": "The label for category Get Started in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Concepts": {
+    "message": "Концепции",
+    "description": "The label for category Concepts in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Guides & Examples": {
+    "message": "Гайды & Примеры",
+    "description": "The label for category Guides & Examples in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Examples": {
+    "message": "Примеры",
+    "description": "The label for category Examples in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Reference": {
+    "message": "Справочный материал",
+    "description": "The label for category Reference in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Layer": {
+    "message": "Слои",
+    "description": "The label for category Layer in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.About": {
+    "message": "О методологии",
+    "description": "The label for category About in sidebar tutorialSidebar"
+  }
+}

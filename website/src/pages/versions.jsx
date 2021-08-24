@@ -1,6 +1,7 @@
 import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
+import { translate } from "@docusaurus/Translate";
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
 // eslint-disable-next-line import/no-unresolved
@@ -25,12 +26,12 @@ function Version() {
             description="Feature Sliced Versions page listing all documented site versions"
         >
             <main className="container margin-vert--lg">
-                <h1>Feature Sliced versions</h1>
+                <h1>{translate({ id: "pages.versions.title" })}</h1>
 
                 {latestVersion && (
                     <div className="margin-bottom--lg">
                         <h3 id="next">Feature Sliced v2.0-beta (Current)</h3>
-                        <p>Здесь можно найти документацию для текущей опубликованной версии</p>
+                        <p>{translate({ id: "pages.versions.current" })}</p>
                         <Table>
                             <Table.Row
                                 th={latestVersion.label}
@@ -52,7 +53,7 @@ function Version() {
 
                 <div className="margin-bottom--lg">
                     <h3 id="legacy">Feature Slices v1 (Legacy)</h3>
-                    <p>Здесь можно найти документацию для старых версий feature-slices</p>
+                    <p>{translate({ id: "pages.versions.legacy" }, { of: "feature-slices" })}</p>
                     <Table>
                         <Table.Row
                             th="v1.0"
@@ -68,7 +69,7 @@ function Version() {
                 </div>
                 <div className="margin-bottom--lg">
                     <h3 id="legacy">Feature Driven (Legacy)</h3>
-                    <p>Здесь можно найти документацию для старых версий feature-driven</p>
+                    <p>{translate({ id: "pages.versions.legacy" }, { of: "feature-driven" })}</p>
                     <Table>
                         <Table.Row
                             th="v0.1"

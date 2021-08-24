@@ -15,7 +15,7 @@
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/OWNER/REPO?style=flat-square)](https://github.com/OWNER/REPO/commits)
 -->
 
-![feature-sliced-banner](assets/banner.jpg)
+![feature-sliced-banner](/website/static/img/banner.jpg)
 
 <!-- ⚡ Add primary information & features about your repository -->
 Методология для проектирования *frontend проектов*, нацеленная [**на разделение приложения согласно бизнес-логике и областям ответственности.**][refs-splitting]
@@ -112,7 +112,7 @@
 
 > `WIP:` Схема - представляет лишь **примерное** разбиение проекта по модулям и будет определена окончательно ближе к релизу
 
-![visual_schema](./assets/visual_schema.jpg)
+![visual_schema](website/static/img/visual_schema.jpg)
 
 </details>
 
@@ -219,13 +219,13 @@ FIXME: Не удалось нормально justify-content:space-around пр�
 
 <div align="center">
 
-[![tg](./assets/social_tg.png)](https://t.me/feature_sliced "Телеграм-чат")
+[![tg](website/static/img/social/tg.png)](https://t.me/feature_sliced "Телеграм-чат")
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![twitter](./assets/social_twitter.png)](https://twitter.com/feature_sliced)
+[![twitter](website/static/img/social/twitter.png)](https://twitter.com/feature_sliced)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![open-collective](./assets/social_opencollective.png)](https://opencollective.com/feature-sliced "OpenCollective профиль")
+[![open-collective](website/static/img/social/opencollective.png)](https://opencollective.com/feature-sliced "OpenCollective профиль")
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![youtube](./assets/social_youtube.png)](https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A)
+[![youtube](website/static/img/social/youtube.png)](https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A)
 </div>
 
 [refs-contributing]: CONTRIBUTING.md
