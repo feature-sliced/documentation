@@ -17,7 +17,7 @@ Here we describe the goals and limitations of the applicability of the methodolo
 
 The methodology should be accessible - for most of the team in projects
 
-*Because even with all the future tools , it will not be enough for only experienced seniors/leads to understand the methodology*
+*Because even with all the future tools , it will not be enough, if only experienced seniors/leads will understand the methodology*
 
 ### Solving everyday problems
 
