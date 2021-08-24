@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Group: `Layers`
 
-The first level of separation: according to the **scope of the influence** of the module
+The first level of separation: according to the **scope of responsibility** of the module
 
 :::note Self-test
 
