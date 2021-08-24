@@ -37,7 +37,7 @@ Usually, the approaches to building the frontend architecture from project to pr
 
 At the same time, incorrectly made decisions often lead [to problems of scalability of the project and the team][refs-arch-problems].
 
-And therefore, instead of inventing and documenting it every time, I want to **summarize the experience and form a working, proven and documented methodology** for designing the frontend architecture.
+And therefore, instead of inventing and documenting it every time, it is better to **summarize the experience and form a working, proven and documented methodology** for designing the frontend architecture.
 
 *Yes, there are many practices and patterns (`SOLID`, `GRASP`, `DDD`, ...)*
 
