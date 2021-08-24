@@ -40,6 +40,8 @@ sidebar_position: 1
 - Чем ниже расположен слой - тем он больше используется в верхних слоях, а значит и тем больше опасности вносить в него изменения (снизу вверх)
   - `shared` > `entities` > `features` > (`widgets`) > `pages` > (`processes`) > `app`
 
+<!-- use: https://www.tablesgenerator.com/markdown_tables# -->
+
 | Layer     |                              Can use                              |                         Can be used by                         |
 |-----------|:-----------------------------------------------------------------:|:--------------------------------------------------------------:|
 | app       | `shared`, `entities`, `features`, `widgets`, `pages`, `processes` |                                -                               |
