@@ -54,7 +54,7 @@ The second level of separation: by **specific BL functionality**
 
 "What area of BL does the module affect?"
 
-*Before that , it is necessary to determine the scope of influence (layer)*
+*Before that , it is necessary to determine the scope of responsibility (layer)*
 
 :::
 
