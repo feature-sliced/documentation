@@ -77,7 +77,7 @@ Now the methodology assumes explicit allocation of layers at the top level
     *(in other words-each module of the layer - can import only the modules of the underlying layers, but not higher)*
 - The **lower the layer of the** module is located , the more **danger and responsibility** to make changes to it
 
-    *(because, as a rule, it is the underlying layers that are more overused)*
+    *(becaus it is usually the underlying layers that are more overused)*
 
 ### `BREAKING` Shared
 

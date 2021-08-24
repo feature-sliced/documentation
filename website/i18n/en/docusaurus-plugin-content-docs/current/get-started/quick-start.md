@@ -6,10 +6,10 @@ sidebar_position: 4
 
 Let's consider the application of **feature-sliced** on the example of TodoApp
 
-- First, we will analyze *the preparatory aspects of creating an application*
-- And then - how the concepts of the methodology help *flexibly and effectively design business logic* without unnecessary costs
+- At first, we will prepare application basely (bootstrap, routing, styles)
+- Then we will consider - how the concepts of the methodology help *flexibly and effectively design business logic* without unnecessary costs
 
-> At the end of the article there is [codesandbox-insert with the final solution][ext-sandbox], which can help to clarify the implementation details
+> There is [codesandbox-insert with the final solution][ext-sandbox], which can help to clarify the implementation details at the end of the article
 
 **Stack**: React, Effector, TypeScript, Sass, AntDesign
 
@@ -19,7 +19,7 @@ The tutorial is designed to **reveal the practical idea of the methodology itsel
 
 :::
 
-## 1. Preparatory moments
+## 1. Preparation
 
 ### 1.1 Initializing the project
 
@@ -68,9 +68,9 @@ And usually most projects at this stage [turn into something like this][ext-plur
 
 *They can become such immediately, or after a long development*
 
-At the same time, if we look inside, as a rule, we will find:
+At the same time, if we look inside we will most likely find:
 
-- Highly branched directories by nesting
+- Highly coupled directories by nesting
 - Strongly connected components with each other
 - A huge number of dissimilar components / containers in their respective folders, linked thoughtlessly
 
@@ -98,7 +98,7 @@ However, most frontend projects are still something like this, since **there is 
     └── index.tsx               # Connecting and rendering the application
 ```
 
-Perhaps, at first glance, such a structure will seem unusual, but over time you will notice that **you use familiar abstractions, but in a consistent and ordered form.**
+At first glance the structure may seem strange, but over time you will notice that **you use familiar abstractions, but in a consistent and ordered form.**
 
 **Also, we enable support for absolute imports for convenience**
 
@@ -304,7 +304,7 @@ $ npm i antd @ant-design/icons
 
 :::tip
 
-But you can use **any other UIKit** or **create your own** by placing the components in `shared/ui` - this is where it is recommended to store UIKit applications:
+But you can use **any other UIKit** or **create your own** by placing the components in `shared/ui` - this is where it is recommended to place UIKit of application:
 
 ```ts
 import { Checkbox } from "antd"; // ~ "shared/ui/checkbox"
@@ -325,7 +325,7 @@ We will try to focus not on the implementation of each module, but on their sequ
 
 Before starting the code, we need to decide - [what value we want to convey to the end user][refs-needs]
 
-To do this, we decompose our functionality *by responsibility zones [(layers)][refs-layers]*
+To do this, we decompose our functionality *by responsibility scopes [(layers)][refs-layers]*
 
 ![layers-flow-themed](/img/layers_flow.png)
 
@@ -392,7 +392,7 @@ Business entities on which a higher-level logic will be built
 
 #### [Shared][refs-shared]
 
-Reused shared modules, without binding to the subject area
+Reused shared modules, without binding to the domain scopes
 
 - `<Card />` - (component) UIKit component
   - *At the same time, you can either implement your own UIKit for the project, or use a ready-made one*
@@ -401,7 +401,7 @@ Reused shared modules, without binding to the subject area
 
 #### What is the profit?
 
-Now all modules can be designed with [weak connectivity][refs-low-coupling] and [with their own area of responsibility][refs-layers], as well as distributed across the team without conflicts during development
+Now all modules can be designed with [weak connectivity][refs-low-coupling] and [with their own scope of responsibility][refs-layers], as well as distributed across the team without conflicts during development
 
 *And most importantly, now each module serves to build a specific business value, which reduces the risks for creating ["features for the sake of features"][refs-needs]*
 
@@ -409,7 +409,7 @@ Now all modules can be designed with [weak connectivity][refs-low-coupling] and 
 
 #### Layers and responsibilities
 
-As described above, thanks to the layered structure, we can **predictably distribute the complexity of the application** according to [areas of responsibility, i.e. layers][refs-layers].
+As described above, thanks to the layered structure, we can **predictably distribute the complexity of the application** according to [scopes of responsibility, i.e. layers][refs-layers].
 
 At the same time, a higher-level logic is built on the basis of the underlying layers:
 
@@ -686,7 +686,7 @@ And we implemented the logic again, without asking too many questions:
 - Can these filters be reused in the future?
 - Can filters know about the page context?
 
-We just divided the logic according to the areas of responsibility (layers)
+We just divided the logic according to the scopes of responsibility (layers)
 
 ```tsx title=pages/tasks-list/index.tsx
 import { TasksFilters } from "features/tasks-filters";
@@ -703,11 +703,11 @@ import { TasksFilters } from "features/tasks-filters";
 
 **At the current stage, such a division may seem superfluous - "Why not put everything at once at the page / feature level"?**
 
-But then let's try to ask ourselves questions:
+But then let's try to ask questions ourselves:
 
-- And where are the guarantees that the complexity of the page will not increase in the future so much that all aspects of logic will be strongly intertwined? How can I add new functionality at no extra cost?
-- And where are the guarantees that a new person who has joined the team (or even you, if you leave the project for six months) will understand what is happening here?
-- And how to build logic so as not to disrupt the data flow / reactivity with other features?
+- Where are the guarantees that the complexity of the page will not increase in the future so much that all aspects of logic will be strongly intertwined? How can I add new functionality at no extra cost?
+- Where are the guarantees that a new person who has joined the team (or even you, if you leave the project for six months) will understand what is happening here?
+- How to build logic so as not to disrupt the data flow / reactivity with other features?
 - What if this filtering logic is so strongly attached to the context of the page that it will be impossible to use it on other pages?
 
 This is why we **divide the responsibility** so that each layer is engaged in only one task, and so that each of the developers understands this
@@ -794,7 +794,7 @@ At the same time, the old code base does not require significant rework
 
 ### We have learned how to apply the methodology for basic cases
 
-It is clear that the world is much more complicated, but already here we have caught on to some controversial points and resolved them in such a way that the project remains supported and extensible.
+Obviously, the world is much more complicated, but now we have already caught on to some controversial points and resolved them in such a way that the project remains supported and extensible.
 
 ### We got a scalable and flexible codebase
 

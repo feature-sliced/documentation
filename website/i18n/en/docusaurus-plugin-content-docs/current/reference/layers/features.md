@@ -67,7 +67,7 @@ features/order/            Feature group
 
 This rule is not always possible to comply with, but it is better to minimize the number of such violations.
 
-As a rule, it is precisely because of the neglect of this rule that there is a high connectivity between the modules of the system and unpredictable side effects during development.
+Usually, it is precisely because of the neglect of this rule that there is a high connectivity between the modules of the system and unpredictable side effects during development.
 
 One of the ways to solve the problem is to use [entity][refs-entity].
 
@@ -122,7 +122,7 @@ export const AuthByPhone = () => {
 
 - ["Guide to getting rid of cross-imports"](/docs/guides/low-coupling)
 - [Understanding user needs and business tasks](/docs/concepts/needs-driven)
-    - To understand the `features` layer
+  - To understand the `features` layer
 - [(Thread) About features and entities clearly](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
 
 [refs-entity]: /docs/reference/layers/entities

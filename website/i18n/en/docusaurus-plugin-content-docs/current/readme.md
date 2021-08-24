@@ -5,7 +5,7 @@ slug: intro
 
 # Intro
 
-A methodology for designing *frontend projects*, aimed [**at dividing the application according to business logic and areas of responsibility.**][refs-splitting]
+A methodology for designing *frontend projects*, aimed [**at dividing the application according to business logic and scopes of responsibility.**][refs-splitting]
 
 - Provides [**clarity, controllability and adaptability**][refs-arch-req] architecture
 - Based on [**time-tested**][refs-motivation-why] design practices and concepts

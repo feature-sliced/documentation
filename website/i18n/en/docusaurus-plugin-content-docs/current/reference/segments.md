@@ -20,7 +20,7 @@ sidebar_position: 3
 
 Each of the above segments represents the levels of abstractions that are familiar to us when developing software.
 
-Each of the segments is responsible for its own area, but all together - **they form a single image of this slice and its logic**, specifically:
+Each of the segments is responsible for its own scope, but all together - **they form a single image of this slice and its logic**, specifically:
 
 - its visual display (ui)
 - its business logic (model)

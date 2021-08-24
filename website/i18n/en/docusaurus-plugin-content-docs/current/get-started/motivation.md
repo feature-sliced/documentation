@@ -44,7 +44,7 @@ Not everyone knows them completely, even fewer understand and apply them correct
 
 ### Existing frameworks cannot be applied everywhere
 
-- Existing solutions, as a rule, have a high entry threshold, which makes it difficult to find new developers
+- Existing solutions usually have a high entry threshold, which makes it difficult to find new developers
 - Also, most often, the choice of technology has already been determined before the onset of serious problems in the project, and therefore you need to be able to "work with what is" - **without being tied to the technology**
 
 > Q: *"In my project `React/Vue/Redux/Effector/Mobx/{YOUR_TECH}` - how can I better build the structure of entities and the relationships between them?"*

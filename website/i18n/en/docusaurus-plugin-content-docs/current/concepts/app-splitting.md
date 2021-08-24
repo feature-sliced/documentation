@@ -52,7 +52,7 @@ The second level of separation: by **specific BL functionality**
 
 :::note Self-test
 
-"What area of BL does the module affect?"
+"What scope of BL does the module affect?"
 
 *Before that , it is necessary to determine the scope of responsibility (layer)*
 
@@ -194,7 +194,7 @@ However, as a result of [discussions and analysis of extensive experience][disc-
 1. The**higher** the layer is located , the more it knows about the BL of the application and vice versa
 2. API logic [recommended][disc-api] should be put in `shared` so that the logic is not scattered around the project
 
-* As a rule, it is common and presented as single instances
+* Usually, it is common and presented as single instances
   * *Edge-case "exceptions"*: *GraphQL*, *react-query hooks*
 
 #### Application for layers

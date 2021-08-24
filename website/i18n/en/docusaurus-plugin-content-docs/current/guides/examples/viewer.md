@@ -310,7 +310,7 @@ export const SomePage = () => {
 
 **Initialization of user account data**
 
-- As a rule, there is a check on whether the user **was already logged in** before he entered the service
+- There is usually a check on whether the user **was already logged in** before he entered the service
   - **If yes** - the provider replenishes the user's context for further use in the system
   - **If not** - the authorization process is started or the context of the viewer is changed so that the authorization page takes the necessary actions
 

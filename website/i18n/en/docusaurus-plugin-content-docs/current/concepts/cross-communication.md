@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Cross-communication
 
-Within the framework of the methodology, all modules are distributed by areas of responsibility [(layer, slice, segment)][refs-splitting]
+Within the framework of the methodology, all modules are distributed by scopes of responsibility [(layer, slice, segment)][refs-splitting]
 
 The layers, in turn, are organized vertically:
 
@@ -61,7 +61,7 @@ Violation of this rule is a signal of problems:
 
 1. The module **has imports from many modules** from its own layer
 
-    - Perhaps the module belongs to **another area of responsibility.**
+    - Perhaps the module belongs to **another scope of responsibility.**
     - You should **move it (partially or completely) to the layer above**.
 
 ## See also
