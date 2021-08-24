@@ -4,31 +4,31 @@
     "description": "The label for version current"
   },
   "sidebar.tutorialSidebar.category.Get Started": {
-    "message": "Get Started",
+    "message": "Ознакомление",
     "description": "The label for category Get Started in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Concepts": {
-    "message": "Concepts",
+    "message": "Концепции",
     "description": "The label for category Concepts in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Guides & Examples": {
-    "message": "Guides & Examples",
+    "message": "Гайды & Примеры",
     "description": "The label for category Guides & Examples in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Examples": {
-    "message": "Examples",
+    "message": "Примеры",
     "description": "The label for category Examples in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Reference": {
-    "message": "Reference",
+    "message": "Справочный материал",
     "description": "The label for category Reference in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Layer": {
-    "message": "Layer",
+    "message": "Слои",
     "description": "The label for category Layer in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.About": {
-    "message": "About",
+    "message": "О методологии",
     "description": "The label for category About in sidebar tutorialSidebar"
   }
 }

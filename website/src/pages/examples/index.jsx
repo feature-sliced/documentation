@@ -1,12 +1,13 @@
 import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
+import { translate } from "@docusaurus/Translate";
 import { ExampleCard } from "@site/src/entities/example";
 
 import { examples } from "./_config";
 
-const TITLE = "Examples";
-const DESCRIPTION = "List of websites people are building with Feature Sliced";
+const TITLE = translate({ id: "pages.examples.title" });
+const DESCRIPTION = translate({ id: "pages.examples.subtitle" });
 const EDIT_URL =
     "https://github.com/feature-sliced/documentation/edit/master/website/src/pages/examples/_config.js";
 const EXAMPLES_URL = "https://github.com/feature-sliced/examples";
@@ -20,14 +21,14 @@ function ExamplesPage() {
                     <p>{DESCRIPTION}</p>
                     <div className="button-group">
                         <a className="button button--primary" href={EDIT_URL} target="_blank">
-                            🙏 Add your site now!
+                            🙏 {translate({ id: "pages.examples.add_me.title" })}
                         </a>
                         <a className="button button--secondary" href={EXAMPLES_URL} target="_blank">
-                            Examples Repository
+                            {translate({ id: "pages.examples.repo.title" })}
                         </a>
                     </div>
                     <div className="margin-top--sm">
-                        <a href="/versions">See also versions list</a>
+                        <a href="/versions">{translate({ id: "pages.examples.versions" })}</a>
                     </div>
                 </div>
                 <section className="container margin-top--lg">

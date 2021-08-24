@@ -1,6 +1,5 @@
 ---
 sidebar_position: 1
-sidebar_label: About architecture
 ---
 
 # Об архитектуре

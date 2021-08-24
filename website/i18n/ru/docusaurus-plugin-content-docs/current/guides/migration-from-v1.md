@@ -1,6 +1,5 @@
 ---
 sidebar_position: 2
-sidebar_label: Migration from v1
 ---
 
 # Миграция с v1
