@@ -8,7 +8,7 @@ sidebar_position: 7
 
 ## Description
 
-There are usually:
+There are usually placed:
 
 - business entities, for building the business logic of the application
     > *For example: `user`, `order`, `post`, `journal`, `navigation`, ...*

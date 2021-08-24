@@ -8,7 +8,7 @@ sidebar_position: 2
 
 ## Description
 
-What usually happens here is:
+There are usually placed:
 
 - initialization of processes and other background logic
 - initialization of providers, wrappers

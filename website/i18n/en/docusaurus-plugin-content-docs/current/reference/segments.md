@@ -33,7 +33,7 @@ Also, in rare cases, affecting:
 
 :::tip
 
-**Each segment can be either a file or a directory** - depending on the complexity of the slice being implemented
+**Each segment can be either a file or a directory** - it depends on the complexity of the slice being implemented
 
 That is, such options are also quite acceptable:
 

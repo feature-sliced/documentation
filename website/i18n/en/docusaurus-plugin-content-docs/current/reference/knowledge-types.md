@@ -5,7 +5,7 @@ sidebar_label: Knowledge types
 
 # Types of knowledge in the project
 
-In any project, the following "types of knowledge"can be distinguished
+In any project, you can distinguish certain types of knowledge
 
 ## Fundamental knowledge
 

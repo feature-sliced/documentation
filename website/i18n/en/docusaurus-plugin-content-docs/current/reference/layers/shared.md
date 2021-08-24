@@ -8,7 +8,7 @@ sidebar_position: 8
 
 ## Description
 
-There are usually:
+There are usually placed:
 
 - shared **UIKit** of the application (if there is one)
   - *[Segment][refs-segments]: `shared/ui`*
