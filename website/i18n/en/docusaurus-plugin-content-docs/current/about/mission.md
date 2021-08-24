@@ -25,7 +25,7 @@ The methodology should set out the reasons and solutions to our everyday problem
 
 **And also-attach tools to all this (cli, linters)**
 
-So that developers can use a *proven experience* approach that allows them to bypass long-standing problems of architecture and development
+So that developers can use a *battle-tested* approach that allows them to bypass long-standing problems of architecture and development
 
 > *@sergeysova: Imagine-a developer writes code within the framework of the methodology and he has problems 10 times less often, simply because other people have thought out the solution to many problems.*
 
