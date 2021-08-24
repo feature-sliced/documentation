@@ -6,19 +6,19 @@ sidebar_position: 2
 
 ![app-themed-bordered](/img/layers/app.png)
 
-## Описание
+## Description
 
-Здесь обычно происходит:
+What usually happens here is:
 
-- инициализация процессов и прочей фоновой логики
-- инициализация провайдеров, оберток
-- подключение глобальных стилей приложения
+- initialization of processes and other background logic
+- initialization of providers, wrappers
+- connecting global application styles
 
-*Методология пока никак не регламентирует содержимое этого слоя, поэтому оно зависит от конкретного проекта*
+*The methodology does not yet regulate the content of this layer in any way, so it depends on the specific project*
 
-## Примеры
+## Examples
 
-### Инициализация роутера
+### Initializing the router
 
 ```tsx title=app/providers/withRouter.tsx
 export const withRouter = (component: Component) => () => (
@@ -32,7 +32,7 @@ export const withRouter = (component: Component) => () => (
 );
 ```
 
-### Инициализация внешних библиотек
+### Initializing external libraries
 
 ```tsx title=app/providers/withAntd.tsx
 export const withAntd = (component: Component) => () => (
@@ -52,9 +52,9 @@ export const withApollo = (component: Component) => () => (
 );
 ```
 
-### Подключение инициализации
+### Enabling initialization
 
-*Здесь показан лишь один из способов, если вы используете HOC для провайдеров и инициализации логики*
+*Only one of the methods is shown here, if you use HOC for providers and logic initialization*
 
 ```tsx title=app/providers/index.ts
 import compose from "compose-function";
@@ -62,11 +62,11 @@ import { withRouter } from "./with-router";
 import { withAntd } from "./with-antd";
 ...
 
-// 1. Библиотека compose часто экспортится из некоторых уже используемых вами зависимостей
-// н-р: `import { compose } from "redux"
-// 2. Стоит учитывать порядок подключения HOCs
-// н-р: withHOC2 не может быть запущен, пока не будет обертки withHOC1 и т.п.
-export const withProviders = compose(withRouter, withAntd, ...);
+// 1. The compose library is often exported from some dependencies that you already use
+// e.g.: `import { compose } from "redux"`
+// 2. It is worth considering the order of HOCs connection
+// e.g.: withHOC2 cannot be started until there is a wrapper withHOC1, etc.
+export const withProviders = compose(withRouter, withAntd,...);
 ```
 
 ```tsx title=app/index.tsx
