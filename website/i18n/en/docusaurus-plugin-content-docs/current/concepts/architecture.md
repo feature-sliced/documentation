@@ -4,89 +4,89 @@ sidebar_position: 1
 
 # About architecture
 
-## Проблемы
+## Problems
 
-Обычно, разговор об архитектуре поднимается, когда разработка стопорится из-за тех или иных проблем в проекте.
+Usually, the conversation about architecture is raised when the development stops due to certain problems in the project.
 
 ### Bus-factor & Onboarding
 
-Проект и его архитектуру понимает лишь ограниченный круг людей
+Only a limited number of people understand the project and its architecture
 
-**Примеры:**
+**Examples:**
 
-- *"Сложно добавить человека в разработку"*
-- *"На каждую проблему - у каждого свое мнение как обходить" (позавидуем ангуляру)*
-- *"Не понимаю что происходит в этом большом куске монолита"*
+- *"It's difficult to add a person to the development"*
+- *"For every problem, everyone has their own opinion on how to get around" (let's envy the angular)*
+- *"I don't understand what is happening in this big piece of monolith"*
 
-### Неявные и неконтролируемые последствия
+### Implicit and uncontrolled consequences
 
-Множество неявных сайд-эффектов при разработке/рефакторинге *("все зависит от всего")*
+A lot of implicit side effects during development/refactoring *("everything depends on everything")*
 
-**Примеры:**
+**Examples:**
 
-- *"Фича импортит фичу"*
-- *"Я обновил(а) стор одной страницы, а отвалилась функциональность на другой"*
-- *"Логика размазана по всему приложению, и невозможно отследить - где начало, где конец"*
+- *"The feature imports the feature"*
+- *"I updated the store of one page, and the functionality fell off on the other"*
+- *"The logic is smeared all over the application, and it is impossible to track where the beginning is, where the end is"*
 
-### Неконтролируемое переиспользование логики
+### Uncontrolled reuse of logic
 
-Сложно переиспользовать/модифицировать существующую логику
+It is difficult to reuse/modify existing logic
 
-При этом, обычно есть [две крайности](https://github.com/feature-sliced/documentation/discussions/14):
+At the same time, there are usually [two extremes](https://github.com/feature-sliced/documentation/discussions/14):
 
-- Либо под каждый модуль пишется логика полностью с нуля *(с возможными повторениями в имеющейся кодобазе)*
-- Либо идет тенденция переносить все-все реализуемые модули в `shared` папки, тем самым создавая из нее большую свалку из модулей *(где большинство используется только в одном месте)*
+- Either the logic is written completely from scratch for each module *(with possible repetitions in the existing codebase)*
+- Either there is a tendency to transfer all-all implemented modules to `shared` folders, thereby creating a large dump of modules *from it (where most are used only in one place)*
 
-**Примеры:**
+**Examples:**
 
-- *"У меня в проекте есть n-реализаций одной и той же бизнес-логики, за что приходится ежедневно расплачиваться"*
-- *"В проекте есть 6 разных компонентов кнопки/попапа/..."*
-- *"Свалка хелперов"*
+- *"I have **N** implementations of the same business logic in my project, for which I still pay"*
+- *"There are 6 different components of the button/pop-up/... In the project"*
+- *"Dump of helpers"*
 
-## Требования
+## Requirements
 
-Поэтому кажется логичным предъявить желаемые *требования к идеальной архитектуре:*
+Therefore, it seems logical to present the desired *requirements for an ideal architecture:*
 
 :::note
 
-Везде где говорится "легко", подразумевается "относительно легко для широкого круга разработчиков", т.к. ясно, что [не получится сделать идеального решения для абсолютно всех](/docs/about/mission#ограничения)
+Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/docs/about/mission#restrictions)
 
 :::
 
 ### Explicitness
 
-- Должно быть **легко осваивать и объяснять** команде проект и его архитектуру
-- Структура должна отображать реальные **бизнес-ценности проекта**
-- Должны быть явными **сайд-эффекты и связи** между абстракциями
-- Должно быть **легко обнаруживать дублирование логики**, не мешая уникальным реализациям
-- Не должно быть **распыления логики** по всему проекту
-- Не должно быть **слишком много разнородных абстракций и правил** для хорошей архитектуры
+- It should be **easy to master and explain** the project and its architecture to the team
+- The structure should reflect the real **business values of the project**
+- There must be explicit **side effects and connections** between abstractions
+- It should be **easy to detect duplicate logic** without interfering with unique implementations
+- There should be no **dispersion of logic** throughout the project
+- There should not be **too many heterogeneous abstractions and rules** for a good architecture
 
 ### Control
 
-- Хорошая архитектура должна **ускорять решение задач, внедрение фич**
-- Должна быть возможность контролировать разработку проекта
-- Должно быть легко **расширять, модифицировать, удалять код**
-- Должна соблюдаться **декомпозиция и изолированность** функциональности
-- Каждый компонент системы должен быть **легко заменяемым и удаляемым**
-  - *[Не нужно оптимизировать под изменения][ext-kof-not-modification] - мы не можем предсказывать будущее*
-  - *[Лучше - оптимизировать под удаление][ext-kof-but-removing] - на основании того контекста, который уже имеется*
+- A good architecture should **speed up the solution of tasks, the introduction of features**
+- It should be possible to control the development of the project
+- It should be easy to **expand, modify, delete the code**
+- The * decomposition and isolation of** functionality must be observed
+- Each component of the system must be **easily replaceable and removable**
+  - *[No need to optimize for changes][ext-kof-not-modification] - we can't predict the future*
+  - *[Better-optimize for deletion][ext-kof-but-removing] - based on the context that already exists*
 
 ### Adaptability
 
-- Хорошая архитектура должна быть применима **к большинству проектов**
-  - *С уже существующими инфраструктурными решениями*
-  - *На любой стадии развития*
-- Не должно быть зависимости от фреймворка и платформы
-- Должна быть возможность **легко масштабировать проект и команду**, с возможностью параллелизации разработки
-- Должно быть легко **подстраиваться под изменяющиеся требования и обстоятельства**
+- A good architecture should be applicable **to most projects**
+  - *With existing infrastructure solutions*
+  - *At any stage of development*
+- There should be no dependence on the framework and platform
+- It should be possible to **easily scale the project and the team**, with the possibility of parallelization of development
+- It should be easy **to adapt to changing requirements and circumstances**
 
-## См. также
+## See also
 
 - [(React Berlin Talk) Oleg Isonen - Feature Driven Architecture][ext-kof]
 - [(React SPB Meetup #1) Sergey Sova - Feature Slices][ext-slices-spb]
-- [(Статья) Про модуляризацию проектов][ext-medium]
-- [(Статья) Про Separation of Concerns и структурирование по фичам][ext-ryanlanciaux]
+- [(Article) About project modularization][ext-medium]
+- [(Article) About Separation of Concerns and structuring by features][ext-ryanlanciaux]
 
 [ext-kof-not-modification]: https://youtu.be/BWAeYuWFHhs?t=1631
 [ext-kof-but-removing]: https://youtu.be/BWAeYuWFHhs?t=1666

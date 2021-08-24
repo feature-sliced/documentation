@@ -6,151 +6,153 @@ sidebar_position: 2
 
 :::note TL;DR
 
-— _Не получается сформулировать цель, которую будет решать новая фича? А может проблема в том, что сама задача не сформулирована? **Смысл ещё и в том, чтобы методология помогла вытащить наружу проблемное определение задач и целей**_
+— _Can't you formulate the goal that the new feature will solve? Or maybe the problem is that the task itself is not formulated? **The point is also that the methodology helps to pull out the problematic definition of tasks and goals**_
 
-— _Проект не живет в статике - требования и функциональность постоянно меняются. Со временем, код превращается в кашу, т.к. на старте проект был спроектирован только под изначальный слепок пожеланий. **И задача хорошей архитектуры в том числе - чтобы быть заточенной под изменяющиеся условия разработки.**_
+— _project does not live in static - requirements and functionality are constantly changing. Over time, the code turns into mush, because at the start the project was designed only for the initial impression of wishes. **And the task of a good architecture is also to be sharpened for changing development conditions.**_
 
 :::
 
-<!--TODO: Сделать каждый раздел позднее более самостоятельным сам по себе -->
-<!--TODO: Добавить больше информации по изменяющимся требованиям проекта -->
+<!--TODO: Make each section later more independent by itself -->
+<!--TODO: Add more information on the changing requirements of the project -->
 
-## Зачем?
+## Why?
 
-Чтобы подобрать четкое имя сущности и понять ее составляющие, **нужно отчетливо понимать - какая задача будет решена с помощью всего этого кода.**
+To choose a clear name for an entity and understand its components, **you need to clearly understand what task will be solved with the help of all this code.**
 
-> *@sergeysova: Во время разработки, мы пытаемся каждой сущности или функции дать имя, которое четко отражает намерения и смысл выполняемого кода.*
+> *@sergeysova: During development, we try to give each entity or function a name that clearly reflects the intentions and meaning of the code being executed.*
 
-*Ведь, без понимания задачи, нельзя написать правильные тесты, покрывающие самые важные кейсы, проставить ошибки помогающие пользователю в нужных местах, даже банально не прерывать флоу пользователя из-за исправимых не критичных ошибок.*
+*After all, without understanding the task, it is impossible to write the right tests that cover the most important cases, put down errors that help the user in the right places, even it is banal not to interrupt the user's flow because of fixable non-critical errors.*
 
-## О каких задачах речь?
+## What tasks are we talking about?
 
-Frontend занимается разработкой приложений и интерфейсов для конечных пользователей, значит мы решаем задачи этих потребителей.
+Frontend develops applications and interfaces for end users, so we solve the tasks of these consumers.
 
-Когда к нам приходит человек, **он хочет решить какую-то свою боль или закрыть потребность.**
+When a person comes to us, **he wants to solve some of his pain or close a need.**
 
-*Задача менеджеров и аналитиков - сформулировать эту потребность, а разработчиков реализовать с учетом особенностей веб-разработки (потеря связи, ошибка бекенда, опечатка, промазал курсором или пальцем).*
+*The task of managers and analysts is to formulate this need, and implement developers taking into account the features of web development (loss of communication, backend error, typo, missed the cursor or finger).*
 
-**Эта самая цель, с которой пришёл пользователь и есть задача разработчиков.**
+**This very goal, with which the user came, is the task of the developers.**
 
-> *Одна маленькая решенная задача и есть feature в методологии feature-sliced — нужно нарезать весь скоуп задач проекта на маленькие цели.*
+> *One small solved problem is a feature in the feature-sliced methodology — you need to cut the entire scope of project tasks into small goals.*
 
-## Как это влияет на разработку?
+## How does this affect development?
 
-### Декомпозиция задачи
+### Task decomposition
 
-Когда разработчик принимается реализовывать задачу, для упрощения понимания и поддержки кода, он мысленно **нарезает ее на этапы**:
+When a developer begins to implement a task, in order to simplify the understanding and support of the code, he mentally **cuts it into stages**:
 
-- сначала *разбить на верхнеуровневые сущности* и *реализовать их*,
-- затем эти сущности *разбить на более мелкие*
-- и так далее
+* first *split into top-level entities* and *implement them*,
+* then these entities *split into smaller ones*
+* and so on
 
-*В процессе разбиения на сущности, разработчик вынужден дать им название, которое четко отражало бы его замысел и при чтении листинга помогало понять какую задачу решает код*
-*При этом не забываем, что пытаемся помочь пользователю уменьшить боль или реализовать потребности*
+*In the process of splitting into entities, the developer is forced to give them a name that would clearly reflect his idea and help to understand what task the code solves when reading the listing*
+*At the same time, we do not forget that we are trying to help the user reduce pain or realize needs*
 
-### Понимание сути задачи
+### Understanding the essence of the task
 
-Но чтобы дать четкое название сущности, **разработчик должен знать предостаточно о ее назначении**
+But to give a clear name to an entity, **the developer must know enough about its purpose**
 
-- как он собирается использовать эту сущность,
-- какую часть задачи пользователя она реализует, где ещё эту сущность можно применить,
-- в каких ещё задачах она может поучаствовать,
-- и так далее
+* how is he going to use this entity,
+* what part of the user's task does it implement, where else can this entity be applied,
+* in what other tasks can it participate,
+* and so on
 
-Сделать вывод не сложно: **пока разработчик будет размышлять над названием сущностей в рамках методологии, он сможет найти плохо сформулированные задачи ещё до написания кода.**
+It is not difficult to draw a conclusion: **while the developer will reflect on the name of entities within the framework of the methodology, he will be able to find poorly formulated tasks even before writing the code.**
 
-> Как дать название сущности, если плохо понимаешь, какие задачи она может решать, как вообще можно разбить задачу на сущности, если плохо ее понимаешь?
+> How to give a name to an entity if you do not understand well what tasks it can solve, how can you even divide a task into entities if you do not understand it well?
 
-## Как сформулировать?
+## How to formulate it?
 
-**Чтобы сформулировать задачу, которая решается фичей, нужно понимать саму задачу**, а это уже область ответственности менеджера проекта и аналитиков.
+**To formulate a task that is solved by features, you need to understand the task itself**, and this is already the responsibility of the project manager and analysts.
 
-*Методология может лишь подсказать разработчику, на какие задачи стоит обратить пристальное внимание менеджеру продукта.*
+*The methodology can only tell the developer what tasks the product manager should pay close attention to.*
 
-> *@sergeysova: Весь frontend это в первую очередь отображение информации, любой компонент в первую очередь что-то отображает, а значит задача "показать пользователю что-то" не имеет практической ценности.*
+> *@sergeysova: the Whole frontend is primarily a display of information, any component in the first turn, displays, and then the task "to show the user something" has no practical value.*
 >
-> *Даже без учета специфики frontend можно спросить "а зачем это нужно показывать", так можно продолжать спрашивать до тех пор пока не вылезет боль или потребность потребителя.*
+> *Even without taking into account the specifics of the frontend can ask, "why do I have to show you", so you can continue to ask until't get out of pain or the need of the consumer.*
 
-Как только мы смогли дойти до базовых потребностей или болей, можно идти обратно и разбираться, **а как именно ваш продукт или сервис может помочь пользователю с его целями**
+As soon as we were able to get to the basic needs or pains, we can go back and figure out **how exactly your product or service can help the user with his goals**
 
-Любая новая задача в вашем трекере направлена на решение задач бизнеса, а бизнес пытается решить задачи пользователя одновременно заработав на нём. А значит, каждая задача несёт в себе определенные цели, даже если они не прописаны в тексте описания.
+Any new task in your tracker is aimed at solving business problems, and the business tries to solve the user's tasks at the same time earning money on it. This means that each task has certain goals, even if they are not spelled out in the description text.
 
-_**Разработчик должен четко понимать, какую цель преследует та или иная задача**, но при этом не каждая компания может позволить себе идеально выстроить процессы, хоть это и отдельный разговор, тем не менее, разработчик вполне может сам "пингануть" нужных менеджеров, чтобы выяснить это и сделать свою часть работы эффективно.*_
+_**The developer must clearly understand what goal this or that task is pursuing**, but not every company can afford to build processes perfectly, although this is a separate conversation, nevertheless, the developer may well "ping" the right managers himself to find out this and do his part of the work effectively._
 
-## А в чем выгода?
+## And what is the benefit?
 
-Посмотрим теперь на весь процесс от начала до конца.
+Now let's look at the whole process from beginning to end.
 
-### 1. Понимание задач пользователей
+### 1. Understanding user tasks
 
-Когда разработчик понимает его боли и то, как бизнес их закрывает, он может предлагать решения, которые бизнесу не доступны в силу специфики веб-разработки.
+When a developer understands his pain and how the business closes them, he can offer solutions that are not available to the business due to the specifics of web development.
 
-> Но конечно, все это может работать только если разработчику небезразлично то, что он делает и ради чего, а иначе *зачем тогда методология и какие-то подходы?*
+> But of course, all this can work only if the developer is not indifferent to what he is doing and for what, otherwise *why then the methodology and some approaches?*
 
-### 2. Структуризация и упорядочивание
+### 2. Structuring and ordering
 
-С пониманием задач приходит **четкая структура как в голове, так и в задачах вместе с кодом**
+With the understanding of tasks comes **a clear structure both in the head and in the tasks along with the code**
 
-### 3. Понимание фичи и ее составляющих
+### 3. Understanding the feature and its components
 
-**Одна фича - это одна полезная функциональность для пользователя**
+**One feature is one useful functionality for the user**
 
-- Когда в одной фиче - реализуется несколько - это и есть **нарушение границ**
-- Фича может быть неделимой и разрастающейся - **и это неплохо**
-- **Плохо** - когда фича не отвечает на вопрос *"А в чем бизнес-ценность для пользователя?"*
-  - Не может быть фичи `карта-офиса`
-  - А вот `бронирование-переговорки-на-карте`, `поиск-сотрудника`, `смена-рабочего-места` - **да**
+* When several features are implemented in one feature, this is **a violation of borders**
+* The feature can be indivisible and growing - **and this is not bad**
+* **Bad** - when the feature does not answer the question *"What is the business value for the user?"*
+* There can be no "map-office" feature
+  * But `booking-meeting-on-the-map`, `search-for-an-employee`, `change-of-workplace` - **yes**
 
-> *@sergeysova: Смысл в том, чтобы*в фиче лежал только код, реализующий непосредственно саму функциональность*, без лишних подробностей и внутренних решений (в идеале)*
+> *@sergeysova: The point is that the feature contains only code that implements the functionality itself*, without unnecessary details and internal solutions (ideally)*
 >
-> *Открываешь код фичи **и видишь только то, что относится к задаче** - не больше*
+> *Open the feature code **and see only what relates to the task** - no more*
 
 ### 4. Profit
 
-Бизнес крайне редко разворачивает свой курс кардинально в другую сторону, а значит **отражение задач бизнеса в коде frontend приложения это весьма существенный профит.**
+Business very rarely turns its course radically in the other direction, which means **the reflection of business tasks in the frontend application code is a very significant profit.**
 
-_Тогда не придётся объяснять каждому новому члену команды, что делает тот или иной код, и вообще ради чего он добавлялся - **все будет объясняться через задачи бизнеса, которые уже отражены в коде.**_
+_Then you don't have to explain to each new team member what this or that code does, and in general why it was added - **everything will be explained through the business tasks that are already reflected in the code.**_
 
-> То, что называется ["Язык бизнеса" в Domain Driven Development][ext-ubiq-lang]
+> What is called ["Business Language" in Domain Driven Development][ext-ubiq-lang]
 
 ---
 
-## Вернемся к реальности
+## Back to reality
 
-Если бизнес-процессы осмыслены и на стадии дизайна даны хорошие имена - *то перенести это понимание и логику в код не особо проблемно.*
+If business processes are understood and good names are given at the design stage - *then it is not particularly problematic to transfer this understanding and logic to the code.*
 
-**Однако на деле**, задачи и функциональность обычно развиваются "слишком" итеративно и (или) нет времени продумывать дизайн.
+**However, in practice**, tasks and functionality are usually developed "too" iteratively and (or) there is no time to think through the design.
 
-**В итоге фича сегодня имеет смысл, а при расширении этой фичи через месяц можно переписать пол проекта.**
+**As a result, the feature makes sense today, and if you expand this feature in a month, you can rewrite the gender of the project.**
 
-> *[[Из обсуждения][disc-src]]: Разработчик пытается думать на 2-3 шага вперед, учитывая будущие хотелки, но тут упирается в собственный опыт*
+> *[[From the discussion][disc-src]]: The developer tries to think 2-3 steps ahead, taking into account future wishes, but here he rests on his own experience*
 >
-> *Проженный опытом инженер обычно сразу смотрит на 10 шагов вперед, и понимает где одну фичу разделить, а где объединить с другой*
+> *Burns experience engineer usually immediately looking 10 steps ahead, and understand where one feature to divide and combine with the other*
 >
-> *Но бывает и так, что приходит задача, с которой не приходилось сталкиваться по опыту, и неоткуда взять понимание - как грамотней декомпозировать, с наименьшими печальными последствиями в будущем*
+> *But sometimes that comes the task which had to face the experience, and nowhere to take the understanding of how literacy to decompose, with the least unfortunate consequences in the future*
 
-## Роль методологии
+## The role of methodology
 
-**Методология помогает решить проблемы разработчиков, чтобы тем было проще решать проблемы пользователей.**
+**The methodology helps to solve the problems of developers, so that it is easier to solve the problems of users.**
 
-Нет решения задач разработчиков только ради разработчиков
+There is no solution to the problems of developers only for the sake of developers
 
-Но чтобы разработчик решил свои задачи, **нужно понять задачи пользователя** - наоборот не выйдет
+But in order for the developer to solve his tasks, **you need to understand the user's tasks** - on the contrary, it will not work
 
-### Требования к методологии
+### Methodology requirements
 
-Становится ясно, что нужно выделить как минимум два требования для **feature-sliced**:
+It becomes clear that you need to identify at least two requirements for **feature-sliced**:
 
-1. Методология должна рассказывать **как создавать фичи, процессы и сущности**
-    - А значит должна четко объяснять *как разделять код между ними*, из чего следует, что именование этих сущностей также должно быть заложено в спецификации.
-2. Методология должна помогать архитектуре **[легко адаптироваться под изменяющиеся требования проекта][refs-arch--adaptability]**
+1. The methodology should tell **how to create features, processes and entities**
 
-## См. также
+    * Which means it should clearly explain *how to divide the code between them*, which means that the naming of these entities should also be laid down in the specification.
 
-- [(Пост) Стимуляция к четкой формулировке задач (+ обсуждение)][disc-src]
-    > _**Текущая статья** является адаптацией этого обсуждения, по ссылке можно ознакомиться с полной неурезанной версией_
-- [(Обсуждение) Как разбить функциональность и что из себя она представляет][tg-src]
-- [(Статья) "How to better organize your applications"][ext-medium]
+2. The methodology should help the architecture **[easily adapt to the changing requirements of the project][refs-arch--adaptability]**
+
+## See also
+
+* [(Post) Stimulation for a clear formulation of tasks (+ discussion)][disc-src]
+    > _**The current article** is an adaptation of this discussion, you can read the full uncut version at the link_
+* [(Discussion) How to break the functionality and what it is][tg-src]
+* [(Article) "How to better organize your applications"][ext-medium]
 
 [refs-arch--adaptability]: architecture#adaptability
 

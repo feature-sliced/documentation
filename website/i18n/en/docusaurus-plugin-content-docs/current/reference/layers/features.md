@@ -6,24 +6,24 @@ sidebar_position: 6
 
 ![features-themed-bordered](/img/layers/features.png)
 
-## Описание
+## Description
 
-Каждая фича - часть бизнес-логики, при этом обязательно имеющая смысл и ценность для конечного пользователя
+Each feature is a part of the business logic, while it necessarily has meaning and value for the end user
 
-- *`ProductList`, `OfficeMap` - вряд ли можно назвать фичами*
-- *`WalletAddFunds`, `AddToCart` - уже больше смысла для конечного пользователя*
+- *`ProductList`, `OfficeMap` - can hardly be called features*
+- *`WalletAddFunds`, `AddToCart` - already makes more sense for the end user*
 
-При этом:
+At the same time:
 
-- для построения логики используются нижележащие слои
+- the underlying layers are used to build the logic
   - *`shared`, `entities`*
-- одна фича **не может** импортировать другую
-  - *Если [возникла такая необходимость][refs-low-coupling] - зависимость нужно переносить на слой выше / ниже, либо решать через композицию через children-props*
-- фичи не могут быть вложенными, но при этом могут объединяться общей папкой, т.е. структурно
-  - *При этом нельзя создавать промежуточные файлы, нужные именно для конкретной группы фич*
-  - *Можно использовать только файлы реэкспорты*
+- one feature **cannot** import another
+  - *If [there is such a need][refs-low-coupling] - the dependency needs to be transferred to the layer above / below, or solved through the composition through children-props*
+- features cannot be nested, but they can be combined by a common folder, i.e. structurally
+  - *At the same time, you can not create intermediate files that are necessary for a specific group of features*
+- *You can only use re-export files*
 
-## Структура
+## Structure
 
 ```sh
 └── features/{slice}
@@ -33,78 +33,78 @@ sidebar_position: 6
           └── index.ts
 ```
 
-Таким образом, фича хранит информацию о том:
+Thus, the feature stores information about:
 
-1. Какие данные нужны для её работы
-1. По каким правилами происходят изменения данных
-1. Какие [сущности][refs-entity] нужны для полного построения фичи
-1. Как данные представлены для пользователя
+1. What data is needed for its operation
+1. By what rules do data changes occur
+1. What [entities][refs-entity] are needed for the complete construction of the feature
+1. How the data is presented to the user
 
-## Правила
+## Rules
 
-### Одна фича = одна функциональность
+### One feature = one functionality
 
-В фиче находится код, который реализует **одну** полезную функциональность для пользователя.
+The feature contains code that implements **one** useful functionality for the user.
 
-### Структурная группировка фич
+### Structural grouping of features
 
-Часто возникает необходимость собрать вместе ряд несколько связанных по смыслу фич *(при этом они могут и должны не импортировать друг друга напрямую)*
+Often there is a need to put together a number of somewhat related features *(at the same time, they can and should not import each other directly)*
 
-Методология рекоммендует избегать **вложенных фич**, т.е. фич - которые сильно связаны под общей оберткой с доп. логикой
+The methodology recommends avoiding **nested features**, i.e. features that are strongly connected under a common wrapper with an additional one. by logic
 
-Вместо этого - методология предлагает при необходимости - **группировать по папкам** необходимые фичи *(при этом нельзя эти фичи связывать напрямую, папки нужны только для структурной группировки по смыслу)*
+Instead, the methodology suggests that, if necessary, **group the necessary features by folders** *(at the same time, you can not link these features directly, folders are only needed for structural grouping by meaning)*
 
 ```diff
-features/order/            Группа фич
-   ├── add-to-cart         Полноценная фича
-   ├── total-info          Полноценная фича
--  ├── model.ts            Общая логика для группы
--  ├── hooks.ts            Общие хуки для группы
-   ├── index.ts            Публичный API с реэкспортом фич
+features/order/            Feature group
+   ├── add-to-cart         Full-fledged feature
+   ├── total-info          Full-fledged feature
+-  ├── model.ts            General logic for the group
+-  ├── hooks.ts            General hooks for the group
+   ├── index.ts            Public API with re-export of features
 ```
 
-### Фичи не должны зависеть друг от друга
+### Features should not depend on each other
 
-Данное правило не всегда получается соблюдать, но количество таких нарушений лучше свести к минимуму.
+This rule is not always possible to comply with, but it is better to minimize the number of such violations.
 
-Как правило, именно из-за пренебрежения этим правилом появляется высокая связность между модулями системы и непредсказуемые сайд-эффекты при разработке.
+Usually, it is precisely because of the neglect of this rule that there is a high coupling between the modules of the system and unpredictable side effects during development.
 
-Одним из способов для решения проблемы является использование [entity][refs-entity].
+One of the ways to solve the problem is to use [entity][refs-entity].
 
-## Примеры
+## Examples
 
-*С точки зрения кода: не все изменения для пользователя — `features`, но все `features` — изменения для пользователя.*
+*From the point of view of the code: not all changes for the user are `features`, but all `features` are changes for the user.*
 
-### Смена языка интерфейса приложения
+### Changing the application interface language
 
-- `Feature` для пользователя и разработчика.
+- `Feature` for the user and the developer.
 
-> При этом сама `i18n` логика может использоваться не только в этой фиче, но и даже в сущностях. Поэтому такое стоит скорее располагать в `shared/lib` или `shared/config`
+> At the same time, the `i18n` logic itself can be used not only in this feature, but even in entities. Therefore, this should rather be placed in `shared/lib` or `shared/config`
 >
-> *Позже будет добавлен отдельный гайд*
+> *A separate guide will be added later*
 
-### Перевод средств между счетами
+### Transfer of funds between accounts
 
-- `Feature` для пользователя и разработчика.
+- `Feature` for the user and the developer.
 
-### Фильтр по тегам
+### Filter by tags
 
-- Для пользователя: `feature`.
-- Для разработчика: [entity][refs-entity] `tags` позволяют реализовать фильтр по тегам внутри `feature`.
+- For the user: `feature`.
+- For the developer: [entity][refs-entity] `tags` allow you to implement a filter by tags inside `feature`.
 
-### Подсказки при заполении полей формы
+### Hints when filling in the form fields
 
-- Для пользователя: `feature`.
-- Для разработчика: часть `form` [entity][refs-entity].
+- For the user: `feature`.
+- For the developer: part of `form` [entity][refs-entity].
 
-### Авторизация по телефону
+### Authorization by phone
 
 ```tsx title=features/auth/by-phone/ui.tsx
 import { viewerModel } from "entities/viewer";
 
 export const AuthByPhone = () => {
     return (
-        // для redux - дополнительно нужен dispatch
+        // for redux - dispatch is additionally needed
         <Form onSuccess={(user) => viewerModel.setUser(user)}>
             <Form.Input 
                 type="phone"
@@ -118,11 +118,12 @@ export const AuthByPhone = () => {
 }
 ```
 
-## См. также
+## See also
 
-- ["Гайд по избавлению от кросс-импортов"](/docs/guides/low-coupling)
-- [Понимание потребностей пользователя и бизнес-задач](/docs/concepts/needs-driven)
-  - Для понимания слоя `features`
-- [(Тред) Про фичи и сущности наглядно](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
+- ["Guide to getting rid of cross-imports"](/docs/guides/low-coupling)
+- [Understanding user needs and business tasks](/docs/concepts/needs-driven)
+  - To understand the `features` layer
+- [(Thread) About features and entities clearly](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
 
 [refs-entity]: /docs/reference/layers/entities
+[refs-low-coupling]: /docs/guides/low-coupling

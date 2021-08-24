@@ -6,21 +6,21 @@ sidebar_position: 8
 
 ![shared-themed-bordered](/img/layers/shared.png)
 
-## Описание
+## Description
 
-Здесь обычно находятся:
+There are usually placed:
 
-- общий **UIKit** приложения (если такой есть)
+- shared **UIKit** of the application (if there is one)
   - *[Segment][refs-segments]: `shared/ui`*
-- общие **вспомогательные библиотеки**
+- shared **auxiliary libraries**
   - *[Segment][refs-segments]: `shared/lib`*
-- общий модуль по **работе с API**
+- general module for **working with the API**
   - *[Segment][refs-segments]: `shared/api`*
-- модуль **конфигурации приложения** и его окружения
+- module **configuration of the application** and its environment
   - *[Segment][refs-segments]: `shared/config`*
-  - *env-переменные, которые могут использоваться в коде вышележащих слоев*
+  - *env-variables that can be used in the code of the overlying layers*
 
-## Структура
+## Structure
 
 ```sh
 └── shared/
@@ -30,9 +30,9 @@ sidebar_position: 8
       └── ui/
 ```
 
-## Примеры
+## Examples
 
-### Использование UIKit
+### Using UIKit
 
 ```tsx title=shared/ui/button/index.tsx
 export const Button = () => {...}
@@ -45,13 +45,13 @@ export const Card = () => {...}
 ```tsx title=**/**/index.tsx
 import { Button } from "shared/ui/button";
 import { Card } from "shared/ui/card";
-// Или в крайних случаях
+// Or in extreme cases
 // import { Button, Card } from "shared/ui";
 ```
 
-### Использование переменных окружения
+### Using environment variables
 
-*Реализация зависит от проекта и команды, здесь приведен лишь один из вариантов*
+*The implementation depends on the project and the team, here is just one of the options*
 
 ```ts title=shared/config/index.ts
 export const isDevEnv = NODE_ENV === "development";

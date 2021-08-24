@@ -4,40 +4,42 @@ sidebar_position: 1
 
 # Overview
 
-**Layer** - первый уровень разбиения приложения, согласно **скоупу влияния** модуля
+**Layer** - the first level of application partitioning, according to the **scope of influence** of the module
 
 ![layers-flow-themed](/img/layers_flow.png)
 
-## Структура
+## Structure
 
 ```sh
 └── src/
-    ├── app/                    # Инициализирующая логика приложения
-    ├── processes/              # (Опц.) Процессы приложения, протекающие над страницами
-    ├── pages/                  # Страницы приложения
-    ├── widgets/                # (Опц.) Самостоятельные виджеты
-    ├── features/               # Ключевая функциональность приложения
-    ├── entities/               # Бизнес-сущности
-    └── shared/                 # Переиспользуемые модули
+    ├── app/                    # Initializing application logic
+    ├── processes/              # (Optional) Application processes running over pages
+    ├── pages/                  # Application Pages
+    ├── widgets/                # (Optional) Independent widgets
+    ├── features/               # Crucial functionality of the application
+    ├── entities/               # Business entities
+    └── shared/                 # Reused modules
 ```
 
-## Правила
+## Rules
 
-- Каждый слой располагается только на самом верхнем уровне, и не может встречаться еще раз на другом уровне вложенности
+- Each layer is located only at the topmost level, and cannot occur again at another nesting level
 
     ```diff
-    // Плохо
+    // Bad
     - pages/../features/..
     - features/../entities/..
-    // Хорошо
+    // Good
     + pages/**
     + features/**
     ```
 
-- Каждый слой может использовать (импортировать) только нижележащие слои
-- Чем выше расположен слой, тем выше уровень его ответственности и знаний о других слоях (сверху-вниз)
+<!-- use: https://www.tablesgenerator.com/markdown_tables# -->
+
+- Each layer can use (import) only the underlying layers
+- The higher the layer is located, the higher the level of its responsibility and knowledge about other layers (from top to bottom)
   - `app` > (`processes`) > `pages` > (`widgets`) > `features` > `entities` > `shared`
-- Чем ниже расположен слой - тем он больше используется в верхних слоях, а значит и тем больше опасности вносить в него изменения (снизу вверх)
+- The lower the layer is located , the more it is used in the upper layers, and therefore the more dangerous it is to make changes to it (from bottom to top)
   - `shared` > `entities` > `features` > (`widgets`) > `pages` > (`processes`) > `app`
 
 | Layer     |                              Can use                              |                         Can be used by                         |
@@ -50,25 +52,25 @@ sidebar_position: 1
 | entities  |                              `shared`                             |       `features`, `widgets`, `pages`, `processes`, `app`       |
 | shared    |                                 -                                 | `entities`, `features`, `widgets`, `pages`, `processes`, `app` |
 
-## Представители
+## Representatives
 
-<!-- Оставил фразы в комментариях, на случай, если решим их вернуть -->
+<!-- I left the phrases in the comments, in case we decide to return them -->
 
 :::note
 
-Стоит понимать, что не все из приведенных слоев обязательны, а нужны лишь, когда **этого требует сложность проекта и разбухающая ответственность** в существующей структуре
+It should be understood that not all of the above layers are mandatory, but are needed only when **the complexity of the project and the swelling responsibility** in the existing structure require it
 
 :::
 
 ### [`app`][refs-app]
 
-<!-- **Инициализирующая логика приложения** -->
+<!-- **Initializing logic of the application** -->
 
 ![app-themed-bordered](/img/layers/app.png)
 
 ### [`processes`][refs-processes]
 
-<!-- **Бизнес-процессы приложения, управляющие страницами** -->
+<!-- **Application business processes that manage pages** -->
 
 ![processes-themed-bordered](/img/layers/processes.png)
 
@@ -82,31 +84,31 @@ sidebar_position: 1
 
 ### [`features`][refs-features]
 
-<!-- **Части функциональности приложения** -->
+<!-- **Parts of the application functionality** -->
 
 ![features-themed-bordered](/img/layers/features.png)
 
 ### [`entities`][refs-entities]
 
-<!-- **Бизнес-сущности** -->
+<!-- **Business Entities** -->
 
 ![entities-themed-bordered](/img/layers/entities.png)
 
 ### [`shared`][refs-shared]
 
-<!-- **Переиспользуемые модули, без привязки к бизнес-логике** -->
+<!-- **Reused modules, without binding to business logic** -->
 
 ![shared-themed-bordered](/img/layers/shared.png)
 
-## См. также
+## See also
 
-- [Адаптивность нейминга][refs-naming-adaptability]
+- [Naming adaptability][refs-naming-adaptability]
 - [Example: Viewer][refs-example-viewer]
-  - *Пример распределения логики по слоям: от `shared` до `app`*
-- [Про понимание потребностей пользователей и функциональность приложения][refs-needs]
-  - *Для понимания слоя `features`*
-- [(Дискуссия) Про переиспользуемые модули][disc-sharing]
-  - *Для понимания слоя `shared`*
+  - *Example of logic distribution by layers: from `shared` to `app`*
+- [About understanding the needs of users and the functionality of the application][refs-needs]
+  - *To understand the `features` layer*
+- [(Discussion) About reused modules][disc-sharing]
+  - *To understand the `shared` layer*
 
 [refs-naming-adaptability]: /docs/concepts/naming-adaptability
 [refs-needs]: /docs/concepts/needs-driven

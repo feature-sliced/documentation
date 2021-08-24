@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-18.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
 

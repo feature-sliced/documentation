@@ -6,16 +6,16 @@ sidebar_position: 7
 
 ![entities-themed-bordered](/img/layers/entities.png)
 
-## Описание
+## Description
 
-Здесь обычно находятся:
+There are usually placed:
 
-- бизнес-сущности, для построения бизнес-логики приложения
-    > *Например: `user`, `order`, `post`, `journal`, `navigation`, ...*
-- компоненты c представлением сущностей, для построения UI вышележащих слоев
-    > *Например: `UserCard`,`TweetCard`, ...*
+- business entities, for building the business logic of the application
+    > *For example: `user`, `order`, `post`, `journal`, `navigation`, ...*
+- components with the representation of entities, for building the UI of the overlying layers
+    > *For example: `UserCard`, `TweetCard`, ...*
 
-## Структура
+## Structure
 
 ```sh
 └── entities/{slice}
@@ -25,9 +25,9 @@ sidebar_position: 7
           └── index.ts
 ```
 
-## Примеры
+## Examples
 
-### Использование модели сущностей
+### Using the Entity Model
 
 ```tsx title=**/**/index.tsx
 import { viewerModel } from "entities/viewer";
@@ -40,7 +40,7 @@ export const Wallet = () => {
 }
 ```
 
-### Использование компонентов сущностей
+### Using Entity components
 
 ```ts title=entities/book/index.ts
 export { BookCard, ... } from "./ui";

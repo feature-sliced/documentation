@@ -6,31 +6,31 @@ sidebar_position: 4
 
 :::caution
 
-На данный момент ведутся активные обсуждения касаемо этого слоя:
+At the moment, active discussions are underway regarding this layer:
 
-- является ли страница тем же слайсом
-- может ли быть иерархия страниц фрактальной, чтобы повторять структуру роутов
-- и т.д.
+- is the page the same slice
+- can the page hierarchy be fractal in order to repeat the structure of routes
+- etc.
 
-Поэтому здесь приведены общие сведения по этому слою
+Therefore, here is an overview of this layer
 
 :::
 
 ![pages-themed-bordered](/img/layers/pages.png)
 
-## Описание
+## Description
 
-1. Здесь располагаются страницы приложения
-    - соответствующие конкретному роуту
-    - при необходимости - сгруппированные общей папкой / родительской страницей
+1. Here are the application pages
+    - corresponding to a specific route
+    - if necessary - grouped by a shared folder / parent page
 
-1. Каждая страница должна иметь **максимально простую логику**
-    - вся логика отображения, бизнес правил и прочего - должна реализовываться путем композиции нижележащих слоев (`shared`, `entitites`, `features`)
-    - при этом взаимодействие между нижележащими слоями - также должно осуществляться чаще всего на странице
-        - *Т.е. если `featureA` влияет на `featureB` на определенной странице - эта логика должна быть прописана в модели самой странице и только на ней!*
-        - *Без кода в самих фичах и тем более, кросс-импортов!*
+1. Each page should have **as simple logic as possible**
+    - all the logic of display, business rules and other things-should be implemented by composing the underlying layers (`shared`, `entitites`, `features`)
+    - while the interaction between the underlying layers - should also be carried out most often on the page
+        - *That is, if `featureA` affects `featureB` on a certain page - this logic should be written in the model of the page itself and only on it!*
+        - *Without the code in the features themselves, and even more so, cross-imports!*
 
-## Структура
+## Structure
 
 ```sh
 └── pages/{slice}
@@ -40,11 +40,11 @@ sidebar_position: 4
           └── ui.tsx
 ```
 
-## Примеры
+## Examples
 
-### Страница оформления заказа
+### Checkout page
 
-*Реализация БЛ заказа очень зависит от вашего проекта, где-то порой это может регулироваться и процессами. Поэтому здесь приведена лишь одна из имплементаций*
+*The implementation of the BL order depends very much on your project, sometimes it can be regulated by processes. Therefore, only one of the implementations is given here*
 
 ```tsx title=pages/**/index.tsx
 import { Order } from "features/order";
@@ -55,20 +55,20 @@ import { Layout } from "shared/ui/layout"
 export const CartPage = () => {
     const order = orderModel.useOrder();
     
-    // Очень условная разметка
+    // Very conditional markup
     return (
-        {/** Используем shared (Layout) */}
+        {/** Using shared (Layout) */}
         <Layout>
             <Layout.Main>
                 ...
-                {/** Используем entities (order.items, ProductCard) */}
+                {/** Using entities (order.items, ProductCard)*/}
                 {order.items.map((item) => (
                     <ProductCard key={item.id} data={item} />
                 ))}
             </Layout.Main>
             <Layout.Sidebar>
                 ...
-                {/** Используем features (Order.TotalInfo) */}
+                {/** Using features (Order. TotalInfo)*/}
                 <Order.TotalInfo />
             </Layout.Sidebar>
         </Layout>

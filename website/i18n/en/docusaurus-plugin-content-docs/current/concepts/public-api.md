@@ -4,32 +4,32 @@ sidebar_position: 5
 
 # Public API
 
-Каждая сущность методологии проектируется как **удобный в использовании и интеграции [модуль][refs-glossary].**
+Each entity of the methodology is designed as a **user-friendly and integrable [module][refs-glossary].**
 
-## Цели
+## Goals
 
-Удобство использования и интеграции модуля достигается через выполнение *ряда целей*:
+The convenience of using and integrating the module is achieved through the fulfillment of *a number of goals*:
 
-1. Приложение должно быть **защищено от изменений** внутренней структуры отдельных модулей
-1. Переработка внутренней структуры модуля **не должна затрагивать** другие модули
-1. Существенные изменения поведения модуля должны быть **легко определяемы**
-    > **Существенные изменения поведения модуля** - изменения, ломающие ожидания сущностей-пользователей модуля.
+1. The application must be **protected from changes** to the internal structure of individual modules
+1. The processing of the internal structure of the module **should not affect** other modules
+1. Significant changes in the behavior of the module should be **easily detectable**
+    > **Significant changes in the behavior of the module** - changes that break the expectations of the user entities of the module.
 
-Достичь этих целей позволяет введение публичного интерфейса (Public API), представляющего собой единую точку доступа к возможностям модуля и определяющего "контракт" взаимодействия модуля с внешним миром.
+These goals can be achieved by introducing a public interface (Public API), which is a single access point to the module's capabilities and defines the "contract" of the module's interaction with the outside world.
 
-:::info Важно
+:::info Important
 
-Структура сущности должна иметь единую точку входа, предоставляющую публичный интерфейс
+The entity structure must have a single entry point that provides a public interface
 
 :::
 
 ```sh
-└── features/                          # 
-   └── auth-form/                      # Внутренняя структура фичи
-            ├── ui/                    #
-            ├── model/                 #
-            ├── {...}/                 #
-            └── index.ts               # Энтрипоинт фичи с ее публичным API
+└── features/               # 
+       ├── auth-form /      # Internal structure of the feature
+       |     ├── ui/        #
+       |     ├── model/     #
+       |     ├── {...}/     #
+       ├── index.ts         # Entrypoint features with its public API
 ```
 
 ```ts title=**/**/index.ts
@@ -37,68 +37,68 @@ export { Form as AuthForm } from "./ui"
 export * as authFormModel from "./model"
 ```
 
-## Требования к публичному API
+## Requirements for the public API
 
-Выполнение этих требований позволяет свести взаимодействие с модулем к **выполнению публичного интерфейса-контракта** и, тем самым, достичь надежности и удобства в использовании модуля.
+Meeting these requirements allows you to reduce interaction with the module to **the implementation of a public interface-contract** and, thereby, achieve reliability and ease of use of the module.
 
-### 1. Контроль доступа
+### 1. Access Control
 
-Public API должен осуществлять **контроль доступа** к содержимому модуля
+The public API must **control access** to the contents of the module
 
-- Другие части приложения могут использовать **только те сущности модуля, которые представлены в публичном интерфейсе**
-- Внутренняя часть модуля за пределами публичного интерфейса **доступны только самому модулю**.
+- Other parts of the application can use **only those module entities that are presented in the public interface**
+- The internal part of the module outside the public interface **is accessible only to the module itself**.
 
-#### Примеры
+#### Examples
 
-##### Отстранение от приватных импортов
+##### Suspension from private imports
 
-- **Плохо**: Идет обращение напрямую к внутренним частям модуля, минуя публичный интерфейс доступа - опасно, особенно при рефакторинге модуля
+- **Bad**: There is a direct access to the internal parts of the module, bypassing the public access interface - it is dangerous, especially when refactoring the module
 
     ```diff
     - import { Form } from "features/auth-form/components/view/form"
     ```
 
-- **Хорошо:** API заранее экспортирует только нужное и разрешенное, разработчику модуля теперь нужно думать только о том, чтобы не ломать Public API при рефакторинге
+- **Good:** The API exports only what is necessary and allowed in advance, the module developer now needs to think only about not breaking the Public API when refactoring
 
     ```diff
     + import { AuthForm } from "features/auth-form"
     ```
 
-### 2. Анти-хрупкость
+### 2. Anti-fragility
 
-Public API должен быть **анти-хрупким** - устойчивым к изменениям внутри модуля
+The public API should be **anti-fragile** - resistant to changes inside the module
 
-- Ломающие изменения поведения модуля отражаются в изменении Public API
+- Breaking changes in the behavior of the module are reflected in the change of the Public API
 
-#### Примеры
+#### Examples
 
-##### Абстрагирование от реализации
+##### Abstracting from the implementation
 
-Изменение внутренней структуры не должно приводить к изменению Public API
+Changing the internal structure should not lead to a change in the Public API
 
-- **Плохо:** перемещение или переименование этого компонента внутри фичи приведет к необходимости рефакторить импорты во всех местах использования компонента.
+- **Bad:** moving or renaming this component inside the feature will lead to the need to refactor imports in all places where the component is used.
 
     ```diff
     - import { Form } from "features/auth-form/ui/form"
     ```
 
-- **Хорошо:** интерфейс фичи не отображает её внутреннуюю структуру, внешние "пользователи" фичи не пострадают от перемещения или переименования компонента внутри фичи
+- **Good:** the interface of the feature does not display its internal structure, external "users" of the feature will not suffer from moving or renaming the component inside the feature
 
     ```diff
     + import { AuthForm } from "features/auth-form"
     ```
 
-### 3. Интегрируемость
+### 3. Integrability
 
-Public API должен способствовать **легкой и гибкой интеграции**
+The public API should facilitate **easy and flexible integration**
 
-- Должен быть удобен для использования остальными частями приложения, в частности, решать проблему коллизии имен
+- Should be convenient for use by the rest of the application, in particular, to solve the problem of name collisions
 
-#### Примеры
+#### Examples
 
-##### Коллизия имен
+##### Name collision
 
-- **Плохо:** будет коллизия имен
+- **Bad:** there will be a name collision
 
     ```ts title=features/auth-form/index.ts
     export { Form } from "./ui"
@@ -115,7 +115,7 @@ Public API должен способствовать **легкой и гибк�
     - import { Form, store } from "features/post-form"
     ```
 
-- **Хорошо:** коллизия решена на уровне интерфейса
+- **Good:** the collision is solved at the interface level
 
     ```ts title=features/auth-form/index.ts
     export { Form as AuthForm } from "./ui"
@@ -132,27 +132,27 @@ Public API должен способствовать **легкой и гибк�
     + import { PostForm, postFormStore } from "features/post-form"
     ```
 
-##### Гибкое использование
+##### Flexible use
 
-- **Плохо:** неудобно писать, неудобно читать, "пользователь" фичи страдает
+- **Bad:** it is inconvenient to write, it is inconvenient to read, the" user " of the feature suffers
 
     ```diff
     - import { storeActionUpdateUserDetails } from "features/auth-form"
     - dispatch(storeActionUpdateUserDetails(...))
     ```
 
-- **Хорошо:** "пользователь" фичи получает доступ к нужным вещам итеративно и гибко
+- **Good:** the "user" of the feature gets access to the necessary things iteratively and flexibly
 
     ```diff
     + import { authFormStore } from "features/auth-form"
     + dispatch(authFormStore.actions.updateUserDetails(...))
     ```
 
-##### Разрешение коллизий
+##### Resolution of collisions
 
-Коллизия имен должна решаться на уровне публичного интерфейса, а не реализации
+Name collisions should be resolved at the level of the public interface, not the implementation
 
-- **Плохо:** коллизия имен решается на уровне реализации
+- **Bad:** name collisions are resolved at the implementation level
 
     ```ts title=features/auth-form/index.ts
     export { AuthForm } from "./ui"
@@ -164,7 +164,7 @@ Public API должен способствовать **легкой и гибк�
     export { postFormActions, postFormReducer } from "model"
     ```
 
-- **Хорошо:** коллизия имен решается на уровне интерфейса
+- **Good:** name collisions are resolved at the interface level
 
     ```ts title=features/auth-form/model.ts
     export { actions, reducer }
@@ -184,31 +184,31 @@ Public API должен способствовать **легкой и гибк�
     export * as postFormStore from "./model"
     ```
 
-## О реэкспортах
+## About re-exports
 
-В JavaScript публичный интерфейс модуля создается с помощью реэкспорта сущностей изнутри модуля в `index` файле:
+In JavaScript, the public interface of a module is created by re-exporting entities from inside the module in an `index` file:
 
 ```ts title=**/**/index.ts
 export { Form as AuthForm } from "./ui"
 export * as authModel from "./model"
 ```
 
-### Недостатки
+### Disadvantages
 
-- В большинстве популярных бандлеров из-за реэкспортов **хуже работает код-сплиттинг**, т.к. [tree-shaking](https://webpack.js.org/guides/tree-shaking/) при таком подходе может безопасно отбросить только модуль целиком, но не его часть.
-   > Например, импорт `authModel` в модели страницы приведет к попаданию компонента `AuthForm` в чанк этой страницы, даже если этот компонент там не используется.
+- In most popular bundlers, due to re-exports, **the code-splitting works worse**, because [tree-shaking](https://webpack.js.org/guides/tree-shaking/) with this approach, it is safe to discard only the entire module, but not part of it.
+   > For example, importing `authModel` into the page model will cause the `AuthForm` component to get into the chunk of this page, even if this component is not used there.
 
-- Как следствие, инициализация чанка становится дороже, т.к. браузер должен обработать все модули в нем, в том числе и те, что попали в бандл "за компанию"
+- As a result, initialization of the chunk becomes more expensive, because the browser must process all the modules in it, including those that got into the bundle "for the company"
 
-### Возможные пути решения
+### Possible solutions
 
-- `webpack` позволяет отметить файлы-реэкспорты как [**side effects free**](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free) - это разрешает `webpack` использовать более агрессивные оптимизации при работе с таким файлом
+- `webpack` allows you to mark re-export files as [**side effects free**](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free) - this allows `webpack` to use more aggressive optimizations when working with such a file
 
-## См. также
+## See also
 
-- [(Обсуждение) Public API абстракции][disc-src]
-- [Принципы **SOLID**][ext-solid]
-- [Паттерны **GRASP**][ext-grasp]
+- [(Discussion) Public Abstraction API][disc-src]
+- [Principles **SOLID**][ext-solid]
+- [Patterns **GRASP**][ext-grasp]
 
 [refs-glossary]: /docs/reference/glossary
 

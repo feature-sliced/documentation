@@ -4,64 +4,64 @@ sidebar_position: 1
 
 # Overview
 
-Методология призвана **упростить и стандартизировать декомпозицию логики для больших и долгоживужих проектов.**
+The methodology is designed to **simplify and standardize the decomposition of logic for large and long-lived projects.**
 
-Для этого она вводит ряд [концепций][refs-concepts] и [абстракций][refs-splitting], на которых *может базироваться* архитектура от проекта к проекту - отсюда получаем *ряд преимуществ*
+To do this, it introduces a number of [concepts][refs-concepts] and [abstractions][refs-splitting], on which the architecture *can be based* from project to project - from here we get *a number of advantages*
 
 :::info
 
-[Модуль][refs-module] - структурная единица проекта (файл / директория)
+[Module][refs-module] - the structural unit of the project (file / directory)
 
 :::
 
-### Явная бизнес-логика
+### Explicit business logic
 
-Модули распределяются согласно [скоупу влияния, бизнес-ответственности и техническому назначению][refs-splitting]
+Modules are distributed according to [scope of influence, business responsibility and technical purpose][refs-splitting]
 
-Благодаря этому *архитектура стандартизируется и становится более простой для ознакомления*
+Thanks to this, *the architecture is standardized and becomes easier to read*
 
-### Адаптация к новым условиям
+### Adaptation to new conditions
 
-Каждый компонент архитектуры имеет свое назначение и не влияет на другие
+Each component of the architecture has its own purpose and does not affect the others
 
-Благодаря этому *под новые требования можно независимо модифицировать функциональность приложения без непредвиденных последствий*
+Thanks to this *it is possible to independently modify the functionality of the application to meet new requirements without unforeseen consequences*
 
-### Техдолг и рефакторинг
+### Technical debt and refactoring
 
-Каждый модуль является независимым и самодостаточным
+Each module is independent and self-sufficient
 
-Благодаря этому *можно переписать его с нуля без неожиданных сайд-эффектов*
+Thanks to this *you can rewrite it from scratch without unexpected side effects*
 
-### Масштабирование проекта и команды
+### Scaling the project and the team
 
-Увеличение функциональности ведет к значительно меньшему усложнению проекта, т.к. вся логика распределена детерминированно и изолированно
+The increase in functionality leads to significantly less complexity of the project, since all the logic is distributed deterministically and in isolation
 
-Благодаря этому *легко добавлять и онбордить новых людей в команду, а также расширять функциональность проекта*
+Thanks to this *it is easy to add and onboard new people to the team, as well as expand the functionality of the project*
 
-### Контролируемое переиспользование логики
+### Controlled reuse of logic
 
-Каждый модуль имеет свои ограничения и рекоммендации на переиспользуемость согласно [своему слою][refs-splitting--layers]
+Each module has its own limitations and recommendations for reuse according to [its layer][refs-splitting--layers]
 
-Благодаря этому *сохраняется баланс между соблюдением принципа `DRY` и возможности кастомизировать логику модуля без оверхедных переопределений*
+Thanks to this, *a balance is maintained between compliance with the `DRY` principle and the ability to customize the module logic without overhead overrides*
 
-## См. также
+## See also
 
-- [Причины создания методологии][refs-motivation]
-- [(Гайд) Как привести модули к низкой связности][refs-low-coupling]
-- [Примеры применения методологии][refs-examples]
-- [(Гайд) Миграция с feature-slices (v1)][refs-migration-v1]
-  - *Содержит также сравнение двух версий и причины создания v2*
+- [Reasons for creating the methodology][refs-motivation]
+- [(Guide) How to reach a low coupling of modules][refs-low-coupling]
+- [Examples of the methodology application][refs-examples]
+- [(Guide) Migration from feature-slices (v1)][refs-migration-v1]
+  - *Also contains a comparison of the two versions and the reasons for creating v2*
 
 [refs-motivation]: /docs/get-started/motivation
 
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-splitting--layers]: /docs/concepts/app-splitting#group-layers
-<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+<!-- FIXME: Refer to the root later, not to the first element -->
 [refs-concepts]: /docs/concepts/architecture
 
 [refs-module]: /docs/reference/glossary#module
 
 [refs-low-coupling]: /docs/guides/low-coupling
 [refs-migration-v1]: /docs/guides/migration-from-v1
-<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
+<!-- FIXME: Refer to the root later, not to the first element -->
 [refs-examples]: /docs/guides/examples/viewer

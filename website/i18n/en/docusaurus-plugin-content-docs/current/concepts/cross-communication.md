@@ -4,64 +4,72 @@ sidebar_position: 3
 
 # Cross-communication
 
-В рамках методологии все модули распределены по зонам ответственности [(layer, slice, segment)][refs-splitting]
+Within the framework of the methodology, all modules are distributed by scopes of responsibility [(layer, slice, segment)][refs-splitting]
 
-Слои, в свою очередь, организованы вертикально:
+The layers, in turn, are organized vertically:
 
-- "Внизу" находятся переиспользуемые модули (ui-kit, внутренние библиотеки проекта), как наиболее абстрактные
-- А по мере продвижения "вверх" располагаются более специфичные модули.
+- "At the bottom" are the reused modules (ui-kit, internal libraries of the project), as the most abstract
+- And as you move "up", more specific modules are located.
 
-Независимо от принадлежности к какому-либо слайсу, каждый модуль [**обязан предоставлять публичный интерфейс доступа**][refs-public-api].
+Regardless of whether it belongs to any slice, each module [**is required to provide a public access interface**][refs-public-api].
 
-## Требования
+## Requirements
 
-Взаимодействие каждого модуля с остальным приложением проектируется с учетом ряда требований:
+The interaction of each module with the rest of the application is designed taking into account a number of requirements:
 
-1. **Слабое зацепление** с другими модулями
-    - *Изменение в одном модуле должно слабо и предсказуемо влиять на другие*
-1. **Высокая связность** - обязанности каждого модуля "сфокусированы" на одной задаче
-    - *Если модуль имеет слишком много ответственностей (начинает "делать слишком много") - это должно быть замечено как можно раньше*
-1. **Отстутствие циклических зависимостей** на масштабе всего приложения
-    - *Часто приводят к неожиданному, нежелательному поведению, лучше избегать их совсем*
+1. **Low coupling** with other modules
+    - *A change in one module should have a weak and predictable effect on others*
 
-## Правило
+1. **High cohesion** - the responsibilities of each module are "focused" on one task
 
-Для выполнения этих требований, в рамках методологии, необходимо соблюдать базовое правило:
+    - *If the module has too many responsibilities (starts "doing too much") - this should be noticed as soon as possible*
+1. **Absence of cyclic dependencies** on the scale of the entire application
 
-:::info Важно
+    - *Often lead to unexpected, undesirable behavior, it is better to avoid them altogether*
 
-Модуль может зависеть только от "нижележащих" модулей, но не от модулей с того же или более высокого слоя
+## Rule
+
+To meet these requirements, within the framework of the methodology, it is necessary to observe the basic rule:
+
+:::info Important
+
+A module can depend only on "underlying" modules, but not on modules from the same or higher layer
 
 :::
 
-- `features/auth` **не может** зависеть от `features/filters` **и наоборот**
-- `features/auth` **может** зависеть от `shared/ui/button`, **но не наоборот**
+- `features/auth` **cannot** depend on `features/filters` **and vice versa**
+- `features/auth` **may** depend on `shared/ui/button`, **but not vice versa**
 
-Следование этому правилу позволяет поддерживать зависимости **"однонаправленными"** - что автоматически **исключает циклические импорты** и значительно **упрощает отслеживание зависимостей** между модулями в приложении.
+Following this rule allows you to keep dependencies **"unidirectional"** - which automatically **eliminates cyclic imports** and significantly **simplifies tracking dependencies** between modules in the application.
 
-## Выявление проблем
+## Identifying problems
 
 <!-- 
-TODO После накопления опыта работы с методологией сделать этот блок более подробным
+TODO After gaining experience with the methodology, make this block more detailed
 -->
-Нарушение этого правила является сигналом проблем:
+Violation of this rule is a signal of problems:
 
-1. Модуль имеет **импорт из другого модуля** со своего слоя
-    - Возможно, модуль был **излишне раздроблен** или имеет **лишнюю ответственность.**
-    - Следует **объединить** его с импортируемым модулем или **вынести его (частично или целиком) на слой ниже** или перенести логику связей в модули на вышестоящих слоях.
-1. Модуль **импортируется многими модулями** со своего слоя
-    - Возможно, модуль имеет **лишнюю ответственность.**
-    - Следует **вынести его (частично или целиком) на слой ниже**, либо перенести логику связей в модули на вышестоящих слоях.
-1. Модуль **имеет импорты из множества модулей** со своего слоя
-    - Возможно, модуль принадлежит к **другой области ответственности.**
-    - Следует **вынести его (частично или целиком) на слой выше**.
+1. The module has **import from another module** from its own layer
 
-## См. также
+    - Perhaps the module was **unnecessarily fragmented** or has **unnecessary responsibility.**
+    - You should **combine** it with the imported module or **move it (partially or completely) to the layer below** or transfer the logic of relationships to modules on higher layers.
 
-- [(Гайд) Про достижение низкой связанности][refs-low-coupling]
-- [(Обсуждение) Entities в методологии и их связность](https://github.com/feature-sliced/documentation/discussions/49)
-- [(Обсуждение) Про cross-импорты и анализ зависимостей](https://github.com/feature-sliced/documentation/discussions/65#discussioncomment-480822)
-- [Паттерны **GRASP**](https://ru.wikipedia.org/wiki/GRASP)
+1. The module **is imported by many modules** from its own layer
+
+    - Perhaps the module has **extra responsibility.**
+    - You should **move it (partially or entirely) to the layer below**, or transfer the logic of connections to modules on higher layers.
+
+1. The module **has imports from many modules** from its own layer
+
+    - Perhaps the module belongs to **another scope of responsibility.**
+    - You should **move it (partially or completely) to the layer above**.
+
+## See also
+
+- [(Guide) About achieving low coupling][refs-low-coupling]
+- [(Discussion) Coupled entities](https://github.com/feature-sliced/documentation/discussions/49)
+- [(Discussion) About cross-imports and analysis зависимостей](https://github.com/feature-sliced/documentation/discussions/65#discussioncomment-480822)
+- [**GRASP** Patterns](https://ru.wikipedia.org/wiki/GRASP)
 
 [refs-public-api]: /docs/concepts/public-api
 [refs-splitting]: /docs/concepts/app-splitting

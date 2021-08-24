@@ -4,7 +4,11 @@ sidebar_position: 5
 
 # FAQ
 
+:::info
+
 Свой вопрос можно задать в [telegram-чате](https://t.me/feature_sliced) / [github-issues](https://github.com/feature-sliced/documentation/issues) / [github-discussions](https://github.com/feature-sliced/documentation/discussions)
+
+:::
 
 ### Структура = Архитектура?
 
@@ -34,11 +38,14 @@ sidebar_position: 5
 
 *В ближайшее время список будет пополняться и будет вынесен в отдельный раздел*
 
-- <https://github.com/accesso-app>
-- <https://github.com/cardbox>
-- <https://github.com/ani-team/github-client>
+- [Internal Examples](https://github.com/feature-sliced/examples)
+- [External Examples](/examples)
 
-*Пока что же - можно ознакомиться с нашими [гайдами](/docs/guides/migration-from-v1) и [туториалами](/docs/get-started/quick-start)*
+*Также можно ознакомиться с [гайдами](/docs/guides/migration-from-v1) и [туториалами](/docs/get-started/quick-start)*
+
+### Есть ли какие-нибудь полезные ресурсы/статьи/и т.д. по FeatureSliced и связанным вещам?
+
+<https://github.com/feature-sliced/awesome>
 
 ### Проект написан на feature-slices v1, как обновиться и стоит ли?
 

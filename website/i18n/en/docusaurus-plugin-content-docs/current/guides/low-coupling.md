@@ -4,29 +4,29 @@ sidebar_position: 3
 
 # Low Coupling & High Cohesion
 
-Модули приложения должны проектироваться как обладающие **сильной связностью** (направленные на решение одной четкой задачи) и **слабой зацепленностью** (как можно менее зависимые от других модулей)
+Application modules should be designed as having **high cohesion** (aimed at solving one determined task) and **low coupling** (independent on other modules as possible)
 
 ![coupling-cohesion-themed](/img/coupling.png)
 
-В рамках методологии это достигается через:
+Within the framework of the methodology, this is achieved through:
 
-* [Разбиение приложения][refs-splitting] на слои и слайсы - модули, реализующие конкретную функциональность.
-* Требование к каждому модулю - предоставлять [публичный интерфейс доступа][refs-public-api]
-* Введение специальных ограничений на [взаимодействие модулей между собой][refs-cross-communication] - каждый модуль может зависеть только от "нижележащих" модулей, но не от модулей с того же или более высокого слоя.
+* [Splitting the application][refs-splitting] into layers and slices-modules that implement specific functionality.
+* The requirement for each module is to provide a [public access interface][refs-public-api]
+* Introduction of special restrictions on [interaction of modules with each other][refs-cross-communication] - each module can depend only on "underlying" modules, but not on modules from the same or higher layer.
 
-## Композиция компонентов (UI level)
+## Composition of components (UI level)
 
-Абсолютное большинство современных UI-фреймоворков и библиотек предоставляют компонентную модель, в которой каждый компонент может иметь собственные свойства, собственное состояние и дочерние компоненты, а также, зачастую, слоты.
+The majority of modern UI frameworks and libraries provide a component model in which each component can have its own properties, its own state and child components, as well as, often, slots.
 
-Такая модель позволяет собирать интерфейс как **композицию различных, напрямую не связанных между собой компонентов** и, тем самым, достигать **слабой зацепленности** компонентов интерфейса
+This model allows you to assemble the interface as a **composition of various components that are not directly related to each other** and, thereby, achieve **low coupling** of the interface components
 
-### Пример
+### Example
 
-Рассмотрим такую композицию на примере **списка с хедером:**
+Let's consider such a composition using the example of a **list with a header:**
 
-#### Закладываем расширяемость
+#### Laying the extensibility
 
-Компонент списка не будет сам определять вид и структуру компонентов хедера и элементов списка, вместо этого будет принимать их в качестве параметров
+The list component will not itself determine the type and structure of the header components and list elements, instead it will accept them as parameters
 
 ```tsx
 interface ListProps {
@@ -45,9 +45,9 @@ const List: Component<ListProps> = ({ Header, Items }) => (
 
 ```
 
-#### Используем композицию
+#### Using the composition
 
-Это позволяет **переиспользовать и независимо изменять** компоненты различных версий хедера и элементов списка. Компоненты хедера и элементов списка могут иметь как свое локальное состояние, так и свою привязку к любым частям общего состояния приложения - компонент списка не будет ничего про это знать, а следовательно, не будет от этого зависеть
+This allows you to **reuse and independently change** components of different versions of the header and list items. The components of the header and list elements can have both their local state and their binding to any parts of the general state of the application - the list component will not know anything about it, and therefore will not depend on it
 
 ```tsx
 <List Header={<FancyHeader />} Items={<ToDoItems />} />
@@ -58,35 +58,35 @@ const List: Component<ListProps> = ({ Header, Items }) => (
 
 ```
 
-## Композиция слоев (APP level)
+## Layer composition (APP level)
 
-Методология предлагает разделять ценную для пользователя функциональность на отдельные модули - [**фичи (features)**][refs-features], а логику, относящуюся к бизнес сущностям - в [**сущности (entities)**][refs-entities]. И фичи, и сущности **должны проектироваться как высоко-связные модули**, т.е. направленные на решение **одной конкретной задачи** или сконцентрированные вокруг **одной конкретной сущности.**
+The methodology suggests dividing the functionality that is valuable for the user into separate modules - [**features**][refs-features], and the logic related to business entities - [**entities**][refs-entities]. Both features and entities **should be designed as highly connected modules**, i.e. aimed at solving **one specific task** or concentrated around **one specific entity.**
 
-Все взаимодействия между такими модулями, аналогично UI-компонентам из примера выше, должны быть организованы как **композиция различных модулей.**
+All interactions between such modules, similar to the UI components from the example above, should be organized as a **composition of various modules.**
 
-### Пример
+### Example
 
-На примере приложения-чата с такими возможностями
+Using the example of a chat application with the following features
 
-* можно открыть список контактов и выбрать друга
-* можно открыть переписку с выбранным другом
+* you can open the contact list and select a friend
+* you can open a conversation with a selected friend
 
-В рамках методологии, это может быть представлено примерно так:
+Within the framework of the methodology, it can be represented something like this:
 
 [Entities][refs-entities]
 
-* Пользователь (содержит состояние пользователя)
-* Контакт (состояние списка контактов, инструменты для работы с отдельным контактом)
-* Переписка (состояние текущей переписки и работа с ней)
+* User (contains the user's state)
+* Contact (the state of the contact list, tools for working with an individual contact)
+* Correspondence (the state of the current correspondence and working with it)
 
 [Features][refs-features]
 
-* Форма отправки сообщения
-* Меню выбора переписки
+* The form of sending a message
+* Correspondence selection menu
 
-#### Свяжем все это вместе
+#### Let's tie it all together
 
-В приложении, для начала, будет одна страница, интерфейс будет основан на слегка модифицированном компоненте из первого примера
+The application, to begin with, will have one page, the interface will be based on a slightly modified component from the first example
 
 ```tsx title=page/main/ui.tsx
 <List
@@ -96,11 +96,11 @@ const List: Component<ListProps> = ({ Header, Items }) => (
 />
 ```
 
-#### Модель данных
+#### Data model
 
-Модель данных страницы будет организована как **композиция фич и сущностей**. В рамках этого примера фичи будут реализованы как фабрики и получать доступ к интерфейсу сущностей через параметры этих фабрик.
+The page data model will be organized as a **composition of features and entities**. In this example, the features will be implemented as factories and access the interface of entities through the parameters of these factories.
 
-> Однако, реализация в виде фабрики необязательна - фича может зависеть от нижележащих слоев и напрямую
+> However, the implementation in the form of a factory is optional - the feature may depend on the underlying layers and directly
 
 ```ts title=pages/main/model.ts
 import { userStore } from "entitites/user"
@@ -126,18 +126,18 @@ export const { sendMessage, attachFile } = createMessageInput({
 })
 ```
 
-## Итого
+## Total
 
-1. Модули должны обладать **сильной связностью** (иметь одну ответственность, решать одну конкретную задачу) и предоставлять [**публичный интерфейс**][refs-public-api] доступа
-2. **Слабая зацепленность** достигается через композицию элементов - компонентов UI, фич и сущностей
-3. Также, для снижения зацепленности, модули **должны зависеть друг от друга только через публичные интерфейсы** - так достигается независимость модулей от внутренней реализации друг друга
+1. Modules must have **high cohesion** (have one responsibility, solve one specific task) and provide [**public interface**][refs-public-api] access
+2. **Low coupling** is achieved through the composition of elements-UI components, features and entities
+3. Also, to reduce entanglement, modules **should depend on each other only through public interfaces** - this is how the independence of modules from each other's internal implementation is achieved
 
-## См. также
+## See also
 
-* [(Статья) Про Low Coupling и High Cohesion наглядно](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
-  * *Схема в начале вдохновлена именно этой статьей*
-* [(Статья) Low Coupling и High Cohesion. Закон Деметры](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
-* [(Презентация) Про принципы проектирования (включая Low Coupling & High Cohesion)](https://www.slideshare.net/cristalngo/software-design-principles-57388843)
+* [(Article) About Low Coupling and High Cohesion clearly](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
+  * *The scheme at the beginning is inspired by this article*
+* [(Article) Low Coupling and High Cohesion. The Law of Demeter](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
+* [(Presentation) About design principles (including Low Coupling & High Cohesion)](https://www.slideshare.net/cristalngo/software-design-principles-57388843)
 
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-public-api]: /docs/concepts/public-api

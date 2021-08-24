@@ -4,107 +4,108 @@ sidebar_position: 2
 
 # Migration from v1
 
-## Зачем v2?
+## Why v2?
 
-Изначальная концепция **feature-slices** [была заявлена][ext-tg-spb] еще в 2018 году.
+The original concept of **feature-slices** [was announced][ext-tg-spb] in 2018.
 
-С тех пор прошло много трансформаций методологии, но при этом **[сохранялись базовые принципы][ext-v1]**:
+Since then, many transformations of the methodology have taken place, but at the same time **[the basic principles were preserved][ext-v1]**:
 
-- Использование *стандартизированной* структуры фронтенд-проектов
-- Разбиение приложения в первую очередь - согласно *бизнес-логике*
-- Использование *изолированных фичей*, для предотвращения неявных сайд-эффектов и циклических зависимостей
-- Использование *Public API* с запретом лезть "во внутренности" модуля
+- Using a *standardized* frontend project structure
+- Splitting the application in the first place-according to *business logic*
+- Use of *isolated features* to prevent implicit side effects and cyclic dependencies
+- Using the *Public API* with a ban on climbing "into the insides" of the module
 
-При этом, в прежней версии методологии все равно **оставались слабые места**, которые
+At the same time, in the previous version of the methodology, there were still **weak points** that
 
-- Где-то приводили к бойлерплейту
-- Где-то к чрезмерному усложнению кодовой базы и неочевидным правилам между абстракциями
-- Где-то к неявным архитектурным решениям, что мешало поддерже проекта и онбордингу новых людей
+- Sometimes it leads to boilerplate code
+- Sometimes it leads to excessive complication of the code base and non-obvious rules between abstractions
+- Sometimes it leads to implicit architectural solutions, which prevented the project from being pulled up and new people from onboarding
 
-Новая версия методологии ([v2][ext-v2]) призвана **устранить эти недостатки, сохраняя при этом и имеющиеся достоинства** подхода.
+The new version of the methodology ([v2][ext-v2]) is designed **to eliminate these shortcomings, while preserving the existing advantages** of the approach.
 
-С 2018 года [развивалась][ext-fdd-issues] и другая подобная методология - [**feature-driven**][ext-fdd], о которой заявил впервые [Oleg Isonen][ext-kof].
+Since 2018, [has also developed][ext-fdd-issues] another similar methodology - [**feature-driven**][ext-fdd], which was first announced by [Oleg Isonen][ext-kof].
 
-В результате слияния двух подходов, **были улучшены и доработаны существующие практики** - в сторону большей гибкости, понятности и эффективности при применении.
+After merging of the two approaches, we have **improved and refined existing practices** - towards greater flexibility, clarity and efficiency in application.
 
-> По итогу это повлияло даже на наименование методологии - *"feature-slice**d**"*
+> As a result, this has even affected the name of the methodology - *"feature-slice**d**"*
 
-## Почему имеет смысл мигрировать проект на v2?
+## Why does it make sense to migrate the project to v2?
 
-> `WIP:` Текущая версия методологии находится на стадии разработки и некоторые детали *могут измениться*
+> `WIP:` The current version of the methodology is under development and some details *may change*
 
-#### 🔍 Более прозрачная и простая архитектура
+#### 🔍 More transparent and simple architecture
 
-Методология (v2) предлагает **более интуитивно понятные и более распространенные среди разработчиков абстракции и способы разделения логики.**
+The methodology (v2) offers **more intuitive and more common abstractions and ways of separating logic among developers.**
 
-Все это крайне положительно влияет на привлечение новых людей, а также изучение текущего состояния проекта, и распределение бизнес-логики приложения.
+All this has an extremely positive effect on attracting new people, as well as studying the current state of the project, and distributing the business logic of the application.
 
-#### 📦 Более гибкая и честная модульность
+#### 📦 More flexible and honest modularity
 
-Методология (v2) позволяет **распределять логику более гибким способом:**
+The methodology (v2) allows **to distribute logic in a more flexible way:**
 
-- С возможностью рефакторить с нуля изолированные части
-- С возможностью опираться на одни и те же абстракции, но без лишних переплетений зависимостей
-- С более простыми требованиями для расположения нового модуля *(layer => slice => segment)*
+- With the ability to refactor isolated parts from scratch
+- With the ability to rely on the same abstractions, but without unnecessary interweaving of dependencies
+- With simpler requirements for the location of the new module *(layer => slice => segment)*
 
-#### 🚀 Больше спецификации, планов, комьюнити
+#### 🚀 More specifications, plans, community
 
-На данный момент `core-team` ведет активную работу именно над последней (v2) версией методологии
+At the moment, the `core-team` is actively working on the latest (v2) version of the methodology
 
-А значит именно для нее:
+So it is for her:
 
-- будет больше описанных кейсов / проблем
-- будет больше гайдов по применению
-- будет больше реальных примеров
-- будет в целом больше документации для онбординга новых людей и изучения концепций методологии
-- будет развиваться в дальнейшем тулкит для соблюдения концепций и конвенций по архитектуре
+- there will be more described cases / problems
+- there will be more guides on the application
+- there will be more real examples
+- in general, there will be more documentation for onboarding new people and studying the concepts of the methodology
+- the toolkit will be developed in the future to comply with the concepts and conventions on architecture
 
-> Само собой, будет поддержка пользователей и по первой версии - но для нас первоочередна все же последняя версия
+> Of course, there will be user support for the first version as well - but the latest version is still a priority for us
 >
-> В будущем же, при следующих мажорных обновлениях - у вас сохранится доступ и к текущей версии (v2) методологии, **без рисков для ваших команд и проектов**
+> In the future, with the next major updates, you will still have access to the current version (v2) of the methodology, **without risks for your teams and projects**
 
 ## Changelog
 
 ### `BREAKING` Layers
 
-Теперь методология предполагает явное выделение слоев на верхнем уровне
+Now the methodology assumes explicit allocation of layers at the top level
 
 - `/app` > `/processes` > **`/pages`** > **`/features`** > `/entities` > `/shared`
-- *Т.е. не все теперь трактуется как фичи/страницы*
-- Такой подход позволяет [явно задать правила для слоев][ext-tg-v2-draft]:
-  - Чем **выше расположен слой** модуля - тем большим **контекстом** он располагает
+- *That is, not everything is now treated as features/pages*
+- This approach allows you to [explicitly set rules for layers][ext-tg-v2-draft]:
+- The **higher the layer** of the module is located , the more **context** it has
+  
+  *(in other words-each module of the layer - can import only the modules of the underlying layers, but not higher)*
 
-    *(иными словами - каждый модуль слоя - может импортировать только модули нижележащих слоев, но не выше)*
-  - Чем **ниже расположен слой** модуля - тем больше **опасности и ответственности**, чтобы внести в него изменения
+- The **lower the layer of the** module is located , the more **danger and responsibility** to make changes to it
 
-    *(потому что, как правило - более переиспользуемыми являются именно нижележащие слои)*
+  *(because it is usually the underlying layers that are more overused)*
 
 ### `BREAKING` Shared
 
-Инфраструктурные абстракции `/ui`, `/lib`, `/api`, которые раньше лежали в src-корне проекта, теперь обособлены отдельной директорией `/src/shared`
+The infrastructure abstractions `/ui`, `/lib`, `/api`, which used to lie in the src root of the project, are now separated by a separate directory `/src/shared`
 
-- `shared/ui` - Все так же общий uikit приложения (опционален)
-  - *При этом никто не запрещает использовать здесь `Atomic Design` как раньше*
-- `shared/lib` - Набор вспомогательных библиотек для реализации логики
-  - *По-прежнему - без свалки хелперов*
-- `shared/api` - Общий энтрипоинт для обращения к API
-  - *Может прописываться и локально в каждой фиче/странице - но не рекомендуется*
-- Как и раньше - в `shared` не должно быть явной привязки к бизнес-логике
-  - *При необходимости - нужно выносить эту связь на уровень `entities` или еще выше*
+- `shared/ui` - Still the same general uikit of the application (optional)
+  - *At the same time, no one forbids using `Atomic Design` here as before*
+- `shared/lib` - A set of auxiliary libraries for implementing logic
+  - *Still - without a dump of helpers*
+- `shared/api` - A common entry point for accessing the API
+  - *Can also be registered locally in each feature / page - but it is not recommended*
+- As before - there should be no explicit binding to business logic in `shared`
+  - *If necessary, you need to take this relationship to the `entities` level or even higher*
 
 ### `NEW` Entities, Processes
 
-В v2 **добавлены и другие новые абстракции**, для устранения проблем усложнения логики и сильной связности.
+In v2 **, other new abstractions** have been added to eliminate the problems of logic complexity and high coupling.
 
-- `/entities` - слой **бизнес-сущностей**, содержащий в себе слайсы, относящиеся напрямую к бизнес-моделям или синтетическим сущностям, необходимым только на фронтенде
-  - *Примеры: `user`, `i18n`, `order`, `blog`*
-- `/processes` - слой **бизнес-процессов**, пронизывающих приложение
-  - **Слой опционален**, обычно рекоммендуется использовать, когда *логика разрастается и начинает размываться в нескольких страницах*
-  - *Примеры: `payment`, `auth`, `quick-tour`*
+- `/entities` - layer **business entities** containing slices that are related directly to the business models or synthetic entities required only on frontend
+  - *Examples: `user`, `i18n`, `order`, `blog`*
+- `/processes` - layer **business processes**, penetrating app
+  - **The layer is optional**, it is usually recommended to use it when *the logic grows and begins to blur in several pages*
+  - *Examples: `payment`, `auth`, `quick-tour`*
 
 ### `BREAKING` Abstractions & Naming
 
-Теперь определены [конкретные абстракции][refs-abstractions] и [четкие рекоммендации для их нейминга][refs-adaptability]
+Now [specific abstractions][refs-abstractions] and [clear recommendations for naming them][refs-adaptability]are defined
 
 [disc-process]: https://github.com/feature-sliced/documentation/discussions/20
 [disc-features]: https://github.com/feature-sliced/documentation/discussions/23
@@ -117,45 +118,45 @@ sidebar_position: 2
 
 #### [Layers][refs-abstractions-layers]
 
-- `/app` — **слой инициализации приложения**
-  - *Прежние варианты: `app`, `core`, `init`, `src/index` (и такое бывает)*
-- `/processes` — [**слой бизнес-процессов**][disc-process]
-  - *Прежние варианты: `processes`, `flows`, `worfklows`*
-- `/pages` — **слой страниц приложения**
-  - *Прежние варианты: `pages`, `screens`, `views`, `layouts`, `components`, `containers`*
-- `/features` — [**слой частей функциональности**][disc-features]
-  - *Прежние варианты: `features`, `components`, `containers`*
-- `/entities` — [**слой бизнес-сущностей**][disc-entities]
-  - *Прежние варианты: `entities`, `models`, `shared`*
-- `/shared` — [**слой переиспользуемого инфраструктурного кода**][disc-shared] 🔥
-  - *Прежние варианты: `shared`, `common`, `lib`*
+- `/app` — **application initialization layer**
+  - *Previous versions: `app`, `core`,`init`, `src/index` (and this happens)*
+- `/processes` — [**business process layer**][disc-process]
+  - *Previous versions: `processes`, `flows`, `workflows`*
+- `/pages` — **application page layer**
+  - *Previous versions: `pages`, `screens`, `views`, `layouts`, `components`, `containers`*
+- `/features` — [**functionality parts layer**][disc-features]
+  - *Previous versions: `features`, `components`, `containers`*
+- `/entities` — [**business entity layer**][disc-entities]
+  - *Previous versions: `entities`, `models`, `shared`*
+- `/shared` — [**layer of reused infrastructure code**][disc-shared] 🔥
+  - *Previous versions: `shared`, `common`, `lib`*
 
 #### [Segments][refs-abstractions-segments]
 
-- `/ui` — [**UI-сегмент**][disc-ui] 🔥
-  - *Прежние варианты: `ui`, `components`, `view`*
-- `/model` — [**БЛ-сегмент**][disc-model] 🔥
-  - *Прежние варианты: `model`, `store`, `state`, `services`, `controller`*
-- `/lib` — сегмент **вспомогательного кода**
-  - *Прежние варианты: `lib`, `libs`, `utils`, `helpers`*
-- `/api` — [**API-сегмент**][disc-api]
-  - *Прежние варианты: `api`, `service`, `requests`, `queries`*
-- `/config` — **сегмент конфигурации приложения**
-  - *Прежние варианты: `config`, `env`, `get-env`*
+- `/ui` — [**UI segment**][disc-ui] 🔥
+  - *Previous versions: `ui`, `components`, `view`*
+- `/model` — [**BL-segment**][disc-model] 🔥
+  - *Previous versions: `model`, `store`, `state`, `services`, `controller`*
+- `/lib` — segment **of auxiliary code**
+  - *Previous versions: `lib`, `libs`, `utils`, `helpers`*
+- `/api` — [**API segment**][disc-api]
+  - *Previous versions: `api`, `service`, `requests`, `queries`*
+- `/config` — **application configuration segment**
+  - *Previous versions: `config`, `env`, `get-env`*
 
 ### `REFINED` Low coupling
 
-Теперь гораздо проще [соблюдать принцип низкой связности][refs-low-coupling] между модулями, благодаря новым слоям.
+Now it is much easier to [observe the principle of low coupling][refs-low-coupling] between modules, thanks to the new layers.
 
-*При этом по-прежнему рекоммендуется максимально избегать случаев, где крайне трудно "расцепить" модули*
+*At the same time, it is still recommended to avoid as much as possible cases where it is extremely difficult to "uncouple" modules*
 
-## См. также
+## See also
 
-- [Заметки с доклада "React SPB Meetup #1"][ext-tg-spb]
+- [Notes from the report "React SPB Meetup #1"][ext-tg-spb]
 - [React Berlin Talk - Oleg Isonen "Feature Driven Architecture"][ext-kof-fdd]
-- [Сравнение с v1 (community-chat)](https://t.me/feature_sliced/493)
-- [Новые идеи v2 с пояснениями (atomicdesign-chat)][ext-tg-v2-draft]
-- [Обсуждение абстракций и нейминга для новой версии методологии (v2)](https://github.com/feature-sliced/documentation/discussions/31)
+- [Comparison with v1 (community-chat)](https://t.me/feature_sliced/493)
+- [New ideas v2 with explanations (atomicdesign-chat)][ext-tg-v2-draft]
+- [Discussion of abstractions and naming for the new version of the methodology (v2)](https://github.com/feature-sliced/documentation/discussions/31)
 
 [refs-low-coupling]: /docs/guides/low-coupling
 [refs-adaptability]: /docs/concepts/naming-adaptability
