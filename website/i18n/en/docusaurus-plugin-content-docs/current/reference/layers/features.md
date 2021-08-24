@@ -67,7 +67,7 @@ features/order/            Feature group
 
 This rule is not always possible to comply with, but it is better to minimize the number of such violations.
 
-Usually, it is precisely because of the neglect of this rule that there is a high connectivity between the modules of the system and unpredictable side effects during development.
+Usually, it is precisely because of the neglect of this rule that there is a high coupling between the modules of the system and unpredictable side effects during development.
 
 One of the ways to solve the problem is to use [entity][refs-entity].
 

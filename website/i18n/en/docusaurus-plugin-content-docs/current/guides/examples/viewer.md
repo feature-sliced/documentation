@@ -1,6 +1,6 @@
 # Viewer
 
-All applications somehow have business logic tied **to the current authorized user.**
+Every application has business logic related **with the current authorized user.**
 
 > Usually such an entity is called `Viewer` / `Principle` / `Session` - but within the framework of the article, we will focus on `viewer`, but it all depends on your project and team
 
@@ -29,7 +29,7 @@ Let's look at them in more detail below with examples
 
 :::info
 
-It should be understood that often there is a public "external" user (user) in the application, and there is an authorized "internal" user (viewer)
+It should be understood that often there is a public "external" user (`entities/user`) in the application, and there is an authorized "internal" user (`entities/viewer`)
 
 *Do not forget to take this difference into account when designing architecture and logic*
 
@@ -326,7 +326,7 @@ export const SomePage = () => {
 ```
 
 - `app/providers/withAuth` - HOC for user authorization
-  - Used **only at the top level, as a provider** with logic initialization, to which only *`app`-layer*
+  - Used **only at the top level, as a provider** with logic initialization, to which only _**app**-layer_
 - **Not to be confused with the `useViewer` hook**, which is accessed by all other layers *(processes / pages / features)*
 
 ## Conclusions

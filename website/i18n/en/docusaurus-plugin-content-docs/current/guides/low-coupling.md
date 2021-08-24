@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Low Coupling & High Cohesion
 
-Application modules should be designed as having **strong connectivity** (aimed at solving one clear task) and **weak coupling** (as little as possible dependent on other modules)
+Application modules should be designed as having **high cohesion** (aimed at solving one determined task) and **low coupling** (independent on other modules as possible)
 
 ![coupling-cohesion-themed](/img/coupling.png)
 
@@ -16,9 +16,9 @@ Within the framework of the methodology, this is achieved through:
 
 ## Composition of components (UI level)
 
-The absolute majority of modern UI frameworks and libraries provide a component model in which each component can have its own properties, its own state and child components, as well as, often, slots.
+The majority of modern UI frameworks and libraries provide a component model in which each component can have its own properties, its own state and child components, as well as, often, slots.
 
-This model allows you to assemble the interface as a **composition of various components that are not directly related to each other** and, thereby, achieve **weak engagement** of the interface components
+This model allows you to assemble the interface as a **composition of various components that are not directly related to each other** and, thereby, achieve **low coupling** of the interface components
 
 ### Example
 
@@ -60,7 +60,7 @@ This allows you to **reuse and independently change** components of different ve
 
 ## Layer composition (APP level)
 
-The methodology suggests dividing the functionality that is valuable for the user into separate modules - [**features (features)**][refs-features], and the logic related to business entities-in [**entities (entities)**][refs-entities]. Both features and entities **should be designed as highly connected modules**, i.e. aimed at solving **one specific task** or concentrated around **one specific entity.**
+The methodology suggests dividing the functionality that is valuable for the user into separate modules - [**features**][refs-features], and the logic related to business entities - [**entities**][refs-entities]. Both features and entities **should be designed as highly connected modules**, i.e. aimed at solving **one specific task** or concentrated around **one specific entity.**
 
 All interactions between such modules, similar to the UI components from the example above, should be organized as a **composition of various modules.**
 
@@ -128,8 +128,8 @@ export const { sendMessage, attachFile } = createMessageInput({
 
 ## Total
 
-1. Modules must have **strong connectivity** (have one responsibility, solve one specific task) and provide [**public interface**][refs-public-api] access
-2. **Weak engagement** is achieved through the composition of elements-UI components, features and entities
+1. Modules must have **high cohesion** (have one responsibility, solve one specific task) and provide [**public interface**][refs-public-api] access
+2. **Low coupling** is achieved through the composition of elements-UI components, features and entities
 3. Also, to reduce entanglement, modules **should depend on each other only through public interfaces** - this is how the independence of modules from each other's internal implementation is achieved
 
 ## See also

@@ -401,7 +401,7 @@ Reused shared modules, without binding to the domain scopes
 
 #### What is the profit?
 
-Now all modules can be designed with [weak connectivity][refs-low-coupling] and [with their own scope of responsibility][refs-layers], as well as distributed across the team without conflicts during development
+Now all modules can be designed with [low coupling][refs-low-coupling] and [with their own scope of responsibility][refs-layers], as well as distributed across the team without conflicts during development
 
 *And most importantly, now each module serves to build a specific business value, which reduces the risks for creating ["features for the sake of features"][refs-needs]*
 

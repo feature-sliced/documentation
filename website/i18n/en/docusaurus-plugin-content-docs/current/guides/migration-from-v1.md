@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Why v2?
 
-The original concept of **feature-slices** [was announced by][ext-tg-spb] back in 2018.
+The original concept of **feature-slices** [was announced][ext-tg-spb] in 2018.
 
 Since then, many transformations of the methodology have taken place, but at the same time **[the basic principles were preserved][ext-v1]**:
 
@@ -17,17 +17,17 @@ Since then, many transformations of the methodology have taken place, but at the
 
 At the same time, in the previous version of the methodology, there were still **weak points** that
 
-- Somewhere they were brought to the boiler plate
-- Somewhere to the excessive complication of the code base and non-obvious rules between abstractions
-- Somewhere to implicit architectural solutions, which prevented the project from being pulled up and new people from onboarding
+- Sometimes it leads to boilerplate code
+- Sometimes it leads to excessive complication of the code base and non-obvious rules between abstractions
+- Sometimes it leads to implicit architectural solutions, which prevented the project from being pulled up and new people from onboarding
 
 The new version of the methodology ([v2][ext-v2]) is designed **to eliminate these shortcomings, while preserving the existing advantages** of the approach.
 
-Since 2018, [ext-fdd-issues] has also developed another similar methodology - [**feature-driven**][ext-fdd], which was first announced by [Oleg Isonen][ext-kof].
+Since 2018, [has also developed][ext-fdd-issues] another similar methodology - [**feature-driven**][ext-fdd], which was first announced by [Oleg Isonen][ext-kof].
 
-As a result of the merger of the two approaches, **existing practices have been improved and refined** - towards greater flexibility, clarity and efficiency in application.
+After merging of the two approaches, we have **improved and refined existing practices** - towards greater flexibility, clarity and efficiency in application.
 
-> As a result, this even affected the name of the methodology - *"feature-slice**d**"*
+> As a result, this has even affected the name of the methodology - *"feature-slice**d**"*
 
 ## Why does it make sense to migrate the project to v2?
 
@@ -73,28 +73,29 @@ Now the methodology assumes explicit allocation of layers at the top level
 - *That is, not everything is now treated as features/pages*
 - This approach allows you to [explicitly set rules for layers][ext-tg-v2-draft]:
 - The **higher the layer** of the module is located , the more **context** it has
+  
+  *(in other words-each module of the layer - can import only the modules of the underlying layers, but not higher)*
 
-    *(in other words-each module of the layer - can import only the modules of the underlying layers, but not higher)*
 - The **lower the layer of the** module is located , the more **danger and responsibility** to make changes to it
 
-    *(becaus it is usually the underlying layers that are more overused)*
+  *(because it is usually the underlying layers that are more overused)*
 
 ### `BREAKING` Shared
 
-The infrastructure abstractions `/ ui`, `/lib`, `/api`, which used to lie in the src root of the project, are now separated by a separate directory `/src/shared`
+The infrastructure abstractions `/ui`, `/lib`, `/api`, which used to lie in the src root of the project, are now separated by a separate directory `/src/shared`
 
-- `shared / ui` - Still the same general uikit of the application (optional)
-  - *At the same time, no one forbids using 'Atomic Design' here as before*
+- `shared/ui` - Still the same general uikit of the application (optional)
+  - *At the same time, no one forbids using `Atomic Design` here as before*
 - `shared/lib` - A set of auxiliary libraries for implementing logic
   - *Still - without a dump of helpers*
-- `shared / api` - A common entry point for accessing the API
+- `shared/api` - A common entry point for accessing the API
   - *Can also be registered locally in each feature / page - but it is not recommended*
 - As before - there should be no explicit binding to business logic in `shared`
   - *If necessary, you need to take this relationship to the `entities` level or even higher*
 
 ### `NEW` Entities, Processes
 
-In v2 **, other new abstractions** have been added to eliminate the problems of logic complexity and strong connectivity.
+In v2 **, other new abstractions** have been added to eliminate the problems of logic complexity and high coupling.
 
 - `/entities` - layer **business entities** containing slices that are related directly to the business models or synthetic entities required only on frontend
   - *Examples: `user`, `i18n`, `order`, `blog`*
@@ -145,7 +146,7 @@ Now [specific abstractions][refs-abstractions] and [clear recommendations for na
 
 ### `REFINED` Low coupling
 
-Now it is much easier to [observe the principle of low connectivity][refs-low-coupling] between modules, thanks to the new layers.
+Now it is much easier to [observe the principle of low coupling][refs-low-coupling] between modules, thanks to the new layers.
 
 *At the same time, it is still recommended to avoid as much as possible cases where it is extremely difficult to "uncouple" modules*
 

@@ -17,10 +17,10 @@ Regardless of whether it belongs to any slice, each module [**is required to pro
 
 The interaction of each module with the rest of the application is designed taking into account a number of requirements:
 
-1. **Weak engagement** with other modules
+1. **Low coupling** with other modules
     - *A change in one module should have a weak and predictable effect on others*
 
-1. **High connectivity** - the responsibilities of each module are "focused" on one task
+1. **High cohesion** - the responsibilities of each module are "focused" on one task
 
     - *If the module has too many responsibilities (starts "doing too much") - this should be noticed as soon as possible*
 1. **Absence of cyclic dependencies** on the scale of the entire application
@@ -66,8 +66,8 @@ Violation of this rule is a signal of problems:
 
 ## See also
 
-- [(Guide) About achieving low connectivity][refs-low-coupling]
-- [(Discussion) Entities in the methodology and their connectivity](https://github.com/feature-sliced/documentation/discussions/49)
+- [(Guide) About achieving low coupling][refs-low-coupling]
+- [(Discussion) Coupled entities](https://github.com/feature-sliced/documentation/discussions/49)
 - [(Discussion) About cross-imports and analysis зависимостей](https://github.com/feature-sliced/documentation/discussions/65#discussioncomment-480822)
 - [**GRASP** Patterns](https://ru.wikipedia.org/wiki/GRASP)
 

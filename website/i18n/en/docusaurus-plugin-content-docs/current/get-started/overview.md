@@ -47,7 +47,7 @@ Thanks to this, *a balance is maintained between compliance with the `DRY` princ
 ## See also
 
 - [Reasons for creating the methodology][refs-motivation]
-- [(Guide) How to bring modules to low connectivity][refs-low-coupling]
+- [(Guide) How to reach a low coupling of modules][refs-low-coupling]
 - [Examples of the methodology application][refs-examples]
 - [(Guide) Migration from feature-slices (v1)][refs-migration-v1]
   - *Also contains a comparison of the two versions and the reasons for creating v2*
