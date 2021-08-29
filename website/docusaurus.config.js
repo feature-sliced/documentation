@@ -253,6 +253,11 @@ const announcementBar = {
     isCloseable: false, // Defaults to `true`.
 };
 
+/** @type {Config["themeConfig"]["colorMode"]} */
+const colorMode = {
+    respectPrefersColorScheme: true,
+};
+
 /** @type {Config} */
 module.exports = {
     title: "feature-sliced",
@@ -267,6 +272,7 @@ module.exports = {
     organizationName: "feature-sliced", // Usually your GitHub org/user name.
     projectName: "documentation", // Usually your repo name.
     themeConfig: {
+        colorMode,
         navbar,
         footer,
         announcementBar,
