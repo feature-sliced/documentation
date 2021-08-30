@@ -1,4 +1,3 @@
-import React from "react";
 import {
     LoginOutlined,
     FileProtectOutlined,
@@ -8,28 +7,28 @@ import {
     LikeOutlined,
     BuildOutlined,
 } from "@ant-design/icons";
-import Translate, { translate } from "@docusaurus/Translate";
+import { translate } from "@docusaurus/Translate";
 
 export const features = [
     {
         title: translate({ id: "pages.home.features.logic.title" }),
         Icon: EyeOutlined,
-        description: <Translate id="pages.home.features.logic.description" />,
+        description: translate({ id: "pages.home.features.logic.description" }),
     },
     {
         title: translate({ id: "pages.home.features.adaptability.title" }),
         Icon: LoginOutlined,
-        description: <Translate id="pages.home.features.adaptability.description" />,
+        description: translate({ id: "pages.home.features.adaptability.description" }),
     },
     {
         title: translate({ id: "pages.home.features.debt.title" }),
         Icon: FileProtectOutlined,
-        description: <Translate id="pages.home.features.debt.description" />,
+        description: translate({ id: "pages.home.features.debt.description" }),
     },
     {
         title: translate({ id: "pages.home.features.shared.title" }),
         Icon: BuildOutlined,
-        description: <Translate id="pages.home.features.shared.description" />,
+        description: translate({ id: "pages.home.features.shared.description" }),
     },
 ];
 
@@ -37,17 +36,17 @@ export const concepts = [
     {
         title: translate({ id: "pages.home.concepts.public.title" }),
         Icon: ApiOutlined,
-        description: <Translate id="pages.home.concepts.public.description" />,
+        description: translate({ id: "pages.home.concepts.public.description" }),
     },
     {
         title: translate({ id: "pages.home.concepts.isolation.title" }),
         Icon: BlockOutlined,
-        description: <Translate id="pages.home.concepts.isolation.description" />,
+        description: translate({ id: "pages.home.concepts.isolation.description" }),
     },
     {
         title: translate({ id: "pages.home.concepts.needs.title" }),
         Icon: LikeOutlined,
-        description: <Translate id="pages.home.concepts.needs.description" />,
+        description: translate({ id: "pages.home.concepts.needs.description" }),
     },
 ];
 
