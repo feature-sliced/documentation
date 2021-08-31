@@ -38,6 +38,10 @@ export const WIP = ({ ticket }) => {
                     </Link>
                 </li>
             </ul>
+            <br />
+            <p>
+                <i>🍰 Stay tuned!</i>
+            </p>
         </div>
     );
 };
