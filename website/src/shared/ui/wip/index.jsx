@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "@docusaurus/Link";
+import { translate } from "@docusaurus/Translate";
 
 // FIXME: simplify mdx-admonition wrapping!
 
@@ -8,7 +9,7 @@ const EXT_ISSUES = "https://github.com/feature-sliced/documentation/issues";
 const EXT_CONTRIBUTING =
     "https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md";
 
-// TODO: add i18n
+// FIXME: simplify i18n
 
 /**
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
@@ -17,19 +18,24 @@ export const WIP = ({ ticket }) => {
     const ticketUrl = `${EXT_ISSUES}/${ticket}`;
     return (
         <div>
-            <p>Статья находится в процессе написания</p>
-            <p>Чтобы помочь, можно:</p>
+            <p>{translate({ id: "shared.wip.title" })}</p>
+            <p>{translate({ id: "shared.wip.subtitle" })}</p>
             <ul>
                 <li>
-                    📢 Поделиться обратной связью{" "}
-                    <Link to={ticketUrl}>в тикете (комментарии/эмодзи)</Link>
+                    {translate({ id: "shared.wip.var.feedback.base" })}
+                    <Link to={ticketUrl}>{translate({ id: "shared.wip.var.feedback.link" })}</Link>
                 </li>
                 <li>
-                    💬 Собрать в тикет накопленный по теме{" "}
-                    <Link to={EXT_TELEGRAM_CHAT}>материал из чата</Link>
+                    {translate({ id: "shared.wip.var.material.base" })}
+                    <Link to={EXT_TELEGRAM_CHAT}>
+                        {translate({ id: "shared.wip.var.material.link" })}
+                    </Link>
                 </li>
                 <li>
-                    ⚒️ Посодействовать <Link to={EXT_CONTRIBUTING}>любым другим способом</Link>
+                    {translate({ id: "shared.wip.var.contribute.base" })}
+                    <Link to={EXT_CONTRIBUTING}>
+                        {translate({ id: "shared.wip.var.contribute.link" })}
+                    </Link>
                 </li>
             </ul>
         </div>

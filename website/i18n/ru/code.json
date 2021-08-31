@@ -127,6 +127,38 @@
     "message": "Предыдущая версия",
     "description": "Previous version"
   },
+  "shared.wip.title": {
+    "message": "Статья находится в процессе написания",
+    "description": "Admonition title"
+  },
+  "shared.wip.subtitle": {
+    "message": "Чтобы ускорить ее появление, можно:",
+    "description": "Admonition subtitle"
+  },
+  "shared.wip.var.feedback.base": {
+    "message": "📢 Поделиться обратной связью ",
+    "description": "Variant for contribute (base)"
+  },
+  "shared.wip.var.feedback.link": {
+    "message": "в тикете (комментарии/эмодзи-реакция)",
+    "description": "Variant for contribute (link)"
+  },
+  "shared.wip.var.material.base": {
+    "message": "💬 Собрать в тикет накопленный по теме ",
+    "description": "Variant for contribute (base)"
+  },
+  "shared.wip.var.material.link": {
+    "message": "материал из чата",
+    "description": "Variant for contribute (link)"
+  },
+  "shared.wip.var.contribute.base": {
+    "message": "⚒️ Посодействовать ",
+    "description": "Variant for contribute (base)"
+  },
+  "shared.wip.var.contribute.link": {
+    "message": "любым другим способом",
+    "description": "Variant for contribute (link)"
+  },
   "theme.NotFound.title": {
     "message": "Страница не найдена",
     "description": "The title of the 404 page"
