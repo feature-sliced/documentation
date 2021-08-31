@@ -217,7 +217,14 @@ const plugins = [
                 .map(({ shortPath, fullPath }) => ({
                     from: shortPath,
                     to: fullPath,
-                })),
+                }))
+                // NOTE: temp redirects, resolve later
+                .concat([
+                    {
+                        from: "/docs/get-started/quick-start",
+                        to: "/docs/get-started/tutorial/quick-start",
+                    },
+                ]),
         },
     ],
     // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image
