@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Viewer
 
 Every application has business logic related **with the current authorized user.**
