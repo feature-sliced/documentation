@@ -7,6 +7,18 @@
     "message": "Get Started",
     "description": "The label for category Get Started in sidebar tutorialSidebar"
   },
+  "sidebar.tutorialSidebar.category.Tutorials": {
+    "message": "Tutorials",
+    "description": "The label for category Tutorials in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Alternatives": {
+    "message": "Alternatives",
+    "description": "The label for category Alternatives in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Onboard": {
+    "message": "Onboard",
+    "description": "The label for category Onboard in sidebar tutorialSidebar"
+  },
   "sidebar.tutorialSidebar.category.Concepts": {
     "message": "Concepts",
     "description": "The label for category Concepts in sidebar tutorialSidebar"
@@ -18,6 +30,10 @@
   "sidebar.tutorialSidebar.category.Examples": {
     "message": "Examples",
     "description": "The label for category Examples in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Handbook": {
+    "message": "Handbook",
+    "description": "The label for category Handbook in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Reference": {
     "message": "Reference",

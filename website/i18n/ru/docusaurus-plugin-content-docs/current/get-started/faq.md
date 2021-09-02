@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 20
 ---
 
 # FAQ
@@ -41,7 +41,7 @@ sidebar_position: 5
 - [Internal Examples](https://github.com/feature-sliced/examples)
 - [External Examples](/examples)
 
-*Также можно ознакомиться с [гайдами](/docs/guides/migration-from-v1) и [туториалами](/docs/get-started/quick-start)*
+*Также можно ознакомиться с [гайдами](/docs/guides/migration-from-v1) и [туториалами](/docs/get-started/tutorial/quick-start)*
 
 ### Есть ли какие-нибудь полезные ресурсы/статьи/и т.д. по FeatureSliced и связанным вещам?
 
@@ -99,4 +99,4 @@ sidebar_position: 5
 
 > *"Сегодня фича может использоваться только на одной странице. На следующей неделе - на трех. А через месяц - ее может не быть совсем. Мы не можем предсказывать будущее, и нужно каждый раз воздерживаться от преждевременных оптимизаций"*
 
-*См. также пример из [quick-start](/docs/get-started/quick-start#обычный-подход)*
+*См. также пример из [quick-start](/docs/get-started/tutorial/quick-start#обычный-подход)*
