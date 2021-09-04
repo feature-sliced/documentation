@@ -30,6 +30,10 @@ Very often, there is a situation on projects when modules related to a specific 
 |    ├── delivery.js
 |    ├── region.js
 |    ├── user.js
+├── helpers/
+|    ├── delivery.js
+|    ├── region.js
+|    ├── user.js
 ├── entities/
 |    ├── delivery/
 |    |      ├── getters.js
@@ -67,14 +71,9 @@ So that when studying a particular module, all its components lie side by side, 
 - |    ├── delivery.js
 - |    ├── region.js
 - |    ├── user.js
-- ├── epics/
-- |    ├── delivery.js
-- |    ├── region.js
-- |    ├── user.js
-- ├── constants/
-- |    ├── delivery.js
-- |    ├── region.js
-- |    ├── user.js
+- ├── epics/{...}
+- ├── constants/{...}
+- ├── helpers/{...}
   ├── entities/
   |    ├── delivery/
 + |    |      ├── ui/ # ~ components/
@@ -86,6 +85,7 @@ So that when studying a particular module, all its components lie side by side, 
 + |    |      |   ├── epics.js
 + |    |      |   ├── getters.js
 + |    |      |   ├── selectors.js
++ |    |      ├── lib/ # ~ helpers
   |    ├── region/
   |    ├── user/
 ```

@@ -30,6 +30,10 @@ import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 |    ├── delivery.js
 |    ├── region.js
 |    ├── user.js
+├── helpers/
+|    ├── delivery.js
+|    ├── region.js
+|    ├── user.js
 ├── entities/
 |    ├── delivery/
 |    |      ├── getters.js
@@ -67,14 +71,9 @@ import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 - |    ├── delivery.js
 - |    ├── region.js
 - |    ├── user.js
-- ├── epics/
-- |    ├── delivery.js
-- |    ├── region.js
-- |    ├── user.js
-- ├── constants/
-- |    ├── delivery.js
-- |    ├── region.js
-- |    ├── user.js
+- ├── epics/{...}
+- ├── constants/{...}
+- ├── helpers/{...}
   ├── entities/
   |    ├── delivery/
 + |    |      ├── ui/ # ~ components/
@@ -86,6 +85,7 @@ import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 + |    |      |   ├── epics.js
 + |    |      |   ├── getters.js
 + |    |      |   ├── selectors.js
++ |    |      ├── lib/ # ~ helpers
   |    ├── region/
   |    ├── user/
 ```
