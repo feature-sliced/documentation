@@ -119,6 +119,10 @@ html img[alt*="bordered"] {
     border-radius: 16px;
 }
 
+html img[alt*="w100"] {
+    width: 100%;
+}
+
 .codesandbox {
     width: 100%;
     height: 700px;
