@@ -18,7 +18,7 @@
 ![feature-sliced-banner](/website/static/img/banner.jpg)
 
 <!-- ⚡ Add primary information & features about your repository -->
-FeatureSliced is an architectural design methodology for *frontend applications*. It aims to [**divide the application according to business logic and scopes of responsibility**][refs-splitting]
+FeatureSliced is an architectural design methodology for *frontend applications*. It aims to [**divide an application according to business logic and scopes of responsibility**][refs-splitting]
 
 - Provides [**explicitness, controllability and adaptability**][refs-arch-req] of architecture
 - Based on [**experience-checked**][refs-motivation-why] design practices and concepts
