@@ -81,4 +81,9 @@ export const companies = [
         src: "foxford.svg",
         alt: "Foxford",
     },
+    {
+        url: "https://vigo.ru/",
+        src: "vigo.png",
+        alt: "Vigo",
+    },
 ];
