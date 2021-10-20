@@ -86,4 +86,9 @@ export const companies = [
         src: "vigo.png",
         alt: "Vigo",
     },
+    {
+        url: "https://yandex.ru/",
+        src: "yandex.svg",
+        alt: "Yandex",
+    },
 ];
