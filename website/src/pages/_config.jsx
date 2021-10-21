@@ -91,4 +91,9 @@ export const companies = [
         src: "yandex.svg",
         alt: "Yandex",
     },
+    {
+        url: "https://space307.com/",
+        src: "space307.svg",
+        alt: "~/.space307",
+    },
 ];
