@@ -147,3 +147,7 @@ html img[alt*="w100"] {
         border-radius: var(--ifm-button-border-radius) !important;
     }
 }
+
+.sidebar-item--wip {
+    opacity: 0.5;
+}
