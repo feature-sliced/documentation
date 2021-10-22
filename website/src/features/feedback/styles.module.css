@@ -1,0 +1,27 @@
+.root {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.button {
+    padding: 16px 8px;
+    background: var(--ifm-color-primary);
+    border: 0;
+    border-radius: 8px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: var(--ifm-alert-shadow);
+    transition: 0.25s;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.icon {
+    font-size: 20px;
+    color: #ffffff;
+}
