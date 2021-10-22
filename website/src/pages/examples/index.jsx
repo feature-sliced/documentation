@@ -20,10 +20,20 @@ function ExamplesPage() {
                     <h1>{TITLE}</h1>
                     <p>{DESCRIPTION}</p>
                     <div className="button-group">
-                        <a className="button button--primary" href={EDIT_URL} target="_blank">
+                        <a
+                            className="button button--primary"
+                            href={EDIT_URL}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
                             🙏 {translate({ id: "pages.examples.add_me.title" })}
                         </a>
-                        <a className="button button--secondary" href={EXAMPLES_URL} target="_blank">
+                        <a
+                            className="button button--secondary"
+                            href={EXAMPLES_URL}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
                             {translate({ id: "pages.examples.repo.title" })}
                         </a>
                     </div>
