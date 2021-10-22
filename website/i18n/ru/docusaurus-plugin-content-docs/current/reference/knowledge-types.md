@@ -1,5 +1,6 @@
 ---
 sidebar_position: 10
+pagination_next: about/mission
 ---
 
 # Типы знаний в проекте
