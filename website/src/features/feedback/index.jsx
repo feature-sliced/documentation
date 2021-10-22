@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { FlagOutlined } from "@ant-design/icons";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
@@ -18,7 +19,7 @@ export const Feedback = () => {
     return (
         <div className={styles.root}>
             <a
-                className={styles.button}
+                className={clsx("button button--primary", styles.button)}
                 href={FEEDBACK_URLS[i18n.currentLocale]}
                 target="_blank"
                 rel="noreferrer noopener"
