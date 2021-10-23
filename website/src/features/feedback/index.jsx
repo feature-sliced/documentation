@@ -1,29 +1,18 @@
 import React from "react";
 import clsx from "clsx";
 import { FlagOutlined } from "@ant-design/icons";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
 
-const FEEDBACK_URLS = {
-    ru: "https://forms.gle/7p4anU2shHAzmfqc8",
-    en: "https://forms.gle/nsYua6bMMG5iBB3v7",
-};
-
-const FEEDBACK_LABEL = {
-    ru: "Поделись фидбеком по документации 🤙",
-    en: "Share your feedback about documentation 🤙",
-};
-
 export const Feedback = () => {
-    const { i18n } = useDocusaurusContext();
     return (
         <div className={styles.root}>
             <a
                 className={clsx("button button--primary", styles.button)}
-                href={FEEDBACK_URLS[i18n.currentLocale]}
+                href={translate({ id: "features.feedback.url" })}
                 target="_blank"
                 rel="noreferrer noopener"
-                title={FEEDBACK_LABEL[i18n.currentLocale]}
+                title={translate({ id: "features.feedback.label" })}
             >
                 <FlagOutlined className={styles.icon} />
             </a>
