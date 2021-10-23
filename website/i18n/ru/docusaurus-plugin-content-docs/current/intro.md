@@ -3,7 +3,7 @@ sidebar_position: 1
 pagination_next: get-started/index
 ---
 
-# Введение
+# 🔎 Введение
 
 <span class="badge badge--secondary margin-bottom--md">OVERVIEW-ORIENTED</span>
 

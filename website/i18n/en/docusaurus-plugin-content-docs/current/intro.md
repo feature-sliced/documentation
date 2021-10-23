@@ -3,7 +3,7 @@ sidebar_position: 1
 pagination_next: get-started/index
 ---
 
-# Intro
+# 🔎 Intro
 
 A methodology for designing *frontend projects*, aimed [**at dividing the application according to business logic and scopes of responsibility.**][refs-splitting]
 
