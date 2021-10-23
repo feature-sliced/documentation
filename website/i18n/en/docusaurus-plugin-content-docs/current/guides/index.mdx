@@ -1,0 +1,39 @@
+---
+sidebar_position: 0
+sidebar_class_name: sidebar-item--root
+hide_table_of_contents: true
+slug: /guides
+pagination_prev: get-started/faq
+---
+
+# 🎯 Guides
+
+<span class="badge badge--primary margin-bottom--md">PRACTICE-ORIENTED</span>
+
+<p class="summary">
+Practical guides and examples on the use of Feature Sliced. There is also describe migration guides and a handbook of vicious practices. It is most useful when you are trying to implement something specific or want to look at the methodology "in battle"
+</p>
+
+## Main
+
+import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { PartitionOutlined, NodeIndexOutlined, ImportOutlined } from "@ant-design/icons";
+
+<Row 
+    title="Desegmented" 
+    description="The problem of redundant desegmentation of logic"
+    to="/docs/guides/handbook/desegmented"
+    Icon={NodeIndexOutlined}
+/>
+<Row 
+    title="Decouple entities" 
+    description="Decomposition of logic with allocation of business entities"
+    to="/docs/guides/decouple-entities"
+    Icon={PartitionOutlined}
+/>
+<Row 
+    title="Migration from legacy" 
+    description="Step-by-step implementation of practices in legacy projects"
+    to="/docs/guides/migration-from-legacy"
+    Icon={ImportOutlined}
+/>

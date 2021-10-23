@@ -1,0 +1,39 @@
+---
+sidebar_position: 0
+sidebar_class_name: sidebar-item--root
+hide_table_of_contents: true
+slug: /concepts
+pagination_prev: guides/usage-with-nextjs
+---
+
+# 🧩 Concepts
+
+<span class="badge badge--warning margin-bottom--md">UNDERSTANDING-ORIENTED</span>
+
+<p class="summary">
+A section with key concepts of the methodology, for an advanced understanding of the Feature Sliced philosophy and application in practice.
+</p>
+
+## Main
+
+import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { BlockOutlined, ApiOutlined, ApartmentOutlined } from "@ant-design/icons";
+
+<Row 
+    title="App splitting" 
+    description="Usage of a layered sliced structure in the decomposition of logic"
+    to="/docs/concepts/app-splitting"
+    Icon={BlockOutlined}
+/>
+<Row 
+    title="Public API" 
+    description="Practices for designing scalable and easy-to-integrate modules"
+    to="/docs/concepts/public-api"
+    Icon={ApiOutlined}
+/>
+<Row 
+    title="Cross-communication" 
+    description="Rules for scalable and efficient interaction of modules"
+    to="/docs/concepts/cross-communitcation"
+    Icon={ApartmentOutlined}
+/>
