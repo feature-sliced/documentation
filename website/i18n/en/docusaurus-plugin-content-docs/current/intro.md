@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-pagination_next: get-started/overview
+pagination_next: get-started/index
 ---
 
 # Intro

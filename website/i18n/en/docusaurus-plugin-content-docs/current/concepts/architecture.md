@@ -1,6 +1,5 @@
 ---
-sidebar_position: 1
-pagination_prev: guides/usage-with-nextjs
+sidebar_position: 2
 ---
 
 # About architecture
