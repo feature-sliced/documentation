@@ -1,0 +1,34 @@
+---
+sidebar_position: 0
+sidebar_class_name: sidebar-item--root
+slug: /guides
+hide_table_of_contents: true
+---
+
+# 🎯 Гайды
+
+<span class="badge badge--primary margin-bottom--md">PRACTICE-ORIENTED</span>
+
+<p class="summary">
+Практические гайды и примеры по применению Feature Sliced. В этом же разделе описаны гайды по миграции и хэндбук порочных практик. Наиболее полезно, когда вы пытаетесь реализовать что-то конкретное или хотите посмотреть на методологию "в бою"
+</p>
+
+## Главное
+
+import Row from "@site/src/shared/ui/row/tmpl.mdx"
+
+<Row 
+    title="Десегментация" 
+    description="Проблема излишней раздробленности логики"
+    to="/docs/guides/handbook/desegmented"
+/>
+<Row 
+    title="Decouple entities" 
+    description="Декомпозиция логики с выделением бизнес-сущностей"
+    to="/docs/guides/decouple-entities"
+/>
+<Row 
+    title="Миграция с legacy" 
+    description="Поэтапное внедрение практик в легаси-проекты"
+    to="/docs/guides/migration-from-legacy"
+/>
