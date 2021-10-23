@@ -148,6 +148,10 @@ html img[alt*="w100"] {
     }
 }
 
+[role=banner] {
+    background-color: #0367d2 !important;
+}
+
 .sidebar-item--wip {
     opacity: 0.5;
 }
