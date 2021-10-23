@@ -8,7 +8,7 @@ const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
 const DEFAULT_LOCALE = "ru";
 
 // Конкретные страницы нужны, т.к. отдельно секции доки не индексируются
-// FIXME: Будет исправлено позднее
+// FIXME: Привести в порядок формат урлов
 const SECTIONS = {
     INTRO: {
         shortPath: "/docs",
@@ -16,19 +16,19 @@ const SECTIONS = {
     },
     GET_STARTED: {
         shortPath: "/docs/get-started",
-        fullPath: "/docs/get-started/overview",
+        fullPath: "/docs/get-started",
     },
     CONCEPTS: {
         shortPath: "/docs/concepts",
-        fullPath: "/docs/concepts/architecture",
+        fullPath: "/docs/concepts",
     },
     GUIDES: {
         shortPath: "/docs/guides",
-        fullPath: "/docs/guides/migration-from-v1",
+        fullPath: "/docs/guides",
     },
     REFERENCE: {
         shortPath: "/docs/reference",
-        fullPath: "/docs/reference/glossary",
+        fullPath: "/docs/reference",
     },
     LAYERS: {
         shortPath: "/docs/reference/layers",
@@ -36,7 +36,7 @@ const SECTIONS = {
     },
     ABOUT: {
         shortPath: "/docs/about",
-        fullPath: "/docs/about/mission",
+        fullPath: "/docs/about",
     },
     EXAMPLES: {
         shortPath: "/examples",
