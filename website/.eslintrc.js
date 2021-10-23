@@ -9,6 +9,8 @@ module.exports = {
     rules: {
         // Sometime harmful =(
         "react/jsx-props-no-spreading": 0,
+        // For external links
+        "react/jsx-no-target-blank": 2,
         "linebreak-style": [2, "unix"],
     },
     settings: {
