@@ -16,19 +16,23 @@ hide_table_of_contents: true
 ## Главное
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { BlockOutlined, ApiOutlined, ApartmentOutlined } from "@ant-design/icons";
 
 <Row 
     title="Разбиение приложения" 
     description="Использование слоисто-слайсовой структуры при декомпозиции логики"
     to="/docs/concepts/app-splitting"
+    Icon={BlockOutlined}
 />
 <Row 
     title="Public API" 
     description="Практики по проектированию устойчивых и удобных для интеграции модулей"
     to="/docs/concepts/public-api"
+    Icon={ApiOutlined}
 />
 <Row 
     title="Кросс-коммуникация" 
     description="Правила масштабируемого и эффективного взаимодействия модулей"
     to="/docs/concepts/cross-communitcation"
+    Icon={ApartmentOutlined}
 />

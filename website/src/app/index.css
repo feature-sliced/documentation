@@ -173,3 +173,7 @@ html img[alt*="w100"] {
     --ifm-badge-background-color: #5c21dd;
     --ifm-badge-border-color: var(--ifm-badge-background-color);
 }
+
+html[data-theme=dark] .badge--warning {
+    --ifm-badge-background-color: var(--ifm-color-warning-dark);
+}

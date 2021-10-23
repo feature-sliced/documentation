@@ -16,19 +16,23 @@ hide_table_of_contents: true
 ## Главное
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { RocketOutlined, BuildOutlined, SettingOutlined } from "@ant-design/icons";
 
 <Row
     title="Базис"
     description="Основы методологии (кратко)"
     to="/docs/get-started/basics"
+    Icon={SettingOutlined}
 />
 <Row
     title="Быстрый старт"
     description="Вводный туториал по применению методологии"
     to="/docs/get-started/tutorial/quick-start"
+    Icon={RocketOutlined}
 />
 <Row
     title="Декомпозиция логики"
     description="Памятка по декомпозиции логики с примерами и критериями"
     to="/docs/get-started/tutorial/decompose"
+    Icon={BuildOutlined}
 />
