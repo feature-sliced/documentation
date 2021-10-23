@@ -63,29 +63,29 @@ const navbar = {
         },
         {
             label: "🚀 Get Started",
-            to: SECTIONS.GET_STARTED.fullPath,
+            to: SECTIONS.GET_STARTED.shortPath,
             activeBasePath: SECTIONS.GET_STARTED.shortPath,
         },
         {
             label: "🎯 Guides",
-            to: SECTIONS.GUIDES.fullPath,
+            to: SECTIONS.GUIDES.shortPath,
             activeBasePath: SECTIONS.GUIDES.shortPath,
         },
         {
             label: "🧩 Concepts",
-            to: SECTIONS.CONCEPTS.fullPath,
+            to: SECTIONS.CONCEPTS.shortPath,
             activeBasePath: SECTIONS.CONCEPTS.shortPath,
         },
         {
             label: "📚 Reference",
-            to: SECTIONS.REFERENCE.fullPath,
+            to: SECTIONS.REFERENCE.shortPath,
             activeBasePath: SECTIONS.REFERENCE.shortPath,
         },
         {
             label: "🍰 About",
-            to: SECTIONS.ABOUT.fullPath,
-            position: "left",
+            to: SECTIONS.ABOUT.shortPath,
             activeBasePath: SECTIONS.ABOUT.shortPath,
+            position: "left",
         },
         {
             label: "🛠 Examples",

@@ -155,3 +155,9 @@ html img[alt*="w100"] {
 .sidebar-item--wip {
     opacity: 0.5;
 }
+
+.sidebar-item--root {
+    margin-bottom: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
