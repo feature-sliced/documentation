@@ -1,0 +1,26 @@
+.root {
+    display: block;
+    padding: 24px;
+    color: var(--ifm-font-color-base);
+    border-radius: var(--ifm-alert-border-radius);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+    transition: 0.25s;
+}
+
+.root:hover {
+    text-decoration: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.root + .root {
+    margin-top: 10px;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+html[data-theme=dark] .root {
+    background: var(--ifm-color-gray-900);
+}
