@@ -168,3 +168,8 @@ html img[alt*="w100"] {
     color: var(--ifm-color-gray-600);
     border-bottom: 1px solid var(--ifm-color-gray-400);
 }
+
+.badge--violet {
+    --ifm-badge-background-color: #5c21dd;
+    --ifm-badge-border-color: var(--ifm-badge-background-color);
+}

@@ -5,6 +5,8 @@ pagination_next: get-started/overview
 
 # Введение
 
+<span class="badge badge--secondary margin-bottom--md">OVERVIEW-ORIENTED</span>
+
 Методология для проектирования *frontend проектов*, нацеленная [**на разделение приложения согласно бизнес-логике и областям ответственности.**][refs-splitting]
 
 - Обеспечивает [**понятность, контролируемость и адаптивность**][refs-arch-req] архитектуры
