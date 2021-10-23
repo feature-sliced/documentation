@@ -161,3 +161,10 @@ html img[alt*="w100"] {
     font-weight: bold;
     text-transform: uppercase;
 }
+
+.summary {
+    padding-bottom: 2rem;
+    font-size: 1.25rem;
+    color: var(--ifm-color-gray-600);
+    border-bottom: 1px solid var(--ifm-color-gray-400);
+}

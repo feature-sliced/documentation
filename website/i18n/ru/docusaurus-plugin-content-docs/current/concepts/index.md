@@ -6,6 +6,6 @@ slug: /concepts
 
 # 🧩 Концепции
 
-Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.
-
----
+<p class="summary">
+Раздел с ключевыми концепциями методологии, для улучшенного понимания философии Feature Sliced и применения на практике.
+</p>

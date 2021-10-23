@@ -6,6 +6,6 @@ slug: /reference
 
 # 📚 Справочник
 
-Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.
-
----
+<p class="summary">
+Подробное описание понятий, на которых базируется методология.
+</p>

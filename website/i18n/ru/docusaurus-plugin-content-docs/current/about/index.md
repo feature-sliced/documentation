@@ -6,6 +6,6 @@ slug: /about
 
 # 🍰 О методологии
 
-Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.
-
----
+<p class="summary">
+Общая информация о методологии, команде, сообщества и истории развития
+</p>
