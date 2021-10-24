@@ -1,6 +1,5 @@
 ---
 sidebar_position: 1
-pagination_prev: concepts/abstractions
 ---
 
 # Глоссарий

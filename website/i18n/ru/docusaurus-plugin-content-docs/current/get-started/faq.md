@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-pagination_next: guides/migration-from-legacy
+pagination_next: guides/index
 ---
 
 # FAQ

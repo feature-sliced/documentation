@@ -1,9 +1,11 @@
 ---
 sidebar_position: 1
-pagination_next: get-started/overview
+pagination_next: get-started/index
 ---
 
-# Введение
+# 🔎 Введение
+
+<span class="badge badge--secondary margin-bottom--md">OVERVIEW-ORIENTED</span>
 
 Методология для проектирования *frontend проектов*, нацеленная [**на разделение приложения согласно бизнес-логике и областям ответственности.**][refs-splitting]
 
