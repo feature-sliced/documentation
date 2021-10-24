@@ -57,19 +57,38 @@ const navbar = {
     items: [
         // left
         {
-            label: "Docs",
+            label: "🔎 Intro",
             to: SECTIONS.INTRO.fullPath,
-            position: "left",
-            items: [
-                { label: "Getting Started", to: SECTIONS.GET_STARTED.fullPath },
-                { label: "Concepts", to: SECTIONS.CONCEPTS.fullPath },
-                { label: "Guides", to: SECTIONS.GUIDES.fullPath },
-                { label: "Reference", to: SECTIONS.REFERENCE.fullPath },
-                { label: "About", to: SECTIONS.ABOUT.fullPath },
-            ],
+            activeBasePath: SECTIONS.INTRO.fullPath,
         },
         {
-            label: "Examples",
+            label: "🚀 Get Started",
+            to: SECTIONS.GET_STARTED.fullPath,
+            activeBasePath: SECTIONS.GET_STARTED.shortPath,
+        },
+        {
+            label: "🎯 Guides",
+            to: SECTIONS.GUIDES.fullPath,
+            activeBasePath: SECTIONS.GUIDES.shortPath,
+        },
+        {
+            label: "🧩 Concepts",
+            to: SECTIONS.CONCEPTS.fullPath,
+            activeBasePath: SECTIONS.CONCEPTS.shortPath,
+        },
+        {
+            label: "📚 Reference",
+            to: SECTIONS.REFERENCE.fullPath,
+            activeBasePath: SECTIONS.REFERENCE.shortPath,
+        },
+        {
+            label: "🍰 About",
+            to: SECTIONS.ABOUT.fullPath,
+            position: "left",
+            activeBasePath: SECTIONS.ABOUT.shortPath,
+        },
+        {
+            label: "🛠 Examples",
             to: SECTIONS.EXAMPLES.fullPath,
             position: "left",
         },

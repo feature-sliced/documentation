@@ -3,32 +3,32 @@
     "message": "feature-sliced",
     "description": "The title in the navbar"
   },
-  "item.label.Docs": {
-    "message": "Документация",
-    "description": "Navbar item with label Docs"
-  },
-  "item.label.Examples": {
-    "message": "Примеры",
+  "item.label.🛠 Examples": {
+    "message": "🛠 Примеры",
     "description": "Navbar item with label Examples"
   },
-  "item.label.Getting Started": {
-    "message": "Ознакомление",
-    "description": "Navbar item with label Getting Started"
+  "item.label.🔎 Intro": {
+    "message": "🔎 Введение",
+    "description": "Navbar item with label Intro"
   },
-  "item.label.Concepts": {
-    "message": "Концепции",
+  "item.label.🚀 Get Started": {
+    "message": "🚀 Быстрый старт",
+    "description": "Navbar item with label Get Started"
+  },
+  "item.label.🧩 Concepts": {
+    "message": "🧩 Концепции",
     "description": "Navbar item with label Concepts"
   },
-  "item.label.Guides": {
-    "message": "Гайды",
+  "item.label.🎯 Guides": {
+    "message": "🎯 Гайды",
     "description": "Navbar item with label Guides"
   },
-  "item.label.Reference": {
-    "message": "Справочный материал",
+  "item.label.📚 Reference": {
+    "message": "📚 Справочник",
     "description": "Navbar item with label Reference"
   },
-  "item.label.About": {
-    "message": "О методологии",
+  "item.label.🍰 About": {
+    "message": "🍰 О методологии",
     "description": "Navbar item with label About"
   }
 }

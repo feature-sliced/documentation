@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-slug: intro
+pagination_next: get-started/overview
 ---
 
 # Intro

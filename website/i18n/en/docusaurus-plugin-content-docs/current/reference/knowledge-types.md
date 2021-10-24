@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 sidebar_label: Knowledge types
+pagination_next: about/mission
 ---
 
 # Types of knowledge in the project

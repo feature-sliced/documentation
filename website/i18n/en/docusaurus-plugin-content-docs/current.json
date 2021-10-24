@@ -3,48 +3,28 @@
     "message": "v2.0-beta 🍰",
     "description": "The label for version current"
   },
-  "sidebar.tutorialSidebar.category.Get Started": {
-    "message": "Get Started",
-    "description": "The label for category Get Started in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Tutorials": {
+  "sidebar.getstartedSidebar.category.Tutorials": {
     "message": "Tutorials",
-    "description": "The label for category Tutorials in sidebar tutorialSidebar"
+    "description": "The label for category Tutorials in sidebar getstartedSidebar"
   },
-  "sidebar.tutorialSidebar.category.Alternatives": {
+  "sidebar.getstartedSidebar.category.Alternatives": {
     "message": "Alternatives",
-    "description": "The label for category Alternatives in sidebar tutorialSidebar"
+    "description": "The label for category Alternatives in sidebar getstartedSidebar"
   },
-  "sidebar.tutorialSidebar.category.Onboard": {
+  "sidebar.getstartedSidebar.category.Onboard": {
     "message": "Onboard",
-    "description": "The label for category Onboard in sidebar tutorialSidebar"
+    "description": "The label for category Onboard in sidebar getstartedSidebar"
   },
-  "sidebar.tutorialSidebar.category.Concepts": {
-    "message": "Concepts",
-    "description": "The label for category Concepts in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Guides & Examples": {
-    "message": "Guides & Examples",
-    "description": "The label for category Guides & Examples in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Examples": {
+  "sidebar.guidesSidebar.category.Examples": {
     "message": "Examples",
-    "description": "The label for category Examples in sidebar tutorialSidebar"
+    "description": "The label for category Examples in sidebar guidesSidebar"
   },
-  "sidebar.tutorialSidebar.category.Handbook": {
+  "sidebar.guidesSidebar.category.Handbook": {
     "message": "Handbook",
-    "description": "The label for category Handbook in sidebar tutorialSidebar"
+    "description": "The label for category Handbook in sidebar guidesSidebar"
   },
-  "sidebar.tutorialSidebar.category.Reference": {
-    "message": "Reference",
-    "description": "The label for category Reference in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Layer": {
+  "sidebar.referenceSidebar.category.Layer": {
     "message": "Layer",
-    "description": "The label for category Layer in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.About": {
-    "message": "About",
-    "description": "The label for category About in sidebar tutorialSidebar"
+    "description": "The label for category Layer in sidebar referenceSidebar"
   }
 }
