@@ -7,6 +7,10 @@
     "message": "🛠 Примеры",
     "description": "Navbar item with label Examples"
   },
+  "item.label.📖 Docs": {
+    "message": "📖 Документация",
+    "description": "Navbar item with label Docs"
+  },
   "item.label.🔎 Intro": {
     "message": "🔎 Введение",
     "description": "Navbar item with label Intro"

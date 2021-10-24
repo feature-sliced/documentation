@@ -57,35 +57,41 @@ const navbar = {
     items: [
         // left
         {
-            label: "🔎 Intro",
-            to: SECTIONS.INTRO.fullPath,
-            activeBasePath: SECTIONS.INTRO.fullPath,
-        },
-        {
-            label: "🚀 Get Started",
-            to: SECTIONS.GET_STARTED.shortPath,
-            activeBasePath: SECTIONS.GET_STARTED.shortPath,
-        },
-        {
-            label: "🎯 Guides",
-            to: SECTIONS.GUIDES.shortPath,
-            activeBasePath: SECTIONS.GUIDES.shortPath,
-        },
-        {
-            label: "🧩 Concepts",
-            to: SECTIONS.CONCEPTS.shortPath,
-            activeBasePath: SECTIONS.CONCEPTS.shortPath,
-        },
-        {
-            label: "📚 Reference",
-            to: SECTIONS.REFERENCE.shortPath,
-            activeBasePath: SECTIONS.REFERENCE.shortPath,
-        },
-        {
-            label: "🍰 About",
-            to: SECTIONS.ABOUT.shortPath,
-            activeBasePath: SECTIONS.ABOUT.shortPath,
+            type: "dropdown",
+            label: "📖 Docs",
             position: "left",
+            items: [
+                {
+                    label: "🔎 Intro",
+                    to: SECTIONS.INTRO.fullPath,
+                    activeBasePath: SECTIONS.INTRO.fullPath,
+                },
+                {
+                    label: "🚀 Get Started",
+                    to: SECTIONS.GET_STARTED.shortPath,
+                    activeBasePath: SECTIONS.GET_STARTED.shortPath,
+                },
+                {
+                    label: "🎯 Guides",
+                    to: SECTIONS.GUIDES.shortPath,
+                    activeBasePath: SECTIONS.GUIDES.shortPath,
+                },
+                {
+                    label: "🧩 Concepts",
+                    to: SECTIONS.CONCEPTS.shortPath,
+                    activeBasePath: SECTIONS.CONCEPTS.shortPath,
+                },
+                {
+                    label: "📚 Reference",
+                    to: SECTIONS.REFERENCE.shortPath,
+                    activeBasePath: SECTIONS.REFERENCE.shortPath,
+                },
+                {
+                    label: "🍰 About",
+                    to: SECTIONS.ABOUT.shortPath,
+                    activeBasePath: SECTIONS.ABOUT.shortPath,
+                },
+            ],
         },
         {
             label: "🛠 Examples",
