@@ -177,3 +177,25 @@ html img[alt*="w100"] {
 html[data-theme=dark] .badge--warning {
     --ifm-badge-background-color: var(--ifm-color-warning-dark);
 }
+
+/* FIXME: temp hack for adaptive-layout! */
+
+@media (max-width: 1080px) {
+    .navbar__brand {
+        margin-right: 0.5rem;
+    }
+
+    .navbar__brand .navbar__title {
+        display: none;
+    }
+
+    .navbar__item {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 996px) {
+    .navbar__brand .navbar__title {
+        display: block;
+    }
+}
