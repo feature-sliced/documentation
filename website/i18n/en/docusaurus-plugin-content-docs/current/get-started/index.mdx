@@ -1,0 +1,39 @@
+---
+sidebar_position: 0
+sidebar_class_name: sidebar-item--root
+slug: /get-started
+hide_table_of_contents: true
+pagination_prev: intro
+---
+
+# 🚀 Get Started
+
+<span class="badge badge--success margin-bottom--md">LEARNING-ORIENTED</span>
+
+<p class="summary">
+Welcome! This section helps you to get acquainted with the application of Feature Sliced and the basics of the methodology. You will also understand the key advantages of the methodology and the reasons for its creation.
+</p>
+
+## Main
+
+import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { RocketOutlined, BuildOutlined, SettingOutlined } from "@ant-design/icons";
+
+<Row
+    title="Basics"
+    description="Fundamentals of methodology (briefly)"
+    to="/docs/get-started/basics"
+    Icon={SettingOutlined}
+/>
+<Row
+    title="Quick Start"
+    description="Introductory tutorial on the usage of the methodology"
+    to="/docs/get-started/tutorial/quick-start"
+    Icon={RocketOutlined}
+/>
+<Row
+    title="Decomposition of logic"
+    description="A memo on the decomposition of logic with examples and criteria"
+    to="/docs/get-started/tutorial/decompose"
+    Icon={BuildOutlined}
+/>

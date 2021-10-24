@@ -148,6 +148,32 @@ html img[alt*="w100"] {
     }
 }
 
+[role=banner] {
+    background-color: #0367d2 !important;
+}
+
 .sidebar-item--wip {
     opacity: 0.5;
+}
+
+.sidebar-item--root {
+    margin-bottom: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.summary {
+    padding-bottom: 2rem;
+    font-size: 1.25rem;
+    color: var(--ifm-color-gray-600);
+    border-bottom: 1px solid var(--ifm-color-gray-400);
+}
+
+.badge--violet {
+    --ifm-badge-background-color: #5c21dd;
+    --ifm-badge-border-color: var(--ifm-badge-background-color);
+}
+
+html[data-theme=dark] .badge--warning {
+    --ifm-badge-background-color: var(--ifm-color-warning-dark);
 }
