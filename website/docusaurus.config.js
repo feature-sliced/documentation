@@ -185,6 +185,19 @@ const footer = {
     copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced`,
 };
 
+// We use metrics only for analyze and refinement website discovery experience
+// @see Privacy
+const metrics = {
+    gtag: {
+        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
+        anonymizeIP: true, // Should IPs be anonymized?
+    },
+    googleAnalytics: {
+        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
+        anonymizeIP: true, // Should IPs be anonymized?
+    },
+};
+
 /** @type {Config["presets"]} */
 const presets = [
     [
@@ -332,6 +345,7 @@ module.exports = {
         announcementBar,
         algolia,
         hideableSidebar: true,
+        ...metrics,
     },
     i18n: {
         defaultLocale: DEFAULT_LOCALE,
@@ -349,6 +363,11 @@ module.exports = {
     plugins,
 };
 
+// Remove configs if there are not secrets passed
 if (!process.env.ALGOLIA_KEY) {
     delete module.exports.themeConfig.algolia;
+}
+if (!process.env.process.env.GA_ID) {
+    delete module.exports.themeConfig.gtag;
+    delete module.exports.themeConfig.googleAnalytics;
 }
