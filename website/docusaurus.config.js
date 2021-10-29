@@ -196,6 +196,11 @@ const metrics = {
         trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
         anonymizeIP: true, // Should IPs be anonymized?
     },
+    // to integrate Hotjar feedback
+    // @see https://github.com/symblai/docusaurus-plugin-hotjar
+    hotjar: {
+        applicationId: process.env.HOTJAR_ID,
+    },
 };
 
 /** @type {Config["presets"]} */
@@ -275,6 +280,7 @@ const plugins = [
             steps: 2, // the max number of images generated between min and max (inclusive)
         },
     ],
+    ["docusaurus-plugin-hotjar"],
 ];
 
 /** @type {Config["themeConfig"]["algolia"]} */
@@ -367,7 +373,10 @@ module.exports = {
 if (!process.env.ALGOLIA_KEY) {
     delete module.exports.themeConfig.algolia;
 }
-if (!process.env.process.env.GA_ID) {
+if (!process.env.GA_ID) {
     delete module.exports.themeConfig.gtag;
     delete module.exports.themeConfig.googleAnalytics;
+}
+if (!process.env.HOTJAR_ID) {
+    delete module.exports.themeConfig.hotjar;
 }
