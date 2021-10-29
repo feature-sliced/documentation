@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const DOMAIN = "https://feature-sliced.design/";
 const GITHUB_ORG = "https://github.com/feature-sliced";
 const GITHUB_DOCS = "https://github.com/feature-sliced/documentation";
@@ -280,8 +282,8 @@ const plugins = [
             steps: 2, // the max number of images generated between min and max (inclusive)
         },
     ],
-    ["docusaurus-plugin-hotjar"],
-];
+    process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
+].filter(Boolean);
 
 /** @type {Config["themeConfig"]["algolia"]} */
 const algolia = {
