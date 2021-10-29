@@ -111,6 +111,14 @@
     "message": "Documentation for older versions of {of} can be found here ",
     "description": "Description for legacy version"
   },
+  "features.cookie-consent.alert": {
+    "message": "We use cookies for analytics",
+    "description": "Cookie Consent alert"
+  },
+  "features.cookie-consent.accept": {
+    "message": "OK",
+    "description": "Cookie Consent accept label"
+  },
   "features.feedback.label": {
     "message": "Share your feedback about documentation 🤙",
     "description": "Feedback share button label"
