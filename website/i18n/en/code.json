@@ -112,7 +112,7 @@
     "description": "Description for legacy version"
   },
   "features.cookie-consent.alert": {
-    "message": "We use cookies for analytics",
+    "message": "🍰 We use cookies for analytics",
     "description": "Cookie Consent alert"
   },
   "features.cookie-consent.accept": {
