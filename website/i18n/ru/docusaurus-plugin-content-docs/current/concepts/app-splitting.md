@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Разбиение приложения
+# Decomposition
 
 ## Group: `Layers`
 

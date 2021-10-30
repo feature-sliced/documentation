@@ -133,5 +133,5 @@ In most cases, [it is recommended][ext-disc-api] to place `api` and `config` onl
 [refs-splitting-slices]: /docs/concepts/app-splitting#group-slices
 [refs-splitting-segments]: /docs/concepts/app-splitting#group-segments
 
-[refs-guides]: /docs/guides/migration-from-v1
+[refs-guides]: /docs/guides/migration/from-v1
 [refs-low-coupling]: /docs/guides/low-coupling

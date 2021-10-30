@@ -3,7 +3,7 @@ sidebar_position: 2
 sidebar_label: Понимание потребностей
 ---
 
-# О понимании потребностей и о формулировке задач
+# Domain First
 
 :::note TL;DR
 

@@ -839,7 +839,7 @@ Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, wher
 
 [refs-low-coupling]: /docs/guides/low-coupling
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-guides]: /docs/guides/migration-from-v1
+[refs-guides]: /docs/guides/migration/from-v1
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-reference]: /docs/reference/glossary
 [refs-layers]: /docs/reference/layers/overview

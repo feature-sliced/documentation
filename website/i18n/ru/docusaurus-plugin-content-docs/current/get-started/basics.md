@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Базис
@@ -133,5 +133,5 @@ sidebar_position: 3
 [refs-splitting-slices]: /docs/concepts/app-splitting#group-slices
 [refs-splitting-segments]: /docs/concepts/app-splitting#group-segments
 
-[refs-guides]: /docs/guides/migration-from-v1
+[refs-guides]: /docs/guides/migration/from-v1
 [refs-low-coupling]: /docs/guides/low-coupling

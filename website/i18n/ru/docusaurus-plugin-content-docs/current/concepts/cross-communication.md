@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Взаимодействие модулей приложения
+# Low Coupling & High Cohesion [2]
 
 В рамках методологии все модули распределены по зонам ответственности [(layer, slice, segment)][refs-splitting]
 

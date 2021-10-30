@@ -42,7 +42,7 @@ There are only such ones in the public domain so far, not all of them have been 
 - [Internal Examples](https://github.com/feature-sliced/examples)
 - [External Examples](/examples)
 
-*Also, you can get acquainted with our [guides](/docs/guides/migration-from-v1) and [tutorials](/docs/get-started/tutorial/quick-start)*
+*Also, you can get acquainted with our [guides](/docs/guides/migration/from-v1) and [tutorials](/docs/get-started/tutorial/quick-start)*
 
 ### Are there some useful resources / articles / etc about FeatureSliced and related things?
 
@@ -50,7 +50,7 @@ There are only such ones in the public domain so far, not all of them have been 
 
 ### The project is written on feature-slices v1, how to update and is it worth it?
 
-Answered [here](/docs/guides/migration-from-v1)
+Answered [here](/docs/guides/migration/from-v1)
 
 ### Can I embed pages/features/entities into each other?
 

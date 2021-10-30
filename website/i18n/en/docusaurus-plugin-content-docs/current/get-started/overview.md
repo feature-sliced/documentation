@@ -62,6 +62,6 @@ Thanks to this, *a balance is maintained between compliance with the `DRY` princ
 [refs-module]: /docs/reference/glossary#module
 
 [refs-low-coupling]: /docs/guides/low-coupling
-[refs-migration-v1]: /docs/guides/migration-from-v1
+[refs-migration-v1]: /docs/guides/migration/from-v1
 <!-- FIXME: Refer to the root later, not to the first element -->
 [refs-examples]: /docs/guides/examples/viewer

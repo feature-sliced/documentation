@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Быстрый старт
@@ -837,7 +837,7 @@ const TaskDetailsPage = (props: Props) => {
 
 [refs-low-coupling]: /docs/guides/low-coupling
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-guides]: /docs/guides/migration-from-v1
+[refs-guides]: /docs/guides/migration/from-v1
 <!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
 [refs-reference]: /docs/reference/glossary
 [refs-layers]: /docs/reference/layers/overview

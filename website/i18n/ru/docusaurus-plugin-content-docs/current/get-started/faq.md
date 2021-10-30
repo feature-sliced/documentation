@@ -42,7 +42,7 @@ pagination_next: guides/index
 - [Internal Examples](https://github.com/feature-sliced/examples)
 - [External Examples](/examples)
 
-*Также можно ознакомиться с [гайдами](/docs/guides/migration-from-v1) и [туториалами](/docs/get-started/tutorial/quick-start)*
+*Также можно ознакомиться с [гайдами](/docs/guides/migration/from-v1) и [туториалами](/docs/get-started/tutorial/quick-start)*
 
 ### Есть ли какие-нибудь полезные ресурсы/статьи/и т.д. по FeatureSliced и связанным вещам?
 
@@ -50,7 +50,7 @@ pagination_next: guides/index
 
 ### Проект написан на feature-slices v1, как обновиться и стоит ли?
 
-Ответили [здесь](/docs/guides/migration-from-v1)
+Ответили [здесь](/docs/guides/migration/from-v1)
 
 ### Могу ли я вкладывать страницы/фичи/сущности друг в друга?
 

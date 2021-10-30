@@ -27,7 +27,7 @@ But the current version gives examples and is developed on the basis of a bunch 
 
 [refs-getstarted]: /docs/get-started/overview
 [refs-concepts]: /docs/concepts/architecture
-[refs-guides]: /docs/guides/migration-from-v1
+[refs-guides]: /docs/guides/migration/from-v1
 [refs-reference]: /docs/reference/glossary
 [refs-about]: /docs/about/mission
 
