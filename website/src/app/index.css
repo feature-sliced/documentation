@@ -41,6 +41,8 @@
 /* Inherited from docusaurus scrollbar stylesheets for inner containers */
 html {
     scroll-behavior: smooth;
+    scrollbar-color: var(--ifm-scrollbar-thumb-background-color) transparent;
+    scrollbar-width: thin;
 }
 
 html::-webkit-scrollbar {
