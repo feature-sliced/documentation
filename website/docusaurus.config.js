@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const DOMAIN = "https://feature-sliced.design/";
 const GITHUB_ORG = "https://github.com/feature-sliced";
 const GITHUB_DOCS = "https://github.com/feature-sliced/documentation";
@@ -174,6 +176,15 @@ const footer = {
                 // TODO: Добавить ссыль на dev.to позднее (как доработаем)
                 // { label: 'Blog', to: '/blog' },
                 { label: "GitHub", href: GITHUB_ORG },
+                {
+                    label: "Contribution Guide (RU)",
+                    href: `${GITHUB_DOCS}/blob/master/CONTRIBUTING.md`,
+                },
+                {
+                    label: "License",
+                    href: `${GITHUB_DOCS}/blob/master/LICENSE`,
+                },
+                { label: "Privacy", href: "/docs/privacy" },
             ],
         },
     ],
@@ -183,6 +194,24 @@ const footer = {
         href: GITHUB_ORG,
     },
     copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced`,
+};
+
+// We use metrics only for analyze and refinement website discovery experience
+// @see Privacy
+const metrics = {
+    gtag: {
+        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
+        anonymizeIP: true, // Should IPs be anonymized?
+    },
+    googleAnalytics: {
+        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
+        anonymizeIP: true, // Should IPs be anonymized?
+    },
+    // to integrate Hotjar feedback
+    // @see https://github.com/symblai/docusaurus-plugin-hotjar
+    hotjar: {
+        applicationId: process.env.HOTJAR_ID,
+    },
 };
 
 /** @type {Config["presets"]} */
@@ -262,7 +291,8 @@ const plugins = [
             steps: 2, // the max number of images generated between min and max (inclusive)
         },
     ],
-];
+    process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
+].filter(Boolean);
 
 /** @type {Config["themeConfig"]["algolia"]} */
 const algolia = {
@@ -332,6 +362,7 @@ module.exports = {
         announcementBar,
         algolia,
         hideableSidebar: true,
+        ...metrics,
     },
     i18n: {
         defaultLocale: DEFAULT_LOCALE,
@@ -349,6 +380,14 @@ module.exports = {
     plugins,
 };
 
+// Remove configs if there are not secrets passed
 if (!process.env.ALGOLIA_KEY) {
     delete module.exports.themeConfig.algolia;
+}
+if (!process.env.GA_ID) {
+    delete module.exports.themeConfig.gtag;
+    delete module.exports.themeConfig.googleAnalytics;
+}
+if (!process.env.HOTJAR_ID) {
+    delete module.exports.themeConfig.hotjar;
 }

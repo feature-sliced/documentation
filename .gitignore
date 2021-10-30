@@ -4,3 +4,4 @@
 /website/build/**
 /node_modules/
 .idea
+.env

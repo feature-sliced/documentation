@@ -111,6 +111,18 @@
     "message": "Здесь можно найти документацию для старых версий {of}",
     "description": "Description for legacy version"
   },
+  "features.cookie-consent.alert": {
+    "message": "🍰 Мы используем куки для аналитики",
+    "description": "Cookie Consent alert"
+  },
+  "features.cookie-consent.accept": {
+    "message": "Хорошо",
+    "description": "Cookie Consent accept label"
+  },
+  "features.cookie-consent.reason": {
+    "message": "зачем?",
+    "description": "Cookie Consent reason label"
+  },
   "features.feedback.label": {
     "message": "Поделись фидбеком по документации 🤙",
     "description": "Feedback share button label"
