@@ -1,8 +1,9 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
+slug: /concepts/decomposition
 ---
 
-# Decomposition
+# Overview
 
 ## Group: `Layers`
 

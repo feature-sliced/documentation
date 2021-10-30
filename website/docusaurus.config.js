@@ -81,15 +81,20 @@ const navbar = {
                     to: SECTIONS.CONCEPTS.shortPath,
                     activeBasePath: SECTIONS.CONCEPTS.shortPath,
                 },
+                // {
+                //     label: "📚 Reference",
+                //     to: SECTIONS.REFERENCE.shortPath,
+                //     activeBasePath: SECTIONS.REFERENCE.shortPath,
+                // },
                 {
-                    label: "📚 Reference",
-                    to: SECTIONS.REFERENCE.shortPath,
-                    activeBasePath: SECTIONS.REFERENCE.shortPath,
-                },
-                {
-                    label: "🍰 About",
+                    label: "📚 Background",
                     to: SECTIONS.ABOUT.shortPath,
                     activeBasePath: SECTIONS.ABOUT.shortPath,
+                },
+                {
+                    label: "🚩 Community",
+                    to: "/docs/community",
+                    activeBasePath: "/docs/community",
                 },
             ],
         },

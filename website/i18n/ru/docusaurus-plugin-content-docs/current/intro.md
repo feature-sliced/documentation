@@ -104,16 +104,16 @@ import { RocketOutlined, ThunderboltOutlined, FundViewOutlined } from "@ant-desi
     Icon={"🧩"}
 />
 <Row 
-    title="Справочник" 
-    description="Подробно о понятиях методологии"
-    to="/docs/reference"
+    title="Background" 
+    description="Философия методологии, ее цели и место в современном фронтенде"
+    to="/docs/about"
     Icon={"📚"}
 />
 <Row 
-    title="О методолологии" 
-    description="О развитии и продвижению методологии"
-    to="/docs/about"
-    Icon={"🍰"}
+    title="Community" 
+    description="Комьюнити-ресурсы"
+    to="/docs/community"
+    Icon={"🚩"}
 />
 ```
 
