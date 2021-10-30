@@ -19,6 +19,18 @@
     "message": "Обсуждения",
     "description": "The label of footer link with label=Обсуждения linking to https://github.com/feature-sliced/documentation/discussions"
   },
+  "link.item.label.License": {
+    "message": "Лицензия",
+    "description": "The label of footer link with label=License linking to LICENSE"
+  },
+  "link.item.label.Privacy": {
+    "message": "Конфиденциальность",
+    "description": "The label of footer link with label=Privacy linking to /docs/privacy"
+  },
+  "link.item.label.Contribution Guide (RU)": {
+    "message": "Гайдлайны по контрибьютингу (RU)",
+    "description": "The label of footer link with label=Contribution Guide (RU) linking to CONTRIBUTING.md"
+  },
   "link.item.label.Telegram": {
     "message": "Telegram",
     "description": "The label of footer link with label=Telegram linking to https://t.me/feature_sliced"

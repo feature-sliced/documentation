@@ -176,6 +176,15 @@ const footer = {
                 // TODO: Добавить ссыль на dev.to позднее (как доработаем)
                 // { label: 'Blog', to: '/blog' },
                 { label: "GitHub", href: GITHUB_ORG },
+                {
+                    label: "Contribution Guide (RU)",
+                    href: `${GITHUB_DOCS}/blob/master/CONTRIBUTING.md`,
+                },
+                {
+                    label: "License",
+                    href: `${GITHUB_DOCS}/blob/master/LICENSE`,
+                },
+                { label: "Privacy", href: "/docs/privacy" },
             ],
         },
     ],
