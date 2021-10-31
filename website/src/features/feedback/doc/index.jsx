@@ -19,13 +19,16 @@ const sendFeedback = (value) => {
         return;
     }
 
-    window.ga("send", {
+    const eventData = {
         hitType: "event",
         eventCategory: "Feedback",
         eventAction: "EXP::Docs:Helpful",
         eventLabel: window.location.href,
         value,
-    });
+    };
+
+    window.ga("send", eventData);
+    console.debug("[EXP_ONLY] Success feedback sending:", { eventData });
 };
 
 /**
