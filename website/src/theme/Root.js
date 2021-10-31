@@ -1,5 +1,5 @@
 import React from "react";
-import { Feedback } from "@site/src/features/feedback";
+import { FeedbackBadge } from "@site/src/features/feedback/badge";
 import { CookieConsent } from "@site/src/features/cookie-consent";
 
 // Default implementation, that you can customize
@@ -9,7 +9,7 @@ function Root({ children }) {
     return (
         <>
             {children}
-            <Feedback />
+            <FeedbackBadge />
             <CookieConsent />
         </>
     );

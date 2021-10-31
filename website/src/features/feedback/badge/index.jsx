@@ -4,7 +4,7 @@ import { FlagOutlined } from "@ant-design/icons";
 import { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
 
-export const Feedback = () => {
+export const FeedbackBadge = () => {
     return (
         <div className={styles.root}>
             <a
