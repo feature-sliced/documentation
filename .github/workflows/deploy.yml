@@ -11,6 +11,8 @@ jobs:
     timeout-minutes: 15
     env:
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
+      GA_ID: ${{ secrets.GA_ID }}
+      HOTJAR_ID: ${{ secrets.HOTJAR_ID }}
 
     steps:
       - uses: actions/checkout@v2
