@@ -9,10 +9,10 @@ export const FeedbackBadge = () => {
         <div className={styles.root}>
             <a
                 className={clsx("button button--primary", styles.button)}
-                href={translate({ id: "features.feedback.url" })}
+                href={translate({ id: "features.feedback-badge.url" })}
                 target="_blank"
                 rel="noreferrer noopener"
-                title={translate({ id: "features.feedback.label" })}
+                title={translate({ id: "features.feedback-badge.label" })}
             >
                 <FlagOutlined className={styles.icon} />
             </a>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import { LikeFilled, DislikeFilled } from "@ant-design/icons";
+import { translate } from "@docusaurus/Translate";
 
 import styles from "./styles.module.css";
 
@@ -29,14 +30,16 @@ export const DocFeedback = ({ className }) => {
     if (feedbackSent) {
         return (
             <div className={clsx(styles.root, styles.rootThanks, className)}>
-                <span>Thank you for letting us know!</span>
+                <span>{translate({ id: "features.feedback-doc.thanks" })}</span>
             </div>
         );
     }
     return (
         <div className={clsx(styles.root, className)}>
             <div className={styles.title}>
-                <span className={styles.titleLabel}>Was this page helpful?</span>
+                <span className={styles.titleLabel}>
+                    {translate({ id: "features.feedback-doc.title" })}
+                </span>
                 <LikeFilled
                     className={clsx(styles.action, styles.actionLike)}
                     onClick={() => handleFeedback(10)}
@@ -47,7 +50,7 @@ export const DocFeedback = ({ className }) => {
                 />
             </div>
             <div className={styles.subtitle}>
-                <span>Your feedback helps us improve the docs</span>
+                <span>{translate({ id: "features.feedback-doc.subtitle" })}</span>
             </div>
         </div>
     );
