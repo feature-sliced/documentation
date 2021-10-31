@@ -1,0 +1,57 @@
+.root {
+    height: 4rem;
+    text-align: center;
+    opacity: 0.5;
+}
+
+.rootThanks {
+    line-height: 4rem;
+}
+
+/* title */
+
+.title {
+    font-size: 1.25rem;
+}
+
+.titleLabel {
+    margin-right: 0.5rem;
+    line-height: 2.4rem;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+}
+
+/* actions */
+
+.action {
+    padding: 0.5rem;
+    margin: 0 0.2rem;
+    font-size: 1.4rem;
+    background-color: var(--background-color-action);
+    border-radius: 50%;
+    transition: 0.25s;
+}
+
+.actionLike:hover {
+    color: var(--color-like);
+}
+
+.actionDislike:hover {
+    color: var(--color-dislike);
+}
+
+/* theme */
+
+html[data-theme="light"] .root {
+    --color-like: var(--ifm-color-success);
+    --color-dislike: var(--ifm-color-danger);
+    --background-color-action: lightgray;
+}
+
+html[data-theme="dark"] .action {
+    --color-like: var(--ifm-color-success-lighter);
+    --color-dislike: var(--ifm-color-danger-lighter);
+    --background-color-action: var(--ifm-color-gray-800);
+}

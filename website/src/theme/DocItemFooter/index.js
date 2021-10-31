@@ -1,5 +1,7 @@
 import React from "react";
 import OriginalDocItemFooter from "@theme-original/DocItemFooter";
+import { DocFeedback } from "@site/src/features/feedback/doc";
+import styles from "./styles.module.css";
 
 /**
  * DocItemFooter
@@ -10,8 +12,8 @@ import OriginalDocItemFooter from "@theme-original/DocItemFooter";
 function DocItemFooter(props) {
     return (
         <>
-            <div style={{ color: "red" }}>Was this page helpful?</div>
             <OriginalDocItemFooter {...props} />
+            <DocFeedback className={styles.feedback} />
         </>
     );
 }
