@@ -45,7 +45,7 @@
 html[data-theme="light"] .root {
     --color-like: var(--ifm-color-success);
     --color-dislike: var(--ifm-color-danger);
-    --background-color-action: lightgray;
+    --background-color-action: var(--ifm-color-gray-300);
 }
 
 html[data-theme="dark"] .action {
