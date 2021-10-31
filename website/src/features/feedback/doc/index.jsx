@@ -5,19 +5,34 @@ import { translate } from "@docusaurus/Translate";
 
 import styles from "./styles.module.css";
 
+/**
+ * Send feedback to Google Analytics
+ * @see https://developers.google.com/analytics/devguides/collection/analyticsjs/events
+ */
 const sendFeedback = (value) => {
-    const { analytics, ga, gtag } = window || {};
-    console.log(`[DEBIG] Feedback sent: ${value}`, { analytics, ga, gtag });
-    // analytics.track("feedback", {
-    //     type: "pageHelpful",
-    //     value,
-    //     section: "endOfPage",
-    // });
+    if (typeof window === undefined) {
+        console.debug("[EXP_ONLY] Failure feedback sending: window not defined");
+        return;
+    }
+    if (!window.ga) {
+        console.debug("[EXP_ONLY] Failure feedback sending: window.ga not defined");
+        return;
+    }
+
+    window.ga("send", {
+        hitType: "event",
+        eventCategory: "Feedback",
+        eventAction: "EXP::Docs:Helpful",
+        eventLabel: window.location.href,
+        value,
+    });
 };
 
 /**
  * DocItem feedback widget
  * @see https://docusaurus.io/feature-requests/p/feedback-widget
+ * @ticket FEEDBACK-309
+ * @terminateTicket FEEDBACK-325
  * TODO: Add emojiis (Bad, OK, Good)
  * TODO: Add comment input
  */
