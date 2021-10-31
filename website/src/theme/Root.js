@@ -1,5 +1,4 @@
 import React from "react";
-import { FeedbackBadge } from "@site/src/features/feedback/badge";
 import { CookieConsent } from "@site/src/features/cookie-consent";
 
 // Default implementation, that you can customize
@@ -9,7 +8,8 @@ function Root({ children }) {
     return (
         <>
             {children}
-            <FeedbackBadge />
+            {/* NOTE: exp with HotJar feedback widget (FEEDBACK-325)  */}
+            {/* <Feedback /> */}
             <CookieConsent />
         </>
     );
