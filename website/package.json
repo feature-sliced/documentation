@@ -30,6 +30,7 @@
     "docusaurus-plugin-hotjar": "^0.0.2",
     "dotenv": "^10.0.0",
     "file-loader": "^6.2.0",
+    "js-cookie": "^3.0.1",
     "react": "^17.0.1",
     "react-cookie-consent": "^6.4.1",
     "react-dom": "^17.0.1",
