@@ -18,6 +18,8 @@ const sendFeedback = (value) => {
 /**
  * DocItem feedback widget
  * @see https://docusaurus.io/feature-requests/p/feedback-widget
+ * TODO: Add emojiis (Bad, OK, Good)
+ * TODO: Add comment input
  */
 export const DocFeedback = ({ className }) => {
     const [feedbackSent, setFeedbackSent] = useState(false);
