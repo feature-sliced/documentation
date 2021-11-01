@@ -123,13 +123,25 @@
     "message": "зачем?",
     "description": "Cookie Consent reason label"
   },
-  "features.feedback.label": {
+  "features.feedback-badge.label": {
     "message": "Поделись фидбеком по документации 🤙",
     "description": "Feedback share button label"
   },
-  "features.feedback.url": {
+  "features.feedback-badge.url": {
     "message": "https://forms.gle/7p4anU2shHAzmfqc8",
     "description": "Feedback share form url"
+  },
+  "features.feedback-doc.thanks": {
+    "message": "Спасибо, что поделились!",
+    "description": "DocFeedback block=Thanks"
+  },
+  "features.feedback-doc.title": {
+    "message": "Страница была полезной?",
+    "description": "DocFeedback block=Title"
+  },
+  "features.feedback-doc.subtitle": {
+    "message": "Ваш фидбек помогает нам улучшать документацию",
+    "description": "DocFeedback block=Subtitle"
   },
   "features.hero.tagline": {
     "message": "Структурная методология для фронтенд проектов",

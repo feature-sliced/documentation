@@ -11,6 +11,17 @@ module.exports = {
         "react/jsx-props-no-spreading": 0,
         // For external links
         "react/jsx-no-target-blank": 2,
+        // For perfomance
+        "react/jsx-no-bind": [
+            2,
+            {
+                ignoreDOMComponents: true,
+                ignoreRefs: true,
+                allowArrowFunctions: false,
+                allowFunctions: false,
+                allowBind: false,
+            },
+        ],
         "linebreak-style": [2, "unix"],
     },
     settings: {

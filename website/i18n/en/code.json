@@ -123,13 +123,25 @@
     "message": "why?",
     "description": "Cookie Consent reason label"
   },
-  "features.feedback.label": {
+  "features.feedback-badge.label": {
     "message": "Share your feedback about documentation 🤙",
     "description": "Feedback share button label"
   },
-  "features.feedback.url": {
+  "features.feedback-badge.url": {
     "message": "https://forms.gle/nsYua6bMMG5iBB3v7",
     "description": "Feedback share form url"
+  },
+  "features.feedback-doc.thanks": {
+    "message": "Thank you for letting us know!",
+    "description": "DocFeedback block=Thanks"
+  },
+  "features.feedback-doc.title": {
+    "message": "Was this page helpful?",
+    "description": "DocFeedback block=Title"
+  },
+  "features.feedback-doc.subtitle": {
+    "message": "Your feedback helps us improve the docs",
+    "description": "DocFeedback block=Subtitle"
   },
   "features.hero.tagline": {
     "message": "Structural methodology for frontend projects",
