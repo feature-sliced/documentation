@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import clsx from "clsx";
 import { LikeFilled, DislikeFilled } from "@ant-design/icons";
 import { translate } from "@docusaurus/Translate";
@@ -42,10 +42,13 @@ const sendFeedback = (value) => {
 export const DocFeedback = ({ className }) => {
     const [feedbackSent, setFeedbackSent] = useState(false);
 
-    const handleFeedback = (value) => {
-        setFeedbackSent(true);
-        sendFeedback(value);
-    };
+    const handleFeedback = useCallback(
+        (value) => () => {
+            setFeedbackSent(true);
+            sendFeedback(value);
+        },
+        [],
+    );
 
     if (feedbackSent) {
         return (
@@ -62,11 +65,11 @@ export const DocFeedback = ({ className }) => {
                 </span>
                 <LikeFilled
                     className={clsx(styles.action, styles.actionLike)}
-                    onClick={() => handleFeedback(10)}
+                    onClick={handleFeedback(10)}
                 />
                 <DislikeFilled
                     className={clsx(styles.action, styles.actionDislike)}
-                    onClick={() => handleFeedback(0)}
+                    onClick={handleFeedback(0)}
                 />
             </div>
             <div className={styles.subtitle}>
