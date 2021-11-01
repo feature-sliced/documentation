@@ -27,7 +27,7 @@ FeatureSliced is an architectural design methodology for *frontend applications*
 
 > **Note:** The methodology is not tied to a specific tech stack and is applicable *to any frontend projects* in general.
 >
-> But the current version gives examples and is developed on the basis of a bunch of `JavaScript` + `React`
+> But the current version is based on and provides examples for `JavaScript` + `React` stack.
 
 ## Motivation
 
