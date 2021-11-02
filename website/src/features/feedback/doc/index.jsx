@@ -19,16 +19,26 @@ const sendFeedback = (value) => {
         return;
     }
 
-    const eventData = {
+    const eventData1 = {
         hitType: "event",
-        eventCategory: "Feedback",
-        eventAction: "EXP::Docs:Helpful",
+        eventCategory: "Feedback1",
+        eventAction: "EXP:Docs:Helpful",
         eventLabel: window.location.href,
-        value,
+        eventValue: value,
+    };
+    const eventData2 = {
+        hitType: "event",
+        eventCategory: "Feedback2",
+        eventAction: "EXP:Docs:Helpful",
+        eventLabel: value,
+        eventValue: value,
     };
 
-    window.ga("send", eventData);
-    console.debug("[EXP_ONLY] Success feedback sending:", { eventData });
+    window.ga("send", eventData1);
+    console.debug("[EXP_ONLY] Success feedback sending (1):", { eventData1 });
+
+    window.ga("send", eventData2);
+    console.debug("[EXP_ONLY] Success feedback sending (2):", { eventData2 });
 };
 
 /**
