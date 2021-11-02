@@ -2,7 +2,6 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import OriginalDocItemFooter from "@theme-original/DocItemFooter";
 import { DocFeedback } from "@site/src/features/feedback/doc";
-import { hasExp, DOC_FEEDBACK_WIDGET } from "@site/src/entities/exp";
 import styles from "./styles.module.css";
 
 /**
@@ -15,7 +14,7 @@ function DocItemFooter(props) {
     return (
         <>
             <OriginalDocItemFooter {...props} />
-            {hasExp(DOC_FEEDBACK_WIDGET) && <DocFeedback className={styles.feedback} />}
+            <DocFeedback className={styles.feedback} />
         </>
     );
 }

@@ -10,35 +10,31 @@ import styles from "./styles.module.css";
  * @see https://developers.google.com/analytics/devguides/collection/analyticsjs/events
  */
 const sendFeedback = (value) => {
-    if (typeof window === undefined) {
-        console.debug("[EXP_ONLY] Failure feedback sending: window not defined");
-        return;
-    }
-    if (!window.ga) {
-        console.debug("[EXP_ONLY] Failure feedback sending: window.ga not defined");
-        return;
-    }
+    if (typeof window === undefined) return;
+    if (!window.ga) return;
 
-    const eventData1 = {
+    // For a while - send feedback in both format
+    // Later will keep and maintain only one
+    window.ga("send", {
         hitType: "event",
-        eventCategory: "Feedback1",
-        eventAction: "EXP:Docs:Helpful",
+        eventCategory: "Feedback 1.2 (full)",
+        eventAction: "Docs:Helpful",
         eventLabel: window.location.href,
         eventValue: value,
-    };
-    const eventData2 = {
+    });
+    window.ga("send", {
         hitType: "event",
-        eventCategory: "Feedback2",
-        eventAction: "EXP:Docs:Helpful",
+        eventCategory: "Feedback 1.2 (mixed)",
+        eventAction: "Docs:Helpful",
         eventLabel: value,
         eventValue: value,
-    };
-
-    window.ga("send", eventData1);
-    console.debug("[EXP_ONLY] Success feedback sending (1):", { eventData1 });
-
-    window.ga("send", eventData2);
-    console.debug("[EXP_ONLY] Success feedback sending (2):", { eventData2 });
+    });
+    window.ga("send", {
+        hitType: "event",
+        eventCategory: "Feedback 1.2 (short)",
+        eventLabel: window.location.href,
+        eventValue: value,
+    });
 };
 
 /**
