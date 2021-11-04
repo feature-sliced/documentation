@@ -27,6 +27,21 @@ But the current version gives examples and is developed on the basis of a bunch 
 <br />
 
 ![schema-themed--scheme](/img/visual_schema.jpg)
+
+## Motivation
+
+Usually, approaches to building the frontend architecture from project to project are [re-invented from scratch][refs-motivation], thereby adding ["project knowledge"][refs-knowledge]
+
+> Despite the fact that the specifics of frontend projects do not differ so much
+
+At the same time, incorrectly made decisions often lead [to problems of scalability of the project and the team][refs-arch-problems].
+
+And therefore, instead of inventing and documenting it every time, it is better to **summarize the experience and form a working, battle-tested and documented methodology** for designing the frontend architecture.
+
+*Yes, there are many practices and patterns (`SOLID`, `GRASP`, `DDD`, ...)*
+
+*But for the frontend [it is highly difficult to find][refs-motivation] well-established and specific approaches*
+
 ## Overview
 
 The methodology is designed to **simplify and standardize the decomposition of logic for large and long-lived projects.**
@@ -127,11 +142,12 @@ import Link from "@docusaurus/Link";
 
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-splitting--layers]: /docs/concepts/app-splitting#group-layers
-[refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#requirements
-[refs-motivation-why]: https://feature-sliced.design/docs/get-started/motivation#why-are-there-not-enough-existing-solutions
+[refs-arch-req]: /docs/concepts/architecture#requirements
+[refs-motivation-why]: /docs/get-started/motivation#why-are-there-not-enough-existing-solutions
 
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [refs-motivation]: /docs/get-started/motivation
+[refs-knowledge]: /docs/reference/knowledge-types
 
 
 [refs-low-coupling]: /docs/guides/low-coupling
