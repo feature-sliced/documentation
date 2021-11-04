@@ -144,8 +144,7 @@ const LEGACY_ROUTES = [
 // @returns { from, to }[]
 const LEGACY_ROUTES_REDIRECTS = LEGACY_ROUTES.reduce((acc, group) => {
     const cleanItems = group.children.map(({ from, to }) => ({ from, to }));
-    acc.concat(cleanItems);
-    return acc;
+    return acc.concat(cleanItems);
 }, []);
 
 // FIXME: temp, resolve later
