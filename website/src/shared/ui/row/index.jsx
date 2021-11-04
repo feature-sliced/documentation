@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import styles from "./styles.module.css";
 
@@ -7,9 +8,9 @@ import styles from "./styles.module.css";
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
  */
 export const Row = (props) => {
-    const { title, description, to, Icon, tags } = props;
+    const { title, description, to, Icon, tags, className } = props;
     return (
-        <Link className={styles.root} to={to}>
+        <Link className={clsx(styles.root, className)} to={to}>
             <RowIcon Icon={Icon} />
             <div className={styles.details}>
                 <div className={styles.detailsMain}>

@@ -9,8 +9,6 @@ import { Row } from "@site/src/shared/ui/row";
 import styles from "./styles.module.css";
 
 const NavPage = () => {
-    const { legacyRoutes } = useDocusaurusContext().siteConfig.customFields;
-
     return (
         <Layout
             title="Versions"
@@ -21,27 +19,52 @@ const NavPage = () => {
                 <section className={styles.section}>
                     <h2>{translate({ id: "pages.nav.legacy.title" })}</h2>
                     <p>{translate({ id: "pages.nav.legacy.details" })}</p>
-                    {legacyRoutes.map((route) => (
-                        <Row
-                            key={route.from}
-                            title={route.title}
-                            to={route.to}
-                            description={
-                                <div className={styles.route}>
-                                    <div>
-                                        <b>old</b>: {route.from}
-                                    </div>
-                                    <div>
-                                        <b>new</b>: {route.to}
-                                    </div>
-                                </div>
-                            }
-                        />
-                    ))}
+                    <GroupItems />
                 </section>
             </main>
         </Layout>
     );
+};
+
+const GroupItems = () => {
+    const { legacyRoutes } = useDocusaurusContext().siteConfig.customFields;
+
+    return (
+        <div>
+            {legacyRoutes.map((routesBatch) => (
+                <div key={routesBatch.group} className={styles.group}>
+                    <h3>{routesBatch.group}</h3>
+                    <p className={styles.groupDetails}>⚡️ {routesBatch.details}</p>
+                    <div className={styles.groupItems}>
+                        {routesBatch.children.map((route) => (
+                            <Row
+                                key={route.from}
+                                className={styles.groupItemsRow}
+                                title={route.title}
+                                to={route.to}
+                                description={
+                                    <div className={styles.route}>
+                                        <div>
+                                            <b>old</b>: {flattenFrom(route.from)}
+                                        </div>
+                                        <div>
+                                            <b>new</b>: {route.to}
+                                        </div>
+                                    </div>
+                                }
+                            />
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
+
+const flattenFrom = (value) => {
+    if (typeof value === "string") return value;
+    // => isArray
+    return value.join("; ");
 };
 
 export default NavPage;

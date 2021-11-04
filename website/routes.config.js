@@ -44,6 +44,7 @@ const SECTIONS = {
 const LEGACY_ROUTES = [
     {
         group: "Get Started",
+        details: "Simplified and merged",
         children: [
             {
                 title: "Overview",
@@ -68,6 +69,7 @@ const LEGACY_ROUTES = [
     },
     {
         group: "Alternatives",
+        details: "Moved to /about as advanced materials",
         children: [
             {
                 title: "BBoM",
@@ -113,6 +115,7 @@ const LEGACY_ROUTES = [
     },
     {
         group: "Promote",
+        details: "Moved to /about as advanced materials",
         children: [
             {
                 title: "Integration, Pros & Cons, Limitations",
