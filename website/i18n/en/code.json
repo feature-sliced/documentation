@@ -111,6 +111,18 @@
     "message": "Documentation for older versions of {of} can be found here ",
     "description": "Description for legacy version"
   },
+  "pages.nav.title": {
+    "message": "🧭 Navigation",
+    "description": "NavPage title"
+  },
+  "pages.nav.legacy.title": {
+    "message": "Legacy routes",
+    "description": "NavPage section=legacy title"
+  },
+  "pages.nav.legacy.details": {
+    "message": "After the restructuring of the documentation, some routes were changed. Below you can find the page you may have been looking for.",
+    "description": "NavPage section=legacy details"
+  },
   "features.cookie-consent.alert": {
     "message": "🍰 We use cookies for analytics",
     "description": "Cookie Consent alert"

@@ -50,8 +50,16 @@ const SECTIONS = {
  * @remark For compatibility with legacy links
  */
 const LEGACY_ROUTES = [
-    { from: "/docs/get-started/quick-start", to: "/docs/get-started/tutorial/quick-start" },
-    { from: "/docs/get-started/overview", to: "/docs/intro" },
+    {
+        title: "QuickStart",
+        from: "/docs/get-started/quick-start",
+        to: "/docs/get-started/tutorial/quick-start",
+    },
+    {
+        title: "Overview",
+        from: "/docs/get-started/overview",
+        to: "/docs/intro",
+    },
 ];
 
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
@@ -281,7 +289,7 @@ const plugins = [
                     to: fullPath,
                 }))
                 // NOTE: temp redirects, resolve later
-                .concat(LEGACY_ROUTES),
+                .concat(LEGACY_ROUTES.map(({ from, to }) => ({ from, to }))),
         },
     ],
     // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image
@@ -343,6 +351,14 @@ const metadatas = [
     // { name: "twitter:description", content: description },
 ];
 
+/**
+ * Custom fields (for access on code-level)
+ * @see https://docusaurus.io/docs/api/docusaurus-config#customfields
+ */
+const customFields = {
+    legacyRoutes: LEGACY_ROUTES,
+};
+
 /** @type {Config} */
 module.exports = {
     title: "feature-sliced",
@@ -381,6 +397,7 @@ module.exports = {
     },
     presets,
     plugins,
+    customFields,
 };
 
 // Remove configs if there are not secrets passed
