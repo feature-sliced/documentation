@@ -66,40 +66,46 @@ Each module has its own limitations and recommendations for reuse according to [
 
 Thanks to this, *a balance is maintained between compliance with the `DRY` principle and the ability to customize the module logic without overhead overrides*
 
-## So what's next?
+## What's next?
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
 import { RocketOutlined, ThunderboltOutlined, FundViewOutlined } from "@ant-design/icons";
+import Link from "@docusaurus/Link";
 
 <Row 
     title="Get Started" 
     description="Quick dive into the methodology"
     to="/docs/get-started"
     Icon={"🚀"}
+    tags={['Basics','QuickStart','Motivation']}
 />
 <Row 
     title="Guides" 
     description="Practical guides and application examples"
     to="/docs/guides"
     Icon={"🎯"}
+    tags={['From v1','From legacy','Decouple']}
 />
 <Row 
     title="Concepts" 
     description="Core concepts for better understanding and application"
     to="/docs/concepts"
     Icon={"🧩"}
+    tags={['Decomposition','Isolation','Public API']}
 />
 <Row 
     title="Reference" 
     description="Reference details of core concepts"
     to="/docs/reference"
     Icon={"📚"}
+    tags={['Glossary','Layers','Segments']}
 />
 <Row 
     title="About" 
     description="The philosophy of methodolog]y, its goals and place in the modern frontend"
     to="/docs/about"
     Icon={"🍰"}
+    tags={['Mission','Team']}
 />
 <Row 
     title="Examples" 
@@ -107,12 +113,6 @@ import { RocketOutlined, ThunderboltOutlined, FundViewOutlined } from "@ant-desi
     to="/examples"
     Icon={"🛠"}
 />
-
-## See also
-
-- [Motivation for creating the methodology][refs-motivation]
-- [(Guide) Migration from feature-slices (v1)][refs-migration-v1]
-  - *Also contains a comparison of the two versions and the reasons for creating v2*
 
 [refs-getstarted]: /docs/get-started/overview
 [refs-concepts]: /docs/concepts
