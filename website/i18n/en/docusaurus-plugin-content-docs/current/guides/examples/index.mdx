@@ -1,0 +1,40 @@
+---
+sidebar_position: 0
+sidebar_class_name: sidebar-item--root
+sidebar_label: 🛠 Overview
+slug: /guides/examples
+hide_table_of_contents: true
+pagination_prev: get-started/faq
+---
+
+# 🛠 Examples
+
+<p class="summary">
+Small practical examples of the methodology application
+</p>
+
+## Main
+
+import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { UserSwitchOutlined, LayoutOutlined, FontSizeOutlined } from "@ant-design/icons";
+
+<Row
+    title="Auth"
+    description="Decomposition of auth logic"
+    to="/docs/guides/examples/auth"
+    Icon={UserSwitchOutlined}
+    tags={["Viewer", "AuthForm", "ProfilePage", "AuthProvider", "AuthToken"]}
+/>
+<Row
+    title="PageLayout"
+    description="Main cases with page layout widgets"
+    to="/docs/guides/examples/page-layout"
+    Icon={LayoutOutlined}
+    tags={["Header", "Sidebar"]}
+/>
+<Row
+    title="Types"
+    description="Where should we locate types? Which kind of types exists in the context of FeatureSliced?"
+    to="/docs/guides/examples/types"
+    Icon={FontSizeOutlined}
+/>
