@@ -19,9 +19,17 @@
     "message": "Examples",
     "description": "The label for category Examples in sidebar guidesSidebar"
   },
-  "sidebar.guidesSidebar.category.Handbook": {
-    "message": "Handbook",
-    "description": "The label for category Handbook in sidebar guidesSidebar"
+  "sidebar.guidesSidebar.category.Migration": {
+    "message": "Migration",
+    "description": "The label for category Migration in sidebar guidesSidebar"
+  },
+  "sidebar.guidesSidebar.category.Tech": {
+    "message": "Tech",
+    "description": "The label for category Tech in sidebar guidesSidebar"
+  },
+  "sidebar.conceptsSidebar.category.Issues": {
+    "message": "Issues",
+    "description": "The label for category Issues in sidebar conceptsSidebar"
   },
   "sidebar.referenceSidebar.category.Layer": {
     "message": "Layer",
