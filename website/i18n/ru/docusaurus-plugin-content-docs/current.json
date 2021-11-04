@@ -19,9 +19,9 @@
     "message": "Примеры",
     "description": "The label for category Examples in sidebar guidesSidebar"
   },
-  "sidebar.guidesSidebar.category.Handbook": {
-    "message": "Handbook",
-    "description": "The label for category Handbook in sidebar guidesSidebar"
+  "sidebar.conceptsSidebar.category.Issues": {
+    "message": "Issues",
+    "description": "The label for category Issues in sidebar conceptsSidebar"
   },
   "sidebar.referenceSidebar.category.Layer": {
     "message": "Слои",
