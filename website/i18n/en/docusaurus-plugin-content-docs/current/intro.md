@@ -5,10 +5,10 @@ pagination_next: get-started/index
 
 # 🔎 Intro
 
-An architectural design methodology for *frontend projects*. It aims to [**divide an application according to business logic and scopes of responsibility.**][refs-splitting]
+FeatureSliced is an architectural design methodology for *frontend projects*. It aims to [**divide an application according to business logic and scopes of responsibility.**][refs-splitting]
 
 - Provides [**explicitness, controllability and adaptability**][refs-arch-req] of architecture
-- Based on [**experienced-checked**][refs-motivation-why] design practices and concepts
+- Based on [**time-tesed**][refs-motivation-why] design practices and concepts
     > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
 - Suggests dividing the project according to [**business units**][ext-ubiq-lang]
 
