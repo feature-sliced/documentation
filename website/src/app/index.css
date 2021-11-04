@@ -131,6 +131,10 @@ html img[alt*="w100"] {
     width: 100%;
 }
 
+html img[alt*="bgLight"] {
+    background: white;
+}
+
 .codesandbox {
     width: 100%;
     height: 700px;
