@@ -9,13 +9,23 @@ import styles from "./styles.module.css";
 export const Row = ({ title, description, to, Icon }) => {
     return (
         <Link className={styles.root} to={to}>
-            {Icon && <Icon className={styles.icon} />}
+            <RowIcon Icon={Icon} />
             <div className={styles.details}>
                 <span className={styles.title}>{title}</span>
                 <p className={styles.description}>{description}</p>
             </div>
         </Link>
     );
+};
+
+const RowIcon = ({ Icon }) => {
+    if (!Icon) {
+        return null;
+    }
+    if (typeof Icon === "string") {
+        return <span className={styles.icon}>{Icon}</span>;
+    }
+    return <Icon className={styles.icon} />;
 };
 
 export default Row;
