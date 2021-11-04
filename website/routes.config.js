@@ -60,8 +60,8 @@ const LEGACY_ROUTES = [
                 title: "Decompose Cheatsheet",
                 from: [
                     "/docs/get-started/tutorial/decompose",
-                    "/docs/get-started/tutorial/design-mock-up",
-                    "/docs/get-started/tutorial/cheatsheet",
+                    "/docs/get-started/tutorial/design-mockup",
+                    "/docs/get-started/onboard/cheatsheet",
                 ],
                 to: "/docs/get-started/cheatsheet",
             },
