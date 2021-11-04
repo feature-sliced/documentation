@@ -248,7 +248,7 @@ If there are variations, how best to place indents-welcome:)
 [refs-splitting-slices]: https://feature-sliced.design/docs/concepts/app-splitting#group-slices
 [refs-splitting-segments]: https://feature-sliced.design/docs/concepts/app-splitting#group-segments
 
-[refs-migration-v1]: https://feature-sliced.design/docs/guides/migration-from-v1
+[refs-migration-v1]: https://feature-sliced.design/docs/guides/migration/from-v1
 
 [ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
 [ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven

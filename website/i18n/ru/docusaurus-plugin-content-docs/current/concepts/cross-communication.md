@@ -65,4 +65,4 @@ TODO После накопления опыта работы с методоло
 
 [refs-public-api]: /docs/concepts/public-api
 [refs-splitting]: /docs/concepts/app-splitting
-[refs-low-coupling]: /docs/guides/low-coupling
+[refs-low-coupling]: /docs/concepts/low-coupling

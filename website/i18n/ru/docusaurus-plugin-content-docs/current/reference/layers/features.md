@@ -120,10 +120,10 @@ export const AuthByPhone = () => {
 
 ## См. также
 
-- ["Гайд по избавлению от кросс-импортов"](/docs/guides/low-coupling)
+- ["Гайд по избавлению от кросс-импортов"](/docs/concepts/low-coupling)
 - [Понимание потребностей пользователя и бизнес-задач](/docs/concepts/needs-driven)
   - Для понимания слоя `features`
 - [(Тред) Про фичи и сущности наглядно](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
 
 [refs-entity]: /docs/reference/layers/entities
-[refs-low-coupling]: /docs/guides/low-coupling
+[refs-low-coupling]: /docs/concepts/low-coupling

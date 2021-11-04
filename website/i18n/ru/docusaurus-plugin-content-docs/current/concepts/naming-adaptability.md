@@ -54,8 +54,7 @@ sidebar_position: 6
 
 [refs-layers]: /docs/reference/layers/overview
 [refs-segments]: /docs/reference/segments
-<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-reference]: /docs/reference/glossary
+[refs-reference]: /docs/reference
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/16
 [disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894

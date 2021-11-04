@@ -837,11 +837,9 @@ Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, wher
 [refs-public-api]: /docs/concepts/public-api
 [refs-splitting]: /docs/concepts/app-splitting
 
-[refs-low-coupling]: /docs/guides/low-coupling
-<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-guides]: /docs/guides/migration-from-v1
-<!-- FIXME: Ссылаться на рут позднее, а не на первый элемент -->
-[refs-reference]: /docs/reference/glossary
+[refs-low-coupling]: /docs/concepts/low-coupling
+[refs-guides]: /docs/guides
+[refs-reference]: /docs/reference
 [refs-layers]: /docs/reference/layers/overview
 [refs-app]: /docs/reference/layers/app
 [refs-pages]: /docs/reference/layers/pages

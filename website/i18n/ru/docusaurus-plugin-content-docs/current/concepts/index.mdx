@@ -17,7 +17,7 @@ pagination_prev: guides/tech/with-nextjs
 ## Главное
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
-import { BlockOutlined, ApiOutlined, ApartmentOutlined } from "@ant-design/icons";
+import { BlockOutlined, ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
 
 <Row 
     title="Разбиение приложения" 
@@ -36,4 +36,16 @@ import { BlockOutlined, ApiOutlined, ApartmentOutlined } from "@ant-design/icons
     description="Правила масштабируемого и эффективного взаимодействия модулей"
     to="/docs/concepts/cross-communication"
     Icon={ApartmentOutlined}
+/>
+<Row 
+    title="Decouple entities" 
+    description="Декомпозиция логики с выделением бизнес-сущностей"
+    to="/docs/concepts/decouple-entities"
+    Icon={PartitionOutlined}
+/>
+<Row 
+    title="Десегментация" 
+    description="Проблема излишней раздробленности логики"
+    to="/docs/concepts/issues/desegmented"
+    Icon={NodeIndexOutlined}
 />

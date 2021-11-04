@@ -73,4 +73,4 @@ Violation of this rule is a signal of problems:
 
 [refs-public-api]: /docs/concepts/public-api
 [refs-splitting]: /docs/concepts/app-splitting
-[refs-low-coupling]: /docs/guides/low-coupling
+[refs-low-coupling]: /docs/concepts/low-coupling
