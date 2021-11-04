@@ -5,6 +5,8 @@ pagination_next: get-started/index
 
 # 🔎 Intro
 
+<span class="badge badge--secondary margin-bottom--md">OVERVIEW-ORIENTED</span>
+
 A methodology for designing *frontend projects*, aimed [**at dividing the application according to business logic and scopes of responsibility.**][refs-splitting]
 
 - Provides [**clarity, controllability and adaptability**][refs-arch-req] architecture
