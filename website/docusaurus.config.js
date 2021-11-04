@@ -116,6 +116,11 @@ const navbar = {
             to: SECTIONS.EXAMPLES.fullPath,
             position: "left",
         },
+        {
+            label: "❔ Help",
+            to: "/nav",
+            position: "left",
+        },
         // right
         {
             type: "docsVersionDropdown",
