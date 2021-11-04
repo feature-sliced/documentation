@@ -21,13 +21,13 @@
 FeatureSliced is an architectural design methodology for *frontend applications*. It aims to [**divide an application according to business logic and scopes of responsibility**][refs-splitting]
 
 - Provides [**explicitness, controllability and adaptability**][refs-arch-req] of architecture
-- Based on [**experience-checked**][refs-motivation-why] design practices and concepts
+- Based on [**time-tested**][refs-motivation-why] design practices and concepts
     > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
 - Suggests dividing the project according to [**business units**][ext-ubiq-lang]
 
 > **Note:** The methodology is not tied to a specific tech stack and is applicable *to any frontend projects* in general.
 >
-> But the current version gives examples and is developed on the basis of a bunch of `JavaScript` + `React`
+> But the current version is based on and provides examples for `JavaScript` + `React` stack.
 
 ## Motivation
 
