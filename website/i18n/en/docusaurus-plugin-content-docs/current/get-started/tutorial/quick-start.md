@@ -299,7 +299,7 @@ $ npm i antd @ant-design/icons
 ```
 
 ```ts title=app/styles/index.scss
-@import '~antd/dist/antd.css';
+@import 'antd/dist/antd.css';
 ```
 
 :::tip
