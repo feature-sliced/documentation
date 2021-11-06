@@ -7,8 +7,28 @@
     margin-top: 4rem;
 }
 
+.group {
+    margin-top: 2rem;
+}
+
+.groupItems {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+}
+
+.groupItemsRow + .groupItemsRow {
+    margin-top: 0;
+}
+
 .route {
     font-size: 0.9rem;
     font-style: italic;
     opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    .groupItems {
+        grid-template-columns: 1fr;
+    }
 }

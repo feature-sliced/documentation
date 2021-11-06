@@ -7,13 +7,13 @@
     "message": "Туториалы",
     "description": "The label for category Tutorials in sidebar getstartedSidebar"
   },
-  "sidebar.getstartedSidebar.category.Alternatives": {
+  "sidebar.aboutSidebar.category.Alternatives": {
     "message": "Альтернативы",
-    "description": "The label for category Alternatives in sidebar getstartedSidebar"
+    "description": "The label for category Alternatives in sidebar aboutSidebar"
   },
-  "sidebar.getstartedSidebar.category.Onboard": {
-    "message": "Внедрение",
-    "description": "The label for category Onboard in sidebar getstartedSidebar"
+  "sidebar.aboutSidebar.category.Promote": {
+    "message": "Продвижение",
+    "description": "The label for category Promote in sidebar aboutSidebar"
   },
   "sidebar.guidesSidebar.category.Examples": {
     "message": "Примеры",

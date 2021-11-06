@@ -42,7 +42,7 @@ pagination_next: guides/index
 - [Internal Examples](https://github.com/feature-sliced/examples)
 - [External Examples](/examples)
 
-*Также можно ознакомиться с [гайдами](/docs/guides/migration-from-v1) и [туториалами](/docs/get-started/tutorial/quick-start)*
+*Также можно ознакомиться с [гайдами](/docs/guides) и [туториалами](/docs/get-started)*
 
 ### Есть ли какие-нибудь полезные ресурсы/статьи/и т.д. по FeatureSliced и связанным вещам?
 
@@ -100,4 +100,4 @@ pagination_next: guides/index
 
 > *"Сегодня фича может использоваться только на одной странице. На следующей неделе - на трех. А через месяц - ее может не быть совсем. Мы не можем предсказывать будущее, и нужно каждый раз воздерживаться от преждевременных оптимизаций"*
 
-*См. также пример из [quick-start](/docs/get-started/tutorial/quick-start#обычный-подход)*
+*См. также пример из [quick-start](/docs/get-started/quick-start#обычный-подход)*

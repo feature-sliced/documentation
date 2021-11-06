@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { REDIRECTS, SECTIONS, LEGACY_ROUTES } = require("./routes.config");
 
 const DOMAIN = "https://feature-sliced.design/";
 const GITHUB_ORG = "https://github.com/feature-sliced";
@@ -8,59 +9,6 @@ const YOUTUBE = "https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A";
 const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
 const DEFAULT_LOCALE = "ru";
-
-// FIXME: Clean up urls format (with new index-pages)
-const SECTIONS = {
-    INTRO: {
-        shortPath: "/docs",
-        fullPath: "/docs/intro",
-    },
-    GET_STARTED: {
-        shortPath: "/docs/get-started",
-        fullPath: "/docs/get-started",
-    },
-    CONCEPTS: {
-        shortPath: "/docs/concepts",
-        fullPath: "/docs/concepts",
-    },
-    GUIDES: {
-        shortPath: "/docs/guides",
-        fullPath: "/docs/guides",
-    },
-    REFERENCE: {
-        shortPath: "/docs/reference",
-        fullPath: "/docs/reference",
-    },
-    LAYERS: {
-        shortPath: "/docs/reference/layers",
-        fullPath: "/docs/reference/layers/overview",
-    },
-    ABOUT: {
-        shortPath: "/docs/about",
-        fullPath: "/docs/about",
-    },
-    EXAMPLES: {
-        shortPath: "/examples",
-        fullPath: "/examples",
-    },
-};
-
-/**
- * Redirections after restructuring docs
- * @remark For compatibility with legacy links
- */
-const LEGACY_ROUTES = [
-    {
-        title: "QuickStart",
-        from: "/docs/get-started/quick-start",
-        to: "/docs/get-started/tutorial/quick-start",
-    },
-    {
-        title: "Overview",
-        from: "/docs/get-started/overview",
-        to: "/docs/intro",
-    },
-];
 
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
 
@@ -286,15 +234,7 @@ const plugins = [
             // Если же переходить чисто по ссылкам, то редиректа не будет (только при обновлении страницы)
             // TODO: Сделать позже, чтоб редирект работал и при переходе с внутренних ссылок
             // И убрать хардкод с доки и конфига
-            redirects: Object.values(SECTIONS)
-                // Иначе выбрасывает ошибку
-                .filter(({ shortPath, fullPath }) => shortPath !== fullPath)
-                .map(({ shortPath, fullPath }) => ({
-                    from: shortPath,
-                    to: fullPath,
-                }))
-                // NOTE: temp redirects, resolve later
-                .concat(LEGACY_ROUTES.map(({ from, to }) => ({ from, to }))),
+            redirects: REDIRECTS,
         },
     ],
     // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image
