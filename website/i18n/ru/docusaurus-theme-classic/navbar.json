@@ -34,5 +34,9 @@
   "item.label.🍰 About": {
     "message": "🍰 О методологии",
     "description": "Navbar item with label About"
+  },
+  "item.label.❔ Help": {
+    "message": "❔ Помощь",
+    "description": "Navbar item with label Help"
   }
 }

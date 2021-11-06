@@ -9,8 +9,7 @@ const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
 const DEFAULT_LOCALE = "ru";
 
-// Конкретные страницы нужны, т.к. отдельно секции доки не индексируются
-// FIXME: Привести в порядок формат урлов
+// FIXME: Clean up urls format (with new index-pages)
 const SECTIONS = {
     INTRO: {
         shortPath: "/docs",
@@ -45,6 +44,23 @@ const SECTIONS = {
         fullPath: "/examples",
     },
 };
+
+/**
+ * Redirections after restructuring docs
+ * @remark For compatibility with legacy links
+ */
+const LEGACY_ROUTES = [
+    {
+        title: "QuickStart",
+        from: "/docs/get-started/quick-start",
+        to: "/docs/get-started/tutorial/quick-start",
+    },
+    {
+        title: "Overview",
+        from: "/docs/get-started/overview",
+        to: "/docs/intro",
+    },
+];
 
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
 
@@ -98,6 +114,11 @@ const navbar = {
         {
             label: "🛠 Examples",
             to: SECTIONS.EXAMPLES.fullPath,
+            position: "left",
+        },
+        {
+            label: "❔ Help",
+            to: "/nav",
             position: "left",
         },
         // right
@@ -273,12 +294,7 @@ const plugins = [
                     to: fullPath,
                 }))
                 // NOTE: temp redirects, resolve later
-                .concat([
-                    {
-                        from: "/docs/get-started/quick-start",
-                        to: "/docs/get-started/tutorial/quick-start",
-                    },
-                ]),
+                .concat(LEGACY_ROUTES.map(({ from, to }) => ({ from, to }))),
         },
     ],
     // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image
@@ -340,6 +356,14 @@ const metadatas = [
     // { name: "twitter:description", content: description },
 ];
 
+/**
+ * Custom fields (for access on code-level)
+ * @see https://docusaurus.io/docs/api/docusaurus-config#customfields
+ */
+const customFields = {
+    legacyRoutes: LEGACY_ROUTES,
+};
+
 /** @type {Config} */
 module.exports = {
     title: "feature-sliced",
@@ -378,6 +402,7 @@ module.exports = {
     },
     presets,
     plugins,
+    customFields,
 };
 
 // Remove configs if there are not secrets passed

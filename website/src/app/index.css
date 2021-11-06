@@ -117,6 +117,11 @@ html[data-theme='dark'] img[alt*="themed"] {
     filter: invert(1) hue-rotate(180deg);
 }
 
+/* FIXME: hardcoded */
+html[data-theme='dark'] img[alt*="themed--scheme"] {
+    filter: invert(0.905) brightness(1.04) grayscale(100%) opacity(0.5);
+}
+
 html img[alt*="bordered"] {
     border: 1px solid rgb(211, 213, 216);
     border-radius: 16px;

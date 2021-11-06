@@ -43,7 +43,7 @@ export default function HomePage() {
                     <Image
                         className={styles.schemeImg}
                         img={imgScheme}
-                        alt="feature-sliced-scheme"
+                        alt="feature-sliced-scheme,themed--scheme"
                     />
                 </Section>
                 <Section

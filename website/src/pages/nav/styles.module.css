@@ -1,0 +1,14 @@
+.root {
+    padding-bottom: 12rem;
+    margin-top: 2rem;
+}
+
+.section {
+    margin-top: 4rem;
+}
+
+.route {
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.5;
+}
