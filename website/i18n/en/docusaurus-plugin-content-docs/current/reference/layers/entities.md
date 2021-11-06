@@ -55,7 +55,7 @@ export const CatalogPage = () => {
     return (
         ...
         {bookQuery.map((book) => (
-            <Book key={book.id} data={book} />
+            <BookCard key={book.id} data={book} />
         ))}
         ...
     )

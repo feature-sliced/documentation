@@ -27,6 +27,7 @@ const RowIcon = ({ Icon }) => {
     if (!Icon) {
         return null;
     }
+    // For plain emojii-icons
     if (typeof Icon === "string") {
         return <span className={styles.icon}>{Icon}</span>;
     }
