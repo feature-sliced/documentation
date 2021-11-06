@@ -189,9 +189,14 @@ html[data-theme=dark] .badge--warning {
     --ifm-badge-background-color: var(--ifm-color-warning-dark);
 }
 
+/* Debug only, for simulating searchBox on devMode
+.navbar__items:last-child {
+    border-right: 161px solid black;
+} */
+
 /* FIXME: temp hack for adaptive-layout! */
 
-@media (max-width: 1080px) {
+@media (max-width: 1180px) {
     .navbar__brand {
         margin-right: 0.5rem;
     }
@@ -202,6 +207,13 @@ html[data-theme=dark] .badge--warning {
 
     .navbar__item {
         white-space: nowrap;
+    }
+}
+
+/* I love adaptive styles... */
+@media (max-width: 1080px) {
+    .navbar__item {
+        padding: var(--ifm-navbar-item-padding-vertical) 0.25rem;
     }
 }
 
