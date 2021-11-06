@@ -10,10 +10,7 @@ import styles from "./styles.module.css";
 
 const NavPage = () => {
     return (
-        <Layout
-            title="Versions"
-            description="Feature Sliced Versions page listing all documented site versions"
-        >
+        <Layout title="🧭 Navigation" description="Feature Sliced Navigation help page">
             <main className={clsx("container", styles.root)}>
                 <h1>{translate({ id: "pages.nav.title" })}</h1>
                 <section className={styles.section}>
