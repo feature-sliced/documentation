@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { LikeFilled, DislikeFilled } from "@ant-design/icons";
 import { translate } from "@docusaurus/Translate";
 
+import { ga } from "@site/src/shared/lib/ga";
 import styles from "./styles.module.css";
 
 /**
@@ -10,30 +11,24 @@ import styles from "./styles.module.css";
  * @see https://developers.google.com/analytics/devguides/collection/analyticsjs/events
  */
 const sendFeedback = (value) => {
-    if (typeof window === undefined) return;
-    if (!window.ga) return;
-
     // For a while - send feedback in both format
     // Later will keep and maintain only one
-    window.ga("send", {
-        hitType: "event",
-        eventCategory: "Feedback 1.2 (full)",
-        eventAction: "Docs:Helpful",
-        eventLabel: window.location.href,
-        eventValue: value,
+    ga.sendEvent({
+        category: ga.CATEGORIES.full,
+        action: "Docs:Helpful",
+        label: window.location.href,
+        value,
     });
-    window.ga("send", {
-        hitType: "event",
-        eventCategory: "Feedback 1.2 (mixed)",
-        eventAction: "Docs:Helpful",
-        eventLabel: value,
-        eventValue: value,
+    ga.sendEvent({
+        category: ga.CATEGORIES.mixed,
+        action: "Docs:Helpful",
+        label: value,
+        value,
     });
-    window.ga("send", {
-        hitType: "event",
-        eventCategory: "Feedback 1.2 (short)",
-        eventLabel: window.location.href,
-        eventValue: value,
+    ga.sendEvent({
+        category: ga.CATEGORIES.short,
+        label: window.location.href,
+        value,
     });
 };
 
