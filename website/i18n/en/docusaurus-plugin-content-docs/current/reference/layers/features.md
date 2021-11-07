@@ -120,10 +120,10 @@ export const AuthByPhone = () => {
 
 ## See also
 
-- ["Guide to getting rid of cross-imports"](/docs/guides/low-coupling)
+- ["Guide to getting rid of cross-imports"](/docs/concepts/low-coupling)
 - [Understanding user needs and business tasks](/docs/concepts/needs-driven)
   - To understand the `features` layer
 - [(Thread) About features and entities clearly](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
 
 [refs-entity]: /docs/reference/layers/entities
-[refs-low-coupling]: /docs/guides/low-coupling
+[refs-low-coupling]: /docs/concepts/low-coupling

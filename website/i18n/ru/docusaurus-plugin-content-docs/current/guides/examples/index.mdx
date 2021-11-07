@@ -1,0 +1,40 @@
+---
+sidebar_position: 0
+sidebar_class_name: sidebar-item--root
+sidebar_label: 🛠 Обзор
+slug: /guides/examples
+hide_table_of_contents: true
+pagination_prev: guides/index
+---
+
+# 🛠 Примеры
+
+<p class="summary">
+Небольшие практические примеры по применению методологии
+</p>
+
+## Main
+
+import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { UserSwitchOutlined, LayoutOutlined, FontSizeOutlined } from "@ant-design/icons";
+
+<Row
+    title="Авторизация"
+    description="Декомпозиция логики авторизации"
+    to="/docs/guides/examples/auth"
+    Icon={UserSwitchOutlined}
+    tags={["Viewer", "AuthForm", "ProfilePage", "AuthProvider", "AuthToken"]}
+/>
+<Row
+    title="PageLayout"
+    description="Основные кейсы с лейаутными виджетами страницы"
+    to="/docs/guides/examples/page-layout"
+    Icon={LayoutOutlined}
+    tags={["Header", "Sidebar"]}
+/>
+<Row
+    title="Типы"
+    description="Где стоит располагать типы? Каких видов они бывают в контексте FeatureSliced?"
+    to="/docs/guides/examples/types"
+    Icon={FontSizeOutlined}
+/>

@@ -3,7 +3,7 @@ sidebar_position: 0
 sidebar_class_name: sidebar-item--root
 hide_table_of_contents: true
 slug: /concepts
-pagination_prev: guides/usage-with-nextjs
+pagination_prev: guides/index
 ---
 
 # 🧩 Concepts
@@ -17,7 +17,7 @@ A section with key concepts of the methodology, for an advanced understanding of
 ## Main
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
-import { BlockOutlined, ApiOutlined, ApartmentOutlined } from "@ant-design/icons";
+import { BlockOutlined, ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
 
 <Row 
     title="App splitting" 
@@ -36,4 +36,16 @@ import { BlockOutlined, ApiOutlined, ApartmentOutlined } from "@ant-design/icons
     description="Rules for scalable and efficient interaction of modules"
     to="/docs/concepts/cross-communication"
     Icon={ApartmentOutlined}
+/>
+<Row 
+    title="Decouple entities" 
+    description="Decomposition of logic with allocation of business entities"
+    to="/docs/concepts/decouple-entities"
+    Icon={PartitionOutlined}
+/>
+<Row 
+    title="Desegmented" 
+    description="The problem of redundant desegmentation of logic"
+    to="/docs/concepts/issues/desegmented"
+    Icon={NodeIndexOutlined}
 />

@@ -122,7 +122,7 @@ sidebar_position: 1
 
 [ext-disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 
-[refs-concepts]: /docs/concepts/architecture
+[refs-concepts]: /docs/concepts
 [refs-public-api]: /docs/concepts/public-api
 [refs-isolation]: /docs/concepts/cross-communication
 [refs-needs-driven]: /docs/concepts/needs-driven
@@ -133,5 +133,5 @@ sidebar_position: 1
 [refs-splitting-slices]: /docs/concepts/app-splitting#group-slices
 [refs-splitting-segments]: /docs/concepts/app-splitting#group-segments
 
-[refs-guides]: /docs/guides/migration-from-v1
-[refs-low-coupling]: /docs/guides/low-coupling
+[refs-guides]: /docs/guides
+[refs-low-coupling]: /docs/concepts/low-coupling

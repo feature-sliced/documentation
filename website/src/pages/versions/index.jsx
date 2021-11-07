@@ -42,7 +42,7 @@ function Version() {
                                     <Link to="/docs/intro">Documentation</Link>
                                 </td>
                                 <td>
-                                    <Link to="/docs/guides/migration-from-v1">
+                                    <Link to="/docs/guides/migration/from-v1">
                                         Migration from v1
                                     </Link>
                                 </td>

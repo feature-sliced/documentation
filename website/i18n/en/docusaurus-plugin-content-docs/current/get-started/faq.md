@@ -50,7 +50,7 @@ There are only such ones in the public domain so far, not all of them have been 
 
 ### The project is written on feature-slices v1, how to update and is it worth it?
 
-Answered [here](/docs/guides/migration-from-v1)
+Answered [here](/docs/guides/migration/from-v1)
 
 ### Can I embed pages/features/entities into each other?
 
@@ -58,7 +58,7 @@ Answered [here](/docs/concepts/app-splitting#group-slices)
 
 ### How do I work with the authorization context?
 
-Answered [here](/docs/guides/examples/viewer)
+Answered [here](/docs/guides/examples/auth)
 
 ### What about Atomic Design?
 
@@ -73,7 +73,7 @@ At the same time, Atomic Design [is well applied](https://t.me/feature_sliced/16
 - `Feature` - business feature, **action on an entity**
   - create-blog-post / login-by-oauth / edit-account / publish-video / ...
 
-See also [comparison reference] (/docs/reference/layers/overview), [viewer implementation of logic by layers](/docs/guides/examples/viewer)
+See also [comparison reference] (/docs/reference/layers/overview), [viewer implementation of logic by layers](/docs/guides/examples/auth)
 
 ### Where to store the layout/template of pages?
 

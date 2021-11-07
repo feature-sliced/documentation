@@ -225,7 +225,7 @@ However, as a result of [discussions and analysis of extensive experience][disc-
 
 [ref-layers]: /docs/reference/layers/overview
 [ref-segments]: /docs/reference/segments
-[ref-low-coupling]: /docs/guides/low-coupling
+[ref-low-coupling]: /docs/concepts/low-coupling
 [ref-grouping]: /docs/reference/layers/features#structural-grouping-features
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31

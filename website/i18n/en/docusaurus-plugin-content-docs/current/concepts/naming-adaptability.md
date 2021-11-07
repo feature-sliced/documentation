@@ -54,8 +54,7 @@ Such name collisions can negatively affect the development process.
 
 [refs-layers]: /docs/reference/layers/overview
 [refs-segments]: /docs/reference/segments
-<!-- FIXME: Refer to the root later, not to the first element -->
-[refs-reference]: /docs/reference/glossary
+[refs-reference]: /docs/reference
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/16
 [disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894

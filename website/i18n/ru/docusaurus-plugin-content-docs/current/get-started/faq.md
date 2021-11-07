@@ -50,7 +50,7 @@ pagination_next: guides/index
 
 ### Проект написан на feature-slices v1, как обновиться и стоит ли?
 
-Ответили [здесь](/docs/guides/migration-from-v1)
+Ответили [здесь](/docs/guides/migration/from-v1)
 
 ### Могу ли я вкладывать страницы/фичи/сущности друг в друга?
 
@@ -58,7 +58,7 @@ pagination_next: guides/index
 
 ### Как мне работать с контекстом авторизации?
 
-Ответили [здесь](/docs/guides/examples/viewer)
+Ответили [здесь](/docs/guides/examples/auth)
 
 ### А что с Atomic Design?
 
@@ -73,7 +73,7 @@ pagination_next: guides/index
 - `Feature` - бизнесовая фича, **действие над сущностью**
   - create-blog-post / login-by-oauth / edit-account / publish-video / ...
 
-См. также [справочную информацию по сравнению](/docs/reference/layers/overview), [реализация viewer логики по слоям](/docs/guides/examples/viewer)
+См. также [справочную информацию по сравнению](/docs/reference/layers/overview), [реализация viewer логики по слоям](/docs/guides/examples/auth)
 
 ### Где хранить layout/template страниц?
 

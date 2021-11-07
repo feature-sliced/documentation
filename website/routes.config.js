@@ -43,7 +43,7 @@ const SECTIONS = {
  */
 const LEGACY_ROUTES = [
     {
-        group: "Get Started",
+        group: "🚀 Get Started",
         details: "Simplified and merged",
         children: [
             {
@@ -68,7 +68,7 @@ const LEGACY_ROUTES = [
         ],
     },
     {
-        group: "Alternatives",
+        group: "🍰 Alternatives",
         details: "Moved to /about as advanced materials",
         children: [
             {
@@ -114,7 +114,7 @@ const LEGACY_ROUTES = [
         ],
     },
     {
-        group: "Promote",
+        group: "🍰 Promote",
         details: "Moved to /about as advanced materials",
         children: [
             {
@@ -136,6 +136,91 @@ const LEGACY_ROUTES = [
                 title: "For company",
                 from: "/docs/get-started/onboard/promote",
                 to: "/docs/about/promote/for-company",
+            },
+        ],
+    },
+    {
+        group: "🧩 Bad Practices handbook",
+        details: "Moved to /concepts as theoretical materials",
+        children: [
+            {
+                title: "Cross-imports",
+                from: "/docs/guides/handbook/cross-imports",
+                to: "/docs/concepts/issues/cross-imports",
+            },
+            {
+                title: "Desegmented",
+                from: "/docs/guides/handbook/desegmented",
+                to: "/docs/concepts/issues/desegmented",
+            },
+            {
+                title: "Routes",
+                from: "/docs/guides/handbook/routes",
+                to: "/docs/concepts/issues/routes",
+            },
+        ],
+    },
+    {
+        group: "🧩 Concepts guidelines",
+        details: "Moved to /concepts as theoretical materials",
+        children: [
+            {
+                title: "Decouple of entities",
+                from: "/docs/guides/decouple-entities",
+                to: "/docs/concepts/decouple-entities",
+            },
+            {
+                title: "Low Coupling & High Cohesion",
+                from: "/docs/guides/low-coupling",
+                to: "/docs/concepts/low-coupling",
+            },
+        ],
+    },
+    {
+        group: "🎯 Examples",
+        details: "Grouped and simplified into /guides/examples as practical examples",
+        children: [
+            {
+                title: "Viewer logic",
+                from: "/docs/guides/examples/viewer",
+                to: "/docs/guides/examples/auth",
+            },
+            {
+                title: "Monorepo",
+                from: "/docs/guides/monorepo",
+                to: "/docs/guides/examples/monorepo",
+            },
+            {
+                title: "White Labels",
+                from: "/docs/guides/white-labels",
+                to: "/docs/guides/examples/white-labels",
+            },
+        ],
+    },
+    {
+        group: "🎯 Migration",
+        details: "Grouped and simplified into /guides/migration as migration guidelines",
+        children: [
+            {
+                title: "Migration from V1",
+                from: "/docs/guides/migration-from-v1",
+                to: "/docs/guides/migration/from-v1",
+            },
+            {
+                title: "Migration from Legacy",
+                from: "/docs/guides/migration-from-legacy",
+                to: "/docs/guides/migration/from-legacy",
+            },
+        ],
+    },
+    {
+        group: "🎯 Tech",
+        details: "Grouped into /guides/tech as tech-specific usage guidelines",
+        children: [
+            {
+                title: "Usage with NextJS",
+                from: "/docs/guides/usage-with-nextjs",
+                to: "/docs/guides/tech/with-nextjs",
             },
         ],
     },

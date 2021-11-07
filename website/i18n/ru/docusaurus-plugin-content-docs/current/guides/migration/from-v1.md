@@ -157,7 +157,7 @@ sidebar_position: 4
 - [Новые идеи v2 с пояснениями (atomicdesign-chat)][ext-tg-v2-draft]
 - [Обсуждение абстракций и нейминга для новой версии методологии (v2)](https://github.com/feature-sliced/documentation/discussions/31)
 
-[refs-low-coupling]: /docs/guides/low-coupling
+[refs-low-coupling]: /docs/concepts/low-coupling
 [refs-adaptability]: /docs/concepts/naming-adaptability
 [refs-abstractions]: /docs/concepts/app-splitting
 [refs-abstractions-layers]: /docs/concepts/app-splitting#group-layers

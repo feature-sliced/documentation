@@ -3,7 +3,7 @@ sidebar_position: 0
 sidebar_class_name: sidebar-item--root
 hide_table_of_contents: true
 slug: /guides
-pagination_prev: get-started/faq
+pagination_prev: get-started/index
 ---
 
 # 🎯 Гайды
@@ -17,23 +17,23 @@ pagination_prev: get-started/faq
 ## Главное
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
-import { PartitionOutlined, NodeIndexOutlined, ImportOutlined } from "@ant-design/icons";
+import { ToolOutlined, ImportOutlined } from "@ant-design/icons";
 
 <Row 
-    title="Десегментация" 
-    description="Проблема излишней раздробленности логики"
-    to="/docs/guides/handbook/desegmented"
-    Icon={NodeIndexOutlined}
+    title="Примеры применения" 
+    description="Практические примеры по применению методологии"
+    to="/docs/guides/examples"
+    Icon={ToolOutlined}
 />
 <Row 
-    title="Decouple entities" 
-    description="Декомпозиция логики с выделением бизнес-сущностей"
-    to="/docs/guides/decouple-entities"
-    Icon={PartitionOutlined}
+    title="Миграция с V1" 
+    description="Гайд по миграции и сравнение с FeatureSlices (v1)"
+    to="/docs/guides/migration/from-v1"
+    Icon={ImportOutlined}
 />
 <Row 
     title="Миграция с legacy" 
     description="Поэтапное внедрение практик в легаси-проекты"
-    to="/docs/guides/migration-from-legacy"
+    to="/docs/guides/migration/from-legacy"
     Icon={ImportOutlined}
 />
