@@ -315,6 +315,7 @@ module.exports = {
     onBrokenMarkdownLinks: "error",
     onDuplicateRoutes: "warn",
     favicon: "img/favicon.ico",
+    trailingSlash: false, // For unified routes (FEEDBACK-337)
     organizationName: "feature-sliced", // Usually your GitHub org/user name.
     projectName: "documentation", // Usually your repo name.
     themeConfig: {
