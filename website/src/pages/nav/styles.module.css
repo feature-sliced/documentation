@@ -7,6 +7,10 @@
     margin-top: 4rem;
 }
 
+.subdetails {
+    opacity: 0.5;
+}
+
 .group {
     margin-top: 2rem;
 }

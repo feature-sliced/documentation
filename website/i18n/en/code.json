@@ -123,6 +123,10 @@
     "message": "After the restructuring of the documentation, some routes were changed. Below you can find the page you may have been looking for.",
     "description": "NavPage section=legacy details"
   },
+  "pages.nav.legacy.subdetails": {
+    "message": "But there are redirects from old links for compatibility",
+    "description": "NavPage section=legacy subdetails"
+  },
   "features.cookie-consent.alert": {
     "message": "🍰 We use cookies for analytics",
     "description": "Cookie Consent alert"

@@ -16,6 +16,9 @@ const NavPage = () => {
                 <section className={styles.section}>
                     <h2>{translate({ id: "pages.nav.legacy.title" })}</h2>
                     <p>{translate({ id: "pages.nav.legacy.details" })}</p>
+                    <p className={styles.subdetails}>
+                        {translate({ id: "pages.nav.legacy.subdetails" })}
+                    </p>
                     <GroupItems />
                 </section>
             </main>
