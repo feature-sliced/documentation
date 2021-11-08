@@ -10,19 +10,19 @@ sidebar_position: 1
 
 Нашли что-то классное? Пожалуйста, **[поделитесь](https://github.com/feature-sliced/awesome/pulls)**!
 
-## Community
+## Комьюнити
 
 - [FeatureSliced Telegram (RU)](https://t.me/feature_sliced)
 - [FeatureSliced Twitter](https://twitter.com/feature_sliced)
 - [FeatureSliced YouTube](https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A)
 
-## Examples
+## Примеры
 
 See the [examples](https://feature-sliced.design/examples)
 
 ## DevExp
 
-### Linting
+### Линтинг
 
 - [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import)
 - [eslint-plugin-simple-import-sort](https://github.com/lydell/eslint-plugin-simple-import-sort)
@@ -31,11 +31,11 @@ See the [examples](https://feature-sliced.design/examples)
 - [ESlint Config (Draft)](https://gist.github.com/azinit/4cb940a1d4a3e05ef47e15aa18a9ecc5)
 - *TBD...*
 
-### Templates
+### Шаблоны проектов
 
 - *TBD...*
 
-### Services
+### Сервисы
 
 - *TBD...*
 
@@ -43,7 +43,7 @@ See the [examples](https://feature-sliced.design/examples)
 
 - *TBD...*
 
-## Articles
+## Статьи
 
 - [Feature Slices (v1) / Сергей Сова](https://featureslices.dev/)
 - [Feature Driven / Oleg Isonen](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
@@ -55,7 +55,7 @@ See the [examples](https://feature-sliced.design/examples)
 - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
 - [Методология "feature-sliced" - идеальный способ структурировать растущий проект? *(BlogPost)* / Олег Кусов](https://okusov.ru/metodologiya-feature-sliced-idealnyj-sposob-strukturirovat-rastushij-proekt)
 
-## Talks
+## Доклады
 
 ### Core-team
 
@@ -66,7 +66,7 @@ See the [examples](https://feature-sliced.design/examples)
 - `RU` `2021` [Архитектура React проектов / TalkStream](https://youtu.be/h1YY7r9Uov8)
 - `RU` `2018` [(React SPB Meetup #1) Feature Slices / Sergey Sova [Слайды]](https://t.me/feature_slices)
 
-### External
+### Сторонние
 
 - `RU` `2021` [(Podlodka FrontendCrew) Live-coding: Clean Architecture на Фронтенде / Александр Беспоясов](https://youtu.be/h4WQRqNjmX0)
 - `RU` `2019` [Структура фронтенд проекта / Илья Климов](https://youtu.be/Sp8V-5k2ZaM)
