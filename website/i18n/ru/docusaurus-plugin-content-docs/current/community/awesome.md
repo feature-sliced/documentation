@@ -18,7 +18,7 @@ sidebar_position: 1
 
 ## Примеры
 
-See the [examples](https://feature-sliced.design/examples)
+См. [примеры](https://feature-sliced.design/examples)
 
 ## DevExp
 
