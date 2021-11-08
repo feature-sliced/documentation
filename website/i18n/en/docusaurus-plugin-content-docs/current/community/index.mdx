@@ -17,23 +17,25 @@ Community resources
 ## Main
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
-import { StarOutlined } from "@ant-design/icons";
+import { StarOutlined, SearchOutlined, TeamOutlined } from "@ant-design/icons";
 
 <Row 
     title="Awesome Resources" 
-    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    description="A curated list of awesome feature-sliced videos, articles, packages"
     to="/docs/community/awesome"
     Icon={StarOutlined}
 />
 <Row 
     title="Team" 
-    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    description="Core-team, Champions, Contributors, Companies"
     to="/docs/community/team"
-    Icon={StarOutlined}
+    Icon={TeamOutlined}
+    disabled
 />
 <Row 
     title="Contributing" 
-    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    description="HowTo, Workflow, Support"
     to="/docs/community/contributing"
-    Icon={StarOutlined}
+    Icon={SearchOutlined}
+    disabled
 />
