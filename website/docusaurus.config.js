@@ -58,7 +58,7 @@ const navbar = {
                     activeBasePath: SECTIONS.ABOUT.shortPath,
                 },
                 {
-                    label: "🚩 Community",
+                    label: "💫 Community",
                     to: SECTIONS.COMMUNITY.shortPath,
                     activeBasePath: SECTIONS.COMMUNITY.shortPath,
                 },
