@@ -31,6 +31,10 @@ const SECTIONS = {
         shortPath: "/docs/about",
         fullPath: "/docs/about",
     },
+    COMMUNITY: {
+        shortPath: "/docs/community",
+        fullPath: "/docs/community",
+    },
     EXAMPLES: {
         shortPath: "/examples",
         fullPath: "/examples",
