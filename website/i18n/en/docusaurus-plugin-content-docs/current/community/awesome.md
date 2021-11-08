@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Awesome Resources
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
