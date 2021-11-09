@@ -10,7 +10,7 @@ import styles from "./styles.module.css";
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
  */
 export const Row = (props) => {
-    const { title, description, to, Icon, tags, className } = props;
+    const { title, description, to, Icon, tags, className, disabled } = props;
     const handleClick = useCallback(() => {
         ga.sendEvent({
             category: ga.CATEGORIES.full,
@@ -20,7 +20,11 @@ export const Row = (props) => {
     }, [to]);
 
     return (
-        <Link className={clsx(styles.root, className)} to={to} onClick={handleClick}>
+        <Link
+            className={clsx(styles.root, className, disabled && styles.rootDisabled)}
+            to={to}
+            onClick={handleClick}
+        >
             <RowIcon Icon={Icon} />
             <div className={styles.details}>
                 <div className={styles.detailsMain}>

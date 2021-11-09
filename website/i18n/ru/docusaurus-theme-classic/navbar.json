@@ -35,6 +35,10 @@
     "message": "🍰 О методологии",
     "description": "Navbar item with label About"
   },
+  "item.label.💫 Community": {
+    "message": "💫 Сообщество",
+    "description": "Navbar item with label Community"
+  },
   "item.label.❔ Help": {
     "message": "❔ Помощь",
     "description": "Navbar item with label Help"

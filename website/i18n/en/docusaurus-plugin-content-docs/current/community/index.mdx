@@ -1,0 +1,40 @@
+---
+sidebar_position: 0
+sidebar_class_name: sidebar-item--root
+hide_table_of_contents: true
+slug: /community
+pagination_prev: about/index
+---
+
+# 💫 Community
+
+<span class="badge badge--info margin-bottom--md">COMMUNITY-ORIENTED</span>
+
+<p class="summary">
+Community resources, additional materials
+</p>
+
+## Main
+
+import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { StarOutlined, SearchOutlined, TeamOutlined } from "@ant-design/icons";
+
+<Row 
+    title="Awesome Resources" 
+    description="A curated list of awesome feature-sliced videos, articles, packages"
+    to="/docs/community/awesome"
+    Icon={StarOutlined}
+/>
+<Row 
+    title="Team" 
+    description="Core-team, Champions, Contributors, Companies"
+    to="/docs/community/team"
+    Icon={TeamOutlined}
+/>
+<Row 
+    title="Contributing" 
+    description="HowTo, Workflow, Support"
+    to="#"
+    Icon={SearchOutlined}
+    disabled
+/>
