@@ -1,366 +1,366 @@
 {
-  "pages.home.features.title": {
-    "message": "Преимущества",
-    "description": "Features"
-  },
-  "pages.home.features.logic.title": {
-    "message": "Явная бизнес-логика",
-    "description": "Feature title"
-  },
-  "pages.home.features.logic.description": {
-    "message": "Архитектуру легко осваивать, поскольку она состоит из доменных модулей",
-    "description": "Feature description"
-  },
-  "pages.home.features.adaptability.title": {
-    "message": "Адаптивность",
-    "description": "Feature title"
-  },
-  "pages.home.features.adaptability.description": {
-    "message": "Компоненты архитектуры можно гибко заменять, добавлять под новые условия",
-    "description": "Feature description"
-  },
-  "pages.home.features.debt.title": {
-    "message": "Технический долг",
-    "description": "Feature title"
-  },
-  "pages.home.features.debt.description": {
-    "message": "Каждый модуль можно независимо модифицировать / переписать без сайд-эффектов",
-    "description": "Feature description"
-  },
-  "pages.home.features.shared.title": {
-    "message": "Явная переиспользуемость",
-    "description": "Feature title"
-  },
-  "pages.home.features.shared.description": {
-    "message": "Сохраняется баланс между DRY и локальной кастомизацией",
-    "description": "Feature description"
-  },
-  "pages.home.concepts.title": {
-    "message": "Концепции",
-    "description": "Concepts"
-  },
-  "pages.home.concepts.public.title": {
-    "message": "Public API",
-    "description": "Concept title"
-  },
-  "pages.home.concepts.public.description": {
-    "message": "Каждый модуль должен иметь на верхнем уровне декларацию своего публичного API",
-    "description": "Concept description"
-  },
-  "pages.home.concepts.isolation.title": {
-    "message": "Изоляция",
-    "description": "Concept title"
-  },
-  "pages.home.concepts.isolation.description": {
-    "message": "Модуль не должен зависеть напрямую от других модулей того же слоя или вышележаших слоев",
-    "description": "Concept description"
-  },
-  "pages.home.concepts.needs.title": {
-    "message": "Понимание потребностей",
-    "description": "Concept title"
-  },
-  "pages.home.concepts.needs.description": {
-    "message": "Ориентирование на потребности бизнеса и пользователя",
-    "description": "Concept description"
-  },
-  "pages.home.scheme.title": {
-    "message": "Схема",
-    "description": "Scheme"
-  },
-  "pages.home.companies.using": {
-    "message": "Компании, использующие методологию",
-    "description": "Companies using methodology"
-  },
-  "pages.home.companies.add_me": {
-    "message": "Методология используется в Вашей компании?",
-    "description": "Methodology is used in your company?"
-  },
-  "pages.home.companies.tell_us": {
-    "message": "Сообщите нам",
-    "description": "Tell us"
-  },
-  "pages.examples.title": {
-    "message": "Примеры",
-    "description": "Page title"
-  },
-  "pages.examples.subtitle": {
-    "message": "Список сайтов, сделанных людьми с FeatureSliced",
-    "description": "Page subtitle"
-  },
-  "pages.examples.add_me.title": {
-    "message": "Добавить пример",
-    "description": "Request to add example"
-  },
-  "pages.examples.repo.title": {
-    "message": "Репозиторий",
-    "description": "Examples repository label"
-  },
-  "pages.examples.versions": {
-    "message": "См. также список версий",
-    "description": "Versions reminder"
-  },
-  "pages.versions.title": {
-    "message": "Версии Feature Sliced",
-    "description": "Feature Sliced versions"
-  },
-  "pages.versions.current": {
-    "message": "Здесь можно найти документацию для текущей опубликованной версии",
-    "description": "Description for current version"
-  },
-  "pages.versions.legacy": {
-    "message": "Здесь можно найти документацию для старых версий {of}",
-    "description": "Description for legacy version"
-  },
-  "pages.nav.title": {
-    "message": "🧭 Навигация",
-    "description": "NavPage title"
-  },
-  "pages.nav.legacy.title": {
-    "message": "Устаревшие ссылки",
-    "description": "NavPage section=legacy title"
-  },
-  "pages.nav.legacy.details": {
-    "message": "После реструктуризации документации, некоторые ссылки на статьи изменились. Ниже можно найти страницу, которую вы, возможно, искали.",
-    "description": "NavPage section=legacy details"
-  },
-  "pages.nav.legacy.subdetails": {
-    "message": "Но для совместимости есть редиректы со старых ссылок",
-    "description": "NavPage section=legacy subdetails"
-  },
-  "features.cookie-consent.alert": {
-    "message": "🍰 Мы используем куки для аналитики",
-    "description": "Cookie Consent alert"
-  },
-  "features.cookie-consent.accept": {
-    "message": "Хорошо",
-    "description": "Cookie Consent accept label"
-  },
-  "features.cookie-consent.reason": {
-    "message": "зачем?",
-    "description": "Cookie Consent reason label"
-  },
-  "features.feedback-badge.label": {
-    "message": "Поделись фидбеком по документации 🤙",
-    "description": "Feedback share button label"
-  },
-  "features.feedback-badge.url": {
-    "message": "https://forms.gle/7p4anU2shHAzmfqc8",
-    "description": "Feedback share form url"
-  },
-  "features.feedback-doc.thanks": {
-    "message": "Спасибо, что поделились!",
-    "description": "DocFeedback block=Thanks"
-  },
-  "features.feedback-doc.title": {
-    "message": "Страница была полезной?",
-    "description": "DocFeedback block=Title"
-  },
-  "features.feedback-doc.subtitle": {
-    "message": "Ваш фидбек помогает нам улучшать документацию",
-    "description": "DocFeedback block=Subtitle"
-  },
-  "features.hero.tagline": {
-    "message": "Структурная методология для фронтенд проектов",
-    "description": "Structural methodology for frontend projects"
-  },
-  "features.hero.get_started": {
-    "message": "Ознакомиться",
-    "description": "Get Started"
-  },
-  "features.hero.examples": {
-    "message": "Примеры",
-    "description": "Examples"
-  },
-  "features.hero.previous": {
-    "message": "Предыдущая версия",
-    "description": "Previous version"
-  },
-  "shared.wip.title": {
-    "message": "Статья находится в процессе написания",
-    "description": "Admonition title"
-  },
-  "shared.wip.subtitle": {
-    "message": "Чтобы ускорить ее появление, можно:",
-    "description": "Admonition subtitle"
-  },
-  "shared.wip.var.feedback.base": {
-    "message": "📢 Поделиться обратной связью ",
-    "description": "Variant for contribute (base)"
-  },
-  "shared.wip.var.feedback.link": {
-    "message": "в тикете (комментарии/эмодзи-реакция)",
-    "description": "Variant for contribute (link)"
-  },
-  "shared.wip.var.material.base": {
-    "message": "💬 Собрать в тикет накопленный по теме ",
-    "description": "Variant for contribute (base)"
-  },
-  "shared.wip.var.material.link": {
-    "message": "материал из чата",
-    "description": "Variant for contribute (link)"
-  },
-  "shared.wip.var.contribute.base": {
-    "message": "⚒️ Посодействовать ",
-    "description": "Variant for contribute (base)"
-  },
-  "shared.wip.var.contribute.link": {
-    "message": "любым другим способом",
-    "description": "Variant for contribute (link)"
-  },
-  "theme.NotFound.title": {
-    "message": "Страница не найдена",
-    "description": "The title of the 404 page"
-  },
-  "theme.NotFound.p1": {
-    "message": "К сожалению, мы не смогли найти запрашиваемую вами страницу.",
-    "description": "The first paragraph of the 404 page"
-  },
-  "theme.NotFound.p2": {
-    "message": "Пожалуйста, обратитесь к владельцу сайта, с которого вы перешли на эту ссылку, чтобы сообщить ему ссылка не работает.",
-    "description": "The 2nd paragraph of the 404 page"
-  },
-  "theme.AnnouncementBar.closeButtonAriaLabel": {
-    "message": "Закрыть",
-    "description": "The ARIA label for close button of announcement bar"
-  },
-  "theme.blog.paginator.navAriaLabel": {
-    "message": "Навигация по странице списка блогов",
-    "description": "The ARIA label for the blog pagination"
-  },
-  "theme.blog.paginator.newerEntries": {
-    "message": "Следующие записи",
-    "description": "The label used to navigate to the newer blog posts page (previous page)"
-  },
-  "theme.blog.paginator.olderEntries": {
-    "message": "Предыдущие записи",
-    "description": "The label used to navigate to the older blog posts page (next page)"
-  },
-  "theme.blog.post.readingTime.plurals": {
-    "message": "{readingTime} мин. чтения",
-    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
-  },
-  "theme.tags.tagsListLabel": {
-    "message": "Теги:",
-    "description": "The label alongside a tag list"
-  },
-  "theme.blog.post.readMore": {
-    "message": "Читать дальше",
-    "description": "The label used in blog post item excerpts to link to full blog posts"
-  },
-  "theme.blog.post.paginator.navAriaLabel": {
-    "message": "Навигация по странице поста блога",
-    "description": "The ARIA label for the blog posts pagination"
-  },
-  "theme.blog.post.paginator.newerPost": {
-    "message": "Следующий пост",
-    "description": "The blog post button label to navigate to the newer/previous post"
-  },
-  "theme.blog.post.paginator.olderPost": {
-    "message": "Предыдущий пост",
-    "description": "The blog post button label to navigate to the older/next post"
-  },
-  "theme.tags.tagsPageTitle": {
-    "message": "Теги",
-    "description": "The title of the tag list page"
-  },
-  "theme.blog.post.plurals": {
-    "message": "{count} запись|{count} записи|{count} записей",
-    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
-  },
-  "theme.blog.tagTitle": {
-    "message": "{nPosts} с тегом \"{tagName}\"",
-    "description": "The title of the page for a blog tag"
-  },
-  "theme.tags.tagsPageLink": {
-    "message": "Посмотреть все теги",
-    "description": "The label of the link targeting the tag list page"
-  },
-  "theme.CodeBlock.copyButtonAriaLabel": {
-    "message": "Скопировать в буфер обмена",
-    "description": "The ARIA label for copy code blocks button"
-  },
-  "theme.CodeBlock.copied": {
-    "message": "Скопировано",
-    "description": "The copied button label on code blocks"
-  },
-  "theme.CodeBlock.copy": {
-    "message": "Скопировать",
-    "description": "The copy button label on code blocks"
-  },
-  "theme.docs.sidebar.expandButtonTitle": {
-    "message": "Развернуть сайдбар",
-    "description": "The ARIA label and title attribute for expand button of doc sidebar"
-  },
-  "theme.docs.sidebar.expandButtonAriaLabel": {
-    "message": "Развернуть сайдбар",
-    "description": "The ARIA label and title attribute for expand button of doc sidebar"
-  },
-  "theme.docs.paginator.navAriaLabel": {
-    "message": "Навигация по странице документации",
-    "description": "The ARIA label for the docs pagination"
-  },
-  "theme.docs.paginator.previous": {
-    "message": "Предыдущая страница",
-    "description": "The label used to navigate to the previous doc"
-  },
-  "theme.docs.paginator.next": {
-    "message": "Следующая страница",
-    "description": "The label used to navigate to the next doc"
-  },
-  "theme.docs.sidebar.collapseButtonTitle": {
-    "message": "Свернуть сайдбар",
-    "description": "The title attribute for collapse button of doc sidebar"
-  },
-  "theme.docs.sidebar.collapseButtonAriaLabel": {
-    "message": "Свернуть сайдбар",
-    "description": "The title attribute for collapse button of doc sidebar"
-  },
-  "theme.docs.sidebar.responsiveCloseButtonLabel": {
-    "message": "Закрыть меню",
-    "description": "The ARIA label for close button of mobile doc sidebar"
-  },
-  "theme.docs.sidebar.responsiveOpenButtonLabel": {
-    "message": "Открыть меню",
-    "description": "The ARIA label for open button of mobile doc sidebar"
-  },
-  "theme.docs.versions.unreleasedVersionLabel": {
-    "message": "Это документация для будущей версии {siteTitle} {versionLabel}.",
-    "description": "The label used to tell the user that he's browsing an unreleased doc version"
-  },
-  "theme.docs.versions.unmaintainedVersionLabel": {
-    "message": "Это документация {siteTitle} для версии {versionLabel}, которая уже не поддерживается.",
-    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
-  },
-  "theme.docs.versions.latestVersionSuggestionLabel": {
-    "message": "Актуальная документация находится на странице {latestVersionLink} ({versionLabel}).",
-    "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
-  },
-  "theme.docs.versions.latestVersionLinkLabel": {
-    "message": "последней версии",
-    "description": "The label used for the latest version suggestion link label"
-  },
-  "theme.common.editThisPage": {
-    "message": "Отредактировать эту страницу",
-    "description": "The link label to edit the current page"
-  },
-  "theme.common.headingLinkTitle": {
-    "message": "Прямая ссылка на этот заголовок",
-    "description": "Title for link to heading"
-  },
-  "theme.lastUpdated.atDate": {
-    "message": " {date}",
-    "description": "The words used to describe on which date a page has been last updated"
-  },
-  "theme.lastUpdated.byUser": {
-    "message": " от {user}",
-    "description": "The words used to describe by who the page has been last updated"
-  },
-  "theme.lastUpdated.lastUpdatedAtBy": {
-    "message": "Последнее обновление{atDate}{byUser}",
-    "description": "The sentence used to display when a page has been last updated, and by who"
-  },
-  "theme.common.skipToMainContent": {
-    "message": "Перейти к основному содержимому",
-    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
-  }
+    "pages.home.features.title": {
+        "message": "Преимущества",
+        "description": "Features"
+    },
+    "pages.home.features.logic.title": {
+        "message": "Явная бизнес-логика",
+        "description": "Feature title"
+    },
+    "pages.home.features.logic.description": {
+        "message": "Архитектуру легко осваивать, поскольку она состоит из доменных модулей",
+        "description": "Feature description"
+    },
+    "pages.home.features.adaptability.title": {
+        "message": "Адаптивность",
+        "description": "Feature title"
+    },
+    "pages.home.features.adaptability.description": {
+        "message": "Компоненты архитектуры можно гибко заменять, добавлять под новые условия",
+        "description": "Feature description"
+    },
+    "pages.home.features.debt.title": {
+        "message": "Технический долг",
+        "description": "Feature title"
+    },
+    "pages.home.features.debt.description": {
+        "message": "Каждый модуль можно независимо модифицировать / переписать без сайд-эффектов",
+        "description": "Feature description"
+    },
+    "pages.home.features.shared.title": {
+        "message": "Явная переиспользуемость",
+        "description": "Feature title"
+    },
+    "pages.home.features.shared.description": {
+        "message": "Сохраняется баланс между DRY и локальной кастомизацией",
+        "description": "Feature description"
+    },
+    "pages.home.concepts.title": {
+        "message": "Концепции",
+        "description": "Concepts"
+    },
+    "pages.home.concepts.public.title": {
+        "message": "Public API",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.public.description": {
+        "message": "Каждый модуль должен иметь на верхнем уровне декларацию своего публичного API",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.isolation.title": {
+        "message": "Изоляция",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.isolation.description": {
+        "message": "Модуль не должен зависеть напрямую от других модулей того же слоя или вышележаших слоев",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.needs.title": {
+        "message": "Понимание потребностей",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.needs.description": {
+        "message": "Ориентирование на потребности бизнеса и пользователя",
+        "description": "Concept description"
+    },
+    "pages.home.scheme.title": {
+        "message": "Схема",
+        "description": "Scheme"
+    },
+    "pages.home.companies.using": {
+        "message": "Компании, использующие методологию",
+        "description": "Companies using methodology"
+    },
+    "pages.home.companies.add_me": {
+        "message": "Методология используется в Вашей компании?",
+        "description": "Methodology is used in your company?"
+    },
+    "pages.home.companies.tell_us": {
+        "message": "Сообщите нам",
+        "description": "Tell us"
+    },
+    "pages.examples.title": {
+        "message": "Примеры",
+        "description": "Page title"
+    },
+    "pages.examples.subtitle": {
+        "message": "Список сайтов, сделанных людьми с FeatureSliced",
+        "description": "Page subtitle"
+    },
+    "pages.examples.add_me.title": {
+        "message": "Добавить пример",
+        "description": "Request to add example"
+    },
+    "pages.examples.repo.title": {
+        "message": "Репозиторий",
+        "description": "Examples repository label"
+    },
+    "pages.examples.versions": {
+        "message": "См. также список версий",
+        "description": "Versions reminder"
+    },
+    "pages.versions.title": {
+        "message": "Версии Feature Sliced",
+        "description": "Feature Sliced versions"
+    },
+    "pages.versions.current": {
+        "message": "Здесь можно найти документацию для текущей опубликованной версии",
+        "description": "Description for current version"
+    },
+    "pages.versions.legacy": {
+        "message": "Здесь можно найти документацию для старых версий {of}",
+        "description": "Description for legacy version"
+    },
+    "pages.nav.title": {
+        "message": "🧭 Навигация",
+        "description": "NavPage title"
+    },
+    "pages.nav.legacy.title": {
+        "message": "Устаревшие ссылки",
+        "description": "NavPage section=legacy title"
+    },
+    "pages.nav.legacy.details": {
+        "message": "После реструктуризации документации, некоторые ссылки на статьи изменились. Ниже можно найти страницу, которую вы, возможно, искали.",
+        "description": "NavPage section=legacy details"
+    },
+    "pages.nav.legacy.subdetails": {
+        "message": "Но для совместимости есть редиректы со старых ссылок",
+        "description": "NavPage section=legacy subdetails"
+    },
+    "features.cookie-consent.alert": {
+        "message": "🍰 Мы используем куки для аналитики",
+        "description": "Cookie Consent alert"
+    },
+    "features.cookie-consent.accept": {
+        "message": "Хорошо",
+        "description": "Cookie Consent accept label"
+    },
+    "features.cookie-consent.reason": {
+        "message": "зачем?",
+        "description": "Cookie Consent reason label"
+    },
+    "features.feedback-badge.label": {
+        "message": "Поделись фидбеком по документации 🤙",
+        "description": "Feedback share button label"
+    },
+    "features.feedback-badge.url": {
+        "message": "https://forms.gle/7p4anU2shHAzmfqc8",
+        "description": "Feedback share form url"
+    },
+    "features.feedback-doc.thanks": {
+        "message": "Спасибо, что поделились!",
+        "description": "DocFeedback block=Thanks"
+    },
+    "features.feedback-doc.title": {
+        "message": "Страница была полезной?",
+        "description": "DocFeedback block=Title"
+    },
+    "features.feedback-doc.subtitle": {
+        "message": "Ваш фидбек помогает нам улучшать документацию",
+        "description": "DocFeedback block=Subtitle"
+    },
+    "features.hero.tagline": {
+        "message": "Структурная методология для фронтенд проектов",
+        "description": "Structural methodology for frontend projects"
+    },
+    "features.hero.get_started": {
+        "message": "Ознакомиться",
+        "description": "Get Started"
+    },
+    "features.hero.examples": {
+        "message": "Примеры",
+        "description": "Examples"
+    },
+    "features.hero.previous": {
+        "message": "Предыдущая версия",
+        "description": "Previous version"
+    },
+    "shared.wip.title": {
+        "message": "Статья находится в процессе написания",
+        "description": "Admonition title"
+    },
+    "shared.wip.subtitle": {
+        "message": "Чтобы ускорить ее появление, можно:",
+        "description": "Admonition subtitle"
+    },
+    "shared.wip.var.feedback.base": {
+        "message": "📢 Поделиться обратной связью ",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.feedback.link": {
+        "message": "в тикете (комментарии/эмодзи-реакция)",
+        "description": "Variant for contribute (link)"
+    },
+    "shared.wip.var.material.base": {
+        "message": "💬 Собрать в тикет накопленный по теме ",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.material.link": {
+        "message": "материал из чата",
+        "description": "Variant for contribute (link)"
+    },
+    "shared.wip.var.contribute.base": {
+        "message": "⚒️ Посодействовать ",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.contribute.link": {
+        "message": "любым другим способом",
+        "description": "Variant for contribute (link)"
+    },
+    "theme.NotFound.title": {
+        "message": "Страница не найдена",
+        "description": "The title of the 404 page"
+    },
+    "theme.NotFound.p1": {
+        "message": "К сожалению, мы не смогли найти запрашиваемую вами страницу.",
+        "description": "The first paragraph of the 404 page"
+    },
+    "theme.NotFound.p2": {
+        "message": "Пожалуйста, обратитесь к владельцу сайта, с которого вы перешли на эту ссылку, чтобы сообщить ему ссылка не работает.",
+        "description": "The 2nd paragraph of the 404 page"
+    },
+    "theme.AnnouncementBar.closeButtonAriaLabel": {
+        "message": "Закрыть",
+        "description": "The ARIA label for close button of announcement bar"
+    },
+    "theme.blog.paginator.navAriaLabel": {
+        "message": "Навигация по странице списка блогов",
+        "description": "The ARIA label for the blog pagination"
+    },
+    "theme.blog.paginator.newerEntries": {
+        "message": "Следующие записи",
+        "description": "The label used to navigate to the newer blog posts page (previous page)"
+    },
+    "theme.blog.paginator.olderEntries": {
+        "message": "Предыдущие записи",
+        "description": "The label used to navigate to the older blog posts page (next page)"
+    },
+    "theme.blog.post.readingTime.plurals": {
+        "message": "{readingTime} мин. чтения",
+        "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+    },
+    "theme.tags.tagsListLabel": {
+        "message": "Теги:",
+        "description": "The label alongside a tag list"
+    },
+    "theme.blog.post.readMore": {
+        "message": "Читать дальше",
+        "description": "The label used in blog post item excerpts to link to full blog posts"
+    },
+    "theme.blog.post.paginator.navAriaLabel": {
+        "message": "Навигация по странице поста блога",
+        "description": "The ARIA label for the blog posts pagination"
+    },
+    "theme.blog.post.paginator.newerPost": {
+        "message": "Следующий пост",
+        "description": "The blog post button label to navigate to the newer/previous post"
+    },
+    "theme.blog.post.paginator.olderPost": {
+        "message": "Предыдущий пост",
+        "description": "The blog post button label to navigate to the older/next post"
+    },
+    "theme.tags.tagsPageTitle": {
+        "message": "Теги",
+        "description": "The title of the tag list page"
+    },
+    "theme.blog.post.plurals": {
+        "message": "{count} запись|{count} записи|{count} записей",
+        "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+    },
+    "theme.blog.tagTitle": {
+        "message": "{nPosts} с тегом \"{tagName}\"",
+        "description": "The title of the page for a blog tag"
+    },
+    "theme.tags.tagsPageLink": {
+        "message": "Посмотреть все теги",
+        "description": "The label of the link targeting the tag list page"
+    },
+    "theme.CodeBlock.copyButtonAriaLabel": {
+        "message": "Скопировать в буфер обмена",
+        "description": "The ARIA label for copy code blocks button"
+    },
+    "theme.CodeBlock.copied": {
+        "message": "Скопировано",
+        "description": "The copied button label on code blocks"
+    },
+    "theme.CodeBlock.copy": {
+        "message": "Скопировать",
+        "description": "The copy button label on code blocks"
+    },
+    "theme.docs.sidebar.expandButtonTitle": {
+        "message": "Развернуть сайдбар",
+        "description": "The ARIA label and title attribute for expand button of doc sidebar"
+    },
+    "theme.docs.sidebar.expandButtonAriaLabel": {
+        "message": "Развернуть сайдбар",
+        "description": "The ARIA label and title attribute for expand button of doc sidebar"
+    },
+    "theme.docs.paginator.navAriaLabel": {
+        "message": "Навигация по странице документации",
+        "description": "The ARIA label for the docs pagination"
+    },
+    "theme.docs.paginator.previous": {
+        "message": "Предыдущая страница",
+        "description": "The label used to navigate to the previous doc"
+    },
+    "theme.docs.paginator.next": {
+        "message": "Следующая страница",
+        "description": "The label used to navigate to the next doc"
+    },
+    "theme.docs.sidebar.collapseButtonTitle": {
+        "message": "Свернуть сайдбар",
+        "description": "The title attribute for collapse button of doc sidebar"
+    },
+    "theme.docs.sidebar.collapseButtonAriaLabel": {
+        "message": "Свернуть сайдбар",
+        "description": "The title attribute for collapse button of doc sidebar"
+    },
+    "theme.docs.sidebar.responsiveCloseButtonLabel": {
+        "message": "Закрыть меню",
+        "description": "The ARIA label for close button of mobile doc sidebar"
+    },
+    "theme.docs.sidebar.responsiveOpenButtonLabel": {
+        "message": "Открыть меню",
+        "description": "The ARIA label for open button of mobile doc sidebar"
+    },
+    "theme.docs.versions.unreleasedVersionLabel": {
+        "message": "Это документация для будущей версии {siteTitle} {versionLabel}.",
+        "description": "The label used to tell the user that he's browsing an unreleased doc version"
+    },
+    "theme.docs.versions.unmaintainedVersionLabel": {
+        "message": "Это документация {siteTitle} для версии {versionLabel}, которая уже не поддерживается.",
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+    },
+    "theme.docs.versions.latestVersionSuggestionLabel": {
+        "message": "Актуальная документация находится на странице {latestVersionLink} ({versionLabel}).",
+        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+    },
+    "theme.docs.versions.latestVersionLinkLabel": {
+        "message": "последней версии",
+        "description": "The label used for the latest version suggestion link label"
+    },
+    "theme.common.editThisPage": {
+        "message": "Отредактировать эту страницу",
+        "description": "The link label to edit the current page"
+    },
+    "theme.common.headingLinkTitle": {
+        "message": "Прямая ссылка на этот заголовок",
+        "description": "Title for link to heading"
+    },
+    "theme.lastUpdated.atDate": {
+        "message": " {date}",
+        "description": "The words used to describe on which date a page has been last updated"
+    },
+    "theme.lastUpdated.byUser": {
+        "message": " от {user}",
+        "description": "The words used to describe by who the page has been last updated"
+    },
+    "theme.lastUpdated.lastUpdatedAtBy": {
+        "message": "Последнее обновление{atDate}{byUser}",
+        "description": "The sentence used to display when a page has been last updated, and by who"
+    },
+    "theme.common.skipToMainContent": {
+        "message": "Перейти к основному содержимому",
+        "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+    }
 }

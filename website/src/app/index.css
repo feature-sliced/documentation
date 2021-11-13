@@ -90,7 +90,7 @@ html::-webkit-scrollbar-corner {
     display: flex;
     width: 24px;
     height: 24px;
-    content: '';
+    content: "";
 }
 
 .github.ext-link::before {
@@ -101,7 +101,7 @@ html::-webkit-scrollbar-corner {
     background: url(assets/telegram.svg) no-repeat;
 }
 
-html[data-theme='dark'] .ext-link::before {
+html[data-theme="dark"] .ext-link::before {
     /* NOTE: Maybe should be colorize explicitly with background-color or by svg#currentColor */
     filter: invert(1);
 }
@@ -109,7 +109,7 @@ html[data-theme='dark'] .ext-link::before {
 /**
  * Dark theme for images
  */
-html[data-theme='dark'] img[alt*="themed"] {
+html[data-theme="dark"] img[alt*="themed"] {
     /**
      * While absolutely inverting, but later for alphaless images
      * maybe will be changed to 0.9 (for more soft inverting)
@@ -118,7 +118,7 @@ html[data-theme='dark'] img[alt*="themed"] {
 }
 
 /* FIXME: hardcoded */
-html[data-theme='dark'] img[alt*="themed--scheme"] {
+html[data-theme="dark"] img[alt*="themed--scheme"] {
     filter: invert(0.905) brightness(1.04) grayscale(100%) opacity(0.5);
 }
 
@@ -159,7 +159,7 @@ iframe {
     }
 }
 
-[role=banner] {
+[role="banner"] {
     background-color: #0367d2 !important;
 }
 
@@ -185,7 +185,7 @@ iframe {
     --ifm-badge-border-color: var(--ifm-badge-background-color);
 }
 
-html[data-theme=dark] .badge--warning {
+html[data-theme="dark"] .badge--warning {
     --ifm-badge-background-color: var(--ifm-color-warning-dark);
 }
 

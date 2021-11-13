@@ -41,7 +41,7 @@
     margin-bottom: 0;
 }
 
-html[data-theme=dark] .root {
+html[data-theme="dark"] .root {
     background: var(--ifm-color-gray-900);
 }
 
