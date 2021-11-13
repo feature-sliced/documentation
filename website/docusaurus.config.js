@@ -217,7 +217,7 @@ const presets = [
             //     `${GITHUB_DOCS}/edit/master/website/blog/`,
             // },
             theme: {
-                customCss: require.resolve("./src/app/index.css"),
+                customCss: require.resolve("./src/app/index.scss"),
             },
             // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap
             sitemap: {
@@ -231,6 +231,7 @@ const presets = [
 
 /** @type {Config["plugins"]} */
 const plugins = [
+    "docusaurus-plugin-sass",
     // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
     [
         "@docusaurus/plugin-client-redirects",

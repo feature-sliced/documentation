@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { translate } from "@docusaurus/Translate";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 // FIXME: rename to `Hero`, because its not header
 export function Header() {

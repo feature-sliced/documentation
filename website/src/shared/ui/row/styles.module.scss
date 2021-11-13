@@ -5,20 +5,20 @@
     border-radius: var(--ifm-alert-border-radius);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
     transition: 0.25s;
-}
 
-.root:hover {
-    text-decoration: none;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    &:hover {
+        text-decoration: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    & + .root {
+        margin-top: 10px;
+    }
 }
 
 .rootDisabled {
     pointer-events: none;
     opacity: 0.5;
-}
-
-.root + .root {
-    margin-top: 10px;
 }
 
 .details {
@@ -41,7 +41,7 @@
     margin-bottom: 0;
 }
 
-html[data-theme=dark] .root {
+html[data-theme="dark"] .root {
     background: var(--ifm-color-gray-900);
 }
 

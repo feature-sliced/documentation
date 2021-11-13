@@ -3,7 +3,7 @@ import ReactCookieConsent from "react-cookie-consent";
 import Link from "@docusaurus/Link";
 import { translate } from "@docusaurus/Translate";
 
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 export const CookieConsent = () => {
     return (

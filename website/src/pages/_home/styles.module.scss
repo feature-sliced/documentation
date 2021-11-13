@@ -29,10 +29,10 @@
 .companiesItem {
     align-self: center;
     transition: 0.25s;
-}
 
-.companiesItem:hover {
-    opacity: 0.7;
+    &:hover {
+        opacity: 0.7;
+    }
 }
 
 .companiesItemImg {

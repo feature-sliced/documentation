@@ -6,7 +6,7 @@ import Layout from "@theme/Layout";
 import { translate } from "@docusaurus/Translate";
 
 import { Row } from "@site/src/shared/ui/row";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 const NavPage = () => {
     return (
