@@ -10,8 +10,13 @@
         "build": "docusaurus build",
         "swizzle": "docusaurus swizzle",
         "test": "yarn test:lint && yarn run build",
+<<<<<<< HEAD
         "test:lint": "eslint \"./**/*.{ts,tsx,js,jsx}\" && stylelint ./**/*.scss",
         "test:lint:fix": "eslint --fix './**/*.{ts,tsx,js,jsx}' && stylelint **/*.scss --fix",
+=======
+        "test:lint": "eslint './**/*.{ts,tsx,js,jsx}' && stylelint **/*.css",
+        "test:lint:fix": "eslint --fix './**/*.{ts,tsx,js,jsx}' && stylelint **/*.css --fix",
+>>>>>>> 0aaad246dd1cdd9ca7765bd5ec8fed533c8b39b3
         "deploy": "docusaurus deploy",
         "clear": "docusaurus clear",
         "serve": "docusaurus serve",
@@ -54,11 +59,17 @@
         "@eslint-kit/eslint-config-prettier": "3.0.0",
         "@eslint-kit/eslint-config-react": "^3.0.0",
         "babel-eslint": "10.1.0",
+<<<<<<< HEAD
         "docusaurus-plugin-sass": "^0.2.1",
         "eslint": "7.10.0",
         "eslint-import-resolver-alias": "1.1.2",
         "prettier": "2.3.0",
         "sass": "^1.43.4",
+=======
+        "eslint": "7.10.0",
+        "eslint-import-resolver-alias": "1.1.2",
+        "prettier": "2.3.0",
+>>>>>>> 0aaad246dd1cdd9ca7765bd5ec8fed533c8b39b3
         "stylelint": "^13.13.1",
         "stylelint-config-recess-order": "^2.4.0",
         "stylelint-config-recommended": "^5.0.0",

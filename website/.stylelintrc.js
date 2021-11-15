@@ -13,4 +13,4 @@ module.exports = {
         "color-hex-length": "long",
         "at-rule-no-unknown": true,
     },
-}
+};
