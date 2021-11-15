@@ -3,7 +3,7 @@ import React from "react";
 import clsx from "clsx";
 // eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 export function ExampleCard({ className, data }) {
     return (

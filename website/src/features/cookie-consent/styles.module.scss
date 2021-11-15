@@ -13,10 +13,10 @@
     background: var(--ifm-color-primary-dark) !important;
     border-radius: var(--ifm-button-border-radius) !important;
     transition: 0.25s;
-}
 
-.button:hover {
-    opacity: 0.7;
+    &:hover {
+        opacity: 0.7;
+    }
 }
 
 @media (max-width: 460px) {

@@ -32,10 +32,10 @@
     color: #ffffff;
     opacity: 0.7;
     transition: 0.25s;
-}
 
-.link:hover {
-    color: unset;
-    text-decoration: unset;
-    opacity: 0.4;
+    &:hover {
+        color: unset;
+        text-decoration: unset;
+        opacity: 0.4;
+    }
 }

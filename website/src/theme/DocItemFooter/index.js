@@ -2,7 +2,7 @@ import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import OriginalDocItemFooter from "@theme-original/DocItemFooter";
 import { DocFeedback } from "@site/src/features/feedback/doc";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 /**
  * DocItemFooter
