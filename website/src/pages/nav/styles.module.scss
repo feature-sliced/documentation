@@ -13,16 +13,16 @@
 
 .group {
     margin-top: 2rem;
-}
 
-.groupItems {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
-}
+    &Items {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 2rem;
+    }
 
-.groupItemsRow + .groupItemsRow {
-    margin-top: 0;
+    &ItemsRow + &ItemsRow {
+        margin-top: 0;
+    }
 }
 
 .route {

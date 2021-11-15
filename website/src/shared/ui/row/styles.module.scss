@@ -14,16 +14,21 @@
     & + .root {
         margin-top: 10px;
     }
-}
 
-.rootDisabled {
-    pointer-events: none;
-    opacity: 0.5;
+    &Disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
 }
 
 .details {
     flex-grow: 1;
     align-self: center;
+
+    &Tags {
+        font-size: 0.8rem;
+        opacity: 0.5;
+    }
 }
 
 .icon {
@@ -43,9 +48,4 @@
 
 html[data-theme="dark"] .root {
     background: var(--ifm-color-gray-900);
-}
-
-.detailsTags {
-    font-size: 0.8rem;
-    opacity: 0.5;
 }

@@ -38,6 +38,26 @@
     background-color: rgb(72, 77, 91);
 }
 
+/**
+ * External community links
+ */
+.ext-link {
+    --ifm-navbar-item-padding-horizontal: 0.5rem;
+
+    transition: 0.25s;
+
+    &:hover {
+        opacity: 0.6;
+    }
+
+    &::before {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        content: "";
+    }
+}
+
 /* Inherited from docusaurus scrollbar stylesheets for inner containers */
 html {
     scroll-behavior: smooth;
@@ -63,36 +83,45 @@ html {
     &::-webkit-scrollbar-corner {
         background-color: #ffffff;
     }
-}
 
-/**
- * External community links
- */
-.ext-link {
-    --ifm-navbar-item-padding-horizontal: 0.5rem;
-
-    transition: 0.25s;
-
-    &:hover {
-        opacity: 0.6;
+    &[data-theme="dark"] .ext-link::before {
+        /* NOTE: Maybe should be colorize explicitly with background-color or by svg#currentColor */
+        filter: invert(1);
     }
 
-    &::before {
-        display: flex;
-        width: 24px;
-        height: 24px;
-        content: "";
+    /**
+   * Dark theme for images
+   */
+    &[data-theme="dark"] img[alt*="themed"] {
+        /**
+       * While absolutely inverting, but later for alphaless images
+       * maybe will be changed to 0.9 (for more soft inverting)
+       */
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    /* FIXME: hardcoded */
+    &[data-theme="dark"] img[alt*="themed--scheme"] {
+        filter: invert(0.905) brightness(1.04) grayscale(100%) opacity(0.5);
+    }
+
+    & img[alt*="bordered"] {
+        border: 1px solid rgb(211, 213, 216);
+        border-radius: 16px;
+    }
+
+    & img[alt*="w100"] {
+        width: 100%;
+    }
+
+    & img[alt*="bgLight"] {
+        background: white;
+    }
+
+    &[data-theme="dark"] .badge--warning {
+        --ifm-badge-background-color: var(--ifm-color-warning-dark);
     }
 }
-
-/* FIXME: Some weird bug,
-  If we try to delete one of this selectors
-  Then `:hover` styles wont'be applied
- */
-/* stylelint-disable-next-line no-duplicate-selectors */
-// .ext-link:hover {
-//     opacity: 0.6;
-// }
 
 .github.ext-link::before {
     background: url(assets/github.svg) no-repeat;
@@ -100,40 +129,6 @@ html {
 
 .telegram.ext-link::before {
     background: url(assets/telegram.svg) no-repeat;
-}
-
-html[data-theme="dark"] .ext-link::before {
-    /* NOTE: Maybe should be colorize explicitly with background-color or by svg#currentColor */
-    filter: invert(1);
-}
-
-/**
- * Dark theme for images
- */
-html[data-theme="dark"] img[alt*="themed"] {
-    /**
-     * While absolutely inverting, but later for alphaless images
-     * maybe will be changed to 0.9 (for more soft inverting)
-     */
-    filter: invert(1) hue-rotate(180deg);
-}
-
-/* FIXME: hardcoded */
-html[data-theme="dark"] img[alt*="themed--scheme"] {
-    filter: invert(0.905) brightness(1.04) grayscale(100%) opacity(0.5);
-}
-
-html img[alt*="bordered"] {
-    border: 1px solid rgb(211, 213, 216);
-    border-radius: 16px;
-}
-
-html img[alt*="w100"] {
-    width: 100%;
-}
-
-html img[alt*="bgLight"] {
-    background: white;
 }
 
 iframe {
@@ -186,14 +181,12 @@ iframe {
     --ifm-badge-border-color: var(--ifm-badge-background-color);
 }
 
-html[data-theme="dark"] .badge--warning {
-    --ifm-badge-background-color: var(--ifm-color-warning-dark);
-}
-
 /* Debug only, for simulating searchBox on devMode
 .navbar__items:last-child {
     border-right: 161px solid black;
 } */
+
+/* FIXME: temp hack for adaptive-layout! */
 
 @media (max-width: 1180px) {
     .navbar__brand {

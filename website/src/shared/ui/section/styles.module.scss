@@ -5,13 +5,13 @@
     padding: 2rem 0;
 
     /* height: 450px; */
-}
 
-.sectionAlt {
-    color: var(--ifm-font-color-base-inverse);
+    &Alt {
+        color: var(--ifm-font-color-base-inverse);
 
-    /* background-color: var(--ifm-color-primary); */
-    background-color: var(--ifm-color-emphasis-600);
+        /* background-color: var(--ifm-color-primary); */
+        background-color: var(--ifm-color-emphasis-600);
+    }
 }
 
 .title {
