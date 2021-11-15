@@ -12,7 +12,7 @@ import imgScheme from "@site/static/img/visual_schema.jpg";
 // NOTE: Locate at index before of specific route-mapping while Node/SSR building
 // "_" for excluding file from routing
 import { features, concepts, companies } from "./_config";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 export default function HomePage() {
     // NOTE: use siteConfig for getting config

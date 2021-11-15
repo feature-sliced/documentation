@@ -4,7 +4,7 @@ import { LikeFilled, DislikeFilled } from "@ant-design/icons";
 import { translate } from "@docusaurus/Translate";
 
 import { ga } from "@site/src/shared/lib/ga";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 
 /**
  * Send feedback to Google Analytics

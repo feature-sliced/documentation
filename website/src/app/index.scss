@@ -38,33 +38,6 @@
     background-color: rgb(72, 77, 91);
 }
 
-/* Inherited from docusaurus scrollbar stylesheets for inner containers */
-html {
-    scroll-behavior: smooth;
-    scrollbar-color: var(--ifm-scrollbar-thumb-background-color) transparent;
-    scrollbar-width: thin;
-}
-
-html::-webkit-scrollbar {
-    width: var(--ifm-scrollbar-size);
-    height: var(--ifm-scrollbar-size);
-    background-color: transparent;
-}
-
-html::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 10px;
-}
-
-html::-webkit-scrollbar-thumb {
-    background-color: var(--ifm-scrollbar-thumb-background-color);
-    border-radius: 10px;
-}
-
-html::-webkit-scrollbar-corner {
-    background-color: #ffffff;
-}
-
 /**
  * External community links
  */
@@ -72,25 +45,82 @@ html::-webkit-scrollbar-corner {
     --ifm-navbar-item-padding-horizontal: 0.5rem;
 
     transition: 0.25s;
+
+    &:hover {
+        opacity: 0.6;
+    }
+
+    &::before {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        content: "";
+    }
 }
 
-/* FIXME: Some weird bug,
-  If we try to delete one of this selectors
-  Then `:hover` styles wont'be applied
- */
-.ext-link:hover {
-    opacity: 0.6;
-}
-/* stylelint-disable-next-line no-duplicate-selectors */
-.ext-link:hover {
-    opacity: 0.6;
-}
+/* Inherited from docusaurus scrollbar stylesheets for inner containers */
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: var(--ifm-scrollbar-thumb-background-color) transparent;
+    scrollbar-width: thin;
 
-.ext-link::before {
-    display: flex;
-    width: 24px;
-    height: 24px;
-    content: "";
+    &::-webkit-scrollbar {
+        width: var(--ifm-scrollbar-size);
+        height: var(--ifm-scrollbar-size);
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--ifm-scrollbar-thumb-background-color);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background-color: #ffffff;
+    }
+
+    &[data-theme="dark"] .ext-link::before {
+        /* NOTE: Maybe should be colorize explicitly with background-color or by svg#currentColor */
+        filter: invert(1);
+    }
+
+    /**
+   * Dark theme for images
+   */
+    &[data-theme="dark"] img[alt*="themed"] {
+        /**
+       * While absolutely inverting, but later for alphaless images
+       * maybe will be changed to 0.9 (for more soft inverting)
+       */
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    /* FIXME: hardcoded */
+    &[data-theme="dark"] img[alt*="themed--scheme"] {
+        filter: invert(0.905) brightness(1.04) grayscale(100%) opacity(0.5);
+    }
+
+    & img[alt*="bordered"] {
+        border: 1px solid rgb(211, 213, 216);
+        border-radius: 16px;
+    }
+
+    & img[alt*="w100"] {
+        width: 100%;
+    }
+
+    & img[alt*="bgLight"] {
+        background: white;
+    }
+
+    &[data-theme="dark"] .badge--warning {
+        --ifm-badge-background-color: var(--ifm-color-warning-dark);
+    }
 }
 
 .github.ext-link::before {
@@ -99,40 +129,6 @@ html::-webkit-scrollbar-corner {
 
 .telegram.ext-link::before {
     background: url(assets/telegram.svg) no-repeat;
-}
-
-html[data-theme="dark"] .ext-link::before {
-    /* NOTE: Maybe should be colorize explicitly with background-color or by svg#currentColor */
-    filter: invert(1);
-}
-
-/**
- * Dark theme for images
- */
-html[data-theme="dark"] img[alt*="themed"] {
-    /**
-     * While absolutely inverting, but later for alphaless images
-     * maybe will be changed to 0.9 (for more soft inverting)
-     */
-    filter: invert(1) hue-rotate(180deg);
-}
-
-/* FIXME: hardcoded */
-html[data-theme="dark"] img[alt*="themed--scheme"] {
-    filter: invert(0.905) brightness(1.04) grayscale(100%) opacity(0.5);
-}
-
-html img[alt*="bordered"] {
-    border: 1px solid rgb(211, 213, 216);
-    border-radius: 16px;
-}
-
-html img[alt*="w100"] {
-    width: 100%;
-}
-
-html img[alt*="bgLight"] {
-    background: white;
 }
 
 iframe {
@@ -183,10 +179,6 @@ iframe {
 .badge--violet {
     --ifm-badge-background-color: #5c21dd;
     --ifm-badge-border-color: var(--ifm-badge-background-color);
-}
-
-html[data-theme="dark"] .badge--warning {
-    --ifm-badge-background-color: var(--ifm-color-warning-dark);
 }
 
 /* Debug only, for simulating searchBox on devMode
