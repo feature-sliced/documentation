@@ -10,13 +10,8 @@
         "build": "docusaurus build",
         "swizzle": "docusaurus swizzle",
         "test": "yarn test:lint && yarn run build",
-<<<<<<< HEAD
         "test:lint": "eslint \"./**/*.{ts,tsx,js,jsx}\" && stylelint ./**/*.scss",
         "test:lint:fix": "eslint --fix './**/*.{ts,tsx,js,jsx}' && stylelint **/*.scss --fix",
-=======
-        "test:lint": "eslint './**/*.{ts,tsx,js,jsx}' && stylelint **/*.css",
-        "test:lint:fix": "eslint --fix './**/*.{ts,tsx,js,jsx}' && stylelint **/*.css --fix",
->>>>>>> 0aaad246dd1cdd9ca7765bd5ec8fed533c8b39b3
         "deploy": "docusaurus deploy",
         "clear": "docusaurus clear",
         "serve": "docusaurus serve",
