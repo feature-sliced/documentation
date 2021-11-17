@@ -59,4 +59,12 @@ export const examples = [
         preview: require("./img/projentry.png"),
         version: VERSIONS.V2,
     },
+    {
+        title: "Loripsum-generator",
+        description: "Simple fish text generator",
+        website: "https://loripsum-generator.vercel.app",
+        source: "https://github.com/yesnoruly/loripsum-generator",
+        preview: require("./img/loripsum-generator.png"),
+        version: VERSIONS.V2,
+    },
 ];
