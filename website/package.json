@@ -16,7 +16,9 @@
         "clear": "docusaurus clear",
         "serve": "docusaurus serve",
         "write-translations": "docusaurus write-translations",
-        "write-heading-ids": "docusaurus write-heading-ids"
+        "write-heading-ids": "docusaurus write-heading-ids",
+        "contributors:add": "cd .. && all-contributors add",
+        "contributors:generate": "cd .. && all-contributors generate"
     },
     "dependencies": {
         "@ant-design/icons": "^4.6.2",
@@ -53,6 +55,7 @@
         "@eslint-kit/eslint-config-patch": "^1.0.0",
         "@eslint-kit/eslint-config-prettier": "3.0.0",
         "@eslint-kit/eslint-config-react": "^3.0.0",
+        "all-contributors-cli": "^6.20.0",
         "babel-eslint": "10.1.0",
         "docusaurus-plugin-sass": "^0.2.1",
         "eslint": "7.10.0",

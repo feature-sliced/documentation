@@ -6,19 +6,159 @@
   "commit": false,
   "contributors": [
     {
+      "login": "sergeysova",
+      "name": "Sergey Sova",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5620073?v=4",
+      "profile": "https://sova.dev/",
+      "contributions": [
+        "blog",
+        "doc",
+        "example",
+        "ideas",
+        "projectManagement",
+        "question",
+        "infra",
+        "research",
+        "eventOrganizing",
+        "tutorial",
+        "talk",
+        "maintenance"
+      ]
+    },
+    {
       "login": "azinit",
       "name": "Ilya Azin",
       "avatar_url": "https://avatars.githubusercontent.com/u/42924400?v=4",
       "profile": "https://t.me/ilya_azin",
       "contributions": [
-        "code"
+        "doc",
+        "example",
+        "ideas",
+        "projectManagement",
+        "question",
+        "review",
+        "infra",
+        "userTesting",
+        "design",
+        "tutorial",
+        "talk",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "KaraMokusee",
+      "name": "Kara Mokusee",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8805308?v=4",
+      "profile": "https://github.com/KaraMokusee",
+      "contributions": [
+        "doc",
+        "content",
+        "ideas",
+        "question",
+        "translation",
+        "talk",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "AlexandrHoroshih",
+      "name": "Alexander Khoroshikh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32790736?v=4",
+      "profile": "https://github.com/AlexandrHoroshih",
+      "contributions": [
+        "doc",
+        "ideas",
+        "question",
+        "review",
+        "tool",
+        "security",
+        "talk",
+        "tutorial",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "unordinarity",
+      "name": "Bear Raytracer",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23265008?v=4",
+      "profile": "https://github.com/unordinarity",
+      "contributions": [
+        "doc",
+        "example",
+        "ideas",
+        "question",
+        "review",
+        "translation",
+        "design",
+        "infra",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "spotsccc",
+      "name": "spotsccc",
+      "avatar_url": "https://avatars.githubusercontent.com/u/80784519?v=4",
+      "profile": "https://github.com/spotsccc",
+      "contributions": [
+        "doc",
+        "example",
+        "ideas",
+        "question",
+        "review",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "ilyaagarkov",
+      "name": "Ilya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10822601?v=4",
+      "profile": "https://github.com/ilyaagarkov",
+      "contributions": [
+        "doc",
+        "ideas",
+        "talk",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "epodgaetskiy",
+      "name": "Evgeniy Podgaetskiy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15031623?v=4",
+      "profile": "https://start.reactwarriors.com/join",
+      "contributions": [
+        "ideas",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "binjospookie",
+      "name": "Viktor Pasynok",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8722478?v=4",
+      "profile": "https://binjo.ru/",
+      "contributions": [
+        "doc",
+        "ideas",
+        "projectManagement",
+        "talk"
+      ]
+    },
+    {
+      "login": "OlegBrony",
+      "name": "Oleh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19880334?v=4",
+      "profile": "https://github.com/OlegBrony",
+      "contributions": [
+        "doc",
+        "ideas",
+        "tutorial"
       ]
     }
   ],
-  "contributorsPerLine": 7,
+  "contributorsPerLine": 5,
   "projectName": "documentation",
   "projectOwner": "feature-sliced",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "none"
 }
