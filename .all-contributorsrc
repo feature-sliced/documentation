@@ -89,6 +89,17 @@
         "review",
         "maintenance"
       ]
+    },
+    {
+      "login": "ilyaagarkov",
+      "name": "Ilya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10822601?v=4",
+      "profile": "https://github.com/ilyaagarkov",
+      "contributions": [
+        "doc",
+        "ideas",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
