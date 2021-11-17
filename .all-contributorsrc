@@ -31,6 +31,8 @@
         "question",
         "review",
         "talk",
+        "infra",
+        "userTesting",
         "maintenance"
       ]
     },
@@ -58,6 +60,7 @@
         "ideas",
         "question",
         "review",
+        "tool",
         "maintenance"
       ]
     },
@@ -73,6 +76,7 @@
         "question",
         "review",
         "translation",
+        "infra",
         "maintenance"
       ]
     },
