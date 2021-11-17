@@ -12,8 +12,15 @@
       "profile": "https://sova.dev/",
       "contributions": [
         "blog",
+        "doc",
         "example",
         "ideas",
+        "projectManagement",
+        "question",
+        "infra",
+        "research",
+        "eventOrganizing",
+        "tutorial",
         "talk",
         "maintenance"
       ]
@@ -30,9 +37,11 @@
         "projectManagement",
         "question",
         "review",
-        "talk",
         "infra",
         "userTesting",
+        "design",
+        "tutorial",
+        "talk",
         "maintenance"
       ]
     },
@@ -47,6 +56,7 @@
         "ideas",
         "question",
         "translation",
+        "talk",
         "maintenance"
       ]
     },
@@ -61,6 +71,9 @@
         "question",
         "review",
         "tool",
+        "security",
+        "talk",
+        "tutorial",
         "maintenance"
       ]
     },
@@ -76,6 +89,7 @@
         "question",
         "review",
         "translation",
+        "design",
         "infra",
         "maintenance"
       ]
@@ -102,6 +116,7 @@
       "contributions": [
         "doc",
         "ideas",
+        "talk",
         "maintenance"
       ]
     },
@@ -111,11 +126,12 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/15031623?v=4",
       "profile": "https://start.reactwarriors.com/join",
       "contributions": [
+        "ideas",
         "maintenance"
       ]
     }
   ],
-  "contributorsPerLine": 6,
+  "contributorsPerLine": 5,
   "projectName": "documentation",
   "projectOwner": "feature-sliced",
   "repoType": "github",
