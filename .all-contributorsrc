@@ -75,6 +75,20 @@
         "translation",
         "maintenance"
       ]
+    },
+    {
+      "login": "spotsccc",
+      "name": "spotsccc",
+      "avatar_url": "https://avatars.githubusercontent.com/u/80784519?v=4",
+      "profile": "https://github.com/spotsccc",
+      "contributions": [
+        "doc",
+        "example",
+        "ideas",
+        "question",
+        "review",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
