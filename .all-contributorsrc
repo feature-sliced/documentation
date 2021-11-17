@@ -129,6 +129,29 @@
         "ideas",
         "maintenance"
       ]
+    },
+    {
+      "login": "binjospookie",
+      "name": "Viktor Pasynok",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8722478?v=4",
+      "profile": "https://binjo.ru/",
+      "contributions": [
+        "doc",
+        "ideas",
+        "projectManagement",
+        "talk"
+      ]
+    },
+    {
+      "login": "OlegBrony",
+      "name": "Oleh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19880334?v=4",
+      "profile": "https://github.com/OlegBrony",
+      "contributions": [
+        "doc",
+        "ideas",
+        "tutorial"
+      ]
     }
   ],
   "contributorsPerLine": 5,
