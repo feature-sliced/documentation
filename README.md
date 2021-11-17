@@ -267,7 +267,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://t.me/ilya_azin"><img src="https://avatars.githubusercontent.com/u/42924400?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ilya Azin</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=azinit" title="Code">💻</a> <a href="#projectManagement-azinit" title="Project Management">📆</a></td>
+    <td align="center"><a href="https://t.me/ilya_azin"><img src="https://avatars.githubusercontent.com/u/42924400?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ilya Azin</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=azinit" title="Code">💻</a> <a href="#projectManagement-azinit" title="Project Management">📆</a> <a href="https://github.com/feature-sliced/documentation/pulls?q=is%3Apr+reviewed-by%3Aazinit" title="Reviewed Pull Requests">👀</a> <a href="#talk-azinit" title="Talks">📢</a> <a href="#ideas-azinit" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/feature-sliced/documentation/commits?author=azinit" title="Documentation">📖</a></td>
   </tr>
 </table>
 
