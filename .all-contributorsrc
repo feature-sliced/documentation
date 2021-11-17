@@ -100,6 +100,15 @@
         "ideas",
         "maintenance"
       ]
+    },
+    {
+      "login": "epodgaetskiy",
+      "name": "Evgeniy Podgaetskiy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15031623?v=4",
+      "profile": "https://start.reactwarriors.com/join",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
