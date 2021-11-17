@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "azinit",
+      "name": "Ilya Azin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42924400?v=4",
+      "profile": "https://t.me/ilya_azin",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "documentation",
+  "projectOwner": "feature-sliced",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
