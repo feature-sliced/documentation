@@ -267,7 +267,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://t.me/ilya_azin"><img src="https://avatars.githubusercontent.com/u/42924400?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ilya Azin</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=azinit" title="Code">💻</a></td>
+    <td align="center"><a href="https://t.me/ilya_azin"><img src="https://avatars.githubusercontent.com/u/42924400?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ilya Azin</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=azinit" title="Code">💻</a> <a href="https://github.com/feature-sliced/documentation/commits?author=azinit" title="Documentation">📖</a> <a href="#design-azinit" title="Design">🎨</a> <a href="https://feature-sliced.design/examples" title="Examples">💡</a> <a href="#ideas-azinit" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://feature-sliced.design/docs/community/team#core-team" title="Maintenance">🚧</a> <a href="https://github.com/orgs/feature-sliced/projects/12" title="Project Management">📆</a> <a href="#question-azinit" title="Answering Questions">💬</a> <a href="https://github.com/feature-sliced/documentation/pulls?q=is%3Apr+reviewed-by%3Aazinit" title="Reviewed Pull Requests">👀</a> <a href="https://feature-sliced.design/docs/community/awesome" title="Talks">📢</a></td>
   </tr>
 </table>
 

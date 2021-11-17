@@ -11,7 +11,16 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/42924400?v=4",
       "profile": "https://t.me/ilya_azin",
       "contributions": [
-        "code"
+        "code",
+        "doc",
+        "design",
+        "example",
+        "ideas",
+        "maintenance",
+        "projectManagement",
+        "question",
+        "review",
+        "talk"
       ]
     }
   ],
@@ -20,5 +29,6 @@
   "projectOwner": "feature-sliced",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "none"
 }
