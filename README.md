@@ -1,6 +1,6 @@
 # feature-sliced
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > `WIP:` The current version of the methodology is under development and some details *can be changed*
@@ -267,7 +267,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://t.me/ilya_azin"><img src="https://avatars.githubusercontent.com/u/42924400?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ilya Azin</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=azinit" title="Code">💻</a> <a href="https://github.com/feature-sliced/documentation/commits?author=azinit" title="Documentation">📖</a> <a href="#design-azinit" title="Design">🎨</a> <a href="https://feature-sliced.design/examples" title="Examples">💡</a> <a href="#ideas-azinit" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://feature-sliced.design/docs/community/team#core-team" title="Maintenance">🚧</a> <a href="https://github.com/orgs/feature-sliced/projects/12" title="Project Management">📆</a> <a href="#question-azinit" title="Answering Questions">💬</a> <a href="https://github.com/feature-sliced/documentation/pulls?q=is%3Apr+reviewed-by%3Aazinit" title="Reviewed Pull Requests">👀</a> <a href="https://feature-sliced.design/docs/community/awesome" title="Talks">📢</a></td>
+    <td align="center"><a href="https://sova.dev/"><img src="https://avatars.githubusercontent.com/u/5620073?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sergey Sova</b></sub></a><br /><a href="#blog-sergeysova" title="Blogposts">📝</a> <a href="#example-sergeysova" title="Examples">💡</a> <a href="#ideas-sergeysova" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-sergeysova" title="Maintenance">🚧</a> <a href="#talk-sergeysova" title="Talks">📢</a></td>
+    <td align="center"><a href="https://t.me/ilya_azin"><img src="https://avatars.githubusercontent.com/u/42924400?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ilya Azin</b></sub></a><br /> <a href="https://github.com/feature-sliced/documentation/commits?author=azinit" title="Documentation">📖</a> <a href="#example-azinit" title="Examples">💡</a> <a href="#ideas-azinit" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-azinit" title="Maintenance">🚧</a> <a href="#projectManagement-azinit" title="Project Management">📆</a> <a href="#question-azinit" title="Answering Questions">💬</a> <a href="https://github.com/feature-sliced/documentation/pulls?q=is%3Apr+reviewed-by%3Aazinit" title="Reviewed Pull Requests">👀</a> <a href="#talk-azinit" title="Talks">📢</a></td>
   </tr>
 </table>
 

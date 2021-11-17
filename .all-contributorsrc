@@ -6,14 +6,25 @@
   "commit": false,
   "contributors": [
     {
+      "login": "sergeysova",
+      "name": "Sergey Sova",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5620073?v=4",
+      "profile": "https://sova.dev/",
+      "contributions": [
+        "blog",
+        "example",
+        "ideas",
+        "maintenance",
+        "talk"
+      ]
+    },
+    {
       "login": "azinit",
       "name": "Ilya Azin",
       "avatar_url": "https://avatars.githubusercontent.com/u/42924400?v=4",
       "profile": "https://t.me/ilya_azin",
       "contributions": [
-        "code",
         "doc",
-        "design",
         "example",
         "ideas",
         "maintenance",
