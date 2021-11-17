@@ -44,6 +44,7 @@
         "content",
         "ideas",
         "question",
+        "translation",
         "maintenance"
       ]
     },
@@ -71,6 +72,7 @@
         "ideas",
         "question",
         "review",
+        "translation",
         "maintenance"
       ]
     }
