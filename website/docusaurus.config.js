@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { REDIRECTS, SECTIONS, LEGACY_ROUTES } = require("./routes.config");
+const { contributorsData } = require("./contributors.config");
 
 const DOMAIN = "https://feature-sliced.design/";
 const GITHUB_ORG = "https://github.com/feature-sliced";
@@ -308,6 +309,7 @@ const metadatas = [
  */
 const customFields = {
     legacyRoutes: LEGACY_ROUTES,
+    contributorsData,
 };
 
 /** @type {Config} */
