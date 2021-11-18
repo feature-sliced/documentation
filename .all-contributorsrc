@@ -154,6 +154,16 @@
       ]
     },
     {
+      "login": "niyazm524",
+      "name": "Niyaz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32315145?v=4",
+      "profile": "https://github.com/niyazm524",
+      "contributions": [
+        "example",
+        "userTesting"
+      ]
+    },
+    {
       "login": "Postamentovich",
       "name": "Viacheslav Zinovev",
       "avatar_url": "https://avatars.githubusercontent.com/u/22918007?v=4",
@@ -190,6 +200,7 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/24413052?v=4",
       "profile": "https://github.com/Imperyall",
       "contributions": [
+        "userTesting",
         "doc"
       ]
     },
@@ -204,11 +215,23 @@
       ]
     },
     {
+      "login": "kof",
+      "name": "Oleg Isonen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52824?v=4",
+      "profile": "https://medium.com/@oleg008",
+      "contributions": [
+        "ideas",
+        "research",
+        "userTesting"
+      ]
+    },
+    {
       "login": "GTech1256",
       "name": "Roman",
       "avatar_url": "https://avatars.githubusercontent.com/u/18086485?v=4",
       "profile": "https://gtech1256.github.io/PersonalPage/",
       "contributions": [
+        "userTesting",
         "doc"
       ]
     },
@@ -287,12 +310,67 @@
       ]
     },
     {
-      "login": "vladislavromanov",
-      "name": "Vladislav Romanov",
-      "avatar_url": "https://avatars.githubusercontent.com/u/63917524?v=4",
-      "profile": "https://github.com/vladislavromanov",
+      "login": "oas89",
+      "name": "Aleksandr Osipov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5285065?v=4",
+      "profile": "https://github.com/oas89",
       "contributions": [
-        "data"
+        "userTesting"
+      ]
+    },
+    {
+      "login": "mg901",
+      "name": "Maxim",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7874664?v=4",
+      "profile": "https://t.me/mg901",
+      "contributions": [
+        "userTesting"
+      ]
+    },
+    {
+      "login": "Kelin2025",
+      "name": "Anton Kosykh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4208480?v=4",
+      "profile": "https://github.com/Kelin2025",
+      "contributions": [
+        "userTesting"
+      ]
+    },
+    {
+      "login": "samelm",
+      "name": "Vladislav Samatov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9926019?v=4",
+      "profile": "https://github.com/samelm",
+      "contributions": [
+        "userTesting"
+      ]
+    },
+    {
+      "login": "olegKusov",
+      "name": "Oleg Kusov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28058268?v=4",
+      "profile": "https://github.com/olegKusov",
+      "contributions": [
+        "blog",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "sandrig",
+      "name": "Andrey Savelev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11439304?v=4",
+      "profile": "https://andreysavelev.com/",
+      "contributions": [
+        "userTesting"
+      ]
+    },
+    {
+      "login": "tavriaforever",
+      "name": "Nickolay Ilchenko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/975906?v=4",
+      "profile": "http://twitter/tavriaforever",
+      "contributions": [
+        "userTesting"
       ]
     },
     {
@@ -301,7 +379,16 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/51231845?v=4",
       "profile": "https://github.com/ledeneveugene",
       "contributions": [
-        "userTesting"
+        "data"
+      ]
+    },
+    {
+      "login": "vladislavromanov",
+      "name": "Vladislav Romanov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/63917524?v=4",
+      "profile": "https://github.com/vladislavromanov",
+      "contributions": [
+        "data"
       ]
     }
   ],
