@@ -1,6 +1,6 @@
 # feature-sliced
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > `WIP:` The current version of the methodology is under development and some details *can be changed*
@@ -283,6 +283,22 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/Postamentovich"><img src="https://avatars.githubusercontent.com/u/22918007?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Viacheslav Zinovev</b></sub></a><br /><a href="#design-Postamentovich" title="Design">🎨</a> <a href="#userTesting-Postamentovich" title="User Testing">📓</a> <a href="https://github.com/feature-sliced/documentation/pulls?q=is%3Apr+reviewed-by%3APostamentovich" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://vk.com/id29842440"><img src="https://avatars.githubusercontent.com/u/25086934?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alexandr</b></sub></a><br /><a href="#ideas-GhostMayor" title="Ideas, Planning, & Feedback">🤔</a> <a href="#userTesting-GhostMayor" title="User Testing">📓</a> <a href="https://github.com/feature-sliced/documentation/pulls?q=is%3Apr+reviewed-by%3AGhostMayor" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/julieobolenskaya"><img src="https://avatars.githubusercontent.com/u/80626513?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Julie Obolenskaya</b></sub></a><br /><a href="#translation-julieobolenskaya" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/Imperyall"><img src="https://avatars.githubusercontent.com/u/24413052?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Roman Tikhiy</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=Imperyall" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://kamyshev.me/"><img src="https://avatars.githubusercontent.com/u/26767722?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Igor Kamyshev</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/issues?q=author%3Aigorkamyshev" title="Bug reports">🐛</a> <a href="https://github.com/feature-sliced/documentation/commits?author=igorkamyshev" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://gtech1256.github.io/PersonalPage/"><img src="https://avatars.githubusercontent.com/u/18086485?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Roman</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=GTech1256" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/websega"><img src="https://avatars.githubusercontent.com/u/56861782?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sergey Vakhramov</b></sub></a><br /><a href="#design-websega" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/mark-omarov"><img src="https://avatars.githubusercontent.com/u/15357910?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mark Omarov</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=mark-omarov" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://dskr.dev/"><img src="https://avatars.githubusercontent.com/u/9007486?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Дмитрий</b></sub></a><br /><a href="#business-skrylnikov" title="Business development">💼</a> <a href="#userTesting-skrylnikov" title="User Testing">📓</a></td>
+    <td align="center"><a href="https://www.leetcode.com/Mihir64"><img src="https://avatars.githubusercontent.com/u/58292449?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mihir Shah</b></sub></a><br /><a href="#design-Mihir50" title="Design">🎨</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/sarmong"><img src="https://avatars.githubusercontent.com/u/42828375?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sarmong</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=sarmong" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/tednaaa"><img src="https://avatars.githubusercontent.com/u/79831859?v=4?s=100" width="100px;" alt=""/><br /><sub><b>And</b></sub></a><br /><a href="#infra-tednaaa" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/feature-sliced/documentation/commits?author=tednaaa" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/GlebHihoho"><img src="https://avatars.githubusercontent.com/u/17951143?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gleb</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=GlebHihoho" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/yesnoruly"><img src="https://avatars.githubusercontent.com/u/64963734?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Roma Karvacky</b></sub></a><br /><a href="#example-yesnoruly" title="Examples">💡</a></td>
   </tr>
 </table>
 

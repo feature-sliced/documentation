@@ -174,6 +174,117 @@
         "userTesting",
         "review"
       ]
+    },
+    {
+      "login": "julieobolenskaya",
+      "name": "Julie Obolenskaya",
+      "avatar_url": "https://avatars.githubusercontent.com/u/80626513?v=4",
+      "profile": "https://github.com/julieobolenskaya",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Imperyall",
+      "name": "Roman Tikhiy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24413052?v=4",
+      "profile": "https://github.com/Imperyall",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "igorkamyshev",
+      "name": "Igor Kamyshev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26767722?v=4",
+      "profile": "https://kamyshev.me/",
+      "contributions": [
+        "bug",
+        "doc"
+      ]
+    },
+    {
+      "login": "GTech1256",
+      "name": "Roman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18086485?v=4",
+      "profile": "https://gtech1256.github.io/PersonalPage/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "websega",
+      "name": "Sergey Vakhramov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56861782?v=4",
+      "profile": "https://github.com/websega",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "mark-omarov",
+      "name": "Mark Omarov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15357910?v=4",
+      "profile": "https://github.com/mark-omarov",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "skrylnikov",
+      "name": "Дмитрий",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9007486?v=4",
+      "profile": "https://dskr.dev/",
+      "contributions": [
+        "business",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "Mihir50",
+      "name": "Mihir Shah",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58292449?v=4",
+      "profile": "https://www.leetcode.com/Mihir64",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "sarmong",
+      "name": "sarmong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42828375?v=4",
+      "profile": "https://github.com/sarmong",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "tednaaa",
+      "name": "And",
+      "avatar_url": "https://avatars.githubusercontent.com/u/79831859?v=4",
+      "profile": "https://github.com/tednaaa",
+      "contributions": [
+        "infra",
+        "doc"
+      ]
+    },
+    {
+      "login": "GlebHihoho",
+      "name": "Gleb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17951143?v=4",
+      "profile": "https://github.com/GlebHihoho",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "yesnoruly",
+      "name": "Roma Karvacky",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64963734?v=4",
+      "profile": "https://github.com/yesnoruly",
+      "contributions": [
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 5,
