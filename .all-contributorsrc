@@ -186,6 +186,17 @@
       ]
     },
     {
+      "login": "kof",
+      "name": "Oleg Isonen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52824?v=4",
+      "profile": "https://medium.com/@oleg008",
+      "contributions": [
+        "ideas",
+        "research",
+        "userTesting"
+      ]
+    },
+    {
       "login": "julieobolenskaya",
       "name": "Julie Obolenskaya",
       "avatar_url": "https://avatars.githubusercontent.com/u/80626513?v=4",
@@ -212,17 +223,6 @@
       "contributions": [
         "bug",
         "doc"
-      ]
-    },
-    {
-      "login": "kof",
-      "name": "Oleg Isonen",
-      "avatar_url": "https://avatars.githubusercontent.com/u/52824?v=4",
-      "profile": "https://medium.com/@oleg008",
-      "contributions": [
-        "ideas",
-        "research",
-        "userTesting"
       ]
     },
     {
