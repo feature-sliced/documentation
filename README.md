@@ -1,6 +1,6 @@
 # feature-sliced
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > `WIP:` The current version of the methodology is under development and some details *can be changed*
@@ -299,6 +299,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/tednaaa"><img src="https://avatars.githubusercontent.com/u/79831859?v=4?s=100" width="100px;" alt=""/><br /><sub><b>And</b></sub></a><br /><a href="#infra-tednaaa" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/feature-sliced/documentation/commits?author=tednaaa" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/GlebHihoho"><img src="https://avatars.githubusercontent.com/u/17951143?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gleb</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=GlebHihoho" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/yesnoruly"><img src="https://avatars.githubusercontent.com/u/64963734?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Roma Karvacky</b></sub></a><br /><a href="#example-yesnoruly" title="Examples">💡</a></td>
+    <td align="center"><a href="https://github.com/vladislavromanov"><img src="https://avatars.githubusercontent.com/u/63917524?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vladislav Romanov</b></sub></a><br /><a href="#data-vladislavromanov" title="Data">🔣</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/ledeneveugene"><img src="https://avatars.githubusercontent.com/u/51231845?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eugene Ledenev</b></sub></a><br /><a href="#userTesting-ledeneveugene" title="User Testing">📓</a></td>
   </tr>
 </table>
 
