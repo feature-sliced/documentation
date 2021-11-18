@@ -152,6 +152,28 @@
         "ideas",
         "tutorial"
       ]
+    },
+    {
+      "login": "Postamentovich",
+      "name": "Viacheslav Zinovev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22918007?v=4",
+      "profile": "https://github.com/Postamentovich",
+      "contributions": [
+        "design",
+        "userTesting",
+        "review"
+      ]
+    },
+    {
+      "login": "GhostMayor",
+      "name": "Alexandr",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25086934?v=4",
+      "profile": "https://vk.com/id29842440",
+      "contributions": [
+        "ideas",
+        "userTesting",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 5,

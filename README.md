@@ -1,6 +1,6 @@
 # feature-sliced
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > `WIP:` The current version of the methodology is under development and some details *can be changed*
@@ -279,6 +279,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://start.reactwarriors.com/join"><img src="https://avatars.githubusercontent.com/u/15031623?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Evgeniy Podgaetskiy</b></sub></a><br /><a href="#ideas-epodgaetskiy" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-epodgaetskiy" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://binjo.ru/"><img src="https://avatars.githubusercontent.com/u/8722478?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Viktor Pasynok</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=binjospookie" title="Documentation">📖</a> <a href="#ideas-binjospookie" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-binjospookie" title="Project Management">📆</a> <a href="#talk-binjospookie" title="Talks">📢</a></td>
     <td align="center"><a href="https://github.com/OlegBrony"><img src="https://avatars.githubusercontent.com/u/19880334?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Oleh</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=OlegBrony" title="Documentation">📖</a> <a href="#ideas-OlegBrony" title="Ideas, Planning, & Feedback">🤔</a> <a href="#tutorial-OlegBrony" title="Tutorials">✅</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/Postamentovich"><img src="https://avatars.githubusercontent.com/u/22918007?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Viacheslav Zinovev</b></sub></a><br /><a href="#design-Postamentovich" title="Design">🎨</a> <a href="#userTesting-Postamentovich" title="User Testing">📓</a> <a href="https://github.com/feature-sliced/documentation/pulls?q=is%3Apr+reviewed-by%3APostamentovich" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://vk.com/id29842440"><img src="https://avatars.githubusercontent.com/u/25086934?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alexandr</b></sub></a><br /><a href="#ideas-GhostMayor" title="Ideas, Planning, & Feedback">🤔</a> <a href="#userTesting-GhostMayor" title="User Testing">📓</a> <a href="https://github.com/feature-sliced/documentation/pulls?q=is%3Apr+reviewed-by%3AGhostMayor" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
