@@ -6,8 +6,18 @@ import Image from "@theme/IdealImage";
 import styles from "./styles.module.scss";
 
 export function ExampleCard({ className, data }) {
+    const isExampleNewerThanTwoWeeks =
+        new Date(data.updatedAt).getDate() >= new Date(Date.now()).getDate() - 14;
+
     return (
-        <article className={clsx("card", styles.root, className)}>
+        <article
+            className={clsx(
+                "card",
+                styles.root,
+                isExampleNewerThanTwoWeeks && styles.cardActive,
+                className,
+            )}
+        >
             <div className={clsx("card__image", styles.preview)}>
                 <div className={clsx(styles.ribbon)}>{data.version}</div>
                 <Image img={data.preview} alt={data.title} />
