@@ -26,6 +26,7 @@ module.exports.validateTemplate = function ({ params }) {
             return acc;
         }, true);
     }
+    console.error("Template validation error.");
     return false;
 };
 
@@ -33,16 +34,17 @@ module.exports.objectFromBuffer = function objectFromBuffer(buffer) {
     return JSON.parse(buffer.toString());
 };
 
-const Config = object({
-    outputDir: string(),
-    textWidthLimit: number(),
-    rules: array(),
-});
-
 const Rule = object({
     name: string(),
     priority: number(),
     pattern: string(),
+});
+
+const Config = object({
+    outputDir: string(),
+    textWidthLimit: number(),
+    quality: number(),
+    rules: array(Rule),
 });
 
 module.exports.validateConfig = function (config) {

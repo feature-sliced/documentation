@@ -13,7 +13,7 @@ function createImageFromTemplate({ path, name, params }) {
 module.exports.createImagesMapFromTemplates = function (templates) {
     const images = new Map();
     templates.forEach((item) => {
-        if (!images.has(item.params.image)) {
+        if (!images.has(`${item.name}_${item.params.image}`)) {
             images.set(`${item.name}_${item.params.image}`, createImageFromTemplate(item));
         }
     });

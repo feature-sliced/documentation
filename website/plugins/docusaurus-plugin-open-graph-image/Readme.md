@@ -1,25 +1,49 @@
 # Docusaurus OpenGraph image generator plugin
 
 
-Templates configuration file example:  
+### Templates folder files listing.
+```sh
+└── website/
+    └── open-graph-tempaltes/ 
+        # required
+        ├── basic
+        |     ├── font.ttf
+        |     ├── preview.png
+        |     └── template.json
+        |
+        └── config.json
+```
+
+
+### Templates configuration file example:  
 **config.json**
 ```json
 {
-  "outputDir": "",
-  "rules": {
-    "basic": {
+  "outputDir": "assets/og",
+  "textWidthLimit": 1100,
+  "quality": 70,
+  "rules": [
+    {
+      "name": "basic",
       "priority": 0,
-      "pattern": "*"
+      "pattern": "."
     },
-    "gray": {
+    {
+      "name": "gray",
       "priority": 1,
-      "pattern": "*"
+      "pattern": "^concepts*"
+    },
+    {
+      "name": "gray",
+      "priority": 2,
+      "pattern": "^about*"
     }
-  }
+  ]
 }
+
 ```
 
-Template configuration example:  
+### Template configuration example:  
 **template.json**
 ```json
 {
@@ -28,23 +52,13 @@ Template configuration example:
   "layout": [
     {
       "type": "text",
-      "name": "label",
-      "fontSize": 72,
+      "name": "title",
+      "fontSize": 80,
       "fill": "white",
       "stroke": "white",
-      "top": 20,
-      "left": 20
-    },
-    {
-      "type": "text",
-      "name": "description",
-      "fontSize": 64,
-      "fill": "white",
-      "stroke": "white",
-      "top": 40,
-      "left": 120
+      "top": 400,
+      "left": 200
     }
   ]
 }
-
 ```

@@ -5,6 +5,8 @@ const { validateTemplate } = require("./utils");
 const { createLayoutLayers } = require("./layout");
 const { createFontsMapFromTemplates } = require("./font");
 const { createImagesMapFromTemplates } = require("./image");
+const { getConfig } = require("./config");
+const { getTemplateNameByRules } = require("./rules");
 
 module.exports = function (context, { templatesDir }) {
     const isProd = process.env.NODE_ENV === "production";
@@ -17,33 +19,40 @@ module.exports = function (context, { templatesDir }) {
 
     const templates = getTemplates(templatesDir);
     if (!templates.some(validateTemplate)) {
-        console.error("Template validation error.");
         return;
     }
 
+    const config = getConfig(templatesDir);
+    if (!config) return;
+
+    // TODO: File not found exception?
     const fonts = createFontsMapFromTemplates(templates);
     const images = createImagesMapFromTemplates(templates);
 
     async function generateImageFromDoc(doc, locale, outputDir) {
         const { id, title } = doc;
 
-        // use basic
         const hashFileName = sha1(id + locale);
+        const templateName = getTemplateNameByRules(id, config.rules);
 
-        const template = templates.find((item) => item.name === "basic");
+        const template = templates.find((item) => item.name === templateName);
 
         const previewImage = await images.get(`${template.name}_${template.params.image}`).clone();
 
         const previewFont = fonts.get(template.params.font);
 
-        const textLayers = createLayoutLayers(doc, template.params.layout, previewFont);
+        const textLayers = createLayoutLayers(
+            doc,
+            template.params.layout,
+            previewFont,
+            config.textWidthLimit,
+        );
 
         try {
             await previewImage.composite(textLayers);
             await previewImage
                 .jpeg({
-                    // TODO: Quality from config.json
-                    quality: 80,
+                    quality: config.quality,
                     chromaSubsampling: "4:4:4",
                 })
                 .toFile(`${outputDir}\\${hashFileName}.jpg`);
@@ -59,7 +68,7 @@ module.exports = function (context, { templatesDir }) {
                 (plugin) => plugin.name === "docusaurus-plugin-content-docs",
             );
 
-            const previewOutputDir = `${outDir}\\assets\\og\\`;
+            const previewOutputDir = `${outDir}\\${config.outputDir}`;
             fs.mkdir(previewOutputDir, { recursive: true }, (error) => {
                 if (error) throw error;
             });

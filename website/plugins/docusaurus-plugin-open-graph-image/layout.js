@@ -1,6 +1,6 @@
 const { createSVGText } = require("./font");
 
-module.exports.createLayoutLayers = function (doc, layout, previewFont) {
+module.exports.createLayoutLayers = function (doc, layout, previewFont, textWidthLimit) {
     const layers = layout.map((item) => {
         if (!Object.prototype.hasOwnProperty.call(doc, item.name)) {
             console.error(`Wrong template config? Doc property ${item.name} not found.`);
@@ -14,7 +14,9 @@ module.exports.createLayoutLayers = function (doc, layout, previewFont) {
         };
 
         return {
-            input: Buffer.from(createSVGText(previewFont, doc[item.name], layoutOptions)),
+            input: Buffer.from(
+                createSVGText(previewFont, doc[item.name], layoutOptions, textWidthLimit),
+            ),
             top: item.top,
             left: item.left,
         };

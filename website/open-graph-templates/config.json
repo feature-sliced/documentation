@@ -1,16 +1,22 @@
 {
   "outputDir": "assets/og",
-  "textWidthLimit": 200,
+  "textWidthLimit": 1100,
+  "quality": 70,
   "rules": [
     {
       "name": "basic",
       "priority": 0,
-      "pattern": "*"
+      "pattern": "."
     },
     {
       "name": "gray",
       "priority": 1,
-      "pattern": "*"
+      "pattern": "^concepts*"
+    },
+    {
+      "name": "gray",
+      "priority": 2,
+      "pattern": "^about*"
     }
   ]
 }
