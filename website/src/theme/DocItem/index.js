@@ -14,9 +14,7 @@ function DocItem(props) {
     return (
         <>
             {/* TODO: Add and use domain from env? */}
-            <OpenGraphPreview
-                imgUrl={`https://feature-sliced.design/assets/og/${hashFileName}.jpg`}
-            />
+            <OpenGraphPreview imgUrl={`http://dev.evgeraskin.ru/assets/og/${hashFileName}.jpg`} />
             <OriginalDocItem {...props} />
         </>
     );

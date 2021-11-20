@@ -17,7 +17,7 @@ const Template = object({
     layout: array(Layout),
 });
 
-module.exports.validateTemplate = function ({ params }) {
+function validateTemplate({ params }) {
     if (is(params, Template)) {
         if (params.layout.length === 0) return false;
 
@@ -28,11 +28,11 @@ module.exports.validateTemplate = function ({ params }) {
     }
     console.error("Template validation error.");
     return false;
-};
+}
 
-module.exports.objectFromBuffer = function objectFromBuffer(buffer) {
+function objectFromBuffer(buffer) {
     return JSON.parse(buffer.toString());
-};
+}
 
 const Rule = object({
     name: string(),
@@ -47,7 +47,7 @@ const Config = object({
     rules: array(Rule),
 });
 
-module.exports.validateConfig = function (config) {
+function validateConfig(config) {
     if (is(config, Config)) {
         return config.rules.reduce((acc, item) => {
             if (!is(item, Rule)) return false;
@@ -55,4 +55,6 @@ module.exports.validateConfig = function (config) {
         }, true);
     }
     return false;
-};
+}
+
+module.exports = { validateTemplate, objectFromBuffer, validateConfig };

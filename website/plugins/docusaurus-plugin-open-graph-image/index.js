@@ -1,6 +1,6 @@
 const fs = require("fs");
 const sha1 = require("sha1");
-const getTemplates = require("./template");
+const { getTemplates } = require("./template");
 const { validateTemplate } = require("./utils");
 const { createLayoutLayers } = require("./layout");
 const { createFontsMapFromTemplates } = require("./font");
@@ -33,6 +33,7 @@ module.exports = function (context, { templatesDir }) {
         const { id, title } = doc;
 
         const hashFileName = sha1(id + locale);
+
         const templateName = getTemplateNameByRules(id, config.rules);
 
         const template = templates.find((item) => item.name === templateName);

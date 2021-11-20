@@ -1,6 +1,6 @@
 const textToSVG = require("text-to-svg");
 
-module.exports.createFontsMapFromTemplates = function (templates) {
+function createFontsMapFromTemplates(templates) {
     const fonts = new Map();
     templates.forEach((item) => {
         if (!fonts.has(item.params.font)) {
@@ -11,9 +11,9 @@ module.exports.createFontsMapFromTemplates = function (templates) {
         }
     });
     return fonts;
-};
+}
 
-module.exports.createSVGText = function (
+function createSVGText(
     font,
     text,
     { fontSize = 72, fill = "white", stroke = "white" },
@@ -29,4 +29,5 @@ module.exports.createSVGText = function (
     }
 
     return font.getSVG(text, options);
-};
+}
+module.exports = { createSVGText, createFontsMapFromTemplates };

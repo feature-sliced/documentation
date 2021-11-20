@@ -1,6 +1,6 @@
 const { createSVGText } = require("./font");
 
-module.exports.createLayoutLayers = function (doc, layout, previewFont, textWidthLimit) {
+function createLayoutLayers(doc, layout, previewFont, textWidthLimit) {
     const layers = layout.map((item) => {
         if (!Object.prototype.hasOwnProperty.call(doc, item.name)) {
             console.error(`Wrong template config? Doc property ${item.name} not found.`);
@@ -25,4 +25,6 @@ module.exports.createLayoutLayers = function (doc, layout, previewFont, textWidt
     if (layers.includes(undefined)) return;
 
     return layers;
-};
+}
+
+module.exports = { createLayoutLayers };
