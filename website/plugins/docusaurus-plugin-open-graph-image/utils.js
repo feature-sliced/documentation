@@ -1,11 +1,5 @@
 const { number, string, is, object, array } = require("superstruct");
 
-const Template = object({
-    image: string(),
-    font: string(),
-    layout: array(),
-});
-
 // TODO: May be with postEffects, images and etc? (optional fontSize, fill and etc)
 const Layout = object({
     type: string(),
@@ -15,6 +9,12 @@ const Layout = object({
     stroke: string(),
     top: number(),
     left: number(),
+});
+
+const Template = object({
+    image: string(),
+    font: string(),
+    layout: array(Layout),
 });
 
 module.exports.validateTemplate = function ({ params }) {
@@ -31,4 +31,26 @@ module.exports.validateTemplate = function ({ params }) {
 
 module.exports.objectFromBuffer = function objectFromBuffer(buffer) {
     return JSON.parse(buffer.toString());
+};
+
+const Config = object({
+    outputDir: string(),
+    textWidthLimit: number(),
+    rules: array(),
+});
+
+const Rule = object({
+    name: string(),
+    priority: number(),
+    pattern: string(),
+});
+
+module.exports.validateConfig = function (config) {
+    if (is(config, Config)) {
+        return config.rules.reduce((acc, item) => {
+            if (!is(item, Rule)) return false;
+            return acc;
+        }, true);
+    }
+    return false;
 };

@@ -6,19 +6,15 @@ function createImagePipeline(file) {
     return sharp(file);
 }
 
-// TODO: save folder path to templates?
-function createImageFromTemplate(templatesDir, { name, params }) {
-    return createImagePipeline(`${templatesDir}\\${name}\\${params.image}`);
+function createImageFromTemplate({ path, name, params }) {
+    return createImagePipeline(`${path}\\${name}\\${params.image}`);
 }
 
-module.exports.createImagesMapFromTemplates = function (templatesDir, templates) {
+module.exports.createImagesMapFromTemplates = function (templates) {
     const images = new Map();
     templates.forEach((item) => {
         if (!images.has(item.params.image)) {
-            images.set(
-                `${item.name}_${item.params.image}`,
-                createImageFromTemplate(templatesDir, item),
-            );
+            images.set(`${item.name}_${item.params.image}`, createImageFromTemplate(item));
         }
     });
     return images;

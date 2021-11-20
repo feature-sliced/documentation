@@ -10,6 +10,7 @@ module.exports = exports = function getTemplates(templatesDir, encode = "utf8") 
 
     return templatesDirNames.map((templateName) => ({
         name: templateName,
+        path: templatesDir,
         params: objectFromBuffer(
             fs.readFileSync(`${templatesDir}\\${templateName}\\template.json`, encode),
         ),

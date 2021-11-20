@@ -3,7 +3,7 @@
   "font": "arial.ttf",
   "layout": [
     {
-      "type": "text",
+      "typse": "text",
       "name": "title",
       "fontSize": 80,
       "fill": "white",

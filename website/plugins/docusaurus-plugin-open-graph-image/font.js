@@ -1,20 +1,19 @@
 const textToSVG = require("text-to-svg");
 
-// TODO: save folder path to templates?
-module.exports.createFontsMapFromTemplates = function (templatesDir, templates) {
+module.exports.createFontsMapFromTemplates = function (templates) {
     const fonts = new Map();
     templates.forEach((item) => {
         if (!fonts.has(item.params.font)) {
             fonts.set(
                 item.params.font,
-                textToSVG.loadSync(`${templatesDir}\\${item.name}\\${item.params.font}`),
+                textToSVG.loadSync(`${item.path}\\${item.name}\\${item.params.font}`),
             );
         }
     });
     return fonts;
 };
 
-module.exports.createSVGText = function createSVGText(
+module.exports.createSVGText = function (
     font,
     text,
     { fontSize = 72, fill = "white", stroke = "white" },

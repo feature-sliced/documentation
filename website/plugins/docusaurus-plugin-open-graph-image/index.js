@@ -1,5 +1,5 @@
 const fs = require("fs");
-const crypto = require("crypto");
+const sha1 = require("sha1");
 const getTemplates = require("./template");
 const { validateTemplate } = require("./utils");
 const { createLayoutLayers } = require("./layout");
@@ -21,8 +21,36 @@ module.exports = function (context, { templatesDir }) {
         return;
     }
 
-    const fonts = createFontsMapFromTemplates(templatesDir, templates);
-    const images = createImagesMapFromTemplates(templatesDir, templates);
+    const fonts = createFontsMapFromTemplates(templates);
+    const images = createImagesMapFromTemplates(templates);
+
+    async function generateImageFromDoc(doc, locale, outputDir) {
+        const { id, title } = doc;
+
+        // use basic
+        const hashFileName = sha1(id + locale);
+
+        const template = templates.find((item) => item.name === "basic");
+
+        const previewImage = await images.get(`${template.name}_${template.params.image}`).clone();
+
+        const previewFont = fonts.get(template.params.font);
+
+        const textLayers = createLayoutLayers(doc, template.params.layout, previewFont);
+
+        try {
+            await previewImage.composite(textLayers);
+            await previewImage
+                .jpeg({
+                    // TODO: Quality from config.json
+                    quality: 80,
+                    chromaSubsampling: "4:4:4",
+                })
+                .toFile(`${outputDir}\\${hashFileName}.jpg`);
+        } catch (error) {
+            console.error(error, id, title, hashFileName);
+        }
+    }
 
     return {
         name: "docusaurus-plugin-open-graph-image",
@@ -42,45 +70,8 @@ module.exports = function (context, { templatesDir }) {
                 docsVersions.forEach((version) => {
                     const { docs } = version;
 
-                    async function generateImageFromDoc(doc) {
-                        const { id, title } = doc;
-
-                        // use basic
-                        const template = templates.find((item) => item.name === "basic");
-
-                        const previewImage = await images
-                            .get(`${template.name}_${template.params.image}`)
-                            .clone();
-
-                        const previewFont = fonts.get(template.params.font);
-
-                        const textLayers = createLayoutLayers(
-                            doc,
-                            template.params.layout,
-                            previewFont,
-                        );
-
-                        await previewImage.composite(textLayers);
-
-                        const shaOne = crypto.createHash("sha1");
-                        const hashFileName = shaOne.update(id + i18n.currentLocale).digest("hex");
-                        console.log("Generating: " + title + " " + id, hashFileName);
-
-                        try {
-                            await previewImage
-                                .jpeg({
-                                    // TODO: Quality from config.json
-                                    quality: 80,
-                                    chromaSubsampling: "4:4:4",
-                                })
-                                .toFile(`${previewOutputDir}\\${hashFileName}.jpg`);
-                        } catch (error) {
-                            console.log(error, id, title, hashFileName);
-                        }
-                    }
-
                     docs.forEach((item) => {
-                        generateImageFromDoc(item);
+                        generateImageFromDoc(item, i18n.currentLocale, previewOutputDir);
                     });
                 });
             }
