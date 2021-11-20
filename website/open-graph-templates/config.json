@@ -1,0 +1,14 @@
+{
+  "outputDir": "assets/og",
+  "textWidthLimit": 200,
+  "rules": {
+    "basic": {
+      "priority": 0,
+      "pattern": "*"
+    },
+    "gray": {
+      "priority": 1,
+      "pattern": "*"
+    }
+  }
+}

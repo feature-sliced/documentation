@@ -1,0 +1,24 @@
+{
+  "image": "preview.png",
+  "font": "Kanit-Bold.ttf",
+  "layout": [
+    {
+      "type": "text",
+      "name": "label",
+      "fontSize": 20,
+      "fill": "white",
+      "stroke": "white",
+      "top": 20,
+      "left": 20
+    },
+    {
+      "type": "text",
+      "name": "description",
+      "fontSize": 20,
+      "fill": "white",
+      "stroke": "white",
+      "top": 40,
+      "left": 120
+    }
+  ]
+}
