@@ -25,7 +25,8 @@ export const examples = [
         description: "The best solutions from developers in one place",
         source: "https://github.com/cardbox/frontend",
         preview: require("./img/cardbox.png"),
-        version: VERSIONS.V1,
+        version: VERSIONS.V2,
+        updatedAt: "2021-11-12",
     },
     {
         title: "Github Client",
@@ -34,6 +35,7 @@ export const examples = [
         source: "https://github.com/ani-team/github-client",
         preview: require("./img/github-client.png"),
         version: VERSIONS.FDD,
+        updatedAt: "2021-07-05",
     },
     {
         title: "Todo App",
@@ -42,6 +44,7 @@ export const examples = [
         source: "https://github.com/feature-sliced/examples/tree/master/todo-app",
         preview: require("./img/todo-app.png"),
         version: VERSIONS.V2,
+        updatedAt: "2021-07-05",
     },
     {
         title: "Sharead (demo)",
@@ -50,6 +53,7 @@ export const examples = [
         source: "https://github.com/select-name/sharead-frontend",
         preview: require("./img/sharead.png"),
         version: VERSIONS.V2,
+        updatedAt: "2021-11-06",
     },
     {
         title: "Projentry (demo)",
@@ -58,6 +62,7 @@ export const examples = [
         source: "https://github.com/ani-team/projentry",
         preview: require("./img/projentry.png"),
         version: VERSIONS.V2,
+        updatedAt: "2021-11-06",
     },
     {
         title: "Loripsum generator",
@@ -66,5 +71,6 @@ export const examples = [
         source: "https://github.com/yesnoruly/loripsum-generator",
         preview: require("./img/loripsum-generator.png"),
         version: VERSIONS.V2,
+        updatedAt: "2021-11-17",
     },
 ];
