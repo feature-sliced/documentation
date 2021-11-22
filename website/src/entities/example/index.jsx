@@ -18,7 +18,7 @@ export function ExampleCard({ className, data }) {
             <div className={clsx("card__body", styles.content)}>
                 {isNew && (
                     <span title="Was updated less than 2 weeks ago" className={styles.labelNew}>
-                        NEW:
+                        NEW:{" "}
                     </span>
                 )}
                 <span className={styles.title}>{data.title}</span>
