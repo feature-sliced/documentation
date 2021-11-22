@@ -3,11 +3,11 @@ import React from "react";
 import clsx from "clsx";
 // eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
-import { getDiffDays } from "@site/src/shared/lib/date/getDiffDays";
+import { date } from "@site/src/shared/lib/date";
 import styles from "./styles.module.scss";
 
 export function ExampleCard({ className, data }) {
-    const isNew = getDiffDays(new Date(data.updatedAt), new Date(Date.now())) <= 14;
+    const isNew = date.getDiffDays(new Date(data.updatedAt), new Date()) <= 14;
 
     return (
         <article className={clsx("card", styles.root, className)}>
