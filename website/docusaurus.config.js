@@ -1,5 +1,4 @@
 require("dotenv").config();
-const path = require("path");
 const { REDIRECTS, SECTIONS, LEGACY_ROUTES } = require("./routes.config");
 
 const DOMAIN = "https://feature-sliced.design/";
@@ -255,12 +254,6 @@ const plugins = [
         },
     ],
     process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
-    [
-        path.resolve(__dirname, "./plugins/docusaurus-plugin-open-graph-image"),
-        {
-            templatesDir: path.resolve(__dirname, "open-graph-templates"),
-        },
-    ],
 ].filter(Boolean);
 
 /** @type {Config["themeConfig"]["algolia"]} */
