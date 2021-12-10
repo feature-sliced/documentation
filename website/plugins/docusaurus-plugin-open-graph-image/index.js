@@ -1,14 +1,13 @@
 const fs = require("fs");
 const sha1 = require("sha1");
 const { getTemplates } = require("./template");
-const { validateTemplate } = require("./utils");
 const { createLayoutLayers } = require("./layout");
 const { createFontsMapFromTemplates } = require("./font");
 const { createImagesMapFromTemplates, getTemplateImageId } = require("./image");
 const { getConfig } = require("./config");
 const { getTemplateNameByRules } = require("./rules");
 
-module.exports = function (context, { templatesDir }) {
+module.exports = function ({ templatesDir }) {
     const isProd = process.env.NODE_ENV === "production";
     if (!isProd) return;
 
@@ -18,9 +17,7 @@ module.exports = function (context, { templatesDir }) {
     }
 
     const templates = getTemplates(templatesDir);
-    if (!templates.some(validateTemplate)) {
-        return;
-    }
+    if (!templates) return;
 
     const config = getConfig(templatesDir);
     if (!config) return;
@@ -69,22 +66,22 @@ module.exports = function (context, { templatesDir }) {
                 (plugin) => plugin.name === "docusaurus-plugin-content-docs",
             );
 
+            if (!docsPlugin) throw new Error("Docusaurus Doc plugin not found.");
+
             const previewOutputDir = `${outDir}\\${config.outputDir}`;
             fs.mkdir(previewOutputDir, { recursive: true }, (error) => {
                 if (error) throw error;
             });
 
-            if (docsPlugin) {
-                const docsContent = docsPlugin.content;
-                const docsVersions = docsContent.loadedVersions;
-                docsVersions.forEach((version) => {
-                    const { docs } = version;
+            const docsContent = docsPlugin.content;
+            const docsVersions = docsContent.loadedVersions;
+            docsVersions.forEach((version) => {
+                const { docs } = version;
 
-                    docs.forEach((item) => {
-                        generateImageFromDoc(item, i18n.currentLocale, previewOutputDir);
-                    });
+                docs.forEach((item) => {
+                    generateImageFromDoc(item, i18n.currentLocale, previewOutputDir);
                 });
-            }
+            });
         },
     };
 };
