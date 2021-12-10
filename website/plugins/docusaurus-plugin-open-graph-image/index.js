@@ -4,7 +4,7 @@ const { getTemplates } = require("./template");
 const { validateTemplate } = require("./utils");
 const { createLayoutLayers } = require("./layout");
 const { createFontsMapFromTemplates } = require("./font");
-const { createImagesMapFromTemplates } = require("./image");
+const { createImagesMapFromTemplates, getTemplateImageId } = require("./image");
 const { getConfig } = require("./config");
 const { getTemplateNameByRules } = require("./rules");
 
@@ -38,7 +38,7 @@ module.exports = function (context, { templatesDir }) {
 
         const template = templates.find((item) => item.name === templateName);
 
-        const previewImage = await images.get(`${template.name}_${template.params.image}`).clone();
+        const previewImage = await images.get(getTemplateImageId(template)).clone();
 
         const previewFont = fonts.get(template.params.font);
 

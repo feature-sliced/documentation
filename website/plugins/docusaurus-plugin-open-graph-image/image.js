@@ -1,5 +1,9 @@
 const sharp = require("sharp");
 
+function getTemplateImageId(template) {
+    return `${template.name}_${template.params.image}`;
+}
+
 function createImagePipeline(file) {
     // TODO: Apply effects, compression and etc.
     // TODO: File validation?
@@ -13,11 +17,13 @@ function createImageFromTemplate({ path, name, params }) {
 function createImagesMapFromTemplates(templates) {
     const images = new Map();
     templates.forEach((item) => {
-        if (!images.has(`${item.name}_${item.params.image}`)) {
-            images.set(`${item.name}_${item.params.image}`, createImageFromTemplate(item));
+        const imageId = getTemplateImageId(item);
+
+        if (!images.has(imageId)) {
+            images.set(imageId, createImageFromTemplate(item));
         }
     });
     return images;
 }
 
-module.exports = { createImagesMapFromTemplates };
+module.exports = { createImagesMapFromTemplates, getTemplateImageId };
