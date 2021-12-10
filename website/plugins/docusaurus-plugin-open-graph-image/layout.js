@@ -1,12 +1,13 @@
 const { createSVGText } = require("./font");
 
 function createLayoutLayers(doc, layout, previewFont, textWidthLimit) {
-    const layers = layout.map((layer) => {
-        if (!doc[layer.name]) {
-            console.error(`Wrong template config? Doc property ${layer.name} not found.`);
-            return undefined;
-        }
+    /* Check for all layers names exist in doc fields */
+    if (!layout.every((layer) => doc[layer.name])) {
+        console.error(`Wrong template config.`);
+        return;
+    }
 
+    return layout.map((layer) => {
         const layoutOptions = {
             fontSize: layer.fontSize,
             fill: layer.fill,
@@ -21,10 +22,6 @@ function createLayoutLayers(doc, layout, previewFont, textWidthLimit) {
             left: layer.left,
         };
     });
-
-    if (layers.includes(undefined)) return;
-
-    return layers;
 }
 
 module.exports = { createLayoutLayers };
