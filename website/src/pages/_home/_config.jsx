@@ -101,4 +101,9 @@ export const companies = [
         src: "pmp-tech.png",
         alt: "PMP Tech",
     },
+    {
+        url: "https://www.aligntech.com/",
+        src: "align.svg",
+        alt: "Align",
+    },
 ];
