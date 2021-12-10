@@ -22,6 +22,7 @@ function createSVGText(
     const attributes = { fill, stroke };
     const options = { fontSize, anchor: "top", attributes };
 
+    /* If font width more than widthLimit => scale font width to ~90% of widthLimit */
     if (widthLimit) {
         const { width } = font.getMetrics(text, options);
         if (width > widthLimit)
