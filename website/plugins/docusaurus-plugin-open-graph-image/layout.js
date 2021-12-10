@@ -1,24 +1,24 @@
 const { createSVGText } = require("./font");
 
 function createLayoutLayers(doc, layout, previewFont, textWidthLimit) {
-    const layers = layout.map((item) => {
-        if (!doc[item.name]) {
-            console.error(`Wrong template config? Doc property ${item.name} not found.`);
-            return;
+    const layers = layout.map((layer) => {
+        if (!doc[layer.name]) {
+            console.error(`Wrong template config? Doc property ${layer.name} not found.`);
+            return undefined;
         }
 
         const layoutOptions = {
-            fontSize: item.fontSize,
-            fill: item.fill,
-            stroke: item.stroke,
+            fontSize: layer.fontSize,
+            fill: layer.fill,
+            stroke: layer.stroke,
         };
 
         return {
             input: Buffer.from(
-                createSVGText(previewFont, doc[item.name], layoutOptions, textWidthLimit),
+                createSVGText(previewFont, doc[layer.name], layoutOptions, textWidthLimit),
             ),
-            top: item.top,
-            left: item.left,
+            top: layer.top,
+            left: layer.left,
         };
     });
 

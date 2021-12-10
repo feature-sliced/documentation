@@ -33,7 +33,7 @@ module.exports = function ({ templatesDir }) {
 
         const templateName = getTemplateNameByRules(id, config.rules);
 
-        const template = templates.find((item) => item.name === templateName);
+        const template = templates.find((template) => template.name === templateName);
 
         const previewImage = await images.get(getTemplateImageId(template)).clone();
 
@@ -78,8 +78,8 @@ module.exports = function ({ templatesDir }) {
             docsVersions.forEach((version) => {
                 const { docs } = version;
 
-                docs.forEach((item) => {
-                    generateImageFromDoc(item, i18n.currentLocale, previewOutputDir);
+                docs.forEach((document) => {
+                    generateImageFromDoc(document, i18n.currentLocale, previewOutputDir);
                 });
             });
         },

@@ -7,7 +7,7 @@ const dirIgnore = ["config.json"];
 function getTemplates(templatesDir, encode = "utf8") {
     const templatesDirNames = fs
         .readdirSync(templatesDir)
-        .filter((item) => !dirIgnore.includes(item));
+        .filter((fileName) => !dirIgnore.includes(fileName));
 
     // TODO: check file exist
     const templates = templatesDirNames.map((templateName) => ({
@@ -47,9 +47,9 @@ function validateTemplate({ params }) {
     if (is(params, Template)) {
         if (params.layout.length === 0) return false;
 
-        return params.layout.reduce((acc, item) => {
-            if (!is(item, Layout)) return false;
-            return acc;
+        return params.layout.reduce((validationResult, layout) => {
+            if (!is(layout, Layout)) return false;
+            return validationResult;
         }, true);
     }
 

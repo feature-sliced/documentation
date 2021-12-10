@@ -2,11 +2,11 @@ const textToSVG = require("text-to-svg");
 
 function createFontsMapFromTemplates(templates) {
     const fonts = new Map();
-    templates.forEach((item) => {
-        if (!fonts.has(item.params.font)) {
+    templates.forEach((template) => {
+        if (!fonts.has(template.params.font)) {
             fonts.set(
-                item.params.font,
-                textToSVG.loadSync(`${item.path}\\${item.name}\\${item.params.font}`),
+                template.params.font,
+                textToSVG.loadSync(`${template.path}\\${template.name}\\${template.params.font}`),
             );
         }
     });

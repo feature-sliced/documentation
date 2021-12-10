@@ -16,11 +16,11 @@ function createImageFromTemplate({ path, name, params }) {
 
 function createImagesMapFromTemplates(templates) {
     const images = new Map();
-    templates.forEach((item) => {
-        const imageId = getTemplateImageId(item);
+    templates.forEach((template) => {
+        const imageId = getTemplateImageId(template);
 
         if (!images.has(imageId)) {
-            images.set(imageId, createImageFromTemplate(item));
+            images.set(imageId, createImageFromTemplate(template));
         }
     });
     return images;
