@@ -391,6 +391,17 @@
       "contributions": [
         "data"
       ]
+    },
+    {
+      "login": "Krakazybik",
+      "name": "Evgeniy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1334019?v=4",
+      "profile": "https://t.me/krakazybik",
+      "contributions": [
+        "code",
+        "plugin",
+        "tool"
+      ]
     }
   ],
   "contributorsPerLine": 5,
