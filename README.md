@@ -1,6 +1,6 @@
 # feature-sliced
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-35-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-36-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > `WIP:` The current version of the methodology is under development and some details *can be changed*
@@ -314,6 +314,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://twitter/tavriaforever"><img src="https://avatars.githubusercontent.com/u/975906?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nickolay Ilchenko</b></sub></a><br /><a href="#userTesting-tavriaforever" title="User Testing">📓</a></td>
     <td align="center"><a href="https://github.com/ledeneveugene"><img src="https://avatars.githubusercontent.com/u/51231845?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eugene Ledenev</b></sub></a><br /><a href="#data-ledeneveugene" title="Data">🔣</a></td>
     <td align="center"><a href="https://github.com/vladislavromanov"><img src="https://avatars.githubusercontent.com/u/63917524?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vladislav Romanov</b></sub></a><br /><a href="#data-vladislavromanov" title="Data">🔣</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://t.me/krakazybik"><img src="https://avatars.githubusercontent.com/u/1334019?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Evgeniy</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=Krakazybik" title="Code">💻</a> <a href="#plugin-Krakazybik" title="Plugin/utility libraries">🔌</a> <a href="#tool-Krakazybik" title="Tools">🔧</a></td>
   </tr>
 </table>
 
