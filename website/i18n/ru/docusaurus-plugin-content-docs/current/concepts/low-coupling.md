@@ -103,9 +103,9 @@ const List: Component<ListProps> = ({ Header, Items }) => (
 > Однако, реализация в виде фабрики необязательна - фича может зависеть от нижележащих слоев и напрямую
 
 ```ts title=pages/main/model.ts
-import { userStore } from "entitites/user"
-import { conversationStore } from "entities/conversation"
-import { contactStore } from "entities/contact"
+import { userModel } from "entitites/user"
+import { conversationModel } from "entities/conversation"
+import { contactModel } from "entities/contact"
 
 import { createMessageInput } from "features/message-input"
 import { createConversationSwitch } from "features/conversation-switch"
@@ -113,15 +113,15 @@ import { createConversationSwitch } from "features/conversation-switch"
 import { beautifiy } from "shared/lib/beautify-text"
 
 export const { allConversations, setConversation } = createConversationSwitch({
-    contacts: contactStore.allContacts,
-    setConversation: conversationStore.setConversation,
-    currentConversation: conversationStore.conversation,
-    currentUser: userStore.currentUser
+    contacts: contactModel.allContacts,
+    setConversation: conversationModel.setConversation,
+    currentConversation: conversationModel.conversation,
+    currentUser: userModel.currentUser
 })
 
 export const { sendMessage, attachFile } = createMessageInput({
-    author: userStore.currentUser
-    send: conversationStore.sendMessage,
+    author: userModel.currentUser
+    send: conversationModel.sendMessage,
     formatMessage: beautify
 })
 ```

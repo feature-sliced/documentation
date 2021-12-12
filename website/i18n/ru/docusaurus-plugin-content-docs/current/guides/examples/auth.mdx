@@ -4,6 +4,9 @@ sidebar_position: 1
 
 # Auth
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Во всех приложениях так или иначе есть бизнес-логика, завязанная **на текущем авторизованном пользователе.**
 
 > Обычно такая сущность называется `Viewer` / `Principle` / `Session` - но в рамках статьи, остановимся именно на `viewer`, но все зависит от вашего проекта и команды
@@ -18,9 +21,9 @@ sidebar_position: 1
 
     *Методология пока никак не регламентирует этот уровень вложенности*
 
-2. Стоит также понимать, что приведенные ниже примеры - абстрактны и синтетичны, и сформированы точкой зрения и опытом автора
+2. Стоит также понимать, что приведенные ниже примеры - абстрактны и синтетичны, и сформированы для демонстрации только концепций методологии
 
-    *Реализация в ваших проектах может отличаться, методология, опять же, никак не регламентирует эти аспекты*
+    *FeatureSliced не регламентирует в себе бест-практисы конкретного дата-фетчера или стейт-менеджера*
 
 :::
 
@@ -70,12 +73,33 @@ export { ViewerAvatar } from "./avatar";
 ...
 ```
 
+<Tabs>
+<TabItem value="redux" label="Redux" default>
+
+В редаксе общепринят подход [redux-ducks](https://github.com/erikras/ducks-modular-redux), когда его юниты (selectors/actions/...) лежат рядом и явно выделены
+
+Но явное выделение далеко не всегда обязательно
+
 ```ts title=entities/user/model/index.ts
 export * as selectors from "./selectors";
 export * as events from "./events";
 export * as stores from "./stores";
 ...
 ```
+</TabItem>
+<TabItem value="effector" label="Effector">
+
+Модель эффектора чаще всего будет состоять из одного файла - т.к. там принято все юниты хранить рядом
+
+Если же в модели юниты можно семантично разделить на несколько сабмоделей, то [можно явно это](https://github.com/feature-sliced/examples/pull/1#discussion_r654841332) обозначить в Public API
+
+```ts title=entities/user/model/index.ts
+export * as submodel1 from "./submodel1"
+export * as submodel2 from "./submodel2"
+...
+```
+</TabItem>
+</Tabs>
 
 ```ts title=entities/user/index.ts
 export * from "./ui"
@@ -114,23 +138,34 @@ export const UserCard = ({ data, ... }: UserCardProps) => {
 
 На этом уровне обычно создается сущность текущего пользователя, с реэкспортом хуков/контрактов/селекторов для использования вышележащими слоями
 
-```ts title=entities/user/model/stores.ts
-// effector
-export const $user = createStore(...);
-// redux (+ toolkit)
-export const userSlice = createSlice(...)
-```
+<Tabs>
+<TabItem value="redux" label="Redux" default>
 
-```ts title=entities/user/model/selectors.ts
-// effector
-export const useViewer = () => {
-    return useStore($user)
-}
-// redux (+ toolkit)
+```ts
+// entities/viewer/model/selectors.ts
 export const useViewer = () => {
     return useSelector((store) => store.entities.userSlice);
 }
+export const useAuth = () => {
+    const viewer = useViewer();
+    return !!viewer
+}
+// entities/viewer/model/store.ts
+export const userSlice = createSlice(...)
 ```
+</TabItem>
+<TabItem value="effector" label="Effector">
+
+```ts
+// entities/viewer/model/index.ts
+export const $viewer = createStore(...);
+export const $isAuth = $viewer.map((viewer) => !!viewer);
+// **/**/ui.tsx
+const viewer = useStore($viewer);
+```
+</TabItem>
+</Tabs>
+
 
 Также тут может быть реализована и другая логика
 
