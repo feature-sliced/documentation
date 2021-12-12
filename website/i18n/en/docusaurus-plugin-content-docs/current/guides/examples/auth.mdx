@@ -21,9 +21,10 @@ Let's look at them in more detail below with examples
 
     *The methodology does not regulate this level of nesting in any way yet*
 
-2. It should also be understood that the examples given below are abstract and synthetic, and are formed by the author's point of view and experience
+2. It should also be understood that the examples below are abstract and synthetic, and are formed purely to demonstrate the concepts of the methodology
 
-    *The implementation in your projects may differ, the methodology, again, does not regulate these aspects in any way*
+    *FeatureSliced does not regulate the best practices of a particular data-fetcher or state-manager*
+
 
 :::
 
@@ -117,23 +118,36 @@ export const UserCard = ({ data, ... }: UserCardProps) => {
 
 At this level, the entity of the current user is usually created, with the re-export of hooks/contracts/selectors for use by the overlying layers
 
-```ts title=entities/user/model/stores.ts
-// effector
-export const $user = createStore(...);
-// redux (+ toolkit)
-export const userSlice = createSlice(...)
-```
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-```ts title=entities/user/model/selectors.ts
-// effector
-export const useViewer = () => {
-    return useStore($user)
-}
-// redux (+ toolkit)
+<Tabs>
+<TabItem value="redux" label="Redux" default>
+
+```ts
+// entities/viewer/model/selectors.ts
 export const useViewer = () => {
     return useSelector((store) => store.entities.userSlice);
 }
+export const useAuth = () => {
+    const viewer = useViewer();
+    return !!viewer
+}
+// entities/viewer/model/store.ts
+export const userSlice = createSlice(...)
 ```
+</TabItem>
+<TabItem value="effector" label="Effector">
+
+```ts
+// entities/viewer/model/index.ts
+export const $viewer = createStore(...);
+export const $isAuth = $viewer.map((viewer) => !!viewer);
+// **/**/ui.tsx
+const viewer = useStore($viewer);
+```
+</TabItem>
+</Tabs>
 
 Also, other logic can be implemented here
 
