@@ -65,7 +65,7 @@ Public API должен осуществлять **контроль доступ
     + import { AuthForm } from "features/auth-form"
     ```
 
-### 2. Sustainability for changes
+### 2. Устойчивость к изменениям
 
 Public API должен быть **устойчивым к изменениям** внутри модуля
 
