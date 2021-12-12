@@ -64,9 +64,9 @@ The public API must **control access** to the contents of the module
     + import { AuthForm } from "features/auth-form"
     ```
 
-### 2. Anti-fragility
+### 2. Sustainability for changes
 
-The public API should be **anti-fragile** - resistant to changes inside the module
+The public API should be sustainable for changes inside the module
 
 - Breaking changes in the behavior of the module are reflected in the change of the Public API
 
