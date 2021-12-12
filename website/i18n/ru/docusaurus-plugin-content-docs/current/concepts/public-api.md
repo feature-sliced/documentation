@@ -147,7 +147,7 @@ Public API должен способствовать **легкой и гибк�
     ```diff
     + import { authFormModel } from "features/auth-form"
     + dispatch(authFormModel.effects.updateUserDetails(...)) // redux
-    + dispatch(authFormModel.updateUserDetailsFx(...)) // effector
+    + authFormModel.updateUserDetailsFx(...) // effector
     ```
 
 ##### Разрешение коллизий

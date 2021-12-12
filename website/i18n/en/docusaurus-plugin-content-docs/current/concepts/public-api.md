@@ -146,7 +146,7 @@ The public API should facilitate **easy and flexible integration**
     ```diff
     + import { authFormModel } from "features/auth-form"
     + dispatch(authFormModel.effects.updateUserDetails(...)) // redux
-    + dispatch(authFormModel.updateUserDetailsFx(...)) // effector
+    + authFormModel.updateUserDetailsFx(...) // effector
     ```
 
 ##### Resolution of collisions
