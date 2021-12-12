@@ -402,6 +402,15 @@
         "plugin",
         "tool"
       ]
+    },
+    {
+      "login": "ainursharaev",
+      "name": "Ainur",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33234903?v=4",
+      "profile": "https://github.com/ainursharaev",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 5,
