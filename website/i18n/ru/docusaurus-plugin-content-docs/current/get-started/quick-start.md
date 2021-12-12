@@ -554,6 +554,7 @@ export const $tasks = createStore<Task[]>(...)
 
 
 // Делаем хуком, чтобы завязаться на обновления react
+// @see В случае эффектора, использование хука - это крайняя мера, т.к. более предпочтительны computed-сторы
 export const useTask = (taskId: number): import("shared/api").Task | undefined => {
   return useStore($tasks)[taskId];
 };

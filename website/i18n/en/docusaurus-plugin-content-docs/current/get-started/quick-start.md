@@ -556,6 +556,7 @@ export const $tasks = createStore<Task[]>(...)
 
 
 // We make a hook to get involved in updates react
+// @see In the case of effector, using a hook is an extreme measure, since computed stores are more preferable
 export const useTask = (taskId: number): import("shared/api").Task | undefined => {
   return useStore($tasks)[taskId];
 };
