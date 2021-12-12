@@ -509,7 +509,7 @@ const TasksListPage = () => {
    * @remark is a bad practice in the effector world and is presented here-just for a visual demonstration
    * It is better to fetch via event.pageMounted or reflect
    */
-  useEffect(() => taskModel.effects.getTasksListFx(), []);
+  useEffect(() => taskModel.getTasksListFx(), []);
 
   return (
     <Layout className={styles.root}>
@@ -560,25 +560,6 @@ export const useTask = (taskId: number): import("shared/api").Task | undefined =
   return useStore($tasks)[taskId];
 };
 ```
-
-:::tip
-
-For a more convenient public API of models, you can export selectors/hooks/events, etc. as separate objects.
-
-**But the main thing** is that this does not undermine [the anti-fragility][refs-public-api] of the module
-
-```ts
-export const events = { toggleTask, setQueryConfig };
-export const effects = { getTaskByIdFx, getTasksListFx };
-export const selectors = { useTask };
-```
-
-```ts
-const task = taskModel.selectors.useTask(taskId);
-taskModel.events.toggleTask(taskId)
-```
-
-:::
 
 #### (features) Checkbox for the task
 

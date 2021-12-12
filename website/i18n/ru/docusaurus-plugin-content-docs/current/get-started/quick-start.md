@@ -507,7 +507,7 @@ const TasksListPage = () => {
    * @remark Является плохой практикой в мире effector и представлено здесь - лишь для наглядной демонстрации
    * Лучше фетчить через event.pageMounted или reflect
    */
-  useEffect(() => taskModel.effects.getTasksListFx(), []);
+  useEffect(() => taskModel.getTasksListFx(), []);
 
   return (
     <Layout className={styles.root}>
@@ -558,25 +558,6 @@ export const useTask = (taskId: number): import("shared/api").Task | undefined =
   return useStore($tasks)[taskId];
 };
 ```
-
-:::tip
-
-Для более удобного публичного API моделей можно отдельными объектами экспортировать селекторы/хуки/события и т.п.
-
-**Но главное**, чтобы это не подрывало [анти-хрупкость][refs-public-api] модуля
-
-```ts
-export const events = { toggleTask, setQueryConfig };
-export const effects = { getTaskByIdFx, getTasksListFx };
-export const selectors = { useTask };
-```
-
-```ts
-const task = taskModel.selectors.useTask(taskId);
-taskModel.events.toggleTask(taskId)
-```
-
-:::
 
 #### (features) Чекбокс для задачи
 
