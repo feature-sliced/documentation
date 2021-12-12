@@ -103,34 +103,34 @@ Public API должен способствовать **легкой и гибк�
 
     ```ts title=features/auth-form/index.ts
     export { Form } from "./ui"
-    export * as store from "./model"
+    export * as model from "./model"
     ```
 
     ```ts title=features/post-form/index.ts
     export { Form } from "./ui"
-    export * as store from "./model"
+    export * as model from "./model"
     ```
 
     ```diff
-    - import { Form, store } from "features/auth-form"
-    - import { Form, store } from "features/post-form"
+    - import { Form, model } from "features/auth-form"
+    - import { Form, model } from "features/post-form"
     ```
 
 - **Хорошо:** коллизия решена на уровне интерфейса
 
     ```ts title=features/auth-form/index.ts
     export { Form as AuthForm } from "./ui"
-    export * as authFormStore from "./model"
+    export * as authFormModel from "./model"
     ```
 
     ```ts title=features/post-form/index.ts
     export { Form as PostForm } from "./ui"
-    export * as postFormStore from "./model"
+    export * as postFormModel from "./model"
     ```
 
     ```diff
-    + import { AuthForm, authFormStore } from "features/auth-form"
-    + import { PostForm, postFormStore } from "features/post-form"
+    + import { AuthForm, authFormModel } from "features/auth-form"
+    + import { PostForm, postFormModel } from "features/post-form"
     ```
 
 ##### Гибкое использование
@@ -145,8 +145,9 @@ Public API должен способствовать **легкой и гибк�
 - **Хорошо:** "пользователь" фичи получает доступ к нужным вещам итеративно и гибко
 
     ```diff
-    + import { authFormStore } from "features/auth-form"
-    + dispatch(authFormStore.actions.updateUserDetails(...))
+    + import { authFormModel } from "features/auth-form"
+    + dispatch(authFormModel.effects.updateUserDetails(...)) // redux
+    + dispatch(authFormModel.updateUserDetailsFx(...)) // effector
     ```
 
 ##### Разрешение коллизий
@@ -173,7 +174,7 @@ Public API должен способствовать **легкой и гибк�
 
     ```ts title=features/auth-form/index.ts
     export { Form as AuthForm } from "./ui"
-    export * as authFormStore from "./model"
+    export * as authFormModel from "./model"
     ```
 
      ```ts title=features/post-form/model.ts
@@ -182,7 +183,7 @@ Public API должен способствовать **легкой и гибк�
 
     ```ts title=features/post-form/index.ts
     export { Form as PostForm } from "./ui"
-    export * as postFormStore from "./model"
+    export * as postFormModel from "./model"
     ```
 
 ## О реэкспортах
