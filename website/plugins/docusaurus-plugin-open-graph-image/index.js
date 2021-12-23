@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 const sha1 = require("sha1");
 const { getTemplates } = require("./template");
 const { createLayoutLayers } = require("./layout");
@@ -93,7 +94,7 @@ async function generateImageFromDoc(initData, doc, locale, outputDir) {
                 quality: config.quality,
                 chromaSubsampling: "4:4:4",
             })
-            .toFile(`${outputDir}\\${hashFileName}.jpg`);
+            .toFile(path.resolve(`${outputDir}\\${hashFileName}.jpg`));
     } catch (error) {
         console.error(error, id, title, hashFileName);
     }

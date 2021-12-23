@@ -1,14 +1,20 @@
-const fs = require("fs");
+const { readFile } = require("fs/promises");
 const { object, string, number, array, is } = require("superstruct");
 const { objectFromBuffer } = require("./utils");
 
-function getConfig(path, encode = "utf-8") {
-    const config = objectFromBuffer(fs.readFileSync(`${path}\\config.json`, encode));
-    if (!validateConfig(config)) {
-        console.error("Config validation error");
-        return;
+async function getConfig(path, encode = "utf-8") {
+    try {
+        const config = objectFromBuffer(await readFile(`${path}\\config.json`, encode));
+
+        if (!validateConfig(config)) {
+            console.error("Config validation error");
+            return;
+        }
+
+        return config;
+    } catch (error) {
+        console.error(error);
     }
-    return config;
 }
 
 const Rule = object({

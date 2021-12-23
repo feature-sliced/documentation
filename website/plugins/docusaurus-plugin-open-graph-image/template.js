@@ -1,29 +1,31 @@
-const fs = require("fs");
+const { readdir, readFile } = require("fs/promises");
 const { object, string, number, array, is } = require("superstruct");
 const { objectFromBuffer } = require("./utils");
 
 const dirIgnore = ["config.json"];
 
-function getTemplates(templatesDir, encode = "utf8") {
-    const templatesDirNames = fs
-        .readdirSync(templatesDir)
-        .filter((fileName) => !dirIgnore.includes(fileName));
+async function getTemplates(templatesDir, encode = "utf8") {
+    try {
+        const allDirFiles = await readdir(templatesDir);
+        const templatesDirNames = allDirFiles.filter((fileName) => !dirIgnore.includes(fileName));
 
-    // TODO: check file exist
-    const templates = templatesDirNames.map((templateName) => ({
-        name: templateName,
-        path: templatesDir,
-        params: objectFromBuffer(
-            fs.readFileSync(`${templatesDir}\\${templateName}\\template.json`, encode),
-        ),
-    }));
+        const templates = templatesDirNames.map(async (templateName) => ({
+            name: templateName,
+            path: templatesDir,
+            params: objectFromBuffer(
+                await readFile(`${templatesDir}\\${templateName}\\template.json`, encode),
+            ),
+        }));
 
-    if (!templates.some(validateTemplate)) {
-        console.error("Templates validation error.");
-        return;
+        if (!templates.some(validateTemplate)) {
+            console.error("Templates validation error.");
+            return;
+        }
+
+        return templates;
+    } catch (error) {
+        console.error(error);
     }
-
-    return templates;
 }
 
 // TODO: May be with postEffects, images and etc? (optional fontSize, fill and etc)
