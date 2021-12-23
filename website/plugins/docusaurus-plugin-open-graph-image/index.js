@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+const { mkdir } = require("fs/promises");
+const { resolve } = require("path");
 const sha1 = require("sha1");
 const { getTemplates } = require("./template");
 const { createLayoutLayers } = require("./layout");
@@ -7,35 +7,44 @@ const { createFontsMapFromTemplates } = require("./font");
 const { createImagesMapFromTemplates, getTemplateImageId } = require("./image");
 const { getConfig } = require("./config");
 const { getTemplateNameByRules } = require("./rules");
+const { Logger } = require("./utils");
 
-module.exports = function ({ templatesDir }) {
-    const initData = bootstrap(templatesDir);
-    if (!initData) {
-        console.error("OpenGraph plugin exit with error.");
-        return;
-    }
-
-    const { config } = initData;
-
+module.exports = function (_, { templatesDir }) {
     return {
         name: "docusaurus-plugin-open-graph-image",
         async postBuild({ plugins, outDir, i18n }) {
+            Logger.info(`OG: work in progress.`);
+
+            const initData = await bootstrap(templatesDir);
+            if (!initData) {
+                Logger.err("OpenGraph plugin exit with error.");
+                return;
+            }
+
+            Logger.ok(`OG: initialization complete.`);
+
+            const { config } = initData;
+
             const docsPlugin = plugins.find(
                 (plugin) => plugin.name === "docusaurus-plugin-content-docs",
             );
 
             if (!docsPlugin) throw new Error("Docusaurus Doc plugin not found.");
 
-            const previewOutputDir = `${outDir}\\${config.outputDir}`;
-            fs.mkdir(previewOutputDir, { recursive: true }, (error) => {
-                if (error) throw error;
-            });
+            const previewOutputDir = resolve(outDir, config.outputDir);
+
+            try {
+                await mkdir(previewOutputDir, { recursive: true });
+            } catch (error) {
+                Logger.err(error);
+                return;
+            }
+            Logger.ok(`OG: assets output folder created.`);
 
             const docsContent = docsPlugin.content;
             const docsVersions = docsContent.loadedVersions;
             docsVersions.forEach((version) => {
                 const { docs } = version;
-
                 docs.forEach((document) => {
                     generateImageFromDoc(initData, document, i18n.currentLocale, previewOutputDir);
                 });
@@ -44,19 +53,19 @@ module.exports = function ({ templatesDir }) {
     };
 };
 
-function bootstrap(templatesDir) {
+async function bootstrap(templatesDir) {
     const isProd = process.env.NODE_ENV === "production";
     if (!isProd) return;
 
     if (!templatesDir) {
-        console.error("Wrong templatesDir option.");
+        Logger.err("Wrong templatesDir option.");
         return;
     }
 
-    const templates = getTemplates(templatesDir);
+    const templates = await getTemplates(templatesDir);
     if (!templates) return;
 
-    const config = getConfig(templatesDir);
+    const config = await getConfig(templatesDir);
     if (!config) return;
 
     // TODO: File not found exception?
@@ -94,8 +103,13 @@ async function generateImageFromDoc(initData, doc, locale, outputDir) {
                 quality: config.quality,
                 chromaSubsampling: "4:4:4",
             })
-            .toFile(path.resolve(`${outputDir}\\${hashFileName}.jpg`));
+            .toFile(resolve(outputDir, `${hashFileName}.jpg`));
+        Logger.ok(`Generated: ${hashFileName}.jpg`);
     } catch (error) {
-        console.error(error, id, title, hashFileName);
+        Logger.err(`${error}
+            DocumentID: ${id}
+            Title: ${title}
+            Hash: ${hashFileName}
+            Path: ${resolve(outputDir, `${hashFileName}.jpg`)}`);
     }
 }

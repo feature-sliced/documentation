@@ -1,9 +1,10 @@
 const { createSVGText } = require("./font");
+const { Logger } = require("./utils");
 
 function createLayoutLayers(doc, layout, previewFont, textWidthLimit) {
     /* Check for all layers names exist in doc fields */
     if (layout.some((layer) => !doc[layer.name])) {
-        console.error(`Wrong template config.`);
+        Logger.err(`Wrong template config.`);
         return;
     }
 

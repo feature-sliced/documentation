@@ -1,3 +1,4 @@
+const { resolve } = require("path");
 const textToSVG = require("text-to-svg");
 
 function createFontsMapFromTemplates(templates) {
@@ -6,7 +7,7 @@ function createFontsMapFromTemplates(templates) {
         if (!fonts.has(template.params.font)) {
             fonts.set(
                 template.params.font,
-                textToSVG.loadSync(`${template.path}\\${template.name}\\${template.params.font}`),
+                textToSVG.loadSync(resolve(template.path, template.name, template.params.font)),
             );
         }
     });

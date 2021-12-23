@@ -1,19 +1,20 @@
+const { resolve } = require("path");
 const { readFile } = require("fs/promises");
 const { object, string, number, array, is } = require("superstruct");
-const { objectFromBuffer } = require("./utils");
+const { objectFromBuffer, Logger } = require("./utils");
 
-async function getConfig(path, encode = "utf-8") {
+async function getConfig(configPath, encode = "utf-8") {
     try {
-        const config = objectFromBuffer(await readFile(`${path}\\config.json`, encode));
+        const config = objectFromBuffer(await readFile(resolve(configPath, "config.json"), encode));
 
         if (!validateConfig(config)) {
-            console.error("Config validation error");
+            Logger.err("Config validation error");
             return;
         }
 
         return config;
     } catch (error) {
-        console.error(error);
+        Logger.err(error);
     }
 }
 
