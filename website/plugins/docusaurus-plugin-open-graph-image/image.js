@@ -1,3 +1,4 @@
+const { resolve } = require("path");
 const sharp = require("sharp");
 
 function getTemplateImageId(template) {
@@ -11,7 +12,7 @@ function createImagePipeline(file) {
 }
 
 function createImageFromTemplate({ path, name, params }) {
-    return createImagePipeline(`${path}\\${name}\\${params.image}`);
+    return createImagePipeline(resolve(path, name, params.image));
 }
 
 function createImagesMapFromTemplates(templates) {
