@@ -317,7 +317,7 @@ export const SomePage = () => {
     return (
         <Layout>
             ...
-            <Settings onSave={(payload) => viewerModel.events.saveChanges(payload)} />
+            <Settings onSave={(payload) => viewerModel.saveChanges(payload)} />
         </Layout>
     )
 }
