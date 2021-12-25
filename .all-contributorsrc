@@ -372,7 +372,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/975906?v=4",
       "profile": "http://twitter/tavriaforever",
       "contributions": [
-        "userTesting"
+        "userTesting",
+        "eventOrganizing"
       ]
     },
     {
@@ -420,6 +421,15 @@
       "profile": "https://github.com/EliseyMartynov",
       "contributions": [
         "example"
+      ]
+    },
+    {
+      "login": "baushonok",
+      "name": "Olga Pasynok",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9272905?v=4",
+      "profile": "https://github.com/baushonok",
+      "contributions": [
+        "eventOrganizing"
       ]
     }
   ],
