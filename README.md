@@ -1,6 +1,6 @@
 # feature-sliced
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-37-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-38-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > `WIP:` The current version of the methodology is under development and some details *can be changed*
@@ -318,6 +318,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://t.me/krakazybik"><img src="https://avatars.githubusercontent.com/u/1334019?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Evgeniy</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=Krakazybik" title="Code">💻</a> <a href="#plugin-Krakazybik" title="Plugin/utility libraries">🔌</a> <a href="#tool-Krakazybik" title="Tools">🔧</a></td>
     <td align="center"><a href="https://github.com/ainursharaev"><img src="https://avatars.githubusercontent.com/u/33234903?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ainur</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=ainursharaev" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/EliseyMartynov"><img src="https://avatars.githubusercontent.com/u/66368523?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Elisey Martynov</b></sub></a><br /><a href="#example-EliseyMartynov" title="Examples">💡</a></td>
   </tr>
 </table>
 
