@@ -281,6 +281,10 @@ const announcementBar = {
 /** @type {Config["themeConfig"]["colorMode"]} */
 const colorMode = {
     respectPrefersColorScheme: true,
+    switchConfig: {
+        darkIcon: "🎄",
+        lightIcon: "⛄",
+    },
 };
 
 /**
