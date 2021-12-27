@@ -206,7 +206,7 @@ const presets = [
                 showLastUpdateTime: true,
                 versions: {
                     current: {
-                        label: `v2.0-beta 🍰`,
+                        label: `v2.0-beta ❄️`, // @christmas Revert later
                     },
                 },
             },
@@ -281,6 +281,7 @@ const announcementBar = {
 /** @type {Config["themeConfig"]["colorMode"]} */
 const colorMode = {
     respectPrefersColorScheme: true,
+    // @christmas Revert later
     switchConfig: {
         darkIcon: "🎄",
         lightIcon: "⛄",
@@ -334,7 +335,7 @@ module.exports = {
         colorMode,
         navbar,
         footer,
-        announcementBar,
+        // announcementBar, // @christmas Revert later
         algolia,
         hideableSidebar: true,
         ...metrics,
