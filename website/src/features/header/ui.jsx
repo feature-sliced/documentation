@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import Snowfall from "react-snowfall";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { translate } from "@docusaurus/Translate";
@@ -10,6 +11,7 @@ export function Header() {
     const { siteConfig } = useDocusaurusContext();
     return (
         <header className={clsx("hero hero--primary", styles.heroBanner)}>
+            <Snowfall /> {/** @christmas Revert later */}
             <div className="container">
                 <h1 className="hero__title">{siteConfig.title}</h1>
                 <p className="hero__subtitle">{translate({ id: "features.hero.tagline" })}</p>

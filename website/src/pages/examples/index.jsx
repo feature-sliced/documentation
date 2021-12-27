@@ -1,6 +1,7 @@
 import React from "react";
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
+import Snowfall from "react-snowfall";
 import { translate } from "@docusaurus/Translate";
 import { ExampleCard } from "@site/src/entities/example";
 
@@ -15,6 +16,7 @@ const EXAMPLES_URL = "https://github.com/feature-sliced/examples";
 function ExamplesPage() {
     return (
         <Layout title={TITLE} description={DESCRIPTION}>
+            <Snowfall /> {/** @christmas Revert later */}
             <main className="container margin-vert--lg">
                 <div className="text--center">
                     <h1>{TITLE}</h1>
