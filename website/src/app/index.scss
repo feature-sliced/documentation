@@ -20,15 +20,25 @@
     --ifm-code-font-size: 95%;
 
     /* https://docusaurus.io/docs/styling-layout */
-    --ifm-color-primary: #5c9cb5;
-    --ifm-color-primary-dark: #4d8fa9;
-    --ifm-color-primary-darker: #4887a0;
-    --ifm-color-primary-darkest: #3c6f83;
-    --ifm-color-primary-light: #6fa7be;
-    --ifm-color-primary-lighter: #78adc2;
-    --ifm-color-primary-lightest: #94becf;
-    --ifm-h2-font-size: 1.75rem;
-    --ifm-button-color: #ffffff;
+    // Primary
+    // --ifm-color-primary: #5c9cb5;
+    // --ifm-color-primary-dark: #4d8fa9;
+    // --ifm-color-primary-darker: #4887a0;
+    // --ifm-color-primary-darkest: #3c6f83;
+    // --ifm-color-primary-light: #6fa7be;
+    // --ifm-color-primary-lighter: #78adc2;
+    // --ifm-color-primary-lightest: #94becf;
+    // --ifm-h2-font-size: 1.75rem;
+    // --ifm-button-color: #ffffff;
+    
+    // @christmas Revert later
+    --ifm-color-primary: #8cd1c6;
+    --ifm-color-primary-dark: #73c7ba;
+    --ifm-color-primary-darker: #67c2b3;
+    --ifm-color-primary-darkest: #46af9e;
+    --ifm-color-primary-light: #a5dbd2;
+    --ifm-color-primary-lighter: #b1e0d9;
+    --ifm-color-primary-lightest: #d7efeb;
 }
 
 .docusaurus-highlight-code-line {
