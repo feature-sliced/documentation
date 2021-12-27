@@ -6,5 +6,5 @@ This folder contains theme components overriding
 
 ## See also
 
-- <https://docusaurus.io/docs/using-themes#wrapper-your-site-with-root>
 - <https://docusaurus.io/docs/using-themes#theme-components>
+- <https://docusaurus.io/docs/using-themes#wrapper-your-site-with-root>
