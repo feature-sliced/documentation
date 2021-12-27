@@ -49,11 +49,11 @@ export const examples = [
     {
         title: "Todo App (Vue 3)",
         description: "QuickStart todo-app example for Vue developers",
-        website: "https://codesandbox.io/s/github/EliseyMartynov/fs-vue/tree/master/",
+        website: "https://fccls.sse.codesandbox.io/",
         source: "https://github.com/EliseyMartynov/fs-vue",
-        preview: require("./img/todo-app.png"),
+        preview: require("./img/todo-app-vue.png"),
         version: VERSIONS.V2,
-        updatedAt: "2021-12-20",
+        updatedAt: "2021-12-27",
     },
     {
         title: "Sharead (demo)",
