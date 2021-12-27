@@ -47,6 +47,15 @@ export const examples = [
         updatedAt: "2021-07-05",
     },
     {
+        title: "Todo App (Vue 3)",
+        description: "QuickStart todo-app example for Vue developers",
+        website: "https://fccls.sse.codesandbox.io/",
+        source: "https://github.com/EliseyMartynov/fs-vue",
+        preview: require("./img/todo-app-vue.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2021-12-27",
+    },
+    {
         title: "Sharead (demo)",
         description: "Book Marketplace",
         website: "https://dev-sharead.netlify.app/",
