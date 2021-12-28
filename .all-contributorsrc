@@ -46,10 +46,10 @@
       ]
     },
     {
-      "login": "KaraMokusee",
-      "name": "Kara Mokusee",
+      "login": "RinAkaia",
+      "name": "Rin 狐 Akaia",
       "avatar_url": "https://avatars.githubusercontent.com/u/8805308?v=4",
-      "profile": "https://github.com/KaraMokusee",
+      "profile": "https://github.com/RinAkaia",
       "contributions": [
         "doc",
         "content",
@@ -278,7 +278,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/42828375?v=4",
       "profile": "https://github.com/sarmong",
       "contributions": [
-        "doc"
+        "doc",
+        "translation"
       ]
     },
     {
@@ -288,7 +289,8 @@
       "profile": "https://github.com/tednaaa",
       "contributions": [
         "infra",
-        "doc"
+        "doc",
+        "code"
       ]
     },
     {
@@ -370,7 +372,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/975906?v=4",
       "profile": "http://twitter/tavriaforever",
       "contributions": [
-        "userTesting"
+        "userTesting",
+        "eventOrganizing"
       ]
     },
     {
@@ -389,6 +392,44 @@
       "profile": "https://github.com/vladislavromanov",
       "contributions": [
         "data"
+      ]
+    },
+    {
+      "login": "Krakazybik",
+      "name": "Evgeniy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1334019?v=4",
+      "profile": "https://t.me/krakazybik",
+      "contributions": [
+        "code",
+        "plugin",
+        "tool"
+      ]
+    },
+    {
+      "login": "ainursharaev",
+      "name": "Ainur",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33234903?v=4",
+      "profile": "https://github.com/ainursharaev",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "EliseyMartynov",
+      "name": "Elisey Martynov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66368523?v=4",
+      "profile": "https://github.com/EliseyMartynov",
+      "contributions": [
+        "example"
+      ]
+    },
+    {
+      "login": "baushonok",
+      "name": "Olga Pasynok",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9272905?v=4",
+      "profile": "https://github.com/baushonok",
+      "contributions": [
+        "eventOrganizing"
       ]
     }
   ],

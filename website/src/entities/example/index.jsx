@@ -3,9 +3,12 @@ import React from "react";
 import clsx from "clsx";
 // eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
+import { date } from "@site/src/shared/lib/date";
 import styles from "./styles.module.scss";
 
 export function ExampleCard({ className, data }) {
+    const isNew = date.getDiffDays(new Date(data.updatedAt), new Date()) <= 14;
+
     return (
         <article className={clsx("card", styles.root, className)}>
             <div className={clsx("card__image", styles.preview)}>
@@ -13,6 +16,11 @@ export function ExampleCard({ className, data }) {
                 <Image img={data.preview} alt={data.title} />
             </div>
             <div className={clsx("card__body", styles.content)}>
+                {isNew && (
+                    <span title="Was updated less than 2 weeks ago" className={styles.labelNew}>
+                        NEW:{" "}
+                    </span>
+                )}
                 <span className={styles.title}>{data.title}</span>
                 <p className={styles.description}>{data.description}</p>
             </div>

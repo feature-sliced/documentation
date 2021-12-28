@@ -96,4 +96,14 @@ export const companies = [
         src: "space307.svg",
         alt: "~/.space307",
     },
+    {
+        url: "https://pmp-tech.ru/",
+        src: "pmp-tech.png",
+        alt: "PMP Tech",
+    },
+    {
+        url: "https://www.aligntech.com/",
+        src: "align.svg",
+        alt: "Align",
+    },
 ];

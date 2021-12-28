@@ -1,4 +1,6 @@
 .root {
+    position: relative; // @christmas Revert later
+    z-index: 0; // @christmas Revert later
     height: 100%;
 }
 
@@ -24,4 +26,9 @@
 
 .title {
     font-weight: 600;
+}
+
+.labelNew {
+    font-weight: bold;
+    color: var(--ifm-color-primary);
 }

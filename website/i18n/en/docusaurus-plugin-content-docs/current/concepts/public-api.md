@@ -64,9 +64,9 @@ The public API must **control access** to the contents of the module
     + import { AuthForm } from "features/auth-form"
     ```
 
-### 2. Anti-fragility
+### 2. Sustainability for changes
 
-The public API should be **anti-fragile** - resistant to changes inside the module
+The public API should be sustainable for changes inside the module
 
 - Breaking changes in the behavior of the module are reflected in the change of the Public API
 
@@ -102,34 +102,34 @@ The public API should facilitate **easy and flexible integration**
 
     ```ts title=features/auth-form/index.ts
     export { Form } from "./ui"
-    export * as store from "./model"
+    export * as model from "./model"
     ```
 
     ```ts title=features/post-form/index.ts
     export { Form } from "./ui"
-    export * as store from "./model"
+    export * as model from "./model"
     ```
 
     ```diff
-    - import { Form, store } from "features/auth-form"
-    - import { Form, store } from "features/post-form"
+    - import { Form, model } from "features/auth-form"
+    - import { Form, model } from "features/post-form"
     ```
 
 - **Good:** the collision is solved at the interface level
 
     ```ts title=features/auth-form/index.ts
     export { Form as AuthForm } from "./ui"
-    export * as authFormStore from "./model"
+    export * as authFormModel from "./model"
     ```
 
     ```ts title=features/post-form/index.ts
     export { Form as PostForm } from "./ui"
-    export * as postFormStore from "./model"
+    export * as postFormModel from "./model"
     ```
 
     ```diff
-    + import { AuthForm, authFormStore } from "features/auth-form"
-    + import { PostForm, postFormStore } from "features/post-form"
+    + import { AuthForm, authFormModel } from "features/auth-form"
+    + import { PostForm, postFormModel } from "features/post-form"
     ```
 
 ##### Flexible use
@@ -144,8 +144,9 @@ The public API should facilitate **easy and flexible integration**
 - **Good:** the "user" of the feature gets access to the necessary things iteratively and flexibly
 
     ```diff
-    + import { authFormStore } from "features/auth-form"
-    + dispatch(authFormStore.actions.updateUserDetails(...))
+    + import { authFormModel } from "features/auth-form"
+    + dispatch(authFormModel.effects.updateUserDetails(...)) // redux
+    + authFormModel.updateUserDetailsFx(...) // effector
     ```
 
 ##### Resolution of collisions
@@ -172,7 +173,7 @@ Name collisions should be resolved at the level of the public interface, not the
 
     ```ts title=features/auth-form/index.ts
     export { Form as AuthForm } from "./ui"
-    export * as authFormStore from "./model"
+    export * as authFormModel from "./model"
     ```
 
      ```ts title=features/post-form/model.ts
@@ -181,7 +182,7 @@ Name collisions should be resolved at the level of the public interface, not the
 
     ```ts title=features/post-form/index.ts
     export { Form as PostForm } from "./ui"
-    export * as postFormStore from "./model"
+    export * as postFormModel from "./model"
     ```
 
 ## About re-exports

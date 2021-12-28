@@ -33,9 +33,15 @@
         "dotenv": "^10.0.0",
         "file-loader": "^6.2.0",
         "js-cookie": "^3.0.1",
+        "picocolors": "^1.0.0",
         "react": "^17.0.1",
         "react-cookie-consent": "^6.4.1",
         "react-dom": "^17.0.1",
+        "react-snowfall": "^1.1.1",
+        "sha1": "^1.1.1",
+        "sharp": "^0.29.3",
+        "superstruct": "^0.15.3",
+        "text-to-svg": "^3.1.5",
         "url-loader": "^4.1.1"
     },
     "browserslist": {

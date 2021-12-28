@@ -7,6 +7,9 @@ import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 
 # Auth
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Every application has business logic related **with the current authorized user.**
 
 > Usually such an entity is called `Viewer` / `Principle` / `Session` - but within the framework of the article, we will focus on `viewer`, but it all depends on your project and team
@@ -21,9 +24,10 @@ Let's look at them in more detail below with examples
 
     *The methodology does not regulate this level of nesting in any way yet*
 
-2. It should also be understood that the examples given below are abstract and synthetic, and are formed by the author's point of view and experience
+2. It should also be understood that the examples below are abstract and synthetic, and are formed to demonstrate only the concepts of the methodology
 
-    *The implementation in your projects may differ, the methodology, again, does not regulate these aspects in any way*
+    *FeatureSliced does not regulate the best practices of a particular data-fetcher or state-manager*
+
 
 :::
 
@@ -73,12 +77,33 @@ export { ViewerAvatar } from "./avatar";
 ...
 ```
 
+<Tabs>
+<TabItem value="redux" label="Redux" default>
+
+In redux, the [redux-ducks](https://github.com/erikra/ducks-modular-redux) approach is generally accepted when its units (selectors/actions/...) they lie side by side and are clearly decomposed
+
+But explicit decomposition is not required
+
 ```ts title=entities/user/model/index.ts
 export * as selectors from "./selectors";
 export * as events from "./events";
 export * as stores from "./stores";
 ...
 ```
+</TabItem>
+<TabItem value="effector" label="Effector">
+
+The effector model will most often consist of a single file - because it is customary to store all units side by side there
+
+If the units in the model can be schematically divided into several submodels, then [you can explicitly do this](https://github.com/feature-sliced/examples/pull/1#discussion_r654841332) denote in the Public API
+
+```ts title=entities/user/model/index.ts
+export * as submodel1 from "./submodel1"
+export * as submodel2 from "./submodel2"
+...
+```
+</TabItem>
+</Tabs>
 
 ```ts title=entities/user/index.ts
 export * from "./ui"
@@ -117,23 +142,33 @@ export const UserCard = ({ data, ... }: UserCardProps) => {
 
 At this level, the entity of the current user is usually created, with the re-export of hooks/contracts/selectors for use by the overlying layers
 
-```ts title=entities/user/model/stores.ts
-// effector
-export const $user = createStore(...);
-// redux (+ toolkit)
-export const userSlice = createSlice(...)
-```
+<Tabs>
+<TabItem value="redux" label="Redux" default>
 
-```ts title=entities/user/model/selectors.ts
-// effector
-export const useViewer = () => {
-    return useStore($user)
-}
-// redux (+ toolkit)
+```ts
+// entities/viewer/model/selectors.ts
 export const useViewer = () => {
     return useSelector((store) => store.entities.userSlice);
 }
+export const useAuth = () => {
+    const viewer = useViewer();
+    return !!viewer
+}
+// entities/viewer/model/store.ts
+export const userSlice = createSlice(...)
 ```
+</TabItem>
+<TabItem value="effector" label="Effector">
+
+```ts
+// entities/viewer/model/index.ts
+export const $viewer = createStore(...);
+export const $isAuth = $viewer.map((viewer) => !!viewer);
+// **/**/ui.tsx
+const viewer = useStore($viewer);
+```
+</TabItem>
+</Tabs>
 
 Also, other logic can be implemented here
 
@@ -282,7 +317,7 @@ export const SomePage = () => {
     return (
         <Layout>
             ...
-            <Settings onSave={(payload) => viewerModel.events.saveChanges(payload)} />
+            <Settings onSave={(payload) => viewerModel.saveChanges(payload)} />
         </Layout>
     )
 }

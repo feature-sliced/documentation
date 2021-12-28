@@ -19,7 +19,7 @@ const navbar = {
     logo: {
         alt: "logo",
         // FIXME: Сделать под SVG позднее
-        src: "img/logo.png",
+        src: "img/logo_frozen.png", // @christmas Revert later
     },
     items: [
         // left
@@ -165,7 +165,7 @@ const footer = {
     ],
     logo: {
         alt: "feature-sliced - Structural pattern for Frontend projects",
-        src: "img/logo.png",
+        src: "img/logo_frozen.png", // @christmas Revert later
         href: GITHUB_ORG,
     },
     copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced`,
@@ -207,7 +207,7 @@ const presets = [
                 showLastUpdateTime: true,
                 versions: {
                     current: {
-                        label: `v2.0-beta 🍰`,
+                        label: `v2.0-beta ❄️`, // @christmas Revert later
                     },
                 },
             },
@@ -288,6 +288,11 @@ const announcementBar = {
 /** @type {Config["themeConfig"]["colorMode"]} */
 const colorMode = {
     respectPrefersColorScheme: true,
+    // @christmas Revert later
+    switchConfig: {
+        darkIcon: "🎄",
+        lightIcon: "⛄",
+    },
 };
 
 /**
@@ -337,7 +342,7 @@ module.exports = {
         colorMode,
         navbar,
         footer,
-        announcementBar,
+        // announcementBar, // @christmas Revert later
         algolia,
         hideableSidebar: true,
         ...metrics,
