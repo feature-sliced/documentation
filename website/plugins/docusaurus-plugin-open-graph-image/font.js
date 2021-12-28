@@ -23,7 +23,7 @@ function createSVGText(
     const attributes = { fill, stroke };
     const options = { fontSize, anchor: "top", attributes };
     // Remove all emoji from text
-    const filteredText = text.replace(
+    let filteredText = text.replace(
         /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
         "",
     );
@@ -33,6 +33,13 @@ function createSVGText(
         const { width } = font.getMetrics(filteredText, options);
         if (width > widthLimit)
             options.fontSize = Math.trunc((fontSize * 0.9) / (width / widthLimit));
+        else {
+            // Center text using spaces.
+            const { width: spaceWidth } = font.getMetrics(" ", options);
+            const availableSpacesCount = Math.trunc((widthLimit - width) / spaceWidth / 2);
+            const spaces = " ".repeat(availableSpacesCount);
+            filteredText = `${spaces}${filteredText}${spaces}`;
+        }
     }
 
     return font.getSVG(filteredText, options);
