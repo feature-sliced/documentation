@@ -256,7 +256,7 @@ const plugins = [
     ],
     process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
     [
-        path.resolve(__dirname, "./plugins/docusaurus-plugin-open-graph-image"),
+        path.resolve(__dirname, "./plugins/docusaurus-plugin-og"),
         {
             templatesDir: path.resolve(__dirname, "config/og"),
         },
