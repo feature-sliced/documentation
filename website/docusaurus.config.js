@@ -11,6 +11,13 @@ const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
 const DEFAULT_LOCALE = "ru";
 
+const DOCUSAURUS_PLUGIN_OG = [
+    path.resolve(__dirname, "./plugins/docusaurus-plugin-og"),
+    {
+        templatesDir: path.resolve(__dirname, "config/og"),
+    },
+];
+
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
 
 /** @type {Config["themeConfig"]["navbar"]} */
@@ -255,12 +262,8 @@ const plugins = [
         },
     ],
     process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
-    [
-        path.resolve(__dirname, "./plugins/docusaurus-plugin-og"),
-        {
-            templatesDir: path.resolve(__dirname, "config/og"),
-        },
-    ],
+    // FIXME: Docusaurus Open Graph Plugin Experimental.
+    process.env.OG_EXP && DOCUSAURUS_PLUGIN_OG,
 ].filter(Boolean);
 
 /** @type {Config["themeConfig"]["algolia"]} */
