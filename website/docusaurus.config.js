@@ -258,7 +258,7 @@ const plugins = [
     [
         path.resolve(__dirname, "./plugins/docusaurus-plugin-open-graph-image"),
         {
-            templatesDir: path.resolve(__dirname, "open-graph-templates"),
+            templatesDir: path.resolve(__dirname, "config/og"),
         },
     ],
 ].filter(Boolean);

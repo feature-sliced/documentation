@@ -32,13 +32,7 @@ const Config = object({
 });
 
 function validateConfig(config) {
-    if (is(config, Config)) {
-        return config.rules.reduce((validationResult, rule) => {
-            if (!is(rule, Rule)) return false;
-            return validationResult;
-        }, true);
-    }
-    return false;
+    return is(config, Config);
 }
 
 module.exports = { getConfig };

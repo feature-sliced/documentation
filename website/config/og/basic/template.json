@@ -1,13 +1,9 @@
 {
   "image": "preview.png",
-  "font": "arial.ttf",
+  "font": "RobotoMono-Bold.ttf",
   "layout": [
     {
-      "type": "text",
       "name": "title",
-      "fontSize": 80,
-      "fill": "white",
-      "stroke": "white",
       "top": 400,
       "left": 210
     }

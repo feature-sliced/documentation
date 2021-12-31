@@ -1,6 +1,6 @@
 const { resolve } = require("path");
 const { readdir, readFile } = require("fs/promises");
-const { object, string, number, array, is } = require("superstruct");
+const { object, string, number, array, is, optional } = require("superstruct");
 const { objectFromBuffer, Logger } = require("./utils");
 
 const dirIgnore = ["config.json"];
@@ -38,11 +38,11 @@ async function getTemplates(templatesDir, encode = "utf8") {
 
 // TODO: May be with postEffects, images and etc? (optional fontSize, fill and etc)
 const Layout = object({
-    type: string(),
+    type: optional(string()),
     name: string(),
-    fontSize: number(),
-    fill: string(),
-    stroke: string(),
+    fontSize: optional(number()),
+    fill: optional(string()),
+    stroke: optional(string()),
     top: number(),
     left: number(),
 });
@@ -54,16 +54,7 @@ const Template = object({
 });
 
 function validateTemplate({ params }) {
-    if (is(params, Template)) {
-        if (params.layout.length === 0) return false;
-
-        return params.layout.reduce((validationResult, layout) => {
-            if (!is(layout, Layout)) return false;
-            return validationResult;
-        }, true);
-    }
-
-    return false;
+    return is(params, Template);
 }
 
 module.exports = { getTemplates };
