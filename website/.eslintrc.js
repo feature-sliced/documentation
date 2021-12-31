@@ -24,7 +24,7 @@ module.exports = {
         ],
         "linebreak-style": [2, "unix"],
         "import/no-unresolved": [
-            "error",
+            2,
             {
                 ignore: ["^@theme-original"],
             },
