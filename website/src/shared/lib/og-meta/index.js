@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "@docusaurus/Head";
 
-export function OpenGraphPreview({ imgUrl }) {
+export function OGMeta({ imgUrl }) {
     return (
         <Head>
             <meta name="og:image" content={imgUrl} />

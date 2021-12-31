@@ -1,24 +1,15 @@
-import sha1 from "sha1";
 import React from "react";
 import OriginalDocItem from "@theme-original/DocItem";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { OpenGraphPreview } from "@site/src/shared/lib/open-graph-preview";
+import { OGMeta } from "@site/src/shared/lib/og-meta";
+import { useOGUrl } from "./lib";
 
 function DocItem(props) {
     const { content } = props;
-    const { id } = content.metadata;
-    const { siteConfig, i18n } = useDocusaurusContext();
-
-    const hashFileName = sha1(id + i18n.currentLocale);
+    const ogUrl = useOGUrl(content.metadata);
 
     return (
         <>
-            <OpenGraphPreview
-                imgUrl={`${siteConfig.url}${
-                    /* OG Preview images build with locale prefix (.../en/assets/...) for not default locales */
-                    i18n.currentLocale !== i18n.defaultLocale ? `/${i18n.currentLocale}` : ""
-                }/assets/og/${hashFileName}.jpg`}
-            />
+            process.env.OG_EXP && <OGMeta imgUrl={ogUrl} />
             <OriginalDocItem {...props} />
         </>
     );
