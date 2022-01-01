@@ -323,6 +323,8 @@ const metadatas = [
  */
 const customFields = {
     legacyRoutes: LEGACY_ROUTES,
+    // FIXME: Open Graph Experimental Mode.
+    isOGExperimental: process.env.OG_EXP,
 };
 
 /** @type {Config} */
