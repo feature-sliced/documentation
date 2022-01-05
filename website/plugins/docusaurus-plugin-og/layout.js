@@ -1,5 +1,5 @@
-const { createSVGText } = require("./font");
 const { Logger } = require("./utils");
+const { textToSVG } = require("./svg");
 
 function createLayoutLayers(doc, layout, previewFont, textWidthLimit) {
     /* Check for all layers names exist in doc fields */
@@ -13,14 +13,16 @@ function createLayoutLayers(doc, layout, previewFont, textWidthLimit) {
             fontSize: layer.fontSize,
             fill: layer.fill,
             stroke: layer.stroke,
+            transform: layer.transform,
+            fontWeight: layer.fontWeight,
         };
 
         return {
             input: Buffer.from(
-                createSVGText(previewFont, doc[layer.name], layoutOptions, textWidthLimit),
+                textToSVG(previewFont, doc[layer.name], layoutOptions, textWidthLimit),
             ),
-            top: layer.top,
-            left: layer.left,
+            top: layer.top || 0,
+            left: layer.left || 0,
         };
     });
 }
