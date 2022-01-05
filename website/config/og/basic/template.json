@@ -1,11 +1,22 @@
 {
   "image": "preview.png",
-  "font": "RobotoMono-Bold.ttf",
+  "font": "RobotoMono-Variable.ttf",
   "layout": [
     {
       "name": "title",
-      "top": 400,
-      "left": 210
+      "transform": "translate(100, 350)",
+      "fontSize": 54,
+      "fontWeight": 600,
+      "fill": "white",
+      "stroke": "white"
+    },
+    {
+      "name": "id",
+      "transform": "translate(100, 400)",
+      "fontSize": 42,
+      "fontWeight": 400,
+      "fill": "#b0b6a4",
+      "stroke": "#b0b6a4"
     }
   ]
 }

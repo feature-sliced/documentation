@@ -40,11 +40,13 @@ async function getTemplates(templatesDir, encode = "utf8") {
 const Layout = object({
     type: optional(string()),
     name: string(),
-    fontSize: optional(number()),
     fill: optional(string()),
     stroke: optional(string()),
-    top: number(),
-    left: number(),
+    top: optional(number()),
+    left: optional(number()),
+    transform: optional(string()),
+    fontSize: optional(number()),
+    fontWeight: optional(number()),
 });
 
 const Template = object({
