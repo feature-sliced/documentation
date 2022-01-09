@@ -431,6 +431,15 @@
       "contributions": [
         "eventOrganizing"
       ]
+    },
+    {
+      "login": "Affiction",
+      "name": "Max Kokosha",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9825305?v=4",
+      "profile": "https://github.com/Affiction",
+      "contributions": [
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 5,
