@@ -1,7 +1,7 @@
 import React from "react";
 import OriginalDocItem from "@theme-original/DocItem";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { OGMeta } from "@site/src/shared/lib/og-meta";
+import { OGMeta } from "@site/src/shared/lib/og";
 import { useDocOGUrl } from "./lib";
 
 function DocItem(props) {
