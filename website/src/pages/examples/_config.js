@@ -82,4 +82,13 @@ export const examples = [
         version: VERSIONS.V2,
         updatedAt: "2021-11-17",
     },
+    {
+        title: "Todo App (Angular 13)",
+        description: "QuickStart todo-app example for Angular developers",
+        website: "https://angular-feature-sliced-architecture.netlify.app/",
+        source: "https://github.com/Affiction/angular-feature-sliced",
+        preview: require("./img/todo-app-angular.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2022-01-09",
+    },
 ];
