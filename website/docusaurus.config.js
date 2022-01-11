@@ -1,4 +1,5 @@
 require("dotenv").config();
+const path = require("path");
 const { REDIRECTS, SECTIONS, LEGACY_ROUTES } = require("./routes.config");
 
 const DOMAIN = "https://feature-sliced.design/";
@@ -9,6 +10,13 @@ const YOUTUBE = "https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A";
 const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
 const DEFAULT_LOCALE = "ru";
+
+const DOCUSAURUS_PLUGIN_OG = [
+    path.resolve(__dirname, "./plugins/docusaurus-plugin-og"),
+    {
+        templatesDir: path.resolve(__dirname, "config/og"),
+    },
+];
 
 /** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
 
@@ -254,6 +262,8 @@ const plugins = [
         },
     ],
     process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
+    // FIXME: Docusaurus Open Graph Plugin Experimental.
+    process.env.OG_EXP && DOCUSAURUS_PLUGIN_OG,
 ].filter(Boolean);
 
 /** @type {Config["themeConfig"]["algolia"]} */
@@ -313,6 +323,8 @@ const metadatas = [
  */
 const customFields = {
     legacyRoutes: LEGACY_ROUTES,
+    // FIXME: Open Graph Experimental Mode.
+    isOGExperimental: process.env.OG_EXP,
 };
 
 /** @type {Config} */

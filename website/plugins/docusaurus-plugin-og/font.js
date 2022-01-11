@@ -22,14 +22,12 @@ function createSVGText(
 ) {
     const attributes = { fill, stroke };
     const options = { fontSize, anchor: "top", attributes };
+    // Remove all emoji from text
+    const filteredText = text.replace(
+        /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+        "",
+    );
 
-    /* If font width more than widthLimit => scale font width to ~90% of widthLimit */
-    if (widthLimit) {
-        const { width } = font.getMetrics(text, options);
-        if (width > widthLimit)
-            options.fontSize = Math.trunc((fontSize * 0.9) / (width / widthLimit));
-    }
-
-    return font.getSVG(text, options);
+    return font.getSVG(filteredText, options);
 }
 module.exports = { createSVGText, createFontsMapFromTemplates };

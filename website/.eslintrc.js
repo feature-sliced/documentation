@@ -23,6 +23,12 @@ module.exports = {
             },
         ],
         "linebreak-style": [2, "unix"],
+        "import/no-unresolved": [
+            2,
+            {
+                ignore: ["^@theme-original"],
+            },
+        ],
     },
     settings: {
         "import/resolver": {

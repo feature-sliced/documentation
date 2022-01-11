@@ -11,7 +11,7 @@ const { Logger } = require("./utils");
 
 module.exports = function (_, { templatesDir }) {
     return {
-        name: "docusaurus-plugin-open-graph-image",
+        name: "docusaurus-plugin-og",
         async postBuild({ plugins, outDir, i18n }) {
             Logger.info(`OG: work in progress.`);
 
