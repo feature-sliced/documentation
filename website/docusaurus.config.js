@@ -319,7 +319,7 @@ const customFields = {
 module.exports = {
     title: "feature-sliced",
     // tagline: 'Методология для проектирования frontend проектов, нацеленная на разделение приложения согласно бизнес-логике и областям ответственности.',
-    tagline: "Structural methodology for frontend projects",
+    tagline: "Architectural methodology for frontend projects",
     url: DOMAIN,
     baseUrl: "/",
     onBrokenLinks: "throw",

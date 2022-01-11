@@ -160,8 +160,8 @@
         "description": "DocFeedback block=Subtitle"
     },
     "features.hero.tagline": {
-        "message": "Structural methodology for frontend projects",
-        "description": "Structural methodology for frontend projects"
+        "message": "Architectural methodology for frontend projects",
+        "description": "Architectural methodology for frontend projects"
     },
     "features.hero.get_started": {
         "message": "Get Started",

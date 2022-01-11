@@ -18,7 +18,7 @@ export default function HomePage() {
     // NOTE: use siteConfig for getting config
     // const {siteConfig} = useDocusaurusContext();
     return (
-        <Layout title="Welcome" description="Structural methodology for frontend projects">
+        <Layout title="Welcome" description="Architectural methodology for frontend projects">
             <Header />
             <main>
                 <Section title={translate({ id: "pages.home.features.title" })}>
