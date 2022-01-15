@@ -1,22 +1,26 @@
 ## CHANGELOG
 
-<!-- 1. Опишите предлагаемые изменения в пару предложений/пунктов -->
+<!-- 1. Describe the proposed changes in a couple of sentences/paragraphs -->
 
-- Добавил(а) ...
-- Поправил(а) ...
+- Added ...smth...
+- Fix ...smth...
 
-## Чеклист
+<!-- Screenshots/Screencasts are welcome -->
 
-<!-- 2. Сверьтесь с чеклистом и отметьте нужные пункты по завершению -->
+## Checklist
 
-<!-- 
-    Наша общая цель - снизить затраты при ревью и добиться консистентности в кодовой базе 🤙 
-    Давайте ценить время друг друга =)
+<!-- 2. Check the checklist and mark the necessary items at the end -->
+
+<!--
+Our common goal is to reduce review costs and achieve consistency in the code base. 🤙 
+Let's appreciate each other's time =)
 -->
 
-- [ ] Если при работе с документацией потребовалось использовать **github-дискуссии, то стоит их прикрепить как see-also источники**
-- [ ] Если PR связан с задачей, то необходимо проверить, что **все требования по задаче выполнены**
-- [ ] Перед тем, как отправлять изменения на ревью, **нужно ознакомиться с [CONTIBUTING-гайдлайнами](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)**
-- [ ] Перед тем, как отправлять изменения на ревью, **нужно провести self-review своих изменений**
-- [ ] Перед тем, как отправлять изменения на ревью, **нужно дождаться CI-проверок**
-- [ ] Перед тем, как отправлять изменения на ревью, **нужно дать краткое описание изменений**
+<!-- Before submitting changes for review, you need to: -->
+
+- [ ] I'm familiarized with **[CONTIBUTING guidelines](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)**
+- [ ] I conducted a **[self-review of your changes](https://blog.beanbaginc.com/2014/12/01/practicing-effective-self-review/)**
+- [ ] I gave a **brief description of the changes**
+- [ ] I awaited for **CI checks**
+- [ ] I specified **related materials** if needed (discussion/issue/pull-request...)
+- [ ] **All requirements for the related issue are resolved** if issue exists
