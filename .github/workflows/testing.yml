@@ -5,7 +5,7 @@ on: [push]
 jobs:
   test-build:
     runs-on: ubuntu-18.04
-    timeout-minutes: 15
+    timeout-minutes: 10
     env:
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
       ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
@@ -30,7 +30,7 @@ jobs:
         working-directory: ./website
   test-lint:
     runs-on: ubuntu-18.04
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
         with:
