@@ -1,8 +1,7 @@
 name: Run tests
 
-on: 
+on:
   - pull_request
-  - push
 
 jobs:
   test-build:
