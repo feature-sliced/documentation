@@ -9,14 +9,12 @@
 
 ## Checklist
 
-<!-- 2. Check the checklist and mark the necessary items at the end -->
+<!-- 2. Before submitting changes for review, check the checklist and mark the necessary items at the end -->
 
 <!--
 Our common goal is to reduce review costs and achieve consistency in the code base. 🤙 
 Let's appreciate each other's time =)
 -->
-
-<!-- Before submitting changes for review, you need to: -->
 
 - [ ] I'm familiarized with **[CONTIBUTING guidelines](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)**
 - [ ] I conducted a **[self-review of your changes](https://blog.beanbaginc.com/2014/12/01/practicing-effective-self-review/)**
