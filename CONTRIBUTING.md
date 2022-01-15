@@ -1,8 +1,8 @@
 # Contributing
 
-Прежде всего, спасибо, что нашли время для внесения своего вклада в проект! 👍
+First of all, thank you for taking the time to contribute to the project! 👍
 
-## Как я могу посодействовать?
+## How can I help?
 
 [issues]: https://github.com/feature-sliced/documentation/issues
 [issues-new]: https://github.com/feature-sliced/documentation/issues/new
@@ -12,50 +12,50 @@
 [fork]: https://github.com/feature-sliced/documentation/fork
 [actions]: https://github.com/feature-sliced/documentation/actions
 
-<!-- Other emojis: 👁️, ✍️, 🔍 -->
+<!-- Other emojis: 👁️ , ✍️ , 🔍 -->
 
-- 📢 [Делиться фидбеком, спрашивать и **обсуждать** что-угодно][disc]
-   > Мы будем рады получить любой фидбек от вас!
-- 💡 [Уведомлять о багах, предлагать улучшения][issues-new]
-   > Если что-то конкретное работает не совсем хорошо для вас или могло бы лучше - дайте нам знать!
-- 💬 Оценивать & обсуждать [**issues**][issues]
-   > Делитесь мнением, оценивайте обозначенную автором проблему
-- 🔩 Повторять сложные [**issues**][issues]
-   > Некоторые issues сложно повторить
-- 🛡️ Проводить ревью для [**pull requests**][pr]
-   > Делитесь мнением и помогайте и помогайте нам с обработкой чужих предложений
-- ⚒️ Предлагать [собственные **pull-requests**!][pr-new]
-   > Усиляйте проект вашими собственными решениями
+- 📢 [Share feedback, ask and **discuss** anything][disc]
+   > We will be glad to receive any feedback from you!
+- 💡 [Notify about bugs, suggest improvements][issues-new]
+   > If something specific doesn't work quite well for you or could be better - let us know!
+- 💬 Rate & discuss [**issues**][issues]
+   > Share your opinion, evaluate the problem identified by the author
+- 🔩 Repeat complex [**issues**][issues]
+   > Some issues are difficult to repeat
+- 🛡️ Conduct a review for [**pull requests**][pr]
+   > Share your opinion and help us with the processing of other people's proposals
+- ⚒️ Suggest [own **pull-requests**!][pr-new]
+   > Enhance the project with your own solutions
 
 ## Workflow
 
 [self-review-article]: https://blog.beanbaginc.com/2014/12/01/practicing-effective-self-review/
 
-1. [Форкните][fork] репозиторий
-2. Внесите свои изменения
-    - Убедитесь, что **коммиты следуют** спецификации [Conventional Commits](https://www.conventionalcommits.org)
-       > Все это помогает формированию changelog'а и ознакомлением с историей проекта
-       >
-       > *Также нелишним будет и указывать в каждом коммите (желательно в body) айдишник задачи в формате `#{ID}` (чтобы было линкование)*
-    - Убедитесь, что **все проверки проходят**
+1. [Fork][fork] repository
+2. Make your changes
+   - Make sure that **commits follow** the [Conventional Commits specification](https://www.conventionalcommits.org)
+      > All this helps the formation of changelog and familiarization with the history of the project
+      >
+      > *It would also be useful to indicate in each commit (preferably in the body) the ID of the task in the format `#{ID}' (so that there is linking)*
+   - Make sure that **all checks pass**
 
       ```sh
       $ npm run test
-      # > Линтинг не нарушен
-      # > Сборка не падает
+      # > Linting is not broken
+      # > The build does not crash
       ```
 
-    - Для модифицирования/добавления markdown-таблиц рекоммендуется использовать готовые сервисы (например [этот](https://www.tablesgenerator.com/markdown_tables))
-3. [Предложите свой pull-request][pr-new] из *вашей forked branch* и укажите связанные [issues][issues] (если они есть)
-    - Перед созданием PR проведите как минимум одно [`self-review`][self-review-article] своих изменений, чтобы сэкономить время ревьювера
-    - Также убедитесь, что описание вашего PR максимально внятно описывает решаемую проблему (позаботьтесь о ревьювере)
-       > Чем больше подробностей изложите в описании - тем лучше
-       >
-       > *Можете ознакомиться с тем, [какие делали pull-request до вас][pr]*
-    - Если все хорошо, можете для ускорения пингануть кого-нибудь из core-мейнтейнеров
-       > Если возникли проблемы - можете временно конвертировать ваш pr в черновик (см. панель справа)
-       >
-       > Или пометить тайтл PR с префиксом `WIP:`
+   - To modify/add markdown tables, it is recommended to use ready-made services (for example [this](https://www.tablesgenerator.com/markdown_tables))
+3. [Offer your pull-request][pr-new] from *your forked branch* and specify related [issues][issues] (if any)
+   - Before creating a PR spend at least one [`self-review`][self-review-article] of your changes, to save the reviewer's time
+   - Also make sure that the description of your PR describes the problem being solved as clearly as possible (take care of the reviewer)
+      > The more details you provide in the description, the better
+      >
+      > *You can get acquainted with [what pull-request was done before you][pr]*
+   - If everything is fine, you can ping someone from the core maintainers to speed up
+      > If you have any problems, you can temporarily convert your PR into a draft (see the panel on the right)
+      >
+      > Or mark the PR title with the prefix 'WIP:`
 
-    - Убедитесь, что проверка через **[CI][actions]** прошла для вашего PR
-      > Наша общая цель - снизить затраты при ревью и добиться консистентности в кодовой базе 🤙
+   - Make sure that the verification via **[CI][actions]** has passed for your PR
+      > Our common goal is to reduce review costs and achieve consistency in the code base 🤙
