@@ -268,6 +268,7 @@ const plugins = [
 
 /** @type {Config["themeConfig"]["algolia"]} */
 const algolia = {
+    appId: process.env.ALGOLIA_ID,
     apiKey: process.env.ALGOLIA_KEY,
     indexName: "feature-sliced",
     // FIXME: При включении отрубает поиск (исправить поздней)
@@ -370,7 +371,7 @@ module.exports = {
 };
 
 // Remove configs if there are not secrets passed
-if (!process.env.ALGOLIA_KEY) {
+if (!process.env.ALGOLIA_KEY || !process.env.ALGOLIA_ID) {
     delete module.exports.themeConfig.algolia;
 }
 if (!process.env.GA_ID) {
