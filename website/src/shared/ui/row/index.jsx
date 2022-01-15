@@ -14,6 +14,7 @@ export const Row = (props) => {
     const handleClick = useCallback(() => {
         ga.sendEvent({
             category: ga.CATEGORIES.full,
+            // FIXME: get later from props
             action: "NavRow:Click",
             label: to,
         });
