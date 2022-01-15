@@ -12,7 +12,7 @@
 [fork]: https://github.com/feature-sliced/documentation/fork
 [actions]: https://github.com/feature-sliced/documentation/actions
 
-<!-- Other emojis: 👁️,  ✍️,  🔍 -->
+<!-- Other emojis: 👁️,  ✍️,  🔍 -111333->
 
 - 📢 [Делиться фидбеком, спрашивать и **обсуждать** что-угодно][disc]
    > Мы будем рады получить любой фидбек от вас!
