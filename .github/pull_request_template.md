@@ -16,7 +16,7 @@ Our common goal is to reduce review costs and achieve consistency in the code ba
 Let's appreciate each other's time =)
 -->
 
-- [ ] I reviewed **[CONTIBUTING guidelines](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)**
+- [ ] I reviewed **[CONTRIBUTING guidelines](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)**
 - [ ] I did a **[self-review of the changes](https://blog.beanbaginc.com/2014/12/01/practicing-effective-self-review/)**
 - [ ] I gave a **brief description of the changes**
 - [ ] I awaited for **CI checks**
