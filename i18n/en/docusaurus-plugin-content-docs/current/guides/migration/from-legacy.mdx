@@ -1,0 +1,120 @@
+---
+sidebar_position: 3
+sidebar_class_name: sidebar-item--wip
+---
+
+import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+
+# Migration from legacy
+
+<WIP ticket="166" />
+
+> The article aggregates the experience of several companies and projects on moving to feature-sliced with different initial conditions
+
+## Why?
+
+> How much does the move need? "Death by a thousand cuts" and those debt. What is missing? How can the methodology help?
+
+> See the talk of [Ilya Klimov about the need and procedure for refactoring](http://youtu.be/aOiJ3k2UvO4)
+
+![approaches-themed-bordered](/img/approaches.png)
+
+## What's the plan?
+
+### 1. Unification of the code base
+
+```diff
+- ├── products/
+- |   ├── components/
+- |   ├── containers/
+- |   ├── store/
+- |   ├── styles/
+- ├── checkout/
+- |   ├── components/
+- |   ├── containers/
+- |   ├── helpers/
+- |   ├── styles/
++ └── src/
+      ├── actions/
+      ├── api/
++     ├── components/
++     ├── containers/
+      ├── constants/
+      ├── epics/
++     ├── i18n/
+      ├── modules/
++     ├── helpers/
++     ├── pages/
+-     ├── routes/
+-     ├── utils/
+      ├── reducers/
+-     ├── redux/
+      ├── selectors/
++     ├── store
++     ├── styles/
+      ├── App.jsx
+      └── index.jsx
+```
+
+### 2. Putting together the destructive decoupled
+
+```diff
+  └── src/
+-     ├── actions/
+      ├── api/
+-     ├── components/
+-     ├── containers/
+-     ├── constants/
+-     ├── epics/
++     ├── entities/{...}
++     |     ├── ui
++     |     ├── model/{actions, selectors, ...}
++     |     ├── lib
+      ├── i18n/
+      |   # We can temporarily put the remaining segments here
++     ├── modules/{helpers, constants}
+-     ├── helpers/
+      ├── pages/
+-     ├── reducers/
+-     ├── selectors/
+-     ├── store/
+      ├── styles/
+      ├── App.jsx
+      └── index.jsx
+```
+
+### 3. Allocate scopes of responsibility
+
+```diff
+ └── src/
+-    ├── api/
++    ├── app/
++    |   ├── index.jsx
++    |   ├── style.css
+     ├── pages/
++    ├── features/
++    |   ├── add-to-cart/{ui, model, lib}
++    |   ├── choose-delivery/{ui, model, lib}
++    ├── entities/{...}
++    |   ├── delivery/{ui, model, lib}
++    |   ├── cart/{ui, model, lib}
++    |   ├── product/{ui, model, lib}
++    ├── shared/
++    |   ├── api/
++    |   ├── lib/    # helpers
++    |   |    ├── i18n/
++    |   ├── config/ # constants
+-    ├── i18n/
+-    ├── modules/{helpers, constants}
+     └── index.jsx
+```
+
+### 4. Final ?
+
+> About the remaining problems and how much it is worth eliminating them
+
+## See also
+
+- [(Talk) Ilya Klimov-The Rat Race of endless refactoring: how not to let technical debt kill motivation and product](https://youtu.be/aOiJ3k2UvO4)
+- [(Talk) Ilya Azin - Architecture of Frontend projects](https://youtu.be/SnzPAr_FJ7w)
+    - There is also discussed approaches for architecture and costs of refactoring

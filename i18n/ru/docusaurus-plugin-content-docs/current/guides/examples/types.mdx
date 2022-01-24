@@ -1,0 +1,30 @@
+---
+sidebar_position: 3
+sidebar_class_name: sidebar-item--wip
+---
+
+import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+
+# Типы
+
+<WIP ticket="179" />
+
+> **Типы бывают разные**
+>
+> Это может быть как служебный type (`Maybe`), так и по предметной области (Tls, Contract, Camera, ...)
+> 
+> 1) То что относится к предметной области обычно лучше класть в shared/api (особенно когда есть кодогенерация в одно место)
+>   (по entities такое распылять не оч выйдет)
+>
+> 2) Общие служебные  типы, которые можно задеклейрить - в тот же react-app-env.d.ts
+>
+> 3) А если у тебя служебные типы и надо импортить прям везде - то некритично особо, можно и в shared, можно и рядом с react-app.env.dts положить
+>
+> https://t.me/feature_sliced/3879
+>
+> 4) Нормализованные типы для сущностей имеет смысл хранить в entities
+>
+> https://t.me/feature_sliced/4513
+
+
+> https://t.me/feature_sliced/3877

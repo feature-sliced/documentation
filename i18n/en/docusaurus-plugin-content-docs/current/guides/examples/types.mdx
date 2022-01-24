@@ -1,0 +1,30 @@
+---
+sidebar_position: 3
+sidebar_class_name: sidebar-item--wip
+---
+
+import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+
+# Types
+
+<WIP ticket="179" />
+
+> **The types are different**
+>
+> This may be as a utility type (`Maybe`) and subject area (Tls Contract, Camera, ...)
+> 
+> 1) what refers to The subject area is usually better to put in the shared/api (especially when there is a code generation in one place)
+> (for entities such spraying PTS released)
+>
+> 2) Common service types that you can segelerite - same-react-app-env.d.ts
+>
+> 3) And if you have service types and you need to import right everywhere, then it's not critical especially, you can also put it in shared, you can also put it next to react-app.env.dts
+>
+> https://t.me/feature_sliced/3879
+>
+> 4) It makes sense to store normalized types for entities in entities
+>
+> https://t.me/feature_sliced/4513
+
+
+> https://t.me/feature_sliced/3877

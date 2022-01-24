@@ -1,0 +1,20 @@
+.section {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 0;
+
+    /* height: 450px; */
+
+    &Alt {
+        color: var(--ifm-font-color-base-inverse);
+
+        /* background-color: var(--ifm-color-primary); */
+        background-color: var(--ifm-color-emphasis-600);
+    }
+}
+
+.title {
+    margin-bottom: 60px;
+    text-align: center;
+}

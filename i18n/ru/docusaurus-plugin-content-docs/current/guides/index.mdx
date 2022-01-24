@@ -1,0 +1,39 @@
+---
+sidebar_position: 0
+sidebar_class_name: sidebar-item--root
+hide_table_of_contents: true
+slug: /guides
+pagination_prev: get-started/index
+---
+
+# 🎯 Гайды
+
+<span class="badge badge--primary margin-bottom--md">PRACTICE-ORIENTED</span>
+
+<p class="summary">
+Практические гайды и примеры по применению Feature Sliced. В этом же разделе описаны гайды по миграции и хэндбук пагубных практик. Наиболее полезно, когда вы пытаетесь реализовать что-то конкретное или хотите посмотреть на методологию "в бою"
+</p>
+
+## Главное
+
+import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { ToolOutlined, ImportOutlined } from "@ant-design/icons";
+
+<Row 
+    title="Примеры применения" 
+    description="Практические примеры по применению методологии"
+    to="/docs/guides/examples"
+    Icon={ToolOutlined}
+/>
+<Row 
+    title="Миграция с V1" 
+    description="Гайд по миграции и сравнение с FeatureSlices (v1)"
+    to="/docs/guides/migration/from-v1"
+    Icon={ImportOutlined}
+/>
+<Row 
+    title="Миграция с legacy" 
+    description="Поэтапное внедрение практик в легаси-проекты"
+    to="/docs/guides/migration/from-legacy"
+    Icon={ImportOutlined}
+/>

@@ -1,0 +1,34 @@
+.root {
+    position: relative; // @christmas Revert later
+    z-index: 0; // @christmas Revert later
+    height: 100%;
+}
+
+.preview {
+    position: relative;
+    max-height: 175px;
+    overflow: hidden;
+}
+
+.ribbon {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    z-index: 1;
+    min-width: 50px;
+    padding: 4px 10px;
+    color: #ffffff;
+    text-align: center;
+    background: var(--ifm-color-primary);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.title {
+    font-weight: 600;
+}
+
+.labelNew {
+    font-weight: bold;
+    color: var(--ifm-color-primary);
+}

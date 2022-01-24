@@ -1,0 +1,39 @@
+---
+sidebar_position: 0
+sidebar_class_name: sidebar-item--root
+hide_table_of_contents: true
+slug: /guides
+pagination_prev: get-started/index
+---
+
+# 🎯 Guides
+
+<span class="badge badge--primary margin-bottom--md">PRACTICE-ORIENTED</span>
+
+<p class="summary">
+Practical guides and examples on the use of Feature Sliced. There is also describe migration guides and a handbook of harmful practices. It is most useful when you are trying to implement something specific or want to look at the methodology "in battle"
+</p>
+
+## Main
+
+import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import { ToolOutlined, ImportOutlined } from "@ant-design/icons";
+
+<Row 
+    title="Usage examples" 
+    description="Practical examples on the application of the methodology"
+    to="/docs/guides/examples"
+    Icon={ToolOutlined}
+/>
+<Row 
+    title="Migration from V1" 
+    description="Migration Guide and comparison with FeatureSlices (v1)"
+    to="/docs/guides/migration/from-v1"
+    Icon={ImportOutlined}
+/>
+<Row 
+    title="Migration from legacy" 
+    description="Step-by-step implementation of practices in legacy projects"
+    to="/docs/guides/migration/from-legacy"
+    Icon={ImportOutlined}
+/>

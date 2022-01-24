@@ -1,0 +1,225 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+    /* Default colors */
+
+    /* --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: rgb(33, 175, 144);
+  --ifm-color-primary-darker: rgb(31, 165, 136);
+  --ifm-color-primary-darkest: rgb(26, 136, 112);
+  --ifm-color-primary-light: rgb(70, 203, 174);
+  --ifm-color-primary-lighter: rgb(102, 212, 189);
+  --ifm-color-primary-lightest: rgb(146, 224, 208); */
+    --ifm-code-font-size: 95%;
+    --ifm-h2-font-size: 1.75rem;
+    --ifm-button-color: #ffffff;
+
+    /* https://docusaurus.io/docs/styling-layout */
+    // Primary
+    // --ifm-color-primary: #5c9cb5;
+    // --ifm-color-primary-dark: #4d8fa9;
+    // --ifm-color-primary-darker: #4887a0;
+    // --ifm-color-primary-darkest: #3c6f83;
+    // --ifm-color-primary-light: #6fa7be;
+    // --ifm-color-primary-lighter: #78adc2;
+    // --ifm-color-primary-lightest: #94becf;
+    // @christmas Revert later
+    --ifm-color-primary: #8cd1c6;
+    --ifm-color-primary-dark: #73c7ba;
+    --ifm-color-primary-darker: #67c2b3;
+    --ifm-color-primary-darkest: #46af9e;
+    --ifm-color-primary-light: #a5dbd2;
+    --ifm-color-primary-lighter: #b1e0d9;
+    --ifm-color-primary-lightest: #d7efeb;
+}
+
+.docusaurus-highlight-code-line {
+    display: block;
+    padding: 0 var(--ifm-pre-padding);
+    margin: 0 calc(-1 * var(--ifm-pre-padding));
+    background-color: rgb(72, 77, 91);
+}
+
+/**
+ * External community links
+ */
+.ext-link {
+    --ifm-navbar-item-padding-horizontal: 0.5rem;
+
+    transition: 0.25s;
+
+    &:hover {
+        opacity: 0.6;
+    }
+
+    &::before {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        content: "";
+    }
+}
+
+/* Inherited from docusaurus scrollbar stylesheets for inner containers */
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: var(--ifm-scrollbar-thumb-background-color) transparent;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: var(--ifm-scrollbar-size);
+        height: var(--ifm-scrollbar-size);
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--ifm-scrollbar-thumb-background-color);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background-color: #ffffff;
+    }
+
+    &[data-theme="dark"] .ext-link::before {
+        /* NOTE: Maybe should be colorize explicitly with background-color or by svg#currentColor */
+        filter: invert(1);
+    }
+
+    /**
+   * Dark theme for images
+   */
+    &[data-theme="dark"] img[alt*="themed"] {
+        /**
+       * While absolutely inverting, but later for alphaless images
+       * maybe will be changed to 0.9 (for more soft inverting)
+       */
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    /* FIXME: hardcoded */
+    &[data-theme="dark"] img[alt*="themed--scheme"] {
+        filter: invert(0.905) brightness(1.04) grayscale(100%) opacity(0.5);
+    }
+
+    & img[alt*="bordered"] {
+        border: 1px solid rgb(211, 213, 216);
+        border-radius: 16px;
+    }
+
+    & img[alt*="w100"] {
+        width: 100%;
+    }
+
+    & img[alt*="bgLight"] {
+        background: white;
+    }
+
+    &[data-theme="dark"] .badge--warning {
+        --ifm-badge-background-color: var(--ifm-color-warning-dark);
+    }
+}
+
+.github.ext-link::before {
+    background: url(assets/github.svg) no-repeat;
+}
+
+.telegram.ext-link::before {
+    background: url(assets/telegram.svg) no-repeat;
+}
+
+iframe {
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    background-color: #f0f2f5;
+    border: 0;
+    border-radius: 16px;
+}
+
+/* media */
+
+/* TODO: connect as file */
+
+@media screen and (max-width: 450px) {
+    .button-group {
+        display: block;
+    }
+
+    .button-group .button {
+        margin: 2px;
+        border-radius: var(--ifm-button-border-radius) !important;
+    }
+}
+
+[role="banner"] {
+    background-color: #0367d2 !important;
+}
+
+.sidebar-item--wip {
+    opacity: 0.5;
+}
+
+.sidebar-item--root {
+    margin-bottom: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.summary {
+    padding-bottom: 2rem;
+    font-size: 1.25rem;
+    color: var(--ifm-color-gray-600);
+    border-bottom: 1px solid var(--ifm-color-gray-400);
+}
+
+.badge--violet {
+    --ifm-badge-background-color: #5c21dd;
+    --ifm-badge-border-color: var(--ifm-badge-background-color);
+}
+
+/* Debug only, for simulating searchBox on devMode
+.navbar__items:last-child {
+    border-right: 161px solid black;
+} */
+
+/* FIXME: temp hack for adaptive-layout! */
+
+@media (max-width: 1180px) {
+    .navbar__brand {
+        margin-right: 0.5rem;
+    }
+
+    .navbar__brand .navbar__title {
+        display: none;
+    }
+
+    .navbar__item {
+        white-space: nowrap;
+    }
+}
+
+/* I love adaptive styles... */
+@media (max-width: 1080px) {
+    .navbar__item {
+        padding: var(--ifm-navbar-item-padding-vertical) 0.25rem;
+    }
+}
+
+@media (max-width: 996px) {
+    .navbar__brand .navbar__title {
+        display: block;
+    }
+}
