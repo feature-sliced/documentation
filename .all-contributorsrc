@@ -440,6 +440,16 @@
       "contributions": [
         "example"
       ]
+    },
+    {
+      "login": "illright",
+      "name": "Lev Chelyadinov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15035286?v=4",
+      "profile": "https://github.com/illright",
+      "contributions": [
+        "doc",
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 5,
