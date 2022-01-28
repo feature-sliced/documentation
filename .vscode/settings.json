@@ -1,6 +1,6 @@
 {
-  "files.associations": {
-    "*.mdx": "markdown"
+  "[mdx]": {
+    "files.trimTrailingWhitespace": false
   },
   "[markdown]": {
     "files.trimTrailingWhitespace": false
