@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.mdx": "markdown"
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  }
+}
