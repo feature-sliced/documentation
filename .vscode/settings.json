@@ -1,0 +1,8 @@
+{
+  "[mdx]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  }
+}

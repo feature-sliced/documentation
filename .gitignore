@@ -1,4 +1,3 @@
-/.vscode/settings.json
 /website/node_modules/**
 /website/.docusaurus/**
 /website/build/**
