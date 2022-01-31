@@ -56,6 +56,15 @@ export const examples = [
         updatedAt: "2021-12-27",
     },
     {
+        title: "Todo App (Angular 13)",
+        description: "QuickStart todo-app example for Angular developers",
+        website: "https://angular-feature-sliced-architecture.netlify.app/",
+        source: "https://github.com/Affiction/angular-feature-sliced",
+        preview: require("./img/todo-app-angular.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2022-01-31",
+    },
+    {
         title: "Sharead (demo)",
         description: "Book Marketplace",
         website: "https://dev-sharead.netlify.app/",
@@ -81,14 +90,5 @@ export const examples = [
         preview: require("./img/loripsum-generator.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-11-17",
-    },
-    {
-        title: "Todo App (Angular 13)",
-        description: "QuickStart todo-app example for Angular developers",
-        website: "https://angular-feature-sliced-architecture.netlify.app/",
-        source: "https://github.com/Affiction/angular-feature-sliced",
-        preview: require("./img/todo-app-angular.png"),
-        version: VERSIONS.V2,
-        updatedAt: "2022-01-09",
     },
 ];
