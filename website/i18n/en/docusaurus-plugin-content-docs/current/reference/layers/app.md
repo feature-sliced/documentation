@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # App
 
+:::tip When to use?
+When it becomes difficult to control and extend the initializing logic of the application (global styles/initialization of external libraries/routing/SSR)
+:::
+
 ![app-themed-bordered](/img/layers/app.png)
 
 ## Description

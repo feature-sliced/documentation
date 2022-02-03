@@ -4,8 +4,10 @@ sidebar_position: 3
 
 # Processes
 
-:::note OPTIONAL
-The layer is optional, and is needed only if the complexity of the project requires it
+:::tip When to use?
+When there is a lot of over-the-page logic that is difficult to control and expand for "end-to-end" interaction between pages
+
+*Use it only if you are sure that additional separation by processes will help your application, and will not cause too much misunderstanding and skepticism! ⚠️*
 :::
 
 ![processes-themed-bordered](/img/layers/processes.png)

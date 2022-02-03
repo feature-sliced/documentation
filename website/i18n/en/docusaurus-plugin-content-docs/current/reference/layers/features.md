@@ -4,6 +4,12 @@ sidebar_position: 6
 
 # Features
 
+:::tip When to use?
+When it becomes difficult to find the boundaries of specific user scenarios in a project, which worsens the controllability and reuse of logic
+
+*Use it only if you are sure that additional separation by features will help your application, and will not cause too much misunderstanding and skepticism! ⚠️*
+:::
+
 ![features-themed-bordered](/img/layers/features.png)
 
 ## Description

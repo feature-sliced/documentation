@@ -4,6 +4,10 @@ sidebar_position: 7
 
 # Entities
 
+:::tip When to use?
+When a lot of deunified logic appears in the project, often tied to specific entities
+:::
+
 ![entities-themed-bordered](/img/layers/entities.png)
 
 ## Description
