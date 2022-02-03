@@ -1,14 +1,25 @@
-# Changelog
+## Background
+
+<!-- 
+  Briefly describe what problem this PR is solving. 
+  If these changes were previously discussed in an issue or discussion,
+  please, leave a reference to it 🔖.
+  
+  If there is a issue that your PR closes, just write "Closes #ISSUE_NUMBER" (e.g. Closes #42)
+  That will automatically close that issue, once PR is merged.
+  Please make sure to address all parts of the issue if you write that!
+-->
+
+
+
+
+## Changelog
 
 <!-- 
   Briefly describe the proposed changes below. 
   Numbered lists work best. 
   If you add 📷 screenshots or 🎞️ screencasts, you'll be our hero.
-
-  If these changes were previously discussed in an issue or discussion,
-  please, leave a reference to it 🔖.
 -->
-
 
 
 
@@ -25,7 +36,5 @@
   Here's a nice article that has some pro-tips:
 
     https://blog.beanbaginc.com/2014/12/01/practicing-effective-self-review/
-
-  If your PR fixes an issue number N, write "Closes #N" at the end.
-  Please make sure to address all parts of the issue if you write that! 
+    
 -->
