@@ -18,7 +18,7 @@ sidebar_position: 1
     ├── widgets/                # Independent and self-contained blocks of pages
     ├── features/               # (Optional) Processing of user scenarios
     ├── entities/               # (Optional) Business entities that domain logic operates with
-    └── shared/                 # Reused modules, non business-specific
+    └── shared/                 # Reused modules, non business specific
 ```
 
 ## Rules

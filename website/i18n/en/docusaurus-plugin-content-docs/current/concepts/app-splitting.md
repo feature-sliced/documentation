@@ -22,7 +22,7 @@ The first level of separation: according to the **scope of responsibility** of t
     ├── widgets/                # Independent and self-contained blocks of pages
     ├── features/               # (Optional) Processing of user scenarios
     ├── entities/               # (Optional) Business entities that domain logic operates with
-    └── shared/                 # Reused modules, non business-specific
+    └── shared/                 # Reused modules, non business specific
 ```
 
 ### Layer order
@@ -64,25 +64,25 @@ The second level of separation is by **specific BL functionality**
 |   # Does not have specific slices, 
 |   # Because it contains meta-logic on the project and its initialization
 ├── processes/
-|   # Slices for implementing processes on pages
+|   # Slices implementing processes on pages
 |   ├── payment
 |   ├── auth
 |   ├── quick-tour
 |   └── ...
 ├── pages/
-|   # Slices for implementing application pages
+|   # Slices implementing application pages
 |   # At the same time, due to the specifics of routing, they can be invested in each other
 |   ├── profile
 |   ├── sign-up
 |   ├── feed
 |   └── ...
 ├── widgets/
-|   # Slices for the implementation of independent page blocks
+|   # Slices implementing independent page blocks
 |   ├── header
 |   ├── feed
 |   └── ...
 ├── features/
-|   # Slices for implementing user scenarios on pages
+|   # Slices implementing user scenarios on pages
 |   ├── auth-by-phone
 |   ├── inline-post
 |   └── ...
