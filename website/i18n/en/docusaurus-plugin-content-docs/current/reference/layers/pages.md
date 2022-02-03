@@ -6,13 +6,13 @@ sidebar_position: 4
 
 :::caution
 
-At the moment, active discussions are underway regarding this layer:
+**Working with pages and routing is very specific for different projects**
 
 - is the page the same slice
 - can the page hierarchy be fractal in order to repeat the structure of routes
 - etc.
 
-Therefore, here is an overview of this layer
+Therefore, here is an overview of this layer (adapt to your framework if needed)
 
 :::
 

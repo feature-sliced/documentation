@@ -4,12 +4,10 @@ sidebar_position: 5
 
 # Widgets
 
-:::caution EXPERIMENTAL
-The layer is experimental, be careful when using it
-:::
+:::tip When to use?
+If pages are huge because of increased business-specific logic with duplicate implementations
 
-:::note OPTIONAL
-The layer is optional, and is needed only if the complexity of the project requires it
+*The layer is good to start using the methodology 🚀*
 :::
 
 ![widgets-themed-bordered](/img/layers/widgets.png)

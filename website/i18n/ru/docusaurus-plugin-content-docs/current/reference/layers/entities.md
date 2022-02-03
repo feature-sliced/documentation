@@ -4,6 +4,10 @@ sidebar_position: 7
 
 # Entities
 
+:::tip Когда использовать?
+Когда в проекте появляется много деунифицированной логикой, часто завязанной на конкретные сущности
+:::
+
 ![entities-themed-bordered](/img/layers/entities.png)
 
 ## Описание

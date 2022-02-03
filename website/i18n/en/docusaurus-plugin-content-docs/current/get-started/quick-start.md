@@ -92,6 +92,7 @@ However, most frontend projects are still something like this, since **there is 
     |    ├── index.tsx          #    Entrypoint for connecting the application (formerly App. tsx)
     |    └── index.css          #    Global application styles
     ├── pages/                  #
+    ├── widgets/                #
     ├── features/               #
     ├── entities/               #
     ├── shared/                 #

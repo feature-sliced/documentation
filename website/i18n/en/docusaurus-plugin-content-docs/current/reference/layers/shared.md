@@ -4,6 +4,12 @@ sidebar_position: 8
 
 # Shared
 
+:::tip When to use?
+If pages are huge because of increased abstract logic (UIKit/hooks/helpers) with duplicate implementations
+
+*The layer is good to start using the methodology 🚀*
+:::
+
 ![shared-themed-bordered](/img/layers/shared.png)
 
 ## Description

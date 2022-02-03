@@ -54,7 +54,7 @@ It should be understood that often there is a public "external" user (`entities/
 ├── entities/viewer              # Layer: Business entities
 |         |                      #     Slice: Current user
 |         ├── ui/                #      Segment: UI-logic (components)
-|         ├── lib/               #      Segment: Infrastructure-logic (helpers)
+|         ├── lib/               #      Segment: Infrastructure-logic (helpers/utils)
 |         ├── model/             #      Segment: Business Logic
 |         └── index.ts           #      [Public API Declaration]
 |   ...           
@@ -192,7 +192,7 @@ Also, other logic can be implemented here
 |        |                       #    Slice Group: The structural group "User authorization"
 |        ├── by-phone/           #      Slice: Feature "Authorization by phone"
 |        |     ├── ui/           #         Segment: UI-logic (components)
-|        |     ├── lib/          #         Segment: Infrastructure-logic (helpers)
+|        |     ├── lib/          #         Segment: Infrastructure-logic (helpers/utils)
 |        |     ├── model/        #         Segment: Business Logic
 |        |     └── index.ts      #         [Public API Declaration]
 |        |
@@ -272,7 +272,7 @@ export const Header = () => {
 |        |                       #    Slice Group: The "Current User" structural group
 |        ├── profile/            #     Slice: The viewer profile page
 |        |     ├── ui.tsx        #         Segment: UI-logic (components)
-|        |     ├── lib.ts        #         Segment: Infrastructure-logic (helpers)
+|        |     ├── lib.ts        #         Segment: Infrastructure-logic (helpers/utils)
 |        |     ├── model.ts      #         Segment: Business Logic
 |        |     └── index.ts      #         [Public API Declaration]
 |        |
@@ -337,7 +337,7 @@ export const SomePage = () => {
 |
 ├── processes                    # Layer: Business processes
 |        ├── auth/               #     Slice: User authorization process
-|        |     ├── lib.ts        #         Segment: Infrastructure-logic (helpers)
+|        |     ├── lib.ts        #         Segment: Infrastructure-logic (helpers/utils)
 |        |     ├── model.ts      #         Segment: Business Logic
 |        |     └── index.ts      #         [Public API Declaration]
 |        |

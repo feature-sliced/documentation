@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
 ├── entities/viewer              # Layer: Бизнес-сущности
 |         |                      #     Slice: Текущий пользователь
 |         ├── ui/                #      Segment: UI-логика (компоненты)
-|         ├── lib/               #      Segment: Инфраструктурная-логика (хелперы)
+|         ├── lib/               #      Segment: Инфраструктурная-логика (helpers/utils)
 |         ├── model/             #      Segment: Бизнес-логика
 |         └── index.ts           #      [Декларация Public API]
 |   ...           
@@ -189,7 +189,7 @@ const viewer = useStore($viewer);
 |        |                       #    Slice Group: Структурная группа "Авторизация пользователя"
 |        ├── by-phone/           #      Slice: Фича "Авторизация по телефону"
 |        |     ├── ui/           #         Segment: UI-логика (компоненты)
-|        |     ├── lib/          #         Segment: Инфраструктурная-логика (хелперы)
+|        |     ├── lib/          #         Segment: Инфраструктурная-логика (helpers/utils)
 |        |     ├── model/        #         Segment: Бизнес-логика
 |        |     └── index.ts      #         [Декларация Public API]
 |        |
@@ -269,7 +269,7 @@ export const Header = () => {
 |        |                       #    Slice Group: Структурная группа "Текущий пользователь"
 |        ├── profile/            #     Slice: Страница профиля вьювера
 |        |     ├── ui.tsx        #         Segment: UI-логика (компоненты)
-|        |     ├── lib.ts        #         Segment: Инфраструктурная-логика (хелперы)
+|        |     ├── lib.ts        #         Segment: Инфраструктурная-логика (helpers/utils)
 |        |     ├── model.ts      #         Segment: Бизнес-логика
 |        |     └── index.ts      #         [Декларация Public API]
 |        |
@@ -334,7 +334,7 @@ export const SomePage = () => {
 |
 ├── processes                    # Layer: Бизнес процессы
 |        ├── auth/               #     Slice: Процесс авторизации пользователя
-|        |     ├── lib.ts        #         Segment: Инфраструктурная-логика (хелперы)
+|        |     ├── lib.ts        #         Segment: Инфраструктурная-логика (helpers/utils)
 |        |     ├── model.ts      #         Segment: Бизнес-логика
 |        |     └── index.ts      #         [Декларация Public API]
 |        |
