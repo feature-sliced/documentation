@@ -52,7 +52,20 @@ sidebar_position: 1
 | entities  |                              `shared`                             |       `features`, `widgets`, `pages`, `processes`, `app`       |
 | shared    |                                 -                                 | `entities`, `features`, `widgets`, `pages`, `processes`, `app` |
 
-## Representatives
+## How to use?
+
+1. **First, decompose by main layers relevant to almost any application:**
+    - `app` - for initializing application logic
+    - `pages` - for application screens
+    - `shared` - for abstract commonly used logic (UIKIT / helpers / API)
+
+2. **Then, add the remaining layers as needed:**
+    - `widgets` - if the logic on the pages starts to grow and duplicate
+    - `entities` - if the amount of deunified logic is growing in the project
+    - `features` - if it becomes difficult to find the boundaries of specific user scenarios in the project, and control them
+    - `processes` - if a lot of "end-to-end logic" grows over the page
+
+## Layers
 
 <!-- I left the phrases in the comments, in case we decide to return them -->
 
