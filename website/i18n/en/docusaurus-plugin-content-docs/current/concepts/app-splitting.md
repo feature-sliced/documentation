@@ -18,10 +18,11 @@ The first level of separation: according to the **scope of responsibility** of t
 └── src/
     ├── app/                    # Initializing application logic
     ├── processes/              # (Optional) Application processes running over pages
-    ├── pages/                  # Application Pages
-    ├── features/               # Crucial functionality of the application
-    ├── entities/               # Business entities
-    └── shared/                 # Reused modules
+    ├── pages/                  # Application pages
+    ├── widgets/                # Independent and self-contained blocks of pages
+    ├── features/               # (Optional) Processing of user scenarios
+    ├── entities/               # (Optional) Business entities that domain logic operates with
+    └── shared/                 # Reused modules, non business-specific
 ```
 
 ### Layer order
@@ -75,8 +76,13 @@ The second level of separation is by **specific BL functionality**
 |   ├── sign-up
 |   ├── feed
 |   └── ...
+├── widgets/
+|   # Slices for the implementation of independent page blocks
+|   ├── header
+|   ├── feed
+|   └── ...
 ├── features/
-|   # Slices for implementing specific functionality on pages
+|   # Slices for implementing user scenarios on pages
 |   ├── auth-by-phone
 |   ├── inline-post
 |   └── ...

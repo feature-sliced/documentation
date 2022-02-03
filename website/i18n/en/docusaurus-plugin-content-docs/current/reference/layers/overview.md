@@ -14,11 +14,11 @@ sidebar_position: 1
 └── src/
     ├── app/                    # Initializing application logic
     ├── processes/              # (Optional) Application processes running over pages
-    ├── pages/                  # Application Pages
-    ├── widgets/                # (Optional) Independent widgets
-    ├── features/               # Crucial functionality of the application
-    ├── entities/               # Business entities
-    └── shared/                 # Reused modules
+    ├── pages/                  # Application pages
+    ├── widgets/                # Independent and self-contained blocks of pages
+    ├── features/               # (Optional) Processing of user scenarios
+    ├── entities/               # (Optional) Business entities that domain logic operates with
+    └── shared/                 # Reused modules, non business-specific
 ```
 
 ## Rules

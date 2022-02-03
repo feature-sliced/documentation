@@ -167,6 +167,11 @@ The third level of abstraction is **according to the purpose in the implementati
     |   |   └── ui/             #         Segment: UI logic
     |   ...                     #
     |                           #
+    ├── widgets/                # Layer: Widgets
+    |   ├── {some-widget}/      #     Slice: (e.g. Header widget)
+    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers)
+    |   |   ├── model/          #         Segment: Business Logic
+    |   |   └── ui/             #         Segment: UI logic
     ├── features/               # Layer: Features
     |   ├── {some-feature}/     #     Slice: (e.g. AuthByPhone feature)
     |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers)
