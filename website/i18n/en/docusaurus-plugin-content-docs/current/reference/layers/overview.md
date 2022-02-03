@@ -15,7 +15,7 @@ sidebar_position: 1
     ├── app/                    # Initializing application logic
     ├── processes/              # (Optional) Application processes running over pages
     ├── pages/                  # Application pages
-    ├── widgets/                # Independent and self-contained blocks of pages
+    ├── widgets/                # Independent and self-contained blocks for pages
     ├── features/               # (Optional) Processing of user scenarios
     ├── entities/               # (Optional) Business entities that domain logic operates with
     └── shared/                 # Reused modules, non business specific
