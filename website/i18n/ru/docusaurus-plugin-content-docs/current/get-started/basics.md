@@ -90,6 +90,13 @@ sidebar_position: 1
     |   |   └── ui/             #         Segment: UI-логика
     |   ...                     #
     |                           #
+    ├── widgets/                # Layer: Виджеты
+    |   ├── {some-feature}/     #     Slice: (н-р виджет Header)
+    |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
+    |   |   ├── model/          #         Segment: Бизнес-логика
+    |   |   └── ui/             #         Segment: UI-логика
+    |   ...                     #
+    |                           #
     ├── features/               # Layer: Фичи
     |   ├── {some-feature}/     #     Slice: (н-р фича AuthByPhone)
     |   |   ├── lib/            #         Segment: Инфраструктурная-логика (хелперы)
