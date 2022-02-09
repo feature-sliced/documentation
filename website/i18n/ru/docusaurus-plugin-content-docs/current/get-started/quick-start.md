@@ -293,7 +293,7 @@ const App = () => (
 
 ### 1.5 Подключим UIKit
 
-Для упрощения туториала, заиспользуем готовый UIKit от [AntDesign](https://ant.design/components/overview/)
+Для упрощения туториала, воспользуемся готовым UIKit от [AntDesign](https://ant.design/components/overview/)
 
 ```cmd
 $ npm i antd @ant-design/icons
