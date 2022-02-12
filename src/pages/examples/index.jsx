@@ -10,7 +10,7 @@ import { examples } from "./_config";
 const TITLE = translate({ id: "pages.examples.title" });
 const DESCRIPTION = translate({ id: "pages.examples.subtitle" });
 const EDIT_URL =
-    "https://github.com/feature-sliced/documentation/edit/master/website/src/pages/examples/_config.js";
+    "https://github.com/feature-sliced/documentation/edit/master/src/pages/examples/_config.js";
 const EXAMPLES_URL = "https://github.com/feature-sliced/examples";
 
 function ExamplesPage() {

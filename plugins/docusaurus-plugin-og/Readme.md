@@ -9,7 +9,7 @@
 
 ### Templates folder files listing.
 ```sh
-└── website/
+└── 
     └── open-graph-tempaltes/ 
         # required
         ├── basic

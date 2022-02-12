@@ -53,7 +53,7 @@ export const concepts = [
 /**
  * Companies using feature-sliced
  * @see https://github.com/feature-sliced/documentation/issues/131
- * @see website/static/img/companies
+ * @see static/img/companies
  */
 export const companies = [
     {

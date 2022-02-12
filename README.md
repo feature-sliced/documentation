@@ -18,7 +18,7 @@
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/OWNER/REPO?style=flat-square)](https://github.com/OWNER/REPO/commits)
 -->
 
-![feature-sliced-banner](/website/static/img/banner.jpg)
+![feature-sliced-banner](/static/img/banner.jpg)
 
 <!-- ⚡ Add primary information & features about your repository -->
 FeatureSliced is an architectural design methodology for *frontend applications*. It aims to [**divide an application according to business logic and scopes of responsibility**][refs-splitting]
@@ -115,7 +115,7 @@ For [architecture design][refs-splitting] the methodology suggests operating wit
 
 > `WIP:` The scheme-represents only an **approximate** division of the project into modules and will be determined definitively closer to the release
 
-![visual_schema](website/static/img/visual_schema.jpg)
+![visual_schema](static/img/visual_schema.jpg)
 
 </details>
 
@@ -225,13 +225,13 @@ If there are variations, how best to place indents-welcome:)
 
 <div align="center">
 
-[![tg](website/static/img/social/tg.png)](https://t.me/feature_sliced "Телеграм-чат")
+[![tg](static/img/social/tg.png)](https://t.me/feature_sliced "Телеграм-чат")
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![twitter](website/static/img/social/twitter.png)](https://twitter.com/feature_sliced)
+[![twitter](static/img/social/twitter.png)](https://twitter.com/feature_sliced)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![open-collective](website/static/img/social/opencollective.png)](https://opencollective.com/feature-sliced "OpenCollective профиль")
+[![open-collective](static/img/social/opencollective.png)](https://opencollective.com/feature-sliced "OpenCollective профиль")
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![youtube](website/static/img/social/youtube.png)](https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A)
+[![youtube](static/img/social/youtube.png)](https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A)
 </div>
 
 [refs-contributing]: CONTRIBUTING.md
