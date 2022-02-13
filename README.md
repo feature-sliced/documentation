@@ -328,7 +328,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Affiction"><img src="https://avatars.githubusercontent.com/u/9825305?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Max Kokosha</b></sub></a><br /><a href="#example-Affiction" title="Examples">💡</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/illright"><img src="https://avatars.githubusercontent.com/u/15035286?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lev Chelyadinov</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=illright" title="Documentation">📖</a> <a href="#content-illright" title="Content">🖋</a> <a href="#ideas-illright" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/illright"><img src="https://avatars.githubusercontent.com/u/15035286?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lev Chelyadinov</b></sub></a><br /><a href="https://github.com/feature-sliced/documentation/commits?author=illright" title="Documentation">📖</a> <a href="#content-illright" title="Content">🖋</a> <a href="#ideas-illright" title="Ideas, Planning, & Feedback">🤔</a> <a href="#design-illright" title="Design">🎨</a></td>
   </tr>
 </table>
 
