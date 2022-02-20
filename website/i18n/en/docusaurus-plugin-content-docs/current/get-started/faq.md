@@ -62,7 +62,7 @@ Answered [here](/docs/guides/examples/auth)
 
 ### What about Atomic Design?
 
-The current version of the methodology does not oblige, but also does not prohibit the use of Atomic Design together with feature-sliced
+The current version of the methodology does not oblige, but also does not prohibit the use of Atomic Design together with Feature-Sliced Design
 
 At the same time, Atomic Design [is well applied](https://t.me/feature_sliced/1653) for the `ui` segment of modules
 
