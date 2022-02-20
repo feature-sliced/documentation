@@ -62,7 +62,7 @@ pagination_next: guides/index
 
 ### А что с Atomic Design?
 
-Текущая версия методологии не обязывает, но и не запрещает использовать Atomic Design вместе с feature-sliced
+Текущая версия методологии не обязывает, но и не запрещает использовать Atomic Design вместе с Feature-Sliced Design
 
 При этом Atomic Design [хорошо применяется](https://t.me/feature_sliced/1653) для `ui` сегмента модулей
 
