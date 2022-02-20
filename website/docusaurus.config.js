@@ -330,7 +330,7 @@ const customFields = {
 
 /** @type {Config} */
 module.exports = {
-    title: "feature-sliced",
+    title: "Feature-Sliced Design",
     // tagline: 'Методология для проектирования frontend проектов, нацеленная на разделение приложения согласно бизнес-логике и областям ответственности.',
     tagline: "Architectural methodology for frontend projects",
     url: DOMAIN,

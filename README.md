@@ -1,4 +1,4 @@
-# feature-sliced
+# Feature-Sliced Design
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-41-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -21,7 +21,7 @@
 ![feature-sliced-banner](/website/static/img/banner.jpg)
 
 <!-- ⚡ Add primary information & features about your repository -->
-FeatureSliced is an architectural design methodology for *frontend applications*. It aims to [**divide an application according to business logic and scopes of responsibility**][refs-splitting]
+**Feature-Sliced Design** (FSD) is an architectural design methodology for *frontend applications*. It aims to [**divide an application according to business logic and scopes of responsibility**][refs-splitting]
 
 - Provides [**explicitness, controllability and adaptability**][refs-arch-req] of architecture
 - Based on [**time-tested**][refs-motivation-why] design practices and concepts

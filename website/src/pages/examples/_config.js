@@ -16,7 +16,7 @@ export const VERSIONS = {
  *  - `/pages/examples/img/{YOUR_SITE}.[png|jpg|jpeg]`
  * 5. Prepare links for your site - `website`, `source`
  *  - Website/Source - are optional but recommended
- * 6. Select feature-sliced version which implemented in your codebase
+ * 6. Select FSD version which implemented in your codebase
  * 7. Profit!
  */
 export const examples = [
