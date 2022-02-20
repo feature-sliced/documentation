@@ -53,7 +53,7 @@ See the [examples](https://feature-sliced.design/examples)
 - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
 - [How to Organize Your React + Redux Codebase](https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase)
 - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
-- [Is the "feature-sliced" methodology an ideal way to structure a growing project? *(BlogPost)* / Oleg Kusov](https://okusov.ru/metodologiya-feature-sliced-idealnyj-sposob-strukturirovat-rastushij-proekt)
+- [Is the "Feature-Sliced" methodology an ideal way to structure a growing project? *(BlogPost)* / Oleg Kusov](https://okusov.ru/metodologiya-feature-sliced-idealnyj-sposob-strukturirovat-rastushij-proekt)
 
 ## Talks
 

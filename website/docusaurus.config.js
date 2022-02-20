@@ -22,7 +22,7 @@ const DOCUSAURUS_PLUGIN_OG = [
 
 /** @type {Config["themeConfig"]["navbar"]} */
 const navbar = {
-    title: "feature-sliced",
+    title: "Feature-Sliced",
     logo: {
         alt: "logo",
         // FIXME: Сделать под SVG позднее
@@ -325,7 +325,7 @@ const customFields = {
 
 /** @type {Config} */
 module.exports = {
-    title: "feature-sliced",
+    title: "Feature-Sliced Design",
     // tagline: 'Методология для проектирования frontend проектов, нацеленная на разделение приложения согласно бизнес-логике и областям ответственности.',
     tagline: "Architectural methodology for frontend projects",
     url: DOMAIN,

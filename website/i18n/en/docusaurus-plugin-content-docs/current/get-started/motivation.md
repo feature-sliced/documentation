@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Motivation
 
-The main idea of **feature-sliced** is to facilitate and reduce the cost of developing complex and developing projects, based on [combining research results, discussing the experience of various kinds of a wide range of developers][ext-discussions].
+The main idea of **Feature-Sliced Design** is to facilitate and reduce the cost of developing complex and developing projects, based on [combining research results, discussing the experience of various kinds of a wide range of developers][ext-discussions].
 
 Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability][refs-mission].
 

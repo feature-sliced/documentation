@@ -51,7 +51,7 @@ export const concepts = [
 ];
 
 /**
- * Companies using feature-sliced
+ * Companies using Feature-Sliced Design
  * @see https://github.com/feature-sliced/documentation/issues/131
  * @see website/static/img/companies
  */
