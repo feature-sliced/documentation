@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 3
 sidebar_label: Knowledge types
 pagination_next: about/index
 ---
