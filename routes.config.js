@@ -61,7 +61,6 @@ const LEGACY_ROUTES = [
                     "/docs/concepts/app-splitting",
                     "/docs/concepts/naming-adaptability",
                     "/docs/concepts/abstractions",
-                    "/docs/reference/layers",
                     "/docs/reference/layers/app",
                     "/docs/reference/segments",
                 ],
