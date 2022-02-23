@@ -1,6 +1,5 @@
 ---
 sidebar_position: 3
-pagination_next: about/index
 ---
 
 # Типы знаний в проекте

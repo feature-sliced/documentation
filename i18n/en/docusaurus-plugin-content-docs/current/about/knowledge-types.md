@@ -1,7 +1,6 @@
 ---
 sidebar_position: 3
 sidebar_label: Knowledge types
-pagination_next: about/index
 ---
 
 # Types of knowledge in the project
