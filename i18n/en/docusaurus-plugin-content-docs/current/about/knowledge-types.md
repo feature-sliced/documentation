@@ -8,25 +8,21 @@ pagination_next: about/index
 
 In any project, you can distinguish certain types of knowledge
 
-## Fundamental knowledge
+- **Fundamental knowledge**  
+  Knowledge that practically does not change over time.
+  *Algorithms, computer science, the mechanisms of the YAP and its API, etc.*
 
-**Knowledge that practically does not change over time.**
+- **Technology stack**  
+  Knowledge about the set of technical solutions used in the project.
+  *Programming languages, frameworks, libraries, etc.*
 
-*Algorithms, computer science, the mechanisms of the YAP and its API, etc.*
+- **Project knowledge**  
+  Knowledge that is applicable exclusively within the framework of the current project.
+  *They are not transferred to the outside world in any way and, having left this project, you can forget about this knowledge.*
 
-## Technology stack
+  *Naturally, this also works in the opposite direction — to add a new person to the current project, you need to train him **a certain minimum amount of this project knowledge** - without which a new participant will not be able to perform useful work*
 
-**Knowledge about the set of technical solutions used in the project.**
-
-*Programming languages, frameworks, libraries, etc.*
-
-## Project knowledge
-
-**Knowledge that is applicable exclusively within the framework of the current project.**
-
-*They are not transferred to the outside world in any way and, having left this project, you can forget about this knowledge.*
-
-*Naturally, this also works in the opposite direction — to add a new person to the current project, you need to train him **a certain minimum amount of this project knowledge** - without which a new participant will not be able to perform useful work*
+**Feature-Sliced Design** aims to take on more responsibility from "project knowledge" so that people can get onboarded into teams and projects faster
 
 ## See also
 
