@@ -142,7 +142,7 @@ sidebar_position: 2
 
 [refs-mission]: /docs/about/mission
 [refs-mission--goals]: /docs/about/mission#цели
-[refs-knowledge]: /docs/reference/knowledge-types
+[refs-knowledge]: /docs/about/knowledge-types
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/27
 [ext-discussions]: https://github.com/feature-sliced/documentation/discussions
