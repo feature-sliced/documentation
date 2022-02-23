@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Глоссарий
+# EDITED-TITLE
 
 ## Module
 
@@ -16,13 +16,13 @@ sidebar_position: 1
 - *модуль экшенов в модели сущности*
 - *и т.д.*
 
-## [Layer][refs-layers]
+## [Layer](/docs/reference/layers/overview)
 
 Каждая из директорий, находящихся на самом верхнем уровне приложения.
 
-Этот уровень определяет [скоуп ответственности модулей][refs-split-layers], а также уровень опасности изменений
+Этот уровень определяет [скоуп ответственности модулей](/docs/concepts/app-splitting#group-layers), а также уровень опасности изменений
 
-- **Представители**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`widgets`][refs-layers-widgets], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
+- **Представители**: `app`, `processes`, `pages`, `widgets`, `features`, `entities`, `shared`
 
 ```sh
 └── src/
@@ -39,9 +39,9 @@ sidebar_position: 1
 
 Каждый из элементов, находящихся на верхнем уровне слоёв
 
-Этот уровень [слабо регламентируется][refs-split-slices] методологией, однако многое зависит от конкретного проекта, стека и команды
+Этот уровень [слабо регламентируется](/docs/concepts/app-splitting#group-slices) методологией, однако многое зависит от конкретного проекта, стека и команды
 
-- **Представители (от каждого слоя)** [`process`][refs-layers-processes], [`page`][refs-layers-pages], [`widget`][refs-layers-widgets], [`feature`][refs-layers-features], [`entity`][refs-layers-entities]
+- **Представители (от каждого слоя)** `process`, `page`, `widget`, `feature`, `entity`
 
 ```sh
 ├── app/
@@ -81,13 +81,13 @@ sidebar_position: 1
 |    # Представляет собой скорее набор общеиспользуемых сегментов, без привязки к БЛ
 ```
 
-## [Segment][refs-segments]
+## [Segment](/docs/reference/segments)
 
 Каждый из модулей, находящийся на верхнем уровне каждого слайса
 
-Этот уровень определяет [назначение модулей в коде и реализации][refs-split-segments], согласно классическим моделям проектирования
+Этот уровень определяет [назначение модулей в коде и реализации](/docs/concepts/app-splitting#group-segments), согласно классическим моделям проектирования
 
-- **Представители**: [`ui`][refs-segments-ui], [`model`][refs-segments-model], [`lib`][refs-segments-lib], [`api`][refs-segments-api], [`config`][refs-segments-config]
+- **Представители**: `ui`, `model`, `lib`, `api`, `config`
 
 ```sh
 {layer}/
@@ -110,26 +110,6 @@ sidebar_position: 1
 
 ## См. также
 
-- [Уровни абстракций по методологии][refs-split]
-- [Layers в методологии][refs-layers]
-- [Segments в методологии][refs-segments]
-
-[refs-split]: /docs/concepts/app-splitting
-[refs-split-layers]: /docs/concepts/app-splitting#group-layers
-[refs-split-slices]: /docs/concepts/app-splitting#group-slices
-[refs-split-segments]: /docs/concepts/app-splitting#group-segments
-
-[refs-layers]: /docs/reference/layers/overview
-[refs-layers-app]: /docs/reference/layers/app
-[refs-layers-processes]: /docs/reference/layers/processes
-[refs-layers-pages]: /docs/reference/layers/pages
-[refs-layers-widgets]: /docs/reference/layers/widgets
-[refs-layers-features]: /docs/reference/layers/features
-[refs-layers-entities]: /docs/reference/layers/entities
-[refs-layers-shared]: /docs/reference/layers/shared
-[refs-segments]: /docs/reference/segments
-[refs-segments-ui]: /docs/reference/segments#ui
-[refs-segments-model]: /docs/reference/segments#model
-[refs-segments-lib]: /docs/reference/segments#lib
-[refs-segments-api]: /docs/reference/segments#api
-[refs-segments-config]: /docs/reference/segments#config
+- [Уровни абстракций по методологии](/docs/concepts/app-splitting)
+- [Layers в методологии](/docs/reference/layers/overview)
+- [Segments в методологии](/docs/reference/segments)
