@@ -206,7 +206,7 @@ const presets = [
                 editLocalizedFiles: true,
                 sidebarPath: require.resolve("./sidebars.js"),
                 // Please change this to your repo.
-                editUrl: `${GITHUB_DOCS}/edit/master/website/`,
+                editUrl: `${GITHUB_DOCS}/edit/master/`,
                 // // Equivalent to `enableUpdateBy`.
                 // showLastUpdateAuthor: true,
                 // Equivalent to `enableUpdateTime`.
@@ -222,7 +222,7 @@ const presets = [
             //   showReadingTime: true,
             //   // Please change this to your repo.
             //   editUrl:
-            //     `${GITHUB_DOCS}/edit/master/website/blog/`,
+            //     `${GITHUB_DOCS}/edit/master/blog/`,
             // },
             theme: {
                 customCss: require.resolve("./src/app/index.scss"),
