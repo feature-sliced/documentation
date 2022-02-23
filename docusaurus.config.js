@@ -325,7 +325,7 @@ const customFields = {
 
 /** @type {Config} */
 module.exports = {
-    title: "Feature-Sliced Design",
+    title: "NETLIFY DEMO",
     // tagline: 'Методология для проектирования frontend проектов, нацеленная на разделение приложения согласно бизнес-логике и областям ответственности.',
     tagline: "Architectural methodology for frontend projects",
     url: DOMAIN,
@@ -356,7 +356,7 @@ module.exports = {
                 label: "Русский",
             },
             en: {
-                label: "English (WIP)",
+                label: "English",
             },
         },
     },
