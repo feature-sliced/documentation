@@ -129,13 +129,13 @@ It should be understood that not all of the above layers are mandatory, but are 
 [refs-low-coupling]: /docs/concepts/low-coupling
 [refs-example-viewer]: /docs/guides/examples/auth
 
-[refs-app]: /docs/concepts/decomposition/referenceapp
-[refs-processes]: /docs/concepts/decomposition/referenceprocesses
-[refs-pages]: /docs/concepts/decomposition/referencepages
-[refs-widgets]: /docs/concepts/decomposition/referencewidgets
-[refs-features]: /docs/concepts/decomposition/referencefeatures
-[refs-entities]: /docs/concepts/decomposition/referenceentities
-[refs-shared]: /docs/concepts/decomposition/referenceshared
+[refs-app]: /docs/concepts/decomposition/reference/app
+[refs-processes]: /docs/concepts/decomposition/reference/processes
+[refs-pages]: /docs/concepts/decomposition/reference/pages
+[refs-widgets]: /docs/concepts/decomposition/reference/widgets
+[refs-features]: /docs/concepts/decomposition/reference/features
+[refs-entities]: /docs/concepts/decomposition/reference/entities
+[refs-shared]: /docs/concepts/decomposition/reference/shared
 
 [refs-segments]: /docs/concepts/decomposition/segments
 [refs-segments--ui]: /docs/concepts/decomposition/segments#ui

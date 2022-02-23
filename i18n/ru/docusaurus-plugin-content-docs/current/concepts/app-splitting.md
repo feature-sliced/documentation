@@ -231,7 +231,7 @@ function Foo() {
 [ref-layers]: /docs/concepts/decomposition/layers
 [ref-segments]: /docs/concepts/decomposition/segments
 [ref-low-coupling]: /docs/concepts/low-coupling
-[ref-grouping]: /docs/concepts/decomposition/referencefeatures#структурная-группировка-фич
+[ref-grouping]: /docs/concepts/decomposition/reference/features#структурная-группировка-фич
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31
 

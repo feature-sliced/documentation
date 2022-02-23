@@ -120,13 +120,13 @@ Since not every layer explicitly uses slices (app, shared)
 [refs-split-segments]: /docs/concepts/decomposition#group-segments
 
 [refs-layers]: /docs/concepts/decomposition/layers
-[refs-layers-app]: /docs/concepts/decomposition/referenceapp
-[refs-layers-processes]: /docs/concepts/decomposition/referenceprocesses
-[refs-layers-pages]: /docs/concepts/decomposition/referencepages
-[refs-layers-widgets]: /docs/concepts/decomposition/referencewidgets
-[refs-layers-features]: /docs/concepts/decomposition/referencefeatures
-[refs-layers-entities]: /docs/concepts/decomposition/referenceentities
-[refs-layers-shared]: /docs/concepts/decomposition/referenceshared
+[refs-layers-app]: /docs/concepts/decomposition/reference/app
+[refs-layers-processes]: /docs/concepts/decomposition/reference/processes
+[refs-layers-pages]: /docs/concepts/decomposition/reference/pages
+[refs-layers-widgets]: /docs/concepts/decomposition/reference/widgets
+[refs-layers-features]: /docs/concepts/decomposition/reference/features
+[refs-layers-entities]: /docs/concepts/decomposition/reference/entities
+[refs-layers-shared]: /docs/concepts/decomposition/reference/shared
 [refs-segments]: /docs/concepts/decomposition/segments
 [refs-segments-ui]: /docs/concepts/decomposition/segments#ui
 [refs-segments-model]: /docs/concepts/decomposition/segments#model

@@ -131,5 +131,5 @@ export const AuthByPhone = () => {
   - To understand the `features` layer
 - [(Thread) About features and entities clearly](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
 
-[refs-entity]: /docs/concepts/decomposition/referenceentities
+[refs-entity]: /docs/concepts/decomposition/reference/entities
 [refs-low-coupling]: /docs/concepts/low-coupling

@@ -826,11 +826,11 @@ const TaskDetailsPage = (props: Props) => {
 [refs-guides]: /docs/guides
 [refs-reference]: /docs/reference
 [refs-layers]: /docs/concepts/decomposition/layers
-[refs-app]: /docs/concepts/decomposition/referenceapp
-[refs-pages]: /docs/concepts/decomposition/referencepages
-[refs-features]: /docs/concepts/decomposition/referencefeatures
-[refs-entities]: /docs/concepts/decomposition/referenceentities
-[refs-shared]: /docs/concepts/decomposition/referenceshared
+[refs-app]: /docs/concepts/decomposition/reference/app
+[refs-pages]: /docs/concepts/decomposition/reference/pages
+[refs-features]: /docs/concepts/decomposition/reference/features
+[refs-entities]: /docs/concepts/decomposition/reference/entities
+[refs-shared]: /docs/concepts/decomposition/reference/shared
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure
