@@ -1,5 +1,5 @@
 {
-    "name": "website",
+    "name": "@feature-sliced/documentation",
     "version": "2.0.0-beta",
     "private": true,
     "scripts": {

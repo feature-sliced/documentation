@@ -24,11 +24,11 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-        working-directory: ./website
+        working-directory: .
 
       - name: Check build
         run: yarn build
-        working-directory: ./website
+        working-directory: .
   test-lint:
     runs-on: ubuntu-18.04
     timeout-minutes: 10
@@ -43,8 +43,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-        working-directory: ./website
+        working-directory: .
 
       - name: Check linting
         run: yarn run test:lint
-        working-directory: ./website
+        working-directory: .

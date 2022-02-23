@@ -8,7 +8,7 @@ import Layout from "@theme/Layout";
 import { useLatestVersion } from "@theme/hooks/useDocs";
 import { Table } from "@site/src/shared/ui/table";
 
-// @see https://github.com/facebook/docusaurus/blob/master/website/src/pages/versions.js (reference)
+// @see https://github.com/facebook/docusaurus/blob/master/src/pages/versions.js (reference)
 function Version() {
     const { siteConfig } = useDocusaurusContext();
     const latestVersion = useLatestVersion();
