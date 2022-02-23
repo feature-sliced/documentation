@@ -17,8 +17,8 @@
         "serve": "docusaurus serve",
         "write-translations": "docusaurus write-translations",
         "write-heading-ids": "docusaurus write-heading-ids",
-        "contributors:add": "cd .. && all-contributors add",
-        "contributors:generate": "cd .. && all-contributors generate"
+        "contributors:add": "all-contributors add",
+        "contributors:generate": "all-contributors generate"
     },
     "dependencies": {
         "@ant-design/icons": "^4.6.2",
