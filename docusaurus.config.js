@@ -9,7 +9,7 @@ const TELEGRAM = "https://t.me/feature_sliced";
 const YOUTUBE = "https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A";
 const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
-const DEFAULT_LOCALE = "ru";
+const DEFAULT_LOCALE = "en";
 
 const DOCUSAURUS_PLUGIN_OG = [
     path.resolve(__dirname, "./plugins/docusaurus-plugin-og"),
@@ -54,11 +54,6 @@ const navbar = {
                     label: "🧩 Concepts",
                     to: SECTIONS.CONCEPTS.shortPath,
                     activeBasePath: SECTIONS.CONCEPTS.shortPath,
-                },
-                {
-                    label: "📚 Reference",
-                    to: SECTIONS.REFERENCE.shortPath,
-                    activeBasePath: SECTIONS.REFERENCE.shortPath,
                 },
                 {
                     label: "🍰 About",
@@ -350,7 +345,7 @@ module.exports = {
     },
     i18n: {
         defaultLocale: DEFAULT_LOCALE,
-        locales: ["ru", "en"],
+        locales: ["en"],
         localeConfigs: {
             ru: {
                 label: "Русский",
