@@ -14,7 +14,7 @@ export function Header() {
             <Snowfall /> {/** @christmas Revert later */}
             <div className="container">
                 <h1 className="hero__title">{siteConfig.title}</h1>
-                <p className="hero__subtitle">{translate({ id: "features.hero.tagline" })}</p>
+                <p className="hero__subtitle">DEMO ONLY DESCRIPTION</p>
                 <div className="button-group">
                     <Link className="button button--primary button--lg" to="/docs/intro">
                         {translate({ id: "features.hero.get_started" })}
