@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Public API
+# 🔌 Public API
 
 Each entity of the methodology is designed as a **user-friendly and integrable [module][refs-glossary].**
 

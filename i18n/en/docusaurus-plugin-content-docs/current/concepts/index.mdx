@@ -11,7 +11,7 @@ pagination_prev: guides/index
 <span class="badge badge--warning margin-bottom--md">UNDERSTANDING-ORIENTED</span>
 
 <p class="summary">
-This section includes methodology's key concepts, that will help you dive deeper into the Feature Sliced philosophy and its application.
+Key concepts, that will help you dive deeper into the Feature-Sliced philosophy and its usage.
 </p>
 
 ## Main
@@ -20,9 +20,9 @@ import Row from "@site/src/shared/ui/row/tmpl.mdx"
 import { BlockOutlined, ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
 
 <Row 
-    title="App splitting" 
-    description="Logical decomposition using layered-sliced structure"
-    to="/docs/concepts/app-splitting"
+    title="About architecture" 
+    description="General problems and requirements of architecture"
+    to="/docs/concepts/architecture"
     Icon={BlockOutlined}
 />
 <Row 
@@ -32,20 +32,16 @@ import { BlockOutlined, ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeI
     Icon={ApiOutlined}
 />
 <Row 
-    title="Cross-communication" 
-    description="Rules for scalable and efficient module interactions"
-    to="/docs/concepts/cross-communication"
+    title="Decomposition" 
+    description="Logical decomposition using layered-sliced structure with extraction of structure units"
+    to="/docs/concepts/decomposition"
     Icon={ApartmentOutlined}
+    tags={['Layers', 'Segments', 'Naming']}
 />
 <Row 
-    title="Decouple entities" 
-    description="Logical decomposition with extraction of business entities"
-    to="/docs/concepts/decouple-entities"
-    Icon={PartitionOutlined}
-/>
-<Row 
-    title="Desegmentation" 
-    description="The problem of excessive fragmentation of logic"
-    to="/docs/concepts/issues/desegmented"
+    title="Isolation" 
+    description="Rules for scalable and efficient module interactions"
+    to="/docs/concepts/isolation"
     Icon={NodeIndexOutlined}
+    tags={['Low Coupling & High Cohesion', 'Decoupling at practice']}
 />

@@ -1,10 +1,10 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Overview
+# Layers
 
-**Layer** - the first level of application partitioning, according to the **scope of influence** of the module
+**Layer** - the first level of application partitioning, according to the **scope of responsibility** of the module
 
 ![layers-flow-themed](/img/layers_flow.png)
 

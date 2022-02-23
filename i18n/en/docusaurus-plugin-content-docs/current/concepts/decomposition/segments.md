@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Segment
+# Segments
 
 **Segment** - the third level of application partitioning, according to the **purpose of the module in the code and implementation**
 

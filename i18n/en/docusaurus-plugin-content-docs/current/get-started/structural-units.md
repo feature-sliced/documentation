@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 6
 ---
 
-# Glossary
+# Structural units
 
 ## Module
 
