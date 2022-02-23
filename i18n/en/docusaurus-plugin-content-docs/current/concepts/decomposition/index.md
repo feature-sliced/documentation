@@ -230,10 +230,10 @@ However, as a result of [discussions and analysis of extensive experience][disc-
 * [(Reference) Layers][ref-layers]
 * [(Reference) Segments][ref-segments]
 
-[ref-layers]: /docs/reference/layers/overview
-[ref-segments]: /docs/reference/segments
+[ref-layers]: /docs/concepts/decomposition/layers
+[ref-segments]: /docs/concepts/decomposition/segments
 [ref-low-coupling]: /docs/concepts/low-coupling
-[ref-grouping]: /docs/reference/layers/features#structural-grouping-features
+[ref-grouping]: /docs/concepts/decomposition/referencefeatures#structural-grouping-features
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31
 

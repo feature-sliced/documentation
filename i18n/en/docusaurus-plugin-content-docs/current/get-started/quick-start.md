@@ -822,17 +822,17 @@ Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, wher
 
 [refs-needs]: /docs/concepts/needs-driven
 [refs-public-api]: /docs/concepts/public-api
-[refs-splitting]: /docs/concepts/app-splitting
+[refs-splitting]: /docs/concepts/decomposition
 
 [refs-low-coupling]: /docs/concepts/low-coupling
 [refs-guides]: /docs/guides
 [refs-reference]: /docs/reference
-[refs-layers]: /docs/reference/layers/overview
-[refs-app]: /docs/reference/layers/app
-[refs-pages]: /docs/reference/layers/pages
-[refs-features]: /docs/reference/layers/features
-[refs-entities]: /docs/reference/layers/entities
-[refs-shared]: /docs/reference/layers/shared
+[refs-layers]: /docs/concepts/decomposition/layers
+[refs-app]: /docs/concepts/decomposition/referenceapp
+[refs-pages]: /docs/concepts/decomposition/referencepages
+[refs-features]: /docs/concepts/decomposition/referencefeatures
+[refs-entities]: /docs/concepts/decomposition/referenceentities
+[refs-shared]: /docs/concepts/decomposition/referenceshared
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure

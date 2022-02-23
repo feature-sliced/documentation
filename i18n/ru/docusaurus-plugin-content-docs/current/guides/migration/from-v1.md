@@ -159,9 +159,9 @@ sidebar_position: 4
 
 [refs-low-coupling]: /docs/concepts/low-coupling
 [refs-adaptability]: /docs/concepts/naming-adaptability
-[refs-abstractions]: /docs/concepts/app-splitting
-[refs-abstractions-layers]: /docs/concepts/app-splitting#group-layers
-[refs-abstractions-segments]: /docs/concepts/app-splitting#group-segments
+[refs-abstractions]: /docs/concepts/decomposition
+[refs-abstractions-layers]: /docs/concepts/decomposition#group-layers
+[refs-abstractions-segments]: /docs/concepts/decomposition#group-segments
 
 [ext-v1]: https://featureslices.dev/v1.0.html
 [ext-tg-spb]: https://t.me/feature_slices

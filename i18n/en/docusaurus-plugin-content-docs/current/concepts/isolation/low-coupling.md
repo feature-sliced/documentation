@@ -139,8 +139,8 @@ export const { sendMessage, attachFile } = createMessageInput({
 * [(Article) Low Coupling and High Cohesion. The Law of Demeter](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
 * [(Presentation) On design principles (including Low Coupling & High Cohesion)](https://www.slideshare.net/cristalngo/software-design-principles-57388843)
 
-[refs-splitting]: /docs/concepts/app-splitting
+[refs-splitting]: /docs/concepts/decomposition
 [refs-public-api]: /docs/concepts/public-api
 [refs-cross-communication]: /docs/concepts/cross-communication
-[refs-features]: /docs/reference/layers/features
-[refs-entities]: /docs/reference/layers/entities
+[refs-features]: /docs/concepts/decomposition/referencefeatures
+[refs-entities]: /docs/concepts/decomposition/referenceentities

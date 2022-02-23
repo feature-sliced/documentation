@@ -129,19 +129,19 @@ sidebar_position: 1
 [refs-low-coupling]: /docs/concepts/low-coupling
 [refs-example-viewer]: /docs/guides/examples/auth
 
-[refs-app]: /docs/reference/layers/app
-[refs-processes]: /docs/reference/layers/processes
-[refs-pages]: /docs/reference/layers/pages
-[refs-widgets]: /docs/reference/layers/widgets
-[refs-features]: /docs/reference/layers/features
-[refs-entities]: /docs/reference/layers/entities
-[refs-shared]: /docs/reference/layers/shared
+[refs-app]: /docs/concepts/decomposition/referenceapp
+[refs-processes]: /docs/concepts/decomposition/referenceprocesses
+[refs-pages]: /docs/concepts/decomposition/referencepages
+[refs-widgets]: /docs/concepts/decomposition/referencewidgets
+[refs-features]: /docs/concepts/decomposition/referencefeatures
+[refs-entities]: /docs/concepts/decomposition/referenceentities
+[refs-shared]: /docs/concepts/decomposition/referenceshared
 
-[refs-segments]: /docs/reference/segments
-[refs-segments--ui]: /docs/reference/segments#ui
-[refs-segments--model]: /docs/reference/segments#model
-[refs-segments--lib]: /docs/reference/segments#lib
-[refs-segments--api]: /docs/reference/segments#api
-[refs-segments--config]: /docs/reference/segments#config
+[refs-segments]: /docs/concepts/decomposition/segments
+[refs-segments--ui]: /docs/concepts/decomposition/segments#ui
+[refs-segments--model]: /docs/concepts/decomposition/segments#model
+[refs-segments--lib]: /docs/concepts/decomposition/segments#lib
+[refs-segments--api]: /docs/concepts/decomposition/segments#api
+[refs-segments--config]: /docs/concepts/decomposition/segments#config
 
 [disc-sharing]: https://github.com/feature-sliced/documentation/discussions/14

@@ -212,7 +212,7 @@ export * as authModel from "./model"
 - [Принципы **SOLID**][ext-solid]
 - [Паттерны **GRASP**][ext-grasp]
 
-[refs-glossary]: /docs/reference/glossary
+[refs-glossary]: /docs/get-started/structural-units
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/41
 [ext-solid]: https://ru.wikipedia.org/wiki/SOLID

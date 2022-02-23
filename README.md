@@ -249,12 +249,12 @@ If there are variations, how best to place indents-welcome:)
 [refs-isolation]: https://feature-sliced.design/docs/concepts/cross-communication
 [refs-needs-driven]: https://feature-sliced.design/docs/concepts/needs-driven
 
-[refs-module]: https://feature-sliced.design/docs/reference/glossary#module
+[refs-module]: https://feature-sliced.design/docs/get-started/structural-units#module
 [refs-knowledge]: https://feature-sliced.design/docs/about/knowledge-types
-[refs-splitting]: https://feature-sliced.design/docs/concepts/app-splitting
-[refs-splitting-layers]: https://feature-sliced.design/docs/concepts/app-splitting#group-layers
-[refs-splitting-slices]: https://feature-sliced.design/docs/concepts/app-splitting#group-slices
-[refs-splitting-segments]: https://feature-sliced.design/docs/concepts/app-splitting#group-segments
+[refs-splitting]: https://feature-sliced.design/docs/concepts/decomposition
+[refs-splitting-layers]: https://feature-sliced.design/docs/concepts/decomposition#group-layers
+[refs-splitting-slices]: https://feature-sliced.design/docs/concepts/decomposition#group-slices
+[refs-splitting-segments]: https://feature-sliced.design/docs/concepts/decomposition#group-segments
 
 [refs-migration-v1]: https://feature-sliced.design/docs/guides/migration/from-v1
 

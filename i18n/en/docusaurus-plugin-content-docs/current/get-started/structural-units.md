@@ -114,22 +114,22 @@ Since not every layer explicitly uses slices (app, shared)
 - [Layers in the methodology][refs-layers]
 - [Segments in the methodology][refs-segments]
 
-[refs-split]: /docs/concepts/app-splitting
-[refs-split-layers]: /docs/concepts/app-splitting#group-layers
-[refs-split-slices]: /docs/concepts/app-splitting#group-slices
-[refs-split-segments]: /docs/concepts/app-splitting#group-segments
+[refs-split]: /docs/concepts/decomposition
+[refs-split-layers]: /docs/concepts/decomposition#group-layers
+[refs-split-slices]: /docs/concepts/decomposition#group-slices
+[refs-split-segments]: /docs/concepts/decomposition#group-segments
 
-[refs-layers]: /docs/reference/layers/overview
-[refs-layers-app]: /docs/reference/layers/app
-[refs-layers-processes]: /docs/reference/layers/processes
-[refs-layers-pages]: /docs/reference/layers/pages
-[refs-layers-widgets]: /docs/reference/layers/widgets
-[refs-layers-features]: /docs/reference/layers/features
-[refs-layers-entities]: /docs/reference/layers/entities
-[refs-layers-shared]: /docs/reference/layers/shared
-[refs-segments]: /docs/reference/segments
-[refs-segments-ui]: /docs/reference/segments#ui
-[refs-segments-model]: /docs/reference/segments#model
-[refs-segments-lib]: /docs/reference/segments#lib
-[refs-segments-api]: /docs/reference/segments#api
-[refs-segments-config]: /docs/reference/segments#config
+[refs-layers]: /docs/concepts/decomposition/layers
+[refs-layers-app]: /docs/concepts/decomposition/referenceapp
+[refs-layers-processes]: /docs/concepts/decomposition/referenceprocesses
+[refs-layers-pages]: /docs/concepts/decomposition/referencepages
+[refs-layers-widgets]: /docs/concepts/decomposition/referencewidgets
+[refs-layers-features]: /docs/concepts/decomposition/referencefeatures
+[refs-layers-entities]: /docs/concepts/decomposition/referenceentities
+[refs-layers-shared]: /docs/concepts/decomposition/referenceshared
+[refs-segments]: /docs/concepts/decomposition/segments
+[refs-segments-ui]: /docs/concepts/decomposition/segments#ui
+[refs-segments-model]: /docs/concepts/decomposition/segments#model
+[refs-segments-lib]: /docs/concepts/decomposition/segments#lib
+[refs-segments-api]: /docs/concepts/decomposition/segments#api
+[refs-segments-config]: /docs/concepts/decomposition/segments#config

@@ -133,10 +133,10 @@ In most cases, [it is recommended][ext-disc-api] to place `api` and `config` onl
 [refs-needs-driven]: /docs/concepts/needs-driven
 [refs-adaptability]: /docs/concepts/naming-adaptability
 
-[refs-splitting]: /docs/concepts/app-splitting
-[refs-splitting-layers]: /docs/concepts/app-splitting#group-layers
-[refs-splitting-slices]: /docs/concepts/app-splitting#group-slices
-[refs-splitting-segments]: /docs/concepts/app-splitting#group-segments
+[refs-splitting]: /docs/concepts/decomposition
+[refs-splitting-layers]: /docs/concepts/decomposition#group-layers
+[refs-splitting-slices]: /docs/concepts/decomposition#group-slices
+[refs-splitting-segments]: /docs/concepts/decomposition#group-segments
 
 [refs-guides]: /docs/guides
 [refs-low-coupling]: /docs/concepts/low-coupling

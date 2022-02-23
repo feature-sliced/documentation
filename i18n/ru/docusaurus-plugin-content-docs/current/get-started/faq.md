@@ -54,7 +54,7 @@ pagination_next: guides/index
 
 ### Могу ли я вкладывать страницы/фичи/сущности друг в друга?
 
-Ответили [здесь](/docs/concepts/app-splitting#group-slices)
+Ответили [здесь](/docs/concepts/decomposition#group-slices)
 
 ### Как мне работать с контекстом авторизации?
 
@@ -73,7 +73,7 @@ pagination_next: guides/index
 - `Feature` - бизнесовая фича, **действие над сущностью**
   - create-blog-post / login-by-oauth / edit-account / publish-video / ...
 
-См. также [справочную информацию по сравнению](/docs/reference/layers/overview), [реализация viewer логики по слоям](/docs/guides/examples/auth)
+См. также [справочную информацию по сравнению](/docs/concepts/decomposition/layers), [реализация viewer логики по слоям](/docs/guides/examples/auth)
 
 ### Где хранить layout/template страниц?
 
@@ -94,7 +94,7 @@ pagination_next: guides/index
 
 ### Могу ли я хранить фичи используемые на одной странице прямо в директории страницы?
 
-Методология крайне не рекомендует так делать, поскольку [каждому модулю есть соответствующее место в структуре](/docs/concepts/app-splitting)
+Методология крайне не рекомендует так делать, поскольку [каждому модулю есть соответствующее место в структуре](/docs/concepts/decomposition)
 
 Иначе - есть риск усложнения кодовой базы проекта
 

@@ -52,8 +52,8 @@ sidebar_position: 6
   - [`processes` vs `flows` vs ...][disc-processes]
   - [`model` vs `store` vs ...][disc-model]
 
-[refs-layers]: /docs/reference/layers/overview
-[refs-segments]: /docs/reference/segments
+[refs-layers]: /docs/concepts/decomposition/layers
+[refs-segments]: /docs/concepts/decomposition/segments
 [refs-reference]: /docs/reference
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/16

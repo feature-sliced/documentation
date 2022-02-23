@@ -64,5 +64,5 @@ TODO После накопления опыта работы с методоло
 - [Паттерны **GRASP**](https://ru.wikipedia.org/wiki/GRASP)
 
 [refs-public-api]: /docs/concepts/public-api
-[refs-splitting]: /docs/concepts/app-splitting
+[refs-splitting]: /docs/concepts/decomposition
 [refs-low-coupling]: /docs/concepts/low-coupling
