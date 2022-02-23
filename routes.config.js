@@ -25,7 +25,7 @@ const SECTIONS = {
     },
     LAYERS: {
         shortPath: "/docs/reference/layers",
-        fullPath: "/docs/reference/layers/overview",
+        fullPath: "/docs/concepts/decomposition/layers",
     },
     ABOUT: {
         shortPath: "/docs/about",
@@ -46,6 +46,38 @@ const SECTIONS = {
  * @remark For compatibility with legacy links
  */
 const LEGACY_ROUTES = [
+    {
+        group: "🧩Concepts & 📚Reference",
+        details: "Simplified and merged",
+        children: [
+            {
+                title: "Structure units [Glossary]",
+                from: "/docs/reference/glossary",
+                to: "/docs/get-started/structural-units",
+            },
+            {
+                title: "Concept: Decomposition",
+                from: [
+                    "/docs/concepts/app-splitting",
+                    "/docs/concepts/naming-adaptability",
+                    "/docs/concepts/abstractions",
+                    "/docs/reference/layers",
+                    "/docs/reference/layers/app",
+                    "/docs/reference/segments",
+                ],
+                to: "/docs/concepts/decomposition",
+            },
+            {
+                title: "Concept: Isolation",
+                from: [
+                    "/docs/concepts/cross-communication",
+                    "/docs/concepts/low-coupling",
+                    "/docs/concepts/decouple-entities",
+                ],
+                to: "/docs/concepts/isolation",
+            },
+        ],
+    },
     {
         group: "🚀 Get Started",
         details: "Simplified and merged",
@@ -181,12 +213,12 @@ const LEGACY_ROUTES = [
             {
                 title: "Decouple of entities",
                 from: "/docs/guides/decouple-entities",
-                to: "/docs/concepts/decouple-entities",
+                to: "/docs/concepts/isolation/decouple-entities",
             },
             {
                 title: "Low Coupling & High Cohesion",
                 from: "/docs/guides/low-coupling",
-                to: "/docs/concepts/low-coupling",
+                to: "/docs/concepts/isolation/low-coupling",
             },
         ],
     },
