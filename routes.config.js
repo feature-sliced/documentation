@@ -141,6 +141,16 @@ const LEGACY_ROUTES = [
                 from: "/docs/get-started/onboard/promote",
                 to: "/docs/about/promote/for-company",
             },
+            {
+                title: "Motivation",
+                from: "/docs/get-started/motivation",
+                to: "/docs/about/motivation",
+            },
+            {
+                title: "Knowledge types",
+                from: "/docs/reference/knowledge-types",
+                to: "/docs/about/knowledge-types",
+            },
         ],
     },
     {

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # Motivation
@@ -142,7 +142,7 @@ If everything goes well, then the methodology will not be limited only to the sp
 
 [refs-mission]: /docs/about/mission
 [refs-mission--goals]: /docs/about/mission#goals
-[refs-knowledge]: /docs/reference/knowledge-types
+[refs-knowledge]: /docs/about/knowledge-types
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/27
 [ext-discussions]: https://github.com/feature-sliced/documentation/discussions

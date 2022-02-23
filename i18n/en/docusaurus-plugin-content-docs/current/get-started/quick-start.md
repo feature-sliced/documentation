@@ -818,7 +818,7 @@ Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, wher
 - [About splitting the application][refs-splitting]
 - [Reference material on the methodology][refs-reference]
 
-[refs-motivation]: /docs/get-started/motivation
+[refs-motivation]: /docs/about/motivation
 
 [refs-needs]: /docs/concepts/needs-driven
 [refs-public-api]: /docs/concepts/public-api

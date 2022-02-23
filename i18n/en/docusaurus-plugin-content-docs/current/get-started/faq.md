@@ -31,7 +31,7 @@ Rather yes than no
 
 ### Why do we need another methodology when everything is based on principles?
 
-Answered [here](/docs/get-started/motivation)
+Answered [here](/docs/about/motivation)
 
 ### Where can I find examples of applying the methodology?
 

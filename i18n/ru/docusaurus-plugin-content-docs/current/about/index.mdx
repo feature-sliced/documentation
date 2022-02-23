@@ -17,11 +17,17 @@ pagination_prev: reference/index
 ## Главное
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
-import { StarOutlined } from "@ant-design/icons";
+import { StarOutlined, TrophyOutlined } from "@ant-design/icons";
 
 <Row 
     title="Миссия" 
     description="Цели и ограничения методологии"
     to="/docs/about/mission"
+    Icon={TrophyOutlined}
+/>
+<Row 
+    title="Мотивация" 
+    description="Причины создания и развития методологии"
+    to="/docs/about/motivation"
     Icon={StarOutlined}
 />

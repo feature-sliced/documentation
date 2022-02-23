@@ -816,7 +816,7 @@ const TaskDetailsPage = (props: Props) => {
 - [Про разбиение приложения][refs-splitting]
 - [Справочный материал по методологии][refs-reference]
 
-[refs-motivation]: /docs/get-started/motivation
+[refs-motivation]: /docs/about/motivation
 
 [refs-needs]: /docs/concepts/needs-driven
 [refs-public-api]: /docs/concepts/public-api

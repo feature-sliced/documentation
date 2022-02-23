@@ -238,8 +238,8 @@ If there are variations, how best to place indents-welcome:)
 
 [refs-docs]: https://feature-sliced.design/docs/intro
 
-[refs-motivation]: https://feature-sliced.design/docs/get-started/motivation
-[refs-motivation-why]: https://feature-sliced.design/docs/get-started/motivation#-почему-не-хватает-существующих-решений
+[refs-motivation]: https://feature-sliced.design/docs/about/motivation
+[refs-motivation-why]: https://feature-sliced.design/docs/about/motivation#-почему-не-хватает-существующих-решений
 
 [refs-concepts]: https://feature-sliced.design/docs/concepts/architecture
 [refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#требования
@@ -250,7 +250,7 @@ If there are variations, how best to place indents-welcome:)
 [refs-needs-driven]: https://feature-sliced.design/docs/concepts/needs-driven
 
 [refs-module]: https://feature-sliced.design/docs/reference/glossary#module
-[refs-knowledge]: https://feature-sliced.design/docs/reference/knowledge-types
+[refs-knowledge]: https://feature-sliced.design/docs/about/knowledge-types
 [refs-splitting]: https://feature-sliced.design/docs/concepts/app-splitting
 [refs-splitting-layers]: https://feature-sliced.design/docs/concepts/app-splitting#group-layers
 [refs-splitting-slices]: https://feature-sliced.design/docs/concepts/app-splitting#group-slices
