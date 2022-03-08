@@ -156,7 +156,9 @@ iframe {
 }
 
 [role="banner"] {
-    background-color: #0367d2 !important;
+    --docusaurus-announcement-bar-height: 42px; // #nowar
+
+    font-size: 1.2rem; // #nowar
 }
 
 .sidebar-item--wip {
