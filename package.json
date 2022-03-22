@@ -11,7 +11,7 @@
         "swizzle": "docusaurus swizzle",
         "test": "yarn test:lint && yarn run build",
         "test:lint": "eslint \"./**/*.{ts,tsx,js,jsx}\" && stylelint ./**/*.scss",
-        "test:lint:fix": "eslint --fix './**/*.{ts,tsx,js,jsx}' && stylelint **/*.scss --fix",
+        "test:lint:fix": "eslint --fix \"./**/*.{ts,tsx,js,jsx}\" && stylelint **/*.scss --fix",
         "deploy": "docusaurus deploy",
         "clear": "docusaurus clear",
         "serve": "docusaurus serve",

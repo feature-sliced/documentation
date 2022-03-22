@@ -22,7 +22,7 @@ const DOCUSAURUS_PLUGIN_OG = [
 
 /** @type {Config["themeConfig"]["navbar"]} */
 const navbar = {
-    title: "Feature-Sliced",
+    // title: "Feature-Sliced",
     logo: {
         alt: "logo",
         // FIXME: Сделать под SVG позднее
