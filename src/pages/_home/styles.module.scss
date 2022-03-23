@@ -15,14 +15,14 @@
 }
 
 .companies {
-    --logoCardSize: 220px;
-    --logoCardGap: 2rem;
+    --logoCardSize: 150px;
+    --logoCardGap: 3rem;
 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--logoCardSize), 1fr));
     grid-gap: var(--logoCardGap);
     width: 100%;
-    padding: 40px 20%;
+    padding: 0 5% 40px 5%;
 
     /* FIXME: fix later */
     &Item {
