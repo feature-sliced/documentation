@@ -9,80 +9,45 @@ pagination_next: get-started/index
 
 ![feature-sliced-banner](/img/banner.jpg)
 
-FeatureSliced is an architectural design methodology for *frontend projects*. It aims to **divide an application according to business logic and scopes of responsibility.**
+**Feature-Sliced Design** (FSD) is an architectural methodology for scaffolding front-end applications. Simply put, it's a compilation of rules and conventions on organizing code. The main purpose of this methodology is to make the project more understandable and structured in the face of ever-changing business requirements.
 
-- Provides [**explicitness, controllability and adaptability**][refs-arch-req] of architecture
-- Based on [**time-tested**][refs-motivation-why] design practices and concepts
-    > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
-- Suggests dividing the project according to [**business units**][ext-ubiq-lang]
+Here is how it's accomplished:
 
-:::note
-The methodology is not tied to a specific tech stack and is applicable *to any frontend projects* in general.
+- A strong foundation of **time-tested** design practices:  
+  _SOLID, GRASP, DDD, Separation of Concerns, Vertical Slices, Public API, Isolation._
+- Project partitioning on business domains
+- Consistency in file structure
 
-But the current version is based on and provides examples for `JavaScript` + `React` stack.
-:::
+The methodology is not tied to any particular technology stack and is applicable to most front-end projects. This documentation contains examples in JavaScript + React, but FSD has been successfully adapted to other technology stacks (see [project examples][refs-examples]).
 
 ## Basics
 
-![schema-themed--scheme](/img/visual_schema.jpg)
+![schema](/img/hierarchy-of-concepts-en.jpg)
 
-> More details: ["Concepts, Abstractions, Structure"][refs-basics]
+The terms in the diagram above are explained in detail in the [**Abstractions**][refs-basics--abstractions] section.
+
+Such a structure has a number of benefits:
+
+- **Uniformity**  
+  The code is organized by scope of influence (layers), by domain (slices), and by technical purpose (segments).  
+  This creates a standardized architecture that is easier to comprehend for newcomers.
+
+- **Controlled reuse of logic**  
+  Each architectural component has its purpose and predictable dependencies.  
+  This keeps a balance between following the **DRY** principle and adaptation possibilities. 
+
+- **Stability in face of changes and refactoring**  
+  A module on a particular layer cannot use other modules on the same layer, or the layers above.  
+  This enables isolated modifications without unforeseen consequences.
+
 
 ## Motivation
 
-Usually, approaches to building the frontend architecture from project to project are [re-invented from scratch][refs-motivation], thereby adding ["project knowledge"][refs-knowledge]
+Front-end architecture approaches are usually re-invented from scratch with every project, adding up to the "project knowledge". Incorrect decisions often lead to issues with scalability, both for the project and the team. Thus, instead of re-inventing and documenting the architecture from scratch, we'd want to **aggregate the experience and construct a working, tested and documented methodology** for front-end architecture.
 
-> Despite the fact that the specifics of frontend projects do not differ so much
+In the [**Motivation**][refs-motivation] section, we go in depth on the reasons behind creating this methodology and compare it to other existing approaches.  
+In the [**About architecture**][refs-architecture] section, we list some of the most common issues with projects and propose a list of requirements for an ideal architecture. Feature-Sliced Design aims to follow these requirements.
 
-At the same time, incorrectly made decisions often lead [to problems of scalability of the project and the team][refs-arch-problems].
-
-And therefore, instead of inventing and documenting it every time, it is better to **summarize the experience and form a working, battle-tested and documented methodology** for designing the frontend architecture.
-
-*Yes, there are many practices and patterns (`SOLID`, `GRASP`, `DDD`, ...)*
-
-*But for the frontend [it is highly difficult to find][refs-motivation] well-established and specific approaches*
-
-## Overview
-
-The methodology is designed to **simplify and standardize the decomposition of logic for large and long-lived projects.**
-
-To do this, it introduces a number of [concepts][refs-concepts] and [abstractions][refs-splitting], on which the architecture *can be based* from project to project - from here we get *a number of advantages*
-
-:::info
-
-[Module][refs-module] - the structural unit of the project (file / directory)
-
-:::
-
-### Explicit business logic
-
-Modules are distributed according to [scope of influence, business responsibility and technical purpose][refs-splitting]
-
-Thanks to this, *the architecture is standardized and becomes easier to read*
-
-### Adaptation to new conditions
-
-Each component of the architecture has its own purpose and does not affect the others
-
-Thanks to this *it is possible to independently modify the functionality of the application to meet new requirements without unforeseen consequences*
-
-### Technical debt and refactoring
-
-Each module is independent and self-sufficient
-
-Thanks to this *you can rewrite it from scratch without unexpected side effects*
-
-### Scaling the project and the team
-
-The increase in functionality leads to significantly less complexity of the project, since all the logic is distributed deterministically and in isolation
-
-Thanks to this *it is easy to add and onboard new people to the team, as well as expand the functionality of the project*
-
-### Controlled reuse of logic
-
-Each module has its own limitations and recommendations for reuse according to [its layer][refs-splitting--layers]
-
-Thanks to this, *a balance is maintained between compliance with the `DRY` principle and the ability to customize the module logic without overhead overrides*
 
 ## What's next?
 
@@ -92,76 +57,54 @@ import Link from "@docusaurus/Link";
 
 <Row 
     title="Get Started" 
-    description="Quick dive into the methodology"
+    description="A tour over the basic concepts and structure as well as a comprehensive review of a React sample project"
     to="/docs/get-started"
     Icon={"🚀"}
-    tags={['Basics','QuickStart','Motivation']}
+    tags={['Basics', 'Quick start', 'FAQ']}
 />
 <Row 
     title="Guides" 
     description="Practical guides and application examples"
     to="/docs/guides"
     Icon={"🎯"}
-    tags={['From v1','From legacy','Examples']}
+    tags={['Examples', 'Migration', 'Tech']}
 />
 <Row 
     title="Concepts" 
-    description="Core concepts for better understanding and application"
+    description="Core concepts for better understanding and more efficient application"
     to="/docs/concepts"
     Icon={"🧩"}
-    tags={['Decomposition','Isolation','Public API']}
+    tags={['Decomposition', 'Isolation', 'Public API']}
 />
 <Row 
     title="Reference" 
     description="Reference details of core concepts"
     to="/docs/reference"
     Icon={"📚"}
-    tags={['Glossary','Layers','Segments']}
+    tags={['Glossary', 'Layer', 'Segment']}
 />
 <Row 
     title="About" 
-    description="The philosophy of methodology, its goals and place in the modern frontend"
+    description="The philosophy of the methodology, its goals and place in the modern front-end"
     to="/docs/about"
     Icon={"🍰"}
-    tags={['Mission','Promote & Integration']}
+    tags={['Mission', 'Alternatives', 'Promote']}
 />
 <Row 
     title="Community" 
-    description="Community resources, additional materials"
+    description="Resources and additional materials, contributed by the community"
     to="/docs/community"
     Icon={"💫"}
-    tags={['Awesome','Team', 'Contributing']}
+    tags={['Awesome', 'Team', 'Examples']}
 />
 <Row 
     title="Examples" 
-    description="Examples of projects built with Feature Sliced"
+    description="Projects built with Feature-Sliced Design"
     to="/examples"
     Icon={"🛠"}
 />
 
-[refs-getstarted]: /docs/get-started
-[refs-basics]: /docs/get-started/basics
+[refs-basics--abstractions]: /docs/get-started/basics#abstractions
 [refs-motivation]: /docs/about/motivation
-[refs-motivation-why]: /docs/about/motivation#why-are-there-not-enough-existing-solutions
-
-[refs-concepts]: /docs/concepts
-[refs-splitting]: /docs/concepts/app-splitting
-[refs-splitting--layers]: /docs/concepts/app-splitting#group-layers
-[refs-arch-req]: /docs/concepts/architecture#requirements
-[refs-arch-problems]: /docs/concepts/architecture#problems
-
-[refs-guides]: /docs/guides
-[refs-low-coupling]: /docs/concepts/low-coupling
-[refs-migration-v1]: /docs/guides/migration/from-v1
-[refs-examples]: /docs/guides/examples
-
-[refs-reference]: /docs/reference
-[refs-module]: /docs/reference/glossary#module
-[refs-knowledge]: /docs/about/knowledge-types
-
-[refs-about]: /docs/about
-
-
-[ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
-
-
+[refs-architecture]: /docs/concepts/architecture
+[refs-examples]: /examples
