@@ -106,4 +106,9 @@ export const companies = [
         src: "align.svg",
         alt: "Align",
     },
+    {
+        url: "https://smile2impress.com/",
+        src: "impress.svg",
+        alt: "Impress",
+    },
 ];
