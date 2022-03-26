@@ -172,7 +172,7 @@ const footer = {
     ],
     logo: {
         alt: "feature-sliced - Structural pattern for Frontend projects",
-        src: "img/logo-base.png",
+        src: "img/logo.png",
         href: GITHUB_ORG,
     },
     copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced`,

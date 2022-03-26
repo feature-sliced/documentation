@@ -1,6 +1,7 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState } from "react";
 import cookies from "js-cookie";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+// import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+// import { useThemeConfig } from "@docusaurus/theme-common";
 
 const KEYS = [
     "logo-base",
@@ -17,34 +18,35 @@ const COOKIE = "THEME_LOGO";
 
 const defaultValue = Number(cookies.get(COOKIE) ?? 0);
 
-console.log({ cookie: cookies.get(COOKIE), num: Number(cookies.get(COOKIE)), defaultValue });
+// console.log({ cookie: cookies.get(COOKIE), num: Number(cookies.get(COOKIE)), defaultValue });
 
-/**
- * @variant "red"
- * @variant "green"
- * @variant "blue"
- */
 export function useSwitch() {
     const [idx, setIdx] = useState(defaultValue);
     const logo = KEYS[idx];
-    const { siteConfig } = useDocusaurusContext();
+    const logoSrc = `/img/${logo}.png`;
+
+    // const { siteConfig } = useDocusaurusContext();
+    // const themeConfig = useThemeConfig();
 
     const onToggle = () => {
         const nextIdx = (idx + 1) % KEYS.length;
-        const nextLogo = KEYS[idx];
+        // const nextLogo = KEYS[nextIdx];
         setIdx(nextIdx);
         cookies.set(COOKIE, nextIdx);
-        console.log("SWITCH", { siteConfig, logo: nextLogo, prevIdx: idx, nextIdx });
-        location.reload();
+        // console.log("SWITCH", { themeConfig, logo: nextLogo, prevIdx: idx, nextIdx });
+        // location.reload();
         // location.href = "/";
     };
 
-    useLayoutEffect(() => {
-        siteConfig.themeConfig.navbar.logo.src = `img/${logo}.png`;
-        // siteConfig.themeConfig.footer.logo.src = `img/${logo}.png`;
-        // location.href = "/";
-        // console.log("1");
-    });
+    // useEffect(() => {
+    //     themeConfig.navbar.logo = {
+    //         alt: "logo",
+    //         src: `img/${logo}.png`,
+    //     };
+    //     // siteConfig.themeConfig.footer.logo.src = `img/${logo}.png`;
+    //     // location.href = "/";
+    //     // console.log("1");
+    // });
 
-    return { idx, logo, onToggle };
+    return { idx, logo, logoSrc, onToggle };
 }

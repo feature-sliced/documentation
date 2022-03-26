@@ -301,3 +301,10 @@ iframe {
         background: linear-gradient(45deg, #f150a3 -0%, #e90c31 100%);
     }
 }
+
+.navbar__logo img {
+    content: var(--logoSrc);
+}
+img.footer__logo {
+    content: var(--logoSrc);
+}

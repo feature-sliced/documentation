@@ -7,14 +7,14 @@ export const DevTools = ({ logo, color }) => {
     return (
         <div className={styles.root}>
             <div className={styles.rootContainer}>
-                <SwitchLogo {...logo} />
-                <SwitchColor {...color} />
+                {logo && <SwitchLogo {...logo} />}
+                {color && <SwitchColor {...color} />}
             </div>
         </div>
     );
 };
 
-const SwitchColor = ({ onToggle }) => {
+export const SwitchColor = ({ onToggle }) => {
     return (
         <button className={clsx("button button--primary", styles.switchColor)} onClick={onToggle}>
             <BgColorsOutlined className={styles.icon} />
@@ -22,7 +22,7 @@ const SwitchColor = ({ onToggle }) => {
     );
 };
 
-const SwitchLogo = ({ onToggle, idx }) => {
+export const SwitchLogo = ({ onToggle, idx }) => {
     return (
         <button className={clsx("button", styles.switchLogo)} onClick={onToggle}>
             {/* <CopyrightOutlined className={styles.icon} /> */}
