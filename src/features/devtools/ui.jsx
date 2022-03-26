@@ -1,6 +1,11 @@
 import React from "react";
 import clsx from "clsx";
-import { BgColorsOutlined } from "@ant-design/icons";
+import {
+    BgColorsOutlined,
+    CopyrightOutlined,
+    CaretRightOutlined,
+    CaretLeftOutlined,
+} from "@ant-design/icons";
 import styles from "./styles.module.scss";
 
 export const DevTools = ({ logo, color }) => {
@@ -16,17 +21,35 @@ export const DevTools = ({ logo, color }) => {
 
 export const SwitchColor = ({ onToggle }) => {
     return (
-        <button className={clsx("button button--primary", styles.switchColor)} onClick={onToggle}>
-            <BgColorsOutlined className={styles.icon} />
-        </button>
+        <div>
+            <button
+                className={clsx("button button--primary", styles.switchColor)}
+                onClick={onToggle}
+            >
+                <BgColorsOutlined className={styles.icon} />
+            </button>
+        </div>
     );
 };
 
-export const SwitchLogo = ({ onToggle, idx }) => {
+const useCursor = (idx, total) => {
+    const current = String(idx + 1).padStart(2, "0");
+    return `[${current}/${total}]`;
+};
+
+export const SwitchLogo = ({ logo, onPrev, onNext, idx, total }) => {
+    const cursor = useCursor(idx, total);
+
     return (
-        <button className={clsx("button", styles.switchLogo)} onClick={onToggle}>
-            {/* <CopyrightOutlined className={styles.icon} /> */}
-            <div>L{idx}</div>
-        </button>
+        <div className={styles.switchLogo}>
+            {/* <button className={clsx("button", styles.switchLogo)} onClick={onToggle}>
+                <CopyrightOutlined className={styles.icon} />
+            </button> */}
+            <CaretLeftOutlined onClick={onPrev} />
+            <CaretRightOutlined onClick={onNext} />
+            <span className={styles.switchLogoTitle}>
+                {cursor} {logo}
+            </span>
+        </div>
     );
 };

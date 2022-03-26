@@ -4,12 +4,9 @@ import cookies from "js-cookie";
 // import { useThemeConfig } from "@docusaurus/theme-common";
 
 const KEYS = [
-    "logo-base",
-    "logo-base-dot",
     "logo-base-mini",
-    "logo-lift",
-    "logo-lift-alt",
-    "logo-node",
+    "logo-base-dot",
+    "logo-base",
     "logo-ext",
     "logo-lin",
     // "logo-lin-cl",
@@ -17,6 +14,9 @@ const KEYS = [
     // "logo-pix-cl",
     "logo-pix-ext",
     "logo-sq",
+    "logo-lift-alt",
+    "logo-lift",
+    "logo-node",
 ];
 
 const COOKIE = "THEME_LOGO";
@@ -33,15 +33,17 @@ export function useSwitch() {
     // const { siteConfig } = useDocusaurusContext();
     // const themeConfig = useThemeConfig();
 
-    const onToggle = () => {
+    const onNext = () => {
         const nextIdx = (idx + 1) % KEYS.length;
-        // const nextLogo = KEYS[nextIdx];
         setIdx(nextIdx);
         cookies.set(COOKIE, nextIdx);
-        // console.log("SWITCH", { themeConfig, logo: nextLogo, prevIdx: idx, nextIdx });
-        // location.reload();
-        // location.href = "/";
     };
+    const onPrev = () => {
+        const nextIdx = (idx - 1 + KEYS.length) % KEYS.length;
+        setIdx(nextIdx);
+        cookies.set(COOKIE, nextIdx);
+    };
+    const onToggle = onNext;
 
     // useEffect(() => {
     //     themeConfig.navbar.logo = {
@@ -53,5 +55,5 @@ export function useSwitch() {
     //     // console.log("1");
     // });
 
-    return { idx, logo, logoSrc, onToggle };
+    return { idx, logo, logoSrc, onToggle, onNext, onPrev, total: KEYS.length };
 }
