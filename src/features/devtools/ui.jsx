@@ -19,6 +19,11 @@ export const DevTools = ({ logo, color }) => {
     );
 };
 
+const useCursor = (idx, total) => {
+    const current = String(idx + 1).padStart(2, "0");
+    return `[${current}/${total}]`;
+};
+
 export const SwitchColor = ({ onToggle }) => {
     return (
         <div>
@@ -30,11 +35,6 @@ export const SwitchColor = ({ onToggle }) => {
             </button>
         </div>
     );
-};
-
-const useCursor = (idx, total) => {
-    const current = String(idx + 1).padStart(2, "0");
-    return `[${current}/${total}]`;
 };
 
 export const SwitchLogo = ({ logo, onPrev, onNext, idx, total }) => {
