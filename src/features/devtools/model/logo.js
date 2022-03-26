@@ -5,11 +5,16 @@ import cookies from "js-cookie";
 
 const KEYS = [
     "logo-base",
+    "logo-base-dot",
+    "logo-base-mini",
+    "logo-lift",
+    "logo-lift-alt",
+    "logo-node",
     "logo-ext",
     "logo-lin",
-    "logo-lin-cl",
+    // "logo-lin-cl",
     "logo-pix",
-    "logo-pix-cl",
+    // "logo-pix-cl",
     "logo-pix-ext",
     "logo-sq",
 ];
