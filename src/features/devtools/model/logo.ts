@@ -1,9 +1,17 @@
 import { useState, useEffect, useLayoutEffect } from "react";
 import cookies from "js-cookie";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 
-const KEYS = ["logo-base", "logo-ext", "logo-lin", "logo-pix", "logo-sq"];
+const KEYS = [
+    "logo-base",
+    "logo-ext",
+    "logo-lin",
+    "logo-lin-cl",
+    "logo-pix",
+    "logo-pix-cl",
+    "logo-pix-ext",
+    "logo-sq",
+];
 
 const COOKIE = "THEME_LOGO";
 
