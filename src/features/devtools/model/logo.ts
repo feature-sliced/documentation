@@ -15,7 +15,7 @@ const KEYS = [
 
 const COOKIE = "THEME_LOGO";
 
-const defaultValue = Number(cookies.get(COOKIE)) ?? 0;
+const defaultValue = Number(cookies.get(COOKIE) ?? 0);
 
 console.log({ cookie: cookies.get(COOKIE), num: Number(cookies.get(COOKIE)), defaultValue });
 
