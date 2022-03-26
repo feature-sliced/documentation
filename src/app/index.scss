@@ -41,13 +41,6 @@
     // --ifm-color-primary-lighter: #2f73ce;
     // --ifm-color-primary-lightest: #4985d5;
 
-    --ifm-color-primary: #2b74d4;
-    --ifm-color-primary-dark: #2768bf;
-    --ifm-color-primary-darker: #2563b4;
-    --ifm-color-primary-darkest: #1e5194;
-    --ifm-color-primary-light: #4082d8;
-    --ifm-color-primary-lighter: #4b89da;
-    --ifm-color-primary-lightest: #6b9ee1;
     --ifm-font-family-base: 'Ubuntu', system-ui, -apple-system, segoe ui, roboto, ubuntu, cantarell, noto sans, sans-serif, blinkmacsystemfont, 'Segoe UI', helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --ifm-heading-font-family: 'Overpass', var(--ifm-font-family-base);
 }
@@ -249,5 +242,62 @@ iframe {
 @media (max-width: 996px) {
     .navbar__brand .navbar__title {
         display: block;
+    }
+}
+
+[data-theme=blue] {
+    --ifm-color-primary: #2b74d4;
+    --ifm-color-primary-dark: #2768bf;
+    --ifm-color-primary-darker: #2563b4;
+    --ifm-color-primary-darkest: #1e5194;
+    --ifm-color-primary-light: #4082d8;
+    --ifm-color-primary-lighter: #4b89da;
+    --ifm-color-primary-lightest: #6b9ee1;
+    
+    .hero.hero--primary {
+        background: linear-gradient(45deg, #59defa -0%, #4b84ea 100%);
+    }
+}
+
+[data-theme=green] {
+    --ifm-color-primary: #4fb040;
+    --ifm-color-primary-dark: #479e3a;
+    --ifm-color-primary-darker: #439636;
+    --ifm-color-primary-darkest: #377b2d;
+    --ifm-color-primary-light: #5abd4b;
+    --ifm-color-primary-lighter: #62c153;
+    --ifm-color-primary-lightest: #7aca6e;
+    --ifm-link-color: var(--ifm-color-primary);
+    
+    [alt=logo],
+    .footer__logo,
+    [alt=feature-sliced-banner] {
+        filter: hue-rotate(245deg) brightness(1.2) !important;
+    }
+    
+    .hero.hero--primary {
+        background: linear-gradient(45deg, #6CF57E -0%, #9ADB18 100%);
+    }
+}
+
+[data-theme=red] {
+    --ifm-color-primary: #cd3260;
+    --ifm-color-primary-dark: #b92d56;
+    --ifm-color-primary-darker: #ae2a52;
+    --ifm-color-primary-darkest: #902343;
+    --ifm-color-primary-light: #d24770;
+    --ifm-color-primary-lighter: #d45178;
+    --ifm-color-primary-lightest: #dc7090;
+    --ifm-link-color: var(--ifm-color-primary);
+    --ifm-link-hover-color: var(--ifm-color-primary);
+    
+    [alt=logo],
+    .footer__logo,
+    [alt=feature-sliced-banner] {
+        filter: hue-rotate(125deg) brightness(0.8) !important;
+    }
+    
+    .hero.hero--primary {
+        background: linear-gradient(45deg, #F150A3 -0%, #E90C31 100%);
     }
 }

@@ -6,12 +6,12 @@ import { CookieConsent } from "@site/src/features/cookie-consent";
 
 function Root({ children }) {
     return (
-        <>
+        <div data-theme="blue">
             {children}
             {/* NOTE: exp with HotJar feedback widget (FEEDBACK-325)  */}
             {/* <Feedback /> */}
             <CookieConsent />
-        </>
+        </div>
     );
 }
 
