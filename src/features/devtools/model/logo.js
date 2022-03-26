@@ -4,18 +4,18 @@ import cookies from "js-cookie";
 // import { useThemeConfig } from "@docusaurus/theme-common";
 
 const KEYS = [
-    "logo-base-mini",
-    "logo-base-dot",
-    "logo-base",
-    "logo-ext",
+    "logo-mini",
+    "logo-led-dot",
+    "logo-led",
+    "logo-led-stretched",
     "logo-lin",
     // "logo-lin-cl",
     "logo-pix",
     // "logo-pix-cl",
-    "logo-pix-ext",
-    "logo-sq",
-    "logo-lift-alt",
+    "logo-pix-stretched",
+    "logo-square",
     "logo-lift",
+    "logo-lift-compat",
     "logo-node",
 ];
 
