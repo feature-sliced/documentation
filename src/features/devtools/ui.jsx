@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { BgColorsOutlined, CopyrightOutlined } from "@ant-design/icons";
+import { BgColorsOutlined } from "@ant-design/icons";
 import styles from "./styles.module.scss";
 
 export const DevTools = ({ logo, color }) => {
