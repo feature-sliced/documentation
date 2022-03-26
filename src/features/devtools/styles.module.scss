@@ -3,15 +3,33 @@
     bottom: 10px;
     left: 10px;
     transform: translateY(-50%);
+
+    &Container {
+        display: flex;
+        flex-direction: column;
+
+        & button {
+            margin: 4px 0;
+        }
+    }
 }
 
-.switch {
+.switchColor {
     padding: 8px;
     border-radius: 50%;
-    // border-top-right-radius: 0;
-    // border-bottom-right-radius: 0;
     box-shadow: var(--ifm-alert-shadow);
-    background: var(--ifm-color-primary);
+}
+
+.switchLogo {
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: var(--ifm-alert-shadow);
+    background: #2964b3;
+    border-color: #2964b3;
+    &:hover {
+        background: #235598;
+        border-color: #235598;
+    }
 }
 
 .icon {

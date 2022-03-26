@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import cookies from "js-cookie";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
-const KEYS = ["logo-pix", "logo-lin", "logo"];
+const KEYS = ["logo-base", "logo-ext", "logo-lin", "logo-pix", "logo-sq"];
 
 const COOKIE = "THEME_LOGO";
 
-const defaultValue = cookies.get(COOKIE) || "logo";
+const defaultValue = Number(cookies.get(COOKIE)) ?? 0;
+
+console.log({ cookie: cookies.get(COOKIE), num: Number(cookies.get(COOKIE)), defaultValue });
 
 /**
  * @variant "red"
@@ -14,22 +17,26 @@ const defaultValue = cookies.get(COOKIE) || "logo";
  * @variant "blue"
  */
 export function useSwitch() {
-    const [logo, setLogo] = useState(defaultValue);
+    const [idx, setIdx] = useState(defaultValue);
+    const logo = KEYS[idx];
     const { siteConfig } = useDocusaurusContext();
 
     const onToggle = () => {
-        const idx = KEYS.indexOf(logo);
         const nextIdx = (idx + 1) % KEYS.length;
-        const nextLogo = KEYS[nextIdx];
-        setLogo(nextLogo);
-        cookies.set(COOKIE, nextLogo);
-
-        console.log("SWITCH", { logo: nextLogo });
+        const nextLogo = KEYS[idx];
+        setIdx(nextIdx);
+        cookies.set(COOKIE, nextIdx);
+        console.log("SWITCH", { siteConfig, logo: nextLogo, prevIdx: idx, nextIdx });
+        location.reload();
+        // location.href = "/";
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         siteConfig.themeConfig.navbar.logo.src = `img/${logo}.png`;
-    }, [logo]);
+        // siteConfig.themeConfig.footer.logo.src = `img/${logo}.png`;
+        // location.href = "/";
+        // console.log("1");
+    });
 
-    return { logo, setLogo, onToggle };
+    return { idx, logo, onToggle };
 }

@@ -7,16 +7,15 @@ import { DevTools, devToolsModel } from "@site/src/features/devtools";
 
 function Root({ children }) {
     const switchColor = devToolsModel.color.useSwitch();
-
-    console.log(switchColor)
+    const switchLogo = devToolsModel.logo.useSwitch();
 
     return (
-        <div data-theme={switchColor.color}>
+        <div data-theme={switchColor.color} data-logo={switchLogo.logo}>
             {children}
             {/* NOTE: exp with HotJar feedback widget (FEEDBACK-325)  */}
             {/* <Feedback /> */}
             <CookieConsent />
-            <DevTools color={switchColor} />
+            <DevTools color={switchColor} logo={switchLogo} />
         </div>
     );
 }
