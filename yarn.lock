@@ -2700,11 +2700,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/jost@^4.5.4":
-  version "4.5.4"
-  resolved "https://registry.yarnpkg.com/@fontsource/jost/-/jost-4.5.4.tgz#5388f2bf99f30191f85ca4f6f6805198548f4e2e"
-  integrity sha512-KHTF84XsoO3MUxHjdUqwF7jsHbqyZAafceFngKURUfx2MdN795ilQ7noNW2gu7qlv2N1fwGJnAUhCTUGelkLwQ==
-
 "@fontsource/overpass@^4.5.4":
   version "4.5.4"
   resolved "https://registry.yarnpkg.com/@fontsource/overpass/-/overpass-4.5.4.tgz#ab782e935c2c4a0b942682c41a2117e43a6fe66b"
