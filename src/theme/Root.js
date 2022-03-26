@@ -11,7 +11,11 @@ function Root({ children }) {
     const switchLogo = devToolsModel.logo.useSwitch();
 
     return (
-        <div role="root" data-theme={switchColor.color} style={{ "--logoSrc": `url(${switchLogo.logoSrc})` }}>
+        <div
+            role="root"
+            data-theme={switchColor.color}
+            style={{ "--logoSrc": `url(${switchLogo.logoSrc})` }}
+        >
             {children}
             {/* NOTE: exp with HotJar feedback widget (FEEDBACK-325)  */}
             {/* <Feedback /> */}

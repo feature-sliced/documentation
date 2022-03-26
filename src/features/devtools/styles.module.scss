@@ -22,9 +22,9 @@
 }
 
 .switchLogo {
-    user-select: none;
     // display: block;
     padding: 8px 12px;
+    user-select: none;
     background: #2964b3;
     border-color: #2964b3;
     border-radius: 25px;
@@ -40,8 +40,8 @@
     }
 
     [role=img]:hover {
-        transition: 0.25s;
         opacity: 0.7;
+        transition: 0.25s;
     }
 }
 
