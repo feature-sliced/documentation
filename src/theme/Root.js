@@ -1,20 +1,22 @@
 import React from "react";
 import { CookieConsent } from "@site/src/features/cookie-consent";
-import { DevTools, devtoolsModel } from "@site/src/features/devtools";
+import { DevTools, devToolsModel } from "@site/src/features/devtools";
 
 // Default implementation, that you can customize
 // https://docusaurus.io/docs/using-themes#wrapper-your-site-with-root
 
 function Root({ children }) {
-    const switcher = devtoolsModel.useSwitchTheme();
-    console.log(switcher);
+    const switchColor = devToolsModel.color.useSwitch();
+
+    console.log(switchColor)
+
     return (
-        <div data-theme={switcher.theme}>
+        <div data-theme={switchColor.color}>
             {children}
             {/* NOTE: exp with HotJar feedback widget (FEEDBACK-325)  */}
             {/* <Feedback /> */}
             <CookieConsent />
-            <DevTools switcher={switcher} />
+            <DevTools color={switchColor} />
         </div>
     );
 }

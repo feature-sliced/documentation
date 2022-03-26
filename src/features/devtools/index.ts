@@ -1,2 +1,4 @@
+import * as devToolsModel from "./model";
+
 export * from "./ui";
-export * as devtoolsModel from "./model";
+export { devToolsModel };
