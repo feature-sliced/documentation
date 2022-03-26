@@ -1,0 +1,20 @@
+.root {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.switch {
+    padding: 8px;
+    border-radius: 50%;
+    // border-top-right-radius: 0;
+    // border-bottom-right-radius: 0;
+    box-shadow: var(--ifm-alert-shadow);
+    background: var(--ifm-color-primary);
+}
+
+.icon {
+    font-size: 20px;
+    color: #ffffff;
+}
