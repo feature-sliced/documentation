@@ -253,7 +253,7 @@ iframe {
     --ifm-color-primary-light: #4082d8;
     --ifm-color-primary-lighter: #4b89da;
     --ifm-color-primary-lightest: #6b9ee1;
-    
+
     .hero.hero--primary {
         background: linear-gradient(45deg, #59defa -0%, #4b84ea 100%);
     }
@@ -268,15 +268,15 @@ iframe {
     --ifm-color-primary-lighter: #62c153;
     --ifm-color-primary-lightest: #7aca6e;
     --ifm-link-color: var(--ifm-color-primary);
-    
+
     [alt=logo],
     .footer__logo,
     [alt=feature-sliced-banner] {
         filter: hue-rotate(245deg) brightness(1.2) !important;
     }
-    
+
     .hero.hero--primary {
-        background: linear-gradient(45deg, #6CF57E -0%, #9ADB18 100%);
+        background: linear-gradient(45deg, #6cf57e -0%, #9adb18 100%);
     }
 }
 
@@ -290,14 +290,14 @@ iframe {
     --ifm-color-primary-lightest: #dc7090;
     --ifm-link-color: var(--ifm-color-primary);
     --ifm-link-hover-color: var(--ifm-color-primary);
-    
+
     [alt=logo],
     .footer__logo,
     [alt=feature-sliced-banner] {
         filter: hue-rotate(125deg) brightness(0.8) !important;
     }
-    
+
     .hero.hero--primary {
-        background: linear-gradient(45deg, #F150A3 -0%, #E90C31 100%);
+        background: linear-gradient(45deg, #f150a3 -0%, #e90c31 100%);
     }
 }

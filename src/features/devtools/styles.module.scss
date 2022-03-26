@@ -22,10 +22,11 @@
 
 .switchLogo {
     padding: 8px;
-    border-radius: 50%;
-    box-shadow: var(--ifm-alert-shadow);
     background: #2964b3;
     border-color: #2964b3;
+    border-radius: 50%;
+    box-shadow: var(--ifm-alert-shadow);
+
     &:hover {
         background: #235598;
         border-color: #235598;

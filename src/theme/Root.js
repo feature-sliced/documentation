@@ -1,6 +1,7 @@
 import React from "react";
-import { CookieConsent } from "@site/src/features/cookie-consent";
+// eslint-disable-next-line import/no-unresolved
 import { DevTools, devToolsModel } from "@site/src/features/devtools";
+import { CookieConsent } from "@site/src/features/cookie-consent";
 
 // Default implementation, that you can customize
 // https://docusaurus.io/docs/using-themes#wrapper-your-site-with-root
