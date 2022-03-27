@@ -1,9 +1,15 @@
 ---
 sidebar_position: 1
-slug: /concepts/isolation
 ---
 
-# Overview
+# Isolation
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
 
 Within the framework of the methodology, all modules are distributed by scopes of responsibility [(layer, slice, segment)][refs-splitting]
 

@@ -228,8 +228,8 @@ const presets = [
                 priority: 0.5,
                 trailingSlash: false,
             },
-            gtag: metrics.gtag,
-            googleAnalytics: metrics.googleAnalytics,
+            gtag: process.env.GA_ID ? metrics.gtag : undefined,
+            googleAnalytics: process.env.GA_ID ? metrics.googleAnalytics : undefined,
         },
     ],
 ];
@@ -344,6 +344,7 @@ module.exports = {
         algolia,
         hideableSidebar: true,
         hotjar: metrics.hotjar,
+        autoCollapseSidebarCategories: true,
     },
     i18n: {
         defaultLocale: DEFAULT_LOCALE,
@@ -366,10 +367,10 @@ module.exports = {
 if (!process.env.ALGOLIA_KEY || !process.env.ALGOLIA_ID) {
     delete module.exports.themeConfig.algolia;
 }
-if (!process.env.GA_ID) {
-    delete module.exports.themeConfig.gtag;
-    delete module.exports.themeConfig.googleAnalytics;
-}
+// if (!process.env.GA_ID) {
+//     delete module.exports.themeConfig.gtag;
+//     delete module.exports.themeConfig.googleAnalytics;
+// }
 if (!process.env.HOTJAR_ID) {
     delete module.exports.themeConfig.hotjar;
 }

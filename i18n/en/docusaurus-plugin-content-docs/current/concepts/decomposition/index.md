@@ -1,9 +1,15 @@
 ---
 sidebar_position: 1
-slug: /concepts/decomposition
 ---
 
-# Overview
+# Decomposition
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
 
 ## Group: `Layers`
 
