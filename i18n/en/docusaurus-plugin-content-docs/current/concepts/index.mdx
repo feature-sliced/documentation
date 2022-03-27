@@ -17,14 +17,8 @@ Key concepts, that will help you dive deeper into the Feature-Sliced philosophy 
 ## Main
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
-import { BlockOutlined, ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
+import { ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
 
-<Row 
-    title="About architecture" 
-    description="General problems and requirements of architecture"
-    to="/docs/concepts/architecture"
-    Icon={BlockOutlined}
-/>
 <Row 
     title="Public API" 
     description="Practices for designing scalable and easy-to-integrate modules"
@@ -33,15 +27,15 @@ import { BlockOutlined, ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeI
 />
 <Row 
     title="Decomposition" 
-    description="Logical decomposition using layered-sliced structure with extraction of structure units"
+    description="Practices for logical decomposition using layered-sliced structure with extraction of structure units"
     to="/docs/concepts/decomposition"
     Icon={ApartmentOutlined}
     tags={['Layers', 'Segments', 'Naming']}
 />
 <Row 
     title="Isolation" 
-    description="Rules for scalable and efficient module interactions"
+    description="Pratices for scalable and efficient module interactions"
     to="/docs/concepts/isolation"
     Icon={NodeIndexOutlined}
-    tags={['Low Coupling & High Cohesion', 'Decoupling at practice']}
+    tags={['Low Coupling & High Cohesion', 'Domain-First', 'Decoupling at practice']}
 />

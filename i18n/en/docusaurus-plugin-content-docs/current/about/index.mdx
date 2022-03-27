@@ -17,7 +17,7 @@ General information about methodology, team, community and development history
 ## Main
 
 import Row from "@site/src/shared/ui/row/tmpl.mdx"
-import { StarOutlined, TrophyOutlined } from "@ant-design/icons";
+import { StarOutlined, TrophyOutlined, BlockOutlined } from "@ant-design/icons";
 
 <Row 
     title="Mission" 
@@ -30,4 +30,25 @@ import { StarOutlined, TrophyOutlined } from "@ant-design/icons";
     description="Reasons for the creation and development of the methodology"
     to="/docs/about/motivation"
     Icon={StarOutlined}
+/>
+<Row 
+    title="Understanding" 
+    description="Deep understanding of FSD concepts"
+    to="/docs/about/understanding/architecture"
+    Icon={BlockOutlined}
+    tags={['About architecture', 'Needs driven', 'Knowledge types']}
+/>
+<Row 
+    title="Alternatives" 
+    description="History of development project architectures, including feature-based"
+    to="/docs/about/alternatives/history"
+    Icon={BlockOutlined}
+    tags={['History', 'BBuM', 'DDD', 'Clean Architecture', 'Atomic Design']}
+/>
+<Row 
+    title="Promote" 
+    description="Deep understanding of FSD concepts"
+    to="/docs/about/promote/integration"
+    Icon={BlockOutlined}
+    tags={['Integration', 'Promoting in team', 'Promoting in company']}
 />
