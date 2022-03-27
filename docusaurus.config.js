@@ -228,6 +228,8 @@ const presets = [
                 priority: 0.5,
                 trailingSlash: false,
             },
+            gtag: metrics.gtag,
+            googleAnalytics: metrics.googleAnalytics,
         },
     ],
 ];
@@ -268,7 +270,7 @@ const algolia = {
     indexName: "feature-sliced",
     // FIXME: При включении отрубает поиск (исправить поздней)
     // // Для поиска с учетом версий (на будущее)
-    // contextualSearch: true,
+    contextualSearch: false,
 };
 
 /** @type {Config["themeConfig"]["announcementBar"]} */
@@ -290,11 +292,11 @@ const colorMode = {
 };
 
 /**
- * @type {Config["themeConfig"]["metadatas"]}
+ * @type {Config["themeConfig"]["metadata"]}
  * @see https://docusaurus.io/docs/api/themes/configuration#meta-image
- * @see https://docusaurus.io/docs/api/themes/configuration#metadatas
+ * @see https://docusaurus.io/docs/api/themes/configuration#metadata
  */
-const metadatas = [
+const metadata = [
     { name: "twitter:site", content: "@feature_sliced" },
     { name: "twitter:card", content: "summary_large_image" },
     // NOTE: uncomment if need
@@ -334,14 +336,14 @@ module.exports = {
     projectName: "documentation", // Usually your repo name.
     themeConfig: {
         image: "img/preview.png",
-        metadatas,
+        metadata,
         colorMode,
         navbar,
         footer,
         announcementBar,
         algolia,
         hideableSidebar: true,
-        ...metrics,
+        hotjar: metrics.hotjar,
     },
     i18n: {
         defaultLocale: DEFAULT_LOCALE,
