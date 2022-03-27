@@ -15,17 +15,17 @@
         "message": "Продвижение",
         "description": "The label for category Promote in sidebar aboutSidebar"
     },
-    "sidebar.guidesSidebar.category.Examples": {
+    "sidebar.guidesExamplesSidebar.category.Examples": {
         "message": "Примеры",
-        "description": "The label for category Examples in sidebar guidesSidebar"
+        "description": "The label for category Examples in sidebar guidesExamplesSidebar"
     },
-    "sidebar.guidesSidebar.category.Migration": {
+    "sidebar.guidesMigrationSidebar.category.Migration": {
         "message": "Миграция",
-        "description": "The label for category Migration in sidebar guidesSidebar"
+        "description": "The label for category Migration in sidebar guidesMigrationSidebar"
     },
-    "sidebar.guidesSidebar.category.Tech": {
+    "sidebar.guidesTechSidebar.category.Tech": {
         "message": "Технологии",
-        "description": "The label for category Tech in sidebar guidesSidebar"
+        "description": "The label for category Tech in sidebar guidesTechSidebar"
     },
     "sidebar.conceptsSidebar.category.Issues": {
         "message": "Issues",
