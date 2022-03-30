@@ -111,4 +111,9 @@ export const companies = [
         src: "impress.svg",
         alt: "Impress",
     },
+    {
+        url: "https://pochta.tech/",
+        src: "pochtatech.svg",
+        alt: "Почтатех",
+    },
 ];
