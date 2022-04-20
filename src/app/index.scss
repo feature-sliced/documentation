@@ -316,12 +316,20 @@ iframe {
     [alt=logo],
     .footer__logo,
     [alt=feature-sliced-banner] {
-        filter: brightness(2) grayscale(1) !important;
+        filter: brightness(1.2) grayscale(1) !important;
     }
 
     .hero.hero--primary {
-        background: linear-gradient(45deg, #ffffff -0%, #acacac 100%);
+        background: linear-gradient(45deg, #dfdfdf -0%, #7B7B7B 100%);
     }
+}
+
+:root[data-theme=dark] [role=root][data-theme=chrome] [alt=logo] {
+    filter: brightness(2) grayscale(1) !important;
+}
+
+:root[data-theme=light] [role=root][data-theme=chrome] [alt=logo] {
+    filter: brightness(0.5) grayscale(1) !important;
 }
 
 .navbar__logo img {
