@@ -127,7 +127,7 @@ export const AuthByPhone = () => {
 ## См. также
 
 - ["Гайд по избавлению от кросс-импортов"](/docs/concepts/low-coupling)
-- [Понимание потребностей пользователя и бизнес-задач](/docs/concepts/needs-driven)
+- [Понимание потребностей пользователя и бизнес-задач](/docs/about/understanding/needs-driven)
   - Для понимания слоя `features`
 - [(Тред) Про фичи и сущности наглядно](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
 

@@ -820,7 +820,7 @@ Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, wher
 
 [refs-motivation]: /docs/about/motivation
 
-[refs-needs]: /docs/concepts/needs-driven
+[refs-needs]: /docs/about/understanding/needs-driven
 [refs-public-api]: /docs/concepts/public-api
 [refs-splitting]: /docs/concepts/decomposition
 

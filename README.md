@@ -241,16 +241,16 @@ If there are variations, how best to place indents-welcome:)
 [refs-motivation]: https://feature-sliced.design/docs/about/motivation
 [refs-motivation-why]: https://feature-sliced.design/docs/about/motivation#-почему-не-хватает-существующих-решений
 
-[refs-concepts]: https://feature-sliced.design/docs/concepts/architecture
-[refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#требования
-[refs-arch-problems]: https://feature-sliced.design/docs/concepts/architecture#проблемы
+[refs-concepts]: https://feature-sliced.design/docs/about/understanding/architecture
+[refs-arch-req]: https://feature-sliced.design/docs/about/understanding/architecture#требования
+[refs-arch-problems]: https://feature-sliced.design/docs/about/understanding/architecture#проблемы
 [refs-public-api]: https://feature-sliced.design/docs/concepts/public-api
 [refs-adaptability]: https://feature-sliced.design/docs/concepts/naming-adaptability
 [refs-isolation]: https://feature-sliced.design/docs/concepts/cross-communication
-[refs-needs-driven]: https://feature-sliced.design/docs/concepts/needs-driven
+[refs-needs-driven]: https://feature-sliced.design/docs/about/understanding/needs-driven
 
 [refs-module]: https://feature-sliced.design/docs/get-started/structural-units#module
-[refs-knowledge]: https://feature-sliced.design/docs/about/knowledge-types
+[refs-knowledge]: https://feature-sliced.design/docs/about/understanding/knowledge-types
 [refs-splitting]: https://feature-sliced.design/docs/concepts/decomposition
 [refs-splitting-layers]: https://feature-sliced.design/docs/concepts/decomposition#group-layers
 [refs-splitting-slices]: https://feature-sliced.design/docs/concepts/decomposition#group-slices

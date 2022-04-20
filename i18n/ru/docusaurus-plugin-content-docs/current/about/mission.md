@@ -47,4 +47,4 @@ sidebar_position: 1
 
 - [Проблемы архитектуры][refs-architecture--problems]
 
-[refs-architecture--problems]: /docs/concepts/architecture#проблемы
+[refs-architecture--problems]: /docs/about/understanding/architecture#проблемы

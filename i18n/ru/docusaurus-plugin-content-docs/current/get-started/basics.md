@@ -132,7 +132,7 @@ sidebar_position: 1
 [refs-concepts]: /docs/concepts
 [refs-public-api]: /docs/concepts/public-api
 [refs-isolation]: /docs/concepts/cross-communication
-[refs-needs-driven]: /docs/concepts/needs-driven
+[refs-needs-driven]: /docs/about/understanding/needs-driven
 [refs-adaptability]: /docs/concepts/naming-adaptability
 
 [refs-splitting]: /docs/concepts/decomposition

@@ -124,7 +124,7 @@ sidebar_position: 1
   - *Для понимания слоя `shared`*
 
 [refs-naming-adaptability]: /docs/concepts/naming-adaptability
-[refs-needs]: /docs/concepts/needs-driven
+[refs-needs]: /docs/about/understanding/needs-driven
 
 [refs-low-coupling]: /docs/concepts/low-coupling
 [refs-example-viewer]: /docs/guides/examples/auth

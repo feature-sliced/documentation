@@ -180,7 +180,7 @@ const LEGACY_ROUTES = [
             {
                 title: "Knowledge types",
                 from: "/docs/reference/knowledge-types",
-                to: "/docs/about/knowledge-types",
+                to: "/docs/about/understanding/knowledge-types",
             },
         ],
     },
@@ -191,17 +191,17 @@ const LEGACY_ROUTES = [
             {
                 title: "Cross-imports",
                 from: "/docs/guides/handbook/cross-imports",
-                to: "/docs/concepts/issues/cross-imports",
+                to: "/docs/guides/issues/cross-imports",
             },
             {
                 title: "Desegmented",
                 from: "/docs/guides/handbook/desegmented",
-                to: "/docs/concepts/issues/desegmented",
+                to: "/docs/guides/issues/desegmented",
             },
             {
                 title: "Routes",
                 from: "/docs/guides/handbook/routes",
-                to: "/docs/concepts/issues/routes",
+                to: "/docs/guides/issues/routes",
             },
         ],
     },
