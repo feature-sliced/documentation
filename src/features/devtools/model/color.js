@@ -5,6 +5,7 @@ const MAP_VALUES = {
     RED: "red",
     GREEN: "green",
     BLUE: "blue",
+    CHROME: "chrome",
 };
 
 const KEYS = Object.values(MAP_VALUES);
