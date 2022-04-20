@@ -17,6 +17,7 @@ const KEYS = [
     "logo-lift",
     "logo-lift-compat",
     "logo-node",
+    "logo-hybrid",
 ];
 
 const COOKIE = "THEME_LOGO";
