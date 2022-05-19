@@ -87,11 +87,6 @@ export const companies = [
         alt: "Vigo",
     },
     {
-        url: "https://yandex.ru/",
-        src: "yandex.svg",
-        alt: "Yandex",
-    },
-    {
         url: "https://space307.com/",
         src: "space307.svg",
         alt: "~/.space307",
