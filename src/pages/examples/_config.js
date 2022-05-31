@@ -98,6 +98,6 @@ export const examples = [
         source: "https://github.com/aabounegm/cast",
         preview: require("./img/cast.png"),
         version: VERSIONS.V2,
-        updatedAt: "2022-05-10",
+        updatedAt: "2022-05-31",
     },
 ];
