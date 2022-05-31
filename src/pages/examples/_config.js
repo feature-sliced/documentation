@@ -91,4 +91,13 @@ export const examples = [
         version: VERSIONS.V2,
         updatedAt: "2021-11-17",
     },
+    {
+        title: "Cast",
+        description: "A podcast listening PWA with automated quality assurance",
+        website: "https://cast-iu.pages.dev/",
+        source: "https://github.com/aabounegm/cast",
+        preview: require("./img/cast.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2022-05-10",
+    },
 ];
