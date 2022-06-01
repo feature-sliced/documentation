@@ -37,6 +37,18 @@ export function ExampleCard({ className, data }) {
                 )}
                 <span className={styles.title}>{data.title}</span>
                 <p className={styles.description}>{data.description}</p>
+                {data.tech && (
+                    <div className={styles.techList}>
+                        {data.tech.map((techItem) => (
+                            <span
+                                className={clsx(styles.techListItem, styles[`tech-${techItem}`])}
+                                key={techItem}
+                            >
+                                {techItem}
+                            </span>
+                        ))}
+                    </div>
+                )}
             </div>
             <div className={clsx("card__footer", styles.actions)}>
                 <div className="button-group button-group--block">

@@ -26,7 +26,51 @@
     font-weight: 600;
 }
 
+.description {
+    margin: 0;
+}
+
 .labelNew {
     font-weight: bold;
     color: var(--ifm-color-primary);
+}
+
+
+/* FIXME: Specify colors for other techs */
+/* FIXME: Specify default color */
+$techs: (
+    "react": "#61DAFB",
+    "graphql": "#E00097",
+    "effector": "#FF8C00",
+    "vue": "#42D392",
+    "vuex": "#3EAF7C",
+    "angular": "#DD0031",
+    "antd": "#0170fe",
+    "svelte": "#FF3E00"
+);
+
+
+
+.techList {
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-style: italic;
+    /* FIXME: Fix for empty data.tech!*/
+    /* FIXME: Fix for overflow data.tech!*/
+
+    &Item {
+        &:not(:first-child) {
+            margin-left: 5px;
+        }
+
+        & {
+            color: gray;
+        }
+
+        @each $techKey, $techVal in $techs {
+            &.tech-#{$techKey} {
+              color: #{$techVal};
+            }
+        }
+    }
 }

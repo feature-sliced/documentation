@@ -10,14 +10,14 @@ export const VERSIONS = {
  * @remark Add site here only if you're sure that its allowed to share website link / codebase
  * @example How to add new site?
  * 1. Add new item in `examples` const
- * 2. Fill details:
+ * 2. Fill details (required with "*"):
  *  - *title (should be unique)
  *  - *description (shortly)
  *  - *preview (image preview - `/pages/examples/img/{YOUR_SITE}.[png|jpg|jpeg]`)
  *  - *updatetAt (date of adding on examples list, for highlighting first two weeks)
  *  - *version (FSD version which implemented in your codebase)
- *  - website, source (links for your site, optional but recommended)
- *  - tech (used UI/state-management tech, optional but recommended)
+ *  - website, source (links for your site)
+ *  - tech (used UI/state-management tech - '/entities/example/styles.module.scss')
  * 3. Profit!
  */
 export const examples = [
