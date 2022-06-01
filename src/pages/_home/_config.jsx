@@ -111,4 +111,9 @@ export const companies = [
         src: "pochtatech.svg",
         alt: "Почтатех",
     },
+    {
+        url: "https://befree.ru/",
+        src: "befree.svg",
+        alt: "befree",
+    },
 ];
