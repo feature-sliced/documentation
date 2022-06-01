@@ -27,6 +27,7 @@ export const examples = [
         preview: require("./img/cardbox.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-11-12",
+        tech: ["react", "effector"],
     },
     {
         title: "Github Client",
@@ -36,6 +37,7 @@ export const examples = [
         preview: require("./img/github-client.png"),
         version: VERSIONS.FDD,
         updatedAt: "2021-07-05",
+        tech: ["react", "graphql", "antd"],
     },
     {
         title: "Todo App (React)",
@@ -45,6 +47,7 @@ export const examples = [
         preview: require("./img/todo-app-react.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-07-05",
+        tech: ["react", "effector", "antd"],
     },
     {
         title: "Todo App (Vue 3)",
@@ -54,6 +57,7 @@ export const examples = [
         preview: require("./img/todo-app-vue.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-12-27",
+        tech: ["vue", "vuex", "antd"],
     },
     {
         title: "Todo App (Angular 13)",
@@ -63,6 +67,7 @@ export const examples = [
         preview: require("./img/todo-app-angular.png"),
         version: VERSIONS.V2,
         updatedAt: "2022-01-31",
+        tech: ["angular", "rxjs"],
     },
     {
         title: "Sharead (demo)",
@@ -72,6 +77,7 @@ export const examples = [
         preview: require("./img/sharead.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-11-06",
+        tech: ["react", "effector", "antd"],
     },
     {
         title: "Projentry (demo)",
@@ -81,6 +87,7 @@ export const examples = [
         preview: require("./img/projentry.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-11-06",
+        tech: ["react", "antd"],
     },
     {
         title: "Loripsum generator",
@@ -90,6 +97,7 @@ export const examples = [
         preview: require("./img/loripsum-generator.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-11-17",
+        tech: ["react", "effector"],
     },
     {
         title: "Cast",
@@ -99,5 +107,6 @@ export const examples = [
         preview: require("./img/cast.png"),
         version: VERSIONS.V2,
         updatedAt: "2022-05-31",
+        tech: ["svelte"],
     },
 ];
