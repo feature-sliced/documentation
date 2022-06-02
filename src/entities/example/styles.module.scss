@@ -36,19 +36,19 @@
 }
 
 .techList {
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
     gap: 8px;
+    align-items: flex-start;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
 
     &Item {
+        padding: 0 14px;
         line-height: 22px;
         color: gray;
-        border-radius: 20px;
-        padding: 0px 14px;
         border: 1px solid gray;
+        border-radius: 20px;
     }
 }
