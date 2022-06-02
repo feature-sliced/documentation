@@ -26,7 +26,29 @@
     font-weight: 600;
 }
 
+.description {
+    margin: 0;
+}
+
 .labelNew {
     font-weight: bold;
     color: var(--ifm-color-primary);
+}
+
+.techList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+
+    &Item {
+        padding: 0 14px;
+        line-height: 22px;
+        color: gray;
+        border: 1px solid gray;
+        border-radius: 20px;
+    }
 }

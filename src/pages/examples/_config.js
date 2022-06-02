@@ -10,14 +10,15 @@ export const VERSIONS = {
  * @remark Add site here only if you're sure that its allowed to share website link / codebase
  * @example How to add new site?
  * 1. Add new item in `examples` const
- * 2. Set title (should be unique)
- * 3. Give short description
- * 4. Add your website preview
- *  - `/pages/examples/img/{YOUR_SITE}.[png|jpg|jpeg]`
- * 5. Prepare links for your site - `website`, `source`
- *  - Website/Source - are optional but recommended
- * 6. Select FSD version which implemented in your codebase
- * 7. Profit!
+ * 2. Fill details (required with "*"):
+ *  - *title (should be unique)
+ *  - *description (shortly)
+ *  - *preview (image preview - `/pages/examples/img/{YOUR_SITE}.[png|jpg|jpeg]`)
+ *  - *updatetAt (date of adding on examples list, for highlighting first two weeks)
+ *  - *version (FSD version which implemented in your codebase)
+ *  - website, source (links for your site)
+ *  - tech (used UI/state-management tech - '/entities/example/styles.module.scss')
+ * 3. Profit!
  */
 export const examples = [
     {
@@ -27,6 +28,7 @@ export const examples = [
         preview: require("./img/cardbox.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-11-12",
+        tech: ["react", "effector"],
     },
     {
         title: "Github Client",
@@ -36,6 +38,7 @@ export const examples = [
         preview: require("./img/github-client.png"),
         version: VERSIONS.FDD,
         updatedAt: "2021-07-05",
+        tech: ["react", "graphql", "antd"],
     },
     {
         title: "Todo App (React)",
@@ -45,6 +48,7 @@ export const examples = [
         preview: require("./img/todo-app-react.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-07-05",
+        tech: ["react", "effector", "antd"],
     },
     {
         title: "Todo App (Vue 3)",
@@ -54,6 +58,7 @@ export const examples = [
         preview: require("./img/todo-app-vue.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-12-27",
+        tech: ["vue", "vuex", "antd"],
     },
     {
         title: "Todo App (Angular 13)",
@@ -63,6 +68,7 @@ export const examples = [
         preview: require("./img/todo-app-angular.png"),
         version: VERSIONS.V2,
         updatedAt: "2022-01-31",
+        tech: ["angular", "rxjs"],
     },
     {
         title: "Sharead (demo)",
@@ -72,6 +78,7 @@ export const examples = [
         preview: require("./img/sharead.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-11-06",
+        tech: ["react", "effector", "antd"],
     },
     {
         title: "Projentry (demo)",
@@ -81,6 +88,7 @@ export const examples = [
         preview: require("./img/projentry.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-11-06",
+        tech: ["react", "antd"],
     },
     {
         title: "Loripsum generator",
@@ -90,6 +98,7 @@ export const examples = [
         preview: require("./img/loripsum-generator.png"),
         version: VERSIONS.V2,
         updatedAt: "2021-11-17",
+        tech: ["react", "effector"],
     },
     {
         title: "Cast",
@@ -99,5 +108,6 @@ export const examples = [
         preview: require("./img/cast.png"),
         version: VERSIONS.V2,
         updatedAt: "2022-05-31",
+        tech: ["svelte"],
     },
 ];
