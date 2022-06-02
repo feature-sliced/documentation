@@ -35,42 +35,20 @@
     color: var(--ifm-color-primary);
 }
 
-
-/* FIXME: Specify colors for other techs */
-/* FIXME: Specify default color */
-$techs: (
-    "react": "#61DAFB",
-    "graphql": "#E00097",
-    "effector": "#FF8C00",
-    "vue": "#42D392",
-    "vuex": "#3EAF7C",
-    "angular": "#DD0031",
-    "antd": "#0170fe",
-    "svelte": "#FF3E00"
-);
-
-
-
 .techList {
     font-size: 0.8rem;
     font-weight: bold;
-    font-style: italic;
-    /* FIXME: Fix for empty data.tech!*/
-    /* FIXME: Fix for overflow data.tech!*/
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
 
     &Item {
-        &:not(:first-child) {
-            margin-left: 5px;
-        }
-
-        & {
-            color: gray;
-        }
-
-        @each $techKey, $techVal in $techs {
-            &.tech-#{$techKey} {
-              color: #{$techVal};
-            }
-        }
+        line-height: 22px;
+        color: gray;
+        border-radius: 20px;
+        padding: 0px 14px;
+        border: 1px solid gray;
     }
 }
