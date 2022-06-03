@@ -51,12 +51,12 @@ FSD has few variations of logo for different context, but it recommended to pref
 <table style={{ textAlign: "center" }}>
     <tr>
         <td>Theme</td>
-        <td>Logo <sub style={{ color: "gray", display: "block" }}>(Ctrl+Click for download)</sub></td>
+        <td>Logo <sub style={{ color: "gray", display: "block" }}>(Ctrl/Cmd + Click for download)</sub></td>
         <td>Usage</td>
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "linear-gradient(135deg, rgba(41,190,220,1) 0%, rgba(81,122,237,1) 100%)" }}>primary <br/> (#29BEDC, #517AED)</td>
-        <td><a href="img/brand/logo-primary.png" download><img src="/img/brand/logo-primary.png" /></a></td>
+        <td><a href="/img/brand/logo-primary.png" download><img src="/img/brand/logo-primary.png" /></a></td>
         <td>Preferred in most cases</td>
     </tr>
     <tr>
