@@ -73,7 +73,7 @@ FSD has few variations of logo for different context, but it recommended to pref
 </tr>
 </table>
 
-## Schemes
+## Banners & Schemes
 
 Work in progress...
 
