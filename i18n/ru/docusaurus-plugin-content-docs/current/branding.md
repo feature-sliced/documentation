@@ -1,9 +1,9 @@
 # Branding Guidelines
 
-FSD visual identity is based on its core-concepts: `Layered`, `Sliced self-contained parts`, `Segmented`, `Parts & Compose`.
+FSD's visual identity is based on its core-concepts: `Layered`, `Sliced self-contained parts`, `Segmented`, `Parts & Compose`.
 But also we tend to design simple, pretty identity, which should convey the FSD philisophy and be easy to recognize.
 
-**Please, use FSD identity "as-is", without changes but with our assets for your comfort.** This brand guide will help you to use FSD's identity correctly.
+**Please, use FSD's identity "as-is", without changes but with our assets for your comfort.** This brand guide will help you to use FSD's identity correctly.
 
 :::caution Compatibility
 
