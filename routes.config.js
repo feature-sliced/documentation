@@ -39,6 +39,11 @@ const SECTIONS = {
         shortPath: "/examples",
         fullPath: "/examples",
     },
+    // FIXME: Temp, use later root "/" folders without "docs" redundant prefix
+    BRANDING: {
+        shortPath: "/branding",
+        fullPath: "/docs/branding",
+    },
 };
 
 /**
