@@ -232,10 +232,24 @@ a[download] {
 
 // FIXME: from vars
 .brand--primary {
-    background: linear-gradient(135deg, rgba(41, 190, 220, 1) 0%, rgba(81, 122, 237, 1) 100%);
+    background: linear-gradient(135deg, #29BEDC, #517AED);
     transition: 0.25s;
 
     &:hover {
         opacity: 0.8;
     }
+}
+
+.pulsing {
+    animation: borderPulse 1000ms infinite ease-out,;
+}
+
+/* Declare border pulse animation */
+@keyframes borderPulse {
+  0% {
+    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255,.4), 0px 0px 0px 0px rgba(255,255,255,1);
+  }
+  100% {
+    box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255,.2), 0px 0px 0px 10px rgba(255,255,255,0);
+  }
 }
