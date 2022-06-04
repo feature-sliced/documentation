@@ -202,9 +202,8 @@ a[download] {
     }
 }
 
-// FIXME: from vars
 .brand--primary {
-    background: linear-gradient(135deg, #29bedc, #517aed);
+    background: linear-gradient(135deg, var(--ifm-color-primary-grad1), var(--ifm-color-primary-grad2));
     transition: 0.25s;
 
     &:hover {
