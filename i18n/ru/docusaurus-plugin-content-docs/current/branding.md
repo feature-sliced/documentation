@@ -53,7 +53,7 @@ FSD имеет несколько вариаций логотипа для ра�
     <tr>
         <td style={{ color: "#000", background: "#FFF" }}>monochrome <br /> (#FFF)</td>
         <td style={{ color: "#000", background: "#242526" }}><a href="/img/brand/logo-monochrome.svg" download><img src="/img/brand/logo-monochrome.svg" alt="logo-monocrhome" /></a></td>
-        <td>Для чернобелого контекста</td>
+        <td>Для черно-белого контекста</td>
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "#3193FF" }}>square <br/> (#3193FF)</td>

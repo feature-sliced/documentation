@@ -25,7 +25,7 @@
 
 
 <!-- 
-  Hi from the Feature Sliced Design core team! 👋
+  Hi from the Feature-Sliced Design core team! 👋
 
   Thank you for taking the time to contribute.
   We have a set of guidelines for contibutors that you might want to read:

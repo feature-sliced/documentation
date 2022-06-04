@@ -84,7 +84,7 @@
         "description": "Page title"
     },
     "pages.examples.subtitle": {
-        "message": "List of websites people are building with Feature Sliced",
+        "message": "List of websites people are building with Feature-Sliced Design",
         "description": "Page subtitle"
     },
     "pages.examples.add_me.title": {
@@ -100,8 +100,8 @@
         "description": "Versions reminder"
     },
     "pages.versions.title": {
-        "message": "Feature Sliced versions",
-        "description": "Feature Sliced versions"
+        "message": "Feature-Sliced Design versions",
+        "description": "Feature-Sliced Design versions"
     },
     "pages.versions.current": {
         "message": "The documentation for the currently published version can be found here",

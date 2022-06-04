@@ -59,10 +59,10 @@ See the [examples](https://feature-sliced.design/examples)
 
 ### Core-team
 
-- `RU` `2021` [(IT2G Tech Talk) Feature Sliced. Architecture of Frontend Projects / Ilya Azin, Yandex](https://youtu.be/TFA6zRO_Cl0)
-- `RU` `2021` [(Podlodka FrontendCrew) Feature Sliced. Architecture of Frontend Projects / Ilya Azin](https://youtu.be/SnzPAr_FJ7w)
+- `RU` `2021` [(IT2G Tech Talk) Feature-Sliced Design. Architecture of Frontend Projects / Ilya Azin, Yandex](https://youtu.be/TFA6zRO_Cl0)
+- `RU` `2021` [(Podlodka FrontendCrew) Feature-Sliced Design. Architecture of Frontend Projects / Ilya Azin](https://youtu.be/SnzPAr_FJ7w)
 - `RU` `2021` [i18n, PageLayout, Auth / Discussion](https://youtu.be/b_nBvHWqxP8)
-- `RU` `2021` [Feature Sliced Committee Setup / Discussion](https://youtu.be/RQBslp8dngA)
+- `RU` `2021` [Feature-Sliced Design Committee Setup / Discussion](https://youtu.be/RQBslp8dngA)
 - `RU` `2021` [Architecture of React projects / TalkStream](https://youtu.be/h1YY7r9Uov8)
 - `RU` `2018` [(React SPB Meetup #1) Feature Slices / Sergey Sova [Slides]](https://t.me/feature_slices)
 
