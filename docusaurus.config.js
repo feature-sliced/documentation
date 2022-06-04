@@ -218,12 +218,10 @@ const presets = [
                     },
                 },
             },
-            // blog: {
-            //   showReadingTime: true,
-            //   // Please change this to your repo.
-            //   editUrl:
-            //     `${GITHUB_DOCS}/edit/master/blog/`,
-            // },
+            blog: {
+                showReadingTime: true,
+                editUrl: `${GITHUB_DOCS}/edit/master/blog/`,
+            },
             theme: {
                 customCss: require.resolve("./src/app/index.scss"),
             },
@@ -286,7 +284,7 @@ const announcementBar = {
     // content: `📚 Documentation refinements are in progress. <a href="https://github.com/feature-sliced/documentation/issues/263" target="_blank" rel="noreferrer noopener">Stay tuned for updates</a> and <a href="https://forms.gle/nsYua6bMMG5iBB3v7" target="_blank" rel="noreferrer noopener">share your feedback</a>`,
     // backgroundColor: "#5c9cb5", // As primary theme
     // backgroundColor: "#0367d2",
-    content: `☮️ Stop the war in Ukraine! #NoWar`, // #nowar
+    content: `🍰 We're <a href="/blog/rebranding-stable">rebranding!</a>&nbsp;&nbsp;|&nbsp;&nbsp;☮️ Stop the war in Ukraine! #NoWar`, // #nowar
     backgroundColor: "#000000", // #nowar
     textColor: "#fff", // Defaults to `#000`.
     isCloseable: false, // Defaults to `true`.
