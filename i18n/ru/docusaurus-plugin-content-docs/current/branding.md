@@ -1,95 +1,81 @@
-# Branding Guidelines
+# Рекомендации по брендингу
 
-FSD's visual identity is based on its core-concepts: `Layered`, `Sliced self-contained parts`, `Segmented`, `Parts & Compose`.
-But also we tend to design simple, pretty identity, which should convey the FSD philisophy and be easy to recognize.
+Визуальная айдентика FSD основана на его ключевых концепциях: `Layered`, `Sliced self-contained parts`, `Parts & Compose`, `Segmented`.
+Но мы также стремимся к простой и красивой айдентики, которая бы отражала философию FSD и была бы легко узнаваемой.
 
-**Please, use FSD's identity "as-is", without changes but with our assets for your comfort.** This brand guide will help you to use FSD's identity correctly.
+**Пожалуйста, используйте айдентик FSD's "as-is", без изменений, но с нашими ассетами для вашего комфорта.** Этот бренд-гайд поможет вам использовать айдентику FSD корректно.
 
-:::caution Compatibility
+:::caution Совместимость
 
-FSD had [another legacy identity](https://drive.google.com/drive/folders/11Y-3qZ_C9jOFoW2UbSp11YasOhw4yBdl?usp=sharing) before. Old design didn't represent main core-concepts of methodology. Also it was created as pure draft, and should have been actualized.
+FSD прежде имел [другую легаси-айдентику](https://drive.google.com/drive/folders/11Y-3qZ_C9jOFoW2UbSp11YasOhw4yBdl?usp=sharing). Старый дизайн не отражал главные концепции методологии. Также это было создано как грубый черновик, который был должен быть актуализирован.
 
-For a compatible and long-term use of the brand, we have been carefully rebranding for a year (2021-2022). **So that you can be sure when using identity of FSD 🍰**
+Для совместимого и долгосрочного использования бренда, мы тщательно работали над ребрендингом в течение года (2021-2022). **Чтобы вы могли быть уверенными в использовании айдентики FSD 🍰**
 
-*But prefer namely actual identity, not old!*
-
-:::
-
-<!-- ## Identity -->
-
-## Title
-
-<!-- :::success Correct
-
-`Feature-Sliced Design`, `FSD`
+*Но используйте именно актуальную айдентику, не старую!*
 
 :::
 
-:::danger Incorrect
+## Название
 
-`Feature-Sliced`, `Feature Sliced`, `feature-sliced`, `feature sliced`, `FS`
+- ✅ **Правильно:** `Feature-Sliced Design`, `FSD`
+- ❌ **Неправильно:** `Feature-Sliced`, `Feature Sliced`, `feature-sliced`, `feature sliced`, `FS`
 
-::: -->
+## Эмодзи
 
-- ✅ **Correct:** `Feature-Sliced Design`, `FSD`
-- ❌ **Incorrect:** `Feature-Sliced`, `Feature Sliced`, `feature-sliced`, `feature sliced`, `FS`
+Ключевые концепции FSD хорошо отражаются в образе *"Торта"*.
+**Поэтому мы используем 🍰 как наше главное эмодзи, так же для более хороших ассоциаций**
 
-## Emojii
+> Пример: *"🍰 Architectural design methodology for Frontend projects"*
 
-Core-concepts of FSD represented well in the image of *"Cake"*.
-**Because of it we use 🍰 as our main emojii, also for better associations**
+## Лого & Палитра
 
-> Example: *"🍰 Architectural design methodology for Frontend projects"*
-
-## Logo & Palette
-
-FSD has few variations of logo for different context, but it recommended to prefer **primary**
+FSD имеет несколько вариаций логотипа для разных контекстов, но рекомендовано использовать **primary**
 
 <!-- FIXME: refactor; use as Brand component for? -->
 <!-- FIXME: Fix downloading -->
 
 <table style={{ textAlign: "center" }}>
     <tr>
-        <td>Theme</td>
-        <td>Logo <sub style={{ color: "gray", display: "block" }}>(Ctrl/Cmd + Click for download)</sub></td>
-        <td>Usage</td>
+        <td>Тема</td>
+        <td>Лого <sub style={{ color: "gray", display: "block" }}>(Ctrl/Cmd + Click для скачивания)</sub></td>
+        <td>Использование</td>
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "linear-gradient(135deg, rgba(41,190,220,1) 0%, rgba(81,122,237,1) 100%)" }}>primary <br/> (#29BEDC, #517AED)</td>
         <td><a href="/img/brand/logo-primary.svg" download><img src="/img/brand/logo-primary.svg" alt="logo-primary" /></a></td>
-        <td>Preferred in most cases</td>
+        <td>Предпочтительно в большинстве случаев</td>
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "#3193FF" }}>flat <br/> (#3193FF)</td>
         <td><a href="/img/brand/logo-flat.svg" download><img src="/img/brand/logo-flat.svg" alt="logo-flat" /></a></td>
-        <td>For one-color context</td>
+        <td>Для одноцветного контекста</td>
     </tr>
     <tr>
         <td style={{ color: "#000", background: "#FFF" }}>monochrome <br /> (#FFF)</td>
         <td style={{ color: "#000", background: "#242526" }}><a href="/img/brand/logo-monochrome.svg" download><img src="/img/brand/logo-monochrome.svg" alt="logo-monocrhome" /></a></td>
-        <td>For grayscale context</td>
+        <td>Для чернобелого контекста</td>
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "#3193FF" }}>square <br/> (#3193FF)</td>
         <td><a href="/img/brand/logo-square.png" download><img src="/img/brand/logo-square.png" height="130" alt="logo-square" /></a></td>
-        <td>For square boundaries</td>
+        <td>Для квадратных размеров</td>
     </tr>
 </table>
 
-## Banners & Schemes
+## Баннеры & Схемы
 
-Work in progress...
+Работа в процессе...
 
 ## OG Preview
 
-Work in progress...
+Работа в процессе...
 
-## Presentation template
+## Шаблон для презентаций
 
-Work in progress...
+Работа в процессе...
 
-## See also
+## См. также
 
-- [Discussion (github)](https://github.com/feature-sliced/documentation/discussions/399)
-- [History of development with references (figma)](https://www.figma.com/file/RPphccpoeasVB0lMpZwPVR/FSD-Brand?node-id=0%3A1)
-- [Rebranding demo](https://rebrand-sliced.netlify.app/en/)
+- [Обсуждение (github)](https://github.com/feature-sliced/documentation/discussions/399)
+- [История ребрендинга с референсами (figma)](https://www.figma.com/file/RPphccpoeasVB0lMpZwPVR/FSD-Brand?node-id=0%3A1)
+- [Демо ребрендинга](https://rebrand-sliced.netlify.app/en/)

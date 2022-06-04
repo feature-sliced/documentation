@@ -1,13 +1,13 @@
 # Branding Guidelines
 
-FSD's visual identity is based on its core-concepts: `Layered`, `Sliced self-contained parts`, `Segmented`, `Parts & Compose`.
+FSD's visual identity is based on its core-concepts: `Layered`, `Sliced self-contained parts`, `Parts & Compose`, `Segmented`.
 But also we tend to design simple, pretty identity, which should convey the FSD philisophy and be easy to recognize.
 
 **Please, use FSD's identity "as-is", without changes but with our assets for your comfort.** This brand guide will help you to use FSD's identity correctly.
 
 :::caution Compatibility
 
-FSD had [another legacy identity](https://drive.google.com/drive/folders/11Y-3qZ_C9jOFoW2UbSp11YasOhw4yBdl?usp=sharing) before. Old design didn't represent main core-concepts of methodology. Also it was created as pure draft, and should have been actualized.
+FSD had [another legacy identity](https://drive.google.com/drive/folders/11Y-3qZ_C9jOFoW2UbSp11YasOhw4yBdl?usp=sharing) before. Old design didn't represent core-concepts of methodology. Also it was created as pure draft, and should have been actualized.
 
 For a compatible and long-term use of the brand, we have been carefully rebranding for a year (2021-2022). **So that you can be sure when using identity of FSD 🍰**
 
@@ -15,21 +15,7 @@ For a compatible and long-term use of the brand, we have been carefully rebrandi
 
 :::
 
-<!-- ## Identity -->
-
 ## Title
-
-<!-- :::success Correct
-
-`Feature-Sliced Design`, `FSD`
-
-:::
-
-:::danger Incorrect
-
-`Feature-Sliced`, `Feature Sliced`, `feature-sliced`, `feature sliced`, `FS`
-
-::: -->
 
 - ✅ **Correct:** `Feature-Sliced Design`, `FSD`
 - ❌ **Incorrect:** `Feature-Sliced`, `Feature Sliced`, `feature-sliced`, `feature sliced`, `FS`
