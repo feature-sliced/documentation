@@ -216,3 +216,11 @@ iframe {
         display: block;
     }
 }
+
+a[download] {
+    transition: 0.25s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
