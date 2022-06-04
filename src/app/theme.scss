@@ -1,43 +1,35 @@
-// 
-
 @import "@fontsource/overpass/400.css";
 @import "@fontsource/ubuntu/400.css";
 
 /* https://docusaurus.io/docs/styling-layout */
 
-// Base styles
 :root {
+    // Base styles
     --ifm-code-font-size: 95%;
     --ifm-h2-font-size: 1.75rem;
     --ifm-button-color: #ffffff;
-}
 
-// Default colors
+    // Default colors
 
-/* :root {
-    --ifm-color-primary: #25c2a0;
+    /* --ifm-color-primary: #25c2a0;
     --ifm-color-primary-dark: rgb(33, 175, 144);
     --ifm-color-primary-darker: rgb(31, 165, 136);
     --ifm-color-primary-darkest: rgb(26, 136, 112);
     --ifm-color-primary-light: rgb(70, 203, 174);
     --ifm-color-primary-lighter: rgb(102, 212, 189);
-    --ifm-color-primary-lightest: rgb(146, 224, 208);
-} */
+    --ifm-color-primary-lightest: rgb(146, 224, 208); */
 
-// 2.0.0-beta theme (legacy)
+    // 2.0.0-beta theme (legacy)
 
-/* :root {
-    --ifm-color-primary: #5c9cb5;
+    /* --ifm-color-primary: #5c9cb5;
     --ifm-color-primary-dark: #4d8fa9;
     --ifm-color-primary-darker: #4887a0;
     --ifm-color-primary-darkest: #3c6f83;
     --ifm-color-primary-light: #6fa7be;
     --ifm-color-primary-lighter: #78adc2;
-    --ifm-color-primary-lightest: #94becf;
-} */
+    --ifm-color-primary-lightest: #94becf; */
 
-// 2.0.0-stable theme (current)
-:root {
+    // 2.0.0-stable theme (current)
     --ifm-color-primary: #2b74d4;
     --ifm-color-primary-dark: #2768bf;
     --ifm-color-primary-darker: #2563b4;

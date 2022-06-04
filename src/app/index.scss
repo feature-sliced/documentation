@@ -228,15 +228,15 @@ a[download] {
 
 .navbar {
     &__brand {
+        margin-right: 0;
         opacity: 1;
         transition: 0.25s;
-        margin-right: 0;
 
         &:hover {
-            opacity: 0.7;    
+            opacity: 0.7;
         }
     }
-    
+
     &__logo {
         margin-right: 0;
     }
