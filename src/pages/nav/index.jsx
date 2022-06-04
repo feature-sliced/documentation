@@ -10,7 +10,7 @@ import styles from "./styles.module.scss";
 
 const NavPage = () => {
     return (
-        <Layout title="🧭 Navigation" description="Feature Sliced Navigation help page">
+        <Layout title="🧭 Navigation" description="Feature-Sliced Design Navigation help page">
             <main className={clsx("container", styles.root)}>
                 <h1>{translate({ id: "pages.nav.title" })}</h1>
                 <section className={styles.section}>

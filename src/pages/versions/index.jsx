@@ -23,14 +23,14 @@ function Version() {
     return (
         <Layout
             title="Versions"
-            description="Feature Sliced Versions page listing all documented site versions"
+            description="Feature-Sliced Design Versions page listing all documented site versions"
         >
             <main className="container margin-vert--lg">
                 <h1>{translate({ id: "pages.versions.title" })}</h1>
 
                 {latestVersion && (
                     <div className="margin-bottom--lg">
-                        <h3 id="next">Feature Sliced v2.0-beta (Current)</h3>
+                        <h3 id="next">Feature-Sliced Design v2.0-beta (Current)</h3>
                         <p>{translate({ id: "pages.versions.current" })}</p>
                         <Table>
                             <Table.Row

@@ -100,8 +100,8 @@
         "description": "Versions reminder"
     },
     "pages.versions.title": {
-        "message": "Версии Feature Sliced",
-        "description": "Feature Sliced versions"
+        "message": "Версии Feature-Sliced Design",
+        "description": "Feature-Sliced Design versions"
     },
     "pages.versions.current": {
         "message": "Здесь можно найти документацию для текущей опубликованной версии",
