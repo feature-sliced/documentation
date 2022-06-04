@@ -2700,6 +2700,16 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/overpass@^4.5.4":
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/@fontsource/overpass/-/overpass-4.5.4.tgz#ab782e935c2c4a0b942682c41a2117e43a6fe66b"
+  integrity sha512-jCYMISy780D6E+RxV3MHe2Nrteg4Eq26D4yORpGp+AoW11N2IPN+u1rJJVFz8pIyXUekSGfTSHzScSsF2iTIZQ==
+
+"@fontsource/ubuntu@^4.5.4":
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/@fontsource/ubuntu/-/ubuntu-4.5.4.tgz#fe694cb5aab6b599475c5958f208b87aaf9920bd"
+  integrity sha512-wekWBF7Mj0GOyoLHnsSXgKZyO7gfS1KzQXOqxEOUUO9wj4ligv4QAWj/hnDqKDtYdBXxBAVKr5B7Yp3LrI6/mw==
+
 "@hapi/hoek@^9.0.0":
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.0.tgz#f3933a44e365864f4dad5db94158106d511e8131"
