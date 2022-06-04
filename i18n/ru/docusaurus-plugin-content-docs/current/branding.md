@@ -56,22 +56,22 @@ FSD has few variations of logo for different context, but it recommended to pref
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "linear-gradient(135deg, rgba(41,190,220,1) 0%, rgba(81,122,237,1) 100%)" }}>primary <br/> (#29BEDC, #517AED)</td>
-        <td><a href="/img/brand/logo-primary.svg" download><img src="/img/brand/logo-primary.svg" /></a></td>
+        <td><a href="/img/brand/logo-primary.svg" download><img src="/img/brand/logo-primary.svg" alt="logo-primary" /></a></td>
         <td>Preferred in most cases</td>
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "#3193FF" }}>flat <br/> (#3193FF)</td>
-        <td><a href="/img/brand/logo-flat.svg" download><img src="/img/brand/logo-flat.svg" /></a></td>
+        <td><a href="/img/brand/logo-flat.svg" download><img src="/img/brand/logo-flat.svg" alt="logo-flat" /></a></td>
         <td>For one-color context</td>
     </tr>
     <tr>
         <td style={{ color: "#000", background: "#FFF" }}>monochrome <br /> (#FFF)</td>
-        <td style={{ color: "#000", background: "#242526" }}><a href="/img/brand/logo-monochrome.svg" download><img src="/img/brand/logo-monochrome.svg" /></a></td>
+        <td style={{ color: "#000", background: "#242526" }}><a href="/img/brand/logo-monochrome.svg" download><img src="/img/brand/logo-monochrome.svg" alt="logo-monocrhome" /></a></td>
         <td>For grayscale context</td>
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "#3193FF" }}>square <br/> (#3193FF)</td>
-        <td><a href="/img/brand/logo-squad.png" download><img src="/img/brand/logo-squad.png" height="130" /></a></td>
+        <td><a href="/img/brand/logo-square.png" download><img src="/img/brand/logo-square.png" height="130" alt="logo-square" /></a></td>
         <td>For square boundaries</td>
     </tr>
 </table>
