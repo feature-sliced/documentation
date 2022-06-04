@@ -229,3 +229,13 @@ a[download] {
         opacity: 0.7;
     }
 }
+
+// FIXME: from vars
+.brand--primary {
+    background: linear-gradient(135deg, rgba(41,190,220,1) 0%, rgba(81,122,237,1) 100%);
+    transition: 0.25s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
