@@ -218,12 +218,10 @@ const presets = [
                     },
                 },
             },
-            // blog: {
-            //   showReadingTime: true,
-            //   // Please change this to your repo.
-            //   editUrl:
-            //     `${GITHUB_DOCS}/edit/master/blog/`,
-            // },
+            blog: {
+                showReadingTime: true,
+                editUrl: `${GITHUB_DOCS}/edit/master/blog/`,
+            },
             theme: {
                 customCss: require.resolve("./src/app/index.scss"),
             },
