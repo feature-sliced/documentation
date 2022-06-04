@@ -22,7 +22,7 @@ const DOCUSAURUS_PLUGIN_OG = [
 
 /** @type {Config["themeConfig"]["navbar"]} */
 const navbar = {
-    title: "Feature-Sliced",
+    title: "Feature-Sliced Design",
     logo: {
         alt: "logo",
         // FIXME: Сделать под SVG позднее
@@ -175,7 +175,7 @@ const footer = {
         src: "img/logo.png",
         href: GITHUB_ORG,
     },
-    copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced`,
+    copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced Design`,
 };
 
 // We use metrics only for analyze and refinement website discovery experience
