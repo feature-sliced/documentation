@@ -26,7 +26,7 @@ const navbar = {
     logo: {
         alt: "logo",
         // FIXME: Сделать под SVG позднее
-        src: "img/logo.png",
+        src: "img/brand/logo-primary.png",
     },
     items: [
         // left
@@ -172,7 +172,7 @@ const footer = {
     ],
     logo: {
         alt: "feature-sliced - Structural pattern for Frontend projects",
-        src: "img/logo.png",
+        src: "img/brand/logo-primary.png",
         href: GITHUB_ORG,
     },
     copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced Design`,
