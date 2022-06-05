@@ -14,7 +14,7 @@ Found something cool? Please, **[contribute](https://github.com/feature-sliced/a
 
 - [FeatureSliced Telegram (RU)](https://t.me/feature_sliced)
 - [FeatureSliced Twitter](https://twitter.com/feature_sliced)
-- [FeatureSliced YouTube](https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A)
+- [FeatureSliced YouTube](https://www.youtube.com/c/FeatureSlicedDesign)
 
 ## Examples
 
