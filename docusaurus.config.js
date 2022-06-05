@@ -171,7 +171,7 @@ const footer = {
         },
     ],
     logo: {
-        alt: "feature-sliced - Structural pattern for Frontend projects",
+        alt: "Feature-Sliced Design - Architectural methodology for frontend projects",
         src: "img/brand/logo-primary.png",
         href: GITHUB_ORG,
     },
