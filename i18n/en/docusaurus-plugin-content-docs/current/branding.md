@@ -22,8 +22,7 @@ For a compatible and long-term use of the brand, we have been carefully rebrandi
 
 ## Emojii
 
-Core-concepts of FSD represented well in the image of *"Cake"*.
-**Because of it we use 🍰 as our main emojii, also for better associations**
+The cake 🍰 image represents FSD core concepts quite well, so it has been chosen as our signature emoji
 
 > Example: *"🍰 Architectural design methodology for Frontend projects"*
 
