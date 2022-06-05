@@ -79,7 +79,7 @@ html {
 
     /* FIXME: hardcoded */
     &[data-theme="dark"] img[alt*="themed--scheme"] {
-        filter: invert(0.905) brightness(1.04) grayscale(100%) opacity(0.5);
+        filter: invert(0.905) brightness(1.04);
     }
 
     & img[alt*="bordered"] {
