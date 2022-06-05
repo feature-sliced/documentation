@@ -65,7 +65,7 @@ FSD has few variations of logo for different context, but it recommended to pref
 
 Work in progress...
 
-## OG Preview
+## Social Preview
 
 Work in progress...
 
