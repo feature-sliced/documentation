@@ -12,9 +12,9 @@ Found something cool? Please, **[contribute](https://github.com/feature-sliced/a
 
 ## Community
 
-- [FeatureSliced Telegram (RU)](https://t.me/feature_sliced)
-- [FeatureSliced Twitter](https://twitter.com/feature_sliced)
-- [FeatureSliced YouTube](https://www.youtube.com/c/FeatureSlicedDesign)
+- [FSD Telegram (RU)](https://t.me/feature_sliced)
+- [FSD Twitter](https://twitter.com/feature_sliced)
+- [FSD YouTube](https://www.youtube.com/c/FeatureSlicedDesign)
 
 ## Examples
 

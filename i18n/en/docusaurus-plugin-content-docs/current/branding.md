@@ -18,7 +18,7 @@ For a compatible and long-term use of the brand, we have been carefully rebrandi
 ## Title
 
 - ✅ **Correct:** `Feature-Sliced Design`, `FSD`
-- ❌ **Incorrect:** `Feature-Sliced`, `Feature Sliced`, `feature-sliced`, `feature sliced`, `FS`
+- ❌ **Incorrect:** `Feature-Sliced`, `Feature Sliced`, `FeatureSliced`, `feature-sliced`, `feature sliced`, `FS`
 
 ## Emojii
 

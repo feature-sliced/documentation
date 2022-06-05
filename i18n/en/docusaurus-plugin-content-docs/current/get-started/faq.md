@@ -44,7 +44,7 @@ There are only such ones in the public domain so far, not all of them have been 
 
 *Also, you can get acquainted with our [guides](/docs/guides) and [tutorials](/docs/get-started)*
 
-### Are there some useful resources / articles / etc about FeatureSliced and related things?
+### Are there some useful resources / articles / etc about FSD and related things?
 
 <https://github.com/feature-sliced/awesome>
 

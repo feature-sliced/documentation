@@ -18,7 +18,7 @@ FSD прежде имел [другую легаси-айдентику](https:/
 ## Название {#title}
 
 - ✅ **Правильно:** `Feature-Sliced Design`, `FSD`
-- ❌ **Неправильно:** `Feature-Sliced`, `Feature Sliced`, `feature-sliced`, `feature sliced`, `FS`
+- ❌ **Неправильно:** `Feature-Sliced`, `Feature Sliced`, `FeatureSliced`, `feature-sliced`, `feature sliced`, `FS`
 
 ## Эмодзи {#emojii}
 
