@@ -63,7 +63,8 @@ FSD имеет несколько вариаций логотипа для ра�
 
 ## Баннеры & Схемы {#banners--schemes}
 
-Работа в процессе...
+<a href="/img/brand/banner-primary.jpg" download><img src="/img/brand/banner-primary.jpg" height="256" alt="banner-primary" /></a>
+<a href="/img/brand/banner-monochrome.jpg" download><img src="/img/brand/banner-monochrome.jpg" height="256" alt="banner-monochrome" /></a>
 
 ## Social Preview
 

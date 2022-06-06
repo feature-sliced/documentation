@@ -63,7 +63,8 @@ FSD has few variations of logo for different context, but it recommended to pref
 
 ## Banners & Schemes
 
-Work in progress...
+<a href="/img/brand/banner-primary.jpg" download><img src="/img/brand/banner-primary.jpg" height="256" alt="banner-primary" /></a>
+<a href="/img/brand/banner-monochrome.jpg" download><img src="/img/brand/banner-monochrome.jpg" height="256" alt="banner-monochrome" /></a>
 
 ## Social Preview
 
