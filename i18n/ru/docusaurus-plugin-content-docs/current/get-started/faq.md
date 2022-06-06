@@ -44,7 +44,7 @@ pagination_next: guides/index
 
 *Также можно ознакомиться с [гайдами](/docs/guides) и [туториалами](/docs/get-started)*
 
-### Есть ли какие-нибудь полезные ресурсы/статьи/и т.д. по FeatureSliced и связанным вещам?
+### Есть ли какие-нибудь полезные ресурсы/статьи/и т.д. по FSD и связанным вещам?
 
 <https://github.com/feature-sliced/awesome>
 

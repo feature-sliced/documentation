@@ -6,7 +6,7 @@ const DOMAIN = "https://feature-sliced.design/";
 const GITHUB_ORG = "https://github.com/feature-sliced";
 const GITHUB_DOCS = "https://github.com/feature-sliced/documentation";
 const TELEGRAM = "https://t.me/feature_sliced";
-const YOUTUBE = "https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A";
+const YOUTUBE = "https://www.youtube.com/c/FeatureSlicedDesign";
 const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
 const DEFAULT_LOCALE = "ru";
@@ -22,11 +22,11 @@ const DOCUSAURUS_PLUGIN_OG = [
 
 /** @type {Config["themeConfig"]["navbar"]} */
 const navbar = {
-    title: "Feature-Sliced Design",
+    title: "",
     logo: {
         alt: "logo",
         // FIXME: Сделать под SVG позднее
-        src: "img/logo.png",
+        src: "img/brand/logo-primary.png",
     },
     items: [
         // left
@@ -171,8 +171,8 @@ const footer = {
         },
     ],
     logo: {
-        alt: "feature-sliced - Structural pattern for Frontend projects",
-        src: "img/logo.png",
+        alt: "Feature-Sliced Design - Architectural methodology for frontend projects",
+        src: "img/brand/logo-primary.png",
         href: GITHUB_ORG,
     },
     copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced Design`,

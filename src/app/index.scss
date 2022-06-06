@@ -6,35 +6,7 @@
  * work well for content-centric websites.
  */
 
-@import "@fontsource/overpass/400.css";
-@import "@fontsource/ubuntu/400.css";
-
-/* You can override the default Infima variables here. */
-:root {
-    /* Default colors */
-
-    /* --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208); */
-    --ifm-code-font-size: 95%;
-
-    /* https://docusaurus.io/docs/styling-layout */
-    --ifm-color-primary: #5c9cb5;
-    --ifm-color-primary-dark: #4d8fa9;
-    --ifm-color-primary-darker: #4887a0;
-    --ifm-color-primary-darkest: #3c6f83;
-    --ifm-color-primary-light: #6fa7be;
-    --ifm-color-primary-lighter: #78adc2;
-    --ifm-color-primary-lightest: #94becf;
-    --ifm-h2-font-size: 1.75rem;
-    --ifm-button-color: #ffffff;
-    --ifm-font-family-base: 'Ubuntu', system-ui, -apple-system, segoe ui, roboto, ubuntu, cantarell, noto sans, sans-serif, blinkmacsystemfont, 'Segoe UI', helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    --ifm-heading-font-family: 'Overpass', var(--ifm-font-family-base);
-}
+@import "./theme.scss";
 
 .docusaurus-highlight-code-line {
     display: block;
@@ -107,7 +79,7 @@ html {
 
     /* FIXME: hardcoded */
     &[data-theme="dark"] img[alt*="themed--scheme"] {
-        filter: invert(0.905) brightness(1.04) grayscale(100%) opacity(0.5);
+        filter: invert(0.905) brightness(1.04) hue-rotate(180deg);
     }
 
     & img[alt*="bordered"] {
@@ -230,9 +202,8 @@ a[download] {
     }
 }
 
-// FIXME: from vars
 .brand--primary {
-    background: linear-gradient(135deg, #29bedc, #517aed);
+    background: linear-gradient(135deg, var(--ifm-color-primary-grad1), var(--ifm-color-primary-grad2));
     transition: 0.25s;
 
     &:hover {
@@ -252,5 +223,21 @@ a[download] {
 
     100% {
         box-shadow: inset 0 0 0 3px rgba(117, 117, 255, 0.2), 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+}
+
+.navbar {
+    &__brand {
+        margin-right: 0;
+        opacity: 1;
+        transition: 0.25s;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &__logo {
+        margin-right: 0;
     }
 }

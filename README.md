@@ -231,7 +231,7 @@ If there are variations, how best to place indents-welcome:)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![open-collective](static/img/social/opencollective.png)](https://opencollective.com/feature-sliced "OpenCollective профиль")
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![youtube](static/img/social/youtube.png)](https://www.youtube.com/channel/UCkng_PHLatpDKPOIKfI731A)
+[![youtube](static/img/social/youtube.png)](https://www.youtube.com/c/FeatureSlicedDesign)
 </div>
 
 [refs-contributing]: CONTRIBUTING.md
