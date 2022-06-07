@@ -22,6 +22,8 @@ For a compatible and long-term use of the brand, we have been carefully rebrandi
 
 FSD had [another legacy identity](https://drive.google.com/drive/folders/11Y-3qZ_C9jOFoW2UbSp11YasOhw4yBdl?usp=sharing) before. Old design didn't represent core-concepts of methodology. Also it was created as pure draft, and should have been actualized.
 
-<a href="/docs/branding">
-    More details at FSD Brandbook...
-</a>
+<div class="container text--center">
+    <a href="/docs/branding" class="button button--primary margin-bottom--md padding-horiz--xl padding-vert--md brand--primary">
+        More details at FSD Brandbook...
+    </a>
+</div>
