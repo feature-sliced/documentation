@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Quick start
 
-Let's consider the application of **feature-sliced** on the example of TodoApp
+Let's consider the application of **Feature-Sliced Design** on the example of TodoApp
 
 - At first, we will prepare application basely (bootstrap, routing, styles)
 - Then we will consider - how the concepts of the methodology help *flexibly and effectively design business logic* without unnecessary costs
