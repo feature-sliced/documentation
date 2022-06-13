@@ -110,4 +110,14 @@ export const examples = [
         updatedAt: "2022-05-31",
         tech: ["svelte"],
     },
+    {
+        title: "Draw, I'll Help",
+        description: "A drawing app with shape correction powered by ML",
+        website: "https://illright.github.io/draw-ill-help/",
+        source: "https://github.com/illright/draw-ill-help",
+        preview: require("./img/draw-ill-help.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2022-06-13",
+        tech: ["svelte"],
+    },
 ];
