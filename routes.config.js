@@ -32,8 +32,8 @@ const SECTIONS = {
         fullPath: "/docs/about",
     },
     COMMUNITY: {
-        shortPath: "/docs/community",
-        fullPath: "/docs/community",
+        shortPath: "/community",
+        fullPath: "/community",
     },
     EXAMPLES: {
         shortPath: "/examples",

@@ -20,7 +20,7 @@ module.exports = {
         { type: "link", href: "https://github.com/feature-sliced/awesome", label: "Awesome Resources" },
         {
             type: "link",
-            label: "Chat with us on Telegram",
+            label: "Telegram chat (Q&A)",
             href: "https://t.me/feature_sliced",
         },
     ],
