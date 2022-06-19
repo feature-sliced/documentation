@@ -67,8 +67,8 @@ const navbar = {
                 },
                 {
                     label: "💫 Community",
-                    to: SECTIONS.COMMUNITY.shortPath,
-                    activeBasePath: SECTIONS.COMMUNITY.shortPath,
+                    to: SECTIONS.COMMUNITY.fullPath,
+                    activeBasePath: SECTIONS.COMMUNITY.fullPath,
                 },
             ],
         },
@@ -204,7 +204,7 @@ const presets = [
             docs: {
                 path: `i18n/${DEFAULT_LOCALE}/docusaurus-plugin-content-docs/current`,
                 editLocalizedFiles: true,
-                sidebarPath: require.resolve("./sidebars.js"),
+                sidebarPath: require.resolve("./sidebars.docs.js"),
                 // Please change this to your repo.
                 editUrl: `${GITHUB_DOCS}/edit/master/`,
                 // // Equivalent to `enableUpdateBy`.
@@ -237,6 +237,22 @@ const presets = [
 
 /** @type {Config["plugins"]} */
 const plugins = [
+    // https://docusaurus.io/docs/docs-multi-instance
+    [
+        "@docusaurus/plugin-content-docs",
+        {
+            id: "community",
+            // !!! FIXME: Adapt for i18n
+            path: `i18n/en/docusaurus-plugin-content-docs/community`,
+            editLocalizedFiles: true,
+            routeBasePath: "community",
+            editUrl: `${GITHUB_DOCS}/edit/master/`,
+            sidebarPath: require.resolve("./sidebars.community.js"),
+            showLastUpdateAuthor: true,
+            showLastUpdateTime: true,
+        },
+    ],
+    // https://www.npmjs.com/package/docusaurus-plugin-sass
     "docusaurus-plugin-sass",
     // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
     [

@@ -33,7 +33,7 @@ const SECTIONS = {
     },
     COMMUNITY: {
         shortPath: "/docs/community",
-        fullPath: "/docs/community",
+        fullPath: "/community",
     },
     EXAMPLES: {
         shortPath: "/examples",
