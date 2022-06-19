@@ -237,11 +237,13 @@ const presets = [
 
 /** @type {Config["plugins"]} */
 const plugins = [
+    // https://docusaurus.io/docs/docs-multi-instance
     [
         "@docusaurus/plugin-content-docs",
         {
             id: "community",
-            path: `i18n/${DEFAULT_LOCALE}/docusaurus-plugin-content-docs/community`,
+            // !!! FIXME: Adapt for i18n
+            path: `i18n/en/docusaurus-plugin-content-docs/community`,
             editLocalizedFiles: true,
             routeBasePath: "community",
             editUrl: `${GITHUB_DOCS}/edit/master/`,
@@ -250,6 +252,7 @@ const plugins = [
             showLastUpdateTime: true,
         },
     ],
+    // https://www.npmjs.com/package/docusaurus-plugin-sass
     "docusaurus-plugin-sass",
     // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
     [
