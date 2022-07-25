@@ -82,6 +82,11 @@ const navbar = {
             to: "/nav",
             position: "left",
         },
+        {
+            label: "📝 Blog",
+            to: "/blog",
+            position: "left",
+        },
         // right
         {
             type: "docsVersionDropdown",
