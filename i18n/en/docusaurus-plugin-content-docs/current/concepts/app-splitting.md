@@ -25,7 +25,7 @@ The first level of separation: according to the **scope of responsibility** of t
     └── shared/                 # Reused modules, non business specific
 ```
 
-### Layer order
+### Layers order
 
 If you look at the order of the layers , you can distinguish two general patterns:
 
@@ -189,7 +189,7 @@ The third level of separation: by **the purpose of the module in the code and im
 
 *At the same time, each segment can be represented **as a file, or as a separate directory** - depending on the complexity and size*
 
-### Restrictions
+### Limitations
 
 The methodology was developed with the aim of not limiting and not bothering developers with the rules for choosing abstractions *(it's desirable to use **any segment in any layer**)*
 

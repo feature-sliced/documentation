@@ -12,7 +12,7 @@ sidebar_position: 8
 
 ![shared-themed-bordered](/img/layers/shared.png)
 
-## Описание
+## Описание {#description}
 
 Здесь обычно находятся:
 
@@ -26,7 +26,7 @@ sidebar_position: 8
   - *[Segment][refs-segments]: `shared/config`*
   - *env-переменные, которые могут использоваться в коде вышележащих слоев*
 
-## Структура
+## Структура {#structure}
 
 ```sh
 └── shared/
@@ -36,9 +36,9 @@ sidebar_position: 8
       └── ui/
 ```
 
-## Примеры
+## Примеры {#examples}
 
-### Использование UIKit
+### Использование UIKit {#using-uikit}
 
 ```tsx title=shared/ui/button/index.tsx
 export const Button = () => {...}
@@ -55,7 +55,7 @@ import { Card } from "shared/ui/card";
 // import { Button, Card } from "shared/ui";
 ```
 
-### Использование переменных окружения
+### Использование переменных окружения {#using-environment-variables}
 
 *Реализация зависит от проекта и команды, здесь приведен лишь один из вариантов*
 

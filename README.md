@@ -242,8 +242,8 @@ If there are variations, how best to place indents-welcome:)
 [refs-motivation-why]: https://feature-sliced.design/docs/about/motivation#-почему-не-хватает-существующих-решений
 
 [refs-concepts]: https://feature-sliced.design/docs/concepts/architecture
-[refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#требования
-[refs-arch-problems]: https://feature-sliced.design/docs/concepts/architecture#проблемы
+[refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#requirements
+[refs-arch-problems]: https://feature-sliced.design/docs/concepts/architecture#problems
 [refs-public-api]: https://feature-sliced.design/docs/concepts/public-api
 [refs-adaptability]: https://feature-sliced.design/docs/concepts/naming-adaptability
 [refs-isolation]: https://feature-sliced.design/docs/concepts/cross-communication

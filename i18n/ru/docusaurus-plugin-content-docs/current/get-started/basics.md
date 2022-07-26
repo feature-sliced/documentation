@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Основы
+# Основы {#basics}
 
 :::caution Предупреждение
 
@@ -12,7 +12,7 @@ sidebar_position: 1
 
 :::
 
-## Concepts
+## Концепции {#concepts}
 
 ### [`Public API`][refs-public-api]
 
@@ -34,7 +34,7 @@ sidebar_position: 1
 
 - Включает в себя также разбиение структуры по бизнес-доменам *(["слоям"][refs-splitting-layers] и ["слайсам"][refs-splitting-slices])*
 
-## Abstractions
+## Абстракции {#abstractions}
 
 Для [проектирования архитектуры][refs-splitting] методология предлагает оперировать [привычными абстракциями][refs-adaptability], но в более консистентном и последовательном порядке.
 
@@ -71,7 +71,7 @@ sidebar_position: 1
 
 :::
 
-## Structure
+## Структура {#structure}
 
 ```sh
 └── src/
@@ -121,7 +121,7 @@ sidebar_position: 1
     └── index.tsx/              #
 ```
 
-## См. также
+## См. также {#see-also}
 
 - [(Раздел) Фундаментальные концепции методологии][refs-concepts]
 - [(Раздел) Гайды и примеры по применению методологии][refs-guides]

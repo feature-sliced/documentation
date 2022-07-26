@@ -10,7 +10,7 @@ sidebar_position: 7
 
 ![entities-themed-bordered](/img/layers/entities.png)
 
-## Описание
+## Описание {#description}
 
 Здесь обычно находятся:
 
@@ -19,7 +19,7 @@ sidebar_position: 7
 - компоненты c представлением сущностей, для построения UI вышележащих слоев
     > *Например: `UserCard`,`TweetCard`, ...*
 
-## Структура
+## Структура {#structure}
 
 ```sh
 └── entities/{slice}
@@ -29,9 +29,9 @@ sidebar_position: 7
           └── index.ts
 ```
 
-## Примеры
+## Примеры {#examples}
 
-### Использование модели сущностей
+### Использование модели сущностей {#using-the-entity-model}
 
 ```tsx title=**/**/index.tsx
 import { viewerModel } from "entities/viewer";
@@ -44,7 +44,7 @@ export const Wallet = () => {
 }
 ```
 
-### Использование компонентов сущностей
+### Использование компонентов сущностей {#using-entity-components}
 
 ```ts title=entities/book/index.ts
 export { BookCard, ... } from "./ui";

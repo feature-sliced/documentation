@@ -29,7 +29,7 @@ So that developers can use a *battle-tested* approach that allows them to bypass
 
 > *@sergeysova: Imagine, that a developer writes code within the framework of the methodology and he has problems 10 times less often, simply because other people have thought out the solution to many problems.*
 
-## Restrictions
+## Limitations
 
 We do not want to *impose our point of view*, and at the same time we understand that *many of our habits, as developers, interfere from day to day*
 

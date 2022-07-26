@@ -126,7 +126,7 @@ export const { sendMessage, attachFile } = createMessageInput({
 })
 ```
 
-## Summing up
+## Summary
 
 1. Modules must have **high cohesion** (have one responsibility, solve one specific task) and provide a [**public interface**][refs-public-api] access
 2. **Low coupling** is achieved through the composition of elements - UI components, features and entities
