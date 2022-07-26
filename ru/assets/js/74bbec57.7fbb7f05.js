@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_feature_sliced_documentation=self.webpackChunk_feature_sliced_documentation||[]).push([[808],{1582:function(a){a.exports=JSON.parse('{"allTagsPath":"/ru/blog/tags","slug":"/ru/blog/tags/brand","name":"brand","count":1,"permalink":"/ru/blog/tags/brand"}')}}]);
