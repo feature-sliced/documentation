@@ -351,7 +351,7 @@ We will outline the basic necessary pages, and user expectations from them:
 
 Each of the described features is a part of the functionality
 
-##### The usual approach
+##### Usual approach
 
 And there is a great temptation
 
@@ -777,7 +777,7 @@ At the same time, the old code base does not require significant rework
 
  => Thanks to the embedded architecture, we can only factor this module in isolation-without implicit side effects for others [(and even rewrite it from scratch)](https://youtu.be/BWAeYuWFHhs?t=1625)
 
-## Total
+## Summary
 
 ### We have learned how to apply the methodology for basic cases
 
