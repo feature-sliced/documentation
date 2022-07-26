@@ -9,7 +9,7 @@ const TELEGRAM = "https://t.me/feature_sliced";
 const YOUTUBE = "https://www.youtube.com/c/FeatureSlicedDesign";
 const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
-const DEFAULT_LOCALE = "ru";
+const DEFAULT_LOCALE = "en";
 
 const DOCUSAURUS_PLUGIN_OG = [
     path.resolve(__dirname, "./plugins/docusaurus-plugin-og"),
@@ -373,7 +373,7 @@ module.exports = {
                 label: "Русский",
             },
             en: {
-                label: "English (WIP)",
+                label: "English",
             },
         },
     },
