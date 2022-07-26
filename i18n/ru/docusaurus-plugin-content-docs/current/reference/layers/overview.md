@@ -8,7 +8,7 @@ sidebar_position: 1
 
 ![layers-flow-themed](/img/layers_flow.png)
 
-## Структура
+## Структура {#structure}
 
 ```sh
 └── src/
@@ -21,7 +21,7 @@ sidebar_position: 1
     └── shared/                 # Переиспользуемые модули, без привязки к бизнес-логике
 ```
 
-## Правила
+## Правила {#rules}
 
 - Каждый слой располагается только на самом верхнем уровне, и не может встречаться еще раз на другом уровне вложенности
 
@@ -52,7 +52,7 @@ sidebar_position: 1
 | entities  |                              `shared`                             |       `features`, `widgets`, `pages`, `processes`, `app`       |
 | shared    |                                 -                                 | `entities`, `features`, `widgets`, `pages`, `processes`, `app` |
 
-## Как использовать?
+## Как использовать? {#how-to-use}
 
 1. **Сначала, выделить основные слои, актуальные для почти любого приложения:**
     - `app` - для инициализирующей логики приложения
@@ -65,7 +65,7 @@ sidebar_position: 1
    - `features` - если в проекте становится сложно отследить начало и конец пользовательских сценариев, и контролировать их
    - `processes` - если же разрастается много надстраничной "сквозной логики"
 
-## Представители
+## Слои {#layers}
 
 <!-- Оставил фразы в комментариях, на случай, если решим их вернуть -->
 
@@ -113,7 +113,7 @@ sidebar_position: 1
 
 ![shared-themed-bordered](/img/layers/shared.png)
 
-## См. также
+## См. также {#see-also}
 
 - [Адаптивность нейминга][refs-naming-adaptability]
 - [Example: Viewer][refs-example-viewer]

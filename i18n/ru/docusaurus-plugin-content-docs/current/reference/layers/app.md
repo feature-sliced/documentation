@@ -10,7 +10,7 @@ sidebar_position: 2
 
 ![app-themed-bordered](/img/layers/app.png)
 
-## Описание
+## Описание {#description}
 
 Здесь обычно происходит:
 
@@ -20,9 +20,9 @@ sidebar_position: 2
 
 *Методология пока никак не регламентирует содержимое этого слоя, поэтому оно зависит от конкретного проекта*
 
-## Примеры
+## Примеры {#examples}
 
-### Инициализация роутера
+### Инициализация роутера {#initializing-the-router}
 
 ```tsx title=app/providers/withRouter.tsx
 export const withRouter = (component: Component) => () => (
@@ -36,7 +36,7 @@ export const withRouter = (component: Component) => () => (
 );
 ```
 
-### Инициализация внешних библиотек
+### Инициализация внешних библиотек {#initializing-external-libraries}
 
 ```tsx title=app/providers/withAntd.tsx
 export const withAntd = (component: Component) => () => (
@@ -56,7 +56,7 @@ export const withApollo = (component: Component) => () => (
 );
 ```
 
-### Подключение инициализации
+### Подключение инициализации {#enabling-initialization}
 
 *Здесь показан лишь один из способов, если вы используете HOC для провайдеров и инициализации логики*
 

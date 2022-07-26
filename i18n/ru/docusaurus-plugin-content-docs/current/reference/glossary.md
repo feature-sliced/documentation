@@ -108,7 +108,7 @@ sidebar_position: 1
 
 :::
 
-## См. также
+## См. также {#see-also}
 
 - [Уровни абстракций по методологии][refs-split]
 - [Layers в методологии][refs-layers]
