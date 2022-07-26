@@ -31,6 +31,10 @@
         "message": "Contribution Guide (RU)",
         "description": "The label of footer link with label=Contribution Guide (RU) linking to CONTRIBUTING.md"
     },
+    "link.item.label.Discord": {
+        "message": "Discord",
+        "description": "The label of footer link with label=Discord linking to https://discord.com/invite/S8MzWTUsmp"
+    },
     "link.item.label.Telegram": {
         "message": "Telegram",
         "description": "The label of footer link with label=Telegram linking to https://t.me/feature_sliced"
