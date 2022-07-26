@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_feature_sliced_documentation=self.webpackChunk_feature_sliced_documentation||[]).push([[6153],{7499:function(e){e.exports=JSON.parse('{"allTagsPath":"/ru/blog/tags","slug":"/ru/blog/tags/discord","name":"discord","count":1,"permalink":"/ru/blog/tags/discord"}')}}]);

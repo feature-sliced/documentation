@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_feature_sliced_documentation=self.webpackChunk_feature_sliced_documentation||[]).push([[395],{1169:function(e){e.exports=JSON.parse('{"allTagsPath":"/ru/blog/tags","slug":"/ru/blog/tags/2-0-0-stable","name":"2.0.0-stable","count":1,"permalink":"/ru/blog/tags/2-0-0-stable"}')}}]);
