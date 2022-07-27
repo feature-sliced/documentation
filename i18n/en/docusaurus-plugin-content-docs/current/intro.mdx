@@ -32,11 +32,11 @@ In FSD, a project consists of _layers_, each layer is made up of _slices_ and ea
 The layers are standardized across all projects and vertically arranged. Modules on one layer can only interact with modules from the layers strictly below. There are currently seven of them (bottom to top):
 
 1. **Shared** — reused functionality, detached from the specifics of the project/business.
-2. **Entities** — business entities (e. g. user, product, order).
+2. **Entities** — business entities (e.g., user, product, order).
 3. **Features** — user interactions, actions that bring business value to the user.
 4. **Widgets** — compositional layer to combine entities and features into meaningful blocks.
 5. **Pages** — compositional layer to construct full pages from entities, features and widgets.
-6. **Processes** — complex inter-page scenarios (e. g. authentication). 
+6. **Processes** — complex inter-page scenarios (e.g., authentication). 
 7. **App** — app-wide settings, styles and providers.
 
 Then there are slices, which partition the code by business domain. This makes your codebase easy to navigate by keeping logically related modules close together. Slices cannot use other slices on the same layer, and that helps with high cohesion and low coupling.
@@ -54,7 +54,7 @@ Let's consider a social network application.
 Within that application, let's consider a post card in a news feed.
 
 * `widgets/` contains the "assembled" post card, with content and interactive buttons that are wired up to the relevant calls on the back-end.
-* `features/` contains the interactivity of the card (e. g., like button) and the logic of processing those interactions.
+* `features/` contains the interactivity of the card (e.g., like button) and the logic of processing those interactions.
 * `entities/` contains the shell of the card with slots for content and the interactive elements. The tile representing the post author is also here, but in a different slice.
 
 ### Advantages
