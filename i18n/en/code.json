@@ -4,11 +4,11 @@
         "description": "Features"
     },
     "pages.home.features.logic.title": {
-        "message": "Explicit business-logic",
+        "message": "Explicit business logic",
         "description": "Feature title"
     },
     "pages.home.features.logic.description": {
-        "message": "Easy discoverable architecture becaus of domain scopes",
+        "message": "Easily discoverable architecture thanks to domain scopes",
         "description": "Feature description"
     },
     "pages.home.features.adaptability.title": {
@@ -16,7 +16,7 @@
         "description": "Feature title"
     },
     "pages.home.features.adaptability.description": {
-        "message": "Architecture components can be flexibly replaced, additives for new conditions",
+        "message": "Architecture components can be flexibly replaced and added for new requirements",
         "description": "Feature description"
     },
     "pages.home.features.debt.title": {
@@ -28,11 +28,11 @@
         "description": "Feature description"
     },
     "pages.home.features.shared.title": {
-        "message": "Explicit sharing",
+        "message": "Explicit code reuse",
         "description": "Feature title"
     },
     "pages.home.features.shared.description": {
-        "message": "Maintains a balance between DRY and local customization",
+        "message": "A balance is maintained between DRY and local customization",
         "description": "Feature description"
     },
     "pages.home.concepts.title": {
@@ -68,12 +68,12 @@
         "description": "Scheme"
     },
     "pages.home.companies.using": {
-        "message": "Companies using methodology",
-        "description": "Companies using methodology"
+        "message": "Companies using FSD",
+        "description": "Companies using FSD"
     },
     "pages.home.companies.add_me": {
-        "message": "Methodology is used in your company?",
-        "description": "Methodology is used in your company?"
+        "message": "FSD is used in your company?",
+        "description": "FSD is used in your company?"
     },
     "pages.home.companies.tell_us": {
         "message": "Tell us",
