@@ -6,7 +6,6 @@ const DOMAIN = "https://feature-sliced.design/";
 const GITHUB_ORG = "https://github.com/feature-sliced";
 const GITHUB_DOCS = "https://github.com/feature-sliced/documentation";
 const TELEGRAM = "https://t.me/feature_sliced";
-const DISCORD = "https://discord.gg/S8MzWTUsmp";
 const YOUTUBE = "https://www.youtube.com/c/FeatureSlicedDesign";
 const TWITTER = "https://twitter.com/feature_sliced";
 const OPEN_COLLECTIVE = "https://opencollective.com/feature-sliced";
@@ -124,10 +123,10 @@ const navbar = {
             ],
         },
         {
-            "href": DISCORD,
+            "href": TELEGRAM,
             "position": "right",
-            "className": "ext-link discord",
-            "aria-label": "Discord community server",
+            "className": "ext-link telegram",
+            "aria-label": "Telegram community chat",
         },
         {
             "href": GITHUB_DOCS,
@@ -152,8 +151,7 @@ const footer = {
         {
             title: "Community",
             items: [
-                { label: "Discord", href: DISCORD },
-                { label: "Telegram (RU)", href: TELEGRAM },
+                { label: "Telegram", href: TELEGRAM },
                 { label: "Twitter", href: TWITTER },
                 { label: "Open Collective", href: OPEN_COLLECTIVE },
                 { label: "YouTube", href: YOUTUBE },
@@ -357,7 +355,7 @@ module.exports = {
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "error",
     onDuplicateRoutes: "warn",
-    favicon: "img/favicon/classic.png",
+    favicon: "img/favicon.ico",
     trailingSlash: false, // For unified routes (FEEDBACK-337)
     organizationName: "feature-sliced", // Usually your GitHub org/user name.
     projectName: "documentation", // Usually your repo name.
