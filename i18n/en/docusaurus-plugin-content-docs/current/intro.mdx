@@ -80,9 +80,9 @@ Here's a proposed strategy to migrate an existing codebase to FSD, based on expe
 
 1. Start by outlining the `app` and `shared` layers to create a foundation. Usually, these layers are the smallest.
 
-2. Distribute all of the existing UI across widgets and pages, even if they have dependencies that violate the rules of FSD.
+2. Distribute all of the existing UI across `widgets` and `pages`, even if they have dependencies that violate the rules of FSD.
 
-3. Start gradually increasing the precision of decomposition by separating features and entities, turning pages and widgets from logic-bearing layers into purely compositional layers.
+3. Start gradually increasing the precision of decomposition by separating `features` and `entities`, turning pages and widgets from logic-bearing layers into purely compositional layers.
 
 It's advised to refrain from adding new large entities while refactoring or refactoring only certain parts of the project.
 
