@@ -39,7 +39,7 @@ The layers are standardized across all projects and vertically arranged. Modules
 6. **Processes** — complex inter-page scenarios (e. g. authentication). 
 7. **App** — app-wide settings, styles and providers.
 
-Then there are slices, which partition the code by business domain. This makes your codebase easy to navigate by keeping logically related modules close together. Slices cannot use other slices on the same level, and that helps with high cohesion and low coupling.
+Then there are slices, which partition the code by business domain. This makes your codebase easy to navigate by keeping logically related modules close together. Slices cannot use other slices on the same layer, and that helps with high cohesion and low coupling.
 
 Each slice, in turn, consists of segments. These are tiny modules that are meant to help with separating code within a slice by its technical purpose. The most common segments are `ui`, `model`, `api` and `lib`, but you can omit some or add more, as you see fit.
 
