@@ -11,16 +11,24 @@ pagination_next: get-started/index
 
 **Feature-Sliced Design** (FSD) is an architectural methodology for scaffolding front-end applications. Simply put, it's a compilation of rules and conventions on organizing code. The main purpose of this methodology is to make the project more understandable and structured in the face of ever-changing business requirements.
 
-Here is how it's accomplished:
+## Is it right for me?
 
-- A strong foundation of **time-tested** design practices:  
-  _SOLID, GRASP, DDD, Separation of Concerns, Vertical Slices, Public API, Isolation._
-- Project partitioning on business domains
-- Consistency in file structure
+FSD can be implemented in projects and teams of any size, but there are a few things to keep in mind:
 
-The methodology is not tied to any particular technology stack and is applicable to most front-end projects. This documentation contains examples in JavaScript + React, but FSD has been successfully adapted to other technology stacks (see [project examples][refs-examples]).
+- This methodology is for front-end projects only. If you're looking for a back-end architecture, consider [Clean Architecture][refs-clean-architecture].
+- A very simple app of a single page might not need the benefits of FSD and suffer from the overhead. However, FSD promotes a nice way of thinking, so feel free to use on the tiniest projects if you want.
+- A huge app, the size of the Google Cloud admin dashboard, will require a custom architecture. It could still be based on FSD, by the way.
+
+FSD doesn't enforce a particular programming language, UI framework or state manager — bring your own or see some [examples][refs-examples].
+
+If you have an existing project, fear not — FSD can be adopted incrementally. Just make sure that your team is **in&nbsp;pain** from the current architecture, otherwise a switch might not be worth it. <!-- For migration guidance, see the Migration section. TODO: add the migration section and link to it here -->
 
 ## Basics
+
+In radically simplified terms, FSD boils down to the following:
+
+- Project partitioning on business domains
+- Specific and consistent file structure (see the image below)
 
 ![themed--scheme](/img/visual_schema.jpg)
 
@@ -108,3 +116,5 @@ import Link from "@docusaurus/Link";
 [refs-motivation]: /docs/about/motivation
 [refs-architecture]: /docs/concepts/architecture
 [refs-examples]: /examples
+
+[refs-clean-architecture]: https://medium.com/codex/clean-architecture-for-dummies-df6561d42c94
