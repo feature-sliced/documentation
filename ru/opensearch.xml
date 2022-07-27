@@ -4,7 +4,7 @@
   <ShortName>Feature-Sliced Design</ShortName>
   <Description>Search Feature-Sliced Design</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://feature-sliced.design/ru/img/favicon.ico</Image>
+  <Image width="16" height="16" type="image/x-icon">https://feature-sliced.design/ru/img/favicon/classic.png</Image>
   <Url type="text/html" method="get" template="https://feature-sliced.design//ru/search?q={searchTerms}"/>
   <Url type="application/opensearchdescription+xml" rel="self" template="https://feature-sliced.design//ru/opensearch.xml" />
   <moz:SearchForm>https://feature-sliced.design//ru/</moz:SearchForm>
