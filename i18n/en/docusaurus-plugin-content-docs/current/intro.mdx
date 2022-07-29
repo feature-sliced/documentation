@@ -31,8 +31,8 @@ In FSD, a project consists of _layers_, each layer is made up of _slices_ and ea
 
 The layers are standardized across all projects and vertically arranged. Modules on one layer can only interact with modules from the layers strictly below. There are currently seven of them (bottom to top):
 
-1. **Shared** — reused functionality, detached from the specifics of the project/business.
-2. **Entities** — business entities (e.g., user, product, order).
+1. **Shared** — reusable functionality, detached from the specifics of the project/business.
+2. **Entities** — business entities (e.g., User, Product, Order).
 3. **Features** — user interactions, actions that bring business value to the user.
 4. **Widgets** — compositional layer to combine entities and features into meaningful blocks.
 5. **Pages** — compositional layer to construct full pages from entities, features and widgets.
@@ -47,7 +47,7 @@ Each slice, in turn, consists of segments. These are tiny modules that are meant
 
 Let's consider a social network application.
 
-* `app/` contains routing and global styles.
+* `app/` contains setup of routing, store and global styles.
 * `processes/` contains the part of authentication that is responsible for reading/writing authentication tokens.
 * `pages/` contains the route components for each page in the app, mostly composition, hardly any logic.
 
@@ -74,7 +74,7 @@ Within that application, let's consider a post card in a news feed.
 
 ## Incremental adoption
 
-The strength of FSD lies in _structured_ decomposition. At its finest, it enables to locate any part of code near-deterministically. However, the level of decomposition is a parameter, and each team can tweak it to strike a balance between simple adoption and the amount of benefits.
+The power of FSD lies in _structured_ decomposition. At its finest, it enables to locate any part of code near-deterministically. However, the level of decomposition is a parameter, and each team can tweak it to strike a balance between simple adoption and the amount of benefits.
 
 Here's a proposed strategy to migrate an existing codebase to FSD, based on experience:
 
