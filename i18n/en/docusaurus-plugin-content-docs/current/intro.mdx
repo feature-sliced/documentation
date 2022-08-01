@@ -23,18 +23,41 @@ FSD doesn't enforce a particular programming language, UI framework or state man
 
 If you have an existing project, fear not — FSD can be adopted incrementally. Just make sure that your team is **in&nbsp;pain** from the current architecture, otherwise a switch might not be worth it. <!-- For migration guidance, see the Migration section. TODO: add the migration section and link to it here -->
 
-## Basics
+## Overview
 
-In radically simplified terms, FSD boils down to the following:
-
-- Project partitioning on business domains
-- Specific and consistent file structure (see the image below)
+In FSD, a project consists of _layers_, each layer is made up of _slices_ and each slice is made up of _segments_. 
 
 ![themed--scheme](/img/visual_schema.jpg)
 
-The terms in the diagram above are explained in detail in the [**Abstractions**][refs-basics--abstractions] section.
+The layers are standardized across all projects and vertically arranged. Modules on one layer can only interact with modules from the layers strictly below. There are currently seven of them (bottom to top):
 
-Such a structure has a number of benefits:
+1. **Shared** — reusable functionality, detached from the specifics of the project/business.
+2. **Entities** — business entities (e.g., User, Product, Order).
+3. **Features** — user interactions, actions that bring business value to the user.
+4. **Widgets** — compositional layer to combine entities and features into meaningful blocks.
+5. **Pages** — compositional layer to construct full pages from entities, features and widgets.
+6. **Processes** — complex inter-page scenarios (e.g., authentication). 
+7. **App** — app-wide settings, styles and providers.
+
+Then there are slices, which partition the code by business domain. This makes your codebase easy to navigate by keeping logically related modules close together. Slices cannot use other slices on the same layer, and that helps with high cohesion and low coupling.
+
+Each slice, in turn, consists of segments. These are tiny modules that are meant to help with separating code within a slice by its technical purpose. The most common segments are `ui`, `model`, `api` and `lib`, but you can omit some or add more, as you see fit.
+
+### Decomposition example
+
+Let's consider a social network application.
+
+* `app/` contains setup of routing, store and global styles.
+* `processes/` contains the part of authentication that is responsible for reading/writing authentication tokens.
+* `pages/` contains the route components for each page in the app, mostly composition, hardly any logic.
+
+Within that application, let's consider a post card in a news feed.
+
+* `widgets/` contains the "assembled" post card, with content and interactive buttons that are wired up to the relevant calls on the back-end.
+* `features/` contains the interactivity of the card (e.g., like button) and the logic of processing those interactions.
+* `entities/` contains the shell of the card with slots for content and the interactive elements. The tile representing the post author is also here, but in a different slice.
+
+### Advantages
 
 - **Uniformity**  
   The code is organized by scope of influence (layers), by domain (slices), and by technical purpose (segments).  
@@ -49,12 +72,19 @@ Such a structure has a number of benefits:
   This enables isolated modifications without unforeseen consequences.
 
 
-## Motivation
+## Incremental adoption
 
-Front-end architecture approaches are usually re-invented from scratch with every project, adding up to the "project knowledge". Incorrect decisions often lead to issues with scalability, both for the project and the team. Thus, instead of re-inventing and documenting the architecture from scratch, we'd want to **aggregate the experience and construct a working, tested and documented methodology** for front-end architecture.
+The power of FSD lies in _structured_ decomposition. At its finest, it enables to locate any part of code near-deterministically. However, the level of decomposition is a parameter, and each team can tweak it to strike a balance between simple adoption and the amount of benefits.
 
-In the [**Motivation**][refs-motivation] section, we go in depth on the reasons behind creating this methodology and compare it to other existing approaches.  
-In the [**About architecture**][refs-architecture] section, we list some of the most common issues with projects and propose a list of requirements for an ideal architecture. Feature-Sliced Design aims to follow these requirements.
+Here's a proposed strategy to migrate an existing codebase to FSD, based on experience:
+
+1. Start by outlining the `app` and `shared` layers to create a foundation. Usually, these layers are the smallest.
+
+2. Distribute all of the existing UI across `widgets` and `pages`, even if they have dependencies that violate the rules of FSD.
+
+3. Start gradually increasing the precision of decomposition by separating `features` and `entities`, turning pages and widgets from logic-bearing layers into purely compositional layers.
+
+It's advised to refrain from adding new large entities while refactoring or refactoring only certain parts of the project.
 
 
 ## What's next?
@@ -112,9 +142,6 @@ import Link from "@docusaurus/Link";
     Icon={"🛠"}
 />
 
-[refs-basics--abstractions]: /docs/get-started/basics#abstractions
-[refs-motivation]: /docs/about/motivation
-[refs-architecture]: /docs/concepts/architecture
 [refs-examples]: /examples
 
 [refs-clean-architecture]: https://medium.com/codex/clean-architecture-for-dummies-df6561d42c94
