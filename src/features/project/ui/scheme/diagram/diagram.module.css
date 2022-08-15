@@ -11,7 +11,7 @@
 
 /* unit */
 
-.unit-patch {
+.unitPatch {
   font-size: 1rem;
 }
 
@@ -43,7 +43,7 @@
   position: relative;
 }
 
-.top > .button-patch {
+.top > .buttonPatch {
   position: absolute;
   left: var(--size-gap);
   top: 50%;

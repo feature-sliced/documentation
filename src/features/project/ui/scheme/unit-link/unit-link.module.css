@@ -1,5 +1,7 @@
 .unit {
-  font-family: 'Overpass Mono', monospace;
+  font-family: var(--ifm-font-family-mono);
+  font-variant-ligatures: none;
+  font-weight: 500;
   line-height: 1;
 
   cursor: pointer;

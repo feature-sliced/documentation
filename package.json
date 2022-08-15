@@ -27,6 +27,7 @@
         "@docusaurus/plugin-ideal-image": "2.0.0-beta.8",
         "@docusaurus/preset-classic": "2.0.0-beta.8",
         "@fontsource/overpass": "^4.5.4",
+        "@fontsource/overpass-mono": "^4.5.9",
         "@fontsource/ubuntu": "^4.5.4",
         "@mdi/js": "^7.0.96",
         "@mdi/react": "^1.6.1",

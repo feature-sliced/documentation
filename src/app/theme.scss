@@ -1,5 +1,6 @@
 @import "@fontsource/overpass/400.css";
 @import "@fontsource/ubuntu/400.css";
+@import "@fontsource/overpass-mono/variable.css";
 
 /* https://docusaurus.io/docs/styling-layout */
 
@@ -41,4 +42,5 @@
     --ifm-color-primary-grad2: #517aed;
     --ifm-font-family-base: 'Ubuntu', system-ui, -apple-system, segoe ui, roboto, ubuntu, cantarell, noto sans, sans-serif, blinkmacsystemfont, 'Segoe UI', helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --ifm-heading-font-family: 'Overpass', var(--ifm-font-family-base);
+    --ifm-font-family-mono: 'Overpass MonoVariable', ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 }

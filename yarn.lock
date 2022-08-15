@@ -2744,6 +2744,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/overpass-mono@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/overpass-mono/-/overpass-mono-4.5.9.tgz#65791d40c14a4606c82842bdb4d7b8e1e962f1e2"
+  integrity sha512-Mryk/f7CAyRKgqzvrDgRR+WdBSYL0Fpwu7QcwOYnJEbt9+NAAYmeNDr3uILhx0X3ymEmwm4QFnm/QE1nfPYTNA==
+
 "@fontsource/overpass@^4.5.4":
   version "4.5.4"
   resolved "https://registry.yarnpkg.com/@fontsource/overpass/-/overpass-4.5.4.tgz#ab782e935c2c4a0b942682c41a2117e43a6fe66b"

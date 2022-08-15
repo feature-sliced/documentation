@@ -38,24 +38,24 @@
   transition-timing-function: ease-in-out;
 }
 
-.icon-off {}
+.iconOff {}
 
-.button:not(.active) > .icon-off {
+.button:not(.active) > .iconOff {
   opacity: 1;
   rotate: 0;
 }
-.button.active > .icon-off {
+.button.active > .iconOff {
   opacity: 0;
   rotate: 90deg;
 }
 
-.icon-on {}
+.iconOn {}
 
-.button:not(.active) > .icon-on {
+.button:not(.active) > .iconOn {
   opacity: 0;
   rotate: -90deg;
 }
-.button.active > .icon-on {
+.button.active > .iconOn {
   opacity: 1;
   rotate: 0;
 }
