@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 // It's utility, not hook =)
 import getBaseUrl from "@docusaurus/useBaseUrl";
 // eslint-disable-next-line import/no-unresolved
@@ -11,10 +11,15 @@ import { Card, Section } from "@site/src/shared/ui";
 import imgScheme from "@site/static/img/visual_schema.jpg";
 // NOTE: Locate at index before of specific route-mapping while Node/SSR building
 // "_" for excluding file from routing
+import { project } from "@site/src/features/project";
 import { features, concepts, companies } from "./_config";
 import styles from "./styles.module.scss";
 
 export default function HomePage() {
+    const controller = useMemo(
+        () => project.model.createProjectController(project.mocks.marketplace),
+        [],
+    );
     // NOTE: use siteConfig for getting config
     // const {siteConfig} = useDocusaurusContext();
     return (
@@ -35,16 +40,10 @@ export default function HomePage() {
                     title={translate({ id: "pages.home.scheme.title" })}
                     rowClass={styles.scheme}
                 >
-                    {/**
-                     *  NOTE: Set fixed height for correct alignment from mobile devices
-                     *  @see https://t.me/c/1463227827/197935
-                     *  NOTE: Cannot be used as native img because of ideal-image plugin preprocessing
-                     */}
-                    <Image
-                        className={styles.schemeImg}
-                        img={imgScheme}
-                        alt="feature-sliced-scheme,themed--scheme"
-                    />
+                    <project.model.ProjectStatefulProvider projectController={controller}>
+                        <project.scheme.Diagram className={styles.schemeDiagram} />
+                        <project.scheme.Description className={styles.schemeDescription} />
+                    </project.model.ProjectStatefulProvider>
                 </Section>
                 <Section
                     title={translate({ id: "pages.home.companies.using" })}

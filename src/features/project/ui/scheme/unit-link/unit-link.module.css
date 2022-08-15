@@ -1,0 +1,72 @@
+.unit {
+  font-family: 'Overpass Mono', monospace;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+/* underscored */
+
+.unit.underscored {
+  background: #FFFFFF;
+  color: #000000D6;
+}
+
+.unit .unit.underscored {
+  background: #EAEAEA;
+  color: #000000D6;
+}
+
+.unit.underscored {
+  text-decoration-style: solid;
+  text-decoration-thickness: 3px;
+  text-decoration-line: underline;
+}
+
+.unit.underscored.red {
+  text-decoration-color: #F92672;
+}
+
+.unit.underscored.blue {
+  text-decoration-color: #66D9EF;
+}
+
+.unit.underscored.green {
+  text-decoration-color: #A6E22E;
+}
+
+/* underscored nesting */
+
+.unit.filled.underscored .unit.filled.underscored {
+  background: #EAEAEA;
+  color: #000000D6;
+}
+
+/* filled */
+
+.unit.filled.white {
+  background: #FFFFFF;
+  color: #000000D6;
+}
+
+.unit.filled.red {
+  background: linear-gradient(35deg, #F150A3, #E90C31);
+  color: #FFFFFFEA;
+}
+
+.unit.filled.blue {
+  background: linear-gradient(35deg, #29BEDC, #517AED);
+  color: #FFFFFFEA;
+}
+
+.unit.filled.green {
+  background: linear-gradient(35deg, #6CF57E, #9ADB18);
+  color: #FFFFFFEA;
+}
+
+/* filled nesting */
+
+.unit.filled.white .unit.filled.white {
+  background: #EAEAEA;
+  color: #000000D6;
+}

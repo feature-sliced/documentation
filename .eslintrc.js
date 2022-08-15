@@ -4,8 +4,14 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    extends: ["@eslint-kit/patch", "@eslint-kit/base", "@eslint-kit/react", "@eslint-kit/prettier"],
-    parser: "babel-eslint",
+    extends: [
+        "@eslint-kit/patch",
+        "@eslint-kit/base",
+        "@eslint-kit/react",
+        "@eslint-kit/prettier",
+        "@eslint-kit/typescript",
+    ],
+    parser: "@typescript-eslint/parser",
     rules: {
         // Sometime harmful =(
         "react/jsx-props-no-spreading": 0,
@@ -38,7 +44,7 @@ module.exports = {
                     ["@docusaurus", "./node_modules/@docusaurus/core/lib/client/exports"],
                     ["@theme", "./node_modules/@docusaurus/theme-classic/src/theme"],
                 ],
-                extensions: [".js", ".jsx", ".json"],
+                extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
             },
         },
     },

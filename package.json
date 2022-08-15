@@ -28,17 +28,22 @@
         "@docusaurus/preset-classic": "2.0.0-beta.8",
         "@fontsource/overpass": "^4.5.4",
         "@fontsource/ubuntu": "^4.5.4",
+        "@mdi/js": "^7.0.96",
+        "@mdi/react": "^1.6.1",
         "@mdx-js/react": "^1.6.21",
         "@svgr/webpack": "^5.5.0",
         "clsx": "^1.1.1",
         "docusaurus-plugin-hotjar": "^0.0.2",
         "dotenv": "^10.0.0",
+        "effector": "^22.3.0",
+        "effector-react": "^22.1.6",
         "file-loader": "^6.2.0",
         "js-cookie": "^3.0.1",
         "picocolors": "^1.0.0",
         "react": "^17.0.1",
         "react-cookie-consent": "^6.4.1",
         "react-dom": "^17.0.1",
+        "react-use": "^17.4.0",
         "sha1": "^1.1.1",
         "sharp": "^0.29.3",
         "superstruct": "^0.15.3",
@@ -58,10 +63,14 @@
         ]
     },
     "devDependencies": {
+        "@docusaurus/module-type-aliases": "^2.0.1",
         "@eslint-kit/eslint-config-base": "4.1.0",
         "@eslint-kit/eslint-config-patch": "^1.0.0",
         "@eslint-kit/eslint-config-prettier": "3.0.0",
         "@eslint-kit/eslint-config-react": "^3.0.0",
+        "@eslint-kit/eslint-config-typescript": "^5.2.0",
+        "@tsconfig/docusaurus": "^1.0.6",
+        "@typescript-eslint/parser": "^5.33.0",
         "all-contributors-cli": "^6.20.0",
         "babel-eslint": "10.1.0",
         "docusaurus-plugin-sass": "^0.2.1",
@@ -72,6 +81,7 @@
         "stylelint": "^13.13.1",
         "stylelint-config-recess-order": "^2.4.0",
         "stylelint-config-recommended": "^5.0.0",
-        "stylelint-config-standard": "^22.0.0"
+        "stylelint-config-standard": "^22.0.0",
+        "typescript": "^4.7.4"
     }
 }

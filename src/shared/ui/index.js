@@ -2,3 +2,4 @@
 export * from "./card";
 export * from "./section";
 export * from "./table";
+export { MaterialBooleanButton } from "./material-boolean-button";

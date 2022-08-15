@@ -1,0 +1,78 @@
+/* container */
+
+.container {
+  --size-cell: 40px;
+  --size-gap: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-gap);
+}
+
+/* unit */
+
+.unit-patch {
+  font-size: 1rem;
+}
+
+/* layer */
+
+.layer {
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  transition: flex-basis 0.25s ease-in-out;
+}
+
+.layer:not(.expanded) {
+  flex: 0 0 var(--size-cell);
+}
+.layer.expanded {
+  flex: 0 0 calc(var(--size-cell) * 2 + var(--size-gap));
+}
+
+.layer > .top {
+  flex: 0 0 var(--size-cell);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.top > .button-patch {
+  position: absolute;
+  left: var(--size-gap);
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.layer > .bottom {
+  flex: 0 0 calc(var(--size-cell) + var(--size-gap));
+  padding: 0 var(--size-gap) var(--size-gap) var(--size-gap);
+
+  display: flex;
+  justify-content: center;
+  gap: var(--size-gap);
+}
+
+.layer:not(.expanded) > .bottom {
+  pointer-events: none;
+}
+.layer.expanded > .bottom {
+  pointer-events: auto;
+}
+
+/* slice */
+
+.slice {
+  flex: 1 1 auto;
+  padding: 0 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

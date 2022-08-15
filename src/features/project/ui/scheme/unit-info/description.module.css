@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  color: #FFFFFFEA;
+  font-family: 'Overpass', sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.description {
+
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.unit-patch {
+  display: inline-block;
+  word-break: break-word;
+
+  padding: 4px;
+}

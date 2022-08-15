@@ -1,0 +1,61 @@
+/* button */
+
+.button {
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  color: currentColor;
+
+  border: none;
+  background: none;
+  appearance: none;
+}
+
+.button:not(.enabled) {
+  opacity: 0.54;
+}
+.button.enabled {
+  opacity: 0.92;
+  cursor: pointer;
+}
+
+/* icons */
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  translate: -50% -50%;
+
+  transition-property: rotate, opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+}
+
+.icon-off {}
+
+.button:not(.active) > .icon-off {
+  opacity: 1;
+  rotate: 0;
+}
+.button.active > .icon-off {
+  opacity: 0;
+  rotate: 90deg;
+}
+
+.icon-on {}
+
+.button:not(.active) > .icon-on {
+  opacity: 0;
+  rotate: -90deg;
+}
+.button.active > .icon-on {
+  opacity: 1;
+  rotate: 0;
+}
