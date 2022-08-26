@@ -116,4 +116,9 @@ export const companies = [
         src: "befree.svg",
         alt: "befree",
     },
+    {
+        url: "https://www.softcery.com/",
+        src: "softcery.png",
+        alt: "Softcery",
+    },
 ];
