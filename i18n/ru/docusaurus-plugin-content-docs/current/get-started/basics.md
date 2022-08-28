@@ -91,7 +91,7 @@ sidebar_position: 1
     |   ...                     #
     |                           #
     ├── widgets/                # Layer: Виджеты
-    |   ├── {some-feature}/     #     Slice: (н-р виджет Header)
+    |   ├── {some-widget}/      #     Slice: (н-р виджет Header)
     |   |   ├── lib/            #         Segment: Инфраструктурная-логика (helpers/utils)
     |   |   ├── model/          #         Segment: Бизнес-логика
     |   |   └── ui/             #         Segment: UI-логика
