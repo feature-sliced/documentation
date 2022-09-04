@@ -1,0 +1,47 @@
+.root {
+    /* Protected from dark mode (and flickering) */
+    color: #1c1e21;
+    background: #ffffff;
+
+    &Container {
+        width: 100%;
+        padding: 0 1rem;
+        overflow: hidden;
+    }
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    filter: grayscale(1);
+    opacity: 0.8;
+    transition: 0.25s;
+
+    &:hover {
+        filter: grayscale(0);
+        opacity: 1;
+    }
+}
+
+.image {
+    height: 50px;
+}
+
+.addMe {
+    width: 100%;
+    padding-top: 40px;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .item {
+        margin: 0 10px;
+    }
+
+    .image {
+        height: 20px;
+    }
+}
