@@ -1,5 +1,10 @@
+/* Protected from dark mode (and flickering) */
+.root {
+    color: #1c1e21;
+    background: #ffffff;
+}
 
-.companies {
+.content {
     --logoCardSize: 150px;
     --logoCardGap: 3rem;
 
@@ -8,37 +13,31 @@
     grid-gap: var(--logoCardGap);
     width: 100%;
     padding: 0 5% 40px 5%;
+}
 
-    /* FIXME: fix later */
-    &Item {
-        align-self: center;
-        transition: 0.25s;
-
-        &:hover {
-            opacity: 0.7;
-        }
-    }
-
-    &ItemImg {
-        width: 100%;
-    }
-
-    &Subtitle {
-        width: 100%;
-        font-size: 12px;
-        font-style: italic;
-        text-align: center;
-    }
-
-    /* Protected from dark mode (and flickering) */
-    &Container {
-        color: #1c1e21;
-        background: #ffffff;
+/* FIXME: fix later */
+.item {
+    align-self: center;
+    transition: 0.25s;
+    
+    &:hover {
+        opacity: 0.7;
     }
 }
 
+.image {
+    width: 100%;
+}
+
+.addMe {
+    width: 100%;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+}
+
 @media screen and (max-width: 966px) {
-    .companies {
+    .content {
         --logoCardSize: 150px;
         --logoCardGap: 1rem;
     }

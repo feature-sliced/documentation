@@ -8,21 +8,18 @@ import styles from "./styles.module.scss";
 
 export const Companies = () => {
     return (
-        <Section
-            title={translate({ id: "pages.home.companies.using" })}
-            className={styles.companiesContainer}
-        >
-            <div className={styles.companies}>
+        <Section title={translate({ id: "pages.home.companies.using" })} className={styles.root}>
+            <div className={styles.content}>
                 {companies.map(({ url, src, alt }) => (
                     <a
                         key={src}
-                        className={styles.companiesItem}
+                        className={styles.item}
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         <img
-                            className={styles.companiesItemImg}
+                            className={styles.image}
                             // It's utility, not hook =)
                             src={getBaseUrl(`img/companies/${src}`)}
                             title={alt}
@@ -31,7 +28,7 @@ export const Companies = () => {
                     </a>
                 ))}
             </div>
-            <span className={styles.companiesSubtitle}>
+            <span className={styles.addMe}>
                 {translate({ id: "pages.home.companies.add_me" })}{" "}
                 <a
                     href="https://github.com/feature-sliced/documentation/issues/131"
