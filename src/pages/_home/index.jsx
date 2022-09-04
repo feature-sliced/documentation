@@ -1,6 +1,5 @@
 import React from "react";
-// It's utility, not hook =)
-import getBaseUrl from "@docusaurus/useBaseUrl";
+
 // eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
 // eslint-disable-next-line import/no-unresolved
@@ -11,7 +10,8 @@ import { Card, Section } from "@site/src/shared/ui";
 import imgScheme from "@site/static/img/visual_schema.jpg";
 // NOTE: Locate at index before of specific route-mapping while Node/SSR building
 // "_" for excluding file from routing
-import { features, concepts, companies } from "./_config";
+import { features, concepts } from "./_config";
+import { Companies } from "./companies";
 import styles from "./styles.module.scss";
 
 export default function HomePage() {
@@ -46,40 +46,7 @@ export default function HomePage() {
                         alt="feature-sliced-scheme,themed--scheme"
                     />
                 </Section>
-                <Section
-                    title={translate({ id: "pages.home.companies.using" })}
-                    className={styles.companiesContainer}
-                >
-                    <div className={styles.companies}>
-                        {companies.map(({ url, src, alt }) => (
-                            <a
-                                key={src}
-                                className={styles.companiesItem}
-                                href={url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <img
-                                    className={styles.companiesItemImg}
-                                    // It's utility, not hook =)
-                                    src={getBaseUrl(`img/companies/${src}`)}
-                                    title={alt}
-                                    alt={alt}
-                                />
-                            </a>
-                        ))}
-                    </div>
-                    <span className={styles.companiesSubtitle}>
-                        {translate({ id: "pages.home.companies.add_me" })}{" "}
-                        <a
-                            href="https://github.com/feature-sliced/documentation/issues/131"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {translate({ id: "pages.home.companies.tell_us" })}
-                        </a>
-                    </span>
-                </Section>
+                <Companies />
             </main>
         </Layout>
     );
