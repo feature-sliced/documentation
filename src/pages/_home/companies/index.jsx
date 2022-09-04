@@ -12,7 +12,7 @@ export const Companies = () => {
         <Section
             title={translate({ id: "pages.home.companies.using" })}
             className={styles.root}
-            containerClass="container--fluid padding-horiz--md"
+            containerClass={styles.rootContainer}
         >
             <Marquee pauseOnHover>
                 {companies.map(({ url, src, alt }) => (
@@ -24,10 +24,10 @@ export const Companies = () => {
                         rel="noopener noreferrer"
                     >
                         <img
+                            className={styles.image}
                             src={getBaseUrl(`img/companies/${src}`)}
                             title={alt}
                             alt={alt}
-                            height={50}
                         />
                     </a>
                 ))}

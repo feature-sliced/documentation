@@ -1,22 +1,16 @@
-/* Protected from dark mode (and flickering) */
 .root {
+    /* Protected from dark mode (and flickering) */
     color: #1c1e21;
     background: #ffffff;
-}
 
-.content {
-    // --logoCardSize: 150px;
-    // --logoCardGap: 3rem;
-
-    // display: grid;
-    // grid-template-columns: repeat(auto-fill, minmax(var(--logoCardSize), 1fr));
-    // grid-gap: var(--logoCardGap);
-    // width: 100%;
-    // padding: 0 5% 40px 5%;
+    &Container {
+        width: 100%;
+        overflow: hidden;
+        padding: 0 1rem;
+    }
 }
 
 .item {
-    // border: 1px solid red;
     display: flex;
     align-items: center;
     transition: 0.25s;
@@ -30,6 +24,10 @@
     }
 }
 
+.image {
+    height: 50px;
+}
+
 .addMe {
     padding-top: 40px;
     width: 100%;
@@ -38,9 +36,12 @@
     text-align: center;
 }
 
-// @media screen and (max-width: 966px) {
-//     .content {
-//         --logoCardSize: 150px;
-//         --logoCardGap: 1rem;
-//     }
-// }
+@media screen and (max-width: 800px) {
+    .item {
+        margin: 0 10px;
+    }
+
+    .image {
+        height: 20px;
+    }
+}
