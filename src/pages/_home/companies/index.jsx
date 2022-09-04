@@ -2,14 +2,19 @@ import React from "react";
 // It's utility, not hook =)
 import getBaseUrl from "@docusaurus/useBaseUrl";
 import { translate } from "@docusaurus/Translate";
+import Marquee from "react-fast-marquee";
 import { Section } from "@site/src/shared/ui";
 import { companies } from "./_config";
 import styles from "./styles.module.scss";
 
 export const Companies = () => {
     return (
-        <Section title={translate({ id: "pages.home.companies.using" })} className={styles.root}>
-            <div className={styles.content}>
+        <Section
+            title={translate({ id: "pages.home.companies.using" })}
+            className={styles.root}
+            containerClass="container--fluid padding-horiz--md"
+        >
+            <Marquee pauseOnHover>
                 {companies.map(({ url, src, alt }) => (
                     <a
                         key={src}
@@ -19,15 +24,14 @@ export const Companies = () => {
                         rel="noopener noreferrer"
                     >
                         <img
-                            className={styles.image}
-                            // It's utility, not hook =)
                             src={getBaseUrl(`img/companies/${src}`)}
                             title={alt}
                             alt={alt}
+                            height={50}
                         />
                     </a>
                 ))}
-            </div>
+            </Marquee>
             <span className={styles.addMe}>
                 {translate({ id: "pages.home.companies.add_me" })}{" "}
                 <a

@@ -5,40 +5,42 @@
 }
 
 .content {
-    --logoCardSize: 150px;
-    --logoCardGap: 3rem;
+    // --logoCardSize: 150px;
+    // --logoCardGap: 3rem;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--logoCardSize), 1fr));
-    grid-gap: var(--logoCardGap);
-    width: 100%;
-    padding: 0 5% 40px 5%;
+    // display: grid;
+    // grid-template-columns: repeat(auto-fill, minmax(var(--logoCardSize), 1fr));
+    // grid-gap: var(--logoCardGap);
+    // width: 100%;
+    // padding: 0 5% 40px 5%;
 }
 
-/* FIXME: fix later */
 .item {
-    align-self: center;
+    // border: 1px solid red;
+    display: flex;
+    align-items: center;
     transition: 0.25s;
+    margin: 0 20px;
+    opacity: 0.8;
+    filter: grayscale(1.0);
     
     &:hover {
-        opacity: 0.7;
+        filter: grayscale(0.0);
+        opacity: 1.0;
     }
 }
 
-.image {
-    width: 100%;
-}
-
 .addMe {
+    padding-top: 40px;
     width: 100%;
     font-size: 12px;
     font-style: italic;
     text-align: center;
 }
 
-@media screen and (max-width: 966px) {
-    .content {
-        --logoCardSize: 150px;
-        --logoCardGap: 1rem;
-    }
-}
+// @media screen and (max-width: 966px) {
+//     .content {
+//         --logoCardSize: 150px;
+//         --logoCardGap: 1rem;
+//     }
+// }
