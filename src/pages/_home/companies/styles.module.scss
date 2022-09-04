@@ -5,22 +5,22 @@
 
     &Container {
         width: 100%;
-        overflow: hidden;
         padding: 0 1rem;
+        overflow: hidden;
     }
 }
 
 .item {
     display: flex;
     align-items: center;
-    transition: 0.25s;
     margin: 0 20px;
+    filter: grayscale(1);
     opacity: 0.8;
-    filter: grayscale(1.0);
-    
+    transition: 0.25s;
+
     &:hover {
-        filter: grayscale(0.0);
-        opacity: 1.0;
+        filter: grayscale(0);
+        opacity: 1;
     }
 }
 
@@ -29,8 +29,8 @@
 }
 
 .addMe {
-    padding-top: 40px;
     width: 100%;
+    padding-top: 40px;
     font-size: 12px;
     font-style: italic;
     text-align: center;
