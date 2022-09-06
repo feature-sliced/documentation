@@ -71,6 +71,16 @@ export const examples = [
         tech: ["angular", "rxjs"],
     },
     {
+        title: "Todo App (React)",
+        description: "QuickStart todo-app example for React developers (Redux version)",
+        website: "https://kxn7cx-3000.preview.csb.app/",
+        source: "https://github.com/EliseyMartynov/fs-rtk",
+        preview: require("./img/todo-app-react.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2022-09-06",
+        tech: ["react", "redux", "antd"],
+    },
+    {
         title: "Sharead (demo)",
         description: "Book Marketplace",
         website: "https://dev-sharead.netlify.app/",
