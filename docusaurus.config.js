@@ -264,6 +264,37 @@ const plugins = [
     process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
     // FIXME: Docusaurus Open Graph Plugin Experimental.
     process.env.OG_EXP && DOCUSAURUS_PLUGIN_OG,
+    [
+        "@jlvandenhout/docusaurus-plugin-docs-editor",
+        {
+            // REQUIRED - The base route to the editor
+            route: "edit",
+            docs: {
+                // The username that owns the docs, defaults to siteConfig.organizationName
+                owner: "feature-sliced",
+                // The repository that contains the docs, defaults to siteConfig.projectName
+                repo: "documentation",
+                // The path to the docs section in your repository
+                path: "i18n/ru/docusaurus-plugin-content-docs/current",
+                // path: "website/i18n/ru/docusaurus-plugin-content-docs/current",
+            },
+            static: {
+                // The path to the static content section in your repository
+                path: "static",
+            },
+
+            // GitHub OAuth Application settings
+            github: {
+                // REQUIRED - The Client ID you got from the GitHub OAuth App setup
+                clientId: "ff686c80886e4493dcdb",
+                // REQUIRED - The plugin will append the authorization code to this URL
+                tokenUrl: "http://localhost:9999/authenticate/",
+                // tokenUrl: "https://polar-falls-16277.herokuapp.com/authenticate/",
+                // // The request method to use (GET or POST), defaults to GET
+                method: "GET",
+            },
+        },
+    ],
 ].filter(Boolean);
 
 /** @type {Config["themeConfig"]["algolia"]} */
