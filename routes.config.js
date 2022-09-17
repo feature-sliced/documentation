@@ -1,45 +1,8 @@
 // Custom "not-docusaurus-related" config for routes setup
 // @see https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
 
-// FIXME: Clean up urls format (with new index-pages)
+// FIXME: move to root and remove "docs" redundant prefix later
 const SECTIONS = {
-    INTRO: {
-        shortPath: "/docs",
-        fullPath: "/docs/intro",
-    },
-    GET_STARTED: {
-        shortPath: "/docs/get-started",
-        fullPath: "/docs/get-started",
-    },
-    CONCEPTS: {
-        shortPath: "/docs/concepts",
-        fullPath: "/docs/concepts",
-    },
-    GUIDES: {
-        shortPath: "/docs/guides",
-        fullPath: "/docs/guides",
-    },
-    REFERENCE: {
-        shortPath: "/docs/reference",
-        fullPath: "/docs/reference",
-    },
-    LAYERS: {
-        shortPath: "/docs/reference/layers",
-        fullPath: "/docs/reference/layers/overview",
-    },
-    ABOUT: {
-        shortPath: "/docs/about",
-        fullPath: "/docs/about",
-    },
-    COMMUNITY: {
-        shortPath: "/docs/community",
-        fullPath: "/community",
-    },
-    EXAMPLES: {
-        shortPath: "/examples",
-        fullPath: "/examples",
-    },
-    // FIXME: Temp, use later root "/" folders without "docs" redundant prefix
     BRANDING: {
         shortPath: "/branding",
         fullPath: "/docs/branding",
@@ -55,11 +18,6 @@ const LEGACY_ROUTES = [
         group: "🚀 Get Started",
         details: "Simplified and merged",
         children: [
-            {
-                title: "Overview",
-                from: "/docs/get-started/overview",
-                to: "/docs/intro",
-            },
             {
                 title: "QuickStart",
                 from: "/docs/get-started/tutorial/quick-start",
@@ -253,13 +211,10 @@ const LEGACY_ROUTES_REDIRECTS = LEGACY_ROUTES.reduce((acc, group) => {
 
 // FIXME: temp, resolve later
 // @returns { from, to }[]
-const SECTIONS_REDIRECTS = Object.values(SECTIONS)
-    // Custom filtering
-    .filter(({ shortPath, fullPath }) => shortPath !== fullPath)
-    .map(({ shortPath, fullPath }) => ({
-        from: shortPath,
-        to: fullPath,
-    }));
+const SECTIONS_REDIRECTS = Object.values(SECTIONS).map(({ shortPath, fullPath }) => ({
+    from: shortPath,
+    to: fullPath,
+}));
 
 // !!! FIXME: refactor later!
 const _TOTAL_ROUTES = [
@@ -296,7 +251,7 @@ const _TOTAL_ROUTES = [
     "/docs/concepts/public-api",
     "/docs/concepts/signals",
     "/docs/get-started",
-    "/docs/get-started/basics",
+    "/docs/get-started/overview",
     "/docs/get-started/cheatsheet",
     "/docs/get-started/faq",
     "/docs/get-started/quick-start",
@@ -319,7 +274,7 @@ const _TOTAL_ROUTES = [
     "/docs/guides/migration/from-legacy",
     "/docs/guides/migration/from-v1",
     "/docs/guides/tech/with-nextjs",
-    "/docs/intro",
+    "/docs/",
     "/docs/privacy",
     "/docs/reference",
     "/docs/reference/glossary",
@@ -343,7 +298,6 @@ const I18N_REDIRECTS = _TOTAL_ROUTES.map((route) => ({
 const REDIRECTS = [...SECTIONS_REDIRECTS, ...LEGACY_ROUTES_REDIRECTS, ...I18N_REDIRECTS];
 
 module.exports = {
-    SECTIONS,
     LEGACY_ROUTES,
     REDIRECTS,
 };

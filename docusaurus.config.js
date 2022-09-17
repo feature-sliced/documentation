@@ -1,6 +1,6 @@
 require("dotenv").config();
 const path = require("path");
-const { REDIRECTS, SECTIONS, LEGACY_ROUTES } = require("./routes.config");
+const { REDIRECTS, LEGACY_ROUTES } = require("./routes.config");
 
 const DOMAIN = "https://feature-sliced.design/";
 const GITHUB_ORG = "https://github.com/feature-sliced";
@@ -32,60 +32,23 @@ const navbar = {
     items: [
         // left
         {
-            type: "dropdown",
             label: "📖 Docs",
-            position: "left",
-            items: [
-                {
-                    label: "🔎 Intro",
-                    to: SECTIONS.INTRO.fullPath,
-                    activeBasePath: SECTIONS.INTRO.fullPath,
-                },
-                {
-                    label: "🚀 Get Started",
-                    to: SECTIONS.GET_STARTED.shortPath,
-                    activeBasePath: SECTIONS.GET_STARTED.shortPath,
-                },
-                {
-                    label: "🎯 Guides",
-                    to: SECTIONS.GUIDES.shortPath,
-                    activeBasePath: SECTIONS.GUIDES.shortPath,
-                },
-                {
-                    label: "🧩 Concepts",
-                    to: SECTIONS.CONCEPTS.shortPath,
-                    activeBasePath: SECTIONS.CONCEPTS.shortPath,
-                },
-                {
-                    label: "📚 Reference",
-                    to: SECTIONS.REFERENCE.shortPath,
-                    activeBasePath: SECTIONS.REFERENCE.shortPath,
-                },
-                {
-                    label: "🍰 About",
-                    to: SECTIONS.ABOUT.shortPath,
-                    activeBasePath: SECTIONS.ABOUT.shortPath,
-                },
-                {
-                    label: "💫 Community",
-                    to: SECTIONS.COMMUNITY.fullPath,
-                    activeBasePath: SECTIONS.COMMUNITY.fullPath,
-                },
-            ],
-        },
-        {
-            label: "🛠 Examples",
-            to: SECTIONS.EXAMPLES.fullPath,
+            to: "/docs",
             position: "left",
         },
         {
-            label: "❔ Help",
-            to: "/nav",
+            label: "💫 Community",
+            to: "/community",
             position: "left",
         },
         {
             label: "📝 Blog",
             to: "/blog",
+            position: "left",
+        },
+        {
+            label: "🛠 Examples",
+            to: "/examples",
             position: "left",
         },
         // right
@@ -145,7 +108,9 @@ const footer = {
         {
             title: "Specs",
             items: [
-                { label: "Documentation", to: "/docs/intro" },
+                { label: "Documentation", to: "/docs" },
+                { label: "Community", to: "/community" },
+                { label: "Help", to: "/nav" },
                 { label: "Discussions", to: `${GITHUB_DOCS}/discussions` },
             ],
         },
@@ -297,6 +262,8 @@ const algolia = {
     // contextualSearch: true,
 };
 
+const NBSP = "&nbsp;";
+
 /** @type {Config["themeConfig"]["announcementBar"]} */
 const announcementBar = {
     id: "bar", // Any value that will identify this message.
@@ -307,7 +274,11 @@ const announcementBar = {
     // content: `📚 Documentation refinements are in progress. <a href="https://github.com/feature-sliced/documentation/issues/263" target="_blank" rel="noreferrer noopener">Stay tuned for updates</a> and <a href="https://forms.gle/nsYua6bMMG5iBB3v7" target="_blank" rel="noreferrer noopener">share your feedback</a>`,
     // backgroundColor: "#5c9cb5", // As primary theme
     // backgroundColor: "#0367d2",
-    content: `🍰 We're <a href="/blog/rebranding-stable">rebranding!</a>&nbsp;&nbsp;|&nbsp;&nbsp;☮️ Stop the war in Ukraine! #NoWar`, // #nowar
+    content: [
+        `🍰 We're <a href="/blog/rebranding-stable">rebranding!</a>`,
+        `❔<a href="/nav">Help</a>`,
+        `☮️ Stop the war in Ukraine! #NoWar`, // #nowar
+    ].join(`${NBSP + NBSP}|${NBSP + NBSP}`),
     backgroundColor: "#000000", // #nowar
     textColor: "#fff", // Defaults to `#000`.
     isCloseable: false, // Defaults to `true`.

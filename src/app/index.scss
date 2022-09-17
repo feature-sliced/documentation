@@ -189,6 +189,7 @@ mark {
 }
 
 /* I love adaptive styles... */
+/* FIXME: add unified adaptive breakpoints */
 @media (max-width: 1080px) {
     .navbar__item {
         padding: var(--ifm-navbar-item-padding-vertical) 0.25rem;
@@ -198,6 +199,11 @@ mark {
 @media (max-width: 996px) {
     .navbar__brand .navbar__title {
         display: block;
+    }
+}
+@media (max-width: 600px) {
+    [role="banner"] {
+        font-size: 1.0rem; // #nowar
     }
 }
 
