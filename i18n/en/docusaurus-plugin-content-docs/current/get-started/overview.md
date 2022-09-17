@@ -159,14 +159,9 @@ It's advised to refrain from adding new large entities while refactoring or refa
 [refs-public-api]: /docs/concepts/public-api
 [refs-isolation]: /docs/concepts/cross-communication
 [refs-needs-driven]: /docs/concepts/needs-driven
-[refs-adaptability]: /docs/concepts/naming-adaptability
 
 [refs-splitting]: /docs/concepts/app-splitting
-[refs-splitting-layers]: /docs/concepts/app-splitting#group-layers
-[refs-splitting-slices]: /docs/concepts/app-splitting#group-slices
-[refs-splitting-segments]: /docs/concepts/app-splitting#group-segments
 
 [refs-guides]: /docs/guides
-[refs-low-coupling]: /docs/concepts/low-coupling
 [refs-examples]: /examples
 [refs-clean-architecture]: https://medium.com/codex/clean-architecture-for-dummies-df6561d42c94

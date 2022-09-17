@@ -117,6 +117,13 @@ iframe {
     border-radius: 16px;
 }
 
+mark {
+    padding: 2px;
+    color: #ffffff;
+    background-color: var(--ifm-color-primary);
+    border-radius: 4px;
+}
+
 /* media */
 
 /* TODO: connect as file */
@@ -237,7 +244,7 @@ a[download] {
         }
     }
 
-    &__logo {
-        margin-right: 0;
-    }
+    // &__logo {
+    //     margin-right: 0;
+    // }
 }
