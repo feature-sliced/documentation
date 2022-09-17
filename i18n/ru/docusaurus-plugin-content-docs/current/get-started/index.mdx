@@ -16,22 +16,22 @@ pagination_prev: intro
 
 ## Главное {#main}
 
-import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
 import { RocketOutlined, BuildOutlined, SettingOutlined } from "@ant-design/icons";
 
-<Row
+<NavCard
     title="Обзор"
     description="Краткий обзор методологии, ее концепций и применения"
     to="/docs/get-started/basics"
     Icon={SettingOutlined}
 />
-<Row
+<NavCard
     title="Быстрый старт"
     description="Вводный туториал по применению методологии"
     to="/docs/get-started/quick-start"
     Icon={RocketOutlined}
 />
-<Row
+<NavCard
     title="Памятка по декомпозиции"
     description="Памятка по декомпозиции логики с примерами и критериями"
     to="/docs/get-started/cheatsheet"

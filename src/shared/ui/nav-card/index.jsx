@@ -6,10 +6,10 @@ import { ga } from "@site/src/shared/lib/ga";
 import styles from "./styles.module.scss";
 
 /**
- * Row card for linking
+ * NavCard for linking
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
  */
-export const Row = (props) => {
+export const NavCard = (props) => {
     const { title, description, to, Icon, tags, className, disabled } = props;
     const handleClick = useCallback(() => {
         ga.sendEvent({
@@ -49,4 +49,4 @@ const RowIcon = ({ Icon }) => {
     return <Icon className={styles.icon} />;
 };
 
-export default Row;
+export default NavCard;

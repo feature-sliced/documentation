@@ -15,28 +15,28 @@ slug: /
 
 ## Главное {#main}
 
-import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
 import { StarOutlined, SearchOutlined, TeamOutlined, VerifiedOutlined } from "@ant-design/icons";
 
-<Row 
+<NavCard
     title="Awesome Ресурсы" 
     description="Подборка интересных видео, статей и тулкита"
     to="https://github.com/feature-sliced/awesome"
     Icon={StarOutlined}
 />
-<Row 
+<NavCard
     title="Команда" 
     description="Core-team, Чемпионы, Контрибьюторы, Компании"
     to="/community/team"
     Icon={TeamOutlined}
 />
-<Row 
+<NavCard
     title="Брендбук" 
     description="Рекомендации по использованию брендовой айдентики FSD"
     to="/docs/branding"
     Icon={VerifiedOutlined}
 />
-<Row 
+<NavCard
     title="Контрибьютинг" 
     description="Как начать, Воркфлоу, Помощь и содействие"
     to="#"

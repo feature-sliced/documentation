@@ -16,22 +16,22 @@ pagination_prev: get-started/index
 
 ## Главное {#main}
 
-import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
 import { ToolOutlined, ImportOutlined } from "@ant-design/icons";
 
-<Row 
+<NavCard
     title="Примеры применения" 
     description="Практические примеры по применению методологии"
     to="/docs/guides/examples"
     Icon={ToolOutlined}
 />
-<Row 
+<NavCard
     title="Миграция с V1" 
     description="Гайд по миграции и сравнение с FeatureSlices (v1)"
     to="/docs/guides/migration/from-v1"
     Icon={ImportOutlined}
 />
-<Row 
+<NavCard
     title="Миграция с legacy" 
     description="Поэтапное внедрение практик в легаси-проекты"
     to="/docs/guides/migration/from-legacy"
