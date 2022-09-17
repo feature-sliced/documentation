@@ -39,7 +39,7 @@ function Version() {
                                 hrefTitle="Release Notes"
                             >
                                 <td>
-                                    <Link to="/docs/intro">Documentation</Link>
+                                    <Link to="/docs">Documentation</Link>
                                 </td>
                                 <td>
                                     <Link to="/docs/guides/migration/from-v1">
