@@ -7,6 +7,10 @@ const SECTIONS = {
         shortPath: "/branding",
         fullPath: "/docs/branding",
     },
+    MIGRATION: {
+        shortPath: "//docs/guides/migration",
+        fullPath: "/docs/guides/migration/from-legacy",
+    },
 };
 
 /**
