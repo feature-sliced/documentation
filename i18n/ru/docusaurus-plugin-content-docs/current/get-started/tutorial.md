@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Быстрый старт
+# Туториал
 
 Рассмотрим применение **Feature-Sliced Design** на примере TodoApp
 
