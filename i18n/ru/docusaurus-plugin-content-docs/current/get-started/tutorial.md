@@ -491,7 +491,7 @@ export const $tasksList = combine($tasks, (tasks) => Object.values(tasks));
 ```tsx title=pages/tasks-list/index.tsx
 import { useEffect } from "react";
 // Если чувствуете себя уверенно с @effector/reflect - можете сразу использовать его
-// В рамках quick-start некритично
+// В рамках туториала некритично
 import { useStore } from "effector";
 import { Layout, Row, Col, Typography, Spin, Empty } from "antd"; // ~ "shared/ui/{...}"
 
@@ -636,7 +636,7 @@ export const $tasksFiltered = combine(
 
 ```tsx title=features/tasks-filters/ui.tsx
 // Если чувствуете себя уверенно с @effector/reflect - можете сразу использовать его
-// В рамках quick-start некритично
+// В рамках туториала некритично
 import { useStore } from "effector";
 import { Radio } from "antd"; // ~ "shared/ui/radio"
 

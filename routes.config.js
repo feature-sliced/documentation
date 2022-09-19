@@ -8,7 +8,7 @@ const SECTIONS = {
         fullPath: "/docs/branding",
     },
     MIGRATION: {
-        shortPath: "//docs/guides/migration",
+        shortPath: "/docs/guides/migration",
         fullPath: "/docs/guides/migration/from-legacy",
     },
 };
@@ -23,9 +23,9 @@ const LEGACY_ROUTES = [
         details: "Simplified and merged",
         children: [
             {
-                title: "QuickStart",
-                from: "/docs/get-started/tutorial/quick-start",
-                to: "/docs/get-started/quick-start",
+                title: "Tutorial",
+                from: "/docs/get-started/quick-start",
+                to: "/docs/get-started/tutorial",
             },
             {
                 title: "Decompose Cheatsheet",
@@ -258,7 +258,7 @@ const _TOTAL_ROUTES = [
     "/docs/get-started/overview",
     "/docs/get-started/cheatsheet",
     "/docs/get-started/faq",
-    "/docs/get-started/quick-start",
+    "/docs/get-started/tutorial",
     "/docs/guides",
     "/docs/guides/examples",
     "/docs/guides/examples/auth",

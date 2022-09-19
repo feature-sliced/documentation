@@ -100,4 +100,4 @@ Otherwise , there is a risk of complicating the project's code base
 
 > *"Today, the feature can only be used on one page. Next week - on three. And in a month - it may be removed at all. We cannot predict the future, and we need to refrain from premature optimizations every time"*
 
-*See also the example from [quick-start](/docs/get-started/quick-start#normal-approach)*
+*See also the example from [tutorial](/docs/get-started/tutorial#normal-approach)*
