@@ -238,7 +238,7 @@ If there are variations, how best to place indents-welcome:)
 
 [refs-contributing]: CONTRIBUTING.md
 
-[refs-docs]: https://feature-sliced.design/docs/intro
+[refs-docs]: https://feature-sliced.design/docs
 
 [refs-motivation]: https://feature-sliced.design/docs/about/motivation
 [refs-motivation-why]: https://feature-sliced.design/docs/about/motivation#-почему-не-хватает-существующих-решений

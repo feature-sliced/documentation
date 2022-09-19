@@ -14,7 +14,7 @@ export function Header() {
                 <h1 className="hero__title">{siteConfig.title}</h1>
                 <p className="hero__subtitle">{translate({ id: "features.hero.tagline" })}</p>
                 <div className="button-group">
-                    <Link className="button button--primary button--lg" to="/docs/intro">
+                    <Link className="button button--primary button--lg" to="/docs">
                         {translate({ id: "features.hero.get_started" })}
                     </Link>
                     <Link className="button button--secondary button--lg" to="/examples">

@@ -5,7 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import { translate } from "@docusaurus/Translate";
 
-import { Row } from "@site/src/shared/ui/row";
+import { NavCard } from "@site/src/shared/ui/nav-card";
 import styles from "./styles.module.scss";
 
 const NavPage = () => {
@@ -37,7 +37,7 @@ const GroupItems = () => {
                     <p className={styles.groupDetails}>⚡️ {routesBatch.details}</p>
                     <div className={styles.groupItems}>
                         {routesBatch.children.map((route) => (
-                            <Row
+                            <NavCard
                                 key={route.from}
                                 className={styles.groupItemsRow}
                                 title={route.title}

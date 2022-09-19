@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Quick start
+# Tutorial
 
 Let's consider the application of **Feature-Sliced Design** on the example of TodoApp
 
@@ -493,7 +493,7 @@ export const $tasksList = combine($tasks, (tasks) => Object.values(tasks));
 ```tsx title=pages/tasks-list/index.tsx
 import { useEffect } from "react";
 // If you feel confident with @effector/reflect - can use it 
-// Within the quick-start non-critical 
+// Within the tutorial non-critical 
 import { useStore } from "effector";
 import { Layout, Row, Col, Typography, Spin, Empty } from "antd"; // ~ "shared/ui/{...}"
 
@@ -638,7 +638,7 @@ export const $tasksFiltered = combine(
 
 ```tsx title=features/tasks-filters/ui.tsx
 // If you feel confident with @effector/reflect, you can immediately use it
-// As part of quick-start uncritically
+// As part of tutorial uncritically
 import { useStore } from "effector";
 import { Radio } from "antd"; // ~ "shared/ui/radio"
 

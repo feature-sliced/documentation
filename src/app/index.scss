@@ -117,6 +117,13 @@ iframe {
     border-radius: 16px;
 }
 
+mark {
+    padding: 2px;
+    color: #ffffff;
+    background-color: var(--ifm-color-primary-neutral);
+    border-radius: 4px;
+}
+
 /* media */
 
 /* TODO: connect as file */
@@ -182,6 +189,8 @@ iframe {
 }
 
 /* I love adaptive styles... */
+
+/* FIXME: add unified adaptive breakpoints */
 @media (max-width: 1080px) {
     .navbar__item {
         padding: var(--ifm-navbar-item-padding-vertical) 0.25rem;
@@ -191,6 +200,12 @@ iframe {
 @media (max-width: 996px) {
     .navbar__brand .navbar__title {
         display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    [role="banner"] {
+        font-size: 1rem; // #nowar
     }
 }
 
@@ -237,7 +252,7 @@ a[download] {
         }
     }
 
-    &__logo {
-        margin-right: 0;
-    }
+    // &__logo {
+    //     margin-right: 0;
+    // }
 }

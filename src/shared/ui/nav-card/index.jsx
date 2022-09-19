@@ -6,11 +6,12 @@ import { ga } from "@site/src/shared/lib/ga";
 import styles from "./styles.module.scss";
 
 /**
- * Row card for linking
+ * NavCard for linking
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
+ * @param {import('./types').Props} props
  */
-export const Row = (props) => {
-    const { title, description, to, Icon, tags, className, disabled } = props;
+export const NavCard = (props) => {
+    const { title, description, to, Icon, tags, className, disabled, theme = "default" } = props;
     const handleClick = useCallback(() => {
         ga.sendEvent({
             category: ga.CATEGORIES.full,
@@ -22,7 +23,12 @@ export const Row = (props) => {
 
     return (
         <Link
-            className={clsx(styles.root, className, disabled && styles.rootDisabled)}
+            className={clsx(
+                styles.root,
+                className,
+                disabled && styles.rootDisabled,
+                styles[`${theme}Theme`],
+            )}
             to={to}
             onClick={handleClick}
         >
@@ -49,4 +55,4 @@ const RowIcon = ({ Icon }) => {
     return <Icon className={styles.icon} />;
 };
 
-export default Row;
+export default NavCard;

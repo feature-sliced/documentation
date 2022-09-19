@@ -15,24 +15,24 @@ pagination_prev: guides/index
 
 ## Главное {#main}
 
-import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
 import { UserSwitchOutlined, LayoutOutlined, FontSizeOutlined } from "@ant-design/icons";
 
-<Row
+<NavCard
     title="Авторизация"
     description="Декомпозиция логики авторизации"
     to="/docs/guides/examples/auth"
     Icon={UserSwitchOutlined}
     tags={["Viewer", "AuthForm", "ProfilePage", "AuthProvider", "AuthToken"]}
 />
-<Row
+<NavCard
     title="PageLayout"
     description="Основные кейсы с лейаутными виджетами страницы"
     to="/docs/guides/examples/page-layout"
     Icon={LayoutOutlined}
     tags={["Header", "Sidebar"]}
 />
-<Row
+<NavCard
     title="Типы"
     description="Где стоит располагать типы? Каких видов они бывают в контексте FSD?"
     to="/docs/guides/examples/types"

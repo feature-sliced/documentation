@@ -16,34 +16,34 @@ pagination_prev: guides/index
 
 ## Главное {#main}
 
-import Row from "@site/src/shared/ui/row/tmpl.mdx"
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
 import { BlockOutlined, ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
 
-<Row 
+<NavCard
     title="Разбиение приложения" 
     description="Использование слоисто-слайсовой структуры при декомпозиции логики"
     to="/docs/concepts/app-splitting"
     Icon={BlockOutlined}
 />
-<Row 
+<NavCard
     title="Public API" 
     description="Практики по проектированию устойчивых и удобных для интеграции модулей"
     to="/docs/concepts/public-api"
     Icon={ApiOutlined}
 />
-<Row 
+<NavCard
     title="Кросс-коммуникация" 
     description="Правила масштабируемого и эффективного взаимодействия модулей"
     to="/docs/concepts/cross-communication"
     Icon={ApartmentOutlined}
 />
-<Row 
+<NavCard
     title="Decouple entities" 
     description="Декомпозиция логики с выделением бизнес-сущностей"
     to="/docs/concepts/decouple-entities"
     Icon={PartitionOutlined}
 />
-<Row 
+<NavCard
     title="Десегментация" 
     description="Проблема излишней раздробленности логики"
     to="/docs/concepts/issues/desegmented"
