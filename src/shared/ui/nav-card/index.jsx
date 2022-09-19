@@ -8,9 +8,10 @@ import styles from "./styles.module.scss";
 /**
  * NavCard for linking
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
+ * @param {import('./types').Props} props
  */
 export const NavCard = (props) => {
-    const { title, description, to, Icon, tags, className, disabled } = props;
+    const { title, description, to, Icon, tags, className, disabled, theme = "default" } = props;
     const handleClick = useCallback(() => {
         ga.sendEvent({
             category: ga.CATEGORIES.full,
@@ -22,7 +23,12 @@ export const NavCard = (props) => {
 
     return (
         <Link
-            className={clsx(styles.root, className, disabled && styles.rootDisabled)}
+            className={clsx(
+                styles.root,
+                className,
+                disabled && styles.rootDisabled,
+                styles[`${theme}Theme`],
+            )}
             to={to}
             onClick={handleClick}
         >

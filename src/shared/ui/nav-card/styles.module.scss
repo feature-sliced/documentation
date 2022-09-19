@@ -46,6 +46,39 @@
     margin-bottom: 0;
 }
 
+
+// themes
+.miniTheme {
+    padding: 20px 30px;
+    
+    
+    & .title {
+        font-size: 1rem;
+    }
+    
+    & .details {
+        filter: grayscale(1);
+    }
+
+    &:hover .details {
+        filter: grayscale(0);
+    }
+}
+
+.primaryTheme {
+    background-color: var(--ifm-color-primary);
+    color: #fff;
+
+    &:hover {
+        color: #fff;
+        box-shadow: 0 2px 10px 0 var(--ifm-color-primary-neutral);
+    }
+}
+
+// dark-mode
 html[data-theme="dark"] .root {
-    background: var(--ifm-color-gray-900);
+    &.defaultTheme,
+    &.miniTheme {
+        background: var(--ifm-color-gray-900);
+    }
 }
