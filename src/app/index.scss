@@ -189,6 +189,7 @@ mark {
 }
 
 /* I love adaptive styles... */
+
 /* FIXME: add unified adaptive breakpoints */
 @media (max-width: 1080px) {
     .navbar__item {
@@ -201,9 +202,10 @@ mark {
         display: block;
     }
 }
+
 @media (max-width: 600px) {
     [role="banner"] {
-        font-size: 1.0rem; // #nowar
+        font-size: 1rem; // #nowar
     }
 }
 
