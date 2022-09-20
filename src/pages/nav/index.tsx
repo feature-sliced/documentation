@@ -31,7 +31,7 @@ const GroupItems = () => {
 
     return (
         <div>
-            {legacyRoutes.map((routesBatch) => (
+            {(legacyRoutes as any).map((routesBatch) => (
                 <div key={routesBatch.group} className={styles.group}>
                     <h3>{routesBatch.group}</h3>
                     <p className={styles.groupDetails}>⚡️ {routesBatch.details}</p>
@@ -61,7 +61,7 @@ const GroupItems = () => {
     );
 };
 
-const flattenFrom = (value) => {
+const flattenFrom = (value: string | string[]) => {
     if (typeof value === "string") return value;
     // => isArray
     return value.join("; ");

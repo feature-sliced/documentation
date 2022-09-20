@@ -10,7 +10,7 @@ export type Example = {
     title: string;
     description: string;
     preview: string;
-    version: 'v0' | 'v1' | 'feature-driven' | 'v2';
+    version: string;
     updatedAt: string;
     website?: string;
     source?: string;

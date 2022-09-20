@@ -9,7 +9,7 @@ type Props = {
     title: React.ReactNode;
     description: React.ReactNode;
     to: string;
-    Icon: string | any;
+    Icon?: string | any;
     tags?: string[];
     className?: string;
     disabled?: boolean;

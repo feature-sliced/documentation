@@ -1,3 +1,5 @@
+import type { Example } from "@site/src/entities/example";
+
 export const VERSIONS = {
     V0: "v0",
     V1: "v1",
@@ -20,7 +22,7 @@ export const VERSIONS = {
  *  - tech (e.g. used UIKit/state-management tech)
  * 3. Profit!
  */
-export const examples = [
+export const examples: Example[] = [
     {
         title: "Cardbox",
         description: "The best solutions from developers in one place",

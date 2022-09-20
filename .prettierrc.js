@@ -8,4 +8,5 @@ module.exports = {
     importOrder: ["^[./]"],
     trailingComma: "all",
     arrowParens: "always",
+    parser: "typescript",
 };

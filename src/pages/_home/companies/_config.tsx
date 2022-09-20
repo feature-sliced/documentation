@@ -1,9 +1,17 @@
+type Company = {
+    /* URL to your company website */
+    url: string;
+    /* Image path to your company logo */
+    src: string;
+    /* Name of your company */
+    alt: string;
+};
 /**
  * Companies using Feature-Sliced Design
  * @see https://github.com/feature-sliced/documentation/issues/131
  * @see static/img/companies
  */
-export const companies = [
+export const companies: Company[] = [
     {
         url: "https://redmadrobot.com/",
         src: "red_mad_robot.png",
