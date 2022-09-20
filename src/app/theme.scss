@@ -43,3 +43,9 @@
     --ifm-font-family-base: 'Ubuntu', system-ui, -apple-system, segoe ui, roboto, ubuntu, cantarell, noto sans, sans-serif, blinkmacsystemfont, 'Segoe UI', helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --ifm-heading-font-family: 'Overpass', var(--ifm-font-family-base);
 }
+
+// Restored values from old dark theme
+html[data-theme=dark] {
+    --ifm-background-color: #18191a;
+    --ifm-background-surface-color: #242526;   
+}
