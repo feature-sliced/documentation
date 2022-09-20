@@ -13,9 +13,6 @@ const EXP_COOKIE_KEY = "exp_flag";
  */
 export const DOC_FEEDBACK_WIDGET = "doc_feedback_widget";
 
-/**
- * @param {string} expFlag
- */
-export const hasExp = (expFlag) => {
+export const hasExp = (expFlag: string) => {
     return cookies.get(EXP_COOKIE_KEY, expFlag);
 };

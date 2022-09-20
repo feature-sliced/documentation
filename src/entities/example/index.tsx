@@ -1,12 +1,26 @@
 import React, { useCallback } from "react";
 import clsx from "clsx";
-// eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
 import { ga } from "@site/src/shared/lib/ga";
 import { date } from "@site/src/shared/lib/date";
 import styles from "./styles.module.scss";
 
-export function ExampleCard({ className, data }) {
+export type Example = {
+    title: string;
+    description: string;
+    preview: string;
+    version: string;
+    updatedAt: string;
+    website?: string;
+    source?: string;
+    tech?: string[];
+};
+type Props = {
+    className?: string;
+    data: Example;
+};
+
+export const ExampleCard: React.FC<Props> = ({ className, data }) => {
     const isNew = date.getDiffDays(new Date(data.updatedAt), new Date()) <= 14;
     const handleWebsiteClick = useCallback(() => {
         ga.sendEvent({
@@ -78,4 +92,4 @@ export function ExampleCard({ className, data }) {
             </div>
         </article>
     );
-}
+};

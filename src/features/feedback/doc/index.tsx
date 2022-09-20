@@ -10,7 +10,7 @@ import styles from "./styles.module.scss";
  * Send feedback to Google Analytics
  * @see https://developers.google.com/analytics/devguides/collection/analyticsjs/events
  */
-const sendFeedback = (value) => {
+const sendFeedback = (value: number) => {
     // For a while - send feedback in both format
     // Later will keep and maintain only one
     ga.sendEvent({
@@ -22,7 +22,7 @@ const sendFeedback = (value) => {
     ga.sendEvent({
         category: ga.CATEGORIES.mixed,
         action: "Docs:Helpful",
-        label: value,
+        label: String(value),
         value,
     });
     ga.sendEvent({
@@ -30,6 +30,10 @@ const sendFeedback = (value) => {
         label: window.location.href,
         value,
     });
+};
+
+type Props = {
+    className?: string;
 };
 
 /**
@@ -40,11 +44,11 @@ const sendFeedback = (value) => {
  * TODO: Add emojiis (Bad, OK, Good)
  * TODO: Add comment input
  */
-export const DocFeedback = ({ className }) => {
+export const DocFeedback: React.FC<Props> = ({ className }) => {
     const [feedbackSent, setFeedbackSent] = useState(false);
 
     const handleFeedback = useCallback(
-        (value) => () => {
+        (value: number) => () => {
             setFeedbackSent(true);
             sendFeedback(value);
         },

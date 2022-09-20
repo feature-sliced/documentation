@@ -5,8 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.scss";
 
-// FIXME: rename to `Hero`, because its not header
-export function Header() {
+export function Hero() {
     const { siteConfig } = useDocusaurusContext();
     return (
         <header className={clsx("hero hero--primary", styles.heroBanner)}>

@@ -1,3 +1,5 @@
+import type { Example } from "@site/src/entities/example";
+
 export const VERSIONS = {
     V0: "v0",
     V1: "v1",
@@ -17,10 +19,10 @@ export const VERSIONS = {
  *  - *updatetAt (date of adding on examples list, for highlighting first two weeks)
  *  - *version (FSD version which implemented in your codebase)
  *  - website, source (links for your site)
- *  - tech (used UI/state-management tech - '/entities/example/styles.module.scss')
+ *  - tech (e.g. used UIKit/state-management tech)
  * 3. Profit!
  */
-export const examples = [
+export const examples: Example[] = [
     {
         title: "Cardbox",
         description: "The best solutions from developers in one place",
@@ -50,7 +52,7 @@ export const examples = [
         updatedAt: "2021-07-05",
         tech: ["react", "effector", "antd"],
     },
-      {
+    {
         title: "Todo App (React+Redux)",
         description: "QuickStart todo-app example for React developers (Redux version)",
         website: "https://kxn7cx-3000.preview.csb.app/",

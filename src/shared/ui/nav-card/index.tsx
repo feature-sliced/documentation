@@ -5,12 +5,22 @@ import Link from "@docusaurus/Link";
 import { ga } from "@site/src/shared/lib/ga";
 import styles from "./styles.module.scss";
 
+type Props = {
+    title: React.ReactNode;
+    description: React.ReactNode;
+    to: string;
+    Icon?: string | any;
+    tags?: string[];
+    className?: string;
+    disabled?: boolean;
+    theme?: "default" | "mini" | "primary";
+};
+
 /**
  * NavCard for linking
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
- * @param {import('./types').Props} props
  */
-export const NavCard = (props) => {
+export const NavCard: React.FC<Props> = (props) => {
     const { title, description, to, Icon, tags, className, disabled, theme = "default" } = props;
     const handleClick = useCallback(() => {
         ga.sendEvent({
