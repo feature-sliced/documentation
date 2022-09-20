@@ -6,7 +6,7 @@ module.exports = {
     },
     parser: "@typescript-eslint/parser",
     extends: ["@eslint-kit/patch", "@eslint-kit/base", "@eslint-kit/react", "@eslint-kit/prettier"],
-    plugins: ["@typescript-eslint"]
+    plugins: ["@typescript-eslint"],
     rules: {
         // Sometime harmful =(
         "react/jsx-props-no-spreading": 0,

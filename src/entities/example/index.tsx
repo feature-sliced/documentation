@@ -13,12 +13,11 @@ export type Example = {
     updatedAt: string;
     website?: string;
     source?: string;
-    tech?: string[]
-
-}
+    tech?: string[];
+};
 type Props = {
     className?: string;
-    data: Example
+    data: Example;
 };
 
 export const ExampleCard: React.FC<Props> = ({ className, data }) => {
@@ -93,4 +92,4 @@ export const ExampleCard: React.FC<Props> = ({ className, data }) => {
             </div>
         </article>
     );
-}
+};

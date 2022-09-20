@@ -1,5 +1,5 @@
-import React from 'react';
-import Footer from '@theme-original/DocItem/Footer';
+import React from "react";
+import Footer from "@theme-original/DocItem/Footer";
 import { DocFeedback } from "@site/src/features/feedback/doc";
 import styles from "./styles.module.scss";
 
@@ -10,10 +10,10 @@ import styles from "./styles.module.scss";
  * @see https://docusaurus.io/docs/next/using-themes#for-site-owners
  */
 export default function FooterWrapper(props) {
-  return (
-    <>
-      <Footer {...props} />
-      <DocFeedback className={styles.feedback} />
-    </>
-  );
+    return (
+        <>
+            <Footer {...props} />
+            <DocFeedback className={styles.feedback} />
+        </>
+    );
 }
