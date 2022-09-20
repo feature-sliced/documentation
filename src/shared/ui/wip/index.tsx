@@ -11,10 +11,14 @@ const EXT_CONTRIBUTING =
 
 // FIXME: simplify i18n
 
+type Props = {
+    ticket: number;
+};
+
 /**
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
  */
-export const WIP = ({ ticket }) => {
+export const WIP: React.FC<Props> = ({ ticket }) => {
     const ticketUrl = `${EXT_ISSUES}/${ticket}`;
     return (
         <div>

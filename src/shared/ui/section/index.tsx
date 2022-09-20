@@ -2,14 +2,22 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
 
-export function Section({
+type Props = React.PropsWithChildren<{
+    title: string;
+    withAltBg?: boolean;
+    rowClass?: string;
+    className?: string;
+    containerClass?: string;
+}>;
+
+export const Section: React.FC<Props> = ({
     title,
     withAltBg,
     children,
     rowClass,
     className,
     containerClass = "container",
-}) {
+}) => {
     return (
         <section
             id={title.toLowerCase()}
@@ -21,4 +29,4 @@ export function Section({
             </div>
         </section>
     );
-}
+};
