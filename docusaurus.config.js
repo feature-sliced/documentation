@@ -258,8 +258,8 @@ const algolia = {
     apiKey: process.env.ALGOLIA_KEY,
     indexName: "feature-sliced",
     // FIXME: При включении отрубает поиск (исправить поздней)
-    // // Для поиска с учетом версий (на будущее)
-    // contextualSearch: true,
+    // Для поиска с учетом версий (на будущее)
+    contextualSearch: false,
 };
 
 const NBSP = "&nbsp;";
@@ -290,11 +290,11 @@ const colorMode = {
 };
 
 /**
- * @type {Config["themeConfig"]["metadatas"]}
+ * @type {Config["themeConfig"]["metadata"]}
  * @see https://docusaurus.io/docs/api/themes/configuration#meta-image
- * @see https://docusaurus.io/docs/api/themes/configuration#metadatas
+ * @see https://docusaurus.io/docs/api/themes/configuration#metadata
  */
-const metadatas = [
+const metadata = [
     { name: "twitter:site", content: "@feature_sliced" },
     { name: "twitter:card", content: "summary_large_image" },
     // NOTE: uncomment if need
@@ -318,6 +318,15 @@ const customFields = {
     isOGExperimental: process.env.OG_EXP,
 };
 
+/**
+ * @see https://docusaurus.io/docs/sidebar#hideable-sidebar
+ */
+const docs = {
+    sidebar: {
+        hideable: true,
+    },
+};
+
 /** @type {Config} */
 module.exports = {
     title: "Feature-Sliced Design",
@@ -326,21 +335,20 @@ module.exports = {
     url: DOMAIN,
     baseUrl: "/",
     onBrokenLinks: "throw",
-    onBrokenMarkdownLinks: "error",
+    onBrokenMarkdownLinks: "throw",
     onDuplicateRoutes: "warn",
     favicon: "img/favicon/classic.png",
-    trailingSlash: false, // For unified routes (FEEDBACK-337)
     organizationName: "feature-sliced", // Usually your GitHub org/user name.
     projectName: "documentation", // Usually your repo name.
     themeConfig: {
+        docs,
         image: "img/preview.png",
-        metadatas,
+        metadata,
         colorMode,
         navbar,
         footer,
         announcementBar,
         algolia,
-        hideableSidebar: true,
         ...metrics,
     },
     i18n: {

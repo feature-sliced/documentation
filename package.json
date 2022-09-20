@@ -20,12 +20,15 @@
         "contributors:add": "all-contributors add",
         "contributors:generate": "all-contributors generate"
     },
+    "engines": {
+        "node": "^16.14"
+    },
     "dependencies": {
         "@ant-design/icons": "^4.6.2",
-        "@docusaurus/core": "2.0.0-beta.8",
-        "@docusaurus/plugin-client-redirects": "2.0.0-beta.8",
-        "@docusaurus/plugin-ideal-image": "2.0.0-beta.8",
-        "@docusaurus/preset-classic": "2.0.0-beta.8",
+        "@docusaurus/core": "2.1.0",
+        "@docusaurus/plugin-client-redirects": "2.1.0",
+        "@docusaurus/plugin-ideal-image": "2.1.0",
+        "@docusaurus/preset-classic": "2.1.0",
         "@fontsource/overpass": "^4.5.4",
         "@fontsource/ubuntu": "^4.5.4",
         "@mdx-js/react": "^1.6.21",
