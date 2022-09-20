@@ -74,6 +74,7 @@ const plugins = [
         "@docusaurus/plugin-content-docs",
         {
             id: "community",
+            breadcrumbs: false,
             // !!! FIXME: Adapt for i18n
             path: `i18n/en/docusaurus-plugin-content-docs/community`,
             editLocalizedFiles: true,
