@@ -9,6 +9,24 @@ const DOCUSAURUS_PLUGIN_OG = [
     },
 ];
 
+// We use metrics only for analyze and refinement website discovery experience
+// @see Privacy
+const metrics = {
+    gtag: {
+        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
+        anonymizeIP: true, // Should IPs be anonymized?
+    },
+    googleAnalytics: {
+        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
+        anonymizeIP: true, // Should IPs be anonymized?
+    },
+    // to integrate Hotjar feedback
+    // @see https://github.com/symblai/docusaurus-plugin-hotjar
+    hotjar: {
+        applicationId: process.env.HOTJAR_ID,
+    },
+};
+
 /** @type {import('@docusaurus/types').DocusaurusConfig["presets"]} */
 const presets = [
     [
@@ -102,24 +120,6 @@ const algolia = {
     // FIXME: При включении отрубает поиск (исправить поздней)
     // Для поиска с учетом версий (на будущее)
     contextualSearch: false,
-};
-
-// We use metrics only for analyze and refinement website discovery experience
-// @see Privacy
-const metrics = {
-    gtag: {
-        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
-        anonymizeIP: true, // Should IPs be anonymized?
-    },
-    googleAnalytics: {
-        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
-        anonymizeIP: true, // Should IPs be anonymized?
-    },
-    // to integrate Hotjar feedback
-    // @see https://github.com/symblai/docusaurus-plugin-hotjar
-    hotjar: {
-        applicationId: process.env.HOTJAR_ID,
-    },
 };
 
 module.exports = { presets, plugins, algolia, metrics };
