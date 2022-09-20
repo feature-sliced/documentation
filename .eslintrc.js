@@ -24,23 +24,19 @@ module.exports = {
             },
         ],
         "linebreak-style": [2, "unix"],
-        "import/no-unresolved": [
-            2,
-            {
-                ignore: ["^@theme-original", "./styles.module.scss"],
-            },
-        ],
+        "import/no-unresolved": 2,
     },
-    settings: {
-        "import/resolver": {
-            alias: {
-                map: [
-                    ["@site", "."],
-                    ["@docusaurus", "./node_modules/@docusaurus/core/lib/client/exports"],
-                    ["@theme", "./node_modules/@docusaurus/theme-classic/src/theme"],
-                ],
-                extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
-            },
-        },
-    },
+    // Uncomment if needed
+    // settings: {
+    //     "import/resolver": {
+    //         alias: {
+    //             map: [
+    //                 // ["@site", "."],
+    //                 // ["@docusaurus", "./node_modules/@docusaurus/core/lib/client/exports"],
+    //                 // ["@theme", "./node_modules/@docusaurus/theme-classic/src/theme"],
+    //             ],
+    //             extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
+    //         },
+    //     },
+    // },
 };

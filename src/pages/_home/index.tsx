@@ -1,8 +1,6 @@
 import React from "react";
 
-// eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
-// eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
 import { translate } from "@docusaurus/Translate";
 import { Hero } from "@site/src/features/hero";

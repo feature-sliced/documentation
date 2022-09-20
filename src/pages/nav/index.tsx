@@ -1,7 +1,6 @@
 import React from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-// eslint-disable-next-line import/no-unresolved
 import Layout from "@theme/Layout";
 import { translate } from "@docusaurus/Translate";
 

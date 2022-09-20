@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import clsx from "clsx";
-// eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
 import { ga } from "@site/src/shared/lib/ga";
 import { date } from "@site/src/shared/lib/date";
