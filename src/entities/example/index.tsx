@@ -6,7 +6,23 @@ import { ga } from "@site/src/shared/lib/ga";
 import { date } from "@site/src/shared/lib/date";
 import styles from "./styles.module.scss";
 
-export function ExampleCard({ className, data }) {
+export type Example = {
+    title: string;
+    description: string;
+    preview: string;
+    version: 'v0' | 'v1' | 'feature-driven' | 'v2';
+    updatedAt: string;
+    website?: string;
+    source?: string;
+    tech?: string[]
+
+}
+type Props = {
+    className?: string;
+    data: Example
+};
+
+export const ExampleCard: React.FC<Props> = ({ className, data }) => {
     const isNew = date.getDiffDays(new Date(data.updatedAt), new Date()) <= 14;
     const handleWebsiteClick = useCallback(() => {
         ga.sendEvent({
