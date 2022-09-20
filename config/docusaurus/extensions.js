@@ -16,9 +16,9 @@ const presets = [
         {
             docs: {
                 path: `i18n/${DEFAULT_LOCALE}/docusaurus-plugin-content-docs/current`,
+                breadcrumbs: false,
                 editLocalizedFiles: true,
                 sidebarPath: require.resolve("./sidebars.docs.js"),
-                // Please change this to your repo.
                 editUrl: `${GITHUB_DOCS}/edit/master/`,
                 // // Equivalent to `enableUpdateBy`.
                 // showLastUpdateAuthor: true,
