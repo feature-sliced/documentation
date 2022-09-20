@@ -5,7 +5,7 @@ import Layout from "@theme/Layout";
 // eslint-disable-next-line import/no-unresolved
 import Image from "@theme/IdealImage";
 import { translate } from "@docusaurus/Translate";
-import { Header } from "@site/src/features/header";
+import { Hero } from "@site/src/features/hero";
 import { Card, Section } from "@site/src/shared/ui";
 import imgScheme from "@site/static/img/visual_schema.jpg";
 // NOTE: Locate at index before of specific route-mapping while Node/SSR building
@@ -19,7 +19,7 @@ export default function HomePage() {
     // const {siteConfig} = useDocusaurusContext();
     return (
         <Layout title="Welcome" description="Architectural methodology for frontend projects">
-            <Header />
+            <Hero />
             <main>
                 <Section title={translate({ id: "pages.home.features.title" })}>
                     {features.map((feature) => (

@@ -1,6 +1,6 @@
 type EventOptions = {
     category: string;
-    action: string;
+    action?: string;
     label: string;
     value?: number;
 };
