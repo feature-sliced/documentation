@@ -34,9 +34,9 @@ module.exports = {
     customFields,
     // Theme
     themeConfig: {
+        image: "img/preview.png",
         // @see https://docusaurus.io/docs/sidebar#hideable-sidebar
         docs: { sidebar: { hideable: true } },
-        image: "img/preview.png",
         colorMode: { respectPrefersColorScheme: true },
         announcementBar: cfg.announcementBar,
         navbar: cfg.navbar,
