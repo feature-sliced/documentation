@@ -43,6 +43,8 @@ const presets = [
                 changefreq: "weekly",
                 priority: 0.5,
                 trailingSlash: false,
+                gtag: process.env.GA_ID ? metrics.gtag : undefined,
+                googleAnalytics: process.env.GA_ID ? metrics.googleAnalytics : undefined,
             },
         },
     ],

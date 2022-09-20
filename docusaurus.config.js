@@ -43,17 +43,13 @@ module.exports = {
         footer: cfg.footer,
         algolia: cfg.algolia,
         metadata: cfg.metadata,
-        ...cfg.metrics,
+        hotjar: cfg.metrics.hotjar,
     },
 };
 
 // Remove configs if there are not secrets passed
 if (!process.env.ALGOLIA_KEY || !process.env.ALGOLIA_ID) {
     delete module.exports.themeConfig.algolia;
-}
-if (!process.env.GA_ID) {
-    delete module.exports.themeConfig.gtag;
-    delete module.exports.themeConfig.googleAnalytics;
 }
 if (!process.env.HOTJAR_ID) {
     delete module.exports.themeConfig.hotjar;
