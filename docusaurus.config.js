@@ -32,6 +32,7 @@ module.exports = {
     onBrokenMarkdownLinks: "throw",
     onDuplicateRoutes: "warn",
     customFields,
+    trailingSlash: false,
     // Theme
     themeConfig: {
         image: "img/preview.png",
