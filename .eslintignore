@@ -4,3 +4,4 @@ build/**
 .github
 public/
 .workflows
+/**/*.d.ts

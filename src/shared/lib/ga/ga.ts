@@ -1,4 +1,11 @@
-export const sendEvent = ({ category, action, label, value }) => {
+type EventOptions = {
+    category: string;
+    action: string;
+    label: string;
+    value?: number;
+};
+
+export const sendEvent = ({ category, action, label, value }: EventOptions) => {
     if (typeof window === undefined) return;
     if (!window.ga) return;
 

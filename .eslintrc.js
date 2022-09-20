@@ -26,7 +26,7 @@ module.exports = {
         "import/no-unresolved": [
             2,
             {
-                ignore: ["^@theme-original"],
+                ignore: ["^@theme-original", "./styles.module.scss"],
             },
         ],
     },
