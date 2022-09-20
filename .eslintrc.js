@@ -24,19 +24,23 @@ module.exports = {
             },
         ],
         "linebreak-style": [2, "unix"],
-        "import/no-unresolved": 2,
+        "import/no-unresolved": [
+            2,
+            { ignore: ["^@theme", "^@docusaurus/plugin-content-docs/client"] },
+        ],
+        "import/extensions": 0,
+        "import/no-extraneous-dependencies": 0,
     },
-    // Uncomment if needed
-    // settings: {
-    //     "import/resolver": {
-    //         alias: {
-    //             map: [
-    //                 // ["@site", "."],
-    //                 // ["@docusaurus", "./node_modules/@docusaurus/core/lib/client/exports"],
-    //                 // ["@theme", "./node_modules/@docusaurus/theme-classic/src/theme"],
-    //             ],
-    //             extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
-    //         },
-    //     },
-    // },
+    settings: {
+        "import/resolver": {
+            alias: {
+                map: [
+                    ["@site", "."],
+                    ["@docusaurus", "./node_modules/@docusaurus/core/lib/client/exports"],
+                    ["@theme", "./node_modules/@docusaurus/theme-classic/src/theme"],
+                ],
+                extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
+            },
+        },
+    },
 };
