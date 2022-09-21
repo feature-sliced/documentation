@@ -38,7 +38,7 @@ const footer = {
                 // { label: 'Blog', to: '/blog' },
                 { label: "GitHub", href: GITHUB_ORG },
                 {
-                    label: "Contribution Guide (RU)",
+                    label: "Contribution Guide",
                     href: `${GITHUB_DOCS}/blob/master/CONTRIBUTING.md`,
                 },
                 {
