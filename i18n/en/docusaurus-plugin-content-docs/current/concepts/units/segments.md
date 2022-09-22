@@ -1,10 +1,10 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Segment
 
-**Segment** - the third level of application partitioning, according to the **purpose of the module in the code and implementation**
+The third level of application partitioning, according to the **purpose of the module in the code and implementation**
 
 ```sh
 {layer}/

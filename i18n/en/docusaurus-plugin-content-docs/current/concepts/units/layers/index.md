@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Overview
+# Layer
 
-**Layer** - the first level of application partitioning, according to the **scope of influence** of the module
+The first level of application partitioning, according to the **scope of influence** of the module
 
 ![layers-flow-themed](/img/layers_flow.png)
 
@@ -65,7 +65,7 @@ sidebar_position: 1
     - `features` - if it becomes difficult to find the boundaries of specific user scenarios in the project, and control them
     - `processes` - if a lot of "end-to-end logic" grows over the page
 
-## Layers
+## Layers types
 
 <!-- I left the phrases in the comments, in case we decide to return them -->
 
