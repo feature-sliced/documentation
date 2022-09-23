@@ -150,9 +150,42 @@ mark {
 }
 
 .sidebar-item--root {
+    --color: var(--ifm-color-primary);
+
     margin-bottom: 6px;
     font-weight: bold;
-    text-transform: uppercase;
+    background-color: var(--color);
+    border-radius: 0.25rem;
+    transition: 0.25s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    & .menu__link {
+        color: #fff;
+    }
+
+    & .menu__link--active {
+        color: #fff;
+        box-shadow: 0 2px 4px 0 var(--color);
+    }
+
+    &.get-started {
+        --color: var(--ifm-color-success);
+    }
+    &.guides {
+        --color: var(--ifm-color-primary);
+    }
+    &.reference {
+        --color: var(--ifm-color-danger);
+    }
+    &.about {
+        --color: var(--ifm-color-violet);
+    }
+    &.community {
+        --color: var(--ifm-color-info);
+    }
 }
 
 .summary {
@@ -163,7 +196,7 @@ mark {
 }
 
 .badge--violet {
-    --ifm-badge-background-color: #5c21dd;
+    --ifm-badge-background-color: var(--ifm-color-violet);
     --ifm-badge-border-color: var(--ifm-badge-background-color);
 }
 
