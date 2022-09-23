@@ -17,35 +17,25 @@ This section includes methodology's key concepts, that will help you dive deeper
 ## Main
 
 import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
-import { BlockOutlined, ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
+import { ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
 
 <NavCard
-    title="App splitting" 
-    description="Logical decomposition using layered-sliced structure"
-    to="/docs/concepts/app-splitting"
-    Icon={BlockOutlined}
+    title="Units" 
+    description="Practices for logical decomposition using layered-sliced structure with extraction of structure units"
+    to="/docs/concepts/units"
+    Icon={ApartmentOutlined}
+    tags={['Layers', 'Segments', 'Decomposition']}
+/>
+<NavCard
+    title="Isolation" 
+    description="Pratices for scalable and efficient module interactions"
+    to="/docs/concepts/isolation"
+    Icon={NodeIndexOutlined}
+    tags={['Low Coupling & High Cohesion', 'Decoupling at practice']}
 />
 <NavCard
     title="Public API" 
     description="Practices for designing scalable and easy-to-integrate modules"
     to="/docs/concepts/public-api"
     Icon={ApiOutlined}
-/>
-<NavCard
-    title="Cross-communication" 
-    description="Rules for scalable and efficient module interactions"
-    to="/docs/concepts/cross-communication"
-    Icon={ApartmentOutlined}
-/>
-<NavCard
-    title="Decouple entities" 
-    description="Logical decomposition with extraction of business entities"
-    to="/docs/concepts/decouple-entities"
-    Icon={PartitionOutlined}
-/>
-<NavCard
-    title="Desegmentation" 
-    description="The problem of excessive fragmentation of logic"
-    to="/docs/concepts/issues/desegmented"
-    Icon={NodeIndexOutlined}
 />

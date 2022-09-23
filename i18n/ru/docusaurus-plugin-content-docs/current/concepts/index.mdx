@@ -19,33 +19,25 @@ pagination_prev: guides/index
 import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
 import { BlockOutlined, ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
 
+import { ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
+
 <NavCard
-    title="Разбиение приложения" 
-    description="Использование слоисто-слайсовой структуры при декомпозиции логики"
-    to="/docs/concepts/app-splitting"
-    Icon={BlockOutlined}
+    title="Юниты" 
+    description="Практики по логической декомпозиции согласно слоисто-слайсово структуре с выделением структурных юнитов"
+    to="/docs/concepts/units"
+    Icon={ApartmentOutlined}
+    tags={['Layers', 'Segments', 'Decomposition']}
+/>
+<NavCard
+    title="Изолирование" 
+    description="Практики масштабируемого и эффективного взаимодействия модулей"
+    to="/docs/concepts/isolation"
+    Icon={NodeIndexOutlined}
+    tags={['Low Coupling & High Cohesion', 'Decoupling at practice']}
 />
 <NavCard
     title="Public API" 
     description="Практики по проектированию устойчивых и удобных для интеграции модулей"
     to="/docs/concepts/public-api"
     Icon={ApiOutlined}
-/>
-<NavCard
-    title="Кросс-коммуникация" 
-    description="Правила масштабируемого и эффективного взаимодействия модулей"
-    to="/docs/concepts/cross-communication"
-    Icon={ApartmentOutlined}
-/>
-<NavCard
-    title="Decouple entities" 
-    description="Декомпозиция логики с выделением бизнес-сущностей"
-    to="/docs/concepts/decouple-entities"
-    Icon={PartitionOutlined}
-/>
-<NavCard
-    title="Десегментация" 
-    description="Проблема излишней раздробленности логики"
-    to="/docs/concepts/issues/desegmented"
-    Icon={NodeIndexOutlined}
 />
