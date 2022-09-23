@@ -19,21 +19,33 @@ pagination_prev: get-started/index
 import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
 import { ToolOutlined, ImportOutlined } from "@ant-design/icons";
 
+import { ToolOutlined, ImportOutlined, BugOutlined, FunctionOutlined } from "@ant-design/icons";
+
 <NavCard
-    title="Примеры применения" 
+    title="Примеры" 
     description="Практические примеры по применению методологии"
     to="/docs/guides/examples"
     Icon={ToolOutlined}
+    tags={['Авторизация', 'Типы', 'Лейаут страницы']}
 />
 <NavCard
-    title="Миграция с V1" 
-    description="Гайд по миграции и сравнение с FeatureSlices (v1)"
+    title="Миграция" 
+    description="Гайды по миграции с легаси проектов"
     to="/docs/guides/migration/from-v1"
     Icon={ImportOutlined}
+    tags={['Легаси', 'FSv1']}
 />
 <NavCard
-    title="Миграция с legacy" 
-    description="Поэтапное внедрение практик в легаси-проекты"
-    to="/docs/guides/migration/from-legacy"
-    Icon={ImportOutlined}
+    title="Технологии" 
+    description="Ориентированные на конкретные фреймворки гайды по использованию"
+    to="/docs/guides/tech/with-nextjs"
+    Icon={FunctionOutlined}
+/>
+
+<NavCard
+    title="Code Issues (Smells)" 
+    description="Общие архитектурные проблемы для выявления в коде"
+    to="/docs/guides/issues/desegmented"
+    Icon={BugOutlined}
+    tags={['Десегментация', 'Роутинг', "Кросс-импорты"]}
 />
