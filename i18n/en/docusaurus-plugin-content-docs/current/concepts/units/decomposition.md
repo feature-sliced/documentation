@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
-# App splitting
+# Decomposition of app
 
 ## Group: `Layers`
 
