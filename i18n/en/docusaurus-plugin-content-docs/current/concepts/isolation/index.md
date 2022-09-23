@@ -1,8 +1,4 @@
----
-sidebar_position: 3
----
-
-# Cross-communication
+# Isolation of modules
 
 Within the framework of the methodology, all modules are distributed by scopes of responsibility [(layer, slice, segment)][refs-splitting]
 
