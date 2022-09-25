@@ -230,7 +230,7 @@ function Foo() {
 
 [ref-layers]: /docs/reference/layers/overview
 [ref-segments]: /docs/reference/segments
-[ref-low-coupling]: /docs/concepts/low-coupling
+[ref-low-coupling]: /docs/reference/isolaiton/low-coupling
 [ref-grouping]: /docs/reference/layers/features#structural-grouping-of-features
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31

@@ -12,7 +12,7 @@ Within the methodology, this is achieved through:
 
 * [Splitting the application][refs-splitting] into layers and slices that implement specific functionality
 * Providing a [public access interface][refs-public-api] for each module
-* Setting up restrictions for [modules interactions][refs-cross-communication] - each module can depend only on the modules below it, but not on modules from the same or higher layer
+* Setting up restrictions for [modules interactions][refs-isolation] - each module can depend only on the modules below it, but not on modules from the same or higher layer
 
 ## Components composition (UI level)
 
@@ -141,6 +141,6 @@ export const { sendMessage, attachFile } = createMessageInput({
 
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-public-api]: /docs/reference/public-api
-[refs-cross-communication]: /docs/concepts/cross-communication
+[refs-isolation]: /docs/reference/isolaiton
 [refs-features]: /docs/reference/layers/features
 [refs-entities]: /docs/reference/layers/entities

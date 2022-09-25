@@ -126,7 +126,7 @@ sidebar_position: 1
 [refs-naming-adaptability]: /docs/about/understanding/naming-adaptability
 [refs-needs]: /docs/about/understanding/needs-driven
 
-[refs-low-coupling]: /docs/concepts/low-coupling
+[refs-low-coupling]: /docs/reference/isolaiton/low-coupling
 [refs-example-viewer]: /docs/guides/examples/auth
 
 [refs-app]: /docs/reference/layers/app

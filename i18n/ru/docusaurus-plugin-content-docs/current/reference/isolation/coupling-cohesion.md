@@ -12,7 +12,7 @@ sidebar_position: 1
 
 * [Разбиение приложения][refs-splitting] на слои и слайсы - модули, реализующие конкретную функциональность.
 * Требование к каждому модулю - предоставлять [публичный интерфейс доступа][refs-public-api]
-* Введение специальных ограничений на [взаимодействие модулей между собой][refs-cross-communication] - каждый модуль может зависеть только от "нижележащих" модулей, но не от модулей с того же или более высокого слоя.
+* Введение специальных ограничений на [взаимодействие модулей между собой][refs-isolation] - каждый модуль может зависеть только от "нижележащих" модулей, но не от модулей с того же или более высокого слоя.
 
 ## Композиция компонентов (UI level) {#components-composition-ui-level}
 
@@ -141,6 +141,6 @@ export const { sendMessage, attachFile } = createMessageInput({
 
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-public-api]: /docs/reference/public-api
-[refs-cross-communication]: /docs/concepts/cross-communication
+[refs-isolation]: /docs/reference/isolaiton
 [refs-features]: /docs/reference/layers/features
 [refs-entities]: /docs/reference/layers/entities
