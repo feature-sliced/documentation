@@ -73,7 +73,7 @@ At the same time, Atomic Design [is well applied](https://t.me/feature_sliced/16
 - `Feature` - business feature, **action on an entity**
   - create-blog-post / login-by-oauth / edit-account / publish-video / ...
 
-See also [comparison reference](/docs/reference/layers/overview), [viewer implementation of logic by layers](/docs/guides/examples/auth)
+See also [comparison reference](/docs/reference/units/layers), [viewer implementation of logic by layers](/docs/guides/examples/auth)
 
 ### Where to store the layout/template of pages?
 

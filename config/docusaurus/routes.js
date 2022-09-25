@@ -146,7 +146,7 @@ const LEGACY_ROUTES = [
         ],
     },
     {
-        group: "📚 Reference guidelines",
+        group: "📚 Reference guidelines (isolation & units)",
         details: "Moved to /reference as theoretical materials (old concepts)",
         children: [
             {
@@ -163,6 +163,56 @@ const LEGACY_ROUTES = [
                 title: "Cross-communication",
                 from: "/docs/concepts/cross-communication",
                 to: "/docs/reference/isolation",
+            },
+            {
+                title: "Glossary",
+                from: "/docs/reference/glossary",
+                to: "/docs/reference/units",
+            },
+            {
+                title: "Segments",
+                from: "/docs/reference/segments",
+                to: "/docs/reference/units/segments",
+            },
+            {
+                title: "Layers",
+                from: "/docs/reference/layers/overview",
+                to: "/docs/reference/units/layers",
+            },
+            {
+                title: "Layers:app",
+                from: "/docs/reference/layers/app",
+                to: "/docs/reference/units/layers/app",
+            },
+            {
+                title: "Layers:processes",
+                from: "/docs/reference/layers/processes",
+                to: "/docs/reference/units/layers/processes",
+            },
+            {
+                title: "Layers:pages",
+                from: "/docs/reference/layers/pages",
+                to: "/docs/reference/units/layers/pages",
+            },
+            {
+                title: "Layers:widgets",
+                from: "/docs/reference/layers/widgets",
+                to: "/docs/reference/units/layers/widgets",
+            },
+            {
+                title: "Layers:features",
+                from: "/docs/reference/layers/features",
+                to: "/docs/reference/units/layers/features",
+            },
+            {
+                title: "Layers:entities",
+                from: "/docs/reference/layers/entities",
+                to: "/docs/reference/units/layers/entitites",
+            },
+            {
+                title: "Layers:shared",
+                from: "/docs/reference/layers/shared",
+                to: "/docs/reference/units/layers/shared",
             },
         ],
     },
@@ -310,16 +360,16 @@ const _TOTAL_ROUTES = [
     "/docs/",
     "/docs/privacy",
     "/docs/reference",
-    "/docs/reference/glossary",
-    "/docs/reference/layers/app",
-    "/docs/reference/layers/entities",
-    "/docs/reference/layers/features",
-    "/docs/reference/layers/overview",
-    "/docs/reference/layers/pages",
-    "/docs/reference/layers/processes",
-    "/docs/reference/layers/shared",
-    "/docs/reference/layers/widgets",
-    "/docs/reference/segments",
+    "/docs/reference/units",
+    "/docs/reference/units/layers/app",
+    "/docs/reference/units/layers/entities",
+    "/docs/reference/units/layers/features",
+    "/docs/reference/units/layers/overview",
+    "/docs/reference/units/layers/pages",
+    "/docs/reference/units/layers/processes",
+    "/docs/reference/units/layers/shared",
+    "/docs/reference/units/layers/widgets",
+    "/docs/reference/units/segments",
 ];
 // from: "/en/docs/*" to "/docs/*"
 const I18N_REDIRECTS = _TOTAL_ROUTES.map((route) => ({

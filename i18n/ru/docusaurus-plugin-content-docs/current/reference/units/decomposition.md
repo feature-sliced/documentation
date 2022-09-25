@@ -228,10 +228,10 @@ function Foo() {
 - [(Reference) Layers][ref-layers]
 - [(Reference) Segments][ref-segments]
 
-[ref-layers]: /docs/reference/layers/overview
-[ref-segments]: /docs/reference/segments
+[ref-layers]: /docs/reference/units/layers
+[ref-segments]: /docs/reference/units/segments
 [ref-low-coupling]: /docs/reference/isolaiton/low-coupling
-[ref-grouping]: /docs/reference/layers/features#structural-grouping-of-features
+[ref-grouping]: /docs/reference/units/layers/features#structural-grouping-of-features
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31
 

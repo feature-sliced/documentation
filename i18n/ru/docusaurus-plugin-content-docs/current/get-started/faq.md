@@ -73,7 +73,7 @@ pagination_next: guides/index
 - `Feature` - бизнесовая фича, **действие над сущностью**
   - create-blog-post / login-by-oauth / edit-account / publish-video / ...
 
-См. также [справочную информацию по сравнению](/docs/reference/layers/overview), [реализация viewer логики по слоям](/docs/guides/examples/auth)
+См. также [справочную информацию по сравнению](/docs/reference/units/layers), [реализация viewer логики по слоям](/docs/guides/examples/auth)
 
 ### Где хранить layout/template страниц? {#where-to-store-the-layouttemplate-of-pages}
 

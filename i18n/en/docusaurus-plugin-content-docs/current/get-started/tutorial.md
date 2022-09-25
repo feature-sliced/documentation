@@ -827,12 +827,12 @@ Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, wher
 [refs-low-coupling]: /docs/reference/isolaiton/low-coupling
 [refs-guides]: /docs/guides
 [refs-reference]: /docs/reference
-[refs-layers]: /docs/reference/layers/overview
-[refs-app]: /docs/reference/layers/app
-[refs-pages]: /docs/reference/layers/pages
-[refs-features]: /docs/reference/layers/features
-[refs-entities]: /docs/reference/layers/entities
-[refs-shared]: /docs/reference/layers/shared
+[refs-layers]: /docs/reference/units/layers
+[refs-app]: /docs/reference/units/layers/app
+[refs-pages]: /docs/reference/units/layers/pages
+[refs-features]: /docs/reference/units/layers/features
+[refs-entities]: /docs/reference/units/layers/entities
+[refs-shared]: /docs/reference/units/layers/shared
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure

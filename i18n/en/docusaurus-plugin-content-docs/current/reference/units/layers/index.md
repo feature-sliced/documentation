@@ -129,19 +129,19 @@ It should be understood that not all of the above layers are mandatory, but are 
 [refs-low-coupling]: /docs/reference/isolaiton/low-coupling
 [refs-example-viewer]: /docs/guides/examples/auth
 
-[refs-app]: /docs/reference/layers/app
-[refs-processes]: /docs/reference/layers/processes
-[refs-pages]: /docs/reference/layers/pages
-[refs-widgets]: /docs/reference/layers/widgets
-[refs-features]: /docs/reference/layers/features
-[refs-entities]: /docs/reference/layers/entities
-[refs-shared]: /docs/reference/layers/shared
+[refs-app]: /docs/reference/units/layers/app
+[refs-processes]: /docs/reference/units/layers/processes
+[refs-pages]: /docs/reference/units/layers/pages
+[refs-widgets]: /docs/reference/units/layers/widgets
+[refs-features]: /docs/reference/units/layers/features
+[refs-entities]: /docs/reference/units/layers/entities
+[refs-shared]: /docs/reference/units/layers/shared
 
-[refs-segments]: /docs/reference/segments
-[refs-segments--ui]: /docs/reference/segments#ui
-[refs-segments--model]: /docs/reference/segments#model
-[refs-segments--lib]: /docs/reference/segments#lib
-[refs-segments--api]: /docs/reference/segments#api
-[refs-segments--config]: /docs/reference/segments#config
+[refs-segments]: /docs/reference/units/segments
+[refs-segments--ui]: /docs/reference/units/segments#ui
+[refs-segments--model]: /docs/reference/units/segments#model
+[refs-segments--lib]: /docs/reference/units/segments#lib
+[refs-segments--api]: /docs/reference/units/segments#api
+[refs-segments--config]: /docs/reference/units/segments#config
 
 [disc-sharing]: https://github.com/feature-sliced/documentation/discussions/14

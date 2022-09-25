@@ -244,7 +244,7 @@ If there are variations, how best to place indents-welcome:)
 [refs-isolation]: https://feature-sliced.design/docs/reference/isolaiton
 [refs-needs-driven]: https://feature-sliced.design/docs/about/understanding/needs-driven
 
-[refs-module]: https://feature-sliced.design/docs/reference/glossary#module
+[refs-module]: https://feature-sliced.design/docs/reference/units#module
 [refs-knowledge]: https://feature-sliced.design/docs/about/understanding/knowledge-types
 [refs-splitting]: https://feature-sliced.design/docs/concepts/app-splitting
 [refs-splitting-layers]: https://feature-sliced.design/docs/concepts/app-splitting#group-layers
