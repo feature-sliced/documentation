@@ -146,27 +146,6 @@ const LEGACY_ROUTES = [
         ],
     },
     {
-        group: "🧩 Bad Practices handbook",
-        details: "Moved to /concepts as theoretical materials",
-        children: [
-            {
-                title: "Cross-imports",
-                from: "/docs/guides/handbook/cross-imports",
-                to: "/docs/concepts/issues/cross-imports",
-            },
-            {
-                title: "Desegmented",
-                from: "/docs/guides/handbook/desegmented",
-                to: "/docs/concepts/issues/desegmented",
-            },
-            {
-                title: "Routes",
-                from: "/docs/guides/handbook/routes",
-                to: "/docs/concepts/issues/routes",
-            },
-        ],
-    },
-    {
         group: "🧩 Concepts guidelines",
         details: "Moved to /concepts as theoretical materials",
         children: [
@@ -179,6 +158,27 @@ const LEGACY_ROUTES = [
                 title: "Low Coupling & High Cohesion",
                 from: "/docs/guides/low-coupling",
                 to: "/docs/concepts/low-coupling",
+            },
+        ],
+    },
+    {
+        group: "🎯 Bad Practices handbook",
+        details: "Moved to /guides as practice materials",
+        children: [
+            {
+                title: "Cross-imports",
+                from: "/docs/concepts/issues/cross-imports",
+                to: "/docs/guides/issues/cross-imports",
+            },
+            {
+                title: "Desegmented",
+                from: "/docs/concepts/issues/desegmented",
+                to: "/docs/guides/issues/desegmented",
+            },
+            {
+                title: "Routes",
+                from: "/docs/concepts/issues/routes",
+                to: "/docs/guides/issues/routes",
             },
         ],
     },
@@ -271,9 +271,9 @@ const _TOTAL_ROUTES = [
     "/docs/about/understanding/architecture",
     "/docs/concepts/cross-communication",
     "/docs/concepts/decouple-entities",
-    "/docs/concepts/issues/cross-imports",
-    "/docs/concepts/issues/desegmented",
-    "/docs/concepts/issues/routes",
+    "/docs/guides/issues/cross-imports",
+    "/docs/guides/issues/desegmented",
+    "/docs/guides/issues/routes",
     "/docs/concepts/low-coupling",
     "/docs/about/understanding/naming-adaptability",
     "/docs/about/understanding/needs-driven",
