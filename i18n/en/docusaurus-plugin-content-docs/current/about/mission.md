@@ -48,4 +48,4 @@ Everyone has their own level of experience in designing and developing systems, 
 
 - [Architecture problems][refs-architecture--problems]
 
-[refs-architecture--problems]: /docs/concepts/architecture#problems
+[refs-architecture--problems]: /docs/about/understanding/architecture#problems

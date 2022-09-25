@@ -236,16 +236,16 @@ If there are variations, how best to place indents-welcome:)
 [refs-motivation]: https://feature-sliced.design/docs/about/motivation
 [refs-motivation-why]: https://feature-sliced.design/docs/about/motivation#-почему-не-хватает-существующих-решений
 
-[refs-concepts]: https://feature-sliced.design/docs/concepts/architecture
-[refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#requirements
-[refs-arch-problems]: https://feature-sliced.design/docs/concepts/architecture#problems
+[refs-concepts]: https://feature-sliced.design/docs/about/understanding/architecture
+[refs-arch-req]: https://feature-sliced.design/docs/about/understanding/architecture#requirements
+[refs-arch-problems]: https://feature-sliced.design/docs/about/understanding/architecture#problems
 [refs-public-api]: https://feature-sliced.design/docs/reference/public-api
-[refs-adaptability]: https://feature-sliced.design/docs/concepts/naming-adaptability
+[refs-adaptability]: https://feature-sliced.design/docs/about/understanding/naming-adaptability
 [refs-isolation]: https://feature-sliced.design/docs/concepts/cross-communication
-[refs-needs-driven]: https://feature-sliced.design/docs/concepts/needs-driven
+[refs-needs-driven]: https://feature-sliced.design/docs/about/understanding/needs-driven
 
 [refs-module]: https://feature-sliced.design/docs/reference/glossary#module
-[refs-knowledge]: https://feature-sliced.design/docs/about/knowledge-types
+[refs-knowledge]: https://feature-sliced.design/docs/about/understanding/knowledge-types
 [refs-splitting]: https://feature-sliced.design/docs/concepts/app-splitting
 [refs-splitting-layers]: https://feature-sliced.design/docs/concepts/app-splitting#group-layers
 [refs-splitting-slices]: https://feature-sliced.design/docs/concepts/app-splitting#group-slices

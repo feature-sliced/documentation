@@ -127,7 +127,7 @@ export const AuthByPhone = () => {
 ## See also
 
 - ["Guide to getting rid of cross-imports"](/docs/concepts/low-coupling)
-- [Understanding user needs and business tasks](/docs/concepts/needs-driven)
+- [Understanding user needs and business tasks](/docs/about/understanding/needs-driven)
   - To understand the `features` layer
 - [(Thread) About features and entities clearly](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
 
