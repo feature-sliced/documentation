@@ -158,7 +158,7 @@ Now it is much easier to [observe the principle of low coupling][refs-low-coupli
 - [New ideas v2 with explanations (atomicdesign-chat)][ext-tg-v2-draft]
 - [Discussion of abstractions and naming for the new version of the methodology (v2)](https://github.com/feature-sliced/documentation/discussions/31)
 
-[refs-low-coupling]: /docs/reference/isolaiton/low-coupling
+[refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [refs-adaptability]: /docs/about/understanding/naming-adaptability
 [refs-abstractions]: /docs/reference/units/decomposition
 [refs-abstractions-layers]: /docs/reference/units/decomposition#group-layers

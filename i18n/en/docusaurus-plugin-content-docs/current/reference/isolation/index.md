@@ -69,4 +69,4 @@ Violation of this rule is a signal of problems:
 
 [refs-public-api]: /docs/reference/public-api
 [refs-splitting]: /docs/reference/units/decomposition
-[refs-low-coupling]: /docs/reference/isolaiton/low-coupling
+[refs-low-coupling]: /docs/reference/isolation/coupling-cohesion

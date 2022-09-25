@@ -824,7 +824,7 @@ Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, wher
 [refs-public-api]: /docs/reference/public-api
 [refs-splitting]: /docs/reference/units/decomposition
 
-[refs-low-coupling]: /docs/reference/isolaiton/low-coupling
+[refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [refs-guides]: /docs/guides
 [refs-reference]: /docs/reference
 [refs-layers]: /docs/reference/units/layers

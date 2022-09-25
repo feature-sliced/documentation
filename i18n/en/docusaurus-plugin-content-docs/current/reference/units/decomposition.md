@@ -231,7 +231,7 @@ However, as a result of [discussions and analysis of extensive experience][disc-
 
 [ref-layers]: /docs/reference/units/layers
 [ref-segments]: /docs/reference/units/segments
-[ref-low-coupling]: /docs/reference/isolaiton/low-coupling
+[ref-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [ref-grouping]: /docs/reference/units/layers/features#structural-grouping-features
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31
