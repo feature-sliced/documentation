@@ -114,10 +114,10 @@ sidebar_position: 1
 - [Layers в методологии][refs-layers]
 - [Segments в методологии][refs-segments]
 
-[refs-split]: /docs/concepts/app-splitting
-[refs-split-layers]: /docs/concepts/app-splitting#group-layers
-[refs-split-slices]: /docs/concepts/app-splitting#group-slices
-[refs-split-segments]: /docs/concepts/app-splitting#group-segments
+[refs-split]: /docs/reference/units/decomposition
+[refs-split-layers]: /docs/reference/units/decomposition#group-layers
+[refs-split-slices]: /docs/reference/units/decomposition#group-slices
+[refs-split-segments]: /docs/reference/units/decomposition#group-segments
 
 [refs-layers]: /docs/reference/units/layers
 [refs-layers-app]: /docs/reference/units/layers/app

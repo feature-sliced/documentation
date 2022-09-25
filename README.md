@@ -246,10 +246,10 @@ If there are variations, how best to place indents-welcome:)
 
 [refs-module]: https://feature-sliced.design/docs/reference/units#module
 [refs-knowledge]: https://feature-sliced.design/docs/about/understanding/knowledge-types
-[refs-splitting]: https://feature-sliced.design/docs/concepts/app-splitting
-[refs-splitting-layers]: https://feature-sliced.design/docs/concepts/app-splitting#group-layers
-[refs-splitting-slices]: https://feature-sliced.design/docs/concepts/app-splitting#group-slices
-[refs-splitting-segments]: https://feature-sliced.design/docs/concepts/app-splitting#group-segments
+[refs-splitting]: https://feature-sliced.design/docs/reference/units/decomposition
+[refs-splitting-layers]: https://feature-sliced.design/docs/reference/units/decomposition#group-layers
+[refs-splitting-slices]: https://feature-sliced.design/docs/reference/units/decomposition#group-slices
+[refs-splitting-segments]: https://feature-sliced.design/docs/reference/units/decomposition#group-segments
 
 [refs-migration-v1]: https://feature-sliced.design/docs/guides/migration/from-v1
 

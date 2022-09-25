@@ -139,7 +139,7 @@ export const { sendMessage, attachFile } = createMessageInput({
 * [(Статья) Low Coupling и High Cohesion. Закон Деметры](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
 * [(Презентация) Про принципы проектирования (включая Low Coupling & High Cohesion)](https://www.slideshare.net/cristalngo/software-design-principles-57388843)
 
-[refs-splitting]: /docs/concepts/app-splitting
+[refs-splitting]: /docs/reference/units/decomposition
 [refs-public-api]: /docs/reference/public-api
 [refs-isolation]: /docs/reference/isolaiton
 [refs-features]: /docs/reference/units/layers/features

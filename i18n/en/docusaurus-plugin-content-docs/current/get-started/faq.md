@@ -54,7 +54,7 @@ Answered [here](/docs/guides/migration/from-v1)
 
 ### Can I embed pages/features/entities into each other?
 
-Answered [here](/docs/concepts/app-splitting#group-slices)
+Answered [here](/docs/reference/units/decomposition#group-slices)
 
 ### How do I work with the authorization context?
 
@@ -94,7 +94,7 @@ It will be, at the moment - in development =)
 
 ### Can I store the features used on one page directly in the page directory?
 
-The methodology strongly recommends against doing this, since [each module has a corresponding place in the structure](/docs/concepts/app-splitting)
+The methodology strongly recommends against doing this, since [each module has a corresponding place in the structure](/docs/reference/units/decomposition)
 
 Otherwise , there is a risk of complicating the project's code base
 

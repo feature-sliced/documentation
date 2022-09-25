@@ -160,9 +160,9 @@ Now it is much easier to [observe the principle of low coupling][refs-low-coupli
 
 [refs-low-coupling]: /docs/reference/isolaiton/low-coupling
 [refs-adaptability]: /docs/about/understanding/naming-adaptability
-[refs-abstractions]: /docs/concepts/app-splitting
-[refs-abstractions-layers]: /docs/concepts/app-splitting#group-layers
-[refs-abstractions-segments]: /docs/concepts/app-splitting#group-segments
+[refs-abstractions]: /docs/reference/units/decomposition
+[refs-abstractions-layers]: /docs/reference/units/decomposition#group-layers
+[refs-abstractions-segments]: /docs/reference/units/decomposition#group-segments
 
 [ext-v1]: https://featureslices.dev/v1.0.html
 [ext-tg-spb]: https://t.me/feature_slices

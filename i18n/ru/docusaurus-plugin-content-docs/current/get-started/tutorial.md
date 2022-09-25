@@ -820,7 +820,7 @@ const TaskDetailsPage = (props: Props) => {
 
 [refs-needs]: /docs/about/understanding/needs-driven
 [refs-public-api]: /docs/reference/public-api
-[refs-splitting]: /docs/concepts/app-splitting
+[refs-splitting]: /docs/reference/units/decomposition
 
 [refs-low-coupling]: /docs/reference/isolaiton/low-coupling
 [refs-guides]: /docs/guides
