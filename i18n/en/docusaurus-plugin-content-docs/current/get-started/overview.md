@@ -97,4 +97,4 @@ It's advised to refrain from adding new large entities while refactoring or refa
 [ext-disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 [refs-examples]: /examples
 [refs-migration]: /docs/guides/migration
-[refs-splitting]: /docs/concepts/app-splitting
+[refs-splitting]: /docs/reference/units/decomposition

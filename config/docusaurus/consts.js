@@ -1,3 +1,12 @@
+const CATEGORIES = {
+    "get-started": "🚀  Get Started",
+    "guides": "🎯  Guides",
+    "reference": "📚  Reference",
+    "about": "🍰  About",
+    "community": "💫  Community",
+    "examples": "🛠  Examples",
+};
+
 module.exports = {
     DOMAIN: "https://feature-sliced.design/",
     GITHUB_ORG: "https://github.com/feature-sliced",
@@ -8,4 +17,5 @@ module.exports = {
     TWITTER: "https://twitter.com/feature_sliced",
     OPEN_COLLECTIVE: "https://opencollective.com/feature-sliced",
     DEFAULT_LOCALE: "en",
+    CATEGORIES,
 };

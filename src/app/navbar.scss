@@ -1,0 +1,98 @@
+@import "./theme.scss";
+
+.navbar {
+    &__brand {
+        margin-right: 0;
+        opacity: 1;
+        transition: 0.25s;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    // &__logo {
+    //     margin-right: 0;
+    // }
+}
+
+/**
+ * External community links
+ */
+.ext-link {
+    --ifm-navbar-item-padding-horizontal: 0.5rem;
+
+    transition: 0.25s;
+
+    &:hover {
+        opacity: 0.6;
+    }
+
+    &::before {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        content: "";
+    }
+
+    &.github::before {
+        background: url(assets/github.svg) no-repeat;
+    }
+
+    &.discord::before {
+        background: url(assets/discord.svg) no-repeat;
+    }
+}
+
+html[data-theme="dark"] .ext-link::before {
+    /* NOTE: Maybe should be colorize explicitly with background-color or by svg#currentColor */
+    filter: invert(1);
+}
+
+[role="banner"] {
+    --docusaurus-announcement-bar-height: 42px; // #nowar
+
+    font-size: 1.2rem; // #nowar
+}
+
+/* Debug only, for simulating searchBox on devMode
+.navbar__items:last-child {
+    border-right: 161px solid black;
+} */
+
+/* FIXME: temp hack for adaptive-layout! */
+
+@media (max-width: 1180px) {
+    .navbar__brand {
+        margin-right: 0.5rem;
+    }
+
+    .navbar__brand .navbar__title {
+        display: none;
+    }
+
+    .navbar__item {
+        white-space: nowrap;
+    }
+}
+
+/* I love adaptive styles... */
+
+/* FIXME: add unified adaptive breakpoints */
+@media (max-width: 1080px) {
+    .navbar__item {
+        padding: var(--ifm-navbar-item-padding-vertical) 0.25rem;
+    }
+}
+
+@media (max-width: 996px) {
+    .navbar__brand .navbar__title {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    [role="banner"] {
+        font-size: 1rem; // #nowar
+    }
+}

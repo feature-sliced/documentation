@@ -16,6 +16,7 @@ const SECTIONS = {
 /**
  * Redirections after restructuring docs
  * @remark For compatibility with legacy links
+ * TODO: Cleanup totally after 2.0.0-stable release
  */
 const LEGACY_ROUTES = [
     {
@@ -40,120 +41,128 @@ const LEGACY_ROUTES = [
     },
     {
         group: "🍰 Alternatives",
-        details: "Moved to /about as advanced materials",
+        details: "Moved and merged to /about/alternatives as advanced materials",
         children: [
             {
-                title: "BBoM",
-                from: "/docs/get-started/alternatives/big-ball-of-mud",
-                to: "/docs/about/alternatives/big-ball-of-mud",
-            },
-            {
-                title: "Design Principles",
-                from: "/docs/get-started/alternatives/design-principles",
-                to: "/docs/about/alternatives/design-principles",
-            },
-            {
-                title: "DDD",
-                from: "/docs/get-started/alternatives/ddd",
-                to: "/docs/about/alternatives/ddd",
-            },
-            {
-                title: "Clean Architecture",
-                from: "/docs/get-started/alternatives/clean-architecture",
-                to: "/docs/about/alternatives/clean-architecture",
-            },
-            {
-                title: "Frameworks",
-                from: "/docs/get-started/alternatives/frameworks",
-                to: "/docs/about/alternatives/frameworks",
-            },
-            {
-                title: "Atomic Design",
-                from: "/docs/get-started/alternatives/atomic-design",
-                to: "/docs/about/alternatives/atomic-design",
-            },
-            {
-                title: "Smart & Dumb components",
-                from: "/docs/get-started/alternatives/smart-dumb-components",
-                to: "/docs/about/alternatives/smart-dumb-components",
-            },
-            {
-                title: "Feature Driven",
-                from: "/docs/get-started/alternatives/feature-driven",
-                to: "/docs/about/alternatives/feature-driven",
+                title: "Architecture approaches alternatives",
+                from: [
+                    "/docs/about/alternatives/big-ball-of-mud",
+                    "/docs/about/alternatives/design-principles",
+                    "/docs/about/alternatives/ddd",
+                    "/docs/about/alternatives/clean-architecture",
+                    "/docs/about/alternatives/frameworks",
+                    "/docs/about/alternatives/atomic-design",
+                    "/docs/about/alternatives/smart-dumb-components",
+                    "/docs/about/alternatives/feature-driven",
+                ],
+                to: "/docs/about/alternatives",
             },
         ],
     },
     {
-        group: "🍰 Promote",
+        group: "🍰 Promote & Understanding",
         details: "Moved to /about as advanced materials",
         children: [
-            {
-                title: "Integration, Pros & Cons, Limitations",
-                from: "/docs/get-started/onboard/pros-cons",
-                to: "/docs/about/promote/integration",
-            },
-            {
-                title: "Partial application",
-                from: "/docs/get-started/onboard/partial-application",
-                to: "/docs/about/promote/partial-application",
-            },
-            {
-                title: "For team",
-                from: "/docs/get-started/onboard/for-team",
-                to: "/docs/about/promote/for-team",
-            },
-            {
-                title: "For company",
-                from: "/docs/get-started/onboard/promote",
-                to: "/docs/about/promote/for-company",
-            },
-            {
-                title: "Motivation",
-                from: "/docs/get-started/motivation",
-                to: "/docs/about/motivation",
-            },
             {
                 title: "Knowledge types",
                 from: "/docs/reference/knowledge-types",
-                to: "/docs/about/knowledge-types",
+                to: "/docs/about/understanding/knowledge-types",
+            },
+            {
+                title: "Needs driven",
+                from: "/docs/concepts/needs-driven",
+                to: "/docs/about/understanding/needs-driven",
+            },
+            {
+                title: "About architecture",
+                from: "/docs/concepts/architecture",
+                to: "/docs/about/understanding/architecture",
+            },
+            {
+                title: "Naming adaptability",
+                from: "/docs/concepts/naming-adaptability",
+                to: "/docs/about/understanding/naming",
+            },
+            {
+                title: "Signals of architecture",
+                from: "/docs/concepts/signals",
+                to: "/docs/about/understanding/signals",
+            },
+            {
+                title: "Abstractions of architecture",
+                from: "/docs/concepts/abstractions",
+                to: "/docs/about/understanding/abstractions",
             },
         ],
     },
     {
-        group: "🧩 Bad Practices handbook",
-        details: "Moved to /concepts as theoretical materials",
-        children: [
-            {
-                title: "Cross-imports",
-                from: "/docs/guides/handbook/cross-imports",
-                to: "/docs/concepts/issues/cross-imports",
-            },
-            {
-                title: "Desegmented",
-                from: "/docs/guides/handbook/desegmented",
-                to: "/docs/concepts/issues/desegmented",
-            },
-            {
-                title: "Routes",
-                from: "/docs/guides/handbook/routes",
-                to: "/docs/concepts/issues/routes",
-            },
-        ],
-    },
-    {
-        group: "🧩 Concepts guidelines",
-        details: "Moved to /concepts as theoretical materials",
+        group: "📚 Reference guidelines (isolation & units)",
+        details: "Moved to /reference as theoretical materials (old concepts)",
         children: [
             {
                 title: "Decouple of entities",
-                from: "/docs/guides/decouple-entities",
-                to: "/docs/concepts/decouple-entities",
+                from: "/docs/concepts/decouple-entities",
+                to: "/docs/reference/isolation/decouple-entities",
             },
             {
                 title: "Low Coupling & High Cohesion",
-                from: "/docs/guides/low-coupling",
-                to: "/docs/concepts/low-coupling",
+                from: "/docs/concepts/low-coupling",
+                to: "/docs/reference/isolation/coupling-cohesion",
+            },
+            {
+                title: "Cross-communication",
+                from: "/docs/concepts/cross-communication",
+                to: "/docs/reference/isolation",
+            },
+            {
+                title: "App splitting",
+                from: "/docs/concepts/app-splitting",
+                to: "/docs/reference/units/decomposition",
+            },
+            {
+                title: "Glossary",
+                from: "/docs/reference/glossary",
+                to: "/docs/reference/units",
+            },
+            {
+                title: "Segments",
+                from: "/docs/reference/segments",
+                to: "/docs/reference/units/segments",
+            },
+            {
+                title: "Layers",
+                from: [
+                    "/docs/reference/layers/overview",
+                    "/docs/reference/layers/app",
+                    "/docs/reference/layers/processes",
+                    "/docs/reference/layers/pages",
+                    "/docs/reference/layers/widgets",
+                    "/docs/reference/layers/features",
+                    "/docs/reference/layers/entities",
+                    "/docs/reference/layers/shared",
+                ],
+                to: "/docs/reference/units/layers",
+            },
+        ],
+    },
+    {
+        group: "🎯 Bad Practices handbook",
+        details: "Moved to /guides as practice materials",
+        children: [
+            {
+                title: "Cross-imports",
+                from: "/docs/concepts/issues/cross-imports",
+                to: "/docs/guides/issues/cross-imports",
+            },
+            {
+                title: "Desegmented",
+                from: "/docs/concepts/issues/desegmented",
+                to: "/docs/guides/issues/desegmented",
+            },
+            {
+                title: "Routes",
+                from: "/docs/concepts/issues/routes",
+                to: "/docs/guides/issues/routes",
             },
         ],
     },
@@ -221,18 +230,10 @@ const SECTIONS_REDIRECTS = Object.values(SECTIONS).map(({ shortPath, fullPath })
 }));
 
 // !!! FIXME: refactor later!
+// UPD: Removed new docs routes for simplifying
 const _TOTAL_ROUTES = [
     "/docs/about",
-    "/docs/about/alternatives/atomic-design",
-    "/docs/about/alternatives/big-ball-of-mud",
-    "/docs/about/alternatives/clean-architecture",
-    "/docs/about/alternatives/ddd",
-    "/docs/about/alternatives/design-principles",
-    "/docs/about/alternatives/feature-driven",
-    "/docs/about/alternatives/frameworks",
-    "/docs/about/alternatives/smart-dumb-components",
-    "/docs/about/history",
-    "/docs/about/knowledge-types",
+    "/docs/about/alternatives",
     "/docs/about/mission",
     "/docs/about/motivation",
     "/docs/about/promote/for-company",
@@ -240,20 +241,6 @@ const _TOTAL_ROUTES = [
     "/docs/about/promote/integration",
     "/docs/about/promote/partial-application",
     "/docs/branding",
-    "/docs/concepts",
-    "/docs/concepts/abstractions",
-    "/docs/concepts/app-splitting",
-    "/docs/concepts/architecture",
-    "/docs/concepts/cross-communication",
-    "/docs/concepts/decouple-entities",
-    "/docs/concepts/issues/cross-imports",
-    "/docs/concepts/issues/desegmented",
-    "/docs/concepts/issues/routes",
-    "/docs/concepts/low-coupling",
-    "/docs/concepts/naming-adaptability",
-    "/docs/concepts/needs-driven",
-    "/docs/concepts/public-api",
-    "/docs/concepts/signals",
     "/docs/get-started",
     "/docs/get-started/overview",
     "/docs/get-started/cheatsheet",
@@ -281,16 +268,6 @@ const _TOTAL_ROUTES = [
     "/docs/",
     "/docs/privacy",
     "/docs/reference",
-    "/docs/reference/glossary",
-    "/docs/reference/layers/app",
-    "/docs/reference/layers/entities",
-    "/docs/reference/layers/features",
-    "/docs/reference/layers/overview",
-    "/docs/reference/layers/pages",
-    "/docs/reference/layers/processes",
-    "/docs/reference/layers/shared",
-    "/docs/reference/layers/widgets",
-    "/docs/reference/segments",
 ];
 // from: "/en/docs/*" to "/docs/*"
 const I18N_REDIRECTS = _TOTAL_ROUTES.map((route) => ({

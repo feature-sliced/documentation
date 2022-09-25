@@ -1,8 +1,5 @@
 ---
-sidebar_position: 0
-sidebar_class_name: sidebar-item--root
 hide_table_of_contents: true
-slug: /guides
 pagination_prev: get-started/index
 ---
 
@@ -17,23 +14,33 @@ Practical guides and examples on the use of Feature-Sliced Design. There is also
 ## Main
 
 import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
-import { ToolOutlined, ImportOutlined } from "@ant-design/icons";
+import { ToolOutlined, ImportOutlined, BugOutlined, FunctionOutlined } from "@ant-design/icons";
 
 <NavCard
-    title="Usage examples" 
+    title="Examples" 
     description="Practical examples on the application of the methodology"
     to="/docs/guides/examples"
     Icon={ToolOutlined}
+    tags={['Auth', 'Types', 'Page layout']}
 />
 <NavCard
-    title="Migration from V1" 
-    description="Migration Guide and comparison with FeatureSlices (v1)"
+    title="Migration" 
+    description="Migration guides for legacy projects"
     to="/docs/guides/migration/from-v1"
     Icon={ImportOutlined}
+    tags={['From legacy', 'From FSv1']}
 />
 <NavCard
-    title="Migration from legacy" 
-    description="Step-by-step implementation of practices in legacy projects"
-    to="/docs/guides/migration/from-legacy"
-    Icon={ImportOutlined}
+    title="Tech" 
+    description="Tech-specific guides for FSD usage"
+    to="/docs/guides/tech/with-nextjs"
+    Icon={FunctionOutlined}
+/>
+
+<NavCard
+    title="Code Issues (Smells)" 
+    description="General architecture issues for legacy code"
+    to="/docs/guides/issues/desegmented"
+    Icon={BugOutlined}
+    tags={['Desegmented', 'Routing', "Cross-imports"]}
 />

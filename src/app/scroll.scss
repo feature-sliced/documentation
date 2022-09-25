@@ -1,0 +1,28 @@
+@import "./theme.scss";
+
+/* Inherited from docusaurus scrollbar stylesheets for inner containers */
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: var(--ifm-scrollbar-thumb-background-color) transparent;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: var(--ifm-scrollbar-size);
+        height: var(--ifm-scrollbar-size);
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--ifm-scrollbar-thumb-background-color);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background-color: #ffffff;
+    }
+}

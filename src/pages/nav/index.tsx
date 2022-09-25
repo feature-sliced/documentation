@@ -63,7 +63,7 @@ const GroupItems = () => {
 const flattenFrom = (value: string | string[]) => {
     if (typeof value === "string") return value;
     // => isArray
-    return value.join("; ");
+    return value.join(";\n");
 };
 
 export default NavPage;

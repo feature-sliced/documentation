@@ -32,6 +32,8 @@
 >
 > But the current version is based on and provides examples for `JavaScript` + `React` stack.
 
+![visual_schema](static/img/visual_schema.jpg)
+
 ## Motivation
 
 Usually, approaches to building the frontend architecture from project to project are [re-invented from scratch][refs-motivation], thereby adding ["project knowledge"][refs-knowledge]
@@ -109,15 +111,6 @@ Orientation **to the needs of the business and the user**
 ## Abstractions
 
 For [architecture design][refs-splitting] the methodology suggests operating with [familiar abstractions][refs-adaptability], but in a more consistent and consistent order.
-
-<details>
-<summary>Visual diagram</summary>
-
-> `WIP:` The scheme-represents only an **approximate** division of the project into modules and will be determined definitively closer to the release
-
-![visual_schema](static/img/visual_schema.jpg)
-
-</details>
 
 ### [`Layers`][refs-splitting-layers]
 
@@ -243,20 +236,20 @@ If there are variations, how best to place indents-welcome:)
 [refs-motivation]: https://feature-sliced.design/docs/about/motivation
 [refs-motivation-why]: https://feature-sliced.design/docs/about/motivation#-почему-не-хватает-существующих-решений
 
-[refs-concepts]: https://feature-sliced.design/docs/concepts/architecture
-[refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#requirements
-[refs-arch-problems]: https://feature-sliced.design/docs/concepts/architecture#problems
-[refs-public-api]: https://feature-sliced.design/docs/concepts/public-api
-[refs-adaptability]: https://feature-sliced.design/docs/concepts/naming-adaptability
-[refs-isolation]: https://feature-sliced.design/docs/concepts/cross-communication
-[refs-needs-driven]: https://feature-sliced.design/docs/concepts/needs-driven
+[refs-concepts]: https://feature-sliced.design/docs/about/understanding/architecture
+[refs-arch-req]: https://feature-sliced.design/docs/about/understanding/architecture#requirements
+[refs-arch-problems]: https://feature-sliced.design/docs/about/understanding/architecture#problems
+[refs-public-api]: https://feature-sliced.design/docs/reference/public-api
+[refs-adaptability]: https://feature-sliced.design/docs/about/understanding/naming
+[refs-isolation]: https://feature-sliced.design/docs/reference/isolation
+[refs-needs-driven]: https://feature-sliced.design/docs/about/understanding/needs-driven
 
-[refs-module]: https://feature-sliced.design/docs/reference/glossary#module
-[refs-knowledge]: https://feature-sliced.design/docs/about/knowledge-types
-[refs-splitting]: https://feature-sliced.design/docs/concepts/app-splitting
-[refs-splitting-layers]: https://feature-sliced.design/docs/concepts/app-splitting#group-layers
-[refs-splitting-slices]: https://feature-sliced.design/docs/concepts/app-splitting#group-slices
-[refs-splitting-segments]: https://feature-sliced.design/docs/concepts/app-splitting#group-segments
+[refs-module]: https://feature-sliced.design/docs/reference/units#module
+[refs-knowledge]: https://feature-sliced.design/docs/about/understanding/knowledge-types
+[refs-splitting]: https://feature-sliced.design/docs/reference/units/decomposition
+[refs-splitting-layers]: https://feature-sliced.design/docs/reference/units/decomposition#group-layers
+[refs-splitting-slices]: https://feature-sliced.design/docs/reference/units/decomposition#group-slices
+[refs-splitting-segments]: https://feature-sliced.design/docs/reference/units/decomposition#group-segments
 
 [refs-migration-v1]: https://feature-sliced.design/docs/guides/migration/from-v1
 

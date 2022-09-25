@@ -1,8 +1,5 @@
 ---
-sidebar_position: 0
-sidebar_class_name: sidebar-item--root
 hide_table_of_contents: true
-slug: /about
 pagination_prev: reference/index
 ---
 
@@ -17,7 +14,7 @@ pagination_prev: reference/index
 ## Главное {#main}
 
 import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
-import { StarOutlined, TrophyOutlined } from "@ant-design/icons";
+import { StarOutlined, TrophyOutlined, BulbOutlined, TeamOutlined } from "@ant-design/icons";
 
 <NavCard
     title="Миссия" 
@@ -30,4 +27,18 @@ import { StarOutlined, TrophyOutlined } from "@ant-design/icons";
     description="Причины создания и развития методологии"
     to="/docs/about/motivation"
     Icon={StarOutlined}
+/>
+<NavCard
+    title="Понимание" 
+    description="Углубленное понимание концепций FSD"
+    to="/docs/about/understanding/architecture"
+    Icon={BulbOutlined}
+    tags={['Об архитектуре', 'Needs driven', 'Нейминг']}
+/>
+<NavCard
+    title="Продвижение" 
+    description="О продвижении и интеграции FSD в компаниях"
+    to="/docs/about/promote/integration"
+    Icon={TeamOutlined}
+    tags={['Интеграция', 'Продвижение в команде', 'Продвижение в компании']}
 />

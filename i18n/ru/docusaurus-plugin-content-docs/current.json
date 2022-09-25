@@ -3,13 +3,25 @@
         "message": "v2.0-beta 🍰",
         "description": "The label for version current"
     },
-    "sidebar.getstartedSidebar.category.Tutorials": {
-        "message": "Туториалы",
-        "description": "The label for category Tutorials in sidebar getstartedSidebar"
+    "sidebar.getstartedSidebar.category.🚀  Get Started": {
+        "message": "🚀  Быстрый старт",
+        "description": "The label for category 🚀  Get Started in sidebar getstartedSidebar"
     },
-    "sidebar.aboutSidebar.category.Alternatives": {
-        "message": "Альтернативы",
-        "description": "The label for category Alternatives in sidebar aboutSidebar"
+    "sidebar.guidesSidebar.category.🎯  Guides": {
+        "message": "🎯  Гайды",
+        "description": "The label for category 🎯  Guides in sidebar getstartedSidebar"
+    },
+    "sidebar.referenceSidebar.category.📚  Reference": {
+        "message": "📚  Справочник",
+        "description": "The label for category 📚  Reference in sidebar getstartedSidebar"
+    },
+    "sidebar.aboutSidebar.category.🍰  About": {
+        "message": "🍰 О методологии",
+        "description": "The label for category 🍰  About in sidebar getstartedSidebar"
+    },
+    "sidebar.aboutSidebar.category.Understanding": {
+        "message": "Понимание",
+        "description": "The label for category Understanding in sidebar aboutSidebar"
     },
     "sidebar.aboutSidebar.category.Promote": {
         "message": "Продвижение",
@@ -27,9 +39,13 @@
         "message": "Технологии",
         "description": "The label for category Tech in sidebar guidesSidebar"
     },
-    "sidebar.conceptsSidebar.category.Issues": {
-        "message": "Issues",
-        "description": "The label for category Issues in sidebar conceptsSidebar"
+    "sidebar.referenceSidebar.category.Units": {
+        "message": "Юниты",
+        "description": "The label for category Units in sidebar referenceSidebar"
+    },
+    "sidebar.referenceSidebar.category.Isolation": {
+        "message": "Изоляция",
+        "description": "The label for category Isolation in sidebar referenceSidebar"
     },
     "sidebar.referenceSidebar.category.Layer": {
         "message": "Слои",

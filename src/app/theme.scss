@@ -42,10 +42,21 @@
     --ifm-color-primary-neutral: #4a7ec2c6;
     --ifm-font-family-base: 'Ubuntu', system-ui, -apple-system, segoe ui, roboto, ubuntu, cantarell, noto sans, sans-serif, blinkmacsystemfont, 'Segoe UI', helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --ifm-heading-font-family: 'Overpass', var(--ifm-font-family-base);
+    --ifm-color-violet: #5c21dd;
 }
 
 // Restored values from old dark theme
 html[data-theme=dark] {
     --ifm-background-color: #18191a;
     --ifm-background-surface-color: #242526;
+
+    // Adapt badges styles
+    .badge--warning {
+        --ifm-badge-background-color: var(--ifm-color-warning-dark);
+    }
+}
+
+.badge--violet {
+    --ifm-badge-background-color: var(--ifm-color-violet);
+    --ifm-badge-border-color: var(--ifm-badge-background-color);
 }
