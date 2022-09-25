@@ -59,6 +59,6 @@ TODO После накопления опыта работы с методоло
 - [(Обсуждение) Про cross-импорты и анализ зависимостей](https://github.com/feature-sliced/documentation/discussions/65#discussioncomment-480822)
 - [Паттерны **GRASP**](https://ru.wikipedia.org/wiki/GRASP)
 
-[refs-public-api]: /docs/concepts/public-api
+[refs-public-api]: /docs/reference/public-api
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-low-coupling]: /docs/concepts/low-coupling

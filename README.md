@@ -32,6 +32,8 @@
 >
 > But the current version is based on and provides examples for `JavaScript` + `React` stack.
 
+![visual_schema](static/img/visual_schema.jpg)
+
 ## Motivation
 
 Usually, approaches to building the frontend architecture from project to project are [re-invented from scratch][refs-motivation], thereby adding ["project knowledge"][refs-knowledge]
@@ -109,15 +111,6 @@ Orientation **to the needs of the business and the user**
 ## Abstractions
 
 For [architecture design][refs-splitting] the methodology suggests operating with [familiar abstractions][refs-adaptability], but in a more consistent and consistent order.
-
-<details>
-<summary>Visual diagram</summary>
-
-> `WIP:` The scheme-represents only an **approximate** division of the project into modules and will be determined definitively closer to the release
-
-![visual_schema](static/img/visual_schema.jpg)
-
-</details>
 
 ### [`Layers`][refs-splitting-layers]
 
@@ -246,7 +239,7 @@ If there are variations, how best to place indents-welcome:)
 [refs-concepts]: https://feature-sliced.design/docs/concepts/architecture
 [refs-arch-req]: https://feature-sliced.design/docs/concepts/architecture#requirements
 [refs-arch-problems]: https://feature-sliced.design/docs/concepts/architecture#problems
-[refs-public-api]: https://feature-sliced.design/docs/concepts/public-api
+[refs-public-api]: https://feature-sliced.design/docs/reference/public-api
 [refs-adaptability]: https://feature-sliced.design/docs/concepts/naming-adaptability
 [refs-isolation]: https://feature-sliced.design/docs/concepts/cross-communication
 [refs-needs-driven]: https://feature-sliced.design/docs/concepts/needs-driven

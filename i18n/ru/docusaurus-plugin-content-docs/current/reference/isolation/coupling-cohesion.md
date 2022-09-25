@@ -140,7 +140,7 @@ export const { sendMessage, attachFile } = createMessageInput({
 * [(Презентация) Про принципы проектирования (включая Low Coupling & High Cohesion)](https://www.slideshare.net/cristalngo/software-design-principles-57388843)
 
 [refs-splitting]: /docs/concepts/app-splitting
-[refs-public-api]: /docs/concepts/public-api
+[refs-public-api]: /docs/reference/public-api
 [refs-cross-communication]: /docs/concepts/cross-communication
 [refs-features]: /docs/reference/layers/features
 [refs-entities]: /docs/reference/layers/entities

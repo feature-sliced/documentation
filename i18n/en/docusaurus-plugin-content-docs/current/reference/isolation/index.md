@@ -67,6 +67,6 @@ Violation of this rule is a signal of problems:
 - [(Discussion) About cross-imports and analysis зависимостей](https://github.com/feature-sliced/documentation/discussions/65#discussioncomment-480822)
 - [**GRASP** Patterns](https://ru.wikipedia.org/wiki/GRASP)
 
-[refs-public-api]: /docs/concepts/public-api
+[refs-public-api]: /docs/reference/public-api
 [refs-splitting]: /docs/concepts/app-splitting
 [refs-low-coupling]: /docs/concepts/low-coupling
