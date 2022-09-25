@@ -240,7 +240,7 @@ If there are variations, how best to place indents-welcome:)
 [refs-arch-req]: https://feature-sliced.design/docs/about/understanding/architecture#requirements
 [refs-arch-problems]: https://feature-sliced.design/docs/about/understanding/architecture#problems
 [refs-public-api]: https://feature-sliced.design/docs/reference/public-api
-[refs-adaptability]: https://feature-sliced.design/docs/about/understanding/naming-adaptability
+[refs-adaptability]: https://feature-sliced.design/docs/about/understanding/naming
 [refs-isolation]: https://feature-sliced.design/docs/reference/isolation
 [refs-needs-driven]: https://feature-sliced.design/docs/about/understanding/needs-driven
 

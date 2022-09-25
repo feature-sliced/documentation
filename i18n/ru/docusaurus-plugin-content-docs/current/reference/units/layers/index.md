@@ -123,7 +123,7 @@ sidebar_position: 1
 - [(Дискуссия) Про переиспользуемые модули][disc-sharing]
   - *Для понимания слоя `shared`*
 
-[refs-naming-adaptability]: /docs/about/understanding/naming-adaptability
+[refs-naming-adaptability]: /docs/about/understanding/naming
 [refs-needs]: /docs/about/understanding/needs-driven
 
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion

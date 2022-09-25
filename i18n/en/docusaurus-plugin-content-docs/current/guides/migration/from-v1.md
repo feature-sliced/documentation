@@ -159,7 +159,7 @@ Now it is much easier to [observe the principle of low coupling][refs-low-coupli
 - [Discussion of abstractions and naming for the new version of the methodology (v2)](https://github.com/feature-sliced/documentation/discussions/31)
 
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
-[refs-adaptability]: /docs/about/understanding/naming-adaptability
+[refs-adaptability]: /docs/about/understanding/naming
 [refs-abstractions]: /docs/reference/units/decomposition
 [refs-abstractions-layers]: /docs/reference/units/decomposition#group-layers
 [refs-abstractions-segments]: /docs/reference/units/decomposition#group-segments

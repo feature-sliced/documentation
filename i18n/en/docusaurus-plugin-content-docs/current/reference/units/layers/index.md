@@ -123,7 +123,7 @@ It should be understood that not all of the above layers are mandatory, but are 
 - [(Discussion) About reused modules][disc-sharing]
   - *To understand the `shared` layer*
 
-[refs-naming-adaptability]: /docs/about/understanding/naming-adaptability
+[refs-naming-adaptability]: /docs/about/understanding/naming
 [refs-needs]: /docs/about/understanding/needs-driven
 
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion

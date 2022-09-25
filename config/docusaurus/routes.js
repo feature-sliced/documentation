@@ -81,7 +81,7 @@ const LEGACY_ROUTES = [
             {
                 title: "Naming adaptability",
                 from: "/docs/concepts/naming-adaptability",
-                to: "/docs/about/understanding/naming-adaptability",
+                to: "/docs/about/understanding/naming",
             },
             {
                 title: "Signals of architecture",
