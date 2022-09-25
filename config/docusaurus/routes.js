@@ -16,6 +16,7 @@ const SECTIONS = {
 /**
  * Redirections after restructuring docs
  * @remark For compatibility with legacy links
+ * TODO: Cleanup totally after 2.0.0-stable release
  */
 const LEGACY_ROUTES = [
     {
@@ -43,43 +44,17 @@ const LEGACY_ROUTES = [
         details: "Moved and merged to /about/alternatives as advanced materials",
         children: [
             {
-                title: "BBoM",
-                from: "/docs/about/alternatives/big-ball-of-mud",
-                to: "/docs/about/alternatives",
-            },
-            {
-                title: "Design Principles",
-                from: "/docs/about/alternatives/design-principles",
-                to: "/docs/about/alternatives",
-            },
-            {
-                title: "DDD",
-                from: "/docs/about/alternatives/ddd",
-                to: "/docs/about/alternatives",
-            },
-            {
-                title: "Clean Architecture",
-                from: "/docs/about/alternatives/clean-architecture",
-                to: "/docs/about/alternatives",
-            },
-            {
-                title: "Frameworks",
-                from: "/docs/about/alternatives/frameworks",
-                to: "/docs/about/alternatives",
-            },
-            {
-                title: "Atomic Design",
-                from: "/docs/about/alternatives/atomic-design",
-                to: "/docs/about/alternatives",
-            },
-            {
-                title: "Smart & Dumb components",
-                from: "/docs/about/alternatives/smart-dumb-components",
-                to: "/docs/about/alternatives",
-            },
-            {
-                title: "Feature Driven",
-                from: "/docs/about/alternatives/feature-driven",
+                title: "Architecture approaches alternatives",
+                from: [
+                    "/docs/about/alternatives/big-ball-of-mud",
+                    "/docs/about/alternatives/design-principles",
+                    "/docs/about/alternatives/ddd",
+                    "/docs/about/alternatives/clean-architecture",
+                    "/docs/about/alternatives/frameworks",
+                    "/docs/about/alternatives/atomic-design",
+                    "/docs/about/alternatives/smart-dumb-components",
+                    "/docs/about/alternatives/feature-driven",
+                ],
                 to: "/docs/about/alternatives",
             },
         ],
@@ -88,31 +63,6 @@ const LEGACY_ROUTES = [
         group: "🍰 Promote & Understanding",
         details: "Moved to /about as advanced materials",
         children: [
-            {
-                title: "Integration, Pros & Cons, Limitations",
-                from: "/docs/get-started/onboard/pros-cons",
-                to: "/docs/about/promote/integration",
-            },
-            {
-                title: "Partial application",
-                from: "/docs/get-started/onboard/partial-application",
-                to: "/docs/about/promote/partial-application",
-            },
-            {
-                title: "For team",
-                from: "/docs/get-started/onboard/for-team",
-                to: "/docs/about/promote/for-team",
-            },
-            {
-                title: "For company",
-                from: "/docs/get-started/onboard/promote",
-                to: "/docs/about/promote/for-company",
-            },
-            {
-                title: "Motivation",
-                from: "/docs/get-started/motivation",
-                to: "/docs/about/motivation",
-            },
             {
                 title: "Knowledge types",
                 from: "/docs/reference/knowledge-types",
@@ -181,43 +131,17 @@ const LEGACY_ROUTES = [
             },
             {
                 title: "Layers",
-                from: "/docs/reference/layers/overview",
+                from: [
+                    "/docs/reference/layers/overview",
+                    "/docs/reference/layers/app",
+                    "/docs/reference/layers/processes",
+                    "/docs/reference/layers/pages",
+                    "/docs/reference/layers/widgets",
+                    "/docs/reference/layers/features",
+                    "/docs/reference/layers/entities",
+                    "/docs/reference/layers/shared",
+                ],
                 to: "/docs/reference/units/layers",
-            },
-            {
-                title: "Layers:app",
-                from: "/docs/reference/layers/app",
-                to: "/docs/reference/units/layers/app",
-            },
-            {
-                title: "Layers:processes",
-                from: "/docs/reference/layers/processes",
-                to: "/docs/reference/units/layers/processes",
-            },
-            {
-                title: "Layers:pages",
-                from: "/docs/reference/layers/pages",
-                to: "/docs/reference/units/layers/pages",
-            },
-            {
-                title: "Layers:widgets",
-                from: "/docs/reference/layers/widgets",
-                to: "/docs/reference/units/layers/widgets",
-            },
-            {
-                title: "Layers:features",
-                from: "/docs/reference/layers/features",
-                to: "/docs/reference/units/layers/features",
-            },
-            {
-                title: "Layers:entities",
-                from: "/docs/reference/layers/entities",
-                to: "/docs/reference/units/layers/entities",
-            },
-            {
-                title: "Layers:shared",
-                from: "/docs/reference/layers/shared",
-                to: "/docs/reference/units/layers/shared",
             },
         ],
     },
@@ -306,10 +230,10 @@ const SECTIONS_REDIRECTS = Object.values(SECTIONS).map(({ shortPath, fullPath })
 }));
 
 // !!! FIXME: refactor later!
+// UPD: Removed new docs routes for simplifying
 const _TOTAL_ROUTES = [
     "/docs/about",
     "/docs/about/alternatives",
-    "/docs/about/understanding/knowledge-types",
     "/docs/about/mission",
     "/docs/about/motivation",
     "/docs/about/promote/for-company",
@@ -317,19 +241,6 @@ const _TOTAL_ROUTES = [
     "/docs/about/promote/integration",
     "/docs/about/promote/partial-application",
     "/docs/branding",
-    "/docs/reference/units/decomposition",
-    "/docs/about/understanding/abstractions",
-    "/docs/about/understanding/architecture",
-    "/docs/reference/isolation",
-    "/docs/reference/isolation/decouple-entities",
-    "/docs/guides/issues/cross-imports",
-    "/docs/guides/issues/desegmented",
-    "/docs/guides/issues/routes",
-    "/docs/reference/isolation/coupling-cohesion",
-    "/docs/about/understanding/naming-adaptability",
-    "/docs/about/understanding/needs-driven",
-    "/docs/reference/public-api",
-    "/docs/about/understanding/signals",
     "/docs/get-started",
     "/docs/get-started/overview",
     "/docs/get-started/cheatsheet",
@@ -357,16 +268,6 @@ const _TOTAL_ROUTES = [
     "/docs/",
     "/docs/privacy",
     "/docs/reference",
-    "/docs/reference/units",
-    "/docs/reference/units/layers",
-    "/docs/reference/units/layers/app",
-    "/docs/reference/units/layers/entities",
-    "/docs/reference/units/layers/features",
-    "/docs/reference/units/layers/pages",
-    "/docs/reference/units/layers/processes",
-    "/docs/reference/units/layers/shared",
-    "/docs/reference/units/layers/widgets",
-    "/docs/reference/units/segments",
 ];
 // from: "/en/docs/*" to "/docs/*"
 const I18N_REDIRECTS = _TOTAL_ROUTES.map((route) => ({
