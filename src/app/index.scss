@@ -149,45 +149,6 @@ mark {
     opacity: 0.5;
 }
 
-.sidebar-item--root {
-    --color: var(--ifm-color-primary);
-
-    margin-bottom: 6px;
-    font-weight: bold;
-    background-color: var(--color);
-    border-radius: 0.25rem;
-    transition: 0.25s;
-
-    &:hover {
-        opacity: 0.8;
-    }
-
-    & .menu__link {
-        color: #fff;
-    }
-
-    & .menu__link--active {
-        color: #fff;
-        box-shadow: 0 2px 4px 0 var(--color);
-    }
-
-    &.get-started {
-        --color: var(--ifm-color-success);
-    }
-    &.guides {
-        --color: var(--ifm-color-primary);
-    }
-    &.reference {
-        --color: var(--ifm-color-danger);
-    }
-    &.about {
-        --color: var(--ifm-color-violet);
-    }
-    &.community {
-        --color: var(--ifm-color-info);
-    }
-}
-
 .summary {
     padding-bottom: 2rem;
     font-size: 1.25rem;
@@ -288,4 +249,12 @@ a[download] {
     // &__logo {
     //     margin-right: 0;
     // }
+}
+
+/* Hide redundant HomePage and CategoryIndex breadcrumb */
+.breadcrumbs__item {
+    &:first-child,
+    &:nth-child(2):last-child {
+        display: none;
+    }
 }
