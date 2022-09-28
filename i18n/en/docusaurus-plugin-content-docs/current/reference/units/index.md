@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Structural unit of the project
 
-A module usually means a specific file or directory *(an abstraction in the context of a structure)*
+A module can be represented as specific file or directory *(an abstraction in the context of a structure)*
 
 - *authorization module*
 - *page module*
@@ -18,21 +18,19 @@ A module usually means a specific file or directory *(an abstraction in the cont
 
 ## [Layer][refs-layers]
 
-Each of the directories located at the topmost level of the application.
-
-This level defines the [scope of responsibility of modules][refs-split-layers], as well as the level of danger of changes
+Each project top level directory defines the [scope of responsibility of modules][refs-split-layers], as well as the level of sensitivity to internal changes
 
 - **Representatives**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`widgets`][refs-layers-widgets], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
 
 ```sh
 └── src/
-    ├── app/                    # Initializing application logic
-    ├── processes/              # (Optional) Application processes running over pages
-    ├── pages/                  # Application pages
-    ├── widgets/                # Independent and self-contained blocks for pages
-    ├── features/               # (Optional) Processing of user scenarios
-    ├── entities/               # (Optional) Business entities that domain logic operates with
-    └── shared/                 # Reused modules, non business specific
+    ├── app/                    # Application initizlization logic and static asses
+    ├── processes/              # (Optional) Page-independent workflows or workflows involving multiple pages
+    ├── pages/                  # Complete application views
+    ├── widgets/                # Various combinations of abstract and / or business units from lower layers
+    ├── features/               # (Optional) User scenarios, which usually operate on business entities
+    ├── entities/               # (Optional) Business units in terms of which application business logic works
+    └── shared/                 # Reusable non business specific modules
 ```
 
 ## Slice
@@ -45,40 +43,54 @@ This level is [poorly regulated][refs-split-slices] is a methodology, but a lot 
 
 ```sh
 ├── app/
-|   # Does not have specific slices, 
-|   # Because it contains meta-logic on the project and its initialization
+|   # Application composition layer
+|   # Only contains abstract initialization logic and static assets, and thus mustn't contain any Slices
+|
 ├── processes/
-|   # Slices implementing processes on pages
-|   ├── payment
+|   # Slices implementing page-independent workflows or workflows involving multiple pages
 |   ├── auth
+|   ├── payment
 |   ├── quick-tour
 |   └── ...
+|
 ├── pages/
-|   # Slices implementing application pages
-|   # At the same time, due to the specifics of routing, they can be invested in each other
-|   ├── profile
-|   ├── sign-up
+|   # Slices implementing complete application views
 |   ├── feed
+|   |
+|   ├── profile
+|   |   # Due to routing specifics, this layer can contain nested structures
+|   |   ├── edit
+|   |   └── stats
+|   |
+|   ├── sign-up
 |   └── ...
+|
 ├── widgets/
-|   # Slices implementing independent page blocks
+|   # Slices implementing various combinations of abstract and / or business units from lower layers,
+|   # to deliver isolated atomic User Interface fragments
+|   ├── chat-window
 |   ├── header
 |   ├── feed
 |   └── ...
+|
 ├── features/
-|   # Slices implementing user scenarios on pages
+|   # Sliced implementing user scenarios, which usually operate on business entities
 |   ├── auth-by-phone
-|   ├── inline-post
+|   ├── create-post
+|   ├── write-message
 |   └── ...
+|
 ├── entities/
-|   # Slices of business entities for implementing a more complex BL
-|   ├── viewer
-|   ├── posts
-|   ├── i18n
+|   # Slices implementing business units in terms of which application business logic works
+|   ├── account
+|   ├── conversation
+|   ├── post
+|   ├── wallet
 |   └── ...
+|
 ├── shared/
-|   # Does not have specific slices
-|   # is rather a set of commonly used segments, without binding to the BL
+|   # This layer is a set of abstract Segments
+|   # It means that it must not contain any business units or business-related logic
 ```
 
 ## [Segment][refs-segments]
@@ -92,19 +104,19 @@ This level determines [the purpose of modules in the code and implementation][re
 ```sh
 {layer}/
     ├── {slice}/
-    |   ├── ui/                     # UI-logic (components, ui-widgets, ...)
-    |   ├── model/                  # Business logic (store, actions, effects, reducers, ...)
+    |   ├── ui/                     # User Interface components and UI related logic
+    |   ├── model/                  # Business logic (store, actions, effects, reducers, etc.)
     |   ├── lib/                    # Infrastructure logic (utils/helpers)
-    |   ├── config/                 # Application configuration (env-vars, ...)
-    |   └── api/                    # Logic of API requests (api instances, requests, ...)
+    |   ├── config/                 # Local configuration (constants, enums, meta information)
+    |   └── api/                    # Logic of API requests (api instances, requests, etc.)
 ```
 
 :::note
 
-Since not every layer explicitly uses slices (app, shared)
+Since some layers doesn't contain slices (app, shared):
 
 - Segments can be arranged according to their own rules `shared/{api, config}`
-- Or not to use `app/{providers, styles}` at all
+- Or not to use segments al all (`app/{providers, styles}`)
 
 :::
 
