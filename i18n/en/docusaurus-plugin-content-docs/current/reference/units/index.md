@@ -24,7 +24,7 @@ Each project top level directory defines the [scope of responsibility of modules
 
 ```sh
 └── src/
-    ├── app/                    # Application initizlization logic and static asses
+    ├── app/                    # Application initialization logic and static assets
     ├── processes/              # (Optional) Page-independent workflows or workflows involving multiple pages
     ├── pages/                  # Complete application views
     ├── widgets/                # Various combinations of abstract and / or business units from lower layers
