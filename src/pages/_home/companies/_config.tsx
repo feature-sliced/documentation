@@ -77,4 +77,9 @@ export const companies: Company[] = [
         src: "softcery.png",
         alt: "Softcery",
     },
+    {
+        url: "https://dodo.dev/",
+        src: "dodo.png",
+        alt: "Dodo Engineering",
+    },
 ];
