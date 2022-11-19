@@ -15,7 +15,7 @@ The first level of application partitioning, according to the **scope of influen
     ├── app/                    # Initializing application logic
     ├── processes/              # (Optional) Application processes running over pages
     ├── pages/                  # Application pages
-    ├── widgets/                # Independent and self-contained blocks for pages
+    ├── widgets/                # Applets intended to be used within pages, including the app layout
     ├── features/               # (Optional) Processing of user scenarios
     ├── entities/               # (Optional) Business entities that domain logic operates with
     └── shared/                 # Reused modules, non business specific
@@ -60,7 +60,7 @@ The first level of application partitioning, according to the **scope of influen
     - `shared` - for abstract commonly used logic (UIKIT / helpers / API)
 
 2. **Then, add the remaining layers as needed:**
-    - `widgets` - if the logic on the pages starts to grow and duplicate
+    - `widgets` - if the logic on the pages starts to grow and / or duplicate
     - `entities` - if the amount of deunified logic is growing in the project
     - `features` - if it becomes difficult to find the boundaries of specific user scenarios in the project, and control them
     - `processes` - if a lot of "end-to-end logic" grows over the page
