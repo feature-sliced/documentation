@@ -37,6 +37,7 @@ And if the first option is easy to implement, then everything becomes not so tri
 
 ```tsx title=widgets/header/ui.tsx
 import { SearchBar } from "features/search-bar";
+import { Navigation } from "features/navigation";
 import { Layout } from "shared/ui";
 
 // The header may differ from page to page
