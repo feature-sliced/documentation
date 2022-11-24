@@ -608,13 +608,15 @@ import { TaskRow, taskModel } from "entities/task";
 #### (entities) Фильтрация на уровне данных {#entities-filtering-at-the-data-level}
 
 ```ts title=entities/task/model/index.ts
+import { combine, createEvent, createStore } from "effector";
+
 export type QueryConfig = { completed?: boolean };
 
 const setQueryConfig = createEvent<QueryConfig>();
 
 // Можно вынести в отдельную директорию (для хранения нескольких моделей)
 export const $queryConfig = createStore<QueryConfig>({})
-  .on(setQueryConfig, (_, payload) => payload)
+  .on(setQueryConfig, (_, payload) => payload);
 
 /**
  * Отфильтрованные таски
