@@ -37,6 +37,7 @@ sidebar_position: 5
 
 ```tsx title=widgets/header/ui.tsx
 import { SearchBar } from "features/search-bar";
+import { Navigation } from "features/navigation";
 import { Layout } from "shared/ui";
 
 // Хедер может отличаться от страницы к странице
