@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
 
 *Во многом повторяет декларацию API и для описанных ниже слоев*
 
-```ts title=entities/user/ui/index.ts
+```ts title=entities/viewer/ui/index.ts
 export { ViewerCard } from "./card";
 export { ViewerAvatar } from "./avatar";
 ...
@@ -80,7 +80,7 @@ export { ViewerAvatar } from "./avatar";
 
 Но явное выделение далеко не всегда обязательно
 
-```ts title=entities/user/model/index.ts
+```ts title=entities/viewer/model/index.ts
 export * as selectors from "./selectors";
 export * as events from "./events";
 export * as stores from "./stores";
@@ -93,7 +93,7 @@ export * as stores from "./stores";
 
 Если же в модели юниты можно семантично разделить на несколько сабмоделей, то [можно явно это](https://github.com/feature-sliced/examples/pull/1#discussion_r654841332) обозначить в Public API
 
-```ts title=entities/user/model/index.ts
+```ts title=entities/viewer/model/index.ts
 export * as submodel1 from "./submodel1"
 export * as submodel2 from "./submodel2"
 ...
@@ -101,7 +101,7 @@ export * as submodel2 from "./submodel2"
 </TabItem>
 </Tabs>
 
-```ts title=entities/user/index.ts
+```ts title=entities/viewer/index.ts
 export * from "./ui"
 export * as viewerModel from "./model";
 ```
@@ -213,7 +213,7 @@ export const AuthByOAuth = () => {
             domain={...}
             scope={...}
             ...
-            // для redux - дополнительно нужен dispatch
+            // для Redux - дополнительно нужен dispatch
             onSuccess=((user) => viewerModel.setUser(user))
         />
     )
