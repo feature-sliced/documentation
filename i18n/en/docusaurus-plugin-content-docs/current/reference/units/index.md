@@ -95,7 +95,7 @@ This level is [poorly regulated][refs-split-slices] is a methodology, but a lot 
 
 ## [Segment][refs-segments]
 
-Each of the modules located at the top level of each slice
+Group of primitives serving as implementation details for business logic
 
 This level determines [the purpose of modules in the code and implementation][refs-split-segments], according to classical design models
 
