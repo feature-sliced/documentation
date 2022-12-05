@@ -610,13 +610,15 @@ import { TaskRow, taskModel } from "entities/task";
 #### (entities) Filtering at the data level
 
 ```ts title=entities/task/model/index.ts
+import { combine, createEvent, createStore } from "effector";
+
 export type QueryConfig = { completed?: boolean };
 
 const setQueryConfig = createEvent<QueryConfig>();
 
 // Can be moved to a separate directory (for storing multiple models)
 export const $queryConfig = createStore<QueryConfig>({})
-  .on(setQueryConfig, (_, payload) => payload)
+  .on(setQueryConfig, (_, payload) => payload);
 
 /**
  * Filtered Tasks
