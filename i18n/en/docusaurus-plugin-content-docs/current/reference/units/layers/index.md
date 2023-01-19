@@ -65,53 +65,11 @@ The first level of application partitioning, according to the **scope of influen
     - `features` - if it becomes difficult to find the boundaries of specific user scenarios in the project, and control them
     - `processes` - if a lot of "end-to-end logic" grows over the page
 
-## Layers types
-
-<!-- I left the phrases in the comments, in case we decide to return them -->
-
 :::note
 
 It should be understood that not all of the above layers are mandatory, but are needed only when **the complexity of the project and the swelling responsibility** in the existing structure require it
 
 :::
-
-### [`app`][refs-app]
-
-<!-- **Initializing logic of the application** -->
-
-![app-themed-bordered](/img/layers/app.png)
-
-### [`processes`][refs-processes]
-
-<!-- **Application business processes that manage pages** -->
-
-![processes-themed-bordered](/img/layers/processes.png)
-
-### [`pages`][refs-pages]
-
-![pages-themed-bordered](/img/layers/pages.png)
-
-### [`widgets`][refs-widgets]
-
-![widgets-themed-bordered](/img/layers/widgets.png)
-
-### [`features`][refs-features]
-
-<!-- **Parts of the application functionality** -->
-
-![features-themed-bordered](/img/layers/features.png)
-
-### [`entities`][refs-entities]
-
-<!-- **Business Entities** -->
-
-![entities-themed-bordered](/img/layers/entities.png)
-
-### [`shared`][refs-shared]
-
-<!-- **Reused modules, without binding to business logic** -->
-
-![shared-themed-bordered](/img/layers/shared.png)
 
 ## See also
 
