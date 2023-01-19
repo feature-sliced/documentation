@@ -4,7 +4,6 @@ sidebar_position: 5
 
 # Widgets
 
-![widgets-themed-bordered](/img/layers/widgets.png)
 
 ## Description
 
