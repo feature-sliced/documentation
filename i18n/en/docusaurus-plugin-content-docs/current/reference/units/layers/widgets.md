@@ -5,7 +5,6 @@ sidebar_position: 5
 # Widgets
 
 
-## Description
 
 Self-sufficient UI blocks emerged from the composition of lower-level units in order to provide a complex user experience.
 
