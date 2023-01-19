@@ -4,43 +4,53 @@ sidebar_position: 5
 
 # Widgets
 
-:::tip When to use?
-If pages are huge because of increased business-specific logic with duplicate implementations
-
-*The layer is good to start using the methodology 🚀*
-:::
-
 ![widgets-themed-bordered](/img/layers/widgets.png)
 
 ## Description
 
-This is usually where independent and complex page widgets are located, composing the underlying layers
+Self-sufficient UI blocks emerged from the composition of lower-level units in order to provide a complex user experience.
 
-> The layer was introduced as an experimental one to solve the existing problems when using other layers
->
-> So far, no best practices have been developed for this layer (apart from those that apply to other layers), so use it only if necessary and consciously
+> So far, no special best practices have been developed for this layer, so use it thoughtfully
 
 ## Examples
 
+### Post Viewer
+
+In this example, the widget uses a post template and composes it with user avatar thumbnail, also integrating certain features, which no entity is supposed to know about because of the scope of responsibility.
+
+```tsx title=widgets/post-viewer/ui.tsx
+import { SharePost } from "features/post/share";
+import { LikePost } from "features/post/like";
+import { PostCard } from "entities/post";
+import { UserAvatar } from "entities/user";
+
+export const PostViewer = ({ data, ... }: PostViewerProps) => (
+    <PostCard
+        before={<UserAvatar size="thumbnail" withPopup={true} />}
+
+        ...
+
+        extra={[
+            <LikePost key="like" postId={data.id} ... />
+            <SharePost key="share" postId={data.id} ... />
+        ]}
+
+        {...{ data }}
+    />
+);
+```
+
 ### Application header
 
-**Header** is a fairly common part of web applications
+Some projects don't have a single header element for the entire application, so it may differ from page to page.
+Also, there's also a question of the right place for application layout blocks in the project structure.
 
-At the same time, more and more often in practice there are examples when we do not have "one single header for the entire application", but differs from page to page
-
-And if the first option is easy to implement, then everything becomes not so trivial with the second one:
-
-- Or the reused component of the header is located in the wrong place of the structure, which causes cross-imports
-- Or they duplicate the implementation of the header on each page (especially when one header is used in half of the pages, and the second one is used in the other half)
-
-**The widget layer is designed to help with this case**
+In such situations, `widgets` layer can help to solve the duplication problem.
 
 ```tsx title=widgets/header/ui.tsx
-import { SearchBar } from "features/search-bar";
+import { SearchBar } from "features/search";
 import { Layout } from "shared/ui";
 
-// The header may differ from page to page
-// At the same time, this logic must be composed somewhere
 export const Header = ({ theme, withSearch, withNav ...}: Props) => (
     <Layout.Header theme={theme}>
         {withSearch && <SearchBar ... />}
@@ -79,40 +89,3 @@ export const AnotherPage = () => (
     </Layout>
 )
 ```
-
-### Tweet Card
-
-```tsx title=widgets/tweet-item/ui.tsx
-import { ShareTweet } from "features/tweets/share";
-import { LikeTweet } from "features/tweets/like";
-import { TweetCard } from "entities/tweet";
-import { UserThumbnail } from "entities/user";
-
-// The component uses a template for tweets from the entities layer
-// At the same time it provides it with certain features-actions,
-// which the entities layer is not supposed to know about because of its scope of responsibility
-//
-// Other features and entities are also used here (e.g., AuthorThumbnail)
-
-// At the same time, if such a composition was usually carried out at the page level,
-// Now, such logic becomes reused
-// and takes away some of the responsibility from the pages
-//
-// Because of which the pages contain only the most necessary logic 
-// (and become thin thanks to this approach)
-export const TweetItem = ({ data,...}: Props) => (
-    <TweetCard
-        before={<UserThumbnail withPopup={true} />}
-        data={data}
-        ...
-        extra={[
-            <LikeTweet key="like" tweetId={data.id} ... />
-            <ShareTweet key="share" tweetId={data.id} ... />
-        ]}
-    />
-);
-```
-
-### Product card
-
-Similar to the tweet card
