@@ -424,7 +424,7 @@ At the same time, a higher-level logic is built on the basis of the underlying l
 Each implemented module must provide its own [public interface][refs-public-api] for use:
 
 ```ts title={layer}/foo/index.ts
-export { FooCard, FooThumbnail, ... } from "./ui";
+export { Card as FooCard, Thumbnail as FooThumbnail, ... } from "./ui";
 export * as fooModel from "./model"; 
 ```
 
@@ -435,7 +435,7 @@ If you need named namespace exports for the Public API declaration, you can look
 Or, as an alternative, use a more detailed design
 
 ```ts title={layer}/foo/index.ts
-import { FooCard, FooThumbnail, ... } from "./ui";
+import { Card as FooCard, Thumbnail as FooThumbnail, ... } from "./ui";
 import * as fooModel from "./model"; 
 
 export { FooCard, FooThumbnail, fooModel };
@@ -610,13 +610,15 @@ import { TaskRow, taskModel } from "entities/task";
 #### (entities) Filtering at the data level
 
 ```ts title=entities/task/model/index.ts
+import { combine, createEvent, createStore } from "effector";
+
 export type QueryConfig = { completed?: boolean };
 
 const setQueryConfig = createEvent<QueryConfig>();
 
 // Can be moved to a separate directory (for storing multiple models)
 export const $queryConfig = createStore<QueryConfig>({})
-  .on(setQueryConfig, (_, payload) => payload)
+  .on(setQueryConfig, (_, payload) => payload);
 
 /**
  * Filtered Tasks

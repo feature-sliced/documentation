@@ -65,7 +65,7 @@ Violation of this rule is a signal of problems:
 - [(Guide) About achieving low coupling][refs-low-coupling]
 - [(Discussion) Coupled entities](https://github.com/feature-sliced/documentation/discussions/49)
 - [(Discussion) About cross-imports and analysis зависимостей](https://github.com/feature-sliced/documentation/discussions/65#discussioncomment-480822)
-- [**GRASP** Patterns](https://ru.wikipedia.org/wiki/GRASP)
+- [**GRASP** Patterns](https://en.wikipedia.org/wiki/GRASP_(object-oriented_design))
 
 [refs-public-api]: /docs/reference/public-api
 [refs-splitting]: /docs/reference/units/decomposition

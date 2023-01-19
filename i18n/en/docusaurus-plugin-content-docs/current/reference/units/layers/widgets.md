@@ -47,11 +47,12 @@ Also, there's also a question of the right place for application layout blocks i
 
 In such situations, `widgets` layer can help to solve the duplication problem.
 
-```tsx title=widgets/header/ui.tsx
+```tsx title=widgets/app-header/ui.tsx
 import { SearchBar } from "features/search";
+import { Navigation } from "features/navigation";
 import { Layout } from "shared/ui";
 
-export const Header = ({ theme, withSearch, withNav ...}: Props) => (
+export const AppHeader = ({ theme, withSearch, withNav ...}: Props) => (
     <Layout.Header theme={theme}>
         {withSearch && <SearchBar ... />}
         {withNav && <Navigation ... />}
@@ -61,13 +62,14 @@ export const Header = ({ theme, withSearch, withNav ...}: Props) => (
 ```
 
 ```tsx title=pages/some-page/ui.tsx
-import { Header } from "widgets/header";
+import { AppHeader } from "widgets/app-header";
 import { Layout } from "shared/ui";
 
 export const SomePage = () => (
     <Layout>
-        {/* Header#1 on one page */}
-        <Header sticky={true} />
+        {/* app header #1 on one page */}
+        <AppHeader sticky={true} />
+
         <Layout.Content>
             ...
         </Layout.Content>
@@ -76,13 +78,14 @@ export const SomePage = () => (
 ```
 
 ```tsx title=pages/another-page/ui.tsx
-import { Header } from "widgets/header";
+import { AppHeader } from "widgets/app-header";
 import { Layout } from "shared/ui";
 
 export const AnotherPage = () => (
     <Layout>
-        {/* Header#2 on another page */}
-        <Header extra={...} theme={...} />
+        {/* app header #2 on another page */}
+        <AppHeader extra={...} theme={...} />
+
         <Layout.Content>
             ...
         </Layout.Content>

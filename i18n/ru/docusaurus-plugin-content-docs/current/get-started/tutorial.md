@@ -422,7 +422,7 @@ import { Card } from "antd"; // ~ "shared/ui/card"
 Каждый реализуемый модуль должен предоставлять к использованию свой [публичный интерфейс][refs-public-api]:
 
 ```ts title={layer}/foo/index.ts
-export { FooCard, FooThumbnail, ... } from "./ui";
+export { Card as FooCard, Thumbnail as FooThumbnail, ... } from "./ui";
 export * as fooModel from "./model"; 
 ```
 
@@ -433,7 +433,7 @@ export * as fooModel from "./model";
 Либо же, как альтернатива, использовать более развернутую конструкцию
 
 ```ts title={layer}/foo/index.ts
-import { FooCard, FooThumbnail, ... } from "./ui";
+import { Card as FooCard, Thumbnail as FooThumbnail, ... } from "./ui";
 import * as fooModel from "./model"; 
 
 export { FooCard, FooThumbnail, fooModel };
@@ -608,13 +608,15 @@ import { TaskRow, taskModel } from "entities/task";
 #### (entities) Фильтрация на уровне данных {#entities-filtering-at-the-data-level}
 
 ```ts title=entities/task/model/index.ts
+import { combine, createEvent, createStore } from "effector";
+
 export type QueryConfig = { completed?: boolean };
 
 const setQueryConfig = createEvent<QueryConfig>();
 
 // Можно вынести в отдельную директорию (для хранения нескольких моделей)
 export const $queryConfig = createStore<QueryConfig>({})
-  .on(setQueryConfig, (_, payload) => payload)
+  .on(setQueryConfig, (_, payload) => payload);
 
 /**
  * Отфильтрованные таски
