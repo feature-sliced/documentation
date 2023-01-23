@@ -14,8 +14,9 @@ Different developers have different experiences and contexts, which can lead to 
 
 The methodology uses specific terms such as:
 
-- [Layers][refs-layers] — "app", "process", "page", "feature", "entity", "shared",
-- [Segments][refs-segments] — "ui', "model", "lib", "api".
+- [Layers][refs-layers] — "app", "process", "page", "feature", "entity", "shared"
+- [Slices][refs-slices]
+- [Segments][refs-segments] — "ui', "model", "lib", "api", "config"
 
 These terms are [clearly defined][refs-reference] in the methodology.
 
@@ -52,10 +53,11 @@ It is important that all team members clearly understand the meaning of terms su
 - [(Discussion) "processes" vs "flows" vs ...][disc-processes]:
 - [(Discussion) "model" vs "store" vs ...][disc-model]:
 
-[refs-layers]: /docs/reference/units/layers
-[refs-reference]: /docs/reference/units
-[refs-segments]: /docs/reference/units/segments
 [disc-model]: https://github.com/feature-sliced/documentation/discussions/68
 [disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894
 [disc-processes]: https://github.com/feature-sliced/documentation/discussions/20
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/16
+[refs-layers]: /docs/reference/units/layers
+[refs-reference]: /docs/reference/units
+[refs-segments]: /docs/reference/units/segments
+[refs-slices]: /docs/reference/units#slice

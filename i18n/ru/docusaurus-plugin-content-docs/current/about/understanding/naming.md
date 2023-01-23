@@ -14,8 +14,9 @@ sidebar_position: 4
 
 В методологии используются такие специфические термины, как:
 
-- [Слои][refs-layers] (Layers) — "app", "process", "page", "feature", "entity", "shared",
-- [Сегменты][refs-segments] (Segments) — "ui', "model", "lib", "api".
+- [Слои][refs-layers] (Layers) — "app", "process", "page", "feature", "entity", "shared"
+- [Слайсы][refs-slices] (Slices)
+- [Сегменты][refs-segments] (Segments) — "ui', "model", "lib", "api", "config"
 
 Эти термины [четко определены][refs-reference] в методологии.
 
@@ -49,13 +50,14 @@ sidebar_position: 4
 
 - [(Обсуждение) Адаптивность нейминга][disc-src]
 - [(Обсуждение) Опрос по неймингу сущностей][disc-naming]:
-- [(Обсуждение) `processes` vs `flows` vs ...][disc-processes]:
-- [(Обсуждение) `model` vs `store` vs ...][disc-model]:
+- [(Обсуждение) "processes" vs "flows" vs ...][disc-processes]:
+- [(Обсуждение) "model" vs "store" vs ...][disc-model]:
 
-[refs-layers]: /docs/reference/units/layers
-[refs-reference]: /docs/reference/units
-[refs-segments]: /docs/reference/units/segments
 [disc-model]: https://github.com/feature-sliced/documentation/discussions/68
 [disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894
 [disc-processes]: https://github.com/feature-sliced/documentation/discussions/20
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/16
+[refs-layers]: /docs/reference/units/layers
+[refs-reference]: /docs/reference/units
+[refs-segments]: /docs/reference/units/segments
+[refs-slices]: /docs/reference/units#slice
