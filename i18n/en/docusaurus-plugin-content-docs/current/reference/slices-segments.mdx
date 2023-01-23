@@ -8,4 +8,29 @@ Slices are the second level in the organizational hierarchy of Feature-Sliced De
 
 Segments are the third level in this hierarchy, and their purpose is to group code by its technical nature.
 
-WIP: To be completed
+## Dividing by slices
+
+Since each layer has semantic meaning, it helps to keep that meaning in mind to understand how the code should be divided by slices. Also remember the [import rule on layers][layer-import-rule] that states that one slice cannot import modules from another slice on the same layer. This rule will ensure that your slices are highly cohesive (which is good).
+
+### Entities
+
+Every slice should be devoted to a single entity. A good starting-off point is to use database entities (table names) from the backend as the main entities for the app, however, entities are not only limited to database tables.
+
+For example, the podcast player _Cast_ (see it in [project examples][examples--cast]) contains an `audio` entity which represents a concept from the technical vocabulary, but does not correspond to a database entity.
+
+### Features
+
+A single action, either done by the user or by the app on their behalf, can represent a single slice. When there are many related small actions, they can be grouped together to keep the slices clean.
+
+For example, for a photo gallery app, creating an album, renaming an album and sharing an album can be grouped into a single slice `album`, but uploading photos and editing them could be placed into separate slices, `upload-photo` and `edit-photo` respectively.
+
+### Widgets/Pages
+
+A single widget/page usually deserves its own slice, however, in the same way as with features, several widgets that are closely related to a single entity can be grouped together.
+
+### Other layers
+
+For layers that are little concerned with business logic, division by slices is unnecessary, which is why layers Shared and App usually consist directly of segments.
+
+[layer-import-rule]: /docs/reference/layers#import-rule-on-layers
+[examples--cast]: /examples#:~:text=Cast
