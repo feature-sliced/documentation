@@ -3,28 +3,30 @@ sidebar_position: 3
 sidebar_label: Knowledge types
 ---
 
-# Types of knowledge in the project
+# Knowledge types in the project
 
-In any project, you can distinguish certain types of knowledge
+The following "types of knowledge" can be distinguished in any project:
 
-- **Fundamental knowledge**  
-  Knowledge that practically does not change over time.  
-  *Algorithms, computer science, the mechanisms of the YAP and its API, etc.*
+### Fundamental knowledge
 
-- **Technology stack**  
-  Knowledge about the set of technical solutions used in the project.  
-  *Programming languages, frameworks, libraries, etc.*
+Knowledge that does not change much over time, such as algorithms, computer science, programming language mechanisms and its APIs.
 
-- **Project knowledge**  
-  Knowledge that is applicable exclusively within the framework of the current project.  
-  *They are not transferred to the outside world in any way and, having left this project, you can forget about this knowledge.*
+### Technology stack
 
-  *Naturally, this also works in the opposite direction — to add a new person to the current project, you need to train him **a certain minimum amount of this project knowledge** - without which a new participant will not be able to perform useful work*
+Knowledge of the set of technical solutions used in a project, including programming languages, frameworks, and libraries.
 
-**Feature-Sliced Design** aims to take on more responsibility from "project knowledge" so that people can get onboarded into teams and projects faster
+### Project knowledge
 
-## See also
+Knowledge that is specific to the current project and is not transferable to other contexts. When a person leaves the project, they may forget about this knowledge. When a new person joins the project, they need to be taught a certain minimum amount of design knowledge specific to the project so that they can contribute effectively.
 
-- [Ilya Klimov - About types of knowledge][ext-klimov]
+:::note
+
+**Feature-Sliced Design** is designed to reduce reliance on "design knowledge", take more responsibility, and make it easier to onboard new team members.
+
+:::
+
+## See also {#see-also}
+
+- [(Video) Ilya Klimov - On Types of Knowledge][ext-klimov]
 
 [ext-klimov]: https://youtu.be/4xyb_tA-uw0?t=249
