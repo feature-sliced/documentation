@@ -75,10 +75,12 @@ It can contain inside:
     |   ├── content/
     |   |     ├── sort/
     |   |     └── table/
-    |   └── index.tsx/
+    |   ├── index.tsx
+    |   └── styles.module.scss
 ```
 
 ```tsx title={layer}/{slice}/ui/index.tsx
+import { Layout } from "shared/ui";
 import Toolbar from "./toolbar";
 import Content from "./content";
 import styles from "./styles.module.scss";
@@ -88,7 +90,7 @@ export const SomeForm = () => (
       <Toolbar className={styles.toolbar} />  
       <Content className={styles.content} />
     </Layout>
-)
+);
 ```
 
 ## `model`
