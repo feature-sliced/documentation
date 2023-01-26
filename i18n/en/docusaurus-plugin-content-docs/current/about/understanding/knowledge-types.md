@@ -27,6 +27,6 @@ Knowledge that is specific to the current project and is not transferable to oth
 
 ## See also {#see-also}
 
-- [(Video) Ilya Klimov - On Types of Knowledge][ext-klimov]
+- [(Video 🇷🇺) Ilya Klimov - On Types of Knowledge][ext-klimov]
 
 [ext-klimov]: https://youtu.be/4xyb_tA-uw0?t=249
