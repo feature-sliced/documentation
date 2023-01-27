@@ -75,10 +75,12 @@ pages/home/
     |   ├── content/
     |   |     ├── sort/
     |   |     └── table/
-    |   └── index.tsx/
+    |   ├── index.tsx
+    |   └── styles.module.scss
 ```
 
 ```tsx title={layer}/{slice}/ui/index.tsx
+import { Layout } from "shared/ui";
 import Toolbar from "./toolbar";
 import Content from "./content";
 import styles from "./styles.module.scss";
@@ -88,7 +90,7 @@ export const SomeForm = () => (
       <Toolbar className={styles.toolbar} />  
       <Content className={styles.content} />
     </Layout>
-)
+);
 ```
 
 ## `model`
@@ -127,7 +129,7 @@ export const SomeForm = () => (
 
 *В редких случаях (react-query / graphql) сами запросы могут лежать рядом с местом использования*
 
-- *Но чаще всего [рекоммендуется][disc-api] располагать API-сегмент в `shared`-слое, чтобы снизить количество переплетений логики*
+- *Но чаще всего [рекомендуется][disc-api] располагать API-сегмент в `shared`-слое, чтобы снизить количество переплетений логики*
 
 При этом, данный сегмент может как писаться вручную, так и генерироваться с помощью схемы API
 
