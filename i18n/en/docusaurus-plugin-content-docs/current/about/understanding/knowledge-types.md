@@ -7,15 +7,15 @@ sidebar_label: Knowledge types
 
 The following "types of knowledge" can be distinguished in any project:
 
-### Fundamental knowledge
+**Fundamental knowledge**
 
 Knowledge that does not change much over time, such as algorithms, computer science, programming language mechanisms and its APIs.
 
-### Technology stack
+**Technology stack**
 
 Knowledge of the set of technical solutions used in a project, including programming languages, frameworks, and libraries.
 
-### Project knowledge
+**Project knowledge**
 
 Knowledge that is specific to the current project and is not transferable to other contexts. When a person leaves the project, they may forget about this knowledge. When a new person joins the project, they need to be taught a certain minimum amount of design knowledge specific to the project so that they can contribute effectively.
 
