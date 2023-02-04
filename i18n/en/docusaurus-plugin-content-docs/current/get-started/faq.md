@@ -54,7 +54,7 @@ Answered [here](/docs/guides/migration/from-v1)
 
 ### Can I embed pages/features/entities into each other?
 
-Answered [here](/docs/reference/units/decomposition#group-slices)
+Answered [here](/docs/reference/slices-segments#slices)
 
 ### How do I work with the authorization context?
 
@@ -73,7 +73,7 @@ At the same time, Atomic Design [is well applied](https://t.me/feature_sliced/16
 - `Feature` - business feature, **action on an entity**
   - create-blog-post / login-by-oauth / edit-account / publish-video / ...
 
-See also [comparison reference](/docs/reference/units/layers), [viewer implementation of logic by layers](/docs/guides/examples/auth)
+See also [comparison reference](/docs/reference/layers), [viewer implementation of logic by layers](/docs/guides/examples/auth)
 
 ### Where to store the layout/template of pages?
 
@@ -94,7 +94,7 @@ It will be, at the moment - in development =)
 
 ### Can I store the features used on one page directly in the page directory?
 
-The methodology strongly recommends against doing this, since [each module has a corresponding place in the structure](/docs/reference/units/decomposition)
+The methodology strongly recommends against doing this, since each module has a corresponding place in the structure.
 
 Otherwise , there is a risk of complicating the project's code base
 

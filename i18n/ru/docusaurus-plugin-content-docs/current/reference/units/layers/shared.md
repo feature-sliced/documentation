@@ -17,13 +17,13 @@ sidebar_position: 8
 Здесь обычно находятся:
 
 - общий **UIKit** приложения (если такой есть)
-  - *[Segment][refs-segments]: `shared/ui`*
+  - *Segment: `shared/ui`*
 - общие **вспомогательные библиотеки**
-  - *[Segment][refs-segments]: `shared/lib`*
+  - *Segment: `shared/lib`*
 - общий модуль по **работе с API**
-  - *[Segment][refs-segments]: `shared/api`*
+  - *Segment: `shared/api`*
 - модуль **конфигурации приложения** и его окружения
-  - *[Segment][refs-segments]: `shared/config`*
+  - *Segment: `shared/config`*
   - *env-переменные, которые могут использоваться в коде вышележащих слоев*
 
 ## Структура {#structure}
@@ -75,5 +75,3 @@ export const OAuthProvider = () => (
     />
 )
 ```
-
-[refs-segments]: /docs/reference/units/segments

@@ -105,7 +105,7 @@ In v2 **, other new abstractions** have been added to eliminate the problems of 
 
 ### `BREAKING` Abstractions & Naming
 
-Now [specific abstractions][refs-abstractions] and [clear recommendations for naming them][refs-adaptability]are defined
+Now specific abstractions and [clear recommendations for naming them][refs-adaptability]are defined
 
 [disc-process]: https://github.com/feature-sliced/documentation/discussions/20
 [disc-features]: https://github.com/feature-sliced/documentation/discussions/23
@@ -116,7 +116,7 @@ Now [specific abstractions][refs-abstractions] and [clear recommendations for na
 [disc-model]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-472645
 [disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 
-#### [Layers][refs-abstractions-layers]
+#### Layers
 
 - `/app` — **application initialization layer**
   - *Previous versions: `app`, `core`,`init`, `src/index` (and this happens)*
@@ -131,7 +131,7 @@ Now [specific abstractions][refs-abstractions] and [clear recommendations for na
 - `/shared` — [**layer of reused infrastructure code**][disc-shared] 🔥
   - *Previous versions: `shared`, `common`, `lib`*
 
-#### [Segments][refs-abstractions-segments]
+#### Segments
 
 - `/ui` — [**UI segment**][disc-ui] 🔥
   - *Previous versions: `ui`, `components`, `view`*
@@ -160,9 +160,6 @@ Now it is much easier to [observe the principle of low coupling][refs-low-coupli
 
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [refs-adaptability]: /docs/about/understanding/naming
-[refs-abstractions]: /docs/reference/units/decomposition
-[refs-abstractions-layers]: /docs/reference/units/decomposition#group-layers
-[refs-abstractions-segments]: /docs/reference/units/decomposition#group-segments
 
 [ext-v1]: https://featureslices.dev/v1.0.html
 [ext-tg-spb]: https://t.me/feature_slices

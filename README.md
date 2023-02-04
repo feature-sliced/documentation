@@ -21,7 +21,7 @@
 ![feature-sliced-banner](/static/img/banner.jpg)
 
 <!-- ⚡ Add primary information & features about your repository -->
-**Feature-Sliced Design** (FSD) is an architectural design methodology for *frontend applications*. It aims to [**divide an application according to business logic and scopes of responsibility**][refs-splitting]
+**Feature-Sliced Design** (FSD) is an architectural design methodology for *frontend applications*. It aims to **divide an application according to business logic and scopes of responsibility**
 
 - Provides [**explicitness, controllability and adaptability**][refs-arch-req] of architecture
 - Based on [**time-tested**][refs-motivation-why] design practices and concepts
@@ -52,13 +52,13 @@ And therefore, instead of inventing and documenting it every time, it is better 
 
 The methodology is designed to **simplify and standardize the decomposition of logic for large and long-lived projects.**
 
-To do this, it introduces a number of [concepts][refs-concepts] and [abstractions][refs-splitting], on which the architecture *can be based* from project to project - from here we get *a number of advantages*
+To do this, it introduces a number of [concepts][refs-concepts] and abstractions, on which the architecture *can be based* from project to project - from here we get *a number of advantages*
 
-> **Note:** [Module][refs-module] - the structural unit of the project (file / directory)
+> **Note:** Module - the structural unit of the project (file / directory)
 
 ### Explicit business logic
 
-Modules are distributed according to [scope of influence, business responsibility and technical purpose][refs-splitting]
+Modules are distributed according to scope of influence, business responsibility and technical purpose.
 
 Thanks to this, *the architecture is standardized and becomes easier to read*
 
@@ -82,7 +82,7 @@ Thanks to this *it is easy to add and onboard new people to the team, as well as
 
 ### Controlled reuse of logic
 
-Each module has its own limitations and recommendations for reuse according to [its layer][refs-splitting-layers]
+Each module has its own limitations and recommendations for reuse according to its layer.
 
 Thanks to this, *a balance is maintained between compliance with the `DRY` principle and the ability to customize the module logic without overhead overrides*
 
@@ -106,13 +106,13 @@ The module should not **depend directly** on other modules of the same layer or 
 
 Orientation **to the needs of the business and the user**
 
-- Also includes splitting the structure by business domains *(so-called ["slices"][refs-splitting-slices])*
+- Also includes splitting the structure by business domains *(so-called "slices")*
 
 ## Abstractions
 
-For [architecture design][refs-splitting] the methodology suggests operating with [familiar abstractions][refs-adaptability], but in a more consistent and consistent order.
+For architecture design the methodology suggests operating with [familiar abstractions][refs-adaptability], but in a more consistent and consistent order.
 
-### [`Layers`][refs-splitting-layers]
+### `Layers`
 
 The first level of abstraction is **according to the scope of influence**
 
@@ -123,13 +123,13 @@ The first level of abstraction is **according to the scope of influence**
 - `entities` - business entities *(viewer, order, ...)*
 - `shared` - reused infrastructure code *(UIKit, libs, API, ...)*
 
-### [`Slices`][refs-splitting-slices]
+### `Slices`
 
 The second level of abstraction is **according to the business domain**
 
 The rules by which the code is divided into slices *depend on the specific project and its business rules* and are not determined by the methodology
 
-### [`Segments`][refs-splitting-segments]
+### `Segments`
 
 The third level of abstraction is **according to the purpose in the implementation**
 
@@ -244,12 +244,7 @@ If there are variations, how best to place indents-welcome:)
 [refs-isolation]: https://feature-sliced.design/docs/reference/isolation
 [refs-needs-driven]: https://feature-sliced.design/docs/about/understanding/needs-driven
 
-[refs-module]: https://feature-sliced.design/docs/reference/units#module
 [refs-knowledge]: https://feature-sliced.design/docs/about/understanding/knowledge-types
-[refs-splitting]: https://feature-sliced.design/docs/reference/units/decomposition
-[refs-splitting-layers]: https://feature-sliced.design/docs/reference/units/decomposition#group-layers
-[refs-splitting-slices]: https://feature-sliced.design/docs/reference/units/decomposition#group-slices
-[refs-splitting-segments]: https://feature-sliced.design/docs/reference/units/decomposition#group-segments
 
 [refs-migration-v1]: https://feature-sliced.design/docs/guides/migration/from-v1
 

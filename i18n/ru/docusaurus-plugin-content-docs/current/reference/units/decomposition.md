@@ -130,7 +130,7 @@ function Foo() {
 
 #### Grouping
 
-- В большинстве случаев следует избегать вложенности в слайсах, а использовать лишь [структурную группировку по папкам][ref-grouping], без дополнительной связующей логики
+- В большинстве случаев следует избегать вложенности в слайсах, а использовать лишь структурную группировку по папкам, без дополнительной связующей логики
 
     ```diff
     features/order/           # Группа фич
@@ -228,10 +228,9 @@ function Foo() {
 - [(Reference) Layers][ref-layers]
 - [(Reference) Segments][ref-segments]
 
-[ref-layers]: /docs/reference/units/layers
-[ref-segments]: /docs/reference/units/segments
+[ref-layers]: /docs/reference/layers
+[ref-segments]: /docs/reference/slices-segments#segments
 [ref-low-coupling]: /docs/reference/isolation/coupling-cohesion
-[ref-grouping]: /docs/reference/units/layers/features#structural-grouping-of-features
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/31
 

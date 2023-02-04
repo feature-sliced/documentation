@@ -43,7 +43,7 @@ sidebar_position: 6
 
 1. Какие данные нужны для её работы
 1. По каким правилами происходят изменения данных
-1. Какие [сущности][refs-entity] нужны для полного построения фичи
+1. Какие сущности нужны для полного построения фичи
 1. Как данные представлены для пользователя
 
 ## Правила {#rules}
@@ -75,7 +75,7 @@ features/order/            Группа фич
 
 Как правило, именно из-за пренебрежения этим правилом появляется высокая связность между модулями системы и непредсказуемые сайд-эффекты при разработке.
 
-Одним из способов для решения проблемы является использование [entity][refs-entity].
+Одним из способов для решения проблемы является использование entity.
 
 ## Примеры {#examples}
 
@@ -96,12 +96,12 @@ features/order/            Группа фич
 ### Фильтр по тегам {#filter-by-tags}
 
 - Для пользователя: `feature`.
-- Для разработчика: [entity][refs-entity] `tags` позволяют реализовать фильтр по тегам внутри `feature`.
+- Для разработчика: entity `tags` позволяют реализовать фильтр по тегам внутри `feature`.
 
 ### Подсказки при заполнении полей формы {#hints-when-filling-in-the-form-fields}
 
 - Для пользователя: `feature`.
-- Для разработчика: часть `form` [entity][refs-entity].
+- Для разработчика: часть `form` entity.
 
 ### Авторизация по телефону {#authorization-by-phone}
 
@@ -131,5 +131,4 @@ export const AuthByPhone = () => {
   - Для понимания слоя `features`
 - [(Тред) Про фичи и сущности наглядно](https://github.com/feature-sliced/documentation/discussions/23#discussioncomment-451017)
 
-[refs-entity]: /docs/reference/units/layers/entities
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion

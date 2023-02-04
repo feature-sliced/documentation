@@ -104,7 +104,7 @@ sidebar_position: 4
 
 ### `BREAKING` Abstractions & Naming
 
-Теперь определены [конкретные абстракции][refs-abstractions] и [четкие рекомендации для их нейминга][refs-adaptability]
+Теперь определены конкретные абстракции и [четкие рекомендации для их нейминга][refs-adaptability]
 
 [disc-process]: https://github.com/feature-sliced/documentation/discussions/20
 [disc-features]: https://github.com/feature-sliced/documentation/discussions/23
@@ -115,7 +115,7 @@ sidebar_position: 4
 [disc-model]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-472645
 [disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 
-#### [Layers][refs-abstractions-layers]
+#### Layers
 
 - `/app` — **слой инициализации приложения**
   - *Прежние варианты: `app`, `core`, `init`, `src/index` (и такое бывает)*
@@ -130,7 +130,7 @@ sidebar_position: 4
 - `/shared` — [**слой переиспользуемого инфраструктурного кода**][disc-shared] 🔥
   - *Прежние варианты: `shared`, `common`, `lib`*
 
-#### [Segments][refs-abstractions-segments]
+#### Segments
 
 - `/ui` — [**UI-сегмент**][disc-ui] 🔥
   - *Прежние варианты: `ui`, `components`, `view`*
@@ -159,9 +159,6 @@ sidebar_position: 4
 
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [refs-adaptability]: /docs/about/understanding/naming
-[refs-abstractions]: /docs/reference/units/decomposition
-[refs-abstractions-layers]: /docs/reference/units/decomposition#group-layers
-[refs-abstractions-segments]: /docs/reference/units/decomposition#group-segments
 
 [ext-v1]: https://featureslices.dev/v1.0.html
 [ext-tg-spb]: https://t.me/feature_slices

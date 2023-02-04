@@ -18,7 +18,7 @@ If you have an existing project, fear not — FSD can be adopted incrementally. 
 
 ## Basics
 
-In FSD, a [project consists][refs-splitting] of <mark>layers</mark>, each layer is made up of <mark>slices</mark> and each slice is made up of <mark>segments</mark>. 
+In FSD, a project consists of <mark>layers</mark>, each layer is made up of <mark>slices</mark> and each slice is made up of <mark>segments</mark>. 
 
 ![themed--scheme](/img/visual_schema.jpg)
 
@@ -97,4 +97,3 @@ It's advised to refrain from adding new large entities while refactoring or refa
 [ext-disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 [refs-examples]: /examples
 [refs-migration]: /docs/guides/migration
-[refs-splitting]: /docs/reference/units/decomposition

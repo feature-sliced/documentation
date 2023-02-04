@@ -52,8 +52,8 @@ Such name collisions can negatively affect the development process.
   - [`processes` vs `flows` vs ...][disc-processes]
   - [`model` vs `store` vs ...][disc-model]
 
-[refs-layers]: /docs/reference/units/layers
-[refs-segments]: /docs/reference/units/segments
+[refs-layers]: /docs/reference/layers
+[refs-segments]: /docs/reference/slices-segments#segments
 [refs-reference]: /docs/reference
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/16

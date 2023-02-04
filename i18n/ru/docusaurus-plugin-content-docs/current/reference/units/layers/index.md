@@ -75,39 +75,39 @@ sidebar_position: 1
 
 :::
 
-### [`app`][refs-app]
+### `app`
 
 <!-- **Инициализирующая логика приложения** -->
 
 ![app-themed-bordered](/img/layers/app.png)
 
-### [`processes`][refs-processes]
+### `processes`
 
 <!-- **Бизнес-процессы приложения, управляющие страницами** -->
 
 ![processes-themed-bordered](/img/layers/processes.png)
 
-### [`pages`][refs-pages]
+### `pages`
 
 ![pages-themed-bordered](/img/layers/pages.png)
 
-### [`widgets`][refs-widgets]
+### `widgets`
 
 ![widgets-themed-bordered](/img/layers/widgets.png)
 
-### [`features`][refs-features]
+### `features`
 
 <!-- **Части функциональности приложения** -->
 
 ![features-themed-bordered](/img/layers/features.png)
 
-### [`entities`][refs-entities]
+### `entities`
 
 <!-- **Бизнес-сущности** -->
 
 ![entities-themed-bordered](/img/layers/entities.png)
 
-### [`shared`][refs-shared]
+### `shared`
 
 <!-- **Переиспользуемые модули, без привязки к бизнес-логике** -->
 
@@ -128,20 +128,5 @@ sidebar_position: 1
 
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [refs-example-viewer]: /docs/guides/examples/auth
-
-[refs-app]: /docs/reference/units/layers/app
-[refs-processes]: /docs/reference/units/layers/processes
-[refs-pages]: /docs/reference/units/layers/pages
-[refs-widgets]: /docs/reference/units/layers/widgets
-[refs-features]: /docs/reference/units/layers/features
-[refs-entities]: /docs/reference/units/layers/entities
-[refs-shared]: /docs/reference/units/layers/shared
-
-[refs-segments]: /docs/reference/units/segments
-[refs-segments--ui]: /docs/reference/units/segments#ui
-[refs-segments--model]: /docs/reference/units/segments#model
-[refs-segments--lib]: /docs/reference/units/segments#lib
-[refs-segments--api]: /docs/reference/units/segments#api
-[refs-segments--config]: /docs/reference/units/segments#config
 
 [disc-sharing]: https://github.com/feature-sliced/documentation/discussions/14

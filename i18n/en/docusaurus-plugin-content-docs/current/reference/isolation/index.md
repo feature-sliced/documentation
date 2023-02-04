@@ -1,6 +1,6 @@
 # Isolation of modules
 
-Within the framework of the methodology, all modules are distributed by scopes of responsibility [(layer, slice, segment)][refs-splitting]
+Within the framework of the methodology, all modules are distributed by scopes of responsibility (layer, slice, segment)
 
 The layers, in turn, are organized vertically:
 
@@ -68,5 +68,4 @@ Violation of this rule is a signal of problems:
 - [**GRASP** Patterns](https://en.wikipedia.org/wiki/GRASP_(object-oriented_design))
 
 [refs-public-api]: /docs/reference/public-api
-[refs-splitting]: /docs/reference/units/decomposition
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion

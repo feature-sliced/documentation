@@ -20,9 +20,9 @@ sidebar_position: 1
 
 Каждая из директорий, находящихся на самом верхнем уровне приложения.
 
-Этот уровень определяет [скоуп ответственности модулей][refs-split-layers], а также уровень опасности изменений
+Этот уровень определяет скоуп ответственности модулей, а также уровень опасности изменений
 
-- **Представители**: [`app`][refs-layers-app], [`processes`][refs-layers-processes], [`pages`][refs-layers-pages], [`widgets`][refs-layers-widgets], [`features`][refs-layers-features], [`entities`][refs-layers-entities], [`shared`][refs-layers-shared]
+- **Представители**: `app`, `processes`, `pages`, `widgets`, `features`, `entities`, `shared`
 
 ```sh
 └── src/
@@ -39,9 +39,9 @@ sidebar_position: 1
 
 Каждый из элементов, находящихся на верхнем уровне слоёв
 
-Этот уровень [слабо регламентируется][refs-split-slices] методологией, однако многое зависит от конкретного проекта, стека и команды
+Этот уровень слабо регламентируется методологией, однако многое зависит от конкретного проекта, стека и команды
 
-- **Представители (от каждого слоя)** [`process`][refs-layers-processes], [`page`][refs-layers-pages], [`widget`][refs-layers-widgets], [`feature`][refs-layers-features], [`entity`][refs-layers-entities]
+- **Представители (от каждого слоя)** `process`, `page`, `widget`, `feature`, `entity`
 
 ```sh
 ├── app/
@@ -85,9 +85,9 @@ sidebar_position: 1
 
 Каждый из модулей, находящийся на верхнем уровне каждого слайса
 
-Этот уровень определяет [назначение модулей в коде и реализации][refs-split-segments], согласно классическим моделям проектирования
+Этот уровень определяет назначение модулей в коде и реализации, согласно классическим моделям проектирования
 
-- **Представители**: [`ui`][refs-segments-ui], [`model`][refs-segments-model], [`lib`][refs-segments-lib], [`api`][refs-segments-api], [`config`][refs-segments-config]
+- **Представители**: `ui`, `model`, `lib`, `api`, `config`
 
 ```sh
 {layer}/
@@ -110,26 +110,8 @@ sidebar_position: 1
 
 ## См. также {#see-also}
 
-- [Уровни абстракций по методологии][refs-split]
 - [Layers в методологии][refs-layers]
 - [Segments в методологии][refs-segments]
 
-[refs-split]: /docs/reference/units/decomposition
-[refs-split-layers]: /docs/reference/units/decomposition#group-layers
-[refs-split-slices]: /docs/reference/units/decomposition#group-slices
-[refs-split-segments]: /docs/reference/units/decomposition#group-segments
-
-[refs-layers]: /docs/reference/units/layers
-[refs-layers-app]: /docs/reference/units/layers/app
-[refs-layers-processes]: /docs/reference/units/layers/processes
-[refs-layers-pages]: /docs/reference/units/layers/pages
-[refs-layers-widgets]: /docs/reference/units/layers/widgets
-[refs-layers-features]: /docs/reference/units/layers/features
-[refs-layers-entities]: /docs/reference/units/layers/entities
-[refs-layers-shared]: /docs/reference/units/layers/shared
-[refs-segments]: /docs/reference/units/segments
-[refs-segments-ui]: /docs/reference/units/segments#ui
-[refs-segments-model]: /docs/reference/units/segments#model
-[refs-segments-lib]: /docs/reference/units/segments#lib
-[refs-segments-api]: /docs/reference/units/segments#api
-[refs-segments-config]: /docs/reference/units/segments#config
+[refs-layers]: /docs/reference/layers
+[refs-segments]: /docs/reference/slices-segments#segments
