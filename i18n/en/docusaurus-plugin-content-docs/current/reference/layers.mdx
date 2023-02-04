@@ -42,7 +42,7 @@ For example, a module in `~/features/aaa` cannot import code from `~/features/bb
 ### Shared
 
 Isolated modules, components and abstractions that are detached from the specifics of the project or business.
-Warning: not to be treated like [a utility dump](https://dev.to/sergeysova/why-utils-helpers-is-a-dump-45fo)!
+Warning: not to be treated like [a utility dump][ext--sova-utility-dump]!
 
 This layer, unlike others, does not consist of slices, and instead consists of segments directly.
 
@@ -51,7 +51,6 @@ This layer, unlike others, does not consist of slices, and instead consists of s
 * UI kit
 * API client
 * Code working with browser APIs
-* Routing primitives (e.g., authentication-protected routes)
 
 ### Entities
 
@@ -174,3 +173,4 @@ This layer usually doesn't contain slices, like Shared, instead having segments 
 * Analytics initialization
 
 [ext--remix]: https://remix.run
+[ext--sova-utility-dump]: https://dev.to/sergeysova/why-utils-helpers-is-a-dump-45fo
