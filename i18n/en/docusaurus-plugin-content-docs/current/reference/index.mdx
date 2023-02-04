@@ -4,33 +4,32 @@ hide_table_of_contents: true
 pagination_prev: guides/index
 ---
 
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { ApiOutlined, GroupOutlined, AppstoreOutlined, NodeIndexOutlined } from "@ant-design/icons";
+
 # 📚 Reference
 
-<span class="badge badge--danger margin-bottom--md">INFORMATION-ORIENTED</span>
-
 <p class="summary">
-A detailed description of the methodology's key concepts, that will help you dive deeper into the Feature-Sliced Design philosophy and its application
+A detailed description of the key concepts of Feature-Sliced Design.
 </p>
 
-
-## Main
-
-import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
-import { ApiOutlined, ApartmentOutlined, PartitionOutlined, NodeIndexOutlined } from "@ant-design/icons";
-
 <NavCard
-    title="Units" 
-    description="Practices for logical decomposition using layered-sliced structure with extraction of structure units"
-    to="/docs/reference/units"
-    Icon={ApartmentOutlined}
-    tags={['Layers', 'Segments', 'Decomposition']}
+    title="Layers" 
+    description="Definition of a layer and explanations for all layers"
+    to="/docs/reference/layers"
+    Icon={GroupOutlined}
+/>
+<NavCard
+    title="Slices and segments" 
+    description="Definitions of a slice and segment, content examples for segments on different layers"
+    to="/docs/reference/layers"
+    Icon={AppstoreOutlined}
 />
 <NavCard
     title="Isolation" 
     description="Pratices for scalable and efficient module interactions"
     to="/docs/reference/isolation"
     Icon={NodeIndexOutlined}
-    tags={['Low Coupling & High Cohesion', 'Decoupling at practice']}
 />
 <NavCard
     title="Public API" 

@@ -21,7 +21,7 @@
         "contributors:generate": "all-contributors generate"
     },
     "engines": {
-        "node": "^16.14"
+        "node": ">= 16.14"
     },
     "dependencies": {
         "@ant-design/icons": "^4.6.2",
