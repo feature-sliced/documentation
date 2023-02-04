@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useMemo } from "react";
 // It's utility, not hook =)
 import getBaseUrl from "@docusaurus/useBaseUrl";
 import { translate } from "@docusaurus/Translate";
 import Marquee from "react-fast-marquee";
+import { shuffle } from "lodash-es";
 import { Section } from "@site/src/shared/ui";
+
 import { companies } from "./_config";
 import styles from "./styles.module.scss";
 
 export const Companies = () => {
+    const companiesShuffled = useMemo(() => shuffle(companies), []);
+
     return (
         <Section
             title={translate({ id: "pages.home.companies.using" })}
@@ -15,7 +19,7 @@ export const Companies = () => {
             containerClass={styles.rootContainer}
         >
             <Marquee pauseOnHover>
-                {companies.map(({ url, src, alt }) => (
+                {companiesShuffled.map(({ url, src, alt }) => (
                     <a
                         key={src}
                         className={styles.item}
