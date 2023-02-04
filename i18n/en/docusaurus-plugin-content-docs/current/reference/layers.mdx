@@ -89,7 +89,7 @@ Here are a few suggestions to overcome this issue:
 
 Actions that a user can make in the application to interact with the business entities to achieve a valuable outcome. This also includes actions that the app makes on behalf of the user to produce value for them.
 
-Each slice in this layer can contain interactive UI elements, internal state and API calls that enable value-producing actions.
+Each slice in this layer can contain _interactive_ UI elements, internal state and API calls that enable value-producing actions.
 
 **Slice examples**:
 
@@ -111,7 +111,7 @@ Each slice in this layer can contain interactive UI elements, internal state and
 
 ### Widgets
 
-Self-sufficient UI blocks emerged from the composition of lower-level units like entities and features.
+Self-sufficient UI blocks that emerged from the composition of lower-level units like entities and features.
 
 This layer provides a way to fill in the slots left in the UI of Entities with other Entities and interactive elements from Features. Therefore, it is common not to have business logic on this layer, instead keeping it in Features. Each slice in this layer contains ready-to-use UI components and sometimes non-business logic such as gestures, keyboard interaction, etc.
 
@@ -130,7 +130,7 @@ This layer provides a way to fill in the slots left in the UI of Entities with o
 
 :::tip
 
-If you're using a nested routing system (e.g. the router of Remix), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create complete interface blocks, complete with related data fetching, loading states, and error boundaries.
+If you're using a nested routing system (e.g. the router of [Remix][ext--remix]), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create complete interface blocks, complete with related data fetching, loading states, and error boundaries.
 
 :::
 
@@ -172,3 +172,5 @@ This layer usually doesn't contain slices, like Shared, instead having segments 
 * Routing
 * Store and other context providers
 * Analytics initialization
+
+[ext--remix]: https://remix.run
