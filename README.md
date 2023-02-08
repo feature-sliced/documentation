@@ -258,6 +258,22 @@ If there are variations, how best to place indents-welcome:)
 [ext-discussions]: https://github.com/feature-sliced/documentation/discussions
 [ext-disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 
+## Badges
+
+[![Feature-Sliced Design][shields-fsd-white]](https://feature-sliced.design/)
+[![Feature-Sliced Design][shields-fsd-pain]](https://feature-sliced.design/)
+[![Feature-Sliced Design][shields-fsd-domain]](https://feature-sliced.design/)
+[![Feature-Sliced Design][shields-fsd-feature]](https://feature-sliced.design/)
+
+[shields-fsd-white]: https://img.shields.io/badge/Feature--Sliced-Design-FFF?logoWidth=20&style=flat-square&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA/SURBVHgB7dKxCgAgCIThs/d/51JoNQIdDrxvqMXlR4FmFs92KDIX/wI7JSdDN+eHtkxIycnQvMNW8hN/crsDc5QgGX9NvT0AAAAASUVORK5CYII=
+
+[shields-fsd-pain]: https://img.shields.io/badge/Feature--Sliced-Design-F92672?logoWidth=20&style=flat-square&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABHSURBVHgB7dKxCQAgDETR08ZNHNBBHNBNrBQFuyCCKQK5V6QMfBJAWVij5zLwKbW6d0VYx2TZyXnBKxvEZJnDx2bylf1kdRM6tiAZsruQ/QAAAABJRU5ErkJggg==
+
+[shields-fsd-domain]: https://img.shields.io/badge/Feature--Sliced-Design-66D9EF?logoWidth=20&style=flat-square&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABISURBVHgB7dKxCQAgDETR0w2cws0cys2cwhEUBbsggikCuVekDHwSQFlYo7Q+8KnmtHdFWMdk2cl5wSsbxGSZw8dm8pX9ZHUTMBUgGU2F718AAAAASUVORK5CYII=
+
+[shields-fsd-feature]: https://img.shields.io/badge/Feature--Sliced-Design-A6E22E?logoWidth=20&style=flat-square&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABISURBVHgB7dKxCQAgDETR00EcwYEc0IEcwUUUBbsggikCuVekDHwSQFlYo/Y88KmktndFWMdk2cl5wSsbxGSZw8dm8pX9ZHUTdIYgGbPdU2QAAAAASUVORK5CYII=
+
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
