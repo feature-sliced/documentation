@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Naming
 
-Different developers have different experiences and contexts, which can lead to misunderstandings on the team when the same entities [are called differently][disc-src]. For example:
+Different developers have different experiences and contexts, which can lead to misunderstandings on the team when the same entities are called differently. For example:
 
 - Components for display can be called "ui", "components", "ui-kit", "views", ...
 - The code that is reused throughout the application can be called "core", "shared", "app", ...
