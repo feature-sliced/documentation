@@ -29,15 +29,13 @@ Naming conflicts can occur when terms used in the FSD methodology overlap with t
 
 For example, a developer seeing the word process in the code will spend unnecessary time trying to understand which process they are talking about.
 
-When communicating within the development team, when saying the word process, everyone involved should clearly understand what we're talking about, the process as a business entity or the process from FSD.
+These **collisions can disrupt the development process**, as developers may spend extra time trying to figure out exactly what they are talking about.
 
-When communicating with the business, developers sometimes use technical terms that the business isn't familiar with. So a developer using the term process to refer to a process from FSD will introduce a misunderstanding into the conversation which may require additional time to clarify.
+When the project glossary contains terminology specific to FSD, it is critical to exercise caution when discussing these terms with the team and non-technical stakeholders.
 
-<!-- TODO: think of examples for other terms -->
+To communicate effectively with the team, it is recommended that the abbreviation "FSD" be used to prefix the methodology terms. For example, when talking about a process, you might say, "We can put this process at the FSD level."
 
-These **conflicts can disrupt the development process** because developers may spend extra time trying to figure out exactly what the conversation is about.
-
-In addition, when communicating with the business, it is important to be aware of any technical terms that may be unfamiliar to non-technical stakeholders. Using such terms can lead to misunderstandings that may take additional time to clarify.
+Conversely, when communicating with non-technical stakeholders, it is best to limit the use of FSD terminology and refrain from mentioning the internal structure.
 
 ## See also {#see-also}
 
