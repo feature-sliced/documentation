@@ -27,7 +27,7 @@ Naming conflicts can occur when terms used in the FSD methodology overlap with t
 - `FSD#page` vs log page,
 - `FSD#model` vs car model.
 
-For example, a developer seeing the word process in the code will spend unnecessary time trying to understand which process they are talking about.
+For example, a developer seeing the word "process" in the code will spend unnecessary time trying to understand which process they are talking about.
 
 These **collisions can disrupt the development process**, as developers may spend extra time trying to figure out exactly what they are talking about.
 
