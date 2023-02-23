@@ -38,9 +38,9 @@ sidebar_position: 4
 ## См. также {#see-also}
 
 - [(Обсуждение) Адаптивность нейминга][disc-src]
-- [(Обсуждение) Опрос по неймингу сущностей][disc-naming]:
-- [(Обсуждение) "processes" vs "flows" vs ...][disc-processes]:
-- [(Обсуждение) "model" vs "store" vs ...][disc-model]:
+- [(Обсуждение) Опрос по неймингу сущностей][disc-naming]
+- [(Обсуждение) "processes" vs "flows" vs ...][disc-processes]
+- [(Обсуждение) "model" vs "store" vs ...][disc-model]
 
 [disc-model]: https://github.com/feature-sliced/documentation/discussions/68
 [disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894

@@ -38,9 +38,9 @@ Conversely, when communicating with non-technical stakeholders, it is better to 
 ## See also {#see-also}
 
 - [(Discussion) Adaptability of naming][disc-src]
-- [(Discussion) Entity Naming Survey][disc-naming]:
-- [(Discussion) "processes" vs "flows" vs ...][disc-processes]:
-- [(Discussion) "model" vs "store" vs ...][disc-model]:
+- [(Discussion) Entity Naming Survey][disc-naming]
+- [(Discussion) "processes" vs "flows" vs ...][disc-processes]
+- [(Discussion) "model" vs "store" vs ...][disc-model]
 
 [disc-model]: https://github.com/feature-sliced/documentation/discussions/68
 [disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894
