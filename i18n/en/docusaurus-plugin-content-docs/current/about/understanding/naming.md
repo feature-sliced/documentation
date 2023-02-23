@@ -17,7 +17,7 @@ The methodology uses specific terms such as:
 - "app", "process", "page", "feature", "entity", "shared" as layer names,
 - "ui', "model", "lib", "api", "config" as segment names.
 
-Original naming is crucial to prevent confusion among team members and new developers joining the project. Using unique names also helps when seeking help from the community.
+It is very important to stick to these terms to prevent confusion among team members and new developers joining the project. Using standard names also helps when asking for help from the community.
 
 ## Naming Conflicts {#when-can-naming-interfere}
 
@@ -27,15 +27,13 @@ Naming conflicts can occur when terms used in the FSD methodology overlap with t
 - `FSD#page` vs log page,
 - `FSD#model` vs car model.
 
-For example, a developer seeing the word "process" in the code will spend unnecessary time trying to understand which process they are talking about.
+For example, a developer who sees the word "process" in the code will spend extra time trying to figure out what process is meant. Such **collisions can disrupt the development process**.
 
-These **collisions can disrupt the development process**, as developers may spend extra time trying to figure out exactly what they are talking about.
+When the project glossary contains terminology specific to FSD, it is critical to be careful when discussing these terms with the team and technical disinterested parties.
 
-When the project glossary contains terminology specific to FSD, it is critical to exercise caution when discussing these terms with the team and non-technical stakeholders.
+To communicate effectively with the team, it is recommended that the abbreviation "FSD" be used to prefix the methodology terms. For example, when talking about a process, you might say, "We can put this process on the FSD features layer."
 
-To communicate effectively with the team, it is recommended that the abbreviation "FSD" be used to prefix the methodology terms. For example, when talking about a process, you might say, "We can put this process at the FSD level."
-
-Conversely, when communicating with non-technical stakeholders, it is best to limit the use of FSD terminology and refrain from mentioning the internal structure.
+Conversely, when communicating with non-technical stakeholders, it is better to limit the use of FSD terminology and refrain from mentioning the internal structure of the code base.
 
 ## See also {#see-also}
 
