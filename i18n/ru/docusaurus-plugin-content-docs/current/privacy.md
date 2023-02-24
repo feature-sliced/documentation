@@ -2,10 +2,10 @@
 
 **Мы используем куки, для сбора данных по использованию документации (для дальнейшей аналитики и улучшения сайта, и ни для каких иных целей)**
 
-Единственные плагины для сбора метрик это [@docusaurus/plugin-google-analytics](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-google-analytics) и [docusaurus-plugin-hotjar](https://github.com/symblai/docusaurus-plugin-hotjar). Мы анализируем только те данные, что предоставляются с помощью [Google Analystics](https://analytics.google.com/) и [Hotjar](https://www.hotjar.com/) - чтобы собрать фидбек и улучшить ваш пользовательский опыт.
+Единственные плагины для сбора метрик это [@docusaurus/plugin-google-analytics](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-google-analytics) и [docusaurus-plugin-hotjar](https://github.com/symblai/docusaurus-plugin-hotjar). Мы анализируем только те данные, что предоставляются с помощью [Google Analytics](https://analytics.google.com/) и [Hotjar](https://www.hotjar.com/) - чтобы собрать фидбек и улучшить ваш пользовательский опыт.
 
 :::warning NOTE
-Эта страница не является юридически полноценной, поэтому за другими подробностями обратитесь пожалуйста к офиц.сайтам [Google Analystics](https://analytics.google.com/) и [Hotjar](https://www.hotjar.com/)
+Эта страница не является юридически полноценной, поэтому за другими подробностями обратитесь пожалуйста к офиц.сайтам [Google Analytics](https://analytics.google.com/) и [Hotjar](https://www.hotjar.com/)
 :::
 
 **Кто имеет доступ к метрикам?**
