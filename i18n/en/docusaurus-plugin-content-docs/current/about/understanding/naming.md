@@ -4,59 +4,45 @@ sidebar_position: 4
 
 # Naming
 
-## Problem
+Different developers have different experiences and contexts, which can lead to misunderstandings on the team when the same entities are called differently. For example:
 
-Due to the fact that each developer has his own experience and development context - [we are used to calling the same entities differently][disc-src], which can lead to misunderstandings within the team.
+- Components for display can be called "ui", "components", "ui-kit", "views", …
+- The code that is reused throughout the application can be called "core", "shared", "app", …
+- Business logic code can be called "store", "model", "state", …
 
-- *Components to be displayed - `ui` / `components` / `ui-kit` / `views` / ...*
-- *Code reusable in all parts of the application - the `core`/ `shared` / `app` / ...*
-- *Code business logic `store` / `model` / `state` / ...*
+## Naming in Feature-Sliced Design {#naming-in-fsd}
 
-## Naming in FSD
+The methodology uses specific terms such as:
 
-The methodology uses such terms as
+- "app", "process", "page", "feature", "entity", "shared" as layer names,
+- "ui', "model", "lib", "api", "config" as segment names.
 
-- `app`, `process`, `page`, `feature`, `entity`, `shared` - *[layers][refs-layers]*
-- `ui`, `model`, `lib`, `api` - *[segments][refs-segments]*
+It is very important to stick to these terms to prevent confusion among team members and new developers joining the project. Using standard names also helps when asking for help from the community.
 
-Within the framework of the methodology, each of these terms has a [clear definition][refs-reference]
+## Naming Conflicts {#when-can-naming-interfere}
 
-When developing a project using the **Feature-Sliced Design** methodology, it is very important [to adhere to the original naming, in order to avoid misunderstandings][disc-src] both among the team members and outside of it.
+Naming conflicts can occur when terms used in the FSD methodology overlap with terms used in the business:
 
-- If a new developer comes to the project who is familiar with the methodology, **he should see the terms already familiar to him**
-- If you ask for help in the community, you will get an answer to your question faster, **if you use the same terminology**
+- `FSD#process` vs simulated process in an application,
+- `FSD#page` vs log page,
+- `FSD#model` vs car model.
 
-## When can naming interfere?
+For example, a developer who sees the word "process" in the code will spend extra time trying to figure out what process is meant. Such **collisions can disrupt the development process**.
 
-When developing a project for displaying/building/modeling any processes, or developing an application for the layout of magazine pages, you may face the problem that **the terms used in the methodology overlap with the terms that your business operates**.
+When the project glossary contains terminology specific to FSD, it is critical to be careful when discussing these terms with the team and technical disinterested parties.
 
-- `FSD#process` vs simulated process in your application
-- `FSD#page` vs magazine page
-- `FSD#model` vs car model
+To communicate effectively with the team, it is recommended that the abbreviation "FSD" be used to prefix the methodology terms. For example, when talking about a process, you might say, "We can put this process on the FSD features layer."
 
-<!-- TODO: think about examples for other terms -->
+Conversely, when communicating with non-technical stakeholders, it is better to limit the use of FSD terminology and refrain from mentioning the internal structure of the code base.
 
-Such name collisions can negatively affect the development process.
+## See also {#see-also}
 
-- The developer, seeing the word `process` in the code, will spend extra time understanding which process is being discussed
+- [(Discussion) Adaptability of naming][disc-src]
+- [(Discussion) Entity Naming Survey][disc-naming]
+- [(Discussion) "processes" vs "flows" vs ...][disc-processes]
+- [(Discussion) "model" vs "store" vs ...][disc-model]
 
-- When communicating within the development team, saying the word `process`, all participants in the conversation should clearly understand what is being discussed, about the process as a business entity or about the process from **Feature-Sliced Design**.
-  
-- When communicating with business, developers sometimes use technical terms that the business is not familiar with. So the developer, using the term `process`, referring to the process from **Feature-Sliced Design**, will introduce a misunderstanding into the conversation, which may require additional time for clarification
-
-## See also
-
-- [(Discussion) Naming adaptability][disc-src]
-- **Discussions on naming entities**:
-  - [Naming survey][disc-naming]
-  - [`processes` vs `flows` vs ...][disc-processes]
-  - [`model` vs `store` vs ...][disc-model]
-
-[refs-layers]: /docs/reference/units/layers
-[refs-segments]: /docs/reference/units/segments
-[refs-reference]: /docs/reference
-
-[disc-src]: https://github.com/feature-sliced/documentation/discussions/16
+[disc-model]: https://github.com/feature-sliced/documentation/discussions/68
 [disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894
 [disc-processes]: https://github.com/feature-sliced/documentation/discussions/20
-[disc-model]: https://github.com/feature-sliced/documentation/discussions/68
+[disc-src]: https://github.com/feature-sliced/documentation/discussions/16
