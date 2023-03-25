@@ -137,7 +137,7 @@ export const examples: Example[] = [
         description: "A simple and free graphic editor for novice artists",
         website: "https://rastrr.ru",
         source: "https://github.com/rastrr-editor/client",
-        preview: null,
+        preview: require("./img/rastrr-editor.png"),
         version: VERSIONS.V2,
         updatedAt: "2023-03-25",
         tech: ["svelte"],
