@@ -132,4 +132,14 @@ export const examples: Example[] = [
         updatedAt: "2022-06-13",
         tech: ["svelte"],
     },
+    {
+        title: "Rastrr",
+        description: "A simple and free graphic editor for novice artists",
+        website: "https://rastrr.ru",
+        source: "https://github.com/rastrr-editor/client",
+        preview: require("./img/rastrr-editor.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-03-25",
+        tech: ["svelte"],
+    },
 ];
