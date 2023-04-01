@@ -142,4 +142,14 @@ export const examples: Example[] = [
         updatedAt: "2023-03-25",
         tech: ["svelte"],
     },
+    {
+        title: "Todo App (ReactNative+Redux)",
+        description: "QuickStart todo-app example for ReactNative(Expo) developers",
+        website: "https://expo.dev/@berdimyradov/todo-app",
+        source: "https://github.com/berdimyradov/fs-rn-todo-app",
+        preview: require("./img/fs-rn-todo-app.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-03-27",
+        tech: ["react-native", "expo", "redux"],
+    },
 ];
