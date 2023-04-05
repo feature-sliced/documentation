@@ -92,4 +92,9 @@ export const companies: Company[] = [
         src: "ladIT.svg",
         alt: "Lad IT",
     },
+    {
+        url: "https://www.x5.ru/",
+        src: "x5digital.png",
+        alt: "X5 Digital",
+    },
 ];
