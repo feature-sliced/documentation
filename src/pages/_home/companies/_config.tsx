@@ -87,4 +87,14 @@ export const companies: Company[] = [
         src: "food_ru.svg",
         alt: "Food.ru",
     },
+    {
+        url: "https://lad24.ru/",
+        src: "ladIT.svg",
+        alt: "Lad IT",
+    },
+    {
+        url: "https://www.x5.ru/",
+        src: "x5digital.png",
+        alt: "X5 Digital",
+    },
 ];
