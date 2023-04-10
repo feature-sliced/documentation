@@ -94,7 +94,7 @@ export const companies: Company[] = [
     },
     {
         url: "https://www.x5.ru/",
-        src: "x5digital.png",
+        src: "x5_digital.png",
         alt: "X5 Digital",
     },
 ];
