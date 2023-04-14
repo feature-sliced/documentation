@@ -8,7 +8,7 @@ import { examples } from "./_config";
 const TITLE = translate({ id: "pages.examples.title" });
 const DESCRIPTION = translate({ id: "pages.examples.subtitle" });
 const EDIT_URL =
-    "https://github.com/feature-sliced/documentation/edit/master/src/pages/examples/_config.js";
+    "https://github.com/feature-sliced/documentation/blob/master/src/pages/examples/_config.ts";
 const EXAMPLES_URL = "https://github.com/feature-sliced/examples";
 
 function ExamplesPage() {
