@@ -152,4 +152,12 @@ export const examples: Example[] = [
         updatedAt: "2023-03-27",
         tech: ["react-native", "expo", "redux"],
     },
+    {
+        title: "Simple Greenhouse App (React+MobX)",
+        description: "Simple demonstration of how FSD can be implemented with TypeScript, React.js, MobX and Firebase",
+        source: "https://github.com/NIRumiantsev/feature-sliced-design",
+        version: VERSIONS.V2,
+        updatedAt: "2023-04-14",
+        tech: ["react", "mobx", "typescript", "firebase", "mui", "vite"],
+    }
 ];
