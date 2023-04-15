@@ -5,7 +5,7 @@ on:
 
 jobs:
   test-build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
@@ -30,7 +30,7 @@ jobs:
         run: yarn build
         working-directory: .
   test-lint:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
