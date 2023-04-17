@@ -158,7 +158,7 @@ export const examples: Example[] = [
         source: "https://github.com/NIRumiantsev/feature-sliced-design",
         preview: require("./img/greenhouse.png"),
         version: VERSIONS.V2,
-        updatedAt: "2023-04-14",
+        updatedAt: "2023-04-17",
         tech: ["react", "mobx", "typescript", "firebase", "mui", "vite"],
     }
 ];
