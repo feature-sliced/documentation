@@ -160,5 +160,5 @@ export const examples: Example[] = [
         version: VERSIONS.V2,
         updatedAt: "2023-04-17",
         tech: ["react", "mobx", "typescript", "firebase", "mui", "vite"],
-    }
+    },
 ];
