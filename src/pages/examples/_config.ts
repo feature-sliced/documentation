@@ -161,5 +161,5 @@ export const examples: Example[] = [
         updatedAt: "2023-04-17",
         tech: ["react", "mobx", "typescript", "firebase", "mui", "vite"],
     },
-// Реверсим список, чтобы наверху показывались сначала последние примеры
+// Reverse the list (last examples should be at the top)
 ].reverse();
