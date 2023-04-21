@@ -31,7 +31,7 @@ sidebar_position: 3
 
 #### По уровню знания/ответственности {#by-the-level-of-knowledgeresponsibility}
 
-`app` > `processes` > `pages` > `features` > `entities` > `shared`
+`app` > `processes` > `pages` > `widgets` > `features` > `entities` > `shared`
 
 Модуль "знает" только про себя и нижележащие модули, но не вышележащие
 
@@ -39,7 +39,7 @@ sidebar_position: 3
 
 #### По уровню опасности изменений {#by-the-level-of-danger-of-changes}
 
-`shared` > `entities` > `features` > `pages` > `processes` > `app`
+`shared` > `entities` > `features` > `widgets` > `pages` > `processes` > `app`
 
 Чем ниже расположен модуль - тем опаснее вносить в него изменения
 
