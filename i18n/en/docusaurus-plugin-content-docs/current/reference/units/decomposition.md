@@ -31,7 +31,7 @@ If you look at the order of the layers , you can distinguish two general pattern
 
 #### By the level of knowledge/responsibility
 
-`app` > `processes` > `pages` > `features` > `entities` > `shared`
+`app` > `processes` > `pages` > `widgets` > `features` > `entities` > `shared`
 
 The module "knows" only about itself and the underlying modules, but not the ones lying above
 
@@ -39,7 +39,7 @@ The module "knows" only about itself and the underlying modules, but not the one
 
 #### By the level of danger of changes
 
-`shared` > `entities` > `features` > `pages` > `processes` > `app`
+`shared` > `entities` > `features` > `widgets` > `pages` > `processes` > `app`
 
 The lower the module is located , the more dangerous it is to make changes to it
 
