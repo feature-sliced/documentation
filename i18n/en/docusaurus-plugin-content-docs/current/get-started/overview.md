@@ -22,7 +22,7 @@ In FSD, a project consists of <mark>layers</mark>, each layer is made up of <mar
 
 ![themed--scheme](/img/visual_schema.jpg)
 
-The **layers** are standardized across all projects and vertically arranged. Modules on one layer can only interact with modules from the layers strictly below. There are currently seven of them (bottom to top):
+The **layers** are standardized across all projects and vertically arranged. Modules on one layer can only interact with modules from the layers strictly below. There are currently six of them (bottom to top):
 
 1. `shared` — reusable functionality, detached from the specifics of the project/business.
    <small>(e.g. UIKit, libs, API)</small>
@@ -33,9 +33,7 @@ The **layers** are standardized across all projects and vertically arranged. Mod
 4. `widgets` — compositional layer to combine entities and features into meaningful blocks.
    <small>(e.g. IssuesList, UserProfile)</small>
 5. `pages` — compositional layer to construct full pages from entities, features and widgets.
-6. `processes` — complex inter-page scenarios. 
-   <small>(e.g., authentication)</small>
-7. `app` — app-wide settings, styles and providers.
+6. `app` — app-wide settings, styles and providers.
 
 
 Then there are **slices**, which partition the code by business domain. This makes your codebase easy to navigate by keeping logically related modules close together. Slices cannot use other slices on the same layer, and that helps with high cohesion and low coupling.
@@ -53,7 +51,6 @@ In most cases, [it is recommended][ext-disc-api] to place `api` and `config` onl
 Let's consider a social network application.
 
 * `app/` contains setup of routing, store and global styles.
-* `processes/` contains the part of authentication that is responsible for reading/writing authentication tokens.
 * `pages/` contains the route components for each page in the app, mostly composition, hardly any logic.
 
 Within that application, let's consider a post card in a news feed.
