@@ -1,0 +1,27 @@
+{
+  "name": "@fsd/website",
+  "description": "FSD website",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "develop": "gatsby develop",
+    "format": "exit 0",
+    "lint": "exit 0",
+    "typecheck": "tsc --noEmit",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^5.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
+    "pkg-dir": "^7.0.0",
+    "typescript": "^5.0.4"
+  }
+}

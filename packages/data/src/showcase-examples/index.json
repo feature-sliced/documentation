@@ -1,0 +1,99 @@
+[
+  {
+    "title": "Cardbox",
+    "description": "The best solutions from developers in one place",
+    "links": [
+      "https://github.com/cardbox/frontend"
+    ],
+    "thumbnails": [
+      "require(./img/cardbox.png)"
+    ],
+    "tags": [
+      "VERSIONS.V2"
+    ]
+  },
+  {
+    "title": "Github Client",
+    "description": "React & GraphQL powered github web-client",
+    "links": [
+      "https://github-client.gq/",
+      "https://github.com/ani-team/github-client"
+    ],
+    "thumbnails": [
+      "require(./img/github-client.png)"
+    ],
+    "tags": [
+      "VERSIONS.FDD"
+    ]
+  },
+  {
+    "title": "Todo App",
+    "description": "QuickStart todo-app example",
+    "links": [
+      "https://7b64m.csb.app/",
+      "https://github.com/feature-sliced/examples/tree/master/todo-app"
+    ],
+    "thumbnails": [
+      "require(./img/todo-app.png)"
+    ],
+    "tags": [
+      "VERSIONS.V2"
+    ]
+  },
+  {
+    "title": "Todo App (Vue 3)",
+    "description": "QuickStart todo-app example for Vue developers",
+    "links": [
+      "https://fccls.sse.codesandbox.io/",
+      "https://github.com/EliseyMartynov/fs-vue"
+    ],
+    "thumbnails": [
+      "require(./img/todo-app-vue.png)"
+    ],
+    "tags": [
+      "VERSIONS.V2"
+    ]
+  },
+  {
+    "title": "Sharead (demo)",
+    "description": "Book Marketplace",
+    "links": [
+      "https://dev-sharead.netlify.app/",
+      "https://github.com/select-name/sharead-frontend"
+    ],
+    "thumbnails": [
+      "require(./img/sharead.png)"
+    ],
+    "tags": [
+      "VERSIONS.V2"
+    ]
+  },
+  {
+    "title": "Projentry (demo)",
+    "description": "Assistant for your projects",
+    "links": [
+      "https://projentry.netlify.app/",
+      "https://github.com/ani-team/projentry"
+    ],
+    "thumbnails": [
+      "require(./img/projentry.png)"
+    ],
+    "tags": [
+      "VERSIONS.V2"
+    ]
+  },
+  {
+    "title": "Loripsum generator",
+    "description": "Simple fish text generator",
+    "links": [
+      "https://loripsum-generator.vercel.app",
+      "https://github.com/yesnoruly/loripsum-generator"
+    ],
+    "thumbnails": [
+      "require(./img/loripsum-generator.png)"
+    ],
+    "tags": [
+      "VERSIONS.V2"
+    ]
+  }
+]

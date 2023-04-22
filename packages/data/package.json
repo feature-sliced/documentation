@@ -1,0 +1,18 @@
+{
+  "name": "@fsd/data",
+  "description": "FSD website data",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "develop": "gqlss src",
+    "format": "exit 0",
+    "lint": "exit 0",
+    "typecheck": "exit 0",
+    "build": "exit 0",
+    "serve": "exit 0",
+    "clean": "exit 0"
+  },
+  "devDependencies": {
+    "@fsd/gqlss": "0.0.0"
+  }
+}

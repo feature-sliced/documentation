@@ -1,0 +1,55 @@
+{
+  "name": "@fsd/gqlss",
+  "description": "GraphQL static server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "gqlss": "bin/gqlss.js"
+  },
+  "scripts": {
+    "develop": "exit 0",
+    "format": "exit 0",
+    "lint": "exit 0",
+    "test": "exit 0",
+    "build": "rollup -c rollup.config.js",
+    "serve": "exit 0",
+    "clean": "rimraf bin"
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "^9.0.17",
+    "@graphql-tools/utils": "^9.2.1",
+    "@mdx-js/mdx": "^2.3.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@rollup/plugin-url": "^8.0.1",
+    "async": "^3.2.4",
+    "chokidar": "^3.5.3",
+    "commander": "^10.0.0",
+    "cross-env": "^7.0.3",
+    "effector": "^22.7.0",
+    "fastify": "^4.15.0",
+    "gqtx": "^0.8.1",
+    "graphql": "^16.6.0",
+    "graphql-yoga": "^3.7.3",
+    "istextorbinary": "^6.0.0",
+    "node-graceful-shutdown": "^1.1.5",
+    "patronum": "^1.16.0",
+    "pkg-dir": "^7.0.0",
+    "prexit": "^2.2.0",
+    "read-pkg-up": "^9.1.0",
+    "rollup": "^3.20.2",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.18",
+    "@types/node": "^18.15.10",
+    "rimraf": "^5.0.0",
+    "type-fest": "^3.7.1",
+    "typescript": "^5.0.2"
+  },
+  "engines": {
+    "node": ">=16.18.0"
+  }
+}

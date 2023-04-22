@@ -1,0 +1,13 @@
+[{
+  "label": "Public API",
+  "description": "Each module must have a declaration of its public API at the top level",
+  "iconUrl": ""
+}, {
+  "label": "Isolation",
+  "description": "The module should not depend directly on other modules of the same layer or overlying layers",
+  "iconUrl": ""
+}, {
+  "label": "Needs Driven",
+  "description": "Orientation to business and user needs",
+  "iconUrl": ""
+}]

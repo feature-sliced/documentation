@@ -1,0 +1,17 @@
+[{
+  "label": "Adaptability",
+  "description": "Architecture components can be flexibly replaced, additives for new conditions",
+  "iconUrl": ""
+}, {
+  "label": "Explicit business-logic",
+  "description": "Easy discoverable architecture because of domain scopes",
+  "iconUrl": ""
+}, {
+  "label": "Tech debt & Refactoring",
+  "description": "Each module can be independently modified / rewritten without side effects",
+  "iconUrl": ""
+}, {
+  "label": "Explicit sharing",
+  "description": "Maintains a balance between DRY and local customization",
+  "iconUrl": ""
+}]
