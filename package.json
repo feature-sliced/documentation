@@ -9,7 +9,7 @@
         "start:en": "docusaurus start --locale en",
         "build": "docusaurus build",
         "swizzle": "docusaurus swizzle",
-        "test": "yarn test:lint && yarn run build",
+        "test": "pnpm run test:lint && pnpm run build",
         "test:lint": "eslint \"./**/*.{ts,tsx,js,jsx}\" && stylelint ./**/*.scss",
         "test:lint:fix": "eslint --fix \"./**/*.{ts,tsx,js,jsx}\" && stylelint **/*.scss --fix",
         "deploy": "docusaurus deploy",
@@ -64,6 +64,7 @@
         ]
     },
     "devDependencies": {
+        "@babel/eslint-parser": "^7.21.3",
         "@docusaurus/module-type-aliases": "2.1.0",
         "@eslint-kit/eslint-config-base": "4.1.0",
         "@eslint-kit/eslint-config-patch": "^1.0.0",
@@ -73,9 +74,8 @@
         "@typescript-eslint/eslint-plugin": "^5.38.0",
         "@typescript-eslint/parser": "^5.38.0",
         "all-contributors-cli": "^6.20.0",
-        "babel-eslint": "10.1.0",
         "docusaurus-plugin-sass": "^0.2.1",
-        "eslint": "7.10.0",
+        "eslint": "^7.32.0",
         "eslint-import-resolver-alias": "1.1.2",
         "prettier": "2.3.0",
         "sass": "^1.43.4",
