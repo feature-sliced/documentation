@@ -121,7 +121,7 @@ $ npx create-react-app todo-app --template typescript
 
 #### Layers: app {#layers-app}
 
-Как можно заметить - мы перенесли всю базовую логику в директорию [`app/`][refs-app]
+Как можно заметить - мы перенесли всю базовую логику в директорию `app/`
 
 Именно там, согласно методологии, стоит располагать всю подготовительную логику:
 
@@ -288,8 +288,8 @@ const App = () => (
 
 Здесь мы использовали сразу несколько слоев:
 
-- [`app`][refs-app] - для инициализации роутера *(HOC: withRouter)*
-- [`pages`][refs-pages] - для хранения модулей страниц
+- `app` - для инициализации роутера *(HOC: withRouter)*
+- `pages` - для хранения модулей страниц
 
 ### 1.5 Подключим UIKit {#15-lets-connect-uikit}
 
@@ -326,13 +326,13 @@ import { Card } from "antd"; // ~ "shared/ui/card"
 
 Прежде чем приступать к коду, надо определиться - [какую ценность мы хотим донести конечному пользователю][refs-needs]
 
-Для этого, декомпозируем нашу функциональность *по зонам ответственности [(слоям)][refs-layers]*
+Для этого, декомпозируем нашу функциональность *по зонам ответственности (слоям)*
 
 ![layers-flow-themed](/img/layers_flow.png)
 
 > **Примечание:** на схеме представлен *экспериментальный слой "Виджетов"*, который излишен в рамках туториала и спецификация которого скоро добавится
 
-#### [Pages][refs-pages]
+#### Pages
 
 Набросаем базово необходимые страницы, и пользовательские ожидания от них:
 
@@ -369,19 +369,19 @@ import { Card } from "antd"; // ~ "shared/ui/card"
 
 Даже при базовом разбиении мы видим, что:
 
-- между страницами есть общие [сущности][refs-entities] и их отображение *(Task)*
-- между страницами есть общие [фичи][refs-features] *(Помечать задачу выполненной / невыполненной)*
+- между страницами есть общие сущности и их отображение *(Task)*
+- между страницами есть общие фичи *(Помечать задачу выполненной / невыполненной)*
 
 Соответственно, кажется логичным продолжать декомпозировать задачу, но уже исходя из перечисленных выше возможностей для пользователя.
 
-#### [Features][refs-features]
+#### Features
 
 Части функциональности, несущие ценность пользователю
 
 - `<ToggleTask />` - (компонент) Пометить задачу выполненной / невыполненной
 - `<TasksFilters/>` - (компонент) Задать фильтрацию для списка задач
 
-#### [Entities][refs-entities]
+#### Entities
 
 Бизнес-сущности, на которых будет строится более высокоуровневая логика
 
@@ -389,7 +389,7 @@ import { Card } from "antd"; // ~ "shared/ui/card"
 - `getTasksListFx({ filters })` - (effect) Подгрузка списка задач с параметрами
 - `getTaskByIdFx(taskId: number)`- (effect) Подгрузка задачи по ID
 
-#### [Shared][refs-shared]
+#### Shared
 
 Переиспользуемые общие модули, без привязки к предметной области
 
@@ -400,7 +400,7 @@ import { Card } from "antd"; // ~ "shared/ui/card"
 
 #### В чем профит? {#what-is-the-profit}
 
-Теперь все модули можно проектировать со [слабой связностью][refs-low-coupling] и [со своей зоной ответственности][refs-layers], а также распределить по команде без конфликтов при разработке
+Теперь все модули можно проектировать со [слабой связностью][refs-low-coupling] и со своей зоной ответственности, а также распределить по команде без конфликтов при разработке
 
 *А самое главное - теперь каждый модуль служит для построения конкретной бизнес-ценности, что снижает риски для создания ["фич ради фич"][refs-needs]*
 
@@ -815,24 +815,17 @@ const TaskDetailsPage = (props: Props) => {
 - [(Обзор) How to Organize Your React + Redux Codebase][ext-pluralsight]
   - Разбор нескольких подходов к структуризации React проектов
 - [Гайды и примеры применения методологии (+ Миграция с v1)][refs-guides]
-- [Про разбиение приложения][refs-splitting]
 - [Справочный материал по методологии][refs-reference]
 
 [refs-motivation]: /docs/about/motivation
 
 [refs-needs]: /docs/about/understanding/needs-driven
 [refs-public-api]: /docs/reference/public-api
-[refs-splitting]: /docs/reference/units/decomposition
 
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [refs-guides]: /docs/guides
 [refs-reference]: /docs/reference
-[refs-layers]: /docs/reference/units/layers
-[refs-app]: /docs/reference/units/layers/app
-[refs-pages]: /docs/reference/units/layers/pages
-[refs-features]: /docs/reference/units/layers/features
-[refs-entities]: /docs/reference/units/layers/entities
-[refs-shared]: /docs/reference/units/layers/shared
+[refs-layers]: /docs/reference/layers
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure

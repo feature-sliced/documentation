@@ -5,7 +5,7 @@ pagination_next: about/index
 
 # Public API
 
-Each entity of the methodology is designed as a **user-friendly and integrable [module][refs-glossary].**
+Each entity of the methodology is designed as a **user-friendly and integrable module.**
 
 ## Goals
 
@@ -211,8 +211,6 @@ export * as authModel from "./model"
 - [(Discussion) Public Abstraction API][disc-src]
 - [Principles **SOLID**][ext-solid]
 - [Patterns **GRASP**][ext-grasp]
-
-[refs-glossary]: /docs/reference/units
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/41
 [ext-solid]: https://ru.wikipedia.org/wiki/SOLID

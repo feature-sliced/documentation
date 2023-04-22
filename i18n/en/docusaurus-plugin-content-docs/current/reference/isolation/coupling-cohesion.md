@@ -10,7 +10,7 @@ Application modules should be designed according to **high cohesion** (should so
 
 Within the methodology, this is achieved through:
 
-* [Splitting the application][refs-splitting] into layers and slices that implement specific functionality
+* Splitting the application into layers and slices that implement specific functionality
 * Providing a [public access interface][refs-public-api] for each module
 * Setting up restrictions for [modules interactions][refs-isolation] - each module can depend only on the modules below it, but not on modules from the same or higher layer
 
@@ -60,7 +60,7 @@ This allows you to **reuse and independently change** components with different 
 
 ## Layer composition (APP level)
 
-The methodology suggests putting the functionality that is valuable for the user into [**features slice**][refs-features], and the logic related to business entities - into [**entities**][refs-entities]. Both features and entities **should be designed as modules with high cohesion**, i.e. aimed at solving **one specific task** or related to **one specific entity.**
+The methodology suggests putting the functionality that is valuable for the user into **features slice**, and the logic related to business entities - into **entities**. Both features and entities **should be designed as modules with high cohesion**, i.e. aimed at solving **one specific task** or related to **one specific entity.**
 
 All interactions between such modules, similar to the UI components from the example above, should be coordinated via a **modules composition**.
 
@@ -73,13 +73,13 @@ Let's use an example of a chat application with the following features:
 
 According to methodology principles, it can be represented as:
 
-[Entities][refs-entities]
+Entities
 
 * User (contains user's state)
 * Contact (state of the contact list, utilities for working with an individual contact)
 * Chat (the state of the current chat and utilies for it)
 
-[Features][refs-features]
+Features
 
 * Form for sending a message
 * Chat selection menu
@@ -139,8 +139,5 @@ export const { sendMessage, attachFile } = createMessageInput({
 * [(Article) Low Coupling and High Cohesion. The Law of Demeter](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
 * [(Presentation) On design principles (including Low Coupling & High Cohesion)](https://www.slideshare.net/cristalngo/software-design-principles-57388843)
 
-[refs-splitting]: /docs/reference/units/decomposition
 [refs-public-api]: /docs/reference/public-api
 [refs-isolation]: /docs/reference/isolation
-[refs-features]: /docs/reference/units/layers/features
-[refs-entities]: /docs/reference/units/layers/entities

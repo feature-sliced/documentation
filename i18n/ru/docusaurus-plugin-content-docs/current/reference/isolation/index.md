@@ -1,6 +1,6 @@
 # Изоляция модулей
 
-В рамках методологии все модули распределены по зонам ответственности [(layer, slice, segment)][refs-splitting]
+В рамках методологии все модули распределены по зонам ответственности (layer, slice, segment)
 
 Слои, в свою очередь, организованы вертикально:
 
@@ -60,5 +60,4 @@ TODO После накопления опыта работы с методоло
 - [Паттерны **GRASP**](https://ru.wikipedia.org/wiki/GRASP)
 
 [refs-public-api]: /docs/reference/public-api
-[refs-splitting]: /docs/reference/units/decomposition
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion

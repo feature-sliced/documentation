@@ -6,7 +6,7 @@ pagination_next: about/index
 
 # Публичное API модуля приложения
 
-Каждая сущность методологии проектируется как **удобный в использовании и интеграции [модуль][refs-glossary].**
+Каждая сущность методологии проектируется как **удобный в использовании и интеграции модуль.**
 
 ## Цели {#goals}
 
@@ -212,8 +212,6 @@ export * as authModel from "./model"
 - [(Обсуждение) Public API абстракции][disc-src]
 - [Принципы **SOLID**][ext-solid]
 - [Паттерны **GRASP**][ext-grasp]
-
-[refs-glossary]: /docs/reference/units
 
 [disc-src]: https://github.com/feature-sliced/documentation/discussions/41
 [ext-solid]: https://ru.wikipedia.org/wiki/SOLID

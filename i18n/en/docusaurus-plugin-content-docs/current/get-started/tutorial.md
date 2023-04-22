@@ -121,7 +121,7 @@ Here's how it will help us in the future
 
 #### Layers: app
 
-As you can see , we have moved all the basic logic to the [`app/`][refs-app] directory
+As you can see , we have moved all the basic logic to the `app/` directory
 
 It is there, according to the methodology, that all the preparatory logic should be placed:
 
@@ -288,8 +288,8 @@ const App = () => (
 
 Here we used several layers at once:
 
-- [`app`][refs-app] - to initialize the router *(HOC: withRouter)*
-- [`pages`][refs-pages] - for storing page modules
+- `app` - to initialize the router *(HOC: withRouter)*
+- `pages` - for storing page modules
 
 ### 1.5 Let's connect UIKit
 
@@ -332,7 +332,7 @@ To do this, we decompose our functionality *by responsibility scopes [(layers)][
 
 > **Note:** the diagram shows *an experimental layer of "Widgets"*, which is unnecessary in the framework of the tutorial and the specification of which will be added soon
 
-#### [Pages][refs-pages]
+#### Pages
 
 We will outline the basic necessary pages, and user expectations from them:
 
@@ -371,19 +371,19 @@ This is due to the usual conditions of the project development:
 
 Even with the basic partitioning, we see that:
 
-- there are common [entities][refs-entities] between the pages and their display *(Task)*
-- there are common [features][refs-features] *between the pages (Mark the task completed / unfulfilled)*
+- there are common entities between the pages and their display *(Task)*
+- there are common features *between the pages (Mark the task completed / unfulfilled)*
 
 Accordingly, it seems logical to continue to decompose the task, but already based on the above-mentioned features for the user.
 
-#### [Features][refs-features]
+#### Features
 
 Parts of functionality that bring value to the user
 
 - `<ToggleTask />` - (component) Mark a task as completed / unfulfilled
 - `<TasksFilters/>` - (component) Set filtering for the task list
 
-#### [Entities][refs-entities]
+#### Entities
 
 Business entities on which a higher-level logic will be built
 
@@ -391,7 +391,7 @@ Business entities on which a higher-level logic will be built
 - `getTasksListFx({ filters })` - (effect) Loading the task list with parameters
 - `getTaskByIdFx(taskId: number)`- (effect) Uploading a task by ID
 
-#### [Shared][refs-shared]
+#### Shared
 
 Reused shared modules, without binding to the domain scopes
 
@@ -817,24 +817,17 @@ Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, wher
 - [(Overview) How to Organize Your React + Redux Codebase][ext-pluralsight]
   - Analysis of several approaches to structuring React projects
 - [Guides and examples of the methodology application (+ Migration from v1)][refs-guides]
-- [About splitting the application][refs-splitting]
 - [Reference material on the methodology][refs-reference]
 
 [refs-motivation]: /docs/about/motivation
 
 [refs-needs]: /docs/about/understanding/needs-driven
 [refs-public-api]: /docs/reference/public-api
-[refs-splitting]: /docs/reference/units/decomposition
 
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [refs-guides]: /docs/guides
 [refs-reference]: /docs/reference
-[refs-layers]: /docs/reference/units/layers
-[refs-app]: /docs/reference/units/layers/app
-[refs-pages]: /docs/reference/units/layers/pages
-[refs-features]: /docs/reference/units/layers/features
-[refs-entities]: /docs/reference/units/layers/entities
-[refs-shared]: /docs/reference/units/layers/shared
+[refs-layers]: /docs/reference/layers
 
 [ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
 [ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure

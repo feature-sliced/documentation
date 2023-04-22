@@ -114,35 +114,6 @@ const LEGACY_ROUTES = [
                 from: "/docs/concepts/cross-communication",
                 to: "/docs/reference/isolation",
             },
-            {
-                title: "App splitting",
-                from: "/docs/concepts/app-splitting",
-                to: "/docs/reference/units/decomposition",
-            },
-            {
-                title: "Glossary",
-                from: "/docs/reference/glossary",
-                to: "/docs/reference/units",
-            },
-            {
-                title: "Segments",
-                from: "/docs/reference/segments",
-                to: "/docs/reference/units/segments",
-            },
-            {
-                title: "Layers",
-                from: [
-                    "/docs/reference/layers/overview",
-                    "/docs/reference/layers/app",
-                    "/docs/reference/layers/processes",
-                    "/docs/reference/layers/pages",
-                    "/docs/reference/layers/widgets",
-                    "/docs/reference/layers/features",
-                    "/docs/reference/layers/entities",
-                    "/docs/reference/layers/shared",
-                ],
-                to: "/docs/reference/units/layers",
-            },
         ],
     },
     {
