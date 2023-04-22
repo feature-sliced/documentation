@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Overview
 
+**Feature-Sliced Design** (FSD) is an architectural methodology for scaffolding front-end applications. Simply put, it's a compilation of rules and conventions on organizing code. The main purpose of this methodology is to make the project more understandable and structured in the face of ever-changing business requirements.
+
 ## Is it right for me?
 
 FSD can be implemented in projects and teams of any size, but there are a few things to keep in mind:
@@ -42,7 +44,7 @@ Each slice, in turn, consists of **segments**. These are tiny modules that are m
 
 :::note
 
-In most cases, [it is recommended][ext-disc-api] to place `api` and `config` only in the shared layer
+In most cases, [it is recommended][ext-disc-api] to place `api` and `config` only in the shared layer, unless your API client is also your storage (GraphQL, TanStack Query, etc.)
 
 :::
 
@@ -63,7 +65,7 @@ Within that application, let's consider a post card in a news feed.
 
 - **Uniformity**  
   The code is organized by scope of influence (layers), by domain (slices), and by technical purpose (segments).  
-  This creates a standardized architecture that is easier to comprehend for newcomers.
+  This creates a standardized architecture that is easy to comprehend for newcomers.
 
 - **Controlled reuse of logic**  
   Each architectural component has its purpose and predictable dependencies.  
@@ -74,7 +76,7 @@ Within that application, let's consider a post card in a news feed.
   This enables isolated modifications without unforeseen consequences.
 
 - **Orientation to business and users needs**  
-  App splitting by business domains help to deeper understand, structure and discovery project features.
+  When the app is split into business domains, you can navigate the code to discover and deeper understand all the project features.
 
 ## Incremental adoption
 

@@ -132,4 +132,34 @@ export const examples: Example[] = [
         updatedAt: "2022-06-13",
         tech: ["svelte"],
     },
-];
+    {
+        title: "Rastrr",
+        description: "A simple and free graphic editor for novice artists",
+        website: "https://rastrr.ru",
+        source: "https://github.com/rastrr-editor/client",
+        preview: require("./img/rastrr-editor.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-03-25",
+        tech: ["svelte"],
+    },
+    {
+        title: "Todo App (ReactNative+Redux)",
+        description: "QuickStart todo-app example for ReactNative(Expo) developers",
+        website: "https://expo.dev/@berdimyradov/todo-app",
+        source: "https://github.com/berdimyradov/fs-rn-todo-app",
+        preview: require("./img/fs-rn-todo-app.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-03-27",
+        tech: ["react-native", "expo", "redux"],
+    },
+    {
+        title: "Simple Greenhouse App (React+MobX)",
+        description: "Simple demonstration of how FSD can be implemented with TypeScript, React.js, MobX and Firebase",
+        source: "https://github.com/NIRumiantsev/feature-sliced-design",
+        preview: require("./img/greenhouse.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-04-17",
+        tech: ["react", "mobx", "typescript", "firebase", "mui", "vite"],
+    },
+// Reverse the list (last examples should be at the top)
+].reverse();
