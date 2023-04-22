@@ -86,5 +86,6 @@
         "stylelint-config-recommended": "^5.0.0",
         "stylelint-config-standard": "^22.0.0",
         "typescript": "^4.8.3"
-    }
+    },
+    "packageManager": "pnpm@8.3.1"
 }
