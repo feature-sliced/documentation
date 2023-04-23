@@ -4,9 +4,7 @@
 <img align="right" alt="Telegram (Russian language)" src="./.github/assets/README-telegram.svg" height="80" />
 </a><a href="https://feature-sliced.design/">
 <img align="right" alt="Website" src="./.github/assets/README-website.svg" height="80" />
-</a>
-<img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-light.svg#gh-light-mode-only" height="80" />
-<img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-dark.svg#gh-dark-mode-only" height="80" />
+</a><img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-light.svg#gh-light-mode-only" height="80" /><img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-dark.svg#gh-dark-mode-only" height="80" />
 
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
