@@ -1,7 +1,13 @@
-<a href="https://discord.gg/S8MzWTUsmp" title="Discord (English language)"><!--
---><img align="right" alt="Discord (English language)" src="./.github/assets/README-discord-light.svg#gh-light-mode-only" height="80" /><!--
---><img align="right" alt="Discord (English language)" src="./.github/assets/README-discord-dark.svg#gh-dark-mode-only" height="80" /><!--
---></a><a href="https://t.me/feature_sliced" title="Telegram (Russian language)"><img align="right" alt="Telegram (Russian language)" src="./.github/assets/README-telegram-light.svg#gh-light-mode-only" height="80" /><img align="right" alt="Telegram (Russian language)" src="./.github/assets/README-telegram-dark.svg#gh-dark-mode-only" height="80" /></a><a href="https://feature-sliced.design/"><img align="right" alt="Website" src="./.github/assets/README-website-light.svg#gh-light-mode-only" height="80" /><img align="right" alt="Website" src="./.github/assets/README-website-dark.svg#gh-dark-mode-only" height="80" /></a>
+<a href="https://discord.gg/S8MzWTUsmp" title="Discord (English language)">
+<img align="right" alt="Discord (English language)" src="./.github/assets/README-discord-light.svg#gh-light-mode-only" height="80" href="#gh-light-node-only" />
+<img align="right" alt="Discord (English language)" src="./.github/assets/README-discord-dark.svg#gh-dark-mode-only" height="80" />
+</a><a href="https://t.me/feature_sliced" title="Telegram (Russian language)">
+<img align="right" alt="Telegram (Russian language)" src="./.github/assets/README-telegram-light.svg#gh-light-mode-only" height="80" />
+<img align="right" alt="Telegram (Russian language)" src="./.github/assets/README-telegram-dark.svg#gh-dark-mode-only" height="80" />
+</a><a href="https://feature-sliced.design/">
+<img align="right" alt="Website" src="./.github/assets/README-website-light.svg#gh-light-mode-only" height="80" />
+<img align="right" alt="Website" src="./.github/assets/README-website-dark.svg#gh-dark-mode-only" height="80" />
+</a>
 <img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-light.svg#gh-light-mode-only" height="80" />
 <img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-dark.svg#gh-dark-mode-only" height="80" />
 
