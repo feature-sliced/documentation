@@ -1,9 +1,12 @@
-# Feature-Sliced Design
+<a href="https://discord.gg/S8MzWTUsmp" title="Discord (English language)"><img align="right" alt="Discord (English language)" src="./.github/assets/README-discord-light.svg#gh-light-mode-only" height="80" /><img align="right" alt="Discord (English language)" src="./.github/assets/README-discord-dark.svg#gh-dark-mode-only" height="80" /></a><a href="https://t.me/feature_sliced" title="Telegram (Russian language)"><img align="right" alt="Telegram (Russian language)" src="./.github/assets/README-telegram-light.svg#gh-light-mode-only" height="80" /><img align="right" alt="Telegram (Russian language)" src="./.github/assets/README-telegram-dark.svg#gh-dark-mode-only" height="80" /></a><a href="https://feature-sliced.design/"><img align="right" alt="Website" src="./.github/assets/README-website-light.svg#gh-light-mode-only" height="80" /><img align="right" alt="Website" src="./.github/assets/README-website-dark.svg#gh-dark-mode-only" height="80" /></a>
+
+<img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-light.svg#gh-light-mode-only" height="80" />
+<img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-dark.svg#gh-dark-mode-only" height="80" />
+
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-41-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-
-> `WIP:` The current version of the methodology is under development and some details *can be changed*
 
 <!-- 🏅 Add badges -->
 
@@ -18,203 +21,33 @@
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/OWNER/REPO?style=flat-square)](https://github.com/OWNER/REPO/commits)
 -->
 
-![feature-sliced-banner](/static/img/banner.jpg)
+**Feature-Sliced Design** (FSD) is an architectural methodology for scaffolding front-end applications. Simply put, it's a compilation of rules and conventions on organizing code. The main purpose of this methodology is to make the project more understandable and structured in the face of ever-changing business requirements.
 
-<!-- ⚡ Add primary information & features about your repository -->
-**Feature-Sliced Design** (FSD) is an architectural design methodology for *frontend applications*. It aims to **divide an application according to business logic and scopes of responsibility**
+This methodology is not tied to a particular stack — it can be used for web or native applications.
 
-- Provides [**explicitness, controllability and adaptability**][refs-arch-req] of architecture
-- Based on [**time-tested**][refs-motivation-why] design practices and concepts
-    > `SOLID`, `GRASP`, `DDD`, `Separation of Concerns`, `Vertical Slices`, `Public API`, `Isolation`
-- Suggests dividing the project according to [**business units**][ext-ubiq-lang]
+## Advantages
 
-> **Note:** The methodology is not tied to a specific tech stack and is applicable *to any frontend projects* in general.
->
-> But the current version is based on and provides examples for `JavaScript` + `React` stack.
+- **Uniformity**  
+  The code is organized by scope of influence (layers), by domain (slices), and by technical purpose (segments).  
+  This creates a standardized architecture that is easy to comprehend for newcomers.
 
-![visual_schema](static/img/visual_schema.jpg)
+- **Controlled reuse of logic**  
+  Each architectural component has its purpose and predictable dependencies.  
+  This keeps a balance between following the **DRY** principle and adaptation possibilities. 
 
-## Motivation
+- **Stability in face of changes and refactoring**  
+  A module on a particular layer cannot use other modules on the same layer, or the layers above.  
+  This enables isolated modifications without unforeseen consequences.
 
-Usually, approaches to building the frontend architecture from project to project are [re-invented from scratch][refs-motivation], thereby adding ["project knowledge"][refs-knowledge]
+- **Orientation to business and users needs**  
+  When the app is split into business domains, you can navigate the code to discover and deeper understand all the project features.
 
-> Despite the fact that the specifics of frontend projects do not differ so much
+## How can I help?
 
-At the same time, incorrectly made decisions often lead [to problems of scalability of the project and the team][refs-arch-problems].
-
-And therefore, instead of inventing and documenting it every time, it is better to **summarize the experience and form a working, battle-tested and documented methodology** for designing the frontend architecture.
-
-*Yes, there are many practices and patterns (`SOLID`, `GRASP`, `DDD`, ...)*
-
-*But for the frontend [it is highly difficult to find][refs-motivation] well-established and specific approaches*
-
-## Overview
-
-The methodology is designed to **simplify and standardize the decomposition of logic for large and long-lived projects.**
-
-To do this, it introduces a number of [concepts][refs-concepts] and abstractions, on which the architecture *can be based* from project to project - from here we get *a number of advantages*
-
-> **Note:** Module - the structural unit of the project (file / directory)
-
-### Explicit business logic
-
-Modules are distributed according to scope of influence, business responsibility and technical purpose.
-
-Thanks to this, *the architecture is standardized and becomes easier to read*
-
-### Adaptation to new conditions
-
-Each component of the architecture has its own purpose and does not affect the others
-
-Thanks to this *it is possible to independently modify the functionality of the application to meet new requirements without unforeseen consequences*
-
-### Technical debt and refactoring
-
-Each module is independent and self-sufficient
-
-Thanks to this *you can rewrite it from scratch without unexpected side effects*
-
-### Scaling the project and the team
-
-The increase in functionality leads to significantly less complexity of the project, since all the logic is distributed deterministically and in isolation
-
-Thanks to this *it is easy to add and onboard new people to the team, as well as expand the functionality of the project*
-
-### Controlled reuse of logic
-
-Each module has its own limitations and recommendations for reuse according to its layer.
-
-Thanks to this, *a balance is maintained between compliance with the `DRY` principle and the ability to customize the module logic without overhead overrides*
-
-## Concepts
-
-### [`Public API`][refs-public-api]
-
-Each module must have a **declaration of its public API** at the top level
-
-- To connect to other modules, without the need to refer to the internal structure of this module
-- To isolate the implementation details from the consumer modules
-- Also, the Public API should protect the module interface after refactoring - in order to avoid unforeseen consequences
-
-### [`Isolation`][refs-isolation]
-
-The module should not **depend directly** on other modules of the same layer or overlying layers
-
-- The concept is also known as `Low Coupling & High Cohesion` - to prevent implicit connections / side effects during development and refactoring
-
-### [`Needs driven`][refs-needs-driven]
-
-Orientation **to the needs of the business and the user**
-
-- Also includes splitting the structure by business domains *(so-called "slices")*
-
-## Abstractions
-
-For architecture design the methodology suggests operating with [familiar abstractions][refs-adaptability], but in a more consistent and consistent order.
-
-### `Layers`
-
-The first level of abstraction is **according to the scope of influence**
-
-- `app` - application initialization *(init, styles, providers, ...)*
-- `processes` - application business processes that manage pages *(payment, auth, ...)*
-- `pages` - application pages *(user-page, ...)*
-- `features` - parts of the application functionality *(auth-by-oauth, ...)*
-- `entities` - business entities *(viewer, order, ...)*
-- `shared` - reused infrastructure code *(UIKit, libs, API, ...)*
-
-### `Slices`
-
-The second level of abstraction is **according to the business domain**
-
-The rules by which the code is divided into slices *depend on the specific project and its business rules* and are not determined by the methodology
-
-### `Segments`
-
-The third level of abstraction is **according to the purpose in the implementation**
-
-- `ui` - UI-representation of the module *(components, widgets, canvas, ...)*
-- `model` - business logic of the module *(store, effects/actions, hooks/contracts, ...)*
-- `lib` - auxiliary libraries
-- `api` - the logic of interaction with the API
-- `config` - the configuration module of the application and its environment
-
-> **Note:** In most cases, [it is recommended][ext-disc-api] to place `api` and `config` only in the shared layer
-
-## Structure
-
-```sh
-└── src/
-    ├── app/                    # Layer: Application
-    |                           #
-    ├── processes/              # Layer: Processes (optional)
-    |   ├── {some-process}/     #     Slice: (e.g. CartPayment process)
-    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers/utils)
-    |   |   └── model/          #         Segment: Business Logic
-    |   ...                     #
-    |                           #
-    ├── pages/                  # Layer: Pages
-    |   ├── {some-page}/        #     Slice: (e.g. ProfilePage page)
-    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers/utils)
-    |   |   ├── model/          #         Segment: Business Logic
-    |   |   └── ui/             #         Segment: UI logic
-    |   ...                     #
-    |                           #
-    ├── widgets/                # Layer: Widgets
-    |   ├── {some-widget}/      #     Slice: (e.g. Header widget)
-    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers/utils)
-    |   |   ├── model/          #         Segment: Business Logic
-    |   |   └── ui/             #         Segment: UI logic
-    ├── features/               # Layer: Features
-    |   ├── {some-feature}/     #     Slice: (e.g. AuthByPhone feature)
-    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers/utils)
-    |   |   ├── model/          #         Segment: Business Logic
-    |   |   └── ui/             #         Segment: UI logic
-    |   ...                     #
-    |                           #
-    ├── entities/               # Layer: Business entities
-    |   ├── {some-entity}/      #     Slice: (e.g. entity User)
-    |   |   ├── lib/            #         Segment: Infrastructure-logic (helpers/utils)
-    |   |   ├── model/          #         Segment: Business Logic
-    |   |   └── ui/             #         Segment: UI logic
-    |   ...                     #
-    |                           #
-    ├── shared/                 # Layer: Reused resources
-    |   ├── api/                #         Segment: Logic of API requests
-    |   ├── config/             #         Segment: Application configuration
-    |   ├── lib/                #         Segment: Infrastructure-application logic
-    |   └── ui/                 #         Segment: UIKit of the application
-    |   ...                     #
-    |                           #
-    └── index.tsx/              #
-```
-
-## Further reading
-
-- **[Methodology documentation][refs-docs]**
-    > *Get-Started, Concepts, Guides, Reference, About*
-- **[Migration from feature-slices@v1][refs-migration-v1]**
-- **Other materials**
-  - Another versions of the methodology: *[feature-slices](https://featureslices.dev/v1.0.html)*, *[feature-driven][ext-fdd]*
-  - [React SPB Meetup Report #1 - Feature Slices](https://t.me/feature_slices)
-  - [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
-  - [A feature based approach to React development](https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/)
-  - [Why React developers should modularize their applications?](https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1)
-  - [How to Organize Your React + Redux Codebase](https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase)
-  - [The Humanizing Work Guide to Splitting User Stories *(aka "Vetical Slices")*](https://www.humanizingwork.com/the-humanizing-work-guide-to-splitting-user-stories/)
-<!-- divider -->
-- **[Discussions on the methodology][ext-discussions]**
-  - **Real application examples, questions, problems, ideas of the methodology are discussed and analyzed here**
-  - All this together affects the specification, the toolkit and, in general, the further vision and development of the methodology
-  - *That is, everything that is not yet in the specification/toolkit is somehow discussed in github-discussions*
-- **[How can I help?][refs-contributing]**
-  - ⭐ Rate us on GitHub
-  - 💫 **Any assistance is important** - from *feedback* to *participation in the development of the methodology!*
-
-<!-- 
-FIXME: It was not possible to properly justify-content:space-around to apply in md
-If there are variations, how best to place indents-welcome:)
--->
+- 🍰 Use the methodology in your projects and spread the word
+- ⭐ Star us on GitHub
+- 💬 Join our [Discord](https://discord.gg/S8MzWTUsmp) or [Telegram](https://t.me/feature_sliced) and share your experience or ask questions
+- 📝 Suggest improvements to the documentation through PRs
 
 <div align="center">
 
@@ -223,35 +56,10 @@ If there are variations, how best to place indents-welcome:)
 [![tg](static/img/social/tg.png)](https://t.me/feature_sliced "Telegram chat")
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![twitter](static/img/social/twitter.png)](https://twitter.com/feature_sliced "Twitter")
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![open-collective](static/img/social/opencollective.png)](https://opencollective.com/feature-sliced "Open Collective")
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![youtube](static/img/social/youtube.png)](https://www.youtube.com/c/FeatureSlicedDesign "YouTube")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- [![open-collective](static/img/social/opencollective.png)](https://opencollective.com/feature-sliced "Open Collective")
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-->[![youtube](static/img/social/youtube.png)](https://www.youtube.com/c/FeatureSlicedDesign "YouTube")
 </div>
-
-[refs-contributing]: CONTRIBUTING.md
-
-[refs-docs]: https://feature-sliced.design/docs
-
-[refs-motivation]: https://feature-sliced.design/docs/about/motivation
-[refs-motivation-why]: https://feature-sliced.design/docs/about/motivation#-почему-не-хватает-существующих-решений
-
-[refs-concepts]: https://feature-sliced.design/docs/about/understanding/architecture
-[refs-arch-req]: https://feature-sliced.design/docs/about/understanding/architecture#requirements
-[refs-arch-problems]: https://feature-sliced.design/docs/about/understanding/architecture#problems
-[refs-public-api]: https://feature-sliced.design/docs/reference/public-api
-[refs-adaptability]: https://feature-sliced.design/docs/about/understanding/naming
-[refs-isolation]: https://feature-sliced.design/docs/reference/isolation
-[refs-needs-driven]: https://feature-sliced.design/docs/about/understanding/needs-driven
-
-[refs-knowledge]: https://feature-sliced.design/docs/about/understanding/knowledge-types
-
-[refs-migration-v1]: https://feature-sliced.design/docs/guides/migration/from-v1
-
-[ext-ubiq-lang]: https://thedomaindrivendesign.io/developing-the-ubiquitous-language
-[ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
-[ext-discussions]: https://github.com/feature-sliced/documentation/discussions
-[ext-disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 
 ## Contributors ✨
 
