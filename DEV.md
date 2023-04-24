@@ -9,16 +9,16 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 
 ## Installation
 
-```console
-yarn install
+```bash
+pnpm install
 ```
 
 ## Local Development
 
 ```bash
-yarn start       # for default locale
-yarn start:ru    # for RU locale
-yarn start:en    # for EN locale
+pnpm start       # for default locale
+pnpm start:ru    # for RU locale
+pnpm start:en    # for EN locale
 ```
 
 > About [docusaurus/i18n commands](https://docusaurus.io/docs/i18n/git#translate-the-files)
@@ -28,7 +28,7 @@ This command starts a local development server and opens up a browser window. Mo
 ## Build
 
 ```console
-yarn build
+pnpm build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
@@ -36,7 +36,7 @@ This command generates static content into the `build` directory and can be serv
 ## Deployment
 
 ```console
-GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+GIT_USER=<Your GitHub username> USE_SSH=true pnpm deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

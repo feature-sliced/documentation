@@ -154,12 +154,13 @@ export const examples: Example[] = [
     },
     {
         title: "Simple Greenhouse App (React+MobX)",
-        description: "Simple demonstration of how FSD can be implemented with TypeScript, React.js, MobX and Firebase",
+        description:
+            "Simple demonstration of how FSD can be implemented with TypeScript, React.js, MobX and Firebase",
         source: "https://github.com/NIRumiantsev/feature-sliced-design",
         preview: require("./img/greenhouse.png"),
         version: VERSIONS.V2,
         updatedAt: "2023-04-17",
         tech: ["react", "mobx", "typescript", "firebase", "mui", "vite"],
     },
-// Reverse the list (last examples should be at the top)
+    // Reverse the list (last examples should be at the top)
 ].reverse();

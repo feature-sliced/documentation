@@ -18,7 +18,7 @@ function createSVGText(
     font,
     text,
     { fontSize = 72, fill = "white", stroke = "white" },
-    widthLimit = 1000,
+    _widthLimit = 1000,
 ) {
     const attributes = { fill, stroke };
     const options = { fontSize, anchor: "top", attributes };
