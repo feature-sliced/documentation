@@ -162,5 +162,15 @@ export const examples: Example[] = [
         updatedAt: "2023-04-17",
         tech: ["react", "mobx", "typescript", "firebase", "mui", "vite"],
     },
+    {
+        title: "Nukeapp (React+ReduxToolkit)",
+        description: "Shopping app build on React/ReduxToolkit stack",
+        website: "https://nukeapp.netlify.app/",
+        source: "https://github.com/noveogroup-amorgunov/nukeapp",
+        preview: require("./img/nukeapp.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-04-24",
+        tech: ["react", "redux-toolkit", "typescript", "vite"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
