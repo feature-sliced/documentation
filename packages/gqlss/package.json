@@ -11,6 +11,7 @@
     "develop": "exit 0",
     "format": "exit 0",
     "lint": "exit 0",
+    "typecheck": "tsc --noEmit",
     "test": "exit 0",
     "build": "rollup -c rollup.config.js",
     "serve": "exit 0",

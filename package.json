@@ -2,13 +2,14 @@
   "name": "fsd",
   "private": true,
   "scripts": {
-    "develop": "",
-    "format": "",
-    "lint": "",
-    "typecheck": "",
-    "build": "",
-    "serve": "",
-    "clean": ""
+    "develop": "nx develop @fsd/website",
+    "format": "nx run-many --target=format",
+    "lint": "nx run-many --target=lint",
+    "typecheck": "nx run-many --target=typecheck",
+    "test": "nx run-many --target=test",
+    "build": "nx build @fsd/website",
+    "serve": "nx serve @fsd/website",
+    "clean": "nx run-many --target=clean"
   },
   "workspaces": [
     "packages/*"

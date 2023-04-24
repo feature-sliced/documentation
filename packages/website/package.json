@@ -8,6 +8,7 @@
     "format": "exit 0",
     "lint": "exit 0",
     "typecheck": "tsc --noEmit",
+    "test": "exit 0",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"

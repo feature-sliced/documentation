@@ -8,6 +8,7 @@
     "format": "exit 0",
     "lint": "exit 0",
     "typecheck": "exit 0",
+    "test": "exit 0",
     "build": "exit 0",
     "serve": "exit 0",
     "clean": "exit 0"
