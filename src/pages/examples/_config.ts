@@ -3,7 +3,6 @@ import type { Example } from "@site/src/entities/example";
 export const VERSIONS = {
     V0: "v0",
     V1: "v1",
-    FDD: "feature-driven",
     V2: "v2",
 };
 
@@ -36,10 +35,10 @@ export const examples: Example[] = [
         title: "Github Client",
         description: "React & GraphQL powered github web-client",
         website: "http://github-client.gq/",
-        source: "https://github.com/ani-team/github-client",
+        source: "https://github.com/ani-team/github-client/tree/workshop/feature-sliced-next",
         preview: require("./img/github-client.png"),
-        version: VERSIONS.FDD,
-        updatedAt: "2021-07-05",
+        version: VERSIONS.V2,
+        updatedAt: "2023-04-26",
         tech: ["react", "graphql", "antd"],
     },
     {
