@@ -97,4 +97,9 @@ export const companies: Company[] = [
         src: "x5_digital.png",
         alt: "X5 Digital",
     },
+    {
+        url: "https://samokat.tech/",
+        src: "samokat.svg",
+        alt: "Samokat.tech",
+    },
 ];
