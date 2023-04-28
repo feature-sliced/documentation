@@ -1,0 +1,63 @@
+---
+sidebar_position: 2
+---
+
+import { ReactCompareSlider, ReactCompareSliderImage, ReactCompareSliderHandle } from "react-compare-slider";
+
+# Tutorial
+
+Let's look at the principles of Feature-Sliced Design by building a simple web notes app. We will start theoretical, so don't worry if you don't know the stack. Here's how the app looks like, nice and simple, only for mobile:
+
+{/* TODO: dark mode */}
+
+![Notes application screens](/img/tutorial/overview.jpg)
+
+## Decomposing the user interface
+
+Most user interfaces are made up of distinct pages or screens, so this is an easy starting point for decomposition. We have just 2 screens here (we told you it'd be simple):
+
+1. Note list screen, where the notes are presented for detailed reading, where you can create a new note and sign in for synchronizing your notes.
+2. Note creating/editing screen, where you can edit the note's title and body, as well as delete it.
+
+The login form is a part of the note list screen.
+
+### Business domain
+
+The business domain is a fancy word for "what your application is about". In our case, it's notes. Therefore, an entity in this domain is the note itself. This is important because we can think of our application as a set of actions on entities: 
+
+* reading a note;
+* creating/editing a note;
+* deleting a note;
+* _uploading your notes to the cloud_.
+
+Pay attention to this last action. Our application does it automatically, but it's an action on behalf of the user and it delivers value for them. Therefore, it is a feature of our product.
+
+### Individual UI elements that are important to the business
+
+If an element is important to the business, it must either be a representation of one of the entities or an action on them. In FSD, we call them `entities` and `features` respectively. 
+
+Let's locate such elements in our UI. Try it yourself first on the image below, and then drag the slider to reveal our solution.
+
+:::tip
+
+Useful questions to ask yourself when determining whether an element is an entity or a feature:
+
+* If an element is non-interactive:
+  * Is this element representing some real-life object or concept? If yes, it's an entity.
+  * Does this element identify you as a user? If yes, it's an entity.
+* If an element is interactive:
+  * Does this element allow you to change something about an entity? If yes, it's a feature.
+  * Does this element allow you to change your own identity (e.g., a login button)? If yes, it's a feature.
+  * Does this element tell you something about the state of the action you're taking on an entity? If yes, it's part of a feature.
+  * Does this element help you accomplish your human goal when you use it? If yes, it's a feature.
+
+:::
+
+<ReactCompareSlider 
+  handle={<ReactCompareSliderHandle buttonStyle={{WebkitBackdropFilter: undefined, backdropFilter: undefined, backgroundColor: 'white', boxShadow: undefined, color: '#444'}} linesStyle={{opacity: 0.5}}/>}
+  itemOne={<ReactCompareSliderImage src="/img/tutorial/overview.jpg" alt="Screens, unannotated" />}
+  itemTwo={<ReactCompareSliderImage src="/img/tutorial/annotated-entities-features.jpg" alt="Screens, annotated with entities and features" />}
+  position={100}
+/>
+
+<p style={{ textAlign: "center" }}>Drag the slider above from right to left!</p>
