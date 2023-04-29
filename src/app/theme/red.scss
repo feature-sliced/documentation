@@ -20,6 +20,7 @@
     }
 
     .hero.hero--primary {
-        background: linear-gradient(45deg, #f150a3 -0%, #e90c31 100%);
+        // background: linear-gradient(45deg, #f150a3 -0%, #e90c31 100%);
+        background: linear-gradient(45deg, var(--ifm-color-primary-lightest) -0%, var(--ifm-color-primary) 100%);
     }
 }

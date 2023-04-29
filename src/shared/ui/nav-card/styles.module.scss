@@ -65,7 +65,7 @@
 }
 
 .primaryTheme {
-    color: #ffffff;
+    color: var(--ifm-background-color);
     background-color: var(--ifm-color-primary);
 
     &:hover {

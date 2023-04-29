@@ -167,9 +167,9 @@
         "message": "Get Started",
         "description": "Get Started"
     },
-    "features.hero.examples": {
-        "message": "Examples",
-        "description": "Examples"
+    "features.hero.showcase": {
+        "message": "Showcase",
+        "description": "Showcase"
     },
     "features.hero.previous": {
         "message": "Previous version",

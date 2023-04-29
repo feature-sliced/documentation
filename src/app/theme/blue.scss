@@ -14,6 +14,7 @@
     --ifm-menu-color-active: var(--ifm-color-primary);
 
     .hero.hero--primary {
-        background: linear-gradient(45deg, #59defa -0%, #4b84ea 100%);
+        // background: linear-gradient(45deg, #59defa -0%, #4b84ea 100%);
+        background: linear-gradient(45deg, var(--ifm-color-primary-lightest) -0%, var(--ifm-color-primary) 100%);
     }
 }

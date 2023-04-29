@@ -167,9 +167,9 @@
         "message": "Ознакомиться",
         "description": "Get Started"
     },
-    "features.hero.examples": {
+    "features.hero.showcase": {
         "message": "Примеры",
-        "description": "Examples"
+        "description": "Showcase"
     },
     "features.hero.previous": {
         "message": "Предыдущая версия",
