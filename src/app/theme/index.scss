@@ -10,22 +10,41 @@
     // Font styles
     --ifm-font-family-base: 'Ubuntu', system-ui, -apple-system, segoe ui, roboto, ubuntu, cantarell, noto sans, sans-serif, blinkmacsystemfont, 'Segoe UI', helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --ifm-heading-font-family: 'Overpass', var(--ifm-font-family-base);
-    --ifm-code-font-size: 95%;
-    --ifm-h2-font-size: 1.75rem;
+
     // Base styles
     --ifm-button-color: #ffffff;
     --ifm-color-violet: #5c21dd;
+    --bg-color-light: #f9f4f7;
+    --bg-color-dark: #191315;
 }
+
+// 1rem = 16px
+.markdown > * {
+    // FIXME: [FSDCUR] Actualize font-weight (500)
+    --ifm-heading-font-weight: 500 !important;
+    --ifm-h1-font-size: 2.25rem !important; // 36px
+    --ifm-h2-font-size: 1.75rem !important; // 28px
+    --ifm-h3-font-size: 1.5rem !important; // 24px
+    --ifm-h4-font-size: 1.25rem !important; // 20px
+    --ifm-h5-font-size: 1.125rem !important; // 18px
+    --ifm-h6-font-size: 1rem !important; // 16px
+    --ifm-code-font-size: 95%;
+} 
 
 // Restored values from old dark theme
 html[data-theme=light] {
-    --ifm-background-color: #f9f4f7;
-    --ifm-background-surface-color: #f9f4f7;
+    --ifm-background-color: var(--bg-color-light);
+    --ifm-background-surface-color: var(--bg-color-light);
+    // FIXME: [FSDCUR] Try to resolve with docusaurus vars
+    --bg-color-alt: var(--bg-color-dark);
+    --bg-color-secondary: #F4EDF0;
 }
 
 html[data-theme=dark] {
-    --ifm-background-color: #191315;
-    --ifm-background-surface-color: #191315;
+    --ifm-background-color: var(--bg-color-dark);
+    --ifm-background-surface-color: var(--bg-color-dark);
+    --bg-color-alt: var(--bg-color-light);
+    --bg-color-secondary: #262224;
 
     // Adapt badges styles
     .badge--warning {
