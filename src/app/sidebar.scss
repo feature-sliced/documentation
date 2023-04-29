@@ -1,0 +1,10 @@
+@import "./theme";
+
+.menu__link--active:not(.menu__link--sublist) {
+    background-color: var(--ifm-color-primary);
+    color: var(--ifm-background-color);
+}
+
+.menu__list-item-collapsible .menu__link--active {
+    color: var(--ifm-color-primary);
+}
