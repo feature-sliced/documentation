@@ -39,10 +39,6 @@
         "message": "💫 Сообщество",
         "description": "Navbar item with label Community"
     },
-    "item.label.❔ Help": {
-        "message": "❔ Помощь",
-        "description": "Navbar item with label Help"
-    },
     "item.label.📝 Blog": {
         "message": "📝 Блог",
         "description": "Navbar item with label Blog"

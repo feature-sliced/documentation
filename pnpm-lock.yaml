@@ -7,9 +7,6 @@ dependencies:
   '@docusaurus/core':
     specifier: 2.1.0
     version: 2.1.0(@docusaurus/types@2.1.0)(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@4.8.3)
-  '@docusaurus/plugin-client-redirects':
-    specifier: 2.1.0
-    version: 2.1.0(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@4.8.3)
   '@docusaurus/plugin-content-docs':
     specifier: 2.1.0
     version: 2.1.0(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@4.8.3)
@@ -1769,42 +1766,6 @@ packages:
       - esbuild
       - uglify-js
       - webpack-cli
-
-  /@docusaurus/plugin-client-redirects@2.1.0(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@4.8.3):
-    resolution: {integrity: sha512-3PhzwHSyZWqBAFPJuLJE3dZVuKWQEj9ReQP85Z3/2hpnQoVNBgAqc+64FIko0FvvK1iluLeasO7NWGyuATngvw==}
-    engines: {node: '>=16.14'}
-    peerDependencies:
-      react: ^16.8.4 || ^17.0.0
-      react-dom: ^16.8.4 || ^17.0.0
-    dependencies:
-      '@docusaurus/core': 2.1.0(@docusaurus/types@2.1.0)(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@4.8.3)
-      '@docusaurus/logger': 2.1.0
-      '@docusaurus/utils': 2.1.0(@docusaurus/types@2.1.0)
-      '@docusaurus/utils-common': 2.1.0(@docusaurus/types@2.1.0)
-      '@docusaurus/utils-validation': 2.1.0(@docusaurus/types@2.1.0)
-      eta: 1.12.3
-      fs-extra: 10.1.0
-      lodash: 4.17.21
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      tslib: 2.4.0
-    transitivePeerDependencies:
-      - '@docusaurus/types'
-      - '@parcel/css'
-      - '@swc/core'
-      - bufferutil
-      - csso
-      - debug
-      - esbuild
-      - eslint
-      - lightningcss
-      - supports-color
-      - typescript
-      - uglify-js
-      - utf-8-validate
-      - vue-template-compiler
-      - webpack-cli
-    dev: false
 
   /@docusaurus/plugin-content-blog@2.1.0(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@4.8.3):
     resolution: {integrity: sha512-xEp6jlu92HMNUmyRBEeJ4mCW1s77aAEQO4Keez94cUY/Ap7G/r0Awa6xSLff7HL0Fjg8KK1bEbDy7q9voIavdg==}

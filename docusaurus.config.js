@@ -8,7 +8,6 @@ const cfg = require("./config/docusaurus");
  * @see https://docusaurus.io/docs/api/docusaurus-config#customfields
  */
 const customFields = {
-    legacyRoutes: cfg.LEGACY_ROUTES,
     // FIXME: Open Graph Experimental Mode.
     isOGExperimental: process.env.OG_EXP,
 };
