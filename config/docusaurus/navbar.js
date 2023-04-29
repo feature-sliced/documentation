@@ -11,22 +11,22 @@ const navbar = {
     items: [
         // left
         {
-            label: "📖 Docs",
+            label: "Docs",
             to: "/docs",
             position: "left",
         },
         {
-            label: "💫 Community",
+            label: "Community",
             to: "/community",
             position: "left",
         },
         {
-            label: "📝 Blog",
+            label: "Blog",
             to: "/blog",
             position: "left",
         },
         {
-            label: "🛠 Examples",
+            label: "Examples",
             to: "/examples",
             position: "left",
         },

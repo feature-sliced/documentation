@@ -3,12 +3,12 @@
         "message": "",
         "description": "The title in the navbar"
     },
-    "item.label.🛠 Examples": {
-        "message": "🛠 Примеры",
+    "item.label.Examples": {
+        "message": "Примеры",
         "description": "Navbar item with label Examples"
     },
-    "item.label.📖 Docs": {
-        "message": "📖 Документация",
+    "item.label.Docs": {
+        "message": "Документация",
         "description": "Navbar item with label Docs"
     },
     "item.label.🔎 Intro": {
@@ -18,10 +18,6 @@
     "item.label.🚀 Get Started": {
         "message": "🚀 Быстрый старт",
         "description": "Navbar item with label Get Started"
-    },
-    "item.label.🧩 Concepts": {
-        "message": "🧩 Концепции",
-        "description": "Navbar item with label Concepts"
     },
     "item.label.🎯 Guides": {
         "message": "🎯 Гайды",
@@ -35,12 +31,12 @@
         "message": "🍰 О методологии",
         "description": "Navbar item with label About"
     },
-    "item.label.💫 Community": {
-        "message": "💫 Сообщество",
+    "item.label.Community": {
+        "message": "Сообщество",
         "description": "Navbar item with label Community"
     },
-    "item.label.📝 Blog": {
-        "message": "📝 Блог",
+    "item.label.Blog": {
+        "message": "Блог",
         "description": "Navbar item with label Blog"
     }
 }
