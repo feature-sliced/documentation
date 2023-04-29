@@ -31,6 +31,7 @@ const getSidebar = (category) => [
     },
 ];
 
+// TODO: [FSDCUR] Add sidebar items description (https://docusaurus.io/blog/releases/2.4#sidebar-item-description)
 module.exports = {
     getstartedSidebar: getSidebar("get-started"),
     guidesSidebar: getSidebar("guides"),

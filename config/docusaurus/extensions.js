@@ -10,6 +10,7 @@ const DOCUSAURUS_PLUGIN_OG = [
 
 // We use metrics only for analyze and refinement website discovery experience
 // @see Privacy
+// FIXME: [FSDCUR] Check GTAG (https://docusaurus.io/blog/releases/2.3#google-tag-manager-plugin)
 const metrics = {
     gtag: {
         trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
