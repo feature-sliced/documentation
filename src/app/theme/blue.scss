@@ -1,0 +1,14 @@
+/* https://docusaurus.io/docs/styling-layout */
+[data-theme=blue] {
+    --ifm-color-primary: #2b74d4;
+    --ifm-color-primary-dark: #2768bf;
+    --ifm-color-primary-darker: #2563b4;
+    --ifm-color-primary-darkest: #1e5194;
+    --ifm-color-primary-light: #4082d8;
+    --ifm-color-primary-lighter: #4b89da;
+    --ifm-color-primary-lightest: #6b9ee1;
+
+    .hero.hero--primary {
+        background: linear-gradient(45deg, #59defa -0%, #4b84ea 100%);
+    }
+}
