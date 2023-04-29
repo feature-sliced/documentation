@@ -3,14 +3,14 @@ sidebar_position: 2
 ---
 
 import { ReactCompareSlider, ReactCompareSliderImage, ReactCompareSliderHandle } from "react-compare-slider";
+import { ThemedCompareSliderImage } from "@site/src/shared/ui";
 
 # Tutorial
 
 Let's look at the principles of Feature-Sliced Design by building a simple web notes app. We will start theoretical, so don't worry if you don't know the stack. Here's how the app looks like, nice and simple, only for mobile:
 
-{/* TODO: dark mode */}
-
-![Notes application screens](/img/tutorial/overview.jpg)
+![Notes application screens](/img/tutorial/overview-light.jpg#light-mode-only)
+![Notes application screens](/img/tutorial/overview-dark.jpg#dark-mode-only)
 
 ## Decomposing the user interface
 
@@ -55,8 +55,8 @@ Useful questions to ask yourself when determining whether an element is an entit
 
 <ReactCompareSlider 
   handle={<ReactCompareSliderHandle buttonStyle={{WebkitBackdropFilter: undefined, backdropFilter: undefined, backgroundColor: 'white', boxShadow: undefined, color: '#444'}} linesStyle={{opacity: 0.5}}/>}
-  itemOne={<ReactCompareSliderImage src="/img/tutorial/overview.jpg" alt="Screens, unannotated" />}
-  itemTwo={<ReactCompareSliderImage src="/img/tutorial/annotated-entities-features.jpg" alt="Screens, annotated with entities and features" />}
+  itemOne={<ThemedCompareSliderImage srcLight="/img/tutorial/overview-light.jpg" srcDark="/img/tutorial/overview-dark.jpg" alt="Screens, unannotated" />}
+  itemTwo={<ThemedCompareSliderImage srcLight="/img/tutorial/annotated-entities-features-light.jpg" srcDark="/img/tutorial/annotated-entities-features-dark.jpg" alt="Screens, annotated with entities and features" />}
   position={100}
 />
 

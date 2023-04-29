@@ -30,6 +30,7 @@
         "@docusaurus/plugin-content-docs": "2.1.0",
         "@docusaurus/plugin-ideal-image": "2.1.0",
         "@docusaurus/preset-classic": "2.1.0",
+        "@docusaurus/theme-common": "2.1.0",
         "@fontsource/overpass": "^4.5.4",
         "@fontsource/ubuntu": "^4.5.4",
         "@mdx-js/react": "^1.6.22",
