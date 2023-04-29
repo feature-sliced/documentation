@@ -18,7 +18,8 @@ const navbar = {
         },
         {
             label: "About",
-            to: "/docs/about",
+            // TODO: [FSDCUR] Add page
+            to: "#",
             position: "left",
         },
         {
@@ -40,7 +41,7 @@ const navbar = {
             label: "Docs",
             to: "/docs",
             // FIXME: [FSDCUR] Simplify regexp
-            activeBaseRegex: "^/docs(?:/(?:get-started|reference|guides)/?.*)?$",
+            activeBaseRegex: "^/docs(?:/(?:get-started|reference|guides|about)/?.*)?$",
             position: "left",
         },
         {
