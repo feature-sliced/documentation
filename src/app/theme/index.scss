@@ -29,7 +29,7 @@
     --ifm-h5-font-size: 1.125rem !important; // 18px
     --ifm-h6-font-size: 1rem !important; // 16px
     --ifm-code-font-size: 95%;
-} 
+}
 
 // Restored values from old dark theme
 html[data-theme=light] {
@@ -37,7 +37,7 @@ html[data-theme=light] {
     --ifm-background-surface-color: var(--bg-color-light);
     // FIXME: [FSDCUR] Try to resolve with docusaurus vars
     --bg-color-alt: var(--bg-color-dark);
-    --bg-color-secondary: #F4EDF0;
+    --bg-color-secondary: #f4edf0;
 }
 
 html[data-theme=dark] {

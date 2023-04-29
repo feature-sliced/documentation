@@ -76,8 +76,6 @@ a[download] {
     &:nth-child(2):last-child {
         display: none;
     }
-
-    
 }
 
 /* Markdown styles */
@@ -89,26 +87,31 @@ a[download] {
         margin-left: 32px;
     }
 
-    & h1, & h2, & h3, & h4, & h5, & h6 {
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
         width: fit-content;
         padding: 0 32px;
     }
-    
+
     & pre code {
         padding-right: 32px;
         padding-left: 32px;
     }
-    
+
     & h1 {
         color: var(--ifm-background-color);
         background-color: var(--ifm-color-primary);
     }
-    
+
     & h2 {
         color: var(--ifm-background-color);
         background-color: var(--bg-color-alt);
     }
-    
+
     & h3 {
         background-color: var(--bg-color-secondary);
     }

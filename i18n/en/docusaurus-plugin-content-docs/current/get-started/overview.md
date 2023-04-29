@@ -96,5 +96,5 @@ It's advised to refrain from adding new large entities while refactoring or refa
 
 [refs-clean-architecture]: https://medium.com/codex/clean-architecture-for-dummies-df6561d42c94
 [ext-disc-api]: https://github.com/feature-sliced/documentation/discussions/66
-[refs-examples]: /examples
+[refs-examples]: /showcase
 [refs-migration]: /docs/guides/migration/from-v1
