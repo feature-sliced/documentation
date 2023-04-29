@@ -1,12 +1,17 @@
 /* https://docusaurus.io/docs/styling-layout */
 [data-theme=blue] {
-    --ifm-color-primary: #2b74d4;
-    --ifm-color-primary-dark: #2768bf;
-    --ifm-color-primary-darker: #2563b4;
-    --ifm-color-primary-darkest: #1e5194;
-    --ifm-color-primary-light: #4082d8;
-    --ifm-color-primary-lighter: #4b89da;
-    --ifm-color-primary-lightest: #6b9ee1;
+    --ifm-color-primary: #0bb6d9;
+    --ifm-color-primary-dark: #0aa4c3;
+    --ifm-color-primary-darker: #099bb8;
+    --ifm-color-primary-darkest: #087f98;
+    --ifm-color-primary-light: #0cc8ef;
+    --ifm-color-primary-lighter: #13cdf3;
+    --ifm-color-primary-lightest: #34d4f5;
+    --ifm-link-color: var(--ifm-color-primary);
+    --ifm-link-hover-color: var(--ifm-color-primary);
+    --ifm-navbar-link-hover-color: var(--ifm-color-primary);
+    --ifm-breadcrumb-color-active: var(--ifm-color-primary);
+    --ifm-menu-color-active: var(--ifm-color-primary);
 
     .hero.hero--primary {
         background: linear-gradient(45deg, #59defa -0%, #4b84ea 100%);
