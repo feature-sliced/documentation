@@ -16,6 +16,8 @@ export default function HomePage() {
     // NOTE: use siteConfig for getting config
     // const {siteConfig} = useDocusaurusContext();
     return (
+        // FIXME: [FSDCUR] Resolve types and OG metadata
+        // @ts-ignore
         <Layout title="Welcome" description="Architectural methodology for frontend projects">
             <Hero />
             <main>
