@@ -66,6 +66,7 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.21.3",
         "@docusaurus/module-type-aliases": "2.4.0",
+        "@docusaurus/types": "^2.4.0",
         "@eslint-kit/eslint-config-base": "4.1.0",
         "@eslint-kit/eslint-config-patch": "^1.0.0",
         "@eslint-kit/eslint-config-prettier": "3.0.0",

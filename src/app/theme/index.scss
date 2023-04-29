@@ -18,9 +18,14 @@
 }
 
 // Restored values from old dark theme
+html[data-theme=light] {
+    --ifm-background-color: #F9F4F7;
+    --ifm-background-surface-color: #F9F4F7;
+}
+
 html[data-theme=dark] {
-    --ifm-background-color: #18191a;
-    --ifm-background-surface-color: #242526;
+    --ifm-background-color: #191315;
+    --ifm-background-surface-color: #191315;
 
     // Adapt badges styles
     .badge--warning {
@@ -39,25 +44,4 @@ html[data-theme=dark] {
 .badge--violet {
     --ifm-badge-background-color: var(--ifm-color-violet);
     --ifm-badge-border-color: var(--ifm-badge-background-color);
-}
-
-.navbar {
-    height: 80px;
-
-    &__link {
-        transition: 0.25s;
-        padding: 0;
-        margin: 0 8px;
-        height: 25px;
-    
-        &--active {
-            color: var(--ifm-navbar-link-color);
-            background: var(--ifm-color-primary);
-        }
-    
-        &:hover.navbar__link--active {
-            color: var(--ifm-navbar-link-color);
-            opacity: 0.7;
-        }
-    }
 }

@@ -1,4 +1,4 @@
-const { DISCORD, GITHUB_DOCS } = require("./consts");
+const { COMMUNITY } = require("./consts");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig["themeConfig"]["navbar"]} */
 const navbar = {
@@ -43,30 +43,37 @@ const navbar = {
             activeBaseRegex: "^/docs(?:/(?:get-started|reference|guides)/?.*)?$",
             position: "left",
         },
+        {
+            label: "Versions",
+            to: "/versions",
+            type: "docsVersion",
+            position: "left",
+        },
         // right
         {
-            type: "docsVersionDropdown",
+            href: COMMUNITY.GITHUB_DOCS,
             position: "right",
-            dropdownActiveClassDisabled: true,
-            dropdownItemsAfter: [
-                {
-                    to: "https://featureslices.dev/v1.0.html",
-                    label: "v1.0",
-                },
-                {
-                    to: "https://featureslices.dev/v0.1.html",
-                    label: "v0.1",
-                },
-                {
-                    to: "https://github.com/feature-sliced/documentation/tree/rc/feature-driven",
-                    label: "feature-driven",
-                },
-                {
-                    to: "/versions",
-                    // TODO: (i18n) Add translation
-                    label: "All versions",
-                },
-            ],
+            className: "ext-link github",
+        },
+        {
+            href: COMMUNITY.TELEGRAM,
+            position: "right",
+            className: "ext-link telegram",
+        },
+        {
+            href: COMMUNITY.TWITTER,
+            position: "right",
+            className: "ext-link twitter",
+        },
+        {
+            href: COMMUNITY.DISCORD,
+            position: "right",
+            className: "ext-link discord",
+        },
+        {
+            href: COMMUNITY.YOUTUBE,
+            position: "right",
+            className: "ext-link youtube",
         },
         {
             type: "localeDropdown",
@@ -78,18 +85,7 @@ const navbar = {
                 },
             ],
         },
-        {
-            "href": DISCORD,
-            "position": "right",
-            "className": "ext-link discord",
-            "aria-label": "Discord community server",
-        },
-        {
-            "href": GITHUB_DOCS,
-            "position": "right",
-            "className": "ext-link github",
-            "aria-label": "GitHub repository",
-        },
+        // TODO: [FSDCUR] Resolve local searchBox visibility
     ],
 };
 

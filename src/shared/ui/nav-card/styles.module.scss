@@ -78,6 +78,7 @@
 html[data-theme="dark"] .root {
     &.defaultTheme,
     &.miniTheme {
+        // FIXME: [FSDCUR] Actualize ifm-color-gray for dark-theme
         background: var(--ifm-color-gray-900);
     }
 }

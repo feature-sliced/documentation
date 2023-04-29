@@ -1,12 +1,4 @@
-const {
-    GITHUB_DOCS,
-    GITHUB_ORG,
-    DISCORD,
-    TELEGRAM,
-    TWITTER,
-    OPEN_COLLECTIVE,
-    YOUTUBE,
-} = require("./consts");
+const { COMMUNITY } = require("./consts");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig["themeConfig"]["footer"]} */
 const footer = {
@@ -17,17 +9,17 @@ const footer = {
             items: [
                 { label: "Documentation", to: "/docs" },
                 { label: "Community", to: "/community" },
-                { label: "Discussions", to: `${GITHUB_DOCS}/discussions` },
+                { label: "Discussions", to: `${COMMUNITY.GITHUB_DOCS}/discussions` },
             ],
         },
         {
             title: "Community",
             items: [
-                { label: "Discord", href: DISCORD },
-                { label: "Telegram (RU)", href: TELEGRAM },
-                { label: "Twitter", href: TWITTER },
-                { label: "Open Collective", href: OPEN_COLLECTIVE },
-                { label: "YouTube", href: YOUTUBE },
+                { label: "Discord", href: COMMUNITY.DISCORD },
+                { label: "Telegram (RU)", href: COMMUNITY.TELEGRAM },
+                { label: "Twitter", href: COMMUNITY.TWITTER },
+                { label: "Open Collective", href: COMMUNITY.OPEN_COLLECTIVE },
+                { label: "YouTube", href: COMMUNITY.YOUTUBE },
             ],
         },
         {
@@ -35,14 +27,14 @@ const footer = {
             items: [
                 // TODO: Добавить ссыль на dev.to позднее (как доработаем)
                 // { label: 'Blog', to: '/blog' },
-                { label: "GitHub", href: GITHUB_ORG },
+                { label: "GitHub", href: COMMUNITY.GITHUB_ORG },
                 {
                     label: "Contribution Guide",
-                    href: `${GITHUB_DOCS}/blob/master/CONTRIBUTING.md`,
+                    href: `${COMMUNITY.GITHUB_DOCS}/blob/master/CONTRIBUTING.md`,
                 },
                 {
                     label: "License",
-                    href: `${GITHUB_DOCS}/blob/master/LICENSE`,
+                    href: `${COMMUNITY.GITHUB_DOCS}/blob/master/LICENSE`,
                 },
                 { label: "Privacy", href: "/docs/privacy" },
             ],
@@ -51,7 +43,7 @@ const footer = {
     logo: {
         alt: "Feature-Sliced Design - Architectural methodology for frontend projects",
         src: "img/brand/logo-primary.png",
-        href: GITHUB_ORG,
+        href: COMMUNITY.GITHUB_ORG,
         width: 160,
     },
     copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced Design`,
