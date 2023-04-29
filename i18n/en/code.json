@@ -79,23 +79,23 @@
         "message": "Tell us",
         "description": "Tell us"
     },
-    "pages.examples.title": {
-        "message": "Examples",
+    "pages.showcase.title": {
+        "message": "Showcase",
         "description": "Page title"
     },
-    "pages.examples.subtitle": {
+    "pages.showcase.subtitle": {
         "message": "List of websites people are building with Feature-Sliced Design",
         "description": "Page subtitle"
     },
-    "pages.examples.add_me.title": {
+    "pages.showcase.add_me.title": {
         "message": "Add example",
         "description": "Request to add example"
     },
-    "pages.examples.repo.title": {
+    "pages.showcase.repo.title": {
         "message": "Repository",
         "description": "Examples repository label"
     },
-    "pages.examples.versions": {
+    "pages.showcase.versions": {
         "message": "See also versions list",
         "description": "Versions reminder"
     },

@@ -41,19 +41,23 @@ html[data-theme=dark] {
     --ifm-badge-border-color: var(--ifm-badge-background-color);
 }
 
-.navbar__link {
-    transition: 0.25s;
-    padding: 0;
-    margin: 0 8px;
-    height: 25px;
+.navbar {
+    height: 80px;
 
-    &--active {
-        color: var(--ifm-navbar-link-color);
-        background: var(--ifm-color-primary);
-    }
-
-    &:hover.navbar__link--active {
-        color: var(--ifm-navbar-link-color);
-        opacity: 0.7;
+    &__link {
+        transition: 0.25s;
+        padding: 0;
+        margin: 0 8px;
+        height: 25px;
+    
+        &--active {
+            color: var(--ifm-navbar-link-color);
+            background: var(--ifm-color-primary);
+        }
+    
+        &:hover.navbar__link--active {
+            color: var(--ifm-navbar-link-color);
+            opacity: 0.7;
+        }
     }
 }

@@ -11,13 +11,14 @@ const navbar = {
     items: [
         // left
         {
-            label: "Docs",
-            to: "/docs",
+            label: "Home",
+            to: "/",
+            activeBaseRegex: "/$",
             position: "left",
         },
         {
-            label: "Community",
-            to: "/community",
+            label: "About",
+            to: "/docs/about",
             position: "left",
         },
         {
@@ -26,8 +27,20 @@ const navbar = {
             position: "left",
         },
         {
-            label: "Examples",
-            to: "/examples",
+            label: "Community",
+            to: "/community",
+            position: "left",
+        },
+        {
+            label: "Showcase",
+            to: "/showcase",
+            position: "left",
+        },
+        {
+            label: "Docs",
+            to: "/docs",
+            // FIXME: [FSDCUR] Simplify regexp
+            activeBaseRegex: "^/docs(?:/(?:get-started|reference|guides)/?.*)?$",
             position: "left",
         },
         // right

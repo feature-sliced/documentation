@@ -3,32 +3,20 @@
         "message": "",
         "description": "The title in the navbar"
     },
-    "item.label.Examples": {
-        "message": "Примеры",
-        "description": "Navbar item with label Examples"
+    "item.label.Home": {
+        "message": "Главная",
+        "description": "Navbar item with label Home"
+    },
+    "item.label.Showcase": {
+        "message": "Галерея",
+        "description": "Navbar item with label Showcase"
     },
     "item.label.Docs": {
         "message": "Документация",
         "description": "Navbar item with label Docs"
     },
-    "item.label.🔎 Intro": {
-        "message": "🔎 Введение",
-        "description": "Navbar item with label Intro"
-    },
-    "item.label.🚀 Get Started": {
-        "message": "🚀 Быстрый старт",
-        "description": "Navbar item with label Get Started"
-    },
-    "item.label.🎯 Guides": {
-        "message": "🎯 Гайды",
-        "description": "Navbar item with label Guides"
-    },
-    "item.label.📚 Reference": {
-        "message": "📚 Справочник",
-        "description": "Navbar item with label Reference"
-    },
-    "item.label.🍰 About": {
-        "message": "🍰 О методологии",
+    "item.label.About": {
+        "message": "О методологии",
         "description": "Navbar item with label About"
     },
     "item.label.Community": {
