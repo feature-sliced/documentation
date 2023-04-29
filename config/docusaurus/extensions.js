@@ -1,6 +1,5 @@
 const path = require("path");
 const { GITHUB_DOCS, DEFAULT_LOCALE } = require("./consts");
-const { REDIRECTS } = require("./routes");
 
 const DOCUSAURUS_PLUGIN_OG = [
     path.resolve(__dirname, "./plugins/docusaurus-plugin-og"),
@@ -102,17 +101,6 @@ const plugins = [
     ],
     // https://www.npmjs.com/package/docusaurus-plugin-sass
     "docusaurus-plugin-sass",
-    // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
-    [
-        "@docusaurus/plugin-client-redirects",
-        {
-            // NOTE: Редиректы работают при прямом переходе по ссылке в адресной строке
-            // Если же переходить чисто по ссылкам, то редиректа не будет (только при обновлении страницы)
-            // TODO: Сделать позже, чтоб редирект работал и при переходе с внутренних ссылок
-            // И убрать хардкод с доки и конфига
-            redirects: REDIRECTS,
-        },
-    ],
     // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-ideal-image
     [
         "@docusaurus/plugin-ideal-image",

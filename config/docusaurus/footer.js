@@ -17,7 +17,6 @@ const footer = {
             items: [
                 { label: "Documentation", to: "/docs" },
                 { label: "Community", to: "/community" },
-                { label: "Help", to: "/nav" },
                 { label: "Discussions", to: `${GITHUB_DOCS}/discussions` },
             ],
         },

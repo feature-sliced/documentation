@@ -12,7 +12,6 @@ const announcementBar = {
     // backgroundColor: "#0367d2",
     content: [
         `🍰 We're <a href="/blog/rebranding-stable">rebranding!</a>`,
-        `❔<a href="/nav">Help</a>`,
         `☮️ Stop the war in Ukraine! #NoWar`, // #nowar
     ].join(`${NBSP + NBSP}|${NBSP + NBSP}`),
     backgroundColor: "#000000", // #nowar
