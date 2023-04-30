@@ -14,7 +14,7 @@ Let's look at the principles of Feature-Sliced Design by building a simple web n
 
 ## Decomposing the user interface
 
-Most user interfaces are made up of distinct pages or screens, so this is an easy starting point for decomposition. We have just 2 screens here (we told you it'd be simple):
+Most user interfaces are made up of distinct pages or screens, so this is an easy starting point for decomposition. We have just 2 screens here (told you it'd be simple!):
 
 1. Note list screen, where the notes are presented for detailed reading, where you can create a new note and sign in for synchronizing your notes.
 2. Note creating/editing screen, where you can edit the note's title and body, as well as delete it.
@@ -34,7 +34,7 @@ Pay attention to this last action. Our application does it automatically, but it
 
 ### Individual UI elements that are important to the business
 
-If an element is important to the business, it must either be a representation of one of the entities or an action on them. In FSD, we call them `entities` and `features` respectively. 
+If an element is important to the business, it must either be a representation of one of the entities or an action on them. In FSD, we call them _entities_ and _features_ respectively. 
 
 Let's locate such elements in our UI. Try it yourself first on the image below, and then drag the slider to reveal our solution.
 
@@ -61,3 +61,59 @@ Useful questions to ask yourself when determining whether an element is an entit
 />
 
 <p style={{ textAlign: "center" }}>Drag the slider above from right to left!</p>
+
+### Combining entities and features into meaningful blocks
+
+Now that we have our entities and features identified and separated, we can start putting them together. In Feature-Sliced Design, we do this in the compositional layers: _Widgets_ and _Pages_. As you may have guessed from the name, one is used to compose blocks of the UI, and the other is used to compose entire screens. Let's identify the blocks that make up our application:
+
+<ReactCompareSlider 
+  handle={<ReactCompareSliderHandle buttonStyle={{WebkitBackdropFilter: undefined, backdropFilter: undefined, backgroundColor: 'white', boxShadow: undefined, color: '#444'}} linesStyle={{opacity: 0.5}}/>}
+  itemOne={<ThemedCompareSliderImage srcLight="/img/tutorial/overview-light.jpg" srcDark="/img/tutorial/overview-dark.jpg" alt="Screens, unannotated" />}
+  itemTwo={<ThemedCompareSliderImage srcLight="/img/tutorial/annotated-widgets-light.jpg" srcDark="/img/tutorial/annotated-widgets-dark.jpg" alt="Screens, annotated with widgets" />}
+  position={0}
+/>
+
+We have three different blocks here: a note card, a note editor, and the application bar. A note card, for example, is made up of a UI skeleton, the data, and an external link component to handle navigation on click. It is a small component, so we can compose it on the Widgets layer:
+
+![Note card composition](/img/tutorial/note-card-composition-light.jpg#light-mode-only)
+![Note card composition](/img/tutorial/note-card-composition-dark.jpg#dark-mode-only)
+
+The note editor in our case is a complete page, so we will compose it on the Pages layer. It's also more complicated, so there are more components involved. We have a skeleton again, the data to populate the editor, the editor component itself, a link button from our internal UI kit that handles navigation, and a button to delete the note, coupled with the click handler:
+
+![Note editor composition](/img/tutorial/edit-note-composition-light.jpg#light-mode-only)
+![Note editor composition](/img/tutorial/edit-note-composition-dark.jpg#dark-mode-only)
+
+Note that we have a UI skeleton component inside `pages/edit-note/ui/`, and the composed component is also in this folder. Sometimes it's more practical to have smaller components like this simply alongside the main component of the slice as opposed to having them in layers below (like the note card skeleton in the previous example).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+You may be used to a much less granular decomposition. You might have used the terms `containers` and `components` before. In FSD, we have _widgets_ for that. Widgets usually represent large blocks of an interface that you can easily identify with your eyes.
+
+
+
+-->
