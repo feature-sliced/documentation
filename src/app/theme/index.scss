@@ -38,6 +38,7 @@ html[data-theme=light] {
     --ifm-background-color: var(--bg-color-light);
     --ifm-background-surface-color: var(--bg-color-light);
     // FIXME: [FSDCUR] Try to resolve with docusaurus vars
+    // FIXME: [FSDCUR] Cleanup website custom vars (bg-color-alt => text-color, color)
     --bg-color-alt: var(--bg-color-dark);
     --bg-color-secondary: #f4edf0;
 
