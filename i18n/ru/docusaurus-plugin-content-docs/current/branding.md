@@ -40,14 +40,9 @@ FSD имеет несколько вариаций логотипа для ра�
         <td>Использование</td>
     </tr>
     <tr>
-        <td style={{ color: "#FFF", background: "linear-gradient(135deg, rgba(41,190,220,1) 0%, rgba(81,122,237,1) 100%)" }}>primary <br/> (#29BEDC, #517AED)</td>
+        <td style={{ color: "#FFF", background: "#0BB6D9" }}>primary <br/> (#0BB6D9)</td>
         <td><a href="/img/brand/logo-primary.png" download><img src="/img/brand/logo-primary.png" height="130" alt="logo-primary" /></a></td>
         <td>Предпочтительно в большинстве случаев</td>
-    </tr>
-    <tr>
-        <td style={{ color: "#FFF", background: "#3193FF" }}>flat <br/> (#3193FF)</td>
-        <td><a href="/img/brand/logo-flat.png" download><img src="/img/brand/logo-flat.png" height="130" alt="logo-flat" /></a></td>
-        <td>Для одноцветного контекста</td>
     </tr>
     <tr>
         <td style={{ color: "#000", background: "#FFF" }}>monochrome <br /> (#FFF)</td>
@@ -55,7 +50,7 @@ FSD имеет несколько вариаций логотипа для ра�
         <td>Для черно-белого контекста</td>
     </tr>
     <tr>
-        <td style={{ color: "#FFF", background: "#3193FF" }}>square <br/> (#3193FF)</td>
+        <td style={{ color: "#FFF", background: "#0BB6D9" }}>square <br/> (#0BB6D9)</td>
         <td><a href="/img/brand/logo-square.png" download><img src="/img/brand/logo-square.png" height="130" alt="logo-square" /></a></td>
         <td>Для квадратных размеров</td>
     </tr>
