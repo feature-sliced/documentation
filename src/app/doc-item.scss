@@ -112,7 +112,18 @@ a[download] {
         background-color: var(--bg-color-alt);
     }
 
-    & h3 {
+    & h3, & h4, & h5, & h6 {
         background-color: var(--bg-color-secondary);
+    }
+
+    & > pre, & > p {
+        margin-bottom: 24px;
+        // FIXME: [FSDCUR] Resolve ifm-leading
+        // margin-bottom: calc(var(--ifm-leading) * 2); // 24px
+    }
+    
+    // FIXME: [FSDCUR] Resolve
+    & > p + ul {
+        margin-top: -24px;
     }
 }

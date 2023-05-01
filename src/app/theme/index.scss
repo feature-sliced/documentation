@@ -30,6 +30,7 @@
     --ifm-h6-font-size: 1rem !important; // 16px
     --ifm-code-font-size: 95%;
     --prism-background-color: var(--bg-color-secondary) !important;
+    --ifm-leading: calc(var(--ifm-leading-desktop) * 0.6rem) !important;
 }
 
 // Restored values from old dark theme
