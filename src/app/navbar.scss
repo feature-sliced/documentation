@@ -69,6 +69,7 @@ html[data-theme="dark"] .ext-link::before {
     --docusaurus-announcement-bar-height: 42px; // #nowar
 
     font-size: 1.2rem; // #nowar
+    border-bottom: none !important;
 }
 
 /* Debug only, for simulating searchBox on devMode
