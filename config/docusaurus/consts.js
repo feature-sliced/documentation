@@ -15,6 +15,7 @@ const COMMUNITY = {
     OPEN_COLLECTIVE: "https://opencollective.com/feature-sliced",
     GITHUB_ORG: "https://github.com/feature-sliced",
     GITHUB_DOCS: "https://github.com/feature-sliced/documentation",
+    // TODO: [FSDCUR] Add OpenCollective, Dev.to to footer later
 };
 
 module.exports = {
