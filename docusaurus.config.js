@@ -44,6 +44,10 @@ module.exports = {
         algolia: cfg.algolia,
         metadata: cfg.metadata,
         hotjar: cfg.metrics.hotjar,
+        prism: {
+            theme: require("prism-react-renderer").themes.vsLight,
+            darkTheme: require("prism-react-renderer").themes.vsDark,
+        },
     },
 };
 
