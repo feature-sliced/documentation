@@ -1,0 +1,10 @@
+@import "./theme";
+
+.table-of-contents {
+    font-size: 1.25rem;
+    line-height: 24px;
+
+    &__left-border {
+        border: 0;
+    }
+}
