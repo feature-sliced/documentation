@@ -40,6 +40,10 @@ html[data-theme=light] {
     // FIXME: [FSDCUR] Try to resolve with docusaurus vars
     --bg-color-alt: var(--bg-color-dark);
     --bg-color-secondary: #f4edf0;
+
+    .navbar__logo, .footer__logo {
+        filter: invert(1) !important;
+    }
 }
 
 html[data-theme=dark] {

@@ -13,8 +13,6 @@
     --ifm-breadcrumb-color-active: var(--ifm-color-primary);
     --ifm-menu-color-active: var(--ifm-color-primary);
 
-    [alt=logo],
-    .footer__logo,
     [alt=feature-sliced-banner] {
         filter: brightness(1.2) grayscale(1) !important;
     }

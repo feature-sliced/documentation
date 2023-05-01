@@ -6,7 +6,7 @@ const navbar = {
     logo: {
         alt: "logo",
         // FIXME: Сделать под SVG позднее
-        src: "img/brand/logo-primary.png",
+        src: "img/brand/logo-monochrome.png",
     },
     items: [
         // left
