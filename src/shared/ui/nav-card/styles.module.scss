@@ -67,9 +67,9 @@
 .primaryTheme {
     color: var(--ifm-background-color);
     background-color: var(--ifm-color-primary);
-
+    
     &:hover {
-        color: #ffffff;
+        color: var(--ifm-background-color);
         box-shadow: 0 2px 10px 0 var(--ifm-color-primary-darkest);
     }
 }
@@ -79,6 +79,6 @@ html[data-theme="dark"] .root {
     &.defaultTheme,
     &.miniTheme {
         // FIXME: [FSDCUR] Actualize ifm-color-gray for dark-theme
-        background: var(--ifm-color-gray-900);
+        background: var(--bg-color-secondary);
     }
 }
