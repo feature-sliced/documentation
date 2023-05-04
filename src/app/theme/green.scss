@@ -16,9 +16,4 @@
     [alt=feature-sliced-banner] {
         filter: hue-rotate(245deg) brightness(1.2) !important;
     }
-
-    .hero.hero--primary {
-        // background: linear-gradient(45deg, #6cf57e -0%, #9adb18 100%);
-        background: linear-gradient(45deg, var(--ifm-color-primary-lightest) -0%, var(--ifm-color-primary) 100%);
-    }
 }

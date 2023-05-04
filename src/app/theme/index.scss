@@ -18,6 +18,12 @@
     --bg-color-dark: #191315;
 }
 
+
+.button--primary {
+    --ifm-button-background-color: var(--ifm-color-primary-darker);
+    --ifm-button-border-color: var(--ifm-color-primary-darker);
+}
+
 // 1rem = 16px
 .markdown > * {
     // FIXME: [FSDCUR] Actualize font-weight (500)
@@ -71,4 +77,8 @@ html[data-theme=dark] {
 .badge--violet {
     --ifm-badge-background-color: var(--ifm-color-violet);
     --ifm-badge-border-color: var(--ifm-badge-background-color);
+}
+
+.hero.hero--primary {
+    background: linear-gradient(45deg, var(--ifm-color-primary-lightest) -0%, var(--ifm-color-primary-darkest) 100%);
 }
