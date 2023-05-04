@@ -87,27 +87,21 @@ a[download] {
         margin-left: 32px;
     }
 
-    & h1,
-    & h2,
-    & h3,
-    & h4,
-    & h5,
-    & h6 {
-        width: fit-content;
-        padding: 0 32px;
-    }
-
     & pre code {
         padding-right: 32px;
         padding-left: 32px;
     }
 
     & h1 {
+        width: fit-content;
+        padding: 0 32px;
         color: var(--ifm-background-color);
         background-color: var(--ifm-color-primary);
     }
 
     & h2 {
+        width: fit-content;
+        padding: 0 5px 0 32px;
         color: var(--ifm-background-color);
         background-color: var(--bg-color-alt);
     }
@@ -116,6 +110,8 @@ a[download] {
     & h4,
     & h5,
     & h6 {
+        width: fit-content;
+        padding: 0 5px 0 32px;
         background-color: var(--bg-color-secondary);
     }
 
