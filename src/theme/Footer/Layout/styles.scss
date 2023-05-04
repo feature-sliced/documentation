@@ -27,12 +27,12 @@
 
 .footer__link {
     &s {
-        font-size: 1.25rem;
-        height: 80px;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        height: 80px;
         margin-bottom: 0;
+        font-size: 1.25rem;
     }
 
     &-item:hover {
@@ -40,5 +40,3 @@
         text-decoration: none;
     }
 }
-
-
