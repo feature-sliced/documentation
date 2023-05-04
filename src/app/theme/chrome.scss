@@ -1,0 +1,19 @@
+/* https://docusaurus.io/docs/styling-layout */
+[data-theme=chrome] {
+    --ifm-color-primary: #8f8f8f;
+    --ifm-color-primary-dark: #818181;
+    --ifm-color-primary-darker: #7a7a7a;
+    --ifm-color-primary-darkest: #646464;
+    --ifm-color-primary-light: #9d9d9d;
+    --ifm-color-primary-lighter: #a4a4a4;
+    --ifm-color-primary-lightest: #bababa;
+    --ifm-link-color: var(--ifm-color-primary);
+    --ifm-link-hover-color: var(--ifm-color-primary);
+    --ifm-navbar-link-hover-color: var(--ifm-color-primary);
+    --ifm-breadcrumb-color-active: var(--ifm-color-primary);
+    --ifm-menu-color-active: var(--ifm-color-primary);
+
+    [alt=feature-sliced-banner] {
+        filter: brightness(1.2) grayscale(1) !important;
+    }
+}

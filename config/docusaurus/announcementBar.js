@@ -11,11 +11,12 @@ const announcementBar = {
     // backgroundColor: "#5c9cb5", // As primary theme
     // backgroundColor: "#0367d2",
     content: [
+        `<a href="/docs/guides/migration/demo">👀 NEW DESIGN</a>`, // FIXME: [FSDCUR] Remove after release
         `🍰 We're <a href="/blog/rebranding-stable">rebranding!</a>`,
         `☮️ Stop the war in Ukraine! #NoWar`, // #nowar
     ].join(`${NBSP + NBSP}|${NBSP + NBSP}`),
-    backgroundColor: "#000000", // #nowar
-    textColor: "#fff", // Defaults to `#000`.
+    backgroundColor: "var(--ifm-background-color)", // #nowar
+    textColor: "var(--bg-color-alt)", // Defaults to `#000`.
     isCloseable: false, // Defaults to `true`.
 };
 

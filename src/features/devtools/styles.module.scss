@@ -1,0 +1,27 @@
+.root {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    transform: translateY(-50%);
+
+    &Container {
+        display: flex;
+        flex-direction: column;
+
+        & button {
+            margin: 4px 0;
+        }
+    }
+}
+
+.switchColor {
+    display: block;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: var(--ifm-alert-shadow);
+}
+
+.icon {
+    font-size: 20px;
+    color: #ffffff;
+}

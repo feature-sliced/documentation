@@ -16,8 +16,8 @@ export function Hero() {
                     <Link className="button button--primary button--lg" to="/docs">
                         {translate({ id: "features.hero.get_started" })}
                     </Link>
-                    <Link className="button button--secondary button--lg" to="/examples">
-                        {translate({ id: "features.hero.examples" })}
+                    <Link className="button button--secondary button--lg" to="/showcase">
+                        {translate({ id: "features.hero.showcase" })}
                     </Link>
                 </div>
                 <div className="margin-top--md">

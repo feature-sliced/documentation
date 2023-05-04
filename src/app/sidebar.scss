@@ -1,0 +1,23 @@
+@import "./theme";
+
+.menu__link,
+.menu__list-item-collapsible {
+    border-radius: 0;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+    color: var(--ifm-background-color);
+    background-color: var(--ifm-color-primary);
+}
+
+.menu__list-item-collapsible .menu__link--active {
+    color: var(--ifm-color-primary);
+}
+
+aside {
+    border: none !important;
+}
+
+nav[aria-label='Docs sidebar'] {
+    padding-top: 1rem;
+}

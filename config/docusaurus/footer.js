@@ -1,60 +1,42 @@
-const {
-    GITHUB_DOCS,
-    GITHUB_ORG,
-    DISCORD,
-    TELEGRAM,
-    TWITTER,
-    OPEN_COLLECTIVE,
-    YOUTUBE,
-} = require("./consts");
+const { COMMUNITY } = require("./consts");
 
+// TODO: [FSDCUR] Adapt to design
 /** @type {import('@docusaurus/types').DocusaurusConfig["themeConfig"]["footer"]} */
 const footer = {
     style: "dark",
-    links: [
-        {
-            title: "Specs",
-            items: [
-                { label: "Documentation", to: "/docs" },
-                { label: "Community", to: "/community" },
-                { label: "Discussions", to: `${GITHUB_DOCS}/discussions` },
-            ],
-        },
-        {
-            title: "Community",
-            items: [
-                { label: "Discord", href: DISCORD },
-                { label: "Telegram (RU)", href: TELEGRAM },
-                { label: "Twitter", href: TWITTER },
-                { label: "Open Collective", href: OPEN_COLLECTIVE },
-                { label: "YouTube", href: YOUTUBE },
-            ],
-        },
-        {
-            title: "More",
-            items: [
-                // TODO: Добавить ссыль на dev.to позднее (как доработаем)
-                // { label: 'Blog', to: '/blog' },
-                { label: "GitHub", href: GITHUB_ORG },
-                {
-                    label: "Contribution Guide",
-                    href: `${GITHUB_DOCS}/blob/master/CONTRIBUTING.md`,
-                },
-                {
-                    label: "License",
-                    href: `${GITHUB_DOCS}/blob/master/LICENSE`,
-                },
-                { label: "Privacy", href: "/docs/privacy" },
-            ],
-        },
-    ],
     logo: {
         alt: "Feature-Sliced Design - Architectural methodology for frontend projects",
-        src: "img/brand/logo-primary.png",
-        href: GITHUB_ORG,
-        width: 160,
+        src: "img/brand/logo-monochrome.svg",
+        href: COMMUNITY.GITHUB_ORG,
+        height: 32,
     },
-    copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced Design`,
+    copyright: `Feature-Sliced Design,&nbsp;<a href="https://github.com/feature-sliced/documentation/blob/master/LICENSE" target="_blank" rel="noreferrer noopener">MIT licensed</a>, 2018-${new Date().getFullYear()}`,
+    links: [
+        {
+            label: "Brand",
+            href: "/docs/branding",
+        },
+        {
+            label: "License",
+            href: `${COMMUNITY.GITHUB_DOCS}/blob/master/LICENSE`,
+        },
+        {
+            label: "Privacy",
+            href: "/docs/privacy",
+        },
+        {
+            label: "Code of Coduct",
+            href: `${COMMUNITY.GITHUB_DOCS}/blob/master/CODE_OF_CONDUCT.md`,
+        },
+        {
+            label: "Discussions",
+            href: `${COMMUNITY.GITHUB_DOCS}/discussions`,
+        },
+        {
+            label: "Contributing",
+            href: `${COMMUNITY.GITHUB_DOCS}/blob/master/CONTRIBUTING.md`,
+        },
+    ],
 };
 
 module.exports = { footer };

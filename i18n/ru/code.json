@@ -79,23 +79,23 @@
         "message": "Сообщите нам",
         "description": "Tell us"
     },
-    "pages.examples.title": {
-        "message": "Примеры",
+    "pages.showcase.title": {
+        "message": "Витрина примеров",
         "description": "Page title"
     },
-    "pages.examples.subtitle": {
+    "pages.showcase.subtitle": {
         "message": "Список сайтов, сделанных людьми с FSD",
         "description": "Page subtitle"
     },
-    "pages.examples.add_me.title": {
+    "pages.showcase.add_me.title": {
         "message": "Добавить пример",
         "description": "Request to add example"
     },
-    "pages.examples.repo.title": {
+    "pages.showcase.repo.title": {
         "message": "Репозиторий",
         "description": "Examples repository label"
     },
-    "pages.examples.versions": {
+    "pages.showcase.versions": {
         "message": "См. также список версий",
         "description": "Versions reminder"
     },
@@ -167,9 +167,9 @@
         "message": "Ознакомиться",
         "description": "Get Started"
     },
-    "features.hero.examples": {
+    "features.hero.showcase": {
         "message": "Примеры",
-        "description": "Examples"
+        "description": "Showcase"
     },
     "features.hero.previous": {
         "message": "Предыдущая версия",

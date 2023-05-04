@@ -36,7 +36,7 @@ module.exports = {
     themeConfig: {
         image: "img/preview.png",
         // @see https://docusaurus.io/docs/sidebar#hideable-sidebar
-        docs: { sidebar: { hideable: true, autoCollapseCategories: true } },
+        docs: { sidebar: { hideable: false, autoCollapseCategories: true } },
         colorMode: { respectPrefersColorScheme: true },
         announcementBar: cfg.announcementBar,
         navbar: cfg.navbar,
@@ -44,6 +44,10 @@ module.exports = {
         algolia: cfg.algolia,
         metadata: cfg.metadata,
         hotjar: cfg.metrics.hotjar,
+        prism: {
+            theme: require("prism-react-renderer").themes.github,
+            darkTheme: require("prism-react-renderer").themes.okaidia,
+        },
     },
 };
 

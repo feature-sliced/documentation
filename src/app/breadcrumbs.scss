@@ -1,0 +1,14 @@
+@import "./theme";
+
+.breadcrumbs {
+    &__link {
+        padding: 0;
+        margin: 0 8px;
+        font-size: 1rem;
+        border-radius: 0;
+    }
+
+    &__item--active .breadcrumbs__link {
+        background: none;
+    }
+}

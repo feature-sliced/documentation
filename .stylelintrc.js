@@ -11,6 +11,8 @@ module.exports = {
     rules: {
         "indentation": 4,
         "color-hex-length": "long",
-        "at-rule-no-unknown": true,
+        "at-rule-no-unknown": [true, {
+            "ignoreAtRules": ["function", "if", "each", "include", "mixin"]
+        }]
     },
 };

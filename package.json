@@ -41,6 +41,7 @@
         "js-cookie": "^3.0.1",
         "lodash-es": "^4.17.21",
         "picocolors": "^1.0.0",
+        "prism-react-renderer": "^2.0.3",
         "react": "^17.0.1",
         "react-cookie-consent": "^6.4.1",
         "react-dom": "^17.0.1",
@@ -66,6 +67,7 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.21.3",
         "@docusaurus/module-type-aliases": "2.4.0",
+        "@docusaurus/types": "^2.4.0",
         "@eslint-kit/eslint-config-base": "4.1.0",
         "@eslint-kit/eslint-config-patch": "^1.0.0",
         "@eslint-kit/eslint-config-prettier": "3.0.0",

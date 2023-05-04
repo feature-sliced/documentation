@@ -14,7 +14,7 @@ export const VERSIONS = {
  * 2. Fill details (required with "*"):
  *  - *title (should be unique)
  *  - *description (shortly)
- *  - *preview (image preview - `/pages/examples/img/{YOUR_SITE}.[png|jpg|jpeg]`)
+ *  - *preview (image preview - `/pages/showcase/img/{YOUR_SITE}.[png|jpg|jpeg]`)
  *  - *updatetAt (date of adding on examples list, for highlighting first two weeks)
  *  - *version (FSD version which implemented in your codebase)
  *  - website, source (links for your site)

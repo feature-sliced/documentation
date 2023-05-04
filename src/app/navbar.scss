@@ -1,6 +1,8 @@
-@import "./theme.scss";
+@import "./theme";
 
 .navbar {
+    --ifm-navbar-height: 80px;
+
     &__brand {
         margin-right: 0;
         opacity: 1;
@@ -11,14 +13,30 @@
         }
     }
 
-    // &__logo {
-    //     margin-right: 0;
-    // }
+    &__link {
+        height: 25px;
+        padding: 0;
+        margin: 0 8px;
+        transition: 0.25s;
+
+        &--active {
+            color: var(--ifm-background-color);
+            background: var(--ifm-color-primary);
+        }
+
+        &:hover.navbar__link--active {
+            color: var(--ifm-background-color);
+            opacity: 0.7;
+        }
+    }
 }
 
 /**
  * External community links
  */
+
+$extlinks: 'discord', 'github', 'telegram', 'twitter', 'youtube';
+
 .ext-link {
     --ifm-navbar-item-padding-horizontal: 0.5rem;
 
@@ -35,12 +53,10 @@
         content: "";
     }
 
-    &.github::before {
-        background: url(assets/github.svg) no-repeat;
-    }
-
-    &.discord::before {
-        background: url(assets/discord.svg) no-repeat;
+    @each $link in $extlinks {
+        &.#{$link}::before {
+            background: url(assets/#{$link}.svg) no-repeat;
+        }
     }
 }
 
@@ -53,6 +69,7 @@ html[data-theme="dark"] .ext-link::before {
     --docusaurus-announcement-bar-height: 42px; // #nowar
 
     font-size: 1.2rem; // #nowar
+    border-bottom: none !important;
 }
 
 /* Debug only, for simulating searchBox on devMode

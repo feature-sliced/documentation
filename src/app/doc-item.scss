@@ -1,4 +1,4 @@
-@import "./theme.scss";
+@import "./theme";
 
 html {
     /**
@@ -40,7 +40,7 @@ iframe {
 mark {
     padding: 2px;
     color: #ffffff;
-    background-color: var(--ifm-color-primary-neutral);
+    background-color: var(--ifm-color-primary-darkest);
     border-radius: 4px;
 }
 
@@ -52,7 +52,7 @@ mark {
 }
 
 .sidebar-item--wip {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .summary {
@@ -75,5 +75,69 @@ a[download] {
     &:first-child,
     &:nth-child(2):last-child {
         display: none;
+    }
+}
+
+/* Markdown styles */
+// FIXME: [FSDCUR] Setup unified gaps vars-palette
+// FIXME: [FSDCUR] Simplify and refine paddings for DOM items
+.markdown {
+    --gap-content: 32px;
+    --anchor-widgth: 27px;
+
+    & > :not(h1,h2,h3,h4,h5,h6,.theme-code-block) {
+        margin-right: var(--gap-content);
+        margin-left: var(--gap-content);
+    }
+
+    & pre code {
+        padding-right: var(--gap-content);
+        padding-left: var(--gap-content);
+    }
+
+    & h1 {
+        width: fit-content;
+        padding: 0 var(--gap-content);
+        color: var(--ifm-background-color);
+        background-color: var(--ifm-color-primary);
+    }
+
+    & h2 {
+        width: fit-content;
+        padding: 0 calc(var(--gap-content) - var(--anchor-widgth)) 0 var(--gap-content);
+        color: var(--ifm-background-color);
+        background-color: var(--bg-color-alt);
+    }
+
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+        width: fit-content;
+        padding: 0 calc(var(--gap-content) - var(--anchor-widgth)) 0 var(--gap-content);
+        background-color: var(--bg-color-secondary);
+    }
+
+    & > pre,
+    & > p {
+        margin-bottom: 24px;
+        // FIXME: [FSDCUR] Resolve ifm-leading
+        // margin-bottom: calc(var(--ifm-leading) * 2); // 24px
+    }
+
+    // FIXME: [FSDCUR] Resolve
+    & > p + ul {
+        margin-top: -24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .markdown {
+        --gap-content: 12px;
+    }
+
+    a.hash-link {
+        padding-left: 0;
+        font-size: 1.25rem;
     }
 }

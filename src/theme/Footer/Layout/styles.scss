@@ -1,0 +1,42 @@
+.footer {
+    --ifm-footer-background-color: var(--ifm-background-color) !important;
+    --ifm-footer-color: var(--bg-color-alt) !important;
+    --ifm-footer-link-color: var(--bg-color-alt) !important;
+    --ifm-footer-title-color: var(--bg-color-alt) !important;
+
+    &__main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > a {
+            height: 80px;
+            padding: 24px 32px;
+        }
+    }
+
+    &__logo {
+        margin-top: 0;
+    }
+
+    &__copyright {
+        padding: 0 32px;
+        text-align: center;
+    }
+}
+
+.footer__link {
+    &s {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        margin-bottom: 0;
+        font-size: 1.25rem;
+    }
+
+    &-item:hover {
+        color: var(--ifm-color-primary);
+        text-decoration: none;
+    }
+}

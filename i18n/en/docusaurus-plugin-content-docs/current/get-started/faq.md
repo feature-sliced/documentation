@@ -40,7 +40,7 @@ There are only such ones in the public domain so far, not all of them have been 
 *In the near future, the list will be updated and will be placed in a separate section*
 
 - [Internal Examples](https://github.com/feature-sliced/examples)
-- [External Examples](/examples)
+- [External Examples](/showcase)
 
 *Also, you can get acquainted with our [guides](/docs/guides) and [tutorials](/docs/get-started)*
 

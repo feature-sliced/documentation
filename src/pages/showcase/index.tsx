@@ -5,14 +5,16 @@ import { ExampleCard } from "@site/src/entities/example";
 
 import { examples } from "./_config";
 
-const TITLE = translate({ id: "pages.examples.title" });
-const DESCRIPTION = translate({ id: "pages.examples.subtitle" });
+const TITLE = translate({ id: "pages.showcase.title" });
+const DESCRIPTION = translate({ id: "pages.showcase.subtitle" });
 const EDIT_URL =
     "https://github.com/feature-sliced/documentation/blob/master/src/pages/examples/_config.ts";
 const EXAMPLES_URL = "https://github.com/feature-sliced/examples";
 
 function ExamplesPage() {
     return (
+        // FIXME: [FSDCUR] Resolve types and OG metadata
+        // @ts-ignore
         <Layout title={TITLE} description={DESCRIPTION}>
             <main className="container margin-vert--lg">
                 <div className="text--center">
@@ -25,7 +27,7 @@ function ExamplesPage() {
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            🙏 {translate({ id: "pages.examples.add_me.title" })}
+                            🙏 {translate({ id: "pages.showcase.add_me.title" })}
                         </a>
                         <a
                             className="button button--secondary"
@@ -33,11 +35,11 @@ function ExamplesPage() {
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            {translate({ id: "pages.examples.repo.title" })}
+                            {translate({ id: "pages.showcase.repo.title" })}
                         </a>
                     </div>
                     <div className="margin-top--sm">
-                        <a href="/versions">{translate({ id: "pages.examples.versions" })}</a>
+                        <a href="/versions">{translate({ id: "pages.showcase.versions" })}</a>
                     </div>
                 </div>
                 <section className="container margin-top--lg">

@@ -1,0 +1,83 @@
+@import "@fontsource/overpass/400.css";
+@import "@fontsource/ubuntu/400.css";
+@import "@fontsource/ubuntu/700.css";
+@import "./red.scss";
+@import "./blue.scss";
+@import "./green.scss";
+@import "./chrome.scss";
+
+:root {
+    // Font styles
+    --ifm-font-family-base: 'Ubuntu', system-ui, -apple-system, segoe ui, roboto, ubuntu, cantarell, noto sans, sans-serif, blinkmacsystemfont, 'Segoe UI', helvetica, arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --ifm-heading-font-family: 'Overpass', var(--ifm-font-family-base);
+
+    // Base styles
+    --ifm-button-color: #ffffff;
+    --ifm-color-violet: #5c21dd;
+    --bg-color-light: #f9f4f7;
+    --bg-color-dark: #191315;
+}
+
+.button--primary {
+    --ifm-button-background-color: var(--ifm-color-primary-darker);
+    --ifm-button-border-color: var(--ifm-color-primary-darker);
+}
+
+// 1rem = 16px
+.markdown > * {
+    // FIXME: [FSDCUR] Actualize font-weight (500)
+    --ifm-heading-font-weight: 500 !important;
+    --ifm-h1-font-size: 2.25rem !important; // 36px
+    --ifm-h2-font-size: 1.75rem !important; // 28px
+    --ifm-h3-font-size: 1.5rem !important; // 24px
+    --ifm-h4-font-size: 1.25rem !important; // 20px
+    --ifm-h5-font-size: 1.125rem !important; // 18px
+    --ifm-h6-font-size: 1rem !important; // 16px
+    --ifm-code-font-size: 95%;
+    --prism-background-color: var(--bg-color-secondary) !important;
+    --ifm-leading: calc(var(--ifm-leading-desktop) * 0.6rem) !important;
+}
+
+// Restored values from old dark theme
+html[data-theme=light] {
+    --ifm-background-color: var(--bg-color-light);
+    --ifm-background-surface-color: var(--bg-color-light);
+    // FIXME: [FSDCUR] Try to resolve with docusaurus vars
+    // FIXME: [FSDCUR] Cleanup website custom vars (bg-color-alt => text-color, color)
+    --bg-color-alt: var(--bg-color-dark);
+    --bg-color-secondary: #f4edf0;
+
+    .navbar__logo,
+    .footer__logo {
+        filter: invert(1) !important;
+    }
+}
+
+html[data-theme=dark] {
+    --ifm-background-color: var(--bg-color-dark);
+    --ifm-background-surface-color: var(--bg-color-dark);
+    --bg-color-alt: var(--bg-color-light);
+    --bg-color-secondary: #262224;
+
+    // Adapt badges styles
+    .badge--warning {
+        --ifm-badge-background-color: var(--ifm-color-warning-dark);
+    }
+}
+
+:root[data-theme=dark] [role=root][data-theme=chrome] [alt=logo] {
+    filter: brightness(2) grayscale(1) !important;
+}
+
+:root[data-theme=light] [role=root][data-theme=chrome] [alt=logo] {
+    filter: brightness(0.5) grayscale(1) !important;
+}
+
+.badge--violet {
+    --ifm-badge-background-color: var(--ifm-color-violet);
+    --ifm-badge-border-color: var(--ifm-badge-background-color);
+}
+
+.hero.hero--primary {
+    background: linear-gradient(45deg, var(--ifm-color-primary-lightest) -0%, var(--ifm-color-primary-darkest) 100%);
+}

@@ -40,7 +40,7 @@ pagination_next: guides/index
 *В ближайшее время список будет пополняться и будет вынесен в отдельный раздел*
 
 - [Internal Examples](https://github.com/feature-sliced/examples)
-- [External Examples](/examples)
+- [External Examples](/showcase)
 
 *Также можно ознакомиться с [гайдами](/docs/guides) и [туториалами](/docs/get-started)*
 
