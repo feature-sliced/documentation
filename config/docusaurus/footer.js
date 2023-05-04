@@ -6,7 +6,7 @@ const footer = {
     style: "dark",
     logo: {
         alt: "Feature-Sliced Design - Architectural methodology for frontend projects",
-        src: "img/brand/logo-monochrome.png",
+        src: "img/brand/logo-monochrome.svg",
         href: COMMUNITY.GITHUB_ORG,
         width: 160,
     },

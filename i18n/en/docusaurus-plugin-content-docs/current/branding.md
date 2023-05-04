@@ -41,12 +41,12 @@ FSD has few variations of logo for different context, but it recommended to pref
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "#0BB6D9" }}>primary <br/> (#0BB6D9)</td>
-        <td><a href="/img/brand/logo-primary.png" download><img src="/img/brand/logo-primary.png" height="130" alt="logo-primary" /></a></td>
+        <td><a href="/img/brand/logo-primary.svg" download><img src="/img/brand/logo-primary.svg" height="130" alt="logo-primary" /></a></td>
         <td>Preferred in most cases</td>
     </tr>
     <tr>
         <td style={{ color: "#000", background: "#FFF" }}>monochrome <br /> (#FFF)</td>
-        <td style={{ color: "#000", background: "#242526" }}><a href="/img/brand/logo-monochrome.png" download><img src="/img/brand/logo-monochrome.png" height="130" alt="logo-monocrhome" /></a></td>
+        <td style={{ color: "#000", background: "#242526" }}><a href="/img/brand/logo-monochrome.svg" download><img src="/img/brand/logo-monochrome.svg" height="130" alt="logo-monocrhome" /></a></td>
         <td>For grayscale context</td>
     </tr>
     <tr>
