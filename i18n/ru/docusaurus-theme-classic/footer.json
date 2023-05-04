@@ -54,9 +54,5 @@
     "link.item.label.GitHub": {
         "message": "GitHub",
         "description": "The label of footer link with label=GitHub linking to https://github.com/feature-sliced"
-    },
-    "copyright": {
-        "message": "Copyright © 2018-2023  Feature-Sliced Design",
-        "description": "The footer copyright"
     }
 }

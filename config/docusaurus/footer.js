@@ -10,7 +10,7 @@ const footer = {
         href: COMMUNITY.GITHUB_ORG,
         width: 160,
     },
-    copyright: `Copyright © ${new Date().getFullYear()}  Feature-Sliced Design`,
+    copyright: `Feature-Sliced Design, <a href="https://github.com/feature-sliced/documentation/blob/master/LICENSE" target="_blank" rel="noreferrer noopener">MIT licensed</a>, 2018-${new Date().getFullYear()}`,
     links: [
         {
             label: "Brand",
