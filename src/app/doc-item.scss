@@ -82,26 +82,29 @@ a[download] {
 // FIXME: [FSDCUR] Setup unified gaps vars-palette
 // FIXME: [FSDCUR] Simplify and refine paddings for DOM items
 .markdown {
+    --gap-content: 32px;
+    --anchor-widgth: 27px;
+
     & > :not(h1,h2,h3,h4,h5,h6,.theme-code-block) {
-        margin-right: 32px;
-        margin-left: 32px;
+        margin-right: var(--gap-content);
+        margin-left: var(--gap-content);
     }
 
     & pre code {
-        padding-right: 32px;
-        padding-left: 32px;
+        padding-right: var(--gap-content);
+        padding-left: var(--gap-content);
     }
 
     & h1 {
         width: fit-content;
-        padding: 0 32px;
+        padding: 0 var(--gap-content);
         color: var(--ifm-background-color);
         background-color: var(--ifm-color-primary);
     }
 
     & h2 {
         width: fit-content;
-        padding: 0 5px 0 32px;
+        padding: 0 calc(var(--gap-content) - var(--anchor-widgth)) 0 var(--gap-content);
         color: var(--ifm-background-color);
         background-color: var(--bg-color-alt);
     }
@@ -111,7 +114,7 @@ a[download] {
     & h5,
     & h6 {
         width: fit-content;
-        padding: 0 5px 0 32px;
+        padding: 0 calc(var(--gap-content) - var(--anchor-widgth)) 0 var(--gap-content);
         background-color: var(--bg-color-secondary);
     }
 
@@ -125,5 +128,16 @@ a[download] {
     // FIXME: [FSDCUR] Resolve
     & > p + ul {
         margin-top: -24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .markdown {
+        --gap-content: 12px;
+    }
+
+    a.hash-link {
+        padding-left: 0;
+        font-size: 1.25rem;
     }
 }
