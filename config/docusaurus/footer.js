@@ -8,21 +8,21 @@ const footer = {
         alt: "Feature-Sliced Design - Architectural methodology for frontend projects",
         src: "img/brand/logo-monochrome.svg",
         href: COMMUNITY.GITHUB_ORG,
-        width: 160,
+        height: 32,
     },
-    copyright: `Feature-Sliced Design, <a href="https://github.com/feature-sliced/documentation/blob/master/LICENSE" target="_blank" rel="noreferrer noopener">MIT licensed</a>, 2018-${new Date().getFullYear()}`,
+    copyright: `Feature-Sliced Design,&nbsp;<a href="https://github.com/feature-sliced/documentation/blob/master/LICENSE" target="_blank" rel="noreferrer noopener">MIT licensed</a>, 2018-${new Date().getFullYear()}`,
     links: [
         {
             label: "Brand",
             href: "/docs/branding",
         },
         {
-            label: "Privacy",
-            href: "/docs/privacy",
-        },
-        {
             label: "License",
             href: `${COMMUNITY.GITHUB_DOCS}/blob/master/LICENSE`,
+        },
+        {
+            label: "Privacy",
+            href: "/docs/privacy",
         },
         {
             label: "Code of Coduct",
