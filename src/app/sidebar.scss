@@ -17,3 +17,7 @@
 aside {
     border: none !important;
 }
+
+nav[aria-label='Docs sidebar'] {
+    padding-top: 1rem;
+}

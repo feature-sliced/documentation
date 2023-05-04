@@ -1,7 +1,7 @@
 @import "./theme";
 
 .navbar {
-    height: 80px;
+    --ifm-navbar-height: 80px;
 
     &__brand {
         margin-right: 0;
