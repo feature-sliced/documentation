@@ -7,29 +7,29 @@ main {
 }
 
 .section {
-    height: var(--section-height);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: var(--section-height);
     border: 2px dashed var(--bg-color-secondary);
 }
 
 .cols {
-    height: var(--section-height);
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-around;
+    height: var(--section-height);
 }
 
 .col {
-    height: var(--section-height);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: var(--section-height);
     border: 2px dashed var(--bg-color-secondary);
 }
 
 .demoText {
-    font-size: 2rem;
     padding: 6rem;
+    font-size: 2rem;
 }
