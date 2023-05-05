@@ -3,12 +3,13 @@ import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { translate } from "@docusaurus/Translate";
+import stylesGen from "../styles.module.scss";
 import styles from "./styles.module.scss";
 
 export function Hero() {
     const { siteConfig } = useDocusaurusContext();
     return (
-        <header className={clsx("hero hero--primary", styles.heroBanner)}>
+        <header className={clsx("hero hero--primary", styles.heroBanner, stylesGen.section)}>
             <div className="container">
                 <h1 className="hero__title">{siteConfig.title}</h1>
                 <p className="hero__subtitle">{translate({ id: "features.hero.tagline" })}</p>

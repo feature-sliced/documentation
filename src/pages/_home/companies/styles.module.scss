@@ -1,7 +1,8 @@
 .root {
     /* Protected from dark mode (and flickering) */
-    color: #1c1e21;
-    background: #ffffff;
+    color: var(--bg-color-alt);
+    background: var(--ifm-background-color);
+    border: 2px dashed var(--bg-color-secondary);
 
     &Container {
         width: 100%;
@@ -34,6 +35,15 @@
     font-size: 12px;
     font-style: italic;
     text-align: center;
+    
+    a {
+        color: var(--ifm-color-primary);
+    }
+}
+
+// FIXME: [FSDCUR] Adapt companies logos for dark theme
+[data-theme="dark"] .marquee {
+    filter: invert(0.905) brightness(1.04) hue-rotate(180deg);
 }
 
 @media screen and (max-width: 800px) {

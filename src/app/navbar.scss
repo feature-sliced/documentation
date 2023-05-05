@@ -1,8 +1,11 @@
 @import "./theme";
 
-.navbar {
+:root {
     --ifm-navbar-height: 80px;
+    --ifm-banner-height: 42px;
+}
 
+.navbar {
     &__brand {
         margin-right: 0;
         opacity: 1;
@@ -66,7 +69,7 @@ html[data-theme="dark"] .ext-link::before {
 }
 
 [role="banner"] {
-    --docusaurus-announcement-bar-height: 42px; // #nowar
+    --docusaurus-announcement-bar-height: var(--ifm-banner-height);
 
     font-size: 1.2rem; // #nowar
     border-bottom: none !important;

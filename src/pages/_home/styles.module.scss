@@ -1,15 +1,35 @@
-.scheme {
-    justify-content: center;
-
-    &Img {
-        width: 80%;
-        padding-top: 1rem;
-        padding-bottom: 4rem;
-    }
+:root {
+    --section-height: calc(100vh - var(--ifm-navbar-height));
 }
 
-@media screen and (max-width: 966px) {
-    .schemeImg {
-        width: 100%;
-    }
+main {
+    padding: 0 4rem;
+}
+
+.section {
+    height: var(--section-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--bg-color-secondary);
+}
+
+.cols {
+    height: var(--section-height);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.col {
+    height: var(--section-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed var(--bg-color-secondary);
+}
+
+.demoText {
+    font-size: 2rem;
+    padding: 6rem;
 }
