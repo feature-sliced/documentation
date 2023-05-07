@@ -15,7 +15,7 @@ The first level of application partitioning, according to the **scope of influen
     ├── app/                    # Initializing application logic
     ├── processes/              # (Optional) Application processes running over pages
     ├── pages/                  # Application pages
-    ├── widgets/                # Self-sufficient UI blocks emerged from the composition of lower-level units in order to provide a complex user experience
+    ├── widgets/                # Self-sufficient UI blocks emerged from the composition of lower-level units
     ├── features/               # (Optional) Processing of user scenarios
     ├── entities/               # (Optional) Business entities that domain logic operates with
     └── shared/                 # Reused modules, non business specific
