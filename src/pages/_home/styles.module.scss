@@ -3,7 +3,7 @@
 }
 
 main {
-    padding: 0 4rem;
+    padding: 0 7rem;
 }
 
 .section {
@@ -23,10 +23,28 @@ main {
 
 .col {
     display: flex;
+    flex: 1 0 50%;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: var(--section-height);
+    max-height: var(--section-height);
     border: 2px dashed var(--bg-color-secondary);
+}
+
+.ecosystem {
+    position: relative;
+
+    &List {
+        max-height: var(--section-height);
+        padding: 4rem;
+        overflow: auto;
+    }
+
+    & a {
+        width: 100%;
+        padding: 3rem 2rem !important;
+    }
 }
 
 .demoText {
