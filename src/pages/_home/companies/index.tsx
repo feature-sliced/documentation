@@ -18,7 +18,7 @@ export const Companies = () => {
             className={styles.root}
             containerClass={styles.rootContainer}
         >
-            <Marquee pauseOnHover className={styles.marquee}>
+            <Marquee pauseOnHover className={styles.marquee} gradient={false}>
                 {companiesShuffled.map(({ url, src, alt }) => (
                     <a
                         key={src}

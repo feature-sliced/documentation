@@ -14,8 +14,11 @@
 .item {
     display: flex;
     align-items: center;
+    padding: 1rem;
     margin: 0 20px;
+    background-color: var(--bg-color-light);
     filter: grayscale(1);
+    border-radius: 0.5rem;
     opacity: 0.8;
     transition: 0.25s;
 
@@ -39,11 +42,6 @@
     a {
         color: var(--ifm-color-primary);
     }
-}
-
-// FIXME: [FSDCUR] Adapt companies logos for dark theme
-[data-theme="dark"] .marquee {
-    filter: invert(0.905) brightness(1.04) hue-rotate(180deg);
 }
 
 @media screen and (max-width: 800px) {
