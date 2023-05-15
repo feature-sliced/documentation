@@ -51,3 +51,31 @@ main {
     padding: 6rem;
     font-size: 2rem;
 }
+
+.cta {
+    display: flex;
+    flex-direction: column;
+
+    & .demoText {
+        padding: 0 6rem;
+        // margin: 0 30rem;
+        text-align: center;
+    }
+
+    &Actions {
+        display: flex;
+        margin: 0 6rem;
+
+        & > a {
+            margin: 1rem !important;
+            // FIXME: [FSDCUR] resolve
+            height: 180px;
+            flex: 1 0 30%;
+
+            &:first-child {
+                // margin-top: 0;
+                // margin-left: 0;
+            }
+        }
+    }
+}

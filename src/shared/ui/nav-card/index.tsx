@@ -13,6 +13,7 @@ type Props = {
     tags?: string[];
     className?: string;
     disabled?: boolean;
+    primaryColor?: "red" | "green" | "blue";
     theme?: "default" | "mini" | "primary";
 };
 
@@ -21,7 +22,17 @@ type Props = {
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
  */
 export const NavCard: React.FC<Props> = (props) => {
-    const { title, description, to, Icon, tags, className, disabled, theme = "default" } = props;
+    const {
+        title,
+        description,
+        to,
+        Icon,
+        tags,
+        className,
+        disabled,
+        theme = "default",
+        primaryColor,
+    } = props;
     const handleClick = useCallback(() => {
         ga.sendEvent({
             category: ga.CATEGORIES.full,
@@ -38,6 +49,7 @@ export const NavCard: React.FC<Props> = (props) => {
                 className,
                 disabled && styles.rootDisabled,
                 styles[`${theme}Theme`],
+                primaryColor && styles[`${primaryColor}Primary`],
             )}
             to={to}
             onClick={handleClick}

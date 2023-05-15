@@ -16,6 +16,7 @@ import {
     TwitterOutlined,
     ApiOutlined,
     SolutionOutlined,
+    DeploymentUnitOutlined,
 } from "@ant-design/icons";
 import { NavCard } from "@site/src/shared/ui";
 import { Hero } from "./hero";
@@ -141,8 +142,40 @@ export default function HomePage() {
                     <img src="/img/promo/example-units.jpeg" alt="themed--scheme" />
                 </section>
                 <Companies />
-                <section className={styles.section}>
-                    <span className={styles.demoText}>call-to-action</span>
+                <section className={clsx(styles.section, styles.cta)}>
+                    <span className={styles.demoText}>
+                        Take your frontend projects to the next level
+                        <br />
+                        with Feature-Sliced Design!
+                        <br />
+                        Dive in now 🚀
+                    </span>
+                    <div className={styles.ctaActions}>
+                        <NavCard
+                            theme="primary"
+                            Icon={ReadOutlined}
+                            title="Documentation"
+                            description="Learn the ins and outs of the Feature-Sliced Design methodology"
+                            primaryColor="red"
+                            to="/docs/"
+                        />
+                        <NavCard
+                            theme="primary"
+                            Icon={DeploymentUnitOutlined}
+                            title="Community"
+                            description="Discover a comprehensive ecosystem of tools and resources to support your frontend projects."
+                            primaryColor="green"
+                            to="/community"
+                        />
+                        <NavCard
+                            theme="primary"
+                            Icon={AppstoreAddOutlined}
+                            title="Showcase"
+                            description="Explore real-world examples and success stories using Feature-Sliced Design."
+                            primaryColor="blue"
+                            to="/showcase"
+                        />
+                    </div>
                 </section>
             </main>
         </Layout>

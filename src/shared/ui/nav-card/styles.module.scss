@@ -65,12 +65,29 @@
 }
 
 .primaryTheme {
+    --bg-color: var(--ifm-color-primary);
+    --shadow-color: var(--ifm-color-primary-darkest);
+
     color: #ffffff;
-    background-color: var(--ifm-color-primary);
+    background-color: var(--bg-color);
 
     &:hover {
         color: #ffffff !important;
-        box-shadow: 0 2px 10px 0 var(--ifm-color-primary-darkest);
+        box-shadow: 0 2px 10px 0 var(--shadow-color);
+    }
+
+    // FIXME: [FSDCUR] Declare RGB palettes more clear
+    &.redPrimary {
+        --bg-color: #e90c5d;
+        --shadow-color: #a30841;
+    }
+    &.greenPrimary {
+        --bg-color: #9de016;
+        --shadow-color: #6e9d0f;
+    }
+    &.bluePrimary {
+        --bg-color: #0bb6d9;
+        --shadow-color: #087f98;
     }
 }
 
