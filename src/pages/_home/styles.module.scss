@@ -67,10 +67,10 @@ main {
         margin: 0 6rem;
 
         & > a {
-            margin: 1rem !important;
+            flex: 1 0 30%;
             // FIXME: [FSDCUR] resolve
             height: 180px;
-            flex: 1 0 30%;
+            margin: 1rem !important;
 
             &:first-child {
                 // margin-top: 0;
