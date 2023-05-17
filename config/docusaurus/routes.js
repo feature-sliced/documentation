@@ -132,37 +132,37 @@ const LEGACY_ROUTES = [
             {
                 title: "App layer",
                 from: "/docs/reference/units/layers/app",
-                to: "/docs/reference/layers#app",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Processes layer",
                 from: "/docs/reference/units/layers/processes",
-                to: "/docs/reference/layers#processes",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Pages layer",
                 from: "/docs/reference/units/layers/pages",
-                to: "/docs/reference/layers#pages",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Widgets layer",
                 from: "/docs/reference/units/layers/widgets",
-                to: "/docs/reference/layers#widgets",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Features layer",
                 from: "/docs/reference/units/layers/features",
-                to: "/docs/reference/layers#features",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Entities layer",
                 from: "/docs/reference/units/layers/entities",
-                to: "/docs/reference/layers#entities",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Shared layer",
                 from: "/docs/reference/units/layers/shared",
-                to: "/docs/reference/layers#shared",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Segments",
