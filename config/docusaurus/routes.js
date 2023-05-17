@@ -114,6 +114,61 @@ const LEGACY_ROUTES = [
                 from: "/docs/concepts/cross-communication",
                 to: "/docs/reference/isolation",
             },
+            {
+                title: "Decomposition",
+                from: "/docs/reference/units/decomposition",
+                to: "/docs/reference",
+            },
+            {
+                title: "Units",
+                from: "/docs/reference/units",
+                to: "/docs/reference",
+            },
+            {
+                title: "Layers",
+                from: "/docs/reference/units/layers",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "App layer",
+                from: "/docs/reference/units/layers/app",
+                to: "/docs/reference/layers#app",
+            },
+            {
+                title: "Processes layer",
+                from: "/docs/reference/units/layers/processes",
+                to: "/docs/reference/layers#processes",
+            },
+            {
+                title: "Pages layer",
+                from: "/docs/reference/units/layers/pages",
+                to: "/docs/reference/layers#pages",
+            },
+            {
+                title: "Widgets layer",
+                from: "/docs/reference/units/layers/widgets",
+                to: "/docs/reference/layers#widgets",
+            },
+            {
+                title: "Features layer",
+                from: "/docs/reference/units/layers/features",
+                to: "/docs/reference/layers#features",
+            },
+            {
+                title: "Entities layer",
+                from: "/docs/reference/units/layers/entities",
+                to: "/docs/reference/layers#entities",
+            },
+            {
+                title: "Shared layer",
+                from: "/docs/reference/units/layers/shared",
+                to: "/docs/reference/layers#shared",
+            },
+            {
+                title: "Segments",
+                from: "/docs/reference/units/segments",
+                to: "/docs/reference/slices-segments",
+            },
         ],
     },
     {
