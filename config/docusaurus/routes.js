@@ -29,6 +29,11 @@ const LEGACY_ROUTES = [
                 to: "/docs/get-started/tutorial",
             },
             {
+                title: "Basics",
+                from: "/docs/get-started/basics",
+                to: "/docs/get-started/overview",
+            },
+            {
                 title: "Decompose Cheatsheet",
                 from: [
                     "/docs/get-started/tutorial/decompose",
@@ -115,6 +120,11 @@ const LEGACY_ROUTES = [
                 to: "/docs/reference/isolation",
             },
             {
+                title: "App splitting",
+                from: "/docs/concepts/app-splitting",
+                to: "/docs/reference",
+            },
+            {
                 title: "Decomposition",
                 from: "/docs/reference/units/decomposition",
                 to: "/docs/reference",
@@ -147,6 +157,11 @@ const LEGACY_ROUTES = [
             {
                 title: "Widgets layer",
                 from: "/docs/reference/units/layers/widgets",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "Widgets layer",
+                from: "/docs/reference/layers/widgets",
                 to: "/docs/reference/layers",
             },
             {
