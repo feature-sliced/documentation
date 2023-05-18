@@ -29,6 +29,11 @@ const LEGACY_ROUTES = [
                 to: "/docs/get-started/tutorial",
             },
             {
+                title: "Basics",
+                from: "/docs/get-started/basics",
+                to: "/docs/get-started/overview",
+            },
+            {
                 title: "Decompose Cheatsheet",
                 from: [
                     "/docs/get-started/tutorial/decompose",
@@ -113,6 +118,71 @@ const LEGACY_ROUTES = [
                 title: "Cross-communication",
                 from: "/docs/concepts/cross-communication",
                 to: "/docs/reference/isolation",
+            },
+            {
+                title: "App splitting",
+                from: "/docs/concepts/app-splitting",
+                to: "/docs/reference",
+            },
+            {
+                title: "Decomposition",
+                from: "/docs/reference/units/decomposition",
+                to: "/docs/reference",
+            },
+            {
+                title: "Units",
+                from: "/docs/reference/units",
+                to: "/docs/reference",
+            },
+            {
+                title: "Layers",
+                from: "/docs/reference/units/layers",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "App layer",
+                from: "/docs/reference/units/layers/app",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "Processes layer",
+                from: "/docs/reference/units/layers/processes",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "Pages layer",
+                from: "/docs/reference/units/layers/pages",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "Widgets layer",
+                from: "/docs/reference/units/layers/widgets",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "Widgets layer",
+                from: "/docs/reference/layers/widgets",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "Features layer",
+                from: "/docs/reference/units/layers/features",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "Entities layer",
+                from: "/docs/reference/units/layers/entities",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "Shared layer",
+                from: "/docs/reference/units/layers/shared",
+                to: "/docs/reference/layers",
+            },
+            {
+                title: "Segments",
+                from: "/docs/reference/units/segments",
+                to: "/docs/reference/slices-segments",
             },
         ],
     },
