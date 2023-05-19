@@ -40,3 +40,24 @@
         text-decoration: none;
     }
 }
+
+// FIXME: [FSDCUR] Setup vars breakpoints for screens
+@media (max-width: 1080px) {
+    .footer__links {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 996px) {
+    .footer {
+        &__main {
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+
+        &__links {
+            flex-direction: column;
+            height: fit-content;
+        }
+    }
+}

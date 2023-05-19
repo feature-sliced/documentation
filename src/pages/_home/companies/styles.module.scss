@@ -1,7 +1,8 @@
 .root {
     /* Protected from dark mode (and flickering) */
-    color: #1c1e21;
-    background: #ffffff;
+    color: var(--bg-color-alt);
+    background: var(--ifm-background-color);
+    border: 2px dashed var(--bg-color-secondary);
 
     &Container {
         width: 100%;
@@ -13,8 +14,11 @@
 .item {
     display: flex;
     align-items: center;
+    padding: 1rem;
     margin: 0 20px;
+    background-color: var(--bg-color-light);
     filter: grayscale(1);
+    border-radius: 0.5rem;
     opacity: 0.8;
     transition: 0.25s;
 
@@ -34,6 +38,10 @@
     font-size: 12px;
     font-style: italic;
     text-align: center;
+
+    a {
+        color: var(--ifm-color-primary);
+    }
 }
 
 @media screen and (max-width: 800px) {
