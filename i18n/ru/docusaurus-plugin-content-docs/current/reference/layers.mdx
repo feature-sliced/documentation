@@ -31,11 +31,14 @@ pagination_next: reference/slices-segments
 
 ## Правило импортов для слоёв
 
-Разница в зависимостях обеспечивается **правилом импортов для слоёв**:
+Слои состоят из _слайсов_ — сильно сцепленных групп модулей. Feature-Sliced Design поддерживает низкую связанность, поэтому зависимости между слайсами регулируются **правилом импортов для слоёв**:
 
-> _Модуль может импортировать другие модули, только если они расположены на слоях строго ниже._
+For example, in `~/features/aaa`, `aaa` is the slice, so a file `~/features/aaa/api/request.ts` cannot import code from any module in `~/features/bbb`, but can import code from `~/entities` and `~/shared`, as well as any sibling code from `~/features/aaa`.
 
-Например, модуль в `~/features/aaa` не может импортировать код из `~/features/bbb`, но может импортировать код из `~/entities` и `~/shared`.
+
+> _Модуль в слайсе может импортировать другие слайсы только в том случае, если они расположены на слоях строго ниже._
+
+Например, в `~/features/aaa`, слайсом является `aaa`, поэтому файл `~/features/aaa/api/request.ts` не может импортировать код ни из какого модуля в папку из `~/features/bbb`, но может импортировать код из `~/entities` и `~/shared`, а также из соседних модулей в `~/features/aaa`.
 
 ## Определения слоёв
 
