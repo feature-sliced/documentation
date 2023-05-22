@@ -31,11 +31,11 @@ You don't have to use every layer in your project — only add them if you think
 
 ## Import rule on layers
 
-The difference in dependency is enforced with **the import rule on layers**:
+Layers are made up of _slices_ — highly cohesive groups of modules. Feature-Sliced Design promotes low coupling, which is why dependencies between slices are regulated by **the import rule on layers**:
 
-> _A module can only import other modules when they are located on layers strictly below._
+> _A module in a slice can only import other slices when they are located on layers strictly below._
 
-For example, a module in `~/features/aaa` cannot import code from `~/features/bbb`, but can import code from `~/entities` and `~/shared`.
+For example, in `~/features/aaa`, `aaa` is the slice, so a file `~/features/aaa/api/request.ts` cannot import code from any module in `~/features/bbb`, but can import code from `~/entities` and `~/shared`, as well as any sibling code from `~/features/aaa`.
 
 ## Layer definitions
 
