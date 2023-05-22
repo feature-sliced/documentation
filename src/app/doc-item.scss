@@ -29,22 +29,22 @@ html {
 }
 
 :root[data-theme=dark] [src$="#light-mode-only"] {
-    display: none
+    display: none;
 }
 
 :root[data-theme=light] [src$="#dark-mode-only"] {
-    display: none
+    display: none;
 }
 
-@media(prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     :root[data-theme=auto] [src$="#light-mode-only"] {
-        display:none
+        display: none;
     }
 }
 
-@media(prefers-color-scheme: light) {
+@media (prefers-color-scheme: light) {
     :root[data-theme=auto] [src$="#dark-mode-only"] {
-        display:none
+        display: none;
     }
 }
 
