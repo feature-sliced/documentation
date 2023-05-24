@@ -15,9 +15,10 @@ On this page, a _module_ refers to an internal module in the application — a f
 
 Every layer carries special semantic meaning to help you determine how much responsibility you should allocate to a module in your code. The names and meanings of layers are standardized across all projects built with Feature-Sliced Design.
 
-There are 7 layers in total, arranged from most responsibility and dependency to least:
+There are **7 layers** in total, arranged from most responsibility and&nbsp;dependency to least:
 
-<img alt="" src="/img/layers/layers.svg" width="128" height="240" style={{ float: "right", margin: "0 2em" }} />
+<img src="/img/layers/folders-graphic-light.svg#light-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
+<img src="/img/layers/folders-graphic-dark.svg#dark-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
 
 1. App
 2. Processes (deprecated)
@@ -31,11 +32,11 @@ You don't have to use every layer in your project — only add them if you think
 
 ## Import rule on layers
 
-The difference in dependency is enforced with **the import rule on layers**:
+Layers are made up of _slices_ — highly cohesive groups of modules. Feature-Sliced Design promotes low coupling, which is why dependencies between slices are regulated by **the import rule on layers**:
 
-> _A module can only import other modules when they are located on layers strictly below._
+> _A module in a slice can only import other slices when they are located on layers strictly below._
 
-For example, a module in `~/features/aaa` cannot import code from `~/features/bbb`, but can import code from `~/entities` and `~/shared`.
+For example, in `~/features/aaa`, `aaa` is the slice, so a file `~/features/aaa/api/request.ts` cannot import code from any module in `~/features/bbb`, but can import code from `~/entities` and `~/shared`, as well as any sibling code from `~/features/aaa`.
 
 ## Layer definitions
 

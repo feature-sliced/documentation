@@ -330,8 +330,6 @@ To do this, we decompose our functionality *by responsibility scopes [(layers)][
 
 ![layers-flow-themed](/img/layers_flow.png)
 
-> **Note:** the diagram shows *an experimental layer of "Widgets"*, which is unnecessary in the framework of the tutorial and the specification of which will be added soon
-
 #### Pages
 
 We will outline the basic necessary pages, and user expectations from them:
