@@ -140,6 +140,11 @@ const LEGACY_ROUTES = [
                 to: "/docs/reference/layers",
             },
             {
+                title: "Layer overview",
+                from: "/docs/reference/layers/overview",
+                to: "/docs/reference/layers",
+            },
+            {
                 title: "App layer",
                 from: "/docs/reference/units/layers/app",
                 to: "/docs/reference/layers",
