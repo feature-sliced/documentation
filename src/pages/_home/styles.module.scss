@@ -53,8 +53,8 @@ main {
         margin-top: 64px;
 
         &Image {
-            flex: 1 0 15%;
             display: block;
+            flex: 1 0 15%;
             width: 80px;
             height: 80px;
             // background: var(--bg-color-alt);
@@ -67,7 +67,7 @@ main {
 
             & > p {
                 font-size: 1.25rem;
-                line-height: 1.5rem
+                line-height: 1.5rem;
             }
         }
     }
@@ -99,9 +99,9 @@ main {
         display: inline-block;
         width: 40px;
         height: 40px;
-        background: linear-gradient(180deg, #2454FF 0%, #2454FF 50%, #FFE500 50%, #FFE600 100%);
-        border-radius: 50%;
         margin-left: 0.75rem;
+        background: linear-gradient(180deg, #2454ff 0%, #2454ff 50%, #ffe500 50%, #ffe600 100%);
+        border-radius: 50%;
     }
 }
 

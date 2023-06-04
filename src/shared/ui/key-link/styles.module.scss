@@ -1,30 +1,33 @@
 .component {
-    text-decoration: underline;
-    padding: 0.75rem;
-    font-size: 1.5rem;
-    color: var(--bg-color-alt);
     display: flex;
     align-items: center;
+    padding: 0.75rem;
+    font-size: 1.5rem;
     line-height: 1.875rem;
+    color: var(--bg-color-alt);
+    text-decoration: underline;
 
-    &:hover, &:active, &:focus, &.active {
-        background-color: var(--ifm-color-primary);
+    &:hover,
+    &:active,
+    &:focus,
+    &.active {
         color: var(--ifm-background-color);
+        background-color: var(--ifm-color-primary);
     }
 }
 
 .key {
-    background-color: var(--bg-color-alt);
-    color: var(--ifm-background-color);
-    padding: 4px;
-    height: 28px;
-    width: 28px;
-    margin-right: 0.75rem;
-    // FIXME: [FSDCORE] resolve bug 
-    text-decoration-color: transparent;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    margin-right: 0.75rem;
     font-size: 1rem;
     font-weight: 700;
+    color: var(--ifm-background-color);
+    // FIXME: [FSDCORE] resolve bug
+    text-decoration-color: transparent;
+    background-color: var(--bg-color-alt);
 }
