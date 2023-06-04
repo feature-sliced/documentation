@@ -141,38 +141,25 @@ export default function HomePage() {
                 <section className={styles.section}>
                     <img src="/img/promo/example-units.jpeg" alt="themed--scheme" />
                 </section>
-                <Companies />
-                <section className={clsx(styles.section, styles.cta)}>
-                    <span className={styles.text}>
+                <section className={clsx(styles.section, styles.sectionText, styles.companies)}>
+                    <h2 className={styles.text}>It’s <span className="text--red">dangerous</span> to go alone</h2>
+                    <p>But you don’t have to. These companies are already using Feature-Sliced Design:</p>
+                    <Companies />
+                </section>
+                <section className={clsx(styles.section, styles.sectionText, styles.nowar)}>
+                    <h2 className={styles.text}>The FSD team stands with Ukraine <div className={styles.flag} /></h2>
+                    <p>The Feature-Sliced Design team unanimously despises the invasion into Ukraine led by the Russian government.</p>
+                    <p><span className="text--primary">Can and want to help?</span> The best way is to seek out a local organization that supports Ukrainian refugees in your country and help someone directly.</p>
+                </section>
+                <section className={clsx(styles.section, styles.sectionText, styles.cta)}>
+                    <h2 className={styles.text}>
                         Think FSD and you are a match? <span className="text--red">&lt;3</span>
-                    </span>
+                    </h2>
                     <div className={styles.ctaActions}>
                         <KeyLink href="/docs" keyIcon={KeyLink.Enter} isActive>Dive into the docs</KeyLink>
-                        <KeyLink href="/docs" keyIcon="S">Talk to someone about it</KeyLink>
-                        {/* <NavCard
-                            theme="primary"
-                            Icon={ReadOutlined}
-                            title="Documentation"
-                            description="Learn the ins and outs of the Feature-Sliced Design methodology"
-                            primaryColor="red"
-                            to="/docs/"
-                        />
-                        <NavCard
-                            theme="primary"
-                            Icon={DeploymentUnitOutlined}
-                            title="Community"
-                            description="Discover a comprehensive ecosystem of tools and resources to support your frontend projects."
-                            primaryColor="green"
-                            to="/community"
-                        />
-                        <NavCard
-                            theme="primary"
-                            Icon={AppstoreAddOutlined}
-                            title="Showcase"
-                            description="Explore real-world examples and success stories using Feature-Sliced Design."
-                            primaryColor="blue"
-                            to="/showcase"
-                        /> */}
+                        <KeyLink href="/docs" keyIcon="E">Discover ecosystem</KeyLink>
+                        <KeyLink href="/docs" keyIcon="S">Explore realworld examples</KeyLink>
+                        <KeyLink href="/docs" keyIcon="D">Talk to someone about it</KeyLink>
                     </div>
                 </section>
             </main>

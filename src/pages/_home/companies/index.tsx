@@ -4,7 +4,7 @@ import getBaseUrl from "@docusaurus/useBaseUrl";
 import { translate } from "@docusaurus/Translate";
 import Marquee from "react-fast-marquee";
 import { shuffle } from "lodash-es";
-import { Section } from "@site/src/shared/ui";
+// import { Section } from "@site/src/shared/ui";
 
 import { companies } from "./_config";
 import styles from "./styles.module.scss";
@@ -13,11 +13,7 @@ export const Companies = () => {
     const companiesShuffled = useMemo(() => shuffle(companies), []);
 
     return (
-        <Section
-            title={translate({ id: "pages.home.companies.using" })}
-            className={styles.root}
-            containerClass={styles.rootContainer}
-        >
+        <>
             <Marquee pauseOnHover className={styles.marquee} gradient={false}>
                 {companiesShuffled.map(({ url, src, alt }) => (
                     <a
@@ -46,6 +42,6 @@ export const Companies = () => {
                     {translate({ id: "pages.home.companies.tell_us" })}
                 </a>
             </span>
-        </Section>
+        </>
     );
 };

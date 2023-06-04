@@ -14,6 +14,7 @@ type Keys = {
     Enter: React.ReactNode;
 };
 
+// FIXME: [FSDCUR] impl click by keyboard
 export const KeyLink: React.FC<Props> & Keys = ({
     keyIcon,
     href,

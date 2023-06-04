@@ -3,7 +3,8 @@
 }
 
 main {
-    padding: 0 7rem;
+    // padding: 0 7rem;
+    padding: 0 20rem;
 }
 
 .section {
@@ -11,7 +12,16 @@ main {
     align-items: center;
     justify-content: center;
     height: var(--section-height);
-    border: 2px dashed var(--bg-color-secondary);
+    // FIXME: [FSDCUR] temp border
+    border: 1px dashed var(--bg-color-secondary);
+    margin: 8px;
+    font-size: 1.5rem;
+
+    // FIXME: [FSDCUR] resolve align
+    &Text {
+        flex-direction: column;
+        align-items: unset;
+    }
 }
 
 .cols {
@@ -48,9 +58,20 @@ main {
 }
 
 .text {
-    padding: 6rem;
+    // padding: 6rem;
     font-size: 3.5rem;
     font-weight: 700;
+}
+
+.nowar {
+    .flag {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(180deg, #2454FF 0%, #2454FF 50%, #FFE500 50%, #FFE600 100%);
+        border-radius: 50%;
+        margin-left: 0.75rem;
+    }
 }
 
 .cta {
@@ -58,22 +79,18 @@ main {
     flex-direction: column;
 
     & .text {
-        padding: 0 6rem;
+        // padding: 0 6rem;
         // margin: 0 30rem;
-        text-align: center;
+        // text-align: center;
     }
 
     &Actions {
         display: flex;
-        margin: 0 6rem;
+        justify-content: flex-start;
+        // margin: 0 6rem;
 
-        & > a {
-            margin: 1rem !important;
-
-            &:first-child {
-                // margin-top: 0;
-                // margin-left: 0;
-            }
+        & > a:not(:first-child) {
+            margin-left: 1rem !important;
         }
     }
 }
