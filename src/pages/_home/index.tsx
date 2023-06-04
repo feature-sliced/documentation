@@ -18,7 +18,7 @@ import {
     SolutionOutlined,
     DeploymentUnitOutlined,
 } from "@ant-design/icons";
-import { NavCard } from "@site/src/shared/ui";
+import { KeyLink, NavCard } from "@site/src/shared/ui";
 import { Hero } from "./hero";
 // FIXME: [FSDCUR] Replace to unified IBM/Carbon icons usage
 import IconNpm from "./npm.svg";
@@ -37,7 +37,7 @@ export default function HomePage() {
             <Hero />
             <main>
                 <section className={styles.section}>
-                    <span className={styles.demoText}>
+                    <span className={styles.text}>
                         Граф с профитами от использования: чистый гит, параллелизация работы,
                         связность и зацепленность, общая терминология итд
                     </span>
@@ -46,7 +46,7 @@ export default function HomePage() {
                     <img src="/img/promo/tech.png" alt="themed--scheme" />
                 </section>
                 <section className={styles.cols}>
-                    <div className={clsx(styles.col, styles.demoText)}>
+                    <div className={clsx(styles.col, styles.text)}>
                         {/* FIXME: [FSDCUR] refine layout */}
                         <span>
                             🍰 <b>Feature-Sliced Design</b> is not only a methodology, but also a
@@ -143,15 +143,13 @@ export default function HomePage() {
                 </section>
                 <Companies />
                 <section className={clsx(styles.section, styles.cta)}>
-                    <span className={styles.demoText}>
-                        Take your frontend projects to the next level
-                        <br />
-                        with Feature-Sliced Design!
-                        <br />
-                        Dive in now 🚀
+                    <span className={styles.text}>
+                        Think FSD and you are a match? <span className="text--red">&lt;3</span>
                     </span>
                     <div className={styles.ctaActions}>
-                        <NavCard
+                        <KeyLink href="/docs" keyIcon={KeyLink.Enter} isActive>Dive into the docs</KeyLink>
+                        <KeyLink href="/docs" keyIcon="S">Talk to someone about it</KeyLink>
+                        {/* <NavCard
                             theme="primary"
                             Icon={ReadOutlined}
                             title="Documentation"
@@ -174,7 +172,7 @@ export default function HomePage() {
                             description="Explore real-world examples and success stories using Feature-Sliced Design."
                             primaryColor="blue"
                             to="/showcase"
-                        />
+                        /> */}
                     </div>
                 </section>
             </main>
