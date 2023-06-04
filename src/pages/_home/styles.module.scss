@@ -1,5 +1,6 @@
 :root {
-    --section-height: calc(100vh - var(--ifm-navbar-height));
+    // --section-height: calc(100vh - var(--ifm-navbar-height));
+    --section-height: calc(80vh - var(--ifm-navbar-height));
 }
 
 main {
@@ -13,7 +14,7 @@ main {
     justify-content: center;
     height: var(--section-height);
     // FIXME: [FSDCUR] temp border
-    border: 1px dashed var(--bg-color-secondary);
+    // border: 1px dashed var(--bg-color-secondary);
     margin: 8px;
     font-size: 1.5rem;
 
@@ -39,7 +40,37 @@ main {
     justify-content: center;
     height: var(--section-height);
     max-height: var(--section-height);
-    border: 2px dashed var(--bg-color-secondary);
+    // FIXME: [FSDCUR] temp border
+    // border: 2px dashed var(--bg-color-secondary);
+}
+
+.profits {
+    // &List {}
+    .card {
+        display: flex;
+        // FIXME: [FSDCUR] resolve width
+        width: 700px;
+        margin-top: 64px;
+
+        &Image {
+            flex: 1 0 15%;
+            display: block;
+            width: 80px;
+            height: 80px;
+            // background: var(--bg-color-alt);
+        }
+
+        &Content {
+            flex: 1 0 85%;
+            // margin-left: 2.5rem;
+            line-height: 1.875rem;
+
+            & > p {
+                font-size: 1.25rem;
+                line-height: 1.5rem
+            }
+        }
+    }
 }
 
 .ecosystem {

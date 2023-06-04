@@ -36,11 +36,37 @@ export default function HomePage() {
         <Layout title="Welcome" description="Architectural methodology for frontend projects">
             <Hero />
             <main>
-                <section className={styles.section}>
-                    <span className={styles.text}>
-                        Граф с профитами от использования: чистый гит, параллелизация работы,
-                        связность и зацепленность, общая терминология итд
-                    </span>
+                <section className={clsx(styles.section, styles.sectionText, styles.limitations)} id="scheme-limitations">
+                    <h2 className={styles.text}>Our aim is to cover the architectural needs of the <span className="text--primary">vast majority of front-end projects</span></h2>
+                    <br/>
+                    {/* FIXME: [FSDCUR] resolve color adaptive */}
+                    <img src="/img/promo/limitations.png" alt="themed--scheme" />
+                </section>
+                {/* Граф с профитами от использования: чистый гит, параллелизация работы, связность и зацепленность, общая терминология итд */}
+                <section className={clsx(styles.section, styles.sectionText, styles.profits)}>
+                    <h2 className={styles.text}>Less <span className="text--red">pain</span>, more <span className="text--green">gain</span></h2>
+                    <div className={styles.profictsList}>
+                        <div className={styles.card}>
+                            <div className={styles.cardImage}>
+                                <img src="/img/promo/coupling.png" alt='coupling--scheme' />
+                            </div>
+                            <div className={styles.cardContent}>
+                                <b>Low coupling, high cohesion</b>
+                                <p>You don’t need to remember what that means.</p>
+                                <p>Just know that it makes your code <span className="text--green">easier to unit-test</span> and refactoring is much more <span className="text--blue">predictable</span></p>
+                            </div>
+                        </div>
+                        <div className={styles.card}>
+                            <div className={styles.cardImage}>
+                                <img src="/img/promo/structure.png" alt='structure--scheme' />
+                            </div>
+                            <div className={styles.cardContent}>
+                                <b>Rigid, standardized structure</b>
+                                <p>New job where people use FSD? No stress!</p>
+                                <p>You’ll <span className="text--green">feel right</span> at home in the codebase. Get <span className="text--blue">straight to business</span>, skip the reinvented wheels.</p>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <section className={styles.section}>
                     <img src="/img/promo/tech.png" alt="themed--scheme" />
@@ -135,12 +161,9 @@ export default function HomePage() {
                         </div>
                     </div>
                 </section>
-                <section className={styles.section} id="scheme-limitations">
-                    <img src="/img/promo/limitations.png" alt="themed--scheme" />
-                </section>
-                <section className={styles.section}>
+                {/* <section className={styles.section}>
                     <img src="/img/promo/example-units.jpeg" alt="themed--scheme" />
-                </section>
+                </section> */}
                 <section className={clsx(styles.section, styles.sectionText, styles.companies)}>
                     <h2 className={styles.text}>It’s <span className="text--red">dangerous</span> to go alone</h2>
                     <p>But you don’t have to. These companies are already using Feature-Sliced Design:</p>
