@@ -18,7 +18,7 @@ const footer = {
                 { label: "Documentation", to: "/docs" },
                 { label: "Community", to: "/community" },
                 { label: "Help", to: "/nav" },
-                { label: "Discussions", to: `${GITHUB_DOCS}/discussions` },
+                { label: "Discussions", href: `${GITHUB_DOCS}/discussions` },
             ],
         },
         {
