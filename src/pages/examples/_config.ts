@@ -181,5 +181,15 @@ export const examples: Example[] = [
         updatedAt: "2023-06-08",
         tech: ["react", "effector", "typescript", "vite", "tailwind", "atomic-router"],
     },
+    {
+        title: "Kinomore (React+Effector)",
+        description: "Large project on the effector/fsd stack",
+        website: "https://kinomore.netlify.app/",
+        source: "https://github.com/Shiyan7/kinomore-v2",
+        preview: require("./img/kinomore.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-06-08",
+        tech: ["react", "effector", "typescript", "nextjs", "react-testing-library"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
