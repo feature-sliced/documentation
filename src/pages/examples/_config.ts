@@ -171,5 +171,15 @@ export const examples: Example[] = [
         updatedAt: "2023-04-24",
         tech: ["react", "redux-toolkit", "typescript", "vite"],
     },
+    {
+        title: "Sudoku (React+Effector)",
+        description: "A simple crossword of numbers on effector / fsd",
+        website: "https://sudoku-effector.pages.dev/",
+        source: "https://github.com/Shiyan7/sudoku-effector",
+        preview: require("./img/sudoku.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-06-08",
+        tech: ["react", "effector", "typescript", "vite", "tailwind", "atomic-router"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
