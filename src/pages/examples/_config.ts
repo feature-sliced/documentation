@@ -179,7 +179,7 @@ export const examples: Example[] = [
         preview: require("./img/sudoku.png"),
         version: VERSIONS.V2,
         updatedAt: "2023-07-06",
-        tech: ["react", "effector", "typescript", "vite"],
+        tech: ["react", "effector", "typescript", "vite", "tailwind", "atomic-router"],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();
