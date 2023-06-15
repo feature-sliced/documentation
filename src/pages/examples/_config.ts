@@ -181,5 +181,16 @@ export const examples: Example[] = [
         updatedAt: "2023-06-08",
         tech: ["react", "effector", "typescript", "vite", "tailwind", "atomic-router"],
     },
+    {
+        title: "Conduit",
+        description:
+            "A social blogging site powered by Feature-Sliced Design architectural methodology.",
+        website: "https://realworld-fsd.netlify.app/",
+        source: "https://github.com/sldk-yuri/realworld-react-fsd",
+        preview: require("./img/conduit.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-06-15",
+        tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
