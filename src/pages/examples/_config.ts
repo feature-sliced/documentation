@@ -189,7 +189,7 @@ export const examples: Example[] = [
         source: "https://github.com/sldk-yuri/realworld-react-fsd",
         preview: require("./img/conduit.png"),
         version: VERSIONS.V2,
-        updatedAt: "2023-06-15",
+        updatedAt: "2023-06-21",
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
     // Reverse the list (last examples should be at the top)
