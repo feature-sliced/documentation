@@ -188,7 +188,7 @@ export const examples: Example[] = [
         source: "https://github.com/Shiyan7/kinomore-v2",
         preview: require("./img/kinomore.png"),
         version: VERSIONS.V2,
-        updatedAt: "2023-06-08",
+        updatedAt: "2023-07-10",
         tech: ["react", "effector", "typescript", "nextjs", "react-testing-library"],
     },
     {
