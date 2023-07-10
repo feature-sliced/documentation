@@ -182,6 +182,16 @@ export const examples: Example[] = [
         tech: ["react", "effector", "typescript", "vite", "tailwind", "atomic-router"],
     },
     {
+        title: "Kinomore (React+Effector)",
+        description: "Large project on the effector/fsd stack",
+        website: "https://kinomore.netlify.app/",
+        source: "https://github.com/Shiyan7/kinomore-v2",
+        preview: require("./img/kinomore.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-07-10",
+        tech: ["react", "effector", "typescript", "nextjs", "react-testing-library"],
+    },
+    {
         title: "Conduit",
         description:
             "A social blogging site powered by Feature-Sliced Design architectural methodology.",
