@@ -4,51 +4,51 @@
     "description": "The label for version current"
   },
   "sidebar.getstartedSidebar.category.🚀  Get Started": {
-    "message": "🚀  Быстрый старт",
+    "message": "🚀  Boshlash",
     "description": "The label for category 🚀  Get Started in sidebar getstartedSidebar"
   },
   "sidebar.guidesSidebar.category.🎯  Guides": {
-    "message": "🎯  Гайды",
+    "message": "🎯  Gaydlar",
     "description": "The label for category 🎯  Guides in sidebar getstartedSidebar"
   },
   "sidebar.referenceSidebar.category.📚  Reference": {
-    "message": "📚  Справочник",
+    "message": "📚  Ma'lumotnoma",
     "description": "The label for category 📚  Reference in sidebar getstartedSidebar"
   },
   "sidebar.aboutSidebar.category.🍰  About": {
-    "message": "🍰 О методологии",
+    "message": "🍰 Metodologiya haqida",
     "description": "The label for category 🍰  About in sidebar getstartedSidebar"
   },
   "sidebar.aboutSidebar.category.Understanding": {
-    "message": "Понимание",
+    "message": "Tushuncha",
     "description": "The label for category Understanding in sidebar aboutSidebar"
   },
   "sidebar.aboutSidebar.category.Promote": {
-    "message": "Продвижение",
+    "message": "Rag'batlantirish",
     "description": "The label for category Promote in sidebar aboutSidebar"
   },
   "sidebar.guidesSidebar.category.Examples": {
-    "message": "Примеры",
+    "message": "Namunalar",
     "description": "The label for category Examples in sidebar guidesSidebar"
   },
   "sidebar.guidesSidebar.category.Migration": {
-    "message": "Миграция",
+    "message": "Migratsiya",
     "description": "The label for category Migration in sidebar guidesSidebar"
   },
   "sidebar.guidesSidebar.category.Tech": {
-    "message": "Технологии",
+    "message": "Texnologiyalar",
     "description": "The label for category Tech in sidebar guidesSidebar"
   },
   "sidebar.referenceSidebar.category.Units": {
-    "message": "Юниты",
+    "message": "Yunitlar",
     "description": "The label for category Units in sidebar referenceSidebar"
   },
   "sidebar.referenceSidebar.category.Isolation": {
-    "message": "Изоляция",
+    "message": "Izolyatsiya",
     "description": "The label for category Isolation in sidebar referenceSidebar"
   },
   "sidebar.referenceSidebar.category.Layer": {
-    "message": "Слои",
+    "message": "Qatlamlar",
     "description": "The label for category Layer in sidebar referenceSidebar"
   }
 }
