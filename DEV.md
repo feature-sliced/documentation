@@ -6,6 +6,7 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 
 - [Russian docs version](i18n/ru)
 - [English docs version](i18n/en)
+- [Uzbek docs version](i18n/uz)
 
 ## Installation
 
