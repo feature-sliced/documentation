@@ -57,12 +57,6 @@ FSD har xil konteksda bir nechta logotipga ega, lekin **primary** dan foydalanis
     </tr>
 </table>
 
-<table style={{ textAlign: "center" }}>
-    <tr>
-        <td style={{ color: "#FFF", background: "linear-gradient(135deg, rgba(41,190,220,1) 0%, rgba(81,122,237,1) 100%)" }}>primary <br/> (#29BEDC, #517AED)</td>
-        <td><a href="/img/brand/logo-primary.png" download><img src="/img/brand/logo-primary.png" height="130" alt="logo-primary" /></a></td>
-</table>
-
 ## Bannerlar & Sxemalar {#banners--schemes}
 
 <a href="/img/brand/banner-primary.jpg" download><img src="/img/brand/banner-primary.jpg" height="256" alt="banner-primary" /></a>
