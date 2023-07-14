@@ -7,6 +7,7 @@
         "start": "docusaurus start",
         "start:ru": "docusaurus start --locale ru",
         "start:en": "docusaurus start --locale en",
+        "start:uz": "docusaurus start --locale uz",
         "build": "docusaurus build",
         "swizzle": "docusaurus swizzle",
         "test": "pnpm run test:lint && pnpm run build",
