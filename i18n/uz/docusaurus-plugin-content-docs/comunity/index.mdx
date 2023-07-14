@@ -1,0 +1,40 @@
+---
+hide_table_of_contents: true
+---
+
+# 💫 Сообщество
+
+<p class="summary">
+  Jamiyat resurslari, qo'shimcha materiallar
+</p>
+
+## Главное {#main}
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { StarOutlined, SearchOutlined, TeamOutlined, VerifiedOutlined } from "@ant-design/icons";
+
+<NavCard
+  title="Ajoyib manbalar"
+  description="Ajoyib FSD videolari, maqolalari, paketlarining saralangan ro'yxati"
+  to="https://github.com/feature-sliced/awesome"
+  Icon={StarOutlined}
+/>
+<NavCard
+  title="Jamoa"
+  description="Core-team, Chempoinlar, Kontributorlar, Kompaniyalar"
+  to="/community/team"
+  Icon={TeamOutlined}
+/>
+<NavCard
+  title="Брендбук"
+  description="FSD brend identifikatori bo'yicha ko'rsatmalar"
+  to="/docs/branding"
+  Icon={VerifiedOutlined}
+/>
+<NavCard
+  title="Contributing"
+  description="Ishga kirishish, Ish jarayoni, Yordam va ko'mak"
+  to="#"
+  Icon={SearchOutlined}
+  disabled
+/>

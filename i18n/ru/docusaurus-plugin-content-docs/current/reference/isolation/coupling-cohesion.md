@@ -30,8 +30,8 @@ sidebar_position: 1
 
 ```tsx
 interface ListProps {
-    Header: Component;
-    Items: Component;
+    Header: React.ReactNode;
+    Items: React.ReactNode;
 }
 
 const List: Component<ListProps> = ({ Header, Items }) => (

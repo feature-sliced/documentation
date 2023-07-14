@@ -171,5 +171,36 @@ export const examples: Example[] = [
         updatedAt: "2023-04-24",
         tech: ["react", "redux-toolkit", "typescript", "vite"],
     },
+    {
+        title: "Sudoku (React+Effector)",
+        description: "A simple crossword of numbers on effector / fsd",
+        website: "https://sudoku-effector.pages.dev/",
+        source: "https://github.com/Shiyan7/sudoku-effector",
+        preview: require("./img/sudoku.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-06-08",
+        tech: ["react", "effector", "typescript", "vite", "tailwind", "atomic-router"],
+    },
+    {
+        title: "Kinomore (React+Effector)",
+        description: "Large project on the effector/fsd stack",
+        website: "https://kinomore.netlify.app/",
+        source: "https://github.com/Shiyan7/kinomore-v2",
+        preview: require("./img/kinomore.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-07-10",
+        tech: ["react", "effector", "typescript", "nextjs", "react-testing-library"],
+    },
+    {
+        title: "Conduit",
+        description:
+            "A social blogging site powered by Feature-Sliced Design architectural methodology.",
+        website: "https://realworld-fsd.netlify.app/",
+        source: "https://github.com/sldk-yuri/realworld-react-fsd",
+        preview: require("./img/conduit.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-06-21",
+        tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();

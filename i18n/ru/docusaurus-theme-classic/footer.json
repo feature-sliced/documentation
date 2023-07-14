@@ -15,6 +15,14 @@
         "message": "Документация",
         "description": "The label of footer link with label=Документация linking to /docs"
     },
+    "link.item.label.Community": {
+      "message": "Сообщество",
+      "description": "The label of the footer link with label=Community linking to /community"
+    },
+    "link.item.label.Help": {
+      "message": "Помощь",
+      "description": "The label of the footer link with label=Help linking to /nav"
+    },
     "link.item.label.Discussions": {
         "message": "Обсуждения",
         "description": "The label of footer link with label=Обсуждения linking to https://github.com/feature-sliced/documentation/discussions"

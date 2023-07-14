@@ -30,8 +30,8 @@ List component will not itself define the look and structure of the header compo
 
 ```tsx
 interface ListProps {
-    Header: Component;
-    Items: Component;
+    Header: React.ReactNode;
+    Items: React.ReactNode;
 }
 
 const List: Component<ListProps> = ({ Header, Items }) => (
