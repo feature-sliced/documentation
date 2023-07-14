@@ -1,0 +1,33 @@
+.component {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+    color: var(--bg-color-alt);
+    text-decoration: underline;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &.active {
+        color: var(--ifm-background-color);
+        background-color: var(--ifm-color-primary);
+    }
+}
+
+.key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    margin-right: 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ifm-background-color);
+    // FIXME: [FSDCORE] resolve bug
+    text-decoration-color: transparent;
+    background-color: var(--bg-color-alt);
+}

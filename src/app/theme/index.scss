@@ -82,3 +82,21 @@ html[data-theme=dark] {
 .hero.hero--primary {
     background: linear-gradient(45deg, var(--ifm-color-primary-lightest) -0%, var(--ifm-color-primary-darkest) 100%);
 }
+
+.text {
+    &--primary {
+        color: var(--ifm-color-primary);
+    }
+
+    &--red {
+        color: #e90c5d;
+    }
+
+    &--green {
+        color: #9de016;
+    }
+
+    &--blue {
+        color: #0bb6d9;
+    }
+}

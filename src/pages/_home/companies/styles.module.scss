@@ -2,7 +2,7 @@
     /* Protected from dark mode (and flickering) */
     color: var(--bg-color-alt);
     background: var(--ifm-background-color);
-    border: 2px dashed var(--bg-color-secondary);
+    // border: 2px dashed var(--bg-color-secondary);
 
     &Container {
         width: 100%;
@@ -37,7 +37,7 @@
     padding-top: 40px;
     font-size: 12px;
     font-style: italic;
-    text-align: center;
+    // text-align: center;
 
     a {
         color: var(--ifm-color-primary);

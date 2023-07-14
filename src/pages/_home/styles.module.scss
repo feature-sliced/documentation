@@ -1,9 +1,11 @@
 :root {
-    --section-height: calc(100vh - var(--ifm-navbar-height));
+    // --section-height: calc(100vh - var(--ifm-navbar-height));
+    --section-height: calc(80vh - var(--ifm-navbar-height));
 }
 
 main {
-    padding: 0 7rem;
+    // padding: 0 7rem;
+    padding: 0 20rem;
 }
 
 .section {
@@ -11,7 +13,16 @@ main {
     align-items: center;
     justify-content: center;
     height: var(--section-height);
-    border: 2px dashed var(--bg-color-secondary);
+    // FIXME: [FSDCUR] temp border
+    // border: 1px dashed var(--bg-color-secondary);
+    margin: 8px;
+    font-size: 1.5rem;
+
+    // FIXME: [FSDCUR] resolve align
+    &Text {
+        flex-direction: column;
+        align-items: unset;
+    }
 }
 
 .cols {
@@ -29,7 +40,37 @@ main {
     justify-content: center;
     height: var(--section-height);
     max-height: var(--section-height);
-    border: 2px dashed var(--bg-color-secondary);
+    // FIXME: [FSDCUR] temp border
+    // border: 2px dashed var(--bg-color-secondary);
+}
+
+.profits {
+    // &List {}
+    .card {
+        display: flex;
+        // FIXME: [FSDCUR] resolve width
+        width: 700px;
+        margin-top: 64px;
+
+        &Image {
+            display: block;
+            flex: 1 0 15%;
+            width: 80px;
+            height: 80px;
+            // background: var(--bg-color-alt);
+        }
+
+        &Content {
+            flex: 1 0 85%;
+            // margin-left: 2.5rem;
+            line-height: 1.875rem;
+
+            & > p {
+                font-size: 1.25rem;
+                line-height: 1.5rem;
+            }
+        }
+    }
 }
 
 .ecosystem {
@@ -47,35 +88,40 @@ main {
     }
 }
 
-.demoText {
-    padding: 6rem;
-    font-size: 2rem;
+.text {
+    // padding: 6rem;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.nowar {
+    .flag {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        margin-left: 0.75rem;
+        background: linear-gradient(180deg, #2454ff 0%, #2454ff 50%, #ffe500 50%, #ffe600 100%);
+        border-radius: 50%;
+    }
 }
 
 .cta {
     display: flex;
     flex-direction: column;
 
-    & .demoText {
-        padding: 0 6rem;
+    & .text {
+        // padding: 0 6rem;
         // margin: 0 30rem;
-        text-align: center;
+        // text-align: center;
     }
 
     &Actions {
         display: flex;
-        margin: 0 6rem;
+        justify-content: flex-start;
+        // margin: 0 6rem;
 
-        & > a {
-            flex: 1 0 30%;
-            // FIXME: [FSDCUR] resolve
-            height: 180px;
-            margin: 1rem !important;
-
-            &:first-child {
-                // margin-top: 0;
-                // margin-left: 0;
-            }
+        & > a:not(:first-child) {
+            margin-left: 1rem !important;
         }
     }
 }

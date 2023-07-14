@@ -72,12 +72,12 @@
         "description": "Companies using methodology"
     },
     "pages.home.companies.add_me": {
-        "message": "Методология используется в Вашей компании?",
-        "description": "Methodology is used in your company?"
+        "message": "If you’re a cool company and you’re using Feature-Sliced Design,",
+        "description": "If you’re a cool company and you’re using Feature-Sliced Design,"
     },
     "pages.home.companies.tell_us": {
-        "message": "Сообщите нам",
-        "description": "Tell us"
+        "message": "give us a call 🤙😎",
+        "description": "give us a call 🤙😎"
     },
     "pages.showcase.title": {
         "message": "Витрина примеров",

@@ -72,12 +72,12 @@
         "description": "Companies using FSD"
     },
     "pages.home.companies.add_me": {
-        "message": "FSD is used in your company?",
-        "description": "FSD is used in your company?"
+        "message": "If you’re a cool company and you’re using Feature-Sliced Design,",
+        "description": "If you’re a cool company and you’re using Feature-Sliced Design,"
     },
     "pages.home.companies.tell_us": {
-        "message": "Tell us",
-        "description": "Tell us"
+        "message": "give us a call 🤙😎",
+        "description": "give us a call 🤙😎"
     },
     "pages.showcase.title": {
         "message": "Showcase",
