@@ -102,4 +102,9 @@ export const companies: Company[] = [
         src: "samokat.svg",
         alt: "Samokat.tech",
     },
+    {
+        url: "https://express24.uz/",
+        src: "express24.svg",
+        alt: "Express24.uz",
+    },
 ];
