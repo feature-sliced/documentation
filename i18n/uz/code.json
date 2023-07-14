@@ -79,23 +79,23 @@
     "message": "Habar bering",
     "description": "Tell us"
   },
-  "pages.examples.title": {
+  "pages.showcase.title": {
     "message": "Namunalar",
     "description": "Page title"
   },
-  "pages.examples.subtitle": {
+  "pages.showcase.subtitle": {
     "message": "FSD yordamida yaratilgan veb-saytlar ro'yxati",
     "description": "Page subtitle"
   },
-  "pages.examples.add_me.title": {
+  "pages.showcase.add_me.title": {
     "message": "Namuna qoshish",
     "description": "Request to add example"
   },
-  "pages.examples.repo.title": {
+  "pages.showcase.repo.title": {
     "message": "Repezitoriyalar",
     "description": "Examples repository label"
   },
-  "pages.examples.versions": {
+  "pages.showcase.versions": {
     "message": "Shuningdek, versiyalar ro'yxatiga qarang",
     "description": "Versions reminder"
   },
@@ -167,7 +167,7 @@
     "message": "Tanishib chiqish",
     "description": "Get Started"
   },
-  "features.hero.examples": {
+  "features.hero.showcase": {
     "message": "Namunalar",
     "description": "Examples"
   },
