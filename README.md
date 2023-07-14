@@ -168,7 +168,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/Affiction"><img src="https://avatars.githubusercontent.com/u/9825305?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Max Kokosha</b></sub></a><br /><a href="#example-Affiction" title="Examples">💡</a></td>
-    <td align="center"><a href="https://github.com/zukhrik"><img src="https://avatars.githubusercontent.com/u/67275391?v=4?s=100" width="100px;" alt="zukhrik"/><br /><sub><b>Zuhriddin Komiljonov</b></sub></a><br /><a href="#example-Affiction" title="Documentation">📖</a></td>
   </tr>
 </table>
 
