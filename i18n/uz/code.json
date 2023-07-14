@@ -1,6 +1,6 @@
 {
   "pages.home.features.title": {
-    "message": "Impityoz",
+    "message": "Afzalliklari",
     "description": "Features"
   },
   "pages.home.features.logic.title": {
@@ -32,7 +32,7 @@
     "description": "Feature title"
   },
   "pages.home.features.shared.description": {
-    "message": "DRY va дщлфд moslashtirish o'rtasidagi muvozanatni saqlaydi",
+    "message": "DRY va lokal moslashtirish o'rtasidagi muvozanatni saqlaydi",
     "description": "Feature description"
   },
   "pages.home.concepts.title": {
@@ -164,11 +164,11 @@
     "description": "Architectural methodology for frontend projects"
   },
   "features.hero.get_started": {
-    "message": "Ko'rib chiqing",
+    "message": "Tanishib chiqish",
     "description": "Get Started"
   },
   "features.hero.examples": {
-    "message": "Namuna",
+    "message": "Namunalar",
     "description": "Examples"
   },
   "features.hero.previous": {
