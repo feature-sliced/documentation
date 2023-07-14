@@ -41,25 +41,26 @@ FSD har xil konteksda bir nechta logotipga ega, lekin **primary** dan foydalanis
         <td>Foydalanish</td>
     </tr>
     <tr>
-        <td style={{ color: "#FFF", background: "linear-gradient(135deg, rgba(41,190,220,1) 0%, rgba(81,122,237,1) 100%)" }}>primary <br/> (#29BEDC, #517AED)</td>
-        <td><a href="/img/brand/logo-primary.png" download><img src="/img/brand/logo-primary.png" height="130" alt="logo-primary" /></a></td>
+        <td style={{ color: "#FFF", background: "#0BB6D9" }}>primary <br/> (#0BB6D9)</td>
+        <td><a href="/img/brand/logo-primary.svg" download><img src="/img/brand/logo-primary.svg" height="130" alt="logo-primary" /></a></td>
         <td>Aksariyat hollarda afzal ko'riladi</td>
     </tr>
     <tr>
-        <td style={{ color: "#FFF", background: "#3193FF" }}>flat <br/> (#3193FF)</td>
-        <td><a href="/img/brand/logo-flat.png" download><img src="/img/brand/logo-flat.png" height="130" alt="logo-flat" /></a></td>
-        <td>Bir rangli kontekst uchun</td>
-    </tr>
-    <tr>
         <td style={{ color: "#000", background: "#FFF" }}>monochrome <br /> (#FFF)</td>
-        <td style={{ color: "#000", background: "#242526" }}><a href="/img/brand/logo-monochrome.png" download><img src="/img/brand/logo-monochrome.png" height="130" alt="logo-monocrhome" /></a></td>
+        <td style={{ color: "#000", background: "#242526" }}><a href="/img/brand/logo-monochrome.svg" download><img src="/img/brand/logo-monochrome.svg" height="130" alt="logo-monocrhome" /></a></td>
         <td>Oq qora kontekst uchun</td>
     </tr>
     <tr>
-        <td style={{ color: "#FFF", background: "#3193FF" }}>square <br/> (#3193FF)</td>
+        <td style={{ color: "#FFF", background: "#0BB6D9" }}>square <br/> (#0BB6D9)</td>
         <td><a href="/img/brand/logo-square.png" download><img src="/img/brand/logo-square.png" height="130" alt="logo-square" /></a></td>
         <td>Kvadrat o'lchamlar uchun</td>
     </tr>
+</table>
+
+<table style={{ textAlign: "center" }}>
+    <tr>
+        <td style={{ color: "#FFF", background: "linear-gradient(135deg, rgba(41,190,220,1) 0%, rgba(81,122,237,1) 100%)" }}>primary <br/> (#29BEDC, #517AED)</td>
+        <td><a href="/img/brand/logo-primary.png" download><img src="/img/brand/logo-primary.png" height="130" alt="logo-primary" /></a></td>
 </table>
 
 ## Bannerlar & Sxemalar {#banners--schemes}
