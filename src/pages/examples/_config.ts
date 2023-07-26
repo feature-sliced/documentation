@@ -202,5 +202,15 @@ export const examples: Example[] = [
         updatedAt: "2023-06-21",
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
+    {
+        title: "Fake Cyber Web Store",
+        description: "Example web store on Vue3",
+        website: "https://akosogorov.github.io/fake-cyber-web-store/",
+        source: "https://github.com/AKosogorov/fake-cyber-web-store",
+        preview: require("./img/fake-cyber-web-store.jpg"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-07-26",
+        tech: ["vue3", "pinia", "typescript", "firebase", "vue-router", "eslint", "prettier", "vite"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
