@@ -263,7 +263,7 @@ const TestPage = lazy(() => import("./test"));
 export const Routing = () => {
     return (
         <Routes>
-            <Route exact path="/" element={<TestPage/>} />
+            <Route path="/" element={<TestPage/>} />
             <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     );
