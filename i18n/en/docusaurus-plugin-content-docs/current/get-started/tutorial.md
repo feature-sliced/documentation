@@ -299,10 +299,6 @@ To simplify the tutorial, we will use the ready-made UIKit from [AntDesign](http
 $ npm i antd @ant-design/icons
 ```
 
-```ts title=app/styles/index.scss
-@import 'antd/dist/antd.css';
-```
-
 :::tip
 
 But you can use **any other UIKit** or **create your own** by placing the components in `shared/ui` - this is where it is recommended to place UIKit of application:
