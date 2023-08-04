@@ -202,5 +202,16 @@ export const examples: Example[] = [
         updatedAt: "2023-06-21",
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
+    {
+        title: "Сryptolight",
+        description:
+            "Cryptocurrency review site based on Feature-Sliced Design (Architectural methodology for frontend projects).",
+        website: "http://crypto-light.space/",
+        source: "https://github.com/Yar56/cryptolight",
+        preview: require("./img/cryptolight.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-08-04",
+        tech: ["react", "effector", "nextui", "typescript", "vite"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
