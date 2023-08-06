@@ -299,10 +299,6 @@ const App = () => (
 $ npm i antd @ant-design/icons
 ```
 
-```ts title=app/styles/index.scss
-@import 'antd/dist/antd.css';
-```
-
 :::tip
 
 Но вы можете использовать **любой другой UIKit** или же **создать собственный**, расположив компоненты в `shared/ui` - именно там рекомендуется хранить UIKit приложения:
