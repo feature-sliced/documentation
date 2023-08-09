@@ -11,7 +11,7 @@ sidebar_position: 1
 FSD can be implemented in projects and teams of any size, but there are a few things to keep in mind:
 
 - This methodology is for front-end projects only. If you're looking for a back-end architecture, consider [Clean Architecture][refs-clean-architecture].
-- A very simple app of a single page might not need the benefits of FSD and suffer from the overhead. However, FSD promotes a nice way of thinking, so feel free to use on the tiniest projects if you want.
+- A very simple app of a single page might not need the benefits of FSD and suffer from the overhead. However, FSD promotes a nice way of thinking, so feel free to use it on the tiniest projects if you want.
 - A huge app, the size of the Google Cloud admin dashboard, will require a custom architecture. It could still be based on FSD, by the way.
 
 FSD doesn't enforce a particular programming language, UI framework or state manager — bring your own or see some [examples][refs-examples].
