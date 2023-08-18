@@ -202,5 +202,16 @@ export const examples: Example[] = [
         updatedAt: "2023-06-21",
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
+    {
+        title: "Image Gallery (React+Redux)",
+        description:
+            "A simple site powered by Feature-Sliced Design.",
+        website: "https://nyar1othotep.github.io/image-gallery/",
+        source: "https://github.com/Nyar1othotep/image-gallery",
+        preview: require("./img/image-gallery-react-redux.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-08-18",
+        tech: ["react", "react-router", "redux-toolkit"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
