@@ -202,5 +202,15 @@ export const examples: Example[] = [
         updatedAt: "2023-06-21",
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
+    {
+        title: "Todo app (Vue 3 + Pinia)",
+        description: "QuickStart todo-app example for Vue developers with pinia store",
+        website: "https://fsd-tasks.netlify.app/",
+        source: "https://github.com/hoach-linux/fsd-vue-antd",
+        preview: require("./img/todo-vue-pinia.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-08-31",
+        tech: ["vue 3", "pinia", "vite", "typescript", "antdv", "directus"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
