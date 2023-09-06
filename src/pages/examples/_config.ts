@@ -202,5 +202,15 @@ export const examples: Example[] = [
         updatedAt: "2023-06-21",
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
+    {
+        title: "Todo App (Nuxt 3, Pinia)",
+        description: "Nuxt 3 + Pinia + Feature-Sliced Design architectural methodology.",
+        website: "https://github.com/Denis-Str/nuxt3-fs",
+        source: "https://github.com/Denis-Str/nuxt3-fs",
+        preview: require("./img/todo-app-vue.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-09-06",
+        tech: ["Nuxt 3", "Pinia", "Composition api"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
