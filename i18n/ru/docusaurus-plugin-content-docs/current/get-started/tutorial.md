@@ -256,16 +256,16 @@ export default TestPage;
 ```tsx title=pages/index.tsx
 // Либо использовать @loadable/component, в рамках туториала - некритично
 import { lazy } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 const TestPage = lazy(() => import("./test"));
 
 export const Routing = () => {
     return (
-        <Switch>
-            <Route exact path="/" component={TestPage} />
-            <Redirect to="/" />
-        </Switch>
+        <Routes>
+            <Route path="/" element={<TestPage/>} />
+            <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
     );
 };
 ```
@@ -297,10 +297,6 @@ const App = () => (
 
 ```cmd
 $ npm i antd @ant-design/icons
-```
-
-```ts title=app/styles/index.scss
-@import 'antd/dist/antd.css';
 ```
 
 :::tip
