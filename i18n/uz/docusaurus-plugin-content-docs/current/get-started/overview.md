@@ -4,94 +4,94 @@ sidebar_position: 1
 
 # Обзор
 
-## Подходит ли это мне? {#is-it-right-for-me}
+## Menga tog'ri keladimi? {#is-it-right-for-me}
 
-FSD подходит для проектов и команд любого размера с некоторыми оговорками:
+FSD ba'zi ogohlantirishlar bilan har qanday hajmdagi loyihalar va jamoalar uchun javob beradi:
 
-- Эта методология исключительно для фронтенда. Если вы ищете архитектуру для бэкенда, обратите внимание на [Clean Architecture][refs-clean-architecture].
-- Эта методология исключительно для приложений с пользовательским интерфейсом. В качестве вдохновения для архитектуры крупной библиотеки компонентов рекомендуется [Material UI][ext-material-ui].
-- Если вы разрабатываете очень простое приложение из одной странички на FSD, преимущества методологии вряд ли понадобятся, а вот разработка может замедлиться. Однако, FSD помогает стандартизированно мыслить о фронтенд-приложениях, так что смело используйте даже на маленьких проектах, если знаете, для чего она вам.
-- Огромное приложение, соизмеримое с админ-панелью Google Cloud, потребует специализированной архитектуры. FSD в данном случае может выступать в качестве отправной точки.
+- Ushbu metodologiya faqat frontend uchun. Agar siz backend arxitekturasini izlayotgan bo'lsangiz, [Clean Architecture][refs-clean-architecture] ga e'tibor bering.
+- Ushbu metodologiya faqatgina foydalanuvchi interfeysi ilovalari uchun. Katta komponentli kutubxona arxitekturasi uchun ilhom sifatida [Material UI][ext-material-ui] lar tavsiya etiladi.
+- Agar siz FSD-da juda oddiy bir sahifali dasturni ishlab chiqayotgan bo'lsangiz, metodologiyaning afzalliklariga ehtiyoj sezilmaydi, va dasturlashni susayishi mumkin. Biroq, FSD oldingi ilovalar haqida standartlashtirilgan tarzda fikr yuritishga yordam beradi, shuning uchun agar sizga nima kerakligini bilsangiz, undan hatto kichik loyihalarda ham foydalaning.
+- Google Cloud administrator paneli hajmidagi ulkan dasturlarda maxsus arxitekturani talab qiladi. Bu holda FSD boshlang'ich nuqtasi sifatida harakat qilishi mumkin.
 
-Методология не привязана к конкретному языку программирования, UI-фреймворку или менеджеру состояния — подойдет любой (см. [примеры использования][refs-examples]).
+Metodologiya ma'lum bir dasturlash tiliga, UI ramkasiga yoki davlat menejeriga bog'liq emas - har qanday ([ishlash namunalari][refs-examples]) ga tog'ri keladi.
 
-Если у вас уже есть проект, не переживайте — FSD можно внедрять постепенно. Главный вопрос, который стоит задать команде: "**Есть ли боль** при разработке проекта?" Если боли нет, возможно, переход делать не стоит. Руководство по миграции см. в разделе [Миграция][refs-migration].
+Agar sizda allaqachon loyiha bo'lsa, tashvishlanmang - FSD asta-sekin joylashtirish mumkin. Jamoaga beriladigan asosiy savol: "**Kamchiliklar bormi** dasturlashda?" Agar kamchiliklar bo'lmasa o'tish shart emas. Migratsiya bo'yicha ko'rsatmalar uchun [Migratsiya][refs-migration] ga qarang.
 
 
-## Основы {#basics}
+## Asoslari {#basics}
 
-Проект на FSD состоит из <mark>слоев</mark> (layers), каждый слой состоит из <mark>слайсов</mark> (slices) и каждый слайс состоит из <mark>сегментов</mark> (segments).
+FSD dagi dastur <mark>qatlamlardan</mark> tashkil qiladi (layers), har bir qatlam <mark>slayslardan</mark> (slices) tashkil qiladi va har bir slays <mark>segmentlardan</mark> (segments).
 
 ![themed--scheme](/img/visual_schema.jpg)
 
-**Слои** стандартизированы во всех проектах и расположены вертикально. Модули на одном слое могут взаимодействовать лишь с модулями, находящимися на слоях строго ниже. На данный момент слоев семь (снизу вверх):
+**Qatlamlar** hamma dasturlarda standartlashtirilgan va vertikal joylashkan. Bir qatlamdagi modullar faqatkina pastdagi modullar bilan aloqada bo'la oladi. Hozirda qatlamlar soni yettita (pastdan tepaga):
 
-1. `shared` — переиспользуемый код, не имеющий отношения к специфике приложения/бизнеса.
-    <small>(например, UIKit, libs, API)</small>
-2. `entities` (сущности) — бизнес-сущности.
-    <small>(например, User, Product, Order)</small>
-3. `features` (фичи) — взаимодействия с пользователем, действия, которые несут бизнес-ценность для пользователя.
-    <small>(например, SendComment, AddToCart, UsersSearch)</small>
-4. `widgets` (виджеты) — композиционный слой для соединения сущностей и фич в самостоятельные блоки
-    <small>(например, IssuesList, UserProfile)</small>.
-5. `pages` (страницы) — композиционный слой для сборки полноценных страниц из сущностей, фич и виджетов.
-6. `processes` (процессы, устаревший слой) — сложные сценарии, покрывающие несколько страниц.
-    <small>(например, авторизация)</small>
-7. `app` — настройки, стили и провайдеры для всего приложения.
+1. `shared` — ilova/biznesning o'ziga xos xususiyatlari bilan bog'liq bo'lmagan qayta ishlatiladigan kod.
+    <small>(masalan, UIKit, libs, API)</small>
+2. `entities` (mantiqlar) — biznes-mantiqlar.
+    <small>(misol, User, Product, Order)</small>
+3. `features` (fichelar) — foydalanuvchining o'zaro ta'siri, foydalanuvchiga biznes qiymatini keltiradigan harakatlar.
+    <small>(misol, SendComment, AddToCart, UsersSearch)</small>
+4. `widgets` (vidjetlar) — mantiqlar va xususiyatlarni mustaqil bloklarga ulash uchun kompozitsion qatlam.
+    <small>(misol, IssuesList, UserProfile)</small>.
+5. `pages` (sahifalar) — mantiqlar, xususiyatlar va vidjetlardan to'liq huquqli sahifalarni yig'ish uchun kompozitsion qatlam.
+6. `processes` (protseslar, eskirgan qatlam) — bir necha sahifalarni qamrab olgan murakkab skriptlar.
+    <small>(misol, авторизация)</small>
+7. `app` — butun dastur uchun sozlamalar, uslublar va provayderlar.
 
-Затем есть **слайсы**, разделяющие код по предметной области. Они группируют логически связанные модули, что облегчает навигацию по кодовой базе. Слайсы не могут использовать другие слайсы на том же слое, что обеспечивает высокий уровень [_связности_][refs-wiki-cohesion] (cohesion) при низком уровне [_зацепления_][refs-wiki-coupling] (coupling).
+Keyin **slayslar** bor, kodni mavzu sohasiga bo'lish. Ular bir-biriga mantiqiy bog'liq bo'lgan modullarni birlashtiradi, bu kodlar bazasini boshqarishni osonlashtiradi. Dilimlar bir qatlamda boshqa bo'laklardan foydalana olmaydi, bu esa yuqori darajani ta'minlaydi [_bog'lanmalar_][refs-wiki-cohesion] (cohesion) past urovenda [_ulanmalar_][refs-wiki-coupling] (coupling).
 
-В свою очередь, каждый слайс состоит из **сегментов**. Это маленькие модули, главная задача которых — разделить код внутри слайса по техническому назначению. Самые распространенные сегменты — `ui`, `model` (store, actions), `api` и `lib` (utils/hooks), но в вашем слайсе может не быть каких-то сегментов, могут быть другие, по вашему усмотрению.
+O'z navbatida, har bir slays **segmentlarda** iborat. Bu kichik modullar bo'lib, ularning asosiy vazifasi tilim ichidagi kodni texnik maqsadiga ko'ra ajratishdir. Keng trqalgan segmentlar — `ui`, `model` (store, actions), `api` va `lib` (utils/hooks), lekin sizning slaysingizda ba'zi segmentlar bo'lmasligi mumkin, sizning ixtiyoringizda boshqalar ham bo'lishi mumkin.
 
 :::note
 
-В большинстве случаев [рекомендуется][ext-disc-api] располагать `api` и `config` только в shared-слое
+Aksariyat hollarda `api` va `config` larni faqatgina shared qatlamida joylashtirish [tavsiya][ext-disc-api] etiladi
 
 :::
 
-## Пример {#example}
+## Namuna {#example}
 
-Рассмотрим приложение социальной сети.
+Ijtimoiy tarmoq ilovasini ko'rib chiqing.
 
-* `app/` содержит настройку роутера, глобальные хранилища и стили.
-* `pages/` содержит компоненты роутов на каждую страницу в приложении, преимущественно композирующие, по возможности, без собственной логики.
+* `app/` router konfiguratsiyasi, global xotira va uslublarni o'z ichiga oladi.
+* `pages/` ilovaning har bir sahifasi uchun marshrut komponentlarini o'z ichiga oladi, asosan, iloji bo'lsa, o'z mantig'isiz tuzadi.
 
-В рамках этого приложения рассмотрим карточку поста в ленте новостей.
+Ushbu ilovaning bir qismi sifatida keling, yangiliklar lentasidagi pochta kartasini ko'rib chiqaylik.
 
-* `widgets/` содержит "собранную" карточку поста, с содержимым и интерактивными кнопками, в которые вшиты запросы к бэкенду.
-* `features/` содержит всю интерактивность карточки (например, кнопку лайка) и логику обработки этой интерактивности.
-* `entities/` содержит скелет карточки со слотами под интерактивные элементы. Компонент, демонстрирующий автора поста, также находится в этой папке, но в другом слайсе.
+* `widgets/` "yig'ilgan" pochta kartasini o'z ichiga oladi, mazmuni va interaktiv tugmalari mavjud bo'lib, ular orqa qismga so'rovlar kiritilgan.
+* `features/` kartaning barcha interaktivligini (masalan, yoqtirish tugmasi) va ushbu interaktivlikni qayta ishlash mantiqini o'z ichiga oladi.
+* `entities/` interaktiv elementlar uchun slotlari bo'lgan skelet kartasini o'z ichiga oladi. Xabar muallifini ko'rsatadigan komponent ham ushbu jildda, lekin boshqa bo'lakda.
 
-### Преимущества {#advantages}
+### Afzalliklar {#advantages}
 
-- **Единообразие**  
-  Код распределяется согласно области влияния (слой), предметной области (слайс) и техническому назначению (сегмент).  
-  Благодаря этому архитектура стандартизируется и становится более простой для ознакомления.
+- **Bir xillik**  
+  Kod ta'sir doirasi (qatlami), mavzu maydoni (bo'limi) va texnik maqsadi (segment) bo'yicha taqsimlanadi.
+  Bu arxitekturani standartlashtiradi va tushunishni osonlashtiradi.
 
-- **Контролируемое переиспользование логики**  
-  Каждый компонент архитектуры имеет свое назначение и предсказуемый список зависимостей.  
-  Благодаря этому сохраняется баланс между соблюдением принципа **DRY** и возможностью адаптировать модуль под разные цели.
+- **Boshqariladigan mantiqni qayta ishlatish**  
+  Arxitekturaning har bir komponenti o'z maqsadiga va taxmin qilinadigan bog'liqlik ro'yxatiga ega.
+  Buning yordamida **DRY** printsipiga muvofiqlik va modulni turli maqsadlar uchun moslashtirish qobiliyati o'rtasida muvozanat saqlanadi.
 
-- **Устойчивость к изменениям и рефакторингу**  
-  Один модуль не может использовать другой модуль, расположенный на том же слое или на слоях выше.
-  Благодаря этому приложение можно изолированно модифицировать под новые требования без непредвиденных последствий.
+- **O'zgarishlarga va qayta ishlashga chidamli**  
+  Bitta modul bitta qatlamda yoki yuqoridagi qatlamlarda joylashgan boshqa moduldan foydalana olmaydi.
+  Bu kutilmagan oqibatlarsiz yangi talablarni qondirish uchun ilovani alohida o'zgartirish imkonini beradi.
 
-- **Ориентированность на потребности бизнеса и пользователей**  
-  Разбиение приложения по бизнес-доменам помогает глубже понимать, структурировать и находить фичи проекта.
+- **Biznes va foydalanuvchi ehtiyojlariga e'tibor qarating**  
+  Ilovani biznes domenlariga bo'lish loyiha xususiyatlarini yaxshiroq tushunish, tuzilish va topishga yordam beradi.
 
-## Постепенное внедрение {#incremental-adoption}
+## Sekin-asta amalga oshirish {#incremental-adoption}
 
-Сила FSD в _структурированной_ декомпозиции. В лучшей форме, FSD позволяет найти место для любой части кода почти однозначно. Однако, уровень декомпозиции — это параметр, и любая команда может подстроить его для оптимального баланса между легкостью внедрения и преимуществами.
+FSD ning kuchi uning tuzilmali parchalanishidir. O'zining eng yaxshi ko'rinishida FSD sizga kodning istalgan qismi uchun joyni deyarli aniq topishga imkon beradi. Biroq, parchalanish darajasi parametrdir va har qanday jamoa uni amalga oshirish qulayligi va foyda o'rtasidagi optimal muvozanat uchun sozlashi mumkin.
 
-Предлагаем следующую стратегию для миграции существующей кодовой базы на FSD, проверенную опытом:
+Mavjud kodlar bazasini FSD ga ko'chirish bo'yicha tajriba bilan tasdiqlangan quyidagi strategiyani taklif qilamiz:
 
-1. Вырезать слои `app` и `shared`, чтобы иметь опору для последующих этапов. Эти слои получатся тонкими и простыми, пусть такими и остаются.
+1. Keyingi qadamlarni qo'llab-quvvatlash uchun `api` va shared qatlamlarni kesib tashlang. Bu qatlamlar ingichka va sodda bo'lib chiqadi, ular shunday bo'lib qolsin.
 
-2. Вынести весь интерфейс, связанный с бизнесом, распределить по виджетам и страницам, даже если в них пока что будут зависимости, нарушающие правила FSD.
+2. Biznes bilan bog'liq barcha interfeysni olib tashlang va uni vidjetlar va sahifalar bo'ylab tarqating, hatto ular hali ham FSD qoidalarini buzadigan bog'liqliklarga ega bo'lsa ham.
 
-3. Постепенно наращивать степень декомпозиции, выделяя `features` и `entities`. Превращать страницы и виджеты из перегруженных логикой слоёв в чисто композиционные слои.
+3. `features` va `entities` ni ta'kidlab, parchalanish darajasini asta-sekin oshiring. Sahifalar va vidjetlarni mantiqiy yuklangan qatlamlardan sof kompozitsion qatlamlarga aylantiring.
 
-Рекомендуется воздержаться от добавления новых крупных сущностей во время рефакторинга, а также рефакторинга по частям.
+Refaktoring jarayonida yangi yirik ob'ektlarni qo'shishdan, shuningdek, qismlarga qayta ishlashdan bosh tortish tavsiya etiladi.
 
 [refs-clean-architecture]: https://medium.com/codex/clean-architecture-for-dummies-df6561d42c94
 [ext-disc-api]: https://github.com/feature-sliced/documentation/discussions/66
