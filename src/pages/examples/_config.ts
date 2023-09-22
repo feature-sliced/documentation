@@ -202,6 +202,17 @@ export const examples: Example[] = [
         updatedAt: "2023-06-21",
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
+	{
+        title: "E-Commerce",
+        description:
+            "This project is an online store built using React. It provides the ability to view the product catalog and product pages",
+        website: "https://ruslan4432013.github.io/e-commerce-kts/",
+        source: "https://github.com/ruslan4432013/e-commerce-kts",
+        preview: require("./img/e-commerce.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-09-09",
+        tech: ["react", "mobx", "webpack", "typescript", "ssr"],
+	},
     {
         title: "Сryptolight",
         description:
