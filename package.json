@@ -43,6 +43,7 @@
         "js-cookie": "^3.0.1",
         "lodash-es": "^4.17.21",
         "picocolors": "^1.0.0",
+        "plugin-image-zoom": "^1.2.0",
         "react": "^17.0.1",
         "react-cookie-consent": "^6.4.1",
         "react-dom": "^17.0.1",

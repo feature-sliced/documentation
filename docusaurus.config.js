@@ -45,6 +45,11 @@ module.exports = {
         algolia: cfg.algolia,
         metadata: cfg.metadata,
         hotjar: cfg.metrics.hotjar,
+        imageZoom: {
+            options: {
+                background: "rgb(255 255 255 / 0.3)",
+            },
+        },
     },
 };
 

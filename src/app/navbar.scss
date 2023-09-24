@@ -96,3 +96,8 @@ html[data-theme="dark"] .ext-link::before {
         font-size: 1rem; // #nowar
     }
 }
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 999;
+}
