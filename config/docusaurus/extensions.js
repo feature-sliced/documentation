@@ -123,6 +123,7 @@ const plugins = [
             steps: 2, // the max number of images generated between min and max (inclusive)
         },
     ],
+    "plugin-image-zoom",
     process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
     // FIXME: Docusaurus Open Graph Plugin Experimental.
     process.env.OG_EXP && DOCUSAURUS_PLUGIN_OG,
