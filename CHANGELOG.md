@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 2.0.0
+## [2.0.0] - 2023-10-01
 
 > **Note**  
 > This release note is retrospective, meaning that prior to this release, the Feature-Sliced Design project did not keep a changelog. Below is a summary of the most prominent recent changes, but there is no FSD v1. Prior to FSD, there has been a project called ["Feature Slices"](https://featureslices.dev/v1.0.html), and it is considered to be the v1 of FSD.
@@ -33,3 +33,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The first page of the docs is now a helpful index with a prominent first step (#525).
 - The overview page has been rewritten to be more concise and informative (#512, #515, #516).
 - FSD has updated its branding, and there are now guidelines to the brand usage. The standard spelling of the name is now "Feature-Sliced Design" (#496, #499, #500, #465).
+
+[2.0.0]: feature-sliced/documentation/releases/tag/v2.0.0
