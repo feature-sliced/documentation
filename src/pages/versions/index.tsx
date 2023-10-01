@@ -33,7 +33,7 @@ function Version() {
                         <Table>
                             <Table.Row
                                 th={latestVersion.label}
-                                href={`${repoUrl}/releases/tag/v${latestVersion.name}`}
+                                href={`${repoUrl}/releases/tag/v2.0.0`}
                                 hrefTitle="Release Notes"
                             >
                                 <td>
