@@ -28,7 +28,7 @@ function Version() {
 
                 {latestVersion && (
                     <div className="margin-bottom--lg">
-                        <h3 id="next">Feature-Sliced Design v2.0-beta (Current)</h3>
+                        <h3 id="next">Feature-Sliced Design v2.0.0 (Current)</h3>
                         <p>{translate({ id: "pages.versions.current" })}</p>
                         <Table>
                             <Table.Row
