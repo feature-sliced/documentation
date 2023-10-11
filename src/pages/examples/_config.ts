@@ -209,7 +209,7 @@ export const examples: Example[] = [
         source: "https://github.com/hoach-linux/fsd-vue-antd",
         preview: require("./img/todo-vue-pinia.png"),
         version: VERSIONS.V2,
-        updatedAt: "2023-08-31",
+        updatedAt: "2023-010-12",
         tech: ["vue 3", "pinia", "vite", "typescript", "antdv", "directus"],
     },
     // Reverse the list (last examples should be at the top)
