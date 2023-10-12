@@ -213,5 +213,25 @@ export const examples: Example[] = [
         updatedAt: "2023-09-09",
         tech: ["react", "mobx", "webpack", "typescript", "ssr"],
     },
+    {
+        title: "Money Flow",
+        description: "A mobile application for tracking your expenses and incomes.",
+        website: "https://moneyflow.cash",
+        source: "https://github.com/moneyflow-dev/moneyflow",
+        preview: require("./img/moneyflow.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-09-07",
+        tech: [
+            "capacitorjs",
+            "react",
+            "react-router",
+            "zustand",
+            "vite",
+            "typescript",
+            "mobile",
+            "android",
+            "ios",
+        ],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
