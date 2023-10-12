@@ -210,7 +210,7 @@ export const examples: Example[] = [
         preview: require("./img/todo-vue-pinia.png"),
         version: VERSIONS.V2,
         updatedAt: "2023-010-12",
-        tech: ["vue 3", "pinia", "vite", "typescript", "antdv", "directus"],
+        tech: ["vue 3", "pinia", "vite", "typescript"],
     },
     {
         title: "E-Commerce",
