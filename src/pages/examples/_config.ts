@@ -203,6 +203,16 @@ export const examples: Example[] = [
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
     {
+        title: "Todo app (Vue 3 + Pinia)",
+        description: "QuickStart todo-app example for Vue developers with pinia store",
+        website: "https://fsd-tasks.netlify.app/",
+        source: "https://github.com/hoach-linux/fsd-vue-antd",
+        preview: require("./img/todo-vue-pinia.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-010-12",
+        tech: ["vue 3", "pinia", "vite", "typescript"],
+    },
+    {
         title: "E-Commerce",
         description:
             "This project is an online store built using React. It provides the ability to view the product catalog and product pages",
