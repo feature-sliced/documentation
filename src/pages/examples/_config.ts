@@ -203,6 +203,17 @@ export const examples: Example[] = [
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
     {
+        title: "E-Commerce",
+        description:
+            "This project is an online store built using React. It provides the ability to view the product catalog and product pages",
+        website: "https://ruslan4432013.github.io/e-commerce-kts/",
+        source: "https://github.com/ruslan4432013/e-commerce-kts",
+        preview: require("./img/e-commerce.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-09-09",
+        tech: ["react", "mobx", "webpack", "typescript", "ssr"],
+    },
+    {
         title: "Money Flow",
         description: "A mobile application for tracking your expenses and incomes.",
         website: "https://moneyflow.cash",
@@ -221,17 +232,6 @@ export const examples: Example[] = [
             "android",
             "ios",
         ],
-    },
-    {
-        title: "E-Commerce",
-        description:
-            "This project is an online store built using React. It provides the ability to view the product catalog and product pages",
-        website: "https://ruslan4432013.github.io/e-commerce-kts/",
-        source: "https://github.com/ruslan4432013/e-commerce-kts",
-        preview: require("./img/e-commerce.png"),
-        version: VERSIONS.V2,
-        updatedAt: "2023-09-09",
-        tech: ["react", "mobx", "webpack", "typescript", "ssr"],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();

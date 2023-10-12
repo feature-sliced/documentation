@@ -59,6 +59,9 @@ dependencies:
   picocolors:
     specifier: ^1.0.0
     version: 1.0.0
+  plugin-image-zoom:
+    specifier: ^1.2.0
+    version: 1.2.0
   react:
     specifier: ^17.0.1
     version: 17.0.2
@@ -8702,6 +8705,10 @@ packages:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
 
+  /medium-zoom@1.0.8:
+    resolution: {integrity: sha512-CjFVuFq/IfrdqesAXfg+hzlDKu6A2n80ZIq0Kl9kWjoHh9j1N9Uvk5X0/MmN0hOfm5F9YBswlClhcwnmtwz7gA==}
+    dev: false
+
   /memfs@3.5.3:
     resolution: {integrity: sha512-UERzLsxzllchadvbPs5aolHh65ISpKpM+ccLbOJ8/vvpBKmAWf+la7dXFy7Mr0ySHbdHrFv5kGFCUHHe6GFEmw==}
     engines: {node: '>= 4.0.0'}
@@ -9406,6 +9413,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 3.0.0
+
+  /plugin-image-zoom@1.2.0:
+    resolution: {integrity: sha512-uVCjp4bXuli39gmBs+JQvXMtpfLL+5yWfRIKZyM41d3D9oxGBEHmRzDu9EgusIwmBrKJvF9QuOZENw/9s6G+Jw==}
+    dependencies:
+      medium-zoom: 1.0.8
+    dev: false
 
   /pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
