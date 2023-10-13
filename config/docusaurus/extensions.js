@@ -134,9 +134,7 @@ const algolia = {
     appId: process.env.ALGOLIA_ID,
     apiKey: process.env.ALGOLIA_KEY,
     indexName: "feature-sliced",
-    // FIXME: При включении отрубает поиск (исправить поздней)
-    // Для поиска с учетом версий (на будущее)
-    contextualSearch: false,
+    contextualSearch: true,
 };
 
 module.exports = { presets, plugins, algolia, metrics };
