@@ -23,6 +23,17 @@ export const VERSIONS = {
  */
 export const examples: Example[] = [
     {
+        title: "Volt React Dashboard-FSD",
+        description:
+            "It features over 100 UI elements, plugins, and example based built with React components.",
+        website: "https://demo.themesberg.com/volt-react-dashboard/#/#home",
+        source: "https://github.com/paghar/volt-react-FSD",
+        preview: require("./img/react-volt.png"),
+        version: VERSIONS.V1,
+        updatedAt: "2023-10-13",
+        tech: ["react", "Bootstrap 5", "javascript"],
+    },
+    {
         title: "Cardbox",
         description: "The best solutions from developers in one place",
         source: "https://github.com/cardbox/frontend",
