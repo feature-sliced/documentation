@@ -58,7 +58,7 @@ const presets = [
                 showLastUpdateTime: true,
                 versions: {
                     current: {
-                        label: `v2.0-beta 🍰`,
+                        label: `v2.0.0 🍰`,
                     },
                 },
                 sidebarItemsGenerator,
@@ -123,6 +123,7 @@ const plugins = [
             steps: 2, // the max number of images generated between min and max (inclusive)
         },
     ],
+    "plugin-image-zoom",
     process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
     // FIXME: Docusaurus Open Graph Plugin Experimental.
     process.env.OG_EXP && DOCUSAURUS_PLUGIN_OG,
