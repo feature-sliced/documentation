@@ -1,7 +1,7 @@
 require("dotenv").config();
 const cfg = require("./config/docusaurus");
 
-/** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
+/** @typedef {import('@docusaurus/types').Config} Config */
 
 /**
  * Custom fields (for access on code-level)

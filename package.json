@@ -69,6 +69,7 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.21.3",
         "@docusaurus/module-type-aliases": "^2.4.1",
+        "@docusaurus/types": "^2.4.3",
         "@eslint-kit/eslint-config-base": "4.1.0",
         "@eslint-kit/eslint-config-patch": "^1.0.0",
         "@eslint-kit/eslint-config-prettier": "3.0.0",
@@ -89,5 +90,5 @@
         "stylelint-config-standard": "^22.0.0",
         "typescript": "^4.9.5"
     },
-    "packageManager": "pnpm@8.3.1"
+    "packageManager": "pnpm@8.9.0"
 }
