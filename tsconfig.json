@@ -1,7 +1,7 @@
 {
-    "extends": "@tsconfig/docusaurus/tsconfig.json",
+    "extends": "@docusaurus/tsconfig",
     "compilerOptions": {
-      "baseUrl": ".",
-      "typeRoots": ["declaration.d.ts", "global.d.ts", "./node_modules/@types", "node", "@docusaurus/module-type-aliases", "@docusaurus/theme-classic"]
+        "baseUrl": ".",
+        "lib": ["DOM", "ESNext"]
     }
 }

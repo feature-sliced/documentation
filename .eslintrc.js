@@ -5,7 +5,7 @@ module.exports = {
         es6: true,
     },
     parser: "@typescript-eslint/parser",
-    extends: ["@eslint-kit/patch", "@eslint-kit/base", "@eslint-kit/react", "@eslint-kit/prettier"],
+    extends: ["@eslint-kit/patch", "@eslint-kit/base", "@eslint-kit/react", "prettier"],
     plugins: ["@typescript-eslint"],
     rules: {
         // Sometime harmful =(
