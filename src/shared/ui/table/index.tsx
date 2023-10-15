@@ -6,7 +6,12 @@ type TableRowProps = React.PropsWithChildren<{
     th: React.ReactNode;
 }>;
 
-const TableRow: React.FC<TableRowProps> = ({ href, hrefTitle, th, children }) => {
+const TableRow: React.FC<TableRowProps> = ({
+    href,
+    hrefTitle,
+    th,
+    children,
+}) => {
     return (
         <tr>
             <th>{th}</th>
@@ -19,9 +24,9 @@ const TableRow: React.FC<TableRowProps> = ({ href, hrefTitle, th, children }) =>
     );
 };
 
-export const Table: React.FC<React.PropsWithChildren> & { Row: typeof TableRow } = ({
-    children,
-}) => {
+export const Table: React.FC<React.PropsWithChildren> & {
+    Row: typeof TableRow;
+} = ({ children }) => {
     return (
         <table>
             <tbody>{children}</tbody>

@@ -5,7 +5,12 @@ module.exports = {
         es6: true,
     },
     parser: "@typescript-eslint/parser",
-    extends: ["@eslint-kit/patch", "@eslint-kit/base", "@eslint-kit/react", "prettier"],
+    extends: [
+        "@eslint-kit/patch",
+        "@eslint-kit/base",
+        "@eslint-kit/react",
+        "prettier",
+    ],
     plugins: ["@typescript-eslint"],
     rules: {
         // Sometime harmful =(
@@ -36,8 +41,14 @@ module.exports = {
             alias: {
                 map: [
                     ["@site", "."],
-                    ["@docusaurus", "./node_modules/@docusaurus/core/lib/client/exports"],
-                    ["@theme", "./node_modules/@docusaurus/theme-classic/src/theme"],
+                    [
+                        "@docusaurus",
+                        "./node_modules/@docusaurus/core/lib/client/exports",
+                    ],
+                    [
+                        "@theme",
+                        "./node_modules/@docusaurus/theme-classic/src/theme",
+                    ],
                 ],
                 extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
             },

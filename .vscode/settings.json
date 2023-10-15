@@ -1,9 +1,9 @@
 {
-  "files.eol": "\n",
-  "[mdx]": {
-    "files.trimTrailingWhitespace": false
-  },
-  "[markdown]": {
-    "files.trimTrailingWhitespace": false
-  }
+    "files.eol": "\n",
+    "[mdx]": {
+        "files.trimTrailingWhitespace": false
+    },
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    }
 }

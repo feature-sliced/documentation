@@ -31,7 +31,7 @@
     opacity: 0.5;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
     .groupItems {
         grid-template-columns: 1fr;
     }

@@ -43,7 +43,8 @@ export const examples: Example[] = [
     },
     {
         title: "Todo App (React+Effector)",
-        description: "QuickStart todo-app example for React developers (Effector version)",
+        description:
+            "QuickStart todo-app example for React developers (Effector version)",
         website: "https://7b64m.csb.app/",
         source: "https://github.com/feature-sliced/examples/tree/master/todo-app",
         preview: require("./img/todo-app-react-effector.png"),
@@ -53,7 +54,8 @@ export const examples: Example[] = [
     },
     {
         title: "Todo App (React+Redux)",
-        description: "QuickStart todo-app example for React developers (Redux version)",
+        description:
+            "QuickStart todo-app example for React developers (Redux version)",
         website: "https://kxn7cx-3000.preview.csb.app/",
         source: "https://github.com/EliseyMartynov/fs-rtk",
         preview: require("./img/todo-app-react-redux.png"),
@@ -143,7 +145,8 @@ export const examples: Example[] = [
     },
     {
         title: "Todo App (ReactNative+Redux)",
-        description: "QuickStart todo-app example for ReactNative(Expo) developers",
+        description:
+            "QuickStart todo-app example for ReactNative(Expo) developers",
         website: "https://expo.dev/@berdimyradov/todo-app",
         source: "https://github.com/berdimyradov/fs-rn-todo-app",
         preview: require("./img/fs-rn-todo-app.png"),
@@ -179,7 +182,14 @@ export const examples: Example[] = [
         preview: require("./img/sudoku.png"),
         version: VERSIONS.V2,
         updatedAt: "2023-06-08",
-        tech: ["react", "effector", "typescript", "vite", "tailwind", "atomic-router"],
+        tech: [
+            "react",
+            "effector",
+            "typescript",
+            "vite",
+            "tailwind",
+            "atomic-router",
+        ],
     },
     {
         title: "Kinomore (React+Effector)",
@@ -189,7 +199,13 @@ export const examples: Example[] = [
         preview: require("./img/kinomore.png"),
         version: VERSIONS.V2,
         updatedAt: "2023-07-10",
-        tech: ["react", "effector", "typescript", "nextjs", "react-testing-library"],
+        tech: [
+            "react",
+            "effector",
+            "typescript",
+            "nextjs",
+            "react-testing-library",
+        ],
     },
     {
         title: "Conduit",
@@ -200,11 +216,19 @@ export const examples: Example[] = [
         preview: require("./img/conduit.png"),
         version: VERSIONS.V2,
         updatedAt: "2023-06-21",
-        tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
+        tech: [
+            "react",
+            "react-router",
+            "react-query",
+            "zustand",
+            "vite",
+            "typescript",
+        ],
     },
     {
         title: "Todo app (Vue 3 + Pinia)",
-        description: "QuickStart todo-app example for Vue developers with pinia store",
+        description:
+            "QuickStart todo-app example for Vue developers with pinia store",
         website: "https://fsd-tasks.netlify.app/",
         source: "https://github.com/hoach-linux/fsd-vue-antd",
         preview: require("./img/todo-vue-pinia.png"),
@@ -225,7 +249,8 @@ export const examples: Example[] = [
     },
     {
         title: "Money Flow",
-        description: "A mobile application for tracking your expenses and incomes.",
+        description:
+            "A mobile application for tracking your expenses and incomes.",
         website: "https://moneyflow.cash",
         source: "https://github.com/moneyflow-dev/moneyflow",
         preview: require("./img/moneyflow.png"),

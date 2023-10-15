@@ -7,6 +7,6 @@ module.exports = {
     rules: {
         "color-hex-length": "long",
         "at-rule-no-unknown": true,
-        "selector-class-pattern": null
+        "selector-class-pattern": null,
     },
 };

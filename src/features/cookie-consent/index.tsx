@@ -18,7 +18,10 @@ export const CookieConsent = () => {
             expires={30}
         >
             {translate({ id: "features.cookie-consent.alert" })}
-            <Link to="/docs/privacy"> ({translate({ id: "features.cookie-consent.reason" })})</Link>
+            <Link to="/docs/privacy">
+                {" "}
+                ({translate({ id: "features.cookie-consent.reason" })})
+            </Link>
         </ReactCookieConsent>
     );
 };
