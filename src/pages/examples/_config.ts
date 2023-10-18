@@ -202,7 +202,17 @@ export const examples: Example[] = [
         updatedAt: "2023-06-21",
         tech: ["react", "react-router", "react-query", "zustand", "vite", "typescript"],
     },
-	{
+    {
+        title: "Todo app (Vue 3 + Pinia)",
+        description: "QuickStart todo-app example for Vue developers with pinia store",
+        website: "https://fsd-tasks.netlify.app/",
+        source: "https://github.com/hoach-linux/fsd-vue-antd",
+        preview: require("./img/todo-vue-pinia.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-010-12",
+        tech: ["vue 3", "pinia", "vite", "typescript"],
+    },
+    {
         title: "E-Commerce",
         description:
             "This project is an online store built using React. It provides the ability to view the product catalog and product pages",
@@ -212,17 +222,37 @@ export const examples: Example[] = [
         version: VERSIONS.V2,
         updatedAt: "2023-09-09",
         tech: ["react", "mobx", "webpack", "typescript", "ssr"],
-	},
-    {
-        title: "Сryptolight",
-        description:
-            "Cryptocurrency review site based on Feature-Sliced Design (Architectural methodology for frontend projects).",
-        website: "http://crypto-light.space/",
-        source: "https://github.com/Yar56/cryptolight",
-        preview: require("./img/cryptolight.png"),
-        version: VERSIONS.V2,
-        updatedAt: "2023-08-04",
-        tech: ["react", "effector", "nextui", "typescript", "vite"],
     },
+    {
+        title: "Money Flow",
+        description: "A mobile application for tracking your expenses and incomes.",
+        website: "https://moneyflow.cash",
+        source: "https://github.com/moneyflow-dev/moneyflow",
+        preview: require("./img/moneyflow.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-09-07",
+        tech: [
+            "capacitorjs",
+            "react",
+            "react-router",
+            "zustand",
+            "vite",
+            "typescript",
+            "mobile",
+            "android",
+            "ios",
+        ],
+    },
+	{
+		title: "Сryptolight",
+		description:
+			"Cryptocurrency review site based on Feature-Sliced Design (Architectural methodology for frontend projects).",
+		website: "http://crypto-light.space/",
+		source: "https://github.com/Yar56/cryptolight",
+		preview: require("./img/cryptolight.png"),
+		version: VERSIONS.V2,
+		updatedAt: "2023-10-18",
+		tech: ["react", "effector", "nextui", "typescript", "vite"],
+	},
     // Reverse the list (last examples should be at the top)
 ].reverse();
