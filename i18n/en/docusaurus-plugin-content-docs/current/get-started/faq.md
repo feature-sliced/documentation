@@ -42,7 +42,7 @@ For example, Atomic Design [can be applied well](https://t.me/feature_sliced/165
 
 ### Are there any useful resources/articles/etc. about FSD?
 
-Yes! <https://github.com/feature-sliced/awesome>
+Yes! https://github.com/feature-sliced/awesome
 
 ### Why do I need Feature-Sliced Design?
 

@@ -62,7 +62,7 @@ html {
     }
 }
 
-@media (max-width: 420px) {
+@media (width <= 420px) {
     .root {
         --height: 7rem;
     }

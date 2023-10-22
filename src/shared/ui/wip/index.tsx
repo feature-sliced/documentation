@@ -27,7 +27,9 @@ export const WIP: React.FC<Props> = ({ ticket }) => {
             <ul>
                 <li>
                     {translate({ id: "shared.wip.var.feedback.base" })}
-                    <Link to={ticketUrl}>{translate({ id: "shared.wip.var.feedback.link" })}</Link>
+                    <Link to={ticketUrl}>
+                        {translate({ id: "shared.wip.var.feedback.link" })}
+                    </Link>
                 </li>
                 <li>
                     {translate({ id: "shared.wip.var.material.base" })}

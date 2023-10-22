@@ -7,6 +7,8 @@ export function useDocOGUrl(metadata, buildOGPath = "assets/og/") {
 
     /* OG Preview images build with locale prefix (.../en/assets/...) for not default locales */
     return `${siteConfig.url}${
-        i18n.currentLocale !== i18n.defaultLocale ? `/${i18n.currentLocale}` : ""
+        i18n.currentLocale !== i18n.defaultLocale
+            ? `/${i18n.currentLocale}`
+            : ""
     }/${buildOGPath}${hashFileName}.jpg`;
 }

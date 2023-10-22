@@ -28,7 +28,9 @@ function Version() {
 
                 {latestVersion && (
                     <div className="margin-bottom--lg">
-                        <h3 id="next">Feature-Sliced Design v2.0.0 (Current)</h3>
+                        <h3 id="next">
+                            Feature-Sliced Design v2.0.0 (Current)
+                        </h3>
                         <p>{translate({ id: "pages.versions.current" })}</p>
                         <Table>
                             <Table.Row
@@ -51,7 +53,12 @@ function Version() {
 
                 <div className="margin-bottom--lg">
                     <h3 id="legacy">Feature Slices v1 (Legacy)</h3>
-                    <p>{translate({ id: "pages.versions.legacy" }, { of: "feature-slices" })}</p>
+                    <p>
+                        {translate(
+                            { id: "pages.versions.legacy" },
+                            { of: "feature-slices" },
+                        )}
+                    </p>
                     <Table>
                         <Table.Row
                             th="v1.0"
@@ -67,7 +74,12 @@ function Version() {
                 </div>
                 <div className="margin-bottom--lg">
                     <h3 id="legacy">Feature Driven (Legacy)</h3>
-                    <p>{translate({ id: "pages.versions.legacy" }, { of: "feature-driven" })}</p>
+                    <p>
+                        {translate(
+                            { id: "pages.versions.legacy" },
+                            { of: "feature-driven" },
+                        )}
+                    </p>
                     <Table>
                         <Table.Row
                             th="v0.1"

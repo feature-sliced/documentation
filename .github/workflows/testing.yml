@@ -34,7 +34,10 @@ jobs:
         uses: actions/cache@v3
         with:
           path: node_modules/.cache/webpack
-          key: ${{ runner.os }}-docusaurus
+          key: docusaurus-${{ github.ref_name }}
+          restore-keys: |
+            docusaurus-${{ github.ref_name }}
+            docusaurus-master
 
       - name: Check build
         run: pnpm build
@@ -59,6 +62,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install
         working-directory: .
+
+      - name: Retrieve linter cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./.eslintcache
+            ./node_modules/.cache/prettier/.prettier-cache
+            ./stylelintcache
+          key: linters-${{ github.ref_name }}
+          restore-keys: |
+            linters-${{ github.ref_name }}
+            linters-master
 
       - name: Check linting
         run: pnpm run test:lint

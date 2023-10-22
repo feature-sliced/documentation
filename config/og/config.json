@@ -1,12 +1,12 @@
 {
-  "outputDir": "assets/og",
-  "textWidthLimit": 1100,
-  "quality": 70,
-  "rules": [
-    {
-      "name": "basic",
-      "priority": 0,
-      "pattern": "."
-    }
-  ]
+    "outputDir": "assets/og",
+    "textWidthLimit": 1100,
+    "quality": 70,
+    "rules": [
+        {
+            "name": "basic",
+            "priority": 0,
+            "pattern": "."
+        }
+    ]
 }

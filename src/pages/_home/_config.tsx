@@ -18,7 +18,9 @@ export const features = [
     {
         title: translate({ id: "pages.home.features.adaptability.title" }),
         Icon: LoginOutlined,
-        description: translate({ id: "pages.home.features.adaptability.description" }),
+        description: translate({
+            id: "pages.home.features.adaptability.description",
+        }),
     },
     {
         title: translate({ id: "pages.home.features.debt.title" }),
@@ -28,7 +30,9 @@ export const features = [
     {
         title: translate({ id: "pages.home.features.shared.title" }),
         Icon: BuildOutlined,
-        description: translate({ id: "pages.home.features.shared.description" }),
+        description: translate({
+            id: "pages.home.features.shared.description",
+        }),
     },
 ];
 
@@ -36,12 +40,16 @@ export const concepts = [
     {
         title: translate({ id: "pages.home.concepts.public.title" }),
         Icon: ApiOutlined,
-        description: translate({ id: "pages.home.concepts.public.description" }),
+        description: translate({
+            id: "pages.home.concepts.public.description",
+        }),
     },
     {
         title: translate({ id: "pages.home.concepts.isolation.title" }),
         Icon: BlockOutlined,
-        description: translate({ id: "pages.home.concepts.isolation.description" }),
+        description: translate({
+            id: "pages.home.concepts.isolation.description",
+        }),
     },
     {
         title: translate({ id: "pages.home.concepts.needs.title" }),

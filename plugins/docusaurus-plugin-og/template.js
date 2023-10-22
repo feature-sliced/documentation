@@ -8,7 +8,9 @@ const dirIgnore = ["config.json"];
 async function getTemplates(templatesDir, encode = "utf8") {
     try {
         const allDirFiles = await readdir(templatesDir);
-        const templatesDirNames = allDirFiles.filter((fileName) => !dirIgnore.includes(fileName));
+        const templatesDirNames = allDirFiles.filter(
+            (fileName) => !dirIgnore.includes(fileName),
+        );
 
         const templates = await Promise.all(
             templatesDirNames.map(async (templateName) => {

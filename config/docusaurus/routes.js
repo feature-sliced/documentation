@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 // Custom "not-docusaurus-related" config for routes setup
 // @see https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
 
@@ -46,7 +47,8 @@ const LEGACY_ROUTES = [
     },
     {
         group: "🍰 Alternatives",
-        details: "Moved and merged to /about/alternatives as advanced materials",
+        details:
+            "Moved and merged to /about/alternatives as advanced materials",
         children: [
             {
                 title: "Architecture approaches alternatives",
@@ -214,7 +216,8 @@ const LEGACY_ROUTES = [
     },
     {
         group: "🎯 Examples",
-        details: "Grouped and simplified into /guides/examples as practical examples",
+        details:
+            "Grouped and simplified into /guides/examples as practical examples",
         children: [
             {
                 title: "Viewer logic",
@@ -235,7 +238,8 @@ const LEGACY_ROUTES = [
     },
     {
         group: "🎯 Migration",
-        details: "Grouped and simplified into /guides/migration as migration guidelines",
+        details:
+            "Grouped and simplified into /guides/migration as migration guidelines",
         children: [
             {
                 title: "Migration from V1",
@@ -270,10 +274,12 @@ const LEGACY_ROUTES_REDIRECTS = LEGACY_ROUTES.reduce((acc, group) => {
 
 // FIXME: temp, resolve later
 // @returns { from, to }[]
-const SECTIONS_REDIRECTS = Object.values(SECTIONS).map(({ shortPath, fullPath }) => ({
-    from: shortPath,
-    to: fullPath,
-}));
+const SECTIONS_REDIRECTS = Object.values(SECTIONS).map(
+    ({ shortPath, fullPath }) => ({
+        from: shortPath,
+        to: fullPath,
+    }),
+);
 
 // !!! FIXME: refactor later!
 // UPD: Removed new docs routes for simplifying
@@ -322,7 +328,11 @@ const I18N_REDIRECTS = _TOTAL_ROUTES.map((route) => ({
 }));
 // NOTE: temp redirects, resolve later
 // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-client-redirects
-const REDIRECTS = [...SECTIONS_REDIRECTS, ...LEGACY_ROUTES_REDIRECTS, ...I18N_REDIRECTS];
+const REDIRECTS = [
+    ...SECTIONS_REDIRECTS,
+    ...LEGACY_ROUTES_REDIRECTS,
+    ...I18N_REDIRECTS,
+];
 
 module.exports = {
     LEGACY_ROUTES,

@@ -17,7 +17,12 @@ function createLayoutLayers(doc, layout, previewFont, textWidthLimit) {
 
         return {
             input: Buffer.from(
-                createSVGText(previewFont, doc[layer.name], layoutOptions, textWidthLimit),
+                createSVGText(
+                    previewFont,
+                    doc[layer.name],
+                    layoutOptions,
+                    textWidthLimit,
+                ),
             ),
             top: layer.top,
             left: layer.left,

@@ -1,10 +1,10 @@
 const CATEGORIES = {
     "get-started": "🚀  Get Started",
-    "guides": "🎯  Guides",
-    "reference": "📚  Reference",
-    "about": "🍰  About",
-    "community": "💫  Community",
-    "examples": "🛠  Examples",
+    guides: "🎯  Guides",
+    reference: "📚  Reference",
+    about: "🍰  About",
+    community: "💫  Community",
+    examples: "🛠  Examples",
 };
 
 module.exports = {
