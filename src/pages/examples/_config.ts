@@ -268,16 +268,16 @@ export const examples: Example[] = [
             "ios",
         ],
     },
-	{
-		title: "Сryptolight",
-		description:
-			"Cryptocurrency review site based on Feature-Sliced Design (Architectural methodology for frontend projects).",
-		website: "http://crypto-light.space/",
-		source: "https://github.com/Yar56/cryptolight",
-		preview: require("./img/cryptolight.png"),
-		version: VERSIONS.V2,
-		updatedAt: "2023-10-18",
-		tech: ["react", "effector", "nextui", "typescript", "vite"],
-	},
+    {
+        title: "Сryptolight",
+        description:
+            "Cryptocurrency review site based on Feature-Sliced Design (Architectural methodology for frontend projects).",
+        website: "http://crypto-light.space/",
+        source: "https://github.com/Yar56/cryptolight",
+        preview: require("./img/cryptolight.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-10-18",
+        tech: ["react", "effector", "nextui", "typescript", "vite"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();

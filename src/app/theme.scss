@@ -1,36 +1,9 @@
-@import "@fontsource/overpass/400.css";
-@import "@fontsource/ubuntu/400.css";
-@import "@fontsource/ubuntu/700.css";
-
 /* https://docusaurus.io/docs/styling-layout */
 
 :root {
     // Base styles
     --ifm-code-font-size: 95%;
-    --ifm-h2-font-size: 1.75rem;
     --ifm-button-color: #ffffff;
-
-    // Default colors
-
-    /* --ifm-color-primary: #25c2a0;
-    --ifm-color-primary-dark: rgb(33, 175, 144);
-    --ifm-color-primary-darker: rgb(31, 165, 136);
-    --ifm-color-primary-darkest: rgb(26, 136, 112);
-    --ifm-color-primary-light: rgb(70, 203, 174);
-    --ifm-color-primary-lighter: rgb(102, 212, 189);
-    --ifm-color-primary-lightest: rgb(146, 224, 208); */
-
-    // 2.0.0-beta theme (legacy)
-
-    /* --ifm-color-primary: #5c9cb5;
-    --ifm-color-primary-dark: #4d8fa9;
-    --ifm-color-primary-darker: #4887a0;
-    --ifm-color-primary-darkest: #3c6f83;
-    --ifm-color-primary-light: #6fa7be;
-    --ifm-color-primary-lighter: #78adc2;
-    --ifm-color-primary-lightest: #94becf; */
-
-    // 2.0.0-stable theme (current)
     --ifm-color-primary: #2b74d4;
     --ifm-color-primary-dark: #2768bf;
     --ifm-color-primary-darker: #2563b4;
@@ -41,11 +14,8 @@
     --ifm-color-primary-grad1: #29bedc;
     --ifm-color-primary-grad2: #517aed;
     --ifm-color-primary-neutral: #4a7ec2c6;
-    --ifm-font-family-base: "Ubuntu", system-ui, -apple-system, segoe ui, roboto,
-        ubuntu, cantarell, noto sans, sans-serif, blinkmacsystemfont, "Segoe UI",
-        helvetica, arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-        "Segoe UI Symbol";
-    --ifm-heading-font-family: "Overpass", var(--ifm-font-family-base);
+    --ifm-heading-font-family: "Overpass Variable",
+        var(--ifm-font-family-base, sans-serif);
     --ifm-color-violet: #5c21dd;
 }
 

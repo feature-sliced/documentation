@@ -11,6 +11,15 @@
 @import "./navbar";
 @import "./doc-item";
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: -0.5px;
+}
+
 @media screen and (width <= 450px) {
     .button-group {
         display: block;
