@@ -23,12 +23,6 @@ dependencies:
   '@docusaurus/preset-classic':
     specifier: ^3.0.0-beta.0
     version: 3.0.0-beta.0(@algolia/client-search@4.20.0)(@types/react@18.2.28)(eslint@7.32.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
-  '@fontsource/overpass':
-    specifier: ^4.5.4
-    version: 4.5.4
-  '@fontsource/ubuntu':
-    specifier: ^4.5.4
-    version: 4.5.4
   '@mdx-js/react':
     specifier: ^2.3.0
     version: 2.3.0(react@18.2.0)
@@ -2540,14 +2534,6 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
-
-  /@fontsource/overpass@4.5.4:
-    resolution: {integrity: sha512-jCYMISy780D6E+RxV3MHe2Nrteg4Eq26D4yORpGp+AoW11N2IPN+u1rJJVFz8pIyXUekSGfTSHzScSsF2iTIZQ==}
-    dev: false
-
-  /@fontsource/ubuntu@4.5.4:
-    resolution: {integrity: sha512-wekWBF7Mj0GOyoLHnsSXgKZyO7gfS1KzQXOqxEOUUO9wj4ligv4QAWj/hnDqKDtYdBXxBAVKr5B7Yp3LrI6/mw==}
-    dev: false
 
   /@hapi/hoek@9.3.0:
     resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}
