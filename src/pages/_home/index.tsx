@@ -16,17 +16,31 @@ export default function HomePage() {
     // NOTE: use siteConfig for getting config
     // const {siteConfig} = useDocusaurusContext();
     return (
-        <Layout title="Welcome" description="Architectural methodology for frontend projects">
+        <Layout
+            title="Welcome"
+            description="Architectural methodology for frontend projects"
+        >
             <Hero />
             <main>
                 <Section title={translate({ id: "pages.home.features.title" })}>
                     {features.map((feature) => (
-                        <Card key={feature.title} size={12 / features.length} {...feature} />
+                        <Card
+                            key={feature.title}
+                            size={12 / features.length}
+                            {...feature}
+                        />
                     ))}
                 </Section>
-                <Section title={translate({ id: "pages.home.concepts.title" })} withAltBg>
+                <Section
+                    title={translate({ id: "pages.home.concepts.title" })}
+                    withAltBg
+                >
                     {concepts.map((concept) => (
-                        <Card key={concept.title} size={12 / concepts.length} {...concept} />
+                        <Card
+                            key={concept.title}
+                            size={12 / concepts.length}
+                            {...concept}
+                        />
                     ))}
                 </Section>
                 <Section

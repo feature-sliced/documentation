@@ -7,7 +7,9 @@ function createFontsMapFromTemplates(templates) {
         if (!fonts.has(template.params.font)) {
             fonts.set(
                 template.params.font,
-                textToSVG.loadSync(resolve(template.path, template.name, template.params.font)),
+                textToSVG.loadSync(
+                    resolve(template.path, template.name, template.params.font),
+                ),
             );
         }
     });

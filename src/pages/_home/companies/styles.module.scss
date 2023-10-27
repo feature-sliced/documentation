@@ -36,7 +36,7 @@
     text-align: center;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (width <= 800px) {
     .item {
         margin: 0 10px;
     }

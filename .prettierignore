@@ -6,3 +6,4 @@ public/
 .workflows
 *.md
 *.mdx
+pnpm-lock.yaml

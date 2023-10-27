@@ -78,7 +78,9 @@ export const DocFeedback: React.FC<Props> = ({ className }) => {
                 />
             </div>
             <div className={styles.subtitle}>
-                <span>{translate({ id: "features.feedback-doc.subtitle" })}</span>
+                <span>
+                    {translate({ id: "features.feedback-doc.subtitle" })}
+                </span>
             </div>
         </div>
     );

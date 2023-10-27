@@ -29,7 +29,8 @@ module.exports = function (_, { templatesDir }) {
                 (plugin) => plugin.name === "docusaurus-plugin-content-docs",
             );
 
-            if (!docsPlugin) throw new Error("Docusaurus Doc plugin not found.");
+            if (!docsPlugin)
+                throw new Error("Docusaurus Doc plugin not found.");
 
             const previewOutputDir = resolve(outDir, config.outputDir);
 
@@ -46,7 +47,12 @@ module.exports = function (_, { templatesDir }) {
             docsVersions.forEach((version) => {
                 const { docs } = version;
                 docs.forEach((document) => {
-                    generateImageFromDoc(initData, document, i18n.currentLocale, previewOutputDir);
+                    generateImageFromDoc(
+                        initData,
+                        document,
+                        i18n.currentLocale,
+                        previewOutputDir,
+                    );
                 });
             });
         },
@@ -83,7 +89,9 @@ async function generateImageFromDoc(initData, doc, locale, outputDir) {
 
     const templateName = getTemplateNameByRules(id, config.rules);
 
-    const template = templates.find((template) => template.name === templateName);
+    const template = templates.find(
+        (template) => template.name === templateName,
+    );
 
     const previewImage = await images.get(getTemplateImageId(template)).clone();
 

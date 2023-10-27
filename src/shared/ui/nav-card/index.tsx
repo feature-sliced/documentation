@@ -21,7 +21,16 @@ type Props = {
  * @see https://docusaurus.io/docs/next/markdown-features/react#importing-markdown
  */
 export const NavCard: React.FC<Props> = (props) => {
-    const { title, description, to, Icon, tags, className, disabled, theme = "default" } = props;
+    const {
+        title,
+        description,
+        to,
+        Icon,
+        tags,
+        className,
+        disabled,
+        theme = "default",
+    } = props;
     const handleClick = useCallback(() => {
         ga.sendEvent({
             category: ga.CATEGORIES.full,
@@ -48,7 +57,9 @@ export const NavCard: React.FC<Props> = (props) => {
                     <span className={styles.title}>{title}</span>
                     <p className={styles.description}>{description}</p>
                 </div>
-                {tags && <div className={styles.detailsTags}>{tags.join(" • ")}</div>}
+                {tags && (
+                    <div className={styles.detailsTags}>{tags.join(" • ")}</div>
+                )}
             </div>
         </Link>
     );

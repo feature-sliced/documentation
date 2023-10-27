@@ -11,18 +11,30 @@ export function Hero() {
         <header className={clsx("hero hero--primary", styles.heroBanner)}>
             <div className="container">
                 <h1 className="hero__title">{siteConfig.title}</h1>
-                <p className="hero__subtitle">{translate({ id: "features.hero.tagline" })}</p>
+                <p className="hero__subtitle">
+                    {translate({ id: "features.hero.tagline" })}
+                </p>
                 <div className="button-group">
-                    <Link className="button button--primary button--lg" to="/docs">
+                    <Link
+                        className="button button--primary button--lg"
+                        to="/docs"
+                    >
                         {translate({ id: "features.hero.get_started" })}
                     </Link>
-                    <Link className="button button--secondary button--lg" to="/examples">
+                    <Link
+                        className="button button--secondary button--lg"
+                        to="/examples"
+                    >
                         {translate({ id: "features.hero.examples" })}
                     </Link>
                 </div>
                 <div className="margin-top--md">
-                    <Link className={styles.link} to="https://featureslices.dev/">
-                        {translate({ id: "features.hero.previous" })} (feature-slices@v1)
+                    <Link
+                        className={styles.link}
+                        to="https://featureslices.dev/"
+                    >
+                        {translate({ id: "features.hero.previous" })}{" "}
+                        (feature-slices@v1)
                     </Link>
                 </div>
             </div>

@@ -33,6 +33,15 @@ jobs:
         run: pnpm install
         working-directory: .
 
+      - name: Retrieve Docusaurus build cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules/.cache/webpack
+          key: docusaurus-${{ github.ref_name }}
+          restore-keys: |
+            docusaurus-${{ github.ref_name }}
+            docusaurus-master
+
       - name: Build static
         run: pnpm build
         working-directory: .

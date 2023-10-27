@@ -24,7 +24,7 @@ More details [discussed in the discussion][disc-src]
 > - *"All the problems are solved by good project documentation, tests, and structured processes"*
 > - *"Problems would not have happened if all developers are following all the above"*
 > - *"Everything was invented before you, you just can't use it"*
-> - *"Take {FRAMEWORK_NAME} - everything has already been decided for you there"*
+> - *"Take \{FRAMEWORK_NAME\} - everything has already been decided for you there"*
 
 ### Principles alone are not enough
 

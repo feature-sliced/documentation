@@ -1,7 +1,7 @@
 require("dotenv").config();
 const cfg = require("./config/docusaurus");
 
-/** @typedef {import('@docusaurus/types').DocusaurusConfig} Config */
+/** @typedef {import('@docusaurus/types').Config} Config */
 
 /**
  * Custom fields (for access on code-level)
@@ -45,6 +45,11 @@ module.exports = {
         algolia: cfg.algolia,
         metadata: cfg.metadata,
         hotjar: cfg.metrics.hotjar,
+        imageZoom: {
+            options: {
+                background: "rgb(255 255 255 / 0.3)",
+            },
+        },
     },
 };
 
