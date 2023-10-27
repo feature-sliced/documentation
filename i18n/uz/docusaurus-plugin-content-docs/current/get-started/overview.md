@@ -10,7 +10,7 @@ FSD ba'zi ogohlantirishlar bilan har qanday hajmdagi loyihalar va jamoalar uchun
 
 - Ushbu metodologiya faqat frontend uchun. Agar siz backend arxitekturasini izlayotgan bo'lsangiz, [Clean Architecture][refs-clean-architecture] ga e'tibor bering.
 - Ushbu metodologiya faqatgina foydalanuvchi interfeysi ilovalari uchun. Katta komponentli kutubxona arxitekturasi uchun ilhom sifatida [Material UI][ext-material-ui] lar tavsiya etiladi.
-- Agar siz FSD-da juda oddiy bir sahifali dasturni ishlab chiqayotgan bo'lsangiz, metodologiyaning afzalliklariga ehtiyoj sezilmaydi, va dasturlashni susayishi mumkin. Biroq, FSD oldingi ilovalar haqida standartlashtirilgan tarzda fikr yuritishga yordam beradi, shuning uchun agar sizga nima kerakligini bilsangiz, undan hatto kichik loyihalarda ham foydalaning.
+- Agar siz FSD-da juda oddiy bir sahifali dasturni ishlab chiqayotgan bo'lsangiz, metodologiyaning afzalliklariga ehtiyoj sezilmaydi, va kodlash jarayoni sekinlashishi mumkin. Biroq, FSD oldingi ilovalar haqida standartlashtirilgan tarzda fikr yuritishga yordam beradi, shuning uchun agar sizga nima kerakligini bilsangiz, undan hatto kichik loyihalarda ham foydalaning.
 - Google Cloud administrator paneli hajmidagi ulkan dasturlarda maxsus arxitekturani talab qiladi. Bu holda FSD boshlang'ich nuqtasi sifatida harakat qilishi mumkin.
 
 Metodologiya ma'lum bir dasturlash tiliga, UI ramkasiga yoki davlat menejeriga bog'liq emas - har qanday ([ishlash namunalari][refs-examples]) ga tog'ri keladi.
