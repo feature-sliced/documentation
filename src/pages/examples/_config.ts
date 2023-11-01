@@ -23,6 +23,15 @@ export const VERSIONS = {
  */
 export const examples: Example[] = [
     {
+        title: "PseudoTube",
+        description: "A place where you can share your opinion about cinema and learn something else besides the name.",
+        source: "https://github.com/MaksimPir/movie_catalog",
+        preview: require("./img/pseudoTube_screens.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-11-01",
+        tech: ["react","typescript", "axios","SCSS","Redux-toolkit"],
+    },
+    {
         title: "Cardbox",
         description: "The best solutions from developers in one place",
         source: "https://github.com/cardbox/frontend",
