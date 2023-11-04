@@ -28,6 +28,7 @@ export const examples: Example[] = [
         source: "https://github.com/MaksimPir/movie_catalog",
         preview: require("./img/pseudoTube_screens.png"),
         version: VERSIONS.V2,
+        website: "https://pseudotube-client.vercel.app/",
         updatedAt: "2023-11-01",
         tech: ["react","typescript", "axios","SCSS","Redux-toolkit"],
     },
