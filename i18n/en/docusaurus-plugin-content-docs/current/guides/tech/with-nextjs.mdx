@@ -11,6 +11,90 @@ import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 
 > About the specifics of the framework and compatibility with the methodology
 
+ 
+
+NextJS works well with Feature-Sliced Design, but conflicts may arise due to the differences between NextJS project structure requirements and Feature-Sliced Design principles.
+Namely, in two points: 
+
+- File routing in the pages layer
+- The absence of the app layer in NextJS
+
+## Conflict between FSD and NextJS on `pages` layer
+
+NextJS suggests using the `pages` directory to define the application's routes. By default, NextJS expects the files in the `pages` folder to correspond to specific URL addresses.
+This routing mechanism **does not** align with the concept of Feature-Sliced Design, as it can lead to mixing the functionality of different modules in one file.
+
+### Moving the `pages` folder from Next.js to the root directory of the project (recommended)
+
+The approach is to move the `pages` folder from NextJS to the root directory of the project, while preserving the Feature-Sliced Design
+project structure inside the `src` folder. To achieve this, you can modify the NextJS settings and specify a new path to the folder with the pages. 
+For example, you can use the `pagesDir` option in the Next.js configuration to specify the path to the folder with the pages.
+
+```sh
+├── pages              # NextJS pages directory
+├── src
+│   ├── app
+│   ├── entities
+│   ├── features  
+│   ├── pages          # FSD pages directory
+│   ├── shared
+│   ├── widgets
+```
+
+### Renaming the `pages` folder within the FSD structure
+
+One way to solve the conflict issue is to rename the `pages` folder within the FSD structure to avoid conflicts
+with the `pages` folder in NextJS.
+You should rename the `pages` folder within Feature-Sliced Design to `pages-flat`.
+This way, the project structure within the `src` folder will be preserved without conflicting with NextJS requirements.
+
+```sh
+├── app
+├── entities
+├── features  
+├── pages              # NextJS pages directory
+├── pages-flat         # Renamed FSD pages directory
+├── shared
+├── widgets             
+```
+
+## The absence of the `app` layer in NextJS
+
+There is no explicit `app` layer in the NextJS structure, instead, NextJS provides the `_app.tsx` file,
+which plays the role of a common wrapping component for all application pages.
+
+### Importing app functionality to `pages/_app.tsx` file
+
+To solve the problem you should create a component inside `app` layer to import it inside `pages/_app.tsx` file for NextJS to work with it.
+For example, we have `App` component:
+
+```tsx
+// app/index.tsx
+
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <Provider1>
+      <Provider2>
+        <BaseLayout>
+            <Component {...pageProps} />
+        </BaseLayout>
+      </Provider2>
+    </Provider1>
+  );
+};
+
+export default App;
+```
+We should import created `App` component and global styles of the project to `pages/_app.tsx` like this:
+
+```tsx
+// pages/_app.tsx
+
+import 'app/styles/index.scss'
+
+export { default } from 'app';
+```
+
 ## See also
 
 - [(Thread) About the pages directory in NextJS](https://t.me/feature_sliced/3623)
