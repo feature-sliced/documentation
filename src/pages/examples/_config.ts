@@ -207,7 +207,7 @@ export const examples: Example[] = [
         description: "Nuxt 3 + Pinia + Feature-Sliced Design architectural methodology.",
         website: "https://github.com/Denis-Str/nuxt3-fs",
         source: "https://github.com/Denis-Str/nuxt3-fs",
-        preview: require("./img/todo-app-nuxt.png"),
+        preview: require("./img/todo-app-vue.png"),
         version: VERSIONS.V2,
         updatedAt: "2023-09-06",
         tech: ["Nuxt 3", "Pinia", "Composition api"],
