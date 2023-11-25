@@ -279,5 +279,15 @@ export const examples: Example[] = [
         updatedAt: "2023-10-18",
         tech: ["react", "effector", "nextui", "typescript", "vite"],
     },
+    {
+        title: "VK Audiopad",
+        description: "Chrome extension for VK Music",
+        website: "https://github.com/vissh/vkui-audiopad",
+        source: "https://github.com/vissh/vkui-audiopad",
+        preview: require("./img/vkaudiopad.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-11-25",
+        tech: ["react", "vkui", "typescript"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
