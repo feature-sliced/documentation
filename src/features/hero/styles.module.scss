@@ -15,10 +15,14 @@
 
     /* height: 500px; */
     text-align: center;
-    background: linear-gradient(45deg, var(--ifm-color-primary-grad1), var(--ifm-color-primary-grad2));
+    background: linear-gradient(
+        45deg,
+        var(--ifm-color-primary-grad1),
+        var(--ifm-color-primary-grad2)
+    );
 }
 
-@media screen and (max-width: 966px) {
+@media screen and (width <= 966px) {
     .heroBanner {
         padding: 2rem;
     }

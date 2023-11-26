@@ -6,12 +6,21 @@
  * work well for content-centric websites.
  */
 
-@import "./theme.scss";
-@import "./scroll.scss";
-@import "./navbar.scss";
-@import "./doc-item.scss";
+@import "./theme";
+@import "./scroll";
+@import "./navbar";
+@import "./doc-item";
 
-@media screen and (max-width: 450px) {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: -0.5px;
+}
+
+@media screen and (width <= 450px) {
     .button-group {
         display: block;
     }

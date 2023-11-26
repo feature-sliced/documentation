@@ -7,21 +7,46 @@ pagination_next: guides/index
 
 :::info
 
-You can ask your question in [telegram chat](https://t.me/feature_sliced) / [github-issues](https://github.com/feature-sliced/documentation/issues) / [github-discussions](https://github.com/feature-sliced/documentation/discussions)
+You can ask your question in our [Telegram chat][telegram], [Discord community][discord], and [GitHub Discussions][github-discussions].
 
 :::
 
-### Structure = Architecture?
+### Is there a toolkit or a linter?
 
-Architecture defines abstractions and relations between them (shared/features/pages/...)
+There is an official ESLint config — [@feature-sliced/eslint-config][eslint-config-official], and an ESLint plugin — [@conarti/eslint-plugin-feature-sliced][eslint-plugin-conarti], created by Aleksandr Belous, a community member. You're welcome to contribute to these projects or start your own!
 
-*But without a proper structure, it's difficult to design a good architecture*
+### Where to store the layout/template of pages?
 
-### Do I need a methodology only for "understanding and clarity" of what is happening in the project?
+If you need plain markup layouts, you can keep them in `shared/ui`. If you need to use higher layers inside, there are a few options:
 
-Rather yes than no
+- Perhaps you don't need layouts at all? If the layout is only a few lines, it might be reasonable to duplicate the code in each page rather than try to abstract it.
+- If you do need layouts, you can have them as separate widgets or pages, and compose them in your router configuration in App. Nested routing is another option.
 
-*Otherwise, you have to read huge directories `components/`...*
+### What is the difference between a feature and an entity?
+
+An _entity_ is a real-life concept that your app is working with. A _feature_ is an nteraction that provides real-life value to your app’s users, the thing people want to do with your entities.
+
+For more information, along with examples, see the Reference page on [slices][reference-entities].
+
+### Can I embed pages/features/entities into each other?
+
+Yes, but this embedding should happen in higher layers. For example, inside a widget, you can import both features and then insert one feature into another as props/children.
+
+You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**][import-rule-layers].
+
+### What about Atomic Design?
+
+The current version of the methodology does not require nor prohibit the use of Atomic Design together with Feature-Sliced Design.
+
+For example, Atomic Design [can be applied well](https://t.me/feature_sliced/1653) for the `ui` segment of modules.
+
+### Are there any useful resources/articles/etc. about FSD?
+
+Yes! https://github.com/feature-sliced/awesome
+
+### Why do I need Feature-Sliced Design?
+
+It helps you and your team to quickly overview the project in terms of its main value-bringing components. A standardized architecture helps to speed up onboarding and resolves debates about code structure. See the [motivation][motivation] page to learn more about why FSD was created.
 
 ### Does a novice developer need an architecture/methodology?
 
@@ -29,75 +54,15 @@ Rather yes than no
 
 *Usually, when you design and develop a project in one person, everything goes smoothly. But if there are pauses in development, new developers are added to the team - then problems come*
 
-### Why do we need another methodology when everything is based on principles?
-
-Answered [here](/docs/about/motivation)
-
-### Where can I find examples of applying the methodology?
-
-There are only such ones in the public domain so far, not all of them have been fully adapted to the latest version
-
-*In the near future, the list will be updated and will be placed in a separate section*
-
-- [Internal Examples](https://github.com/feature-sliced/examples)
-- [External Examples](/examples)
-
-*Also, you can get acquainted with our [guides](/docs/guides) and [tutorials](/docs/get-started)*
-
-### Are there some useful resources / articles / etc about FSD and related things?
-
-<https://github.com/feature-sliced/awesome>
-
-### The project is written on feature-slices v1, how to update and is it worth it?
-
-Answered [here](/docs/guides/migration/from-v1)
-
-### Can I embed pages/features/entities into each other?
-
-Answered [here](/docs/reference/slices-segments#slices)
-
 ### How do I work with the authorization context?
 
 Answered [here](/docs/guides/examples/auth)
 
-### What about Atomic Design?
-
-The current version of the methodology does not oblige, but also does not prohibit the use of Atomic Design together with Feature-Sliced Design
-
-At the same time, Atomic Design [is well applied](https://t.me/feature_sliced/1653) for the `ui` segment of modules
-
-### What is the difference between feature and entity?
-
-- `Entity` - business **entity**
-  - blog-post / user / order / product / ...
-- `Feature` - business feature, **action on an entity**
-  - create-blog-post / login-by-oauth / edit-account / publish-video / ...
-
-See also [comparison reference](/docs/reference/layers), [viewer implementation of logic by layers](/docs/guides/examples/auth)
-
-### Where to store the layout/template of pages?
-
-It is better to store general templates for markup in `shared/ui`, but there are [different cases](https://github.com/feature-sliced/documentation/discussions/129)
-
-### Will there be a toolkit / linters?
-
-It will be, at the moment - in development =)
-
-> For now, to sort / prohibit imports, you can use
->
-> - `eslint-plugin-import`
-> - `eslint-plugin-simple-import-sort`
-> - `eslint-plugin-boundaries`
-> - `dependency-cruiser`
->
-> See [basic config example](https://gist.github.com/azinit/4cb940a1d4a3e05ef47e15aa18a9ecc5)
-
-### Can I store the features used on one page directly in the page directory?
-
-The methodology strongly recommends against doing this, since each module has a corresponding place in the structure.
-
-Otherwise , there is a risk of complicating the project's code base
-
-> *"Today, the feature can only be used on one page. Next week - on three. And in a month - it may be removed at all. We cannot predict the future, and we need to refrain from premature optimizations every time"*
-
-*See also the example from [tutorial](/docs/get-started/tutorial#normal-approach)*
+[import-rule-layers]: /docs/reference/layers#import-rule-on-layers
+[reference-entities]: /docs/reference/layers#entities
+[eslint-config-official]: https://github.com/feature-sliced/eslint-config
+[eslint-plugin-conarti]: https://github.com/conarti/eslint-plugin-feature-sliced
+[motivation]: /docs/about/motivation
+[telegram]: https://t.me/feature_sliced
+[discord]: https://discord.gg/S8MzWTUsmp
+[github-discussions]: https://github.com/feature-sliced/documentation/discussions

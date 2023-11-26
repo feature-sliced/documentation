@@ -9,7 +9,10 @@ import styles from "./styles.module.scss";
 
 const NavPage = () => {
     return (
-        <Layout title="🧭 Navigation" description="Feature-Sliced Design Navigation help page">
+        <Layout
+            title="🧭 Navigation"
+            description="Feature-Sliced Design Navigation help page"
+        >
             <main className={clsx("container", styles.root)}>
                 <h1>{translate({ id: "pages.nav.title" })}</h1>
                 <section className={styles.section}>
@@ -33,7 +36,9 @@ const GroupItems = () => {
             {(legacyRoutes as any).map((routesBatch) => (
                 <div key={routesBatch.group} className={styles.group}>
                     <h3>{routesBatch.group}</h3>
-                    <p className={styles.groupDetails}>⚡️ {routesBatch.details}</p>
+                    <p className={styles.groupDetails}>
+                        ⚡️ {routesBatch.details}
+                    </p>
                     <div className={styles.groupItems}>
                         {routesBatch.children.map((route) => (
                             <NavCard
@@ -44,7 +49,8 @@ const GroupItems = () => {
                                 description={
                                     <div className={styles.route}>
                                         <div>
-                                            <b>old</b>: {flattenFrom(route.from)}
+                                            <b>old</b>:{" "}
+                                            {flattenFrom(route.from)}
                                         </div>
                                         <div>
                                             <b>new</b>: {route.to}

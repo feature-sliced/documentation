@@ -25,7 +25,8 @@ function ExamplesPage() {
                             target="_blank"
                             rel="noreferrer noopener"
                         >
-                            🙏 {translate({ id: "pages.examples.add_me.title" })}
+                            🙏{" "}
+                            {translate({ id: "pages.examples.add_me.title" })}
                         </a>
                         <a
                             className="button button--secondary"
@@ -37,14 +38,19 @@ function ExamplesPage() {
                         </a>
                     </div>
                     <div className="margin-top--sm">
-                        <a href="/versions">{translate({ id: "pages.examples.versions" })}</a>
+                        <a href="/versions">
+                            {translate({ id: "pages.examples.versions" })}
+                        </a>
                     </div>
                 </div>
                 <section className="container margin-top--lg">
                     <div className="margin-top--lg">
                         <div className="row">
                             {examples.map((data) => (
-                                <article key={data.title} className="col col--4 margin-bottom--lg">
+                                <article
+                                    key={data.title}
+                                    className="col col--4 margin-bottom--lg"
+                                >
                                     <ExampleCard data={data} />
                                 </article>
                             ))}

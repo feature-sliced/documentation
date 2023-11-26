@@ -3,11 +3,12 @@
 .root {
     color: var(--ifm-font-color-base) !important;
     background-color: var(--ifm-background-surface-color) !important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 30%);
 }
 
 .button {
-    padding: var(--ifm-button-padding-vertical) var(--ifm-button-padding-horizontal) !important;
+    padding: var(--ifm-button-padding-vertical)
+        var(--ifm-button-padding-horizontal) !important;
     margin: 8px !important;
     color: var(--ifm-button-color) !important;
     background: var(--ifm-color-primary-dark) !important;
@@ -19,7 +20,7 @@
     }
 }
 
-@media (max-width: 460px) {
+@media (width <= 460px) {
     .buttonWrapper {
         flex-grow: 1;
         text-align: center;

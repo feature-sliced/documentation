@@ -20,3 +20,6 @@ build
 .env.production.local
 
 npm-debug.log*
+
+.eslintcache
+.stylelintcache

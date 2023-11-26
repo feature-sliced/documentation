@@ -45,7 +45,10 @@ export const ExampleCard: React.FC<Props> = ({ className, data }) => {
             </div>
             <div className={clsx("card__body", styles.content)}>
                 {isNew && (
-                    <span title="Was updated less than 2 weeks ago" className={styles.labelNew}>
+                    <span
+                        title="Was updated less than 2 weeks ago"
+                        className={styles.labelNew}
+                    >
                         NEW:{" "}
                     </span>
                 )}
@@ -55,7 +58,10 @@ export const ExampleCard: React.FC<Props> = ({ className, data }) => {
                     <div className={styles.techList}>
                         {data.tech.map((techItem) => (
                             <span
-                                className={clsx(styles.techListItem, styles[`tech-${techItem}`])}
+                                className={clsx(
+                                    styles.techListItem,
+                                    styles[`tech-${techItem}`],
+                                )}
                                 key={techItem}
                             >
                                 {techItem}

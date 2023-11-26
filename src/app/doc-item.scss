@@ -1,4 +1,4 @@
-@import "./theme.scss";
+@import "./theme";
 
 html {
     /**
@@ -15,7 +15,7 @@ html {
     }
 
     & img[alt*="bordered"] {
-        border: 1px solid rgb(211, 213, 216);
+        border: 1px solid rgb(211 213 216);
         border-radius: 16px;
     }
 
@@ -28,22 +28,22 @@ html {
     }
 }
 
-:root[data-theme=dark] [src$="#light-mode-only"] {
+:root[data-theme="dark"] [src$="#light-mode-only"] {
     display: none;
 }
 
-:root[data-theme=light] [src$="#dark-mode-only"] {
+:root[data-theme="light"] [src$="#dark-mode-only"] {
     display: none;
 }
 
 @media (prefers-color-scheme: dark) {
-    :root[data-theme=auto] [src$="#light-mode-only"] {
+    :root[data-theme="auto"] [src$="#light-mode-only"] {
         display: none;
     }
 }
 
 @media (prefers-color-scheme: light) {
-    :root[data-theme=auto] [src$="#dark-mode-only"] {
+    :root[data-theme="auto"] [src$="#dark-mode-only"] {
         display: none;
     }
 }
@@ -68,7 +68,7 @@ mark {
     display: block;
     padding: 0 var(--ifm-pre-padding);
     margin: 0 calc(-1 * var(--ifm-pre-padding));
-    background-color: rgb(72, 77, 91);
+    background-color: rgb(72 77 91);
 }
 
 .sidebar-item--wip {

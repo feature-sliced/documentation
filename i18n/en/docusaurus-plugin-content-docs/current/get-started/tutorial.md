@@ -347,9 +347,9 @@ Each of the described features is a part of the functionality
 
 ##### Usual approach
 
-And there is a great temptation
+And there is a great temptation to 
 
-- or implement all the logic in the directory of each specific page.
+- either implement all the logic in the directory of each specific page.
 - or put all" possibly reused "modules in the shared folder `src/components` or similar
 
 But if such a solution would be suitable for a small and short-lived project, then in real corporate development, it **can put an end** to the further development of the project, turning it into **"another dense legacy"**

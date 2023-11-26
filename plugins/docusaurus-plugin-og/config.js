@@ -5,7 +5,9 @@ const { objectFromBuffer, Logger } = require("./utils");
 
 async function getConfig(configPath, encode = "utf-8") {
     try {
-        const config = objectFromBuffer(await readFile(resolve(configPath, "config.json"), encode));
+        const config = objectFromBuffer(
+            await readFile(resolve(configPath, "config.json"), encode),
+        );
 
         if (!validateConfig(config)) {
             Logger.err("Config validation error");
