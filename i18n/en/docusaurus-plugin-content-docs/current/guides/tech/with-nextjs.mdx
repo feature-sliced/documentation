@@ -1,6 +1,5 @@
 ---
 sidebar_position: 10
-sidebar_class_name: sidebar-item--wip
 ---
 
 import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
@@ -13,22 +12,21 @@ import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 
  
 
-NextJS works well with Feature-Sliced Design, but conflicts may arise due to the differences between NextJS project structure requirements and Feature-Sliced Design principles.
+NextJS works well with FSD, but conflicts arise due to the differences between NextJS project structure requirements and FSD principles.
 Namely, in two points: 
 
-- File routing in the pages layer
-- The absence of the app layer in NextJS
+- File routing in the `pages` layer
+- The conflict or absence of the `app` layer in NextJS
 
-## Conflict between FSD and NextJS on `pages` layer
+## Conflict between FSD and NextJS on `pages` layer {#pages-conflict}
 
-NextJS suggests using the `pages` directory to define the application's routes. By default, NextJS expects the files in the `pages` folder to correspond to specific URL addresses.
-This routing mechanism **does not** align with the concept of Feature-Sliced Design, as it can lead to mixing the functionality of different modules in one file.
+NextJS suggests using the `pages` directory to define the application's routes. By default, NextJS expects the files in the `pages` directory to correspond to specific URL addresses.
+This routing mechanism **does not** align with the concept of FSD, as it can lead to mixing the functionality of different modules in one file.
 
-### Moving the `pages` folder from Next.js to the root directory of the project (recommended)
+### Moving the `pages` directory of NextJS to the root directory of the project (recommended)
 
-The approach is to move the `pages` folder from NextJS to the root directory of the project, while preserving the Feature-Sliced Design
-project structure inside the `src` folder. To achieve this, you can modify the NextJS settings and specify a new path to the folder with the pages. 
-For example, you can use the `pagesDir` option in the Next.js configuration to specify the path to the folder with the pages.
+The approach is to move the `pages` directory of NextJS to the root directory of the project, while preserving the FSD
+project structure inside the `src` folder and import the pages of FSD to the `pages` directory of NextJS.
 
 ```sh
 ├── pages              # NextJS pages directory
@@ -41,12 +39,12 @@ For example, you can use the `pagesDir` option in the Next.js configuration to s
 │   ├── widgets
 ```
 
-### Renaming the `pages` folder within the FSD structure
+### Renaming the `pages` layer within the FSD structure
 
-One way to solve the conflict issue is to rename the `pages` folder within the FSD structure to avoid conflicts
-with the `pages` folder in NextJS.
-You should rename the `pages` folder within Feature-Sliced Design to `pages-flat`.
-This way, the project structure within the `src` folder will be preserved without conflicting with NextJS requirements.
+Another way to solve the conflict issue is to rename the `pages` layer within the FSD structure to avoid conflicts
+with the `pages` directory in NextJS.
+You should rename the `pages` layer within FSD to `pages-flat`.
+This way, the project structure within the `src` directory will be preserved without conflicting with NextJS requirements.
 
 ```sh
 ├── app
@@ -58,9 +56,9 @@ This way, the project structure within the `src` folder will be preserved withou
 ├── widgets             
 ```
 
-## The absence of the `app` layer in NextJS
+## The absence of the `app` layer in NextJS {#app-absence}
 
-There is no explicit `app` layer in the NextJS structure, instead, NextJS provides the `_app.tsx` file,
+There is no explicit `app` layer in the NextJS below version 13, instead, NextJS provides the `_app.tsx` file,
 which plays the role of a common wrapping component for all application pages.
 
 ### Importing app functionality to `pages/_app.tsx` file
@@ -85,7 +83,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
 export default App;
 ```
-We should import created `App` component and global styles of the project to `pages/_app.tsx` like this:
+Need to import created `App` component and global styles of the project to `pages/_app.tsx` like this:
 
 ```tsx
 // pages/_app.tsx
@@ -95,6 +93,26 @@ import 'app/styles/index.scss'
 export { default } from 'app';
 ```
 
-## See also
+## Dealing with App Router {#app-router}
+
+App Router has become stable in NextJS 13.4. App Router allow to use `app` directory for routing instead of `pages` directory.
+To comply with the FSD principles, you should deal with the NextJS `app` directory in the same way as it is recommended 
+to fix the conflict with the `pages` directory of NextJS.
+
+The approach is to move the `app` directory of NextJS to the root directory of the project, while preserving the FSD
+project structure inside the `src` folder and import the pages of FSD to the `app` directory of NextJS.
+
+```sh
+├── app                # NextJS app directory
+├── src
+│   ├── app            # FSD app directory
+│   ├── entities
+│   ├── features  
+│   ├── pages
+│   ├── shared
+│   ├── widgets
+```
+
+## See also {#see-also}
 
 - [(Thread) About the pages directory in NextJS](https://t.me/feature_sliced/3623)
