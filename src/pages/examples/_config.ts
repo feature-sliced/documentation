@@ -238,7 +238,8 @@ export const examples: Example[] = [
     },
     {
         title: "E-Commerce",
-        description: "This project is an online store built using React. It provides the ability to view the product catalog and product pages",
+        description:
+            "This project is an online store built using React. It provides the ability to view the product catalog and product pages",
         website: "https://ruslan4432013.github.io/e-commerce-kts/",
         source: "https://github.com/ruslan4432013/e-commerce-kts",
         preview: require("./img/e-commerce.png"),
@@ -288,7 +289,7 @@ export const examples: Example[] = [
         updatedAt: "2023-11-25",
         tech: ["react", "vkui", "typescript"],
     },
-      {
+    {
         title: "Fake Cyber Web Store",
         description: "Example web store on Vue3",
         website: "https://akosogorov.github.io/fake-cyber-web-store/",
@@ -296,7 +297,16 @@ export const examples: Example[] = [
         preview: require("./img/fake-cyber-web-store.jpg"),
         version: VERSIONS.V2,
         updatedAt: "2023-07-26",
-        tech: ["vue3", "pinia", "typescript", "firebase", "vue-router", "eslint", "prettier", "vite"],
-    }
+        tech: [
+            "vue3",
+            "pinia",
+            "typescript",
+            "firebase",
+            "vue-router",
+            "eslint",
+            "prettier",
+            "vite",
+        ],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
