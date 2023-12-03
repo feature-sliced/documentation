@@ -30,11 +30,13 @@ project structure inside the `src` folder and import the pages of FSD to the `pa
 │   ├── widgets
 ```
 
+**See the example on [CodeSandbox]("")**
+
 ### Renaming the `pages` layer within the FSD structure
 
 Another way to solve the conflict issue is to rename the `pages` layer within the FSD structure to avoid conflicts
 with the `pages` directory in NextJS.
-You should rename the `pages` layer within FSD to `pages-flat`.
+You should rename the `pages` layer within FSD to `views`.
 This way, the project structure within the `src` directory will be preserved without conflicting with NextJS requirements.
 
 ```sh
@@ -42,10 +44,14 @@ This way, the project structure within the `src` directory will be preserved wit
 ├── entities
 ├── features  
 ├── pages              # NextJS pages directory
-├── pages-flat         # Renamed FSD pages directory
+├── views              # Renamed FSD pages directory
 ├── shared
 ├── widgets             
 ```
+
+**See the example on [CodeSandbox]("")**
+
+__Both conflict resolution approaches also involve the use of [grouping](https://nextjs.org/docs/app/building-your-application/routing/route-groups) when there are a large number of pages.__
 
 ## The absence of the `app` layer in NextJS {#app-absence}
 
@@ -84,6 +90,8 @@ import 'app/styles/index.scss'
 export { default } from 'app';
 ```
 
+**See the example on [CodeSandbox]("")**
+
 ## Dealing with App Router {#app-router}
 
 App Router has become stable in NextJS 13.4. App Router allow to use `app` directory for routing instead of `pages` directory.
@@ -103,6 +111,10 @@ project structure inside the `src` folder and import the pages of FSD to the `ap
 │   ├── shared
 │   ├── widgets
 ```
+
+**See the example on [CodeSandbox]("")**
+
+__This approach also involve the use of [grouping](https://nextjs.org/docs/app/building-your-application/routing/route-groups) when there are a large number of pages.__
 
 ## See also {#see-also}
 

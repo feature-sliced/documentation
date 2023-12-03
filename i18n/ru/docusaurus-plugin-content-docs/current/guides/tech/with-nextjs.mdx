@@ -30,10 +30,12 @@ NextJS предлагает использовать директорию `pages
 │   ├── widgets
 ```
 
+**Смотрите пример на [CodeSandbox]("")**
+
 ### Переименование директории `pages` в структуре FSD
 
 Другой способ решить проблему - переименовать слой `app` в структуре FSD, чтобы избежать конфликтов с директорией `pages` NextJS.
-Вам следует переименовать слой `app` в FSD в `pages-flat`. 
+Вам следует переименовать слой `app` в FSD в `views`. 
 Таким образом, структура проекта в директории `src` будет сохранена, не вступая в противоречие с требованиями NextJS.
 
 ```sh
@@ -41,10 +43,14 @@ NextJS предлагает использовать директорию `pages
 ├── entities
 ├── features  
 ├── pages              # Директория pages (NextJS)
-├── pages-flat         # Переименованная директория страниц FSD
+├── views              # Переименованная директория страниц FSD
 ├── shared
 ├── widgets             
 ```
+
+**Смотрите пример на [CodeSandbox]("")**
+
+__Оба подхода к разрешению конфликтов также предполагают использование [группирования маршрутов](https://nextjs.org/docs/app/building-your-application/routing/route-groups) при наличии большого количества страниц.__
 
 ## Отсутствие слоя `app` в NextJS {#app-absence}
 
@@ -83,6 +89,8 @@ import 'app/styles/index.scss'
 export { default } from 'app';
 ```
 
+**Смотрите пример на [CodeSandbox]("")**
+
 ## Работа с App Router {#app-router}
 
 App Router стал стабильным в NextJS версии 13.4. App Router позволяет использовать директорию `app` для маршрутизации вместо директории `pages`.
@@ -102,6 +110,10 @@ App Router стал стабильным в NextJS версии 13.4. App Router
 │   ├── shared
 │   ├── widgets
 ```
+
+**Смотрите пример на [CodeSandbox]("")**
+
+__Этот подход также предполагает использование [группирования маршрутов](https://nextjs.org/docs/app/building-your-application/routing/route-groups) при наличии большого количества страниц.__
 
 ## См. также {#see-also}
 
