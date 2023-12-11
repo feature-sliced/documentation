@@ -308,5 +308,25 @@ export const examples: Example[] = [
             "vite",
         ],
     },
+    {
+        title: "Polka",
+        description:
+            "The application is a bookshelf where you can add your favorite books. The application works with the Google Books API.",
+        website: "https://polka-fsd.netlify.app/",
+        source: "https://github.com/lollipopfly/polka",
+        preview: require("./img/polka.jpg"),
+        version: VERSIONS.V2,
+        updatedAt: "2023-12-06",
+        tech: [
+            "vue3",
+            "pinia",
+            "typescript",
+            "vue-router",
+            "eslint",
+            "prettier",
+            "vite",
+            "vuetify",
+        ],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
