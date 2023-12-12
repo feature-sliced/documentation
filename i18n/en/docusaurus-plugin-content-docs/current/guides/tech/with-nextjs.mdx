@@ -12,7 +12,7 @@ Namely, in two points:
 ## Conflict between FSD and NextJS on `pages` layer {#pages-conflict}
 
 NextJS suggests using the `pages` folder to define the application's routes. By default, NextJS expects the files in the `pages` folder to correspond to specific URL addresses.
-This routing mechanism **does not** align with the concept of FSD, as it can lead to mixing the functionality of different modules in one file.
+This routing mechanism **does not** align with the concept of FSD, as in such a routing mechanism it is not possible to observe the flat slice structure.
 
 ### Moving the `pages` folder of NextJS to the root folder of the project (recommended)
 
