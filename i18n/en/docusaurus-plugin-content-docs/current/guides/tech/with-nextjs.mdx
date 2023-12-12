@@ -11,21 +11,21 @@ Namely, in two points:
 
 ## Conflict between FSD and NextJS on `pages` layer {#pages-conflict}
 
-NextJS suggests using the `pages` directory to define the application's routes. By default, NextJS expects the files in the `pages` directory to correspond to specific URL addresses.
+NextJS suggests using the `pages` folder to define the application's routes. By default, NextJS expects the files in the `pages` folder to correspond to specific URL addresses.
 This routing mechanism **does not** align with the concept of FSD, as it can lead to mixing the functionality of different modules in one file.
 
-### Moving the `pages` directory of NextJS to the root directory of the project (recommended)
+### Moving the `pages` folder of NextJS to the root folder of the project (recommended)
 
-The approach is to move the `pages` directory of NextJS to the root directory of the project, while preserving the FSD
-project structure inside the `src` folder and import the pages of FSD to the `pages` directory of NextJS.
+The approach is to move the `pages` folder of NextJS to the root folder of the project, while preserving the FSD
+project structure inside the `src` folder and import the pages of FSD to the `pages` folder of NextJS.
 
 ```sh
-├── pages              # NextJS pages directory
+├── pages              # NextJS pages folder
 ├── src
 │   ├── app
 │   ├── entities
 │   ├── features  
-│   ├── pages          # FSD pages directory
+│   ├── pages          # FSD pages folder
 │   ├── shared
 │   ├── widgets
 ```
@@ -33,16 +33,16 @@ project structure inside the `src` folder and import the pages of FSD to the `pa
 ### Renaming the `pages` layer within the FSD structure
 
 Another way to solve the conflict issue is to rename the `pages` layer within the FSD structure to avoid conflicts
-with the `pages` directory in NextJS.
+with the `pages` folder in NextJS.
 You should rename the `pages` layer within FSD to `views`.
-This way, the project structure within the `src` directory will be preserved without conflicting with NextJS requirements.
+This way, the project structure within the `src` folder will be preserved without conflicting with NextJS requirements.
 
 ```sh
 ├── app
 ├── entities
 ├── features  
-├── pages              # NextJS pages directory
-├── views              # Renamed FSD pages directory
+├── pages              # NextJS pages folder
+├── views              # Renamed FSD pages folder
 ├── shared
 ├── widgets             
 ```
@@ -88,17 +88,17 @@ export { default } from 'app';
 
 ## Dealing with App Router {#app-router}
 
-App Router has become stable in NextJS 13.4. App Router allow to use `app` directory for routing instead of `pages` directory.
-To comply with the FSD principles, you should deal with the NextJS `app` directory in the same way as it is recommended 
-to fix the conflict with the `pages` directory of NextJS.
+App Router has become stable in NextJS 13.4. App Router allow to use `app` folder for routing instead of `pages` folder.
+To comply with the FSD principles, you should deal with the NextJS `app` folder in the same way as it is recommended 
+to fix the conflict with the `pages` folder of NextJS.
 
-The approach is to move the `app` directory of NextJS to the root directory of the project, while preserving the FSD
-project structure inside the `src` folder and import the pages of FSD to the `app` directory of NextJS.
+The approach is to move the `app` folder of NextJS to the root folder of the project, while preserving the FSD
+project structure inside the `src` folder and import the pages of FSD to the `app` folder of NextJS.
 
 ```sh
-├── app                # NextJS app directory
+├── app                # NextJS app folder
 ├── src
-│   ├── app            # FSD app directory
+│   ├── app            # FSD app folder
 │   ├── entities
 │   ├── features  
 │   ├── pages
