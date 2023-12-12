@@ -34,7 +34,7 @@ project structure inside the `src` folder and import the pages of FSD to the `pa
 
 Another way to solve the conflict issue is to rename the `pages` layer within the FSD structure to avoid conflicts
 with the `pages` folder in NextJS.
-You should rename the `pages` layer within FSD to `views`.
+You can rename the `pages` layer within FSD to `views`.
 This way, the project structure within the `src` folder will be preserved without conflicting with NextJS requirements.
 
 ```sh
@@ -56,7 +56,7 @@ which plays the role of a common wrapping component for all application pages.
 
 ### Importing app functionality to `pages/_app.tsx` file
 
-To solve the problem of the absence of the `app` folder in the NextJS structure you should create `App` component inside `app` layer to import it inside `pages/_app.tsx` file for NextJS to work with it.
+To solve the problem of the absence of the `app` folder in the NextJS structure you can create `App` component inside `app` layer to import it inside `pages/_app.tsx` file for NextJS to work with it.
 For example:
 
 ```tsx
@@ -76,7 +76,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
 export default App;
 ```
-Need to import created `App` component and global styles of the project to `pages/_app.tsx` like this:
+You can import created `App` component and global styles of the project to `pages/_app.tsx` like this:
 
 ```tsx
 // pages/_app.tsx
