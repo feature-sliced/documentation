@@ -3,7 +3,7 @@ sidebar_position: 10
 ---
 # Usage with NextJS
 
-It is possible to implement FSD in the NextJS project, but conflicts arise due to differences between the requirements for the NextJS project structure and the principles of FSD in two points: 
+It is possible to implement FSD in a NextJS project, but conflicts arise due to differences between the requirements for the NextJS project structure and the principles of FSD in two points: 
 
 - Routing files in the `pages` layer
 - Conflict or absence of the `app` layer in NextJS
@@ -24,7 +24,7 @@ the FSD project structure inside the `src` folder.
 ├── src
 │   ├── app
 │   ├── entities
-│   ├── features  
+│   ├── features
 │   ├── pages          # FSD pages folder
 │   ├── shared
 │   ├── widgets
@@ -33,18 +33,20 @@ the FSD project structure inside the `src` folder.
 ### Renaming the `pages` layer within the FSD structure
 
 Another way to solve the problem is to rename the `app` layer in the FSD structure to avoid conflicts with the NextJS `pages` folder.
-You can rename the `app` layer in FSD to `views`. 
+You can rename the `app` layer in FSD to `views`.
 In that way, the structure of the project in the `src` folder is preserved without contradiction with the requirements of NextJS.
 
 ```sh
 ├── app
 ├── entities
-├── features  
+├── features
 ├── pages              # NextJS pages folder
 ├── views              # Renamed FSD pages folder
 ├── shared
-├── widgets             
+├── widgets
 ```
+
+Keep in mind that it's highly recommended to document this rename prominently in your project's README or internal documentation. This rename is a part of your ["project knowledge"][project-knowledge].
 
 ## The absence of the `app` folder in NextJS {#app-absence}
 
@@ -80,7 +82,7 @@ Then you can import the `App` component and global project styles into `pages/_a
 
 import 'app/styles/index.scss'
 
-export { default } from 'app';
+export { default } from 'app/providers';
 ```
 
 ## Dealing with App Router {#app-router}
@@ -97,7 +99,7 @@ the FSD project structure inside the `src` folder.
 ├── src
 │   ├── app            # FSD app folder
 │   ├── entities
-│   ├── features  
+│   ├── features
 │   ├── pages
 │   ├── shared
 │   ├── widgets
@@ -106,3 +108,5 @@ the FSD project structure inside the `src` folder.
 ## See also {#see-also}
 
 - [(Thread) About the pages directory in NextJS](https://t.me/feature_sliced/3623)
+
+[project-knowledge]: /docs/about/understanding/knowledge-types

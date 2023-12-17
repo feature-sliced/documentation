@@ -23,7 +23,7 @@ NextJS предлагает использовать папку `pages` для �
 ├── src
 │   ├── app
 │   ├── entities
-│   ├── features  
+│   ├── features
 │   ├── pages          # Папка pages (FSD)
 │   ├── shared
 │   ├── widgets
@@ -38,12 +38,14 @@ NextJS предлагает использовать папку `pages` для �
 ```sh
 ├── app
 ├── entities
-├── features  
+├── features
 ├── pages              # Папка pages (NextJS)
 ├── views              # Переименованная папка страниц FSD
 ├── shared
-├── widgets             
+├── widgets
 ```
+
+Учтите, что в этом случае рекомендуется задокументировать это переименование в видном месте — в README проекта или внутренней документации. Это переименование — часть ["проектных знаний"][project-knowledge].
 
 ## Отсутствие папки `app` в NextJS {#app-absence}
 
@@ -79,7 +81,7 @@ export default App;
 
 import 'app/styles/index.scss'
 
-export { default } from 'app';
+export { default } from 'app/providers';
 ```
 
 ## Работа с App Router {#app-router}
@@ -96,7 +98,7 @@ App Router стал стабильным в NextJS версии 13.4. App Router
 ├── src
 │   ├── app            # Папка app (FSD)
 │   ├── entities
-│   ├── features  
+│   ├── features
 │   ├── pages
 │   ├── shared
 │   ├── widgets
@@ -105,3 +107,5 @@ App Router стал стабильным в NextJS версии 13.4. App Router
 ## См. также {#see-also}
 
 - [(Тред) Про pages директорию в NextJS](https://t.me/feature_sliced/3623)
+
+[project-knowledge]: /docs/about/understanding/knowledge-types
