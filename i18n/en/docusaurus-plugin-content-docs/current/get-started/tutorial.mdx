@@ -1,0 +1,283 @@
+---
+sidebar_position: 2
+---
+
+import { ThemedCompareSliderImage } from "@site/src/shared/ui";
+
+# Tutorial
+
+Let’s look at how the main concepts of Feature-Sliced Design, namely, *layers*, *slices*, and *segments*, are used to architect an actual application. We’re going to build a note-taking web application for mobile devices, it’s gonna look like this:
+
+![Notes application screens](/img/tutorial/overview-light.jpg#light-mode-only)
+![Notes application screens](/img/tutorial/overview-dark.jpg#dark-mode-only)
+
+This tutorial has two parts. Part 1 is called *“on paper”*:
+
+- **No code will be written in this part**  
+  Just looking at designs and talking theoretically about business value
+- **This part is the most important**  
+  The take-aways from this part can then be implemented in any language and framework.
+
+Part 2 is called *“in code”*. This is when we put the knowledge from Part 1 into practice. Our stack is going to be TypeScript, [React](https://react.dev), and [Remix](https://remix.run). This part is not available yet, but it is coming soon 🚧.
+
+<aside>
+🍰 Look out for these slices of cake! Whenever you see them, it means you should actually *do* something.
+</aside>
+
+## Part 1. On paper
+
+Every app *that has users* allows these users to achieve certain goals. We call this **business value**. For example, the app of a local pizza shop delivers value to you by letting you order pizza or compare prices with a competitor pizza shop. However, business value doesn’t actually have to involve money. For example, our notes app delivers value by letting you store notes in an organised way and access your notes from any device.
+
+That’s how you could describe this app to your parents, but for decomposition, we need to get a bit more verbose and obvious. Our app will let you do the following:
+
+- read a note
+- create/edit a note
+- delete a note
+- synchronise your notes across devices
+
+### Business domain
+
+Notice in the list above how a particular word appears very often — *note*. All of these features are certain actions that we do with notes. There’s a term for this: a note is an **entity** in our **business domain**. The term *business domain* is just a fancy way of saying “what the application is about”.
+
+Here's an example:
+
+![Two columns of items connected by lines. On the left are entities, on the right are applications. The applications are: a pizza shop application, a cryptocurrency exchange, a social network, and our note app. The Order entity is connected to the pizza shop and the cryptocurrency exchange. The Meal entity is connected to the pizza shop. The User entity is connected to all 4 applications. The Book entity is not connected to any application. The Comment entity is connected to the social network. The Currency entity is connected to the cryptocurrency exchange. The Note entity is connected to our note app.](/img/tutorial/business-domains-light.jpg#light-mode-only)
+![Two columns of items connected by lines. On the left are entities, on the right are applications. The applications are: a pizza shop application, a cryptocurrency exchange, a social network, and our note app. The Order entity is connected to the pizza shop and the cryptocurrency exchange. The Meal entity is connected to the pizza shop. The User entity is connected to all 4 applications. The Book entity is not connected to any application. The Comment entity is connected to the social network. The Currency entity is connected to the cryptocurrency exchange. The Note entity is connected to our note app.](/img/tutorial/business-domains-dark.jpg#dark-mode-only)
+
+As we can see, a note is certainly a part of our business domain, while a meal certainly isn’t, even though notes can contain dinner recipes. A user is also a part of our business domain, which is true for all applications that have some sort of authorization. Since our app is pretty simple, these two entities alone make up our entire business domain. It’s a pretty small domain.
+
+As you might remember from the [overview], Feature-Sliced Design has a layer called Entities. This layer is entirely devoted to entities from the business domain — one slice for each entity. Therefore, in our future app, the folder `entities/` will have two subfolders, `note/` and `user/`.
+
+```
+📂 entities/
+  📁 note/
+  📁 user/
+```
+
+### Squeezing business value out of entities
+
+Entities by themselves don’t produce any business value — they simply exist, waiting for you to do something with them. If you recall, we previously wrote down a list of things we can do in our app:
+
+- read a note
+- create/edit a note
+- delete a note
+- synchronise your notes across devices
+
+This list is all about notes, but our business domain also includes a user. That’s how we know that this list is incomplete. It must also include actions on the user entity, namely:
+
+- log in, or present yourself as a certain user
+- log out, or revoke access to a user’s content on a device
+
+The things we write in this list really are just features of our application, only described in excruciating detail. Good thing that Feature-Sliced Design also has a layer called Features! That’s where these will go:
+
+```
+📂 features/
+  📁 edit-note/
+  📁 delete-note/
+  📁 sync-notes/
+  📁 authenticate/
+```
+
+We grouped some features together (like create and edit, or log in and log out) and omitted some features altogether (reading notes requires no interaction with the app apart from page navigation) because that’s what makes sense from the technical side. 
+
+:::tip
+
+That’s just one possible set of features, and there’s no single correct set, it depends on how granularly you want to think about your app.
+
+:::
+
+### Finding entities and features in the interface
+
+If we look at our application from the lens of entities and features, we may notice that many interface elements either represent entities or let us perform actions on them.
+
+🍰 Try finding these elements now! Afterwards, check yourself by expanding the solution block underneath this picture.
+
+<details>
+    <summary>If you need a hint, ask yourself these questions to determine what an element is</summary>
+
+    - If an element is non-interactive:
+        - Does this element represent some real-life object or concept? If yes, it's an **entity**.
+        - Does this element identify you as a user? If yes, it's an **entity**.
+    - If an element is interactive:
+        - Does this element allow you to change something in an entity? If yes, it's a **feature**.
+        - Does this element allow you to change your own identity (e.g., a login button)? If yes, it's a **feature**.
+        - Does this element help you accomplish your human goal when you use it? If yes, it's a **feature**.
+</details>
+
+![Notes application screens](/img/tutorial/overview-light.jpg#light-mode-only)
+![Notes application screens](/img/tutorial/overview-dark.jpg#dark-mode-only)
+
+<details>
+    <summary>Reveal solution</summary>
+
+    ![Same screens, but with highlighted entities and features](/img/tutorial/annotated-entities-features-light.jpg#light-mode-only)
+    ![Same screens, but with highlighted entities and features](/img/tutorial/annotated-entities-features-dark.jpg#dark-mode-only)
+</details>
+
+### Questioning our choices
+
+> *Your scientists were so preoccupied with whether or not they could, they didn’t stop to think if they should.*  
+> — Dr. Ian Malcolm, Jurassic Park, 1993
+
+Let the following realisation sink in:
+
+*Every element that represents as entity or a feature is placed in the folder of that entity or feature.*
+
+Once you fully realise that we’re suggesting to have a separate folder for a lousy Delete button, you may rightfully protest, thinking that it is pure overhead with no benefit. And you’re right, it is a lot of overhead. You don’t have to decompose this precisely, though. We believe in what we like to call **Pain-Driven Development** — when you only need to do something if *not doing it* causes you pain. Many small applications don’t really need to have the Features layer, and sometimes they don’t even need the Entities layer. Our application is a prime example of that, however, for the educational purposes of this tutorial, we will go all the way. <!-- TODO: At the end, we will present two versions of the final application: one *fully decomposed* and one *reasonable*. -->
+
+If we don’t decompose down to the Entities and Features, it means that more logic stays in the higher layers, the layers that we call compositional, Widgets and Pages. More on them in the next section.
+
+### Putting it back together
+
+We found our smallest pieces, entities and features, now we will zoom out. Applications usually consist of screens, or *pages*. If there is a lot on the page, sometimes we can identify independent large blocks of a page. We will call them *widgets*.
+
+We’ve seen four layers so far:
+
+1. Pages
+2. Widgets
+3. Features
+4. Entities
+
+Entities and features are more or less similar in size, widgets are larger, pages are even larger. That creates a natural ordering of layers, from large to small. There actually is an even smaller layer — Shared, that is where all non-business stuff goes. We’ll discuss this layer later, as it doesn’t matter for now.
+
+An important principle of Feature-Sliced and Design is the **import rule on layers**:
+
+*A module in a slice can only import other slices when they are located on layers strictly below.*
+
+This means that a widget can only reference the Shared, Entities and Features layers. If you need to place a widget inside a widget, you’ll need to do it on the Pages layer.
+
+<div style={{ display: "flex", justifyContent: "center", gap: "10%", marginTop: "2em", marginBottom: "2em" }}><div>
+
+**Widgets** can use:
+
+- Shared
+- Entities
+- Features
+
+</div><div>
+
+**Pages** can use:
+
+- Shared
+- Entities
+- Features
+- <em style={{ color: "green" }}>Widgets</em>
+
+</div></div>
+
+If we look at our interface again, three blocks stand out to us: the ever-present bottom bar, the list of notes and a card to create or edit a note. Observe that if we take those widgets away, the screen becomes almost empty, and the application loses value to the user. By the way, the note list and the note editing card might as well be considered pages, not widgets, considering how important they are to the page.
+
+![Same screens, but with annotated widgets](/img/tutorial/annotated-widgets-light.jpg#light-mode-only)
+![Same screens, but with annotated widgets](/img/tutorial/annotated-widgets-dark.jpg#dark-mode-only)
+
+Let’s look closer at what makes up our blocks. The note list is just a bunch of note cards rendered with some spacing. Therefore, let’s direct our attention to the note card itself. It’s basically made up of three things: appearance, data and click logic — perfect manifestation of the holy trinity of HTML, CSS, and JS.
+
+![Composition of a note card](/img/tutorial/note-card-composition-light.jpg#light-mode-only)
+![Composition of a note card](/img/tutorial/note-card-composition-dark.jpg#dark-mode-only)
+
+The note editor is a bit more complex because it includes elements that are compositions themselves, such as the buttons at the bottom. Still mostly the same appearance and data, but this time there’s a inline text editor between them.
+
+![Composition of a note editor](/img/tutorial/note-editor-composition-light.jpg#light-mode-only)
+![Composition of a note editor](/img/tutorial/note-editor-composition-dark.jpg#dark-mode-only)
+
+The Delete button is a feature, but it uses the same appearance as the back button. Note that the back button is not a feature because its purpose is not to deliver business value.
+
+### Purpose over essence
+
+In the diagrams above, every element is annotated with its purpose — whether it represents logic, data or UI. It makes for a convenient grouping of code by its technical purpose. In FSD, we maintain this grouping through segments. Segments are just folders inside of slices. Some common segment names are `ui/`, `model/`, and `api/`. 
+
+- `ui` contains everything that involves presentation — UI components, data formatting functions, hooks for UI logic, etc.
+- `model` contains the data and business logic — stores for certain types of objects, data mappers, hooks for business logic, etc.
+- `api` contains everything to do with communicating with external APIs — API calls, queries, mutations.
+
+This kind of grouping is beneficial because it allows you to predict where a certain module will be in the file system. If you’re looking for API query hooks, you don’t have to dig through the `hooks/` folder, ignoring all the UI and logic hooks.
+
+You’re not limited to these three segments, you could define your own, just make sure that they reflect the purpose of the code (the why), not the essence (the what).
+
+<p><em style={{ color: "indianred", fontWeight: "bold", fontStyle: "normal" }}>Bad</em> segment names: <code>components</code>, <code>hooks</code>, <code>helpers</code></p>
+
+<p><em style={{ color: "green", fontWeight: "bold", fontStyle: "normal" }}>Good</em> segment names: <code>assets</code>, <code>i18n</code>, <code>routes</code></p>
+
+With that in mind, a typical layer would look like this:
+
+```
+📂 features/
+  📂 edit-note/
+    📁 ui/
+    📁 api/
+    📄 index (a declaration of what other modules can import from here)
+  📁 …
+```
+
+### Business-less layers
+
+Talking about segments is a good segue into the two layers-exceptions: App and Shared. They are located on top and bottom of the layer stack respectively, and they differ structurally from other layers — they don’t have slices. The Shared layer doesn’t have slices because it’s not tied to any business domain, the App layer doesn’t have slices because it **is** the business domain.
+
+Usually, these two layers are the best places to define your custom segments. Don’t be afraid to create new segments, they don’t cost you anything. For example, your Shared layer could consist of the following segments:
+
+- `ui` — the UI kit
+- `api` — the configuration of the API client
+- `i18n` — locales and internationalization providers
+- `store`\* — store providers
+- `routes` — route constants
+- `env` — environment variables
+
+\* not `model`, because it’s not a data model of Shared
+
+As you can imagine, most of these segments will be pretty small, and that’s okay. Their main goal is to help you find code quicker, not to pack as many things as possible.
+
+The App layer is usually the initialization code of your application. It’s where you define your routes, lay out your providers, connect styles. Sometimes your framework tells you where you should define your routes and configure things (for example, file-based routing like Next.js), in these cases it’s totally fine if the code on your App layer is not necessarily in the `app/` folder. The App layer is the last layer, thus it is queen! It can take as much space in the project source code as it needs.
+
+### Talking to the backend
+
+Now that most of our application is laid out, we need to fill it with some data. Our backend provides, but how do we retrieve and store it?
+
+We already touched on the API and Model segments in slices. They exist for this exact purpose, and they make the most sense on the Entities layer, since that’s where you need to fetch *and* store data. The API segment is also commonly found in Features, usually containing mutations, that is, operations that change the data on the backend.
+
+With some tech stacks you might not even need the Model segment for storage. For example, [TanStack Query](https://tanstack.com/query/latest) stores the server-side data in cache, allowing you to request a fetch and retrieve the data at the same time. Other stacks may have these operations separate, such as [Redux](https://redux.js.org/), where you dispatch an action to fetch and then use a selector to extract the fetched data from the store. In this case, the fetching code goes in API and the selector/reducer go to Model.
+
+### Recap
+
+We’ve covered a lot of ground here. Let’s sum it all up. Here’s the app we’re building, if you need a refresher:
+
+![Notes application screens](/img/tutorial/overview-light.jpg#light-mode-only)
+![Notes application screens](/img/tutorial/overview-dark.jpg#dark-mode-only)
+
+Our application’s code will be organized in layers, so let’s recap what each of them contains:
+
+- Shared
+    - UI segment — the UI kit of our application (we should be able to swap this for Ant or MUI if we want to)
+- Entities
+    - Note slice
+        - UI segment — the appearance of a note card
+        - API segment — query for a list of notes from the backend
+        - Model segment — storage of the fetched notes for app-wide access
+- Features
+    - Authenticate slice
+        - UI segment — the button to sign in that displays the current user
+        - API segment — API call to sign in/out
+    - Edit note slice
+        - UI segment — the editor component for the title and the body
+        - API segment — API call to save changes and a query to get the current note content
+    - Add note slice
+        - UI segment — the button to add a new note
+        - API segment — API call to add a new note
+    - Delete note slice (similar to Add note)
+- Widgets
+    - Note list slice
+        - UI segment — the rendered out note card from Entities using the data from the storage in Entities
+    - Application bar
+        - UI segment — feature buttons inserted into a shell of an app bar from Shared, a collapsible login form
+- Pages
+    - Sign in slice
+        - UI segment — the title and description of the application, the bottom bar with the sign-in form
+    - Note list slice
+        - UI segment — the note editor widget, inserted into the layout
+    - Note editor slice
+        - UI segment — a combination of the note editor and delete note features
+- Application
+    - Routes segment — the route configuration
+
+Congratulations, learning time is over! Stay tuned for Part 2 to build this in code.
+
+[overview]: /docs/get-started/overview
