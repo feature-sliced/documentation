@@ -328,15 +328,25 @@ export const examples: Example[] = [
             "vuetify",
         ],
     },
-     {
+    {
         title: "FalkChat",
-        description: "FalkChat is your go-to destination for seamless and engaging online conversations.",
+        description:
+            "FalkChat is your go-to destination for seamless and engaging online conversations.",
         website: "https://chat.falkomer.tech",
         version: VERSIONS.V2,
         updatedAt: "2023-12-21",
         source: "https://github.com/falkomerr/falkchat",
         preview: require("./img/falkchat.png"),
-        tech: ["react", "next", "prettier", "clerk", "typescript", "tailwind", "shadcn/ui", "zustand"],
+        tech: [
+            "react",
+            "next",
+            "prettier",
+            "clerk",
+            "typescript",
+            "tailwind",
+            "shadcn/ui",
+            "zustand",
+        ],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();
