@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Обзор
+# Qisqacha ma'lumot
 
 ## Menga tog'ri keladimi? {#is-it-right-for-me}
 
