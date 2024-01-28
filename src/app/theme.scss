@@ -34,3 +34,7 @@ html[data-theme="dark"] {
     --ifm-badge-background-color: var(--ifm-color-violet);
     --ifm-badge-border-color: var(--ifm-badge-background-color);
 }
+
+img {
+    height: unset;
+}
