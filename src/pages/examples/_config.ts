@@ -347,6 +347,24 @@ export const examples: Example[] = [
             "shadcn/ui",
             "zustand",
         ],
-    },
+  },
+  {
+        title: "Portfolio",
+        description: "Portfolio that has Seo optimization and Content Security Policy (CSP)",
+        website: "https://semklim.vercel.app/",
+        source: "https://github.com/semklim/portfolio",
+        preview: require("./img/portfolio.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-02-14",
+        tech: [
+            "react",
+            "typescript",
+            "framerMotion",
+            "emailJs",
+            "sweetalert2",
+            "sass",
+            "eslint"
+        ],
+  },
     // Reverse the list (last examples should be at the top)
 ].reverse();
