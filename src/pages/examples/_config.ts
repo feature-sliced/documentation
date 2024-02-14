@@ -347,10 +347,11 @@ export const examples: Example[] = [
             "shadcn/ui",
             "zustand",
         ],
-  },
-  {
+    },
+    {
         title: "Portfolio",
-        description: "Portfolio that has Seo optimization and Content Security Policy (CSP)",
+        description:
+            "Portfolio that has Seo optimization and Content Security Policy (CSP)",
         website: "https://semklim.vercel.app/",
         source: "https://github.com/semklim/portfolio",
         preview: require("./img/portfolio.png"),
@@ -363,8 +364,8 @@ export const examples: Example[] = [
             "emailJs",
             "sweetalert2",
             "sass",
-            "eslint"
+            "eslint",
         ],
-  },
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
