@@ -2,828 +2,169 @@
 sidebar_position: 2
 ---
 
-# Tutorial
+# Part 1. On paper
 
-Let's consider the application of **Feature-Sliced Design** on the example of TodoApp
+This tutorial will examine the Real World App, also known as Conduit. Conduit is a basic [Medium](https://medium.com/) clone — it lets you read and write articles as well as comment on the articles of others.
 
-- At first, we will prepare application basely (bootstrap, routing, styles)
-- Then we will consider - how the concepts of the methodology help *flexibly and effectively design business logic* without unnecessary costs
+![realworld-feed-anonymous.png](/img/tutorial/realworld-feed-anonymous.png)
 
-> There is [codesandbox-insert with the final solution][ext-sandbox], which can help to clarify the implementation details at the end of the article
+This is a pretty small application, so we will keep it simple and avoid excessive decomposition. It’s highly likely that the entire app will fit into just three layers: **App**, **Pages**, and **Shared**. If not, we will introduce additional layers as we go. Ready?
 
-**Stack**: React, Effector, TypeScript, Sass, AntDesign
+## Start by listing the pages
 
-:::note
+If we look at the screenshot above, we can assume at least the following pages:
 
-The tutorial is designed to **reveal the practical idea of the methodology itself**. Therefore, the practices described here are largely suitable for other technological stacks of frontend projects
+- Home (article feed)
+- Sign in and sign up
+- Article reader
+- Article editor
+- User profile viewer
+- User profile editor (user settings)
 
-:::
+Every one of these pages will become its own *slice* on the Pages *layer*. Recall from the overview that slices are simply folders inside of layers and layers are simply folders with predefined names like `pages`.
 
-## 1. Preparation
+As such, our Pages folder will look like this:
 
-### 1.1 Initializing the project
-
-At the moment, there are many ways to generate and run a project template
-
-We will not focus too much on this step, but for quick initialization, you can use [CRA (for React)](https://create-react-app.dev/docs/getting-started):
-
-```cmd
-$ npx create-react-app todo-app --template typescript
+```
+📂 pages/
+  📁 feed/
+  📁 sign-in/
+  📁 article-read/
+  📁 article-edit/
+  📁 profile/
+  📁 settings/
 ```
 
-### 1.2 Preparing the structure
+The key difference of Feature-Sliced Design from an unregulated code structure is that pages cannot reference each other. That is, one page cannot import code from another page. This is due to the **import rule on layers**:
 
-We received the following blank for the project
+*A module in a slice can only import other slices when they are located on layers strictly below.*
 
-```sh
-└── src/
-    ├── App.css
-    ├── App.test.tsx
-    ├── App.tsx
-    ├── index.css
-    ├── index.ts
-    ├── logo.svg
-    ├── react-app-env.d.ts
-    ├── reportWebVitals.ts
-    ├── setupTests.ts
-    └── index.tsx/
+In this case, a page is a slice, so modules (files) inside this page can only reference code from layers below, not from the same layer, Pages.
+
+## Close look at the feed
+
+<figure>
+  ![Anonymous user’s perspective](/img/tutorial/realworld-feed-anonymous.png)
+  <figcaption>
+    _Anonymous user’s perspective_
+  </figcaption>
+</figure>
+
+<figure>
+  ![Authenticated user’s perspective](/img/tutorial/realworld-feed-authenticated.png)
+  <figcaption>
+    _Authenticated user’s perspective_
+  </figcaption>
+</figure>
+
+There are three dynamic areas on the feed page:
+
+1. Sign-in links with an indication if you are signed in
+2. List of tags that triggers filtering in the feed
+3. One/two feeds of articles, each article with a like button
+
+The sign-in links are a part of a header that is common to all pages, we will revisit it separately.
+
+### List of tags
+
+To build the list of tags, we need to fetch the available tags, render each tag as a chip, and store the selected tags in a client-side storage. These operations fall into categories “API interaction”, “user interface”, and “storage”, respectively. In Feature-Sliced Design, code is separated by purpose using *segments*. Segments are folders in slices, and they can have arbitrary names that describe the purpose, but some purposes are so common that there’s a convention for certain segment names:
+
+- 📂 `api/` for backend interactions
+- 📂 `ui/` for code that handles rendering and appearance
+- 📂 `model/` for storage and business logic
+- 📂 `config/` for feature flags, environment variables and other forms of configuration
+
+We will place code that fetches tags into `api`, the tag component into `ui`, and the storage interaction into `model`.
+
+### Articles
+
+Using the same grouping principles, we can decompose the feed of articles into the same three segments:
+
+- 📂 `api/`: fetch paginated articles with like count; like an article
+- 📂 `ui/`:
+    - tab list that can render an extra tab if a tag is selected
+    - individual article
+    - functional pagination
+- 📂 `model/`: client-side storage of the currently loaded articles and current page (if needed)
+
+## Reuse generic code
+
+Most pages are very different in intent, but certain things stay the same across the entire app — for example, the UI kit that conforms to the design language, or the convention on the backend that everything is done with a REST API with the same authentication method. Since slices are meant to be isolated, code reuse is facilitated by a lower layer, **Shared**.
+
+Shared is different from other layers in the sense that it contains segments, not slices. In this way, the Shared layer can be thought of as a hybrid between a layer and a slice.
+
+Usually, the code in Shared is not planned ahead of time, but rather extracted during development, because only during development does it become clear which parts of code are actually shared. However, it’s still helpful to keep a mental note of what kind of code naturally belongs in Shared:
+
+- 📂 `ui/` — the UI kit, pure appearance, no business logic. For example, buttons, modal dialogs, form inputs.
+- 📂 `api/` — convenience wrappers around request making primitives (like `fetch()` on the Web) and, optionally, functions for triggering particular requests according to the backend specification.
+- 📂 `config/` — parsing environment variables
+- 📂 `i18n/` — configuration of language support
+- 📂 `router/` — routing primitives and route constants
+
+Those are just a few examples of segment names in Shared, but you can omit any of them or create your own. The only important thing to remember when creating new segments is that segment names should describe **purpose (the why), not essence (the what)**. Names like “components”, “hooks”, “modals” *should not* be used because they describe what these files are, but don’t help to navigate the code inside. This requires people on the team to dig through every file in such folders and also keeps unrelated code close, which leads to broad areas of code being affected by refactoring and thus makes code review and testing harder.
+
+## Define a strict public API
+
+In the context of Feature-Sliced Design, the term *public API* refers to a slice or segment declaring what can be imported from it by other modules in the project. For example, in JavaScript that can be an `index.js` file re-exporting objects from other files in the slice. This enables freedom in refactoring code inside a slice as long as the contract with the outside world (i.e. the public API) stays the same.
+
+For the Shared layer that has no slices, it’s usually more convenient to define a separate public API for each segment as opposed to defining one single index of everything in Shared. This keeps imports from Shared naturally organized by intent. For other layers that have slices, the opposite is true — it’s usually more practical to define one index per slice and let the slice decide its own set of segments that is unknown to the outside world because other layers usually have a lot less exports.
+
+Our slices/segments will appear to each other as follows:
+
+```jsx
+📂 pages/
+  📂 feed/
+    📄 index
+  📂 sign-in/
+    📄 index
+  📂 article-read/
+    📄 index
+  📁 …
+📂 shared/
+  📂 ui/
+    📄 index
+  📂 api/
+    📄 index
+  📁 …
 ```
 
-#### How it usually happens
+Whatever is inside folders like `pages/feed` or `shared/ui` is only known to those folders, and other files should not rely on the internal structure of these folders.
 
-And usually most projects at this stage [turn into something like this][ext-pluralsight--flat]:
+## Large reused blocks in the UI
 
-```sh
-└── src/
-    ├── api/
-    ├── components/
-    ├── containers/
-    ├── helpers/
-    ├── pages/
-    ├── routes/
-    ├── store/
-    ├── App.tsx
-    └── index.tsx/
-```
+Earlier we made a note to revisit the header that appears on every page. Rebuilding it from scratch on every page would be impractical, so it’s only natural to want to reuse it. We already have Shared to facilitate code reuse, however, there’s a caveat to putting large blocks of UI in Shared — the Shared layer is not supposed to know about any of the layers above. 
 
-*They can become such immediately, or after a long development*
+Between Shared and Pages there are three other layers: Entities, Features, and Widgets.  Some projects may have something in those layers that they need in a large reusable block, and that means we can’t put that reusable block in Shared, or else it would be importing from upper layers, which is prohibited. That’s where the Widgets layer comes in. It is located above Shared, Entities, and Features, so it can use them all.
 
-At the same time, if we look inside we will most likely find:
+In our case, the header is very simple — it’s a static logo and top-level navigation. The navigation needs to make a request to the API to determine if the user is currently logged in or not, but that can be handled by a simple import from the `api` segment. Therefore, we will keep our header in Shared.
 
-- Highly coupled directories by nesting
-- Strongly connected components with each other
-- A huge number of dissimilar components / containers in their respective folders, linked thoughtlessly
+## Close look at a page with a form
 
-#### How can it be done otherwise
+Let’s also examine a page that’s intended for editing, not reading. For example, the article writer:
 
-Anyone who has been developing frontend projects for at least a long time understands the advantages and disadvantages of this approach.
+![realworld-editor-authenticated.png](/img/tutorial/realworld-editor-authenticated.png)
 
-However, most frontend projects are still something like this, since **there is no proven flexible and extensible alternative**
+It looks trivial, but contains several aspects of application development that we haven’t explored yet — form validation, error states, and data persistence.
 
-*Multiply this by the free adaptations of the structure for each project, without a ban from the framework-and [we get "projects as unique as snowflakes"][refs-motivation]*
+If we were to build this page, we would grab some inputs and buttons from Shared and put together a form in the `ui` segment of this page. Then, in the `api` segment, we would define a mutation request to create the article on the backend. 
 
-**The purpose of this tutorial** is to show a different view of the usual practices in designing
+To validate the request before sending, we need a validation schema, and a good place for it is the `model` segment, since it’s the data model. There we will produce error messages and display them using another component in the `ui` segment. 
 
-#### Adapting the structure to the desired view
-
-```sh
-└── src/
-    ├── app/                    # Initializing application logic
-    |    ├── index.tsx          #    Entrypoint for connecting the application (formerly App. tsx)
-    |    └── index.css          #    Global application styles
-    ├── pages/                  #
-    ├── widgets/                #
-    ├── features/               #
-    ├── entities/               #
-    ├── shared/                 #
-    └── index.tsx               # Connecting and rendering the application
-```
-
-At first glance the structure may seem strange, but over time you will notice that **you use familiar abstractions, but in a consistent and ordered form.**
-
-**Also, we enable support for absolute imports for convenience**
-
-```ts title=tsconfig.json
-{
-  "compilerOptions": {
-    "baseUrl": "./src",
-    // Or aliases, if it's more convenient
-```
-
-Here's how it will help us in the future
-
-```diff
-- import App from "../app"
-- import Button from "../../shared/ui/button";
-+ import App from "app"
-+ import Button from "shared/ui/button";
-```
-
-#### Layers: app
-
-As you can see , we have moved all the basic logic to the `app/` directory
-
-It is there, according to the methodology, that all the preparatory logic should be placed:
-
-- connecting global styles (`/app/styles/**` + `/app/index.css`)
-- providers and HOCs with initializing logic (`/app/providers/**`)
-
-For now, we will transfer all the existing logic there, and leave the other directories empty, as in the diagram above.
-
-```tsx title=app/index.tsx
-import "./index.css";
-
-const App = () => {...}
-```
-
-### 1.3 Enabling global styles
-
-#### Install dependencies
-
-In the tutorial, we install sass, but you can also take any other preprocessor that supports imports
-
-```cmd
-$ npm i sass
-```
-
-#### Creating files for styles
-
-##### For css variables
-
-```scss title=app/styles/vars.scss
-:root {
-    --color-dark: #242424;
-    --color-primary: #108ee9;
-    ...
-}
-```
-
-##### To normalize styles
-
-```scss title=app/styles/normalize.scss
-html {
-    scroll-behavior: smooth;
-}
-...
-```
-
-##### Connecting all styles
-
-```scss title=app/styles/index.scss
-@import "./normalize.scss";
-@import "./vars.scss";
-...
-```
-
-```scss title=app/index.scss
-@import "./styles/index.scss";
-...
-```
-
-```tsx title=app/index.tsx
-import "./index.scss"
-
-const App = () => {...}
-```
-
-### 1.4 Adding routing
-
-#### Install dependencies
-
-```cmd
-$ npm i react-router react-router-dom compose-function
-$ npm i -D @types/react-router @types/react-router-dom @types/compose-function
-```
-
-#### Add HOC to initialize the router
-
-```tsx title=app/providers/with-router.tsx
-import { Suspense } from "react";
-import { BrowserRouter } from "react-router-dom";
-
-export const withRouter = (component: () => React.ReactNode) => () => (
-    <BrowserRouter>
-        <Suspense fallback="Loading...">
-            {component()}
-        </Suspense>
-    </BrowserRouter>
-);
-```
-
-```ts title=app/providers/index.ts
-import compose from "compose-function";
-import { withRouter } from "./with-router";
-
-export const withProviders = compose(withRouter);
-```
-
-```tsx title=app/index.tsx
-import { withProviders } from "./providers";
-...
-
-const App = () => {...}
-
-export default withProviders(App);
-```
-
-#### Let's add real pages
-
-:::note
-
-This is just one of the routing implementations
-
-- You can declare it declaratively or through the list of routes (+ react-router-config)
-- You can declare it at the pages or app level
-
-The methodology does not yet regulate the implementation of this logic in any way
-
-:::
-
-##### Temporary page, only for checking the routing
-
-You can delete it later
-
-```tsx title=pages/test/index.tsx
-const TestPage = () => {
-    return <div>Test Page</div>;
-};
-
-export default TestPage;
-```
-
-##### Let's form the routes
-
-```tsx title=pages/index.tsx
-// Or use @loadable/component, as part of the tutorial - uncritically
-import { lazy } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
-
-const TestPage = lazy(() => import("./test"));
-
-export const Routing = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<TestPage/>} />
-            <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-    );
-};
-```
-
-##### Connecting the routing to the application
-
-```tsx title=app/index.tsx
-import { Routing } from "pages";
-
-const App = () => (
-    // Potentially you can insert here 
-    // A single header for the entire application
-    // Or do it on separate pages
-    <Routing />
-)
-...
-```
-
-#### Layers: app, pages
-
-Here we used several layers at once:
-
-- `app` - to initialize the router *(HOC: withRouter)*
-- `pages` - for storing page modules
-
-### 1.5 Let's connect UIKit
-
-To simplify the tutorial, we will use the ready-made UIKit from [AntDesign](https://ant.design/components/overview/)
-
-```cmd
-$ npm i antd @ant-design/icons
-```
-
-:::tip
-
-But you can use **any other UIKit** or **create your own** by placing the components in `shared/ui` - this is where it is recommended to place UIKit of application:
-
-```ts
-import { Checkbox } from "antd"; // ~ "shared/ui/checkbox"
-import { Card } from "antd"; // ~ "shared/ui/card"
-```
-
-:::
-
-## 2. Implementing business logic
-
-:::note
-
-We will try to focus not on the implementation of each module, but on their sequential composition
-
-:::
-
-### 2.1 Let's analyze the functionality
-
-Before starting the code, we need to decide - [what value we want to convey to the end user][refs-needs]
-
-To do this, we decompose our functionality *by responsibility scopes [(layers)][refs-layers]*
-
-![layers-flow-themed](/img/layers_flow.png)
-
-#### Pages
-
-We will outline the basic necessary pages, and user expectations from them:
-
-1. `TasksListPage` - the "Task List" page
-
-    - View the task list
-    - Go to the page of a specific task
-    - *Mark a specific task completed/unfulfilled*
-    - Set filtering by completed / unfulfilled tasks
-
-2. `TaskDetailsPage` - page "Task card"
-
-    - View information about the task
-    - *Mark a specific task as completed/unfulfilled*
-    - Go back to the task list
-
-Each of the described features is a part of the functionality
-
-##### Usual approach
-
-And there is a great temptation to 
-
-- either implement all the logic in the directory of each specific page.
-- or put all" possibly reused "modules in the shared folder `src/components` or similar
-
-But if such a solution would be suitable for a small and short-lived project, then in real corporate development, it **can put an end** to the further development of the project, turning it into **"another dense legacy"**
-
-This is due to the usual conditions of the project development:
-
-- requirements change quite often
-- there are new circumstances
-- the technical debt is accumulating every day and it is becoming more difficult to add new features
-- it is necessary to scale both the project itself and its team
-
-##### Alternative approach
-
-Even with the basic partitioning, we see that:
-
-- there are common entities between the pages and their display *(Task)*
-- there are common features *between the pages (Mark the task completed / unfulfilled)*
-
-Accordingly, it seems logical to continue to decompose the task, but already based on the above-mentioned features for the user.
-
-#### Features
-
-Parts of functionality that bring value to the user
-
-- `<ToggleTask />` - (component) Mark a task as completed / unfulfilled
-- `<TasksFilters/>` - (component) Set filtering for the task list
-
-#### Entities
-
-Business entities on which a higher-level logic will be built
-
-- `<TaskCard />` - (component) Task card, with information display
-- `getTasksListFx({ filters })` - (effect) Loading the task list with parameters
-- `getTaskByIdFx(taskId: number)`- (effect) Uploading a task by ID
-
-#### Shared
-
-Reused shared modules, without binding to the domain scopes
-
-- `<Card />` - (component) UIKit component
-  - *At the same time, you can either implement your own UIKit for the project, or use a ready-made one*
-- `getTasksList({ filters })` - (api) Loading the task list with parameters
-- `getTaskById(taskId: number)` - (api) Loading a task by ID
-
-#### What is the profit?
-
-Now all modules can be designed with [low coupling][refs-low-coupling] and [with their own scope of responsibility][refs-layers], as well as distributed across the team without conflicts during development
-
-*And most importantly, now each module serves to build a specific business value, which reduces the risks for creating ["features for the sake of features"][refs-needs]*
-
-### 2.2 What else is worth remembering
-
-#### Layers and responsibilities
-
-As described above, thanks to the layered structure, we can **predictably distribute the complexity of the application** according to [scopes of responsibility, i.e. layers][refs-layers].
-
-At the same time, a higher-level logic is built on the basis of the underlying layers:
-
-```tsx
-// (shared)         => (entities)  + (features)     => (pages)
-<Card> + <Checkbox> => <TaskCard/> + <ToggleTask/>  => <TaskPage/>
-```
-
-#### Preparing modules for use
-
-Each implemented module must provide its own [public interface][refs-public-api] for use:
-
-```ts title={layer}/foo/index.ts
-export { Card as FooCard, Thumbnail as FooThumbnail, ... } from "./ui";
-export * as fooModel from "./model"; 
-```
-
-:::info
-
-If you need named namespace exports for the Public API declaration, you can look aside [@babel/plugin-proposal-export-namespace-from](https://babeljs.io/docs/en/babel-plugin-proposal-export-namespace-from)
-
-Or, as an alternative, use a more detailed design
-
-```ts title={layer}/foo/index.ts
-import { Card as FooCard, Thumbnail as FooThumbnail, ... } from "./ui";
-import * as fooModel from "./model"; 
-
-export { FooCard, FooThumbnail, fooModel };
-```
-
-:::
-
-### 2.3 Let's display the basic task list
-
-#### (entities) Task card
-
-```tsx title=entities/task/ui/task-row/index.tsx
-import { Link } from "react-router-dom";
-import cn from "classnames"; // we can safely use the analogy 
-import { Row } from "antd"; // ~ "shared/ui/row"
-
-export const TaskRow = ({ data, titleHref }: TaskRowProps) => {
-    return (
-        <Row className={cn(styles.root, { [styles.completed]: data.completed })}>
-            {titleHref ? <Link to={titleHref}>{data.title}</Link> : data.title}
-        </Row>
-    )
-}
-```
-
-#### (entities) Loading the task list
-
-You can split it by the type of entity, or store everything in the duck-modular style
-
-> For more information about the implementation of the API according to the tutorial, see [here][ext-source-api]
-
-```ts title=entities/task/model/index.ts
-import { createStore, combine, createEffect, createEvent } from "effector";
-import { useStore } from "effector-react";
-
-import { typicodeApi } from "shared/api";
-import type { Task } from "shared/api";
-
-// Each effect can also have its own additional. processing
-const getTasksListFx = createEffect((params?: typicodeApi.tasks.GetTasksListParams) => {
-  // There may also be an additional processing the effect
-  return typicodeApi.tasks.getTasksList(params);
-});
-
-// Can also be stored in a normalized form
-export const $tasks = createStore<Task[]>([])
-  .on(getTasksListFx.doneData, (_, payload) => ...)
-
-export const $tasksList = combine($tasks, (tasks) => Object.values(tasks));
-// You can also add other things like `isEmpty`, `isLoading`, ...
-```
-
-#### (pages) Let's connect all the logic on the page
-
-```tsx title=pages/tasks-list/index.tsx
-import { useEffect } from "react";
-// If you feel confident with @effector/reflect - can use it 
-// Within the tutorial non-critical 
-import { useStore } from "effector";
-import { Layout, Row, Col, Typography, Spin, Empty } from "antd"; // ~ "shared/ui/{...}"
-
-import { TaskRow, taskModel } from "entities/task";
-import styles from "./styles.module.scss";
-
-const TasksListPage = () => {
-  const tasks = useStore(taskModel.$tasksList);
-  const isLoading = useStore(taskModel.$tasksListLoading);
-  const isEmpty = useStore(taskModel.$tasksListEmpty);
-
-  /**
-   * Requesting data when loading the page
-   * @remark is a bad practice in the effector world and is presented here-just for a visual demonstration
-   * It is better to fetch via event.pageMounted or reflect
-   */
-  useEffect(() => taskModel.getTasksListFx(), []);
-
-  return (
-    <Layout className={styles.root}>
-      <Layout.Toolbar className={styles.toolbar}>
-        <Row justify="center">
-          <Typography.Title level={1}>Tasks List</Typography.Title>
-        </Row>
-        {/* TODO: TasksFilters */}
-      </Layout.Toolbar>
-      <Layout.Content className={styles.content}>
-        <Row gutter={[0, 20]} justify="center">
-          {isLoading && <Spin size="large" />}
-          {!isLoading && tasks.map((task) => (
-            <Col key={task.id} span={24}>
-              <TaskRow
-                data={task}
-                titleHref={`/${task.id}`}
-                // TODO: ToggleTaskCheckbox
-              />
-            </Col>
-          ))}
-          {!isLoading && isEmpty && <Empty description="No tasks found" />}
-        </Row>
-      </Layout.Content>
-    </Layout>
-  );
-};
-```
-
-### 2.4 Adding task status switching
-
-#### (entities) Switching the task status
-
-```ts title=entities/task/model/index.ts
-export const toggleTask = createEvent<number>();
-
-export const $tasks = createStore<Task[]>(...)
-  ...
-  .on(toggleTask, (state, taskId) => produce(state, draft => {
-    const task = draft[taskId];
-    task.completed = !task.completed;
-    console.log(1, { taskId, state, draft: draft[taskId].completed });
-  }))
-
-
-// We make a hook to get involved in updates react
-// @see In the case of effector, using a hook is an extreme measure, since computed stores are more preferable
-export const useTask = (taskId: number): import("shared/api").Task | undefined => {
-  return useStoreMap({
-    store: $tasks,
-    keys: [taskId],
-    fn: (tasks, [id]) => tasks[id] ?? null
-  });
-};
-```
-
-#### (features) Checkbox for the task
-
-```tsx title=features/toggle-task/ui.tsx
-import { Checkbox } from "antd"; // ~ "shared/ui/checkbox"
-import { taskModel } from "entities/task";
-
-// resolve / unresolve
-export const ToggleTask = ({ taskId }: ToggleTaskProps) => {
-    const task = taskModel.useTask(taskId);
-    if (!task) return null;
-
-    return (
-        <Checkbox 
-            onClick={() => taskModel.toggleTask(taskId)} 
-            checked={task.completed}
-        />
-    )
-}
-```
-
-#### (pages) Embedding the checkbox in the page
-
-What is noteworthy is that the task card does not know at all about the page where it is used, nor about what action buttons can be inserted into it (the same can be said about the feature itself)
-
-This approach allows you to simultaneously **competently share responsibility** and **flexibly reuse logic during implementation**
-
-```tsx title=pages/tasks-list/index.tsx
-import { ToggleTask } from "features/toggle-task";
-import { TaskRow, taskModel } from "entities/task";
-...
-<Col key={task.id} span={24}>
-      <TaskRow
-        ...
-        before={<ToggleTask taskId={task.id} withStatus={false} />}
-      />
-</Col>
-```
-
-### 2.5 Adding task filtering
-
-#### (entities) Filtering at the data level
-
-```ts title=entities/task/model/index.ts
-import { combine, createEvent, createStore } from "effector";
-
-export type QueryConfig = { completed?: boolean };
-
-const setQueryConfig = createEvent<QueryConfig>();
-
-// Can be moved to a separate directory (for storing multiple models)
-export const $queryConfig = createStore<QueryConfig>({})
-  .on(setQueryConfig, (_, payload) => payload);
-
-/**
- * Filtered Tasks
- * @remark Can be handled at the effects level - but then you need to connect additional logic to the store
- * > For example, hide / show the task at the `toggleTask` event
- */
-export const $tasksFiltered = combine(
-  $tasksList,
-  $queryConfig,
-  (tasksList, config) => {
-    return tasksList.filter(task => (
-      config.completed === undefined ||
-      task.completed === config.completed
-  ))},
-);
-```
-
-#### (features) UI controls for filters
-
-```tsx title=features/tasks-filters/ui.tsx
-// If you feel confident with @effector/reflect, you can immediately use it
-// As part of tutorial uncritically
-import { useStore } from "effector";
-import { Radio } from "antd"; // ~ "shared/ui/radio"
-
-import { taskModel } from "entities/task";
-import { filtersList, getFilterById, DEFAULT_FILTER } from "./config";
-
-export const const TasksFilters = () => {
-  const isLoading = useStore($tasksListLoading);
-
-  return (
-    <Radio.Group defaultValue={DEFAULT_FILTER} buttonStyle="solid">
-      {filtersList.map(({ title, id }) => (
-        <Radio.Button
-          key={id}
-          onClick={() => taskModel.setQueryConfig(getFilterById(id).config)}
-          value={id}
-          disabled={isLoading}
-        >
-          {title}
-        </Radio.Button>
-      ))}
-    </Radio.Group>
-  );
-};
-```
-
-#### (pages) Implementing filtering in the page
-
-And we implemented the logic again, without asking too many questions:
-
-- And where to put the filtering logic?
-- Can these filters be reused in the future?
-- Can filters know about the page context?
-
-We just divided the logic according to the scopes of responsibility (layers)
-
-```tsx title=pages/tasks-list/index.tsx
-import { TasksFilters } from "features/tasks-filters";
-...
-<Layout.Toolbar className={styles.toolbar}>
-    ...
-    <Row justify="center">
-        <TasksFilters />
-    </Row>
-</Layout.Toolbar>
-```
-
-:::note
-
-**At the current stage, such a division may seem superfluous - "Why not put everything at once at the page / feature level"?**
-
-But then let's try to ask questions ourselves:
-
-- Where are the guarantees that the complexity of the page will not increase in the future so much that all aspects of logic will be strongly intertwined? How can I add new functionality at no extra cost?
-- Where are the guarantees that a new person who has joined the team (or even you, if you leave the project for six months) will understand what is happening here?
-- How to build logic so as not to disrupt the data flow / reactivity with other features?
-- What if this filtering logic is so strongly attached to the context of the page that it will be impossible to use it on other pages?
-
-This is why we **divide the responsibility** so that each layer is engaged in only one task, and so that each of the developers understands this
-
-:::
-
-### 2.6 Task Page
-
-We implement the task page in the same way:
-
-- We highlight the shared logic
-- We highlight the entities logic
-- We highlight the features logic
-- We highlight the pages logic
-
-#### (pages) The"Task Card" page
-
-```tsx title=pages/task-details/index.tsx
-import { ToggleTask } from "features/toggle-task";
-import { TaskCard, taskModel } from "entities/task";
-import { Layout, Button } from "antd"; // ~ "shared/ui/{...}"
-import styles from "./styles.module.scss";
-
-const TaskDetailsPage = (props: Props) => {
-    const taskId = Number(props.match?.params.taskId);
-    const task = taskModel.useTask(taskId);
-    const isLoading = useStore(taskModel.$taskDetailsLoading);
-
-  /**
-   * Requesting data on the task
-   * @remark is a bad practice in the effector world and is presented here-just for a visual demonstration
-   * It is better to fetch via event.pageMounted or reflect
-   */
-    useEffect(() => taskModel.getTaskByIdFx({ taskId }), [taskId]);
-
-    // You can transfer part of the logic to entity/task/card (as a container)
-    if (!task && !isLoading) {
-        return ...
-    }
-
-    return (
-        <Layout className={styles.root}>
-            <Layout.Content className={styles.content}>
-                <TaskCard
-                    data={task}
-                    size="default"
-                    loading={isLoading}
-                    className={styles.card}
-                    bodyStyle={{ height: 400 }}
-                    extra={<Link to="/">Back to TasksList</Link>}
-                    actions={[
-                        <ToggleTask key="toggle" taskId={taskId} />
-                    ]}
-                />
-            </Layout.Content>
-        </Layout>
-    )
-};
-```
-
-### 2.7 What's next?
-
-And then new tasks arrive, new requirements are identified
-
-At the same time, the old code base does not require significant rework
-
-#### Has the functionality tied to the user appeared?
-
-=> Adding `entities/user`
-
-#### Did you need to change the filtering logic?
-
-=> Changing the processing at the `entities` or `pages` level, depending on the scale
-
-#### Do you need to add more features to the task card, but at the same time, so that it can be used in the old way?
-
-=> Add features and insert them into the card only on the desired **page**
-
-#### Has a module become too complex to support?
-
- => Thanks to the embedded architecture, we can only factor this module in isolation-without implicit side effects for others [(and even rewrite it from scratch)](https://youtu.be/BWAeYuWFHhs?t=1625)
+To improve user experience, we could also persist the inputs to prevent accidental data loss. This is also a job of the `model` segment.
 
 ## Summary
 
-### We have learned how to apply the methodology for basic cases
+We have examined several pages and outlined a preliminary structure for our application:
 
-Obviously, the world is much more complicated, but now we have already caught on to some controversial points and resolved them in such a way that the project remains supported and extensible.
+1. Shared layer
+    1. `ui`  will contain our reusable UI kit
+    2. `api`  will contain our primitive interactions with the backend
+    3. The rest will be arranged on demand
+2. Pages layer — each page is a separate slice
+    1. `ui`  will contain the page itself and all of its parts
+    2. `api`  will contain more specialized data fetching, using `shared/ui` 
+    3. `model`  might contain client-side storage of the data that we will display
 
-### We got a scalable and flexible codebase
+Let’s get building!
 
-1. Reused and expandable modules
-
-    - *shared, features, entities*
-
-1. Uniform and predictable distribution of logic
-
-    - *Since the composition goes in the same direction (the overlying layers use the underlying ones) , we can predictably track and modify it without fear of unforeseen consequences*
-
-1. The structure of the application, which tells about the business logic for itself
-
-    - What pages are there?
-        - `TasksList`, `TaskDetails`
-    - What features are there? What can the user do?
-        - `ToggleTask` `TasksFilters`
-    - What are the business entities? What is the work being done with?
-        - `Task (TaskCard, ...)`
-    - What can be reused from the auxiliary?
-        - `UIKit (Card, ...)` `API (tasksApi)`
-
-### Example
-
-Below in [Codesandbox][ext-sandbox] is an example of the resulting TodoApp, where you can study in detail the final structure of the application
-
-<iframe class="codesandbox" src="https://codesandbox.io/embed/github/feature-sliced/examples/tree/master/todo-app?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&codemirror=1" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
-
-## See also
-
-- [(Overview) How to Organize Your React + Redux Codebase][ext-pluralsight]
-  - Analysis of several approaches to structuring React projects
-- [Guides and examples of the methodology application (+ Migration from v1)][refs-guides]
-- [Reference material on the methodology][refs-reference]
-
-[refs-motivation]: /docs/about/motivation
-
-[refs-needs]: /docs/about/understanding/needs-driven
-[refs-public-api]: /docs/reference/public-api
-
-[refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
-[refs-guides]: /docs/guides
-[refs-reference]: /docs/reference
-[refs-layers]: /docs/reference/layers
-
-[ext-pluralsight]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase
-[ext-pluralsight--flat]: https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure
-[ext-sandbox]: https://codesandbox.io/s/github/feature-sliced/examples/tree/master/todo-app
-[ext-source-api]: https://github.com/feature-sliced/examples/tree/master/todo-app/src/shared/api
+_To be continued._
