@@ -1,8 +1,9 @@
 ---
 sidebar_position: 2
 ---
+# Tutorial
 
-# Part 1. On paper
+## Part 1. On paper
 
 This tutorial will examine the Real World App, also known as Conduit. Conduit is a basic [Medium](https://medium.com/) clone — it lets you read and write articles as well as comment on the articles of others.
 
@@ -10,7 +11,7 @@ This tutorial will examine the Real World App, also known as Conduit. Conduit is
 
 This is a pretty small application, so we will keep it simple and avoid excessive decomposition. It’s highly likely that the entire app will fit into just three layers: **App**, **Pages**, and **Shared**. If not, we will introduce additional layers as we go. Ready?
 
-## Start by listing the pages
+### Start by listing the pages
 
 If we look at the screenshot above, we can assume at least the following pages:
 
@@ -41,7 +42,7 @@ The key difference of Feature-Sliced Design from an unregulated code structure i
 
 In this case, a page is a slice, so modules (files) inside this page can only reference code from layers below, not from the same layer, Pages.
 
-## Close look at the feed
+### Close look at the feed
 
 <figure>
   ![Anonymous user’s perspective](/img/tutorial/realworld-feed-anonymous.png)
@@ -65,7 +66,7 @@ There are three dynamic areas on the feed page:
 
 The sign-in links are a part of a header that is common to all pages, we will revisit it separately.
 
-### List of tags
+#### List of tags
 
 To build the list of tags, we need to fetch the available tags, render each tag as a chip, and store the selected tags in a client-side storage. These operations fall into categories “API interaction”, “user interface”, and “storage”, respectively. In Feature-Sliced Design, code is separated by purpose using *segments*. Segments are folders in slices, and they can have arbitrary names that describe the purpose, but some purposes are so common that there’s a convention for certain segment names:
 
@@ -76,7 +77,7 @@ To build the list of tags, we need to fetch the available tags, render each tag 
 
 We will place code that fetches tags into `api`, the tag component into `ui`, and the storage interaction into `model`.
 
-### Articles
+#### Articles
 
 Using the same grouping principles, we can decompose the feed of articles into the same three segments:
 
@@ -87,7 +88,7 @@ Using the same grouping principles, we can decompose the feed of articles into t
     - functional pagination
 - 📂 `model/`: client-side storage of the currently loaded articles and current page (if needed)
 
-## Reuse generic code
+### Reuse generic code
 
 Most pages are very different in intent, but certain things stay the same across the entire app — for example, the UI kit that conforms to the design language, or the convention on the backend that everything is done with a REST API with the same authentication method. Since slices are meant to be isolated, code reuse is facilitated by a lower layer, **Shared**.
 
@@ -103,7 +104,7 @@ Usually, the code in Shared is not planned ahead of time, but rather extracted d
 
 Those are just a few examples of segment names in Shared, but you can omit any of them or create your own. The only important thing to remember when creating new segments is that segment names should describe **purpose (the why), not essence (the what)**. Names like “components”, “hooks”, “modals” *should not* be used because they describe what these files are, but don’t help to navigate the code inside. This requires people on the team to dig through every file in such folders and also keeps unrelated code close, which leads to broad areas of code being affected by refactoring and thus makes code review and testing harder.
 
-## Define a strict public API
+### Define a strict public API
 
 In the context of Feature-Sliced Design, the term *public API* refers to a slice or segment declaring what can be imported from it by other modules in the project. For example, in JavaScript that can be an `index.js` file re-exporting objects from other files in the slice. This enables freedom in refactoring code inside a slice as long as the contract with the outside world (i.e. the public API) stays the same.
 
@@ -130,7 +131,7 @@ Our slices/segments will appear to each other as follows:
 
 Whatever is inside folders like `pages/feed` or `shared/ui` is only known to those folders, and other files should not rely on the internal structure of these folders.
 
-## Large reused blocks in the UI
+### Large reused blocks in the UI
 
 Earlier we made a note to revisit the header that appears on every page. Rebuilding it from scratch on every page would be impractical, so it’s only natural to want to reuse it. We already have Shared to facilitate code reuse, however, there’s a caveat to putting large blocks of UI in Shared — the Shared layer is not supposed to know about any of the layers above. 
 
@@ -138,7 +139,7 @@ Between Shared and Pages there are three other layers: Entities, Features, and W
 
 In our case, the header is very simple — it’s a static logo and top-level navigation. The navigation needs to make a request to the API to determine if the user is currently logged in or not, but that can be handled by a simple import from the `api` segment. Therefore, we will keep our header in Shared.
 
-## Close look at a page with a form
+### Close look at a page with a form
 
 Let’s also examine a page that’s intended for editing, not reading. For example, the article writer:
 
@@ -152,7 +153,7 @@ To validate the request before sending, we need a validation schema, and a good 
 
 To improve user experience, we could also persist the inputs to prevent accidental data loss. This is also a job of the `model` segment.
 
-## Summary
+### Summary
 
 We have examined several pages and outlined a preliminary structure for our application:
 
