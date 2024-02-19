@@ -7,7 +7,7 @@ sidebar_position: 2
 
 This tutorial will examine the Real World App, also known as Conduit. Conduit is a basic [Medium](https://medium.com/) clone — it lets you read and write articles as well as comment on the articles of others.
 
-![realworld-feed-anonymous.png](/img/tutorial/realworld-feed-anonymous.png)
+![Conduit home page](/img/tutorial/realworld-feed-anonymous.jpg)
 
 This is a pretty small application, so we will keep it simple and avoid excessive decomposition. It’s highly likely that the entire app will fit into just three layers: **App**, **Pages**, and **Shared**. If not, we will introduce additional layers as we go. Ready?
 
@@ -45,14 +45,14 @@ In this case, a page is a slice, so modules (files) inside this page can only re
 ### Close look at the feed
 
 <figure>
-  ![Anonymous user’s perspective](/img/tutorial/realworld-feed-anonymous.png)
+  ![Anonymous user’s perspective](/img/tutorial/realworld-feed-anonymous.jpg)
   <figcaption>
     _Anonymous user’s perspective_
   </figcaption>
 </figure>
 
 <figure>
-  ![Authenticated user’s perspective](/img/tutorial/realworld-feed-authenticated.png)
+  ![Authenticated user’s perspective](/img/tutorial/realworld-feed-authenticated.jpg)
   <figcaption>
     _Authenticated user’s perspective_
   </figcaption>
@@ -143,7 +143,7 @@ In our case, the header is very simple — it’s a static logo and top-level na
 
 Let’s also examine a page that’s intended for editing, not reading. For example, the article writer:
 
-![realworld-editor-authenticated.png](/img/tutorial/realworld-editor-authenticated.png)
+![Conduit post editor](/img/tutorial/realworld-editor-authenticated.jpg)
 
 It looks trivial, but contains several aspects of application development that we haven’t explored yet — form validation, error states, and data persistence.
 
