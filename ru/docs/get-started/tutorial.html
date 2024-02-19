@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.0">
-<title data-rh="true">Туториал | Feature-Sliced Design</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" property="og:image" content="https://feature-sliced.design/ru/img/preview.png"><meta data-rh="true" name="twitter:image" content="https://feature-sliced.design/ru/img/preview.png"><meta data-rh="true" property="og:url" content="https://feature-sliced.design/ru/docs/get-started/tutorial"><meta data-rh="true" property="og:locale" content="ru"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" property="og:locale:alternate" content="uz"><meta data-rh="true" name="docusaurus_locale" content="ru"><meta data-rh="true" name="docsearch:language" content="ru"><meta data-rh="true" name="twitter:site" content="@feature_sliced"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Туториал | Feature-Sliced Design"><meta data-rh="true" name="description" content="Рассмотрим применение Feature-Sliced Design на примере TodoApp"><meta data-rh="true" property="og:description" content="Рассмотрим применение Feature-Sliced Design на примере TodoApp"><link data-rh="true" rel="icon" href="/ru/img/favicon/classic.png"><link data-rh="true" rel="canonical" href="https://feature-sliced.design/ru/docs/get-started/tutorial"><link data-rh="true" rel="alternate" href="https://feature-sliced.design/ru/docs/get-started/tutorial" hreflang="ru"><link data-rh="true" rel="alternate" href="https://feature-sliced.design/docs/get-started/tutorial" hreflang="en"><link data-rh="true" rel="alternate" href="https://feature-sliced.design/uz/docs/get-started/tutorial" hreflang="uz"><link data-rh="true" rel="alternate" href="https://feature-sliced.design/docs/get-started/tutorial" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://18IVO61EUN-dsn.algolia.net" crossorigin="anonymous"><link rel="alternate" type="application/rss+xml" href="/ru/blog/rss.xml" title="Feature-Sliced Design RSS Feed">
+<title data-rh="true">Туториал | Feature-Sliced Design</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" property="og:image" content="https://feature-sliced.design/ru/img/preview.png"><meta data-rh="true" name="twitter:image" content="https://feature-sliced.design/ru/img/preview.png"><meta data-rh="true" property="og:url" content="https://feature-sliced.design/ru/docs/get-started/tutorial"><meta data-rh="true" property="og:locale" content="ru"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" property="og:locale:alternate" content="uz"><meta data-rh="true" name="docusaurus_locale" content="ru"><meta data-rh="true" name="docsearch:language" content="ru"><meta data-rh="true" name="twitter:site" content="@feature_sliced"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Туториал | Feature-Sliced Design"><meta data-rh="true" name="description" content="Часть 1. На бумаге"><meta data-rh="true" property="og:description" content="Часть 1. На бумаге"><link data-rh="true" rel="icon" href="/ru/img/favicon/classic.png"><link data-rh="true" rel="canonical" href="https://feature-sliced.design/ru/docs/get-started/tutorial"><link data-rh="true" rel="alternate" href="https://feature-sliced.design/ru/docs/get-started/tutorial" hreflang="ru"><link data-rh="true" rel="alternate" href="https://feature-sliced.design/docs/get-started/tutorial" hreflang="en"><link data-rh="true" rel="alternate" href="https://feature-sliced.design/uz/docs/get-started/tutorial" hreflang="uz"><link data-rh="true" rel="alternate" href="https://feature-sliced.design/docs/get-started/tutorial" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://18IVO61EUN-dsn.algolia.net" crossorigin="anonymous"><link rel="alternate" type="application/rss+xml" href="/ru/blog/rss.xml" title="Feature-Sliced Design RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/ru/blog/atom.xml" title="Feature-Sliced Design Atom Feed">
 
 <link rel="preconnect" href="https://www.google-analytics.com">
@@ -22,643 +22,132 @@
 
 
 <script>!function(t,h,e,j,s,n){t.hj=t.hj||function(){(t.hj.q=t.hj.q||[]).push(arguments)},t._hjSettings={hjid:2677291,hjsv:6},s=h.getElementsByTagName("head")[0],(n=h.createElement("script")).async=1,n.src="https://static.hotjar.com/c/hotjar-"+t._hjSettings.hjid+".js?sv="+t._hjSettings.hjsv,s.appendChild(n)}(window,document)</script><link rel="stylesheet" href="/ru/assets/css/styles.d5c6678a.css">
-<script src="/ru/assets/js/runtime~main.401b1f34.js" defer="defer"></script>
-<script src="/ru/assets/js/main.2d5e0fee.js" defer="defer"></script>
+<script src="/ru/assets/js/runtime~main.24f45b59.js" defer="defer"></script>
+<script src="/ru/assets/js/main.e3dcb542.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();null!==e?t(e):window.matchMedia("(prefers-color-scheme: dark)").matches?t("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,t("light"))}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script><div id="__docusaurus"><div role="region" aria-label="Перейти к основному содержимому"><a class="skipToContent_seUM" href="#__docusaurus_skipToContent_fallback">Перейти к основному содержимому</a></div><div class="announcementBar_ueLS" style="background-color:#000000;color:#fff" role="banner"><div class="content_bC5d announcementBarContent_DFWp">🍰 We're <a href="/blog/rebranding-stable">rebranding!</a>&nbsp;&nbsp;|&nbsp;&nbsp;❔<a href="/nav">Help</a>&nbsp;&nbsp;|&nbsp;&nbsp;☮️ Stop the war in Ukraine! #NoWar</div></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Переключить навигационную панель" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ru/"><div class="navbar__logo"><img src="/ru/img/brand/logo-primary.png" alt="logo" class="themedComponent_lmYv themedComponent--light_zmjl"><img src="/ru/img/brand/logo-primary.png" alt="logo" class="themedComponent_lmYv themedComponent--dark_ABcP"></div><b class="navbar__title text--truncate"></b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/ru/docs">📖 Документация</a><a class="navbar__item navbar__link" href="/ru/community">💫 Сообщество</a><a class="navbar__item navbar__link" href="/ru/blog">📝 Блог</a><a class="navbar__item navbar__link" href="/ru/examples">🛠 Примеры</a></div><div class="navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class="navbar__link" aria-haspopup="true" aria-expanded="false" role="button" href="/ru/docs">v2.0.0 🍰</a><ul class="dropdown__menu"><li><a aria-current="page" class="dropdown__link dropdown__link--active" href="/ru/docs/get-started/tutorial">v2.0.0 🍰</a></li><li><a href="https://featureslices.dev/v1.0.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">v1.0</a></li><li><a href="https://featureslices.dev/v0.1.html" target="_blank" rel="noopener noreferrer" class="dropdown__link">v0.1</a></li><li><a href="https://github.com/feature-sliced/documentation/tree/rc/feature-driven" target="_blank" rel="noopener noreferrer" class="dropdown__link">feature-driven</a></li><li><a class="dropdown__link" href="/ru/versions">All versions</a></li></ul></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="iconLanguage_DxYL"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>Русский</a><ul class="dropdown__menu"><li><a href="/ru/docs/get-started/tutorial" target="_self" rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang="ru">Русский</a></li><li><a href="/docs/get-started/tutorial" target="_self" rel="noopener noreferrer" class="dropdown__link" lang="en">English</a></li><li><a href="/uz/docs/get-started/tutorial" target="_self" rel="noopener noreferrer" class="dropdown__link" lang="uz">O&#x27;zbekcha</a></li><li><a href="https://github.com/feature-sliced/documentation/issues/244" target="_blank" rel="noopener noreferrer" class="dropdown__link">Help Us Translate<svg width="12" height="12" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><a href="https://discord.gg/S8MzWTUsmp" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link ext-link discord" aria-label="Discord community server"></a><a href="https://github.com/feature-sliced/documentation" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link ext-link github" aria-label="GitHub repository"></a><div class="toggle_cgr5 colorModeToggle_MjmF"><button class="clean-btn toggleButton_jFzR toggleButtonDisabled_mXji" type="button" disabled="" title="Переключение между темным и светлым режимом (сейчас используется Светлый режим)" aria-label="Переключение между темным и светлым режимом (сейчас используется Светлый режим)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_p6t_"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_E2tx"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_BdA4"><button type="button" class="DocSearch DocSearch-Button" aria-label="Поиск"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Поиск</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_vRMm"><div class="docsWrapper_khtr"><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_odle" type="button"></button><div class="docRoot_q3rb"><aside class="theme-doc-sidebar-container docSidebarContainer_KVyW"><div class="sidebarViewport_bkuJ"><div class="sidebar_PvBo"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_NMVi menuWithAnnouncementBar_fmuV"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--active" href="/ru/docs/get-started">🚀  Быстр ый старт</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ru/docs/get-started/overview">Обзор</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ru/docs/get-started/tutorial">Туториал</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ru/docs/get-started/faq">FAQ</a></li></ul></li></ul></nav><button type="button" title="Свернуть сайдбар" aria-label="Свернуть сайдбар" class="button button--secondary button--outline collapseSidebarButton_k0KO"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_CZWU"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div></aside><main class="docMainContainer_fP4x"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol__PIR"><div class="docItemContainer_IwyP"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_kmk8" aria-label="Навигационная цепочка текущей страницы"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Главная страница" class="breadcrumbs__link" href="/ru/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_VgLq"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ru/docs/get-started"><span itemprop="name">🚀  Быстрый старт</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Туториал</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_g1iP theme-doc-toc-mobile tocMobile_ysdb"><button type="button" class="clean-btn tocCollapsibleButton__PSm">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><h1 id="туториал">Туториал</h1>
-<p>Рассмотрим применение <strong>Feature-Sliced Design</strong> на примере TodoApp</p>
+<h2 id="часть-1-на-бумаге">Часть 1. На бумаге</h2>
+<p>В этом руководстве мы рассмотрим приложение Real World App, также известное как Conduit. Conduit является упрощённым клоном <a href="https://medium.com/">Medium</a> — он позволяет вам читать и писать статьи в блогах, а также комментировать статьи других людей.</p>
+<p><img alt="Главная страница Conduit" src="/ru/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg" width="2880" height="1504"></p>
+<p>Это довольно небольшое приложение, поэтому мы не станем сильно усложнять разработку излишней декомпозици ей. Вероятнее всего, что всё приложение поместится в три слоя: <strong>App</strong>, <strong>Pages</strong> и <strong>Shared</strong>. Если нет, будем вводить дополнительные слои по ходу. Готовы?</p>
+<h3 id="начните-с-перечисления-страниц">Начните с перечисления страниц</h3>
+<p>Если мы посмотрим на скриншот выше, мы можем предположить, что по крайней мере, есть следующие страницы:</p>
 <ul>
-<li>Сначала разберем <em>подготовительные аспекты создания приложения</em></li>
-<li>А затем - как концепции методологии помогают <em>гибко и эффективно проектировать бизнес-логику</em> без лишних затрат</li>
+<li>Домашняя (лента статей)</li>
+<li>Войти и зарегистрироваться</li>
+<li>Просмотр статей</li>
+<li>Редактор статей</li>
+<li>Просмотр профилей людей</li>
+<li>Редактор профиля (настройки)</li>
 </ul>
-<blockquote>
-<p>В конце статьи есть <a href="https://codesandbox.io/s/github/feature-sliced/examples/tree/master/todo-app">codesandbox-вставка с финальным решением</a>, которое может помочь для уточнения деталей реализации</p>
-</blockquote>
-<p><strong>Стек</strong>: React, Effector, TypeScript, Sass, AntDesign</p>
-<admonition type="note"><p>Туториал призван <strong>раскрыть практическую идею самой методологии</strong>. Поэтому описанные здесь практики - во многом подойдут и для других технологических стеков фронтенд-проектов</p></admonition>
-<h2 id="1-preparation">1. Подготовительные моменты</h2>
-<h3 id="11-initializing-the-project">1.1 Инициализируем проект</h3>
-<p>На данный момент имеется множество способов сгенерировать и запустить шаблон проекта</p>
-<p>Не будем акцентироваться сильно на этом шаге, но для быстрой инициализации можно воспользоваться <a href="https://create-react-app.dev/docs/getting-started">CRA (для React)</a>:</p>
-<pre><code class="language-cmd">$ npx create-react-app todo-app --template typescript
+<p>Каждая из этих страниц станет отдельным <em>слайсом</em> на <em>слое</em> Pages. Вспомните из обзора, что слайсы — это просто папки внутри слоев, а слои — это просто папки с заранее определенными названиями, например, <code>pages</code>.</p>
+<p>Таким образом, наша папка Pages будет выглядеть так:</p>
+<pre><code class="language-jsx">📂 pages/
+  📁 feed/ (лента)
+  📁 sign-in/ (войти/зарегистрироваться)
+  📁 article-read/ (просмотр статей)
+  📁 article-edit/ (редактор статей)
+  📁 profile/ (профиль)
+  📁 settings/ (настройки)
 </code></pre>
-<h3 id="12-preparing-the-structure">1.2 Подготавливаем структуру</h3>
-<p>Получили следующую заготовку под проект</p>
-<pre><code class="language-sh">└── src/
-    ├── App.css
-    ├── App.test.tsx
-    ├── App.tsx
-    ├── index.css
-    ├── index.ts
-    ├── logo.svg
-    ├── react-app-env.d.ts
-    ├── reportWebVitals.ts
-    ├── setupTests.ts
-    └── index.tsx/
-</code></pre>
-<h4 id="how-it-usually-happens">Как это обычно происходит</h4>
-<p>И обычно большинство проектов на данном этапе <a href="https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase#module-theflatstructure">превращаются в примерно такое</a>:</p>
-<pre><code class="language-sh">└── src/
-    ├── api/
-    ├── components/
-    ├─ ─ containers/
-    ├── helpers/
-    ├── pages/
-    ├── routes/
-    ├── store/
-    ├── App.tsx
-    └── index.tsx/
-</code></pre>
-<p><em>Они могут как сразу стать такими, так и по прошествии долгой разработки</em></p>
-<p>При этом, если мы заглянем внутрь, как правило обнаружим:</p>
-<ul>
-<li>Сильно ветвистые по вложенности директории</li>
-<li>Сильно связанные друг с другом компоненты</li>
-<li>Огромное количество разнородных компонентов/контейнеров в соответствующих папках, связанные &quot;абы как&quot;</li>
-</ul>
-<h4 id="how-can-it-be-done-otherwise">Как это можно делать иначе</h4>
-<p>Каждый, кто хоть сколько давно разрабатывал фронтенд-проекты, примерно понимает преимущества и недостатки такого подхода.</p>
-<p>Однако, все еще большинство фронтенд-проектов представляют из себя нечто такое, поскольку <strong>нет проверенной опытом гибкой и расширяемой альтернативы</strong></p>
-<p><em>Помножим это на вольные адаптации структуры под каждый проект, без запрета со стороны фреймворка - и <a href="/docs/about/motivation">получим &quot;уникальные как снежинки проекты&quot;</a></em></p>
-<p><strong>Цель данного туториала</strong> - показать другой взгляд на привычные практики при проектировании</p>
-<h4 id="adapting-the-structure-to-the-desired-view">Адаптируем структуру к нужному виду</h4>
-<pre><code class="language-sh">└── src/
-    ├── app/                    # Инициализирующая логика приложения
-    |    ├── index.tsx          # Энтрипоинт для подключения приложения (бывший App.tsx)
-    |    └── index.css          # Глобальные стили приложения
-    ├── pages/                  #
-    ├── widgets/                #
-    ├── features/               #
-    ├── entities/               #
-    ├── shared/                 #
-    └── index.tsx               # Подключение и рендеринг приложения
-</code></pre>
-<p>Возможно, на первый взгляд, такая структура покажется непривычной, но со временем вы сами заметите, что <strong>используете знакомые вам абстракции, но в консистентном и упорядоченном виде.</strong></p>
-<p><strong>Также, подключаем поддержку абсолютных импортов для удобства</strong></p>
-<pre><code class="language-ts" metastring="title=tsconfig.json">{
-  &quot;compilerOptions&quot;: {
-    &quot;baseUrl&quot;: &quot;./src&quot;,
-    // Либо же алиасы, если так удобнее
-</code></pre>
-<p>Вот, как это поможет нам в будущем</p>
-<pre><code class="language-diff">- import App from &quot;../app&quot;
-- import Button from &quot;../../shared/ui/button&quot;;
-+ import App from &quot;app&quot;
-+ import Button from &quot;shared/ui/button&quot;;
-</code></pre>
-<h4 id="layers-app">Layers: app</h4>
-<p>Как можно заметить - мы перенесли всю базовую логику в директорию <code>app/</code></p>
-<p>Именно там, согласно методологии, стоит располагать всю подготовительную логику:</p>
-<ul>
-<li>подключение глобальных стилей (<code>/app/styles/**</code> + <code>/app/index.css</code>)</li>
-<li>провайдеры и HOCs с инициализирующей логикой (<code>/app/providers/**</code>)</li>
-</ul>
-<p>Пока что перенесем туда всю существующую логику, а другие директории оставим пустыми, как на схеме выше.</p>
-<pre><code class="language-tsx" metastring="title=app/index.tsx">import &quot;./index.css&quot;;
-
-const App = () =&gt; {...}
-</code></pre>
-<h3 id="13-enabling-global-styles">1.3 Подключим глобальные стили</h3>
-<h4 id="install-dependencies">Установим зависимости</h4>
-<p>В туториале устанавливаем sass, но можно взять и любой другой препроцессор, поддерживающий импорты</p>
-<pre><code class="language-cmd">$ npm i sass
-</code></pre>
-<h4 id="creating-files-for-styles">Заводим файлы для стилей</h4>
-<h5 id="for-css-variables">Для css-переменных</h5>
-<pre><code class="language-scss" metastring="title=app/styles/vars.scss">:root {
-    --color-dark: #242424;
-    --color-primary: #108ee9;
-    ...
-}
-</code></pre>
-<h5 id="to-normalize-styles">Для нормализации стилей</h5>
-<pre><code class="language-scss" metastring="title=app/styles/normalize.scss">html {
-    scroll-behavior: smooth;
-}
-...
-</code></pre>
-<h5 id="connecting-all-styles">Подключаем все стили</h5>
-<pre><code class="language-scss" metastring="title=app/styles/index.scss">@import &quot;./normalize.scss&quot;;
-@import &quot;./vars.scss&quot;;
-...
-</code></pre>
-<pre><code class="language-scss" metastring="title=app/index.scss">@import &quot;./styles/index.scss&quot;;
-...
-</code></pre>
-<pre><code class="language-tsx" metastring="title=app/index.tsx">import &quot;./index.scss&quot;
-
-const App = () =&gt; {...}
-</code></pre>
-<h3 id="14-adding-routing">1.4 Добавим роутинг</h3>
-<h4 id="install-dependencies-1">Установим зависимости</h4>
-<pre><code class="language-cmd">$ npm i react-router react-router-dom compose-function
-$ npm i -D @types/react-router @types/react-router-dom @types/compose-function
-</code></pre>
-<h4 id="add-hoc-to-initialize-the-router">Добавим HOC для инициализации роутера</h4>
-<pre><code class="language-tsx" metastring="title=app/providers/with-router.tsx">import { Suspense } from &quot;react&quot;;
-import { BrowserRouter } from &quot;react-router-dom&quot;;
-
-export const withRouter = (component: () =&gt; React.ReactNode) =&gt; () =&gt; (
-    &lt;BrowserRouter&gt;
-        &lt;Suspense fallback=&quot;Loading...&quot;&gt;
-            {component()}
-        &lt;/Suspense&gt;
-    &lt;/BrowserRouter&gt;
-);
-</code></pre>
-<pre><code class="language-ts" metastring="title=app/providers/index.ts">import compose from &quot;compose-function&quot;;
-import { withRouter } from &quot;./with-router&quot;;
-
-export const withProviders = compose(withRouter);
-</code></pre>
-<pre><code class="language-tsx" metastring="title=app/index.tsx">import { withProviders } from &quot;./providers&quot;;
-...
-
-const App = () =&gt; {...}
-
-export default withProviders(App);
-</code></pre>
-<h4 id="lets-add-real-pages">Добавим реальные страницы</h4>
-<admonition type="note"><p>Это лишь одна из реализаций роутинга</p><ul>
-<li>Можно объявлять его декларативно либо через список роутов (+ react-router-config)</li>
-<li>Можно объявлять его на уровне pages либо app</li>
-</ul><p>Методология пока никак не регламентирует реализацию этой логики</p></admonition>
-<h5 id="temporary-page-only-for-checking-the-routing">Временная страница, только для проверки роу тинга</h5>
-<p>Ее можно удалить позднее</p>
-<pre><code class="language-tsx" metastring="title=pages/test/index.tsx">const TestPage = () =&gt; {
-    return &lt;div&gt;Test Page&lt;/div&gt;;
-};
-
-export default TestPage;
-</code></pre>
-<h5 id="lets-form-the-routes">Сформируем роуты</h5>
-<pre><code class="language-tsx" metastring="title=pages/index.tsx">// Либо использовать @loadable/component, в рамках туториала - некритично
-import { lazy } from &quot;react&quot;;
-import { Route, Routes, Navigate } from &quot;react-router-dom&quot;;
-
-const TestPage = lazy(() =&gt; import(&quot;./test&quot;));
-
-export const Routing = () =&gt; {
-    return (
-        &lt;Routes&gt;
-            &lt;Route path=&quot;/&quot; element={&lt;TestPage/&gt;} /&gt;
-            &lt;Route path=&quot;*&quot; element={&lt;Navigate to=&quot;/&quot; /&gt;} /&gt;
-        &lt;/Routes&gt;
-    );
-};
-</code></pre>
-<h5 id="connecting-the-routing-to-the-application">Подключаем роутинг к приложению</h5>
-<pre><code class="language-tsx" metastring="title=app/index.tsx">import { Routing } from &quot;pages&quot;;
-
-const App = () =&gt; (
-    // Потенциально сюда можно вставить 
-    // Единый на все приложение хедер
-    // Либо же делать это на отдельных страницах
-    &lt;Routing /&gt;
-)
-...
-</code></pre>
-<h4 id="layers-app-pages">Layers: app, pages</h4>
-<p>Здесь мы использовали сразу несколько слоев:</p>
-<ul>
-<li><code>app</code> - для инициализации роутера <em>(HOC: withRouter)</em></li>
-<li><code>pages</code> - для хранения модулей страниц</li>
-</ul>
-<h3 id="15-lets-connect-uikit">1.5 Подключим UIKit</h3>
-<p>Для упрощения туториала, воспользуемся готовым UIKit от <a href="https://ant.design/components/overview/">AntDesign</a></p>
-<pre><code class="language-cmd">$ npm i antd @ant-design/icons
-</code></pre>
-<admonition type="tip"><p>Но вы можете использовать <strong>любой другой UIKit</strong> или же <strong>создать собственный</strong>, расположив компоненты в <code>shared/ui</code> - именно там рекомендуется хранить UIKit приложения:</p><pre><code class="language-ts">import { Checkbox } from &quot;antd&quot;; // ~ &quot;shared/ui/checkbox&quot;
-import { Card } from &quot;antd&quot;; // ~ &quot;shared/ui/card&quot;
-</code></pre></admonition>
-<h2 id="2-implementing-business-logic">2. Реализация бизнес-логики</h2>
-<admonition type="note"><p>Постараемся сконцентрироваться не на реализации каждого модуля, а на их последовательной композиции</p></admonition>
-<h3 id="21-lets-analyze-the-functionality">2.1 Проанализируем функциональность</h3>
-<p>Прежде чем приступать к коду, надо определиться - <a href="/docs/about/understanding/needs-driven">какую ценность мы хотим донести конечному пользователю</a></p>
-<p>Для этого, декомпозируем нашу функциональность <em>по зонам ответственности (слоям)</em></p>
-<p><img alt="layers-flow-themed" src="/ru/assets/images/layers_flow-88496fd4047ede3ddbdbd73d4a46ddae.png" width="1152" height="355"></p>
-<h4 id="pages">Pages</h4>
-<p>Набросаем базово необходимые страницы, и пользовательские ожидания от них:</p>
+<p>Ключевое отличие Feature-Sliced Design от произвольной структуры кода заключается в том, что страницы не могут зависеть друг от друга. То есть одна страница не может импортировать код с другой страницы. Это связано с <strong>правилом импорта для слоёв</strong>:</p>
+<p><em>Модуль в слайсе может импортировать другие слайсы только в том случае, если они расположены на слоях строго ниже.</em></p>
+<p>В этом случае страница является слайсом, поэтому модули (файлы) внутри этой страницы могут импортировать код только из слоев ниже, а не из других страниц.</p>
+<h3 id="пристальный-взгляд-на-ленту">Пристальный взгляд на ленту</h3>
+<figure><p><img alt="Перспектива анонимного посетителя" src="/ru/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg" width="2880" height="1504"></p><figcaption><p><em>Перспектива анонимного посетителя</em></p></figcaption></figure>
+<figure><p><img alt="Перспектива авторизованного пользователя" src="/ru/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg" width="2880" height="1504"></p><figcaption><p><em>Перспектива авторизованного пользователя</em></p></figcaption></figure>
+<p>На странице ленты есть три динамических области:</p>
 <ol>
-<li>
-<p><code>TasksListPage</code> - страница &quot;Список задач&quot;</p>
+<li>Ссылки для логина, показывающие статус авторизации</li>
+<li>Список тэгов, фильтрующих ленту</li>
+<li>Одна—две ленты статей, у каждой статьи кнопка лайка</li>
+</ol>
+<p>Ссылки для логина — часть заголовка, общего для всех страниц, так что пока что отложим их.</p>
+<h4 id="с писок-тэгов">Список тэгов</h4>
+<p>Чтобы создать список тэгов, нам нужно получить все доступные тэги, отобразить каждый тэг как чип (<a href="https://m3.material.io/components/chips/overview">chip</a>) и сохранить выбранные тэги в хранилище на стороне клиента. Эти операции относятся к категориям «взаимодействие с API», «пользовательский интерфейс» и «хранение данных». В Feature-Sliced Design код делится по назначению с помощью <em>сегментов</em>. Сегменты — это папки в слайсах, и они могут иметь произвольные названия, описывающие их цель, но некоторые цели настолько распространены, что существует несколько общепринятых названий:</p>
 <ul>
-<li>Смотреть список задач</li>
-<li>Переходить к странице конкретной задачи</li>
-<li><em>Помечать выполненной/невыполненной конкретную задачу</em></li>
-<li>Задавать фильтрацию по выполненным/невыполненным задачам</li>
+<li>📂 <code>api/</code> для взаимодействия с бэкендом</li>
+<li>📂 <code>ui/</code> для кода, отвечающего за отображение и внешний вид</li>
+<li>📂 <code>model/</code> для хранения данных и бизнес-логики</li>
+<li>📂 <code>config/</code> для фиче-флагов, переменных окружения и других форм конфигурации</li>
+</ul>
+<p>Мы поместим код, который получает тэги, в <code>api</code>, сам компонент тэга в <code>ui</code>, а взаимодействие с хранилищем в <code>model</code>.</p>
+<h4 id="статьи">Статьи</h4>
+<p>Следуя той же логике, мы можем разбить ленту статей на те же три сегмента:</p>
+<ul>
+<li>📂 <code>api/</code>: получить постраничн ый список статей с количеством лайков, оставить лайк</li>
+<li>📂 <code>ui/</code>:<!-- -->
+<ul>
+<li>список вкладок, который может отображать дополнительную вкладку при выборе тэга</li>
+<li>отдельная статья</li>
+<li>рабочая пагинация</li>
 </ul>
 </li>
-<li>
-<p><code>TaskDetailsPage</code> - страница &quot;Карточка задачи&quot;</p>
-<ul>
-<li>Смотреть информацию по задаче</li>
-<li><em>Помечать выполненной/невыполненной конкретную задачу</em></li>
-<li>Возвращаться к списку задач</li>
+<li>📂 <code>model/</code>: клиентское хранилище загруженных постов и текущей страницы (при необходимости)</li>
 </ul>
+<h3 id="переиспользование-общего-кода">Переиспользование общего кода</h3>
+<p>Страницы, как правило, очень отличаются по своей цели, но что-то остается одинаковым по всему приложению — например, UI-кит, соответствующий языку дизайна, или соглашение на бэкенде, что все делается через REST API с конкретным методом аутентификации. Поскольку слайсы должны быть изолированными, переиспользование кода происходит за счёт слоя ниже, <strong>Shared</strong>.</p>
+<p>Shared отличается от других слоев тем, что он содержит сегменты, а не слайсы. Таким образом, слой Shared представляет собой гибрид между слоем и слайсом.</p>
+<p>Обычно код в Shared не планируется заранее, а извлекается по ходу разработки, потому что только во время разработки становится ясно, какие части кода действительно переиспользуются. Тем не менее, полезно держать в голове, какой код имеет смысл хранить в Shared:</p>
+<ul>
+<li>📂 <code>ui/</code> — UI-кит, только внешний вид, без бизнес-логики. Например, кнопки, диалоги, поля форм.</li>
+<li>📂 <code>api/</code> — удобные обёртки вокруг запросов на бэкенд (например, обёртка над <code>fetch()</code>  в случае веба)</li>
+<li>📂 <code>config/</code> — обработка переменных окружения</li>
+<li>📂 <code>i18n/</code> — конфигурация поддержки разных языков</li>
+<li>📂 <code>router/</code> — примитивы и константы маршрутизации</li>
+</ul>
+<p>Это лишь примеры сегментов в Shared, вы можете опустить любой из них или создать свой собственный. Единственное, что нужно помнить при создании новых сегментов — названия сегментов должны описывать <strong>цель (почему), а не суть (что)</strong>. Такие названия как <code>components</code> , <code>hooks</code>  или <code>modals</code>  <em>не стоит</em> использовать, потому что они описывают, что содержат эти файлы по сути, а не то, с какой целью писался этот код. Как следствие таких названий, команде приходится копаться в таких папках, чтоб найти нужное. Помимо этого,  несвязанный код лежит рядом, из-за чего при рефакторинге затрагивается большая часть приложения, что усложняет ревью и тестирование.</p>
+<h3 id="определите-строгий- публичный-api">Определите строгий публичный API</h3>
+<p>В контексте Feature-Sliced Design термин <em>публичный API</em> означает, что слайс или сегмент объявляет, что из него могут импортировать другие модули в проекте. Например, в JavaScript это может быть файл <code>index.js</code>, который переэкспортирует объекты из других файлов в слайсе. Это обеспечивает свободу рефакторинга внутри слайса до тех пор, пока контракт с внешним миром (т.е. публичный API) остается неизменным.</p>
+<p>Для слоя Shared,  на котором нет слайсов, обычно удобнее определить публичный API (он же индекс) на уровне сегментов, а не один индекс на весь слой. В таком случае импорты из Shared естественным образом организуются по назначению. Для других слоев, на которых слайсы есть, верно обратное — обычно практичнее определить один индекс на слайс и позволить слайсу самому контролировать набор сегментов внутри, потому что другие слои обычно имеют гораздо меньше экспортов и чаще рефакторятся.</p>
+<p>Наши слайсы/сегменты будут выглядеть друг для друга следующим образом:</p>
+<pre><code class="language-jsx">📂 pages/
+  📂 feed/
+    📄 index
+  📂 sign-in/
+    📄 index
+  📂 article-read/
+    📄 index
+  📁 …
+📂 shared/
+  📂 ui/
+    📄 index
+  📂 api/
+    📄 index
+  📁 …
+</code></pre>
+<p>Все, что находится внутри папок типа <code>pages/feed</code>  или <code>shared/ui</code> , известно только этим папкам, и нет никаких гарантий по содержанию этих папок.</p>
+<h3 id="крупные-переиспользуемые-блоки-интерфейса">Крупные переиспользуемые блоки интерфейса</h3>
+<p>Ранее мы хотели отдельно вернуться к переиспользуемому заголовку приложения. Собирать его заново на каждой странице было бы непрактично, поэтому мы его переиспользуем. У нас уже есть слой Shared для переиспользования кода, однако, в случае крупных блоков интерфейса в Shared есть нюанс — слой Shared не должен знать о слоях выше.</p>
+<p>Между слоями Shared и Pages есть три других слоя: Entities, Features и Widgets. В других проектах на этих слоях может лежать что-то, что хочется использовать в крупном переиспользуемом блоке, и тогда мы не сможем поместить этот блок в Shared, потому что тогда ему придется импортировать со слоёв выше, а это запрещено. Тут приходит на помощь слой Widgets. Он расположен выше Shared, Entities и Featuers, поэтому он может использовать их всех.</p>
+<p>В нашем случае заголовок очень простой — это статический логотип и навигация верхнего уровня. Навигация должна спросить у API, авт оризован ли сейчас пользователь, но это может быть решено простым импортом из сегмента <code>api</code>. Поэтому мы оставим наш заголовок в Shared.</p>
+<h3 id="пристальный-взгляд-на-страницу-с-формой">Пристальный взгляд на страницу с формой</h3>
+<p>Давайте также рассмотрим страницу, на которой можно не только читать, но и редактировать. К примеру, редактор статей:</p>
+<p><img alt="Редактор статей в Conduit" src="/ru/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg" width="2880" height="1200"></p>
+<p>Она выглядит тривиально, но содержит несколько аспектов разработки приложений, которые мы еще не исследовали — валидацию форм, состояние ошибки и постоянное хранение данных.</p>
+<p>Для создания этой страницы нам нужно несколько полей и кнопок из Shared, которые мы соберём в форму в сегменте <code>ui</code> этой страницы. Затем, в сегменте <code>api</code> мы определим изменяющий запрос, чтобы создать статью на бэкенде.</p>
+<p>Чтобы проверить запрос перед отправкой, нам нужна схема валидации, и хорошим местом для нее является сегмент <code>model</code> , поскольку это модель данных. Там же мы сгенерируем сообщение об ошибке, а отобразим его с помощью ещё одного компонента в сегменте <code>ui</code>.</p>
+<p> Чтобы улучшить пользовательский опыт, мы также можем сохранять введённые данные постоянно, чтобы предотвратить случайную потерю при закрытии браузера. Это тоже подходит под сегмент <code>model</code>.</p>
+<h3 id="итоги">Итоги</h3>
+<p>Мы разобрали несколько страниц и пришли к базовой структуре нашего приложения:</p>
+<ol>
+<li>Слой Shared<!-- -->
+<ol>
+<li><code>ui</code>  будет содержать наш переиспользуемый UI-кит</li>
+<li><code>api</code>  будет содержать наши примитивы для взаимодействия с бэкендом</li>
+<li>Остальное разложим по ходу написания кода</li>
+</ol>
+</li>
+<li>Слой Pages — для каждой страницы отдельный слайс<!-- -->
+<ol>
+<li><code>ui</code>  будет содержать саму страницу и составляющие её блоки</li>
+<li><code>api</code>  будет содержать более специализированные функции получения данных, использующие <code>shared/ui</code></li>
+<li><code>model</code>  может содержать клиентское хранилище данных, которые мы будем отображать</li>
+</ol>
 </li>
 </ol>
-<p>Каждая из описанных возможностей - представляет из себя часть функциональности</p>
-<h5 id="usual-approach">Обычный подход</h5>
-<p>И есть большой соблазн</p>
-<ul>
-<li>либо всю логику реализовать в директории каждой конкретной страницы.</li>
-<li>либо все &quot;возможно переиспользуемые&quot; модули вынести в общую папку <code>src/components</code> или подобную</li>
-</ul>
-<p>Но если для маленького и недолгоживущего проекта такое решение подошло бы, то в реальной корпоративной разработке, оно <strong>может поставить крест</strong> на дальнейшем развитии проекта, превратив его в <strong>&quot;еще одно дремучее легаси&quot;</strong></p>
-<p>Обусловлено это обычными условиями развития проекта:</p>
-<ul>
-<li>требования меняются достаточно часто</li>
-<li>появляются новые обстоятельства</li>
-<li>техдолг копится с каждым днем и все сложнее добавлять новые фичи</li>
-<li>нужно масштабировать как сам проект, так и его команду</li>
-</ul>
-<h5 id="alternative-approach">Альтернативный подход</h5>
-<p>Даже при базовом разбиении мы видим, что:</p>
-<ul>
-<li>между страницами есть общие сущности и их отображение <em>(Task)</em></li>
-<li>между страницами есть общие фичи <em>(Помечать задачу выполненной / невыполненной)</em></li>
-</ul>
-<p>Соответственно, кажется логичным продолжать декомпозировать задачу, но уже исходя из перечисленных выше возможностей для пользователя.</p>
-<h4 id="features">Features</h4>
-<p>Части функциональности, несущие ценность пользователю</p>
-<ul>
-<li><code>&lt;ToggleTask /&gt;</code> - (компонент) Пометить задачу выполненной / невыполненной</li>
-<li><code>&lt;TasksFilters/&gt;</code> - (компонент) Задать фильтрацию для списка задач</li>
-</ul>
-<h4 id="entities">Entities</h4>
-<p>Бизнес-сущности, на которых будет строится более высокоуровневая логика</p>
-<ul>
-<li><code>&lt;TaskCard /&gt;</code> - (компонент) Карточка задачи, с отображением информации</li>
-<li><code>getTasksListFx({ filters })</code> - (effect) Подгрузка списка задач с параметрами</li>
-<li><code>getTaskByIdFx(taskId: number)</code>- (effect) Подгрузка задачи по ID</li>
-</ul>
-<h4 id="shared">Shared</h4>
-<p>Переиспользуемые общие модули, без привязки к предметной области</p>
-<ul>
-<li><code>&lt;Card /&gt;</code> - (компонент) UIKit ко мпонент<!-- -->
-<ul>
-<li><em>При этом можно как реализовывать собственный UIKit под проект, так воспользоваться готовым</em></li>
-</ul>
-</li>
-<li><code>getTasksList({ filters })</code> - (api) Подгрузка списка задач с параметрами</li>
-<li><code>getTaskById(taskId: number)</code>- (api) Подгрузка задачи по ID</li>
-</ul>
-<h4 id="what-is-the-profit">В чем профит?</h4>
-<p>Теперь все модули можно проектировать со <a href="/docs/reference/isolation/coupling-cohesion">слабой связностью</a> и со своей зоной ответственности, а также распределить по команде без конфликтов при разработке</p>
-<p><em>А самое главное - теперь каждый модуль служит для построения конкретной бизнес-ценности, что снижает риски для создания <a href="/docs/about/understanding/needs-driven">&quot;фич ради фич&quot;</a></em></p>
-<h3 id="22-what-else-is-worth-remembering">2.2 Про что еще стоит помнить</h3>
-<h4 id="layers-and-responsibilities">Слои и ответственность</h4>
-<p>Как было описано выше, благодаря слоистой структуре мы можем <strong>предсказуемо распределять сложность приложения</strong> согласно <a href="/docs/reference/layers">зонам ответственности, т.е. слоям</a>.</p>
-<p>При этом более высокоуровневая логика строится на основании нижележащих слоев:</p>
-<pre><code class="language-tsx">// (shared)         =&gt; (entities)  + (features)     =&gt; (pages)
-&lt;Card&gt; + &lt;Checkbox&gt; =&gt; &lt;TaskCard/&gt; + &lt;ToggleTask/&gt;  =&gt; &lt;TaskPage/&gt;
-</code></pre>
-<h4 id="preparing-modules-for-use">Подготовка модулей к использованию</h4>
-<p>Каждый реализуемый модуль должен предоставлять к использованию свой <a href="/docs/reference/public-api">публичный интерфейс</a>:</p>
-<pre><code class="language-ts" metastring="title={layer}/foo/index.ts">export { Card as FooCard, Thumbnail as FooThumbnail, ... } from &quot;./ui&quot;;
-export * as fooModel from &quot;./model&quot;; 
-</code></pre>
-<admonition type="info"><p>Если вам нужны именованные экспорты неймспейсов для декларации Public API, можно посмотреть в сторону <a href="https://babeljs.io/docs/en/babel-plugin-proposal-export-namespace-from">@babel/plugin-proposal-export-namespace-from</a></p><p>Либо же, как альтернатива, использовать более развернутую конструкцию</p><pre><code class="language-ts" metastring="title={layer}/foo/index.ts">import { Card as FooCard, Thumbnail as FooThumbnail, ... } from &quot;./ui&quot;;
-import * as fooModel from &quot;./model&quot;; 
-
-export { FooCard, FooThumbnail, fooModel };
-</code></pre></admonition>
-<h3 id="23-lets-display-the-basic-task-list">2.3 Отобразим базово список задач</h3>
-<h4 id="entities-task-card">(entities) Карточка задачи</h4>
-<pre><code class="language-tsx" metastring="title=entities/task/ui/task-row/index.tsx">import { Link } from &quot;react-router-dom&quot;;
-import cn from &quot;classnames&quot;; // Можно смело использовать аналоги
-import { Row } from &quot;antd&quot;; // ~ &quot;shared/ui/row&quot;
-
-export const TaskRow = ({ data, titleHref }: TaskRowProps) =&gt; {
-    return (
-        &lt;Row className={cn(styles.root, { [styles.completed]: data.completed })}&gt;
-            {titleHref ? &lt;Link to={titleHref}&gt;{data.title}&lt;/Link&gt; : data.title}
-        &lt;/Row&gt;
-    )
-}
-</code></pre>
-<h4 id="entities-loading-the-task-list">(entities) Подгрузка списка задач</h4>
-<p>Можно разбивать по типу сущности, либо хранить все в duck-modular-стиле</p>
-<blockquote>
-<p>Более подробно с реализацией API по туториалу можно ознакомиться <a href="https://github.com/feature-sliced/examples/tree/master/todo-app/src/shared/api">здесь</a></p>
-</blockquote>
-<pre><code class="language-ts" metastring="title=entities/task/model/index.ts">import { createStore, combine, createEffect, createEvent } from &quot;effector&quot;;
-import { useStore } from &quot;effector-react&quot;;
-
-import { typicodeApi } from &quot;shared/api&quot;;
-import type { Task } from &quot;shared/api&quot;;
-
-// В каждом эффекте так же может быть своя доп. обработка
-const getTasksListFx = createEffect((params?: typicodeApi.tasks.GetTasksListParams) =&gt; {
-  // Здесь также может быть доп. обработка эффекта
-  return typicodeApi.tasks.getTasksList(params);
-});
-
-// Можно хранить и в нормализованном виде
-export const $tasks = createStore&lt;Task[]&gt;([])
-  .on(getTasksListFx.doneData, (_, payload) =&gt; ...)
-
-export const $tasksList = combine($tasks, (tasks) =&gt; Object.values(tasks));
-// Можно промаппить и другие вещи вроде `isEmpty`, `isLoading`, ...
-</code></pre>
-<h4 id="pages-lets-connect-all-the-logic-on-the-page">(pages) Соединим всю логику на странице</h4>
-<pre><code class="language-tsx" metastring="title=pages/tasks-list/index.tsx">import { useEffect } from &quot;react&quot;;
-// Если чувствуете себя уверенно с @effector/reflect - можете сразу использовать его
-// В рамках туториала некритично
-import { useStore } from &quot;effector&quot;;
-import { Layout, Row, Col, Typography, Spin, Empty } from &quot;antd&quot;; // ~ &quot;shared/ui/{...}&quot;
-
-import { TaskRow, taskModel } from &quot;entities/task&quot;;
-import styles from &quot;./styles.module.scss&quot;;
-
-const TasksListPage = () =&gt; {
-  const tasks = useStore(taskModel.$tasksList);
-  const isLoading = useStore(taskModel.$tasksListLoading);
-  const isEmpty = useStore(taskModel.$tasksListEmpty);
-
-  /**
-   * Запрашиваем данные при загрузке страницы
-   * @remark Является плохой практикой в мире effector и представлено здесь - лишь для наглядной демонстрации
-   * Лучше фетчить через event.pageMounted или reflect
-   */
-  useEffect(() =&gt; taskModel.getTasksListFx(), []);
-
-  return (
-    &lt;Layout className={styles.root}&gt;
-      &lt;Layout.Toolbar className={styles.toolbar}&gt;
-        &lt;Row justify=&quot;center&quot;&gt;
-          &lt;Typography.Title level={1}&gt;Tasks List&lt;/Typography.Title&gt;
-        &lt;/Row&gt;
-        {/* TODO: TasksFilters */}
-      &lt;/Layout.Toolbar&gt;
-      &lt;Layout.Content className={styles.content}&gt;
-        &lt;Row gutter={[0, 20]} justify=&quot;center&quot;&gt;
-          {isLoading &amp;&amp; &lt;Spin size=&quot;large&quot; /&gt;}
-          {!isLoading &amp;&amp; tasks.map((task) =&gt; (
-            &lt;Col key={task.id} span={24}&gt;
-              &lt;TaskRow
-                data={task}
-                titleHref={`/${task.id}`}
-                // TODO: ToggleTaskCheckbox
-              /&gt;
-            &lt;/Col&gt;
-          ))}
-          {!isLoading &amp;&amp; isEmpty &amp;&amp; &lt;Empty description=&quot;No tasks found&quot; /&gt;}
-        &lt;/Row&gt;
-      &lt;/Layout.Content&gt;
-    &lt;/Layout&gt;
-  );
-};
-</code></pre>
-<h3 id="24-adding-task-status-switching">2.4 Добавим переключение статуса задач</h3>
-<h4 id="entities-switching-the-task-status">(entities) Переключение статуса задачи</h4>
-<pre><code class="language-ts" metastring="title=entities/task/model/index.ts">export const toggleTask = createEvent&lt;number&gt;();
-
-export const $tasks = createStore&lt;Task[]&gt;(...)
-  ...
-  .on(toggleTask, (state, taskId) =&gt; produce(state, draft =&gt; {
-    const task = draft[taskId];
-    task.completed = !task.completed;
-    console.log(1, { taskId, state, draft: draft[taskId].completed });
-  }))
-
-
-// Делаем хуком, чтобы завязаться на обновления react
-// @see В случае эффектора, использование хука - это крайняя мера, т.к. более предпочтительны computed-сторы
-export const useTask = (taskId: number): import(&quot;shared/api&quot;).Task | undefined =&gt; {
-  return useStoreMap({
-    store: $tasks,
-    keys: [taskId],
-    fn: (tasks, [id]) =&gt; tasks[id] ?? null
-  });
-};
-</code></pre>
-<h4 id="features-checkbox-for-the-task">(features) Чекбокс для задачи</h4>
-<pre><code class="language-tsx" metastring="title=features/toggle-task/ui.tsx">import { Checkbox } from &quot;antd&quot;; // ~ &quot;shared/ui/checkbox&quot;
-import { taskModel } from &quot;entities/task&quot;;
-
-// resolve / unresolve
-export const ToggleTask = ({ taskId }: ToggleTaskProps) =&gt; {
-    const task = taskModel.useTask(taskId);
-    if (!task) return null;
-
-    return (
-        &lt;Checkbox 
-            onClick={() =&gt; taskModel.toggleTask(taskId)} 
-            checked={task.completed}
-        /&gt;
-    )
-}
-</code></pre>
-<h4 id="pages-embedding-the-checkbox-in-the-page">(pages) Внедряем чекбокс в страницу</h4>
-<p>Что примечательно - карточка задачи совсем не знает ни про страницу где используется, ни про то, какие кнопки-действия в нее могут вставляться (то же самое можно сказать и про саму фичу)</p>
-<p>Такой подход позволяет одновременно <strong>грамотно разделять ответственность</strong> и <strong>гибко переиспользовать логику при реализации</strong></p>
-<pre><code class="language-tsx" metastring="title=pages/tasks-list/index.tsx">import { ToggleTask } from &quot;features/toggle-task&quot;;
-import { TaskRow, taskModel } from &quot;entities/task&quot;;
-...
-&lt;Col key={task.id} span={24}&gt;
-      &lt;TaskRow
-        ...
-        before={&lt;ToggleTask taskId={task.id} withStatus={false} /&gt;}
-      /&gt;
-&lt;/Col&gt;
-</code></pre>
-<h3 id="25-adding-task-filtering">2.5 Добавим фильтрацию задач</h3>
-<h4 id="entities-filtering-at-the-data-level">(entities) Фильтрация на уровне данных</h4>
-<pre><code class="language-ts" metastring="title=entities/task/model/index.ts">import { combine, createEvent, createStore } from &quot;effector&quot;;
-
-export type QueryConfig = { completed?: boolean };
-
-const setQueryConfig = createEvent&lt;QueryConfig&gt;();
-
-// Можно вынести в отдельную директорию (для хранения нескольких моделей)
-export const $queryConfig = createStore&lt;QueryConfig&gt;({})
-  .on(setQueryConfig, (_, payload) =&gt; payload);
-
-/**
- * Отфильтрованные таски
- * @remark Можно разруливать на уровне эффектов - но тогда нужно подключать дополнительную логику в стор
- * &gt; Например скрывать/показывать таск при `toggleTask` событии
- */
-export const $tasksFiltered = combine(
-  $tasksList,
-  $queryConfig,
-  (tasksList, config) =&gt; {
-    return tasksList.filter(task =&gt; (
-      config.completed === undefined ||
-      task.completed === config.completed
-  ))},
-);
-</code></pre>
-<h4 id="features-ui-controls-for-filters">(features) UI-контролы для фильтров</h4>
-<pre><code class="language-tsx" metastring="title=features/tasks-filters/ui.tsx">// Если чувствуете себя уверенно с @effector/reflect - можете сразу использовать его
-// В рамках туториала некритично
-import { useStore } from &quot;effector&quot;;
-import { Radio } from &quot;antd&quot;; // ~ &quot;shared/ui/radio&quot;
-
-import { taskModel } from &quot;entities/task&quot;;
-import { filtersList, getFilterById, DEFAULT_FILTER } from &quot;./config&quot;;
-
-export const const TasksFilters = () =&gt; {
-  const isLoading = useStore($tasksListLoading);
-
-  return (
-    &lt;Radio.Group defaultValue={DEFAULT_FILTER} buttonStyle=&quot;solid&quot;&gt;
-      {filtersList.map(({ title, id }) =&gt; (
-        &lt;Radio.Button
-          key={id}
-          onClick={() =&gt; taskModel.setQueryConfig(getFilterById(id).config)}
-          value={id}
-          disabled={isLoading}
-        &gt;
-          {title}
-        &lt;/Radio.Button&gt;
-      ))}
-    &lt;/Radio.Group&gt;
-  );
-};
-</code></pre>
-<h4 id="pages-implementing-filtering-in-the-page">(pages) Внедряем фильтрацию в страницу</h4>
-<p>И мы снова реализовали логику, особо не задаваясь вопросами:</p>
-<ul>
-<li>А куда положить логику фильтрации?</li>
-<li>А могут ли эти фильтры переиспользоваться в будущем?</li>
-<li>А могут ли фильтры знать про контекст страницы?</li>
-</ul>
-<p>Мы просто разделили логику согласно зонам ответственности (слоям)</p>
-<pre><code class="language-tsx" metastring="title=pages/tasks-list/index.tsx">import { TasksFilters } from &quot;features/tasks-filters&quot;;
-...
-&lt;Layout.Toolbar className={styles.toolbar}&gt;
-    ...
-    &lt;Row justify=&quot;center&quot;&gt;
-        &lt;TasksFilters /&gt;
-    &lt;/Row&gt;
-&lt;/Layout.Toolbar&gt;
-</code></pre>
-<admonition type="note"><p><strong>К текущему этапу, такое разбиение может показаться излишним - &quot;Почему бы не положить все сразу на уровне страницы / фичи&quot;?</strong></p><p>Но тогда попробуем задать себе вопросы:</p><ul>
-<li>А где гарантии, что сложность страницы не увеличится в будущем настолько, что все аспекты логики сильно будут переплетены? Как при этом без лишних затрат добавлять новую функциональность?</li>
-<li>А где гарантии, что новый человек, пришедший в команду (или даже вы, если на полгода отойдете от проекта) - поймет, что здесь происходит?</li>
-<li>А как построить логику, чтобы не нарушить поток данных / реактивность с другими фичами?</li>
-<li>А что, если эта логика фильтрации настолько сильно прикрепится к контексту страницы, что ее будет невозможно использовать на других страницах?</li>
-</ul><p>Именно поэтому мы и <strong>разбиваем ответственность</strong>, чтобы каждый слой занимался только одной задачей, и чтобы это понимал каждый из разработчиков</p></admonition>
-<h3 id="26-task-page">2.6 Страница задачи</h3>
-<p>Аналогичным образом реализуем страницу задачи:</p>
-<ul>
-<li>Выделяем shared логику</li>
-<li>Выделяем entities логику</li>
-<li>Выделяем features логику</li>
-<li>Выделяем pages логику</li>
-</ul>
-<h4 id="pages-thetask-card-page">(pages) Страница &quot;Карточка задачи&quot;</h4>
-<pre><code class="language-tsx" metastring="title=pages/task-details/index.tsx">import { ToggleTask } from &quot;features/toggle-task&quot;;
-import { TaskCard, taskModel } from &quot;entities/task&quot;;
-import { Layout, Button } from &quot;antd&quot;; // ~ &quot;shared/ui/{...}&quot;
-import styles from &quot;./styles.module.scss&quot;;
-
-const TaskDetailsPage = (props: Props) =&gt; {
-    const taskId = Number(props.match?.params.taskId);
-    const task = taskModel.useTask(taskId);
-    const isLoading = useStore(taskModel.$taskDetailsLoading);
-
-  /**
-   * Запрашиваем данные по задаче
-   * @remark Является плохой практикой в мире effector и представлено здесь - лишь для наглядной демонстрации
-   * Лучше фетчить через event.pageMounted или reflect
-   */
-    useEffect(() =&gt; taskModel.getTaskByIdFx({ taskId }), [taskId]);
-
-    // Можно часть логики перенести в entity/task/card (как контейнер)
-    if (!task &amp;&amp; !isLoading) {
-        return ...
-    }
-
-    return (
-        &lt;Layout className={styles.root}&gt;
-            &lt;Layout.Content className={styles.content}&gt;
-                &lt;TaskCard
-                    data={task}
-                    size=&quot;default&quot;
-                    loading={isLoading}
-                    className={styles.card}
-                    bodyStyle={{ height: 400 }}
-                    extra={&lt;Link to=&quot;/&quot;&gt;Back to TasksList&lt;/Link&gt;}
-                    actions={[
-                        &lt;ToggleTask key=&quot;toggle&quot; taskId={taskId} /&gt;
-                    ]}
-                /&gt;
-            &lt;/Layout.Content&gt;
-        &lt;/Layout&gt;
-    )
-};
-</code></pre>
-<h3 id="27-whats-next">2.7 Что дальше?</h3>
-<p>А дальше поступают новые задачи, выявляются новые требования</p>
-<p>При этом старая кодовая база не требует значительных переработок</p>
-<h4 id="has-the-functionality-tied-to-the-user-appeared">Появилась функциональность, завязанная на пользователе?</h4>
-<p>=&gt; Добавляем <code>entities/user</code></p>
-<h4 id="did-you-need-to-change-the-filtering-logic">Понадобилось поменять логику фильтрации?</h4>
-<p>=&gt; Меняем обработку на <code>entities</code> или <code>pages</code> уровне, в зависимости от масштабности</p>
-<h4 id="do-you-need-to-add-more-features-to-the-task-card-but-at-the-same-time-so-that-it-can-be-used-in-the-old-way">Нужно добавить больше фичей в карточку задачи, но при этом, чтобы ее можно было использовать по-старому?</h4>
-<p>=&gt; Добавляем фичи и вставляем их в карточку только на нужной <strong>странице</strong></p>
-<h4 id="has-a-module-become-too-complex-to-support">Какой-то модуль стал слишком сложным для поддержки?</h4>
-<p>=&gt; Благодаря заложенной архитектуре, мы можем изолированно отрефакторить только этот модуль - без неявных сайд-эффектов для других <a href="https://youtu.be/BWAeYuWFHhs?t=1625">(и даже переписать с нуля)</a></p>
-<h2 id="summary">Итого</h2>
-<h3 id="we-have-learned-how-to-apply-the-methodology-for-basic-cases">Мы научились применять методологию для базовых случаев</h3>
-<p>Понятно, что м ир гораздо сложнее, но уже здесь мы зацепились за некоторые спорные моменты и разрешили их таким образом, чтобы проект оставался поддерживаемым и расширяемым.</p>
-<h3 id="we-got-a-scalable-and-flexible-codebase">Мы получили масштабируемую и гибкую кодовую базу</h3>
-<ol>
-<li>
-<p>Переиспользуемые и расширяемые модули</p>
-<ul>
-<li><em>shared, features, entities</em></li>
-</ul>
-</li>
-<li>
-<p>Равномерное и предсказуемое распределение логики</p>
-<ul>
-<li><em>Поскольку композиция у нас идет в одном направлении (вышележащие слои используют нижележащие) - мы можем предсказуемо ее отслеживать и модифицировать, не боясь непредвиденных последствий</em></li>
-</ul>
-</li>
-<li>
-<p>Структуру приложения, которая рассказывает о бизнес логике сама за себя</p>
-<ul>
-<li>Какие есть страницы?<!-- -->
-<ul>
-<li><code>TasksList</code>, <code>TaskDetails</code></li>
-</ul>
-</li>
-<li>Какие есть фичи? Что может пользователь?<!-- -->
-<ul>
-<li><code>ToggleTask</code> <code>TasksFilters</code></li>
-</ul>
-</li>
-<li>Какие есть бизнес-сущности? С чем ведется работа?<!-- -->
-<ul>
-<li><code>Task (TaskCard, ...)</code></li>
-</ul>
-</li>
-<li>Что можно переиспользовать из вспомогательного?<!-- -->
-<ul>
-<li><code>UIKit (Card, ...)</code> <code>API (tasksApi)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="example">Пример</h3>
-<p>Ниже в <a href="https://codesandbox.io/s/github/feature-sliced/examples/tree/master/todo-app">Codesandbox</a> предст авлен пример получившегося TodoApp, где можно подробно изучить финальную структуру приложения</p>
-<iframe class="codesandbox" src="https://codesandbox.io/embed/github/feature-sliced/examples/tree/master/todo-app?autoresize=1&amp;fontsize=14&amp;hidenavigation=1&amp;theme=dark&amp;codemirror=1" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
-<h2 id="see-also">См. также</h2>
-<ul>
-<li><a href="https://www.pluralsight.com/guides/how-to-organize-your-react-+-redux-codebase">(Обзор) How to Organize Your React + Redux Codebase</a>
-<ul>
-<li>Разбор нескольких подходов к структуризации React проектов</li>
-</ul>
-</li>
-<li><a href="/docs/guides">Гайды и примеры применения методологии (+ Миграция с v1)</a></li>
-<li><a href="/docs/reference">Справочный материал по методологии</a></li>
-</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/feature-sliced/documentation/edit/master/i18n/ru/docusaurus-plugin-content-docs/current/get-started/tutorial.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_n0ip" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Отредактировать эту страницу</a></div><div class="col lastUpdated_PINg"><span class="theme-last-updated">Последнее обновление<!-- --> <b><time datetime="2024-01-28T19:58:11.000Z">28 янв. 2024 г.</time></b></span></div></div></footer><div class="root_vWuT feedback_uP2s"><div class="title_XNgF"><span class="titleLabel_HRC4">Страница была полезной?</span><span role="img" aria-label="like" tabindex="-1" class="anticon anticon-like action_WmDf actionLike_q2D9"><svg viewBox="64 64 896 896" focusable="false" data-icon="like" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7 0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 00-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 00471 99.9c-52 0-98 35-111.8 85.1l-85.9 311h-.3v428h472.3c9.2 0 18.2-1.8 26.5-5.4 47.6-20.3 78.3-66.8 78.3-118.4 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7-.2-12.6-2-25.1-5.6-37.1zM112 528v364c0 17.7 14.3 32 32 32h65V496h-65c-17.7 0-32 14.3-32 32z"></path></svg></span><span role="img" aria-label="dislike" tabindex="-1" class="anticon anticon-dislike action_WmDf actionDislike_xA01"><svg viewBox="64 64 896 896" focusable="false" data-icon="dislike" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M885.9 490.3c3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-51.6-30.7-98.1-78.3-118.4a66.1 66.1 0 00-26.5-5.4H273v428h.3l85.8 310.8C372.9 889 418.9 924 470.9 924c29.7 0 57.4-11.8 77.9-33.4 20.5-21.5 31-49.7 29.5-79.4l-6-122.9h239.9c12.1 0 23.9-3.2 34.3-9.3 40.4-23.5 65.5-66.1 65.5-111 0-28.3-9.3-55.5-26.1-77.7zM112 132v364c0 17.7 14.3 32 32 32h65V100h-65c-17.7 0-32 14.3-32 32z"></path></svg></span></div><div class="subtitle_wXTa"><span>Ваш фидбек помогает нам улучшать документацию</span></div></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Навигация по странице документации"><a class="pagination-nav__link pagination-nav__link--prev" href="/ru/docs/get-started/overview"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">Обзор</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ru/docs/get-started/faq"><div class="pagination-nav__sublabel">Следующая страница</div><div class="pagination-nav__label">FAQ</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_TjBW thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#1-preparation" class="table-of-contents__link toc-highlight">1. Подготовительные моменты</a><ul><li><a href="#11-initializing-the-project" class="table-of-contents__link toc-highlight">1.1 Инициализируем проект</a></li><li><a href="#12-preparing-the-structure" class="table-of-contents__link toc-highlight">1.2 Подготавливаем структуру</a></li><li><a href="#13-enabling-global-styles" class="table-of-contents__link toc-highlight">1.3 Подключим глобальные стили</a></li><li><a href="#14-adding-routing" class="table-of-contents__link toc-highlight">1.4 Добавим роутинг</a></li><li><a href="#15-lets-connect-uikit" class="table-of-contents__link toc-highlight">1.5 Подключим UIKit</a></li></ul></li><li><a href="#2-implementing-business-logic" class="table-of-contents__link toc-highlight">2. Реализация бизнес-логики</a><ul><li><a href="#21-lets-analyze-the-functionality" class="table-of-contents__link toc-highlight">2.1 Проанализируем функциональность</a></li><li><a href="#22-what-else-is-worth-remembering" class="table-of-contents__link toc-highlight">2.2 Про что еще стоит помнить</a></li><li><a href="#23-lets-display-the-basic-task-list" class="table-of-contents__link toc-highlight">2.3 Отобразим базово список задач</a></li><li><a href="#24-adding-task-status-switching" class="table-of-contents__link toc-highlight">2.4 Добавим переключение статуса задач</a></li><li><a href="#25-adding-task-filtering" class="table-of-contents__link toc-highlight">2.5 Добавим фильтрацию задач</a></li><li><a href="#26-task-page" class="table-of-contents__link toc-highlight">2.6 Страница задачи</a></li><li><a href="#27-whats-next" class="table-of-contents__link toc-highlight">2.7 Что дальше?</a></li></ul></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Итого</a><ul><li><a href="#we-have-learned-how-to-apply-the-methodology-for-basic-cases" class="table-of-contents__link toc-highlight">Мы научились применять методологию для базовых случаев</a></li><li><a href="#we-got-a-scalable-and-flexible-codebase" class="table-of-contents__link toc-highlight">Мы получили масштабируемую и гибкую кодовую базу</a></li><li><a href="#example" class="table-of-contents__link toc-highlight">Пример</a></li></ul></li><li><a href="#see-also" class="table-of-contents__link toc-highlight">См. также</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Спецификация</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/ru/docs">Документация</a></li><li class="footer__item"><a class="footer__link-item" href="/ru/community">Сообщество</a></li><li class="footer__item"><a class="footer__link-item" href="/ru/nav">Помощь</a></li><li class="footer__item"><a href="https://github.com/feature-sliced/documentation/discussions" target="_blank" rel="noopener noreferrer" class="footer__link-item">Обсуждения<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">Сообщество</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/S8MzWTUsmp" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://t.me/feature_sliced" target="_blank" rel="noopener noreferrer" class="footer__link-item">Telegram (RU)<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://twitter.com/feature_sliced" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://opencollective.com/feature-sliced" target="_blank" rel="noopener noreferrer" class="footer__link-item">Open Collective<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://www.youtube.com/c/FeatureSlicedDesign" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">Остальное</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/feature-sliced" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="footer__link-item">Contribution Guide<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/feature-sliced/documentation/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" class="footer__link-item">Лицензия<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/ru/docs/privacy">Конфиденциальность</a></li></ul></div></div><div class="footer__bottom text--center"><div class="margin-bottom--sm"><a href="https://github.com/feature-sliced" rel="noopener noreferrer" class="footerLogoLink_hAmV"><img src="/ru/img/brand/logo-primary.png" alt="Feature-Sliced Design - Architectural methodology for frontend projects" class="footer__logo themedComponent_lmYv themedComponent--light_zmjl" width="160"><img src="/ru/img/brand/logo-primary.png" alt="Feature-Sliced Design - Architectural methodology for frontend projects" class="footer__logo themedComponent_lmYv themedComponent--dark_ABcP" width="160"></a></div><div class="footer__copyright">Copyright © 2018-2023  Feature-Sliced Design</div></div></div></footer></div>
+<p>Давайте создадим это приложение!</p>
+<p><em>Продолжение следует.</em></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/feature-sliced/documentation/edit/master/i18n/ru/docusaurus-plugin-content-docs/current/get-started/tutorial.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_n0ip" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Отредактировать эту страницу</a></div><div class="col lastUpdated_PINg"><span class="theme-last-updated">Последнее обновление<!-- --> <b><time datetime="2024-02-19T23:00:52.000Z">19 февр. 2024 г.</time></b></span></div></div></footer><div class="root_vWuT feedback_uP2s"><div class="title_XNgF"><span class="titleLabel_HRC4">Страница была полезной?</span><span role="img" aria-label="like" tabindex="-1" class="anticon anticon-like action_WmDf actionLike_q2D9"><svg viewBox="64 64 896 896" focusable="false" data-icon="like" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M885.9 533.7c16.8-22.2 26.1-49.4 26.1-77.7 0-44.9-25.1-87.4-65.5-111.1a67.67 67.67 0 00-34.3-9.3H572.4l6-122.9c1.4-29.7-9.1-57.9-29.5-79.4A106.62 106.62 0 00471 99.9c-52 0-98 35-111.8 85.1l-85.9 311h-.3v428h472.3c9.2 0 18.2-1.8 26.5-5.4 47.6-20.3 78.3-66.8 78.3-118.4 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7 0-12.6-1.8-25-5.4-37 16.8-22.2 26.1-49.4 26.1-77.7-.2-12.6-2-25.1-5.6-37.1zM112 528v364c0 17.7 14.3 32 32 32h65V496h-65c-17.7 0-32 14.3-32 32z"></path></svg></span><span role="img" aria-label="dislike" tabindex="-1" class="anticon anticon-dislike action_WmDf actionDislike_xA01"><svg viewBox="64 64 896 896" focusable="false" data-icon="dislike" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M885.9 490.3c3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-28.3-9.3-55.5-26.1-77.7 3.6-12 5.4-24.4 5.4-37 0-51.6-30.7-98.1-78.3-118.4a66.1 66.1 0 00-26.5-5.4H273v428h.3l85.8 310.8C372.9 889 418.9 924 470.9 924c29.7 0 57.4-11.8 77.9-33.4 20.5-21.5 31-49.7 29.5-79.4l-6-122.9h239.9c12.1 0 23.9-3.2 34.3-9.3 40.4-23.5 65.5-66.1 65.5-111 0-28.3-9.3-55.5-26.1-77.7zM112 132v364c0 17.7 14.3 32 32 32h65V100h-65c-17.7 0-32 14.3-32 32z"></path></svg></span></div><div class="subtitle_wXTa"><span>Ваш фидбек помогает нам улучшать документацию</span></div></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Навигация по странице документации"><a class="pagination-nav__link pagination-nav__link--prev" href="/ru/docs/get-started/overview"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">Обзор</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ru/docs/get-started/faq"><div class="pagination-nav__sublabel">Следующая страница</div><div class="pagination-nav__label">FAQ</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_TjBW thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#часть-1-на-бумаге" class="table-of-contents__link toc-highlight">Часть 1. На бумаге</a><ul><li><a href="#начните-с-перечисления-страниц" class="table-of-contents__link toc-highlight">Начните с перечисления страниц</a></li><li><a href="#пристальный-взгляд-на-ленту" class="table-of-contents__link toc-highlight">Пристальный взгляд на ленту</a></li><li><a href="#переиспользование-общего-кода" class="table-of-contents__link toc-highlight">Переиспользование общего кода</a></li><li><a href="#определите-строгий-публичный-api" class="table-of-contents__link toc-highlight">Определите строгий публичный API</a></li><li><a href="#крупные-переиспользуемые-блоки-интерфейса" class="table-of-contents__link toc-highlight">Крупные переиспользуемые блоки интерфейса</a></li><li><a href="#пристальный-взгляд-на-страницу-с-формой" class="table-of-contents__link toc-highlight">Пристальный взгляд на страницу с формой</a></li><li><a href="#итоги" class="table-of-contents__link toc-highlight">Итоги</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Спецификация</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/ru/docs">Документация</a></li><li class="footer__item"><a class="footer__link-item" href="/ru/community">Сообщество</a></li><li class="footer__item"><a class="footer__link-item" href="/ru/nav">Помощь</a></li><li class="footer__item"><a href="https://github.com/feature-sliced/documentation/discussions" target="_blank" rel="noopener noreferrer" class="footer__link-item">Обсуждения<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">Сообщество</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/S8MzWTUsmp" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://t.me/feature_sliced" target="_blank" rel="noopener noreferrer" class="footer__link-item">Telegram (RU)<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://twitter.com/feature_sliced" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://opencollective.com/feature-sliced" target="_blank" rel="noopener noreferrer" class="footer__link-item">Open Collective<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://www.youtube.com/c/FeatureSlicedDesign" target="_blank" rel="noopener noreferrer" class="footer__link-item">YouTube<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">Остальное</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/feature-sliced" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="footer__link-item">Contribution Guide<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/feature-sliced/documentation/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" class="footer__link-item">Лицензия<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_khbl"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/ru/docs/privacy">Конфиденциальность</a></li></ul></div></div><div class="footer__bottom text--center"><div class="margin-bottom--sm"><a href="https://github.com/feature-sliced" rel="noopener noreferrer" class="footerLogoLink_hAmV"><img src="/ru/img/brand/logo-primary.png" alt="Feature-Sliced Design - Architectural methodology for frontend projects" class="footer__logo themedComponent_lmYv themedComponent--light_zmjl" width="160"><img src="/ru/img/brand/logo-primary.png" alt="Feature-Sliced Design - Architectural methodology for frontend projects" class="footer__logo themedComponent_lmYv themedComponent--dark_ABcP" width="160"></a></div><div class="footer__copyright">Copyright © 2018-2023  Feature-Sliced Design</div></div></div></footer></div>
 </body>
 </html>
