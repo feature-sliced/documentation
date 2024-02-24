@@ -163,7 +163,7 @@ We have examined several pages and outlined a preliminary structure for our appl
     3. The rest will be arranged on demand
 2. Pages layer — each page is a separate slice
     1. `ui`  will contain the page itself and all of its parts
-    2. `api`  will contain more specialized data fetching, using `shared/ui` 
+    2. `api`  will contain more specialized data fetching, using `shared/api`
     3. `model`  might contain client-side storage of the data that we will display
 
 Let’s get building!
