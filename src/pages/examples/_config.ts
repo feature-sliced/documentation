@@ -348,5 +348,16 @@ export const examples: Example[] = [
             "zustand",
         ],
     },
+    {
+        title: "Posts (React Query example)",
+        description:
+            "Example of using FSD with React Query (Mutation, Query, Pagination)",
+        website: "https://fsd-react-query-example.vercel.app/",
+        version: VERSIONS.V2,
+        updatedAt: "2024-02-25",
+        source: "https://github.com/ruslan4432013/fsd-react-query-example",
+        preview: require("./img/react-query-example.png"),
+        tech: ["react", "react-query", "typescript", "material ui"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
