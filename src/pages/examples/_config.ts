@@ -352,7 +352,7 @@ export const examples: Example[] = [
         title: "Posts (React Query example)",
         description:
             "Example of using FSD with React Query (Mutation, Query, Pagination)",
-        website: "https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main",
+        website: "https://fsd-react-query-example.vercel.app/",
         version: VERSIONS.V2,
         updatedAt: "2024-02-25",
         source: "https://github.com/ruslan4432013/fsd-react-query-example",
