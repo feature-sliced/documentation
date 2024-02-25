@@ -357,12 +357,7 @@ export const examples: Example[] = [
         updatedAt: "2024-02-25",
         source: "https://github.com/ruslan4432013/fsd-react-query-example",
         preview: require("./img/react-query-example.png"),
-        tech: [
-            "react",
-            "react-query",
-            "typescript",
-            "material ui"
-        ],
+        tech: ["react", "react-query", "typescript", "material ui"],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();
