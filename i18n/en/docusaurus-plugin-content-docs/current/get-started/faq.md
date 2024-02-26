@@ -24,7 +24,7 @@ If you need plain markup layouts, you can keep them in `shared/ui`. If you need 
 
 ### What is the difference between a feature and an entity?
 
-An _entity_ is a real-life concept that your app is working with. A _feature_ is an nteraction that provides real-life value to your app’s users, the thing people want to do with your entities.
+An _entity_ is a real-life concept that your app is working with. A _feature_ is an interaction that provides real-life value to your app’s users, the thing people want to do with your entities.
 
 For more information, along with examples, see the Reference page on [slices][reference-entities].
 
