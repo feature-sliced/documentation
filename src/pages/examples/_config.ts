@@ -359,5 +359,15 @@ export const examples: Example[] = [
         preview: require("./img/react-query-example.png"),
         tech: ["react", "react-query", "typescript", "material ui"],
     },
+    {
+        title: "Moke Smoke - Mobile App",
+        description:
+            "Moke Smoke not only helps you track your progress in quitting smoking, but also offers a range of unique features and opportunities to interact with other community members.",
+        version: VERSIONS.V2,
+        updatedAt: "2024-02-28",
+        source: "https://github.com/penteleichuk/Moke-Smoke",
+        preview: require("./img/react-query-example.png"),
+        tech: ["react-native", "rtk", "typescript", "persist", "firebase", "offline / online"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
