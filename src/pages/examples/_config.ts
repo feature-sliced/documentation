@@ -359,5 +359,15 @@ export const examples: Example[] = [
         preview: require("./img/react-query-example.png"),
         tech: ["react", "react-query", "typescript", "material ui"],
     },
+    {
+        title: "Moonlogs (Effector + Forest example)",
+        description:
+            "Moonlogs is a business-event logging tool with a built-in user-friendly web interface for easy access to events",
+        version: VERSIONS.V2,
+        updatedAt: "2024-03-06",
+        source: "https://github.com/pijng/moonlogs",
+        preview: require("./img/moonlogs.png"),
+        tech: ["forest", "effector", "tailwind", "typescript", "go"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
