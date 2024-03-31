@@ -376,7 +376,7 @@ export const examples: Example[] = [
         version: VERSIONS.V2,
         updatedAt: "2024-03-31",
         source: "https://github.com/penteleichuk/Moke-Smoke",
-        preview: require("./img/moke-smoke.png"),
+        preview: require("./img/moke-smoke.jpg"),
         tech: ["react", "rtk", "persist", "typescript", "firebase"],
     },
     // Reverse the list (last examples should be at the top)
