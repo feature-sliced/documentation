@@ -369,5 +369,15 @@ export const examples: Example[] = [
         preview: require("./img/moonlogs.png"),
         tech: ["forest", "effector", "tailwind", "typescript", "go"],
     },
+    {
+        title: "Moke Smoke (React Native example)",
+        description:
+            "An application that helps you quit smoking, published in the App Store and Google. Developed with React Native",
+        version: VERSIONS.V2,
+        updatedAt: "2024-03-31",
+        source: "https://github.com/penteleichuk/Moke-Smoke",
+        preview: require("./img/moke-smoke.jpg"),
+        tech: ["react", "rtk", "persist", "typescript", "firebase"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
