@@ -379,5 +379,23 @@ export const examples: Example[] = [
         preview: require("./img/moke-smoke.jpg"),
         tech: ["react", "rtk", "persist", "typescript", "firebase"],
     },
+    {
+        title: "IT bookstore",
+        description:
+            "Catalog for viewing and searching information technology books",
+        website: "https://umttikhinadasha.github.io/IT-Bookstore/",
+        version: VERSIONS.V2,
+        updatedAt: "2024-03-28",
+        source: "https://github.com/UmttikhinaDasha/IT-Bookstore",
+        preview: require("./img/it-bookstore.png"),
+        tech: [
+            "react",
+            "redux toolkit",
+            "typescript",
+            "react router",
+            "vite",
+            "scss",
+        ],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
