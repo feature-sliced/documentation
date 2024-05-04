@@ -59,6 +59,9 @@ dependencies:
   plugin-image-zoom:
     specifier: ^1.2.0
     version: 1.2.0
+  prism-react-renderer:
+    specifier: ^2.3.1
+    version: 2.3.1(react@18.3.1)
   react:
     specifier: ^18.3.1
     version: 18.3.1
