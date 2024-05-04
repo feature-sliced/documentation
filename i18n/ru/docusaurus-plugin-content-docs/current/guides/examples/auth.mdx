@@ -68,7 +68,7 @@ import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 
 *Во многом повторяет декларацию API и для описанных ниже слоев*
 
-```ts title=entities/user/ui/index.ts
+```ts title="entities/user/ui/index.ts"
 export { ViewerCard } from "./card";
 export { ViewerAvatar } from "./avatar";
 ...
@@ -81,7 +81,7 @@ export { ViewerAvatar } from "./avatar";
 
 Но явное выделение далеко не всегда обязательно
 
-```ts title=entities/user/model/index.ts
+```ts title="entities/user/model/index.ts"
 export * as selectors from "./selectors";
 export * as events from "./events";
 export * as stores from "./stores";
@@ -94,7 +94,7 @@ export * as stores from "./stores";
 
 Если же в модели юниты можно семантично разделить на несколько сабмоделей, то [можно явно это](https://github.com/feature-sliced/examples/pull/1#discussion_r654841332) обозначить в Public API
 
-```ts title=entities/user/model/index.ts
+```ts title="entities/user/model/index.ts"
 export * as submodel1 from "./submodel1"
 export * as submodel2 from "./submodel2"
 ...
@@ -102,7 +102,7 @@ export * as submodel2 from "./submodel2"
 </TabItem>
 </Tabs>
 
-```ts title=entities/user/index.ts
+```ts title="entities/user/index.ts"
 export * from "./ui"
 export * as viewerModel from "./model";
 ```
@@ -111,7 +111,7 @@ export * as viewerModel from "./model";
 
 Здесь могут содержаться компоненты, относящиеся не к конкретной странице/фиче, а напрямую к сущности пользователя
 
-```tsx title=entities/user/ui/card/index.tsx
+```tsx title="entities/user/ui/card/index.tsx"
 import { Card } from "shared/ui/card";
 
 // Считается хорошей практикой - не связывать напрямую с моделью ui-компоненты из entitites
@@ -205,7 +205,7 @@ const viewer = useStore($viewer);
 
 - Авторизация по внешнему ресурсу
 
-```tsx title=features/auth/by-oauth/ui.tsx
+```tsx title="features/auth/by-oauth/ui.tsx"
 import { viewerModel } from "entities/viewer";
 
 export const AuthByOAuth = () => {
@@ -223,7 +223,7 @@ export const AuthByOAuth = () => {
 
 - Использование контекста пользователя в фичах
 
-```tsx title=features/wallet/ui.tsx
+```tsx title="features/wallet/ui.tsx"
 import { viewerModel } from "entities/viewer";
 
 export const Wallet = () => {
@@ -236,7 +236,7 @@ export const Wallet = () => {
 
 - Использование компонентов вьювера
 
-```tsx title=features/header/ui.tsx
+```tsx title="features/header/ui.tsx"
 import { ViewerAvatar } from "entities/viewer";
 ...
 export const Header = () => {
@@ -287,7 +287,7 @@ export const Header = () => {
 
 - Использование компонентов вьювера и *viewer-based* фич на страницах
 
-```tsx title=pages/user/ui.tsx
+```tsx title="pages/user/ui.tsx"
 import { Wallet } from "features/wallet";
 import { ViewerCard } from "entities/viewer";
 ...
@@ -307,7 +307,7 @@ export const UserPage = () => {
 
 - Использование модели вьювера
 
-```tsx title=pages/some/ui.tsx
+```tsx title="pages/some/ui.tsx"
 import { viewerModel } from "entities/viewer";
 ...
 export const SomePage = () => {
