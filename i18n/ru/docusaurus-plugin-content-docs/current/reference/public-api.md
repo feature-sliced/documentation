@@ -34,7 +34,7 @@ pagination_next: about/index
             └── index.ts               # Энтрипоинт фичи с ее публичным API
 ```
 
-```ts title=""**/**/index.ts""
+```ts title="**/**/index.ts"
 export { Form as AuthForm } from "./ui"
 export * as authFormModel from "./model"
 ```
