@@ -25,20 +25,20 @@ In FSD, a project consists of <mark>layers</mark>, each layer is made up of <mar
 
 ![themed--scheme](/img/visual_schema.jpg)
 
-The **layers** are standardized across all projects and vertically arranged. Modules on one layer can only interact with modules from the layers strictly below. There are currently seven of them (bottom to top):
+The **layers** are standardized across all projects and vertically arranged. Modules on one layer can only interact with modules from the layers strictly below. There are currently seven of them (from top to bottom):
 
-1. `shared` — reusable functionality, detached from the specifics of the project/business.
-   <small>(e.g. UIKit, libs, API)</small>
-2. `entities` — business entities.
-   <small>(e.g., User, Product, Order)</small>
-3. `features` — user interactions, actions that bring business value to the user.
-   <small>(e.g. SendComment, AddToCart, UsersSearch)</small>
+1. `app` — app-wide settings, styles and providers.
+2. `processes` (deprecated) — complex inter-page scenarios. 
+   <small>(e.g., authentication)</small>.
+3. `pages` — compositional layer to construct full pages from entities, features and widgets.
 4. `widgets` — compositional layer to combine entities and features into meaningful blocks.
-   <small>(e.g. IssuesList, UserProfile)</small>
-5. `pages` — compositional layer to construct full pages from entities, features and widgets.
-6. `processes` (deprecated) — complex inter-page scenarios. 
-   <small>(e.g., authentication)</small>
-7. `app` — app-wide settings, styles and providers.
+   <small>(e.g. IssuesList, UserProfile)</small>.
+5. `features` — user interactions, actions that bring business value to the user.
+   <small>(e.g. SendComment, AddToCart, UsersSearch)</small>.
+6. `entities` — business entities.
+   <small>(e.g., User, Product, Order)</small>.
+7. `shared` — reusable functionality, detached from the specifics of the project/business.
+   <small>(e.g. UIKit, libs, API)</small>/.
 
 
 Then there are **slices**, which partition the code by business domain. This makes your codebase easy to navigate by keeping logically related modules close together. Slices cannot use other slices on the same layer, and that helps with high cohesion and low coupling.
