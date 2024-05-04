@@ -34,7 +34,7 @@ pagination_next: about/index
             └── index.ts               # Энтрипоинт фичи с ее публичным API
 ```
 
-```ts title=**/**/index.ts
+```ts title=""**/**/index.ts""
 export { Form as AuthForm } from "./ui"
 export * as authFormModel from "./model"
 ```
@@ -102,12 +102,12 @@ Public API должен способствовать **легкой и гибк�
 
 - **Плохо:** будет коллизия имен
 
-    ```ts title=features/auth-form/index.ts
+    ```ts title="features/auth-form/index.ts"
     export { Form } from "./ui"
     export * as model from "./model"
     ```
 
-    ```ts title=features/post-form/index.ts
+    ```ts title="features/post-form/index.ts"
     export { Form } from "./ui"
     export * as model from "./model"
     ```
@@ -119,12 +119,12 @@ Public API должен способствовать **легкой и гибк�
 
 - **Хорошо:** коллизия решена на уровне интерфейса
 
-    ```ts title=features/auth-form/index.ts
+    ```ts title="features/auth-form/index.ts"
     export { Form as AuthForm } from "./ui"
     export * as authFormModel from "./model"
     ```
 
-    ```ts title=features/post-form/index.ts
+    ```ts title="features/post-form/index.ts"
     export { Form as PostForm } from "./ui"
     export * as postFormModel from "./model"
     ```
@@ -157,32 +157,32 @@ Public API должен способствовать **легкой и гибк�
 
 - **Плохо:** коллизия имен решается на уровне реализации
 
-    ```ts title=features/auth-form/index.ts
+    ```ts title="features/auth-form/index.ts"
     export { AuthForm } from "./ui"
     export { authFormActions, authFormReducer } from "model"
     ```
 
-    ```ts title=features/post-form/index.ts
+    ```ts title="features/post-form/index.ts"
     export { PostForm } from "./ui"
     export { postFormActions, postFormReducer } from "model"
     ```
 
 - **Хорошо:** коллизия имен решается на уровне интерфейса
 
-    ```ts title=features/auth-form/model.ts
+    ```ts title="features/auth-form/model.ts"
     export { actions, reducer }
     ```
 
-    ```ts title=features/auth-form/index.ts
+    ```ts title="features/auth-form/index.ts"
     export { Form as AuthForm } from "./ui"
     export * as authFormModel from "./model"
     ```
 
-     ```ts title=features/post-form/model.ts
+     ```ts title="features/post-form/model.ts"
     export { actions, reducer }
     ```
 
-    ```ts title=features/post-form/index.ts
+    ```ts title="features/post-form/index.ts"
     export { Form as PostForm } from "./ui"
     export * as postFormModel from "./model"
     ```
@@ -191,7 +191,7 @@ Public API должен способствовать **легкой и гибк�
 
 В JavaScript публичный интерфейс модуля создается с помощью реэкспорта сущностей изнутри модуля в `index` файле:
 
-```ts title=**/**/index.ts
+```ts title="**/**/index.ts"
 export { Form as AuthForm } from "./ui"
 export * as authModel from "./model"
 ```

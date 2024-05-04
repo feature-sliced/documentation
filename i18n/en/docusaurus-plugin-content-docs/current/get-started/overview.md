@@ -99,4 +99,4 @@ It's advised to refrain from adding new large entities while refactoring or refa
 [ext-disc-api]: https://github.com/feature-sliced/documentation/discussions/66
 [ext-material-ui]: https://github.com/mui/material-ui
 [refs-examples]: /examples
-[refs-migration]: /docs/guides/migration
+[refs-migration]: /docs/guides/migration/from-legacy

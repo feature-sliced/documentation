@@ -71,7 +71,7 @@ The usual [Public API of the module][refs-public-api]
 
 *Largely repeats the API declaration for the layers described below*
 
-```ts title=entities/user/ui/index.ts
+```ts title="entities/user/ui/index.ts"
 export { ViewerCard } from "./card";
 export { ViewerAvatar } from "./avatar";
 ...
@@ -84,7 +84,7 @@ In redux, the [redux-ducks](https://github.com/erikras/ducks-modular-redux) appr
 
 But explicit decomposition is not required
 
-```ts title=entities/user/model/index.ts
+```ts title="entities/user/model/index.ts"
 export * as selectors from "./selectors";
 export * as events from "./events";
 export * as stores from "./stores";
@@ -97,7 +97,7 @@ The effector model will most often consist of a single file - because it is cust
 
 If the units in the model can be schematically divided into several submodels, then [you can explicitly do this](https://github.com/feature-sliced/examples/pull/1#discussion_r654841332) denote in the Public API
 
-```ts title=entities/user/model/index.ts
+```ts title="entities/user/model/index.ts"
 export * as submodel1 from "./submodel1"
 export * as submodel2 from "./submodel2"
 ...
@@ -105,7 +105,7 @@ export * as submodel2 from "./submodel2"
 </TabItem>
 </Tabs>
 
-```ts title=entities/user/index.ts
+```ts title="entities/user/index.ts"
 export * from "./ui"
 export * as viewerModel from "./model";
 ```
@@ -114,7 +114,7 @@ export * as viewerModel from "./model";
 
 It may contain components that are not related to a specific page/feature, but directly to the user's entity
 
-```tsx title=entities/user/ui/card/index.tsx
+```tsx title="entities/user/ui/card/index.tsx"
 import { Card } from "shared/ui/card";
 
 // It is considered a good practice not to link ui components from entitites directly to the model
@@ -207,7 +207,7 @@ Also, other logic can be implemented here
 
 - Authorization by an external resource
 
-```tsx title=features/auth/by-oauth/ui.tsx
+```tsx title="features/auth/by-oauth/ui.tsx"
 import { viewerModel } from "entities/viewer";
 
 export const AuthByOAuth = () => {
@@ -225,7 +225,7 @@ export const AuthByOAuth = () => {
 
 - Using the user's context in features
 
-```tsx title=features/wallet/ui.tsx
+```tsx title="features/wallet/ui.tsx"
 import { viewerModel } from "entities/viewer";
 
 export const Wallet = () => {
@@ -238,7 +238,7 @@ export const Wallet = () => {
 
 - Using the viewer components
 
-```tsx title=features/header/ui.tsx
+```tsx title="features/header/ui.tsx"
 import { ViewerAvatar } from "entities/viewer";
 ...
 export const Header = () => {
@@ -289,7 +289,7 @@ export const Header = () => {
 
 - Using the viewer components and *viewer-based* features on the pages
 
-```tsx title=pages/user/ui.tsx
+```tsx title="pages/user/ui.tsx"
 import { Wallet } from "features/wallet";
 import { ViewerCard } from "entities/viewer";
 ...
@@ -309,7 +309,7 @@ export const UserPage = () => {
 
 - Using the viewer model
 
-```tsx title=pages/some/ui.tsx
+```tsx title="pages/some/ui.tsx"
 import { viewerModel } from "entities/viewer";
 ...
 export const SomePage = () => {

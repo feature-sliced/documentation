@@ -49,7 +49,7 @@ Therefore, it seems logical to present the desired *requirements for an ideal ar
 
 :::note
 
-Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/docs/about/mission#restrictions)
+Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/docs/about/mission#limitations)
 
 :::
 

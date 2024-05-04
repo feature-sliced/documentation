@@ -88,7 +88,7 @@ Features
 
 В приложении, для начала, будет одна страница, интерфейс будет основан на слегка модифицированном компоненте из первого примера
 
-```tsx title=page/main/ui.tsx
+```tsx title="page/main/ui.tsx"
 <List
     Header={<ConversationSwitch />}
     Items={<Messages />}
@@ -102,7 +102,7 @@ Features
 
 > Однако, реализация в виде фабрики необязательна - фича может зависеть от нижележащих слоев и напрямую
 
-```ts title=pages/main/model.ts
+```ts title="pages/main/model.ts"
 import { userModel } from "entitites/user"
 import { conversationModel } from "entities/conversation"
 import { contactModel } from "entities/contact"

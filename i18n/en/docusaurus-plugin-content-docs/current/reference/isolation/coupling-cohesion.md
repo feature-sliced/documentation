@@ -88,7 +88,7 @@ Features
 
 The application, to begin with, will have one page, and the interface will be slightly modified from the first example
 
-```tsx title=page/main/ui.tsx
+```tsx title="page/main/ui.tsx"
 <List
     Header={<ConversationSwitch />}
     Items={<Messages />}
@@ -102,7 +102,7 @@ The page data model will be organized as a **composition of features and entitie
 
 > However, the implementation using factory is optional - the feature may directly depend on the lower layers.
 
-```ts title=pages/main/model.ts
+```ts title="pages/main/model.ts"
 import { userModel } from "entitites/user"
 import { conversationModel } from "entities/conversation"
 import { contactModel } from "entities/contact"

@@ -33,7 +33,7 @@ The entity structure must have a single entry point that provides a public inter
        ├── index.ts         # Entrypoint features with its public API
 ```
 
-```ts title=**/**/index.ts
+```ts title="**/**/index.ts"
 export { Form as AuthForm } from "./ui"
 export * as authFormModel from "./model"
 ```
@@ -101,12 +101,12 @@ The public API should facilitate **easy and flexible integration**
 
 - **Bad:** there will be a name collision
 
-    ```ts title=features/auth-form/index.ts
+    ```ts title="features/auth-form/index.ts"
     export { Form } from "./ui"
     export * as model from "./model"
     ```
 
-    ```ts title=features/post-form/index.ts
+    ```ts title="features/post-form/index.ts"
     export { Form } from "./ui"
     export * as model from "./model"
     ```
@@ -118,12 +118,12 @@ The public API should facilitate **easy and flexible integration**
 
 - **Good:** the collision is solved at the interface level
 
-    ```ts title=features/auth-form/index.ts
+    ```ts title="features/auth-form/index.ts"
     export { Form as AuthForm } from "./ui"
     export * as authFormModel from "./model"
     ```
 
-    ```ts title=features/post-form/index.ts
+    ```ts title="features/post-form/index.ts"
     export { Form as PostForm } from "./ui"
     export * as postFormModel from "./model"
     ```
@@ -156,32 +156,32 @@ Name collisions should be resolved at the level of the public interface, not the
 
 - **Bad:** name collisions are resolved at the implementation level
 
-    ```ts title=features/auth-form/index.ts
+    ```ts title="features/auth-form/index.ts"
     export { AuthForm } from "./ui"
     export { authFormActions, authFormReducer } from "model"
     ```
 
-    ```ts title=features/post-form/index.ts
+    ```ts title="features/post-form/index.ts"
     export { PostForm } from "./ui"
     export { postFormActions, postFormReducer } from "model"
     ```
 
 - **Good:** name collisions are resolved at the interface level
 
-    ```ts title=features/auth-form/model.ts
+    ```ts title="features/auth-form/model.ts"
     export { actions, reducer }
     ```
 
-    ```ts title=features/auth-form/index.ts
+    ```ts title="features/auth-form/index.ts"
     export { Form as AuthForm } from "./ui"
     export * as authFormModel from "./model"
     ```
 
-     ```ts title=features/post-form/model.ts
+     ```ts title="features/post-form/model.ts"
     export { actions, reducer }
     ```
 
-    ```ts title=features/post-form/index.ts
+    ```ts title="features/post-form/index.ts"
     export { Form as PostForm } from "./ui"
     export * as postFormModel from "./model"
     ```
@@ -190,7 +190,7 @@ Name collisions should be resolved at the level of the public interface, not the
 
 In JavaScript, the public interface of a module is created by re-exporting entities from inside the module in an `index` file:
 
-```ts title=**/**/index.ts
+```ts title="**/**/index.ts"
 export { Form as AuthForm } from "./ui"
 export * as authModel from "./model"
 ```
