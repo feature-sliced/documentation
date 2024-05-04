@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_feature_sliced_documentation=self.webpackChunk_feature_sliced_documentation||[]).push([[565],{2208:e=>{e.exports=JSON.parse('{"label":"promo","permalink":"/blog/tags/promo","allTagsPath":"/blog/tags","count":2,"unlisted":false}')}}]);

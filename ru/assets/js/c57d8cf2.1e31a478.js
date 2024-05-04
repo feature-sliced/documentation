@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_feature_sliced_documentation=self.webpackChunk_feature_sliced_documentation||[]).push([[3955],{3356:e=>{e.exports=JSON.parse('{"label":"community","permalink":"/ru/blog/tags/community","allTagsPath":"/ru/blog/tags","count":1,"unlisted":false}')}}]);
