@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Since last release][since-last-release]
+
+### Added
+
+- New article about how to use FSD with Next.js (#644).
+- The tutorial was rewritten. Technical details were stripped out, more FSD theory has been added (#665).
+
 ## [2.0.0] - 2023-10-01
 
 > **Note**  
@@ -34,4 +41,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The overview page has been rewritten to be more concise and informative (#512, #515, #516).
 - FSD has updated its branding, and there are now guidelines to the brand usage. The standard spelling of the name is now "Feature-Sliced Design" (#496, #499, #500, #465).
 
+[since-last-release]: https://github.com/feature-sliced/documentation/compare/v2.0.0...HEAD
 [2.0.0]: https://github.com/feature-sliced/documentation/releases/tag/v2.0.0

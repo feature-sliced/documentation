@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { themes: prismThemes } = require("prism-react-renderer");
 const cfg = require("./config/docusaurus");
 
 /** @typedef {import('@docusaurus/types').Config} Config */
@@ -49,6 +50,10 @@ module.exports = {
             options: {
                 background: "rgb(255 255 255 / 0.3)",
             },
+        },
+        prism: {
+            theme: prismThemes.oneLight,
+            darkTheme: prismThemes.oneDark,
         },
     },
 };
