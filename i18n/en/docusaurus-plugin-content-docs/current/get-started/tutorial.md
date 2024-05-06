@@ -827,7 +827,7 @@ export async function getUserFromSession(request: Request) {
   const cookie = request.headers.get("Cookie");
   const session = await sessionStorage.getSession(cookie);
 
-  return session.get("user");
+  return session.get("user") ?? null;
 }
 
 export async function requireUser(request: Request) {
