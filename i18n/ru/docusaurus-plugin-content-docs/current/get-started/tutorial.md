@@ -284,7 +284,7 @@ export function ArticlePreview({ article }) { /* TODO */ }
 
 Поскольку мы пишем на TypeScript, было бы неплохо иметь типизированный объект статьи Article. Если мы изучим сгенерированный `v1.d.ts`, то увидим, что объект Article доступен через `components["schemas"]["Article"]`. Поэтому давайте создадим файл с нашими моделями данных в Shared и экспортируем модели:
 
-```tsx title="shared/models/index.ts"
+```tsx title="shared/api/models.ts"
 import type { components } from "./v1";
 
 export type Article = components["schemas"]["Article"];
