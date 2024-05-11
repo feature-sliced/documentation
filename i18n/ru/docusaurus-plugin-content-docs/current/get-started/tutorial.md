@@ -1517,7 +1517,7 @@ export function ArticlePreview({ article }: ArticlePreviewProps) {
 Во-первых, нам нужны данные. Давайте создадим загрузчик:
 
 ```bash
-npx fsd pages article-reader -s api
+npx fsd pages article-read -s api
 ```
 
 ```tsx title="pages/article-read/api/loader.ts"

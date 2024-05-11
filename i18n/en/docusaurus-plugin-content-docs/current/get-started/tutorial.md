@@ -1520,7 +1520,7 @@ And with that we are officially done with the feed! Yay!
 First, we need data. Let’s create a loader:
 
 ```bash
-npx fsd pages article-reader -s api
+npx fsd pages article-read -s api
 ```
 
 ```tsx title="pages/article-read/api/loader.ts"
