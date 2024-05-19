@@ -277,6 +277,7 @@ export const examples: Example[] = [
     {
         title: "VK Audiopad",
         description: "Chrome extension for VK Music",
+        website: "https://chrome.google.com/webstore/detail/plclpmphdjmdgmdpfkcmdkmohgpfecip",
         source: "https://github.com/vissh/vkui-audiopad",
         preview: require("./img/vkaudiopad.png"),
         version: VERSIONS.V2,
