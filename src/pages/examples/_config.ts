@@ -34,7 +34,6 @@ export const examples: Example[] = [
     {
         title: "Github Client",
         description: "React & GraphQL powered github web-client",
-        website: "http://github-client.gq/",
         source: "https://github.com/ani-team/github-client/tree/workshop/feature-sliced-next",
         preview: require("./img/github-client.png"),
         version: VERSIONS.V2,
@@ -56,7 +55,6 @@ export const examples: Example[] = [
         title: "Todo App (React+Redux)",
         description:
             "QuickStart todo-app example for React developers (Redux version)",
-        website: "https://kxn7cx-3000.preview.csb.app/",
         source: "https://github.com/EliseyMartynov/fs-rtk",
         preview: require("./img/todo-app-react-redux.png"),
         version: VERSIONS.V2,
@@ -66,7 +64,6 @@ export const examples: Example[] = [
     {
         title: "Todo App (Vue 3)",
         description: "QuickStart todo-app example for Vue developers",
-        website: "https://fccls.sse.codesandbox.io/",
         source: "https://github.com/EliseyMartynov/fs-vue",
         preview: require("./img/todo-app-vue.png"),
         version: VERSIONS.V2,
@@ -147,7 +144,6 @@ export const examples: Example[] = [
         title: "Todo App (ReactNative+Redux)",
         description:
             "QuickStart todo-app example for ReactNative(Expo) developers",
-        website: "https://expo.dev/@berdimyradov/todo-app",
         source: "https://github.com/berdimyradov/fs-rn-todo-app",
         preview: require("./img/fs-rn-todo-app.png"),
         version: VERSIONS.V2,
@@ -251,7 +247,6 @@ export const examples: Example[] = [
         title: "Money Flow",
         description:
             "A mobile application for tracking your expenses and incomes.",
-        website: "https://moneyflow.cash",
         source: "https://github.com/moneyflow-dev/moneyflow",
         preview: require("./img/moneyflow.png"),
         version: VERSIONS.V2,
@@ -282,7 +277,8 @@ export const examples: Example[] = [
     {
         title: "VK Audiopad",
         description: "Chrome extension for VK Music",
-        website: "https://github.com/vissh/vkui-audiopad",
+        website:
+            "https://chrome.google.com/webstore/detail/plclpmphdjmdgmdpfkcmdkmohgpfecip",
         source: "https://github.com/vissh/vkui-audiopad",
         preview: require("./img/vkaudiopad.png"),
         version: VERSIONS.V2,
