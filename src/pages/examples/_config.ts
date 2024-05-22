@@ -393,5 +393,23 @@ export const examples: Example[] = [
             "scss",
         ],
     },
+    {
+  title: "Diet app",
+  description:
+      "Test app to help people control your weight",
+  website: "https://diet-app-pi.vercel.app/",
+  version: VERSIONS.V2,
+  updatedAt: "2024-05-22",
+  source: "https://github.com/GorunowMaxim/diet-app",
+  preview: require("./img/previewDietApp.PNG"),
+  tech: [
+      "react",
+      "typescript",
+      "next",
+      "react-hook-form",
+      "mongodb",
+      "scss",
+  ],
+},
     // Reverse the list (last examples should be at the top)
 ].reverse();
