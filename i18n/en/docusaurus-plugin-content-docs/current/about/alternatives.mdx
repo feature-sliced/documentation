@@ -90,7 +90,7 @@ Framework-agnostic, conventional-approach
 
 ## Atomic Design
 
-### Approach
+### What is it?
 In Atomic Design, the scope of responsibility is divided into standardized layers.
 
 Atomic Design is broken down into **5 layers** (from top to bottom):
@@ -105,7 +105,7 @@ Modules at one layer interact only with modules in the layers below, similar to 
 That is, molecules are built from atoms, organisms from molecules, templates from organisms, and pages from templates. 
 Atomic Design also implies the use of Public API within modules for isolation.
 
-### Applicability
+### Applicability to frontend
 
 Atomic Design is relatively common in projects. Atomic Design is more popular among web designers than in development.
 Web designers often use Atomic Design to create scalable and easily maintainable designs. 
@@ -114,12 +114,12 @@ In development, Atomic Design is often mixed with other architectural methodolog
 However, since Atomic Design focuses on UI components and their composition, a problem arises with implementing 
 business logic within the architecture.
 
-The issue is that Atomic Design does not provide a clear layer for business logic, 
+The problem is that Atomic Design does not provide a clear level of responsibility for business logic, 
 leading to its distribution across various components and levels, complicating maintenance and testing. 
-Business logic becomes blurred between layers, making it difficult to clearly separate responsibilities 
-and making the code less modular and reusable.
+The business logic becomes blurred, making it difficult to clearly separate responsibilities and rendering 
+the code less modular and reusable.
 
-### FSD Position
+### How does it relate to FSD?
 
 In the context of FSD, some elements of Atomic Design can be applied to create flexible and scalable UI components. 
 The `atoms` and `molecules` layers can be implemented in `shared/ui` in FSD, simplifying the reuse and 
@@ -134,8 +134,7 @@ maintenance of basic UI elements.
 ```
 A comparison of FSD and Atomic Design shows that both methodologies strive for modularity and reusability 
 but focus on different aspects. Atomic Design is oriented towards visual components and their composition. 
-FSD focuses on dividing the application's functionality into independent modules and their interconnections, 
-with no issues observed in implementing business logic, unlike Atomic Design.
+FSD focuses on dividing the application's functionality into independent modules and their interconnections.
 
 - [Atomic Design Methodology](https://atomicdesign.bradfrost.com/table-of-contents/)
 - [(Thread) About applicability in shared / ui](https://t.me/feature_sliced/1653)
