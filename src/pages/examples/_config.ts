@@ -401,7 +401,7 @@ export const examples: Example[] = [
   version: VERSIONS.V2,
   updatedAt: "2024-05-22",
   source: "https://github.com/GorunowMaxim/diet-app",
-  preview: require("./img/previewDietApp.PNG"),
+  preview: require("./img/previewDietApp.png"),
   tech: [
       "react",
       "typescript",
