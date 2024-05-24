@@ -1,0 +1,454 @@
+---
+sidebar_position: 10
+---
+# Usage with React Query
+
+## The problem of “where to put the keys”
+
+###  Solution — break down by entities
+
+If the project already has a division into entities, and each request corresponds to a single entity,
+the purest division will be by entity. In this case, we suggest using the following structure:
+```sh
+└── src/                                        #
+    ├── app/                                    #
+    |   ...                                     #
+    ├── pages/                                  #
+    |   ...                                     #
+    ├── entities/                               #
+    |     ├── {entity}/                         #
+    |    ...     └── api/                       #
+    |                 ├── `{entity}.query`      # Query-factory where are the keys and functions
+    |                 ├── `get-{entity}`        # Entity getter function
+    |                 ├── `create-{entity}`     # Entity creation function
+    |                 ├── `update-{entity}`     # Entity update function
+    |                 ├── `delete-{entity}`     # Entity delete function
+    |                ...                        #
+    |                                           #
+    ├── features/                               #
+    |   ...                                     #
+    ├── widgets/                                #
+    |   ...                                     #
+    └── shared/                                 #
+        ...                                     #
+```
+
+If there are connections among the entities (for example, the Country entity has a field-list of City entities),
+then you can take an [experimental approach to organized cross-imports
+via @x-notation](https://github.com/feature-sliced/documentation/discussions/390#discussioncomment-5570073) or consider the alternative solution below.
+
+### An alternative solution is to keep it
+In cases where entity separation is not appropriate, the following structure can be considered:
+
+```sh
+└── src/                                        #
+   ...                                          #
+    └── shared/                                 #
+          ├── api/                              #
+         ...   ├── `queries`                    # Query-factories
+               |      ├── `document.ts`         #
+               |      ├── `background-jobs.ts`  #
+               |     ...                        #
+               └──  index.ts                                #
+```
+
+Then in @/shared/api/index.ts
+
+```ts
+export { documentQueries } from './queries/document'
+```
+
+
+## The problem of “Where to insert mutations?”
+
+It is not recommended to mix mutations with queries. There are two options:
+
+### 1. Define a custom hook in the api segment near the place of use:
+```tsx title=@/features/update-post/api/use-update-title.ts
+export const useUpdateTitle = () => {
+ const queryClient = useQueryClient()
+
+
+ return useMutation({
+   mutationFn: ({id, newTitle}) =>
+     apiClient
+       .patch(`/posts/${id}`, { title: newTitle })
+       .then((data) => console.log(data)),
+
+
+   onSuccess: (newPost) => {
+	queryClient.setQueryData(postsQueries.ids(id), newPost)
+   },
+ })
+}
+```
+### 2. Define a mutation function somewhere else (shared or entity) and use useMutation directly in the component
+
+```tsx
+ const { mutateAsync, isPending } = useMutation({
+     mutationFn: postApi.createPost
+ });
+```
+
+:::note
+### Component example
+```tsx
+export const CreatePost = () => {
+ const { classes } = useStyles()
+ const [title, setTitle] = useState('')
+ const { mutate, isPending } = useMutation({
+   mutationFn: postApi.createPost
+ })
+ const handleChange = (e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)
+ const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+   e.preventDefault()
+   mutate({ title, userId: DEFAULT_USER_ID })
+ }
+
+
+ return (
+   <form className={classes.create_form} onSubmit={handleSubmit}>
+     <TextField
+       onChange={handleChange}
+       value={title}
+     />
+     <LoadingButton type="submit" variant="contained" loading={isPending}>Create</LoadingButton>
+   </form>
+ )
+}
+
+```
+:::
+
+## Organization of requests
+
+### Query factory
+
+In this guide, we'll look at how to use a query factory.
+(an object where the key values are functions that return a list of query keys)
+
+```ts
+const keyFactory = {
+ all: () => ['entity'],
+ lists: () => [...postQueries.all(), 'list'],
+}
+```
+
+:::info
+QueryOptions
+queryOptions - built-in react-query@v5 utility (optional)
+```ts
+queryOptions({
+  queryKey,
+  ...options,
+})
+```
+For greater type safety, further compatibility with future versions of react-query, and easy access to functions and query keys,
+You can use the built-in queryOptions function from “@tanstack/react-query”
+#### [(More details here)](https://tkdodo.eu/blog/the-query-options-api#queryoptions)
+:::
+
+### 1. Creating a Query Factory
+
+```tsx title=@/entities/post/api/post.queries.ts
+import { keepPreviousData, queryOptions } from "@tanstack/react-query";
+import { getPosts } from "./get-posts";
+import { getDetailPost } from "./get-detail-post";
+import { PostDetailQuery } from "./query/post.query";
+
+
+export const postQueries = {
+ all: () => ['posts'],
+
+
+ lists: () => [...postQueries.all(), 'list'],
+ list: (page: number, limit: number) =>
+   queryOptions({
+     queryKey: [...postQueries.lists(), page, limit],
+     queryFn: () => getPosts(page, limit),
+     placeholderData: keepPreviousData
+   }),
+
+
+ details: () => [...postQueries.all(), 'detail'],
+ detail: (query?: PostDetailQuery) =>
+   queryOptions({
+     queryKey: [...postQueries.details(), query?.id],
+     queryFn: () => getDetailPost({ id: query?.id }),
+     staleTime: 5000,
+   }),
+}
+```
+
+
+### 2. Using Query Factory in application code
+```tsx
+import { useParams } from "react-router-dom";
+import { postApi } from '@/entities/post'
+import { useQuery } from "@tanstack/react-query";
+
+
+type Params = {
+ postId: string
+}
+
+
+export const PostPage = () => {
+ const { postId } = useParams<Params>();
+ const id = parseInt(postId || '')
+ const {
+   data: post,
+   error,
+   isLoading,
+   isError
+ } = useQuery(postApi.postQueries.detail({ id }))
+
+
+ if (isLoading) {
+   return <div>Loading...</div>
+ }
+
+
+ if (isError || !post) {
+   return <>{error?.message}</>
+ }
+
+
+ return (
+   <div>
+     <p>Post id: {post.id}</p>
+     <div>
+       <h1>{post.title}</h1>
+       <div>
+         <p>{post.body}</p>
+       </div>
+     </div>
+     <div>
+       Owner: {post.userId}
+     </div>
+   </div>
+ )
+}
+```
+
+### Benefits of using Query Factory
+- ***Request structuring:*** A factory allows you to organize all API requests in one place, making your code more readable and maintainable.
+- ***Convenient access to queries and keys:*** The factory provides convenient methods for accessing different types of queries and their keys.
+- ***Query Refetching Ability:*** The factory allows easy refetching without the need to change query keys in different parts of the application.
+
+## Pagination
+
+In this section, we'll look at an example of the getPosts function, which makes an API request to retrieve post entities using pagination.
+
+### 1. Creating a function getPosts
+The getPosts function is located in the `get-posts.ts` file, which is located in the api segment
+
+```tsx
+import { apiClient } from "@/shared/api/base";
+
+
+import { PostWithPaginationDto } from "./dto/post-with-pagination.dto";
+import { PostQuery } from "./query/post.query";
+import { mapPost } from "./mapper/map-post";
+import { PostWithPagination } from "../model/post-with-pagination";
+
+
+const calculatePostPage = (totalCount: number, limit: number) => Math.floor(totalCount / limit)
+
+export const getPosts = async (page: number, limit: number): Promise<PostWithPagination> => {
+ const skip = page * limit
+ const query: PostQuery = { skip, limit }
+ const result = await apiClient.get<PostWithPaginationDto>('/posts', query)
+
+
+ return ({
+   posts: result.posts.map(post => mapPost(post)),
+   limit: result.limit,
+   skip: result.skip,
+   total: result.total,
+   totalPages: calculatePostPage(result.total, limit)
+ })
+}
+```
+
+### 2. Query factory for pagination
+The postQueries query factory defines various query options for working with posts,
+including requesting a list of posts with a specific page and limit.
+
+```tsx
+import { keepPreviousData, queryOptions } from "@tanstack/react-query";
+import { getPosts } from "./get-posts";
+
+
+export const postQueries = {
+ all: () => ['posts'],
+ lists: () => [...postQueries.all(), 'list'],
+ list: (page: number, limit: number) =>
+   queryOptions({
+     queryKey: [...postQueries.lists(), page, limit],
+     queryFn: () => getPosts(page, limit),
+     placeholderData: keepPreviousData
+   }),
+}
+```
+
+
+### 3. Use in application code
+
+```tsx title=@/pages/home/ui/index.tsx
+export const HomePage = () => {
+const itemsOnScreen = DEFAULT_ITEMS_ON_SCREEN
+const [page, setPage] = usePageParam(DEFAULT_PAGE)
+const { data, isFetching, isLoading } = useQuery(postApi.postQueries.list(page, itemsOnScreen))
+return (
+   <>
+    <Pagination
+       onChange={(_, page) => setPage(page)}
+       page={page}
+       count={data?.totalPages}
+       variant="outlined"
+       color="primary"
+    />
+    <Posts posts={data?.posts}/>
+   </>
+ )
+}
+```
+:::note
+The example is simplified, the full version is available on [GitHub](https://github.com/ruslan4432013/fsd-react-query-example)
+:::
+
+## QueryProvider for managing queries
+In this guide, we will look at how to organize a QueryProvider
+
+### 1. Creating a QueryProvider
+The file `query-provider.tsx` is located at the path `@/app/providers/query-provider.tsx`.
+
+```tsx title=@/app/providers/query-provider.tsx
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ReactNode } from "react";
+
+type Props = {
+ children: ReactNode
+ client: QueryClient
+}
+
+export const QueryProvider = ({ client, children }: Props) => {
+ return (
+   <QueryClientProvider client={client}>
+     {children}
+     <ReactQueryDevtools/>
+   </QueryClientProvider>
+ )
+}
+```
+
+### 2. Создание QueryClient
+QueryClient is an instance used to manage API requests.
+The `query-client.ts` file is located at `@/shared/api/query-client.ts`.
+QueryClient is created with certain settings for query caching.
+
+```tsx title=@/shared/api/query-client.ts
+import { QueryClient } from "@tanstack/react-query";
+
+
+export const queryClient = new QueryClient({
+ defaultOptions: {
+   queries: {
+     staleTime: 5 * 60 * 1000,
+     gcTime: 5 * 60 * 1000,
+   }
+ }
+})
+
+```
+
+## Code generation
+Let's discuss code generation separately.
+There are tools that can generate API code for you, but they are less flexible than the manual approach described above.
+If your Swagger file is well-structured,
+and you're using one of these tools, it might make sense to generate all the code in the @/shared/api directory.
+
+
+## Additional advice for organizing RQ
+### API Client
+
+Using a custom API client class in the shared layer,
+you can standardize the configuration and work with the API in the project.
+This allows you to manage logging,
+headers and data exchange format (such as JSON or XML) from one place.
+This approach makes it easier to maintain and develop the project because it simplifies changes and updates to interactions with the API.
+```tsx title=@/shared/api/api-client
+import { API_URL } from "@/shared/config";
+
+export class ApiClient {
+ private baseUrl: string;
+
+
+ constructor(url: string) {
+   this.baseUrl = url;
+ }
+
+
+ async handleResponse<TResult>(response: Response): Promise<TResult> {
+   if (!response.ok) {
+     throw new Error(`HTTP error! Status: ${response.status}`);
+   }
+
+
+   try {
+     return await response.json();
+   } catch (error) {
+     throw new Error("Error parsing JSON response");
+   }
+ }
+
+
+ public async get<TResult = unknown>(endpoint: string, queryParams?: Record<string, string | number>): Promise<TResult> {
+   const url = new URL(endpoint, this.baseUrl);
+
+
+   if (queryParams) {
+     Object.entries(queryParams).forEach(([key, value]) => {
+       url.searchParams.append(key, value.toString());
+     });
+   }
+  const response = await fetch(url.toString(), {
+     method: "GET",
+     headers: {
+       "Content-Type": "application/json"
+     }
+   });
+
+
+   return this.handleResponse<TResult>(response);
+ }
+
+
+ public async post<TResult = unknown, TData = Record<string, unknown>>(endpoint: string, body: TData): Promise<TResult> {
+   const response = await fetch(`${this.baseUrl}${endpoint}`, {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json"
+     },
+     body: JSON.stringify(body)
+   });
+
+
+   return this.handleResponse<TResult>(response);
+ }
+}
+
+
+export const apiClient = new ApiClient(API_URL);
+```
+
+
+## See also {#see-also}
+
+- [(GitHub) Sample Project](https://github.com/ruslan4432013/fsd-react-query-example)
+- [(CodeSandbox) Sample Project](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main?layout=%257B%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522rootPanelGroup%2522%253A%257B%2522direction%2522%253A%2522horizontal%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522id%2522%253A%2522ROOT_LAYOUT%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522clrti20ur00062e692m2srxkw%2522%252C%2522sizes%2522%253A%255B70%252C30%255D%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522EDITOR%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522id%2522%253A%2522clrti20ur00022e699yxhtzkr%2522%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522SHELLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522id%2522%253A%2522clrti20ur00042e69vnagesqm%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522DEVTOOLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522id%2522%253A%2522clrti20ur00052e6932ilzv6s%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%252C%2522sizes%2522%253A%255B50%252C50%255D%257D%252C%2522tabbedPanels%2522%253A%257B%2522clrti20ur00022e699yxhtzkr%2522%253A%257B%2522id%2522%253A%2522clrti20ur00022e699yxhtzkr%2522%252C%2522tabs%2522%253A%255B%257B%2522id%2522%253A%2522clrti20ur00012e69gyct3luk%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522filepath%2522%253A%2522%252FREADME.md%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%252C%257B%2522id%2522%253A%2522clrti61l900022e675k2bx9ue%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522initialSelections%2522%253A%255B%257B%2522startLineNumber%2522%253A7%252C%2522startColumn%2522%253A22%252C%2522endLineNumber%2522%253A7%252C%2522endColumn%2522%253A22%257D%255D%252C%2522filepath%2522%253A%2522%252Fsrc%252Fapp%252Findex.tsx%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%252C%257B%2522type%2522%253A%2522FILE%2522%252C%2522filepath%2522%253A%2522%252Fentities%252Fpost%252Fapi%252Fget-detail-post%2522%252C%2522id%2522%253A%2522cls03tzf000jb2e68sf9cjrzs%2522%252C%2522mode%2522%253A%2522temporary%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%255D%252C%2522activeTabId%2522%253A%2522cls03tzf000jb2e68sf9cjrzs%2522%257D%252C%2522clrti20ur00052e6932ilzv6s%2522%253A%257B%2522id%2522%253A%2522clrti20ur00052e6932ilzv6s%2522%252C%2522activeTabId%2522%253A%2522clrti4ufd00rw2e698svcnz9l%2522%252C%2522tabs%2522%253A%255B%257B%2522type%2522%253A%2522TASK_PORT%2522%252C%2522taskId%2522%253A%2522dev%2522%252C%2522port%2522%253A5173%252C%2522id%2522%253A%2522clrti4ufd00rw2e698svcnz9l%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522path%2522%253A%2522%252F%253Fpage%253D5%2522%257D%255D%257D%252C%2522clrti20ur00042e69vnagesqm%2522%253A%257B%2522id%2522%253A%2522clrti20ur00042e69vnagesqm%2522%252C%2522activeTabId%2522%253A%2522cls058iyw007p2e6838qlunyv%2522%252C%2522tabs%2522%253A%255B%257B%2522type%2522%253A%2522TASK_LOG%2522%252C%2522taskId%2522%253A%2522CSB_RUN_OUTSIDE_CONTAINER%253D1%2520devcontainer%2520templates%2520apply%2520--template-id%2520%255C%2522ghcr.io%252Fdevcontainers%252Ftemplates%252Ftypescript-node%255C%2522%2520--template-args%2520%27%257B%257D%27%2520--features%2520%27%255B%255D%27%2522%252C%2522id%2522%253A%2522clrti2czg00812e69dhww7ecz%2522%252C%2522mode%2522%253A%2522permanent%2522%257D%252C%257B%2522type%2522%253A%2522TASK_LOG%2522%252C%2522taskId%2522%253A%2522dev%2522%252C%2522id%2522%253A%2522cls058iyw007p2e6838qlunyv%2522%252C%2522mode%2522%253A%2522permanent%2522%257D%252C%257B%2522id%2522%253A%2522cls09s0ja00mg2e68vzmmsxbb%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522TERMINAL%2522%252C%2522shellId%2522%253A%2522cls09s0v5005ee7exe4jbedr5%2522%257D%255D%257D%257D%252C%2522showDevtools%2522%253Atrue%252C%2522showShells%2522%253Atrue%252C%2522showSidebar%2522%253Atrue%252C%2522sidebarPanelSize%2522%253A15%257D)
+- [About the query factory](https://tkdodo.eu/blog/the-query-options-api)
+
+[project-knowledge]: /docs/about/understanding/knowledge-types
