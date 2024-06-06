@@ -70,7 +70,7 @@ How are they similar (to many), how are they different
 
 - [(Thread) About use-case/interactor in the methodology](https://t.me/feature_sliced/3897)
 - [(Thread) About DI in the methodology](https://t.me/feature_sliced/4592)
-- [(Article) Alexander Bespalov - Clean Architecture on frontend](https://bespoyasov.ru/blog/clean-architecture-on-frontend/)
+- [(Article) Alex Bespoyasov - Clean Architecture on frontend](https://bespoyasov.me/blog/clean-architecture-on-frontend/)
 - [(Article) DDD, Hexagonal, Onion, Clean, CQRS, ... How I put it all together](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
 - [(Talk) Ilya Azin - Feature-Sliced Design (fragment about Clean Architecture, DDD)](https://youtu.be/SnzPAr_FJ7w?t=528)
 - [(Article) Misconceptions of Clean Architecture](http://habr.com/ru/company/mobileup/blog/335382/)
@@ -101,39 +101,39 @@ Atomic Design is broken down into **5 layers** (from top to bottom):
 4. `molecules` - More complex components that generally do not contain business logic.
 5. `atoms` - UI components without business logic.
 
-Modules at one layer interact only with modules in the layers below, similar to FSD. 
-That is, molecules are built from atoms, organisms from molecules, templates from organisms, and pages from templates. 
+Modules at one layer interact only with modules in the layers below, similar to FSD.
+That is, molecules are built from atoms, organisms from molecules, templates from organisms, and pages from templates.
 Atomic Design also implies the use of Public API within modules for isolation.
 
 ### Applicability to frontend
 
 Atomic Design is relatively common in projects. Atomic Design is more popular among web designers than in development.
-Web designers often use Atomic Design to create scalable and easily maintainable designs. 
+Web designers often use Atomic Design to create scalable and easily maintainable designs.
 In development, Atomic Design is often mixed with other architectural methodologies.
 
-However, since Atomic Design focuses on UI components and their composition, a problem arises with implementing 
+However, since Atomic Design focuses on UI components and their composition, a problem arises with implementing
 business logic within the architecture.
 
-The problem is that Atomic Design does not provide a clear level of responsibility for business logic, 
-leading to its distribution across various components and levels, complicating maintenance and testing. 
-The business logic becomes blurred, making it difficult to clearly separate responsibilities and rendering 
+The problem is that Atomic Design does not provide a clear level of responsibility for business logic,
+leading to its distribution across various components and levels, complicating maintenance and testing.
+The business logic becomes blurred, making it difficult to clearly separate responsibilities and rendering
 the code less modular and reusable.
 
 ### How does it relate to FSD?
 
-In the context of FSD, some elements of Atomic Design can be applied to create flexible and scalable UI components. 
-The `atoms` and `molecules` layers can be implemented in `shared/ui` in FSD, simplifying the reuse and 
+In the context of FSD, some elements of Atomic Design can be applied to create flexible and scalable UI components.
+The `atoms` and `molecules` layers can be implemented in `shared/ui` in FSD, simplifying the reuse and
 maintenance of basic UI elements.
 
 ```
 ├── shared
-│   ├── ui 
+│   ├── ui
 │   │   ├── atoms
 │   │   ├── molecules
 │   ...
 ```
-A comparison of FSD and Atomic Design shows that both methodologies strive for modularity and reusability 
-but focus on different aspects. Atomic Design is oriented towards visual components and their composition. 
+A comparison of FSD and Atomic Design shows that both methodologies strive for modularity and reusability
+but focus on different aspects. Atomic Design is oriented towards visual components and their composition.
 FSD focuses on dividing the application's functionality into independent modules and their interconnections.
 
 - [Atomic Design Methodology](https://atomicdesign.bradfrost.com/table-of-contents/)
