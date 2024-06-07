@@ -395,31 +395,24 @@ export const examples: Example[] = [
     },
     {
         title: "Roke.to dApp",
-        description: "A crypto streaming service which allows paying people by the second",
+        description:
+            "A crypto streaming service which allows paying people by the second",
         website: "https://app2.roke.to/",
         version: VERSIONS.V2,
         updatedAt: "2024-06-07",
         source: "https://github.com/roke-to/roketo-ui",
         preview: require("./img/roketo.jpg"),
-        tech: [
-            "react",
-            "effector",
-            "tailwindcss",
-        ]
+        tech: ["react", "effector", "tailwindcss"],
     },
     {
         title: "Roke.to Business",
-        description: "Business branch of Roketo, a crypto streaming service which allows paying people by the second",
+        description:
+            "Business branch of Roketo, a crypto streaming service which allows paying people by the second",
         version: VERSIONS.V2,
         updatedAt: "2024-06-07",
         source: "https://github.com/roke-to/roketo-business-ui",
         preview: require("./img/roketo-business.jpg"),
-        tech: [
-            "react",
-            "effector",
-            "tailwindcss",
-            "turbo",
-        ]
+        tech: ["react", "effector", "tailwindcss", "turbo"],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();
