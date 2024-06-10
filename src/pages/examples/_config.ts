@@ -414,5 +414,16 @@ export const examples: Example[] = [
         preview: require("./img/roketo-business.jpg"),
         tech: ["react", "effector", "tailwindcss", "turbo"],
     },
+    {
+        title: "Kanban task management app",
+        description:
+            "Organize tasks visually, track progress effortlessly, and boost personal productivity with our intuitive Kanban Task Management App.",
+        version: VERSIONS.V2,
+        updatedAt: "2024-06-10",
+        website: "https://nextjs-task-management-app.vercel.app/",
+        source: "https://github.com/Un1T3G/nextjs-task-management-app",
+        preview: require("./img/nextjs-task-management.png"),
+        tech: ["react", "typescript", "effector", "joy-ui", "nextjs"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
