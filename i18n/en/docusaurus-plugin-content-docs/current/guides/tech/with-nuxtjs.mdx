@@ -13,7 +13,7 @@ It is possible to implement FSD in a NuxtJS project, but conflicts arise due to 
 
 Add an `alias` object to your config:
 
-```ts
+```ts title="nuxt.config.ts"
 export default defineNuxtConfig({
   devtools: { enabled: true },      // Not related to FSD, enabled at project startup
   alias: {
@@ -24,24 +24,25 @@ export default defineNuxtConfig({
 
 ## Move file routing to `src/app`
 
-First of all, create a `src` directory in the root of your project, and create app and pages layers inside this directory.
+First of all, create a `src` directory in the root of the project, and create app and pages layers inside this directory and a routes folder inside the app layer.
 Thus, your file structure should look like this:
 
 ```sh
-├─── src
-│ ├─── app           
+├── src
+│   ├── app
+│   │  ├── routes           
 │ ├─── pages                        # The pages folder assigned to FSD
 ```
 
 In order for NuxtJS to use the `app` layer for file routing, you need to modify `nuxt.config.ts` as follows:
-```ts
+```ts title="nuxt.config.ts"
 export default defineNuxtConfig({
   devtools: { enabled: true },      // Not FSD related, enabled at project startup
   alias: {
     "@": '~/src'
   },
   dir: {
-    pages: './src/app'
+    pages: './src/app/routes'
   }
 })
 ```
@@ -55,15 +56,13 @@ For example, to add a `Home` page to your project, you need to do the following 
 
 To create a page slice, let's use the [CLI](https://github.com/feature-sliced/cli):
 
-```shell
+```shell 
 fsd pages home
 ```
 
 Create a ``home-page.vue`` file inside the ui segment, access it using the Public API
 
-```ts
-// src/pages/home/index.ts
-
+```ts title="src/pages/home/index.ts"
 export { default as HomePage } from './ui/home-page';
 ```
 
@@ -71,15 +70,16 @@ Create a root for this page inside the `app` layer:
 
 ```sh
 
-├─── src
-│ ├─── app
-│ │ ├───home
-│ │ │ │ ├──── index.vue
-│ ├─── pages
-│ │ │ ├───home 
-│ │ │ │ ├──── ui 
-│ │ │ │ │ │ ├──── home-page.vue
-│ │ │ │ ├──── index.ts
+├── src
+│   ├── app
+│   │   ├── routes
+│   │   │   ├── home
+│   │   │   │   ├── index.vue 
+│   ├── pages
+│   │   ├──home 
+│   │   │   ├── ui 
+│   │   │   │   ├── home-page.vue
+│   │   │   ├── index.ts
 
 ```
 
@@ -99,15 +99,15 @@ Add your page component inside the `index.vue` file:
 
 You can place layouts inside the `app` layer, to do this you need to modify the config as follows:
 
-```ts
+```ts title="nuxt.config.ts"
 export default defineNuxtConfig({
   devtools: { enabled: true },      // Not related to FSD, enabled at project startup
   alias: {
     "@": '~/src'
   },
   dir: {
-    pages: './src/app',
-    layouts: './src/app/_layouts'   // The underscore is needed to make it clear that layouts is not a page.
+    pages: './src/app/routes',
+    layouts: './src/app/layouts'   
   }
 })
 ```
