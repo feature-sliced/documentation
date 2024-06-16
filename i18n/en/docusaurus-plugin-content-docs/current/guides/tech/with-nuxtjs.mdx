@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 ---
-# Use with NuxtJS
+# Usage with NextJS
 
 It is possible to implement FSD in a NuxtJS project, but conflicts arise due to differences between the NuxtJS project structure requirements and FSD principles: 
 
@@ -31,7 +31,7 @@ Thus, your file structure should look like this:
 ├── src
 │   ├── app
 │   │  ├── routes           
-│ ├─── pages                        # The pages folder assigned to FSD
+│   ├─── pages                        # The pages folder assigned to FSD
 ```
 
 In order for NuxtJS to use the `app` layer for file routing, you need to modify `nuxt.config.ts` as follows:
@@ -85,7 +85,7 @@ Create a root for this page inside the `app` layer:
 
 Add your page component inside the `index.vue` file:
 
-```html
+```html title="pages/home/ui/home-page.vue"
 <script setup>
   import { HomePage } from '@/pages/home';
 </script>
