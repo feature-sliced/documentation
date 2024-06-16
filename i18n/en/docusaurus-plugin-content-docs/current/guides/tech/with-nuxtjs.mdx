@@ -1,9 +1,9 @@
 ---
 sidebar_position: 10
 ---
-# Usage with NextJS
+# Usage with NuxtJS
 
-It is possible to implement FSD in a NuxtJS project, but conflicts arise due to differences between the NuxtJS project structure requirements and FSD principles: 
+It is possible to implement FSD in a NuxtJS project, but conflicts arise due to differences between the NuxtJS project structure requirements and FSD principles:
 
 - Initially, NuxtJS offers a project file structure without a `src` folder, i.e. in the root of the project.
 - The file routing is in the `pages` folder, while in FSD this folder is reserved for the flat slice structure.
@@ -30,8 +30,8 @@ Thus, your file structure should look like this:
 ```sh
 ├── src
 │   ├── app
-│   │  ├── routes           
-│   ├─── pages                        # The pages folder assigned to FSD
+│   │   ├── routes
+│   ├── pages                        # The pages folder assigned to FSD
 ```
 
 In order for NuxtJS to use the `app` layer for file routing, you need to modify `nuxt.config.ts` as follows:
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 })
 ```
 
-Now, you can create roots for pages within `app` and connect pages from `pages` to them. 
+Now, you can create roots for pages within `app` and connect pages from `pages` to them.
 
 For example, to add a `Home` page to your project, you need to do the following steps:
 - Add a page slice inside the `pages` layer
@@ -56,7 +56,7 @@ For example, to add a `Home` page to your project, you need to do the following 
 
 To create a page slice, let's use the [CLI](https://github.com/feature-sliced/cli):
 
-```shell 
+```shell
 fsd pages home
 ```
 
@@ -74,13 +74,12 @@ Create a root for this page inside the `app` layer:
 │   ├── app
 │   │   ├── routes
 │   │   │   ├── home
-│   │   │   │   ├── index.vue 
+│   │   │   │   ├── index.vue
 │   ├── pages
-│   │   ├──home 
-│   │   │   ├── ui 
+│   │   ├── home
+│   │   │   ├── ui
 │   │   │   │   ├── home-page.vue
 │   │   │   ├── index.ts
-
 ```
 
 Add your page component inside the `index.vue` file:
@@ -107,7 +106,7 @@ export default defineNuxtConfig({
   },
   dir: {
     pages: './src/app/routes',
-    layouts: './src/app/layouts'   
+    layouts: './src/app/layouts'
   }
 })
 ```
