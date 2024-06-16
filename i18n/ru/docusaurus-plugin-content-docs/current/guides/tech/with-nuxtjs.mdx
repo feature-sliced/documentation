@@ -1,0 +1,117 @@
+---
+sidebar_position: 10
+---
+# Использование с NuxtJS
+
+В NuxtJS проекте возможно реализовать FSD, однако возникают конфликты из-за различий между требованиями к структуре проекта NuxtJS и принципами FSD: 
+
+- Изначально, NuxtJS предлагает файловую структуру проекта без папки `src`, то есть в корне проекта.
+- Файловый роутинг находится в папке `pages`, а в FSD эта папка отведена под плоскую структуру слайсов.
+
+
+## Добавление алиаса для `src` директории
+
+Добавьте обьект `alias` в ваш конфиг:
+```ts title="nuxt.config.ts"
+export default defineNuxtConfig({
+  devtools: { enabled: true },        // Не относятся к FSD, включёны при старте проекта
+  alias: {
+    "@": '~/src'
+  },
+})
+```
+
+## Перемещение файлового роутинга в `src/app`
+
+В первую очередь, создайте `src` директорию в корне проекта, а также создайте внутри этой директории слои app и pages и папку routes внутри слоя app.
+Таким образом, ваша файловая структура должна выглядеть так:
+
+```sh
+├── src
+│   ├── app
+│   │   ├── routes
+│   ├── pages                         # Папка pages, закреплённая за FSD
+```
+
+Для того чтобы NuxtJS использовал папку routes внутри слоя `app` для файлового роутинга, вам нужно изменить `nuxt.config.ts` следующим образом:
+```ts title="nuxt.config.ts"
+export default defineNuxtConfig({
+  devtools: { enabled: true },        // Не относятся к FSD, включёны при старте проекта
+  alias: {
+    "@": '~/src'
+  },
+  dir: {
+    pages: './src/app/routes'
+  }
+})
+```
+
+Теперь, вы можете создавать роуты для страниц внутри `app` и подключать к ним страницы из `pages`.
+
+Например, чтобы добавить страницу `Home` в проект, вам нужно сделать следующие шаги:
+- Добавить слайс страницы внутри слоя `pages`
+- Добавить соответствующий роут внутрь слоя `app`
+- Совместить страницу из слайса с роутом
+
+Для того чтобы создать слайс страницы, воспользуемся [CLI](https://github.com/feature-sliced/cli):
+
+```shell
+fsd pages home
+```
+
+Создайте файл `home-page.vue` внутри сегмента ui, откройте к нему доступ с помощью Public API
+
+```ts title="src/pages/home/index.ts"
+export { default as HomePage } from './ui/home-page';
+```
+
+Создайте роут для этой страницы внутри слоя `app`:
+
+```sh
+
+├── src
+│   ├── app
+│   │   ├── routes
+│   │   │   ├── home
+│   │   │   │   ├── index.vue
+│   ├── pages
+│   │   ├── home
+│   │   │   ├── ui
+│   │   │   │   ├── home-page.vue
+│   │   │   ├── index.ts
+```
+
+Добавьте внутрь `index.vue` файла компонент вашей страницы:
+
+```html title="pages/home/ui/home-page.vue"
+<script setup>
+  import { HomePage } from '@/pages/home';
+</script>
+
+<template>
+  <HomePage/>
+</template>
+```
+
+## Что делать с `layouts`?
+
+Вы можете разместить layouts внутри слоя `app`, для этого нужно изменить конфиг следующим образом:
+
+```ts title="nuxt.config.ts"
+export default defineNuxtConfig({
+  devtools: { enabled: true },        // Не относятся к FSD, включёны при старте проекта
+  alias: {
+    "@": '~/src'
+  },
+  dir: {
+    pages: './src/app/routes',
+    layouts: './src/app/layouts'
+  }
+})
+```
+
+
+## См. также
+
+- [Документация по изменению конфига директорий в NuxtJS](https://nuxt.com/docs/api/nuxt-config#dir)
+- [Документация по изменению алиасов в NuxtJS](https://nuxt.com/docs/api/nuxt-config#alias)
