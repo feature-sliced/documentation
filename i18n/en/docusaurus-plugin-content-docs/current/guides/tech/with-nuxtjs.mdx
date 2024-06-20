@@ -87,6 +87,10 @@ Add your page component inside the `index.vue` file:
 ```html title="pages/home/ui/home-page.vue"
 <script setup>
   import { HomePage } from '@/pages/home';
+
+  definePageMeta({
+    path: "/"
+  });
 </script>
 
 <template>
