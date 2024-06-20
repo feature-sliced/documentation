@@ -86,6 +86,10 @@ export { default as HomePage } from './ui/home-page';
 ```html title="pages/home/ui/home-page.vue"
 <script setup>
   import { HomePage } from '@/pages/home';
+
+  definePageMeta({
+    path: "/"
+  })
 </script>
 
 <template>
