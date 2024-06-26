@@ -1,9 +1,0 @@
-node_modules/**
-dist/**
-build/**
-public/
-.github
-.workflows
-*.md
-*.mdx
-pnpm-lock.yaml
