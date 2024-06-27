@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Overview {#overview}
+# Overview
 
 **Feature-Sliced Design** (FSD) is an architectural methodology for scaffolding front-end applications. Simply put, it's a compilation of rules and conventions on organizing code. The main purpose of this methodology is to make the project more understandable and stable in the face of ever-changing business requirements.
 
@@ -87,11 +87,11 @@ Slices cannot use other slices on the same layer, and that helps with high cohes
 
 Slices, as well as layers App and Shared, consist of segments, and segments group your code by its purpose. Segment names are not constrained by the standard, but there are several conventional names for the most common purposes:
 
-- `ui` — self-explanatory
-- `api` — also self-explanatory
-- `model` — the data model: schemas, interfaces, stores, and business logic
-- `lib` — library code that's only used within this slice
-- `config` — configuration files and feature flags
+- `ui` — everything related to UI display: UI components, date formatters, styles, etc.
+- `api` — backend interactions: request functions, data types, mappers, etc.
+- `model` — the data model: schemas, interfaces, stores, and business logic.
+- `lib` — library code that other modules on this slice need.
+- `config` — configuration files and feature flags.
 
 Usually these segments are enough for most layers, you would only create your own segments in Shared or App, but this is not a rule.
 
@@ -115,7 +115,7 @@ Usually these segments are enough for most layers, you would only create your ow
 
 If you have an existing codebase that you want to migrate to FSD, we suggest the following strategy. We found it useful in our own migration experience.
 
-1. Start by slowly shaping up the App and Shared layers module-by-module to create a foundation. Usually, these layers are the smallest.
+1. Start by slowly shaping up the App and Shared layers module-by-module to create a foundation.
 
 2. Distribute all of the existing UI across Widgets and Pages using broad strokes, even if they have dependencies that violate the rules of FSD.
 
