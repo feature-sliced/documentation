@@ -414,5 +414,23 @@ export const examples: Example[] = [
         preview: require("./img/roketo-business.jpg"),
         tech: ["react", "effector", "tailwindcss", "turbo"],
     },
+    {
+        title: "Ducks Tinder",
+        description:
+            "Tinder clone, application that helps you meet new people using matching, liking matches and finally chatting with them",
+        website: "https://ducks-tinder-client.vercel.app/",
+        version: VERSIONS.V2,
+        updatedAt: "2024-06-28",
+        source: "https://github.com/Stepasha419a/ducks-tinder-client",
+        preview: require("./img/ducks-tinder.png"),
+        tech: [
+            "react",
+            "redux toolkit",
+            "typescript",
+            "vite",
+            "scss",
+            "socket io",
+        ],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
