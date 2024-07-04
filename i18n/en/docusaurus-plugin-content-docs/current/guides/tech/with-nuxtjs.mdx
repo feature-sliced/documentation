@@ -17,7 +17,7 @@ Add an `alias` object to your config:
 export default defineNuxtConfig({
   devtools: { enabled: true },      // Not related to FSD, enabled at project startup
   alias: {
-    "@": '~/src'
+    "@": '../src'
   },
 })
 ```
@@ -39,7 +39,7 @@ In order for NuxtJS to use the `app` layer for file routing, you need to modify 
 export default defineNuxtConfig({
   devtools: { enabled: true },      // Not FSD related, enabled at project startup
   alias: {
-    "@": '~/src'
+    "@": '../src'
   },
   dir: {
     pages: './src/app/routes'
@@ -101,7 +101,7 @@ You can place layouts inside the `app` layer, to do this you need to modify the 
 export default defineNuxtConfig({
   devtools: { enabled: true },      // Not related to FSD, enabled at project startup
   alias: {
-    "@": '~/src'
+    "@": '../src'
   },
   dir: {
     pages: './src/app/routes',
