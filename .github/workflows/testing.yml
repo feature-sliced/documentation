@@ -14,24 +14,20 @@ jobs:
       HOTJAR_ID: ${{ secrets.HOTJAR_ID }}
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.3.1
+      - run: corepack enable
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 20.x
 
       - name: Install dependencies
         run: pnpm install
         working-directory: .
 
       - name: Retrieve Docusaurus build cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules/.cache/webpack
           key: docusaurus-${{ github.ref_name }}
@@ -47,24 +43,20 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.3.1
+      - run: corepack enable
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 20.x
 
       - name: Install dependencies
         run: pnpm install
         working-directory: .
 
       - name: Retrieve linter cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ./.eslintcache
