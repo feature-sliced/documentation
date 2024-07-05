@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://feature-sliced.design/sitemap.xml
