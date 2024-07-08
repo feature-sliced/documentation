@@ -358,6 +358,13 @@
             "avatar_url": "https://avatars.githubusercontent.com/u/67275391?v=4",
             "profile": "https://github.com/Zukhrik",
             "contributions": ["translation", "promotion", "doc"]
+        },
+        {
+            "login": "Egor Voronov",
+            "name": "Егор Воронов",
+            "avatar_url": "https://avatars.githubusercontent.com/u/93457786?v=4",
+            "profile": "https://github.com/Egor-Voronov",
+            "contributions": ["example"]
         }
     ],
     "contributorsPerLine": 5,
