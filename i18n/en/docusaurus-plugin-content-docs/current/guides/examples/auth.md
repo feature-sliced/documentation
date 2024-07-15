@@ -96,9 +96,9 @@ Create a function that makes a request to your backend's login endpoint. This fu
 
 There are two places you can put this function: in `shared/api`, or in the `api` segment of the page.
 
-#### In the `shared/api` segment
+#### In `shared/api`
 
-This approach goes well when you put all your API requests there, grouped by endpoint, for example. The file structure might look like this:
+This approach goes well with when you put all your API requests in `shared/api`, grouped by endpoint, for example. The file structure might look like this:
 
 - 📂 shared
     - 📂 api
@@ -108,7 +108,7 @@ This approach goes well when you put all your API requests there, grouped by end
         - 📄 client.ts
         - 📄 index.ts
 
-The `📄 client.ts` file contains a wrapper around your request-making primitive. It would know about the base URL of your backend, set necessary headers, serialize data correctly, etc.
+The `📄 client.ts` file contains a wrapper around your request-making primitive (for example, `fetch()`). This wrapper would know about the base URL of your backend, set necessary headers, serialize data correctly, etc.
 
 ```ts title="shared/api/endpoints/login.ts"
 import { POST } from "../client";
@@ -135,18 +135,19 @@ If you don't keep all your requests in one place, consider stashing the login re
         - 📄 index.ts
     - other pages…
 
-```ts title="shared/api/endpoints/login.ts"
+```ts title="pages/login/api/login.ts"
 import { POST } from "shared/api";
 
 export function login({ email, password }: { email: string, password: string }) {
     return POST("/login", { email, password });
 }
 ```
+
 You don't have to export the `login()` function in the page's public API, because it's unlikely that any other place in the app will need this request.
 
 ### Two-factor authentication
 
-If your app supports two-factor authentication, you might have to redirect to another page where a user can enter a one-time password. Usually your `POST /login` request would return the user object with a flag indicating that the user has 2FA enabled. If that flag is set, redirect the user to the 2FA page.
+If your app supports two-factor authentication (2FA), you might have to redirect to another page where a user can enter a one-time password. Usually your `POST /login` request would return the user object with a flag indicating that the user has 2FA enabled. If that flag is set, redirect the user to the 2FA page.
 
 Since this page is very related to logging in, you can also keep it in the same slice, `login` on the Pages layer.
 
@@ -170,13 +171,13 @@ Automatic token refresh can be implemented as a middleware in the API client —
 - Make any request that requires authentication
 - If the request fails with a status code that indicates token expiration, and there is a token in the store, make a refresh request, store the new tokens, and retry the original request
 
-One drawback of this approach is that the logic of managing and refreshing the token doesn't have a dedicated place. This can be fine for some apps or teams, but if the token management logic is more complex, it may be preferable to separate responsibilities of making requests and managing tokens. You can do that by keeping your requests and API client in `shared/api`, but the token store and management logic in `shared/auth`.
+One of the drawbacks of this approach is that the logic of managing and refreshing the token doesn't have a dedicated place. This can be fine for some apps or teams, but if the token management logic is more complex, it may be preferable to separate responsibilities of making requests and managing tokens. You can do that by keeping your requests and API client in `shared/api`, but the token store and management logic in `shared/auth`.
 
 Another drawback of this approach is that if your backend returns an object of your current user's information along with the token, you have to store that somewhere or discard that information and request it again from an endpoint like `/me` or `/users/current`.
 
 ### In Entities
 
-It's common for FSD projects to have an entity for a user and the current user. It can even be the same entity for both.
+It's common for FSD projects to have an entity for a user and/or an entity for the current user. It can even be the same entity for both.
 
 :::note
 
@@ -184,7 +185,7 @@ The **current user** is also sometimes called "viewer" or "me". This is to disti
 
 :::
 
-To store the token in the user entity, create a reactive store in the `model` segment. That store can contain both the token and the user object.
+To store the token in the User entity, create a reactive store in the `model` segment. That store can contain both the token and the user object.
 
 Since the API client is usually defined in `shared/api` or spreaded across the entities, the main challenge to this approach is making the token available to other requests that need it without breaking [the import rule on layers][import-rule-on-layers]:
 
@@ -195,7 +196,7 @@ There are several solutions to this challenge:
 1. **Pass the token manually every time you make a request**  
     This is the simplest solution, but it quickly becomes cumbersome, and if you don't have type safety, it's easy to forget. It's also not compatible with middlewares pattern for the API client in Shared.
 1. **Expose the token to the entire app with a context or a global store like `localStorage`**  
-    The key to retrieve the token will be kept in `shared/api` so that the API client can access it. The reactive store of the token will be exported from the User entity, and the context provider (if needed) will be set up on the App layer. This gives more freedom for designing the API client, however, this creates an implicit dependency. When following this approach, consider providing helpful error messages if the context or `localStorage` are not set up correctly.
+    The key to retrieve the token will be kept in `shared/api` so that the API client can access it. The reactive store of the token will be exported from the User entity, and the context provider (if needed) will be set up on the App layer. This gives more freedom for designing the API client, however, this creates an implicit dependency on higher layers to provide context. When following this approach, consider providing helpful error messages if the context or `localStorage` are not set up correctly.
 1. **Inject the token into the API client every time it changes**  
     If your store is reactive, you can create a subscription that will update the API client's token store every time the store in the entity changes. This is similar to the previous solution in that they both create an implicit dependency on higher layers, but this one is more imperative ("push"), while the previous one is more declarative ("pull").
 
@@ -203,7 +204,7 @@ Once you overcome the challenge of exposing the token that is stored in the enti
 
 ### In Pages/Widgets (not recommended)
 
-It is discouraged to store app-wide state like an access token in pages or widgets. Avoid placing your token store in the login page, instead choose from the first two solutions, Shared or Entities.
+It is discouraged to store app-wide state like an access token in pages or widgets. Avoid placing your token store in the `model` segment of the login page, instead choose from the first two solutions, Shared or Entities.
 
 ## Logout and token invalidation
 
