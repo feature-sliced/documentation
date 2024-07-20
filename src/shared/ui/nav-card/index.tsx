@@ -1,8 +1,7 @@
-import React, { useCallback } from "react";
+import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 
-import { ga } from "@site/src/shared/lib/ga";
 import styles from "./styles.module.scss";
 
 type Props = {
@@ -31,14 +30,6 @@ export const NavCard: React.FC<Props> = (props) => {
         disabled,
         theme = "default",
     } = props;
-    const handleClick = useCallback(() => {
-        ga.sendEvent({
-            category: ga.CATEGORIES.full,
-            // FIXME: get later from props
-            action: "NavRow:Click",
-            label: to,
-        });
-    }, [to]);
 
     return (
         <Link
@@ -49,7 +40,6 @@ export const NavCard: React.FC<Props> = (props) => {
                 styles[`${theme}Theme`],
             )}
             to={to}
-            onClick={handleClick}
         >
             <RowIcon Icon={Icon} />
             <div className={styles.details}>

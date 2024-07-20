@@ -41,18 +41,12 @@ importers:
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
-      docusaurus-plugin-hotjar:
-        specifier: ^0.0.2
-        version: 0.0.2
       dotenv:
         specifier: ^16.3.1
         version: 16.3.1
       file-loader:
         specifier: ^6.2.0
         version: 6.2.0(webpack@5.91.0)
-      js-cookie:
-        specifier: ^3.0.5
-        version: 3.0.5
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -74,9 +68,6 @@ importers:
       react:
         specifier: ^18.3.1
         version: 18.3.1
-      react-cookie-consent:
-        specifier: ^8.0.1
-        version: 8.0.1(react@18.3.1)
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
@@ -3225,9 +3216,6 @@ packages:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
     engines: {node: '>=6.0.0'}
 
-  docusaurus-plugin-hotjar@0.0.2:
-    resolution: {integrity: sha512-Jsdxa6k4YQm4SBiY5mv9h/6sKUrQs6lC6mRoPUfjiPVtnhURE3d0dj4Vnrpy/tRVSAbywAqA0F/PGn5RKHtVaw==}
-
   docusaurus-plugin-sass@0.2.5:
     resolution: {integrity: sha512-Z+D0fLFUKcFpM+bqSUmqKIU+vO+YF1xoEQh5hoFreg2eMf722+siwXDD+sqtwU8E4MvVpuvsQfaHwODNlxJAEg==}
     peerDependencies:
@@ -4444,13 +4432,6 @@ packages:
 
   joi@17.13.1:
     resolution: {integrity: sha512-vaBlIKCyo4FCUtCm7Eu4QZd/q02bWcxfUO6YSXAZOWF6gzcLBeba8kwotUdYJjDLW8Cz8RywsSOqiNJZW0mNvg==}
-
-  js-cookie@2.2.1:
-    resolution: {integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==}
-
-  js-cookie@3.0.5:
-    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
-    engines: {node: '>=14'}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -5682,12 +5663,6 @@ packages:
   rc@1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
-
-  react-cookie-consent@8.0.1:
-    resolution: {integrity: sha512-4A2jzPQDFfBhtxIz4hYX+vJ0QnOknGdOXpEoetXzgwUrMtxVJVow8YgBsGerNt5rJI7WhKkHwr8LmxekxgVejg==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: '>=16'
 
   react-dev-utils@12.0.1:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
@@ -9766,33 +9741,65 @@ snapshots:
     dependencies:
       '@babel/core': 7.23.7
 
+  '@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
+
   '@svgr/babel-plugin-remove-jsx-attribute@8.0.0(@babel/core@7.23.7)':
     dependencies:
       '@babel/core': 7.23.7
+
+  '@svgr/babel-plugin-remove-jsx-attribute@8.0.0(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
 
   '@svgr/babel-plugin-remove-jsx-empty-expression@8.0.0(@babel/core@7.23.7)':
     dependencies:
       '@babel/core': 7.23.7
 
+  '@svgr/babel-plugin-remove-jsx-empty-expression@8.0.0(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
+
   '@svgr/babel-plugin-replace-jsx-attribute-value@8.0.0(@babel/core@7.23.7)':
     dependencies:
       '@babel/core': 7.23.7
+
+  '@svgr/babel-plugin-replace-jsx-attribute-value@8.0.0(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
 
   '@svgr/babel-plugin-svg-dynamic-title@8.0.0(@babel/core@7.23.7)':
     dependencies:
       '@babel/core': 7.23.7
 
+  '@svgr/babel-plugin-svg-dynamic-title@8.0.0(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
+
   '@svgr/babel-plugin-svg-em-dimensions@8.0.0(@babel/core@7.23.7)':
     dependencies:
       '@babel/core': 7.23.7
+
+  '@svgr/babel-plugin-svg-em-dimensions@8.0.0(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
 
   '@svgr/babel-plugin-transform-react-native-svg@8.1.0(@babel/core@7.23.7)':
     dependencies:
       '@babel/core': 7.23.7
 
+  '@svgr/babel-plugin-transform-react-native-svg@8.1.0(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
+
   '@svgr/babel-plugin-transform-svg-component@8.0.0(@babel/core@7.23.7)':
     dependencies:
       '@babel/core': 7.23.7
+
+  '@svgr/babel-plugin-transform-svg-component@8.0.0(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
 
   '@svgr/babel-preset@8.1.0(@babel/core@7.23.7)':
     dependencies:
@@ -9806,10 +9813,22 @@ snapshots:
       '@svgr/babel-plugin-transform-react-native-svg': 8.1.0(@babel/core@7.23.7)
       '@svgr/babel-plugin-transform-svg-component': 8.0.0(@babel/core@7.23.7)
 
+  '@svgr/babel-preset@8.1.0(@babel/core@7.24.5)':
+    dependencies:
+      '@babel/core': 7.24.5
+      '@svgr/babel-plugin-add-jsx-attribute': 8.0.0(@babel/core@7.24.5)
+      '@svgr/babel-plugin-remove-jsx-attribute': 8.0.0(@babel/core@7.24.5)
+      '@svgr/babel-plugin-remove-jsx-empty-expression': 8.0.0(@babel/core@7.24.5)
+      '@svgr/babel-plugin-replace-jsx-attribute-value': 8.0.0(@babel/core@7.24.5)
+      '@svgr/babel-plugin-svg-dynamic-title': 8.0.0(@babel/core@7.24.5)
+      '@svgr/babel-plugin-svg-em-dimensions': 8.0.0(@babel/core@7.24.5)
+      '@svgr/babel-plugin-transform-react-native-svg': 8.1.0(@babel/core@7.24.5)
+      '@svgr/babel-plugin-transform-svg-component': 8.0.0(@babel/core@7.24.5)
+
   '@svgr/core@8.1.0(typescript@5.5.3)':
     dependencies:
-      '@babel/core': 7.23.7
-      '@svgr/babel-preset': 8.1.0(@babel/core@7.23.7)
+      '@babel/core': 7.24.5
+      '@svgr/babel-preset': 8.1.0(@babel/core@7.24.5)
       camelcase: 6.3.0
       cosmiconfig: 8.3.6(typescript@5.5.3)
       snake-case: 3.0.4
@@ -11259,8 +11278,6 @@ snapshots:
   doctrine@3.0.0:
     dependencies:
       esutils: 2.0.3
-
-  docusaurus-plugin-hotjar@0.0.2: {}
 
   docusaurus-plugin-sass@0.2.5(@docusaurus/core@3.3.2(@docusaurus/types@3.3.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(eslint@7.32.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.3))(sass@1.69.7)(webpack@5.91.0):
     dependencies:
@@ -12734,10 +12751,6 @@ snapshots:
       '@sideway/formula': 3.0.1
       '@sideway/pinpoint': 2.0.0
 
-  js-cookie@2.2.1: {}
-
-  js-cookie@3.0.5: {}
-
   js-tokens@4.0.0: {}
 
   js-yaml@3.14.1:
@@ -14198,11 +14211,6 @@ snapshots:
       ini: 1.3.8
       minimist: 1.2.8
       strip-json-comments: 2.0.1
-
-  react-cookie-consent@8.0.1(react@18.3.1):
-    dependencies:
-      js-cookie: 2.2.1
-      react: 18.3.1
 
   react-dev-utils@12.0.1(eslint@7.32.0)(typescript@5.5.3)(webpack@5.91.0):
     dependencies:

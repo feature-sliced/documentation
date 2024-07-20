@@ -12,8 +12,6 @@ jobs:
     env:
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
       ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
-      GA_ID: ${{ secrets.GA_ID }}
-      HOTJAR_ID: ${{ secrets.HOTJAR_ID }}
 
     steps:
       - uses: actions/checkout@v4

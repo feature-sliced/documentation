@@ -127,18 +127,6 @@
         "message": "But there are redirects from old links for compatibility",
         "description": "NavPage section=legacy subdetails"
     },
-    "features.cookie-consent.alert": {
-        "message": "🍰 We use cookies for analytics",
-        "description": "Cookie Consent alert"
-    },
-    "features.cookie-consent.accept": {
-        "message": "OK",
-        "description": "Cookie Consent accept label"
-    },
-    "features.cookie-consent.reason": {
-        "message": "why?",
-        "description": "Cookie Consent reason label"
-    },
     "features.feedback-badge.label": {
         "message": "Share your feedback about documentation 🤙",
         "description": "Feedback share button label"
