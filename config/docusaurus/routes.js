@@ -318,7 +318,6 @@ const _TOTAL_ROUTES = [
     "/docs/guides/migration/from-v1",
     "/docs/guides/tech/with-nextjs",
     "/docs/",
-    "/docs/privacy",
     "/docs/reference",
 ];
 // from: "/en/docs/*" to "/docs/*"

@@ -127,18 +127,6 @@
         "message": "Lekin moslik uchun eski havolalardan qayta yo'naltirishlar mavjud",
         "description": "NavPage section=legacy subdetails"
     },
-    "features.cookie-consent.alert": {
-        "message": "🍰 Biz tahlil qilish uchun cookie-fayllardan foydalanamiz",
-        "description": "Cookie Consent alert"
-    },
-    "features.cookie-consent.accept": {
-        "message": "Yaxshi",
-        "description": "Cookie Consent accept label"
-    },
-    "features.cookie-consent.reason": {
-        "message": "nimaga?",
-        "description": "Cookie Consent reason label"
-    },
     "features.feedback-badge.label": {
         "message": "Hujjatlar bo'yicha fikr-mulohazalaringizni baham ko'ring 🤙",
         "description": "Feedback share button label"
