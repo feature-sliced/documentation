@@ -10,17 +10,18 @@ type Props = WrapperProps<typeof DocItemFooterType>;
 
 export default function FooterWrapper(props: Props) {
     const {
-        siteConfig: { customFields },
+        siteConfig: { url, customFields },
     } = useDocusaurusContext();
 
     return (
         <>
             <DocItemFooter {...props} />
-            {typeof customFields.pushFeedbackProjectId === "string" && (
-                <FeedbackWidget
-                    projectId={customFields.pushFeedbackProjectId}
-                />
-            )}
+            {typeof customFields.pushFeedbackProjectId === "string" &&
+                window.location.hostname === new URL(url).hostname && (
+                    <FeedbackWidget
+                        projectId={customFields.pushFeedbackProjectId}
+                    />
+                )}
         </>
     );
 }
