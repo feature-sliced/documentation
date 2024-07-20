@@ -1,14 +1,15 @@
 import React from "react";
 import DocItemFooter from "@theme-original/DocItem/Footer";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import { FeedbackWidget } from "@site/src/features/feedback/doc";
 import type DocItemFooterType from "@theme/DocItem/Footer";
 // eslint-disable-next-line import/no-unresolved
 import type { WrapperProps } from "@docusaurus/types";
 
-type Props = WrapperProps<typeof DocItemFooterType>;
-
-export default function FooterWrapper(props: Props) {
+export default function FooterWrapper(
+    props: WrapperProps<typeof DocItemFooterType>,
+) {
     const {
         siteConfig: { url, customFields },
     } = useDocusaurusContext();
@@ -16,12 +17,16 @@ export default function FooterWrapper(props: Props) {
     return (
         <>
             <DocItemFooter {...props} />
-            {typeof customFields.pushFeedbackProjectId === "string" &&
-                window.location.hostname === new URL(url).hostname && (
-                    <FeedbackWidget
-                        projectId={customFields.pushFeedbackProjectId}
-                    />
-                )}
+            <BrowserOnly>
+                {() =>
+                    typeof customFields.pushFeedbackProjectId === "string" &&
+                    window.location.hostname === new URL(url).hostname && (
+                        <FeedbackWidget
+                            projectId={customFields.pushFeedbackProjectId}
+                        />
+                    )
+                }
+            </BrowserOnly>
         </>
     );
 }
