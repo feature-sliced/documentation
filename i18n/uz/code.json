@@ -152,12 +152,68 @@
         "description": "DocFeedback block=Thanks"
     },
     "features.feedback-doc.title": {
-        "message": "Sahifa foydali boldimi?",
+        "message": "Sahifa foydali bo'ldimi?",
         "description": "DocFeedback block=Title"
     },
     "features.feedback-doc.subtitle": {
-        "message": "Sizning fikr-mulohazalaringiz hujjatlarni yaxshilashga yordam beradi",
+        "message": "Sizning fikringiz bizga dastur dokumentatsiyasini yaxshilashda yordam beradi",
         "description": "DocFeedback block=Subtitle"
+    },
+    "features.feedback-doc.button-text": {
+        "message": "Fikr-mulohaza qoldirish",
+        "description": "The text on a floating button to leave feedback about the docs"
+    },
+    "features.feedback-doc.email-placeholder": {
+        "message": "Sizning e-mailingizni qoldiring (ixtiyoriy)",
+        "description": "The placeholder for email input"
+    },
+    "features.feedback-doc.error-message": {
+        "message": "Iltimos, keyinroq urinib ko'ring.",
+        "description": "The error message displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-error-403": {
+        "message": "URL so'rovi bu proyekt uchun PushFeedbackda ko'rsatilgan URL bilan mos kelmadi.",
+        "description": "The title of the modal displayed when the feedback form submission fails with 403 error"
+    },
+    "features.feedback-doc.modal-title-error-404": {
+        "message": "Biz PushFeedbackda berilgan proyekt identifikatorini topolmadik.",
+        "description": "The title of the modal displayed when the feedback form submission fails with 404 error"
+    },
+    "features.feedback-doc.message-placeholder": {
+        "message": "Fikringizni shu yerga yozing…",
+        "description": "The placeholder for message input"
+    },
+    "features.feedback-doc.modal-title": {
+        "message": "Fikringizni ulashing",
+        "description": "The title of the modal displayed when the feedback form is opened"
+    },
+    "features.feedback-doc.modal-title-error": {
+        "message": "Xatolik!",
+        "description": "The title of the modal displayed when the feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-success": {
+        "message": "Fikringiz uchun rahmat!",
+        "description": "The title of the modal displayed when the feedback form submission is successful"
+    },
+    "features.feedback-doc.rating-placeholder": {
+        "message": "Ushbu sahifa foydali bo'ldimi?",
+        "description": "The placeholder for rating input"
+    },
+    "features.feedback-doc.rating-stars-placeholder": {
+        "message": "Ushbu sahifani qanday baholay olasiz",
+        "description": "The placeholder for rating stars input"
+    },
+    "features.feedback-doc.screenshot-button-text": {
+        "message": "Ekran surati olish",
+        "description": "The text on a button to take a screenshot"
+    },
+    "features.feedback-doc.screenshot-topbar-text": {
+        "message": "Sahifadagi elementni tanlang",
+        "description": "The text displayed in the top bar of the screenshot tool"
+    },
+    "features.feedback-doc.send-button-text": {
+        "message": "Yuborish",
+        "description": "The text on a button to send feedback"
     },
     "features.hero.tagline": {
         "message": "Front-end loyihalari uchun arxitektura metodologiyasi",

@@ -12,6 +12,7 @@ const customFields = {
     legacyRoutes: cfg.LEGACY_ROUTES,
     // FIXME: Open Graph Experimental Mode.
     isOGExperimental: process.env.OG_EXP,
+    pushFeedbackProjectId: "5i2vbxcpaz",
 };
 
 /** @type {Config} */

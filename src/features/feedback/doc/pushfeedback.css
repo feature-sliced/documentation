@@ -1,0 +1,4 @@
+:root {
+    --feedback-font-family: var(--ifm-font-family-base, sans-serif) !important;
+    --feedback-modal-screnshot-z-index: 201 !important;
+}
