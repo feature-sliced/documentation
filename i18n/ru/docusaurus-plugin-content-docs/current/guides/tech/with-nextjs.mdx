@@ -91,21 +91,26 @@ App Router стал стабильным в NextJS версии 13.4. App Router
 для устранения конфликта с папкой `pages` NextJS.
 
 Подход заключается в перемещении папки `app` NextJS в корневую папку проекта и импорте страниц FSD в папку `app` NextJS. Это сохраняет
-структуру проекта FSD внутри папки `src`.
+структуру проекта FSD внутри папки `src`. Вам также стоит добавить в корневую папку проекта папку `pages`, потому что App Router совместим с Pages Router.
 
-```sh
+```
 ├── app                # Папка app (NextJS)
+├── pages              # Пустая папка pages (NextJS)
+│   ├── README.md      # Описание того, зачем нужна эта папка
 ├── src
 │   ├── app            # Папка app (FSD)
 │   ├── entities
 │   ├── features
-│   ├── pages
+│   ├── pages          # Папка pages (FSD)
 │   ├── shared
 │   ├── widgets
 ```
+
+[![Открыть в StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)][ext-app-router-stackblitz]
 
 ## См. также {#see-also}
 
 - [(Тред) Про pages директорию в NextJS](https://t.me/feature_sliced/3623)
 
 [project-knowledge]: /docs/about/understanding/knowledge-types
+[ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md 

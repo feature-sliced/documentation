@@ -92,21 +92,26 @@ To comply with the principles of FSD, you should treat the NextJS `app` folder i
 to resolve a conflict with the NextJS `pages` folder.
 
 The approach is to move the NextJS `app` folder to the root folder of the project and import the FSD pages into the NextJS `app` folder. This saves
-the FSD project structure inside the `src` folder.
+the FSD project structure inside the `src` folder. You should still also add the `pages` folder to the root, because the App router is compatible with the Pages router.
 
-```sh
+```
 ├── app                # NextJS app folder
+├── pages              # Stub NextJS pages folder
+│   ├── README.md      # Description of why this folder exists
 ├── src
 │   ├── app            # FSD app folder
 │   ├── entities
 │   ├── features
-│   ├── pages
+│   ├── pages          # FSD app folder
 │   ├── shared
 │   ├── widgets
 ```
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)][ext-app-router-stackblitz]
 
 ## See also {#see-also}
 
 - [(Thread) About the pages directory in NextJS](https://t.me/feature_sliced/3623)
 
 [project-knowledge]: /docs/about/understanding/knowledge-types
+[ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md 
