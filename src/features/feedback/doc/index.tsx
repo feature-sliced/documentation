@@ -1,87 +1,67 @@
-import React, { useState, useCallback } from "react";
-import clsx from "clsx";
-import { LikeFilled, DislikeFilled } from "@ant-design/icons";
+import React, { useEffect } from "react";
 import { translate } from "@docusaurus/Translate";
+import { FeedbackButton } from "pushfeedback-react";
+import { defineCustomElements } from "pushfeedback/loader";
 
-import { ga } from "@site/src/shared/lib/ga";
-import styles from "./styles.module.scss";
+import "pushfeedback/dist/pushfeedback/pushfeedback.css";
 
-/**
- * Send feedback to Google Analytics
- * @see https://developers.google.com/analytics/devguides/collection/analyticsjs/events
- */
-const sendFeedback = (value: number) => {
-    // For a while - send feedback in both format
-    // Later will keep and maintain only one
-    ga.sendEvent({
-        category: ga.CATEGORIES.full,
-        action: "Docs:Helpful",
-        label: window.location.href,
-        value,
-    });
-    ga.sendEvent({
-        category: ga.CATEGORIES.mixed,
-        action: "Docs:Helpful",
-        label: String(value),
-        value,
-    });
-    ga.sendEvent({
-        category: ga.CATEGORIES.short,
-        label: window.location.href,
-        value,
-    });
-};
+export function FeedbackWidget({ projectId }: { projectId: string }) {
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            defineCustomElements(window);
+        }
+    }, []);
 
-type Props = {
-    className?: string;
-};
-
-/**
- * DocItem feedback widget
- * @see https://docusaurus.io/feature-requests/p/feedback-widget
- * @ticket FEEDBACK-309
- * @terminateTicket FEEDBACK-325
- * TODO: Add emojiis (Bad, OK, Good)
- * TODO: Add comment input
- */
-export const DocFeedback: React.FC<Props> = ({ className }) => {
-    const [feedbackSent, setFeedbackSent] = useState(false);
-
-    const handleFeedback = useCallback(
-        (value: number) => () => {
-            setFeedbackSent(true);
-            sendFeedback(value);
-        },
-        [],
-    );
-
-    if (feedbackSent) {
-        return (
-            <div className={clsx(styles.root, styles.rootThanks, className)}>
-                <span>{translate({ id: "features.feedback-doc.thanks" })}</span>
-            </div>
-        );
-    }
     return (
-        <div className={clsx(styles.root, className)}>
-            <div className={styles.title}>
-                <span className={styles.titleLabel}>
-                    {translate({ id: "features.feedback-doc.title" })}
-                </span>
-                <LikeFilled
-                    className={clsx(styles.action, styles.actionLike)}
-                    onClick={handleFeedback(10)}
-                />
-                <DislikeFilled
-                    className={clsx(styles.action, styles.actionDislike)}
-                    onClick={handleFeedback(0)}
-                />
-            </div>
-            <div className={styles.subtitle}>
-                <span>
-                    {translate({ id: "features.feedback-doc.subtitle" })}
-                </span>
-            </div>
+        <div className="feedback-widget">
+            <FeedbackButton
+                project={projectId}
+                email-placeholder={translate({
+                    id: "features.feedback-doc.email-placeholder",
+                })}
+                error-message={translate({
+                    id: "features.feedback-doc.error-message",
+                })}
+                modal-title-error-4-0-3={translate({
+                    id: "features.feedback-doc.modal-title-error-4-0-3",
+                })}
+                modal-title-error-4-0-4={translate({
+                    id: "features.feedback-doc.modal-title-error-4-0-4",
+                })}
+                message-placeholder={translate({
+                    id: "features.feedback-doc.message-placeholder",
+                })}
+                modal-title={translate({
+                    id: "features.feedback-doc.modal-title",
+                })}
+                modal-title-error={translate({
+                    id: "features.feedback-doc.modal-title-error",
+                })}
+                modal-title-success={translate({
+                    id: "features.feedback-doc.modal-title-success",
+                })}
+                screenshot-button-text={translate({
+                    id: "features.feedback-doc.screenshot-button-text",
+                })}
+                screenshot-topbar-text={translate({
+                    id: "features.feedback-doc.screenshot-topbar-text",
+                })}
+                send-button-text={translate({
+                    id: "features.feedback-doc.send-button-text",
+                })}
+                rating-placeholder={translate({
+                    id: "features.feedback-doc.rating-placeholder",
+                })}
+                rating-stars-placeholder={translate({
+                    id: "features.feedback-doc.rating-stars-placeholder",
+                })}
+                button-position="center-right"
+                button-style="dark"
+                modal-position="bottom-right"
+                custom-font="true"
+            >
+                {translate({ id: "features.feedback-doc.button-text" })}
+            </FeedbackButton>
         </div>
     );
-};
+}

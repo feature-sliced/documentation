@@ -127,18 +127,6 @@
         "message": "Но для совместимости есть редиректы со старых ссылок",
         "description": "NavPage section=legacy subdetails"
     },
-    "features.cookie-consent.alert": {
-        "message": "🍰 Мы используем куки для аналитики",
-        "description": "Cookie Consent alert"
-    },
-    "features.cookie-consent.accept": {
-        "message": "Хорошо",
-        "description": "Cookie Consent accept label"
-    },
-    "features.cookie-consent.reason": {
-        "message": "зачем?",
-        "description": "Cookie Consent reason label"
-    },
     "features.feedback-badge.label": {
         "message": "Поделись фидбеком по документации 🤙",
         "description": "Feedback share button label"
@@ -158,6 +146,62 @@
     "features.feedback-doc.subtitle": {
         "message": "Ваш фидбек помогает нам улучшать документацию",
         "description": "DocFeedback block=Subtitle"
+    },
+    "features.feedback-doc.button-text": {
+        "message": "Оставить отзыв",
+        "description": "The text on a floating button to leave feedback about the docs"
+    },
+    "features.feedback-doc.email-placeholder": {
+        "message": "Оставьте ваш e-mail (по желанию)",
+        "description": "The placeholder for email input"
+    },
+    "features.feedback-doc.error-message": {
+        "message": "Пожалуйста, попробуйте позже.",
+        "description": "The error message displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-error-403": {
+        "message": "URL запроса не совпадает с URL, указанным в PushFeedback для этого проекта.",
+        "description": "The title of the modal displayed when the feedback form submission fails with 403 error"
+    },
+    "features.feedback-doc.modal-title-error-404": {
+        "message": "Мы не смогли найти предоставленный идентификатор проекта в PushFeedback.",
+        "description": "The title of the modal displayed when the feedback form submission fails with 404 error"
+    },
+    "features.feedback-doc.message-placeholder": {
+        "message": "Напишите ваш отзыв здесь…",
+        "description": "The placeholder for message input"
+    },
+    "features.feedback-doc.modal-title": {
+        "message": "Поделитесь вашим мнением",
+        "description": "The title of the modal displayed when the feedback form is opened"
+    },
+    "features.feedback-doc.modal-title-error": {
+        "message": "Упс!",
+        "description": "The title of the modal displayed when the feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-success": {
+        "message": "Спасибо за ваш отзыв!",
+        "description": "The title of the modal displayed when the feedback form submission is successful"
+    },
+    "features.feedback-doc.rating-placeholder": {
+        "message": "Была ли эта страница полезной?",
+        "description": "The placeholder for rating input"
+    },
+    "features.feedback-doc.rating-stars-placeholder": {
+        "message": "Как бы вы оценили эту страницу",
+        "description": "The placeholder for rating stars input"
+    },
+    "features.feedback-doc.screenshot-button-text": {
+        "message": "Сделать скриншот",
+        "description": "The text on a button to take a screenshot"
+    },
+    "features.feedback-doc.screenshot-topbar-text": {
+        "message": "Выберите элемент на странице",
+        "description": "The text displayed in the top bar of the screenshot tool"
+    },
+    "features.feedback-doc.send-button-text": {
+        "message": "Отправить",
+        "description": "The text on a button to send feedback"
     },
     "features.hero.tagline": {
         "message": "Архитектурная методология для фронтенд проектов",

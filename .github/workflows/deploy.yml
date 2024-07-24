@@ -12,21 +12,15 @@ jobs:
     env:
       ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
       ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
-      GA_ID: ${{ secrets.GA_ID }}
-      HOTJAR_ID: ${{ secrets.HOTJAR_ID }}
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          persist-credentials: false
+      - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.3.1
+      - run: corepack enable
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18.x
+          node-version: 20.x
           cache: pnpm
 
       - name: Install dependencies
@@ -34,7 +28,7 @@ jobs:
         working-directory: .
 
       - name: Retrieve Docusaurus build cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules/.cache/webpack
           key: docusaurus-${{ github.ref_name }}
@@ -47,7 +41,7 @@ jobs:
         working-directory: .
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.3
+        uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
           branch: gh-pages
           folder: ./build

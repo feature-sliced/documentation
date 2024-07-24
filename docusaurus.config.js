@@ -12,6 +12,7 @@ const customFields = {
     legacyRoutes: cfg.LEGACY_ROUTES,
     // FIXME: Open Graph Experimental Mode.
     isOGExperimental: process.env.OG_EXP,
+    pushFeedbackProjectId: "5i2vbxcpaz",
 };
 
 /** @type {Config} */
@@ -45,7 +46,7 @@ module.exports = {
         footer: cfg.footer,
         algolia: cfg.algolia,
         metadata: cfg.metadata,
-        hotjar: cfg.metrics.hotjar,
+
         imageZoom: {
             options: {
                 background: "rgb(255 255 255 / 0.3)",
@@ -61,7 +62,4 @@ module.exports = {
 // Remove configs if there are not secrets passed
 if (!process.env.ALGOLIA_KEY || !process.env.ALGOLIA_ID) {
     delete module.exports.themeConfig.algolia;
-}
-if (!process.env.HOTJAR_ID) {
-    delete module.exports.themeConfig.hotjar;
 }

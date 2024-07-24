@@ -31,10 +31,6 @@
         "message": "Litsenziya",
         "description": "The label of footer link with label=License linking to LICENSE"
     },
-    "link.item.label.Privacy": {
-        "message": "Foydalanuvchi shartnomasi",
-        "description": "The label of footer link with label=Privacy linking to /docs/privacy"
-    },
     "link.item.label.Contribution Guide (RU)": {
         "message": "Hissa qoʻshish boʻyicha qoʻllanma (RU)",
         "description": "The label of footer link with label=Contribution Guide (RU) linking to CONTRIBUTING.md"

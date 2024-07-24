@@ -31,10 +31,6 @@
         "message": "Лицензия",
         "description": "The label of footer link with label=License linking to LICENSE"
     },
-    "link.item.label.Privacy": {
-        "message": "Конфиденциальность",
-        "description": "The label of footer link with label=Privacy linking to /docs/privacy"
-    },
     "link.item.label.Contribution Guide (RU)": {
         "message": "Гайдлайны по контрибьютингу (RU)",
         "description": "The label of footer link with label=Contribution Guide (RU) linking to CONTRIBUTING.md"

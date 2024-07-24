@@ -9,24 +9,6 @@ const DOCUSAURUS_PLUGIN_OG = [
     },
 ];
 
-// We use metrics only for analyze and refinement website discovery experience
-// @see Privacy
-const metrics = {
-    gtag: {
-        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
-        anonymizeIP: true, // Should IPs be anonymized?
-    },
-    googleAnalytics: {
-        trackingID: process.env.GA_ID, // the Google Analytics Tracking ID
-        anonymizeIP: true, // Should IPs be anonymized?
-    },
-    // to integrate Hotjar feedback
-    // @see https://github.com/symblai/docusaurus-plugin-hotjar
-    hotjar: {
-        applicationId: process.env.HOTJAR_ID,
-    },
-};
-
 /**
  * Hide category index pages from sidebar ()
  * TODO: Remove custom generator after issue fix
@@ -78,10 +60,6 @@ const presets = [
                 changefreq: "weekly",
                 priority: 0.5,
             },
-            gtag: process.env.GA_ID ? metrics.gtag : undefined,
-            googleAnalytics: process.env.GA_ID
-                ? metrics.googleAnalytics
-                : undefined,
         },
     ],
 ];
@@ -129,7 +107,6 @@ const plugins = [
         },
     ],
     "plugin-image-zoom",
-    process.env.HOTJAR_ID && "docusaurus-plugin-hotjar", // For preventing crashing
     // FIXME: Docusaurus Open Graph Plugin Experimental.
     process.env.OG_EXP && DOCUSAURUS_PLUGIN_OG,
 ].filter(Boolean);
@@ -142,4 +119,4 @@ const algolia = {
     contextualSearch: true,
 };
 
-module.exports = { presets, plugins, algolia, metrics };
+module.exports = { presets, plugins, algolia };

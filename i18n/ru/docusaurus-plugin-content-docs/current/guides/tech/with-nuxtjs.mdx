@@ -16,7 +16,7 @@ sidebar_position: 10
 export default defineNuxtConfig({
   devtools: { enabled: true },        // Не относятся к FSD, включёны при старте проекта
   alias: {
-    "@": '~/src'
+    "@": '../src'
   },
 })
 ```
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 export default defineNuxtConfig({
   devtools: { enabled: true },        // Не относятся к FSD, включёны при старте проекта
   alias: {
-    "@": '~/src'
+    "@": '../src'
   },
   dir: {
     pages: './src/app/routes'
@@ -101,7 +101,7 @@ export { default as HomePage } from './ui/home-page';
 export default defineNuxtConfig({
   devtools: { enabled: true },        // Не относятся к FSD, включёны при старте проекта
   alias: {
-    "@": '~/src'
+    "@": '../src'
   },
   dir: {
     pages: './src/app/routes',

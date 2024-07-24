@@ -22,7 +22,7 @@
         "contributors:generate": "all-contributors generate"
     },
     "engines": {
-        "node": ">= 18.0"
+        "node": ">= 20.0"
     },
     "dependencies": {
         "@ant-design/icons": "^5.2.6",
@@ -36,16 +36,15 @@
         "@svgr/webpack": "^8.1.0",
         "@types/lodash-es": "^4.17.12",
         "clsx": "^2.1.0",
-        "docusaurus-plugin-hotjar": "^0.0.2",
         "dotenv": "^16.3.1",
         "file-loader": "^6.2.0",
-        "js-cookie": "^3.0.5",
         "lodash-es": "^4.17.21",
         "picocolors": "^1.0.0",
         "plugin-image-zoom": "^1.2.0",
         "prism-react-renderer": "^2.3.1",
+        "pushfeedback": "^0.1.40",
+        "pushfeedback-react": "^0.1.40",
         "react": "^18.3.1",
-        "react-cookie-consent": "^8.0.1",
         "react-dom": "^18.3.1",
         "react-fast-marquee": "^1.6.2",
         "sha1": "^1.1.1",
@@ -78,8 +77,8 @@
         "@types/node": "^20.12.8",
         "@types/react": "^18.3.1",
         "@types/react-dom": "^18.3.0",
-        "@typescript-eslint/eslint-plugin": "^6.18.1",
-        "@typescript-eslint/parser": "^6.18.1",
+        "@typescript-eslint/eslint-plugin": "^6.21.0",
+        "@typescript-eslint/parser": "^6.21.0",
         "all-contributors-cli": "^6.26.1",
         "docusaurus-plugin-sass": "^0.2.5",
         "eslint": "^7.32.0",
@@ -92,7 +91,7 @@
         "stylelint-config-recess-order": "^4.4.0",
         "stylelint-config-recommended": "^13.0.0",
         "stylelint-config-standard-scss": "^11.1.0",
-        "typescript": "^5.4.5"
+        "typescript": "^5.5.3"
     },
-    "packageManager": "pnpm@8.14.1"
+    "packageManager": "pnpm@9.4.0"
 }

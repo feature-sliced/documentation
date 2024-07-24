@@ -4,6 +4,7 @@
  * @see https://docusaurus.io/docs/api/themes/configuration#metadata
  */
 const metadata = [
+    { name: "keywords", content: "architecture, frontend, project structure" },
     { name: "twitter:site", content: "@feature_sliced" },
     { name: "twitter:card", content: "summary_large_image" },
     // NOTE: uncomment if need

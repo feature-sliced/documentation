@@ -127,18 +127,6 @@
         "message": "But there are redirects from old links for compatibility",
         "description": "NavPage section=legacy subdetails"
     },
-    "features.cookie-consent.alert": {
-        "message": "🍰 We use cookies for analytics",
-        "description": "Cookie Consent alert"
-    },
-    "features.cookie-consent.accept": {
-        "message": "OK",
-        "description": "Cookie Consent accept label"
-    },
-    "features.cookie-consent.reason": {
-        "message": "why?",
-        "description": "Cookie Consent reason label"
-    },
     "features.feedback-badge.label": {
         "message": "Share your feedback about documentation 🤙",
         "description": "Feedback share button label"
@@ -147,17 +135,61 @@
         "message": "https://forms.gle/nsYua6bMMG5iBB3v7",
         "description": "Feedback share form url"
     },
-    "features.feedback-doc.thanks": {
-        "message": "Thank you for letting us know!",
-        "description": "DocFeedback block=Thanks"
+    "features.feedback-doc.button-text": {
+        "message": "Feedback",
+        "description": "The text on a floating button to leave feedback about the docs"
     },
-    "features.feedback-doc.title": {
+    "features.feedback-doc.email-placeholder": {
+        "message": "Your email (optional)",
+        "description": "The placeholder for email input"
+    },
+    "features.feedback-doc.error-message": {
+        "message": "Something went wrong. Please try again later.",
+        "description": "The error message displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-error-403": {
+        "message": "The request URL does not match the one defined in PushFeedback for this project.",
+        "description": "The title of the modal displayed when feedback form submission fails with 403 error"
+    },
+    "features.feedback-doc.modal-title-error-404": {
+        "message": "We could not find the provided project id in PushFeedback.",
+        "description": "The title of the modal displayed when feedback form submission fails with 404 error"
+    },
+    "features.feedback-doc.message-placeholder": {
+        "message": "Comments",
+        "description": "The placeholder for message input"
+    },
+    "features.feedback-doc.modal-title": {
+        "message": "Share your feedback",
+        "description": "The title of the modal to leave feedback about the docs"
+    },
+    "features.feedback-doc.modal-title-error": {
+        "message": "Oops!",
+        "description": "The title of the modal displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-success": {
+        "message": "Thanks for your feedback!",
+        "description": "The title of the modal displayed when feedback form submission succeeds"
+    },
+    "features.feedback-doc.screenshot-button-text": {
+        "message": "Take a Screenshot",
+        "description": "The text on a button to take a screenshot"
+    },
+    "features.feedback-doc.screenshot-topbar-text": {
+        "message": "SELECT AN ELEMENT ON THE PAGE",
+        "description": "The text displayed in the top bar when selecting an element to take a screenshot"
+    },
+    "features.feedback-doc.send-button-text": {
+        "message": "Send",
+        "description": "The text on a button to send feedback"
+    },
+    "features.feedback-doc.rating-placeholder": {
         "message": "Was this page helpful?",
-        "description": "DocFeedback block=Title"
+        "description": "The placeholder for rating input"
     },
-    "features.feedback-doc.subtitle": {
-        "message": "Your feedback helps us improve the docs",
-        "description": "DocFeedback block=Subtitle"
+    "features.feedback-doc.rating-stars-placeholder": {
+        "message": "How would you rate this page",
+        "description": "The placeholder for rating stars input"
     },
     "features.hero.tagline": {
         "message": "Architectural methodology for frontend projects",

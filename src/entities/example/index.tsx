@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import clsx from "clsx";
 import Image from "@theme/IdealImage";
-import { ga } from "@site/src/shared/lib/ga";
 import { date } from "@site/src/shared/lib/date";
 import styles from "./styles.module.scss";
 
@@ -22,20 +21,6 @@ type Props = {
 
 export const ExampleCard: React.FC<Props> = ({ className, data }) => {
     const isNew = date.getDiffDays(new Date(data.updatedAt), new Date()) <= 14;
-    const handleWebsiteClick = useCallback(() => {
-        ga.sendEvent({
-            category: ga.CATEGORIES.full,
-            action: "Example:Click",
-            label: `${data.title} [website]`,
-        });
-    }, []);
-    const handleSourceClick = useCallback(() => {
-        ga.sendEvent({
-            category: ga.CATEGORIES.full,
-            action: "Example:Click",
-            label: `${data.title} [source]`,
-        });
-    }, []);
 
     return (
         <article className={clsx("card", styles.root, className)}>
@@ -78,7 +63,6 @@ export const ExampleCard: React.FC<Props> = ({ className, data }) => {
                             href={data.website}
                             target="_blank"
                             rel="noreferrer noopener"
-                            onClick={handleWebsiteClick}
                         >
                             Website
                         </a>
@@ -89,7 +73,6 @@ export const ExampleCard: React.FC<Props> = ({ className, data }) => {
                             href={data.source}
                             target="_blank"
                             rel="noreferrer noopener"
-                            onClick={handleSourceClick}
                         >
                             Source
                         </a>
