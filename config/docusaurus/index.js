@@ -1,4 +1,3 @@
-const { announcementBar } = require("./announcementBar");
 const { navbar } = require("./navbar");
 const { footer } = require("./footer");
 const consts = require("./consts");
@@ -8,7 +7,6 @@ const { presets, plugins, algolia } = require("./extensions");
 const { LEGACY_ROUTES, REDIRECTS } = require("./routes");
 
 module.exports = {
-    announcementBar,
     navbar,
     footer,
     consts,
