@@ -41,7 +41,6 @@ module.exports = {
         // @see https://docusaurus.io/docs/sidebar#hideable-sidebar
         docs: { sidebar: { hideable: true, autoCollapseCategories: true } },
         colorMode: { respectPrefersColorScheme: true },
-        announcementBar: cfg.announcementBar,
         navbar: cfg.navbar,
         footer: cfg.footer,
         algolia: cfg.algolia,

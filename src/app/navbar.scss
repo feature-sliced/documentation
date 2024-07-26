@@ -49,12 +49,6 @@ html[data-theme="dark"] .ext-link::before {
     filter: invert(1);
 }
 
-[role="banner"] {
-    --docusaurus-announcement-bar-height: 42px; // #nowar
-
-    font-size: 1.2rem; // #nowar
-}
-
 /* Debug only, for simulating searchBox on devMode
 .navbar__items:last-child {
     border-right: 161px solid black;
@@ -88,12 +82,6 @@ html[data-theme="dark"] .ext-link::before {
 @media (width <= 996px) {
     .navbar__brand .navbar__title {
         display: block;
-    }
-}
-
-@media (width <= 600px) {
-    [role="banner"] {
-        font-size: 1rem; // #nowar
     }
 }
 
