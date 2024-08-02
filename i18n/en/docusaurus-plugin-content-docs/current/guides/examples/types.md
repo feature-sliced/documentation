@@ -167,7 +167,7 @@ const songsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchSong.fulfilled, (state, action) => {
-      articlesAdapter.upsertMany(state, action.payload.map(convertSongDTO))
+      songAdapter.upsertMany(state, action.payload.map(convertSongDTO))
     })
   },
 });
@@ -212,7 +212,7 @@ export const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchSong.fulfilled, (state, action) => {
-      articlesAdapter.upsertMany(state, action.payload.songs)
+      songAdapter.upsertMany(state, action.payload.songs)
     })
   },
 })
