@@ -65,35 +65,17 @@ You are free to add more segments, but make sure that the name of these segments
 
 ### Entities
 
-Concepts from the real world that form together the essence of the project. Commonly, these are the terms that the business uses to describe the product.
+Slices on this layer represent concepts from the real world that the project is working with. Commonly, they are the terms that the business uses to describe the product. For example, a social network might work with business entities like User, Post, and Group.
 
-Slices in this layer typically contain static UI elements, data stores, and optionally, CRUD operations.
+An entity slice might contain the data storage (`📁 model`), data validation schemas (`📁 model`), entity-related API request functions (`📁 api`), as well as the visual representation of this entity in the interface (`📁 ui`). The visual representation doesn't have to produce a complete UI block — it is primarily meant to reuse the same appearance across several pages in the app, and different business logic may be attached to it through props or slots.
 
-**Slice examples**:
+#### Entity relationships
 
-<table>
-<thead><tr><th> For a social network </th><th> For a Git frontend (e.g., GitHub) </th></tr></thead>
-<tbody><tr><td><ul>
-<li>User</li>
-<li>Post</li>
-<li>Group</li>
-</ul></td><td><ul>
-<li>Repository</li>
-<li>File</li>
-<li>Commit</li>
-</ul></td></tr></tbody></table>
+Entities in FSD are slices, and by default, slices cannot know about each other. In real life, however, entities often interact with each other, and sometimes one entity owns or contains other entities. Because of that, the business logic of these interactions is best kept in higher layers, like Features or Pages. 
 
+When one entity's data object contains other data objects, usually it's a good idea to make the connection between the entities explicit and side-step the slice isolation by making a cross-reference API with the `@x` notation. The reason is that connected entities need to be refactored together, so it's best to make the connection impossible to miss.
 
-:::tip
-
-You may notice in the example of a Git frontend that a _repository_ contains _files_. This makes the repository a higher-level entity which has other entities nested inside. That is a common situation with entities, and sometimes it's hard to manage such higher-level entities without breaking the import rule on layers.
-
-Here are a few suggestions to overcome this issue:
-* The UI of entities should contain slots for places where the lower-level entities are to be inserted
-* The business logic related to entity interaction should be placed in features (most of the time)
-* The typings of database entities can be extracted to the Shared layer below, next to the API client
-
-:::
+TODO: Add a link to the cross-reference API documentation.
 
 ### Features
 
