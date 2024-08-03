@@ -7,13 +7,7 @@ pagination_next: reference/slices-segments
 
 Layers are the first level of organisational hierarchy in Feature-Sliced Design. Their purpose is to separate code based on how much responsibility it needs and how many other modules in the app it depends on.
 
-:::note
-
-On this page, a _module_ refers to an internal module in the application — a file or directory with an index file. Not to be confused with npm packages.
-
-:::
-
-Every layer carries special semantic meaning to help you determine how much responsibility you should allocate to a module in your code. The names and meanings of layers are standardized across all projects built with Feature-Sliced Design.
+Every layer carries special semantic meaning to help you determine how much responsibility you should allocate to your code. The names and meanings of layers are standardized across all projects built with Feature-Sliced Design.
 
 There are **7 layers** in total, arranged from most responsibility and&nbsp;dependency to least:
 
@@ -28,9 +22,15 @@ There are **7 layers** in total, arranged from most responsibility and&nbsp;depe
 6. Entities
 7. Shared
 
-You don't have to use every layer in your project — only add them if you think it brings value to your project.
+You don't have to use every layer in your project — only add them if you think it brings value to your project. Typically, most frontend projects will have at least the Shared, Pages, and App layers.
 
 ## Import rule on layers
+
+:::note
+
+On this page, a _module_ refers to an internal module in the application — a file or directory with an index file. Not to be confused with npm packages.
+
+:::
 
 Layers are made up of _slices_ — highly cohesive groups of modules. Feature-Sliced Design promotes low coupling, which is why dependencies between slices are regulated by **the import rule on layers**:
 
@@ -38,26 +38,36 @@ Layers are made up of _slices_ — highly cohesive groups of modules. Feature-Sl
 
 For example, in `~/features/aaa`, `aaa` is the slice, so a file `~/features/aaa/api/request.ts` cannot import code from any module in `~/features/bbb`, but can import code from `~/entities` and `~/shared`, as well as any sibling code from `~/features/aaa`.
 
+Layers App and Shared are **exceptions** — they are simultaneously a layer and a slice. This is because slices partition code by business domain, and for Shared, there are no business domains, and the App layer combines all business domains. In practice, this means that layers App and Shared are made up of segments, and segments can import each other freely.
+
 ## Layer definitions
+
+This section describes the semantic meaning of each layer to create an intuition for what kind of code belongs there.
 
 ### Shared
 
-Isolated modules, components and abstractions that are detached from the specifics of the project or business.
-Warning: not to be treated like [a utility dump][ext--sova-utility-dump]!
+This layer forms a foundation for the rest of the app. It's a place to create connections with the external world, for example, backends, third-party libraries, the environment. It is also a place to define your own highly contained libraries.
 
-This layer, unlike others, does not consist of slices, and instead consists of segments directly.
+This layer, like the App layer, _does not contain slices_. Slices are intended to divide the layer into business domains, but business domains do not exist in Shared. This means that segments can reference and import from each other.
 
-**Content examples**:
+Here are the segments that you can typically find in this layer:
 
-* UI kit
-* API client
-* Code working with browser APIs
+- `📁 api` — the API client and potentially also functions to make requests to specific backend endpoints.
+- `📁 ui` — the application's UI kit.  
+  Components on this layer should not contain business logic, but it's okay for them to be business-themed. For example, you can put the company logo and page layout here.
+- `📁 lib` — a collection of libraries (they can literally be packages, but don't have to).  
+  This folder should not be treated as helpers or utilities ([read here why these folders often turn into a dump][ext--sova-utility-dump]). Instead, every library in this folder should have one area of focus, for example, dates, colors, text manipulation, etc. That area of focus should be documented in a README file. The developers in your team should know what can and cannot be added to these libraries.
+- `📁 config` — environment variables, global feature flags and other global configuration for your app.
+- `📁 routes` — route constants or patterns for matching routes.
+- `📁 i18n` — setup code for translations, global translation strings.
+
+You are free to add more segments, but make sure that the name of these segments describes the purpose of the content, not its essence. For example, `components`, `hooks`, and `types` are bad segment names because they aren't that helpful when you're looking for code.
 
 ### Entities
 
 Concepts from the real world that form together the essence of the project. Commonly, these are the terms that the business uses to describe the product.
 
-Each slice in this layer contains static UI elements, data stores and CRUD operations.
+Slices in this layer typically contain static UI elements, data stores, and optionally, CRUD operations.
 
 **Slice examples**:
 
@@ -89,7 +99,7 @@ Here are a few suggestions to overcome this issue:
 
 Actions that a user can make in the application to interact with the business entities to achieve a valuable outcome. This also includes actions that the app makes on behalf of the user to produce value for them.
 
-Each slice in this layer can contain _interactive_ UI elements, internal state and API calls that enable value-producing actions.
+Slices in this layer typically contain _interactive_ UI elements, internal state, and optionally, API calls that enable value-producing actions.
 
 **Slice examples**:
 
