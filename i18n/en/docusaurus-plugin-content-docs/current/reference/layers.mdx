@@ -79,27 +79,11 @@ TODO: Add a link to the cross-reference API documentation.
 
 ### Features
 
-Actions that a user can make in the application to interact with the business entities to achieve a valuable outcome. This also includes actions that the app makes on behalf of the user to produce value for them.
+This layer is for the main interactions in your app, things that your users care to do. These interactions often involve business entities, as they are what the app is about.
 
-Slices in this layer typically contain _interactive_ UI elements, internal state, and optionally, API calls that enable value-producing actions.
+A crucial principle for using the Features layer effectively is: **not everything needs to be a feature**. A good indicator that something needs to be a feature is the fact that it is reused. For example, if the app has several editors, and all of them have comments, then comments are a reused feature. Remember that slices are a mechanism for finding code quickly, and if there are too many features, the important ones are drowned out.
 
-**Slice examples**:
-
-<table>
-<thead><tr><th> For a social network </th><th> For a Git frontend (e.g., GitHub) </th><th> Actions on behalf of users </th></tr></thead>
-<tbody><tr><td><ul>
-<li>Authenticate</li>
-<li>Create a post</li>
-<li>Join a group</li>
-</ul></td><td><ul>
-<li>Edit a file</li>
-<li>Leave a comment</li>
-<li>Merge branches</li>
-</ul></td><td><ul>
-<li>Detect dark mode</li>
-<li>Perform background computation</li>
-<li>User-Agent-based actions</li>
-</ul></td></tr></tbody></table>
+Ideally, when you arrive in a new project, you would discover its functionality by looking through the pages and features. When deciding on what should be a feature, optimize for the experience of a newcomer to the project to quickly discover large important areas of code.
 
 ### Widgets
 
