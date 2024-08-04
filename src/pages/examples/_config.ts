@@ -421,7 +421,7 @@ export const examples: Example[] = [
         version: VERSIONS.V2,
         updatedAt: "2024-08-04",
         source: "https://github.com/Metalvast/SpotifyVoiceCommander",
-        preview: require("./img/roketo-business.jpg"),
+        preview: require("./img/spotify-voice-commander.png"),
         tech: ["blazor", "maui", "fluxor", "mudblazor"],
     },
     // Reverse the list (last examples should be at the top)
