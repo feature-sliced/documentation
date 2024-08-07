@@ -414,5 +414,15 @@ export const examples: Example[] = [
         preview: require("./img/roketo-business.jpg"),
         tech: ["react", "effector", "tailwindcss", "turbo"],
     },
+      {
+        title: "Quotation Monitoring App",
+        description:
+            "Quotation monitoring application that shows fresh updates in real time",
+        version: VERSIONS.V2,
+        updatedAt: "2024-07-08",
+        source: "https://github.com/Egor-Voronov/tickers-task",
+        preview: require("./img/tickers-task.png"),
+        tech: ["react", "mobx", "typescript"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
