@@ -414,5 +414,21 @@ export const examples: Example[] = [
         preview: require("./img/roketo-business.jpg"),
         tech: ["react", "effector", "tailwindcss", "turbo"],
     },
+    {
+        title: "Yoldi Profiles",
+        description: "Synthetic app with viewing and edition profiles",
+        source: "https://github.com/creator-woow/yoldi-profiles",
+        preview: require("./img/yoldi-profiles.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-08-07",
+        tech: [
+            "typescript",
+            "react",
+            "next",
+            "tailwind",
+            "prettier",
+            "eslint",
+        ]
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
