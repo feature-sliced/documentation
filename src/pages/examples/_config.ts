@@ -414,5 +414,15 @@ export const examples: Example[] = [
         preview: require("./img/roketo-business.jpg"),
         tech: ["react", "effector", "tailwindcss", "turbo"],
     },
+    {
+        title: "SpotifyVoiceCommander",
+        description:
+            "SpotifyVoiceCommander is a small plugin for managing spotify by voice",
+        version: VERSIONS.V2,
+        updatedAt: "2024-08-04",
+        source: "https://github.com/Metalvast/SpotifyVoiceCommander",
+        preview: require("./img/spotify-voice-commander.png"),
+        tech: ["blazor", "maui", "fluxor", "mudblazor"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
