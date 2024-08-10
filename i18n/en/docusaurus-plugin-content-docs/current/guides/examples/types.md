@@ -6,6 +6,12 @@ sidebar_position: 2
 
 This guide concerns data types from typed languages like TypeScript and describes where they fit within FSD.
 
+:::info
+
+Is your question not covered by this guide? Post your question by leaving feedback on this article (blue button on the right) and we will consider expanding this guide!
+
+:::
+
 ## Utility types
 
 Utility types are types that don't have much meaning on their own and are usually used with other types. For example:
@@ -108,9 +114,13 @@ There are two ways to deal with this issue:
 
    By making explicit connections between entities, we stay on top of inter-dependencies and maintain a decent level of domain separation.
 
-## Data transfer objects and mappers
+## Data transfer objects and mappers {#data-transfer-objects-and-mappers}
 
 Data transfer objects, or DTOs, is a term that describes the shape of data that comes from the backend. Sometimes, the DTO is fine to use as is, but sometimes it's inconvenient for the frontend. That's where mappers come in — they transform a DTO into a more convenient shape.
+
+### Where to put DTOs
+
+If you have backend types in a separate package (for example, if you share code between the frontend and the backend), then just import your DTOs from there and you're done! If you don't share code between the backend and frontend, then you need to keep DTOs somewhere in your frontend codebase, and we will explore this case below.
 
 If you have your request functions in `shared/api`, that's where the DTOs should be, right next to the function that uses them:
 
@@ -130,19 +140,67 @@ export function listSongs() {
 
 As mentioned in the previous section, storing your requests and DTOs in Shared comes with the benefit of being able to reference other DTOs.
 
-Mappers, however, should usually be located next to stores. They should be applied before the store is written to. For example, with Redux Toolkit:
+### Where to put mappers
 
-```ts title="entities/song/model/mapper.ts"
-import { listSongs, type SongDTO } from "shared/api";
+Mappers are functions that accept a DTO for transformation, and as such, they should be located near the definition of the DTO. In practice this means that if your requests and DTOs are defined in `shared/api`, then the mappers should go there as well:
+
+```ts title="shared/api/songs.ts"
+import type { ArtistDTO } from "./artists";
+
+interface SongDTO {
+  id: number;
+  title: string;
+  disc_no: number;
+  artist_ids: Array<ArtistDTO["id"]>;
+}
 
 interface Song {
   id: string;
   title: string;
+  /** The full title of the song, including the disc number. */
   fullTitle: string;
   artistIds: Array<string>;
 }
 
-export function convertSongDTO(dto: SongDTO): Song {
+function adaptSongDTO(dto: SongDTO): Song {
+  return {
+    id: String(dto.id),
+    title: dto.title,
+    fullTitle: `${dto.disc_no} / ${dto.title}`,
+    artistIds: dto.artist_ids.map(String),
+  };
+}
+
+export function listSongs() {
+  return fetch('/api/songs').then(async (res) => (await res.json()).map(adaptSongDTO));
+}
+```
+
+If your requests and stores are defined in entity slices, then all this code would go there, keeping in mind the limitations of cross-imports between slices:
+
+```ts title="entities/song/api/dto.ts"
+import type { ArtistDTO } from "entities/artist/@x/song";
+
+export interface SongDTO {
+  id: number;
+  title: string;
+  disc_no: number;
+  artist_ids: Array<ArtistDTO["id"]>;
+}
+```
+
+```ts title="entities/song/api/mapper.ts"
+import type { SongDTO } from "./dto";
+
+export interface Song {
+  id: string;
+  title: string;
+  /** The full title of the song, including the disc number. */
+  fullTitle: string;
+  artistIds: Array<string>;
+}
+
+export function adaptSongDTO(dto: SongDTO): Song {
   return {
     id: String(dto.id),
     title: dto.title,
@@ -152,13 +210,20 @@ export function convertSongDTO(dto: SongDTO): Song {
 }
 ```
 
+```ts title="entities/song/api/listSongs.ts"
+import { adaptSongDTO } from "./mapper";
+
+export function listSongs() {
+  return fetch('/api/songs').then(async (res) => (await res.json()).map(adaptSongDTO));
+}
+```
+
 ```ts title="entities/song/model/songs.ts"
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 
-import { listSongs } from "shared/api";
-import { convertSongDTO } from "./mapper";
+import { listSongs } from "../api/listSongs";
 
-export const fetchSongs = createAsyncThunk('songs/fetchSongs', async () => listSongs().then((response) => response.songs));
+export const fetchSongs = createAsyncThunk('songs/fetchSongs', listSongs);
 
 const songAdapter = createEntityAdapter();
 const songsSlice = createSlice({
@@ -166,14 +231,16 @@ const songsSlice = createSlice({
   initialState: songAdapter.getInitialState(),
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchSong.fulfilled, (state, action) => {
-      songAdapter.upsertMany(state, action.payload.map(convertSongDTO))
+    builder.addCase(fetchSongs.fulfilled, (state, action) => {
+      songAdapter.upsertMany(state, action.payload);
     })
   },
 });
 ```
 
-The most problematic part is when a response from the backend contains several entities. For example, if the song included not just the authors' IDs, but the entire author objects. In this case, it is impossible for entities not to know about each other (unless we want to discard the data or have a firm conversation with the backend team). Instead of coming up with solutions for indirect connections between slices (such as a common middleware that would dispatch actions to other slices), prefer explicit cross-imports with the `@x` notation:
+### How to deal with nested DTOs
+
+The most problematic part is when a response from the backend contains several entities. For example, if the song included not just the authors' IDs, but the entire author objects. In this case, it is impossible for entities not to know about each other (unless we want to discard the data or have a firm conversation with the backend team). Instead of coming up with solutions for indirect connections between slices (such as a common middleware that would dispatch actions to other slices), prefer explicit cross-imports with the `@x` notation. Here is how we can implement it with Redux Toolkit:
 
 ```ts title="entities/song/model/songs.ts"
 import {
@@ -184,8 +251,7 @@ import {
 } from '@reduxjs/toolkit'
 import { normalize, schema } from 'normalizr'
 
-import { getSong } from "shared/api";
-import { convertSongDTO } from "./mapper";
+import { getSong } from "../api/getSong";
 
 // Define normalizr entity schemas
 export const artistEntity = new schema.Entity('artists')
@@ -219,6 +285,10 @@ export const slice = createSlice({
 
 const reducer = slice.reducer
 export default reducer
+```
+
+```ts title="entities/song/@x/artist.ts"
+export { fetchSong } from "../model/songs";
 ```
 
 ```ts title="entities/artist/model/artists.ts"
@@ -276,7 +346,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-It would be nice to have typed Redux hooks `useAppDispatch` and `useAppSelector` in `shared/redux`, but they cannot import `RootState` and `AppDispatch` from the App layer due to the [import rule on layers][import-rule-on-layers]:
+It would be nice to have typed Redux hooks `useAppDispatch` and `useAppSelector` in `shared/store`, but they cannot import `RootState` and `AppDispatch` from the App layer due to the [import rule on layers][import-rule-on-layers]:
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 
@@ -291,7 +361,7 @@ declare type RootState = ReturnType<typeof rootReducer>;
 declare type AppDispatch = typeof store.dispatch;
 ```
 
-```ts title="shared/redux/index.ts"
+```ts title="shared/store/index.ts"
 import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
@@ -306,12 +376,65 @@ The choice of segment should be dictated by usage locations as well. If your enu
 
 Some enums are truly common across the whole project, like general backend response statuses or design system tokens. In this case, you can place them in Shared, and choose the segment based on what the enum represents (`api` for response statuses, `ui` for design tokens, etc.).
 
-<!-- TODO: ## Type validation schemas and Zod -->
+## Type validation schemas and Zod
 
-<!-- TODO: ## Typings of component props and context -->
+If you want to validate that your data conforms to a certain shape or constraints, you can define a validation schema. In TypeScript, a popular library for this job is [Zod][ext-zod]. Validation schemas should also be colocated with the code that uses them, as much as possible.
 
-<!-- TODO: ## Ambient declaration files (`*.d.ts`) -->
+Validation schemas are similar to mappers (as discussed in the [Data transfer objects and mappers](#data-transfer-objects-and-mappers) section) in the sense that they take a data transfer object and parse it, producing an error if the parsing fails.
+
+One of the most common cases of validation is for the data that comes from the backend. Typically, you want to fail the request when the data doesn't match the schema, so it makes sense to put the schema in the same place as the request function, which is usually the `api` segment.
+
+If your data comes through user input, like a form, the validation should happen as the data is being entered. You can place your schema in the `ui` segment, next to the form component, or in the `model` segment, if the `ui` segment is too crowded.
+
+## Typings of component props and context
+
+In general, it's best to keep the props or context interface in the same file as the component or context that uses them. If you have a framework with single-file components, like Vue or Svelte, and you can't define the props interface in the same file, or you want to share that interface between several components, create a separate file in the same folder, typically, the `ui` segment.
+
+Here's an example with JSX (React or Solid):
+
+```ts title="pages/home/ui/RecentActions.tsx"
+interface RecentActionsProps {
+  actions: Array<{ id: string; text: string }>;
+}
+
+export function RecentActions({ actions }: RecentActionsProps) {
+  /* … */
+}
+```
+
+And here's an example with the interface stored in a separate file for Vue:
+
+```ts title="pages/home/ui/RecentActionsProps.ts"
+export interface RecentActionsProps {
+  actions: Array<{ id: string; text: string }>;
+}
+```
+
+```html title="pages/home/ui/RecentActions.vue"
+<script setup lang="ts">
+  import type { RecentActionsProps } from "./RecentActionsProps";
+
+  const props = defineProps<RecentActionsProps>();
+</script>
+```
+
+## Ambient declaration files (`*.d.ts`)
+
+Some packages, for example, [Vite][ext-vite] or [ts-reset][ext-ts-reset], require ambient declaration files to work across your app. Usually, they aren't large or complicated, so they often don't require any architecting, it's fine to just throw them in the `src/` folder. To keep the `src` more organized, you can keep them on the App layer, in `app/ambient/`.
+
+Other packages simply don't have typings, and you might want to declare them as untyped or even write your own typings for them. A good place for those typings would be `shared/lib`, in a folder like `shared/lib/untyped-packages`. Create a `%LIBRARY_NAME%.d.ts` file there and declare the types you need:
+
+```ts title="shared/lib/untyped-packages/use-react-screenshot.d.ts"
+// This library doesn't have typings, and we didn't want to bother writing our own.
+declare module "use-react-screenshot";
+```
+
+## Auto-generation of types
+
+It's common to generate types from external sources, for example, generating backend types from an OpenAPI schema. In this case, create a dedicated place in your codebase for these types, like `shared/api/openapi`. Ideally, you should also include a README in that folder that describes what these files are, how to regenerate them, etc.
 
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
 [ext-type-fest]: https://github.com/sindresorhus/type-fest
 [ext-zod]: https://zod.dev
+[ext-vite]: https://vitejs.dev
+[ext-ts-reset]: https://www.totaltypescript.com/ts-reset

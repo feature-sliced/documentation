@@ -6,6 +6,12 @@ sidebar_position: 2
 
 В этом руководстве рассматриваются типы данных из типизированных языков, таких как TypeScript, и где они вписываются в FSD.
 
+:::info
+
+Вашего вопроса нет в этом руководстве? Напишите свой вопрос, оставив отзыв к этой статье (синяя кнопка справа), и мы рассмотрим возможность расширения этого руководства!
+
+:::
+
 ## Типы-утилиты
 
 Типы-утилиты — это типы, которые сами по себе не имеют особого смысла и обычно используются с другими типами. Например:
@@ -109,9 +115,13 @@ export function listSongs() {
 
    С помощью явных связей между сущностями мы получаем точный контроль взаимозависимостей и при этом поддерживаем достаточный уровень разделения доменов.
 
-## Объекты передачи данных (DTO) и мапперы
+## Объекты передачи данных (DTO) и мапперы {#data-transfer-objects-and-mappers}
 
 Объекты передачи данных, или DTO (от англ. _data transfer object_), — это термин, описывающий форму данных, которые поступают из бэкенда. Иногда DTO можно использовать как есть, но иногда их формат неудобен для фронтенда. Тут приходят на помощь мапперы — это функции, которые преобразуют DTO в более удобную форму.
+
+### Куда положить DTO
+
+Если ваши типы бэкенда находятся в отдельном пакете (например, если вы делите код между фронтендом и бэкендом), просто импортируйте ваши DTO оттуда, и готово! Если вы не делите код между бэкендом и фронтендом, вам нужно хранить DTO где-то в вашем фронтенд-коде, и мы рассмотрим этот случай ниже.
 
 Если вы храните функции запросов в `shared/api`, то именно там должны быть DTO, прямо рядом с функцией, которая их использует:
 
@@ -131,19 +141,67 @@ export function listSongs() {
 
 Как упоминалось в предыдущем разделе, хранение ваших запросов и DTO в Shared имеет преимущество того, что вы можете ссылаться на другие DTO.
 
-Код мапперов, наоборот, должен лежать рядом с хранилищами. Их следует применять перед записью в хранилище. Например, с Redux Toolkit:
+### Куда положить мапперы
 
-```ts title="entities/song/model/mapper.ts"
-import { listSongs, type SongDTO } from "shared/api";
+Мапперы — это функции, которые принимают DTO для преобразования, и, следовательно, они должны находиться рядом с определением DTO. На практике это означает, что если ваши запросы и DTO определены в `shared/api`, то и мапперы должны быть там же:
+
+```ts title="shared/api/songs.ts"
+import type { ArtistDTO } from "./artists";
+
+interface SongDTO {
+  id: number;
+  title: string;
+  disc_no: number;
+  artist_ids: Array<ArtistDTO["id"]>;
+}
 
 interface Song {
   id: string;
   title: string;
+  /** The full title of the song, including the disc number. */
   fullTitle: string;
   artistIds: Array<string>;
 }
 
-export function convertSongDTO(dto: SongDTO): Song {
+function adaptSongDTO(dto: SongDTO): Song {
+  return {
+    id: String(dto.id),
+    title: dto.title,
+    fullTitle: `${dto.disc_no} / ${dto.title}`,
+    artistIds: dto.artist_ids.map(String),
+  };
+}
+
+export function listSongs() {
+  return fetch('/api/songs').then(async (res) => (await res.json()).map(adaptSongDTO));
+}
+```
+
+Если ваши запросы и хранилища определены в слайсах сущностей, то весь этот код должен быть там, с учётом ограничения кросс-импортов между сущностями:
+
+```ts title="entities/song/api/dto.ts"
+import type { ArtistDTO } from "entities/artist/@x/song";
+
+export interface SongDTO {
+  id: number;
+  title: string;
+  disc_no: number;
+  artist_ids: Array<ArtistDTO["id"]>;
+}
+```
+
+```ts title="entities/song/api/mapper.ts"
+import type { SongDTO } from "./dto";
+
+export interface Song {
+  id: string;
+  title: string;
+  /** Полное название песни, включая номер диска. */
+  fullTitle: string;
+  artistIds: Array<string>;
+}
+
+export function adaptSongDTO(dto: SongDTO): Song {
   return {
     id: String(dto.id),
     title: dto.title,
@@ -153,13 +211,20 @@ export function convertSongDTO(dto: SongDTO): Song {
 }
 ```
 
+```ts title="entities/song/api/listSongs.ts"
+import { adaptSongDTO } from "./mapper";
+
+export function listSongs() {
+  return fetch('/api/songs').then(async (res) => (await res.json()).map(adaptSongDTO));
+}
+```
+
 ```ts title="entities/song/model/songs.ts"
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 
-import { listSongs } from "shared/api";
-import { convertSongDTO } from "./mapper";
+import { listSongs } from "../api/listSongs";
 
-export const fetchSongs = createAsyncThunk('songs/fetchSongs', async () => listSongs().then((response) => response.songs));
+export const fetchSongs = createAsyncThunk('songs/fetchSongs', listSongs);
 
 const songAdapter = createEntityAdapter();
 const songsSlice = createSlice({
@@ -167,14 +232,17 @@ const songsSlice = createSlice({
   initialState: songAdapter.getInitialState(),
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchSong.fulfilled, (state, action) => {
-      songAdapter.upsertMany(state, action.payload.map(convertSongDTO))
+    builder.addCase(fetchSongs.fulfilled, (state, action) => {
+      songAdapter.upsertMany(state, action.payload);
     })
   },
 });
 ```
 
-Самый проблемный момент — это когда ответ от бэкенда содержит несколько сущностей. Например, если песня включает в себя не только ID авторов, но и сами объекты данных об авторах целиком. В этом случае сущности не могут не знать друг о друге (если только мы не хотим выбрасывать данные или проводить серьезную беседу с командой бэкенда). Вместо того, чтобы придумывать решения для неявных связей между срезами (например, общий middleware, который будет диспатчить действия другим слайсам), предпочитайте явный кросс-импорт через `@x`-нотацию:
+### Что делать с вложенными DTO
+
+Самый проблемный момент — это когда ответ от бэкенда содержит несколько сущностей. Например, если песня включает в себя не только ID авторов, но и сами объекты данных об авторах целиком. В этом случае сущности не могут не знать друг о друге (если только мы не хотим выбрасывать данные или проводить серьезную беседу с командой бэкенда). Вместо того, чтобы придумывать решения для неявных связей между срезами (например, общий middleware, который будет диспатчить действия другим слайсам), предпочитайте явный кросс-импорт через `@x`-нотацию. Вот как мы можем это реализовать с Redux Toolkit:
+
 
 ```ts title="entities/song/model/songs.ts"
 import {
@@ -185,8 +253,7 @@ import {
 } from '@reduxjs/toolkit'
 import { normalize, schema } from 'normalizr'
 
-import { getSong } from "shared/api";
-import { convertSongDTO } from "./mapper";
+import { getSong } from "../api/getSong";
 
 // Объявляем схемы сущностей в normalizr
 export const artistEntity = new schema.Entity('artists')
@@ -220,6 +287,10 @@ export const slice = createSlice({
 
 const reducer = slice.reducer
 export default reducer
+```
+
+```ts title="entities/song/@x/artist.ts"
+export { fetchSong } from "../model/songs";
 ```
 
 ```ts title="entities/artist/model/artists.ts"
@@ -277,7 +348,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-Было бы неплохо иметь типизированные хуки `useAppDispatch` и `useAppSelector` в `shared/redux`, но они не могут импортировать `RootState` и `AppDispatch` из слоя App из-за [правила импорта для слоёв][import-rule-on-layers]:
+Было бы неплохо иметь типизированные хуки `useAppDispatch` и `useAppSelector` в `shared/store`, но они не могут импортировать `RootState` и `AppDispatch` из слоя App из-за [правила импорта для слоёв][import-rule-on-layers]:
 
 > Модуль в слайсе может импортировать другие слайсы только в том случае, если они расположены на слоях строго ниже.
 
@@ -292,13 +363,72 @@ declare type RootState = ReturnType<typeof rootReducer>;
 declare type AppDispatch = typeof store.dispatch;
 ```
 
-```ts title="shared/redux/index.ts"
+```ts title="shared/store/index.ts"
 import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 ```
 
+## Схемы валидации типов и Zod
+
+Если вы хотите проверить, что ваши данные соответствуют определенной форме или ограничениям, вы можете создать схему валидации. В TypeScript популярной библиотекой для этой задачи является [Zod][ext-zod]. Схемы валидации также должны быть размещены рядом с кодом, который их использует, насколько это возможно.
+
+Схемы валидации похожи на мапперы (как обсуждалось в разделе [Объекты передачи данных (DTO) и мапперы](#data-transfer-objects-and-mappers)) в том смысле, что они принимают объект передачи данных и парсят его, выдавая ошибку, если парсинг не удался.
+
+Один из наиболее распространенных случаев валидации — это данные, поступающие с бэкенда. Обычно вы хотите пометить запрос как неудавшийся, если данные не соответствуют схеме, поэтому имеет смысл поместить схему в том же месте, что и функция запроса, что обычно является сегментом `api`.
+
+Если ваши данные поступают через пользовательский ввод, например, через форму, валидация должна происходить во время ввода данных. Вы можете разместить свою схему в сегменте `ui`, рядом с компонентом формы, или в сегменте `model`, если сегмент `ui` слишком перегружен.
+
+## Типизация пропов компонентов и контекста
+
+В целом, лучше хранить интерфейс пропов или контекста в том же файле, что и компонент или контекст, который их использует. Если у вас фреймворк с однофайловыми компонентами, например, Vue или Svelte, и вы не можете определить интерфейс пропов в том же файле, или вы хотите переиспользовать этот интерфейс между несколькими компонентами, создайте отдельный файл в той же папке, обычно в сегменте `ui`.
+
+Вот пример с JSX (React или Solid):
+
+```ts title="pages/home/ui/RecentActions.tsx"
+interface RecentActionsProps {
+  actions: Array<{ id: string; text: string }>;
+}
+
+export function RecentActions({ actions }: RecentActionsProps) {
+  /* … */
+}
+```
+
+И вот пример с интерфейсом, хранящимся в отдельном файле, для Vue:
+
+```ts title="pages/home/ui/RecentActionsProps.ts"
+export interface RecentActionsProps {
+  actions: Array<{ id: string; text: string }>;
+}
+```
+
+```html title="pages/home/ui/RecentActions.vue"
+<script setup lang="ts">
+  import type { RecentActionsProps } from "./RecentActionsProps";
+
+  const props = defineProps<RecentActionsProps>();
+</script>
+```
+
+## Декларационные файлы окружения (`*.d.ts`)
+
+Некоторые пакеты, например, [Vite][ext-vite] или [ts-reset][ext-ts-reset], требуют декларационные файлы окружения для работы в вашем приложении. Обычно они небольшие и несложные, поэтому часто не требуют какой-либо архитектуры, их можно просто поместить в папку `src/`. Чтобы `src` был более организованным, вы можете хранить их на слое App, в `app/ambient/`.
+
+Другие пакеты просто не имеют типов, и вам может понадобиться объявить их как нетипизированные или даже написать собственные типы для них. Хорошим местом для этих типов будет `shared/lib`, в папке типа `shared/lib/untyped-packages`. Создайте там файл `%LIBRARY_NAME%.d.ts` и объявите типы, которые вам нужны:
+
+```ts title="shared/lib/untyped-packages/use-react-screenshot.d.ts"
+// У этой библиотеки нет типов, и мы не хотели заморачиваться с написанием своих.
+declare module "use-react-screenshot";
+```
+
+## Автогенерация типов
+
+Часто бывает полезно генерировать типы из внешних источников, например, генерировать типы бэкенда из схемы OpenAPI. В этом случае создайте специальное место в вашем коде для этих типов, например, `shared/api/openapi`. Идеально, если вы также включите README в эту папку, который описывает, что это за файлы, как их перегенерировать и т. д.
+
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
 [ext-type-fest]: https://github.com/sindresorhus/type-fest
 [ext-zod]: https://zod.dev
+[ext-vite]: https://vitejs.dev
+[ext-ts-reset]: https://www.totaltypescript.com/ts-reset
