@@ -23,6 +23,15 @@ export const VERSIONS = {
  */
 export const examples: Example[] = [
     {
+        title: "Tiny Bunny Mini Game",
+        description: "Mini-game \"21 points\" in the universe of the visual novel \"Tiny Bunny\".",
+        source: "https://github.com/sanua356/tiny-bunny",
+        preview: require("./img/tiny-bunny.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-08-10",
+        tech: ["react", "redux-toolkit", 'typescript'],
+    },
+    {
         title: "Cardbox",
         description: "The best solutions from developers in one place",
         source: "https://github.com/cardbox/frontend",
