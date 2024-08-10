@@ -100,5 +100,5 @@ export function useThemeSwitcher() {
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
 [ext-react-router]: https://reactrouter.com/
 [ext-render-props]: https://www.patterns.dev/react/render-props-pattern/
-[ext-vue-slots]: https://vuejs.org/guide/components/slots
+[ext-vue-slots]: https://ru.vuejs.org/guide/components/slots
 
