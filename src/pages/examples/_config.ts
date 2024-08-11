@@ -26,6 +26,7 @@ export const examples: Example[] = [
         title: "Tiny Bunny Mini Game",
         description: "Mini-game \"21 points\" in the universe of the visual novel \"Tiny Bunny\".",
         source: "https://github.com/sanua356/tiny-bunny",
+        website: "https://sanua356.github.io/tiny-bunny/",
         preview: require("./img/tiny-bunny.png"),
         version: VERSIONS.V2,
         updatedAt: "2024-08-10",
