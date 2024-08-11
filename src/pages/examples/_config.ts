@@ -414,5 +414,15 @@ export const examples: Example[] = [
         preview: require("./img/roketo-business.jpg"),
         tech: ["react", "effector", "tailwindcss", "turbo"],
     },
+    {
+        title: "Tiny Bunny Mini Game",
+        description: "Mini-game \"21 points\" in the universe of the visual novel \"Tiny Bunny\".",
+        source: "https://github.com/sanua356/tiny-bunny",
+        website: "https://sanua356.github.io/tiny-bunny/",
+        preview: require("./img/tiny-bunny.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-08-10",
+        tech: ["react", "redux-toolkit", 'typescript'],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
