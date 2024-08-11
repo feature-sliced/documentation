@@ -23,16 +23,6 @@ export const VERSIONS = {
  */
 export const examples: Example[] = [
     {
-        title: "Tiny Bunny Mini Game",
-        description: "Mini-game \"21 points\" in the universe of the visual novel \"Tiny Bunny\".",
-        source: "https://github.com/sanua356/tiny-bunny",
-        website: "https://sanua356.github.io/tiny-bunny/",
-        preview: require("./img/tiny-bunny.png"),
-        version: VERSIONS.V2,
-        updatedAt: "2024-08-10",
-        tech: ["react", "redux-toolkit", 'typescript'],
-    },
-    {
         title: "Cardbox",
         description: "The best solutions from developers in one place",
         source: "https://github.com/cardbox/frontend",
@@ -423,6 +413,16 @@ export const examples: Example[] = [
         source: "https://github.com/roke-to/roketo-business-ui",
         preview: require("./img/roketo-business.jpg"),
         tech: ["react", "effector", "tailwindcss", "turbo"],
+    },
+    {
+        title: "Tiny Bunny Mini Game",
+        description: "Mini-game \"21 points\" in the universe of the visual novel \"Tiny Bunny\".",
+        source: "https://github.com/sanua356/tiny-bunny",
+        website: "https://sanua356.github.io/tiny-bunny/",
+        preview: require("./img/tiny-bunny.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-08-10",
+        tech: ["react", "redux-toolkit", 'typescript'],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();
