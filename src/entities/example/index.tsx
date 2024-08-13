@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import clsx from "clsx";
 import Image from "@theme/IdealImage";
 import { date } from "@site/src/shared/lib/date";
