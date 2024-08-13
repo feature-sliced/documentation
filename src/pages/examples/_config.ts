@@ -415,6 +415,16 @@ export const examples: Example[] = [
         tech: ["react", "effector", "tailwindcss", "turbo"],
     },
     {
+        title: "Tiny Bunny Mini Game",
+        description: "Mini-game \"21 points\" in the universe of the visual novel \"Tiny Bunny\".",
+        source: "https://github.com/sanua356/tiny-bunny",
+        website: "https://sanua356.github.io/tiny-bunny/",
+        preview: require("./img/tiny-bunny.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-08-10",
+        tech: ["react", "redux-toolkit", 'typescript'],
+    },
+    {
         title: "Yoldi Profiles",
         description: "Synthetic app with viewing and edition profiles",
         source: "https://github.com/creator-woow/yoldi-profiles",
@@ -429,6 +439,6 @@ export const examples: Example[] = [
             "prettier",
             "eslint",
         ]
-    },
+    }
     // Reverse the list (last examples should be at the top)
 ].reverse();

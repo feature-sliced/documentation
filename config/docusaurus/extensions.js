@@ -51,6 +51,7 @@ const presets = [
             blog: {
                 showReadingTime: true,
                 editUrl: `${GITHUB_DOCS}/edit/master/blog/`,
+                onInlineAuthors: "ignore",
             },
             theme: {
                 customCss: require.resolve("../../src/app/index.scss"),
