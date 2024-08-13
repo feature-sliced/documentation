@@ -370,7 +370,7 @@ export const examples: Example[] = [
             "An application that helps you quit smoking, published in the App Store and Google. Developed with React Native",
         version: VERSIONS.V2,
         updatedAt: "2024-03-31",
-        website: "https://dontsmoke.vasyl.site/ru",
+        website: "https://dontsmoke.vasyl.site",
         source: "https://github.com/penteleichuk/Moke-Smoke",
         preview: require("./img/moke-smoke.jpg"),
         tech: ["react", "rtk", "persist", "typescript", "firebase"],
