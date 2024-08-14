@@ -173,6 +173,7 @@ export const examples: Example[] = [
     {
         title: "Sudoku (React+Effector)",
         description: "A simple crossword of numbers on effector / fsd",
+        website: "https://sudoku-effector.pages.dev/",
         source: "https://github.com/Shiyan7/sudoku-effector",
         preview: require("./img/sudoku.png"),
         version: VERSIONS.V2,
@@ -416,13 +417,14 @@ export const examples: Example[] = [
     },
     {
         title: "Tiny Bunny Mini Game",
-        description: "Mini-game \"21 points\" in the universe of the visual novel \"Tiny Bunny\".",
+        description:
+            'Mini-game "21 points" in the universe of the visual novel "Tiny Bunny".',
         source: "https://github.com/sanua356/tiny-bunny",
         website: "https://sanua356.github.io/tiny-bunny/",
         preview: require("./img/tiny-bunny.png"),
         version: VERSIONS.V2,
         updatedAt: "2024-08-10",
-        tech: ["react", "redux-toolkit", 'typescript'],
+        tech: ["react", "redux-toolkit", "typescript"],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();
