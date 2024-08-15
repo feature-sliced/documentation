@@ -56,7 +56,7 @@ Here are the segments that you can typically find in this layer:
 - `📁 ui` — the application's UI kit.  
   Components on this layer should not contain business logic, but it's okay for them to be business-themed. For example, you can put the company logo and page layout here.
 - `📁 lib` — a collection of libraries (they can literally be packages, but don't have to).  
-  This folder should not be treated as helpers or utilities ([read here why these folders often turn into a dump][ext--sova-utility-dump]). Instead, every library in this folder should have one area of focus, for example, dates, colors, text manipulation, etc. That area of focus should be documented in a README file. The developers in your team should know what can and cannot be added to these libraries.
+  This folder should not be treated as helpers or utilities ([read here why these folders often turn into a dump][ext-sova-utility-dump]). Instead, every library in this folder should have one area of focus, for example, dates, colors, text manipulation, etc. That area of focus should be documented in a README file. The developers in your team should know what can and cannot be added to these libraries.
 - `📁 config` — environment variables, global feature flags and other global configuration for your app.
 - `📁 routes` — route constants or patterns for matching routes.
 - `📁 i18n` — setup code for translations, global translation strings.
@@ -87,28 +87,15 @@ Ideally, when you arrive in a new project, you would discover its functionality 
 
 ### Widgets
 
-Self-sufficient UI blocks that emerged from the composition of lower-level units like entities and features.
+The Widgets layer is intended for large self-sufficient blocks of UI. Widgets are most useful when they are reused across multiple pages, or when the page that they belong to has multiple large indepdendent blocks, and this is one of them. 
 
-This layer provides a way to fill in the slots left in the UI of Entities with other Entities and interactive elements from Features. Therefore, it is common not to have business logic on this layer, instead keeping it in Features. Each slice in this layer contains ready-to-use UI components and sometimes non-business logic such as gestures, keyboard interaction, etc.
-
-Sometimes, however, it is more convenient to have business logic on this layer. Usually it happens when the widget is quite rich in interactivity (e.g., interactive data tables) and the business logic inside them is not used in other places.
-
-**Slice examples**:
-
-<table>
-<thead><tr><th> For a social network </th><th> For a Git frontend (e.g., GitHub) </th></tr></thead>
-<tbody><tr><td><ul>
-<li>Post card</li>
-<li>User profile header (with actions)</li>
-</ul></td><td><ul>
-<li>List of files in a repository (with actions)</li>
-<li>Comment in a thread</li>
-<li>Repository card</li>
-</ul></td></tr></tbody></table>
+If a block of UI makes up most of the interesting content on a page, and is never reused, it **should not be a widget**, and instead it should be placed in a page.
 
 :::tip
 
-If you're using a nested routing system (e.g. the router of [Remix][ext--remix]), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create complete interface blocks, complete with related data fetching, loading states, and error boundaries. In the same way, you can store page layouts on this layer.
+If you're using a nested routing system (like the router of [Remix][ext-remix]), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create full router blocks, complete with related data fetching, loading states, and error boundaries. 
+
+In the same way, you can store page layouts on this layer.
 
 :::
 
@@ -157,5 +144,5 @@ This layer usually doesn't contain slices, like Shared, instead having segments 
 * Store and other context providers
 * Analytics initialization
 
-[ext--remix]: https://remix.run
-[ext--sova-utility-dump]: https://dev.to/sergeysova/why-utils-helpers-is-a-dump-45fo
+[ext-remix]: https://remix.run
+[ext-sova-utility-dump]: https://dev.to/sergeysova/why-utils-helpers-is-a-dump-45fo
