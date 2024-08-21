@@ -426,5 +426,23 @@ export const examples: Example[] = [
         updatedAt: "2024-08-10",
         tech: ["react", "redux-toolkit", "typescript"],
     },
+    {
+        title: "My Task Board",
+        description:
+            "A straightforward task management application, which will involve implementing essential HTTP methods such as GET, POST, PUT, and DELETE.",
+        source: "https://github.com/ifeelBALANCED/task-manager-app-frontend",
+        website: "https://my-tasks-manager-app.vercel.app/",
+        preview: require("./img/my-task-board.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-08-21",
+        tech: [
+            "react",
+            "effector",
+            "typescript",
+            "tailwindcss",
+            "mantine-ui",
+            "farfetched",
+        ],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
