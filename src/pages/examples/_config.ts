@@ -425,6 +425,24 @@ export const examples: Example[] = [
         version: VERSIONS.V2,
         updatedAt: "2024-08-10",
         tech: ["react", "redux-toolkit", "typescript"],
+    },{
+        title: "Fasty.PWA",
+        description:
+            'Business pwa-application for efficient management of courier deliveries".',
+        source: "https://github.com/KoninMikhail/fasty-package-delivery-courier-pwa",
+        website: "https://fasty-app.vercel.app/",
+        preview: require("./img/fasty-delivery.jpg"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-09-12",
+        tech: [
+            "react",
+            "effector",
+            "typescript",
+            "react-router",
+            "vite-pwa",
+            "tailwindcss",
+            "nextui"
+        ],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();
