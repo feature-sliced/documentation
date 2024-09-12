@@ -371,6 +371,7 @@ export const examples: Example[] = [
             "An application that helps you quit smoking, published in the App Store and Google. Developed with React Native",
         version: VERSIONS.V2,
         updatedAt: "2024-03-31",
+        website: "https://dontsmoke.vasyl.site",
         source: "https://github.com/penteleichuk/Moke-Smoke",
         preview: require("./img/moke-smoke.jpg"),
         tech: ["react", "rtk", "persist", "typescript", "firebase"],
@@ -413,6 +414,17 @@ export const examples: Example[] = [
         source: "https://github.com/roke-to/roketo-business-ui",
         preview: require("./img/roketo-business.jpg"),
         tech: ["react", "effector", "tailwindcss", "turbo"],
+    },
+    {
+        title: "Tiny Bunny Mini Game",
+        description:
+            'Mini-game "21 points" in the universe of the visual novel "Tiny Bunny".',
+        source: "https://github.com/sanua356/tiny-bunny",
+        website: "https://sanua356.github.io/tiny-bunny/",
+        preview: require("./img/tiny-bunny.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-08-10",
+        tech: ["react", "redux-toolkit", "typescript"],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();

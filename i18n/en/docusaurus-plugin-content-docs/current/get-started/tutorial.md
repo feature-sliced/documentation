@@ -1608,8 +1608,8 @@ export function ArticleReadPage() {
       <div className="container page">
         <div className="row article-content">
           <div className="col-md-12">
+            <p>{article.article.body}</p>
             <ul className="tag-list">
-              <p>{article.article.body}</p>
               {article.article.tagList.map((tag) => (
                 <li className="tag-default tag-pill tag-outline" key={tag}>
                   {tag}
