@@ -6,22 +6,18 @@ pagination_next: reference/index
 
 import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 
-# Cross-imports
+# Кросс-импорты
 
 <WIP ticket="220" />
 
-> Cross-imports appear when the layer or abstraction begins to take too much responsibility than it should. That is why the methodology identifies new layers that allow you to uncouple these cross-imports
-
-## Introduction {#start}
-
-Before we look at how to work with cross-imports to comply with the FSD methodology, we need to understand what "cross-import" is in principle.
+> Cross-imports appear when a layer/abstraction starts to take on too much responsibility than it should. That is why the methodology allocates new layers that allow these cross-imports to be decoupled.
+## Введение {#start}
 
 **Cross-import** is a situation in which, within a layer, there is a need to import data from one slice to another.
 
-:::warning Important
+:::warning Warning
 
-The article only deals with conflict situations when importing between **slices**. Within one slice, fragments can import each other, such a situation is not prohibited
-
+The article only deals with conflict situations when importing between **slices**. Within one slice, fragments can import each other, such a situation is not prohibited.
 :::
 
 Let's look at an abstract example:
@@ -37,28 +33,28 @@ Let's look at an abstract example:
 In this example, to call the `getCitiesByCountryName` method, you need to get the result of calling the `getCountriesList` method.
 It is not possible to obtain the result of the `getCountriesList` method directly, as this would violate the principle of low coupling and complicate the project's maintenance in the future.
 
-How to resolve situations when there is a need to make a cross-import? Let's consider in this article.
-
 ## Cross-import solutions options {#solutions}
 
 ### Merging multiple slices into one {#slices-merge}
-As you can see from the example above, the domain scope of the `getCitiesByCountryName` and `getCountriesList` methods is quite similar, which means it is possible to create a derived slice from the two existing ones, where both methods would be in the same directory.
+As you can see from the example above, the domain scope of the `getCitiesByCountryName` and `getCountriesList` methods is quite similar, meaning it is possible to create a derived slice from the two existing ones, where both methods would be in the same directory.
 
 Result of merging slices `countries` and `cities`:
 - `📂 entities`
-   - `📂 geography`
+   - `📂 location`
 	  - `📁 lib`
 	    - `📄 getCountriesList`
 		- `📄 getCitiesByCountryName`
 
-As you can see from the example, we got rid of the situation where one slice imports data from another and achieved high cohesion and low cohesion within a segment of one slice.
+As you can see from the example, we have eliminated the situation where one slice imports data from another and achieved high cohesion and low connectivity within a segment of a single slice.
 
-### Splitting slices into different layers {#slices-moving}
+### Moving code to a higher layer {#slices-moving}
 This option is more suitable for those cases where combining several slices into one is difficult or impossible.
 
-It is likely that the slice into which you are importing data from another slice is quite logically rich and can be moved to a higher layer in order to eliminate their connectivity within a single layer.
+It is likely that the slice into which you are importing data from another slice is highly logically rich and can be moved to a higher layer to eliminate the connectivity of slices within a single layer.
 
-The result of splitting the `countries` and `cities` slices into different layers:
+Let's imagine that the `countries` slice is more dense with business logic than in the example above, then merging it with the `cities` slice will create additional clutter, so a good solution would be to move the `cities` slice to a higher layer in order to maintain the correct slice structure.
+
+The result of moving the `countries` and `cities` slices to different layers:
 - `📂 entities`
    - `📂 countries`
 	  - `📁 lib`
@@ -68,21 +64,21 @@ The result of splitting the `countries` and `cities` slices into different layer
       - `📁 lib`
 	    - `📄 getCitiesByCountryName`
 
-By moving the `cities` slice to the `features` layer (not necessarily to it, any layer higher in the hierarchy will do), we have more specifically specified its domain area and made it possible to have a correct import mechanism from the point of view of the layer hierarchy.
+By moving the `cities` slice to the `features` layer (not necessarily to it, any layer higher in the hierarchy will do), its domain area became more specific and it became possible to build an import mechanism that is correct from the point of view of the layer hierarchy.
 
-### Code duplication {#duplication-code}
-If the amount of data you are going to import from another slice is small, it is not a bad idea to duplicate it into the current slice. However, this option should not be a priority among all the above.
+### Duplication code {#duplication-code}
+If the amount of data you are going to import from another slice is small, it may be worth duplicating it into the current slice. However, this option should not be a priority among all the above.
 
-## But what if cross-import is inevitable? {#cross-import-is-inevitable}
+## What if cross-import is inevitable? {#cross-import-is-inevitable}
 
-:::caution Attention
+:::caution Warning
 
-The information in this section **is not a guide to action**. It does not reflect the official position of the authors of the Feature Sliced ​​Design methodology.
-However, in exotic situations, the information in this section may be useful
+The approach described in this section is experimental and has not yet been standardized. 
+However, in exotic situations, the information in this section may be useful.
 
 :::
 
-If your project requires cross-import and the two methods described above did not help, the Feature Sliced ​​Design community offers the following solution to the problem
+If your project requires cross-import and the three methods described above did not help, the Feature Sliced ​​Design community offers the following solution to the problem.
 
 - `📂 entities`
    - `📂 countries`
@@ -95,7 +91,7 @@ If your project requires cross-import and the two methods described above did no
    - `@x`
 
 ### @x {#export-private-api}
-**@x** - this is an approach where within a slice you can create an explicit public export of only those modules that can be used within several slices of the same layer
+**@x** - this is an experimental approach where within a slice you can create an explicit public export of only those modules that can be used within multiple slices of the same layer.
 
 Let's look at an example:
 ```ts title="entities/countries/@x.ts"
@@ -114,19 +110,18 @@ return getCitiesByCountryName(countries[0]);
 As you can see from the import path in the `getCitiesByCountryName` file, thanks to the export from the @x file, it is clear that this module is not intended for public use, but exists only to be imported inside another slice.
 
 ### Lifting the ban on cross-imports {#disable-cross-imports-rule}
-If you have tried all the methods in the article, but for some reason still could not get rid of cross-imports, it may be worth considering lifting the ban on them within specific slices, or the entire project as a whole. 
-However, it is important to understand that lifting the ban on cross-imports can potentially negatively affect the overall structure of the project.
+If you have tried all the methods in the article, but for some reason still could not get rid of cross-imports, perhaps it is worth considering lifting the ban on them within specific slices, or the entire project as a whole.
+However, it is important to understand that lifting the ban on cross-imports could potentially have a negative impact on the overall structure of the project.
 
 ## Useful links {#useful-links}
 
 1. The Feature Sliced ​​Design team has developed a tool that allows you to automatically check for cross-imports in a project: [Steiger](https://github.com/feature-sliced/steiger) 
 2. More information about the cross-import rule: [Steiger-Forbidden-Imports](https://github.com/feature-sliced/steiger/blob/master/packages/steiger-plugin-fsd/src/forbidden-imports/README.md) 
 
+## См. также {#see-also}
 
-## See also
-
-- [(Thread) About the supposed inevitability of cross-ports](https://t.me/feature_sliced/4515)
-- [(Thread) About resolving cross-ports in entities](https://t.me/feature_sliced/3678)
+- [(Thread) On the supposed inevitability of cross-imports](https://t.me/feature_sliced/4515)
+- [(Thread) About resolving cross-imports in entities](https://t.me/feature_sliced/3678)
 - [(Thread) About cross-imports and responsibility](https://t.me/feature_sliced/3287)
 - [(Thread) About imports between segments](https://t.me/feature_sliced/4021)
 - [(Thread) About cross-imports inside shared](https://t.me/feature_sliced/3618)
