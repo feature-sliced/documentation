@@ -53,19 +53,19 @@ This option is more suitable for those cases where combining several slices into
 
 It is likely that the slice into which you are importing data from another slice is highly logically rich and can be moved to a higher layer to eliminate the connectivity of slices within a single layer.
 
-Let's imagine that the `countries` slice is more dense with business logic than in the example above, then merging it with the `cities` slice will create additional clutter, so a good solution would be to move the `cities` slice to a higher layer in order to maintain the correct slice structure.
+Let's imagine that the `countries` slice is more dense with business logic than in the example above, then merging it with the `cities` slice will create additional clutter, so a good solution would be to restructure the logic of the `cities` slice in a higher layer.
 
-The result of moving the `countries` and `cities` slices to different layers:
+The result of moving the logic of the `countries` and `cities` slices:
 - `📂 entities`
    - `📂 countries`
 	  - `📁 lib`
 	    - `📄 getCountriesList `
 - `📂 features`
-   - `📁 cities`
+   - `📁 get-locations`
       - `📁 lib`
 	    - `📄 getCitiesByCountryName`
 
-By moving the `cities` slice to the `features` layer (not necessarily to it, any layer higher in the hierarchy will do), its domain area became more specific and it became possible to build an import mechanism that is correct from the point of view of the layer hierarchy.
+By restructuring the logic of the `cities` slice on the `features` layer (not necessarily on it, any layer higher in the hierarchy will do), its domain area was more specifically clarified, and it became possible to build a correct import mechanism from the point of view of the layer hierarchy.
 
 ### Duplication code {#duplication-code}
 If the amount of data you are going to import from another slice is small, it may be worth duplicating it into the current slice. However, this option should not be a priority among all the above.
