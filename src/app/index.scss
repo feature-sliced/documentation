@@ -31,3 +31,8 @@ h6 {
         border-radius: var(--ifm-button-border-radius) !important;
     }
 }
+
+.theme-back-to-top-button {
+    // The PushFeedback button is positioned in the same place, so we need to move the "back to top" button higher
+    bottom: 3.5rem;
+}
