@@ -20,7 +20,7 @@ export default function FooterWrapper(
             <BrowserOnly>
                 {() =>
                     typeof customFields.pushFeedbackProjectId === "string" &&
-                    (window.location.hostname === new URL(url).hostname || true) && (
+                    window.location.hostname === new URL(url).hostname && (
                         <FeedbackWidget
                             projectId={customFields.pushFeedbackProjectId}
                         />
