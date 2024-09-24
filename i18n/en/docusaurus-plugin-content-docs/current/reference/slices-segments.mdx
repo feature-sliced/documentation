@@ -14,6 +14,24 @@ The names of slices are not standardized because they are directly determined by
 
 The layers Shared and App don't contain slices. That is because Shared should contain no business logic at all, hence has no meaning for the product, and App should contain only code that concerns the entire application, so no splitting is necessary.
 
+### Zero coupling and high cohesion
+
+Slices are meant to be independent and highly cohesive groups of code files. The graphic below might help to visualize the tricky concepts of _cohesion_ and _coupling_:
+
+<figure> 
+    <img alt="coupling-cohesion-themed" src="/img/coupling.png" width="80%" />
+
+    <figcaption>
+        Source: https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
+    </figcaption>
+</figure>
+
+An ideal slice is independent from other slices on its layer (zero coupling) and contains most of the code related to its primary goal (high cohesion).
+
+The independence of slices is enforced by the [import rule on layers][layers--import-rule]:
+
+> _A module (file) in a slice can only import other slices when they are located on layers strictly below._
+
 ### Public API rule on slices
 
 Inside a slice, the code could be organized in any way that you want. That doesn't pose any issues as long as the slice provides a good public API for other slices to use it. This is enforced with the **public API rule on slices**:
@@ -49,4 +67,5 @@ You can also create custom segments. The most common places for custom segments 
 Make sure that the name of these segments describes the purpose of the content, not its essence. For example, `components`, `hooks`, and `types` are bad segment names because they aren't that helpful when you're looking for code.
 
 [layers--layer-definitions]: /docs/reference/layers#layer-definitions
+[layers--import-rule]: /docs/reference/layers#import-rule-on-layers
 [ref-public-api]: /docs/reference/public-api

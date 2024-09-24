@@ -264,6 +264,18 @@ const LEGACY_ROUTES = [
             },
         ],
     },
+    {
+        group: "Deduplication of Reference",
+        details:
+            "Cleaned up the Reference section and deduplicated the material",
+        children: [
+            {
+                title: "Isolation of modules",
+                from: "/docs/reference/isolation",
+                to: "/docs/reference/layers#import-rule-on-layers",
+            },
+        ],
+    },
 ];
 
 // @returns { from, to }[]

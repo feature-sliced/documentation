@@ -65,9 +65,11 @@ Index files like `index.js`, also known as barrel files, are the most common way
 
 Circular import is when two or more files import each other in a circle.
 
+<!-- TODO: add backgrounds to the images below, check on mobile -->
+
 <figure>
-    <img src="/img/circular-import-light.svg#light-mode-only" width="50%" alt="Three files importing each other in a circle" />
-    <img src="/img/circular-import-dark.svg#dark-mode-only" width="50%" alt="Three files importing each other in a circle" />
+    <img src="/img/circular-import-light.svg#light-mode-only" width="60%" alt="Three files importing each other in a circle" />
+    <img src="/img/circular-import-dark.svg#dark-mode-only" width="60%" alt="Three files importing each other in a circle" />
     <figcaption>
         Pictured above: three files, `fileA.js`, `fileB.js`, and `fileC.js`, importing each other in a circle.
     </figcaption>
@@ -94,16 +96,57 @@ To prevent this issue, consider these two principles. If you have two files, and
 - When they are in the same slice, always use _relative_ imports and write the full import path
 - When they are in different slices, always use _absolute_ imports, for example, with an alias
 
-### Something else
+### Large bundles and broken tree-shaking in Shared {#large-bundles}
 
-- making bundles unnecessarily large by including unused code
-- not actually offering protection against side-stepping the public API
-- introducing more danger of circular imports
-- slowing down development performance of bundlers on large projects
+Some bundlers might have a hard time tree-shaking (removing code that isn't imported) when you have an index file that re-exports everything.
 
-To tackle the issues of side-stepping and circular imports, consider using [Steiger][ext-steiger], an architectural linter with a ruleset for Feature-Sliced Design.
+Usually this isn't a problem for public APIs, because the contents of a module are usually quite closely related, so you would rarely need to import one thing and tree-shake away the other. However, there are two very common cases when the normal rules of public API in FSD may lead to issues — `shared/ui` and `shared/lib`.
 
-<!-- CONTINUE: suggest splitting the project, suggest using Node packages as public API, mention shared/ui and shared/lib, mention server/client with Next/Remix -->
+These two folders are both collections of unrelated things that often aren't all needed in one place. For example, `shared/ui` might have modules for every component in the UI library:
+
+- `📂 shared/ui/`
+    - `📁 button`
+    - `📁 text-field`
+    - `📁 carousel`
+    - `📁 accordion`
+
+This problem is made worse when one of these modules has a heavy dependency, like a syntax highlighter or a drag'n'drop library. You don't want to pull those into every page that uses a button.
+
+If your bundles grow undesirably due to a single public API in `shared/ui` or `shared/lib`, it's recommended to instead have a separate index file for each component or library:
+
+- `📂 shared/ui/`
+    - `📂 button`
+        - `📄 index.js`
+    - `📂 text-field`
+        - `📄 index.js`
+
+Then the consumers of these components can import them directly like this:
+
+```js title="pages/sign-in/ui/SignInPage.jsx"
+import { Button } from '@/shared/ui/button';
+import { TextField } from '@/shared/ui/text-field';
+```
+
+### No real protection against side-stepping the public API
+
+When you create an index file for a slice, you don't actually forbid anyone from not using it and importing directly. This is especially a problem for auto-imports, because there are several places from which an object can be imported, so the IDE has to decide that for you. Sometimes it might choose to import directly, breaking the public API rule on slices.
+
+To catch these issues automatically, we recommend using [Steiger][ext-steiger], an architectural linter with a ruleset for Feature-Sliced Design.
+
+### Worse performance of bundlers on large projects
+
+Having a large amount of index files in a project can slow down the development server, as noted by TkDodo in [his article "Please Stop Using Barrel Files"][ext-please-stop-using-barrel-files].
+
+There are several things you can do to tackle this issue:
+1. The same advice as in ["Large bundles and broken tree-shaking in Shared" issue](#large-bundles) — have separate index files for each component/library in `shared/ui` and `shared/lib` instead of one big one
+2. Avoid having index files in segments on layers that have slices.  
+   For example, if you have an index for the feature "comments", `📄 features/comments/index.js`, there's no reason to have another index for the `ui` segment of that feature, `📄 features/comments/ui/index.js`.
+3. If you have a very big project, there's a good chance that your application can be split into several big chunks.  
+   For example, Google Docs has very different responsibilities for the document editor and for the file browser. You can create a monorepo setup where each package is a separate FSD root, with its own set of layers. Some packages can only have the Shared and Entities layers, others might only have Pages and App, others still might include their own small Shared, but still use the big one from another package too.
+
+   <!-- TODO: add a link to a page that explains this in more detail (when one will exist) -->
+
+<!-- TODO: discuss issues with mixing server/client code in Next/Remix -->
 
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
 [ext-steiger]: https://github.com/feature-sliced/steiger
