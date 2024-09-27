@@ -266,15 +266,16 @@ const LEGACY_ROUTES = [
     },
     {
         group: "Rename 'legacy' to 'custom'",
-        details: "'Legacy' is derogatory, we don't get to call people's projects legacy",
+        details:
+            "'Legacy' is derogatory, we don't get to call people's projects legacy",
         children: [
             {
                 title: "Rename 'legacy' to custom",
                 from: "/docs/guides/migration/from-legacy",
                 to: "/docs/guides/migration/from-custom",
-            }
-        ]
-    }
+            },
+        ],
+    },
 ];
 
 // @returns { from, to }[]
