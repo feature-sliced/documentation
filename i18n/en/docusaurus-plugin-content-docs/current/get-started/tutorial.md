@@ -38,7 +38,7 @@ As such, our Pages folder will look like this:
 
 The key difference of Feature-Sliced Design from an unregulated code structure is that pages cannot reference each other. That is, one page cannot import code from another page. This is due to the **import rule on layers**:
 
-*A module in a slice can only import other slices when they are located on layers strictly below.*
+*A module (file) in a slice can only import other slices when they are located on layers strictly below.*
 
 In this case, a page is a slice, so modules (files) inside this page can only reference code from layers below, not from the same layer, Pages.
 
