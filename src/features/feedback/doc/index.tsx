@@ -55,7 +55,7 @@ export function FeedbackWidget({ projectId }: { projectId: string }) {
                 rating-stars-placeholder={translate({
                     id: "features.feedback-doc.rating-stars-placeholder",
                 })}
-                button-position="center-right"
+                button-position="bottom-right"
                 button-style="dark"
                 modal-position="bottom-right"
                 custom-font="true"
