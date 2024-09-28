@@ -6,7 +6,13 @@ sidebar_position: 1
 
 Application modules should be designed according to **high cohesion** (should solve one specific task) and **low coupling** (independent of other modules) principles.
 
-![coupling-cohesion-themed](/img/coupling.png)
+<figure>
+    <img src="/img/coupling-cohesion-light.svg#light-mode-only" alt="" />
+    <img src="/img/coupling-cohesion-dark.svg#dark-mode-only" alt="" />
+    <figcaption>
+        Image inspired by https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
+    </figcaption>
+</figure>
 
 Within the methodology, this is achieved through:
 
