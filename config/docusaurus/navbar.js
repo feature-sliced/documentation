@@ -37,11 +37,11 @@ const navbar = {
             dropdownActiveClassDisabled: true,
             dropdownItemsAfter: [
                 {
-                    to: "https://featureslices.dev/v1.0.html",
+                    to: "https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0.md",
                     label: "v1.0",
                 },
                 {
-                    to: "https://featureslices.dev/v0.1.html",
+                    to: "https://github.com/feature-sliced/featureslices.dev/blob/master/v0.1.md",
                     label: "v0.1",
                 },
                 {

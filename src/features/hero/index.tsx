@@ -31,7 +31,7 @@ export function Hero() {
                 <div className="margin-top--md">
                     <Link
                         className={styles.link}
-                        to="https://featureslices.dev/"
+                        to="https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0.md"
                     >
                         {translate({ id: "features.hero.previous" })}{" "}
                         (feature-slices@v1)

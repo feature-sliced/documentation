@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2023-10-01
 
 > **Note**  
-> This release note is retrospective, meaning that prior to this release, the Feature-Sliced Design project did not keep a changelog. Below is a summary of the most prominent recent changes, but there is no FSD v1. Prior to FSD, there has been a project called ["Feature Slices"](https://featureslices.dev/v1.0.html), and it is considered to be the v1 of FSD.
+> This release note is retrospective, meaning that prior to this release, the Feature-Sliced Design project did not keep a changelog. Below is a summary of the most prominent recent changes, but there is no FSD v1. Prior to FSD, there has been a project called ["Feature Slices"](https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0.md), and it is considered to be the v1 of FSD.
 
 ### Deprecated
 

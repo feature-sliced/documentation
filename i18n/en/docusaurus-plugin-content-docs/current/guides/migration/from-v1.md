@@ -161,7 +161,7 @@ Now it is much easier to [observe the principle of low coupling][refs-low-coupli
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [refs-adaptability]: /docs/about/understanding/naming
 
-[ext-v1]: https://featureslices.dev/v1.0.html
+[ext-v1]: https://github.com/feature-sliced/featureslices.dev/blob/master/v1.0.md
 [ext-tg-spb]: https://t.me/feature_slices
 [ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
 [ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
