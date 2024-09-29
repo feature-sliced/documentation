@@ -6,7 +6,13 @@ sidebar_position: 1
 
 アプリケーションのモジュールは、**強い結合性**（明確なタスクを解決することに焦点を当てる）と**弱い結合性**（他のモジュールからできるだけ依存しない）を持つように設計されるべきです。
 
-![coupling-cohesion-themed](/img/coupling.png)
+<figure>
+    <img src="/img/coupling-cohesion-light.svg#light-mode-only" alt="" />
+    <img src="/img/coupling-cohesion-dark.svg#dark-mode-only" alt="" />
+    <figcaption>
+        インスパイア先: https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
+    </figcaption>
+</figure>
 
 FSDでは、以下の方法で達成されます。
 
