@@ -1,0 +1,38 @@
+---
+hide_table_of_contents: true
+pagination_prev: guides/index
+---
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { ApiOutlined, GroupOutlined, AppstoreOutlined, NodeIndexOutlined } from "@ant-design/icons";
+
+# 📚 参考書
+
+<p class="summary">
+FSDの重要な概念に関するセクション
+</p>
+
+<NavCard
+    title="レイヤー" 
+    description="レイヤーの定義と意味"
+    to="/docs/reference/layers"
+    Icon={GroupOutlined}
+/>
+<NavCard
+    title="スライスとセグメント" 
+    description="スライスとセグメントの定義、異なるレイヤーでのセグメント例"
+    to="/docs/reference/slices-segments"
+    Icon={AppstoreOutlined}
+/>
+<NavCard
+    title="分離" 
+    description="モジュール間の拡張性のある効率的な相互作用の実践"
+    to="/docs/reference/isolation"
+    Icon={NodeIndexOutlined}
+/>
+<NavCard
+    title="公開API" 
+    description="堅牢で統合しやすいモジュール設計に関する実践"
+    to="/docs/reference/public-api"
+    Icon={ApiOutlined}
+/>
