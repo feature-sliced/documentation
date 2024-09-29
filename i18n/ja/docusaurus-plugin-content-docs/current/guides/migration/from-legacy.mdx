@@ -1,0 +1,107 @@
+---
+sidebar_position: 3
+sidebar_class_name: sidebar-item--wip
+---
+
+import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+
+# レガシーからの移行
+
+<WIP ticket="166" />
+
+> この記事では、さまざまな初期条件でFeature-Sliced Designに移行する際の複数の企業やプロジェクトの経験が集約されています。
+
+## 何をするべきか？ {#whats-the-plan}
+
+### 1. コードベースの統一 {#1-unification-of-the-code-base}
+
+```diff
+- ├── products/
+- |   ├── components/
+- |   ├── containers/
+- |   ├── store/
+- |   ├── styles/
+- ├── checkout/
+- |   ├── components/
+- |   ├── containers/
+- |   ├── helpers/
+- |   ├── styles/
++ └── src/
+      ├── actions/
+      ├── api/
++     ├── components/
++     ├── containers/
+      ├── constants/
+      ├── epics/
++     ├── i18n/
+      ├── modules/
++     ├── helpers/
++     ├── pages/
+-     ├── routes/
+-     ├── utils/
+      ├── reducers/
+-     ├── redux/
+      ├── selectors/
++     ├── store
++     ├── styles/
+      ├── App.jsx
+      └── index.jsx
+```
+
+
+### 2. 過度に分散したものをまとめる {#2-putting-together-the-destructive-decoupled}
+
+```diff
+  └── src/
+-     ├── actions/
+      ├── api/
+-     ├── components/
+-     ├── containers/
+-     ├── constants/
+-     ├── epics/
++     ├── entities/{...}
++     |     ├── ui
++     |     ├── model/{actions, selectors, ...}
++     |     ├── lib
+      ├── i18n/
+      |   # 一時的に残りのセグメントをここに置くことができる
++     ├── modules/{helpers, constants}
+-     ├── helpers/
+      ├── pages/
+-     ├── reducers/
+-     ├── selectors/
+-     ├── store/
+      ├── styles/
+      ├── App.jsx
+      └── index.jsx
+```
+
+### 3. 責任範囲を明確にする {#3-allocate-scopes-of-responsibility}
+
+```diff
+ └── src/
+-    ├── api/
++    ├── app/
++    |   ├── index.jsx
++    |   ├── style.css
+     ├── pages/
++    ├── features/
++    |   ├── add-to-cart/{ui, model, lib}
++    |   ├── choose-delivery/{ui, model, lib}
++    ├── entities/{...}
++    |   ├── delivery/{ui, model, lib}
++    |   ├── cart/{ui, model, lib}
++    |   ├── product/{ui, model, lib}
++    ├── shared/
++    |   ├── api/
++    |   ├── lib/    # ヘルパー関数
++    |   |    ├── i18n/
++    |   ├── config/ # 定数
+-    ├── i18n/
+-    ├── modules/{helpers, constants}
+     └── index.jsx
+```
+
+### 4. 最終的に？ 
+
+> 残された問題とそれを解決する価値があるかどうかについて。
