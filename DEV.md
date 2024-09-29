@@ -7,6 +7,7 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
 - [Russian docs version](i18n/ru)
 - [English docs version](i18n/en)
 - [Uzbek docs version](i18n/uz)
+- [Japanese docs version](i18n/ja)
 
 ## Installation
 
@@ -20,6 +21,8 @@ pnpm install
 pnpm start       # for default locale
 pnpm start:ru    # for RU locale
 pnpm start:en    # for EN locale
+pnpm start:uz    # for UZ locale
+pnpm start:ja    # for JA locale
 ```
 
 > About [docusaurus/i18n commands](https://docusaurus.io/docs/i18n/git#translate-the-files)
