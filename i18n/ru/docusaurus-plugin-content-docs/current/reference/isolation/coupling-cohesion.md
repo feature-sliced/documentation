@@ -6,7 +6,13 @@ sidebar_position: 1
 
 Модули приложения должны проектироваться как обладающие **сильной связностью** (направленные на решение одной четкой задачи) и **слабой зацепленностью** (как можно менее зависимые от других модулей)
 
-![coupling-cohesion-themed](/img/coupling.png)
+<figure>
+    <img src="/img/coupling-cohesion-light.svg#light-mode-only" alt="" />
+    <img src="/img/coupling-cohesion-dark.svg#dark-mode-only" alt="" />
+    <figcaption>
+        Иллюстрация вдохновлена статьей https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
+    </figcaption>
+</figure>
 
 В рамках методологии это достигается через:
 

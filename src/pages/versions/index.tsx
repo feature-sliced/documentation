@@ -62,12 +62,12 @@ function Version() {
                     <Table>
                         <Table.Row
                             th="v1.0"
-                            href="https://featureslices.dev/v1.0.html"
+                            href="https://feature-sliced.github.io/featureslices.dev/v1.0.html"
                             hrefTitle="Documentation"
                         />
                         <Table.Row
                             th="v0.1"
-                            href="https://featureslices.dev/v0.1.html"
+                            href="https://feature-sliced.github.io/featureslices.dev/v0.1.html"
                             hrefTitle="Documentation"
                         />
                     </Table>

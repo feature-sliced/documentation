@@ -160,7 +160,7 @@ sidebar_position: 4
 [refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
 [refs-adaptability]: /docs/about/understanding/naming
 
-[ext-v1]: https://featureslices.dev/v1.0.html
+[ext-v1]: https://feature-sliced.github.io/featureslices.dev/v1.0.html
 [ext-tg-spb]: https://t.me/feature_slices
 [ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
 [ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
