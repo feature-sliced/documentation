@@ -8,7 +8,7 @@ pagination_prev: get-started/index
 <span class="badge badge--primary margin-bottom--md">PRACTICE-ORIENTED</span>
 
 <p class="summary">
-Feature-Sliced Design(FSD)의 적용을 위한 종합 가이드입니다. 구체적인 예시, 마이그레이션 전략, 그리고 FSD 레거시 코드에서 발생할 수 있는 문제점들을 다룹니다. FSD를 프로젝트에 도입하거나 기존 구조를 개선하고자 할 때 참고하기 좋은 리소스입니다.
+Feature-Sliced Design(FSD)의 적용을 위한 종합 가이드입니다. 구체적인 예시, 마이그레이션 전략, 그리고 FSD 코드에서 발견할 수 있는 흔한 설계상의 문제들을 다룹니다. FSD를 프로젝트에 도입하거나 기존 구조를 개선하고자 할 때 참고하기 좋은 리소스입니다.
 </p>
 
 ## Main
@@ -18,28 +18,29 @@ import { ToolOutlined, ImportOutlined, BugOutlined, FunctionOutlined } from "@an
 
 <NavCard
     title="Examples" 
-    description="인증, 타입 관리, 페이지 레이아웃 등 다양한 기능을 다루는 예제들"
+    description="방법론을 적용한 실제 예시"
     to="/docs/guides/examples"
     Icon={ToolOutlined}
     tags={['Authentication', 'Types', 'Page layout']}
 />
 <NavCard
     title="Migration" 
-    description="기존 아키텍처 및 FSD v1에서 FSD v2로 전환하는 가이드"
+    description="기존 아키텍처에서 마이그레이션 하기 위한 가이드"
     to="/docs/guides/migration/from-v1"
     Icon={ImportOutlined}
     tags={['From custom architecture', 'From FSv1']}
 />
 <NavCard
     title="Tech" 
-    description="Next.js, React Query 등 다양한 프레임워크와 라이브러리와 함께 FSD를 사용하는 방법"
+    description="프레임워크 및 라이브러리별 사용 가이드"
     to="/docs/guides/tech/with-nextjs"
     Icon={FunctionOutlined}
+    tags={['NextJS', 'NuxtJS', 'React Query', 'SvelteKit']}
 />
 
 <NavCard
     title="Code Issues (Smells)" 
-    description="레거시 코드에서 발생하는 아키텍처 문제와 해결책"
+    description="코드에서 발견할 수 있는 흔한 설계상의 문제"
     to="/docs/guides/issues/desegmented"
     Icon={BugOutlined}
     tags={['Desegmented', 'Routing', "Cross-imports"]}
