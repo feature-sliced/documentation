@@ -1,0 +1,36 @@
+---
+hide_table_of_contents: true
+---
+
+# Examples
+
+<p class="summary">
+방법론 적용에 대한 예시들
+</p>
+
+## Main
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { UserSwitchOutlined, LayoutOutlined, FontSizeOutlined } from "@ant-design/icons";
+
+<NavCard
+    title="Authentication"
+    description="인증 로직의 세분화"
+    to="/docs/guides/examples/auth"
+    Icon={UserSwitchOutlined}
+    tags={["Forms", "2FA", "OAuth", "Token storage", "Token refresh"]}
+/>
+<NavCard
+    title="Types"
+    description="타입 위치 선정 및 FSD에서의 타입 종류"
+    to="/docs/guides/examples/types"
+    Icon={FontSizeOutlined}
+    tags={["DTO", "Mappers", "Entity relationships", "Auto-generation", "Validation schemas"]}
+/>
+<NavCard
+    title="Page layouts"
+    description="FSD에서 타입을 어디에 배치하고 활용할지에 대한 가이드"
+    to="/docs/guides/examples/page-layout"
+    Icon={LayoutOutlined}
+    tags={["Where to store them", "Using widgets in layouts"]}
+/>
