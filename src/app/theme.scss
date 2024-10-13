@@ -38,3 +38,22 @@ html[data-theme="dark"] {
 img {
     height: unset;
 }
+
+.alert.file-tree {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+
+    .file-tree & {
+        padding: 0;
+    }
+
+    & summary + div > div {
+        padding-top: 0;
+        margin-top: 0;
+        border: 0;
+    }
+}

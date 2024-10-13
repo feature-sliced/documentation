@@ -10,7 +10,7 @@ const SECTIONS = {
     },
     MIGRATION: {
         shortPath: "/docs/guides/migration",
-        fullPath: "/docs/guides/migration/from-legacy",
+        fullPath: "/docs/guides/migration/from-custom",
     },
 };
 
@@ -249,7 +249,7 @@ const LEGACY_ROUTES = [
             {
                 title: "Migration from Legacy",
                 from: "/docs/guides/migration-from-legacy",
-                to: "/docs/guides/migration/from-legacy",
+                to: "/docs/guides/migration/from-custom",
             },
         ],
     },
@@ -261,6 +261,18 @@ const LEGACY_ROUTES = [
                 title: "Usage with NextJS",
                 from: "/docs/guides/usage-with-nextjs",
                 to: "/docs/guides/tech/with-nextjs",
+            },
+        ],
+    },
+    {
+        group: "Rename 'legacy' to 'custom'",
+        details:
+            "'Legacy' is derogatory, we don't get to call people's projects legacy",
+        children: [
+            {
+                title: "Rename 'legacy' to custom",
+                from: "/docs/guides/migration/from-legacy",
+                to: "/docs/guides/migration/from-custom",
             },
         ],
     },
@@ -326,7 +338,7 @@ const _TOTAL_ROUTES = [
     "/docs/guides/examples/theme",
     "/docs/guides/examples/types",
     "/docs/guides/examples/white-labels",
-    "/docs/guides/migration/from-legacy",
+    "/docs/guides/migration/from-custom",
     "/docs/guides/migration/from-v1",
     "/docs/guides/tech/with-nextjs",
     "/docs/",
