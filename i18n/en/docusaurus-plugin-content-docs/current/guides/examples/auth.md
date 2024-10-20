@@ -189,7 +189,7 @@ To store the token in the User entity, create a reactive store in the `model` se
 
 Since the API client is usually defined in `shared/api` or spreaded across the entities, the main challenge to this approach is making the token available to other requests that need it without breaking [the import rule on layers][import-rule-on-layers]:
 
-> A module in a slice can only import other slices when they are located on layers strictly below.
+> A module (file) in a slice can only import other slices when they are located on layers strictly below.
 
 There are several solutions to this challenge:
 
