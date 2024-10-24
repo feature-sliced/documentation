@@ -181,7 +181,7 @@ Install dependencies with `npm install` and start the development server with `n
 Let’s start by creating blank components for all our pages. Run the following command in your project:
 
 ```bash
-npx fsd pages feed sign-in article-read article-edit profile settings --segments ui
+npx @feature-sliced/cli pages feed sign-in article-read article-edit profile settings --segments ui
 ```
 
 This will create folders like `pages/feed/ui/` and an index file, `pages/feed/index.ts`, for every page.
@@ -238,7 +238,7 @@ Then, if you run the dev server and open the application, you should see the Con
 To talk to the RealWorld backend, let’s create a convenient API client in Shared. Create two segments, `api` for the client and `config` for variables like the backend base URL:
 
 ```bash
-npx fsd shared --segments api config
+npx @feature-sliced/cli shared --segments api config
 ```
 
 Then create `shared/config/backend.ts`:
@@ -769,7 +769,7 @@ export function RegisterPage() {
 We have a broken import to fix now. It involves a new segment, so create that:
 
 ```bash
-npx fsd pages sign-in -s api
+npx @feature-sliced/cli pages sign-in -s api
 ```
 
 However, before we can implement the backend part of registering, we need some infrastructure code for Remix to handle sessions. That goes to Shared, in case any other page needs it.
@@ -1017,7 +1017,7 @@ Now let’s give the users a way to actually get to these pages.
 As we discussed in part 1, the app header is commonly placed either in Widgets or in Shared. We will put it in Shared because it’s very simple and all the business logic can be kept outside of it. Let’s create a place for it:
 
 ```bash
-npx fsd shared ui
+npx @feature-sliced/cli shared ui
 ```
 
 Now create `shared/ui/Header.tsx`  with the following contents:
@@ -1520,7 +1520,7 @@ And with that we are officially done with the feed! Yay!
 First, we need data. Let’s create a loader:
 
 ```bash
-npx fsd pages article-read -s api
+npx @feature-sliced/cli pages article-read -s api
 ```
 
 ```tsx title="pages/article-read/api/loader.ts"

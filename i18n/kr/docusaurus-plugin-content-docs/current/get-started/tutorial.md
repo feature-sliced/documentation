@@ -186,7 +186,7 @@ Shared와 Pages 사이에는 Entities, Features, Widgets의 세 가지 다른 �
 모든 페이지에 대한 빈 컴포넌트를 만드는 것부터 시작하겠습니다. 프로젝트에서 다음 명령을 실행하세요.
 
 ```bash
-npx fsd pages feed sign-in article-read article-edit profile settings --segments ui
+npx @feature-sliced/cli pages feed sign-in article-read article-edit profile settings --segments ui
 ```
 
 이렇게 하면 `pages/feed/ui/`와 같은 폴더와 모든 페이지에 대한 인덱스 파일인 `pages/feed/index.ts`가 생성됩니다.
@@ -241,7 +241,7 @@ RealWorld 백엔드와 통신하기 위해 Shared에 편리한 API 클라이언�
 
 
 ```bash
-npx fsd shared --segments api config
+npx @feature-sliced/cli shared --segments api config
 ```
 
 그런 다음 `shared/config/backend.ts`를 만드세요.
@@ -773,7 +773,7 @@ export function RegisterPage() {
 이제 고쳐야 할 깨진 import가 있습니다. 새로운 세그먼트가 필요하므로 다음과 같이 만드세요.
 
 ```bash
-npx fsd pages sign-in -s api
+npx @feature-sliced/cli pages sign-in -s api
 ```
 
 그러나 등록의 백엔드 부분을 구현하기 전에 Remix가 세션을 처리할 수 있도록 일부 인프라 코드가 필요합니다. 다른 페이지에서도 필요할 수 있으므로 이는 Shared로 갑니다.
@@ -1023,7 +1023,7 @@ export default SignInPage;
 1부에서 논의했듯이, 앱 헤더는 일반적으로 Widgets나 Shared에 배치됩니다. 매우 간단하고 모든 비즈니스 로직을 외부에 유지할 수 있기 때문에 Shared에 넣을 것입니다. 이를 위한 장소를 만들어 봅시다.
 
 ```bash
-npx fsd shared ui
+npx @feature-sliced/cli shared ui
 ```
 
 이제 다음 내용으로 `shared/ui/Header.tsx`를 만드세요.
@@ -1527,7 +1527,7 @@ export function ArticlePreview({ article }: ArticlePreviewProps) {
 먼저 데이터가 필요합니다. 로더를 만들어 봅시다.
 
 ```bash
-npx fsd pages article-read -s api
+npx @feature-sliced/cli pages article-read -s api
 ```
 
 ```tsx title="pages/article-read/api/loader.ts"

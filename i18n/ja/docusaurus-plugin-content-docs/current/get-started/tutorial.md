@@ -184,7 +184,7 @@ UXを向上させるために、ブラウザを閉じたときに偶発的なデ
 すべてのページのために空のコンポーネントを作成することから始めましょう。ターミナルで次のコマンドを実行します。
 
 ```bash
-npx fsd pages feed sign-in article-read article-edit profile settings --segments ui
+npx @feature-sliced/cli pages feed sign-in article-read article-edit profile settings --segments ui
 ```
 
 これにより、`pages/feed/ui/`のようなフォルダーと、各ページのインデックスファイル`pages/feed/index.ts`が作成されます。
@@ -238,7 +238,7 @@ export default FeedPage;
 RealWorldのバックエンドと通信するために、Shared層内に便利なAPIクライアントを作成しましょう。クライアント用の`api`セグメントと、バックエンドの基本URLなどの変数用の`config`セグメントを作成します。
 
 ```bash
-npx fsd shared --segments api config
+npx @feature-sliced/cli shared --segments api config
 ```
 
 次に、`shared/config/backend.ts`を作成します。
@@ -769,7 +769,7 @@ export function RegisterPage() {
 これからは壊れたインポートを修正する必要があります。インポートが新しいセグメントにアクセスしているため、次のコマンドでそのセグメントを作成しましょう。
 
 ```bash
-npx fsd pages sign-in -s api
+npx @feature-sliced/cli pages sign-in -s api
 ```
 
 ただし、登録のバックエンド部分を実装する前に、Remixのセッション処理のためのインフラコードが必要です。これは他のページでも必要になる可能性があるため、Shared層に配置します。
@@ -1017,7 +1017,7 @@ export default SignInPage;
 前章で説明されたように、アプリケーションのヘッダーは通常Widgets層、またはShared層に配置されます。ヘッダーは非常にシンプルで、すべてのビジネスロジックを外部に保持できるので、Shared層に配置しましょう。ヘッダー用のフォルダーを作成します。
 
 ```bash
-npx fsd shared ui
+npx @feature-sliced/cli shared ui
 ```
 
 次に、`shared/ui/Header.tsx`を作成し、次の内容を配置します。
@@ -1521,7 +1521,7 @@ export function ArticlePreview({ article }: ArticlePreviewProps) {
 まず、データが必要です。ローダーを作成しましょう。
 
 ```bash
-npx fsd pages article-read -s api
+npx @feature-sliced/cli pages article-read -s api
 ```
 
 ```tsx title="pages/article-read/api/loader.ts"
