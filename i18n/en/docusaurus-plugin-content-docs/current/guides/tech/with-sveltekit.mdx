@@ -44,10 +44,10 @@ Thus, your file structure should look like this:
 │   ├── app
 │   │   ├── index.html
 │   │   ├── routes
-│   ├── pages                               # Папка pages, закреплённая за FSD
+│   ├── pages                               # FSD Pages folder
 ```
 
-Now, you can create roots for pages within `app` and connect pages from `pages` to them.
+Now, you can create routes for pages within `app` and connect pages from `pages` to them.
 
 For example, to add a home page to your project, you need to do the following steps:
 - Add a page slice inside the `pages` layer
@@ -60,13 +60,13 @@ To create a page slice, let's use the [CLI](https://github.com/feature-sliced/cl
 fsd pages home
 ```
 
-Create a ``home-page.vue`` file inside the ui segment, access it using the Public API
+Create a ``home-page.svelte`` file inside the ui segment, access it using the Public API
 
 ```ts title="src/pages/home/index.ts"
-export { default as HomePage } from './ui/home-page';
+export { default as HomePage } from './ui/home-page.svelte';
 ```
 
-Create a root for this page inside the `app` layer:
+Create a route for this page inside the `app` layer:
 
 ```sh
 
@@ -82,7 +82,7 @@ Create a root for this page inside the `app` layer:
 │   │   │   ├── index.ts
 ```
 
-Add your page component inside the `index.svelte` file:
+Add your page component inside the `+page.svelte` file:
 
 ```html title="src/app/routes/+page.svelte"
 <script>

@@ -66,7 +66,7 @@ Thus, the file structure will look like this:
 │   │   │   │   ├── home-page.vue
 │   │   │   ├── index.ts
 ```
-Finally, let's add a root to the config:
+Finally, let's add a route to the config:
 
 ```ts title="app/router.config.ts"
 import type { RouterConfig } from '@nuxt/schema'
@@ -111,8 +111,8 @@ Now, you can create routes for pages within `app` and connect pages from `pages`
 
 For example, to add a `Home` page to your project, you need to do the following steps:
 - Add a page slice inside the `pages` layer
-- Add the corresponding root inside the `app` layer
-- Align the page from the slice with the root
+- Add the corresponding route inside the `app` layer
+- Connect the page from the slice with the route
 
 To create a page slice, let's use the [CLI](https://github.com/feature-sliced/cli):
 
@@ -126,7 +126,7 @@ Create a ``home-page.vue`` file inside the ui segment, access it using the Publi
 export { default as HomePage } from './ui/home-page';
 ```
 
-Create a root for this page inside the `app` layer:
+Create a route for this page inside the `app` layer:
 
 ```sh
 

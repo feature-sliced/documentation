@@ -60,10 +60,10 @@ export default config;
 fsd pages home
 ```
 
-Создайте файл `home-page.vue` внутри сегмента ui, откройте к нему доступ с помощью Public API
+Создайте файл `home-page.svelte` внутри сегмента ui, откройте к нему доступ с помощью Public API
 
 ```ts title="src/pages/home/index.ts"
-export { default as HomePage } from './ui/home-page';
+export { default as HomePage } from './ui/home-page.svelte';
 ```
 
 Создайте роут для этой страницы внутри слоя `app`:
@@ -82,7 +82,7 @@ export { default as HomePage } from './ui/home-page';
 │   │   │   ├── index.ts
 ```
 
-Добавьте внутрь `index.svelte` файла компонент вашей страницы:
+Добавьте внутрь `+page.svelte` файла компонент вашей страницы:
 
 ```html title="src/app/routes/+page.svelte"
 <script>

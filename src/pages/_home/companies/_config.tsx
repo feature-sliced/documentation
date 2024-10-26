@@ -107,4 +107,9 @@ export const companies: Company[] = [
         src: "express24.svg",
         alt: "Express24.uz",
     },
+    {
+        url: "https://blindtyping.com/",
+        src: "blindtyping.svg",
+        alt: "Blindtyping",
+    },
 ];
