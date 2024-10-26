@@ -31,7 +31,7 @@ export * from "./model/comments";  // 💩 this is bad practice
 
 This hurts the discoverability of a slice because you can't easily tell what the interface of this slice is. Not knowing the interface means that you have to dig deep into the code of a slice to understand how to integrate it. Another problem is that you might accidentally expose the module internals accidentally, which will make refactoring difficult if someone starts depending on them.
 
-## Public API for cross-imports
+## Public API for cross-imports {#public-api-for-cross-imports}
 
 Cross-imports are a situation when one slice imports from another slice on the same layer. Usually that is prohibited by the [import rule on layers][import-rule-on-layers], but often there are legitimate reasons to cross-import. For example, business entities often reference each other in the real world, and it's best to reflect these relationships in the code instead of working around them.
 

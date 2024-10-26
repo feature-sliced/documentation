@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 
-# Migration from v1
+# Migration from v1 to v2
 
 ## Why v2?
 
