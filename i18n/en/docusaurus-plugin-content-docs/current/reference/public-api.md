@@ -110,7 +110,7 @@ These two folders are both collections of unrelated things that often aren't all
     - `📁 carousel`
     - `📁 accordion`
 
-This problem is made worse when one of these modules has a heavy dependency, like a syntax highlighter or a drag'n'drop library. You don't want to pull those into every page that uses a button.
+This problem is made worse when one of these modules has a heavy dependency, like a syntax highlighter or a drag'n'drop library. You don't want to pull those into every page that uses something from `shared/ui`, for example, a button.
 
 If your bundles grow undesirably due to a single public API in `shared/ui` or `shared/lib`, it's recommended to instead have a separate index file for each component or library:
 
