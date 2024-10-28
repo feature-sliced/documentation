@@ -40,17 +40,17 @@ type ArrayValues<T extends readonly unknown[]> = T[number];
 
 :::warning
 
-`shared/types` 폴더를 생성하거나 각 슬라이스에 `types` 라는 세그먼트를 추가하는 것은 피하는 것이 좋습니다.<br/>
-`types`라는 카테고리는 `components`나 `hooks`와 마찬가지로 그 자체로 코드이 목적을 명확히 설명하지 않습니다. 슬라이스에 해당 코드의 목적을 정확히 설명 할 수 있어야 합니다. 
+`shared/types` 폴더를 생성하거나 각 슬라이스에 `types`라는 세그먼트를 추가하고 싶은 마음이 들 수 있지만, 그렇게 하지 않는 것이 좋습니다.<br/>
+`types`라는 카테고리는 `components`나 `hooks`와 마찬가지로 내용이 무엇인지를 설명할 뿐, 코드의 목적을 명확히 설명하지 않습니다. 슬라이스는 해당 코드의 목적을 정확히 설명할 수 있어야 합니다.
 
 :::
 
-## 비즈니스 entities 및 상호 참조 관계
+## 비즈니스 엔티티 및 상호 참조 관계
 
-앱에서 가장 중요한 타입 중 하나는 비즈니스 entities, 즉 앱에서 다루는 객체들 입니다. 
-예를 들어, 음악 스트리밍 앱에서는 _Song_, _Album_ 등이 비즈니스 entities가 될 수 있습니다. 
+앱에서 가장 중요한 타입 중 하나는 비즈니스 엔티티, 즉 앱에서 다루는 객체들 입니다. 
+예를 들어, 음악 스트리밍 앱에서는 _Song_, _Album_ 등이 비즈니스 엔티티가 될 수 있습니다. 
 
-비즈니스 entities는 주로 백엔드 바탕이기 떄문에, 백엔드 응답을 타입으로 정의하는 것이 첫 번째 단계입니다. 
+비즈니스 엔티티는 주로 백엔드 바탕이기 떄문에, 백엔드 응답을 타입으로 정의하는 것이 첫 번째 단계입니다. 
 각 엔드포인트에 대한 요청 함수와 그 응답을 타입으로 지정하는 것이 좋습니다, 추가적인 타입 안정성을 위해 [Zod][ext-zod]와 같은 스키마 검증 라이브러리를 사용해 응답을 검증할 수도 있습니다. 
 
 예를 들어, 모든 요청을 Shared에 보관하는 경우 이렇게 작성할 수 있습니다.
@@ -69,14 +69,14 @@ export function listSongs() {
 }
 ```
 
-`Song` 타입은 다른 entities인 `Artist`를 참조합니다. 이와 같이 요청 관련 코드들을 Shared에 관리하면, 타입들의 서로 얽혀 있을 떄 관리가 용이해집니다. 만약 이 함수를 `entities/song/api`에 보관했다면, `entities/artist`에서 간단히 가져오는 것이 어려웠을 것 입니다. FSD 구조에서는 [레이어별 import 규칙][import-rule-on-layers]을 통해 슬라이스 간의 교차 import를 제한하고 있기 떄문입니다:
+`Song` 타입은 다른 엔티티인 `Artist`를 참조합니다. 이와 같이 요청 관련 코드들을 Shared에 관리하면, 타입들의 서로 얽혀 있을 떄 관리가 용이해집니다. 만약 이 함수를 `entities/song/api`에 보관했다면, `entities/artist`에서 간단히 가져오는 것이 어려웠을 것 입니다. FSD 구조에서는 [레이어별 import 규칙][import-rule-on-layers]을 통해 슬라이스 간의 교차 import를 제한하고 있기 떄문입니다:
 
 > 슬라이스 안에 있는 모듈은 계층적으로 더 낮은 레이어에 위치한 슬라이스만 가져올 수 있습니다.
 
 이 문제를 해결하기 위한 두 가지 방법은 다음과 같습니다:
 
 1. **타입 매개변수화**  
-   타입이 다른 entities와 연결될 때, 타입 매개변수를 통해 처리할 수 있습니다. 예를 들어, Song 타입에 ArtistType이라는 제약 조건을 설정할 수 있습니다.
+   타입이 다른 엔티티와 연결될 때, 타입 매개변수를 통해 처리할 수 있습니다. 예를 들어, Song 타입에 ArtistType이라는 제약 조건을 설정할 수 있습니다.
 
    ```ts title="entities/song/model/song.ts"
    interface Song<ArtistType extends { id: string }> {
@@ -88,8 +88,8 @@ export function listSongs() {
 
    이 방법은 일부 타입에 더 적합합니다. 예를 들어, `Cart = { items: Array<Product> }`처럼 간단한 타입은 다양한 제품 타입을 지원하기 쉽게 할 수 있습니다. 하지만 `Country`와 `City`처럼 더 밀접하게 연결된 타입은 분리하기 어렵습니다.
 
-2. **croess-import (공용 API를 사용해 관리하기)**  
-    FSD에서 entities 간 cross-imports를 허용하기 위해서는 공용 API를 사용할 수 있습니다. 예를 들어, `song`, `artist`, `playlist`라는 entities가 있고, 후자의 두 entities가 `song`을 참조해야 한다고 가정합니다. 이 경우, `song` entities 내에 `artist`와 `playlist`용 공용 API를 따로 `@x` 표기를 만들어 사용할 수 있습니다.
+2. **Cross-import (공개 API를 사용해 관리하기)**  
+    FSD에서 엔티티 간 cross-imports를 허용하기 위해서는 공개 API를 사용할 수 있습니다. 예를 들어, `song`, `artist`, `playlist`라는 엔티티가 있고, 후자의 두 엔티티가 `song`을 참조해야 한다고 가정합니다. 이 경우, `song` 엔티티 내에 `artist`와 `playlist`용 공개 API를 따로 `@x` 표기를 만들어 사용할 수 있습니다.
 
    - 📂 entities
      - 📂 song
@@ -115,7 +115,7 @@ export function listSongs() {
    }
    ```
 
-   이렇게 entities 간 명시적으로 연결을 해두면 의존 관계를 파악하고 도메인 분리 수준을 유지하기 쉬워집니다. 
+   이렇게 엔티티 간 명시적으로 연결을 해두면 의존 관계를 파악하고 도메인 분리 수준을 유지하기 쉬워집니다. 
 
 ## 데이터 전송 객체와 mappers {#data-transfer-objects-and-mappers}
 
@@ -143,9 +143,9 @@ export function listSongs() {
 
 앞에서 언급한 것처럼, 요청과 DTO를 shared에 두면 다른 DTO를 참조하기가 용이합니다.
 
-### mappers의 위치
+### Mappers의 위치
 
-mappers는 DTO를 받아 변환하는 역할을 하므로, DTO 정의와 가까운 위치에 두는 것이 좋습니다. 만약 요청과 DTO가 `shared/api`에 정의되어 있다면, mappers도 그곳에 위치하는 것이 적절합니다.
+Mappers는 DTO를 받아 변환하는 역할을 하므로, DTO 정의와 가까운 위치에 두는 것이 좋습니다. 만약 요청과 DTO가 `shared/api`에 정의되어 있다면, mappers도 그곳에 위치하는 것이 적절합니다.
 
 ```ts title="shared/api/songs.ts"
 import type { ArtistDTO } from "./artists";
@@ -179,7 +179,7 @@ export function listSongs() {
 }
 ```
 
-요청과 상태 관리 코드가 entities 슬라이스에 정의되어 있는 경우, mappers 역시 해당 슬라이스 내에 두는 것이 좋습니다. 이때 슬라이스 간 교차 참조가 발생하지 않도록 주의해야 합니다.
+요청과 상태 관리 코드가 엔티티 슬라이스에 정의되어 있는 경우, mappers 역시 해당 슬라이스 내에 두는 것이 좋습니다. 이때 슬라이스 간 교차 참조가 발생하지 않도록 주의해야 합니다.
 
 ```ts title="entities/song/api/dto.ts"
 import type { ArtistDTO } from "entities/artist/@x/song";
@@ -243,7 +243,7 @@ const songsSlice = createSlice({
 
 ### 중첩된 DTO 처리 방법
 
-백엔드 응답에 여러 entities가 포함된 경우 문제가 될 수 있습니다. 예를 들어, 곡 정보에 저자의 ID뿐만 아니라 저자 객체 전체가 포함된 경우가 있을 수 있습니다. 이런 상황에서는 entities 간의 상호 참조를 피하기 어렵습니다. 이러한 경우, 슬라이스 간 간접적인 연결 대신 명시적인 교차 참조를 사용하는 것이 좋습니다. 이를 위해 `@x` 표기법을 활용할 수 있으며, 다음은 Redux Toolkit을 사용한 예시입니다:
+백엔드 응답에 여러 엔티티가 포함된 경우 문제가 될 수 있습니다. 예를 들어, 곡 정보에 저자의 ID뿐만 아니라 저자 객체 전체가 포함된 경우가 있을 수 있습니다. 이런 상황에서는 엔티티 간의 상호 참조를 피하기 어렵습니다. 데이터를 지우거나 백엔드 팀과 협의하지 않는 한, 이러한 경우에는 슬라이스 간 간접적인 연결 대신 명시적인 교차 참조를 사용하는 것이 좋습니다. 이를 위해 `@x` 표기법을 활용할 수 있으며, 다음은 Redux Toolkit을 사용한 예시입니다:
 
 ```ts title="entities/song/model/songs.ts"
 import {
@@ -317,19 +317,19 @@ const reducer = slice.reducer
 export default reducer
 ```
 
-이 방법은 슬라이스 분리의 이점을 다소 제한할 수 있지만, 우리가 제어할 수 없는 두 entities 간의 관계를 명확하게 나타냅니다. 만약 이러한 entities가 리팩토링되어야 한다면, 함께 리팩토링해야 할 것입니다.
+이 방법은 슬라이스 분리의 이점을 다소 제한할 수 있지만, 우리가 제어할 수 없는 두 엔티티 간의 관계를 명확하게 나타냅니다. 만약 이러한 엔티티가 리팩토링되어야 한다면, 함께 리팩토링해야 할 것입니다.
 
 ## 전역 타입과 Redux 
 
 전역 타입은 애플리케이션 전반에서 사용되는 타입을 의미하며, 크게 두 가지로 나눌 수 있습니다:<br/>
-1. 애플리케이션 특성이 없는 일반 타입
+1. 애플리케이션 특성이 없는 제너릭 타입
 2. 애플리케이션 전체에 알고 있어야 하는 타입 
 
-첫 번째 경우에는 관련 타입을 적절한 세그먼트의 Shared 폴더에 배치하면 됩니다. 예를 들어, 분석 전역 변수를 위한 인터페이스가 있다면 `shared/analytics`에 두는 것이 좋습니다.
+첫 번째 경우에는 관련 타입을 Shared 폴더 안에 적절한 세그먼트로 배치하면 됩니다. 예를 들어, 분석 전역 변수를 위한 인터페이스가 있다면 `shared/analytics`에 두는 것이 좋습니다.
 
 :::warning
 
-경고: `shared/types` 폴더 생성을 피하는 것이 좋습니다. 이는 "타입"이라는 속성만으로 관련 없는 것들을 모으는 것이며, 프로젝트에서 코드를 검색할 떄 유용하지 않을 수 있습니다. 
+경고: `shared/types` 폴더를 생성하지 않는 것이 좋습니다. "타입"이라는 공통된 속성으로 관련 없는 항목들을 그룹화하면, 프로젝트에서 코드를 검색할 때 효율성이 떨어질 수 있습니다.
 
 :::
 
@@ -383,7 +383,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 데이터가 특정 형태나 제약 조건을 충족하는지 검증하려면 검증 스키마를 정의할 수 있습니다. TypeScript에서는 [Zod][ext-zod]와 같은 라이브러리를 많이 사용합니다. 검증 스키마는 가능하면 사용하는 코드와 같은 위치에 두는 것이 좋습니다.
 
-[검증 스키마는 데이터를 파싱하며, 파싱에 실패하면 오류를 발생시킵니다](#data-transfer-objects-and-mappers). 가장 일반적인 검증 사례 중 하나는 백엔드에서 오는 데이터에 대한 것입니다. 데이터가 스키마와 일치하지 않는 경우 요청을 실패시키기를 원하기 때문에, 보통 `api` 세그먼트에 스키마를 두는 것이 좋습니다.
+검증 스키마는 데이터를 파싱하며, 파싱에 실패하면 오류를 발생시킵니다.([Data transfoer objects and mappers](#data-transfer-objects-and-mappers) 토론을 참조하세요.) 가장 일반적인 검증 사례 중 하나는 백엔드에서 오는 데이터에 대한 것입니다. 데이터가 스키마와 일치하지 않는 경우 요청을 실패시키기를 원하기 때문에, 보통 `api` 세그먼트에 스키마를 두는 것이 좋습니다.
 
 사용자 입력(예: 폼)으로 데이터를 받을 경우, 입력된 데이터에 대해 바로 검증이 이루어져야 합니다. 이 경우 스키마를 `ui` 세그먼트 내 폼 컴포넌트 옆에 두거나, `ui` 세그먼트가 너무 복잡하다면 `model` 세그먼트에 둘 수 있습니다.
 
