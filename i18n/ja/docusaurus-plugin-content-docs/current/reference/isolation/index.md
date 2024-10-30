@@ -54,10 +54,8 @@ TODO 方法論の経験を積んだ後、このセクションをより詳細に
 
 ## 参照 {#see-also}
 
-- [(ガイド) 低い結合性の達成について][refs-low-coupling]
 - [(ディスカッション) 方法論におけるエンティティとその結合性](https://github.com/feature-sliced/documentation/discussions/49)
 - [(ディスカッション) クロスインポートと依存関係の分析について](https://github.com/feature-sliced/documentation/discussions/65#discussioncomment-480822)
 - [パターン **GRASP**](https://ru.wikipedia.org/wiki/GRASP)
 
 [refs-public-api]: /docs/reference/public-api
-[refs-low-coupling]: /docs/reference/isolation/coupling-cohesion

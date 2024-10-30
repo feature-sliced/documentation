@@ -109,17 +109,17 @@ const LEGACY_ROUTES = [
             {
                 title: "Decouple of entities",
                 from: "/docs/concepts/decouple-entities",
-                to: "/docs/reference/isolation/decouple-entities",
+                to: "/docs/reference/layers#import-rule-on-layers",
             },
             {
                 title: "Low Coupling & High Cohesion",
                 from: "/docs/concepts/low-coupling",
-                to: "/docs/reference/isolation/coupling-cohesion",
+                to: "/docs/reference/slices-segments#zero-coupling-high-cohesion",
             },
             {
                 title: "Cross-communication",
                 from: "/docs/concepts/cross-communication",
-                to: "/docs/reference/isolation",
+                to: "/docs/reference/layers#import-rule-on-layers",
             },
             {
                 title: "App splitting",
