@@ -7,10 +7,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Since last release][since-last-release]
 
+## [2.1.0] - 2024-10-31
+
+Wow, it's been over a year! With this release, Feature-Sliced Design is officially embracing a new mental model called _pages-first_, that proved to be more practical and easy to understand, and also was endorsed by active community members for a while.
+
+Another exciting new thing in the FSD ecosystem is our architectural linter, [Steiger](https://github.com/feature-sliced/steiger). It's still in active development, but it is production-ready.
+
+### Minor changes to the FSD specification itself
+
+This release doesn't have any breaking changes, but we still recommend that you check out [the migration guide](https://feature-sliced.design/docs/guides/migration/from-v2-0) to benefit from a more straightforward mental model.
+
+1. The pages-first mental model. When decomposing, try to start by putting everything in pages first. Then, once you encounter the need to reuse something, and large business-related bits of code start to appear, you can consider moving them to the layers below.
+2. Application-aware things like the route constants, the API calls, or company logo, are now explicitly allowed in Shared. Business logic is still not allowed, but these things are not considered to be business logic.
+3. Imports between segments in App and Shared were always allowed, but it's been made explicit too.
+
+---
+
+And here's what happened to the documentation website:
+
 ### Added
 
-- New article about how to use FSD with Next.js (#644).
+- Slightly rewritten and expanded overview page to give some details about FSD right away (#685).
+- New partial translations: Korean (#739, #736, #735, #742, #732, #730, #715), Japanese (#728).
 - The tutorial was rewritten. Technical details were stripped out, more FSD theory has been added (#665).
+- Guides on how to deal with common frontend issues like page layouts (#708), types (#701), authentication (#693).
+- Guides on how to use FSD with Nuxt (#710, #689, #683, #679), SvelteKit (#698), Next.js (#699, #664, #644), and TanStack Query (#673).
+- A new feedback widget, powered by PushFeedback! Go give it a try and let us know what you think of the new pages (#695).
+- Comparison of FSD with Atomic Design (#671).
+
+### Changed
+
+- The migration guide from a custom architecture (formerly known as "from legacy") has been actualized (#725).
+
+### Removed
+
+- The decomposition cheatsheet is now unlisted for an undefined period of time. It proved to be more harmful than useful, but maybe it can be saved later (#649).
 
 ## [2.0.0] - 2023-10-01
 
@@ -41,5 +72,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The overview page has been rewritten to be more concise and informative (#512, #515, #516).
 - FSD has updated its branding, and there are now guidelines to the brand usage. The standard spelling of the name is now "Feature-Sliced Design" (#496, #499, #500, #465).
 
-[since-last-release]: https://github.com/feature-sliced/documentation/compare/v2.0.0...HEAD
+[since-last-release]: https://github.com/feature-sliced/documentation/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/feature-sliced/documentation/releases/tag/v2.1.0
 [2.0.0]: https://github.com/feature-sliced/documentation/releases/tag/v2.0.0
