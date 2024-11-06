@@ -1,0 +1,39 @@
+---
+sidebar_position: 0
+hide_table_of_contents: true
+pagination_prev: guides/index
+---
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { ApiOutlined, GroupOutlined, AppstoreOutlined, NodeIndexOutlined } from "@ant-design/icons";
+
+# 📚 Reference
+
+<p class="summary">
+Feature-Sliced Design의 핵심 개념에 대한 자세한 설명입니다.
+</p>
+
+<NavCard
+    title="Layers" 
+    description="레이어의 정의 및 모든 레이어에 대한 설명"
+    to="/docs/reference/layers"
+    Icon={GroupOutlined}
+/>
+<NavCard
+    title="Slices and segments" 
+    description="슬라이스와 세그먼츠의 정의, 다양한 레이어의 세그먼트에 대한 콘텐츠 예시"
+    to="/docs/reference/slices-segments"
+    Icon={AppstoreOutlined}
+/>
+<NavCard
+    title="Isolation" 
+    description="확장 가능하고 효율적인 모듈 상호 작용을 위한 방법"
+    to="/docs/reference/isolation"
+    Icon={NodeIndexOutlined}
+/>
+<NavCard
+    title="Public API" 
+    description="확장 가능하고 통합하기 쉬운 모듈을 설계하는 방법"
+    to="/docs/reference/public-api"
+    Icon={ApiOutlined}
+/>
