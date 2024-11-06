@@ -1,0 +1,186 @@
+---
+sidebar_position: 1
+pagination_next: reference/slices-segments
+---
+
+# Layers
+
+Layers는 Feature-Sliced Design에서 조직 구조의 첫 번째 수준입니다. 그 목적은 코드의 책임 범위와 애플리케이션 내 다른 모듈에 대한 의존성 정도에 따라 코드를 구분하는 것입니다.
+
+:::note
+
+이 페이지에서 "모듈"은 애플리케이션 내의 내부 모듈을 의미합니다 — 인덱스 파일이 포함된 파일 또는 디렉토리입니다. npm 패키지와 혼동하지 마세요.
+
+:::
+
+각 레이어는 모듈에 할당해야 할 책임의 정도를 결정하는 데 도움이 되는 특별한 의미를 가지고 있습니다. 레이어의 이름과 의미는 Feature-Sliced Design으로 구축된 모든 프로젝트에서 표준화되어 있습니다.
+
+총 **7개의 레이어**가 있으며, 가장 많은 책임과 의존성을 가진 레이어에서 적은 책임과 의존성을 가진 레이어로 배열됩니다:
+
+<img src="/img/layers/folders-graphic-light.svg#light-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="파일 시스템 트리, 최상위 폴더인 src가 있고, 그 아래에 7개의 하위 폴더가 있습니다: app, processes, pages, widgets, features, entities, shared. processes 폴더는 약간 흐릿하게 표시됩니다." />
+<img src="/img/layers/folders-graphic-dark.svg#dark-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="파일 시스템 트리, 최상위 폴더인 src가 있고, 그 아래에 7개의 하위 폴더가 있습니다: app, processes, pages, widgets, features, entities, shared. processes 폴더는 약간 흐릿하게 표시됩니다." />
+
+1. App
+2. Processes (deprecated)
+3. Pages
+4. Widgets
+5. Features
+6. Entities
+7. Shared
+
+프로젝트에서 모든 레이어를 사용할 필요는 없습니다. 프로젝트에 가치를 더한다고 생각될 때만 레이어를 추가하세요.
+
+## 레이어 가져오기(import) 규칙
+
+레이어는 _slice_ 로 구성됩니다 — 매우 응집력 있는 모듈 그룹입니다. Feature-Sliced Design은 결합도를 낮추는 것을 촉진하므로, slice 간의 의존성은 레이어의 **import 규칙**에 의해 관리됩니다:
+
+> _slice의 모듈은 자신보다 하위 레이어에 위치한 다른 slice만 가져올 수 있습니다._
+
+예를 들어, `~/features/aaa` 에서 `aaa` 가 slice라면, `~/features/aaa/api/request.ts` 파일은 `~/features/bbb`의 어떤 모듈도 가져올 수 없지만, `~/entities` 와 `~/shared`의 코드를 가져올 수 있고, `~/features/aaa` 내의 형제 모듈 또한 가져올 수 있습니다.
+
+## 레이어 정의
+
+### Shared
+
+프로젝트나 비즈니스의 세부 사항과 분리된 독립적인 모듈, 컴포넌트 추상화입니다.
+주의: [utility dump][ext--sova-utility-dump] 처럼 다뤄서는 안됩니다!
+
+이 레이어는 다른 레이어와 달리 slices로 구성되지 않고 segments로 구성됩니다.
+
+**콘텐츠 예시**:
+
+* UI kit
+* API client
+* 브라우저 API와 작업하는 코드
+
+### Entities
+
+프로젝트의 본질을 이루는 현실 세계의 개념들입니다. 일반적으로 비즈니스에서 제품을 설명하는 데 사용하는 용어들이 여기에 해당됩니다.
+
+이 레이어의 각 slices는 정적인 UI 요소, 데이터 저장소 및 CRUD 작업을 포함합니다.
+
+**Slice 예시**:
+
+<table>
+<thead><tr><th> 소셜 네트워크의 경우 </th><th> Git frontend 의 경우 (예. GitHub) </th></tr></thead>
+<tbody><tr><td><ul>
+<li>User</li>
+<li>Post</li>
+<li>Group</li>
+</ul></td><td><ul>
+<li>Repository</li>
+<li>File</li>
+<li>Commit</li>
+</ul></td></tr></tbody></table>
+
+
+:::tip
+
+
+Git frontend 의 예시에서 _Repository_ 는 _Files_ 을 포함하는데, 이는 _Repository_ 는 더 높은 수준의 엔티티로서 다른 엔티티들을 포함하고 있다는 것을 의미합니다. 이러한 경우는 엔티티에서 자주 발생하며, 때때로 이런 상위 수준의 엔티티를 관리하는 것이 레이어간 import 규칙을 깨는 일이 될 수 있습니다.
+
+이 문제를 해결하기 위한 몇 가지 제안은 다음과 같습니다:
+* 엔티티의 UI에는 하위 레벨 엔티티를 삽입할 위치에 대한 슬롯이 포함되어야 합니다.
+* 엔티티 간 상호작용에 관련된 비즈니스 로직은 대부분 Features에 배치해야 합니다.
+* 데이터베이스 엔티티의 타입 정의는 Shared 레이어로 추출하여 API 클라이언트 옆에 배치할 수 있습니다.
+
+:::
+
+### Features
+
+사용자가 비즈니스 엔티티와 상호 작용하여 가치 있는 결과를 얻기 위해 애플리케이션에서 수행할 수 있는 작업입니다. 또한 애플리케이션이 사용자를 대신하여 가치를 창출하기 위해 수행하는 작업도 포함됩니다.
+
+이 레이어의 각 slices는 _상호작용 가능한_ UI 요소, 내부 상태 및 API 호출을 포함하여 가치를 생성하는 동작을 가능하게 합니다.
+
+**Slice examples**:
+
+<table>
+<thead><tr><th> 소셜 네트워크의 경우 </th><th> Git frontend 의 경우 (예. GitHub) </th><th> 사용자를 대신하는 동작 </th></tr></thead>
+<tbody><tr><td><ul>
+<li>인증</li>
+<li>글 작성</li>
+<li>그룹 가입</li>
+</ul></td><td><ul>
+<li>파일 수정</li>
+<li>댓글 남기기</li>
+<li>브랜치 병합</li>
+</ul></td><td><ul>
+<li>다크 모드 감지</li>
+<li>백그라운드 계산 수행</li>
+<li>사용자-에이전트 기반 작업</li>
+</ul></td></tr></tbody></table>
+
+### Widgets
+
+entities 및 features 와 같은 하위 레벨 단위의 구성에서 나온 자급자족적인 UI 블록 
+
+이 레이어는 Entities 의 UI에 남은 슬롯을 다른 Entities 와 Features의 대화형 요소로 채울 수 있는 방법을 제공합니다. 따라서 이 레이어에는 비즈니스 로직이 포함되지 않고, 그 대신 Features에 비즈니스 로직을 두는 것이 일반적입니다. 이 레이어의 각 slice는 준비된 UI 컴포넌트와 때때로 비즈니스 로직과는 관계 없는 제스처, 키보드 상호작용 등도 포함될 수 있습니다.
+
+하지만, 때때로 비즈니스 로직을 이 레이어에 두는 것이 더 편리할 때도 있습니다. 보통 위젯이 상당히 풍부한 상호작용을 가질 때 (예: 인터렉티브 데이터 테이블) 이들 내부의 비즈니스 로직이 다른 곳에서 사용되지 않는 경우입니다.
+
+**Slice 예시**:
+
+<table>
+<thead><tr><th> 소셜 네트워크의 경우 </th><th> Git frontend 의 경우 (예. GitHub) </th></tr></thead>
+<tbody><tr><td><ul>
+<li>카드 전송</li>
+<li>유저 프로필 헤더 (기능 포함)</li>
+</ul></td><td><ul>
+<li>리포지토리에 있는 파일 목록(기능 포함)</li>
+<li>쓰레드에 댓글 달기</li>
+<li>리포지토리 카드</li>
+</ul></td></tr></tbody></table>
+
+:::tip
+
+중첩된 라우팅 시스템 (예. [Remix][ext--remix]의 라우터)을 사용하는 경우, 플랫 라우팅 시스템에서 Pages 레이어를 사용하는 방법과 같이 Widgets 레이어를 사용하는 것이 유용할 수 있습니다. - 관련 데이터 가져오기, 로딩 상태 및 오류 경계를 사용하여 완전환 인터페이스 블록을 만들 수 있습니다. 같은 방식으로, 이 레이어에 Pages 레이아웃을 둘 수 있습니다.
+
+:::
+
+### Pages
+
+웹 사이트와 같은 페이지 기반 애플리케이션 또는 모바일 앱과 같은 화면 기반 애플리케이션의 경우 화면/활동을 포함하는 레이어입니다.
+
+이 레이어는 Widgets와 특성이 비슷하지만, 더 큰 규모에서 사용됩니다. 이 레이어의 각 slice는 라우터에 연결할 준비가 된 UI 컴포넌트와 데이터 조회 로직 및 에러 핸들링을 포함합니다.
+
+**Slice 예시**:
+
+<table>
+<thead><tr><th> 소셜 네트워크의 경우 </th><th> Git frontend 의 경우 (예. GitHub) </th></tr></thead>
+<tbody><tr><td><ul>
+<li>뉴스 피드</li>
+<li>커뮤니티 페이지</li>
+<li>사용자의 공개 프로필</li>
+</ul></td><td><ul>
+<li>리포지토리 페이지</li>
+<li>사용자 리포지토리</li>
+<li>리포지토리의 브랜치</li>
+</ul></td></tr></tbody></table>
+
+### Processes
+
+:::caution
+
+이 layer는 더 이상 사용되지 않습니다. 현재 사양에서는 이 layer를 사용하지 않고 대신 해당 콘텐츠를 `features` 및 `app` 으로 옮길 것을 권장합니다.
+
+:::
+
+여러 페이지 상호 작용을 위한 탈출구 입니다.
+
+이 레이어는 의도적으로 정의되지 않았습니다. 대부분의 애플리케이션은 이 레이어를 사용하지 않으며, 라우터 수준과 서버 수준의 로직은 App layer 에 두어야 합니다. App layer 가 너무 커져서 유지보수가 불가능해질 때만 이 layer를 사용하는 것을 고려하세요.
+
+### App
+
+앱 전체와 관련된 모든 사항들, 기술적인 측면(예. context provider) 과 비즈니스적인 측면 (예. 분석) 모두 포함됩니다.
+
+이 layer 는 일반적으로 Shared 처럼 slice 를 포함하지 않고, 대신 segments 를 직접 구성됩니다.
+
+**콘텐츠 예시**:
+
+* Styles
+* Routing
+* Store and other context providers
+* Analytics 초기화
+
+[ext--remix]: https://remix.run
+[ext--sova-utility-dump]: https://dev.to/sergeysova/why-utils-helpers-is-a-dump-45fo
