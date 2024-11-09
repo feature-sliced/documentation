@@ -1,0 +1,69 @@
+---
+sidebar_position: 1
+slug: /
+pagination_next: get-started/index
+---
+
+# Documentation
+
+![feature-sliced-banner](/img/banner.jpg)
+
+**Feature-Sliced Design** (FSD) is an architectural methodology for scaffolding front-end applications. Simply put, it's a compilation of rules and conventions on organizing code. The main purpose of this methodology is to make the project more understandable and structured in the face of ever-changing business requirements.
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { RocketOutlined, ThunderboltOutlined, FundViewOutlined } from "@ant-design/icons";
+import Link from "@docusaurus/Link";
+
+<NavCard
+    theme="primary"
+    Icon="🍰"
+    title="New to FSD?"
+    description="Learn the basics with quick overview of methodology"
+    to="/docs/get-started/overview"
+/>
+
+<!-- TODO: move to features/doc-index -->
+
+<br />
+
+<NavCard
+    theme="mini"
+    title="🚀 Get Started"
+    description="A tour over the basic concepts and structure as well as a comprehensive review of a React sample project"
+    to="/docs/get-started"
+    tags={['Overview', 'Tutorial', 'FAQ']}
+/>
+<NavCard
+    theme="mini"
+    title="🎯 Guides"
+    description="Practical guides and application examples"
+    to="/docs/guides"
+    tags={['Examples', 'Migration', 'Tech']}
+/>
+<NavCard
+    theme="mini"
+    title="📚 Reference"
+    description="Reference details of core concepts (for more efficient application)"
+    to="/docs/reference"
+    tags={['Units', 'Isolation', 'Public API']}
+/>
+<NavCard
+    theme="mini"
+    title="🍰 About"
+    description="The philosophy of the methodology, its goals and place in the modern front-end"
+    to="/docs/about"
+    tags={['Mission', 'Alternatives', 'Promote']}
+/>
+<NavCard
+    theme="mini"
+    title="💫 Community"
+    description="Resources and additional materials, contributed by the community"
+    to="/community"
+    tags={['Awesome', 'Team', 'Examples']}
+/>
+<NavCard
+    theme="mini"
+    title="🛠 Examples"
+    description="Projects built with Feature-Sliced Design"
+    to="/examples"
+/>

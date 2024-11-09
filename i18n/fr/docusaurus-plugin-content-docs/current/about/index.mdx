@@ -1,0 +1,44 @@
+---
+hide_table_of_contents: true
+pagination_prev: reference/index
+---
+
+# 🍰 About
+
+<span class="badge badge--violet margin-bottom--md">BACKGROUND-ORIENTED</span>
+
+<p class="summary">
+General information about methodology, team, community and development history
+</p>
+
+## Main
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { StarOutlined, TrophyOutlined, BulbOutlined, TeamOutlined } from "@ant-design/icons";
+
+<NavCard
+    title="Mission" 
+    description="Goals and limitations of the methodology"
+    to="/docs/about/mission"
+    Icon={TrophyOutlined}
+/>
+<NavCard
+    title="Motivation" 
+    description="Reasons for the creation and development of the methodology"
+    to="/docs/about/motivation"
+    Icon={StarOutlined}
+/>
+<NavCard
+    title="Understanding" 
+    description="Deep understanding of FSD concepts"
+    to="/docs/about/understanding/architecture"
+    Icon={BulbOutlined}
+    tags={['About architecture', 'Needs driven', 'Naming']}
+/>
+<NavCard
+    title="Promote" 
+    description="About promotion and integration FSD at companies"
+    to="/docs/about/promote/integration"
+    Icon={TeamOutlined}
+    tags={['Integration', 'Promoting in team', 'Promoting in company']}
+/>

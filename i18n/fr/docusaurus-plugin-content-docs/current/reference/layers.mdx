@@ -1,0 +1,185 @@
+---
+sidebar_position: 1
+pagination_next: reference/slices-segments
+---
+
+# Layers
+
+Layers are the first level of organisational hierarchy in Feature-Sliced Design. Their purpose is to separate code based on how much responsibility it needs and how many other modules in the app it depends on.
+
+:::note
+
+On this page, a _module_ refers to an internal module in the application — a file or directory with an index file. Not to be confused with npm packages.
+
+:::
+
+Every layer carries special semantic meaning to help you determine how much responsibility you should allocate to a module in your code. The names and meanings of layers are standardized across all projects built with Feature-Sliced Design.
+
+There are **7 layers** in total, arranged from most responsibility and&nbsp;dependency to least:
+
+<img src="/img/layers/folders-graphic-light.svg#light-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
+<img src="/img/layers/folders-graphic-dark.svg#dark-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
+
+1. App
+2. Processes (deprecated)
+3. Pages
+4. Widgets
+5. Features
+6. Entities
+7. Shared
+
+You don't have to use every layer in your project — only add them if you think it brings value to your project.
+
+## Import rule on layers
+
+Layers are made up of _slices_ — highly cohesive groups of modules. Feature-Sliced Design promotes low coupling, which is why dependencies between slices are regulated by **the import rule on layers**:
+
+> _A module in a slice can only import other slices when they are located on layers strictly below._
+
+For example, in `~/features/aaa`, `aaa` is the slice, so a file `~/features/aaa/api/request.ts` cannot import code from any module in `~/features/bbb`, but can import code from `~/entities` and `~/shared`, as well as any sibling code from `~/features/aaa`.
+
+## Layer definitions
+
+### Shared
+
+Isolated modules, components and abstractions that are detached from the specifics of the project or business.
+Warning: not to be treated like [a utility dump][ext--sova-utility-dump]!
+
+This layer, unlike others, does not consist of slices, and instead consists of segments directly.
+
+**Content examples**:
+
+* UI kit
+* API client
+* Code working with browser APIs
+
+### Entities
+
+Concepts from the real world that form together the essence of the project. Commonly, these are the terms that the business uses to describe the product.
+
+Each slice in this layer contains static UI elements, data stores and CRUD operations.
+
+**Slice examples**:
+
+<table>
+<thead><tr><th> For a social network </th><th> For a Git frontend (e.g., GitHub) </th></tr></thead>
+<tbody><tr><td><ul>
+<li>User</li>
+<li>Post</li>
+<li>Group</li>
+</ul></td><td><ul>
+<li>Repository</li>
+<li>File</li>
+<li>Commit</li>
+</ul></td></tr></tbody></table>
+
+
+:::tip
+
+You may notice in the example of a Git frontend that a _repository_ contains _files_. This makes the repository a higher-level entity which has other entities nested inside. That is a common situation with entities, and sometimes it's hard to manage such higher-level entities without breaking the import rule on layers.
+
+Here are a few suggestions to overcome this issue:
+* The UI of entities should contain slots for places where the lower-level entities are to be inserted
+* The business logic related to entity interaction should be placed in features (most of the time)
+* The typings of database entities can be extracted to the Shared layer below, next to the API client
+
+:::
+
+### Features
+
+Actions that a user can make in the application to interact with the business entities to achieve a valuable outcome. This also includes actions that the app makes on behalf of the user to produce value for them.
+
+Each slice in this layer can contain _interactive_ UI elements, internal state and API calls that enable value-producing actions.
+
+**Slice examples**:
+
+<table>
+<thead><tr><th> For a social network </th><th> For a Git frontend (e.g., GitHub) </th><th> Actions on behalf of users </th></tr></thead>
+<tbody><tr><td><ul>
+<li>Authenticate</li>
+<li>Create a post</li>
+<li>Join a group</li>
+</ul></td><td><ul>
+<li>Edit a file</li>
+<li>Leave a comment</li>
+<li>Merge branches</li>
+</ul></td><td><ul>
+<li>Detect dark mode</li>
+<li>Perform background computation</li>
+<li>User-Agent-based actions</li>
+</ul></td></tr></tbody></table>
+
+### Widgets
+
+Self-sufficient UI blocks that emerged from the composition of lower-level units like entities and features.
+
+This layer provides a way to fill in the slots left in the UI of Entities with other Entities and interactive elements from Features. Therefore, it is common not to have business logic on this layer, instead keeping it in Features. Each slice in this layer contains ready-to-use UI components and sometimes non-business logic such as gestures, keyboard interaction, etc.
+
+Sometimes, however, it is more convenient to have business logic on this layer. Usually it happens when the widget is quite rich in interactivity (e.g., interactive data tables) and the business logic inside them is not used in other places.
+
+**Slice examples**:
+
+<table>
+<thead><tr><th> For a social network </th><th> For a Git frontend (e.g., GitHub) </th></tr></thead>
+<tbody><tr><td><ul>
+<li>Post card</li>
+<li>User profile header (with actions)</li>
+</ul></td><td><ul>
+<li>List of files in a repository (with actions)</li>
+<li>Comment in a thread</li>
+<li>Repository card</li>
+</ul></td></tr></tbody></table>
+
+:::tip
+
+If you're using a nested routing system (e.g. the router of [Remix][ext--remix]), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create complete interface blocks, complete with related data fetching, loading states, and error boundaries. In the same way, you can store page layouts on this layer.
+
+:::
+
+### Pages
+
+Complete pages for a page-based application (like a website) or screens/activities for screen-based applications (like mobile apps).
+
+This layer is similar to Widgets in its compositional nature, albeit on a larger scale. Each slice in this layer contains UI components that are ready to be plugged into a router and sometimes data-fetching logic and error handling.
+
+**Slice examples**:
+
+<table>
+<thead><tr><th> For a social network </th><th> For a Git frontend (e.g., GitHub) </th></tr></thead>
+<tbody><tr><td><ul>
+<li>News feed</li>
+<li>Community page</li>
+<li>User's public profile</li>
+</ul></td><td><ul>
+<li>Repository page</li>
+<li>User's repositories</li>
+<li>Branches in a repository</li>
+</ul></td></tr></tbody></table>
+
+### Processes
+
+:::caution
+
+This layer has been deprecated. The current version of the spec recommends avoiding it and moving its contents to `features` and `app` instead.
+
+:::
+
+Escape hatches for multi-page interactions.
+
+This layer is deliberately left undefined. Most applications should not use this layer, and keep router-level and server-level logic on the App layer. Consider using this layer only when the App layer grows large enough to become unmaintainable and needs unloading.
+
+### App
+
+All kinds of app-wide matters, both in the technical sense (e.g., context providers) and in the business sense (e.g., analytics).
+
+This layer usually doesn't contain slices, like Shared, instead having segments directly.
+
+**Content examples**:
+
+* Styles
+* Routing
+* Store and other context providers
+* Analytics initialization
+
+[ext--remix]: https://remix.run
+[ext--sova-utility-dump]: https://dev.to/sergeysova/why-utils-helpers-is-a-dump-45fo
