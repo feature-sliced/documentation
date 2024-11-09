@@ -4,141 +4,141 @@ sidebar_position: 2
 
 # Motivation
 
-The main idea of **Feature-Sliced Design** is to facilitate and reduce the cost of developing complex and developing projects, based on [combining research results, discussing the experience of various kinds of a wide range of developers][ext-discussions].
+L'idée principale de **Feature-Sliced Design** est de faciliter et de réduire le coût du développement de projets complexes et en évolution, basée sur [la combinaison des résultats de recherches, la discussion de l'expérience de divers développeurs][ext-discussions].
 
-Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability][refs-mission].
+Évidemment, cela ne sera pas une solution miracle, et bien sûr, la méthodologie aura ses propres [limites d'applicabilité][refs-mission].
 
-Nevertheless, there are reasonable questions regarding *the feasibility of such a methodology as a whole*
+Néanmoins, il existe des questions légitimes concernant *la faisabilité d'une telle méthodologie dans son ensemble*.
 
 :::note
 
-More details [discussed in the discussion][disc-src]
+Plus de détails [discutés dans la discussion][disc-src]
 
 :::
 
-## Why are there not enough existing solutions?
+## Pourquoi les solutions existantes ne suffisent-elles pas ?
 <!--TODO: #existing-solutions -->
-> It usually, these arguments:
+> Il s'agit généralement des arguments suivants :
 >
-> - *"Why you need some new methodology, if you already have long-established approaches and principles of design such as `SOLID`, `KISS`, `YAGNI`, `DDD`, `GRASP`, `DRY`, etc."*
-> - *"All the problems are solved by good project documentation, tests, and structured processes"*
-> - *"Problems would not have happened if all developers are following all the above"*
-> - *"Everything was invented before you, you just can't use it"*
-> - *"Take \{FRAMEWORK_NAME\} - everything has already been decided for you there"*
+> - *"Pourquoi avez-vous besoin d'une nouvelle méthodologie si vous avez déjà des approches et des principes de conception bien établis comme `SOLID`, `KISS`, `YAGNI`, `DDD`, `GRASP`, `DRY`, etc."*
+> - *"Tous les problèmes sont résolus par une bonne documentation de projet, des tests et des processus structurés"*
+> - *"Les problèmes ne surviendraient pas si tous les développeurs suivaient tous les principes mentionnés ci-dessus"*
+> - *"Tout a été inventé avant vous, vous ne savez juste pas l'utiliser"*
+> - *"Prenez \{FRAMEWORK_NAME\} - tout a déjà été résolu pour vous là-bas"*
 
-### Principles alone are not enough
+### Les principes à eux seuls ne suffisent pas
 
-**The existence of principles alone is not enough to design a good architecture**
+**L'existence de principes à elle seule n'est pas suffisante pour concevoir une bonne architecture**
 
-Not everyone knows them completely, even fewer understand and apply them correctly
+Tout le monde ne les connaît pas entièrement, encore moins les comprend et les applique correctement.
 
-*The design principles are too general, and do not give a specific answer to the question: "How to design the structure and architecture of a scalable and flexible application?"*
+*Les principes de conception sont trop généraux et ne donnent pas de réponse spécifique à la question : "Comment concevoir la structure et l'architecture d'une application évolutive et flexible ?"*
 
-### Processes don't always work
+### Les processus ne fonctionnent pas toujours
 
-*Documentation/Tests/Processes* are, of course, good, but alas, even at high costs for them - **they do not always solve the problems posed by the architecture and the introduction of new people into the project**
+*Documentation / Tests / Processus* sont, bien sûr, bons, mais hélas, même avec un coût élevé pour ceux-ci - **ils ne résolvent pas toujours les problèmes posés par l'architecture et l'introduction de nouvelles personnes dans le projet**.
 
-- The time of entry of each developer into the project is not greatly reduced, because the documentation will most often come out huge / outdated
-- Constantly make sure that everyone understands architecture in the same way-it also requires a huge amount of resources
-- Do not forget about the bus-factor
+- Le temps d'entrée de chaque développeur dans le projet n'est pas considérablement réduit, car la documentation est souvent volumineuse / obsolète.
+- Il faut constamment s'assurer que tout le monde comprend l'architecture de la même manière - cela nécessite également une énorme quantité de ressources.
+- N'oublions pas le facteur de risque (bus-factor).
 
-### Existing frameworks cannot be applied everywhere
+### Les frameworks existants ne peuvent pas être appliqués partout
 
-- Existing solutions usually have a high entry threshold, which makes it difficult to find new developers
-- Also, most often, the choice of technology has already been determined before the onset of serious problems in the project, and therefore you need to be able to "work with what is" - **without being tied to the technology**
+- Les solutions existantes ont généralement un seuil d'entrée élevé, ce qui rend difficile la recherche de nouveaux développeurs.
+- De plus, le choix de la technologie est souvent déjà déterminé avant que des problèmes sérieux ne surviennent dans le projet, il faut donc savoir "travailler avec ce qui est disponible" - **sans être lié à la technologie**.
 
-> Q: *"In my project `React/Vue/Redux/Effector/Mobx/{YOUR_TECH}` - how can I better build the structure of entities and the relationships between them?"*
+> Q : *"Dans mon projet `React/Vue/Redux/Effector/Mobx/{YOUR_TECH}` - comment puis-je mieux construire la structure des entités et les relations entre elles ?"*
 
-### As a result
+### En résumé
 
-We get *"unique as snowflakes"* projects, each of which requires a long immersion of the employee, and knowledge that is unlikely to be applicable on another project
+Nous obtenons des projets *"uniques comme des flocons de neige"*, chacun nécessitant une longue immersion de l'employé, et des connaissances qui seront probablement inutilisables sur un autre projet.
 
-> @sergeysova: *"This is exactly the situation that currently exists in our field of frontend development: each lead will invent different architectures and project structures, while it is not a fact that these structures will pass the test of time, as a result, a maximum of two people can develop the project besides him, and each new developer needs to be immersed again."*
+> @sergeysova : *"C'est exactement la situation qui existe actuellement dans notre domaine du développement frontend : chaque lead va inventer différentes architectures et structures de projet, alors qu'il n'est même pas garanti que ces structures passeront l'épreuve du temps. Résultat, un maximum de deux personnes peuvent développer le projet à part lui, et chaque nouveau développeur doit encore être immergé dans le projet."*
 
-## Why do developers need the methodology?
+## Pourquoi les développeurs ont-ils besoin de la méthodologie ?
 
-### Focus on business features, not on architecture problems
+### Se concentrer sur les fonctionnalités métiers, pas sur les problèmes d'architecture
 
-The methodology allows you to save resources on designing a scalable and flexible architecture, instead directing the attention of developers to the development of the main functionality. At the same time, the architectural solutions themselves are standardized from project to project.
+La méthodologie permet d'économiser des ressources sur la conception d'une architecture évolutive et flexible, tout en dirigeant l'attention des développeurs sur le développement de la fonctionnalité principale. En même temps, les solutions architecturales elles-mêmes sont standardisées d'un projet à l'autre.
 
-*A separate question is that the methodology should earn the trust of the community, so that another developer can get acquainted with it and rely on it in solving the problems of his project within the time available to him*
+*Une question séparée est que la méthodologie doit gagner la confiance de la communauté, afin qu'un autre développeur puisse s'y familiariser et s'en remettre pour résoudre les problèmes de son projet dans le temps qui lui est imparti.*
 
-### An experience-proven solution
+### Une solution éprouvée par l'expérience
 
-The methodology is designed for developers who are aimed at *a proven solution for designing complex business logic*
+La méthodologie est conçue pour les développeurs qui cherchent *une solution éprouvée pour concevoir une logique métier complexe*.
 
-*However, it is clear that the methodology is generally about a set of best-practices, articles that address certain problems and cases during development. Therefore, the methodology will also be useful for the rest of the developers-who somehow face problems during development and design*
+*Cependant, il est clair que la méthodologie repose généralement sur un ensemble de bonnes pratiques, d'articles abordant certains problèmes et cas durant le développement. Par conséquent, la méthodologie sera également utile pour les autres développeurs - ceux qui rencontrent des problèmes de développement et de conception.*
 
-### Project Health
+### Santé du projet
 
-The methodology will allow *to solve and track the problems of the project in advance, without requiring a huge amount of resources*
+La méthodologie permettra de *résoudre et suivre les problèmes du projet à l'avance, sans nécessiter une énorme quantité de ressources.*
 
-**Most often, technical debt accumulates and accumulates over time, and the responsibility for its resolution lies on both the lead and the team**
+**La plupart du temps, la dette technique s'accumule au fil du temps, et la responsabilité de sa résolution incombe à la fois au lead et à l'équipe.**
 
-The methodology will allow you to *warn* possible problems in the scaling and development of the project in advance
+La méthodologie permettra de *prévenir* les problèmes potentiels liés à l'évolutivité et au développement du projet à l'avance.
 
-## Why does a business need a methodology?
+## Pourquoi une entreprise a-t-elle besoin d'une méthodologie ?
 
-### Fast onboarding
+### Onboarding rapide
 
-With the methodology, you can hire a person to the project who **is already previously familiar with this approach, and not train again**
+Avec la méthodologie, il est possible d'embaucher une personne pour le projet qui **est déjà familière avec cette approche, sans avoir à la former à nouveau.**
 
-*People start to understand and benefit the project faster, and there are additional guarantees to find people for the next iterations of the project*
+*Les gens commencent à comprendre et à contribuer au projet plus rapidement, avec des garanties supplémentaires pour trouver des personnes pour les prochaines itérations du projet.*
 
-### An experience-proven solution
+### Une solution éprouvée par l'expérience
 
-With the methodology, the business will get *a solution for most of the issues that arise during the development of systems*
+Avec la méthodologie, l'entreprise obtient *une solution pour la plupart des problèmes qui surviennent lors du développement de systèmes.*
 
-Since most often a business wants to get a framework / solution that would solve the lion's share of problems during the development of the project
+Puisque le plus souvent, une entreprise souhaite obtenir un cadre/solution qui résout la majorité des problèmes rencontrés pendant le développement du projet.
 
-### Applicability for different stages of the project
+### Applicabilité pour les différentes étapes du projet
 
-The methodology can benefit the project *both at the stage of project support and development, and at the MVP stage*
+La méthodologie peut bénéficier au projet *tant au stade de la maintenance et du développement que pendant la phase de MVP.*
 
-Yes, the most important thing for MVP is *"features, not the architecture laid down for the future"*. But even in conditions of limited deadlines, knowing the best-practices from the methodology, you can *"do with little blood"*, when designing the MVP version of the system, finding a reasonable compromise
-(rather than modeling features "at random")
+Oui, la chose la plus importante pour un MVP est *"les fonctionnalités, pas l'architecture posée pour l'avenir"*. Mais même dans des conditions de délais limités, connaître les bonnes pratiques de la méthodologie permet de *"faire avec moins de sang versé"*, lors de la conception de la version MVP du système, en trouvant un compromis raisonnable
+(plutôt que de modéliser les fonctionnalités "au hasard").
 
-*The same can be said about testing*
+*On peut dire la même chose à propos des tests.*
 
-## When is our methodology not needed?
+## Quand notre méthodologie n'est-elle pas nécessaire ?
 
-- If the project will live for a short time
-- If the project does not need a supported architecture
-- If the business does not perceive the connection between the code base and the speed of feature delivery
-- If it is more important for the business to close orders as soon as possible, without further support
+- Si le projet aura une durée de vie courte.
+- Si le projet n'a pas besoin d'une architecture maintenable.
+- Si l'entreprise ne perçoit pas le lien entre la base de code et la vitesse de livraison des fonctionnalités.
+- Si l'entreprise privilégie la fermeture rapide des commandes, sans maintenance future.
 
-### Business Size
+### Taille de l'entreprise
 
-- **Small business** - most often needs a ready-made and very fast solution. Only when the business grows (at least to almost average), he understands that in order for customers to continue using, it is necessary, among other things, to devote time to the quality and stability of the solutions being developed
-- **Medium-sized business** - usually understands all the problems of development, and even if it is necessary to *"arrange a race for features"*, he still spends time on quality improvements, refactoring and tests (and of course-on an extensible architecture)
-- **Big business** - usually already has an extensive audience, staff, and a much more extensive set of its practices, and probably even its own approach to architecture, so the idea of taking someone else's comes to them not so often
+- **Petite entreprise** - a souvent besoin d'une solution prête à l'emploi et rapide. Ce n'est que lorsque l'entreprise grandit (au moins à une taille moyenne) qu'elle comprend qu'il faut consacrer du temps à la qualité et à la stabilité des solutions développées.
+- **Entreprise de taille moyenne** - comprend généralement tous les problèmes liés au développement, et même si elle doit *"accélérer la course aux fonctionnalités"*, elle prend tout de même du temps pour améliorer la qualité, refactoriser et effectuer des tests (et bien sûr, pour avoir une architecture extensible).
+- **Grande entreprise** - dispose généralement déjà d'un large public, d'un personnel et d'un ensemble de pratiques plus étendues, et probablement même de sa propre approche de l'architecture. Ainsi, l'idée de prendre celle de quelqu'un d'autre ne leur vient pas aussi souvent.
 
 ## Plans
 
-The main part of the goals [is set out here][refs-mission--goals], but in addition, it is worth talking about our expectations from the methodology in the future
+La majeure partie des objectifs [est définie ici][refs-mission--goals], mais il vaut la peine de parler aussi de nos attentes concernant la méthodologie dans le futur.
 
-### Combining experience
+### Combinaison d'expériences
 
-Now we are trying to combine all our diverse experience of the `core-team`, and get a methodology hardened by practice as a result
+Nous essayons maintenant de combiner toute notre expérience diversifiée de l'`équipe principale`, pour obtenir une méthodologie consolidée par la pratique.
 
-Of course, we can get Angular 3.0 as a result, but it is much more important here to **investigate the very problem of designing the architecture of complex systems**
+Bien sûr, nous pourrions obtenir Angular 3.0 en résultat, mais il est bien plus important ici d'**examiner le problème même de la conception de l'architecture des systèmes complexes**.
 
-*And yes - we have complaints about the current version of the methodology, but we want to work together to come to a single and optimal solution (taking into account, among other things, the experience of the community)*
+*Et oui, nous avons des plaintes concernant la version actuelle de la méthodologie, mais nous voulons travailler ensemble pour parvenir à une solution unique et optimale (en tenant compte, entre autres, de l'expérience de la communauté).*
 
-### Life outside the specification
+### Vie au-delà de la spécification
 
-If everything goes well, then the methodology will not be limited only to the specification and the toolkit
+Si tout se passe bien, la méthodologie ne sera pas limitée uniquement à la spécification et à l'outil.
 
-- Perhaps there will be reports, articles
-- There may be `CODE_MODEs` for migrations to other technologies of projects written according to the methodology
-- It is possible that as a result we will be able to reach the maintainers of large technological solutions
-  - *Especially for React, compared to other frameworks - this is the main problem, because it does not say how to solve certain problems*
+- Peut-être qu'il y aura des rapports, des articles.
+- Il pourrait y avoir des `CODE_MODEs` pour les migrations vers d'autres technologies des projets écrits selon la méthodologie.
+- Il est possible qu'au final nous puissions atteindre les mainteneurs de grandes solutions technologiques.
+  - *Surtout pour React, comparé à d'autres frameworks - c'est le principal problème, car cela ne dit pas comment résoudre certains problèmes.*
 
-## See also
+## Voir aussi
 
-- [(Discussion) Don't need a methodology?][disc-src]
-- [About the methodology's mission: goals and limitations][refs-mission]
-- [Types of knowledge in the project][refs-knowledge]
+- [(Discussion) Vous n'avez pas besoin d'une méthodologie ?][disc-src]
+- [À propos de la mission de la méthodologie : objectifs et limitations][refs-mission]
+- [Types de connaissances dans le projet][refs-knowledge]
 
 [refs-mission]: /docs/about/mission
 [refs-mission--goals]: /docs/about/mission#goals

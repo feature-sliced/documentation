@@ -2,45 +2,45 @@
 sidebar_position: 4
 ---
 
-# Naming
+# Nommage
 
-Different developers have different experiences and contexts, which can lead to misunderstandings on the team when the same entities are called differently. For example:
+Les différents développeurs ont des expériences et des contextes variés, ce qui peut entraîner des malentendus au sein de l'équipe lorsque les mêmes entités sont appelées différemment. Par exemple :
 
-- Components for display can be called "ui", "components", "ui-kit", "views", …
-- The code that is reused throughout the application can be called "core", "shared", "app", …
-- Business logic code can be called "store", "model", "state", …
+- Les composants pour l'affichage peuvent être appelés "ui", "composants", "ui-kit", "vues", …
+- Le code qui est réutilisé dans toute l'application peut être appelé "core", "shared", "app", …
+- Le code de logique métier peut être appelé "store", "model", "state", …
 
-## Naming in Feature-Sliced Design {#naming-in-fsd}
+## Nommage dans le Feature-Sliced Design {#naming-in-fsd}
 
-The methodology uses specific terms such as:
+La méthodologie utilise des termes spécifiques tels que :
 
-- "app", "process", "page", "feature", "entity", "shared" as layer names,
-- "ui', "model", "lib", "api", "config" as segment names.
+- "app", "process", "page", "feature", "entity", "shared" en tant que noms de couches,
+- "ui", "model", "lib", "api", "config" en tant que noms de segments.
 
-It is very important to stick to these terms to prevent confusion among team members and new developers joining the project. Using standard names also helps when asking for help from the community.
+Il est très important de s'en tenir à ces termes pour éviter toute confusion parmi les membres de l'équipe et les nouveaux développeurs rejoignant le projet. L'utilisation de noms standard aide également lorsqu'on demande de l'aide à la communauté.
 
-## Naming Conflicts {#when-can-naming-interfere}
+## Conflits de Nommage {#when-can-naming-interfere}
 
-Naming conflicts can occur when terms used in the FSD methodology overlap with terms used in the business:
+Des conflits de nommage peuvent survenir lorsque les termes utilisés dans la méthodologie FSD se chevauchent avec les termes utilisés dans le domaine métier :
 
-- `FSD#process` vs simulated process in an application,
-- `FSD#page` vs log page,
-- `FSD#model` vs car model.
+- `FSD#process` vs processus simulé dans une application,
+- `FSD#page` vs page de journal,
+- `FSD#model` vs modèle de voiture.
 
-For example, a developer who sees the word "process" in the code will spend extra time trying to figure out what process is meant. Such **collisions can disrupt the development process**.
+Par exemple, un développeur qui voit le mot "process" dans le code passera du temps supplémentaire à essayer de comprendre quel processus est désigné. De telles **collisions peuvent perturber le processus de développement**.
 
-When the project glossary contains terminology specific to FSD, it is critical to be careful when discussing these terms with the team and technical disinterested parties.
+Lorsque le glossaire du projet contient des terminologies spécifiques à FSD, il est crucial de faire attention lorsque l'on discute de ces termes avec l'équipe et les parties prenantes non techniques.
 
-To communicate effectively with the team, it is recommended that the abbreviation "FSD" be used to prefix the methodology terms. For example, when talking about a process, you might say, "We can put this process on the FSD features layer."
+Pour communiquer efficacement avec l'équipe, il est recommandé d'utiliser l'abréviation "FSD" pour préfixer les termes de la méthodologie. Par exemple, lorsqu'on parle d'un processus, on pourrait dire : "Nous pouvons mettre ce processus dans la couche FSD des fonctionnalités."
 
-Conversely, when communicating with non-technical stakeholders, it is better to limit the use of FSD terminology and refrain from mentioning the internal structure of the code base.
+Inversement, lorsqu'on communique avec des parties prenantes non techniques, il est préférable de limiter l'utilisation de la terminologie FSD et de s'abstenir de mentionner la structure interne de la base de code.
 
-## See also {#see-also}
+## Voir aussi {#see-also}
 
-- [(Discussion) Adaptability of naming][disc-src]
-- [(Discussion) Entity Naming Survey][disc-naming]
-- [(Discussion) "processes" vs "flows" vs ...][disc-processes]
-- [(Discussion) "model" vs "store" vs ...][disc-model]
+- [(Discussion) Adaptabilité du nommage][disc-src]
+- [(Discussion) Sondage sur le nommage des entités][disc-naming]
+- [(Discussion) "processus" vs "flux" vs ...][disc-processes]
+- [(Discussion) "modèle" vs "store" vs ...][disc-model]
 
 [disc-model]: https://github.com/feature-sliced/documentation/discussions/68
 [disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894

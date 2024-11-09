@@ -2,91 +2,91 @@
 sidebar_position: 1
 ---
 
-# About architecture
+# À propos de l'architecture
 
-## Problems
+## Problèmes
 
-Usually, the conversation about architecture is raised when the development stops due to certain problems in the project.
+En général, la conversation sur l'architecture est soulevée lorsque le développement s'arrête en raison de certains problèmes dans le projet.
 
-### Bus-factor & Onboarding
+### Bus-factor et Onboarding
 
-Only a limited number of people understand the project and its architecture
+Seule un nombre limité de personnes comprennent le projet et son architecture.
 
-**Examples:**
+**Exemples :**
 
-- *"It's difficult to add a person to the development"*
-- *"For every problem, everyone has their own opinion on how to get around" (let's envy the angular)*
-- *"I don't understand what is happening in this big piece of monolith"*
+- *"C'est difficile d'ajouter une personne au développement"*
+- *"Pour chaque problème, tout le monde a son propre avis sur la manière de contourner cela" (envions Angular)*
+- *"Je ne comprends pas ce qui se passe dans ce gros morceau de monolithe"*
 
-### Implicit and uncontrolled consequences
+### Conséquences implicites et incontrôlées
 
-A lot of implicit side effects during development/refactoring *("everything depends on everything")*
+De nombreux effets secondaires implicites pendant le développement/refactoring *("tout dépend de tout")*
 
-**Examples:**
+**Exemples :**
 
-- *"The feature imports the feature"*
-- *"I updated the store of one page, and the functionality fell off on the other"*
-- *"The logic is smeared all over the application, and it is impossible to track where the beginning is, where the end is"*
+- *"La fonctionnalité importe la fonctionnalité"*
+- *"J'ai mis à jour le store d'une page, et la fonctionnalité a cessé de fonctionner sur l'autre"*
+- *"La logique est dispersée dans toute l'application, et il est impossible de suivre où commence et où finit chaque chose"*
 
-### Uncontrolled reuse of logic
+### Réutilisation incontrôlée de la logique
 
-It is difficult to reuse/modify existing logic
+Il est difficile de réutiliser/modifier la logique existante
 
-At the same time, there are usually [two extremes](https://github.com/feature-sliced/documentation/discussions/14):
+En même temps, il y a généralement [deux extrêmes](https://github.com/feature-sliced/documentation/discussions/14) :
 
-- Either the logic is written completely from scratch for each module *(with possible repetitions in the existing codebase)*
-- Either there is a tendency to transfer all-all implemented modules to `shared` folders, thereby creating a large dump of modules *from it (where most are used only in one place)*
+- Soit la logique est écrite entièrement à partir de zéro pour chaque module *(avec des répétitions possibles dans le code existant)*
+- Soit il y a une tendance à transférer tous les modules implémentés vers les dossiers `shared`, créant ainsi un grand dumping de modules *d'où beaucoup ne sont utilisés que dans un seul endroit*
 
-**Examples:**
+**Exemples :**
 
-- *"I have **N** implementations of the same business logic in my project, for which I still pay"*
-- *"There are 6 different components of the button/pop-up/... In the project"*
-- *"Dump of helpers"*
+- *"J'ai **N** implémentations de la même logique métier dans mon projet, pour lesquelles je paye toujours"*
+- *"Il y a 6 composants différents de bouton/pop-up/... dans le projet"*
+- *"Un dumping de helpers"*
 
-## Requirements
+## Exigences
 
-Therefore, it seems logical to present the desired *requirements for an ideal architecture:*
+Il semble donc logique de présenter les *exigences pour une architecture idéale :*
 
 :::note
 
-Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/docs/about/mission#limitations)
+Chaque fois qu'il est dit "facile", cela signifie "relativement facile pour un large éventail de développeurs", car il est évident que [il ne sera pas possible de créer une solution idéale pour absolument tout le monde](/docs/about/mission#limitations)
 
 :::
 
-### Explicitness
+### Clarté
 
-- It should be **easy to master and explain** the project and its architecture to the team
-- The structure should reflect the real **business values of the project**
-- There must be explicit **side effects and connections** between abstractions
-- It should be **easy to detect duplicate logic** without interfering with unique implementations
-- There should be no **dispersion of logic** throughout the project
-- There should not be **too many heterogeneous abstractions and rules** for a good architecture
+- Il devrait être **facile de maîtriser et d'expliquer** le projet et son architecture à l'équipe
+- La structure devrait refléter les **valeurs réelles du projet**
+- Il doit y avoir des **effets secondaires et des connexions explicites** entre les abstractions
+- Il devrait être **facile de détecter la logique dupliquée** sans interférer avec les implémentations uniques
+- Il ne devrait pas y avoir de **dispersion de la logique** dans tout le projet
+- Il ne devrait pas y avoir **trop d'abstractions et de règles hétérogènes** pour une bonne architecture
 
-### Control
+### Contrôle
 
-- A good architecture should **speed up the solution of tasks, the introduction of features**
-- It should be possible to control the development of the project
-- It should be easy to **expand, modify, delete the code**
-- The * decomposition and isolation of** functionality must be observed
-- Each component of the system must be **easily replaceable and removable**
-  - *[No need to optimize for changes][ext-kof-not-modification] - we can't predict the future*
-  - *[Better-optimize for deletion][ext-kof-but-removing] - based on the context that already exists*
+- Une bonne architecture devrait **accélérer la résolution des tâches, l'introduction de nouvelles fonctionnalités**
+- Il devrait être possible de contrôler le développement du projet
+- Il devrait être facile de **développer, modifier ou supprimer le code**
+- La **décomposition et l'isolation** des fonctionnalités doivent être respectées
+- Chaque composant du système doit être **facilement remplaçable et supprimable**
+  - *[Pas besoin d'optimiser pour les changements][ext-kof-not-modification] - nous ne pouvons pas prédire l'avenir*
+  - *[Mieux vaut optimiser pour la suppression][ext-kof-but-removing] - en fonction du contexte déjà existant*
 
-### Adaptability
+### Adaptabilité
 
-- A good architecture should be applicable **to most projects**
-  - *With existing infrastructure solutions*
-  - *At any stage of development*
-- There should be no dependence on the framework and platform
-- It should be possible to **easily scale the project and the team**, with the possibility of parallelization of development
-- It should be easy **to adapt to changing requirements and circumstances**
+- Une bonne architecture doit être applicable **à la plupart des projets**
+  - *Avec les solutions d'infrastructure existantes*
+  - *À n'importe quelle étape du développement*
+- Il ne doit pas y avoir de dépendance au framework ou à la plateforme
+- Il doit être possible de **faire évoluer facilement le projet et l'équipe**, avec la possibilité de paralléliser le développement
+- Il devrait être facile **de s'adapter aux exigences et circonstances changeantes**
 
-## See also
+## Voir aussi
 
-- [(React Berlin Talk) Oleg Isonen - Feature Driven Architecture][ext-kof]
+- [(Conférence React Berlin) Oleg Isonen - Feature Driven Architecture][ext-kof]
 - [(React SPB Meetup #1) Sergey Sova - Feature Slices][ext-slices-spb]
-- [(Article) About project modularization][ext-medium]
-- [(Article) About Separation of Concerns and structuring by features][ext-ryanlanciaux]
+- [(Article) À propos de la modularisation des projets][ext-medium]
+- [(Article) À propos de la séparation des préoccupations et de la structuration par fonctionnalités][ext-ryanlanciaux]
 
 [ext-kof-not-modification]: https://youtu.be/BWAeYuWFHhs?t=1631
 [ext-kof-but-removing]: https://youtu.be/BWAeYuWFHhs?t=1666
@@ -94,4 +94,4 @@ Wherever it says "easy", it means "relatively easy for a wide range of developer
 [ext-slices-spb]: https://t.me/feature_slices
 [ext-kof]: https://youtu.be/BWAeYuWFHhs
 [ext-medium]: https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1
-[ext-ryanlanciaux]: https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/
+[ext-ryanlanciaux]: https://ryanlanciaux

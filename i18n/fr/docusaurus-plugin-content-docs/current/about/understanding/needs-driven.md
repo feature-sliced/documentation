@@ -2,157 +2,157 @@
 sidebar_position: 2
 ---
 
-# Needs driven
+# Besoins motivés
 
 :::note TL;DR
 
-— _Can't you formulate the goal that the new feature will solve? Or maybe the problem is that the task itself is not formulated? **The point is also that the methodology helps to pull out the problematic definition of tasks and goals**_
+— _Ne pouvez-vous pas formuler l'objectif que la nouvelle fonctionnalité résoudra ? Ou peut-être que le problème vient du fait que la tâche elle-même n'est pas formulée ? **L'idée est aussi que la méthodologie aide à extraire la définition problématique des tâches et des objectifs**_
 
-— _project does not live in static - requirements and functionality are constantly changing. Over time, the code turns into mush, because at the start the project was designed only for the initial impression of wishes. **And the task of a good architecture is also to be sharpened for changing development conditions.**_
+— _Le projet ne vit pas dans un état statique – les exigences et les fonctionnalités changent constamment. Avec le temps, le code devient un "pâté", car au début, le projet a été conçu uniquement pour répondre aux premières impressions des souhaits. **Et la tâche d'une bonne architecture est également de s'affiner pour les conditions de développement changeantes.**_
 
 :::
 
-<!--TODO: Make each section later more independent by itself -->
-<!--TODO: Add more information on the changing requirements of the project -->
+<!--TODO: Rendre chaque section plus indépendante plus tard -->
+<!--TODO: Ajouter plus d'informations sur les exigences changeantes du projet -->
 
-## Why?
+## Pourquoi ?
 
-To choose a clear name for an entity and understand its components, **you need to clearly understand what task will be solved with the help of all this code.**
+Pour choisir un nom clair pour une entité et comprendre ses composants, **il faut bien comprendre quelle tâche sera résolue avec tout ce code.**
 
-> _@sergeysova: During development, we try to give each entity or function a name that clearly reflects the intentions and meaning of the code being executed._
+> _@sergeysova : Pendant le développement, nous essayons de donner à chaque entité ou fonction un nom qui reflète clairement les intentions et la signification du code exécuté._
 
-_After all, without understanding the task, it is impossible to write the right tests that cover the most important cases, put down errors that help the user in the right places, even it is banal not to interrupt the user's flow because of fixable non-critical errors._
+Après tout, sans comprendre la tâche, il est impossible d'écrire les bons tests qui couvrent les cas les plus importants, de mettre des erreurs qui aident l'utilisateur aux bons endroits, voire de ne pas interrompre le flux de l'utilisateur à cause d'erreurs non critiques mais réparables.
 
-## What tasks are we talking about?
+## De quelles tâches parlons-nous ?
 
-Frontend develops applications and interfaces for end users, so we solve the tasks of these consumers.
+Le frontend développe des applications et des interfaces pour les utilisateurs finaux, nous résolvons donc les tâches de ces consommateurs.
 
-When a person comes to us, **he wants to solve some of his pain or close a need.**
+Lorsqu'une personne vient vers nous, **elle veut résoudre une de ses douleurs ou satisfaire un besoin.**
 
-_The task of managers and analysts is to formulate this need, and implement developers taking into account the features of web development (loss of communication, backend error, typo, missed the cursor or finger)._
+_Le rôle des gestionnaires et des analystes est de formuler ce besoin, et celui des développeurs de le mettre en œuvre en tenant compte des spécificités du développement web (perte de communication, erreur backend, faute de frappe, curseur ou doigt manqué)._
 
-**This very goal, with which the user came, is the task of the developers.**
+**Cet objectif, avec lequel l'utilisateur est venu, est la tâche des développeurs.**
 
-> _One small solved problem is a feature in the Feature-Sliced Design methodology — you need to cut the entire scope of project tasks into small goals._
+> _Une petite problématique résolue est une fonctionnalité dans la méthodologie Feature-Sliced Design – vous devez découper l'ensemble des tâches du projet en petits objectifs._
 
-## How does this affect development?
+## Comment cela affecte-t-il le développement ?
 
-### Task decomposition
+### Décomposition des tâches
 
-When a developer begins to implement a task, in order to simplify the understanding and support of the code, he mentally **cuts it into stages**:
+Lorsqu'un développeur commence à implémenter une tâche, pour simplifier la compréhension et le support du code, il **la découpe mentalement en étapes** :
 
-* first _split into top-level entities_ and _implement them_,
-* then these entities _split into smaller ones_
-* and so on
+* d'abord, _séparer en entités de haut niveau_ et _les implémenter_,
+* puis ces entités _les diviser en plus petites_ 
+* et ainsi de suite
 
-_In the process of splitting into entities, the developer is forced to give them a name that would clearly reflect his idea and help to understand what task the code solves when reading the listing_
-_At the same time, we do not forget that we are trying to help the user reduce pain or realize needs_
+_Dans le processus de découpage en entités, le développeur est obligé de leur donner un nom qui reflète clairement son idée et aide à comprendre quelle tâche le code résout lorsqu'on lit la liste_
+_En même temps, on n'oublie pas que nous essayons d'aider l'utilisateur à réduire la douleur ou réaliser des besoins_
 
-### Understanding the essence of the task
+### Comprendre l'essence de la tâche
 
-But to give a clear name to an entity, **the developer must know enough about its purpose**
+Mais pour donner un nom clair à une entité, **le développeur doit en savoir suffisamment sur son objectif**
 
-* how is he going to use this entity,
-* what part of the user's task does it implement, where else can this entity be applied,
-* in what other tasks can it participate,
-* and so on
+* comment va-t-il utiliser cette entité,
+* quelle partie de la tâche de l'utilisateur implémente-t-elle, où cette entité peut-elle être appliquée ailleurs,
+* dans quelles autres tâches peut-elle participer,
+* et ainsi de suite
 
-It is not difficult to draw a conclusion: **while the developer will reflect on the name of entities within the framework of the methodology, he will be able to find poorly formulated tasks even before writing the code.**
+Il n'est pas difficile de tirer une conclusion : **tandis que le développeur réfléchira au nom des entités dans le cadre de la méthodologie, il pourra trouver des tâches mal formulées même avant d'écrire le code.**
 
-> How to give a name to an entity if you do not understand well what tasks it can solve, how can you even divide a task into entities if you do not understand it well?
+> Comment donner un nom à une entité si vous ne comprenez pas bien quelles tâches elle peut résoudre, comment pouvez-vous même diviser une tâche en entités si vous ne la comprenez pas bien ?
 
-## How to formulate it?
+## Comment la formuler ?
 
-**To formulate a task that is solved by features, you need to understand the task itself**, and this is already the responsibility of the project manager and analysts.
+**Pour formuler une tâche résolue par des fonctionnalités, il faut comprendre la tâche elle-même**, et cela relève déjà de la responsabilité du chef de projet et des analystes.
 
-_The methodology can only tell the developer what tasks the product manager should pay close attention to._
+_La méthodologie peut seulement indiquer au développeur quelles tâches le chef de produit doit examiner attentivement._
 
-> _@sergeysova: the Whole frontend is primarily a display of information, any component in the first turn, displays, and then the task "to show the user something" has no practical value._
+> _@sergeysova : Le frontend tout entier est avant tout un affichage d'informations, tout composant, au départ, affiche, et ensuite la tâche "montrer quelque chose à l'utilisateur" n'a pas de valeur pratique._
 >
-> _Even without taking into account the specifics of the frontend can ask, "why do I have to show you", so you can continue to ask until't get out of pain or the need of the consumer._
+> _Même sans prendre en compte les spécificités du frontend, on peut demander "pourquoi dois-je te montrer ça ?", et on peut continuer à poser des questions jusqu'à ce qu'on sorte de la douleur ou du besoin du consommateur._
 
-As soon as we were able to get to the basic needs or pains, we can go back and figure out **how exactly your product or service can help the user with his goals**
+Dès que nous avons pu arriver aux besoins ou douleurs de base, nous pouvons revenir et réfléchir **à la manière exacte dont votre produit ou service peut aider l'utilisateur à atteindre ses objectifs**
 
-Any new task in your tracker is aimed at solving business problems, and the business tries to solve the user's tasks at the same time earning money on it. This means that each task has certain goals, even if they are not spelled out in the description text.
+Toute nouvelle tâche dans votre gestionnaire est destinée à résoudre des problèmes commerciaux, et l'entreprise essaie de résoudre les tâches de l'utilisateur tout en gagnant de l'argent avec. Cela signifie que chaque tâche a certains objectifs, même s'ils ne sont pas explicitement formulés dans le texte de description.
 
-_**The developer must clearly understand what goal this or that task is pursuing**, but not every company can afford to build processes perfectly, although this is a separate conversation, nevertheless, the developer may well "ping" the right managers himself to find out this and do his part of the work effectively._
+_**Le développeur doit comprendre clairement quel objectif cette ou cette tâche poursuit**, mais toutes les entreprises ne peuvent pas se permettre de construire des processus parfaitement, bien que cela soit un autre sujet, néanmoins, le développeur peut tout à fait "alerter" les bons gestionnaires pour découvrir cela et accomplir sa partie du travail de manière efficace._
 
-## And what is the benefit?
+## Et quel est l'avantage ?
 
-Now let's look at the whole process from beginning to end.
+Voyons maintenant le processus dans son ensemble.
 
-### 1. Understanding user tasks
+### 1. Comprendre les tâches des utilisateurs
 
-When a developer understands his pain and how the business closes them, he can offer solutions that are not available to the business due to the specifics of web development.
+Lorsque le développeur comprend sa douleur et comment l'entreprise la résout, il peut proposer des solutions qui ne sont pas disponibles pour l'entreprise à cause des spécificités du développement web.
 
-> But of course, all this can work only if the developer is not indifferent to what he is doing and for what, otherwise _why then the methodology and some approaches?_
+> Mais bien sûr, tout cela ne fonctionne que si le développeur n'est pas indifférent à ce qu'il fait et pourquoi, sinon _pourquoi alors la méthodologie et certaines approches ?_
 
-### 2. Structuring and ordering
+### 2. Structuration et organisation
 
-With the understanding of tasks comes **a clear structure both in the head and in the tasks along with the code**
+Avec la compréhension des tâches vient **une structure claire, à la fois dans la tête et dans les tâches ainsi que le code**
 
-### 3. Understanding the feature and its components
+### 3. Compréhension de la fonctionnalité et de ses composants
 
-**One feature is one useful functionality for the user**
+**Une fonctionnalité est une utilité pour l'utilisateur**
 
-* When several features are implemented in one feature, this is **a violation of borders**
-* The feature can be indivisible and growing - **and this is not bad**
-* **Bad** - when the feature does not answer the question _"What is the business value for the user?"_
-* There can be no "map-office" feature
-  * But `booking-meeting-on-the-map`, `search-for-an-employee`, `change-of-workplace` - **yes**
+* Lorsque plusieurs fonctionnalités sont implémentées dans une seule fonctionnalité, cela constitue **une violation des frontières**
+* La fonctionnalité peut être indivisible et croissante - **et ce n'est pas mauvais**
+* **Mauvais** - lorsqu'une fonctionnalité ne répond pas à la question _"Quelle est la valeur commerciale pour l'utilisateur ?"_
+* Il ne peut y avoir de fonctionnalité "carte-bureau"
+  * Mais `réservation-réunion-sur-carte`, `recherche-employé`, `changement-de-lieu-de-travail` - **oui**
 
-> _@sergeysova: The point is that the feature contains only code that implements the functionality itself_, without unnecessary details and internal solutions (ideally)*
+> _@sergeysova : L'idée est que la fonctionnalité contient uniquement le code qui implémente la fonctionnalité elle-même_, sans détails inutiles et solutions internes (idéalement)*
 >
-> *Open the feature code **and see only what relates to the task** - no more*
+> *Ouvrez le code de la fonctionnalité **et voyez uniquement ce qui se rapporte à la tâche** - rien de plus*
 
 ### 4. Profit
 
-Business very rarely turns its course radically in the other direction, which means **the reflection of business tasks in the frontend application code is a very significant profit.**
+Les entreprises changent rarement de direction radicalement, ce qui signifie que **la réflexion des tâches commerciales dans le code de l'application frontend est un profit très significatif.**
 
-_Then you don't have to explain to each new team member what this or that code does, and in general why it was added - **everything will be explained through the business tasks that are already reflected in the code.**_
+_Ainsi, vous n'aurez pas à expliquer à chaque nouveau membre de l'équipe ce que fait tel ou tel code, et pourquoi il a été ajouté - **tout sera expliqué par les tâches commerciales déjà reflétées dans le code.**_
 
-> What is called ["Business Language" in Domain Driven Development][ext-ubiq-lang]
+> Ce que l'on appelle ["Langage des Affaires" en Domain Driven Design][ext-ubiq-lang]
 
 ---
 
-## Back to reality
+## Retour à la réalité
 
-If business processes are understood and good names are given at the design stage - _then it is not particularly problematic to transfer this understanding and logic to the code._
+Si les processus commerciaux sont compris et de bons noms sont donnés dès la phase de conception - _alors il n'est pas particulièrement problématique de transférer cette compréhension et cette logique dans le code._
 
-**However, in practice**, tasks and functionality are usually developed "too" iteratively and (or) there is no time to think through the design.
+**Cependant, en pratique**, les tâches et les fonctionnalités sont généralement développées de manière "trop" itérative et (ou) il n'y a pas de temps pour réfléchir à la conception.
 
-**As a result, the feature makes sense today, and if you expand this feature in a month, you can rewrite the gender of the project.**
+**Résultat**, la fonctionnalité a du sens aujourd'hui, et si vous étendez cette fonctionnalité dans un mois, vous pouvez réécrire le genre du projet.
 
-> *[[From the discussion][disc-src]]: The developer tries to think 2-3 steps ahead, taking into account future wishes, but here he rests on his own experience*
+> *[[De la discussion][disc-src]] : Le développeur essaie de penser 2-3 étapes à l'avance, en tenant compte des souhaits futurs, mais ici il se heurte à sa propre expérience*
 >
-> _Burns experience engineer usually immediately looking 10 steps ahead, and understand where one feature to divide and combine with the other_
+> _L'ingénieur expérimenté essaie généralement de voir 10 étapes à l'avance, et comprend où une fonctionnalité peut être divisée et combinée avec une autre_
 >
-> _But sometimes that comes the task which had to face the experience, and nowhere to take the understanding of how literacy to decompose, with the least unfortunate consequences in the future_
+> _Mais parfois, il arrive qu'une tâche doive être confrontée à l'expérience, et il n'y a nulle part où prendre la compréhension de comment décomposer de manière judicieuse, avec les conséquences les moins malheureuses dans le futur._
 
-## The role of methodology
+## Le rôle de la méthodologie
 
-**The methodology helps to solve the problems of developers, so that it is easier to solve the problems of users.**
+**La méthodologie aide à résoudre les problèmes des développeurs, afin qu'ils puissent plus facilement résoudre les problèmes des utilisateurs.**
 
-There is no solution to the problems of developers only for the sake of developers
+Il n'existe pas de solution aux problèmes des développeurs uniquement pour les développeurs.
 
-But in order for the developer to solve his tasks, **you need to understand the user's tasks** - on the contrary, it will not work
+Mais pour que le développeur résolve ses tâches, **il faut comprendre les tâches des utilisateurs** - sinon cela ne fonctionnera pas.
 
-### Methodology requirements
+### Exigences méthodologiques
 
-It becomes clear that you need to identify at least two requirements for **Feature-Sliced Design**:
+Il devient clair qu'il faut identifier au moins deux exigences pour **Feature-Sliced Design** :
 
-1. The methodology should tell **how to create features, processes and entities**
+1. La méthodologie doit indiquer **comment créer des fonctionnalités, des processus et des entités**
 
-    * Which means it should clearly explain _how to divide the code between them_, which means that the naming of these entities should also be laid down in the specification.
+    * Ce qui signifie qu'elle doit expliquer clairement _comment diviser le code entre eux_, ce qui implique également que le nommage de ces entités doit être défini dans la spécification.
 
-2. The methodology should help the architecture **[easily adapt to the changing requirements of the project][refs-arch--adaptability]**
+2. La méthodologie doit aider l'architecture à **[s'adapter facilement aux exigences changeantes du projet][refs-arch--adaptability]**
 
-## See also
+## Voir aussi
 
-* [(Post) Stimulation for a clear formulation of tasks (+ discussion)][disc-src]
-    > _**The current article** is an adaptation of this discussion, you can read the full uncut version at the link_
-* [(Discussion) How to break the functionality and what it is][tg-src]
-* [(Article) "How to better organize your applications"][ext-medium]
+* [(Post) Stimulation pour une formulation claire des tâches (+ discussion)][disc-src]
+    > _**L'article actuel** est une adaptation de cette discussion, vous pouvez lire la version complète sans coupures en suivant le lien_
+* [(Discussion) Comment découper la fonctionnalité et ce que c'est][tg-src]
+* [(Article) "Comment mieux organiser vos applications"][ext-medium]
 
 [refs-arch--adaptability]: architecture#adaptability
 

@@ -4,48 +4,48 @@ sidebar_position: 1
 
 # Mission
 
-Here we describe the goals and limitations of the applicability of the methodology-which we are guided by when developing the methodology
+Ici, nous décrivons les objectifs et les limitations de l'applicabilité de la méthodologie — ce qui nous guide lors du développement de la méthodologie.
 
-- We see our goal as a balance between ideology and simplicity
-- We won't be able to make a silver bullet that fits everyone
+- Nous voyons notre objectif comme un équilibre entre idéologie et simplicité
+- Nous ne serons pas en mesure de créer une solution universelle qui convienne à tout le monde
 
-**Nevertheless, the methodology should be close and accessible to a fairly wide range of developers**
+**Néanmoins, la méthodologie doit être proche et accessible à un large éventail de développeurs**
 
-## Goals
+## Objectifs
 
-### Intuitive clarity for a wide range of developers
+### Clarté intuitive pour un large éventail de développeurs
 
-The methodology should be accessible - for most of the team in projects
+La méthodologie doit être accessible — pour la plupart des membres de l’équipe dans les projets
 
-*Because even with all the future tools , it will not be enough, if only experienced seniors/leads will understand the methodology*
+*Car même avec tous les outils futurs, cela ne suffira pas si seule une petite partie des développeurs (les seniors/leads) comprend la méthodologie*
 
-### Solving everyday problems
+### Résolution des problèmes quotidiens
 
-The methodology should set out the reasons and solutions to our everyday problems when developing projects
+La méthodologie doit exposer les raisons et les solutions à nos problèmes quotidiens lors du développement de projets
 
-**And also-attach tools to all this (cli, linters)**
+**Et aussi — fournir des outils pour tout cela (cli, linters)**
 
-So that developers can use a *battle-tested* approach that allows them to bypass long-standing problems of architecture and development
+Ainsi, les développeurs pourront utiliser une approche *prouvée en conditions réelles* qui leur permet d'éviter les problèmes de longue date liés à l'architecture et au développement.
 
-> *@sergeysova: Imagine, that a developer writes code within the framework of the methodology and he has problems 10 times less often, simply because other people have thought out the solution to many problems.*
+> *@sergeysova : Imaginez qu'un développeur écrit du code dans le cadre de la méthodologie et qu'il rencontre 10 fois moins de problèmes, simplement parce que d'autres personnes ont trouvé des solutions à de nombreux problèmes.*
 
 ## Limitations
 
-We do not want to *impose our point of view*, and at the same time we understand that *many of our habits, as developers, interfere from day to day*
+Nous ne voulons pas *imposer notre point de vue*, tout en comprenant que *beaucoup de nos habitudes, en tant que développeurs, gênent au quotidien*.
 
-Everyone has their own level of experience in designing and developing systems, **therefore, it is worth understanding the following:**
+Chacun a son propre niveau d'expérience en conception et développement de systèmes, **il convient donc de comprendre ce qui suit :**
 
-- **Will not work**: very simple, very clear, for everyone
-    > *@sergeysova: Some concepts cannot be intuitively understood until you encounter problems and spend years solving them.*
+- **Ne fonctionnera pas** : très simple, très clair, pour tout le monde
+    > *@sergeysova : Certains concepts ne peuvent être compris intuitivement que lorsque vous êtes confronté à des problèmes et que vous passez des années à les résoudre.*
     >
-    > - *In math world: is graph theory.*
-    > - *In physics: quantum mechanics.*
-    > - *In programming: application architecture.*
+    > - *Dans le monde des mathématiques : la théorie des graphes.*
+    > - *En physique : la mécanique quantique.*
+    > - *En programmation : l'architecture des applications.*
 
-- **Possible and desirable**: simplicity, extensibility
+- **Possible et souhaitable** : simplicité, extensibilité
 
-## See also
+## Voir aussi
 
-- [Architecture problems][refs-architecture--problems]
+- [Problèmes d'architecture][refs-architecture--problems]
 
 [refs-architecture--problems]: /docs/about/understanding/architecture#problems

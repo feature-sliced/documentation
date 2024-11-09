@@ -1,29 +1,29 @@
 ---
 sidebar_position: 3
-sidebar_label: Knowledge types
+sidebar_label: Types de connaissances
 ---
 
-# Knowledge types in the project
+# Types de connaissances dans le projet
 
-The following "types of knowledge" can be distinguished in any project:
+Les "types de connaissances" suivants peuvent être distingués dans tout projet :
 
-* **Fundamental knowledge**  
-  Knowledge that does not change much over time, such as algorithms, computer science, programming language mechanisms and its APIs.
+* **Connaissances fondamentales**  
+  Connaissances qui ne changent pas beaucoup au fil du temps, telles que les algorithmes, l'informatique, les mécanismes du langage de programmation et ses API.
 
-* **Technology stack**  
-  Knowledge of the set of technical solutions used in a project, including programming languages, frameworks, and libraries.
+* **Stack technologique**  
+  Connaissances de l'ensemble des solutions techniques utilisées dans un projet, y compris les langages de programmation, les frameworks et les bibliothèques.
 
-* **Project knowledge**  
-  Knowledge that is specific to the current project and not valuable outside of it. This knowledge is essential for newly-onboarded developers to be able to contribute effectively.
+* **Connaissances spécifiques au projet**  
+  Connaissances spécifiques au projet actuel et qui ne sont pas précieuses en dehors de celui-ci. Ces connaissances sont essentielles pour que les développeurs nouvellement intégrés puissent contribuer efficacement.
 
 :::note
 
-**Feature-Sliced Design** is designed to reduce reliance on "project knowledge", take more responsibility, and make it easier to onboard new team members.
+**Feature-Sliced Design** est conçu pour réduire la dépendance aux "connaissances spécifiques au projet", prendre plus de responsabilités et faciliter l'intégration des nouveaux membres de l'équipe.
 
 :::
 
-## See also {#see-also}
+## Voir aussi {#see-also}
 
-- [(Video 🇷🇺) Ilya Klimov - On Types of Knowledge][ext-klimov]
+- [(Vidéo 🇷🇺) Ilya Klimov - Sur les types de connaissances][ext-klimov]
 
 [ext-klimov]: https://youtu.be/4xyb_tA-uw0?t=249

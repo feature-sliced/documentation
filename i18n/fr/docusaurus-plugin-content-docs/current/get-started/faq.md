@@ -7,56 +7,56 @@ pagination_next: guides/index
 
 :::info
 
-You can ask your question in our [Telegram chat][telegram], [Discord community][discord], and [GitHub Discussions][github-discussions].
+Vous pouvez poser vos questions dans notre [chat Telegram][telegram], [communauté Discord][discord], et [Discussions GitHub][github-discussions].
 
 :::
 
-### Is there a toolkit or a linter?
+### Existe-t-il un kit d'outils ou un linter ?
 
-There is an official ESLint config — [@feature-sliced/eslint-config][eslint-config-official], and an ESLint plugin — [@conarti/eslint-plugin-feature-sliced][eslint-plugin-conarti], created by Aleksandr Belous, a community member. You're welcome to contribute to these projects or start your own!
+Il existe une configuration officielle ESLint — [@feature-sliced/eslint-config][eslint-config-official], et un plugin ESLint — [@conarti/eslint-plugin-feature-sliced][eslint-plugin-conarti], créé par Aleksandr Belous, un membre de la communauté. Vous êtes invités à contribuer à ces projets ou à créer les vôtres !
 
-### Where to store the layout/template of pages?
+### Où stocker la mise en page/le modèle des pages ?
 
-If you need plain markup layouts, you can keep them in `shared/ui`. If you need to use higher layers inside, there are a few options:
+Si vous avez besoin de modèles HTML simples, vous pouvez les conserver dans `shared/ui`. Si vous devez utiliser des couches supérieures à l'intérieur, plusieurs options s'offrent à vous :
 
-- Perhaps you don't need layouts at all? If the layout is only a few lines, it might be reasonable to duplicate the code in each page rather than try to abstract it.
-- If you do need layouts, you can have them as separate widgets or pages, and compose them in your router configuration in App. Nested routing is another option.
+- Peut-être n'avez-vous pas besoin de mises en page du tout ? Si la mise en page est courte, il peut être plus raisonnable de dupliquer le code dans chaque page plutôt que d'essayer de l'abstraire.
+- Si vous avez besoin de mises en page, vous pouvez les traiter comme des widgets ou des pages séparées, et les composer dans la configuration de votre routeur dans l'application. Le routage imbriqué est également une option.
 
-### What is the difference between a feature and an entity?
+### Quelle est la différence entre une fonctionnalité et une entité ?
 
-An _entity_ is a real-life concept that your app is working with. A _feature_ is an interaction that provides real-life value to your app’s users, the thing people want to do with your entities.
+Une _entité_ est un concept réel avec lequel votre application interagit. Une _fonctionnalité_ est une interaction qui apporte de la valeur à vos utilisateurs, la chose que les gens veulent faire avec vos entités.
 
-For more information, along with examples, see the Reference page on [slices][reference-entities].
+Pour plus d'informations, avec des exemples, consultez la page de référence sur les [slices][reference-entities].
 
-### Can I embed pages/features/entities into each other?
+### Puis-je intégrer des pages/fonctionnalités/entités les unes dans les autres ?
 
-Yes, but this embedding should happen in higher layers. For example, inside a widget, you can import both features and then insert one feature into another as props/children.
+Oui, mais cette intégration doit se faire dans des couches supérieures. Par exemple, à l'intérieur d'un widget, vous pouvez importer les deux fonctionnalités et insérer l'une dans l'autre en tant que props/enfants.
 
-You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**][import-rule-layers].
+Vous ne pouvez pas importer une fonctionnalité d'une autre fonctionnalité, cela est interdit par la [**règle d'importation sur les couches**][import-rule-layers].
 
-### What about Atomic Design?
+### Qu'en est-il de l'Atomic Design ?
 
-The current version of the methodology does not require nor prohibit the use of Atomic Design together with Feature-Sliced Design.
+La version actuelle de la méthodologie ne nécessite ni n'interdit l'utilisation de l'Atomic Design avec le Feature-Sliced Design.
 
-For example, Atomic Design [can be applied well](https://t.me/feature_sliced/1653) for the `ui` segment of modules.
+Par exemple, l'Atomic Design [peut être appliqué efficacement](https://t.me/feature_sliced/1653) pour le segment `ui` des modules.
 
-### Are there any useful resources/articles/etc. about FSD?
+### Existe-t-il des ressources/articles/etc. utiles sur FSD ?
 
-Yes! https://github.com/feature-sliced/awesome
+Oui ! https://github.com/feature-sliced/awesome
 
-### Why do I need Feature-Sliced Design?
+### Pourquoi ai-je besoin de Feature-Sliced Design ?
 
-It helps you and your team to quickly overview the project in terms of its main value-bringing components. A standardized architecture helps to speed up onboarding and resolves debates about code structure. See the [motivation][motivation] page to learn more about why FSD was created.
+Cela aide vous et votre équipe à avoir une vue d'ensemble rapide du projet en termes de ses composants principaux à valeur ajoutée. Une architecture standardisée permet de faciliter l'intégration des nouveaux membres et de résoudre les débats sur la structure du code. Consultez la page [motivation][motivation] pour en savoir plus sur la création de FSD.
 
-### Does a novice developer need an architecture/methodology?
+### Un développeur novice a-t-il besoin d'une architecture/méthodologie ?
 
-Rather yes than no
+Plutôt oui que non
 
-*Usually, when you design and develop a project in one person, everything goes smoothly. But if there are pauses in development, new developers are added to the team - then problems come*
+*Habituellement, lorsqu'un projet est conçu et développé par une seule personne, tout se passe bien. Mais si des pauses dans le développement se produisent, ou si de nouveaux développeurs rejoignent l'équipe, des problèmes surgissent.*
 
-### How do I work with the authorization context?
+### Comment travailler avec le contexte d'autorisation ?
 
-Answered [here](/docs/guides/examples/auth)
+Réponse [ici](/docs/guides/examples/auth)
 
 [import-rule-layers]: /docs/reference/layers#import-rule-on-layers
 [reference-entities]: /docs/reference/layers#entities

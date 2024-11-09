@@ -1,30 +1,32 @@
 ---
 sidebar_position: 2
 ---
-# Tutorial
+# Tutoriel
 
-## Part 1. On paper
+## Partie 1. Sur le papier
 
-This tutorial will examine the Real World App, also known as Conduit. Conduit is a basic [Medium](https://medium.com/) clone — it lets you read and write articles as well as comment on the articles of others.
+Ce tutoriel va examiner l'application Real World App, également connue sous le nom de Conduit. Conduit est un clone simple de [Medium](https://medium.com/) — il vous permet de lire et d'écrire des articles ainsi que de commenter les articles des autres.
 
-![Conduit home page](/img/tutorial/realworld-feed-anonymous.jpg)
+![Page d'accueil de Conduit](/img/tutorial/realworld-feed-anonymous.jpg)
 
-This is a pretty small application, so we will keep it simple and avoid excessive decomposition. It’s highly likely that the entire app will fit into just three layers: **App**, **Pages**, and **Shared**. If not, we will introduce additional layers as we go. Ready?
+Il s'agit d'une application assez petite, donc nous allons la garder simple et éviter une décomposition excessive. Il est très probable que l'ensemble de l'application tienne dans seulement trois couches : **App**, **Pages**, et **Shared**. Si ce n'est pas le cas, nous introduirons des couches supplémentaires au fur et à mesure. Prêt ?
 
-### Start by listing the pages
+### Commencez par lister les pages
 
-If we look at the screenshot above, we can assume at least the following pages:
+Si nous regardons la capture d'écran ci-dessus, nous pouvons supposer au moins les pages suivantes :
 
-- Home (article feed)
-- Sign in and sign up
-- Article reader
-- Article editor
-- User profile viewer
-- User profile editor (user settings)
+- Accueil (fil d'articles)
+- Connexion et inscription
+- Lecteur d'articles
+- Éditeur d'articles
+- Vue du profil utilisateur
+- Éditeur du profil utilisateur (paramètres de l'utilisateur)
 
-Every one of these pages will become its own *slice* on the Pages *layer*. Recall from the overview that slices are simply folders inside of layers and layers are simply folders with predefined names like `pages`.
 
-As such, our Pages folder will look like this:
+Chacune de ces pages deviendra son propre *slice* dans la *couche* Pages. Rappelez-vous de l'aperçu, les slices sont simplement des dossiers à l'intérieur des couches, et les couches sont simplement des dossiers avec des noms prédéfinis comme `pages`.
+
+Ainsi, notre dossier Pages ressemblera à ceci :
+
 
 ```
 📂 pages/
@@ -36,81 +38,84 @@ As such, our Pages folder will look like this:
   📁 settings/
 ```
 
-The key difference of Feature-Sliced Design from an unregulated code structure is that pages cannot reference each other. That is, one page cannot import code from another page. This is due to the **import rule on layers**:
+La différence clé entre le Feature-Sliced Design et une structure de code non régulée est que les pages ne peuvent pas se référencer entre elles. Autrement dit, une page ne peut pas importer du code d'une autre page. Cela est dû à la règle d'importation sur les couches :
 
-*A module in a slice can only import other slices when they are located on layers strictly below.*
+Un module dans une slice ne peut importer d'autres slices que lorsqu'elles se trouvent sur des couches strictement inférieures.
 
-In this case, a page is a slice, so modules (files) inside this page can only reference code from layers below, not from the same layer, Pages.
+Dans ce cas, une page est une slice, donc les modules (fichiers) à l'intérieur de cette page ne peuvent se référer qu'au code des couches inférieures, et non de la même couche, Pages.
 
-### Close look at the feed
+### Vue détaillée du flux
 
 <figure>
-  ![Anonymous user’s perspective](/img/tutorial/realworld-feed-anonymous.jpg)
+  ![Vue de l'utilisateur anonyme](/img/tutorial/realworld-feed-anonymous.jpg)
   <figcaption>
-    _Anonymous user’s perspective_
+    _Vue de l'utilisateur anonyme_
   </figcaption>
 </figure>
 
 <figure>
-  ![Authenticated user’s perspective](/img/tutorial/realworld-feed-authenticated.jpg)
+  ![Vue de l'utilisateur authentifié](/img/tutorial/realworld-feed-authenticated.jpg)
   <figcaption>
-    _Authenticated user’s perspective_
+    _Vue de l'utilisateur authentifié_
   </figcaption>
 </figure>
 
-There are three dynamic areas on the feed page:
 
-1. Sign-in links with an indication if you are signed in
-2. List of tags that triggers filtering in the feed
-3. One/two feeds of articles, each article with a like button
+Il y a trois zones dynamiques sur la page de flux :
 
-The sign-in links are a part of a header that is common to all pages, we will revisit it separately.
+1. Les liens de connexion avec une indication si l'utilisateur est connecté
+2. La liste des tags qui déclenche le filtrage dans le flux
+3. Un/deux flux d'articles, chaque article avec un bouton "J'aime"
 
-#### List of tags
+Les liens de connexion font partie d'un en-tête qui est commun à toutes les pages, nous reviendrons dessus séparément.
 
-To build the list of tags, we need to fetch the available tags, render each tag as a chip, and store the selected tags in a client-side storage. These operations fall into categories “API interaction”, “user interface”, and “storage”, respectively. In Feature-Sliced Design, code is separated by purpose using *segments*. Segments are folders in slices, and they can have arbitrary names that describe the purpose, but some purposes are so common that there’s a convention for certain segment names:
+#### Liste des tags
 
-- 📂 `api/` for backend interactions
-- 📂 `ui/` for code that handles rendering and appearance
-- 📂 `model/` for storage and business logic
-- 📂 `config/` for feature flags, environment variables and other forms of configuration
+Pour construire la liste des tags, nous devons récupérer les tags disponibles, rendre chaque tag sous forme de puce, et stocker les tags sélectionnés dans un stockage côté client. Ces opérations appartiennent aux catégories "Interaction avec l'API", "Interface utilisateur" et "Stockage", respectivement. Dans le cadre de Feature-Sliced Design, le code est séparé par objectif à l'aide des *segments*. Les segments sont des dossiers dans les slices, et ils peuvent avoir des noms arbitraires décrivant leur objectif, mais certains objectifs sont tellement courants qu'il existe une convention pour certains noms de segments :
 
-We will place code that fetches tags into `api`, the tag component into `ui`, and the storage interaction into `model`.
+- 📂 `api/` pour les interactions avec le backend
+- 📂 `ui/` pour le code qui gère l'affichage et l'apparence
+- 📂 `model/` pour le stockage et la logique métier
+- 📂 `config/` pour les indicateurs de fonctionnalité, les variables d'environnement et autres formes de configuration
+
+Nous allons placer le code qui récupère les tags dans `api`, le composant de tag dans `ui`, et l'interaction avec le stockage dans `model`.
+
 
 #### Articles
 
-Using the same grouping principles, we can decompose the feed of articles into the same three segments:
+En utilisant les mêmes principes de regroupement, nous pouvons décomposer le flux d'articles en trois segments identiques :
 
-- 📂 `api/`: fetch paginated articles with like count; like an article
-- 📂 `ui/`:
-    - tab list that can render an extra tab if a tag is selected
-    - individual article
-    - functional pagination
-- 📂 `model/`: client-side storage of the currently loaded articles and current page (if needed)
+- 📂 `api/` : récupérer les articles paginés avec le nombre de "J'aime" ; aimer un article
+- 📂 `ui/` :
+    - liste d'onglets qui peut afficher un onglet supplémentaire si un tag est sélectionné
+    - article individuel
+    - pagination fonctionnelle
+- 📂 `model/` : stockage côté client des articles actuellement chargés et de la page en cours (si nécessaire)
 
-### Reuse generic code
+### Réutilisation du code générique
 
-Most pages are very different in intent, but certain things stay the same across the entire app — for example, the UI kit that conforms to the design language, or the convention on the backend that everything is done with a REST API with the same authentication method. Since slices are meant to be isolated, code reuse is facilitated by a lower layer, **Shared**.
+La plupart des pages ont des objectifs très différents, mais certaines choses restent les mêmes dans toute l'application — par exemple, l'UI kit qui respecte le langage de design, ou la convention côté backend que tout est fait avec une API REST utilisant la même méthode d'authentification. Puisque les slices sont censées être isolées, la réutilisation du code est facilitée par une couche inférieure, **Shared**.
 
-Shared is different from other layers in the sense that it contains segments, not slices. In this way, the Shared layer can be thought of as a hybrid between a layer and a slice.
+Shared diffère des autres couches dans le sens où elle contient des segments, et non des slices. De cette façon, la couche Shared peut être considérée comme un hybride entre une couche et une slice.
 
-Usually, the code in Shared is not planned ahead of time, but rather extracted during development, because only during development does it become clear which parts of code are actually shared. However, it’s still helpful to keep a mental note of what kind of code naturally belongs in Shared:
+En général, le code dans Shared n'est pas planifié à l'avance, mais plutôt extrait au fur et à mesure du développement, car c'est seulement en cours de développement qu'il devient clair quelles parties du code sont réellement partagées. Cependant, il est toujours utile de garder à l'esprit quel type de code appartient naturellement à Shared :
 
-- 📂 `ui/` — the UI kit, pure appearance, no business logic. For example, buttons, modal dialogs, form inputs.
-- 📂 `api/` — convenience wrappers around request making primitives (like `fetch()` on the Web) and, optionally, functions for triggering particular requests according to the backend specification.
-- 📂 `config/` — parsing environment variables
-- 📂 `i18n/` — configuration of language support
-- 📂 `router/` — routing primitives and route constants
+- 📂 `ui/` — l'UI kit, pure apparence, pas de logique métier. Par exemple, les boutons, les boîtes de dialogue modales, les champs de formulaire.
+- 📂 `api/` — des wrappers pratiques autour des primitives de requêtes (comme `fetch()` sur le Web) et, éventuellement, des fonctions pour déclencher des requêtes particulières selon la spécification du backend.
+- 📂 `config/` — parsing des variables d'environnement
+- 📂 `i18n/` — configuration du support des langues
+- 📂 `router/` — primitives de routage et constantes de route
 
-Those are just a few examples of segment names in Shared, but you can omit any of them or create your own. The only important thing to remember when creating new segments is that segment names should describe **purpose (the why), not essence (the what)**. Names like “components”, “hooks”, “modals” *should not* be used because they describe what these files are, but don’t help to navigate the code inside. This requires people on the team to dig through every file in such folders and also keeps unrelated code close, which leads to broad areas of code being affected by refactoring and thus makes code review and testing harder.
+Ce ne sont que quelques exemples de noms de segments dans Shared, mais vous pouvez en omettre certains ou créer les vôtres. La seule chose importante à retenir lorsque vous créez de nouveaux segments, c'est que les noms de segments doivent décrire **l'objectif (le pourquoi), pas l'essence (le quoi)**. Des noms comme « composants », « hooks », « modals » *ne doivent pas* être utilisés, car ils décrivent ce que ces fichiers sont, mais ne facilitent pas la navigation dans le code. Cela oblige les membres de l'équipe à fouiller dans chaque fichier de ces dossiers et garde également le code non lié à proximité, ce qui entraîne des zones larges de code affectées par le refactoring et rend ainsi la revue de code et les tests plus difficiles.
 
-### Define a strict public API
+### Définir une API publique stricte
 
-In the context of Feature-Sliced Design, the term *public API* refers to a slice or segment declaring what can be imported from it by other modules in the project. For example, in JavaScript that can be an `index.js` file re-exporting objects from other files in the slice. This enables freedom in refactoring code inside a slice as long as the contract with the outside world (i.e. the public API) stays the same.
+Dans le cadre de Feature-Sliced Design, le terme *API publique* fait référence à une slice ou un segment déclarant ce qui peut être importé par d'autres modules dans le projet. Par exemple, en JavaScript, cela peut être un fichier `index.js` réexportant des objets provenant d'autres fichiers dans la slice. Cela permet de refactoriser librement le code à l'intérieur d'une slice tant que le contrat avec l'extérieur (c'est-à-dire l'API publique) reste le même.
 
-For the Shared layer that has no slices, it’s usually more convenient to define a separate public API for each segment as opposed to defining one single index of everything in Shared. This keeps imports from Shared naturally organized by intent. For other layers that have slices, the opposite is true — it’s usually more practical to define one index per slice and let the slice decide its own set of segments that is unknown to the outside world because other layers usually have a lot less exports.
+Pour la couche Shared qui n'a pas de slices, il est généralement plus pratique de définir une API publique séparée pour chaque segment plutôt que de définir un seul index pour tout Shared. Cela permet de garder les imports de Shared naturellement organisés par objectif. Pour les autres couches qui ont des slices, l'inverse est vrai — il est généralement plus pratique de définir un index par slice et de laisser la slice décider de son propre ensemble de segments qui est inconnu de l'extérieur, car les autres couches ont généralement beaucoup moins d'exports.
 
-Our slices/segments will appear to each other as follows:
+Nos slices/segments apparaîtront les uns aux autres comme suit :
+
 
 ```
 📂 pages/
@@ -128,130 +133,52 @@ Our slices/segments will appear to each other as follows:
     📄 index
   📁 …
 ```
+Ce qui se trouve à l'intérieur des dossiers comme `pages/feed` ou `shared/ui` n'est connu que de ces dossiers, et les autres fichiers ne doivent pas dépendre de la structure interne de ces dossiers.
 
-Whatever is inside folders like `pages/feed` or `shared/ui` is only known to those folders, and other files should not rely on the internal structure of these folders.
+### Blocs réutilisés de grande taille dans l'UI
 
-### Large reused blocks in the UI
+Plus tôt, nous avons mentionné de revenir sur l'en-tête qui apparaît sur chaque page. Le reconstruire à partir de zéro sur chaque page serait peu pratique, donc il est tout à fait naturel de vouloir le réutiliser. Nous avons déjà Shared pour faciliter la réutilisation du code, cependant, il y a une mise en garde à propos de la mise en place de gros blocs d'UI dans Shared — la couche Shared ne doit pas connaître les couches situées au-dessus d'elle.
 
-Earlier we made a note to revisit the header that appears on every page. Rebuilding it from scratch on every page would be impractical, so it’s only natural to want to reuse it. We already have Shared to facilitate code reuse, however, there’s a caveat to putting large blocks of UI in Shared — the Shared layer is not supposed to know about any of the layers above. 
+Entre Shared et Pages, il y a trois autres couches : Entities, Features, et Widgets. Certains projets peuvent avoir des éléments dans ces couches qu'ils doivent utiliser dans un grand bloc réutilisable, ce qui signifie que nous ne pouvons pas placer ce bloc réutilisable dans Shared, sinon il importerait des couches supérieures, ce qui est interdit. C'est là qu'intervient la couche Widgets. Elle est située au-dessus de Shared, Entities et Features, donc elle peut utiliser toutes ces couches.
 
-Between Shared and Pages there are three other layers: Entities, Features, and Widgets.  Some projects may have something in those layers that they need in a large reusable block, and that means we can’t put that reusable block in Shared, or else it would be importing from upper layers, which is prohibited. That’s where the Widgets layer comes in. It is located above Shared, Entities, and Features, so it can use them all.
+Dans notre cas, l'en-tête est très simple — il s'agit d'un logo statique et d'une navigation de haut niveau. La navigation doit faire une requête à l'API pour déterminer si l'utilisateur est actuellement connecté ou non, mais cela peut être géré par un simple import du segment `api`. Par conséquent, nous conserverons notre en-tête dans Shared.
 
-In our case, the header is very simple — it’s a static logo and top-level navigation. The navigation needs to make a request to the API to determine if the user is currently logged in or not, but that can be handled by a simple import from the `api` segment. Therefore, we will keep our header in Shared.
+### Analyse d'une page avec un formulaire
 
-### Close look at a page with a form
-
-Let’s also examine a page that’s intended for editing, not reading. For example, the article writer:
+Examinons également une page destinée à la modification, et non à la lecture. Par exemple, l'éditeur d'articles :
 
 ![Conduit post editor](/img/tutorial/realworld-editor-authenticated.jpg)
 
-It looks trivial, but contains several aspects of application development that we haven’t explored yet — form validation, error states, and data persistence.
+Cela semble trivial, mais comporte plusieurs aspects du développement d'application que nous n'avons pas encore explorés — validation des formulaires, états d'erreur, et persistance des données.
 
-If we were to build this page, we would grab some inputs and buttons from Shared and put together a form in the `ui` segment of this page. Then, in the `api` segment, we would define a mutation request to create the article on the backend. 
+Si nous devions créer cette page, nous prendrions quelques champs de saisie et boutons depuis Shared et assemblerions un formulaire dans le segment `ui` de cette page. Ensuite, dans le segment `api`, nous définirions une requête de mutation pour créer l'article sur le backend.
 
-To validate the request before sending, we need a validation schema, and a good place for it is the `model` segment, since it’s the data model. There we will produce error messages and display them using another component in the `ui` segment. 
+Pour valider la requête avant de l'envoyer, nous aurions besoin d'un schéma de validation, et un bon endroit pour cela est le segment `model`, car il s'agit du modèle de données. Là, nous produirions des messages d'erreur et les afficherions en utilisant un autre composant dans le segment `ui`.
 
-To improve user experience, we could also persist the inputs to prevent accidental data loss. This is also a job of the `model` segment.
+Pour améliorer l'expérience utilisateur, nous pourrions également persister les entrées pour éviter toute perte de données accidentelle. Cela relève également du segment `model`.
 
-### Summary
+### Résumé
 
-We have examined several pages and outlined a preliminary structure for our application:
+Nous avons examiné plusieurs pages et esquissé une structure préliminaire pour notre application :
 
-1. Shared layer
-    1. `ui`  will contain our reusable UI kit
-    2. `api`  will contain our primitive interactions with the backend
-    3. The rest will be arranged on demand
-2. Pages layer — each page is a separate slice
-    1. `ui`  will contain the page itself and all of its parts
-    2. `api`  will contain more specialized data fetching, using `shared/api`
-    3. `model`  might contain client-side storage of the data that we will display
+1. Couche Shared
+    1. `ui` contiendra notre kit UI réutilisable
+    2. `api` contiendra nos interactions primitives avec le backend
+    3. Le reste sera organisé au besoin
+2. Couche Pages — chaque page est une slice distincte
+    1. `ui` contiendra la page elle-même et toutes ses parties
+    2. `api` contiendra des récupérations de données plus spécialisées, utilisant `shared/api`
+    3. `model` pourrait contenir le stockage côté client des données que nous afficherons
 
-Let’s get building!
+Passons à la construction !
 
-## Part 2. In code
+## Partie 2. En code
 
-Now that we have a plan, let’s put it to practice. We will use React and [Remix](https://remix.run).
+Maintenant que nous avons un plan, mettons-le en pratique. Nous utiliserons React et [Remix](https://remix.run).
 
-There's a template ready for this project, clone it from GitHub to get a headstart: [https://github.com/feature-sliced/tutorial-conduit/tree/clean](https://github.com/feature-sliced/tutorial-conduit/tree/clean).
+Un modèle est prêt pour ce projet, clonez-le depuis GitHub pour démarrer rapidement : [https://github.com/feature-sliced/tutorial-conduit/tree/clean](https://github.com/feature-sliced/tutorial-conduit/tree/clean).
 
-Install dependencies with `npm install` and start the development server with `npm run dev`. Open [http://localhost:3000](http://localhost:3000) and you should see a blank app.
-
-### Lay out the pages
-
-Let’s start by creating blank components for all our pages. Run the following command in your project:
-
-```bash
-npx fsd pages feed sign-in article-read article-edit profile settings --segments ui
-```
-
-This will create folders like `pages/feed/ui/` and an index file, `pages/feed/index.ts`, for every page.
-
-### Connect the feed page
-
-Let’s connect the root route of our application to the feed page. Create a component, `FeedPage.tsx` in `pages/feed/ui` and put the following inside it:
-
-
-```tsx title="pages/feed/ui/FeedPage.tsx"
-export function FeedPage() {
-  return (
-    <div className="home-page">
-      <div className="banner">
-        <div className="container">
-          <h1 className="logo-font">conduit</h1>
-          <p>A place to share your knowledge.</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-```
-
-Then re-export this component in the feed page’s public API, the `pages/feed/index.ts` file:
-
-
-
-```ts title="pages/feed/index.ts"
-export { FeedPage } from "./ui/FeedPage";
-```
-
-Now connect it to the root route. In Remix, routing is file-based, and the route files are located in the `app/routes` folder, which nicely coincides with Feature-Sliced Design.
-
-Use the `FeedPage` component in `app/routes/_index.tsx`:
-
-```tsx title="app/routes/_index.tsx"
-import type { MetaFunction } from "@remix-run/node";
-import { FeedPage } from "pages/feed";
-
-export const meta: MetaFunction = () => {
-  return [{ title: "Conduit" }];
-};
-
-export default FeedPage;
-```
-
-Then, if you run the dev server and open the application, you should see the Conduit banner!
-
-![The banner of Conduit](/img/tutorial/conduit-banner.jpg)
-
-### API client
-
-To talk to the RealWorld backend, let’s create a convenient API client in Shared. Create two segments, `api` for the client and `config` for variables like the backend base URL:
-
-```bash
-npx fsd shared --segments api config
-```
-
-Then create `shared/config/backend.ts`:
-
-```tsx title="shared/config/backend.ts"
-export const backendBaseUrl = "https://api.realworld.io/api";
-```
-
-```tsx title="shared/config/index.ts"
-export { backendBaseUrl } from "./backend";
-```
-
-Since the RealWorld project conveniently provides an [OpenAPI specification](https://github.com/gothinkster/realworld/blob/main/api/openapi.yml), we can take advantage of auto-generated types for our client. We will use [the `openapi-fetch` package](https://openapi-ts.pages.dev/openapi-fetch/) that comes with an additional type generator.
+Installez les dépendances avec `npm install` et lancez le serveur de développement avec `npm run dev`. Ouvrez [http://localhost:3000](http://localhost:3000) et vous devriez voir une application vide.
 
 Run the following command to generate up-to-date API typings:
 
