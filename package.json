@@ -1,6 +1,6 @@
 {
     "name": "@feature-sliced/documentation",
-    "version": "2.1",
+    "version": "2.1.0",
     "private": true,
     "scripts": {
         "docusaurus": "docusaurus",
