@@ -24,7 +24,6 @@ A simple way to start is by running our linter, [Steiger][steiger], on the proje
 - [`excessive-slicing`][excessive-slicing] — if a layer has too many slices, it's usually a sign that the decomposition is too fine-grained. This rule will suggest merging or grouping some slices to help project navigation.
 
 ```bash
-npm add --save-dev steiger @feature-sliced/steiger-plugin
 npx steiger src
 ```
 

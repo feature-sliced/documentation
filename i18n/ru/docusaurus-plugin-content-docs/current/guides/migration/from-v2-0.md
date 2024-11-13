@@ -24,7 +24,6 @@ sidebar_position: 3
 - [`excessive-slicing`][excessive-slicing] — если у слоя слишком много слайсов, это обычно означает, что декомпозиция слишком мелкая. Это правило предложит объединить или сгруппировать некоторые слайсы, чтобы помочь в навигации по проекту.
 
 ```bash
-npm add --save-dev steiger @feature-sliced/steiger-plugin
 npx steiger src
 ```
 
