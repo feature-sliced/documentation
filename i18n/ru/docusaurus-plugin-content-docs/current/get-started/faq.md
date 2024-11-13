@@ -13,7 +13,7 @@ pagination_next: guides/index
 
 ### Существует ли тулкит или линтер? {#is-there-a-toolkit-or-a-linter}
 
-Есть официальный конфиг для ESLint — [@feature-sliced/eslint-config][eslint-config-official], и плагин для ESLint — [@conarti/eslint-plugin-feature-sliced][eslint-plugin-conarti], созданный участником сообщества Александром Белоусом. Мы будем рады вашим вкладам в эти проекты или созданию своих!
+Да! У нас есть линтер [Steiger][ext-steiger] для проверки архитектуры вашего проекта и [генераторы папок][ext-tools] через CLI или IDE.
 
 ### Где хранить layout/template страниц? {#where-to-store-the-layouttemplate-of-pages}
 
@@ -58,10 +58,10 @@ _Entity_ — это понятие из реальной жизни, с кото
 
 Ответили [здесь](/docs/guides/examples/auth)
 
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
 [import-rule-layers]: /docs/reference/layers#import-rule-on-layers
 [reference-entities]: /docs/reference/layers#entities
-[eslint-config-official]: https://github.com/feature-sliced/eslint-config
-[eslint-plugin-conarti]: https://github.com/conarti/eslint-plugin-feature-sliced
 [motivation]: /docs/about/motivation
 [telegram]: https://t.me/feature_sliced
 [discord]: https://discord.gg/S8MzWTUsmp

@@ -43,7 +43,7 @@ const presets = [
                 showLastUpdateTime: true,
                 versions: {
                     current: {
-                        label: `v2.0.0 🍰`,
+                        label: `v2.1`,
                     },
                 },
                 sidebarItemsGenerator,

@@ -18,7 +18,7 @@ FSDでは、以下の方法で達成されます。
 
 * アプリケーションを層とスライスに分割する - 特定の機能を実現するモジュール。
 * 各モジュールには、[公開API][refs-public-api]を提供することが求められます。
-* モジュール間の[相互作用][refs-isolation]に特別な制限を設ける - 各モジュールは「下位」のモジュールにのみ依存でき、同じ層またはそれ以上の層のモジュールには依存できません。
+* モジュール間の相互作用に特別な制限を設ける - 各モジュールは「下位」のモジュールにのみ依存でき、同じ層またはそれ以上の層のモジュールには依存できません。
 
 ## コンポーネントの構成（UIレベル） {#components-composition-ui-level}
 
@@ -144,4 +144,3 @@ export const { sendMessage, attachFile } = createMessageInput({
 * [(プレゼンテーション) 設計原則について（低結合と高凝集を含む）](https://www.slideshare.net/cristalngo/software-design-principles-57388843)
 
 [refs-public-api]: /docs/reference/public-api
-[refs-isolation]: /docs/reference/isolation

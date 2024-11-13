@@ -13,7 +13,7 @@ pagination_next: guides/index
 
 ### toolkit이나 linter가 있나요?
 
-공식 ESLint 설정인 [@feature-sliced/eslint-config][eslint-config-official]와 커뮤니티 멤버인 Aleksandr Belous가 만든 ESLint 플러그인 [@conarti/eslint-plugin-feature-sliced][eslint-plugin-conarti]가 있습니다. 이 프로젝트들에 기여하거나 여러분만의 프로젝트를 시작해보세요!
+네! 우리는 CLI 또는 IDE를 통해 프로젝트의 아키텍처와 [폴더 생성기][ext-tools]를 확인하기 위한 [Steiger][ext-steiger]라는 linter를 가지고 있습니다.
 
 ### Where to store the layout/template of pages?
 
@@ -59,10 +59,10 @@ pagination_next: guides/index
 
 [여기](/docs/guides/examples/auth)에서 답변했습니다.
 
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
 [import-rule-layers]: /docs/reference/layers#import-rule-on-layers
 [reference-entities]: /docs/reference/layers#entities
-[eslint-config-official]: https://github.com/feature-sliced/eslint-config
-[eslint-plugin-conarti]: https://github.com/conarti/eslint-plugin-feature-sliced
 [motivation]: /docs/about/motivation
 [telegram]: https://t.me/feature_sliced
 [discord]: https://discord.gg/S8MzWTUsmp

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 # Миграция с v1
@@ -157,7 +157,7 @@ sidebar_position: 4
 - [Новые идеи v2 с пояснениями (atomicdesign-chat)][ext-tg-v2-draft]
 - [Обсуждение абстракций и нейминга для новой версии методологии (v2)](https://github.com/feature-sliced/documentation/discussions/31)
 
-[refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
+[refs-low-coupling]: /docs/reference/slices-segments#zero-coupling-high-cohesion
 [refs-adaptability]: /docs/about/understanding/naming
 
 [ext-v1]: https://feature-sliced.github.io/featureslices.dev/v1.0.html
