@@ -23,6 +23,11 @@ A simple way to start is by running our linter, [Steiger][steiger], on the proje
 - [`insignificant-slice`][insignificant-slice] — if an entity or feature is only used in one page, this rule will suggest merging that entity or feature into the page entirely.
 - [`excessive-slicing`][excessive-slicing] — if a layer has too many slices, it's usually a sign that the decomposition is too fine-grained. This rule will suggest merging or grouping some slices to help project navigation.
 
+```bash
+npm add --save-dev steiger @feature-sliced/steiger-plugin
+npx steiger src
+```
+
 This will help you identify which slices are only used once, so that you could reconsider if they are really necessary. In such considerations, keep in mind that a layer forms some kind of global namespace for all the slices inside of it. Just as you wouldn't pollute the global namespace with variables that are only used once, you should treat a place in the namespace of a layer as valuable, to be used sparingly.
 
 ### Standardize cross-imports
