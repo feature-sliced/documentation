@@ -13,7 +13,7 @@ You can ask your question in our [Telegram chat][telegram], [Discord community][
 
 ### Is there a toolkit or a linter?
 
-There is an official ESLint config — [@feature-sliced/eslint-config][eslint-config-official], and an ESLint plugin — [@conarti/eslint-plugin-feature-sliced][eslint-plugin-conarti], created by Aleksandr Belous, a community member. You're welcome to contribute to these projects or start your own!
+Yes! We have a linter called [Steiger][ext-steiger] to check your project's architecture and [folder generators][ext-tools] through a CLI or IDEs.
 
 ### Where to store the layout/template of pages?
 
@@ -58,10 +58,10 @@ Rather yes than no
 
 Answered [here](/docs/guides/examples/auth)
 
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
 [import-rule-layers]: /docs/reference/layers#import-rule-on-layers
 [reference-entities]: /docs/reference/layers#entities
-[eslint-config-official]: https://github.com/feature-sliced/eslint-config
-[eslint-plugin-conarti]: https://github.com/conarti/eslint-plugin-feature-sliced
 [motivation]: /docs/about/motivation
 [telegram]: https://t.me/feature_sliced
 [discord]: https://discord.gg/S8MzWTUsmp
