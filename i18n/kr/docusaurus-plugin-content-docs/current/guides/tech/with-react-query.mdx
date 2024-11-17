@@ -328,7 +328,7 @@ export const QueryProvider = ({ client, children }: Props) => {
 ```
 
 ### 2. `QueryClient` 생성하기
-`QueryClient`는 API 요청을 관리하는 인스턴스입니다. `query-client.ts` 파일은 `@/shared/api/query-client.ts`에 속해 있으며, 쿼리 캐싱을 위해 특정 설정으로 API 요청을 `QueryClient`를 생성합니다.
+`QueryClient`는 API 요청을 관리하는 인스턴스입니다. `query-client.ts` 파일은 `@/shared/api/query-client.ts`에 속해 있으며, 쿼리 캐싱을 위해 특정 설정으로 `QueryClient`를 생성합니다.
 
 ```tsx title="@/shared/api/query-client.ts"
 import { QueryClient } from "@tanstack/react-query";
@@ -345,7 +345,7 @@ export const queryClient = new QueryClient({
 
 ## 코드 생성
 
-API 코드를 생성해주는 도구들이 있지만, 이러한 방식은 위에서 설명한 수동 접근 방식에 비해 유연성이 부족할 수 있습니다. 그러나 Swagger 파일이 잘 구성되어 있고 이러한 자동 생성 도구를 사용하는 경우, 생성된 코드를 `@/shared/api` 디렉토리에 두어 관리하는 것이 효율적일 수 있습니다.
+API 코드를 생성해주는 도구들이 있지만, 이러한 방식은 위의 예제 처럼 직접 코드를 작성하는 방법보다 유연성이 부족할 수 있습니다. 그러나 Swagger 파일이 잘 구성되어 있고 이러한 자동 생성 도구를 사용하는 경우, 생성된 코드를 `@/shared/api` 디렉토리에 두어 관리하는 것이 효율적일 수 있습니다.
 
 
 ## React Query를 조직화하기 위한 추가 조언
