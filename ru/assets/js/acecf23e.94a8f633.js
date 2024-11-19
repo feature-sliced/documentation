@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_feature_sliced_documentation=self.webpackChunk_feature_sliced_documentation||[]).push([["7627"],{7548:function(e){e.exports=JSON.parse('{"blogBasePath":"/ru/blog","blogTitle":"Blog","authorsListPath":"/ru/blog/authors"}')}}]);
