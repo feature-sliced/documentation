@@ -308,7 +308,7 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchSong.fulfilled, (state, action) => {
       // 같은 fetch 결과를 처리하며, 여기서 artists를 삽입합니다.
-      usersAdapter.upsertMany(state, action.payload.users)
+      artistAdapter.upsertMany(state, action.payload.artists)
     })
   },
 })

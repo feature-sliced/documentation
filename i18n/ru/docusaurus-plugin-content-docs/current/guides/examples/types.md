@@ -307,7 +307,7 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchSong.fulfilled, (state, action) => {
       // И здесь обрабатываем тот же ответ с бэкенда, добавляя исполнителей
-      artistAdapter.upsertMany(state, action.payload.users)
+      artistAdapter.upsertMany(state, action.payload.artists)
     })
   },
 })
