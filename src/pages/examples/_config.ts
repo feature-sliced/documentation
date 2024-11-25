@@ -434,7 +434,7 @@ export const examples: Example[] = [
         website: "https://ivanzemsky.github.io/ProjectManagement/",
         preview: require("./img/project-management-system.png"),
         version: VERSIONS.V2,
-        updatedAt: "2024-11-24",
+        updatedAt: "2024-11-25",
         tech: ["react", "typescript", "material ui", "mobx", "react-hook-form"],
     },
     // Reverse the list (last examples should be at the top)
