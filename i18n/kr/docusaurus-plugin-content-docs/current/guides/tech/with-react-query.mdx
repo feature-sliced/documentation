@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 ---
-# React Query와 함께 사용하기 
+# React Query와 함께 사용하기
 
 ## “키를 어디에 두어야 하는가” 문제
 
@@ -33,7 +33,7 @@ sidebar_position: 10
         ...                                     #
 ```
 
-만약 엔티티 간에 연결이 필요한 경우 (예: Country 엔티티에 City 엔티티 필드가 포함되는 경우), [@x-notation을 활용한 교차 임포트 방식](https://github.com/feature-sliced/documentation/discussions/390#discussioncomment-5570073)을 사용하거나 대안으로 아래의 구조를 고려할 수 있습니다.
+만약 엔티티 간에 연결이 필요한 경우 (예: Country 엔티티에 City 엔티티 필드가 포함되는 경우), [교차 가져오기를 위한 공개 API][public-api-for-cross-imports]을 사용하거나 대안으로 아래의 구조를 고려할 수 있습니다.
 
 ### 대안 방안 — shared에 유지하기
 
@@ -422,4 +422,4 @@ export const apiClient = new ApiClient(API_URL);
 - [(CodeSandbox) 샘플 프로젝트](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
 - [쿼리 팩토리에 대하여](https://tkdodo.eu/blog/the-query-options-api)
 
-
+[public-api-for-cross-imports]: /docs/reference/public-api#public-api-for-cross-imports

@@ -35,7 +35,7 @@ sidebar_position: 10
 ```
 
 Если среди сущностей есть связи (например, у сущности Страна есть поле-список сущностей Город), то можно воспользоваться
-[экспериментальным подходом к организованным кросс-импортам через @x-нотацию](https://github.com/feature-sliced/documentation/discussions/390#discussioncomment-5570073) или рассмотреть альтернативное решение ниже.
+[публичным API для кросс-импортов][public-api-for-cross-imports] или рассмотреть альтернативное решение ниже.
 
 
 ### Альтернативное решение — хранить запросы в общем доступе.
@@ -432,3 +432,5 @@ export const apiClient = new ApiClient(API_URL);
 - [(GitHub) Пример проекта](https://github.com/ruslan4432013/fsd-react-query-example)
 - [(CodeSandbox) Пример проекта](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
 - [О фабрике запросов](https://tkdodo.eu/blog/the-query-options-api)
+
+[public-api-for-cross-imports]: /docs/reference/public-api#public-api-for-cross-imports

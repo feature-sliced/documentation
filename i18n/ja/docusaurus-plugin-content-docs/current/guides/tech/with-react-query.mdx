@@ -34,7 +34,7 @@ sidebar_position: 10
         ...                                     #
 ```
 
-もしエンティティ間に関係がある場合（例えば、「国」のエンティティに「都市」のエンティティ一覧フィールドがある場合）、`@x` アノテーションを使用した組織的なクロスインポートの[実験的アプローチ](https://github.com/feature-sliced/documentation/discussions/390#discussioncomment-5570073)を利用するか、以下の代替案を検討できます。
+もしエンティティ間に関係がある場合（例えば、「国」のエンティティに「都市」のエンティティ一覧フィールドがある場合）、`@x` アノテーションを使用した組織的なクロスインポートの[クロスインポート用のパブリックAPI][public-api-for-cross-imports]を利用するか、以下の代替案を検討できます。
 
 ### 代替案 — クエリを公開で保存する
 
@@ -432,3 +432,4 @@ export const apiClient = new ApiClient(API_URL);
 
 - [The Query Options API](https://tkdodo.eu/blog/the-query-options-api)
 
+[public-api-for-cross-imports]: /docs/reference/public-api#public-api-for-cross-imports
