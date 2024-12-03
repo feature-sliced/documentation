@@ -1,216 +1,159 @@
 ---
 sidebar_position: 3
-sidebar_label: 公開API
-pagination_next: about/index
 ---
 
 # 公開API
 
-FSDでの各エンティティは、**使いやすく統合しやすいモジュール**として設計されています。
+公開APIは、モジュールのグループ（スライスなど）とそれを使用するコードとの間の**契約**です。また、特定のオブジェクトへのアクセスを制限し、その公開APIを通じてのみアクセスを許可します。
 
-## 目的 {#goals}
+実際には、通常、再エクスポートを伴うインデックスファイルとして実装されます。
 
-モジュールの使いやすさと統合しやすさは、*いくつかの目的*を達成することによって実現されます。
+```js title="pages/auth/index.js"
+export { LoginPage } from "./ui/LoginPage";
+export { RegisterPage } from "./ui/RegisterPage";
+```
 
-1. アプリケーションは、個々モジュール内部構造の**変更から保護されるべき**
-1. モジュール内部構造の再設計は、**他のモジュールに影響を与えてはならない**
-1. モジュールの動作の重要な変更は、**簡単に特定できるべき**
-    > **モジュールの動作に関する重要な変更**とは、モジュール利用者の期待を壊す変更
+## 良い公開APIとは？
 
-これらの目的を達成するために、公開API（公開インターフェース）が導入され、モジュール機能への単一アクセス点を提供し、モジュールと外部世界との相互作用の「契約」を定義します。
+良い公開APIは、他のコードとの統合を便利で信頼性の高いものにします。これを達成するためには、以下の3つの目標を設定することが重要です。
 
-:::info 重要
+1. アプリケーションの残りの部分は、スライスの構造的変更（リファクタリングなど）から保護されるべきです。
+2. スライスの動作における重要な変更が以前の期待を破る場合、公開APIに変更が必要です。
+3. スライスの必要な部分のみを公開するべきです。
 
-エンティティの構造は、公開APIを提供する単一のエントリーポイントを持つべき
+最後の目標には重要な実践的な意味があります。特にスライスの初期開発段階では、すべてをワイルドカードで再エクスポートしたくなるかもしれません。なぜなら、ファイルからエクスポートする新しいオブジェクトは、スライスからも自動的にエクスポートされるからです。
+
+
+```js title="バッドプラクティス, features/comments/index.js"
+// ❌ これは悪いコードの例です。このようにしないでください。
+export * from "./ui/Comment";  // 👎
+export * from "./model/comments";  // 💩
+```
+
+これは、スライスの理解可能性を損ないます。インターフェースが理解できないと、スライスのコードを深く掘り下げて統合方法を調べなければいけなくなってしまいます。もう一つの問題は、モジュールの内部を誤って公開してしまう可能性があり、誰かがそれに依存し始めるとリファクタリングが難しくなることです。
+
+## クロスインポートのための公開API {#public-api-for-cross-imports}
+
+クロスインポートは、同じレイヤーの別のスライスからインポートする状況です。通常、これは[レイヤーに関するインポートルール][import-rule-on-layers]によって禁止されていますが、しばしば正当な理由でクロスインポートが必要です。たとえば、ビジネスエンティティは現実世界で互いに参照し合うことが多く、これらの関係をコードに反映させるのが最善です。
+
+この目的のために、`@x`表記として知られる特別な種類の公開APIがあります。エンティティAとBがあり、エンティティBがエンティティAからインポートする必要がある場合、エンティティAはエンティティB専用の別の公開APIを宣言できます。
+
+- `📂 entities`
+  - `📂 A`
+    - `📂 @x`
+      - `📄 B.ts` — エンティティB内のコード専用の特別な公開API
+    - `📄 index.ts` — 通常の公開API
+
+その後、`entities/B/`内のコードは`entities/A/@x/B`からインポートできます。
+
+```ts
+import type { EntityA } from "entities/A/@x/B";
+```
+
+
+`A/@x/B`という表記は「AとBが交差している」と読むことを意図しています。
+
+:::note
+
+クロスインポートは最小限に抑え、**この表記はエンティティレイヤーでのみ使用してください**。クロスインポートを排除することがしばしば非現実的だからです。
 
 :::
 
-```sh
-└── features/                          # 
-   └── auth-form/                      # フィーチャーの内部構造
-            ├── ui/                    #
-            ├── model/                 #
-            ├── {...}/                 #
-            └── index.ts               # フィーチャーの公開APIを持つエントリーポイント
+## インデックスファイルの問題
+
+`index.js`のようなインデックスファイル（Barrelファイルとも呼ばれる）は、公開APIを定義する最も一般的な方法です。作成は簡単ですが、特定のバンドラーやフレームワークで問題を引き起こすことがあります。
+
+### 循環インポート
+
+循環インポートとは、2つ以上のファイルが互いに循環的にインポートすることです。
+
+<!-- TODO: 画像に背景を追加し、モバイルで確認 -->
+
+<figure>
+    <img src="/img/circular-import-light.svg#light-mode-only" width="60%" alt="三つのファイルが循環的にインポートしている" />
+    <img src="/img/circular-import-dark.svg#dark-mode-only" width="60%" alt="三つのファイルが循環的にインポートしている" />
+    <figcaption>
+        上の図には、`fileA.js`、`fileB.js`、`fileC.js`の三つのファイルが循環的にインポートしている様子が示されています。
+    </figcaption>
+</figure>
+
+これらの状況は、バンドラーにとって扱いが難しく、場合によってはデバッグが難しいランタイムエラーを引き起こすことさえあります。
+
+循環インポートはインデックスファイルなしでも発生する可能性がありますが、インデックスファイルがあると、循環インポートを誤って作成する明確な機会が生まれます。これは、公開APIのスライスに2つのオブジェクト（例えば、`HomePage`と`loadUserStatistics`）が存在し、`HomePage`が`loadUserStatistics`に以下のようにアクセスすると循環インポートが発生してしまいます。
+
+
+```jsx title="pages/home/ui/HomePage.jsx"
+import { loadUserStatistics } from "../"; // pages/home/index.jsからインポート
+
+export function HomePage() { /* … */ }
 ```
 
-```ts title="**/**/index.ts"
-export { Form as AuthForm } from "./ui"
-export * as authFormModel from "./model"
+```js title="pages/home/index.js"
+export { HomePage } from "./ui/HomePage";
+export { loadUserStatistics } from "./api/loadUserStatistics";
 ```
 
-## 公開APIの要件 {#requirements-for-the-public-api}
 
-下記の要件を満たすことで、モジュールとの相互作用を**公開API契約の実行**に制限し、モジュールの信頼性と使いやすさを達成できます。
+この状況は循環インポートを作成します。なぜなら、`index.js`が`ui/HomePage.jsx`をインポートしますが、`ui/HomePage.jsx`が`index.js`をインポートするからです。
 
-### 1. アクセス制御 {#1-access-control}
+この問題を防ぐために、次の2つの原則を考慮してください。
+- ファイルが同じスライス内にある場合は、常に**相対インポート**を使用し、完全なインポートパスを記述すること
+- ファイルが異なるスライスにある場合は、常に**絶対インポート**を使用すること（エイリアスなどで）
 
-公開APIは、モジュール内容への**アクセス制御**を行うべきです。
+### Sharedにおける大きなバンドルサイズと壊れたツリーシェイキング {#large-bundles}
 
-- アプリケーションの他の部分は、**公開APIで提供されるモジュールのエンティティのみを使用できる**
-- 公開APIのないモジュールの内部部分は、**モジュール自身のみがアクセスできる**
+インデックスファイルがすべてを再エクスポートする場合、いくつかのバンドラーはツリーシェイキング（インポートされていないコードを削除すること）に苦労するかもしれません。
 
-#### 例 {#examples}
+通常、これは公開APIにとって問題ではありません。なぜなら、モジュールの内容は通常非常に密接に関連しているため、1つのものをインポートし、他のものをツリーシェイキングする必要がほとんどないからです。しかし、公開APIのルールが問題を引き起こす非常に一般的なケースが2つあります。それは`shared/ui`と`shared/lib`です。
 
-##### プライベートインポートからの排除 {#suspension-from-private-imports}
+これらの2つのフォルダーは、しばしば一度にすべてが必要ではない無関係なもののコレクションです。たとえば、`shared/ui`にはUIライブラリのすべてのコンポーネントのモジュールが含まれているかもしれません。
 
-- **悪い例**: 公開APIをバイパスしてモジュールの内部部分に直接アクセスすることは危険であり、特にモジュールのリファクタリング時に問題を引き起こす可能性がある。
+- `📂 shared/ui/`
+  - `📁 button`
+  - `📁 text-field`
+  - `📁 carousel`
+  - `📁 accordion`
 
-    ```diff
-    - import { Form } from "features/auth-form/components/view/form"
-    ```
+この問題は、これらのモジュールの1つが重い依存関係（シンタックスハイライトやドラッグ＆ドロップライブラリ）を持っている場合、悪化します。ボタンなど、`shared/ui`から何かを使用するすべてのページにそれらを引き込むことは望ましくありません。
 
-- **良い例**: APIは事前に必要なものだけをエクスポートし、モジュールの開発者はリファクタリング時に公開APIを壊さないことだけを考えればよい。
+`shared/ui`や`shared/lib`の単一の公開APIによってバンドルサイズが不適切に増加する場合は、各コンポーネントやライブラリのために別々のインデックスファイルを持つことをお勧めします。
 
-    ```diff
-    + import { AuthForm } from "features/auth-form"
-    ```
+- `📂 shared/ui/`
+  - `📂 button`
+    - `📄 index.js`
+  - `📂 text-field`
+    - `📄 index.js`
 
-### 2. 変更への耐性 {#2-sustainability-for-changes}
+その後、これらのコンポーネントの消費者は、次のように直接インポートできます。
 
-公開APIは、モジュール内部の**変更に対して耐性があるべきです**。
-
-- モジュールの動作を壊す変更は、公開APIの変更として反映されるべき
-
-#### 例 {#examples}
-
-##### 実装からの抽象化 {#abstracting-from-the-implementation}
-
-内部構造の変更は、公開APIの変更を引き起こすべきではありません。
-
-- **悪い例**: このコンポーネントをフィーチャー内で移動、または名前変更すると、すべての使用場所でインポートをリファクタリングする必要が生じる。
-
-    ```diff
-    - import { Form } from "features/auth-form/ui/form"
-    ```
-
-- **良い例**: フィーチャーのインターフェースは内部構造を反映せず、外部の「ユーザー」はフィーチャー内のコンポーネントの移動や名前変更の影響を受けない。
-
-    ```diff
-    + import { AuthForm } from "features/auth-form"
-    ```
-
-### 3. 統合性 {#3-integrability}
-
-公開APIは、**簡単で柔軟な統合を促進するべきです**。
-
-- 公開APIは、アプリケーションの他の部分での使用が便利であり、特に名前衝突問題を解決する必要がある。
-
-#### 例 {#examples}
-
-##### 名前の衝突 {#name-collision}
-
-- **悪い例**: 名前の衝突が発生してしまう。
-
-    ```ts title="features/auth-form/index.ts"
-    export { Form } from "./ui"
-    export * as model from "./model"
-    ```
-
-    ```ts title="features/post-form/index.ts"
-    export { Form } from "./ui"
-    export * as model from "./model"
-    ```
-
-    ```diff
-    - import { Form, model } from "features/auth-form"
-    - import { Form, model } from "features/post-form"
-    ```
-
-- **良い例**: インターフェースレベルで名前の衝突が解決される。
-
-    ```ts title="features/auth-form/index.ts"
-    export { Form as AuthForm } from "./ui"
-    export * as authFormModel from "./model"
-    ```
-
-    ```ts title="features/post-form/index.ts"
-    export { Form as PostForm } from "./ui"
-    export * as postFormModel from "./model"
-    ```
-
-    ```diff
-    + import { AuthForm, authFormModel } from "features/auth-form"
-    + import { PostForm, postFormModel } from "features/post-form"
-    ```
-
-##### 柔軟な使用 {#flexible-use}
-
-- **悪い例**: 書きにくく、読みづらく、「ユーザー」は不便を感じます。
-
-    ```diff
-    - import { storeActionUpdateUserDetails } from "features/auth-form"
-    - dispatch(storeActionUpdateUserDetails(...))
-    ```
-
-- **良い例**: 「ユーザー」は必要なものに対して反復的かつ柔軟にアクセスできます。
-
-    ```diff
-    + import { authFormModel } from "features/auth-form"
-    + dispatch(authFormModel.effects.updateUserDetails(...)) // redux
-    + authFormModel.updateUserDetailsFx(...) // effector
-    ```
-
-##### 衝突の解決 {#resolution-of-collisions}
-
-名前の衝突は、実装レベルではなく公開APIのレベルで解決されるべきです。
-
-- **悪い例**: 名前の衝突が実装レベルで解決される。
-
-    ```ts title="features/auth-form/index.ts"
-    export { AuthForm } from "./ui"
-    export { authFormActions, authFormReducer } from "model"
-    ```
-
-    ```ts title="features/post-form/index.ts"
-    export { PostForm } from "./ui"
-    export { postFormActions, postFormReducer } from "model"
-    ```
-
-- **良い例**: 名前の衝突がインターフェースレベルで解決される。
-
-    ```ts title="features/auth-form/model.ts"
-    export { actions, reducer }
-    ```
-
-    ```ts title="features/auth-form/index.ts"
-    export { Form as AuthForm } from "./ui"
-    export * as authFormModel from "./model"
-    ```
-
-     ```ts title="features/post-form/model.ts"
-    export { actions, reducer }
-    ```
-
-    ```ts title="features/post-form/index.ts"
-    export { Form as PostForm } from "./ui"
-    export * as postFormModel from "./model"
-    ```
-
-## 再エクスポートについて {#about-re-exports}
-
-JavaScriptでは、モジュールの公開APIは、モジュール内部のエンティティを`index`ファイルで再エクスポートすることによって作成されます。
-
-```ts title="**/**/index.ts"
-export { Form as AuthForm } from "./ui"
-export * as authModel from "./model"
+```js title="pages/sign-in/ui/SignInPage.jsx"
+import { Button } from '@/shared/ui/button';
+import { TextField } from '@/shared/ui/text-field';
 ```
 
-### 欠点 {#disadvantages}
 
-- ほとんどの人気のバンドラーでは、再エクスポートのために**コード分割の効果が低下してしまいます**。なぜなら、このアプローチでは[ツリーシェイキング](https://webpack.js.org/guides/tree-shaking/)が安全にモジュール全体しか削除することができないからです。
-   > 例えば、ページモデルで`authModel`をインポートすると、たとえ使用されていなくても、`AuthForm`コンポーネントがそのページのチャンクに含まれてしまいます。
+### 公開APIを回避することに対する実質的な保護がない
 
-- 結果として、チャンクの初期化が高コストになり、ブラウザはその中のすべてのモジュールを処理する必要があります。
+スライスのためにインデックスファイルを作成しても、誰もそれを使用せず、直接インポートを使用することができます。これは特に自動インポートにおいて問題です。なぜなら、オブジェクトをインポートできる場所がいくつかあるため、IDEがあなたのために決定しなければならないからです。時には、直接インポートを選択し、スライスの公開APIルールを破ることがあります。
 
-### 可能な解決策 {#possible-solutions}
+これらの問題を自動的にキャッチするために、[Steiger][ext-steiger]を使用することをお勧めします。これは、Feature-Sliced Designのルールセットを持つアーキテクチャリンターです。
 
-- `webpack`は、再エクスポートファイルを[**副作用なし**](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free)としてマークすることを可能にしています。これにより、`webpack`はそのファイルを扱う際に攻撃的な最適化を使用できるようになります。
+### 大規模プロジェクトにおけるバンドラーのパフォーマンスの低下
 
-## 参照 {#see-also}
+プロジェクト内に大量のインデックスファイルがあると、開発サーバーが遅くなる可能性があります。これは、TkDodoが[「Barrelファイルの使用をやめてください」][ext-please-stop-using-barrel-files]という記事で指摘しています。
 
-- [**SOLID**原則][ext-solid]
-- [**GRASP**パターン][ext-grasp]
+この問題に対処するためにできることはいくつかあります。
 
-[ext-solid]: https://ja.wikipedia.org/wiki/SOLID
-[ext-grasp]: https://ja.wikipedia.org/wiki/GRASP
+1. [「Sharedにおける大きなバンドルサイズと壊れたツリーシェイキング」](#large-bundles)のセクションと同じアドバイス — `shared/ui`や`shared/lib`の各コンポーネントやライブラリのために別々のインデックスファイルを持つこと。
+2. スライスを持つレイヤーのセグメントにインデックスファイルを持たないようにすること。  
+   たとえば、「コメント」フィーチャーのインデックス（`📄 features/comments/index.js`）がある場合、そのフィーチャーの`ui`セグメントのために別のインデックスを持つ理由はありません（`📄 features/comments/ui/index.js`）。
+3. 非常に大きなプロジェクトがある場合、アプリケーションをいくつかの大きなチャンクに分割できる可能性が高いです。  
+   たとえば、Google Docsは、ドキュメントエディターとファイルブラウザに非常に異なる責任を持っています。各パッケージが独自のレイヤーセットを持つ別々のFSDルートとしてモノレポを作成できます。いくつかのパッケージは、SharedとEntitiesレイヤーのみを持つことができ、他のパッケージはPagesとAppのみを持つことができ、他のパッケージは独自の小さなSharedを含むことができますが、他のパッケージからの大きなSharedも使用できます。
+
+<!-- TODO: 詳細を説明するページへのリンクを追加する（存在する場合） -->
+
+<!-- TODO: Next/Remixでのサーバー/クライアントコードの混在に関する問題を議論する -->
+
+[import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[ext-please-stop-using-barrel-files]: https://tkdodo.eu/blog/please-stop-using-barrel-files
