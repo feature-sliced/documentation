@@ -62,7 +62,7 @@ fsd pages home
 `ui`セグメント内に`home-page.svelte`ファイルを作成し、公開APIを介してアクセスできるようにします。　
 
 ```ts title="src/pages/home/index.ts"
-export { default as HomePage } from './ui/home-page';
+export { default as HomePage } from './ui/home-page.svelte';
 ```
 
 このページのルートを`app`層内に作成します。
@@ -81,7 +81,7 @@ export { default as HomePage } from './ui/home-page';
 │   │   │   ├── index.ts
 ```
 
-最後に`index.svelte`ファイル内にページコンポーネントを追加します。
+最後に`+page.svelte`ファイル内にページコンポーネントを追加します。
 
 ```html title="src/app/routes/+page.svelte"
 <script>

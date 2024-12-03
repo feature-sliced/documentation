@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 
-# v1からの移行
+# v1からv2への移行
 
 ## なぜv2なのか？ {#why-v2}
 
