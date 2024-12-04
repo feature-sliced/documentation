@@ -95,6 +95,25 @@ Slices, as well as layers App and Shared, consist of segments, and segments grou
 
 Usually these segments are enough for most layers, you would only create your own segments in Shared or App, but this is not a rule.
 
+## Definitions {#definitions}
+
+### Business Domain
+
+A specific area of the project's functionality, reflecting a real-world category or aspect of the business, such as user management, orders, or products. In FSD, slices represent business domains, grouping related modules for better cohesion and separation.
+
+### Business Entity
+
+An object or concept in the business domain, such as a user, product, or order, that is central to the business operations. Business entities are managed in the "Entities" layer of FSD, providing reusable business logic.
+
+### Product Feature
+
+A functional capability of the application that directly solves a user or business need, such as login or search functionality. The "Features" layer in FSD contains these reused implementations that bring business value.
+
+### Business Value
+
+The measurable impact or benefit that a feature or functionality provides to the business, such as increased efficiency, revenue, or customer satisfaction. FSD encourages building features that focus on delivering business value to users.
+
+
 ## Advantages {#advantages}
 
 - **Uniformity**  
