@@ -1,0 +1,95 @@
+# SvelteKit와 함께 사용하기
+
+SvelteKit에서도 FSD(Feature-Sliced Design) 아키텍처 구현할 수 있지만, SvelteKit의 기본 구조와 FSD의 원칙 사이에 약간의 충돌이 발생할 수 있습니다.
+
+- SvelteKit에서는 라우팅 관련 파일을 기본적으로 `src/routes` 폴더에 배치하지만, FSD에서는 라우팅이 app 레이어에 포함되어야 합니다.
+- SvelteKit은 라우팅과 관련 없는 파일을 모두 src/lib 폴더에 배치할 것을 권장합니다.
+
+## 구성 설정
+
+```ts title="svelte.config.ts"
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+/** @type {import('@sveltejs/kit').Config}*/ 
+const config = {
+   preprocess: [vitePreprocess()],
+   kit: {
+     adapter: adapter(),
+     files: {
+       routes: 'src/app/routes',             // 라우팅을 app 레이어 내부로 이동
+       lib: 'src',
+       appTemplate: 'src/app/index.html',    // 애플리케이션 진입점을 app 레이어 내부로 이동
+       assets: 'public'
+     },
+     alias: {
+       '@/*': 'src/*'                        // src 디렉터리에 대한 별칭 생성
+     }
+   }
+};
+
+export default config;
+```
+
+## 파일 라우팅을 `src/app`으로 이동
+
+구성을 변경하면 아래와 같은 파일 구조가 만들어집니다:
+
+```sh
+├── src
+│   ├── app
+│   │   ├── index.html
+│   │   ├── routes
+│   ├── pages                               # FSD에 고정된 pages 폴더
+```
+
+이제 라우트 파일을 `app` 레이어의 routes 폴더에 배치하고, `pages` 레이어의 페이지와 연결할 수 있습니다.
+
+예를 들어, 프로젝트에 홈 페이지를 추가하려면 다음 단계를 따라야 합니다:
+
+- `pages` 레이어에 새 페이지 슬라이스 추가
+- `app` 레이어의 `routes` 폴더에 라우트 생성
+- 슬라이스의 페이지를 루트와 연결
+
+[CLI 도구](https://github.com/feature-sliced/cli)를 사용하여 빠르게 페이지 슬라이스를 생성할 수 있습니다:
+
+```shell
+fsd pages home
+```
+
+`home-page.vue` 파일을 ui 세그먼트에 생성한 뒤, 이를 공개 API로 접근 가능하게 만듭니다:
+
+
+```ts title="src/pages/home/index.ts"
+export { default as HomePage } from './ui/home-page';
+```
+
+그리고 `app` 레이어의 routes 폴더에 라우트를 추가합니다:
+
+```sh
+├── src
+│   ├── app
+│   │   ├── routes
+│   │   │   ├── +page.svelte
+│   │   ├── index.html
+│   ├── pages
+│   │   ├── home
+│   │   │   ├── ui
+│   │   │   │   ├── home-page.svelte
+│   │   │   ├── index.ts
+```
+
+`index.svelte` 파일에 페이지 컴포넌트를 추가합니다:
+
+```html title="src/app/routes/+page.svelte"
+<script>
+  import { HomePage } from '@/pages/home';
+</script>
+
+<HomePage/>
+```
+
+## 추가 참고 사항
+
+- [SvelteKit의 디렉터리 구조 변경 문서](https://kit.svelte.dev/docs/configuration#files)
+
