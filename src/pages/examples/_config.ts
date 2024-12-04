@@ -426,5 +426,16 @@ export const examples: Example[] = [
         updatedAt: "2024-08-10",
         tech: ["react", "redux-toolkit", "typescript"],
     },
+    {
+        title: "Cat Pinterest",
+        description:
+            "Cat Pinterest where you can look at kittens and like them (=^･ω･^=)",
+        source: "https://github.com/s3rxio/cats-app",
+        website: "https://cats-app.s3rxio.ru",
+        preview: require("./img/cat-pinterest.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-09-19",
+        tech: ["react", "react-query", "react-router-dom", "typescript"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
