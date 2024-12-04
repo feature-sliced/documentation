@@ -1,0 +1,40 @@
+---
+hide_table_of_contents: true
+---
+
+# 💫 Communauté {#community}
+
+<p class="summary">
+Ressources communautaires, matériel supplémentaire
+</p>
+
+## Principal {#main}
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { StarOutlined, SearchOutlined, TeamOutlined, VerifiedOutlined } from "@ant-design/icons";
+
+<NavCard
+    title="Ressources Géniales" 
+    description="Une liste sélectionnée de vidéos, articles, et packages FSD"
+    to="https://github.com/feature-sliced/awesome"
+    Icon={StarOutlined}
+/>
+<NavCard
+    title="Équipe" 
+    description="Équipe principale, Champions, Contributeurs, Entreprises"
+    to="/community/team"
+    Icon={TeamOutlined}
+/>
+<NavCard
+    title="Brandbook" 
+    description="Recommandations pour l'utilisation de la marque FSD"
+    to="/docs/branding"
+    Icon={VerifiedOutlined}
+/>
+<NavCard
+    title="Contribution" 
+    description="Comment faire, flux de travail, support"
+    to="#"
+    Icon={SearchOutlined}
+    disabled
+/>
