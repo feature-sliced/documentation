@@ -1,0 +1,97 @@
+---
+sidebar_position: 2
+sidebar_class_name: sidebar-item--wip
+---
+
+import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+
+# 비분절화
+
+<WIP ticket="148" />
+
+## 상황
+
+프로젝트에서는 특정 도메인과 관련된 모듈들이 서로 관련이 있음에도 불구하고, 불필요하게 분산되어 프로젝트 전체에 흩어져 있는 경우가 자주 발생합니다.
+
+```sh
+├── components/
+|    ├── DeliveryCard
+|    ├── DeliveryChoice
+|    ├── RegionSelect
+|    ├── UserAvatar
+├── actions/
+|    ├── delivery.js
+|    ├── region.js
+|    ├── user.js
+├── epics/
+|    ├── delivery.js
+|    ├── region.js
+|    ├── user.js
+├── constants/
+|    ├── delivery.js
+|    ├── region.js
+|    ├── user.js
+├── helpers/
+|    ├── delivery.js
+|    ├── region.js
+|    ├── user.js
+├── entities/
+|    ├── delivery/
+|    |      ├── getters.js
+|    |      ├── selectors.js
+|    ├── region/
+|    ├── user/
+```
+
+## 문제점
+
+이 문제는 최소한 높은 응집성 원칙의 위반과, **변경 축의 과도한 확장(Stretching of the Axis of Changes)** 이라는 형태로 나타납니다.
+
+## 이를 무시할 경우
+
+- 예를 들어, 배송(delivery)과 관련된 로직을 수정하려면 여러 위치에 흩어져 있는 코드를 찾아 수정해야 합니다. 이는 변경이 필요한 범위를 불필요하게 넓혀 **변경 축을 확장** 시키는 결과를 초래합니다.
+- 사용자와 관련된 로직을 이해하려면, 프로젝트 전반에 흩어져 있는 **actions, epics, constants, entities, components** 를 모두 찾아 학습해야 합니다. 이는 이들이 한 곳에 모여 있지 않기 때문입니다.
+- 암묵적인 연결로 인해 도메인 영역이 비대해지며 통제하기 어려워질 수 있습니다.
+- 또한, 이 방식은 프로젝트 디렉토리에 "상수를 위한 상수 생성"과 같은 불필요한 파일을 무분별하게 쌓게 만들어, 문제를 제대로 인지하지 못하게 만듭니다.
+
+## 해결책
+
+특정 도메인 또는 사용자 케이스와 관련된 모든 모듈을 서로 인접하게 배치합니다.
+
+이를 통해 특정 모듈을 학습하거나 수정할 때 필요한 모든 구성 요소가 한곳에 모여 있어, 프로젝트 전체를 뒤질 필요가 없습니다.
+
+> 이러한 접근 방식은 코드베이스의 탐색성과 명확성을 크게 향상시키며, 모듈 간의 관계를 더 직관적으로 이해할 수 있도록 돕습니다.
+
+```diff
+- ├── components/
+- |    ├── DeliveryCard
+- |    ├── DeliveryChoice
+- |    ├── RegionSelect
+- |    ├── UserAvatar
+- ├── actions/
+- |    ├── delivery.js
+- |    ├── region.js
+- |    ├── user.js
+- ├── epics/{...}
+- ├── constants/{...}
+- ├── helpers/{...}
+  ├── entities/
+  |    ├── delivery/
++ |    |      ├── ui/ # ~ components/
++ |    |      |   ├── card.js
++ |    |      |   ├── choice.js
++ |    |      ├── model/
++ |    |      |   ├── actions.js
++ |    |      |   ├── constants.js
++ |    |      |   ├── epics.js
++ |    |      |   ├── getters.js
++ |    |      |   ├── selectors.js
++ |    |      ├── lib/ # ~ helpers
+  |    ├── region/
+  |    ├── user/
+```
+
+## See also
+
+* [(아티클) 낮은 결합도와 높은 응집도에 대한 명확한 설명](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
+* [(아티클) 낮은 결합도와 높은 응집도, 그리고 디미터의 법칙](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
