@@ -1,0 +1,137 @@
+---
+sidebar_position: 1
+---
+
+# Aperçu
+
+**Feature-Sliced Design** (FSD) est une méthodologie architecturale pour la structure des applications front-end. En termes simples, c'est un ensemble de règles et de conventions sur l'organisation du code. Le principal objectif de cette méthodologie est de rendre le projet plus compréhensible et stable face aux exigences commerciales en constante évolution.
+
+Outre un ensemble de conventions, FSD est également un ensemble d'outils. Nous avons un [linter][ext-steiger] pour vérifier l'architecture de votre projet, des [générateurs de dossiers][ext-tools] via un CLI ou des IDE, ainsi qu'une riche bibliothèque [d'exemples][examples].
+
+## Est-ce fait pour moi ? {#is-it-right-for-me}
+
+FSD peut être mis en œuvre dans des projets et des équipes de toutes tailles. Il est adapté à votre projet si :
+
+- Vous travaillez sur le **frontend** (UI sur web, mobile, bureau, etc.)
+- Vous construisez une **application**, pas une bibliothèque
+
+Et c'est tout ! Il n'y a aucune restriction sur le langage de programmation, le framework UI ou le gestionnaire d'état que vous utilisez. Vous pouvez également adopter FSD de manière incrémentielle, l'utiliser dans des monorepos et l'étendre en divisant votre application en packages et en appliquant FSD individuellement dans chacun d'eux.
+
+Si vous avez déjà une architecture en place et que vous envisagez de passer à FSD, assurez-vous que l'architecture actuelle **pose problème** dans votre équipe. Par exemple, si votre projet est devenu trop grand et trop interconnecté pour implémenter efficacement de nouvelles fonctionnalités, ou si vous attendez beaucoup de nouveaux membres dans l'équipe. Si l'architecture actuelle fonctionne, il n'est peut-être pas nécessaire de la changer. Mais si vous décidez de migrer, consultez la section [Migration][migration] pour obtenir des conseils.
+
+## Exemple de base {#basic-example}
+
+Voici un projet simple qui implémente FSD :
+
+- `📁 app`
+- `📁 pages`
+- `📁 shared`
+
+Ces dossiers de niveau supérieur sont appelés _couches_. Voyons plus en détail :
+
+- `📂 app`
+   - `📁 routes`
+   - `📁 analytics`
+- `📂 pages`
+   - `📁 home`
+   - `📂 article-reader`
+      - `📁 ui`
+      - `📁 api`
+   - `📁 settings`
+- `📂 shared`
+   - `📁 ui`
+   - `📁 api`
+
+Les dossiers à l'intérieur de `📂 pages` sont appelés _tranches_. Ils divisent la couche par domaine (dans ce cas, par pages). 
+
+Les dossiers à l'intérieur de `📂 app`, `📂 shared`, et `📂 pages/article-reader` sont appelés _segments_, et ils divisent les tranches (ou les couches) par objectif technique, c'est-à-dire à quoi sert le code.
+
+## Concepts {#concepts}
+
+Les couches, les tranches et les segments forment une hiérarchie comme suit :
+
+<figure>
+   ![Hiérarchie des concepts de FSD, décrite ci-dessous](/img/visual_schema.jpg)
+
+   <figcaption style={{ fontStyle: "italic", fontSize: "0.9em" }}>
+      <p>Illustration ci-dessus : trois piliers, étiquetés de gauche à droite comme "Couches", "Tranches" et "Segments".</p>
+      <p>Le pilier "Couches" contient sept divisions disposées de haut en bas et étiquetées "app", "processes", "pages", "widgets", "features", "entities", et "shared". La division "processes" est barrée. La division "entities" est reliée au deuxième pilier "Tranches" de manière à indiquer que ce pilier est le contenu de "entities".</p>
+      <p>Le pilier "Tranches" contient trois divisions disposées de haut en bas et étiquetées "user", "post", et "comment". La division "post" est reliée au troisième pilier "Segments" de la même manière, ce qui montre que c'est le contenu de "post".</p>
+      <p>Le pilier "Segments" contient trois divisions, disposées de haut en bas et étiquetées "ui", "model", et "api".</p>
+   </figcaption>
+</figure>
+
+### Couches {#layers}
+
+Les couches sont normalisées dans tous les projets FSD. Vous n'êtes pas obligé d'utiliser toutes les couches, mais leurs noms sont importants. Il y en a actuellement sept (de haut en bas) :
+
+1. App\* — tout ce qui fait fonctionner l'application — routage, points d'entrée, styles globaux, fournisseurs.
+2. Processes (obsolète) — scénarios complexes inter-pages.
+3. Pages — pages complètes ou grandes parties de pages dans un routage imbriqué.
+4. Widgets — gros morceaux autonomes de fonctionnalité ou d'UI, livrant généralement un cas d'utilisation complet.
+5. Features — implémentations _réutilisées_ de fonctionnalités complètes du produit, c'est-à-dire des actions qui apportent de la valeur commerciale à l'utilisateur.
+6. Entities — entités commerciales avec lesquelles le projet travaille, comme `user` ou `product`.
+7. Shared\* — fonctionnalité réutilisable, surtout lorsqu'elle est détachée des spécificités du projet ou de l'entreprise, bien que ce ne soit pas nécessairement le cas.
+
+_\* — ces couches, App et Shared, contrairement aux autres, n'ont pas de tranches et sont composées directement de segments._
+
+Le principe avec les couches est qu'un module d'une couche ne peut connaître et importer que des modules des couches strictement inférieures.
+
+### Tranches {#slices}
+
+Les tranches partitionnent le code par domaine commercial. Vous êtes libre de choisir n'importe quel nom pour elles et de créer autant de tranches que vous le souhaitez. Les tranches rendent votre codebase plus facile à naviguer en gardant les modules logiquement liés ensemble.
+
+Les tranches ne peuvent pas utiliser d'autres tranches sur la même couche, ce qui permet d'assurer une forte cohésion et un faible couplage.
+
+### Segments {#segments}
+
+Les tranches, ainsi que les couches App et Shared, sont composées de segments, et les segments regroupent votre code par son objectif. Les noms des segments ne sont pas contraints par la norme, mais il existe plusieurs noms conventionnels pour les objectifs les plus courants :
+
+- `ui` — tout ce qui est lié à l'affichage de l'UI : composants UI, formatage des dates, styles, etc.
+- `api` — interactions avec le backend : fonctions de requêtes, types de données, mappeurs, etc.
+- `model` — le modèle de données : schémas, interfaces, stores, et logique métier.
+- `lib` — code de bibliothèque dont d'autres modules sur cette tranche ont besoin.
+- `config` — fichiers de configuration et drapeaux de fonctionnalités.
+
+En général, ces segments suffisent pour la plupart des couches. Vous ne créeriez vos propres segments que dans Shared ou App, mais ce n'est pas une règle stricte.
+
+## Avantages {#advantages}
+
+- **Uniformité**  
+  Étant donné que la structure est normalisée, les projets deviennent plus uniformes, ce qui facilite l'intégration des nouveaux membres dans l'équipe.
+
+- **Stabilité face aux changements et aux refactorisations**  
+  Un module sur une couche ne peut pas utiliser d'autres modules sur la même couche, ni ceux des couches supérieures.  
+  Cela vous permet d'effectuer des modifications isolées sans conséquences imprévues sur le reste de l'application.
+
+- **Réutilisation contrôlée de la logique**  
+  Selon la couche, vous pouvez rendre le code très réutilisable ou très local.  
+  Cela permet de maintenir un équilibre entre le principe **DRY** (Don't Repeat Yourself) et la praticité.
+
+- **Orientation vers les besoins commerciaux et des utilisateurs**  
+  L'application est divisée en domaines commerciaux et l'utilisation du langage commercial est encouragée dans la dénomination, afin que vous puissiez effectuer un travail utile pour le produit sans avoir à comprendre en profondeur toutes les autres parties du projet.
+
+## Adoption incrémentale {#incremental-adoption}
+
+Si vous avez une base de code existante que vous souhaitez migrer vers FSD, nous suggérons la stratégie suivante. Nous l'avons trouvée utile lors de notre propre expérience de migration.
+
+1. Commencez lentement à structurer les modules des couches App et Shared, module par module, pour créer une base solide.
+
+2. Distribuez toute l'UI existante sur les Widgets et Pages en prenant de grandes lignes, même si elles ont des dépendances qui violent les règles de FSD.
+
+3. Commencez progressivement à résoudre les violations d'importation et à extraire les Entities et éventuellement même les Features.
+
+Il est conseillé de ne pas ajouter de nouvelles entités importantes pendant la refactorisation ou de ne refactoriser que certaines parties du projet.
+
+## Étapes suivantes {#next-steps}
+
+- **Vous voulez bien comprendre comment penser en FSD ?** Consultez le [Tutoriel][tutorial].
+- **Vous préférez apprendre par des exemples ?** Nous en avons beaucoup dans la section [Exemples][examples].
+- **Des questions ?** Venez sur notre [chat Telegram][ext-telegram] et obtenez de l'aide de la communauté.
+
+[tutorial]: /docs/get-started/tutorial
+[examples]: /examples
+[migration]: /docs/guides/migration/from-custom
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
+[ext-telegram]: https://t.me/feature_sliced

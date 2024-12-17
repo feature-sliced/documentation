@@ -1,0 +1,88 @@
+---
+sidebar_position: 3
+sidebar_class_name: sidebar-item--wip
+---
+
+import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+
+# Alternatives
+
+<WIP ticket="62" />
+
+## Big Ball of Mud
+
+<WIP ticket="258" />
+
+- [(Article) DDD - Big Ball of Mud](https://thedomaindrivendesign.io/big-ball-of-mud/)
+
+## Composants intelligents et stupides
+
+<WIP ticket="214" />
+
+- [(Article) Dan Abramov - Presentational and Container Components (TLDR: Non recommandé)](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+## Principes de conception
+
+<WIP ticket="59" />
+
+## DDD
+
+<WIP ticket="1" />
+
+## Voir aussi {#see-also}
+
+- [(Article) DDD, Hexagonal, Onion, Clean, CQRS, … Comment tout assembler](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
+
+## Architecture propre
+
+<WIP ticket="165" />
+
+- [(Article) DDD, Hexagonal, Onion, Clean, CQRS, … Comment tout assembler](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
+
+## Framework
+
+<WIP ticket="58" />
+
+- [(Article) Pourquoi créer FSD (Fragments concernant les frameworks)](/docs/about/motivation)
+
+## Design atomique
+
+### Qu'est-ce que c'est ?
+
+Le design atomique divise les responsabilités en couches standardisées.
+
+Le design atomique se divise en **5 couches** (de haut en bas).
+
+1. `pages` - A le même objectif que la couche `pages` de FSD.
+2. `templates` - Composants définissant la structure de pages indépendantes du contenu.
+3. `organisms` - Modules composés de molécules ayant une logique métier.
+4. `molecules` - Composants plus complexes, généralement sans logique métier.
+5. `atoms` - Composants UI sans logique métier.
+
+Les modules d'une même couche interagissent uniquement avec ceux de la couche inférieure, comme dans FSD.
+Ainsi, une molécule (molecule) est construite à partir d'un atome (atom), un organisme (organism) est construit à partir de molécules, un modèle (template) est construit à partir d'organismes et une page (page) est construite à partir de modèles.
+Le design atomique suppose également l'utilisation d'**API publiques** au sein des modules.
+
+### Applicabilité dans le frontend
+Le design atomique est assez couramment rencontré dans les projets. Il est surtout populaire parmi les web designers, plutôt que les développeurs. Les designers l'utilisent pour créer des designs évolutifs et faciles à maintenir.
+Dans le développement, le design atomique est souvent combiné avec d'autres méthodologies d'architecture.
+
+Cependant, le design atomique se concentre sur les composants UI et leur structure, ce qui entraîne des problèmes pour l'implémentation de la logique métier dans l'architecture.
+
+Le problème réside dans le fait que le design atomique ne fournit pas un niveau de responsabilité clair pour la logique métier, ce qui conduit à la dispersion de la logique métier dans divers composants et niveaux, rendant ainsi la maintenance et les tests plus complexes.
+La logique métier devient floue, la séparation claire des responsabilités devient difficile et le code n'est plus modulable ni réutilisable.
+
+### Intégration avec FSD
+Dans le contexte de FSD, certains éléments du design atomique peuvent être utilisés pour créer des composants UI flexibles et évolutifs. Les couches `atoms` et `molecules` peuvent être implémentées dans le `shared/ui` de FSD, simplifiant ainsi la réutilisation et la maintenance des éléments UI de base.
+
+```sh
+├── shared
+│   ├── ui 
+│   │   ├── atoms
+│   │   ├── molecules
+│   ...
+
+<WIP ticket="219" />
+
+- [(Conférence) Feature Driven Architecture - Oleg Isonen](https://youtu.be/BWAeYuWFHhs)
+- [Feature Driven - Spécification courte (du point de vue de FSD)](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)

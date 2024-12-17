@@ -1,0 +1,57 @@
+---
+title: Slices and segments
+sidebar_position: 2
+pagination_next: reference/public-api
+---
+
+# Slices and segments
+
+## Slices
+
+Slices are the second level in the organizational hierarchy of Feature-Sliced Design. Their main purpose is to group code by its meaning for the product, business or just the application.
+
+The names of slices are not standardized because they are directly determined by the business domain of your application. For example, a photo gallery might have slices `photo`, `create-album`, `gallery-page`. A social network would require different slices, for example, `post`, `add-user-to-friends`, `news-feed`.
+
+Closely related slices can be structurally grouped in a directory, but they should exercise the same isolation rules as other slices — there should be **no code sharing** in that directory.
+
+![Features "compose", "like" and "delete" grouped in a directory "post". In that directory there is also a file "some-shared-code.ts" that is crossed out to imply that it's not allowed.](/img/graphic-nested-slices.svg)
+
+The layers Shared and App don't contain slices. That is because Shared should contain no business logic at all, hence has no meaning for the product, and App should contain only code that concerns the entire application, so no splitting is necessary.
+
+### Public API rule on slices
+
+Inside a slice, the code could be organized very liberally, and that doesn't pose any issues as long as the slice provides a good public API. This is enforced with the **public API rule on slices**:
+
+> _Every slice (and segment on layers that don't have slices) must contain a public API definition._
+>
+> _Modules outside of this slice/segment can only reference the public API, not the internal file structure of the slice/segment._
+
+Read more about the rationale of public APIs and the best practices on creating one in the [Public API reference][ref--public-api].
+
+## Segments
+
+Segments are the third and final level in the organizational hierarchy, and their purpose is to group code by its technical nature.
+
+There a few standardized segment names:
+* `ui` — UI components, data formatting functions
+* `model` — business logic and data storage, as well as functions to manipulate this data
+* `lib` — auxiliary and infrastructural code
+* `api` — communication with external APIs, backend API methods
+
+Custom segments are permitted, but should be created sparingly. The most common places for custom segments are the App layer and the Shared layer, where slices don't make sense.
+
+### Examples
+
+| Layer    | `ui`         | `model`      | `lib`        | `api`        |
+| :------- | :----------- | :----------- | :----------- | :----------- |
+| Shared   | UI kit       | Usually not used | Utility modules of several related files. <br />If you need to use individual helpers, consider using utility libraries such as [`lodash-es`][ext--lodash]. | Rudimentary API client with additional features like authentication or caching. |
+| Entities | Skeleton of a business entity with slots for interactive elements | Data storage of instances of this entity as well as functions for manipulating that data. <br /> This segment is most fit for storing server-side data. If you use [TanStack Query][ext--tanstack-query] or other methods of implicit storage, you may choose to omit this segment. | Functions for manipulating instances of this entity that aren't related to storage | API methods using the API client from Shared for easy communication with the backend |
+| Features | Interactive elements that enable users to use this feature | Business logic and infrastructure data storage, if needed (e.g., current app theme). This is the code that actually produces value for the user. | Infrastructural code that helps to concisely describe the business logic in the `model` segment | API methods that represent this feature on the backend. <br /> May compose API methods from Entities. |
+| Widgets  | Composition of Entities and Features into self-contained UI blocks. <br /> Can also contain error boundaries and loading states. | Infrastructure data storage, if needed | Non-business interactions (e.g., gestures) and other necessary code for the block to function on a page | Usually not used, but can contain data loaders in nested routing contexts (e.g., [Remix][ext--remix]) |
+| Pages    | Composition of Entities, Features and Widgets into complete pages. <br /> Can also contain error boundaries and loading states. | Usually not used | Non-business interactions (e.g., gestures) and other necessary code for the page to deliver a complete user experience | Data loaders for SSR-oriented frameworks |
+
+[ref--public-api]: /docs/reference/public-api
+
+[ext--lodash]: https://www.npmjs.com/package/lodash-es
+[ext--tanstack-query]: https://tanstack.com/query/latest
+[ext--remix]: https://remix.run
