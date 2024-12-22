@@ -37,6 +37,8 @@ This is a non-breaking change, so you don’t even necessarily need to migrate y
 
 ### What else happened since the last release?
 
+The cross-import notation (`@x`) that was an experimental proposal for a long time has now been standardized! Its official name is **Public API for cross-imports**. You can use it to create explicit connections between entities. There's [a new section in our documentation all about this new notation](https://feature-sliced.design/docs/reference/public-api#public-api-for-cross-imports).
+
 Another exciting new thing in the FSD ecosystem is our architectural linter, [Steiger](https://github.com/feature-sliced/steiger). It's still in active development, but it is production-ready.
 
 A couple more minor clarifications to the docs were made as well:
