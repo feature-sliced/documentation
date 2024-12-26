@@ -10,7 +10,7 @@ const SECTIONS = {
     },
     MIGRATION: {
         shortPath: "/docs/guides/migration",
-        fullPath: "/docs/guides/migration/from-legacy",
+        fullPath: "/docs/guides/migration/from-custom",
     },
 };
 
@@ -109,17 +109,17 @@ const LEGACY_ROUTES = [
             {
                 title: "Decouple of entities",
                 from: "/docs/concepts/decouple-entities",
-                to: "/docs/reference/isolation/decouple-entities",
+                to: "/docs/reference/layers#import-rule-on-layers",
             },
             {
                 title: "Low Coupling & High Cohesion",
                 from: "/docs/concepts/low-coupling",
-                to: "/docs/reference/isolation/coupling-cohesion",
+                to: "/docs/reference/slices-segments#zero-coupling-high-cohesion",
             },
             {
                 title: "Cross-communication",
                 from: "/docs/concepts/cross-communication",
-                to: "/docs/reference/isolation",
+                to: "/docs/reference/layers#import-rule-on-layers",
             },
             {
                 title: "App splitting",
@@ -249,7 +249,7 @@ const LEGACY_ROUTES = [
             {
                 title: "Migration from Legacy",
                 from: "/docs/guides/migration-from-legacy",
-                to: "/docs/guides/migration/from-legacy",
+                to: "/docs/guides/migration/from-custom",
             },
         ],
     },
@@ -261,6 +261,30 @@ const LEGACY_ROUTES = [
                 title: "Usage with NextJS",
                 from: "/docs/guides/usage-with-nextjs",
                 to: "/docs/guides/tech/with-nextjs",
+            },
+        ],
+    },
+    {
+        group: "Rename 'legacy' to 'custom'",
+        details:
+            "'Legacy' is derogatory, we don't get to call people's projects legacy",
+        children: [
+            {
+                title: "Rename 'legacy' to custom",
+                from: "/docs/guides/migration/from-legacy",
+                to: "/docs/guides/migration/from-custom",
+            },
+        ],
+    },
+    {
+        group: "Deduplication of Reference",
+        details:
+            "Cleaned up the Reference section and deduplicated the material",
+        children: [
+            {
+                title: "Isolation of modules",
+                from: "/docs/reference/isolation",
+                to: "/docs/reference/layers#import-rule-on-layers",
             },
         ],
     },
@@ -314,7 +338,7 @@ const _TOTAL_ROUTES = [
     "/docs/guides/examples/theme",
     "/docs/guides/examples/types",
     "/docs/guides/examples/white-labels",
-    "/docs/guides/migration/from-legacy",
+    "/docs/guides/migration/from-custom",
     "/docs/guides/migration/from-v1",
     "/docs/guides/tech/with-nextjs",
     "/docs/",

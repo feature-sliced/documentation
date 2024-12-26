@@ -6,11 +6,11 @@
  * work well for content-centric websites.
  */
 
-@import "./theme";
-@import "./scroll";
-@import "./navbar";
-@import "./doc-item";
-@import "../features/feedback/doc/pushfeedback";
+@use "./theme";
+@use "./scroll";
+@use "./navbar";
+@use "./doc-item";
+@use "../features/feedback/doc/pushfeedback";
 
 h1,
 h2,
@@ -30,4 +30,9 @@ h6 {
         margin: 2px;
         border-radius: var(--ifm-button-border-radius) !important;
     }
+}
+
+.theme-back-to-top-button {
+    // The PushFeedback button is positioned in the same place, so we need to move the "back to top" button higher
+    bottom: 3.5rem !important;
 }

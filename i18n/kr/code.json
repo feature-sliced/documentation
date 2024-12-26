@@ -1,82 +1,82 @@
 {
     "pages.home.features.title": {
-        "message": "Features",
+        "message": "특징",
         "description": "Features"
     },
     "pages.home.features.logic.title": {
-        "message": "Explicit business logic",
+        "message": "명시적인 비즈니스 로직",
         "description": "Feature title"
     },
     "pages.home.features.logic.description": {
-        "message": "Easily discoverable architecture thanks to domain scopes",
+        "message": "도메인 스코프 덕분에 찾고자 하는 로직을 쉽게 발견할 수 있는 아키텍처입니다.",
         "description": "Feature description"
     },
     "pages.home.features.adaptability.title": {
-        "message": "Adaptability",
+        "message": "유연성",
         "description": "Feature title"
     },
     "pages.home.features.adaptability.description": {
-        "message": "Architecture components can be flexibly replaced and added for new requirements",
+        "message": "아키텍처 구성 요소를 새로운 요구사항에 맞춰 유연하게 교체하고 추가할 수 있습니다.",
         "description": "Feature description"
     },
     "pages.home.features.debt.title": {
-        "message": "Tech debt & Refactoring",
+        "message": "기술 부채 및 리팩토링",
         "description": "Feature title"
     },
     "pages.home.features.debt.description": {
-        "message": "Each module can be independently modified / rewritten without side effects",
+        "message": "각 모듈을 부작용 없이 독립적으로 수정, 재작성할 수 있습니다.",
         "description": "Feature description"
     },
     "pages.home.features.shared.title": {
-        "message": "Explicit code reuse",
+        "message": "명시적 코드 재사용",
         "description": "Feature title"
     },
     "pages.home.features.shared.description": {
-        "message": "A balance is maintained between DRY and local customization",
+        "message": "DRY 원칙과 로컬 커스터마이징 사이에 균형을 유지합니다.",
         "description": "Feature description"
     },
     "pages.home.concepts.title": {
-        "message": "Concepts",
+        "message": "개념",
         "description": "Concepts"
     },
     "pages.home.concepts.public.title": {
-        "message": "Public API",
+        "message": "공용 API",
         "description": "Concept title"
     },
     "pages.home.concepts.public.description": {
-        "message": "Each module must have a declaration of its public API at the top level",
+        "message": "각 모듈에는 최상위 레벨에 공용 API 선언이 있어야 합니다.",
         "description": "Concept description"
     },
     "pages.home.concepts.isolation.title": {
-        "message": "Isolation",
+        "message": "격리",
         "description": "Concept title"
     },
     "pages.home.concepts.isolation.description": {
-        "message": "The module should not depend directly on other modules of the same layer or overlying layers",
+        "message": "같은 레이어 또는 상위 레이어의 모듈에 직접 의존하지 않아야 합니다.",
         "description": "Concept description"
     },
     "pages.home.concepts.needs.title": {
-        "message": "Needs Driven",
+        "message": "요구사항 중심",
         "description": "Concept title"
     },
     "pages.home.concepts.needs.description": {
-        "message": "Orientation to business and user needs",
+        "message": "비즈니스 및 사용자 요구사항을 중심으로 합니다.",
         "description": "Concept description"
     },
     "pages.home.scheme.title": {
-        "message": "Scheme",
+        "message": "구조",
         "description": "Scheme"
     },
     "pages.home.companies.using": {
-        "message": "Companies using FSD",
+        "message": "FSD를 사용하는 기업",
         "description": "Companies using FSD"
     },
     "pages.home.companies.add_me": {
-        "message": "FSD is used in your company?",
+        "message": "FSD를 사용하는 기업이신가요?",
         "description": "FSD is used in your company?"
     },
     "pages.home.companies.tell_us": {
-        "message": "Tell us",
+        "message": "알려주세요",
         "description": "Tell us"
     },
     "pages.examples.title": {
@@ -192,19 +192,19 @@
         "description": "The placeholder for rating stars input"
     },
     "features.hero.tagline": {
-        "message": "Architectural methodology for frontend projects",
+        "message": "프론트엔드 프로젝트를 위한 아키텍처 방법론",
         "description": "Architectural methodology for frontend projects"
     },
     "features.hero.get_started": {
-        "message": "Get Started",
+        "message": "시작하기",
         "description": "Get Started"
     },
     "features.hero.examples": {
-        "message": "Examples",
+        "message": "예제",
         "description": "Examples"
     },
     "features.hero.previous": {
-        "message": "Previous version",
+        "message": "이전 버전",
         "description": "Previous version"
     },
     "shared.wip.title": {

@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 
-# Migration from v1
+# Migration from v1 to v2
 
 ## Why v2?
 
@@ -158,10 +158,10 @@ Now it is much easier to [observe the principle of low coupling][refs-low-coupli
 - [New ideas v2 with explanations (atomicdesign-chat)][ext-tg-v2-draft]
 - [Discussion of abstractions and naming for the new version of the methodology (v2)](https://github.com/feature-sliced/documentation/discussions/31)
 
-[refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
+[refs-low-coupling]: /docs/reference/slices-segments#zero-coupling-high-cohesion
 [refs-adaptability]: /docs/about/understanding/naming
 
-[ext-v1]: https://featureslices.dev/v1.0.html
+[ext-v1]: https://feature-sliced.github.io/featureslices.dev/v1.0.html
 [ext-tg-spb]: https://t.me/feature_slices
 [ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
 [ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
