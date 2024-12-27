@@ -65,16 +65,21 @@ Layers, slices, and segments form a hierarchy like this:
 
 Layers are standardized across all FSD projects. You don't have to use all of the layers, but their names are important. There are currently seven of them (from top to bottom):
 
-1. **App\*** — everything that makes the app run — routing, entrypoints, global styles, providers.
+1. **App** — everything that makes the app run — routing, entrypoints, global styles, providers.
 2. **Processes** (deprecated) — complex inter-page scenarios.
 3. **Pages** — full pages or large parts of a page in nested routing.
 4. **Widgets** — large self-contained chunks of functionality or UI, usually delivering an entire use case.
 5. **Features** — _reused_ implementations of entire product features, i.e. actions that bring business value to the user.
 6. **Entities** — business entities that the project works with, like `user` or `product`.
-7. **Shared\*** — reusable functionality, especially when it's detached from the specifics of the project/business, though not necessarily.
+7. **Shared** — reusable functionality, especially when it's detached from the specifics of the project/business, though not necessarily.
 
-_\* — these layers, **App** and **Shared**, unlike the other layers, don't have slices, and are made up of segments directly._
+:::warning
 
+Layers: **App** and **Shared**, unlike other layers, do not have slides and are divided into segments directly.
+
+However, for all other layers: **Entities**, **Features**, **Widgets** and **Pages** retain the structure in which you must first create slides, inside which to describe the segments.
+
+:::
 The trick with layers is that modules on one layer can only know about and import from modules from the layers strictly below.
 
 ### Slices {#slices}
