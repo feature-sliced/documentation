@@ -79,4 +79,3 @@ Ish davom etmoqda...
 
 - [Muhokama (github)](https://github.com/feature-sliced/documentation/discussions/399)
 - [Ma'lumotnomalar bilan rebrending tarixi (figma)](https://www.figma.com/file/RPphccpoeasVB0lMpZwPVR/FSD-Brand?node-id=0%3A1)
-- [Rebrending demosi](https://rebrand-sliced.netlify.app/en/)
