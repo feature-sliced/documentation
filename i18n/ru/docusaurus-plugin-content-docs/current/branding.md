@@ -78,4 +78,3 @@ FSD имеет несколько вариаций логотипа для ра�
 
 - [Обсуждение (github)](https://github.com/feature-sliced/documentation/discussions/399)
 - [История ребрендинга с референсами (figma)](https://www.figma.com/file/RPphccpoeasVB0lMpZwPVR/FSD-Brand?node-id=0%3A1)
-- [Демо ребрендинга](https://rebrand-sliced.netlify.app/en/)
