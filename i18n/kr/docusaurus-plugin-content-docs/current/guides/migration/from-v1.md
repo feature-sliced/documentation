@@ -158,7 +158,7 @@ v2에서는 로직 복잡성과 높은 결합을 줄이기 위한 **새로운 �
 - [v2에 대한 새로운 아이디어와 설명 (atomicdesign 채팅)][ext-tg-v2-draft]
 - [새로운 버전 방법론 (v2)에 대한 추상화 및 네이밍 논의](https://github.com/feature-sliced/documentation/discussions/31)
 
-[refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
+[refs-low-coupling]: /docs/reference/slices-segments#zero-coupling-high-cohesion
 [refs-adaptability]: /docs/about/understanding/naming
 
 [ext-v1]: https://feature-sliced.github.io/featureslices.dev/v1.0.html
