@@ -1,22 +1,24 @@
 ---
-title: 슬라이스와 세그먼트
+title: Slice와 Segment
 sidebar_position: 2
 pagination_next: reference/public-api
 ---
 
-# 슬라이스와 세그먼트
+# Slice와 Segment
 
-## 슬라이스(Slices)
+## Slice
 
-슬라이스는 Feature-Sliced Design의 조직 계층에서 두 번째 수준에 해당합니다. 슬라이스의 주요 목적은 제품, 비즈니스, 또는 애플리케이션의 의미에 따라 코드를 체계적으로 그룹화하는 것입니다.
+Slice는 Feature-Sliced Design의 두 번째 구성 단위입니다. Slice의 주 목적은 제품, 비즈니스, Application 관점에서 코드를 체계적으로 그룹화하는 것입니다.
 
-슬라이스의 이름은 표준화되어 있지 않습니다. 이는 애플리케이션의 비즈니스 도메인에 따라 이름이 직접적으로 결정되기 때문입니다. 예를 들어, 사진 갤러리 경우, `photo`, `effects`, `gallery-page`와 같은 슬라이스를 가질 수 있습니다. 반면 소셜 네트워크는 `post`, `comments`, `news-feed`와 같은 슬라이스가 필요할 것입니다.
+Slice 이름은 표준화되어 있지 않고 Application의 비즈니스 도메인에 따라 결정됩니다. 예시:
+- 사진 갤러리: `photo`, `effects`, `gallery-page`
+- 소셜 네트워크: `post`, `comments`, `news-feed`
 
-Shared와 App 레이어는 슬라이스를 포함하지 않습니다. Shared는 비즈니스 로직을 전혀 포함하지 않아야 하며, App은 애플리케이션 전반과 관련된 코드만 포함해야 하므로, 별도의 슬라이스로 분할될 필요가 없습니다.
+Shared와 App Layer는 Slice를 포함하지 않습니다. Shared는 Business Logic을 포함하지 않고, App은 Application 전체 관련 코드만 다루기 때문입니다.
 
-### Zero 결합도와 높은 응집도 {#zero-coupling-high-cohesion}
+### Zero 결합도과 High 응집도 {#zero-coupling-high-cohesion}
 
-슬라이스는 독립적이고 높은 응집도를 가진 코드 파일 그룹이어야 합니다. 아래 그래픽은 _응집도_와 _결합도_라는 복잡한 개념을 시각적으로 이해하는 데 도움을 줄 수 있습니다:
+Slice는 독립적이고 응집도 높은 코드 그룹이어야 합니다. 아래 그래픽은 _응집도_과 _결합도_ 개념을 시각화합니다:
 
 <figure>
     <img src="/img/coupling-cohesion-light.svg#light-mode-only" alt="" />
@@ -26,47 +28,47 @@ Shared와 App 레이어는 슬라이스를 포함하지 않습니다. Shared는 
     </figcaption>
 </figure>
 
-이상적인 슬라이스는 다음과 같은 특징을 가집니다:
-    1. 독립적 — 같은 레이어의 다른 슬라이스와 결합되지 않음(제로 결합도).
-    2. 응집도 높음 — 주요 목적과 관련된 대부분의 코드를 포함함.
+이상적인 Slice 특징:
+    1. 독립적 — 같은 Layer의 다른 Slice와 Zero 결합도
+    2. 높은 응집도 — 핵심 목적 관련 코드를 포함
 
-슬라이스의 독립성은 [레이어의 임포트 규칙][layers--import-rule]에 의해 강제됩니다:
+Slice의 독립성은 [Layer Import Rule][layers--import-rule]로 강제됩니다:
 
-> _슬라이스의 모듈(파일)은 엄격하게 아래 레이어에 위치한 다른 슬라이스만 임포트할 수 있습니다.._
+> _Slice의 모듈은 하위 Layer의 다른 Slice만 Import 가능_
 
-### 슬라이스(Slices)의 Public API 규칙
+### Slice의 Public API Rule
 
-슬라이스 내부에서는 원하는 방식으로 코드를 구성할 수 있습니다. 다만, 슬라이스가 다른 슬라이스에서 사용할 수 있는 좋은 Public API를 제공하는 것이 중요합니다. 이 원칙은 **슬라이스의 Public API 규칙**에 의해 강제됩니다:
+Slice 내부 구조는 자유롭지만, 다른 Slice가 사용할 좋은 Public API를 제공해야 합니다. 이는 **Slice Public API Rule**로 강제됩니다:
 
-> _모든 슬라이스(그리고 슬라이스가 없는 레이어의 세그먼트)는 Public API 정의를 포함해야 합니다._
+> _모든 Slice(와 Slice가 없는 Layer의 Segment)는 Public API를 정의해야 합니다._
 >
-> _슬라이스/세그먼트 외부의 모듈은 슬라이스/세그먼트의 내부 파일 구조가 아닌 Public API만 참조할 수 있습니다._
+> _외부 모듈은 Slice/Segment의 내부 구조가 아닌 Public API만 참조 가능_
 
-Public API의 근거와 생성에 대한 모범 사례는 [Public API 참조][ref-public-api]에서 자세히 확인할 수 있습니다.
+자세한 내용은 [Public API Reference][ref-public-api]를 참고하세요.
 
-### 슬라이스(Slices) 그룹
+### Slice Group
 
-밀접하게 관련된 슬라이스들은 구조적으로 폴더 내에서 그룹화할 수 있습니다. 하지만, 이 경우에도 다른 슬라이스들과 동일한 격리 규칙을 따라야 합니다. 즉, 그룹 내의 폴더에서는 **코드 공유가 없어야** 합니다.
+연관된 Slice들은 폴더로 그룹화할 수 있습니다. 단, 다른 Slice와 동일한 격리 규칙을 따라야 하며, 그룹 내 **코드 공유는 불가능**합니다.
 
 ![Features "compose", "like" 그리고 "delete"가 "post" 폴더에 그룹화되어 있습니다. 해당 폴더에는 허용되지 않음을 나타내기 위해 취소선이 그어진 "some-shared-code.ts" 파일도 있습니다.](/img/graphic-nested-slices.svg)
 
-## 세그먼트(Segments)
+## Segment
 
-세그먼트는 조직 계층의 세 번째이자 마지막 수준으로, 기술적 특성에 따라 코드를 그룹화하는 것을 목적으로 합니다.
+Segment는 마지막 구성 단위로, 기술적 특성에 따라 코드를 그룹화합니다.
 
-표준화된 세그먼트 이름입니다:
+표준 Segment:
 
-- `ui` — UI 표시와 관련된 모든 것: UI 컴포넌트, 날짜 포매터, 스타일 등
-- `api` — 백엔드 상호작용: 요청 함수, 데이터 타입, 매퍼 등
-- `model` — 데이터 모델: 스키마, 인터페이스, 스토어, 비즈니스 로직
-- `lib` — 이 슬라이스의 다른 모듈에서 필요로 하는 라이브러리 코드
-- `config` — 설정 파일과 기능 플래그
+- `ui` — UI 관련: Component, Date Formatter, Style 등
+- `api` — Backend 통신: Request Function, Data Type, Mapper 등
+- `model` — Data Model: Schema, Interface, Store, Business Logic
+- `lib` — Slice 내부 Library 코드
+- `config` — Configuration과 Feature Flag
 
-각 레이어(Layer)에서 이러한 세그먼트가 어떻게 사용되는지에 대한 더 자세한 정보는 [레이어 페이지][layers--layer-definitions]를 참조하세요.
+각 Layer의 Segment 사용법은 [Layer Page][layers--layer-definitions]를 참조하세요.
 
-사용자 정의 세그먼트를 생성할 수도 있습니다. 사용자 정의 세그먼트는 슬라이스가 없는 App 레이어와 Shared 레이어에서 가장 흔히 사용됩니다.
+Custom Segment도 생성 가능하며, App과 Shared Layer에서 주로 사용됩니다.
 
-세그먼트 이름은 코드의 목적을 설명해야 합니다. 예를 들어, `components`, `hooks`, `types`와 같은 이름은 코드를 찾는 데 비효율적이므로 사용을 피하는 것이 좋습니다.
+Segment 이름은 코드 목적을 명확히 해야 합니다. `components`, `hooks`, `types`같은 모호한 이름은 피하세요.
 
 [layers--layer-definitions]: /docs/reference/layers#layer-definitions
 [layers--import-rule]: /docs/reference/layers#import-rule-on-layers
