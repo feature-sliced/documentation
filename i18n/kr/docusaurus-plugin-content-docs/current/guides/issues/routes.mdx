@@ -1,18 +1,18 @@
 ---
 sidebar_position: 3
 sidebar_class_name: sidebar-item--wip
-sidebar_label: 라우팅
+sidebar_label: Routing
 ---
     
 import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
     
-# 라우팅
+# Routing
     
 <WIP ticket="169" />
     
 ## 상황
     
-페이지에 대한 URL이 페이지 아래 계층에 하드코딩되어 있는 경우가 발생합니다.
+Page의 URL이 하위 Layer에 하드코딩되어 있는 경우가 있습니다.
     
 ```tsx title="entities/post/card" 
 <Card>
@@ -26,21 +26,21 @@ import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 
 ## 문제점
 
-URL이 책임 범위에 따라 페이지 계층에 집중되지 않고, 하위 계층에 분산되어 관리됩니다.
+URL이 Page Layer에 집중되지 않고, 하위 Layer에 분산되어 관리됩니다.
 
-## 무시할 경우
+## 무시했을 때의 결과
 
-URL을 변경하려면, 해당 URL(또는 URL과 관련된 리디렉션 로직)이 페이지 계층 외의 여러 하위 계층에 존재할 수 있음을 고려해야 합니다.
+URL 변경 시 Page Layer 외의 여러 하위 Layer에 있는 URL과 redirect 로직을 모두 고려해야 합니다.
 
-결과적으로, 단순한 상품 카드와 같은 요소조차 페이지의 책임 일부를 떠안게 되어, 프로젝트 전반의 로직이 불필요하게 복잡해질 수 있습니다.
+결과적으로 단순한 Product Card 같은 Component도 Page의 책임을 가지게 되어, 프로젝트 구조가 불필요하게 복잡해집니다.
 
-## 해결책
+## 해결 방안
 
-URL과 리디렉션 로직은 페이지 레벨과 그 위 계층에서만 처리하도록 결정합니다.
+URL과 redirect 로직은 Page Layer와 그 상위 Layer에서만 다루도록 합니다.
 
-이를 위해, 조립(composition), props 전달, 팩토리 패턴 등을 활용해 URL 정보를 하위 계층에 전달합니다.
+이를 위해 composition, props 전달, Factory 패턴 등을 활용해 URL 정보를 하위 Layer에 전달합니다.
 
 ## 참고 자료
 
-- [(스레드) 엔티티/피처/위젯에서 라우팅을 "봉합"하면 어떻게 될까요?](https://t.me/feature_sliced/4389)
-- [(스레드) 왜 라우트 로직을 페이지에만 섞으면 안 되는가?](https://t.me/feature_sliced/3756)
+- [(스레드) Entity/Feature/Widget에서 Routing 처리의 영향](https://t.me/feature_sliced/4389)
+- [(스레드) Page에서만 Route 로직을 다뤄야 하는 이유](https://t.me/feature_sliced/3756)
