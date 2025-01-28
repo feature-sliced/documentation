@@ -13,7 +13,7 @@ pagination_next: guides/index
 
 ### ツールキットやリンターはありますか？ {#is-there-a-toolkit-or-a-linter}
 
-公式のESLintコンフィグ — [@feature-sliced/eslint-config][eslint-config-official]、およびコミュニティメンバーのアレクサンドル・ベロウスによって作成されたESLintプラグイン — [@conarti/eslint-plugin-feature-sliced][eslint-plugin-conarti]があります。これらのプロジェクトへの貢献や独自のツールの作成を歓迎します！
+はい！CLI または IDE を通じてプロジェクトのアーキテクチャと [フォルダー ジェネレーター][ext-tools] をチェックするための [Steiger][ext-steiger] というリンターがあります。
 
 ### ページのレイアウト/テンプレートはどこに保存すればよいですか？ {#where-to-store-the-layouttemplate-of-pages}
 
@@ -58,10 +58,10 @@ FSDは、プロジェクトの主要な価値を提供するコンポーネン�
 
 [こちら](/docs/guides/examples/auth)で回答しています。
 
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
 [import-rule-layers]: /docs/reference/layers#import-rule-on-layers
 [reference-entities]: /docs/reference/layers#entities
-[eslint-config-official]: https://github.com/feature-sliced/eslint-config
-[eslint-plugin-conarti]: https://github.com/conarti/eslint-plugin-feature-sliced
 [motivation]: /docs/about/motivation
 [telegram]: https://t.me/feature_sliced
 [discord]: https://discord.gg/S8MzWTUsmp

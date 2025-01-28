@@ -1,217 +1,153 @@
 ---
 sidebar_position: 3
-pagination_next: about/index
 ---
 
 # Public API
 
-Each entity of the methodology is designed as a **user-friendly and integrable module.**
+A public API is a _contract_ between a group of modules, like a slice, and the code that uses it. It also acts as a gate, only allowing access to certain objects, and only through that public API.
 
-## Goals
+In practice, it's usually implemented as an index file with re-exports:
 
-The convenience of using and integrating the module is achieved through the fulfillment of *a number of goals*:
+```js title="pages/auth/index.js"
+export { LoginPage } from "./ui/LoginPage";
+export { RegisterPage } from "./ui/RegisterPage";
+```
 
-1. The application must be **protected from changes** to the internal structure of individual modules
-1. The processing of the internal structure of the module **should not affect** other modules
-1. Significant changes in the behavior of the module should be **easily detectable**
-    > **Significant changes in the behavior of the module** - changes that break the expectations of the user entities of the module.
+## What makes a good public API?
 
-These goals can be achieved by introducing a public interface (Public API), which is a single access point to the module's capabilities and defines the "contract" of the module's interaction with the outside world.
+A good public API makes using and integrating into other code a slice convenient and reliable. It can be achieved by setting these three goals:
 
-:::info Important
+1. The rest of the application must be protected from structural changes to the slice, like a refactoring
+1. Significant changes in the behavior of the slice that break the previous expectations should cause changes in the public API
+1. Only the necessary parts of the slice should be exposed
 
-The entity structure must have a single entry point that provides a public interface
+The last goal has some important practical implications. It may be tempting to create wildcard re-exports of everything, especially in early development of the slice, because any new objects you export from your files are also automatically exported from the slice:
+
+```js title="Bad practice, features/comments/index.js"
+// ❌ BAD CODE BELOW, DON'T DO THIS
+export * from "./ui/Comment";  // 👎 don't try this at home
+export * from "./model/comments";  // 💩 this is bad practice
+```
+
+This hurts the discoverability of a slice because you can't easily tell what the interface of this slice is. Not knowing the interface means that you have to dig deep into the code of a slice to understand how to integrate it. Another problem is that you might accidentally expose the module internals, which will make refactoring difficult if someone starts depending on them.
+
+## Public API for cross-imports {#public-api-for-cross-imports}
+
+Cross-imports are a situation when one slice imports from another slice on the same layer. Usually that is prohibited by the [import rule on layers][import-rule-on-layers], but often there are legitimate reasons to cross-import. For example, business entities often reference each other in the real world, and it's best to reflect these relationships in the code instead of working around them.
+
+For this purpose, there's a special kind of public API, also known as the `@x`-notation. If you have entities A and B, and entity B needs to import from entity A, then entity A can declare a separate public API just for entity B.
+
+- `📂 entities`
+    - `📂 A`
+        - `📂 @x`
+            - `📄 B.ts` — a special public API just for code inside `entities/B/`
+        - `📄 index.ts` — the regular public API
+
+Then the code inside `entities/B/` can import from `entities/A/@x/B`:
+
+```ts
+import type { EntityA } from "entities/A/@x/B";
+```
+
+The notation `A/@x/B` is meant to be read as "A crossed with B".
+
+:::note
+
+Try to keep cross-imports to a minimum, and **only use this notation on the Entities layer**, where eliminating cross-imports is often unreasonable.
 
 :::
 
-```sh
-└── features/               # 
-       ├── auth-form /      # Internal structure of the feature
-       |     ├── ui/        #
-       |     ├── model/     #
-       |     ├── {...}/     #
-       ├── index.ts         # Entrypoint features with its public API
+## Issues with index files
+
+Index files like `index.js`, also known as barrel files, are the most common way to define a public API. They are easy to make, but they are known to cause problems with certain bundlers and frameworks.
+
+### Circular imports
+
+Circular import is when two or more files import each other in a circle.
+
+<!-- TODO: add backgrounds to the images below, check on mobile -->
+
+<figure>
+    <img src="/img/circular-import-light.svg#light-mode-only" width="60%" alt="Three files importing each other in a circle" />
+    <img src="/img/circular-import-dark.svg#dark-mode-only" width="60%" alt="Three files importing each other in a circle" />
+    <figcaption>
+        Pictured above: three files, `fileA.js`, `fileB.js`, and `fileC.js`, importing each other in a circle.
+    </figcaption>
+</figure>
+
+These situations are often difficult for bundlers to deal with, and in some cases they might even lead to runtime errors that might be difficult to debug.
+
+Circular imports can occur without index files, but having an index file presents a clear opporutnity to accidentally create a circular import. It often happens when you have two objects exposed in the public API of a slice, for example, `HomePage` and `loadUserStatistics`, and the `HomePage` needs to access `loadUserStatistics`, but it does it like this:
+
+```jsx title="pages/home/ui/HomePage.jsx"
+import { loadUserStatistics } from "../"; // importing from pages/home/index.js
+
+export function HomePage() { /* … */ }
 ```
 
-```ts title="**/**/index.ts"
-export { Form as AuthForm } from "./ui"
-export * as authFormModel from "./model"
+```js title="pages/home/index.js"
+export { HomePage } from "./ui/HomePage";
+export { loadUserStatistics } from "./api/loadUserStatistics";
 ```
 
-## Requirements for the public API
+This situation creates a circular import, because `index.js` imports `ui/HomePage.jsx`, but `ui/HomePage.jsx` imports `index.js`.
 
-Meeting these requirements allows you to reduce interaction with the module to **the implementation of a public interface-contract** and, thereby, achieve reliability and ease of use of the module.
+To prevent this issue, consider these two principles. If you have two files, and one imports from the other:
+- When they are in the same slice, always use _relative_ imports and write the full import path
+- When they are in different slices, always use _absolute_ imports, for example, with an alias
 
-### 1. Access Control
+### Large bundles and broken tree-shaking in Shared {#large-bundles}
 
-The public API must **control access** to the contents of the module
+Some bundlers might have a hard time tree-shaking (removing code that isn't imported) when you have an index file that re-exports everything.
 
-- Other parts of the application can use **only those module entities that are presented in the public interface**
-- The internal part of the module outside the public interface **is accessible only to the module itself**.
+Usually this isn't a problem for public APIs, because the contents of a module are usually quite closely related, so you would rarely need to import one thing and tree-shake away the other. However, there are two very common cases when the normal rules of public API in FSD may lead to issues — `shared/ui` and `shared/lib`.
 
-#### Examples
+These two folders are both collections of unrelated things that often aren't all needed in one place. For example, `shared/ui` might have modules for every component in the UI library:
 
-##### Suspension from private imports
+- `📂 shared/ui/`
+    - `📁 button`
+    - `📁 text-field`
+    - `📁 carousel`
+    - `📁 accordion`
 
-- **Bad**: There is a direct access to the internal parts of the module, bypassing the public access interface - it is dangerous, especially when refactoring the module
+This problem is made worse when one of these modules has a heavy dependency, like a syntax highlighter or a drag'n'drop library. You don't want to pull those into every page that uses something from `shared/ui`, for example, a button.
 
-    ```diff
-    - import { Form } from "features/auth-form/components/view/form"
-    ```
+If your bundles grow undesirably due to a single public API in `shared/ui` or `shared/lib`, it's recommended to instead have a separate index file for each component or library:
 
-- **Good:** The API exports only what is necessary and allowed in advance, the module developer now needs to think only about not breaking the Public API when refactoring
+- `📂 shared/ui/`
+    - `📂 button`
+        - `📄 index.js`
+    - `📂 text-field`
+        - `📄 index.js`
 
-    ```diff
-    + import { AuthForm } from "features/auth-form"
-    ```
+Then the consumers of these components can import them directly like this:
 
-### 2. Sustainability for changes
-
-The public API should be sustainable for changes inside the module
-
-- Breaking changes in the behavior of the module are reflected in the change of the Public API
-
-#### Examples
-
-##### Abstracting from the implementation
-
-Changing the internal structure should not lead to a change in the Public API
-
-- **Bad:** moving or renaming this component inside the feature will lead to the need to refactor imports in all places where the component is used.
-
-    ```diff
-    - import { Form } from "features/auth-form/ui/form"
-    ```
-
-- **Good:** the interface of the feature does not display its internal structure, external "users" of the feature will not suffer from moving or renaming the component inside the feature
-
-    ```diff
-    + import { AuthForm } from "features/auth-form"
-    ```
-
-### 3. Integrability
-
-The public API should facilitate **easy and flexible integration**
-
-- Should be convenient for use by the rest of the application, in particular, to solve the problem of name collisions
-
-#### Examples
-
-##### Name collision
-
-- **Bad:** there will be a name collision
-
-    ```ts title="features/auth-form/index.ts"
-    export { Form } from "./ui"
-    export * as model from "./model"
-    ```
-
-    ```ts title="features/post-form/index.ts"
-    export { Form } from "./ui"
-    export * as model from "./model"
-    ```
-
-    ```diff
-    - import { Form, model } from "features/auth-form"
-    - import { Form, model } from "features/post-form"
-    ```
-
-- **Good:** the collision is solved at the interface level
-
-    ```ts title="features/auth-form/index.ts"
-    export { Form as AuthForm } from "./ui"
-    export * as authFormModel from "./model"
-    ```
-
-    ```ts title="features/post-form/index.ts"
-    export { Form as PostForm } from "./ui"
-    export * as postFormModel from "./model"
-    ```
-
-    ```diff
-    + import { AuthForm, authFormModel } from "features/auth-form"
-    + import { PostForm, postFormModel } from "features/post-form"
-    ```
-
-##### Flexible use
-
-- **Bad:** it is inconvenient to write, it is inconvenient to read, the" user " of the feature suffers
-
-    ```diff
-    - import { storeActionUpdateUserDetails } from "features/auth-form"
-    - dispatch(storeActionUpdateUserDetails(...))
-    ```
-
-- **Good:** the "user" of the feature gets access to the necessary things iteratively and flexibly
-
-    ```diff
-    + import { authFormModel } from "features/auth-form"
-    + dispatch(authFormModel.effects.updateUserDetails(...)) // redux
-    + authFormModel.updateUserDetailsFx(...) // effector
-    ```
-
-##### Resolution of collisions
-
-Name collisions should be resolved at the level of the public interface, not the implementation
-
-- **Bad:** name collisions are resolved at the implementation level
-
-    ```ts title="features/auth-form/index.ts"
-    export { AuthForm } from "./ui"
-    export { authFormActions, authFormReducer } from "model"
-    ```
-
-    ```ts title="features/post-form/index.ts"
-    export { PostForm } from "./ui"
-    export { postFormActions, postFormReducer } from "model"
-    ```
-
-- **Good:** name collisions are resolved at the interface level
-
-    ```ts title="features/auth-form/model.ts"
-    export { actions, reducer }
-    ```
-
-    ```ts title="features/auth-form/index.ts"
-    export { Form as AuthForm } from "./ui"
-    export * as authFormModel from "./model"
-    ```
-
-     ```ts title="features/post-form/model.ts"
-    export { actions, reducer }
-    ```
-
-    ```ts title="features/post-form/index.ts"
-    export { Form as PostForm } from "./ui"
-    export * as postFormModel from "./model"
-    ```
-
-## About re-exports
-
-In JavaScript, the public interface of a module is created by re-exporting entities from inside the module in an `index` file:
-
-```ts title="**/**/index.ts"
-export { Form as AuthForm } from "./ui"
-export * as authModel from "./model"
+```js title="pages/sign-in/ui/SignInPage.jsx"
+import { Button } from '@/shared/ui/button';
+import { TextField } from '@/shared/ui/text-field';
 ```
 
-### Disadvantages
+### No real protection against side-stepping the public API
 
-- In most popular bundlers, due to re-exports, **the code-splitting works worse**, because [tree-shaking](https://webpack.js.org/guides/tree-shaking/) with this approach, it is safe to discard only the entire module, but not part of it.
-   > For example, importing `authModel` into the page model will cause the `AuthForm` component to get into the chunk of this page, even if this component is not used there.
+When you create an index file for a slice, you don't actually forbid anyone from not using it and importing directly. This is especially a problem for auto-imports, because there are several places from which an object can be imported, so the IDE has to decide that for you. Sometimes it might choose to import directly, breaking the public API rule on slices.
 
-- As a result, initialization of the chunk becomes more expensive, because the browser must process all the modules in it, including those that got into the bundle "for the company"
+To catch these issues automatically, we recommend using [Steiger][ext-steiger], an architectural linter with a ruleset for Feature-Sliced Design.
 
-### Possible solutions
+### Worse performance of bundlers on large projects
 
-- `webpack` allows you to mark re-export files as [**side effects free**](https://webpack.js.org/guides/tree-shaking/#mark-the-file-as-side-effect-free) - this allows `webpack` to use more aggressive optimizations when working with such a file
+Having a large amount of index files in a project can slow down the development server, as noted by TkDodo in [his article "Please Stop Using Barrel Files"][ext-please-stop-using-barrel-files].
 
-## See also
+There are several things you can do to tackle this issue:
+1. The same advice as in ["Large bundles and broken tree-shaking in Shared" issue](#large-bundles) — have separate index files for each component/library in `shared/ui` and `shared/lib` instead of one big one
+2. Avoid having index files in segments on layers that have slices.  
+   For example, if you have an index for the feature "comments", `📄 features/comments/index.js`, there's no reason to have another index for the `ui` segment of that feature, `📄 features/comments/ui/index.js`.
+3. If you have a very big project, there's a good chance that your application can be split into several big chunks.  
+   For example, Google Docs has very different responsibilities for the document editor and for the file browser. You can create a monorepo setup where each package is a separate FSD root, with its own set of layers. Some packages can only have the Shared and Entities layers, others might only have Pages and App, others still might include their own small Shared, but still use the big one from another package too.
 
-- [(Discussion) Public Abstraction API][disc-src]
-- [Principles **SOLID**][ext-solid]
-- [Patterns **GRASP**][ext-grasp]
+   <!-- TODO: add a link to a page that explains this in more detail (when one will exist) -->
 
-[disc-src]: https://github.com/feature-sliced/documentation/discussions/41
-[ext-solid]: https://ru.wikipedia.org/wiki/SOLID
-[ext-grasp]: https://ru.wikipedia.org/wiki/GRASP
+<!-- TODO: discuss issues with mixing server/client code in Next/Remix -->
+
+[import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[ext-please-stop-using-barrel-files]: https://tkdodo.eu/blog/please-stop-using-barrel-files

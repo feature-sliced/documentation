@@ -57,6 +57,9 @@ module.exports = {
             darkTheme: prismThemes.oneDark,
         },
     },
+    future: {
+        experimental_faster: true,
+    },
 };
 
 // Remove configs if there are not secrets passed

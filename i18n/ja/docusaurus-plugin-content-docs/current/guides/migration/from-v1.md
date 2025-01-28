@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 
-# v1からの移行
+# v1からv2への移行
 
 ## なぜv2なのか？ {#why-v2}
 
@@ -144,7 +144,7 @@ v2では、**ロジックの複雑さと強い結合の問題を解消するた�
 
 - [React Berlin Talk - Oleg Isonen "Feature Driven Architecture"][ext-kof-fdd]
 
-[refs-low-coupling]: /docs/reference/isolation/coupling-cohesion
+[refs-low-coupling]: /docs/reference/slices-segments#zero-coupling-high-cohesion
 [refs-adaptability]: /docs/about/understanding/naming
 
 [ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven

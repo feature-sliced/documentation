@@ -1,4 +1,4 @@
-type Company = {
+export type Company = {
     /* URL to your company website */
     url: string;
     /* Image path to your company logo */
@@ -107,4 +107,26 @@ export const companies: Company[] = [
         src: "express24.svg",
         alt: "Express24.uz",
     },
+    {
+        url: "https://blindtyping.com/",
+        src: "blindtyping.svg",
+        alt: "Blindtyping",
+    },
 ];
+
+const japaneseCompanies: Company[] = [
+    {
+        url: "https://hapins.net/",
+        src: "ja/hapins.png",
+        alt: "HapInS",
+    },
+];
+
+const koreanCompanies: Company[] = [];
+
+export const localeToCompaniesMap: Record<string, Company[]> = {
+    ru: companies,
+    en: companies,
+    ja: japaneseCompanies,
+    ko: koreanCompanies,
+};

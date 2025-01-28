@@ -1,9 +1,9 @@
 ---
 sidebar_position: 3
-sidebar_label: 프로젝트 지식의 세 가지 유형
+sidebar_label: 프로젝트의 지식 유형
 ---
 
-# 프로젝트 지식의 세 가지 유형
+# 프로젝트의 지식 유형
 
 소프트웨어 프로젝트를 개발할 때 다루게 되는 지식은 크게 세 가지로 나눌 수 있습니다:
 
@@ -32,8 +32,6 @@ sidebar_label: 프로젝트 지식의 세 가지 유형
 - 새로운 팀원의 적응 과정을 단순화
 :::
 
-## See also {#see-also}
+## 참고 자료 {#see-also}
 
 - [(영상 🇷🇺) Ilya Klimov - 지식 유형에 관하여][ext-klimov]
-
-[ext-klimov]: https://youtu.be/4xyb_tA-uw0?t=249

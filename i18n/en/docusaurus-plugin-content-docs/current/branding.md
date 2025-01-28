@@ -78,4 +78,3 @@ Work in progress...
 
 - [Discussion (github)](https://github.com/feature-sliced/documentation/discussions/399)
 - [History of development with references (figma)](https://www.figma.com/file/RPphccpoeasVB0lMpZwPVR/FSD-Brand?node-id=0%3A1)
-- [Rebranding demo](https://rebrand-sliced.netlify.app/en/)
