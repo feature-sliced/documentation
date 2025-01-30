@@ -35,3 +35,7 @@ sidebar_label: 프로젝트의 지식 유형
 ## 참고 자료 {#see-also}
 
 - [(영상 🇷🇺) Ilya Klimov - 지식 유형에 관하여][ext-klimov]
+
+[ext-klimov]: https://youtu.be/4xyb_tA-uw0?t=249
+
+
