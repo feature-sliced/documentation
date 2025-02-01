@@ -80,55 +80,55 @@
         "description": "Tell us"
     },
     "pages.examples.title": {
-        "message": "Examples",
+        "message": "예제",
         "description": "Page title"
     },
     "pages.examples.subtitle": {
-        "message": "List of websites people are building with Feature-Sliced Design",
+        "message": "Feature-Sliced Design으로 사람들이 제작한 웹사이트 목록",
         "description": "Page subtitle"
     },
     "pages.examples.add_me.title": {
-        "message": "Add example",
+        "message": "예제 추가하기",
         "description": "Request to add example"
     },
     "pages.examples.repo.title": {
-        "message": "Repository",
+        "message": "저장소",
         "description": "Examples repository label"
     },
     "pages.examples.versions": {
-        "message": "See also versions list",
+        "message": "버전 목록도 확인해보세요",
         "description": "Versions reminder"
     },
     "pages.versions.title": {
-        "message": "Feature-Sliced Design versions",
+        "message": "Feature-Sliced Design 버전",
         "description": "Feature-Sliced Design versions"
     },
     "pages.versions.current": {
-        "message": "The documentation for the currently published version can be found here",
+        "message": "현재 배포된 버전의 문서는 여기에서 확인할 수 있습니다.",
         "description": "Description for current version"
     },
     "pages.versions.legacy": {
-        "message": "Documentation for older versions of {of} can be found here ",
+        "message": "{of}의 이전 버전에 대한 문서는 여기에서 확인할 수 있습니다.",
         "description": "Description for legacy version"
     },
     "pages.nav.title": {
-        "message": "🧭 Navigation",
+        "message": "🧭 내비게이션",
         "description": "NavPage title"
     },
     "pages.nav.legacy.title": {
-        "message": "Legacy routes",
+        "message": "이전 경로",
         "description": "NavPage section=legacy title"
     },
     "pages.nav.legacy.details": {
-        "message": "After the restructuring of the documentation, some routes were changed. Below you can find the page you may have been looking for.",
+        "message": "문서 구조가 변경되면서 일부 경로가 바뀌었습니다. 아래에서 찾고 계신 페이지를 확인할 수 있습니다.",
         "description": "NavPage section=legacy details"
     },
     "pages.nav.legacy.subdetails": {
-        "message": "But there are redirects from old links for compatibility",
+        "message": "그러나 호환성을 위해 이전 링크에서 리디렉션이 제공됩니다.",
         "description": "NavPage section=legacy subdetails"
     },
     "features.feedback-badge.label": {
-        "message": "Share your feedback about documentation 🤙",
+        "message": "문서에 대한 의견을 공유해주세요 🤙",
         "description": "Feedback share button label"
     },
     "features.feedback-badge.url": {
@@ -136,59 +136,59 @@
         "description": "Feedback share form url"
     },
     "features.feedback-doc.button-text": {
-        "message": "Feedback",
+        "message": "피드백",
         "description": "The text on a floating button to leave feedback about the docs"
     },
     "features.feedback-doc.email-placeholder": {
-        "message": "Your email (optional)",
+        "message": "이메일 주소 (선택 사항)",
         "description": "The placeholder for email input"
     },
     "features.feedback-doc.error-message": {
-        "message": "Something went wrong. Please try again later.",
+        "message": "문제가 발생했습니다. 나중에 다시 시도해주세요.",
         "description": "The error message displayed when feedback form submission fails"
     },
     "features.feedback-doc.modal-title-error-403": {
-        "message": "The request URL does not match the one defined in PushFeedback for this project.",
+        "message": "요청 URL이 이 프로젝트의 PushFeedback에 정의된 URL과 일치하지 않습니다.",
         "description": "The title of the modal displayed when feedback form submission fails with 403 error"
     },
     "features.feedback-doc.modal-title-error-404": {
-        "message": "We could not find the provided project id in PushFeedback.",
+        "message": "PushFeedback에서 제공된 프로젝트 ID를 찾을 수 없습니다.",
         "description": "The title of the modal displayed when feedback form submission fails with 404 error"
     },
     "features.feedback-doc.message-placeholder": {
-        "message": "Comments",
+        "message": "코멘트",
         "description": "The placeholder for message input"
     },
     "features.feedback-doc.modal-title": {
-        "message": "Share your feedback",
+        "message": "피드백을 공유해주세요",
         "description": "The title of the modal to leave feedback about the docs"
     },
     "features.feedback-doc.modal-title-error": {
-        "message": "Oops!",
+        "message": "이런!",
         "description": "The title of the modal displayed when feedback form submission fails"
     },
     "features.feedback-doc.modal-title-success": {
-        "message": "Thanks for your feedback!",
+        "message": "피드백을 주셔서 감사합니다!",
         "description": "The title of the modal displayed when feedback form submission succeeds"
     },
     "features.feedback-doc.screenshot-button-text": {
-        "message": "Take a Screenshot",
+        "message": "스크린샷 찍기",
         "description": "The text on a button to take a screenshot"
     },
     "features.feedback-doc.screenshot-topbar-text": {
-        "message": "SELECT AN ELEMENT ON THE PAGE",
+        "message": "페이지에서 요소를 선택하세요",
         "description": "The text displayed in the top bar when selecting an element to take a screenshot"
     },
     "features.feedback-doc.send-button-text": {
-        "message": "Send",
+        "message": "보내기",
         "description": "The text on a button to send feedback"
     },
     "features.feedback-doc.rating-placeholder": {
-        "message": "Was this page helpful?",
+        "message": "이 페이지가 도움이 되었나요?",
         "description": "The placeholder for rating input"
     },
     "features.feedback-doc.rating-stars-placeholder": {
-        "message": "How would you rate this page",
+        "message": "이 페이지를 어떻게 평가하시겠습니까?",
         "description": "The placeholder for rating stars input"
     },
     "features.hero.tagline": {
@@ -208,191 +208,191 @@
         "description": "Previous version"
     },
     "shared.wip.title": {
-        "message": "The article is in the process of writing",
+        "message": "이 글은 작성 중입니다",
         "description": "Admonition title"
     },
     "shared.wip.subtitle": {
-        "message": "To bring the release of the article closer, you can:",
+        "message": "이 글의 발행을 앞당기려면 다음을 수행할 수 있습니다:",
         "description": "Admonition subtitle"
     },
     "shared.wip.var.feedback.base": {
-        "message": "📢 Share your feedback ",
+        "message": "📢 의견을 공유해주세요 ",
         "description": "Variant for contribute (base)"
     },
     "shared.wip.var.feedback.link": {
-        "message": "at article (comment/emoji-reaction)",
+        "message": "글에서 (댓글/이모지 반응)",
         "description": "Variant for contribute (link)"
     },
     "shared.wip.var.material.base": {
-        "message": "💬 Collect the relevant ",
+        "message": "💬 관련 자료를 모아주세요 ",
         "description": "Variant for contribute (base)"
     },
     "shared.wip.var.material.link": {
-        "message": "material on the topic from chat",
+        "message": "채팅에서 주제와 관련된 자료",
         "description": "Variant for contribute (link)"
     },
     "shared.wip.var.contribute.base": {
-        "message": "⚒️ Contribute ",
+        "message": "⚒️ 기여하기 ",
         "description": "Variant for contribute (base)"
     },
     "shared.wip.var.contribute.link": {
-        "message": "in any other way",
+        "message": "다른 방식으로",
         "description": "Variant for contribute (link)"
     },
     "theme.NotFound.title": {
-        "message": "Page Not Found",
+        "message": "페이지를 찾을 수 없습니다",
         "description": "The title of the 404 page"
     },
     "theme.NotFound.p1": {
-        "message": "We could not find what you were looking for.",
+        "message": "찾으시는 내용을 찾을 수 없습니다.",
         "description": "The first paragraph of the 404 page"
     },
     "theme.NotFound.p2": {
-        "message": "Please contact the owner of the site that linked you to the original URL and let them know their link is broken.",
+        "message": "해당 URL을 링크한 사이트 소유자에게 연락해 링크가 깨졌음을 알려주세요.",
         "description": "The 2nd paragraph of the 404 page"
     },
     "theme.AnnouncementBar.closeButtonAriaLabel": {
-        "message": "Close",
+        "message": "닫기",
         "description": "The ARIA label for close button of announcement bar"
     },
     "theme.blog.paginator.navAriaLabel": {
-        "message": "Blog list page navigation",
+        "message": "블로그 목록 페이지 탐색",
         "description": "The ARIA label for the blog pagination"
     },
     "theme.blog.paginator.newerEntries": {
-        "message": "Newer Entries",
+        "message": "최신 글",
         "description": "The label used to navigate to the newer blog posts page (previous page)"
     },
     "theme.blog.paginator.olderEntries": {
-        "message": "Older Entries",
+        "message": "이전 글",
         "description": "The label used to navigate to the older blog posts page (next page)"
     },
     "theme.blog.post.readingTime.plurals": {
-        "message": "One min read|{readingTime} min read",
+        "message": "1분 읽기|{readingTime}분 읽기",
         "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
     },
     "theme.tags.tagsListLabel": {
-        "message": "Tags:",
+        "message": "태그:",
         "description": "The label alongside a tag list"
     },
     "theme.blog.post.readMore": {
-        "message": "Read More",
+        "message": "더 읽기",
         "description": "The label used in blog post item excerpts to link to full blog posts"
     },
     "theme.blog.post.paginator.navAriaLabel": {
-        "message": "Blog post page navigation",
+        "message": "블로그 글 페이지 탐색",
         "description": "The ARIA label for the blog posts pagination"
     },
     "theme.blog.post.paginator.newerPost": {
-        "message": "Newer Post",
+        "message": "최신 글",
         "description": "The blog post button label to navigate to the newer/previous post"
     },
     "theme.blog.post.paginator.olderPost": {
-        "message": "Older Post",
+        "message": "이전 글",
         "description": "The blog post button label to navigate to the older/next post"
     },
     "theme.tags.tagsPageTitle": {
-        "message": "Tags",
+        "message": "태그",
         "description": "The title of the tag list page"
     },
     "theme.blog.post.plurals": {
-        "message": "One post|{count} posts",
+        "message": "1개의 글|{count}개의 글",
         "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
     },
     "theme.blog.tagTitle": {
-        "message": "{nPosts} tagged with \"{tagName}\"",
+        "message": "\"{tagName}\" 태그가 포함된 {nPosts}개의 글",
         "description": "The title of the page for a blog tag"
     },
     "theme.tags.tagsPageLink": {
-        "message": "View All Tags",
+        "message": "모든 태그 보기",
         "description": "The label of the link targeting the tag list page"
     },
     "theme.CodeBlock.copyButtonAriaLabel": {
-        "message": "Copy code to clipboard",
+        "message": "코드를 클립보드에 복사",
         "description": "The ARIA label for copy code blocks button"
     },
     "theme.CodeBlock.copied": {
-        "message": "Copied",
+        "message": "복사됨",
         "description": "The copied button label on code blocks"
     },
     "theme.CodeBlock.copy": {
-        "message": "Copy",
+        "message": "복사",
         "description": "The copy button label on code blocks"
     },
     "theme.docs.sidebar.expandButtonTitle": {
-        "message": "Expand sidebar",
+        "message": "사이드바 확장",
         "description": "The ARIA label and title attribute for expand button of doc sidebar"
     },
     "theme.docs.sidebar.expandButtonAriaLabel": {
-        "message": "Expand sidebar",
+        "message": "사이드바 확장",
         "description": "The ARIA label and title attribute for expand button of doc sidebar"
     },
     "theme.docs.paginator.navAriaLabel": {
-        "message": "Docs pages navigation",
+        "message": "문서 페이지 탐색",
         "description": "The ARIA label for the docs pagination"
     },
     "theme.docs.paginator.previous": {
-        "message": "Previous",
+        "message": "이전",
         "description": "The label used to navigate to the previous doc"
     },
     "theme.docs.paginator.next": {
-        "message": "Next",
+        "message": "다음",
         "description": "The label used to navigate to the next doc"
     },
     "theme.docs.sidebar.collapseButtonTitle": {
-        "message": "Collapse sidebar",
+        "message": "사이드바 축소",
         "description": "The title attribute for collapse button of doc sidebar"
     },
     "theme.docs.sidebar.collapseButtonAriaLabel": {
-        "message": "Collapse sidebar",
+        "message": "사이드바 축소",
         "description": "The title attribute for collapse button of doc sidebar"
     },
     "theme.docs.sidebar.responsiveCloseButtonLabel": {
-        "message": "Close menu",
+        "message": "메뉴 닫기",
         "description": "The ARIA label for close button of mobile doc sidebar"
     },
     "theme.docs.sidebar.responsiveOpenButtonLabel": {
-        "message": "Open menu",
+        "message": "메뉴 열기",
         "description": "The ARIA label for open button of mobile doc sidebar"
     },
     "theme.docs.versions.unreleasedVersionLabel": {
-        "message": "This is unreleased documentation for {siteTitle} {versionLabel} version.",
+        "message": "이 문서는 {siteTitle} {versionLabel} 버전의 미발행 문서입니다.",
         "description": "The label used to tell the user that he's browsing an unreleased doc version"
     },
     "theme.docs.versions.unmaintainedVersionLabel": {
-        "message": "This is documentation for {siteTitle} {versionLabel}, which is no longer actively maintained.",
+        "message": "이 문서는 더 이상 유지 관리되지 않는 {siteTitle} {versionLabel} 버전의 문서입니다.",
         "description": "The label used to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionSuggestionLabel": {
-        "message": "For up-to-date documentation, see the {latestVersionLink} ({versionLabel}).",
+        "message": "최신 문서를 보려면 {latestVersionLink} ({versionLabel})를 확인하세요.",
         "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionLinkLabel": {
-        "message": "latest version",
+        "message": "최신 버전",
         "description": "The label used for the latest version suggestion link label"
     },
     "theme.common.editThisPage": {
-        "message": "Edit this page",
+        "message": "이 페이지 편집하기",
         "description": "The link label to edit the current page"
     },
     "theme.common.headingLinkTitle": {
-        "message": "Direct link to heading",
+        "message": "해당 헤딩으로 직접 이동",
         "description": "Title for link to heading"
     },
     "theme.lastUpdated.atDate": {
-        "message": " on {date}",
+        "message": "{date}에 업데이트됨",
         "description": "The words used to describe on which date a page has been last updated"
     },
     "theme.lastUpdated.byUser": {
-        "message": " by {user}",
+        "message": "{user}에 의해 업데이트됨",
         "description": "The words used to describe by who the page has been last updated"
     },
     "theme.lastUpdated.lastUpdatedAtBy": {
-        "message": "Last updated{atDate}{byUser}",
+        "message": "마지막 업데이트: {atDate}{byUser}",
         "description": "The sentence used to display when a page has been last updated, and by who"
     },
     "theme.common.skipToMainContent": {
-        "message": "Skip to main content",
+        "message": "주요 콘텐츠로 건너뛰기",
         "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
     }
 }
