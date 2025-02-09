@@ -426,5 +426,16 @@ export const examples: Example[] = [
         updatedAt: "2024-08-10",
         tech: ["react", "redux-toolkit", "typescript"],
     },
+    {
+        title: "Progect Management System",
+        description:
+            'Single-user client-side web app for project management',
+        source: "https://github.com/IvanZemsky/ProjectManagement",
+        website: "https://ivanzemsky.github.io/ProjectManagement/",
+        preview: require("./img/project-management-system.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2024-11-25",
+        tech: ["react", "typescript", "material ui", "mobx", "react-hook-form"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
