@@ -29,7 +29,7 @@ export * from "./ui/Comment";  // 👎 don't try this at home
 export * from "./model/comments";  // 💩 this is bad practice
 ```
 
-This hurts the discoverability of a slice because you can't easily tell what the interface of this slice is. Not knowing the interface means that you have to dig deep into the code of a slice to understand how to integrate it. Another problem is that you might accidentally expose the module internals accidentally, which will make refactoring difficult if someone starts depending on them.
+This hurts the discoverability of a slice because you can't easily tell what the interface of this slice is. Not knowing the interface means that you have to dig deep into the code of a slice to understand how to integrate it. Another problem is that you might accidentally expose the module internals, which will make refactoring difficult if someone starts depending on them.
 
 ## Public API for cross-imports {#public-api-for-cross-imports}
 

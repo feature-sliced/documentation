@@ -1,0 +1,75 @@
+---
+title: Slice와 Segment
+sidebar_position: 2
+pagination_next: reference/public-api
+---
+
+# Slice와 Segment
+
+## Slice
+
+Slice는 Feature-Sliced Design의 두 번째 구성 단위입니다. Slice의 주 목적은 제품, 비즈니스, Application 관점에서 코드를 체계적으로 그룹화하는 것입니다.
+
+Slice 이름은 표준화되어 있지 않고 Application의 비즈니스 도메인에 따라 결정됩니다. 예시:
+- 사진 갤러리: `photo`, `effects`, `gallery-page`
+- 소셜 네트워크: `post`, `comments`, `news-feed`
+
+Shared와 App Layer는 Slice를 포함하지 않습니다. Shared는 Business Logic을 포함하지 않고, App은 Application 전체 관련 코드만 다루기 때문입니다.
+
+### Zero 결합도과 High 응집도 {#zero-coupling-high-cohesion}
+
+Slice는 독립적이고 응집도 높은 코드 그룹이어야 합니다. 아래 그래픽은 _응집도_과 _결합도_ 개념을 시각화합니다:
+
+<figure>
+    <img src="/img/coupling-cohesion-light.svg#light-mode-only" alt="" />
+    <img src="/img/coupling-cohesion-dark.svg#dark-mode-only" alt="" />
+    <figcaption>
+        Image inspired by https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
+    </figcaption>
+</figure>
+
+이상적인 Slice 특징:
+    1. 독립적 — 같은 Layer의 다른 Slice와 Zero 결합도
+    2. 높은 응집도 — 핵심 목적 관련 코드를 포함
+
+Slice의 독립성은 [Layer Import Rule][layers--import-rule]로 강제됩니다:
+
+> _Slice의 모듈은 하위 Layer의 다른 Slice만 Import 가능_
+
+### Slice의 Public API Rule
+
+Slice 내부 구조는 자유롭지만, 다른 Slice가 사용할 좋은 Public API를 제공해야 합니다. 이는 **Slice Public API Rule**로 강제됩니다:
+
+> _모든 Slice(와 Slice가 없는 Layer의 Segment)는 Public API를 정의해야 합니다._
+>
+> _외부 모듈은 Slice/Segment의 내부 구조가 아닌 Public API만 참조 가능_
+
+자세한 내용은 [Public API Reference][ref-public-api]를 참고하세요.
+
+### Slice Group
+
+연관된 Slice들은 폴더로 그룹화할 수 있습니다. 단, 다른 Slice와 동일한 격리 규칙을 따라야 하며, 그룹 내 **코드 공유는 불가능**합니다.
+
+![Features "compose", "like" 그리고 "delete"가 "post" 폴더에 그룹화되어 있습니다. 해당 폴더에는 허용되지 않음을 나타내기 위해 취소선이 그어진 "some-shared-code.ts" 파일도 있습니다.](/img/graphic-nested-slices.svg)
+
+## Segment
+
+Segment는 마지막 구성 단위로, 기술적 특성에 따라 코드를 그룹화합니다.
+
+표준 Segment:
+
+- `ui` — UI 관련: Component, Date Formatter, Style 등
+- `api` — Backend 통신: Request Function, Data Type, Mapper 등
+- `model` — Data Model: Schema, Interface, Store, Business Logic
+- `lib` — Slice 내부 Library 코드
+- `config` — Configuration과 Feature Flag
+
+각 Layer의 Segment 사용법은 [Layer Page][layers--layer-definitions]를 참조하세요.
+
+Custom Segment도 생성 가능하며, App과 Shared Layer에서 주로 사용됩니다.
+
+Segment 이름은 코드 목적을 명확히 해야 합니다. `components`, `hooks`, `types`같은 모호한 이름은 피하세요.
+
+[layers--layer-definitions]: /docs/reference/layers#layer-definitions
+[layers--import-rule]: /docs/reference/layers#import-rule-on-layers
+[ref-public-api]: /docs/reference/public-api
