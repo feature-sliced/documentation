@@ -1,8 +1,9 @@
 ---
 sidebar_position: 1
+sidebar_label: 인증
 ---
 
-# Authentication
+# 인증
 
 보통 인증은 세 가지 주요 단계로 이루어집니다:
 

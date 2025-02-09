@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Types
+# 타입
 
 이 가이드는 Typescript와 같은 정적 타입 언어의 데이터 타입을 다루는 방법과 FSD 구조 내에서 타입이 어떻게 활용되는지 설명합니다.
 
