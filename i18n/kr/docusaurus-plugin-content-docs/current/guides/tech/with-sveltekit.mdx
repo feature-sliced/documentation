@@ -1,0 +1,95 @@
+# SvelteKit와 함께 사용하기
+
+SvelteKit에서 FSD(Feature-Sliced Design) 아키텍처를 구현할 수 있지만, 몇 가지 구조적 차이점이 있습니다:
+
+- SvelteKit은 routing 파일을 `src/routes`에 배치하지만, FSD에서는 app Layer에 포함됩니다
+- SvelteKit은 routing 외 파일을 src/lib에 배치하도록 권장합니다
+
+## 구성 설정
+
+```ts title="svelte.config.ts"
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+/** @type {import('@sveltejs/kit').Config}*/ 
+const config = {
+   preprocess: [vitePreprocess()],
+   kit: {
+     adapter: adapter(),
+     files: {
+       routes: 'src/app/routes',             // routing을 app Layer로 이동
+       lib: 'src',
+       appTemplate: 'src/app/index.html',    // application entry point를 app Layer로 이동
+       assets: 'public'
+     },
+     alias: {
+       '@/*': 'src/*'                        // src directory alias 설정
+     }
+   }
+};
+
+export default config;
+```
+
+## File Routing을 `src/app`으로 이동
+
+Configuration 변경 후 구조:
+
+```sh
+├── src
+│   ├── app
+│   │   ├── index.html
+│   │   ├── routes
+│   ├── pages                               # FSD pages Layer
+```
+
+이제 route 파일을 `app` Layer의 routes 폴더에 배치하고, `pages` Layer와 연결할 수 있습니다.
+
+예시) Home Page 추가 과정:
+
+1. `pages` Layer에 새 Page Slice 추가
+2. `app` Layer의 `routes`에 route 생성
+3. Slice의 Page를 route와 연결
+
+[CLI tool](https://github.com/feature-sliced/cli)을 사용한 Page Slice 생성:
+
+```shell
+fsd pages home
+```
+
+`home-page.vue` 파일을 UI Segment에 생성하고 public API로 노출:
+
+
+```ts title="src/pages/home/index.ts"
+export { default as HomePage } from './ui/home-page';
+```
+
+`app` Layer의 routes에 route 추가:
+
+```sh
+├── src
+│   ├── app
+│   │   ├── routes
+│   │   │   ├── +page.svelte
+│   │   ├── index.html
+│   ├── pages
+│   │   ├── home
+│   │   │   ├── ui
+│   │   │   │   ├── home-page.svelte
+│   │   │   ├── index.ts
+```
+
+Page Component 연결:
+
+```html title="src/app/routes/+page.svelte"
+<script>
+  import { HomePage } from '@/pages/home';
+</script>
+
+<HomePage/>
+```
+
+## 참고 자료
+
+- [SvelteKit Directory Structure 문서](https://kit.svelte.dev/docs/configuration#files)
+
