@@ -5,7 +5,9 @@ pagination_next: reference/slices-segments
 
 # Layer
 
-Layer는 Feature-Sliced Design의 기본 구성 단위입니다. Layer의 주 목적은 코드의 책임 범위와 의존성을 기준으로 코드를 체계적으로 구조화하는 것입니다.
+Layer는 Feature-Sliced Design의 계층 구조에서 가장 상위 수준을 담당하며, Layer > Slice > Segment로 구성된 구조의 첫 번째 단계입니다. 
+Layer의 목적은 프로젝트를 기능별로 정리하고, 모듈 간의 의존성을 효과적으로 관리할 수 있도록 폴더 구조를 분리하는 것입니다. 
+또한, 각 Layer는 특정 기능이 어디에 배치되어야 하는지를 결정하는 기준이 되어, 코드 구조를 체계적으로 유지하는 데 도움을 줍니다.
 
 총 **7개의 Layer**가 있으며, 책임과 의존성이 높은 순서대로 정렬되어 있습니다:
 
