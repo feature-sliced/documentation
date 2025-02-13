@@ -1,0 +1,36 @@
+---
+hide_table_of_contents: true
+---
+
+# Examples
+
+<p class="summary">
+Small practical examples of the methodology application
+</p>
+
+## Main
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { UserSwitchOutlined, LayoutOutlined, FontSizeOutlined } from "@ant-design/icons";
+
+<NavCard
+    title="Authentication"
+    description="Decomposition of authentication logic"
+    to="/docs/guides/examples/auth"
+    Icon={UserSwitchOutlined}
+    tags={["Forms", "2FA", "OAuth", "Token storage", "Token refresh"]}
+/>
+<NavCard
+    title="Types"
+    description="Where to keep the types? What kinds of types are there in the context of FSD?"
+    to="/docs/guides/examples/types"
+    Icon={FontSizeOutlined}
+    tags={["DTO", "Mappers", "Entity relationships", "Auto-generation", "Validation schemas"]}
+/>
+<NavCard
+    title="Page layouts"
+    description="Main cases with layouts"
+    to="/docs/guides/examples/page-layout"
+    Icon={LayoutOutlined}
+    tags={["Where to store them", "Using widgets in layouts"]}
+/>

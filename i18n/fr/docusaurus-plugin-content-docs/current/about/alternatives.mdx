@@ -1,0 +1,153 @@
+---
+sidebar_class_name: sidebar-item--wip
+sidebar_position: 3
+---
+
+import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+
+# Alternatives
+
+<WIP ticket="62" />
+
+Historique des approches architecturales
+
+## Big Ball of Mud
+
+<WIP ticket="258" />
+
+> Qu'est-ce que c'est ? Pourquoi est-ce si courant ? Quand cela commence-t-il à poser des problèmes ? Que faire et comment FSD aide-t-il à cela ?
+
+- [(Article) Oleg Isonen - Derniers mots sur l'architecture UI avant qu'une IA ne prenne le relais](https://oleg008.medium.com/last-words-on-ui-architecture-before-an-ai-takes-over-468c78f18f0d)
+- [(Rapport) Julia Nikolaeva, iSpring - Big Ball of Mud et autres problèmes du monolithe, comment nous les avons gérés](http://youtu.be/gna4Ynz1YNI)
+- [(Article) DD - Big Ball of Mud](https://thedomaindrivendesign.io/big-ball-of-mud/)
+
+
+## Composants intelligents et stupides
+
+<WIP ticket="214" />
+
+> À propos de l'approche ; De son applicabilité dans le frontend ; Position de la méthodologie
+
+À propos de l'obsolescence, d'une nouvelle vision selon la méthodologie
+
+Pourquoi l'approche des composants-conteneurs est-elle nuisible ?
+
+- [(Article) Den Abramov - Présentation et composants Conteneur (TLDR : obsolète)](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+
+## Principes de conception
+
+<WIP ticket="59" />
+
+> De quoi parle-t-on ; Position de FSD
+
+SOLID, GRASP, KISS, YAGNI, ... - et pourquoi ils ne fonctionnent pas bien ensemble en pratique
+
+Et comment cela agrège ces pratiques
+
+- [(Talk) Ilya Azin - Feature-Sliced Design (extrait sur les principes de conception)](https://youtu.be/SnzPAr_FJ7w?t=380)
+
+
+## DDD
+
+<WIP ticket="1" />
+
+> À propos de l'approche ; Pourquoi cela fonctionne mal en pratique
+
+Quelle est la différence, comment cela améliore l'applicabilité, où cela adopte des pratiques
+
+- [(Article) DDD, Hexagonal, Onion, Clean, CQRS, ... Comment je mets tout cela ensemble](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
+- [(Talk) Ilya Azin - Feature-Sliced Design (extrait sur Clean Architecture, DDD)](https://youtu.be/SnzPAr_FJ7w?t=528)
+
+
+## Clean Architecture
+
+<WIP ticket="165" />
+
+> À propos de l'approche ; De son applicabilité dans le frontend ; Position de FSD
+
+Comment elles sont similaires (à bien des égards), comment elles diffèrent
+
+- [(Fil de discussion) À propos de l'usage du cas/interacteur dans la méthodologie](https://t.me/feature_sliced/3897)
+- [(Fil de discussion) À propos de l'injection de dépendances dans la méthodologie](https://t.me/feature_sliced/4592)
+- [(Article) Alex Bespoyasov - Clean Architecture dans le frontend](https://bespoyasov.me/blog/clean-architecture-on-frontend/)
+- [(Article) DDD, Hexagonal, Onion, Clean, CQRS, ... Comment je mets tout cela ensemble](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
+- [(Talk) Ilya Azin - Feature-Sliced Design (extrait sur Clean Architecture, DDD)](https://youtu.be/SnzPAr_FJ7w?t=528)
+- [(Article) Idées fausses sur Clean Architecture](http://habr.com/ru/company/mobileup/blog/335382/)
+
+
+## Frameworks
+
+<WIP ticket="58" />
+
+> De l'applicabilité dans le frontend ; Pourquoi les frameworks ne résolvent pas les problèmes ; Pourquoi il n'y a pas d'approche unique ; Position de FSD
+
+Approche agnostique aux frameworks, approche conventionnelle
+
+- [(Article) À propos des raisons de la création de la méthodologie (extrait sur les frameworks)](/docs/about/motivation)
+- [(Fil de discussion) À propos de l'applicabilité de la méthodologie pour différents frameworks](https://t.me/feature_sliced/3867)
+
+
+## Atomic Design
+
+### Qu'est-ce que c'est ?
+Dans l'Atomic Design, la portée de responsabilité est divisée en couches standardisées.
+
+L'Atomic Design est divisé en **5 couches** (de haut en bas) :
+
+1. `pages` - Fonctionnalité similaire à la couche `pages` dans FSD.
+2. `templates` - Composants qui définissent la structure d'une page sans être liés à un contenu spécifique.
+3. `organisms` - Modules constitués de molécules ayant une logique métier.
+4. `molecules` - Composants plus complexes qui ne contiennent généralement pas de logique métier.
+5. `atoms` - Composants UI sans logique métier.
+
+Les modules à une couche n'interagissent qu'avec les modules des couches inférieures, ce qui est similaire à FSD.
+C'est-à-dire que les molécules sont construites à partir des atomes, les organismes à partir des molécules, les templates à partir des organismes, et les pages à partir des templates.
+L'Atomic Design implique également l'utilisation d'API publiques au sein des modules pour l'isolation.
+
+### Applicabilité au frontend
+
+L'Atomic Design est relativement courant dans les projets. Il est plus populaire chez les designers web que chez les développeurs.
+Les designers web utilisent souvent l'Atomic Design pour créer des designs évolutifs et facilement maintenables.
+En développement, l'Atomic Design est souvent mélangé avec d'autres méthodologies architecturales.
+
+Cependant, étant donné que l'Atomic Design se concentre sur les composants UI et leur composition, un problème surgit lorsqu'il s'agit d'implémenter
+la logique métier dans l'architecture.
+
+Le problème est que l'Atomic Design ne fournit pas un niveau clair de responsabilité pour la logique métier,
+ce qui entraîne sa distribution à travers divers composants et niveaux, compliquant la maintenance et les tests.
+La logique métier devient floue, rendant difficile la séparation claire des responsabilités et rendant
+le code moins modulaire et réutilisable.
+
+### Comment cela se rapporte-t-il à FSD ?
+
+Dans le contexte de FSD, certains éléments de l'Atomic Design peuvent être appliqués pour créer des composants UI flexibles et évolutifs.
+Les couches `atoms` et `molecules` peuvent être implémentées dans `shared/ui` dans FSD, simplifiant la réutilisation et
+la maintenance des éléments UI de base.
+
+```
+├── shared
+│   ├── ui
+│   │   ├── atoms
+│   │   ├── molecules
+│   ...
+```
+Une comparaison de FSD et d'Atomic Design montre que les deux méthodologies visent la modularité et la réutilisabilité
+mais se concentrent sur des aspects différents. L'Atomic Design est orienté vers les composants visuels et leur composition.
+FSD se concentre sur la division de la fonctionnalité de l'application en modules indépendants et leurs interconnexions.
+
+- [Méthodologie Atomic Design](https://atomicdesign.bradfrost.com/table-of-contents/)
+- [(Fil de discussion) À propos de l'applicabilité dans shared/ui](https://t.me/feature_sliced/1653)
+- [(Vidéo) Brève présentation d'Atomic Design](https://youtu.be/Yi-A20x2dcA)
+- [(Talk) Ilya Azin - Feature-Sliced Design (extrait sur Atomic Design)](https://youtu.be/SnzPAr_FJ7w?t=587)
+
+## L'approche "Feature Driver"
+
+<WIP ticket="219" />
+
+> À propos de l'approche ; De son applicabilité dans le frontend ; Position de FSD
+
+À propos de la compatibilité, du développement historique et de la comparaison
+
+- [(Talk) Oleg Isonen - Feature Driven Architecture](https://youtu.be/BWAeYuWFHhs)
+- [Feature Driven - Spécification courte (du point de vue de FSD)](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
