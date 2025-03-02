@@ -1,19 +1,31 @@
 ---
 # sidebar_position: 3
-unlisted: true
 ---
 
 # Decomposition cheatsheet
 
 Use this as a quick reference when you're deciding how to decompose your UI. PDF versions are also available below, so you can print it out and keep one under your pillow.
 
-## Choosing a layer
+## Decomposition by necessity {#decomposition-by-necessity}
+It is a common mistake to assign separate slides to the part of the code that is not reused anywhere.
+This mistake creates several problems at once:
+- The codebase becomes more disjointed, making the code harder to navigate.
+- A person reading your code, seeing that a slice is not part of the page, may begin to question whether they are breaking part of the display by changing that slice.
+- This is a violation of basic principles such as [KISS](https://en.wikipedia.org/wiki/KISS_principle) and [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor).
+
+It can be avoided by following a simple rule: **"Parts of code that are not reused anywhere should be where they are used"**.
+
+For example, we have a component that contains a block of information about a user. This component is only used on the profile page, so it should stay on the profile page.
+
+If you are sure that your slice will be used in more than one place, you can use the note below.
+
+## Choosing a layer {#choosing-a-layer}
 
 [Download PDF](/files/choosing-a-layer-en.pdf)
 
 ![Definitions of all layers and self-check questions](/img/choosing-a-layer-en.jpg)
 
-## Examples
+## Examples {#examples}
 
 ### Tweet
 
@@ -32,3 +44,4 @@ Use this as a quick reference when you're deciding how to decompose your UI. PDF
 - [(Thread) About the difference between features and entities](https://t.me/feature_sliced/3776)
 - [(Thread) About the difference between things and entities (2)](https://t.me/feature_sliced/3248)
 - [(Thread) About the application of criteria for decomposition](https://t.me/feature_sliced/3833)
+- [(Thread) About decomposition by necessity](https://t.me/feature_sliced/1/106360)
