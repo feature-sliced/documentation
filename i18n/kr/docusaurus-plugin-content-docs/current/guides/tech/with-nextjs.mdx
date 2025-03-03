@@ -3,57 +3,60 @@ sidebar_position: 10
 ---
 # NextJS와 함께 사용하기
 
-NextJS에서도 FSD(Feature-Sliced Design) 아키텍처를 구현할 수 있지만, 두 가지 점에서 NextJS의 프로젝트 구조 요구사항과 FSD 구조 간에 충돌이 발생합니다:
+NextJS에서도 FSD 아키텍처를 적용할 수 있지만, NextJS의 기본 프로젝트 구조와 FSD 원칙 간에 몇 가지 충돌이 발생할 수 있습니다.
 
-- `pages` 폴더와의 라우팅 방식 차이
-- NextJS에서 `app` 폴더의 충돌 문제 또는 부재
+#### 주요 차이점 
 
-## FSD와 NextJS의 `페이지` 레이어 간 충돌 {#pages-conflict}
+- NextJS의 `pages` 폴더와 FSD의 `pages` layer 간의 이름 충돌
+- NextJS 13 이전 버전에서는 FSD의 `app` layer에 해당하는 명확한 폴더 구조가 없음
 
-NextJS는 애플리케이션 라우트를 정의하기 위해 `pages` 폴더를 사용하며, `pages` 폴더 내의 파일이 URL과 매핑되도록 설정합니다. 
-하지만 이 방식은 FSD(Folder Slice Design) `개념에 맞지는 않습니다`. 특히, NextJS의 라우팅 방식으로는 FSD의 슬라이스 구조를 평평하게 유지하기 어려운 점이 있습니다.
+## FSD와 NextJS의 `pages` layer 충돌 {#pages-conflict}
 
-### NextJS의 `pages` 폴더를 프로젝트 루트 폴더로 이동하기 (권장)
+NextJS는 파일 시스템 기반 라우팅을 위해 `pages` 폴더를 사용하며, 해당 폴더 내 파일이 자동으로 라우트에 매핑됩니다.
+그러나 이 방식은 FSD의 `pages layer 개념과 충돌`하며, 특히 FSD에서 권장하는 평탄한(flat) slice 구조를 NextJS의 중첩 라우팅 방식에서 유지하기 어려운 문제가 있습니다.
 
-프로젝트 루트에 `pages` 폴더를 배치하고, FSD 구조에 맞춘 페이지들을 NextJS의 `pages` 폴더로 옮깁니다. 
-이렇게 하면 `src` 폴더 내에서 FSD 구조를 유지할 수 있습니다.
+### NextJS의 `pages` 폴더를 루트 폴더로 이동 (권장)
+
+가장 권장되는 방법은 NextJS의 `pages` 폴더를 프로젝트 루트에 배치하고, FSD 구조는 `src` 폴더 내에서 유지하는 것입니다.
+이렇게 하면 NextJS의 라우팅 시스템을 그대로 활용하면서도 FSD 아키텍처를 온전히 적용할 수 있습니다.
 
 ```sh
-├── pages              # NextJS 페이지 폴더
+├── pages              # NextJS의 라우팅 시스템용 폴더
 ├── src
 │   ├── app
 │   ├── entities
 │   ├── features
-│   ├── pages          # FSD 페이지 폴더
+│   ├── pages          # FSD의 pages layer
 │   ├── shared
 │   ├── widgets
 ```
 
 ### FSD 구조 내 `pages` 폴더 이름 변경하기
 
-다른 방법으로는 FSD 구조 내에서 `pages` 폴더의 이름을 변경하여 NextJS의 `pages` 폴더와 충돌을 피할 수도 있습니다. 
-예를 들어, `pages` 폴더를 `views`로 이름을 변경하면 `src` 폴더 내의 FSD 구조를 유지하면서도 NextJS의 요구 사항과 충돌하지 않게 됩니다.
+다른 방법으로는 FSD의 `pages` layer 이름을 변경하여 NextJS의 `pages` 폴더와의 충돌을 방지하는 것입니다.
+예를 들어, `pages`를 `views`로 변경하면 NextJS의 라우팅 시스템과 FSD 구조를 동시에 유지할 수 있습니다.
 
 ```sh
 ├── app
 ├── entities
 ├── features
-├── pages              # NextJS 페이지 폴더
-├── views              # 이름이 변경된 FSD 페이지 폴더
+├── pages              # NextJS 라우팅용 폴더
+├── views              # 이름이 변경된 FSD pages layer
 ├── shared
 ├── widgets
 ```
 
-이름을 변경하는 경우, 이를 프로젝트의 README나 내부 문서에 명확히 기록하여 변경 사항이 잘 전달되도록 하는 것이 좋습니다. 이러한 변경은 ["프로젝트 지식"][project-knowledge]의 일부로 문서화하는 것이 중요합니다.
+폴더 이름을 변경한 경우, 프로젝트의 README나 내부 문서에 이를 명확하게 기록하는 것이 중요합니다.
+이러한 변경 사항은 ["프로젝트 지식"][project-knowledge]의 일부로 문서화하여 팀원들이 쉽게 이해할 수 있도록 해야 합니다.
 
-## NextJS에서 `app` 폴더 부재 문제 {#app-absence}
+## NextJS에서 FSD의 `app` layer 구현하기 {#app-absence}
 
-NextJS 13버전 이하에서는 명시적인 `app` 폴더가 없으며, 
-대신 `_app.tsx` 파일이 모든 페이지를 감싸는 컴포넌트 역할을 합니다.
+NextJS 13 이전 버전에서는 FSD의 `app` layer에 해당하는 명확한 폴더 구조가 제공되지 않았습니다.
+대신 `pages/_app.tsx` 파일이 애플리케이션의 진입점 역할을 하며, 전역 상태 및 레이아웃을 관리합니다.
 
-### `pages/_app.tsx` 파일에 app 기능 가져오기
+### `pages/_app.tsx`에 app layer 기능 통합하기
 
-NextJS 구조에서 `app` 폴더가 없는 문제를 해결하려면, `app` 폴더 내에 `App` 컴포넌트를 생성하고, 이를 `pages/_app.tsx`에 가져와 NextJS가 사용할 수 있도록 설정하면 됩니다. 예를 들어:
+FSD의 `app` layer 개념을 NextJS에 적용하려면, `app` 폴더에 애플리케이션의 프로바이더와 레이아웃 구성을 정의한 후, 이를 `pages/_app.tsx`에서 가져와 사용할 수 있습니다.
 
 ```tsx
 // app/providers/index.tsx
@@ -73,7 +76,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 export default App;
 ```
 
-그 다음 `pages/_app.tsx` 파일에서 `App` 컴포넌트와 프로젝트 전역 스타일을 다음과 같이 가져올 수 있습니다:
+그다음, `pages/_app.tsx`에서 `App` 컴포넌트를 가져와 NextJS의 진입점으로 설정하고, 전역 스타일을 로드할 수 있습니다.
 
 ```tsx
 // pages/_app.tsx
@@ -85,33 +88,30 @@ export { default } from 'app/providers';
 
 ## App Router 사용하기 {#app-router}
 
-NextJS 13.4 버전에서는 App Router가 안정화되었습니다. App Router를 사용하면 `pages` 폴더 대신 `app` 폴더를 통해 라우팅을 처리할 수 있습니다. 
-FSD 원칙을 준수하기 위해, NextJS의 `app` 폴더도 `pages` 폴더와의 충돌 문제를 해결한 것과 동일한 방식으로 다루어야 합니다. 
+NextJS 13.4 버전부터 정식 지원되는 App Router는 `pages` 폴더 대신 `app` 폴더를 통해 라우팅을 구현합니다.
+FSD 아키텍처를 App Router와 함께 사용할 때도 앞서 설명한 것과 유사한 방식으로 구조를 설정할 수 있습니다.
 
-이를 위해 NextJS의 `app` 폴더를 프로젝트 루트로 이동하고, FSD 페이지들을 `app` 폴더로 옮기는 방식을 사용합니다.
-이렇게 하면 `src` 폴더 내에서 FSD 프로젝트 구조를 유지할 수 있습니다. 
-또한, App Router와 Pages Router가 호환되므로 `pages` 폴더를 프로젝트 루트에 추가하는 것이 필요합니다.
+NextJS의 app 폴더를 프로젝트 루트에 배치하고, FSD의 app layer는 `src` 폴더 내에서 유지하는 것이 좋습니다.
+또한, App Router와 Pages Router는 함께 사용할 수 있으므로, 필요에 따라 두 라우팅 시스템을 모두 활용할 수도 있습니다.
 
 ```
-├── app                # NextJS app 폴더
-├── pages              # NextJS pages 폴더
-│   ├── README.md      # 해당 폴더의 목적과 역할에 대한 설명
+├── app                # NextJS의 App Router용 폴더
+├── pages              # NextJS의 Pages Router용 폴더 (선택적)
+│   ├── README.md      # 폴더의 용도 설명
 ├── src
-│   ├── app            # FSD app 폴더
+│   ├── app            # FSD의 app layer
 │   ├── entities
 │   ├── features
-│   ├── pages          # FSD pages 폴더
+│   ├── pages          # FSD의 pages layer
 │   ├── shared
 │   ├── widgets
 ```
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)][ext-app-router-stackblitz]
 
-## 관련 항목 {#see-also}
+## 참고 자료 {#see-also}
 
-- [(스레드) NextJS의 pages 디렉토리에 대한 토론](https://t.me/feature_sliced/3623)
+- [(스레드) NextJS의 pages 폴더에 대한 토론](https://t.me/feature_sliced/3623)
 
 [project-knowledge]: /docs/about/understanding/knowledge-types
 [ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md
-
-
