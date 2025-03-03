@@ -40,18 +40,18 @@ export default <RouterConfig> {
 };
 
 ```
-프로젝트에 Home 페이지를 추가하려면 다음 단계를 수행합니다:
+프로젝트에 Home page를 추가하려면 다음 단계를 수행합니다:
 
-1. `pages` 레이어 내에 페이지 slice를 생성합니다.
+1. `pages` layer 내에 page slice를 생성합니다.
 2. `app/router.options.ts` 파일에 해당 라우트를 등록합니다.
 
-페이지 slice는 [CLI](https://github.com/feature-sliced/cli)를 사용하여 생성할 수 있습니다:
+page slice는 [CLI](https://github.com/feature-sliced/cli)를 사용하여 생성할 수 있습니다:
 
 ```shell
 fsd pages home
 ```
 
-이제 `ui` 세그먼트 내에 `home-page.vue` 파일을 만들고, Public API를 통해 이를 노출합니다:
+이제 `ui` segment 내에 `home-page.vue` 파일을 만들고, Public API를 통해 이를 노출합니다:
 
 ```ts title="src/pages/home/index.ts"
 export { default as HomePage } from './ui/home-page';
@@ -69,7 +69,7 @@ export { default as HomePage } from './ui/home-page';
 │   │   │   ├── index.ts
 ```
 
-마지막으로 `router.options.ts` 파일에 새로운 페이지에 대한 라우트를 추가합니다:
+마지막으로 `router.options.ts` 파일에 새로운 page에 대한 라우트를 추가합니다:
 
 ```ts title="app/router.options.ts"
 import type { RouterConfig } from '@nuxt/schema'
@@ -117,23 +117,23 @@ export default defineNuxtConfig({
 })
 ```
 
-이제 `app/routes` 내에서 라우트를 생성하고, `pages`에 있는 페이지들과 연결할 수 있습니다.
+이제 `app/routes` 내에서 라우트를 생성하고, `pages`에 있는 page들과 연결할 수 있습니다.
 
-프로젝트에 `Home` 페이지를 추가하려면 다음 단계를 수행합니다:
-- `pages` layer 내에 페이지 slice를 생성합니다.
-- `app/routes` 디렉터리 내에서 해당 페이지에 대한 라우트를 추가합니다.
-- 페이지 slice의 컴포넌트를 라우트에서 사용할 수 있도록 연결합니다.
+프로젝트에 `Home` page를 추가하려면 다음 단계를 수행합니다:
+- `pages` layer 내에 page slice를 생성합니다.
+- `app/routes` 디렉터리 내에서 해당 page에 대한 라우트를 추가합니다.
+- page slice의 컴포넌트를 라우트에서 사용할 수 있도록 연결합니다.
 
 
-#### 1️⃣ 페이지 slice 생성
+#### 1️⃣ page slice 생성
 
-페이지 slice는 [CLI](https://github.com/feature-sliced/cli)를 사용하여 간편하게 생성할 수 있습니다:
+page slice는 [CLI](https://github.com/feature-sliced/cli)를 사용하여 간편하게 생성할 수 있습니다:
 
 ```shell
 fsd pages home
 ```
 
-이제 `ui` 세그먼트 내에 `home-page.vue` 파일을 생성하고, Public API를 통해 이를 노출합니다:
+이제 `ui` segment 내에 `home-page.vue` 파일을 생성하고, Public API를 통해 이를 노출합니다:
 
 ```ts title="src/pages/home/index.ts"
 export { default as HomePage } from './ui/home-page';
@@ -141,7 +141,7 @@ export { default as HomePage } from './ui/home-page';
 
 #### 2️⃣ `app/routes` 내에 라우트 추가
 
-생성한 페이지를 라우트와 연결하려면, `app/routes/index.vue` 파일을 생성하고 `HomePage` 컴포넌트를 등록해야 합니다.
+생성한 page를 라우트와 연결하려면, `app/routes/index.vue` 파일을 생성하고 `HomePage` 컴포넌트를 등록해야 합니다.
 
 ```sh
 
@@ -156,7 +156,7 @@ export { default as HomePage } from './ui/home-page';
 │   │   │   ├── index.ts
 ```
 
-#### 3️⃣ `index.vue`에서 페이지 컴포넌트 등록
+#### 3️⃣ `index.vue`에서 page 컴포넌트 등록
 
 ```html title="src/app/routes/index.vue"
 <script setup>
