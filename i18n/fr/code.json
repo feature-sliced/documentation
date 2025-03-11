@@ -1,0 +1,234 @@
+{
+    "pages.home.features.title": {
+        "message": "Fonctionnalités",
+        "description": "Features"
+    },
+    "pages.home.features.logic.title": {
+        "message": "Logique métier explicite",
+        "description": "Feature title"
+    },
+    "pages.home.features.logic.description": {
+        "message": "Architecture facilement découvrable grâce aux domaines",
+        "description": "Feature description"
+    },
+    "pages.home.features.adaptability.title": {
+        "message": "Adaptabilité",
+        "description": "Feature title"
+    },
+    "pages.home.features.adaptability.description": {
+        "message": "Les composants d'architecture peuvent être remplacés et ajoutés pour de nouveaux besoins",
+        "description": "Feature description"
+    },
+    "pages.home.features.debt.title": {
+        "message": "Dette technique & refactorisation",
+        "description": "Feature title"
+    },
+    "pages.home.features.debt.description": {
+        "message": "Chaque module peut être modifié ou réécrit indépendamment sans effets de bord",
+        "description": "Feature description"
+    },
+    "pages.home.features.shared.title": {
+        "message": "Réutilisation de code explicite",
+        "description": "Feature title"
+    },
+    "pages.home.features.shared.description": {
+        "message": "Un équilibre est maintenu entre DRY et la personnalisation locale",
+        "description": "Feature description"
+    },
+    "pages.home.concepts.title": {
+        "message": "Concepts",
+        "description": "Concepts"
+    },
+    "pages.home.concepts.public.title": {
+        "message": "API publique",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.public.description": {
+        "message": "Chaque module doit déclarer son API publique au niveau supérieur",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.isolation.title": {
+        "message": "Isolation",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.isolation.description": {
+        "message": "Le module ne doit pas dépendre directement des autres modules du même niveau ou de niveaux supérieurs",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.needs.title": {
+        "message": "Axé sur les besoins",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.needs.description": {
+        "message": "Orientation vers les besoins métiers et utilisateurs",
+        "description": "Concept description"
+    },
+    "pages.home.scheme.title": {
+        "message": "Schéma",
+        "description": "Scheme"
+    },
+    "pages.home.companies.using": {
+        "message": "Entreprises utilisant FSD",
+        "description": "Companies using FSD"
+    },
+    "pages.home.companies.add_me": {
+        "message": "Votre entreprise utilise FSD ?",
+        "description": "FSD is used in your company?"
+    },
+    "pages.home.companies.tell_us": {
+        "message": "Faites-le nous savoir",
+        "description": "Tell us"
+    },
+    "pages.examples.title": {
+        "message": "Exemples",
+        "description": "Page title"
+    },
+    "pages.examples.subtitle": {
+        "message": "Liste de sites créés avec Feature-Sliced Design",
+        "description": "Page subtitle"
+    },
+    "pages.examples.add_me.title": {
+        "message": "Ajouter un exemple",
+        "description": "Request to add example"
+    },
+    "pages.examples.repo.title": {
+        "message": "Dépôt",
+        "description": "Examples repository label"
+    },
+    "pages.examples.versions": {
+        "message": "Voir aussi la liste des versions",
+        "description": "Versions reminder"
+    },
+    "pages.versions.title": {
+        "message": "Versions de Feature-Sliced Design",
+        "description": "Feature-Sliced Design versions"
+    },
+    "pages.versions.current": {
+        "message": "La documentation de la version actuelle est disponible ici",
+        "description": "Description for current version"
+    },
+    "pages.versions.legacy": {
+        "message": "La documentation des anciennes versions de {of} est disponible ici ",
+        "description": "Description for legacy version"
+    },
+    "pages.nav.title": {
+        "message": "🧭 Navigation",
+        "description": "NavPage title"
+    },
+    "pages.nav.legacy.title": {
+        "message": "Itinéraires hérités",
+        "description": "NavPage section=legacy title"
+    },
+    "pages.nav.legacy.details": {
+        "message": "Suite à la restructuration de la documentation, certains itinéraires ont changé. Vous trouverez ci-dessous la page que vous recherchiez.",
+        "description": "NavPage section=legacy details"
+    },
+    "pages.nav.legacy.subdetails": {
+        "message": "Des redirections sont disponibles pour les anciens liens pour assurer la compatibilité",
+        "description": "NavPage section=legacy subdetails"
+    },
+    "features.feedback-badge.label": {
+        "message": "Donnez votre avis sur la documentation 🤙",
+        "description": "Feedback share button label"
+    },
+    "features.feedback-badge.url": {
+        "message": "https://forms.gle/nsYua6bMMG5iBB3v7",
+        "description": "Feedback share form url"
+    },
+    "features.feedback-doc.button-text": {
+        "message": "Retour d'expérience",
+        "description": "The text on a floating button to leave feedback about the docs"
+    },
+    "features.feedback-doc.email-placeholder": {
+        "message": "Votre email (facultatif)",
+        "description": "The placeholder for email input"
+    },
+    "features.feedback-doc.error-message": {
+        "message": "Un problème est survenu. Veuillez réessayer plus tard.",
+        "description": "The error message displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-error-403": {
+        "message": "L'URL de la demande ne correspond pas à celle définie dans PushFeedback pour ce projet.",
+        "description": "The title of the modal displayed when feedback form submission fails with 403 error"
+    },
+    "features.feedback-doc.modal-title-error-404": {
+        "message": "Nous n'avons pas trouvé l'identifiant de projet fourni dans PushFeedback.",
+        "description": "The title of the modal displayed when feedback form submission fails with 404 error"
+    },
+    "features.feedback-doc.message-placeholder": {
+        "message": "Commentaires",
+        "description": "The placeholder for message input"
+    },
+    "features.feedback-doc.modal-title": {
+        "message": "Partagez votre avis",
+        "description": "The title of the modal to leave feedback about the docs"
+    },
+    "features.feedback-doc.modal-title-error": {
+        "message": "Oups !",
+        "description": "The title of the modal displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-success": {
+        "message": "Merci pour votre retour !",
+        "description": "The title of the modal displayed when feedback form submission succeeds"
+    },
+    "features.feedback-doc.screenshot-button-text": {
+        "message": "Prendre une capture d'écran",
+        "description": "The text on a button to take a screenshot"
+    },
+    "features.feedback-doc.screenshot-topbar-text": {
+        "message": "SÉLECTIONNEZ UN ÉLÉMENT SUR LA PAGE",
+        "description": "The text displayed in the top bar when selecting an element to take a screenshot"
+    },
+    "features.feedback-doc.send-button-text": {
+        "message": "Envoyer",
+        "description": "The text on a button to send feedback"
+    },
+    "features.feedback-doc.rating-placeholder": {
+        "message": "Cette page vous a-t-elle été utile ?",
+        "description": "The placeholder for rating input"
+    },
+    "features.feedback-doc.rating-stars-placeholder": {
+        "message": "Comment évalueriez-vous cette page",
+        "description": "The placeholder for rating stars input"
+    },
+    "features.hero.tagline": {
+        "message": "Méthodologie d'architecture pour les projets frontend",
+        "description": "Architectural methodology for frontend projects"
+    },
+    "features.hero.get_started": {
+        "message": "Commencer",
+        "description": "Get Started"
+    },
+    "features.hero.examples": {
+        "message": "Exemples",
+        "description": "Examples"
+    },
+    "features.hero.previous": {
+        "message": "Version précédente",
+        "description": "Previous version"
+    },
+    "shared.wip.title": {
+        "message": "L'article est en cours de rédaction",
+        "description": "Admonition title"
+    },
+    "shared.wip.subtitle": {
+        "message": "Pour accélérer la publication de l'article, vous pouvez :",
+        "description": "Admonition subtitle"
+    },
+    "shared.wip.var.feedback.base": {
+        "message": "📢 Partagez votre avis ",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.feedback.link": {
+        "message": "sur l'article (commentaire/réaction emoji)",
+        "description": "Variant for contribute (link)"
+    },
+    "shared.wip.var.material.base": {
+        "message": "💬 Collectez les ",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.material.link": {
+        "message": "sources de l'article",
+        "description": "Variant for contribute (link)"
+    }
+}

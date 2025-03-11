@@ -1,0 +1,39 @@
+---
+sidebar_position: 0
+hide_table_of_contents: true
+pagination_prev: guides/index
+---
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { ApiOutlined, GroupOutlined, AppstoreOutlined, NodeIndexOutlined } from "@ant-design/icons";
+
+# 📚 Reference
+
+<p class="summary">
+A detailed description of the key concepts of Feature-Sliced Design.
+</p>
+
+<NavCard
+    title="Layers" 
+    description="Definition of a layer and explanations for all layers"
+    to="/docs/reference/layers"
+    Icon={GroupOutlined}
+/>
+<NavCard
+    title="Slices and segments" 
+    description="Definitions of a slice and segment, content examples for segments on different layers"
+    to="/docs/reference/slices-segments"
+    Icon={AppstoreOutlined}
+/>
+<NavCard
+    title="Isolation" 
+    description="Pratices for scalable and efficient module interactions"
+    to="/docs/reference/isolation"
+    Icon={NodeIndexOutlined}
+/>
+<NavCard
+    title="Public API" 
+    description="Practices for designing scalable and easy-to-integrate modules"
+    to="/docs/reference/public-api"
+    Icon={ApiOutlined}
+/>

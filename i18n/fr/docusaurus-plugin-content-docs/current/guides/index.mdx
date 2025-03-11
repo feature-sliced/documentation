@@ -1,0 +1,46 @@
+---
+hide_table_of_contents: true
+pagination_prev: get-started/index
+---
+
+# 🎯 Guides
+
+<span class="badge badge--primary margin-bottom--md">PRACTICE-ORIENTED</span>
+
+<p class="summary">
+Practical guides and examples on the use of Feature-Sliced Design. There is also describe migration guides and a handbook of harmful practices. It is most useful when you are trying to implement something specific or want to look at the methodology "in battle"
+</p>
+
+## Main
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { ToolOutlined, ImportOutlined, BugOutlined, FunctionOutlined } from "@ant-design/icons";
+
+<NavCard
+    title="Examples" 
+    description="Practical examples on the application of the methodology"
+    to="/docs/guides/examples"
+    Icon={ToolOutlined}
+    tags={['Authentication', 'Types', 'Page layout']}
+/>
+<NavCard
+    title="Migration" 
+    description="Migration guides from other architectures"
+    to="/docs/guides/migration/from-v1"
+    Icon={ImportOutlined}
+    tags={['From custom architecture', 'From FSv1']}
+/>
+<NavCard
+    title="Tech" 
+    description="Tech-specific guides for FSD usage"
+    to="/docs/guides/tech/with-nextjs"
+    Icon={FunctionOutlined}
+/>
+
+<NavCard
+    title="Code Issues (Smells)" 
+    description="General architecture issues for legacy code"
+    to="/docs/guides/issues/desegmented"
+    Icon={BugOutlined}
+    tags={['Desegmented', 'Routing', "Cross-imports"]}
+/>
