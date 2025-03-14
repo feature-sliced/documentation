@@ -23,6 +23,17 @@ export const VERSIONS = {
  */
 export const examples: Example[] = [
     {
+        title: "FSD Fipe",
+        description:
+            "Simple Brazilian Fipe search focused in FSD implementation",
+        source: "https://github.com/MatheusMoura17/fsd-fipe",
+        website: "https://matheusmoura17.github.io/fsd-fipe",
+        preview: require("./img/fsd-fipe.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2025-01-12",
+        tech: ["react", "typescript", "vite", "tanstack-query", "zustand"],
+    },
+    {
         title: "Cardbox",
         description: "The best solutions from developers in one place",
         source: "https://github.com/cardbox/frontend",
