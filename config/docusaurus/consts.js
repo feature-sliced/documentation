@@ -8,7 +8,7 @@ const CATEGORIES = {
 };
 
 module.exports = {
-    DOMAIN: "https://feature-sliced.design/",
+    DOMAIN: "https://feature-sliced.github.io/",
     GITHUB_ORG: "https://github.com/feature-sliced",
     GITHUB_DOCS: "https://github.com/feature-sliced/documentation",
     TELEGRAM: "https://t.me/feature_sliced",

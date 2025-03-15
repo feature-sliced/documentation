@@ -33,11 +33,11 @@ In FSD 2.0 we explained how to identify entities and features in your applicatio
 
 ### Is it hard to migrate from FSD 2.0?
 
-This is a non-breaking change, so you don’t even necessarily need to migrate your current FSD projects to FSD 2.1, but we still think the new way of thinking will lead to a more cohesive and less opinionated structure. We’ve compiled a few steps you can take in [the migration guide](https://feature-sliced.design/docs/guides/migration/from-v2-0).
+This is a non-breaking change, so you don’t even necessarily need to migrate your current FSD projects to FSD 2.1, but we still think the new way of thinking will lead to a more cohesive and less opinionated structure. We’ve compiled a few steps you can take in [the migration guide](https://feature-sliced.github.io/documentation/docs/guides/migration/from-v2-0).
 
 ### What else happened since the last release?
 
-The cross-import notation (`@x`) that was an experimental proposal for a long time has now been standardized! Its official name is **Public API for cross-imports**. You can use it to create explicit connections between entities. There's [a new section in our documentation all about this new notation](https://feature-sliced.design/docs/reference/public-api#public-api-for-cross-imports).
+The cross-import notation (`@x`) that was an experimental proposal for a long time has now been standardized! Its official name is **Public API for cross-imports**. You can use it to create explicit connections between entities. There's [a new section in our documentation all about this new notation](https://feature-sliced.github.io/documentation/docs/reference/public-api#public-api-for-cross-imports).
 
 Another exciting new thing in the FSD ecosystem is our architectural linter, [Steiger](https://github.com/feature-sliced/steiger). It's still in active development, but it is production-ready.
 
