@@ -8,7 +8,7 @@ authors:
   url: https://github.com/unordinarity
   image_url: https://github.com/unordinarity.png
 tags: [community, discord, promo]
-image: https://feature-sliced.design/img/blog/international-community.png
+image: https://feature-sliced.github.io/documentation/img/blog/international-community.png
 hide_table_of_contents: false
 ---
 

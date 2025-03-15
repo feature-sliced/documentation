@@ -1,4 +1,4 @@
-<a href="https://discord.gg/S8MzWTUsmp" title="Discord"><img align="right" alt="Discord" src="./.github/assets/README-discord.svg" height="80" /></a><a href="https://t.me/feature_sliced" title="Telegram"><img align="right" alt="Telegram" src="./.github/assets/README-telegram.svg" height="80" /></a><a href="https://feature-sliced.design/"><img align="right" alt="Website" src="./.github/assets/README-website.svg" height="80" /></a><img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-light.svg#gh-light-mode-only" height="80" /><img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-dark.svg#gh-dark-mode-only" height="80" />
+<a href="https://discord.gg/S8MzWTUsmp" title="Discord"><img align="right" alt="Discord" src="./.github/assets/README-discord.svg" height="80" /></a><a href="https://t.me/feature_sliced" title="Telegram"><img align="right" alt="Telegram" src="./.github/assets/README-telegram.svg" height="80" /></a><a href="https://feature-sliced.github.io/documentation/"><img align="right" alt="Website" src="./.github/assets/README-website.svg" height="80" /></a><img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-light.svg#gh-light-mode-only" height="80" /><img alt="Feature-Sliced Design, an architectural methodology for frontend projects" src="./.github/assets/README-banner-dark.svg#gh-dark-mode-only" height="80" />
 
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
@@ -41,7 +41,7 @@ This methodology is not tied to a particular stack — it can be used for web or
 
 To show off that your project uses FSD, you can use the GitHub topic `feature-sliced` and one of the following badges:
 
-[![Feature-Sliced Design][shields-fsd-white]](https://feature-sliced.design/) [![Feature-Sliced Design][shields-fsd-pain]](https://feature-sliced.design/) [![Feature-Sliced Design][shields-fsd-domain]](https://feature-sliced.design/) [![Feature-Sliced Design][shields-fsd-feature]](https://feature-sliced.design/)
+[![Feature-Sliced Design][shields-fsd-white]](https://feature-sliced.github.io/documentation/) [![Feature-Sliced Design][shields-fsd-pain]](https://feature-sliced.github.io/documentation/) [![Feature-Sliced Design][shields-fsd-domain]](https://feature-sliced.github.io/documentation/) [![Feature-Sliced Design][shields-fsd-feature]](https://feature-sliced.github.io/documentation/)
 
 [shields-fsd-white]: https://img.shields.io/badge/Feature--Sliced-Design?style=for-the-badge&labelColor=262224&color=F2F2F2&logoWidth=10&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA/SURBVHgB7dKxCgAgCIThs/d/51JoNQIdDrxvqMXlR4FmFs92KDIX/wI7JSdDN+eHtkxIycnQvMNW8hN/crsDc5QgGX9NvT0AAAAASUVORK5CYII=
 
@@ -55,28 +55,28 @@ To show off that your project uses FSD, you can use the GitHub topic `feature-sl
 
 ```markdown
 White: 
-[![Feature-Sliced Design][shields-fsd-white]](https://feature-sliced.design/)
+[![Feature-Sliced Design][shields-fsd-white]](https://feature-sliced.github.io/documentation/)
 
 [shields-fsd-white]: https://img.shields.io/badge/Feature--Sliced-Design?style=for-the-badge&labelColor=262224&color=F2F2F2&logoWidth=10&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA/SURBVHgB7dKxCgAgCIThs/d/51JoNQIdDrxvqMXlR4FmFs92KDIX/wI7JSdDN+eHtkxIycnQvMNW8hN/crsDc5QgGX9NvT0AAAAASUVORK5CYII=
 
 ----
 
 Pain (red):
-[![Feature-Sliced Design][shields-fsd-pain]](https://feature-sliced.design/)
+[![Feature-Sliced Design][shields-fsd-pain]](https://feature-sliced.github.io/documentation/)
 
 [shields-fsd-pain]: https://img.shields.io/badge/Feature--Sliced-Design?style=for-the-badge&labelColor=262224&color=F2F2F2&logoWidth=10&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABHSURBVHgB7dKxCQAgDETR08ZNHNBBHNBNrBQFuyCCKQK5V6QMfBJAWVij5zLwKbW6d0VYx2TZyXnBKxvEZJnDx2bylf1kdRM6tiAZsruQ/QAAAABJRU5ErkJggg==
 
 ----
 
 Domain (blue):
-[![Feature-Sliced Design][shields-fsd-domain]](https://feature-sliced.design/)
+[![Feature-Sliced Design][shields-fsd-domain]](https://feature-sliced.github.io/documentation/)
 
 [shields-fsd-domain]: https://img.shields.io/badge/Feature--Sliced-Design?style=for-the-badge&color=F2F2F2&labelColor=262224&logoWidth=10&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABISURBVHgB7dKxCQAgDETR0w2cws0cys2cwhEUBbsggikCuVekDHwSQFlYo7Q+8KnmtHdFWMdk2cl5wSsbxGSZw8dm8pX9ZHUTMBUgGU2F718AAAAASUVORK5CYII=
 
 ----
 
 Feature (green):
-[![Feature-Sliced Design][shields-fsd-feature]](https://feature-sliced.design/)
+[![Feature-Sliced Design][shields-fsd-feature]](https://feature-sliced.github.io/documentation/)
 
 [shields-fsd-feature]: https://img.shields.io/badge/Feature--Sliced-Design?style=for-the-badge&labelColor=262224&color=F2F2F2&logoWidth=10&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAAALFAAACxQGJ1n/vAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABISURBVHgB7dKxCQAgDETR00EcwYEc0IEcwUUUBbsggikCuVekDHwSQFlYo/Y88KmktndFWMdk2cl5wSsbxGSZw8dm8pX9ZHUTdIYgGbPdU2QAAAAASUVORK5CYII=
 ```
