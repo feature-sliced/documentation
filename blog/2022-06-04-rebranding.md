@@ -8,7 +8,7 @@ authors:
     url: https://github.com/azinit
     image_url: https://github.com/azinit.png
 tags: [brand, promo]
-image: https://feature-sliced.design/img/blog/rebranding-stable.png
+image: https://feature-sliced.github.io/documentation/img/blog/rebranding-stable.png
 hide_table_of_contents: false
 ---
 
