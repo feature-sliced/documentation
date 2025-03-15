@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Feature-Sliced Design Blog</title>
-        <link>https://feature-sliced.design/blog</link>
+        <link>https://feature-sliced.github.io/documentation/blog</link>
         <description>Feature-Sliced Design Blog</description>
         <lastBuildDate>Mon, 25 Jul 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,11 +10,11 @@
         <language>en</language>
         <item>
             <title><![CDATA[🌎 FSD international community]]></title>
-            <link>https://feature-sliced.design/blog/international-community</link>
-            <guid>https://feature-sliced.design/blog/international-community</guid>
+            <link>https://feature-sliced.github.io/documentation/blog/international-community</link>
+            <guid>https://feature-sliced.github.io/documentation/blog/international-community</guid>
             <pubDate>Mon, 25 Jul 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[FSD international community announcement]]></description>
-            <content:encoded><![CDATA[<div class="container text--center margin-vert--md"><img src="https://feature-sliced.design/img/blog/international-community.png" alt="post-cover" width="100%"></div>
+            <content:encoded><![CDATA[<div class="container text--center margin-vert--md"><img src="https://feature-sliced.github.io/img/blog/international-community.png" alt="post-cover" width="100%"></div>
 <p>TLDR:</p>
 <p>FSD goes out into the world, and the beginning of this is the international <a href="https://discord.gg/S8MzWTUsmp" target="_blank" rel="noopener noreferrer">Discord-server</a></p>
 <p>FSD выходит в мир, и началом послужит международный <a href="https://discord.gg/S8MzWTUsmp" target="_blank" rel="noopener noreferrer">Discord-сервер</a></p>
@@ -30,24 +30,24 @@
         </item>
         <item>
             <title><![CDATA[💥 FSD rebranding!]]></title>
-            <link>https://feature-sliced.design/blog/rebranding-stable</link>
-            <guid>https://feature-sliced.design/blog/rebranding-stable</guid>
+            <link>https://feature-sliced.github.io/documentation/blog/rebranding-stable</link>
+            <guid>https://feature-sliced.github.io/documentation/blog/rebranding-stable</guid>
             <pubDate>Sat, 04 Jun 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[FSD 2.0.0-stable rebranding news 🍰]]></description>
-            <content:encoded><![CDATA[<div class="container text--center margin-vert--md"><img src="https://feature-sliced.design/img/blog/rebranding-stable.png" alt="logo-primary" width="100%"></div>
+            <content:encoded><![CDATA[<div class="container text--center margin-vert--md"><img src="https://feature-sliced.github.io/img/blog/rebranding-stable.png" alt="logo-primary" width="100%"></div>
 <p>TLDR:</p>
-<p>We've made whole new identity for FSD website and all related projects, feel free to use <a href="https://feature-sliced.design/docs/branding">brand assets</a></p>
-<p>Мы сделали полностью новую айдентику для сайта FSD и всех связанных проектов, не стесняйтесь пользоваться <a href="https://feature-sliced.design/docs/branding">фирменными ассетами</a></p>
+<p>We've made whole new identity for FSD website and all related projects, feel free to use <a href="https://feature-sliced.github.io/documentation/docs/branding">brand assets</a></p>
+<p>Мы сделали полностью новую айдентику для сайта FSD и всех связанных проектов, не стесняйтесь пользоваться <a href="https://feature-sliced.github.io/documentation/docs/branding">фирменными ассетами</a></p>
 <hr>
 <p>For a long time FSD had <a href="https://drive.google.com/drive/folders/11Y-3qZ_C9jOFoW2UbSp11YasOhw4yBdl?usp=sharing" target="_blank" rel="noopener noreferrer">inconsistent legacy identity</a>. Old design was not representing core-concepts of methodology because it was created as a pure draft. After long time it should have been actualized. So, for long-term use, we carefully reworked FSD signature style.</p>
 <p>Let's take a deep dive and decompose ideas behind redesign. The light glow on new logo resembles warm brightness of old CRT monitors, passing the idea of a long history of software architecture. Geometry slightly refers to legacy logo to maintain continuity. It also subtly provides the idea of vertical layers and clear boundaries between them. Effects and colors are neutral and friendly to seamlessly pervade any page like FSD can do with projects. Lot of ideas, but, like it works with every good design, they may be seamless.</p>
 <p>Long story short, that's what reworked FSD identity is. Modern yet vintage, simple yet meaningful, strict yet notable.</p>
-<p>Get all the assets in <a href="https://feature-sliced.design/docs/branding">brandbook</a></p>
+<p>Get all the assets in <a href="https://feature-sliced.github.io/documentation/docs/branding">brandbook</a></p>
 <hr>
 <p>Долгое время у FSD была <a href="https://drive.google.com/drive/folders/11Y-3qZ_C9jOFoW2UbSp11YasOhw4yBdl?usp=sharing" target="_blank" rel="noopener noreferrer">неконсистентная устаревшая айдентика</a>. Старый дизайн не передавал ключевые идеи методологии потому что был сделан исключительно как черновик. Спустя много времени пора бы его актуализировать. Итак, для долгосрочного использования мы тщательно переработали фирменный стиль FSD.</p>
 <p>Давайте глубоко погрузимся и разложим идеи, лежащие в основе редизайна. Легкое свечение на новом логотипе напоминает теплую яркость старых электронно-лучевых мониторов, передавая идею долгой истории архитектуры программного обеспечения. Геометрия слегка отсылает к устаревшему логотипу, чтобы сохранить преемственность. Она также тонко намекает на идею вертикальных слоев и четких границ между ними. Эффекты и цвета нейтральны и дружелюбны, чтобы беспрепятственно проникать на любую страницу, как это делает FSD с проектами. Много идей, но, как это должно быть с любым хорошим дизайном, они незаметны.</p>
 <p>Кратко говоря, это и есть переработанная айдентика FSD. Современная, но винтажная; простая, но содержательная; строгая, но заметная.</p>
-<p>Все ассеты можно скачать в <a href="https://feature-sliced.design/docs/branding">брендбуке</a></p>]]></content:encoded>
+<p>Все ассеты можно скачать в <a href="https://feature-sliced.github.io/documentation/docs/branding">брендбуке</a></p>]]></content:encoded>
             <category>brand</category>
             <category>promo</category>
         </item>
