@@ -434,7 +434,7 @@ export const examples: Example[] = [
         preview: require("./img/yeahub.png"),
         version: VERSIONS.V2,
         updatedAt: "2025-04-04",
-        tech: ["react", "redux-toolkit, rtk query", "react router", "typescript", "webpack", "storybook"],
+        tech: ["react", "redux-toolkit", "rtk query", "react router", "typescript", "webpack", "storybook"],
     },
     // Reverse the list (last examples should be at the top)
 ].reverse();
