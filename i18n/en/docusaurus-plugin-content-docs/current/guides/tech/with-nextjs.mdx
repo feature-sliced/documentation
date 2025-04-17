@@ -109,6 +109,10 @@ the FSD project structure inside the `src` folder. You should still also add the
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)][ext-app-router-stackblitz]
 
+## Middleware
+
+If you are using middleware in a project, it also needs to be moved from `src` to the root of the project. Otherwise, NextJS simply won't see it — middleware must be located strictly at the root next to `app` or `pages'.
+
 ## See also {#see-also}
 
 - [(Thread) About the pages directory in NextJS](https://t.me/feature_sliced/3623)

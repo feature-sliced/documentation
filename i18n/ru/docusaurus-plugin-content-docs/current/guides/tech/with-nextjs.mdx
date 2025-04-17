@@ -106,7 +106,12 @@ App Router стал стабильным в NextJS версии 13.4. App Router
 │   ├── widgets
 ```
 
+
 [![Открыть в StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)][ext-app-router-stackblitz]
+
+## Middleware
+
+Если вы используете middleware в проекте, его также нужно переместить из `src` в корень проекта. Иначе NextJS просто не увидит его — middleware должен находиться строго в корне рядом с `app` или `pages`.
 
 ## См. также {#see-also}
 
