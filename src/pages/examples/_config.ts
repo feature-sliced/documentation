@@ -217,7 +217,7 @@ export const examples: Example[] = [
             "react-router",
             "react-query",
             "zustand",
-            "vite",
+            "webpack",
             "typescript",
         ],
     },
