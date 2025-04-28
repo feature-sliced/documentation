@@ -54,7 +54,7 @@ FSD har xil konteksda bir nechta logotipga ega, lekin **primary** dan foydalanis
     </tr>
     <tr>
         <td style={{ color: "#000", background: "#FFF" }}>monochrome <br /> (#FFF)</td>
-        <td style={{ color: "#000", background: "#242526" }}><a href={useBaseUrl("/img/brand/logo-monochrome.png")} download><img src={useBaseUrl("/img/brand/logo-monochrome.png")} height="130" alt="logo-monocrhome" /></a></td>
+        <td style={{ color: "#000", background: "#242526" }}><a href={useBaseUrl("/img/brand/logo-monochrome.png")} download><img src={useBaseUrl("/img/brand/logo-monochrome.png")} height="130" alt="logo-monochrome" /></a></td>
         <td>Oq qora kontekst uchun</td>
     </tr>
     <tr>
