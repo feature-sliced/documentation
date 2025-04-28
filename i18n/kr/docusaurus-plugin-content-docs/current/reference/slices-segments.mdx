@@ -4,6 +4,8 @@ sidebar_position: 2
 pagination_next: reference/public-api
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 # Slice와 Segment
 
 ## Slice
@@ -21,8 +23,8 @@ Shared와 App Layer는 Slice를 포함하지 않습니다. Shared는 Business Lo
 Slice는 독립적이고 응집도 높은 코드 그룹이어야 합니다. 아래 그래픽은 _응집도_과 _결합도_ 개념을 시각화합니다:
 
 <figure>
-    <img src="/img/coupling-cohesion-light.svg#light-mode-only" alt="" />
-    <img src="/img/coupling-cohesion-dark.svg#dark-mode-only" alt="" />
+    <img src={useBaseUrl("/img/coupling-cohesion-light.svg#light-mode-only")} alt="" />
+    <img src={useBaseUrl("/img/coupling-cohesion-dark.svg#dark-mode-only")} alt="" />
     <figcaption>
         Image inspired by https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
     </figcaption>

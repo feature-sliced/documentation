@@ -12,8 +12,10 @@ image: https://feature-sliced.github.io/documentation/img/blog/international-com
 hide_table_of_contents: false
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 <div class="container text--center margin-vert--md">
-    <img src="/img/blog/international-community.png" alt="post-cover" width="100%" />
+    <img src={useBaseUrl("/img/blog/international-community.png")} alt="post-cover" width="100%" />
 </div>
 
 TLDR:

@@ -3,14 +3,16 @@ sidebar_position: 1
 pagination_next: reference/slices-segments
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 # Слои
 
 Слои - это первый уровень организационной иерархии в Feature-Sliced Design. Их цель - разделить код на основе того, сколько ответственности ему требуется и от скольких других модулей в приложении он зависит. Каждый слой несет особое семантическое значение, чтобы помочь вам определить, сколько ответственности следует выделить вашему коду.
 
 Всего существует **7 слоев**, расположенных от наибольшей ответственности и&nbsp;зависимости к наименьшей:
 
-<img src="/img/layers/folders-graphic-light.svg#light-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="Дерево файловой системы с одной корневой папкой под названием src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes слегка выцвечена." />
-<img src="/img/layers/folders-graphic-dark.svg#dark-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="Дерево файловой системы с одной корневой папкой под названием src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes слегка выцвечена." />
+<img src={useBaseUrl("/img/layers/folders-graphic-light.svg#light-mode-only")} width="180" style={{ float: "right", margin: "0 1em" }} alt="Дерево файловой системы с одной корневой папкой под названием src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes слегка выцвечена." />
+<img src={useBaseUrl("/img/layers/folders-graphic-dark.svg#dark-mode-only")} width="180" style={{ float: "right", margin: "0 1em" }} alt="Дерево файловой системы с одной корневой папкой под названием src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes слегка выцвечена." />
 
 1. App (Эпп)
 2. Processes (Процессы, устаревший слой)

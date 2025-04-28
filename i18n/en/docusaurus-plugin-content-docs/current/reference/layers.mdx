@@ -3,14 +3,16 @@ sidebar_position: 1
 pagination_next: reference/slices-segments
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Layers
 
 Layers are the first level of organisational hierarchy in Feature-Sliced Design. Their purpose is to separate code based on how much responsibility it needs and how many other modules in the app it depends on. Every layer carries special semantic meaning to help you determine how much responsibility you should allocate to your code.
 
 There are **7 layers** in total, arranged from most responsibility and&nbsp;dependency to least:
 
-<img src="/img/layers/folders-graphic-light.svg#light-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
-<img src="/img/layers/folders-graphic-dark.svg#dark-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
+<img src={useBaseUrl("/img/layers/folders-graphic-light.svg#light-mode-only")} width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
+<img src={useBaseUrl("/img/layers/folders-graphic-dark.svg#dark-mode-only")} width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
 
 1. App
 2. Processes (deprecated)
@@ -32,7 +34,7 @@ Layers are made up of _slices_ — highly cohesive groups of modules. Dependenci
 
 For example, the folder `📁 ~/features/aaa` is a slice with the name "aaa". A file inside of it, `~/features/aaa/api/request.ts`, cannot import code from any file in `📁 ~/features/bbb`, but can import code from `📁 ~/entities` and `📁 ~/shared`, as well as any sibling code from `📁 ~/features/aaa`, for example, `~/features/aaa/lib/cache.ts`.
 
-Layers App and Shared are **exceptions** to this rule — they are both a layer and a slice at the same time. Slices partition code by business domain, and these two layers are exceptions because Shared does not have business domains, and App combines all business domains. 
+Layers App and Shared are **exceptions** to this rule — they are both a layer and a slice at the same time. Slices partition code by business domain, and these two layers are exceptions because Shared does not have business domains, and App combines all business domains.
 
 In practice, this means that layers App and Shared are made up of segments, and segments can import each other freely.
 
@@ -67,7 +69,7 @@ An entity slice might contain the data storage (`📁 model`), data validation s
 
 #### Entity relationships
 
-Entities in FSD are slices, and by default, slices cannot know about each other. In real life, however, entities often interact with each other, and sometimes one entity owns or contains other entities. Because of that, the business logic of these interactions is preferably kept in higher layers, like Features or Pages. 
+Entities in FSD are slices, and by default, slices cannot know about each other. In real life, however, entities often interact with each other, and sometimes one entity owns or contains other entities. Because of that, the business logic of these interactions is preferably kept in higher layers, like Features or Pages.
 
 When one entity's data object contains other data objects, usually it's a good idea to make the connection between the entities explicit and side-step the slice isolation by making a cross-reference API with the `@x` notation. The reason is that connected entities need to be refactored together, so it's best to make the connection impossible to miss.
 
@@ -92,7 +94,7 @@ Learn more about the `@x` notation in the [Public API for cross-imports][public-
 
 This layer is for the main interactions in your app, things that your users care to do. These interactions often involve business entities, because that's what the app is about.
 
-A crucial principle for using the Features layer effectively is: **not everything needs to be a feature**. A good indicator that something needs to be a feature is the fact that it is reused on several pages. 
+A crucial principle for using the Features layer effectively is: **not everything needs to be a feature**. A good indicator that something needs to be a feature is the fact that it is reused on several pages.
 
 For example, if the app has several editors, and all of them have comments, then comments are a reused feature. Remember that slices are a mechanism for finding code quickly, and if there are too many features, the important ones are drowned out.
 
@@ -102,13 +104,13 @@ A feature slice might contain the UI to perform the interaction like a form (`�
 
 ### Widgets
 
-The Widgets layer is intended for large self-sufficient blocks of UI. Widgets are most useful when they are reused across multiple pages, or when the page that they belong to has multiple large independent blocks, and this is one of them. 
+The Widgets layer is intended for large self-sufficient blocks of UI. Widgets are most useful when they are reused across multiple pages, or when the page that they belong to has multiple large independent blocks, and this is one of them.
 
 If a block of UI makes up most of the interesting content on a page, and is never reused, it **should not be a widget**, and instead it should be placed directly inside that page.
 
 :::tip
 
-If you're using a nested routing system (like the router of [Remix][ext-remix]), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create full router blocks, complete with related data fetching, loading states, and error boundaries. 
+If you're using a nested routing system (like the router of [Remix][ext-remix]), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create full router blocks, complete with related data fetching, loading states, and error boundaries.
 
 In the same way, you can store page layouts on this layer.
 

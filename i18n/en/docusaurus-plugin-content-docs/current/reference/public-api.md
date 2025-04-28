@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Public API
 
 A public API is a _contract_ between a group of modules, like a slice, and the code that uses it. It also acts as a gate, only allowing access to certain objects, and only through that public API.
@@ -68,8 +70,8 @@ Circular import is when two or more files import each other in a circle.
 <!-- TODO: add backgrounds to the images below, check on mobile -->
 
 <figure>
-    <img src="/img/circular-import-light.svg#light-mode-only" width="60%" alt="Three files importing each other in a circle" />
-    <img src="/img/circular-import-dark.svg#dark-mode-only" width="60%" alt="Three files importing each other in a circle" />
+    <img src={useBaseUrl("/img/circular-import-light.svg#light-mode-only")} width="60%" alt="Three files importing each other in a circle" />
+    <img src={useBaseUrl("/img/circular-import-dark.svg#dark-mode-only")} width="60%" alt="Three files importing each other in a circle" />
     <figcaption>
         Pictured above: three files, `fileA.js`, `fileB.js`, and `fileC.js`, importing each other in a circle.
     </figcaption>
