@@ -51,9 +51,9 @@ This layer, like the App layer, _does not contain slices_. Slices are intended t
 Here are the segments that you can typically find in this layer:
 
 - `📁 api` — the API client and potentially also functions to make requests to specific backend endpoints.
-- `📁 ui` — the application's UI kit.
+- `📁 ui` — the application's UI kit.  
   Components on this layer should not contain business logic, but it's okay for them to be business-themed. For example, you can put the company logo and page layout here. Components with UI logic are also allowed (for example, autocomplete or a search bar).
-- `📁 lib` — a collection of internal libraries.
+- `📁 lib` — a collection of internal libraries.  
   This folder should not be treated as helpers or utilities ([read here why these folders often turn into a dump][ext-sova-utility-dump]). Instead, every library in this folder should have one area of focus, for example, dates, colors, text manipulation, etc. That area of focus should be documented in a README file. The developers in your team should know what can and cannot be added to these libraries.
 - `📁 config` — environment variables, global feature flags and other global configuration for your app.
 - `📁 routes` — route constants or patterns for matching routes.
