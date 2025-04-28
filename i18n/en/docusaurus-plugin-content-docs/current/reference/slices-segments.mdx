@@ -4,6 +4,8 @@ sidebar_position: 2
 pagination_next: reference/public-api
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Slices and segments
 
 ## Slices
@@ -19,8 +21,8 @@ The layers Shared and App don't contain slices. That is because Shared should co
 Slices are meant to be independent and highly cohesive groups of code files. The graphic below might help to visualize the tricky concepts of _cohesion_ and _coupling_:
 
 <figure>
-    <img src="/img/coupling-cohesion-light.svg#light-mode-only" alt="" />
-    <img src="/img/coupling-cohesion-dark.svg#dark-mode-only" alt="" />
+    <img src={useBaseUrl("/img/coupling-cohesion-light.svg#light-mode-only")} alt="" />
+    <img src={useBaseUrl("/img/coupling-cohesion-dark.svg#dark-mode-only")} alt="" />
     <figcaption>
         Image inspired by https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
     </figcaption>

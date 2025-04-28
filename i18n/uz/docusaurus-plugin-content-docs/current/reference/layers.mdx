@@ -3,6 +3,8 @@ sidebar_position: 1
 pagination_next: reference/slices-segments
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 # Qatlamlar
 
 Qatlamlar - Xususiyatlar bilan kesilgan dizayndagi tashkiliy ierarxiyaning birinchi darajasi. Ularning maqsadi kodni qanchalik mas'uliyatga muhtojligi va dasturda qancha boshqa modullarga bog'liqligi asosida ajratishdir.
@@ -14,8 +16,8 @@ Ushbu sahifada _module_ ilovadagi ichki modul - indeks fayli bo'lgan fayl yoki k
 Har bir qatlam o'ziga xos semantik ma'noga ega bo'lib, kodingizdagi modulga qanday mas'uliyat yuklanishi kerakligini aniqlashga yordam beradi. Qatlam nomlari va qiymatlari Feature-Sliced ​​Design yordamida qurilgan barcha loyihalar uchun standartlashtirilgan.
 Hammasi bo'lib **7 ta qatlam** mavjud bo'lib, ular eng katta mas'uliyat va&nbsp;bog'liqlikdan tortib to eng kichikgacha tartiblangan:
 
-<img src="/img/layers/folders-graphic-light.svg#light-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло." />
-<img src="/img/layers/folders-graphic-dark.svg#dark-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло." />
+<img src={useBaseUrl("/img/layers/folders-graphic-light.svg#light-mode-only")} width="180" style={{ float: "right", margin: "0 1em" }} alt="Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло." />
+<img src={useBaseUrl("/img/layers/folders-graphic-dark.svg#dark-mode-only")} width="180" style={{ float: "right", margin: "0 1em" }} alt="Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло." />
 
 1. App (Ilova)
 2. Processes (Jarayonlar, eski qatlam)

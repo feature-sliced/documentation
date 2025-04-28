@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 # Публичный API
 
 Публичный API — это _контракт_ между группой модулей, например, слайсом, и кодом, который его использует. Он также действует как ворота, разрешая доступ только к определенным объектам и только через этот публичный API.
@@ -68,8 +70,8 @@ import type { EntityA } from "entities/A/@x/B";
 <!-- TODO: добавить фоны к изображениям ниже, проверить на мобильных устройствах -->
 
 <figure>
-    <img src="/img/circular-import-light.svg#light-mode-only" width="60%" alt="Три файла, импортирующие друг друга по кругу" />
-    <img src="/img/circular-import-dark.svg#dark-mode-only" width="60%" alt="Три файла, импортирующие друг друга по кругу" />
+    <img src={useBaseUrl("/img/circular-import-light.svg#light-mode-only")} width="60%" alt="Три файла, импортирующие друг друга по кругу" />
+    <img src={useBaseUrl("/img/circular-import-dark.svg#dark-mode-only")} width="60%" alt="Три файла, импортирующие друг друга по кругу" />
     <figcaption>
         На изображении выше: три файла, `fileA.js`, `fileB.js` и `fileC.js`, импортирующие друг друга по кругу.
     </figcaption>

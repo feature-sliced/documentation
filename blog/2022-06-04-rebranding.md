@@ -12,8 +12,10 @@ image: https://feature-sliced.github.io/documentation/img/blog/rebranding-stable
 hide_table_of_contents: false
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 <div class="container text--center margin-vert--md">
-    <img src="/img/blog/rebranding-stable.png" alt="logo-primary" width="100%" />
+    <img src={useBaseUrl("/img/blog/rebranding-stable.png")} alt="logo-primary" width="100%" />
 </div>
 
 TLDR:

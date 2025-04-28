@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 # Public API
 
 Public API는 Slice와 같은 모듈 그룹과 이를 사용하는 코드 사이의 Contract 역할을 합니다. 또한 Gate 역할을 하여 특정 Object에 접근할 수 있는 유일한 경로를 제공합니다.
@@ -72,8 +74,8 @@ Circular Import는 파일들이 서로를 순환적으로 Import하는 경우입
 <!-- TODO: add backgrounds to the images below, check on mobile -->
 
 <figure>
-    <img src="/img/circular-import-light.svg#light-mode-only" width="60%" alt="세 파일이 서로 원형으로 import하는 모습" />
-    <img src="/img/circular-import-dark.svg#dark-mode-only" width="60%" alt="세 파일이 서로를 원형으로 import하고 있는 예시입니다." />
+    <img src={useBaseUrl("/img/circular-import-light.svg#light-mode-only")} width="60%" alt="세 파일이 서로 원형으로 import하는 모습" />
+    <img src={useBaseUrl("/img/circular-import-dark.svg#dark-mode-only")} width="60%" alt="세 파일이 서로를 원형으로 import하고 있는 예시입니다." />
     <figcaption>
         위 그림: `fileA.js`, `fileB.js`, `fileC.js` 파일의 Circular Import 예시
     </figcaption>

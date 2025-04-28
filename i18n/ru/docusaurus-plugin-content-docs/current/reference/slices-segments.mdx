@@ -4,6 +4,8 @@ sidebar_position: 2
 pagination_next: reference/public-api
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 # Слайсы и сегменты
 
 ## Слайсы
@@ -19,8 +21,8 @@ pagination_next: reference/public-api
 Слайсы задуманы как независимые и сильно связанные группы файлов кода. Картинка ниже может помочь визуализировать такие сложные концепции как _связность_ (cohesion) и _сцепленность_ (coupling):
 
 <figure>
-    <img src="/img/coupling-cohesion-light.svg#light-mode-only" alt="" />
-    <img src="/img/coupling-cohesion-dark.svg#dark-mode-only" alt="" />
+    <img src={useBaseUrl("/img/coupling-cohesion-light.svg#light-mode-only")} alt="" />
+    <img src={useBaseUrl("/img/coupling-cohesion-dark.svg#dark-mode-only")} alt="" />
     <figcaption>
         Картинка вдохновлена https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
     </figcaption>
