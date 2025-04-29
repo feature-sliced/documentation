@@ -7,173 +7,250 @@ sidebar_position: 10
 
 - Изначально, NuxtJS предлагает файловую структуру проекта без папки `src`, то есть в корне проекта.
 - Файловый роутинг находится в папке `pages`, а в FSD эта папка отведена под плоскую структуру слайсов.
+- Автоимпорты работают для всех компонентов, в то время как FSD пропагандирует концепцию Public API (делится только необходимым из index файлов).
 
+Но NuxtJS обладает довольно гибкой настройкой конфигурации, что поможет нам полноценно внедрить в него FSD, не теряя его основных достоинств со стороны разработки:
 
-## Добавление алиаса для `src` директории
+- Автоимпорты.
+- Файловый роутинг.
 
-Добавьте обьект `alias` в ваш конфиг:
-```ts title="nuxt.config.ts"
-export default defineNuxtConfig({
-  devtools: { enabled: true },        // Не относятся к FSD, включёны при старте проекта
-  alias: {
-    "@": '../src'
-  },
-})
-```
-## Выбор способа настройки роутера
+## Автоимпорты
 
-В NuxtJS есть два способа настройки роутинга - с помощью конфига и с помощью файловой структуры.
-В случае с файловым роутингом вы будете создавать index.vue файлы в папках внутри директории app/routes, а в случае конфига - настраивать роуты в `router.options.ts` файле.
+На первый взгляд автоимпорты противоречат концепции Public Api и FSD, т.к. создает импорты для всех компонентов, но этого можно избежать, правильно настроив конфигурацию.
 
+### Компоненты
 
-### Роутинг с помощью конфига
+По умолчанию в NuxtJS для компонентов выделена дирректория `components/`.
 
-В слое `app` создайте файл `router.options.ts`, и экспортируйте из него обьект конфига:
-```ts title="app/router.options.ts"
-import type { RouterConfig } from '@nuxt/schema';
+Дирректории для компонентов можно переопределить настройкой `components`.
 
-export default <RouterConfig> {
-  routes: (_routes) => [],
-};
+#### shared
 
-```
-
-Чтобы добавить страницу `Home` в проект, вам нужно сделать следующие шаги:
-- Добавить слайс страницы внутри слоя `pages`
-- Добавить соответствующий роут в конфиг `app/router.config.ts`
-
-
-Для того чтобы создать слайс страницы, воспользуемся [CLI](https://github.com/feature-sliced/cli):
-
-```shell
-fsd pages home
-```
-
-Создайте файл `home-page.vue` внутри сегмента ui, откройте к нему доступ с помощью Public API
-
-```ts title="src/pages/home/index.ts"
-export { default as HomePage } from './ui/home-page';
-```
-
-Таким образом, файловая структура будет выглядеть так:
-```sh
-|── src
-│   ├── app
-│   │   ├── router.config.ts
-│   ├── pages
-│   │   ├── home
-│   │   │   ├── ui
-│   │   │   │   ├── home-page.vue
-│   │   │   ├── index.ts
-```
-Наконец, добавим роут в конфиг:
-
-```ts title="app/router.config.ts"
-import type { RouterConfig } from '@nuxt/schema'
-
-export default <RouterConfig> {
-  routes: (_routes) => [
+```ts
+components: {
+  dirs: [
     {
-      name: 'home',
-      path: '/',
-      component: () => import('@/pages/home.vue').then(r => r.default || r)
-    }
+      path: "~/src/shared", // shared дирректория
+      pattern: "**/*index.vue", // Файл для автоимпорта
+      extensions: ["vue"],
+    },
+  ];
+}
+```
+
+#### entities
+
+```ts
+components: {
+  dirs: [
+    {
+      path: "~/src/entities", // entities дирректория
+      extendComponent(component) {
+        component.pascalName = component.pascalName.replaceAll("Ui", ""); // Убираем Ui дирректории из имени компонента
+        return component;
+      },
+      pattern: "**/*index.vue", // Файл для автоимпорта
+      extensions: ["vue"],
+    },
+  ];
+}
+```
+
+#### features
+
+```ts
+components: {
+  dirs: [
+    {
+      path: "~/src/features", // features дирректория
+      extendComponent(component) {
+        component.pascalName = component.pascalName.replaceAll("Ui", ""); // Убираем Ui дирректории из имени компонента
+        component.pascalName = component.pascalName + "Feature"; // Добавляем Feature постфикс
+        return component;
+      },
+      pattern: "**/*index.vue", // Файл для автоимпорта
+      extensions: ["vue"],
+    },
+  ];
+}
+```
+
+#### widgets
+
+```ts
+components: {
+  dirs: [
+    {
+      path: "~/src/widgets", // widgets дирректория
+      extendComponent(component) {
+        component.pascalName = component.pascalName.replaceAll("Ui", ""); // Убираем Ui дирректории из имени компонента
+        component.pascalName = component.pascalName + "Widget"; // Добавляем Widget постфикс
+        return component;
+      },
+      pattern: "**/*index.vue", // Файл для автоимпорта
+      extensions: ["vue"],
+    },
+  ];
+}
+```
+
+#### pages
+
+```ts
+components: {
+  dirs: [
+    {
+      path: "~/src/pages", // pages дирректория
+      pattern: "**/*index.vue", // Файл для автоимпорта
+      extensions: ["vue"],
+    },
+  ];
+}
+```
+
+### Типы, функции и т.п.
+
+По умолчанию в NuxtJS для этого выделена дирректория `utils/` и т.п.
+
+Такие дирректории можно переопределить настройкой `imports`.
+
+```ts
+imports: {
+  dirs: [
+    "./src/widgets/*/*/index.ts", // Автоимпорты для widgets слоя
+    "./src/features/*/*/index.ts", // Автоимпорты для features слоя
+    "./src/entities/*/*/index.ts", // Автоимпорты для entities слоя
+    "./src/shared/*/index.ts", // Автоимпорты для shared слоя
   ],
 }
 ```
 
-### Файловый роутинг
+### Использование
 
-В первую очередь, создайте `src` директорию в корне проекта, а также создайте внутри этой директории слои app и pages и папку routes внутри слоя app.
-Таким образом, ваша файловая структура должна выглядеть так:
+1. Создайте `src` дирректорию.
+2. Добавьте в `src` дирректорию FSD слои.
 
-```sh
-├── src
-│   ├── app
-│   │   ├── routes
-│   ├── pages                         # Папка pages, закреплённая за FSD
+```bash
+.../
+├── src/
+│   ├── app/
+│   ├── entities/
+│   ├── features/
+│   ├── shared/
+│   ├── widgets/
 ```
 
-Для того чтобы NuxtJS использовал папку routes внутри слоя `app` для файлового роутинга, вам нужно изменить `nuxt.config.ts` следующим образом:
-```ts title="nuxt.config.ts"
-export default defineNuxtConfig({
-  devtools: { enabled: true },        // Не относятся к FSD, включёны при старте проекта
-  alias: {
-    "@": '../src'
-  },
-  dir: {
-    pages: './src/app/routes'
-  }
-})
+#### shared
+
+Рассмотрим компонент `UiButton` для примера.
+
+##### Структурв папок
+
+```bash
+.../
+├── src/
+│   ├── shared/
+│   │   ├── ui/
+│   │   │   ├── button/
+│   │   │   │   ├── interfaces/
+│   │   │   │   │   ├── ...
+│   │   │   │   ├── index.ts # Для автоимпортов типов компонента
+│   │   │   │   ├── index.vue # Для автоимпорта компонента
+│   │   ├── utils/ # Любой сегмент
+│   │   │   ├── sum.ts
+│   │   │   ├── index.ts # Для автоимпорта функции и т.п. сегмента
 ```
 
-Теперь, вы можете создавать роуты для страниц внутри `app` и подключать к ним страницы из `pages`.
+`ui/button/index.ts` - файл для автоимпорта типов компонента.
 
-Например, чтобы добавить страницу `Home` в проект, вам нужно сделать следующие шаги:
-- Добавить слайс страницы внутри слоя `pages`
-- Добавить соответствующий роут внутрь слоя `app`
-- Совместить страницу из слайса с роутом
-
-Для того чтобы создать слайс страницы, воспользуемся [CLI](https://github.com/feature-sliced/cli):
-
-```shell
-fsd pages home
+```ts
+export type { IUiButtonProps } from "./interfaces";
 ```
 
-Создайте файл `home-page.vue` внутри сегмента ui, откройте к нему доступ с помощью Public API
+`ui/button/index.vue` - файл для автоимпорта компонента.
 
-```ts title="src/pages/home/index.ts"
-export { default as HomePage } from './ui/home-page';
-```
+```vue
+<script setup lang="ts">
+import type { IUiButtonProps } from "./interfaces";
 
-Создайте роут для этой страницы внутри слоя `app`:
-
-```sh
-
-├── src
-│   ├── app
-│   │   ├── routes
-│   │   │   ├── index.vue
-│   ├── pages
-│   │   ├── home
-│   │   │   ├── ui
-│   │   │   │   ├── home-page.vue
-│   │   │   ├── index.ts
-```
-
-Добавьте внутрь `index.vue` файла компонент вашей страницы:
-
-```html title="src/app/routes/index.vue"
-<script setup>
-  import { HomePage } from '@/pages/home';
+const props = withDefaults(defineProps<IUiButtonProps>(), {
+  type: "button",
+});
 </script>
 
 <template>
-  <HomePage/>
+  <button :type="type">
+    <slot />
+  </button>
 </template>
 ```
 
-## Что делать с `layouts`?
+`utils/index.ts` - файл для автоимпорта функции и т.п. сегмента.
 
-Вы можете разместить layouts внутри слоя `app`, для этого нужно изменить конфиг следующим образом:
-
-```ts title="nuxt.config.ts"
-export default defineNuxtConfig({
-  devtools: { enabled: true },        // Не относятся к FSD, включёны при старте проекта
-  alias: {
-    "@": '../src'
-  },
-  dir: {
-    pages: './src/app/routes',
-    layouts: './src/app/layouts'
-  }
-})
+```ts
+export { sum } from "./sum";
 ```
 
+##### Использование
 
-## См. также
+```vue
+<script setup lang="ts">
+const props: IUiButtonProps = {
+  type: "submit",
+};
+</script>
 
-- [Документация по изменению конфига директорий в NuxtJS](https://nuxt.com/docs/api/nuxt-config#dir)
-- [Документация по изменению конфига роутера в NuxtJS](https://nuxt.com/docs/guide/recipes/custom-routing#router-config)
-- [Документация по изменению алиасов в NuxtJS](https://nuxt.com/docs/api/nuxt-config#alias)
+<template>
+  <UiButton v-bind="props"> Total: {{ sum(1, 4) }} </UiButton>
+</template>
+```
 
+#### entities
+
+Все также, как с `shared`, но компоненты не имеют `Ui` префикса и в структуру папок добавляется папка `слайса`.
+
+#### features, widgets
+
+Все также, как с `entities`, но компоненты имеют `Feature` и `Widget` постфикс.
+
+#### pages
+
+```bash
+.../
+├── src/
+│   ├── pages/
+│   │   ├── product/ # Любая страница
+│   │   │   ├── index.vue # Для автоимпорта компонента страницы
+```
+
+## Роутинг, шаблоны, middleware
+
+Необходимо переопределить дирректории по умолчанию.
+
+```ts
+dir: {
+  pages: "./src/app/routes", // Роутинг
+  layouts: "./src/app/layouts", // Шаблоны
+  middleware: "./src/app/middlewares", // middlewares
+},
+```
+
+### app
+
+```bash
+.../
+├── src/
+│   ├── app/
+│   │   ├── routes/ # Роуты приложения
+│   │   │   ├── index.vue # Роут для пути "/"
+│   │   ├── middlewares/ # Middleware приложения
+│   │   │   ├── auth.ts # Middleware авторизации
+│   │   ├── layouts/ # Шаблоны приложения
+│   │   │   ├── default.vue # Шаблон приложения по умолчанию
+```
+
+## Хочешь начать быстрее
+
+Чтобы не настраивать все вручную, можно использовать модуль, который автоматически меняет конфигурацию.
+
+[@dand.dev/nuxt-fsd](https://www.npmjs.com/package/@dand.dev/nuxt-fsd)
