@@ -426,5 +426,15 @@ export const examples: Example[] = [
         updatedAt: "2024-08-10",
         tech: ["react", "redux-toolkit", "typescript"],
     },
+    {
+        title: "YeaHub Platform",
+        description: "YeaHub is a platform dedicated to the professional growth, learning, and collaboration of IT specialists.",
+        source: "https://github.com/YeaHubTeam/yeahub-platform",
+        website: "https://yeahub.ru/questions?page=1&status=all&specialization=11",
+        preview: require("./img/yeahub.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2025-04-04",
+        tech: ["react", "redux-toolkit", "rtk query", "react router", "typescript", "webpack", "storybook"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
