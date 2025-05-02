@@ -1,10 +1,10 @@
 {
     "version.label": {
-        "message": "v2.1",
+        "message": "v2.0.0 🍰",
         "description": "The label for version current"
     },
     "sidebar.getstartedSidebar.category.Tutorials": {
-        "message": "Tutoriels",
+        "message": "Tutorials",
         "description": "The label for category Tutorials in sidebar getstartedSidebar"
     },
     "sidebar.aboutSidebar.category.Alternatives": {
@@ -12,11 +12,11 @@
         "description": "The label for category Alternatives in sidebar aboutSidebar"
     },
     "sidebar.aboutSidebar.category.Promote": {
-        "message": "Promouvoir",
+        "message": "Promote",
         "description": "The label for category Promote in sidebar aboutSidebar"
     },
     "sidebar.guidesSidebar.category.Examples": {
-        "message": "Exemples",
+        "message": "Examples",
         "description": "The label for category Examples in sidebar guidesSidebar"
     },
     "sidebar.guidesSidebar.category.Migration": {
@@ -24,15 +24,15 @@
         "description": "The label for category Migration in sidebar guidesSidebar"
     },
     "sidebar.guidesSidebar.category.Tech": {
-        "message": "Technologies",
+        "message": "Tech",
         "description": "The label for category Tech in sidebar guidesSidebar"
     },
     "sidebar.conceptsSidebar.category.Issues": {
-        "message": "Problèmes",
+        "message": "Issues",
         "description": "The label for category Issues in sidebar conceptsSidebar"
     },
     "sidebar.referenceSidebar.category.Layer": {
-        "message": "Couche",
+        "message": "Layer",
         "description": "The label for category Layer in sidebar referenceSidebar"
     }
 }
