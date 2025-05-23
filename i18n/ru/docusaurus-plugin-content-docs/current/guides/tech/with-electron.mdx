@@ -1,0 +1,103 @@
+---
+sidebar_position: 10
+---
+# Использование с Electron
+
+Electron-приложения имеют особую архитектуру, состоящую из нескольких процессов с разными ответственностями. Применение FSD в таком контексте требует адаптации структуры под специфику Electron.
+
+```sh
+└── src
+    ├── preload         # preload скрипт и context bridge
+    ├── main            # main процесс
+    │   ├── app
+    │   ├── processes   # используется вместо слоёв pages и widgets
+    │   ├── features
+    │   ├── entities
+    │   └── shared
+    ├── renderer        # renderer процесс
+    │   ├── app
+    │   ├── pages
+    │   ├── widgets
+    │   ├── features
+    │   ├── entities
+    │   └── shared
+    └── shared          # общий код между main и renderer, описание IPC (наименование event'ов, контракты)
+```
+
+## Правила для публичного API
+Каждый процесс должен иметь свой публиный API, нельзя импортировать модули из `main` в `renderer`. Общедоступным кодом является только папка `src/shared`. Она же служит для описания контрактов по взаимодействию процессов.
+
+## Дополнительные изменения в стандартной структуре
+Предлагается использовать новый сегмент `ipc`, в котором происходит взаимодействие между процессами
+Чтобы решить проблему отсутствия `pages` и `widgets` как таковых в `main` процессе, предлагается использовать вместо них слой `processes`.
+
+## Пример взаимодействия
+
+```typescript title="src/shared/constants/ipc-channels.ts"
+export const IPC_CHANNELS = {
+    GET_USER_DATA: 'GET_USER_DATA',
+    SAVE_SETTINGS: 'SAVE_SETTINGS',
+} as const;
+
+export type TChannelKeys = keyof typeof IPC_CHANNELS;
+```
+
+```typescript title="src/shared/types/ipc-events.ts"
+import { IPC_CHANNELS } from '../constants/ipc-channels';
+
+export interface IPCEvents {
+    [IPC_CHANNELS.GET_USER_DATA]: {
+        response: { name: string; email: string; };
+    };
+    [IPC_CHANNELS.SAVE_SETTINGS]: {
+        args: { theme: string; };
+        response: void;
+    };
+}
+```
+
+```typescript title="src/shared/types/preload.ts"
+import { IPC_CHANNELS } from '../constants/ipc-channels';
+import type { IPCEvents } from './ipc-events';
+
+export type TElectronAPI = {
+    [K in keyof typeof IPC_CHANNELS]: IPCEvents[typeof IPC_CHANNELS[K]]['response'] extends void
+        ? (args: IPCEvents[typeof IPC_CHANNELS[K]]['args']) => void
+        : (args: IPCEvents[typeof IPC_CHANNELS[K]]['args']) => Promise<IPCEvents[typeof IPC_CHANNELS[K]]['response']>;
+};
+```
+
+```typescript title="src/preload/context-bridge.ts"
+import { contextBridge, ipcRenderer } from 'electron';
+import { IPC_CHANNELS } from 'shared/constants';
+import type { TElectronAPI } from 'shared/types';
+
+const API: TElectronAPI = {
+    [IPC_CHANNELS.GET_USER_DATA]: () => ipcRenderer.invoke(IPC_CHANNELS.GET_USER_DATA),
+    [IPC_CHANNELS.SAVE_SETTINGS]: (args) => ipcRenderer.send(IPC_CHANNELS.SAVE_SETTINGS, args),
+} as const;
+
+contextBridge.exposeInMainWorld('electron', API);
+```
+
+```typescript title="src/main/processes/user-manager/ipc/send-user-data.ts"
+import { ipcMain } from 'electron';
+import { IPC_CHANNELS } from 'shared/constants';
+
+ipcMain.handle(IPC_CHANNELS.GET_USER_DATA, () => {
+    return { name: 'John Doe', email: 'john.doe@example.com' };
+});
+```
+
+```typescript title="src/renderer/page/user-settings/ipc/get-user-data.ts"
+import { IPC_CHANNELS } from 'shared/constants';
+
+const getUserData = async () => {
+    const userData = await window.electron[IPC_CHANNELS.GET_USER_DATA]();
+};
+```
+
+## См. также
+- [Документация по моделям процессов](https://www.electronjs.org/docs/latest/tutorial/process-model)
+- [Документация по изоляции контекстов](https://www.electronjs.org/docs/latest/tutorial/context-isolation)
+- [Документация по IPC](https://www.electronjs.org/docs/latest/tutorial/ipc)
