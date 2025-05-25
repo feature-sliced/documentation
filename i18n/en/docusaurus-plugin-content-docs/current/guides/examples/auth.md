@@ -92,31 +92,56 @@ export function RegisterPage() {
 
 Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager.
 
-### Where to store the request function
+[Where to store the request function][examples-api-requests]
 
 There are two places you can put this function: in `shared/api`, or in the `api` segment of the page.
 
 #### In `shared/api`
 
-This approach goes well with when you put all your API requests in `shared/api`, grouped by endpoint, for example. The file structure might look like this:
+This approach goes well with when , for example. The file structure might look like this:
 
 - 📂 shared
     - 📂 api
         - 📂 endpoints
             - 📄 login.ts
-            - other endpoint functions…
         - 📄 client.ts
         - 📄 index.ts
 
-The `📄 client.ts` file contains a wrapper around your request-making primitive (for example, `fetch()`). This wrapper would know about the base URL of your backend, set necessary headers, serialize data correctly, etc.
+The `📄 client.ts` file contains a wrapper around your request-making primitive (for example, `fetch()`). This wrapper would know about the base URL of your backend, set necessary headers, serialize data correctly, and so on:
+
+```ts title="shared/api/client.ts"
+// axios api client
+export const axiosInstance = axios.create({
+  baseURL: 'https://some-domain.com/api/',
+  timeout: 1000,
+  headers: {'X-Custom-Header': 'foobar'}
+});
+
+// fetch api client
+export const fetchInstance = {
+  async get() {
+    const response = await fetch('https://some-domain', {
+      headers: {
+        'X-Custom-Header': 'foobar'
+      }
+    });
+
+    return response.json();
+  }
+};
+```
+
+Then, you put all your API requests in `shared/api/endpoints`, grouped by endpoint:
 
 ```ts title="shared/api/endpoints/login.ts"
-import { POST } from "../client";
+import { instance } from "../client";
 
 export function login({ email, password }: { email: string, password: string }) {
-    return POST("/login", { email, password });
+    return instance.post("/login", { email, password });
 }
 ```
+
+And then create index file to allow components to use new functionality:
 
 ```ts title="shared/api/index.ts"
 export { login } from "./endpoints/login";
@@ -220,6 +245,7 @@ Don't forget to build failsafes for when a request to log out fails, or a reques
 
 [tutorial-authentication]: /docs/get-started/tutorial#authentication
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
+[examples-api-requests]: /docs/guides/examples/api-requests
 [ext-remix]: https://remix.run
 [ext-zod]: https://zod.dev
 
