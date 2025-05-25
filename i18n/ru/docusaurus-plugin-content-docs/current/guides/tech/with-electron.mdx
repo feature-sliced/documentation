@@ -7,21 +7,20 @@ Electron-приложения имеют особую архитектуру, с
 
 ```sh
 └── src
-    ├── preload         # preload скрипт и context bridge
-    ├── main            # main процесс
-    │   ├── app
-    │   ├── processes   # используется вместо слоёв pages и widgets
+    ├── app
+    ├── main            # Main процесс
+    │   ├── widgets
     │   ├── features
     │   ├── entities
     │   └── shared
-    ├── renderer        # renderer процесс
-    │   ├── app
+    ├── renderer        # Renderer процесс
     │   ├── pages
     │   ├── widgets
     │   ├── features
     │   ├── entities
     │   └── shared
-    └── shared          # общий код между main и renderer, описание IPC (наименование event'ов, контракты)
+    └── shared          # Общий код между main и renderer
+        └── ipc         # Описание IPC (наименование event'ов, контракты)
 ```
 
 ## Правила для публичного API
@@ -29,72 +28,145 @@ Electron-приложения имеют особую архитектуру, с
 
 ## Дополнительные изменения в стандартной структуре
 Предлагается использовать новый сегмент `ipc`, в котором происходит взаимодействие между процессами
-Чтобы решить проблему отсутствия `pages` и `widgets` как таковых в `main` процессе, предлагается использовать вместо них слой `processes`.
+Слой `pages`, исходя из названия, не должен присутствовать в `src/main`. Слой `app` в `src` содержит точки входа для `main` и `renderer`, а также IPC.
 
 ## Пример взаимодействия
 
-```typescript title="src/shared/constants/ipc-channels.ts"
-export const IPC_CHANNELS = {
+```typescript title="src/shared/ipc/channels.ts"
+export const CHANNELS = {
     GET_USER_DATA: 'GET_USER_DATA',
     SAVE_SETTINGS: 'SAVE_SETTINGS',
 } as const;
 
-export type TChannelKeys = keyof typeof IPC_CHANNELS;
+export type TChannelKeys = keyof typeof CHANNELS;
 ```
 
-```typescript title="src/shared/types/ipc-events.ts"
-import { IPC_CHANNELS } from '../constants/ipc-channels';
+```typescript title="src/shared/ipc/events.ts"
+import { CHANNELS } from './channels';
 
-export interface IPCEvents {
-    [IPC_CHANNELS.GET_USER_DATA]: {
+export interface IEvents {
+    [CHANNELS.GET_USER_DATA]: {
         response: { name: string; email: string; };
     };
-    [IPC_CHANNELS.SAVE_SETTINGS]: {
+    [CHANNELS.SAVE_SETTINGS]: {
         args: { theme: string; };
         response: void;
     };
 }
 ```
 
-```typescript title="src/shared/types/preload.ts"
-import { IPC_CHANNELS } from '../constants/ipc-channels';
-import type { IPCEvents } from './ipc-events';
+```typescript title="src/shared/ipc/preload.ts"
+import { CHANNELS } from './channels';
+import type { IEvents } from './events';
 
 export type TElectronAPI = {
-    [K in keyof typeof IPC_CHANNELS]: IPCEvents[typeof IPC_CHANNELS[K]]['response'] extends void
-        ? (args: IPCEvents[typeof IPC_CHANNELS[K]]['args']) => void
-        : (args: IPCEvents[typeof IPC_CHANNELS[K]]['args']) => Promise<IPCEvents[typeof IPC_CHANNELS[K]]['response']>;
+    [K in keyof typeof CHANNELS]: IEvents[typeof CHANNELS[K]]['response'] extends void
+        ? (args: IEvents[typeof CHANNELS[K]]['args']) => void
+        : (args: IEvents[typeof CHANNELS[K]]['args']) => Promise<IEvents[typeof CHANNELS[K]]['response']>;
 };
 ```
 
-```typescript title="src/preload/context-bridge.ts"
+```typescript title="src/app/preload/context-bridge.ts"
 import { contextBridge, ipcRenderer } from 'electron';
-import { IPC_CHANNELS } from 'shared/constants';
-import type { TElectronAPI } from 'shared/types';
+import { CHANNELS, type TElectronAPI } from 'shared/ipc';
 
 const API: TElectronAPI = {
-    [IPC_CHANNELS.GET_USER_DATA]: () => ipcRenderer.invoke(IPC_CHANNELS.GET_USER_DATA),
-    [IPC_CHANNELS.SAVE_SETTINGS]: (args) => ipcRenderer.send(IPC_CHANNELS.SAVE_SETTINGS, args),
+    [CHANNELS.GET_USER_DATA]: () => ipcRenderer.invoke(CHANNELS.GET_USER_DATA),
+    [CHANNELS.SAVE_SETTINGS]: (args) => ipcRenderer.send(CHANNELS.SAVE_SETTINGS, args),
 } as const;
 
 contextBridge.exposeInMainWorld('electron', API);
 ```
 
-```typescript title="src/main/processes/user-manager/ipc/send-user-data.ts"
+```typescript title="src/main/widgets/user-manager/ipc/send-user-data.ts"
 import { ipcMain } from 'electron';
-import { IPC_CHANNELS } from 'shared/constants';
+import { CHANNELS } from 'shared/ipc';
 
-ipcMain.handle(IPC_CHANNELS.GET_USER_DATA, () => {
+ipcMain.handle(CHANNELS.GET_USER_DATA, () => {
     return { name: 'John Doe', email: 'john.doe@example.com' };
 });
 ```
 
 ```typescript title="src/renderer/page/user-settings/ipc/get-user-data.ts"
-import { IPC_CHANNELS } from 'shared/constants';
+import { CHANNELS } from 'shared/ipc';
 
 const getUserData = async () => {
-    const userData = await window.electron[IPC_CHANNELS.GET_USER_DATA]();
+    const userData = await window.electron[CHANNELS.GET_USER_DATA]();
 };
+```
+
+## Структура вышеописанного примера с дополнениями
+
+Теперь распишем подробнее структуру нашего проекта для большей наглядности. Предположим, что используется React в качестве UI библиотеки
+
+```sh
+└── src
+    ├── app                                 # Общий сегмент app
+    │   ├── main                            # Main процесс
+    │   │   ├── index.ts                    # Точка входа main процесса
+    │   │   └── create-window.ts
+    │   ├── preload                         # Preload скрипт и Context Bridge
+    │   │   ├── index.ts                    # Точка входа preload
+    │   │   └── context-bridge.ts
+    │   └── renderer                        # Renderer процесс
+    │       ├── index.html                  # Точка входа renderer процесса
+    │       ├── app.tsx
+    │       └── globals.css
+    ├── main
+    │   ├── widgets
+    │   │   ├── user-manager
+    │   │   │   ├── ipc
+    │   │   │   │   ├── handle-user-data.ts
+    │   │   │   │   └── handle-user-settings.ts
+    │   │   │   └── model
+    │   │   │       └── save-user.ts
+    │   │   ├── notifications
+    │   │   │   ├── model
+    │   │   │       └── notification-manager.ts
+    │   │   │   └── ipc
+    │   │   │       └── send-notification.ts
+    │   ├── features
+    │   │   ├── user-events-logger
+    │   │   │    └── model
+    │   │   │        └── log.ts
+    │   ├── entities
+    │   │   └── users
+    │   └── shared
+    ├── renderer
+    │   ├── pages
+    │   │   ├── settings
+    │   │   │   ├── ipc
+    │   │   │   │   ├── get-settings.ts
+    │   │   │   │   └── save-settings.ts
+    │   │   │   ├── ui
+    │   │   │   │   └── settings.tsx
+    │   │   │   └── index.ts
+    │   │   ├── dashboard
+    │   │   │   ├── ui
+    │   │   │   │   └── dashboard.tsx
+    │   │   │   └── index.ts
+    │   ├── widgets
+    │   │   ├── user-manager
+    │   │   │   ├── ipc
+    │   │   │   │   ├── get-users.ts
+    │   │   │   │   └── save-user.ts
+    │   │   │   ├── ui
+    │   │   │   │   └── user-widget.tsx
+    │   │   │   ├── model
+    │   │   │   │   └── user-state.ts
+    │   │   │   └── index.ts
+    │   └── features
+    │       ├── notifications
+    │       │   ├── ipc
+    │       │   │   └── get-notification.ts
+    │       │   ├── ui
+    │       │   │   └── notification.tsx
+    │       │   ├── model
+    │       │   │   └── state.ts
+    │       │   └── index.ts
+    │       └── shared
+    └── shared                              # Общий код между main и renderer
+        └── ipc                             # Описание IPC (наименование event'ов, контракты)
 ```
 
 ## См. также
