@@ -2,91 +2,128 @@
 sidebar_position: 4
 ---
 
-# API requests
+# Handling API Requests
 
-## `shared/api`
+Feature-Sliced Design provides a structured way to organize your API request logic.
 
-Start by placing your requests in the `shared/api`, this will remove unnecessary architectural boundaries and let you prototype faster and reuse requests easier. This might be enough for the majority of projects. The file structure might look like this:
+## Shared API Requests
 
+Start by placing common API request logic in the `shared/api` directory. This makes it easy to reuse requests across your application and helps with faster prototyping. For many projects, this is all you'll need for API calls.
+
+A typical file structure would be:
 - 📂 shared
     - 📂 api
-        - 📂 endpoints
-            - 📄 login.ts
         - 📄 client.ts
         - 📄 index.ts
+        - 📂 endpoints
+            - 📄 login.ts
 
-The `📄 client.ts` file contains a wrapper around your request-making primitive (for example, `fetch()`). This wrapper would know about the base URL of your backend, set necessary headers, serialize data correctly, and so on:
+The `client.ts` file centralizes your HTTP request setup. It wraps your chosen method (like `fetch()` or an `axios` instance) and handles common configurations, such as:
+
+- Backend base URL.
+- Default headers (e.g., for authentication).
+- Data serialization.
+
+Here are examples for `axios` and `fetch`:
 
 ```ts title="shared/api/client.ts"
-// axios api client
+// Example using axios
+import axios from 'axios';
+
 export const axiosClient = axios.create({
-  baseURL: 'https://some-domain.com/api/',
-  timeout: 1000,
-  headers: { 'X-Custom-Header': 'foobar' }
+  baseURL: 'https://your-api-domain.com/api/',
+  timeout: 5000,
+  headers: { 'X-Custom-Header': 'my-custom-value' }
 });
 
-// fetch api client
-export const fetchClient = {
-  async get(endpoint: string) {
-    const response = await fetch(`https://some-domain.com/api${endpoint}`, {
-      headers: {
-        'X-Custom-Header': 'foobar'
-      }
-    });
+// --- OR ---
 
+// Example using fetch
+export const fetchClient = {
+  async post(endpoint: string, body: any, options?: RequestInit) {
+    const response = await fetch(`https://your-api-domain.com/api${endpoint}`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Custom-Header': 'my-custom-value',
+        ...options?.headers,
+      },
+    });
     return response.json();
   }
+  // ... other methods like put, delete, etc.
 };
+
+// Choose one client, for instance, you might export your preferred client as 'client':
+// export const client = axiosClient;
+// export const client = fetchClient;
 ```
 
-Then, you put all your API requests in `shared/api/endpoints`, grouped by endpoint:
+Organize your individual API request functions in `shared/api/endpoints`, grouping them by the API endpoint.
 
 ```ts title="shared/api/endpoints/login.ts"
-import { client } from "../client";
+import { client } from '../client'; // Assuming 'client' is configured and exported
 
-export function login({ email, password }: { email: string, password: string }) {
-  return client.post("/login", { email, password });
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
 }
 ```
-
-And then create an index file to allow components to use new functionality:
+Use an `index.ts` file in `shared/api` to export your request functions.
 
 ```ts title="shared/api/index.ts"
-export { login } from "./endpoints/login";
+export { client } from './client'; // If you want to export the client itself
+export { login } from './endpoints/login';
+export type { LoginCredentials } from './endpoints/login';
 ```
 
-## slice
+## Slice-Specific API Requests
 
-API requests that clearly won't be reused in the future should be placed in the `api` segment of the same slice to keep project scope clean:
+If an API request is only used by a specific slice (like a single page or feature) and won't be reused, place it in the api segment of that slice. This keeps slice-specific logic neatly contained.
 
 - 📂 pages
     - 📂 login
+        - 📄 index.ts
         - 📂 api
             - 📄 login.ts
         - 📂 ui
             - 📄 LoginPage.tsx
-        - 📄 index.ts
 
 ```ts title="pages/login/api/login.ts"
-import { client } from "shared/api";
+import { client } from 'shared/api';
 
-export function login({ email, password }: { email: string, password: string }) {
-  return client.post("/login", { email, password });
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
 }
 ```
 
-You don't have to export the `login()` function in the page's public API, because it's unlikely that any other place in the app will need this request.
+You don't need to export `login()` function in the page's public API, because it's unlikely that any other place in the app will need this request.
 
 :::note
 
-Do not move API calls to the `entities` layer preemptively, as you might end up in the situation when you have no abstraction layer for frontend-specific entities. Backend responses can vary between requests, and they might be inappropriate for the frontend.
+Avoid placing API calls and response types in the `entities` layer prematurely. Backend responses may differ from what your frontend entities need. API logic in `shared/api` or a slice's `api` segment allows you to transform data appropriately, keeping entities focused on frontend concerns.
 
 :::
 
-## Client generators
+## Using Client Generators
 
-If the backend provides OpenAPI specifications, you can use tools like [orval](https://orval.dev/) or [openapi-typescript](https://openapi-ts.dev/) to generate types and requests for you in `shared/api` folder.
+If your backend has an OpenAPI specification, tools like [orval](https://orval.dev/) or [openapi-typescript](https://openapi-ts.dev/) can generate API types and request functions for you. Place the generated code in `shared/api`.
 
-## Server state libraries
+## Integrating with Server State Libraries
 
-When using libraries like [TanStack Query](https://tanstack.com/query/latest) or [pinia-colada](https://pinia-colada.esm.dev/) in the `pages`, `widgets`, or `features` layers, you might need to reuse types or cache keys between slices, which is prohibited by Feature-Sliced Design. In such cases, you can share types, cache keys, and options via `shared` layer.
+When using server state libraries like [TanStack Query (React Query)](https://tanstack.com/query/latest) or [Pinia Colada](https://pinia-colada.esm.dev/) you might need to share types or cache keys between slices. Use the `shared` layer for things like:
+
+- API data types
+- Cache keys
+- Common query/mutation options
