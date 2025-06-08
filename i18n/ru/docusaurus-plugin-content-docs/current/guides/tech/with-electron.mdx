@@ -7,35 +7,55 @@ Electron-приложения имеют особую архитектуру, с
 
 ```sh
 └── src
-    ├── app
-    ├── main            # Main процесс
-    │   ├── widgets
-    │   ├── features
-    │   ├── entities
+    ├── app                                 # Общий сегмент app
+    │   ├── main                            # Main процесс
+    │   │   └── index.ts                    # Точка входа main процесса
+    │   ├── preload                         # Preload скрипт и Context Bridge
+    │   │   └── index.ts                    # Точка входа preload
+    │   └── renderer                        # Renderer процесс
+    │       └── index.html                  # Точка входа renderer процесса
+    ├── main
+    │   ├── services
+    │   │   └── user
+    │   │       └── ipc
+    │   │           ├── get-user.ts
+    │   │           └── send-user.ts
     │   └── shared
-    ├── renderer        # Renderer процесс
-    │   ├── pages
-    │   ├── widgets
-    │   ├── features
-    │   ├── entities
+    ├── renderer
+    │   └── pages
+    │   │   ├── settings
+    │   │   │   ├── ipc
+    │   │   │   │   ├── get-user.ts
+    │   │   │   │   └── save-user.ts
+    │   │   │   ├── ui
+    │   │   │   │   └── user.tsx
+    │   │   │   └── index.ts
+    │   │   └── home
+    │   │       ├── ui
+    │   │       │   └── home.tsx
+    │   │       └── index.ts
     │   └── shared
-    └── shared          # Общий код между main и renderer
-        └── ipc         # Описание IPC (наименование event'ов, контракты)
+    └── shared                              # Общий код между main и renderer
+        └── ipc                             # Описание IPC (наименование event'ов, контракты)
 ```
 
 ## Правила для публичного API
-Каждый процесс должен иметь свой публичный API, нельзя импортировать модули из `main` в `renderer`. Общедоступным между процессами кодом является только папка `src/shared`. Она же служит для описания контрактов по взаимодействию процессов.
+Каждый процесс должен иметь свой публичный API, как пример, нельзя импортировать модули из `main` в `renderer`.
+Общедоступным между процессами кодом является только папка `src/shared`.
+Она же необходима для описания контрактов по взаимодействию процессов.
 
 ## Дополнительные изменения в стандартной структуре
-Предлагается использовать новый сегмент `ipc`, в котором происходит взаимодействие между процессами
-Слой `pages`, исходя из названия, не должен присутствовать в `src/main`. Слой `app` в `src` содержит точки входа для `main` и `renderer`, а также IPC.
+Предлагается использовать новый сегмент `ipc`, в котором происходит взаимодействие между процессами.
+Слои `pages` и `widgets`, исходя из названия, не должен присутствовать в `src/main`, вместо них предлагается в качестве самого верхнего уровня использовать слой `services`.
+Слой `app` в `src` содержит точки входа для `main` и `renderer`, а также IPC.
+Сегментам в слое `app` нежелательно иметь точек пересечения
 
 ## Пример взаимодействия
 
 ```typescript title="src/shared/ipc/channels.ts"
 export const CHANNELS = {
     GET_USER_DATA: 'GET_USER_DATA',
-    SAVE_SETTINGS: 'SAVE_SETTINGS',
+    SAVE_USER: 'SAVE_USER',
 } as const;
 
 export type TChannelKeys = keyof typeof CHANNELS;
@@ -46,10 +66,11 @@ import { CHANNELS } from './channels';
 
 export interface IEvents {
     [CHANNELS.GET_USER_DATA]: {
-        response: { name: string; email: string; };
+        args: void,
+        response?: { name: string; email: string; };
     };
-    [CHANNELS.SAVE_SETTINGS]: {
-        args: { theme: string; };
+    [CHANNELS.SAVE_USER]: {
+        args: { name: string; };
         response: void;
     };
 }
@@ -59,117 +80,51 @@ export interface IEvents {
 import { CHANNELS } from './channels';
 import type { IEvents } from './events';
 
+type TOptionalArgs<T> = T extends void ? [] : [args: T];
+
 export type TElectronAPI = {
-    [K in keyof typeof CHANNELS]: IEvents[typeof CHANNELS[K]]['response'] extends void
-        ? (args: IEvents[typeof CHANNELS[K]]['args']) => void
-        : (args: IEvents[typeof CHANNELS[K]]['args']) => Promise<IEvents[typeof CHANNELS[K]]['response']>;
+    [K in keyof typeof CHANNELS]: (...args: TOptionalArgs<IEvents[typeof CHANNELS[K]]['args']>) => IEvents[typeof CHANNELS[K]]['response'];
 };
 ```
 
-```typescript title="src/app/preload/context-bridge.ts"
+```typescript title="src/app/preload/index.ts"
 import { contextBridge, ipcRenderer } from 'electron';
 import { CHANNELS, type TElectronAPI } from 'shared/ipc';
 
 const API: TElectronAPI = {
-    [CHANNELS.GET_USER_DATA]: () => ipcRenderer.invoke(CHANNELS.GET_USER_DATA),
-    [CHANNELS.SAVE_SETTINGS]: (args) => ipcRenderer.send(CHANNELS.SAVE_SETTINGS, args),
+    [CHANNELS.GET_USER_DATA]: () => ipcRenderer.sendSync(CHANNELS.GET_USER_DATA),
+    [CHANNELS.SAVE_USER]: args => ipcRenderer.invoke(CHANNELS.SAVE_USER, args),
 } as const;
 
 contextBridge.exposeInMainWorld('electron', API);
 ```
 
-```typescript title="src/main/widgets/user-manager/ipc/send-user-data.ts"
+```typescript title="src/main/services/user/ipc/send-user.ts"
 import { ipcMain } from 'electron';
 import { CHANNELS } from 'shared/ipc';
 
-ipcMain.handle(CHANNELS.GET_USER_DATA, () => {
-    return { name: 'John Doe', email: 'john.doe@example.com' };
-});
-```
-
-```typescript title="src/renderer/page/user-settings/ipc/get-user-data.ts"
-import { CHANNELS } from 'shared/ipc';
-
-const getUserData = async () => {
-    const userData = await window.electron[CHANNELS.GET_USER_DATA]();
+export const sendUser = () => {
+    ipcMain.on(CHANNELS.GET_USER_DATA, ev => {
+        ev.returnValue = {
+            name: 'John Doe',
+            email: 'john.doe@example.com',
+        };
+    });
 };
 ```
 
-## Структура вышеописанного примера с дополнениями
+```typescript title="src/renderer/page/user-settings/ipc/get-user.ts"
+import { CHANNELS } from 'shared/ipc';
 
-Теперь распишем подробнее структуру нашего проекта для большей наглядности. Предположим, что используется React в качестве UI библиотеки
+export const getUser = () => {
+    const user = window.electron[CHANNELS.GET_USER_DATA]();
 
-```sh
-└── src
-    ├── app                                 # Общий сегмент app
-    │   ├── main                            # Main процесс
-    │   │   ├── index.ts                    # Точка входа main процесса
-    │   │   └── create-window.ts
-    │   ├── preload                         # Preload скрипт и Context Bridge
-    │   │   ├── index.ts                    # Точка входа preload
-    │   │   └── context-bridge.ts
-    │   └── renderer                        # Renderer процесс
-    │       ├── index.html                  # Точка входа renderer процесса
-    │       ├── app.tsx
-    │       └── globals.css
-    ├── main
-    │   ├── widgets
-    │   │   ├── user-manager
-    │   │   │   ├── ipc
-    │   │   │   │   ├── handle-user-data.ts
-    │   │   │   │   └── handle-user-settings.ts
-    │   │   │   └── model
-    │   │   │       └── save-user.ts
-    │   │   ├── notifications
-    │   │   │   ├── model
-    │   │   │       └── notification-manager.ts
-    │   │   │   └── ipc
-    │   │   │       └── send-notification.ts
-    │   ├── features
-    │   │   ├── user-events-logger
-    │   │   │    └── model
-    │   │   │        └── log.ts
-    │   ├── entities
-    │   │   └── users
-    │   └── shared
-    ├── renderer
-    │   ├── pages
-    │   │   ├── settings
-    │   │   │   ├── ipc
-    │   │   │   │   ├── get-settings.ts
-    │   │   │   │   └── save-settings.ts
-    │   │   │   ├── ui
-    │   │   │   │   └── settings.tsx
-    │   │   │   └── index.ts
-    │   │   ├── dashboard
-    │   │   │   ├── ui
-    │   │   │   │   └── dashboard.tsx
-    │   │   │   └── index.ts
-    │   ├── widgets
-    │   │   ├── user-manager
-    │   │   │   ├── ipc
-    │   │   │   │   ├── get-users.ts
-    │   │   │   │   └── save-user.ts
-    │   │   │   ├── ui
-    │   │   │   │   └── user-widget.tsx
-    │   │   │   ├── model
-    │   │   │   │   └── user-state.ts
-    │   │   │   └── index.ts
-    │   └── features
-    │       ├── notifications
-    │       │   ├── ipc
-    │       │   │   └── get-notification.ts
-    │       │   ├── ui
-    │       │   │   └── notification.tsx
-    │       │   ├── model
-    │       │   │   └── state.ts
-    │       │   └── index.ts
-    │       └── shared
-    └── shared                              # Общий код между main и renderer
-        └── ipc                             # Описание IPC (наименование event'ов, контракты)
+    return user ?? { name: 'John Dont e', email: 'john.donte@example.com' };
+};
 ```
 
 ## См. также
 - [Документация по моделям процессов](https://www.electronjs.org/docs/latest/tutorial/process-model)
 - [Документация по изоляции контекстов](https://www.electronjs.org/docs/latest/tutorial/context-isolation)
 - [Документация по IPC](https://www.electronjs.org/docs/latest/tutorial/ipc)
+- [Пример](https://github.com/georgkrom/electron-fsd.git)

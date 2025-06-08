@@ -426,5 +426,15 @@ export const examples: Example[] = [
         updatedAt: "2024-08-10",
         tech: ["react", "redux-toolkit", "typescript"],
     },
+    {
+        title: "Electron FSD",
+        description:
+            'Electron application template using Feature-Sliced Design',
+        source: "https://github.com/georgkrom/electron-fsd",
+        preview: require("./img/electron-fsd.png"),
+        version: VERSIONS.V2,
+        updatedAt: "2025-06-09",
+        tech: ["react", "electron", "typescript"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
