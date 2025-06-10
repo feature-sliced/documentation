@@ -2,9 +2,10 @@
 sidebar_position: 4
 ---
 
-# Handling API Requests
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-Feature-Sliced Design provides a structured way to organize your API request logic.
+# Handling API Requests
 
 ## Shared API Requests
 
@@ -26,20 +27,24 @@ The `client.ts` file centralizes your HTTP request setup. It wraps your chosen m
 
 Here are examples for `axios` and `fetch`:
 
+<Tabs>
+
+<TabItem value="axios" label="Axios">
 ```ts title="shared/api/client.ts"
 // Example using axios
 import axios from 'axios';
 
-export const axiosClient = axios.create({
+export const client = axios.create({
   baseURL: 'https://your-api-domain.com/api/',
   timeout: 5000,
   headers: { 'X-Custom-Header': 'my-custom-value' }
 });
+```
+</TabItem>
 
-// --- OR ---
-
-// Example using fetch
-export const fetchClient = {
+<TabItem value="fetch" label="Fetch">
+```ts title="shared/api/client.ts"
+export const client = {
   async post(endpoint: string, body: any, options?: RequestInit) {
     const response = await fetch(`https://your-api-domain.com/api${endpoint}`, {
       method: 'POST',
@@ -55,16 +60,21 @@ export const fetchClient = {
   }
   // ... other methods like put, delete, etc.
 };
-
-// Choose one client, for instance, you might export your preferred client as 'client':
-// export const client = axiosClient;
-// export const client = fetchClient;
 ```
+</TabItem>
+
+</Tabs>
 
 Organize your individual API request functions in `shared/api/endpoints`, grouping them by the API endpoint.
 
+:::note
+
+To keep examples focused, we omit form interaction and validation. For details on libraries like Zod or Valibot, refer to the [Type Validation and Schemas](/docs/guides/examples/types#type-validation-schemas-and-zod) article.
+
+:::
+
 ```ts title="shared/api/endpoints/login.ts"
-import { client } from '../client'; // Assuming 'client' is configured and exported
+import { client } from '../client';
 
 export interface LoginCredentials {
   email: string;
@@ -118,7 +128,7 @@ Avoid placing API calls and response types in the `entities` layer prematurely. 
 
 ## Using Client Generators
 
-If your backend has an OpenAPI specification, tools like [orval](https://orval.dev/) or [openapi-typescript](https://openapi-ts.dev/) can generate API types and request functions for you. Place the generated code in `shared/api`.
+If your backend has an OpenAPI specification, tools like [orval](https://orval.dev/) or [openapi-typescript](https://openapi-ts.dev/) can generate API types and request functions for you. Place the generated code in, for example, `shared/api/openapi`. Make sure to include `README.md` to document what those types are, and how to generate them.
 
 ## Integrating with Server State Libraries
 

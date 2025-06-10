@@ -429,6 +429,10 @@ Other packages simply don't have typings, and you might want to declare them as 
 declare module "use-react-screenshot";
 ```
 
+## Auto-generation of types
+
+It's common to generate types from external sources, for example, generating backend types from an OpenAPI schema. In this case, create a dedicated place in your codebase for these types, like `shared/api/openapi`. Ideally, you should also include a README in that folder that describes what these files are, how to regenerate them, etc.
+
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
 [ext-type-fest]: https://github.com/sindresorhus/type-fest
 [ext-zod]: https://zod.dev
