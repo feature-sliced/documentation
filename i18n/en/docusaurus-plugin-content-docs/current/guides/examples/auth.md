@@ -90,7 +90,7 @@ export function RegisterPage() {
 
 ## How to send credentials to the backend
 
-Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager: [where to store the request function][examples-api-requests].
+Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager. As explained in the [guide for API requests][examples-api-requests], you can put your request either in `shared/api` or in the `api` segment of your login page.
 
 ### Two-factor authentication
 
