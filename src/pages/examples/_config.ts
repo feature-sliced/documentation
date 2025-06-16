@@ -426,5 +426,15 @@ export const examples: Example[] = [
         updatedAt: "2024-08-10",
         tech: ["react", "redux-toolkit", "typescript"],
     },
+		{
+        title: "Clouderica",
+        description:
+            "Scalable cloud storage platform built with NestJS, PostgreSQL, and React.",
+        version: VERSIONS.V2,
+        updatedAt: "2025-06-17",
+        source: "https://github.com/romxnv/clouderica-frontend",
+        preview: require("./img/clouderica.png"),
+        tech: ["react", "react-query", "zustand", "tailwindcss", "typescript"],
+    },
     // Reverse the list (last examples should be at the top)
 ].reverse();
