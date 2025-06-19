@@ -87,18 +87,6 @@
         "message": "FSD yordamida yaratilgan veb-saytlar ro'yxati",
         "description": "Page subtitle"
     },
-    "pages.examples.add_me.title": {
-        "message": "Namuna qoshish",
-        "description": "Request to add example"
-    },
-    "pages.examples.repo.title": {
-        "message": "Repezitoriyalar",
-        "description": "Examples repository label"
-    },
-    "pages.examples.versions": {
-        "message": "Shuningdek, versiyalar ro'yxatiga qarang",
-        "description": "Versions reminder"
-    },
     "pages.versions.title": {
         "message": "Feature-Sliced Design versiyalari",
         "description": "Feature-Sliced Design versions"
