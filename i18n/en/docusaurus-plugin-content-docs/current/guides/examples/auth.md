@@ -90,60 +90,7 @@ export function RegisterPage() {
 
 ## How to send credentials to the backend
 
-Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager.
-
-### Where to store the request function
-
-There are two places you can put this function: in `shared/api`, or in the `api` segment of the page.
-
-#### In `shared/api`
-
-This approach goes well with when you put all your API requests in `shared/api`, grouped by endpoint, for example. The file structure might look like this:
-
-- 📂 shared
-    - 📂 api
-        - 📂 endpoints
-            - 📄 login.ts
-            - other endpoint functions…
-        - 📄 client.ts
-        - 📄 index.ts
-
-The `📄 client.ts` file contains a wrapper around your request-making primitive (for example, `fetch()`). This wrapper would know about the base URL of your backend, set necessary headers, serialize data correctly, etc.
-
-```ts title="shared/api/endpoints/login.ts"
-import { POST } from "../client";
-
-export function login({ email, password }: { email: string, password: string }) {
-    return POST("/login", { email, password });
-}
-```
-
-```ts title="shared/api/index.ts"
-export { login } from "./endpoints/login";
-```
-
-#### In the `api` segment of the page
-
-If you don't keep all your requests in one place, consider stashing the login request in the `api` segment of the login page.
-
-- 📂 pages
-    - 📂 login
-        - 📂 api
-            - 📄 login.ts
-        - 📂 ui
-            - 📄 LoginPage.tsx
-        - 📄 index.ts
-    - other pages…
-
-```ts title="pages/login/api/login.ts"
-import { POST } from "shared/api";
-
-export function login({ email, password }: { email: string, password: string }) {
-    return POST("/login", { email, password });
-}
-```
-
-You don't have to export the `login()` function in the page's public API, because it's unlikely that any other place in the app will need this request.
+Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager. As explained in the [guide for API requests][examples-api-requests], you can put your request either in `shared/api` or in the `api` segment of your login page.
 
 ### Two-factor authentication
 
@@ -220,6 +167,7 @@ Don't forget to build failsafes for when a request to log out fails, or a reques
 
 [tutorial-authentication]: /docs/get-started/tutorial#authentication
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
+[examples-api-requests]: /docs/guides/examples/api-requests
 [ext-remix]: https://remix.run
 [ext-zod]: https://zod.dev
 
