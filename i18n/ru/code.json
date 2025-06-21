@@ -239,6 +239,12 @@
         "message": "любым другим способом",
         "description": "Variant for contribute (link)"
     },
+    "shared.translationBanner.base": {
+        "message": "Эта документация переведена автоматически и может содержать неточности. За проверенной версией обращайтесь к "
+    },
+    "shared.translationBanner.link": {
+        "message": "английской документации"
+    },
     "theme.NotFound.title": {
         "message": "Страница не найдена",
         "description": "The title of the 404 page"
