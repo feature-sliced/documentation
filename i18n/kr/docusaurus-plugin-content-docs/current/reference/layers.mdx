@@ -6,10 +6,10 @@ pagination_next: reference/slices-segments
 # Layer
 
 Layer는 Feature-Sliced Design의 계층 구조에서 가장 상위 수준을 담당하며, Layer > Slice > Segment로 구성된 구조의 첫 번째 단계입니다. 
-Layer의 목적은 프로젝트를 기능별로 정리하고, 모듈 간의 의존성을 효과적으로 관리할 수 있도록 폴더 구조를 분리하는 것입니다. 
-또한, 각 Layer는 특정 기능이 어디에 배치되어야 하는지를 결정하는 기준이 되어, 코드 구조를 체계적으로 유지하는 데 도움을 줍니다.
+Layer의 목적은 코드가 얼마나 많은 책임을 가져야 하는지와 앱 내 다른 모듈들에 얼마나 의존하는지에 따라 코드를 분리하는 것입니다.
+또한, 각 Layer는 코드에 할당해야 하는 책임의 정도를 결정하는 데 도움이 되는 특별한 의미를 가지고 있습니다.
 
-총 **7개의 Layer**가 있으며, 책임과 의존성이 높은 순서대로 정렬되어 있습니다:
+총 **7개의 Layer**가 있으며, 가장 많은 책임과 의존성을 가진 것부터 가장 적은 것까지 순서대로 배열되어 있습니다:
 
 <img src="/img/layers/folders-graphic-light.svg#light-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
 <img src="/img/layers/folders-graphic-dark.svg#dark-mode-only" width="180" style={{ float: "right", margin: "0 1em" }} alt="A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out." />
