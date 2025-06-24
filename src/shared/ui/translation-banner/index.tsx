@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "@docusaurus/Link";
 import { useLocation } from "@docusaurus/router";
 import { translate } from "@docusaurus/Translate";
 
@@ -11,9 +10,9 @@ export const Banner: React.FC = () => {
     return (
         <div>
             {translate({ id: "shared.translationBanner.base" })}
-            <Link autoAddBaseUrl={false} to={canonicalPath}>
+            <a href={canonicalPath}>
                 {translate({ id: "shared.translationBanner.link" })}
-            </Link>
+            </a>
             .
         </div>
     );
