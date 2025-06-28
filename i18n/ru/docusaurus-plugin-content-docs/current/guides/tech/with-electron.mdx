@@ -15,14 +15,15 @@ Electron-приложения имеют особую архитектуру, с
     │   └── renderer                        # Renderer процесс
     │       └── index.html                  # Точка входа renderer процесса
     ├── main
-    │   ├── services
+    │   ├── features
     │   │   └── user
     │   │       └── ipc
     │   │           ├── get-user.ts
     │   │           └── send-user.ts
+    │   ├── entities
     │   └── shared
     ├── renderer
-    │   └── pages
+    │   ├── pages
     │   │   ├── settings
     │   │   │   ├── ipc
     │   │   │   │   ├── get-user.ts
@@ -34,6 +35,9 @@ Electron-приложения имеют особую архитектуру, с
     │   │       ├── ui
     │   │       │   └── home.tsx
     │   │       └── index.ts
+    │   ├── widgets
+    │   ├── features
+    │   ├── entities
     │   └── shared
     └── shared                              # Общий код между main и renderer
         └── ipc                             # Описание IPC (наименование event'ов, контракты)
@@ -46,7 +50,7 @@ Electron-приложения имеют особую архитектуру, с
 
 ## Дополнительные изменения в стандартной структуре
 Предлагается использовать новый сегмент `ipc`, в котором происходит взаимодействие между процессами.
-Слои `pages` и `widgets`, исходя из названия, не должен присутствовать в `src/main`, вместо них предлагается в качестве самого верхнего уровня использовать слой `services`.
+Слои `pages` и `widgets`, исходя из названия, не должны присутствовать в `src/main`, вы можете использовать `features`, `entities` и `shared`.
 Слой `app` в `src` содержит точки входа для `main` и `renderer`, а также IPC.
 Сегментам в слое `app` нежелательно иметь точек пересечения
 
@@ -99,7 +103,7 @@ const API: TElectronAPI = {
 contextBridge.exposeInMainWorld('electron', API);
 ```
 
-```typescript title="src/main/services/user/ipc/send-user.ts"
+```typescript title="src/main/features/user/ipc/send-user.ts"
 import { ipcMain } from 'electron';
 import { CHANNELS } from 'shared/ipc';
 
@@ -113,13 +117,13 @@ export const sendUser = () => {
 };
 ```
 
-```typescript title="src/renderer/page/user-settings/ipc/get-user.ts"
+```typescript title="src/renderer/pages/user-settings/ipc/get-user.ts"
 import { CHANNELS } from 'shared/ipc';
 
 export const getUser = () => {
     const user = window.electron[CHANNELS.GET_USER_DATA]();
 
-    return user ?? { name: 'John Dont e', email: 'john.donte@example.com' };
+    return user ?? { name: 'John Donte', email: 'john.donte@example.com' };
 };
 ```
 
@@ -127,4 +131,4 @@ export const getUser = () => {
 - [Документация по моделям процессов](https://www.electronjs.org/docs/latest/tutorial/process-model)
 - [Документация по изоляции контекстов](https://www.electronjs.org/docs/latest/tutorial/context-isolation)
 - [Документация по IPC](https://www.electronjs.org/docs/latest/tutorial/ipc)
-- [Пример](https://github.com/georgkrom/electron-fsd.git)
+- [Пример](https://github.com/feature-sliced/examples/tree/master/examples/electron)
