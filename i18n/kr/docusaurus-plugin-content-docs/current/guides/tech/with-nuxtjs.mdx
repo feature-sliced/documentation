@@ -1,0 +1,196 @@
+---
+sidebar_position: 10
+---
+# NuxtJS와 함께 사용하기
+
+NuxtJS 프로젝트에서 FSD를 적용할 수 있지만, NuxtJS의 기본적인 프로젝트 구조와 FSD 아키텍처 원칙 간의 차이로 인해 일부 충돌이 발생할 수 있습니다:
+
+- NuxtJS는 기본적으로 `src` 디렉터리 없이 프로젝트 루트에서 파일을 관리하는 구조를 제공합니다.
+- 파일 기반 라우팅(File-based Routing) 방식으로 `pages` 디렉터리 내 Vue 파일을 자동 매핑하지만, FSD에서는 디렉터리 구조를 slice 관점에서 사용하므로 충돌이 발생할 수 있습니다.
+
+
+## `src` 폴더에 대한 별칭(alias) 추가하기
+
+설정 파일의 `alias` 객체에 src 디렉터리를 매핑합니다.
+
+```ts title="nuxt.config.ts"
+export default defineNuxtConfig({
+  devtools: { enabled: true }, // 개발 도구 활성화 (FSD와는 무관)
+  alias: {
+    "@": '../src'
+  },
+})
+```
+## 라우터 설정 방법 선택하기
+
+NuxtJS에서는 라우팅을 설정하는 두 가지 방법을 제공합니다: `파일 기반 라우팅`과 `설정 기반 라우팅`입니다.
+
+- 파일 기반 라우팅: `app/routes` 디렉터리 내에 `index.vue` 파일을 생성하여 자동으로 라우트를 정의합니다.
+- 설정 기반 라우팅: `router.options.ts` 파일에서 직접 라우트 구성을 설정합니다.
+
+### 설정 기반 라우팅
+
+NuxtJS에서 설정을 기반으로 라우팅을 구성하려면, `app` 레이어에 `router.options.ts` 파일을 생성하고 라우트 설정 객체를 정의합니다.
+
+```ts title="app/router.options.ts"
+import type { RouterConfig } from '@nuxt/schema';
+
+export default <RouterConfig> {
+  routes: (_routes) => [],
+};
+
+```
+프로젝트에 Home page를 추가하려면 다음 단계를 수행합니다:
+
+1. `pages` layer 내에 page slice를 생성합니다.
+2. `app/router.options.ts` 파일에 해당 라우트를 등록합니다.
+
+page slice는 [CLI](https://github.com/feature-sliced/cli)를 사용하여 생성할 수 있습니다:
+
+```shell
+fsd pages home
+```
+
+이제 `ui` segment 내에 `home-page.vue` 파일을 만들고, Public API를 통해 이를 노출합니다:
+
+```ts title="src/pages/home/index.ts"
+export { default as HomePage } from './ui/home-page';
+```
+
+위 과정을 따르면 프로젝트 구조는 다음과 같이 구성됩니다:
+```sh
+|── src
+│   ├── app
+│   │   ├── router.options.ts
+│   ├── pages
+│   │   ├── home
+│   │   │   ├── ui
+│   │   │   │   ├── home-page.vue
+│   │   │   ├── index.ts
+```
+
+마지막으로 `router.options.ts` 파일에 새로운 page에 대한 라우트를 추가합니다:
+
+```ts title="app/router.options.ts"
+import type { RouterConfig } from '@nuxt/schema'
+
+export default <RouterConfig> {
+  routes: (_routes) => [
+    {
+      name: 'home',
+      path: '/',
+      component: () => import('@/pages/home.vue').then(r => r.default || r)
+    }
+  ],
+}
+```
+
+### 파일 기반 라우팅
+
+#### `src` 디렉토리 설정 및 라우터 구성 
+
+먼저 프로젝트 루트에 `src` 디렉토리를 생성하고, 그 안에 `app`과 `pages` 레이어를 구성합니다. 
+이후 `app` 레이어 내에 `routes` 폴더를 추가하여 NuxtJS의 라우팅을 이곳에서 관리할 수 있도록 설정합니다.
+
+최종적으로 파일 구조는 다음과 같아야 합니다:
+
+```sh
+├── src
+│   ├── app
+│   │   ├── routes
+│   ├── pages                         # FSD 구조에 맞는 Pages 레이어
+```
+
+#### nuxt.config.ts에서 라우트 디렉터리 변경
+
+NuxtJS가 `pages` 폴더 대신 `app/routes` 폴더를 라우트 디렉터리로 사용하도록 설정하려면, `nuxt.config.ts` 파일을 수정해야 합니다:
+
+```ts title="nuxt.config.ts"
+export default defineNuxtConfig({
+  devtools: { enabled: true }, // 개발 도구 활성화 (FSD와 무관)
+  alias: {
+    "@": '../src'
+  },
+  dir: {
+    pages: './src/app/routes'
+  }
+})
+```
+
+이제 `app/routes` 내에서 라우트를 생성하고, `pages`에 있는 page들과 연결할 수 있습니다.
+
+프로젝트에 `Home` page를 추가하려면 다음 단계를 수행합니다:
+- `pages` layer 내에 page slice를 생성합니다.
+- `app/routes` 디렉터리 내에서 해당 page에 대한 라우트를 추가합니다.
+- page slice의 컴포넌트를 라우트에서 사용할 수 있도록 연결합니다.
+
+
+#### 1️⃣ page slice 생성
+
+page slice는 [CLI](https://github.com/feature-sliced/cli)를 사용하여 간편하게 생성할 수 있습니다:
+
+```shell
+fsd pages home
+```
+
+이제 `ui` segment 내에 `home-page.vue` 파일을 생성하고, Public API를 통해 이를 노출합니다:
+
+```ts title="src/pages/home/index.ts"
+export { default as HomePage } from './ui/home-page';
+```
+
+#### 2️⃣ `app/routes` 내에 라우트 추가
+
+생성한 page를 라우트와 연결하려면, `app/routes/index.vue` 파일을 생성하고 `HomePage` 컴포넌트를 등록해야 합니다.
+
+```sh
+
+├── src
+│   ├── app
+│   │   ├── routes
+│   │   │   ├── index.vue
+│   ├── pages
+│   │   ├── home
+│   │   │   ├── ui
+│   │   │   │   ├── home-page.vue
+│   │   │   ├── index.ts
+```
+
+#### 3️⃣ `index.vue`에서 page 컴포넌트 등록
+
+```html title="src/app/routes/index.vue"
+<script setup>
+  import { HomePage } from '@/pages/home';
+</script>
+
+<template>
+  <HomePage/>
+</template>
+```
+
+이제 `HomePage`가 NuxtJS의 라우팅 시스템을 통해 정상적으로 렌더링됩니다.
+
+## `layouts`는 어떻게 처리할까요?
+
+레이아웃은 `app` layer 내에서 관리할 수 있으며, 이를 위해 NuxtJS 설정을 수정해야 합니다.
+
+```ts title="nuxt.config.ts"
+export default defineNuxtConfig({
+  devtools: { enabled: true }, // 개발 도구 활성화 (FSD와 무관)
+  alias: {
+    "@": '../src'
+  },
+  dir: {
+    pages: './src/app/routes',
+    layouts: './src/app/layouts'
+  }
+})
+```
+
+
+## 참고 자료
+
+- [NuxtJS 폴더 설정 변경 문서](https://nuxt.com/docs/api/nuxt-config#dir)
+- [NuxtJS 라우터 설정 변경 문서](https://nuxt.com/docs/guide/recipes/custom-routing#router-config)
+- [NuxtJS 별칭(alias) 변경 문서](https://nuxt.com/docs/api/nuxt-config#alias)
+

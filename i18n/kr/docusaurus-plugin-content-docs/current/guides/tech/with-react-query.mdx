@@ -3,11 +3,11 @@ sidebar_position: 10
 ---
 # React Query와 함께 사용하기
 
-## “키를 어디에 두어야 하는가” 문제
+## "Query Key 배치" 문제
 
-### 해결책 — 엔티티별로 분리하기
+### 해결책 — entities별로 분리하기
 
-프로젝트가 이미 엔티티 단위로 구성되어 있으며, 각 요청이 단일 엔티티에 해당한다면, 엔티티별로 코드를 구성하는 것이 좋습니다. 예를 들어, 다음과 같은 디렉토리 구조를 사용할 수 있습니다:
+프로젝트가 이미 entities 단위로 구성되어 있으며, 각 요청이 단일 entity에 해당한다면, entities별로 코드를 분리하는 것이 좋습니다. 예를 들어, 다음과 같은 디렉토리 구조를 사용할 수 있습니다:
 
 ```sh
 └── src/                                        #
@@ -18,11 +18,11 @@ sidebar_position: 10
     ├── entities/                               #
     |     ├── {entity}/                         #
     |    ...     └── api/                       #
-    |                 ├── `{entity}.query`      # 쿼리 키와 함수
-    |                 ├── `get-{entity}`        # 엔티티 조회 함수
-    |                 ├── `create-{entity}`     # 엔티티 생성 함수
-    |                 ├── `update-{entity}`     # 엔티티 업데이트 함수
-    |                 ├── `delete-{entity}`     # 엔티티 삭제 함수
+    |                 ├── `{entity}.query`      # Query Keys와 Query Functions
+    |                 ├── `get-{entity}`        # entity fetch 함수
+    |                 ├── `create-{entity}`     # entity create 함수
+    |                 ├── `update-{entity}`     # entity update 함수
+    |                 ├── `delete-{entity}`     # entity delete 함수
     |                ...                        #
     |                                           #
     ├── features/                               #
@@ -33,18 +33,18 @@ sidebar_position: 10
         ...                                     #
 ```
 
-만약 엔티티 간에 연결이 필요한 경우 (예: Country 엔티티에 City 엔티티 필드가 포함되는 경우), [교차 가져오기를 위한 공개 API][public-api-for-cross-imports]을 사용하거나 대안으로 아래의 구조를 고려할 수 있습니다.
+만약 entities 간의 관계가 필요한 경우(예: Country 엔터티가 City 엔터티의 필드를 포함하는 경우), [교차 가져오기를 위한 Public API][public-api-for-cross-imports]를 활용하거나, 아래와 같은 대체 구조를 고려할 수 있습니다.
 
-### 대안 방안 — shared에 유지하기
+### 대안 방안 — shared에 저장하기
 
-엔티티별 분리가 적절하지 않은 경우, 다음과 같은 구조를 사용할 수 있습니다:
+entities별 분리가 적절하지 않은 경우, 다음과 같은 구조를 사용할 수 있습니다:
 
 ```sh
 └── src/                                        #
    ...                                          #
     └── shared/                                 #
           ├── api/                              #
-         ...   ├── `queries`                    # 쿼리 팩토리들
+         ...   ├── `queries`                    # Query Factories
                |      ├── `document.ts`         #
                |      ├── `background-jobs.ts`  #
                |     ...                        #
@@ -57,9 +57,9 @@ sidebar_position: 10
 export { documentQueries } from "./queries/document";
 ```
 
-## "mutation 위치 설정" 문제
+## "Mutation 위치 설정" 문제
 
-쿼리와 mutation을 같은 위치에 두는 것은 권장되지 않습니다. 다음 두 가지 옵션이 있습니다:
+Query와 Mutation을 같은 위치에 두는 것은 권장되지 않습니다. 다음 두 가지 옵션이 있습니다:
 
 ### 1. 사용 위치 근처의 `api` 디렉토리에서 커스텀 훅 정의하기
 
@@ -80,7 +80,7 @@ export const useUpdateTitle = () => {
 };
 ```
 
-### 2. 공용 또는 엔티티에서 mutation 함수를 정의하고, 컴포넌트에서 `useMutation`을 직접 사용하기
+### 2. 공용 또는 entities에서 mutation 함수를 정의하고, 컴포넌트에서 `useMutation`을 직접 사용하기
 
 ```tsx
 const { mutateAsync, isPending } = useMutation({
@@ -115,11 +115,13 @@ export const CreatePost = () => {
 };
 ```
 
-## 요청의 조직화
+## Request 조직화
 
-### 쿼리 팩토리
+### Query Factory
 
-쿼리 팩토리는 쿼리 키 목록을 반환하는 함수를 포함한 객체입니다. 사용 방법은 다음과 같습니다:
+Query Factory는 Query Key 목록을 반환하는 함수를 포함한 객체입니다. 
+
+사용 방법은 다음과 같습니다:
 
 ```ts
 const keyFactory = {
@@ -129,7 +131,7 @@ const keyFactory = {
 ```
 
 :::info
-`queryOptions`는 react-query@v5의 내장 유틸리티입니다 (선택 사항)
+`queryOptions`는 TanStack Query v5에서 제공하는 내장 유틸리티로, 선택적으로 사용할 수 있습니다.
 
 ```ts
 queryOptions({
@@ -138,11 +140,11 @@ queryOptions({
 });
 ```
 
-더 큰 타입 안정성, react-query의 향후 버전과의 호환성, 함수 및 쿼리 키에 대한 쉬운 액세스를 위해, "@tanstack/react-query"의 내장 queryOptions 함수를 사용할 수 있습니다 [(자세한 내용은 여기)](https://tkdodo.eu/blog/the-query-options-api#queryoptions).
+더 엄격한 타입, TanStack Query의 향후 버전과의 호환성, Query Function 및 Query Key에 대한 쉬운 액세스를 위해, "@tanstack/react-query"의 내장 queryOptions 함수를 사용할 수 있습니다 [(자세한 내용은 여기)](https://tkdodo.eu/blog/the-query-options-api#queryoptions).
 
 :::
 
-### 1. 쿼리 팩토리 생성 예시
+### 1. Query Factory 생성 예시
 
 ```tsx title="@/entities/post/api/post.queries.ts"
 import { keepPreviousData, queryOptions } from "@tanstack/react-query";
@@ -171,7 +173,7 @@ export const postQueries = {
 };
 ```
 
-### 2. 애플리케이션 코드에서의 쿼리 팩토리 사용 예시
+### 2. 애플리케이션 코드에서의 Query Factory 사용 예시
 ```tsx
 import { useParams } from "react-router-dom";
 import { postApi } from "@/entities/post";
@@ -214,16 +216,17 @@ export const PostPage = () => {
 };
 ```
 
-### 쿼리 팩토리 사용의 장점
-- **요청 구조화**: 팩토리를 통해 모든 API 요청을 한 곳에 조직화하여 코드의 가독성과 유지보수성을 높입니다.
-- **쿼리 및 키에 대한 편리한 접근**: 다양한 유형의 쿼리와 해당 키에 쉽게 접근할 수 있는 메서드를 제공합니다.
-- **쿼리 재호출 용이성**: 애플리케이션의 여러 부분에서 쿼리 키를 변경할 필요 없이 쉽게 재호출할 수 있습니다.
+### Query Factory 사용의 장점
+- **Request 구조화**: 모든 API 요청을 Factory 패턴으로 관리하여 코드의 가독성과 유지보수성을 향상시킵니다.
+- **Query와 Key에 대한 편리한 접근**: 다양한 Query 유형과 해당 Key를 손쉽게 조회할 수 있는 메서드를 제공합니다.
+- **Query Invalidation 용이성**: 애플리케이션의 전반에서 Query Key를 변경할 필요 없이 쉽게 Invalidate할 수 있습니다.
 
-## 페이지네이션
-이 섹션에서는 페이지네이션을 사용하여 게시물 엔티티를 가져오는 API 요청을 수행하는 `getPosts` 함수의 예를 소개합니다.
+## Pagination
+
+이 섹션에서는 Pagination을 활용하여 `getPosts` 함수를 통해 게시물 entity를 가져오는 API 요청을 수행하는 방법을 소개합니다.
 
 ### 1. `getPosts` 함수 생성하기
-getPosts 함수는 `api` 세그먼트의 `get-posts.ts` 파일에 있습니다.
+getPosts 함수는 `api` segments의 `get-posts.ts` 파일에서 정의됩니다.
 
 ```tsx title="@/pages/post-feed/api/get-posts.ts"
 import { apiClient } from "@/shared/api/base";
@@ -254,8 +257,9 @@ export const getPosts = async (
 };
 ```
 
-### 2. 페이지네이션을 위한 쿼리 팩토리
-`postQueries` 쿼리 팩토리는 특정 페이지와 제한에 맞춰 게시물 목록을 요청하는 등 게시물 관련 다양한 쿼리 옵션을 정의합니다.
+### 2. Pagination을 위한 Query Factory
+
+`postQueries` Query Factory는 특정 페이지와 제한에 맞춰 게시물 목록을 요청하는 등, 게시물 관련 다양한 Query Options을 정의합니다.
 
 ```tsx
 import { keepPreviousData, queryOptions } from "@tanstack/react-query";
@@ -301,11 +305,12 @@ export const HomePage = () => {
 예시는 단순화된 버전이며, 전체 코드는 [GitHub](https://github.com/ruslan4432013/fsd-react-query-example)에서 확인할 수 있습니다.
 :::
 
-## 쿼리 관리를 위한 `QueryProvider`
-이 가이드에서는 `QueryProvider`를 어떻게 구성하는지 살펴봅니다.
+## Query 관리를 위한 `QueryProvider`
+
+이 가이드에서는 `QueryProvider`의 구성 방법을 설명합니다.
 
 ### 1. `QueryProvider` 생성하기
-`query-provider.tsx` 파일은 `@/app/providers/query-provider.tsx` 경로에 있습니다.
+`QueryProvider`는 `@/app/providers/query-provider.tsx` 경로에 위치합니다.
 
 ```tsx title="@/app/providers/query-provider.tsx"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -328,7 +333,9 @@ export const QueryProvider = ({ client, children }: Props) => {
 ```
 
 ### 2. `QueryClient` 생성하기
-`QueryClient`는 API 요청을 관리하는 인스턴스입니다. `query-client.ts` 파일은 `@/shared/api/query-client.ts`에 속해 있으며, 쿼리 캐싱을 위해 특정 설정으로 `QueryClient`를 생성합니다.
+
+`QueryClient`는 API 요청을 관리하는 인스턴스로, Query Caching을 위한 설정과 함께 생성됩니다.
+이 인스턴스는 `@/shared/api/query-client.ts` 파일에 정의됩니다.
 
 ```tsx title="@/shared/api/query-client.ts"
 import { QueryClient } from "@tanstack/react-query";
@@ -345,14 +352,18 @@ export const queryClient = new QueryClient({
 
 ## 코드 생성
 
-API 코드를 생성해주는 도구들이 있지만, 이러한 방식은 위의 예제 처럼 직접 코드를 작성하는 방법보다 유연성이 부족할 수 있습니다. 그러나 Swagger 파일이 잘 구성되어 있고 이러한 자동 생성 도구를 사용하는 경우, 생성된 코드를 `@/shared/api` 디렉토리에 두어 관리하는 것이 효율적일 수 있습니다.
-
+API 코드를 자동으로 생성하는 도구들이 있지만, 이러한 방식은 직접 코드를 작성하는 방법보다 유연성이 부족할 수 있습니다.
+그러나 Swagger 파일이 잘 구성된 경우, 자동 생성 도구를 활용하는 것이 효율적일 수 있으며, 생성된 코드는 `@/shared/api` 디렉토리에 저장하여 체계적으로 관리하는 것이 좋습니다.
 
 ## React Query를 조직화하기 위한 추가 조언
+
 ### API 클라이언트
 
-공유 레이어에서 커스텀 API 클라이언트 클래스를 사용하면, 프로젝트 내 API 작업을 일관성 있게 관리할 수 있습니다. 이를 통해 로깅, 헤더 설정, 데이터 전송 형식(JSON 또는 XML 등)을 한 곳에서 관리할 수 있게 됩니다. 또한 이 접근 방식은 API와의 상호작용에 대한 변경 사항을 쉽게 반영할 수 있게 하여, 프로젝트의 유지보수성과 개발 편의성을 크게 향상시킵니다.
+shared layer에서 커스텀 API 클라이언트 클래스를 사용하면, 프로젝트 내 API 요청을 보다 일관성 있게 관리할 수 있습니다.
 
+- 로깅 및 에러 핸들링을 중앙에서 관리 가능
+- 헤더 설정 및 데이터 전송 형식(JSON, XML 등)을 일괄적으로 적용
+- API 변경 사항을 한 곳에서 쉽게 반영하여 유지보수성 향상
 
 ```tsx title="@/shared/api/api-client.ts"
 import { API_URL } from "@/shared/config";
@@ -420,6 +431,6 @@ export const apiClient = new ApiClient(API_URL);
 
 - [(GitHub) 샘플 프로젝트](https://github.com/ruslan4432013/fsd-react-query-example)
 - [(CodeSandbox) 샘플 프로젝트](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
-- [쿼리 팩토리에 대하여](https://tkdodo.eu/blog/the-query-options-api)
+- [Query Options에 대하여](https://tkdodo.eu/blog/the-query-options-api)
 
 [public-api-for-cross-imports]: /docs/reference/public-api#public-api-for-cross-imports

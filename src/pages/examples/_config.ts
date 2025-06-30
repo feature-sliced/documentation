@@ -6,21 +6,7 @@ export const VERSIONS = {
     V2: "v2",
 };
 
-/**
- * List of site examples
- * @remark Add site here only if you're sure that its allowed to share website link / codebase
- * @example How to add new site?
- * 1. Add new item in `examples` const
- * 2. Fill details (required with "*"):
- *  - *title (should be unique)
- *  - *description (shortly)
- *  - *preview (image preview - `/pages/examples/img/{YOUR_SITE}.[png|jpg|jpeg]`)
- *  - *updatetAt (date of adding on examples list, for highlighting first two weeks)
- *  - *version (FSD version which implemented in your codebase)
- *  - website, source (links for your site)
- *  - tech (e.g. used UIKit/state-management tech)
- * 3. Profit!
- */
+// Currently not accepting any more examples!
 export const examples: Example[] = [
     {
         title: "Cardbox",
