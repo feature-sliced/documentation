@@ -52,7 +52,7 @@ It's also necessary for describing contracts for process interaction.
 It's suggested to use a new `ipc` segment, where interaction between processes takes place.
 The `pages` and `widgets` layers, based on their names, should not be present in `src/main`. You can use `features`, `entities` and `shared`.
 The `app` layer in `src` contains entry points for `main` and `renderer`, as well as the IPC.
-Segments in the `app` layer are not desirable to have intersection points
+It's not desirable for segments in the `app` layer to have intersection points
 
 ## Interaction example
 
