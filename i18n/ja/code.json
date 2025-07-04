@@ -239,12 +239,6 @@
         "message": "貢献する",
         "description": "Variant for contribute (link)"
     },
-    "shared.translationBanner.base": {
-        "message": "このドキュメントは自動翻訳されており、誤りを含む可能性があります。公式版については、以下を参照してください。"
-    },
-    "shared.translationBanner.link": {
-        "message": "英語のドキュメント"
-    },
     "theme.NotFound.title": {
         "message": "ページが見つかりません",
         "description": "The title of the 404 page"

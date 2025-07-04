@@ -227,12 +227,6 @@
         "message": "in any other way",
         "description": "Variant for contribute (link)"
     },
-    "shared.translationBanner.base": {
-        "message": "This documentation has been automatically translated and may contain errors. For the authoritative version, please refer to the "
-    },
-    "shared.translationBanner.link": {
-        "message": "English Documentation"
-    },
     "theme.NotFound.title": {
         "message": "Page Not Found",
         "description": "The title of the 404 page"

@@ -239,12 +239,6 @@
         "message": "har qanday boshqa yo'l bilan",
         "description": "Variant for contribute (link)"
     },
-    "shared.translationBanner.base": {
-        "message": "Ushbu hujjat avtomatik tarzda tarjima qilingan va xatolar boʻlishi mumkin. Tasdiqlangan versiya uchun "
-    },
-    "shared.translationBanner.link": {
-        "message": "ingliz tilidagi hujjatlarga murojaat qiling"
-    },
     "theme.NotFound.title": {
         "message": "Sahifa topilmadi",
         "description": "The title of the 404 page"
