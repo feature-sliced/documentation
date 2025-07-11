@@ -1,71 +1,74 @@
 ---
 sidebar_position: 10
 ---
-# Использование с NextJS
+# Использование с Next.js
 
-В NextJS проекте возможно реализовать FSD, но возникают конфликты из-за различий между требованиями к структуре проекта NextJS и принципами FSD в двух пунктах: 
+В Next.js проекте возможно реализовать FSD, но возникают конфликты из-за различий между требованиями к структуре проекта Next.js и принципами FSD.
 
-- Маршрутизация файлов в слое `pages`
-- Конфликт или отсутствие слоя `app` в NextJS
+## Конфликт между FSD и Next.js в слое `app`
 
-## Конфликт между FSD и NextJS в слое `pages` {#pages-conflict}
-
-NextJS предлагает использовать папку `pages` для определения маршрутов приложения. NextJS ожидает, что файлы в папке `pages` будут соответствовать URL-адресам.
+Next.js предлагает использовать папку `app` для определения маршрутов приложения. Next.js ожидает, что файлы в папке `app` будут соответствовать URL-адресам.
 Этот механизм маршрутизации **не соответствует** концепции FSD, поскольку в таком механизме маршрутизации не представляется возможным соблюсти плоскую структуру слайсов.
 
-### Перемещение папки `pages` NextJS в корневую папку проекта (рекомендуется)
+Подход заключается в перемещении папки `app` Next.js в корневую папку проекта и импорте страниц FSD в папку `app` Next.js.
+Это сохраняет структуру проекта FSD внутри папки `src`.
 
-Подход заключается в перемещении папки `pages` NextJS в корневую папку проекта и импорте страниц FSD в папку `pages` NextJS. Это сохраняет
-структуру проекта FSD внутри папки `src`.
-
-```sh
-├── pages              # Папка pages (NextJS)
-├── src
-│   ├── app
-│   ├── entities
-│   ├── features
-│   ├── pages          # Папка pages (FSD)
-│   ├── shared
-│   ├── widgets
-```
-
-### Переименование папки `pages` в структуре FSD
-
-Другой способ решить проблему - переименовать слой `pages` в структуре FSD, чтобы избежать конфликтов с папкой `pages` NextJS.
-Вы можете переименовать слой `pages` в FSD в `views`. 
-Таким образом, структура проекта в папке `src` сохраняется без противоречий с требованиями NextJS.
+Вам также стоит добавить в корневую папку проекта папку `pages`, потому что App Router совместим с Pages Router.
+Лучшим способом будет положить внутрь пустой файл `.gitkeep` или `README.md` с описанием необходимости сохранить данную папку.
 
 ```sh
-├── app
-├── entities
-├── features
-├── pages              # Папка pages (NextJS)
-├── views              # Переименованная папка страниц FSD
-├── shared
-├── widgets
+├── app              # Папка app (Next.js)
+├── pages            # Устаревшая папка pages (Next.js)
+│   └── .gitkeep     # Для сохранения совместимости с Pages Router
+└── src
+    ├── app
+    ├── pages
+    ├── widgets
+    ├── features
+    ├── entities
+    └── shared
 ```
 
-Учтите, что в этом случае рекомендуется задокументировать это переименование в видном месте — в README проекта или внутренней документации. Это переименование — часть ["проектных знаний"][project-knowledge].
+### Пример ре-экспорта страницы из `src/pages/example` в `app/example/page.tsx`
 
-## Отсутствие папки `app` в NextJS {#app-absence}
+```tsx title="app/example/page.tsx"
+export { Example as default, metadata } from '@/pages/example';
+```
 
-В NextJS ниже версии 13 нет явной папки `app`, вместо этого NextJS предоставляет файл `_app.tsx`,
+### Middleware
+Если вы используете middleware в проекте, он обязательно должен располагаться в корне проекта рядом с папками `app` и `pages`.
+
+### Instrumentation
+Файл `instrumentation.ts|js` позволяет отслеживать производительность и поведение вашего приложения. Если вы его используете, то она обязательно должен находиться в корне проекта по аналогии с `middleware.ts|js`
+
+### Route Handlers
+Предлагается использовать новый сегмент `routes` в слое `app` или `pages` для работы c Route Handlers.
+
+```tsx title="app/api/get-example/route.ts"
+export { getExample as GET } from '@/pages/example';
+```
+
+### Дополнительные рекомендации
+- Используйте сегмент `queries` в слое `shared` для описания запросов к БД и их дальнейшего использования в вышестоящих слоях.
+- Логику кэширования и ревалидации запросов лучше держать там же, где и сами запросы, в базовом сценарии это сегмент `api` в слое `shared`.
+
+## Устаревший подход с Pages Router
+
+В Next.js ниже версии 13 нет явной папки `app`, вместо этого Next.js предоставляет файл `_app.tsx`,
 который играет роль компонента обертывания для всех страниц проекта.
 
 ### Импорт функциональности в `pages/_app.tsx`
 
-Чтобы решить проблему отсутствия папки `app` в структуре NextJS, вы можете создать компонент `App` внутри слоя `app` и импортировать компонент `App` в `pages/_app.tsx`, чтобы NextJS мог с ним работать.
+Чтобы решить проблему отсутствия папки `app` в структуре Next.js, вы можете создать компонент `App` внутри слоя `app` и импортировать компонент `App` в `pages/_app.tsx`, чтобы Next.js мог с ним работать.
 Например:
 
-```tsx
-// app/providers/index.tsx
-
-const App = ({ Component, pageProps }: AppProps) => {
+```tsx title="app/providers/index.tsx"
+const App = ({ Component, pageProps }: IProps) => {
   return (
     <Provider1>
       <Provider2>
         <BaseLayout>
-            <Component {...pageProps} />
+            <Component { ...pageProps } />
         </BaseLayout>
       </Provider2>
     </Provider1>
@@ -74,47 +77,16 @@ const App = ({ Component, pageProps }: AppProps) => {
 
 export default App;
 ```
+
 Затем вы можете импортировать компонент `App` и глобальные стили проекта в `pages/_app.tsx` следующим образом:
 
-```tsx
-// pages/_app.tsx
-
-import 'app/styles/index.scss'
+```tsx title="pages/_app.tsx"
+import 'app/styles/globals.css'
 
 export { default } from 'app/providers';
 ```
 
-## Работа с App Router {#app-router}
+## См. также
 
-App Router стал стабильным в NextJS версии 13.4. App Router позволяет использовать папку `app` для маршрутизации вместо папки `pages`.
-Для соответствия принципам FSD, вам следует обращаться с папкой `app` NextJS так же, как рекомендуется
-для устранения конфликта с папкой `pages` NextJS.
-
-Подход заключается в перемещении папки `app` NextJS в корневую папку проекта и импорте страниц FSD в папку `app` NextJS. Это сохраняет
-структуру проекта FSD внутри папки `src`. Вам также стоит добавить в корневую папку проекта папку `pages`, потому что App Router совместим с Pages Router.
-
-```
-├── app                # Папка app (NextJS)
-├── pages              # Пустая папка pages (NextJS)
-│   ├── README.md      # Описание того, зачем нужна эта папка
-├── src
-│   ├── app            # Папка app (FSD)
-│   ├── entities
-│   ├── features
-│   ├── pages          # Папка pages (FSD)
-│   ├── shared
-│   ├── widgets
-```
-
-[![Открыть в StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)][ext-app-router-stackblitz]
-
-## Middleware
-
-Если вы используете middleware в проекте, его также нужно переместить из `src` в корень проекта. Иначе NextJS просто не увидит его — middleware должен находиться строго в корне рядом с `app` или `pages`.
-
-## См. также {#see-also}
-
-- [(Тред) Про pages директорию в NextJS](https://t.me/feature_sliced/3623)
-
-[project-knowledge]: /docs/about/understanding/knowledge-types
-[ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md
+[Структура проекта Next.js](https://Next.js.org/docs/app/getting-started/project-structure)
+[Компоновка страниц Next.js](https://Next.js.org/docs/app/getting-started/layouts-and-pages)
