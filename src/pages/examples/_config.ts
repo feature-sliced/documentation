@@ -9,6 +9,17 @@ export const VERSIONS = {
 // Currently not accepting any more examples!
 export const examples: Example[] = [
     {
+        title: "JSDev Space",
+        description: "A practical site for JS/TS developers built with Feature-Sliced Design",
+        website: "https://jsdev.space",
+        version: VERSIONS.V2,
+        preview: require("./img/jsdev-space.png"),
+        updatedAt: "2025-07-15",
+        source: "https://github.com/anliberant/jsdev-astro", 
+        tech: ["Astro", "TypeScript", "MDX"],
+        logo: "https://jsdev.space/icon.png", 
+    },
+    {
         title: "Cardbox",
         description: "The best solutions from developers in one place",
         source: "https://github.com/cardbox/frontend",
