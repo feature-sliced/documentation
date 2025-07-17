@@ -11,18 +11,29 @@ Next.js предлагает использовать папку `app` для о
 Этот механизм маршрутизации **не соответствует** концепции FSD, поскольку в таком механизме маршрутизации не представляется возможным соблюсти плоскую структуру слайсов.
 
 Подход заключается в перемещении папки `app` Next.js в корневую папку проекта и импорте страниц FSD в папку `app` Next.js.
-Это сохраняет структуру проекта FSD внутри папки `src`.
+Это сохраняет структуру проекта FSD внутри папки `src`, где должны размещаться слои.
 
 Вам также стоит добавить в корневую папку проекта папку `pages`, потому что App Router совместим с Pages Router.
-Лучшим способом будет положить внутрь пустой файл `.gitkeep` или `README.md` с описанием необходимости сохранить данную папку.
+Лучшим способом будет положить внутрь `README.md` с описанием необходимости сохранить данную папку.
 
 ```sh
-├── app              # Папка app (Next.js)
-├── pages            # Устаревшая папка pages (Next.js)
-│   └── .gitkeep     # Для сохранения совместимости с Pages Router
+├── app                              # Папка app (Next.js)
+    ├── api
+    │   └── get-example
+    │       └── route.ts
+│   └── example
+│       └── page.tsx
+├── pages                            # Устаревшая папка pages (Next.js)
+│   └── README.md                    # Для сохранения совместимости с Pages Router
 └── src
     ├── app
     ├── pages
+    │   └── example
+    │       ├── index.ts
+    │       ├── ui
+    │       │   └── example.tsx
+    │       └── routes
+    │           └── get-example.ts   # Route handler
     ├── widgets
     ├── features
     ├── entities
@@ -39,7 +50,7 @@ export { Example as default, metadata } from '@/pages/example';
 Если вы используете middleware в проекте, он обязательно должен располагаться в корне проекта рядом с папками `app` и `pages`.
 
 ### Instrumentation
-Файл `instrumentation.ts|js` позволяет отслеживать производительность и поведение вашего приложения. Если вы его используете, то она обязательно должен находиться в корне проекта по аналогии с `middleware.ts|js`
+Файл `instrumentation.ts|js` позволяет отслеживать производительность и поведение вашего приложения. Если вы его используете, то он обязательно должен находиться в корне проекта по аналогии с `middleware.ts|js`
 
 ### Route Handlers
 Предлагается использовать новый сегмент `routes` в слое `app` или `pages` для работы c Route Handlers.
@@ -49,44 +60,59 @@ export { getExample as GET } from '@/pages/example';
 ```
 
 ### Дополнительные рекомендации
-- Используйте сегмент `queries` в слое `shared` для описания запросов к БД и их дальнейшего использования в вышестоящих слоях.
+- Используйте сегмент `api` в слое `shared` для описания запросов к БД и их дальнейшего использования в вышестоящих слоях.
 - Логику кэширования и ревалидации запросов лучше держать там же, где и сами запросы, в базовом сценарии это сегмент `api` в слое `shared`.
 
 ## Устаревший подход с Pages Router
+Роуты страниц должны помещаться в папку `pages` в корне проекта по аналогии с `app` для App Router.
+Структура внутри `src`, где располагаются папки слоёв остаётся без изменений.
 
-В Next.js ниже версии 13 нет явной папки `app`, вместо этого Next.js предоставляет файл `_app.tsx`,
-который играет роль компонента обертывания для всех страниц проекта.
-
-### Импорт функциональности в `pages/_app.tsx`
-
-Чтобы решить проблему отсутствия папки `app` в структуре Next.js, вы можете создать компонент `App` внутри слоя `app` и импортировать компонент `App` в `pages/_app.tsx`, чтобы Next.js мог с ним работать.
-Например:
-
-```tsx title="app/providers/index.tsx"
-const App = ({ Component, pageProps }: IProps) => {
-  return (
-    <Provider1>
-      <Provider2>
-        <BaseLayout>
-            <Component { ...pageProps } />
-        </BaseLayout>
-      </Provider2>
-    </Provider1>
-  );
-};
-
-export default App;
+```sh
+├── pages                        # Папка pages (Next.js)
+│   ├── _app.tsx
+│   ├── api
+│   │   └── example.ts           # API Route ре-экспорт
+│   └── example
+│       └── index.tsx
+└── src
+    ├── app
+    ├── pages
+    │   └── example
+    │       ├── index.ts
+    │       ├── ui
+    │       │   └── example.tsx
+    │       └── routes
+    │           ├── config.ts    # Конфигурация API Rout'а
+    │           └── handler.ts   # API Route
+    ├── widgets
+    ├── features
+    ├── entities
+    └── shared
 ```
 
-Затем вы можете импортировать компонент `App` и глобальные стили проекта в `pages/_app.tsx` следующим образом:
+### Ре-экспорт функциональности в `pages/_app.tsx` из публичного API `src/app/index.ts`
 
 ```tsx title="pages/_app.tsx"
-import 'app/styles/globals.css'
+export { App as default } from '@/app';
+```
 
-export { default } from 'app/providers';
+### Пример ре-экспорта страницы из `src/pages/example` в `pages/example/index.tsx`
+
+```tsx title="pages/example/index.tsx"
+export { Example as default } from '@/pages/example';
+```
+
+### API Routes
+Предлагается использовать новый сегмент `routes` в слое `app` или `pages` для работы c API Routes.
+
+```tsx title="app/api/example.ts"
+export { handler as default, config } from '@/pages/example';
 ```
 
 ## См. также
 
 [Структура проекта Next.js](https://Next.js.org/docs/app/getting-started/project-structure)
 [Компоновка страниц Next.js](https://Next.js.org/docs/app/getting-started/layouts-and-pages)
+
+[project-knowledge]: /docs/about/understanding/knowledge-types
+[ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md

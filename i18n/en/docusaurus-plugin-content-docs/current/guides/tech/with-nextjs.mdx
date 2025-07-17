@@ -7,22 +7,33 @@ It's possible to implement FSD in a Next.js project, but conflicts arise due to 
 
 ## Conflict between FSD and Next.js in the `app` layer
 
-Next.js suggests using the `app` folder to define application routes. Next.js expects files in the `app` folder to correspond to URLs.
+Next.js suggests using the `app` folder to define application routes. It expects files in the `app` folder to correspond to pathnames.
 This routing mechanism **does not align** with the FSD concept, as it's not possible to maintain a flat slice structure with such a routing mechanism.
 
 The approach is to move the Next.js `app` folder to the project root and import FSD pages into the Next.js `app` folder.
-This preserves the FSD project structure inside the `src` folder.
+This preserves the FSD project structure inside the `src` folder, where layer folders should be placed.
 
 You should also add a `pages` folder to the project root because App Router is compatible with Pages Router.
-The best way is to put an empty `.gitkeep` or `README.md` file inside describing the need to save this folder.
+The best way is to put `README.md` file inside describing the need to save this folder.
 
 ```sh
-├── app              # App folder (Next.js)
-├── pages            # Legacy pages folder (Next.js)
-│   └── .gitkeep     # To maintain compatibility with Pages Router
+├── app                              # App folder (Next.js)
+    ├── api
+    │   └── get-example
+    │       └── route.ts
+│   └── example
+│       └── page.tsx
+├── pages                            # Legacy pages folder (Next.js)
+│   └── README.md                    # To maintain compatibility with Pages Router
 └── src
     ├── app
     ├── pages
+    │   └── example
+    │       ├── index.ts
+    │       ├── ui
+    │       │   └── example.tsx
+    │       └── routes
+    │           └── get-example.ts   # Route handler
     ├── widgets
     ├── features
     ├── entities
@@ -44,48 +55,64 @@ The `instrumentation.ts|js` file allows you to monitor the performance and behav
 ### Route Handlers
 It is suggested to use a new `routes` segment in the `app` or `pages` layer to work with Route Handlers.
 
-```tsx title="app/api/get-example/route.ts"
+```tsx title="app/routes/get-example/route.ts"
 export { getExample as GET } from '@/pages/example';
 ```
 
 ### Additional recommendations
-- Use the `queries` segment in the `shared` layer to describe database queries and their further use in higher layers.
+- Use the `api` segment in the `shared` layer to describe database queries and their further use in higher layers.
 - Caching and revalidating queries logic is better kept in the same place as the queries themselves, in a basic scenario this is the `api` segment in the `shared` layer.
 
 ## Legacy approach with Pages Router
+Page routers should be placed in the `pages` folder in the root of the project, similar to `app` for the App Router.
+The structure inside `src` where the layer folders are located remains unchanged.
 
-In Next.js below version 13, there is no explicit `app` folder. Next.js provides a `_app.tsx` file instead, which serves as a wrapper component for all project pages.
-
-### Importing functionality into `pages/_app.tsx`
-
-To solve the problem of missing the `app` folder in the Next.js structure, you can create an `App` component inside the `app` layer and import it into `pages/_app.tsx` so that Next.js can work with it.
-For example:
-
-```tsx title="app/providers/index.tsx"
-const App = ({ Component, pageProps }: IProps) => {
-  return (
-    <Provider1>
-      <Provider2>
-        <BaseLayout>
-            <Component { ...pageProps } />
-        </BaseLayout>
-      </Provider2>
-    </Provider1>
-  );
-};
-
-export default App;
+```sh
+├── pages                        # Pages folder (Next.js)
+│   ├── _app.tsx
+│   ├── api
+│   │   └── example.ts           # API Route re-export
+│   └── example
+│       └── index.tsx
+└── src
+    ├── app
+    ├── pages
+    │   └── example
+    │       ├── index.ts
+    │       ├── ui
+    │       │   └── example.tsx
+    │       └── routes
+    │           ├── config.ts    # API Route config
+    │           └── handler.ts   # API Route
+    ├── widgets
+    ├── features
+    ├── entities
+    └── shared
 ```
 
-Then you can import the `App` component and global project styles into `pages/_app.tsx` as follows:
+### Functionality re-export from the public API `src/app/index.ts` to `pages/_app.tsx`
 
 ```tsx title="pages/_app.tsx"
-import 'app/styles/globals.css'
+export { App as default } from '@/app';
+```
 
-export { default } from 'app/providers';
+### Example of re-exporting a page from `src/pages/example` to `pages/example/index.tsx`
+
+```tsx title="pages/example/index.tsx"
+export { Example as default } from '@/pages/example';
+```
+
+### API Routes
+It is suggested to use a new `routes` segment in the `app` or `pages` layer to work with API Routes.
+
+```tsx title="app/api/example.ts"
+export { handler as default, config } from '@/pages/example';
 ```
 
 ## See also
 
 [Next.js Project Structure](https://Next.js.org/docs/app/getting-started/project-structure)
 [Next.js Page Layouts](https://Next.js.org/docs/app/getting-started/layouts-and-pages)
+
+[project-knowledge]: /docs/about/understanding/knowledge-types
+[ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md
