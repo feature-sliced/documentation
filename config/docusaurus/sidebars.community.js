@@ -25,11 +25,6 @@ module.exports = {
                 { type: "link", href: "/examples", label: "Examples" },
                 {
                     type: "link",
-                    href: "https://github.com/feature-sliced/awesome",
-                    label: "Awesome Resources",
-                },
-                {
-                    type: "link",
                     label: "Discord community server",
                     href: "https://discord.com/invite/S8MzWTUsmp",
                 },

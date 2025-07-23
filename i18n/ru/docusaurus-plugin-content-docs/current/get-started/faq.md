@@ -42,7 +42,7 @@ _Entity_ — это понятие из реальной жизни, с кото
 
 ### Есть ли какие-нибудь полезные ресурсы/статьи/т.д. по FSD? {#are-there-any-useful-resourcesarticlesetc-about-fsd}
 
-Да! https://github.com/feature-sliced/awesome
+Да! [Awesome resourses](/community/awesome)
 
 ### Зачем мне нужен Feature-Sliced Design? {#why-do-i-need-feature-sliced-design}
 
