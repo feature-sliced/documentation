@@ -4,11 +4,11 @@
         "description": "Features"
     },
     "pages.home.features.logic.title": {
-        "message": "명시적인 비즈니스 로직",
+        "message": "명시적 비즈니스 로직",
         "description": "Feature title"
     },
     "pages.home.features.logic.description": {
-        "message": "도메인 스코프 덕분에 찾고자 하는 로직을 쉽게 발견할 수 있는 아키텍처입니다.",
+        "message": "도메인별로 코드를 구분해 필요한 로직을 즉시 찾을 수 있습니다.",
         "description": "Feature description"
     },
     "pages.home.features.adaptability.title": {
@@ -16,15 +16,15 @@
         "description": "Feature title"
     },
     "pages.home.features.adaptability.description": {
-        "message": "아키텍처 구성 요소를 새로운 요구사항에 맞춰 유연하게 교체하고 추가할 수 있습니다.",
+        "message": "요구사항이 바뀌어도 구성 요소를 간편하게 교체·확장합니다.",
         "description": "Feature description"
     },
     "pages.home.features.debt.title": {
-        "message": "기술 부채 및 리팩토링",
+        "message": "기술 부채 최소화",
         "description": "Feature title"
     },
     "pages.home.features.debt.description": {
-        "message": "각 모듈을 부작용 없이 독립적으로 수정, 재작성할 수 있습니다.",
+        "message": "모듈을 독립적으로 수정·리팩터링해 부작용을 없앱니다.",
         "description": "Feature description"
     },
     "pages.home.features.shared.title": {
@@ -32,7 +32,7 @@
         "description": "Feature title"
     },
     "pages.home.features.shared.description": {
-        "message": "DRY 원칙과 로컬 커스터마이징 사이에 균형을 유지합니다.",
+        "message": "DRY 원칙과 로컬 커스터마이징 사이에서 균형을 잡습니다.",
         "description": "Feature description"
     },
     "pages.home.concepts.title": {
@@ -44,7 +44,7 @@
         "description": "Concept title"
     },
     "pages.home.concepts.public.description": {
-        "message": "각 모듈에는 최상위 레벨에 공용 API 선언이 있어야 합니다.",
+        "message": "모든 모듈은 최상위 수준에 공용 API를 노출해야 합니다.",
         "description": "Concept description"
     },
     "pages.home.concepts.isolation.title": {
@@ -52,7 +52,7 @@
         "description": "Concept title"
     },
     "pages.home.concepts.isolation.description": {
-        "message": "같은 레이어 또는 상위 레이어의 모듈에 직접 의존하지 않아야 합니다.",
+        "message": "같은 Layer 또는 상위 Layer에 직접 의존하지 않습니다.",
         "description": "Concept description"
     },
     "pages.home.concepts.needs.title": {
@@ -60,7 +60,7 @@
         "description": "Concept title"
     },
     "pages.home.concepts.needs.description": {
-        "message": "비즈니스 및 사용자 요구사항을 중심으로 합니다.",
+        "message": "비즈니스와 사용자 요구를 설계의 기준으로 삼습니다.",
         "description": "Concept description"
     },
     "pages.home.scheme.title": {
@@ -68,11 +68,11 @@
         "description": "Scheme"
     },
     "pages.home.companies.using": {
-        "message": "FSD를 사용하는 기업",
+        "message": "FSD 도입 기업",
         "description": "Companies using FSD"
     },
     "pages.home.companies.add_me": {
-        "message": "FSD를 사용하는 기업이신가요?",
+        "message": "귀사도 FSD를 사용하시나요?",
         "description": "FSD is used in your company?"
     },
     "pages.home.companies.tell_us": {
@@ -84,19 +84,19 @@
         "description": "Page title"
     },
     "pages.examples.subtitle": {
-        "message": "Feature-Sliced Design으로 사람들이 제작한 웹사이트 목록",
+        "message": "Feature‑Sliced Design으로 제작된 웹사이트 모음",
         "description": "Page subtitle"
     },
     "pages.versions.title": {
-        "message": "Feature-Sliced Design 버전",
+        "message": "Feature‑Sliced Design 버전",
         "description": "Feature-Sliced Design versions"
     },
     "pages.versions.current": {
-        "message": "현재 배포된 버전의 문서는 여기에서 확인할 수 있습니다.",
+        "message": "현재 배포된 문서는 여기에서 확인할 수 있습니다.",
         "description": "Description for current version"
     },
     "pages.versions.legacy": {
-        "message": "{of}의 이전 버전에 대한 문서는 여기에서 확인할 수 있습니다.",
+        "message": "{of}의 이전 문서는 여기에서 확인할 수 있습니다.",
         "description": "Description for legacy version"
     },
     "pages.nav.title": {
@@ -108,15 +108,15 @@
         "description": "NavPage section=legacy title"
     },
     "pages.nav.legacy.details": {
-        "message": "문서 구조가 변경되면서 일부 경로가 바뀌었습니다. 아래에서 찾고 계신 페이지를 확인할 수 있습니다.",
+        "message": "문서 구조가 바뀌어 일부 경로가 변경되었습니다. 아래에서 원하는 페이지를 찾을 수 있습니다.",
         "description": "NavPage section=legacy details"
     },
     "pages.nav.legacy.subdetails": {
-        "message": "그러나 호환성을 위해 이전 링크에서 리디렉션이 제공됩니다.",
+        "message": "기존 링크는 호환성을 위해 리디렉션됩니다.",
         "description": "NavPage section=legacy subdetails"
     },
     "features.feedback-badge.label": {
-        "message": "문서에 대한 의견을 공유해주세요 🤙",
+        "message": "문서 의견 보내기 🤙",
         "description": "Feedback share button label"
     },
     "features.feedback-badge.url": {
@@ -128,35 +128,35 @@
         "description": "The text on a floating button to leave feedback about the docs"
     },
     "features.feedback-doc.email-placeholder": {
-        "message": "이메일 주소 (선택 사항)",
+        "message": "이메일 주소(선택)",
         "description": "The placeholder for email input"
     },
     "features.feedback-doc.error-message": {
-        "message": "문제가 발생했습니다. 나중에 다시 시도해주세요.",
+        "message": "문제가 발생했습니다. 잠시 후 다시 시도해 주세요.",
         "description": "The error message displayed when feedback form submission fails"
     },
     "features.feedback-doc.modal-title-error-403": {
-        "message": "요청 URL이 이 프로젝트의 PushFeedback에 정의된 URL과 일치하지 않습니다.",
+        "message": "요청 URL이 PushFeedback 설정과 일치하지 않습니다.",
         "description": "The title of the modal displayed when feedback form submission fails with 403 error"
     },
     "features.feedback-doc.modal-title-error-404": {
-        "message": "PushFeedback에서 제공된 프로젝트 ID를 찾을 수 없습니다.",
+        "message": "PushFeedback 프로젝트 ID를 찾을 수 없습니다.",
         "description": "The title of the modal displayed when feedback form submission fails with 404 error"
     },
     "features.feedback-doc.message-placeholder": {
-        "message": "코멘트",
+        "message": "내용을 입력하세요",
         "description": "The placeholder for message input"
     },
     "features.feedback-doc.modal-title": {
-        "message": "피드백을 공유해주세요",
+        "message": "피드백 보내기",
         "description": "The title of the modal to leave feedback about the docs"
     },
     "features.feedback-doc.modal-title-error": {
-        "message": "이런!",
+        "message": "오류!",
         "description": "The title of the modal displayed when feedback form submission fails"
     },
     "features.feedback-doc.modal-title-success": {
-        "message": "피드백을 주셔서 감사합니다!",
+        "message": "피드백을 보내주셔서 감사합니다!",
         "description": "The title of the modal displayed when feedback form submission succeeds"
     },
     "features.feedback-doc.screenshot-button-text": {
@@ -164,7 +164,7 @@
         "description": "The text on a button to take a screenshot"
     },
     "features.feedback-doc.screenshot-topbar-text": {
-        "message": "페이지에서 요소를 선택하세요",
+        "message": "캡처할 요소를 선택하세요",
         "description": "The text displayed in the top bar when selecting an element to take a screenshot"
     },
     "features.feedback-doc.send-button-text": {
@@ -196,27 +196,27 @@
         "description": "Previous version"
     },
     "shared.wip.title": {
-        "message": "이 글은 작성 중입니다",
+        "message": "작성 진행 중",
         "description": "Admonition title"
     },
     "shared.wip.subtitle": {
-        "message": "이 글의 발행을 앞당기려면 다음을 수행할 수 있습니다:",
+        "message": "행을 앞당기고 싶다면 다음을 도와주세요:",
         "description": "Admonition subtitle"
     },
     "shared.wip.var.feedback.base": {
-        "message": "📢 의견을 공유해주세요 ",
+        "message": "📢 의견 공유 ",
         "description": "Variant for contribute (base)"
     },
     "shared.wip.var.feedback.link": {
-        "message": "글에서 (댓글/이모지 반응)",
+        "message": "글에 댓글·이모지 달기",
         "description": "Variant for contribute (link)"
     },
     "shared.wip.var.material.base": {
-        "message": "💬 관련 자료를 모아주세요 ",
+        "message": "💬 자료 모으기 ",
         "description": "Variant for contribute (base)"
     },
     "shared.wip.var.material.link": {
-        "message": "채팅에서 주제와 관련된 자료",
+        "message": "채팅방에 관련 자료 남기기",
         "description": "Variant for contribute (link)"
     },
     "shared.wip.var.contribute.base": {
@@ -224,7 +224,7 @@
         "description": "Variant for contribute (base)"
     },
     "shared.wip.var.contribute.link": {
-        "message": "다른 방식으로",
+        "message": "다른 방식으로 기여",
         "description": "Variant for contribute (link)"
     },
     "theme.NotFound.title": {
@@ -232,11 +232,11 @@
         "description": "The title of the 404 page"
     },
     "theme.NotFound.p1": {
-        "message": "찾으시는 내용을 찾을 수 없습니다.",
+        "message": "요청하신 내용을 찾지 못했습니다.",
         "description": "The first paragraph of the 404 page"
     },
     "theme.NotFound.p2": {
-        "message": "해당 URL을 링크한 사이트 소유자에게 연락해 링크가 깨졌음을 알려주세요.",
+        "message": "이 링크를 공유한 사이트 관리자에게 알려 주세요.",
         "description": "The 2nd paragraph of the 404 page"
     },
     "theme.AnnouncementBar.closeButtonAriaLabel": {
@@ -244,7 +244,7 @@
         "description": "The ARIA label for close button of announcement bar"
     },
     "theme.blog.paginator.navAriaLabel": {
-        "message": "블로그 목록 페이지 탐색",
+        "message": "블로그 목록 탐색",
         "description": "The ARIA label for the blog pagination"
     },
     "theme.blog.paginator.newerEntries": {
@@ -268,7 +268,7 @@
         "description": "The label used in blog post item excerpts to link to full blog posts"
     },
     "theme.blog.post.paginator.navAriaLabel": {
-        "message": "블로그 글 페이지 탐색",
+        "message": "블로그 글 탐색",
         "description": "The ARIA label for the blog posts pagination"
     },
     "theme.blog.post.paginator.newerPost": {
@@ -296,7 +296,7 @@
         "description": "The label of the link targeting the tag list page"
     },
     "theme.CodeBlock.copyButtonAriaLabel": {
-        "message": "코드를 클립보드에 복사",
+        "message": "코드 복사",
         "description": "The ARIA label for copy code blocks button"
     },
     "theme.CodeBlock.copied": {
@@ -316,7 +316,7 @@
         "description": "The ARIA label and title attribute for expand button of doc sidebar"
     },
     "theme.docs.paginator.navAriaLabel": {
-        "message": "문서 페이지 탐색",
+        "message": "문서 탐색",
         "description": "The ARIA label for the docs pagination"
     },
     "theme.docs.paginator.previous": {
@@ -344,15 +344,15 @@
         "description": "The ARIA label for open button of mobile doc sidebar"
     },
     "theme.docs.versions.unreleasedVersionLabel": {
-        "message": "이 문서는 {siteTitle} {versionLabel} 버전의 미발행 문서입니다.",
+        "message": "이 문서는 {siteTitle} {versionLabel} 미발행 버전입니다.",
         "description": "The label used to tell the user that he's browsing an unreleased doc version"
     },
     "theme.docs.versions.unmaintainedVersionLabel": {
-        "message": "이 문서는 더 이상 유지 관리되지 않는 {siteTitle} {versionLabel} 버전의 문서입니다.",
+        "message": "이 문서는 더 이상 유지되지 않는 {siteTitle} {versionLabel} 버전입니다.",
         "description": "The label used to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionSuggestionLabel": {
-        "message": "최신 문서를 보려면 {latestVersionLink} ({versionLabel})를 확인하세요.",
+        "message": "최신 문서는 {latestVersionLink}({versionLabel})에서 확인하세요.",
         "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionLinkLabel": {
@@ -360,19 +360,19 @@
         "description": "The label used for the latest version suggestion link label"
     },
     "theme.common.editThisPage": {
-        "message": "이 페이지 편집하기",
+        "message": "이 페이지 편집",
         "description": "The link label to edit the current page"
     },
     "theme.common.headingLinkTitle": {
-        "message": "해당 헤딩으로 직접 이동",
+        "message": "해당 헤딩으로 이동",
         "description": "Title for link to heading"
     },
     "theme.lastUpdated.atDate": {
-        "message": "{date}에 업데이트됨",
+        "message": "{date}에 업데이트",
         "description": "The words used to describe on which date a page has been last updated"
     },
     "theme.lastUpdated.byUser": {
-        "message": "{user}에 의해 업데이트됨",
+        "message": "{user} 업데이트",
         "description": "The words used to describe by who the page has been last updated"
     },
     "theme.lastUpdated.lastUpdatedAtBy": {
