@@ -5,9 +5,9 @@ sidebar_position: 4
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Handling API Requests
+# Handling API Requests {#handling-api-requests}
 
-## Shared API Requests
+## Shared API Requests {#shared-api-requests}
 
 Start by placing common API request logic in the `shared/api` directory. This makes it easy to reuse requests across your application and helps with faster prototyping. For many projects, this is all you'll need for API calls.
 
@@ -93,7 +93,7 @@ export { login } from './endpoints/login';
 export type { LoginCredentials } from './endpoints/login';
 ```
 
-## Slice-Specific API Requests
+## Slice-Specific API Requests {#slice-specific-api-requests}
 
 If an API request is only used by a specific slice (like a single page or feature) and won't be reused, place it in the api segment of that slice. This keeps slice-specific logic neatly contained.
 
@@ -126,14 +126,16 @@ Avoid placing API calls and response types in the `entities` layer prematurely. 
 
 :::
 
-## Using Client Generators
+## Using Client Generators {#client-generators}
 
 If your backend has an OpenAPI specification, tools like [orval](https://orval.dev/) or [openapi-typescript](https://openapi-ts.dev/) can generate API types and request functions for you. Place the generated code in, for example, `shared/api/openapi`. Make sure to include `README.md` to document what those types are, and how to generate them.
 
-## Integrating with Server State Libraries
+## Integrating with Server State Libraries {#server-state-libraries}
 
 When using server state libraries like [TanStack Query (React Query)](https://tanstack.com/query/latest) or [Pinia Colada](https://pinia-colada.esm.dev/) you might need to share types or cache keys between slices. Use the `shared` layer for things like:
 
 - API data types
 - Cache keys
 - Common query/mutation options
+
+For more details on how to work with server state libraries, refer to [React Query article](/docs/guides/tech/with-react-query) 
