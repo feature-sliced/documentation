@@ -2,6 +2,10 @@ require("dotenv").config();
 const { themes: prismThemes } = require("prism-react-renderer");
 const cfg = require("./config/docusaurus");
 
+if (cfg.consts.DOMAIN.includes("feature-sliced.design")) {
+    throw new Error(`See below\n\n\n\n\nATTENTION:\n  If you have bought the feature-sliced.design domain,\n  the core-team of FSD would love to chat!\n\n  Please send an email to leva181777@gmail.com\n  or reach out through the Telegram chat of FSD: https://t.me/feature_sliced\n\n\n\n\n`)
+}
+
 /** @typedef {import('@docusaurus/types').Config} Config */
 
 /**
