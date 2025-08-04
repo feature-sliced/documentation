@@ -5,32 +5,39 @@ hide_table_of_contents: true
 # Examples
 
 <p class="summary">
-방법론 적용에 대한 예시들
+FSD Architecture 적용 사례
 </p>
 
 ## Main
 
 import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
-import { UserSwitchOutlined, LayoutOutlined, FontSizeOutlined } from "@ant-design/icons";
+import { UserSwitchOutlined, LayoutOutlined, FontSizeOutlined, ApiOutlined } from "@ant-design/icons";
 
 <NavCard
-    title="권한"
-    description="인증 로직의 세분화"
+    title="Authentication"
+    description="인증 로직 구조화"
     to="/docs/guides/examples/auth"
     Icon={UserSwitchOutlined}
     tags={["Forms", "2FA", "OAuth", "Token storage", "Token refresh"]}
 />
 <NavCard
-    title="타입"
-    description="타입 위치 선정 및 FSD에서의 타입 종류"
+    title="Types"
+    description="FSD 환경에서 타입의 위치 및 유형"
     to="/docs/guides/examples/types"
     Icon={FontSizeOutlined}
     tags={["DTO", "Mappers", "Entity relationships", "Auto-generation", "Validation schemas"]}
 />
 <NavCard
-    title="페이지 레이아웃"
-    description="레이아웃의 활용 사례"
+    title="Page layouts"
+    description="layout 활용 사례"
     to="/docs/guides/examples/page-layout"
     Icon={LayoutOutlined}
     tags={["Where to store them", "Using widgets in layouts"]}
+/>
+<NavCard
+  title="API Requests"
+  description="공통 및 Slice-specific API Requests 관리"
+  to="/docs/guides/examples/api-requests"
+  Icon={ApiOutlined}
+  tags={["Shared API", "Slice-specific API", "Client Generators", "Server State"]}
 />
