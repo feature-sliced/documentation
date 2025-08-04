@@ -84,7 +84,7 @@ export function useThemeSwitcher() {
 예를 들어, [React Router][ext-react-router]의 deeply nested routes를 사용할 때, child routes(예: `/users`, `/users/:id`, `/users/:id/settings` 등)의 공통 로직(인증 처리, 데이터 로딩 등)을 layout 레벨에서 한 번에 처리하면 편리합니다.
 이 경우 layout 컴포넌트를 `shared`나 `widgets` 폴더에 두면 [layer에 대한 import 규칙][import-rule-on-layers]을 위반합니다.
 
-> Slice의 module은 자신보다 하위 layer에만 있는 Slice를 import할 수 있습니다. 
+> Slice의 module은 자신보다 하위 layer에만 있는 Slice를 import할 수 있습니다.
 
 이 문제가 정말 중요한지 먼저 고려해 봐야 합니다.
 
@@ -94,7 +94,7 @@ export function useThemeSwitcher() {
 비즈니스 로직을 사용하는 layout이 2~3개 페이지만 적용된다면, layout 역할이 단순 wrapper인지 확인하고, 아래 대안을 고려하세요.
 
 1. **App layer에서 inline으로 작성하기**  
-    Router의 nesting 기능을 이용하면, 공통된 URL 패턴을 가진 여러 경로(예: /users, /users/profile, /users/settings)를 하나의 **route group** 으로 묶을 수 있습니다. 이렇게 만든 route group에 한 번만 layout을 지정하면, 해당 그룹의 모든 페이지에 동일한 layout이 적용됩니다.
+    Router의 nesting 기능을 이용하면, 공통된 URL 패턴을 가진 여러 경로(예: /users, /users/profile, /users/settings)를 하나의 `route group` 으로 묶을 수 있습니다. 이렇게 만든 route group에 한 번만 layout을 지정하면, 해당 그룹의 모든 페이지에 동일한 layout이 적용됩니다.
 
 2. **코드 복사 & 붙여넣기**  
    레이아웃은 자주 변경되지 않으므로, 필요한 페이지만 복사해 두고 수정할 때만 업데이트하세요.
@@ -103,7 +103,7 @@ export function useThemeSwitcher() {
 위 방식이 적합하지 않다면, layout에 widget을 포함하는 다음 두 가지 해결책을 검토하세요:
 
 1. **Render Props 또는 Slots 사용하기**  
-   React에서는 [render props][ext-render-props]를, Vue에서는 [slots][ext-vue-slots]를 사용해 **부모 layout 컴포넌트에 자식 UI를 props/slot 형태로 전달해 특정 위치에 주입(injection)** 하는 방식입니다.
+   React에서는 [render props][ext-render-props]를, Vue에서는 [slots][ext-vue-slots]를 사용해 `부모 layout 컴포넌트에 자식 UI를 props/slot 형태로 전달해 특정 위치에 주입(injection)` 하는 방식입니다.
 
 2. **layout을 App layer로 이동하기**  
    `app/layouts` 등에 layout 파일을 두고, 필요한 widget을 조합해 사용하세요.
@@ -111,7 +111,6 @@ export function useThemeSwitcher() {
 ## 참고 자료
 
 React 및 Remix(React Router와 유사)의 인증 layout 구축에 대한 예시는 [튜토리얼][tutorial]에서 확인하실 수 있습니다.
-
 
 [tutorial]: /docs/get-started/tutorial
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
