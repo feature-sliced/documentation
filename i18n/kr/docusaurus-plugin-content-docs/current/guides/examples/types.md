@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# 타입
+# Types
 
 이 가이드는 TypeScript 같은 정적 타입 언어에서 데이터를 정의·활용하는 방법과, FSD 구조 내에서 타입을 어디에 배치할지 설명합니다.
 
