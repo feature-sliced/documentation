@@ -5,10 +5,9 @@ sidebar_label: 기존 아키텍처에서 전환하기
 
 # 기존 아키텍처에서 FSD로의 마이그레이션
 
-이 가이드는 기존 아키텍처에서 Feature-Sliced Design(FSD)으로 전환할 때 도움이 되는 접근 방식을 설명합니다.
+이 가이드는 기존 아키텍처를 **Feature-Sliced Design(FSD)** 으로 단계별 전환하는 방법을 설명합니다.
 
-아래는 일반적인 기존 아키텍처의 폴더 구조입니다. 이 가이드에서는 이를 예시로 사용하여 전환 과정을 설명합니다.
-파란색 화살표를 클릭하여 폴더를 열어보세요.
+아래 폴더 구조를 예시로 살펴보세요. (파란 화살표를 클릭하면 펼쳐집니다).
 
 <details className="file-tree">
       <summary>📁 src</summary>
@@ -47,58 +46,63 @@ sidebar_label: 기존 아키텍처에서 전환하기
       </ul>
 </details>
 
-## 시작하기 전에 {#before-you-start}
+## 시작 전 체크리스트 {#before-you-start}
 
-FSD로 전환을 고려할 때 팀에게 가장 중요한 질문은 _정말로 FSD가 필요한가?_ 라는 점입니다. FSD는 훌륭한 방법론이지만, 어떤 프로젝트에서는 굳이 필요하지 않을 수 있습니다.
+Feature-Sliced Design(FSD)이 **정말 필요한지 먼저 확인하세요.**  
+모든 프로젝트가 새로운 아키텍처를 요구하는 것은 아닙니다.
 
-다음과 같은 이유가 있다면 전환을 고려해 볼 수 있습니다:
+### 전환을 고려해야 할 징후
 
 1. 신규 팀원이 프로젝트에 적응하기 어려워하는 경우
 2. 코드 일부를 수정할 때, 관련 없는 다른 코드에 오류가 발생하는 경우가 **잦은** 경우 
 3. 새 기능을 추가할 때 고려해야 할 사항이 너무 많아 어려움을 겪는 경우
 
-**팀원들의 동의 없이 FSD로 전환을 시도하지 마십시오.** 팀 리더라고 해도 전환의 이점이 비용보다 크다는 점을 먼저 설득하는 것이 중요합니다. 새로운 아키텍처를 도입하는 데는 학습과 전환 비용이 따르므로 충분한 논의가 필요합니다.
+**팀의 합의 없이 FSD 전환을 시작하지 마세요.**  
+팀 리더라도 전환의 이점이 학습·전환 비용을 상회한다는 점을 먼저 설득해야 합니다.  
+또한, 개선 효과가 바로 눈에 띄지 않을 수 있으므로 **팀원** 및 **프로젝트 매니저(PM)** 의 승인을 사전에 확보하고 이점을 공유하세요.
 
-또한, 아키텍처 변경은 즉시 관리층에 가시적으로 드러나지 않을 수 있습니다. 프로젝트 전환을 시작하기 전에 관리자의 동의를 얻고, 전환이 프로젝트에 어떤 이점을 줄 수 있는지 설명하는 것이 중요합니다.
+:::tip PM 설득 시 고려할 사항
 
-:::tip
-
-프로젝트 매니저를 설득해야 한다면, 다음과 같은 점을 고려해 보세요:
-1. FSD로의 전환은 점진적으로 진행될 수 있어 새로운 기능 개발을 중단할 필요가 없습니다.
-2. 체계적인 아키텍처는 새로운 개발자가 업무에 익숙해지는 시간을 크게 줄여줄 수 있습니다.
-3. FSD는 문서화된 아키텍처이기 때문에, 팀이 자체 문서화를 지속적으로 관리할 필요성이 줄어듭니다.
+- FSD 전환은 단계적으로 진행할 수 있어 기존 기능 개발을 중단하지 않아도 됩니다.  
+- 명확한 아키텍처 구조는 신규 개발자 온보딩 시간을 단축합니다.  
+- 공식 문서를 활용하면 별도 문서 유지·관리 비용을 절감할 수 있습니다.  
 
 :::
 
 ---
 
-마이그레이션을 시작하기로 결정했다면, `📁 src` 폴더에 대한 별칭(alias)을 설정하는 것이 첫 단계입니다. 이후 설명에서는 `@`를 `./src`의 별칭으로 사용하겠습니다.
+마이그레이션을 시작하기로 결정했다면, `📁 src` 폴더에 별칭(alias)을 설정하는 것을 첫 단계로 삼으세요.<br/>
 
-## 1단계: 페이지별로 코드 분리하기 {#divide-code-by-pages}
+## 1단계: 페이지 단위로 코드 분리하기 {#divide-code-by-pages}
 
-대부분의 커스텀(custom) 아키텍처는 어느 정도 페이지별로 코드가 나뉘어 있습니다. 만약 `📁 pages` 폴더가 이미 있다면 이 단계를 건너뛸 수 있습니다.
+대부분의 커스텀 아키텍처는 규모와 관계없이 이미 어느 정도 페이지 단위로 코드를 나누고 있습니다. `📁 pages` 폴더가 있다면 이 단계를 건너뛰어도 됩니다.
 
-`📁 routes` 폴더만 있다면, `📁 pages` 폴더를 새로 만들고 `📁 routes`에서 가능한 많은 컴포넌트 코드를 pages로 이동하세요. 이상적인 구조는 작은 라우트 파일과 큰 페이지 파일을 갖추는 것입니다. 코드를 이동할 때는 페이지별로 폴더를 만들고, index 파일을 추가합니다.
+
+위에 예시 폴더처럼 `📁 routes`만 있다면 다음 순서를 따르세요.
+
+1. `📁 pages` 폴더를 새로 만듭니다.  
+2. `📁 routes`에 있던 **페이지용 컴포넌트**를 가능한 한 모두 `📁 pages` 폴더로 옮깁니다. 
+3. 코드를 옮길 때마다 해당 페이지 전용 폴더를 만들고 그 안에 `index` 파일을 추가해 entry를 노출합니다.
 
 :::note
 
-현재는 페이지들이 서로를 참조해도 괜찮습니다. 지금은 페이지별로 구조를 명확하게 구분하는 데 집중하세요. 참조 문제는 나중에 해결할 수 있습니다.
+이 단계에서는 **Page A에서 Page B의 코드를 import**해도 괜찮습니다. 나중 단계에서 이러한 의존성을 분리할 예정이니, 우선 **페이지 폴더를 만드는 것**에 집중하세요.
 
 :::
 
-라우트 파일:
+route file:
 
 ```js title="src/routes/products.[id].js"
-export { ProductPage as default } from "@/pages/product"
+export { ProductPage as default } from "src/pages/product"
 ```
 
-페이지 index 파일:
+page index file:
 
 ```js title="src/pages/product/index.js"
 export { ProductPage } from "./ProductPage.jsx"
 ```
 
-페이지 컴포넌트 파일:
+page component file:
 
 ```jsx title="src/pages/product/ProductPage.jsx"
 export function ProductPage(props) {
@@ -106,11 +110,15 @@ export function ProductPage(props) {
 }
 ```
 
-## 2단계: 페이지에서 나머지 코드 분리하기 {#separate-everything-else-from-pages}
+## 2단계: 페이지 외부 코드를 분리하기 {#separate-everything-else-from-pages}
 
-`📁 src/shared` 폴더를 만들고 `📁 pages`나 `📁 routes`에 의존하지 않는 코드를 모두 이곳으로 이동합니다. 그다음 `📁 src/app` 폴더를 만들어 pages 또는 routes에 의존하는 코드를 이곳으로 옮깁니다. 라우트 파일도 포함됩니다.
+1. **`📁 src/shared` 폴더를 만든다.**  
+   - `📁 pages` 또는 `📁 routes`를 **import하지 않는** 모든 코드를 이곳으로 이동한다.  
+2. **`📁 src/app` 폴더를 만든다.**  
+   - `📁 pages` 또는 `📁 routes`를 **import하는** 코드를 이곳으로 옮긴다. 라우트 파일도 여기에 포함한다.
 
-Shared layer 에는 slices가 없으므로, segments끼리 서로 import해도 괜찮습니다.
+> **Shared layer에는 slice가 없다.**  
+> 따라서 segment 간 import는 자유롭다.
 
 이제 폴더 구조는 다음과 같아야 합니다:
 
@@ -181,32 +189,37 @@ Shared layer 에는 slices가 없으므로, segments끼리 서로 import해도 �
       </ul>
 </details>
 
-## 3단계: 페이지 간의 cross-imports 해결하기 {#tackle-cross-imports-between-pages}
+## 3단계: 페이지 간의 cross-imports 해결 {#tackle-cross-imports-between-pages}
 
 <!-- A good way to approach this is by setting up [Steiger][ext-steiger], the linter for FSD.  -->
 <!-- TODO: add instructions once the new config format is standardized -->
 
-각 페이지가 다른 페이지를 import하고 있는 경우, 다음 두 가지 방법 중 하나를 선택하여 해결할 수 있습니다:
+한 페이지가 다른 페이지의 코드를 가져오고 있다면 두 가지 방법으로 의존성을 제거한다.
 
-1. 필요한 코드만 복사하여 붙여넣어 참조를 제거합니다.
-2. 코드를 Shared layer의 적절한 segment로 이동합니다:
-      - UI 키트의 일부라면 `📁 shared/ui`로 이동
-      - 설정 상수라면 `📁 shared/config`로 이동
-      - 백엔드와의 상호작용 코드라면 `📁 shared/api`로 이동
+| 방법 | 사용 시점 |
+|------|-----------|
+| **A. 코드 복사** | 페이지마다 로직이 달라질 가능성이 있거나, 재사용성이 낮을 때 |
+| **B. Shared로 이동** | 여러 페이지에서 공통으로 쓰일 때 |
+
+
+- Shared 이동 위치 예시
+  - UI 구성 요소 → `📁 shared/ui`  
+  - 설정 상수   → `📁 shared/config`  
+  - 백엔드 호출  → `📁 shared/api`
 
 :::note
 
-**코드를 복사해서 붙여넣는 것이 항상 잘못된 것은 아닙니다.** 경우에 따라, 모듈로 재사용하는 것보다 복사하여 독립적으로 사용하는 것이 더 나을 수 있습니다. 특히, 각 페이지에서 코드가 조금씩 달라질 가능성이 있는 경우에는 불필요한 의존성을 만들지 않도록 하는 것이 중요합니다.
-
-다만, 비즈니스 로직을 반복하지 않도록 주의하세요. 비즈니스 로직을 여러 곳에 복사해 둘 경우, 오류 수정 시 여러 위치에서 코드를 수정해야 할 수도 있습니다.
+코드 복사는 잘못이 아니다. **중복보다 의존성 최소화**가 더 중요할 때가 많다.  
+다만 비즈니스 로직은 중복을 피해야 하며, 복사 시에도 DRY 원칙을 염두에 둔다.
 
 :::
 
 ## 4단계: Shared 레이어 정리하기 {#unpack-shared-layer}
 
-이 단계에서는 Shared 레이어에 많은 코드가 남아 있을 수 있지만, 가능하면 이를 피하는 것이 좋습니다. Shared 레이어는 코드베이스 내 다른 모든 레이어에 의존할 수 있으므로, 여기에 변경이 발생하면 예기치 않은 결과를 초래할 가능성이 높아집니다
+- **한 페이지에서만 쓰이는 코드**는 해당 페이지 **slice**로 이동한다.  
+- `actions / reducers / selectors`도 예외가 아니다. **사용처와 가까이** 두는 편이 좋다.  
 
-한 페이지에서만 사용하는 코드가 있다면 해당 페이지의 slice로 이동하세요. _이는 actions, reducers, selectors에도 적용됩니다_. 모든 action을 한 곳에 모을 필요는 없으며, 관련된 action을 사용하는 위치에 가까이 배치하는 것이 더 좋습니다.
+Shared는 모든 layer가 의존할 수 있는 **공통 의존점**이므로, 코드를 최소화해 변경 위험을 낮춘다.
 
 최종 폴더 구조는 다음과 같아야 합니다:
 
@@ -265,47 +278,53 @@ Shared layer 에는 slices가 없으므로, segments끼리 서로 import해도 �
       </ul>
 </details>
 
-## 5단계: 기술적 목적에 따른 코드 정리 {#organize-by-technical-purpose}
+## 5단계: 기술적 목적별 segment 정리 {#organize-by-technical-purpose}
 
-FSD에서는 코드를 _segments_ 단위로 나누어, 기술적 목적에 따라 구분합니다. 다음은 일반적인 세그먼트 예시입니다:
 
-- `ui` — UI 표시와 관련된 요소들: UI 컴포넌트, 날짜 형식 지정, 스타일 등
-- `api` — 백엔드와의 상호작용: 요청 함수, 데이터 타입, 매퍼 등
-- `model` — 데이터 모델: 스키마, 인터페이스, 스토어 및 비즈니스 로직
-- `lib` — 이 슬라이스의 다른 모듈에서 필요한 라이브러리 코드
-- `config` — 설정 파일과 기능 플래그
+| segment | 용도 예시 |
+|----------|-----------|
+| `ui`     | Components, formatters, styles |
+| `api`    | Backend requests, DTOs, mappers |
+| `model`  | Store, schema, business logic |
+| `lib`    | Shared utilities / helpers |
+| `config` | Configuration files, feature flags |
 
-필요에 따라 자체적인 segments를 추가할 수도 있습니다. 단, `components`, `actions`, `types`, `utils`처럼 코드의 성격에 따라 그룹화하기보다는, 코드의 목적에 따라 구분하는 것이 좋습니다.
 
-각 페이지에 segments를 나누어 코드를 정리하세요. 이미 `ui` 세그먼트가 있다면, 이제는 actions, reducers, selectors를 위한 `model` 세그먼트를 만들고, thunks와 mutations를 위한 `api` segments도 추가할 차례입니다.
+> “**무엇인지**”가 아니라 “**무엇을 위해**” 존재하는지를 기준으로 나눈다.  
+> 따라서 `components`, `utils`, `types` 같은 이름은 지양한다.
 
-또한, Shared 레이어에 있는 폴더를 다음과 같이 재배치하세요:
-- `📁 components`, `📁 containers` — 대부분은 `📁 shared/ui`로 이동
-- `📁 helpers`, `📁 utils` — 재사용되는 헬퍼들이 남아 있다면 기능에 따라 그룹화하여 `📁 shared/lib`로 이동
-- `📁 constants` — 기능에 따라 그룹화하여 `📁 shared/config`로 이동
+1. **각 페이지**에 `ui / model / api` 등 필요한 segment를 만든다.  
+2. **Shared** 폴더를 정리한다.  
+   - `components·containers` → `shared/ui`  
+   - `helpers·utils` → `shared/lib` (기능별 그룹화 후)  
+   - `constants` → `shared/config`
 
 
 ## 선택 단계 {#optional-steps}
 
-### 6단계: 여러 페이지에서 사용하는 Redux slices를 entities/features으로 정리하기 {#form-entities-features-from-redux}
+### 6단계: 여러 페이지에서 재사용되는 Redux slice를 Entities / Features layer로 분리하기 {#form-entities-features-from-redux}
 
-일반적으로 여러 페이지에서 재사용되는 Redux slices는 제품이나 사용자와 같이 비즈니스와 관련이 깊습니다. 이러한 경우, slice를 Entities layer로 이동하고, 하나의 폴더에 하나의 entity가 있도록 구성합니다. 만약 Redux slice가 사용자의 특정 액션과 관련이 있다면, 이를 Features layer로 이동할 수 있습니다.
+- 여러 페이지에서 재사용되는 Redux **slice**는 주로 **product, user** 같은 **business entity**를 표현합니다.  
+  이 경우 **Entities layer**로 옮기고, **entity**마다 폴더를 하나씩 만듭니다.  
+- 댓글 작성처럼 **사용자 행동(action)** 을 다루는 **slice**는 **Features layer**로 이동합니다.
 
-Entities와 기능은 서로 독립적으로 사용될 수 있도록 설계됩니다. business domain에 따라 entities 간에 본질적인 연결이 필요한 경우, [business entities 연결 가이드][business-entities-cross-relations]를 참고하여 이러한 연결을 효율적으로 조직하는 방법을 확인하세요.
+**Entities**와 **Features**는 서로 독립적으로 사용될 수 있도록 설계되어 있습니다.  
+Entitles 간 연결이 필요하면 [Business-Entities Cross-Relations 가이드][business-entities-cross-relations]를 참고하세요.  
+해당 **slice**와 연관된 API 함수는 `📁 shared/api`에 그대로 두어도 무방합니다.
 
-이 slices와 관련된 API 함수는 `📁 shared/api`에 그대로 두어도 괜찮습니다.
+### 7단계: modules 폴더 리팩터링 {#refactor-your-modules}
 
-### 7단계: modules 리팩터링 {#refactor-your-modules}
+`📁 modules`는 과거에 비즈니스 로직을 모아 두던 곳으로, 성격상 **Features layer**와 비슷합니다.  
+단, 앱 Header처럼 **large UI block**(예: global Header, Sidebar)이라면 **Widgets layer**로 옮기는 편이 좋습니다.
 
-`📁 modules` 폴더는 일반적으로 비즈니스 로직을 담고 있어 FSD의 Features layer와 성격이 비슷합니다. 일부 모듈은 앱 헤더와 같이 큰 UI 요소를 설명하는 역할을 할 수도 있습니다. 이 경우 해당 modules을 Widgets layer로 이동하는 것이 좋습니다.
+### 8단계: shared/ui에 presentational UI 기반 마련하기 {#form-clean-ui-foundation}
 
-### 8단계: `shared/ui`에서 UI 기본 요소 정리하기 {#form-clean-ui-foundation}
+`📁 shared/ui`에는 비즈니스 로직이 전혀 없는, 재사용 가능한 presentational UI 컴포넌트만 남겨야 합니다.  
 
-`📁 shared/ui`는 비즈니스 로직이 포함되지 않고 재사용 가능한 UI 요소들로만 구성되어야 합니다.
+- 기존 `📁 components` · `📁 containers`에 있던 컴포넌트에서 비즈니스 로직을 분리해 상위 layer로 이동합니다.  
+- 여러 곳에서 쓰이지 않는 부분은 **복사(paste)** 해서 각 layer에서 독립적으로 관리해도 괜찮습니다.
 
-이전 `📁 components`와 `📁 containers`에 있던 UI 컴포넌트를 리팩터링하여 비즈니스 로직을 분리하고, 해당 로직을 상위 layers로 이동시키세요. 많은 곳에서 사용되지 않는다면, 코드 복사를 통해 필요한 부분에만 사용해도 좋습니다.
-
-## 추가 참고 자료 {#see-also}
+## 참고 자료 {#see-also}
 
 - [(러시아어 영상) Ilya Klimov — "끝없는 리팩터링의 악순환에서 벗어나기: 기술 부채가 동기와 제품에 미치는 영향](https://youtu.be/aOiJ3k2UvO4)
 
