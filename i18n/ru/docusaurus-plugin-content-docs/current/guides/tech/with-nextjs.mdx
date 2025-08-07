@@ -18,9 +18,9 @@ Next.js предлагает использовать папку `app` для о
 
 ```sh
 ├── app                              # Папка app (Next.js)
-    ├── api
-    │   └── get-example
-    │       └── route.ts
+│   ├── api
+│   │   └── get-example
+│   │       └── route.ts
 │   └── example
 │       └── page.tsx
 ├── pages                            # Устаревшая папка pages (Next.js)
@@ -53,15 +53,33 @@ export { Example as default, metadata } from '@/pages/example';
 Файл `instrumentation.ts|js` позволяет отслеживать производительность и поведение вашего приложения. Если вы его используете, то он обязательно должен находиться в корне проекта по аналогии с `middleware.ts|js`
 
 ### Route Handlers
-Предлагается использовать новый сегмент `routes` в слое `app` или `pages` для работы c Route Handlers.
+Предлагается использовать новый сегмент `api-routes` в слое `app` для работы c Route Handlers.
+Однако, не стоит злоупотреблять их применением ввиду сложности поддержки кода и нарушением принципов разделения ответственности.
 
-```tsx title="app/api/get-example/route.ts"
-export { getExample as GET } from '@/pages/example';
+```tsx title="src/app/api-routes/get-example-data.ts"
+    import { getExamplesList } from '@/shared/db';
+
+    export const getExampleData = () => {
+        try {
+            const examplesList = getExamplesList();
+
+            return Response.json({ examplesList });
+        } catch {
+            return Response.json(null, {
+                status: 500,
+                statusText: 'Ouch, something went wrong',
+            });
+        }
+    };
+```
+
+```tsx title="app/api/example/route.ts"
+export { getExampleData as GET } from '@/app';
 ```
 
 ### Дополнительные рекомендации
-- Используйте сегмент `api` в слое `shared` для описания запросов к БД и их дальнейшего использования в вышестоящих слоях.
-- Логику кэширования и ревалидации запросов лучше держать там же, где и сами запросы, в базовом сценарии это сегмент `api` в слое `shared`.
+- Используйте сегмент `db` в слое `shared` для описания запросов к БД и их дальнейшего использования в вышестоящих слоях.
+- Логику кэширования и ревалидации запросов лучше держать там же, где и сами запросы.
 
 ## Устаревший подход с Pages Router
 Роуты страниц должны помещаться в папку `pages` в корне проекта по аналогии с `app` для App Router.
@@ -76,6 +94,8 @@ export { getExample as GET } from '@/pages/example';
 │       └── index.tsx
 └── src
     ├── app
+    │   └── custom-app
+    │       └── custom-app.tsx   # Кастомный компонент App
     ├── pages
     │   └── example
     │       ├── index.ts
@@ -96,17 +116,17 @@ export { getExample as GET } from '@/pages/example';
 export { App as default } from '@/app';
 ```
 
-### Пример ре-экспорта страницы из `src/pages/example` в `pages/example/index.tsx`
+Пример ре-экспорта страницы из `src/pages/example` в `pages/example/index.tsx`
 
 ```tsx title="pages/example/index.tsx"
 export { Example as default } from '@/pages/example';
 ```
 
 ### API Routes
-Предлагается использовать новый сегмент `routes` в слое `app` или `pages` для работы c API Routes.
+Предлагается использовать новый сегмент `api-routes` в слое `app` для работы c API Routes.
 
 ```tsx title="app/api/example.ts"
-export { handler as default, config } from '@/pages/example';
+export { handler as default, config } from '@/app';
 ```
 
 ## См. также

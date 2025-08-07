@@ -14,13 +14,13 @@ The approach is to move the Next.js `app` folder to the project root and import 
 This preserves the FSD project structure inside the `src` folder, where layer folders should be placed.
 
 You should also add a `pages` folder to the project root because App Router is compatible with Pages Router.
-The best way is to put `README.md` file inside describing the need to save this folder.
+The best way is to put `README.md` files inside the root `pages` folder describing why it is necessary but empty.
 
 ```sh
 ├── app                              # App folder (Next.js)
-    ├── api
-    │   └── get-example
-    │       └── route.ts
+│   ├── api
+│   │   └── get-example
+│   │       └── route.ts
 │   └── example
 │       └── page.tsx
 ├── pages                            # Legacy pages folder (Next.js)
@@ -53,18 +53,36 @@ If you use middleware in your project, it must be located in the project root al
 The `instrumentation.ts|js` file allows you to monitor the performance and behavior of your application. If you use it, it must be located in the project root, similar to `middleware.ts|js`.
 
 ### Route Handlers
-It is suggested to use a new `routes` segment in the `app` or `pages` layer to work with Route Handlers.
+It is suggested to use a new `api-routes` segment in the `app` layer to work with Route Handlers.
+However, you should avoid overusing them due to code maintenance complexity and violation of separation of concerns principles.
 
-```tsx title="app/routes/get-example/route.ts"
-export { getExample as GET } from '@/pages/example';
+```tsx title="src/app/api-routes/get-example-data.ts"
+    import { getExamplesList } from '@/shared/db';
+
+    export const getExampleData = () => {
+        try {
+            const examplesList = getExamplesList();
+
+            return Response.json({ examplesList });
+        } catch {
+            return Response.json(null, {
+                status: 500,
+                statusText: 'Ouch, something went wrong',
+            });
+        }
+    };
+```
+
+```tsx title="app/api/example/route.ts"
+export { getExampleData as GET } from '@/app';
 ```
 
 ### Additional recommendations
-- Use the `api` segment in the `shared` layer to describe database queries and their further use in higher layers.
-- Caching and revalidating queries logic is better kept in the same place as the queries themselves, in a basic scenario this is the `api` segment in the `shared` layer.
+- Use the `db` segment in the `shared` layer to describe database queries and their further use in higher layers.
+- Caching and revalidating queries logic is better kept in the same place as the queries themselves.
 
 ## Legacy approach with Pages Router
-Page routers should be placed in the `pages` folder in the root of the project, similar to `app` for the App Router.
+When using the Pages Router, routes should be placed in the `pages` folder in the root of the project, similar to `app` for the App Router.
 The structure inside `src` where the layer folders are located remains unchanged.
 
 ```sh
@@ -76,6 +94,8 @@ The structure inside `src` where the layer folders are located remains unchanged
 │       └── index.tsx
 └── src
     ├── app
+    │   └── custom-app
+    │       └── custom-app.tsx   # Custom App component
     ├── pages
     │   └── example
     │       ├── index.ts
@@ -90,23 +110,38 @@ The structure inside `src` where the layer folders are located remains unchanged
     └── shared
 ```
 
-### Functionality re-export from the public API `src/app/index.ts` to `pages/_app.tsx`
+### Custom `_app` component
+
+You can place your Custom App component in `src/app/_app` or `src/app/custom-app`
+
+```tsx title="src/app/custom-app/custom-app.tsx"
+import type { AppProps } from 'next/app';
+
+export const MyApp = ({ Component, pageProps }: AppProps) => {
+    return (
+        <>
+            <p>My Custom App component</p>
+            <Component { ...pageProps } />
+        </>
+    );
+};
+```
 
 ```tsx title="pages/_app.tsx"
 export { App as default } from '@/app';
 ```
 
-### Example of re-exporting a page from `src/pages/example` to `pages/example/index.tsx`
+Example of re-exporting a page from `src/pages/example` to `pages/example/index.tsx`:
 
 ```tsx title="pages/example/index.tsx"
 export { Example as default } from '@/pages/example';
 ```
 
 ### API Routes
-It is suggested to use a new `routes` segment in the `app` or `pages` layer to work with API Routes.
+It is suggested to use a new `api-routes` segment in the `app` layer to work with API Routes.
 
 ```tsx title="app/api/example.ts"
-export { handler as default, config } from '@/pages/example';
+export { handler as default, config } from '@/app';
 ```
 
 ## See also
