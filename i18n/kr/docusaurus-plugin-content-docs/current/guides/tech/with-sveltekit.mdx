@@ -1,11 +1,13 @@
 # SvelteKit와 함께 사용하기
 
-SvelteKit에서 FSD(Feature-Sliced Design) 아키텍처를 구현할 수 있지만, 몇 가지 구조적 차이점이 있습니다:
+SvelteKit 프로젝트에 FSD(Feature-Sliced Design)를 적용할 때는 다음 차이를 유의하세요:
 
-- SvelteKit은 routing 파일을 `src/routes`에 배치하지만, FSD에서는 app Layer에 포함됩니다
-- SvelteKit은 routing 외 파일을 src/lib에 배치하도록 권장합니다
+- SvelteKit은 routing 파일을 `src/routes`에 두지만, FSD는 routing을 `app` 레이어에 포함합니다.  
+- SvelteKit은 라우트 외 파일을 `src/lib`에 두도록 권장합니다.
 
 ## 구성 설정
+
+`svelte.config.ts`에서 기본 경로를 변경해 `app` layer로 라우팅과 템플릿을 이동하고, `src/lib`를 설정합니다.
 
 ```ts title="svelte.config.ts"
 import adapter from '@sveltejs/adapter-auto';
@@ -17,9 +19,9 @@ const config = {
    kit: {
      adapter: adapter(),
      files: {
-       routes: 'src/app/routes',             // routing을 app Layer로 이동
+       routes: 'src/app/routes',             // routing을 app layer로 이동
        lib: 'src',
-       appTemplate: 'src/app/index.html',    // application entry point를 app Layer로 이동
+       appTemplate: 'src/app/index.html',    // application entry point를 app layer로 이동
        assets: 'public'
      },
      alias: {
@@ -33,7 +35,7 @@ export default config;
 
 ## File Routing을 `src/app`으로 이동
 
-Configuration 변경 후 구조:
+설정 변경 후 폴더 구조는 다음과 같습니다:
 
 ```sh
 ├── src
@@ -43,28 +45,28 @@ Configuration 변경 후 구조:
 │   ├── pages                               # FSD pages Layer
 ```
 
-이제 route 파일을 `app` Layer의 routes 폴더에 배치하고, `pages` Layer와 연결할 수 있습니다.
+이제 `app/routes` 폴더에 라우트 파일을 두고, `pages` layer의 컴포넌트를 연결할 수 있습니다.
 
-예시) Home Page 추가 과정:
+예시) Home 페이지 추가 예시
 
-1. `pages` Layer에 새 Page Slice 추가
-2. `app` Layer의 `routes`에 route 생성
-3. Slice의 Page를 route와 연결
+1. pages layer에 새 page slice 생성
+2. `app/routes`에 route 파일 추가
+3. page component를 route와 연결
 
-[CLI tool](https://github.com/feature-sliced/cli)을 사용한 Page Slice 생성:
+[CLI 도구](https://github.com/feature-sliced/cli)로 page slice를 생성합니다:
 
 ```shell
 fsd pages home
 ```
 
-`home-page.vue` 파일을 UI Segment에 생성하고 public API로 노출:
+`pages/home/ui/home-page.svelte`를 생성하고 public API로 노출하세요:
 
 
 ```ts title="src/pages/home/index.ts"
 export { default as HomePage } from './ui/home-page';
 ```
 
-`app` Layer의 routes에 route 추가:
+`app/routes`에 route 파일을 추가합니다:
 
 ```sh
 ├── src
@@ -79,7 +81,7 @@ export { default as HomePage } from './ui/home-page';
 │   │   │   ├── index.ts
 ```
 
-Page Component 연결:
+`+page.svelte`에서 page component를 import 후 렌더링합니다:
 
 ```html title="src/app/routes/+page.svelte"
 <script>
