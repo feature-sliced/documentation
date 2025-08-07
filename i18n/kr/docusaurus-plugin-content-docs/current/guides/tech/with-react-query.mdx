@@ -3,11 +3,12 @@ sidebar_position: 10
 ---
 # React Query와 함께 사용하기
 
-## "Query Key 배치" 문제
+## Query Key 배치 문제
 
-### 해결책 — entities별로 분리하기
+### entities별 분리
 
-프로젝트가 이미 entities 단위로 구성되어 있으며, 각 요청이 단일 entity에 해당한다면, entities별로 코드를 분리하는 것이 좋습니다. 예를 들어, 다음과 같은 디렉토리 구조를 사용할 수 있습니다:
+각 요청이 특정 entity에 대응한다면,  
+`src/entities/{entity}/api` 폴더에 관련 코드를 모아두세요:
 
 ```sh
 └── src/                                        #
@@ -33,11 +34,12 @@ sidebar_position: 10
         ...                                     #
 ```
 
-만약 entities 간의 관계가 필요한 경우(예: Country 엔터티가 City 엔터티의 필드를 포함하는 경우), [교차 가져오기를 위한 Public API][public-api-for-cross-imports]를 활용하거나, 아래와 같은 대체 구조를 고려할 수 있습니다.
+entities 간에 데이터를 참조해야 하면 [공용 Public API][public-api-for-cross-imports]를 사용하거나,<br/>
+아래 예시처럼 `shared/api/queries`에 모아두는 방법도 있습니다.
 
-### 대안 방안 — shared에 저장하기
+### 대안 — shared에 모아두기
 
-entities별 분리가 적절하지 않은 경우, 다음과 같은 구조를 사용할 수 있습니다:
+entity별 분리가 어려울 때는 예시 처럼 `src/shared/api/queries`에 Query Factory를 정의하세요.
 
 ```sh
 └── src/                                        #
@@ -57,11 +59,12 @@ entities별 분리가 적절하지 않은 경우, 다음과 같은 구조를 사
 export { documentQueries } from "./queries/document";
 ```
 
-## "Mutation 위치 설정" 문제
+## Mutation 배치 문제
 
-Query와 Mutation을 같은 위치에 두는 것은 권장되지 않습니다. 다음 두 가지 옵션이 있습니다:
+Query와 Mutation을 같은 위치에 두는 것은 권장하지 않습니다.  
+두 가지 방안을 제안합니다:
 
-### 1. 사용 위치 근처의 `api` 디렉토리에서 커스텀 훅 정의하기
+### 사용 위치 근처 api 폴더에 Custom Hook 정의
 
 ```tsx title="@/features/update-post/api/use-update-title.ts"
 export const useUpdateTitle = () => {
@@ -80,7 +83,7 @@ export const useUpdateTitle = () => {
 };
 ```
 
-### 2. 공용 또는 entities에서 mutation 함수를 정의하고, 컴포넌트에서 `useMutation`을 직접 사용하기
+### entities 또는 shared에 함수만 정의하고, 컴포넌트에서 `useMutation` 사용
 
 ```tsx
 const { mutateAsync, isPending } = useMutation({
@@ -119,9 +122,8 @@ export const CreatePost = () => {
 
 ### Query Factory
 
-Query Factory는 Query Key 목록을 반환하는 함수를 포함한 객체입니다. 
-
-사용 방법은 다음과 같습니다:
+Query Factory는 Query Key와 Query Function을 한곳에서 관리합니다.  
+다음 예시처럼 객체로 정의하세요:
 
 ```ts
 const keyFactory = {
@@ -131,7 +133,7 @@ const keyFactory = {
 ```
 
 :::info
-`queryOptions`는 TanStack Query v5에서 제공하는 내장 유틸리티로, 선택적으로 사용할 수 있습니다.
+TanStack Query v5의 `queryOptions` 유틸을 사용하면 타입 안전성과 향후 호환성을 높일 수 있습니다.
 
 ```ts
 queryOptions({
@@ -140,11 +142,11 @@ queryOptions({
 });
 ```
 
-더 엄격한 타입, TanStack Query의 향후 버전과의 호환성, Query Function 및 Query Key에 대한 쉬운 액세스를 위해, "@tanstack/react-query"의 내장 queryOptions 함수를 사용할 수 있습니다 [(자세한 내용은 여기)](https://tkdodo.eu/blog/the-query-options-api#queryoptions).
+자세한 내용은 [Query Options API](https://tkdodo.eu/blog/the-query-options-api#queryoptions)에서 확인하세요.
 
 :::
 
-### 1. Query Factory 생성 예시
+### Query Factory 생성 예시
 
 ```tsx title="@/entities/post/api/post.queries.ts"
 import { keepPreviousData, queryOptions } from "@tanstack/react-query";
@@ -173,7 +175,7 @@ export const postQueries = {
 };
 ```
 
-### 2. 애플리케이션 코드에서의 Query Factory 사용 예시
+### 애플리케이션 코드에서의 Query Factory 사용 예시
 ```tsx
 import { useParams } from "react-router-dom";
 import { postApi } from "@/entities/post";
@@ -217,16 +219,17 @@ export const PostPage = () => {
 ```
 
 ### Query Factory 사용의 장점
-- **Request 구조화**: 모든 API 요청을 Factory 패턴으로 관리하여 코드의 가독성과 유지보수성을 향상시킵니다.
-- **Query와 Key에 대한 편리한 접근**: 다양한 Query 유형과 해당 Key를 손쉽게 조회할 수 있는 메서드를 제공합니다.
-- **Query Invalidation 용이성**: 애플리케이션의 전반에서 Query Key를 변경할 필요 없이 쉽게 Invalidate할 수 있습니다.
+- **Request 구조화**: 모든 API 호출을 Factory 패턴으로 통합 관리해, 코드 가독성과 유지보수성을 개선합니다.  
+- **Query와 Key에 대한 편리한 접근**: 다양한 Query Type과 해당 Key를 메서드로 제공해, 언제든 간편하게 참조할 수 있습니다.  
+- **Query Invalidation 용이성**: Query Key를 직접 수정하지 않고도 원하는 Query를 손쉽게 무효화할 수 있습니다.  
 
 ## Pagination
 
-이 섹션에서는 Pagination을 활용하여 `getPosts` 함수를 통해 게시물 entity를 가져오는 API 요청을 수행하는 방법을 소개합니다.
+Pagination을 적용해 `getPosts` 함수로 게시물 목록을 가져오는 과정을 설명합니다.
 
-### 1. `getPosts` 함수 생성하기
-getPosts 함수는 `api` segments의 `get-posts.ts` 파일에서 정의됩니다.
+### `getPosts` 함수 생성하기
+
+`src/pages/post-feed/api/get-posts.ts` 파일에 다음과 같이 정의됩니다.
 
 ```tsx title="@/pages/post-feed/api/get-posts.ts"
 import { apiClient } from "@/shared/api/base";
@@ -257,9 +260,9 @@ export const getPosts = async (
 };
 ```
 
-### 2. Pagination을 위한 Query Factory
+### 페이지네이션용 Query Factory 정의
 
-`postQueries` Query Factory는 특정 페이지와 제한에 맞춰 게시물 목록을 요청하는 등, 게시물 관련 다양한 Query Options을 정의합니다.
+페이지 번호(`page`)와 한도(`limit`)를 인자로 받아 게시물 목록을 가져오는 Query를 설정합니다.  
 
 ```tsx
 import { keepPreviousData, queryOptions } from "@tanstack/react-query";
@@ -278,7 +281,10 @@ export const postQueries = {
 ```
 
 
-### 3. 애플리케이션 코드에서의 사용
+### 애플리케이션 코드 사용 예시
+
+페이지네이션된 게시물을 화면에 렌더링하는 방법입니다.  
+`useQuery` 훅으로 `postQueries.list`를 호출하고, `Pagination` 컴포넌트와 연동하세요.
 
 ```tsx title="@/pages/home/ui/index.tsx"
 export const HomePage = () => {
@@ -301,16 +307,20 @@ export const HomePage = () => {
   );
 };
 ```
+
 :::note
-예시는 단순화된 버전이며, 전체 코드는 [GitHub](https://github.com/ruslan4432013/fsd-react-query-example)에서 확인할 수 있습니다.
+
+전체 코드는 [GitHub FSD React Query](https://github.com/ruslan4432013/fsd-react-query-example) 예제에서 확인할 수 있습니다.
+
 :::
 
-## Query 관리를 위한 `QueryProvider`
+## Query 관리를 위한 QueryProvider
 
-이 가이드에서는 `QueryProvider`의 구성 방법을 설명합니다.
+QueryProvider 구성 방법을 안내합니다.
 
-### 1. `QueryProvider` 생성하기
-`QueryProvider`는 `@/app/providers/query-provider.tsx` 경로에 위치합니다.
+### `QueryProvider` 생성하기
+
+`src/app/providers/query-provider.tsx`에 QueryProvider 컴포넌트를 정의합니다.
 
 ```tsx title="@/app/providers/query-provider.tsx"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -332,10 +342,10 @@ export const QueryProvider = ({ client, children }: Props) => {
 };
 ```
 
-### 2. `QueryClient` 생성하기
+### 2. `QueryClient` 생성
 
-`QueryClient`는 API 요청을 관리하는 인스턴스로, Query Caching을 위한 설정과 함께 생성됩니다.
-이 인스턴스는 `@/shared/api/query-client.ts` 파일에 정의됩니다.
+React Query의 캐싱과 기본 옵션을 설정할 `QueryClient` 인스턴스를 만듭니다.  
+아래 코드를 `@/shared/api/query-client.ts`에 정의하세요.
 
 ```tsx title="@/shared/api/query-client.ts"
 import { QueryClient } from "@tanstack/react-query";
@@ -350,20 +360,23 @@ export const queryClient = new QueryClient({
 });
 ```
 
-## 코드 생성
+## 코드 자동 생성
 
-API 코드를 자동으로 생성하는 도구들이 있지만, 이러한 방식은 직접 코드를 작성하는 방법보다 유연성이 부족할 수 있습니다.
-그러나 Swagger 파일이 잘 구성된 경우, 자동 생성 도구를 활용하는 것이 효율적일 수 있으며, 생성된 코드는 `@/shared/api` 디렉토리에 저장하여 체계적으로 관리하는 것이 좋습니다.
+API 코드 자동 생성 도구를 사용하면 반복 작업을 줄일 수 있습니다.  
+다만, 직접 작성하는 방식보다 유연성이 떨어질 수 있습니다.  
+Swagger 파일이 잘 정의되어 있다면 자동 생성 도구를 활용해 코드를 생성하세요.  
+생성된 코드는 `@/shared/api` 디렉토리에 배치해 일관되게 관리합니다.
 
 ## React Query를 조직화하기 위한 추가 조언
 
-### API 클라이언트
+### API Client
 
-shared layer에서 커스텀 API 클라이언트 클래스를 사용하면, 프로젝트 내 API 요청을 보다 일관성 있게 관리할 수 있습니다.
+`shared/api`에 커스텀 APIClient 클래스를 정의하면 다음 기능을 한곳에서 일괄 설정할 수 있습니다:
 
-- 로깅 및 에러 핸들링을 중앙에서 관리 가능
-- 헤더 설정 및 데이터 전송 형식(JSON, XML 등)을 일괄적으로 적용
-- API 변경 사항을 한 곳에서 쉽게 반영하여 유지보수성 향상
+- response, request 로깅 및 에러 처리를 일관되게 적용  
+- 공통 헤더와 인증 설정, 데이터 직렬화 방식을 한곳에서 설정  
+- API endpoint 변경이나 옵션 업데이트를 단일 수정 지점에서 반영  
+
 
 ```tsx title="@/shared/api/api-client.ts"
 import { API_URL } from "@/shared/config";
@@ -429,8 +442,8 @@ export const apiClient = new ApiClient(API_URL);
 
 ## 참고 자료 {#see-also}
 
-- [(GitHub) 샘플 프로젝트](https://github.com/ruslan4432013/fsd-react-query-example)
-- [(CodeSandbox) 샘플 프로젝트](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
-- [Query Options에 대하여](https://tkdodo.eu/blog/the-query-options-api)
+- [(GitHub) 예제 프로젝트](https://github.com/ruslan4432013/fsd-react-query-example)
+- [(CodeSandbox) 예제 프로젝트](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
+- [Query Options 가이드](https://tkdodo.eu/blog/the-query-options-api)
 
 [public-api-for-cross-imports]: /docs/reference/public-api#public-api-for-cross-imports
