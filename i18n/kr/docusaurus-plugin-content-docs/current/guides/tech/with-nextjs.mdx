@@ -47,13 +47,13 @@ FSD의 `pages` layer 이름을 변경해 NextJS `pages` 폴더와 충돌을 방�
 ├── widgets
 ```
 
-폴더 이름을 변경했다면 프로젝트 README나 내부 문서에 반드시 기록해야 합니다.<br/>
+폴더 이름을 변경했다면 프로젝트 README나 내부 문서에 반드시 기록해야 합니다.  
 이 내용을 [프로젝트 지식][project-knowledge]에 포함해 팀원들이 쉽게 확인할 수 있도록 하세요.
 
 ## NextJS에서 `app` layer 구현하기 {#app-absence}
 
-NextJS 13 이전 버전에는 FSD app layer에 대응하는 전용 폴더가 없습니다.<br/>
-대신 pages/_app.tsx가 모든 페이지의 wrapping component로 작동합니다.<br/>
+NextJS 13 이전 버전에는 FSD app layer에 대응하는 전용 폴더가 없습니다.  
+대신 pages/_app.tsx가 모든 페이지의 wrapping component로 작동합니다.  
 이 파일에서 전역 상태 관리(global state management)와 레이아웃 구성(layout)을 담당합니다.
 
 ### `pages/_app.tsx`에 app layer 기능 통합하기
@@ -95,7 +95,7 @@ export { default } from 'app/providers';
 NextJS 13.4부터 `app` 폴더 기반 App Router를 지원합니다.  
 FSD 아키텍처를 App Router와 함께 사용하려면 다음 구조를 적용하세요.
 
-`app` 폴더는 NextJS App Router 전용입니다.<br/>
+`app` 폴더는 NextJS App Router 전용입니다.  
 `src/app`은 FSD의 app layer를 유지합니다.
 필요에 따라 App Router와 Pages Router를 함께 사용할 수 있습니다.
 
@@ -120,7 +120,7 @@ App Router만 사용해도 `Pages Router`와의 호환성을 위해 `root pages`
 
 ## Middleware {#middleware}
 
-NextJS middleware 파일은 반드시 프로젝트 root 폴더(`app` 또는 `pages` 폴더와 동일 수준)에 둬야 합니다.<br/>
+NextJS middleware 파일은 반드시 프로젝트 root 폴더(`app` 또는 `pages` 폴더와 동일 수준)에 둬야 합니다.  
 `src` 아래에 두면 NextJS가 인식하지 않으므로, middleware 파일을 root로 이동하세요.
 
 ## 참고 자료 {#see-also}
