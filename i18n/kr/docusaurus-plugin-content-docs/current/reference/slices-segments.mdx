@@ -6,21 +6,24 @@ pagination_next: reference/public-api
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-# Slice와 Segment
+# Slices and segments
 
 ## Slice
 
-Slice는 Feature-Sliced Design의 두 번째 구성 단위입니다. Slice의 주 목적은 제품, 비즈니스, Application 관점에서 코드를 체계적으로 그룹화하는 것입니다.
+Slice는 Feature-Sliced Design 조직 구조의 **두 번째 계층**입니다.  
+주 목적은 제품, 비즈니스, 또는 단순히 애플리케이션 관점에서 **관련 있는 코드를 하나로 묶는 것**입니다.
 
-Slice 이름은 표준화되어 있지 않고 Application의 비즈니스 도메인에 따라 결정됩니다. 예시:
+Slice의 이름은 표준화되어 있지 않고, 애플리케이션의 비즈니스 도메인에 따라 결정됩니다. 예를 들어:
 - 사진 갤러리: `photo`, `effects`, `gallery-page`
 - 소셜 네트워크: `post`, `comments`, `news-feed`
 
-Shared와 App Layer는 Slice를 포함하지 않습니다. Shared는 Business Logic을 포함하지 않고, App은 Application 전체 관련 코드만 다루기 때문입니다.
+`Shared`와 `App` Layer는 Slice를 포함하지 않습니다.  
+Shared는 비즈니스 로직이 전혀 없어 제품 관점에서 의미가 없고, App은 애플리케이션 전체를 다루기 때문에 별도로 나눌 필요가 없습니다.
 
-### Zero 결합도과 High 응집도 {#zero-coupling-high-cohesion}
+### Zero 결합도와 높은 응집도 {#zero-coupling-high-cohesion}
 
-Slice는 독립적이고 응집도 높은 코드 그룹이어야 합니다. 아래 그래픽은 _응집도_과 _결합도_ 개념을 시각화합니다:
+Slice는 **다른 Slice와 독립적**이며, **자신의 핵심 목적과 관련된 대부분의 코드**를 포함해야 합니다.  
+아래 그림은 **응집도(cohesion)** 와 **결합도(coupling)** 개념을 시각적으로 설명합니다.
 
 <figure>
     <img src={useBaseUrl("/img/coupling-cohesion-light.svg#light-mode-only")} alt="" />
@@ -30,33 +33,32 @@ Slice는 독립적이고 응집도 높은 코드 그룹이어야 합니다. 아�
     </figcaption>
 </figure>
 
-이상적인 Slice 특징:
-    1. 독립적 — 같은 Layer의 다른 Slice와 Zero 결합도
-    2. 높은 응집도 — 핵심 목적 관련 코드를 포함
+Slice의 독립성은 [Layer Import Rule][layers--import-rule]로 보장됩니다.
 
-Slice의 독립성은 [Layer Import Rule][layers--import-rule]로 강제됩니다:
+> _Slice 내부의 모듈(파일)은 자신보다 아래 계층(Layer)에 있는 Slice만 import할 수 있습니다._
 
-> _Slice의 모듈은 하위 Layer의 다른 Slice만 Import 가능_
+### Slice의 Public API 규칙
 
-### Slice의 Public API Rule
+Slice 내부 구조는 **팀이 원하는 방식대로 자유롭게** 구성할 수 있습니다.  
+단, 다른 Slice가 사용할 수 있도록 **명확한 Public API**를 반드시 제공해야 합니다.  
+이 규칙은 **Slice Public API Rule**로 강제됩니다.
 
-Slice 내부 구조는 자유롭지만, 다른 Slice가 사용할 좋은 Public API를 제공해야 합니다. 이는 **Slice Public API Rule**로 강제됩니다:
+> _모든 Slice(또는 Slice가 없는 Layer의 Segment)는 Public API를 정의해야 합니다._  
+> _외부 모듈은 Slice/Segment의 내부 구조가 아니라 Public API를 통해서만 접근할 수 있습니다._
 
-> _모든 Slice(와 Slice가 없는 Layer의 Segment)는 Public API를 정의해야 합니다._
->
-> _외부 모듈은 Slice/Segment의 내부 구조가 아닌 Public API만 참조 가능_
-
-자세한 내용은 [Public API Reference][ref-public-api]를 참고하세요.
+Public API의 목적과 작성 방법은 [Public API Reference][ref-public-api]에서 자세히 설명합니다.
 
 ### Slice Group
 
-연관된 Slice들은 폴더로 그룹화할 수 있습니다. 단, 다른 Slice와 동일한 격리 규칙을 따라야 하며, 그룹 내 **코드 공유는 불가능**합니다.
+연관성이 높은 Slice는 폴더로 묶어서 관리할 수 있습니다.  
+단, 다른 Slice와 동일하게 **격리 규칙**을 적용해야 하며, 그룹 내부에서도 **코드 공유는 불가능**합니다.
 
 ![Features "compose", "like" 그리고 "delete"가 "post" 폴더에 그룹화되어 있습니다. 해당 폴더에는 허용되지 않음을 나타내기 위해 취소선이 그어진 "some-shared-code.ts" 파일도 있습니다.](/img/graphic-nested-slices.svg)
 
 ## Segment
 
-Segment는 마지막 구성 단위로, 기술적 특성에 따라 코드를 그룹화합니다.
+Segment는 FSD 구조에서 **세 번째이자 마지막 계층**이며,  
+코드를 **기술적 성격**에 따라 그룹화합니다.
 
 표준 Segment:
 
@@ -66,11 +68,13 @@ Segment는 마지막 구성 단위로, 기술적 특성에 따라 코드를 그�
 - `lib` — Slice 내부 Library 코드
 - `config` — Configuration과 Feature Flag
 
-각 Layer의 Segment 사용법은 [Layer Page][layers--layer-definitions]를 참조하세요.
+각 Layer에서 Segment를 어떻게 활용하는지는 [Layer 페이지][layers--layer-definitions]를 참고하세요.
 
-Custom Segment도 생성 가능하며, App과 Shared Layer에서 주로 사용됩니다.
+또한 **커스텀 Segment**를 만들 수 있습니다.  
+특히 `App` Layer와 `Shared` Layer는 Slice가 없기 때문에, 커스텀 Segment가 자주 사용됩니다.
 
-Segment 이름은 코드 목적을 명확히 해야 합니다. `components`, `hooks`, `types`같은 모호한 이름은 피하세요.
+Segment 이름은 **내용의 본질(components/hooks/types)** 이 아니라 **목적**을 설명해야 합니다.  
+예를 들어 `components`, `hooks`, `types` 같은 이름은 찾을 때 도움이 되지 않으므로 피하세요.
 
 [layers--layer-definitions]: /docs/reference/layers#layer-definitions
 [layers--import-rule]: /docs/reference/layers#import-rule-on-layers
