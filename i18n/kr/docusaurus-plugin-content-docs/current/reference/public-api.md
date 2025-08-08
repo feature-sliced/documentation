@@ -134,7 +134,7 @@ export { loadUserStatistics } from "./api/loadUserStatistics";
 여기서 `Button` 하나만 사용해도 `carousel`이나 `accordion` 같은 무거운 의존성이 번들에 포함될 수 있습니다.  
 특히 Syntax Highlighter, Drag-and-Drop 라이브러리처럼 용량이 큰 의존성은 영향을 크게 줍니다.
 
-### 해결 방법
+#### 해결 방법
 
 - 각 컴포넌트/라이브러리별로 별도 Index 파일 생성
 
