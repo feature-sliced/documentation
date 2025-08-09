@@ -1,0 +1,49 @@
+name: Build Preview Deployment
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    name: Publish to Cloudflare Pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - run: |
+          npm install -g corepack@latest
+          corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: .
+
+      - name: Retrieve Docusaurus build cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache/rspack
+          key: docusaurus-${{ github.ref_name }}
+          restore-keys: |
+            docusaurus-${{ github.ref_name }}
+            docusaurus-master
+
+      - name: Build static
+        run: pnpm build
+        working-directory: .
+
+      # Uploads the build directory as a workflow artifact
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-build
+          path: build
