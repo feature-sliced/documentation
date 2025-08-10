@@ -54,27 +54,27 @@ export { Example as default, metadata } from '@/pages/example';
 
 ### Route Handlers
 Предлагается использовать новый сегмент `api-routes` в слое `app` для работы c Route Handlers.
-Однако, не стоит злоупотреблять их применением ввиду сложности поддержки кода и нарушением принципов разделения ответственности.
+Однако, не стоит злоупотреблять их применением ввиду сложности поддержки кода и нарушения принципов разделения ответственности.
 
 ```tsx title="src/app/api-routes/get-example-data.ts"
-    import { getExamplesList } from '@/shared/db';
+import { getExamplesList } from '@/shared/db';
 
-    export const getExampleData = () => {
-        try {
-            const examplesList = getExamplesList();
+export const getExampleData = () => {
+    try {
+        const examplesList = getExamplesList();
 
-            return Response.json({ examplesList });
-        } catch {
-            return Response.json(null, {
-                status: 500,
-                statusText: 'Ouch, something went wrong',
-            });
-        }
-    };
+        return Response.json({ examplesList });
+    } catch {
+        return Response.json(null, {
+            status: 500,
+            statusText: 'Ouch, something went wrong',
+        });
+    }
+};
 ```
 
 ```tsx title="app/api/example/route.ts"
-export { getExampleData as GET } from '@/app';
+export { getExampleData as GET } from '@/app/api-routes';
 ```
 
 ### Дополнительные рекомендации
@@ -113,7 +113,7 @@ export { getExampleData as GET } from '@/app';
 ### Ре-экспорт функциональности в `pages/_app.tsx` из публичного API `src/app/index.ts`
 
 ```tsx title="pages/_app.tsx"
-export { App as default } from '@/app';
+export { App as default } from '@/app/custom-app';
 ```
 
 Пример ре-экспорта страницы из `src/pages/example` в `pages/example/index.tsx`
@@ -126,7 +126,33 @@ export { Example as default } from '@/pages/example';
 Предлагается использовать новый сегмент `api-routes` в слое `app` для работы c API Routes.
 
 ```tsx title="app/api/example.ts"
-export { handler as default, config } from '@/app';
+import { getExampleData } from '@/app/api-routes';
+
+export const config = getExampleData.config;
+export default getExampleData.handler;
+```
+
+```tsx title="src/app/api-routes/get-example-data.ts"
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '1mb',
+        },
+    },
+    maxDuration: 5,
+};
+
+const handler = (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
+    res.status(200).json({ message: 'Hello from FSD' });
+};
+
+export const getExampleData = { config, handler } as const;
+```
+
+```tsx title="src/app/api-routes/index.ts"
+export { getExampleData } from './get-example-data';
 ```
 
 ## См. также

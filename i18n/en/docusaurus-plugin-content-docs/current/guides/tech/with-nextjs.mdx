@@ -54,27 +54,29 @@ The `instrumentation.ts|js` file allows you to monitor the performance and behav
 
 ### Route Handlers
 It is suggested to use a new `api-routes` segment in the `app` layer to work with Route Handlers.
-However, you should avoid overusing them due to code maintenance complexity and violation of separation of concerns principles.
+
+Be mindful when writing backend code in the FSD structure — FSD is primarily intended for frontends, meaning that's what people will expect to find.
+If you need a lot of endpoints, consider separating them into a different package in a monorepo.
 
 ```tsx title="src/app/api-routes/get-example-data.ts"
-    import { getExamplesList } from '@/shared/db';
+import { getExamplesList } from '@/shared/db';
 
-    export const getExampleData = () => {
-        try {
-            const examplesList = getExamplesList();
+export const getExampleData = () => {
+    try {
+        const examplesList = getExamplesList();
 
-            return Response.json({ examplesList });
-        } catch {
-            return Response.json(null, {
-                status: 500,
-                statusText: 'Ouch, something went wrong',
-            });
-        }
-    };
+        return Response.json({ examplesList });
+    } catch {
+        return Response.json(null, {
+            status: 500,
+            statusText: 'Ouch, something went wrong',
+        });
+    }
+};
 ```
 
 ```tsx title="app/api/example/route.ts"
-export { getExampleData as GET } from '@/app';
+export { getExampleData as GET } from '@/app/api-routes';
 ```
 
 ### Additional recommendations
@@ -110,6 +112,12 @@ The structure inside `src` where the layer folders are located remains unchanged
     └── shared
 ```
 
+Example of re-exporting a page from `src/pages/example` to `pages/example/index.tsx`:
+
+```tsx title="pages/example/index.tsx"
+export { Example as default } from '@/pages/example';
+```
+
 ### Custom `_app` component
 
 You can place your Custom App component in `src/app/_app` or `src/app/custom-app`
@@ -128,20 +136,40 @@ export const MyApp = ({ Component, pageProps }: AppProps) => {
 ```
 
 ```tsx title="pages/_app.tsx"
-export { App as default } from '@/app';
-```
-
-Example of re-exporting a page from `src/pages/example` to `pages/example/index.tsx`:
-
-```tsx title="pages/example/index.tsx"
-export { Example as default } from '@/pages/example';
+export { App as default } from '@/app/custom-app';
 ```
 
 ### API Routes
 It is suggested to use a new `api-routes` segment in the `app` layer to work with API Routes.
 
 ```tsx title="app/api/example.ts"
-export { handler as default, config } from '@/app';
+import { getExampleData } from '@/app/api-routes';
+
+export const config = getExampleData.config;
+export default getExampleData.handler;
+```
+
+```tsx title="src/app/api-routes/get-example-data.ts"
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '1mb',
+        },
+    },
+    maxDuration: 5,
+};
+
+const handler = (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
+    res.status(200).json({ message: 'Hello from FSD' });
+};
+
+export const getExampleData = { config, handler } as const;
+```
+
+```tsx title="src/app/api-routes/index.ts"
+export { getExampleData } from './get-example-data';
 ```
 
 ## See also
