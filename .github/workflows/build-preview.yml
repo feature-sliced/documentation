@@ -39,7 +39,8 @@ jobs:
 
       - name: Build static
         run: pnpm build
-        working-directory: .
+        env:
+          BASE_URL: /
 
       # Uploads the build directory as a workflow artifact
       - name: Upload build artifact
