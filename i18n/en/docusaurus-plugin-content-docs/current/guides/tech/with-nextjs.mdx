@@ -14,6 +14,7 @@ The approach is to move the Next.js `app` folder to the project root and import 
 This preserves the FSD project structure inside the `src` folder, where layer folders should be placed.
 
 You should also add a `pages` folder to the project root because App Router is compatible with Pages Router.
+If you don't do this, Next.js will try to use `src/pages` as the Pages Router, which will break the build.
 The best way is to put `README.md` files inside the root `pages` folder describing why it is necessary but empty.
 
 ```sh
