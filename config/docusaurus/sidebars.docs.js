@@ -32,8 +32,10 @@ const getSidebar = (category) => [
 ];
 
 module.exports = {
-    getstartedSidebar: getSidebar("get-started"),
-    guidesSidebar: getSidebar("guides"),
-    referenceSidebar: getSidebar("reference"),
-    aboutSidebar: getSidebar("about"),
+    docsSidebar: [
+        ...getSidebar("get-started"),
+        ...getSidebar("guides"),
+        ...getSidebar("reference"),
+        ...getSidebar("about"),
+    ],
 };
