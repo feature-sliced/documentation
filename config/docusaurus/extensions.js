@@ -107,6 +107,16 @@ const plugins = [
             steps: 2, // the max number of images generated between min and max (inclusive)
         },
     ],
+    [
+        "@signalwire/docusaurus-plugin-llms-txt",
+        {
+            content: {
+                includeDocs: true,
+                includePages: true,
+                enableLlmsFullTxt: true,
+            },
+        },
+    ],
     "plugin-image-zoom",
     // FIXME: Docusaurus Open Graph Plugin Experimental.
     process.env.OG_EXP && DOCUSAURUS_PLUGIN_OG,
