@@ -45,6 +45,7 @@ const footer = {
                     label: "License",
                     href: `${GITHUB_DOCS}/blob/master/LICENSE`,
                 },
+                { label: "Docs for LLMs", to: "/docs/llms" },
             ],
         },
     ],
