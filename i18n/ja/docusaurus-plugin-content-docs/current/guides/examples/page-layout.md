@@ -29,7 +29,7 @@ export function Layout({ siblingPages, headings }) {
         <nav>
           <ul>
             <li> <Link to="/">ホーム</Link> </li>
-            <li> <Link to="/docs">ドキュメント</Link> </li>
+            <li> <Link to="/docs/get-started/overview">ドキュメント</Link> </li>
             <li> <Link to="/blog">ブログ</Link> </li>
           </ul>
         </nav>

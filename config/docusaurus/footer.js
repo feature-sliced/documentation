@@ -15,7 +15,7 @@ const footer = {
         {
             title: "Specs",
             items: [
-                { label: "Documentation", to: "/docs" },
+                { label: "Documentation", to: "/docs/get-started/overview" },
                 { label: "Community", to: "/community" },
                 { label: "Help", to: "/nav" },
                 { label: "Discussions", href: `${GITHUB_DOCS}/discussions` },
