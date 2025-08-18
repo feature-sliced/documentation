@@ -1,0 +1,150 @@
+# Handling API Requests
+
+## Shared API Requests[​](#shared-api-requests "해당 헤딩으로 이동")
+
+Shared API request 로직은 `shared/api` 폴더에 두세요.<br /><!-- -->이렇게 하면 애플리케이션 전체에서 손쉽게 재사용할 수 있고, 빠른 프로토타이핑이 가능합니다. 대부분의 프로젝트에서는 이 폴더 구조와 client.ts 설정만으로 충분합니다.
+
+일반적인 파일 구조 예시:
+
+* 📂 shared
+
+  <!-- -->
+
+  * 📂 api
+
+    <!-- -->
+
+    * 📄 client.ts
+    * 📄 index.ts
+    * 📂 endpoints
+      <!-- -->
+      * 📄 login.ts
+
+`client.ts` 파일은 HTTP request 관련 설정을 **한 곳에서** 관리합니다.<br />`fetch()` 또는 `axios` instance에 공통 설정을 적용하여 다음을 처리합니다:
+
+* 백엔드 기본 URL
+* Default headers (예: 인증 header)
+* 데이터 직렬화
+
+아래 예시를 참고하세요.
+
+* Axios
+* Fetch
+
+shared/api/client.ts
+
+```
+// Axios 예시
+import axios from 'axios';
+
+export const client = axios.create({
+  baseURL: 'https://your-api-domain.com/api/',
+  timeout: 5000,
+  headers: { 'X-Custom-Header': 'my-custom-value' }
+});
+```
+
+shared/api/client.ts
+
+```
+export const client = {
+  async post(endpoint: string, body: any, options?: RequestInit) {
+    const response = await fetch(`https://your-api-domain.com/api${endpoint}`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Custom-Header': 'my-custom-value',
+        ...options?.headers,
+      },
+    });
+    return response.json();
+  }
+  // ... other methods like put, delete, etc.
+};
+```
+
+`shared/api/endpoints` 폴더에 endpoint별 request 함수를 정리하세요.
+
+note
+
+예시의 가독성을 위해 form handling과 검증(Zod·Valibot 등)은 생략했습니다. 자세한 내용은 [Type Validation and Schemas](/documentation/kr/docs/guides/examples/types.md#type-validation-schemas-and-zod)에서 확인하세요.
+
+shared/api/endpoints/login.ts
+
+```
+import { client } from '../client';
+
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+
+`shared/api/index.ts`에서 request 함수와 타입을 내보내세요:
+
+shared/api/index.ts
+
+```
+export { client } from './client'; // If you want to export the client itself
+export { login } from './endpoints/login';
+export type { LoginCredentials } from './endpoints/login';
+```
+
+## Slice-specific API Requests[​](#slice-specific-api-requests "해당 헤딩으로 이동")
+
+특정 페이지나 feature에서만 쓰이는 request는 해당 slice의 api 폴더에 두어 정리하세요. 이렇게 하면 slice별 로직이 깔끔하게 분리됩니다.
+
+* 📂 pages
+
+  <!-- -->
+
+  * 📂 login
+
+    <!-- -->
+
+    * 📄 index.ts
+    * 📂 api
+      <!-- -->
+      * 📄 login.ts
+    * 📂 ui
+      <!-- -->
+      * 📄 LoginPage.tsx
+
+pages/login/api/login.ts
+
+```
+import { client } from 'shared/api';
+
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+
+이 함수는 재사용 가능성이 낮으므로, slice의 public API로 내보낼 필요가 없습니다.
+
+note
+
+entities layer에 API request와 response 타입을 배치하지 마세요. 백엔드 response 타입과 프론트엔드 `entities` 타입이 다를 수 있습니다. `shared/api`나 slice의 `api` 폴더에서 데이터를 변환하고, entities는 프론트엔드 관점에 집중하도록 설계하세요.
+
+## API 타입과 클라이언트 자동 생성[​](#api-타입과-클라이언트-자동-생성 "해당 헤딩으로 이동")
+
+백엔드에 OpenAPI 스펙이 있다면 [orval](https://orval.dev/)이나 [openapi-typescript](https://openapi-ts.dev/) 같은 도구로 API 타입과 request 함수를 생성할 수 있습니다. 생성된 코드는 `shared/api/openapi` 등에 두고 `README.md`에 생성 방법과 타입 설명을 문서화하세요.
+
+## 서버 상태 라이브러리 연동[​](#서버-상태-라이브러리-연동 "해당 헤딩으로 이동")
+
+[TanStack Query (React Query)](https://tanstack.com/query/latest)나 [Pinia Colada](https://pinia-colada.esm.dev/) 같은 서버 상태 관리 라이브러리를 사용할 때는 slice 간 타입이나 cache key를 공유해야 할 수 있습니다. 이럴 때는 `shared` layer에 다음을 배치하세요.
+
+* API 데이터 타입 (API data types)
+* 캐시 키 (cache keys)
+* 공통 query/mutation 옵션 (common query/mutation options)

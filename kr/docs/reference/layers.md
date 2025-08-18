@@ -1,0 +1,176 @@
+# Layer
+
+Layer는 Feature-Sliced Design에서 **코드를 구분하는 가장 큰 범위**입니다.<br /><!-- -->코드를 나눌 때는 각 부분이 **어떤 기능을 담당하는지**와 **다른 코드에 얼마나 의존하는지**를 기준으로 합니다.<br /><!-- -->Layer마다 **어떤 역할을 맡는지**에 대한 공통된 의미가 있습니다.
+
+총 **7개의 Layer**가 있으며, **담당 기능과 의존성이 많은 것**부터 **적은 것** 순으로 나열합니다.
+
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/kr/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/kr/img/layers/folders-graphic-dark.svg#dark-mode-only)
+
+1. App
+2. Processes (deprecated)
+3. Pages
+4. Widgets
+5. Features
+6. Entities
+7. Shared
+
+> 모든 Layer를 꼭 써야 하는 건 아닙니다. **필요할 때만** 추가하세요.<br /><!-- -->대부분의 프론트엔드 프로젝트는 최소한 `shared`, `page`, `app`은 포함합니다.
+
+실무에서는 폴더명을 소문자로 작성합니다(예: `📁 shared`, `📁 page`, `📁 app`).<br />**새로운 Layer를 만드는 것은 권장하지 않습니다**(역할이 이미 표준화되어 있음).
+
+## Import 규칙[​](#import-규칙 "해당 헤딩으로 이동")
+
+Layer는 **Slice(서로 밀접하게 연관된 모듈 묶음)** 로 구성됩니다.<br /><!-- -->Slice 간 연결은 **Layer Import 규칙**으로 제한합니다.
+
+> **규칙**: Slice 안의 코드는 **자신보다 아래 Layer**의 *다른 Slice*만 Import할 수 있습니다.
+
+예: `📁 ~/features/aaa/api/request.ts`는
+
+* 같은 Layer의 `📁 ~/features/bbb` → **불가능**
+* 더 아래 Layer(`📁 ~/entities`, `📁 ~/shared`) → **가능**
+* 같은 Slice(`📁 ~/features/aaa/lib/cache.ts`) → **가능**
+
+`app`과 `shared`는 **예외**입니다.<br /><!-- -->두 Layer는 **Layer이면서 동시에 하나의 큰 Slice처럼 동작**하고, 내부는 **Segment**로 나눕니다.<br /><!-- -->이 경우 Segment끼리 자유롭게 Import할 수 있습니다.<br /><!-- -->(`shared`는 비즈니스 도메인이 없고, `app`은 모든 도메인을 묶는 역할을 합니다.)
+
+## Layer별 역할[​](#layer별-역할 "해당 헤딩으로 이동")
+
+각 Layer가 어떤 의미를 가지며, 어떤 코드를 포함하는지 정리했습니다.
+
+### Shared[​](#shared "해당 헤딩으로 이동")
+
+앱의 **기본 구성 요소**를 모아둡니다.<br /><!-- -->백엔드, 서드파티 라이브러리, 실행 환경과의 연결, 그리고 **높은 응집도의 내부 라이브러리**를 포함합니다.
+
+* `app`과 마찬가지로 **Slice 없이 Segment로만 구성**합니다.
+* 비즈니스 도메인이 없으므로 **Shared 안의 파일끼리는 자유롭게 Import**할 수 있습니다.
+
+Segment 예시
+
+* `📁 api` — API 클라이언트와 백엔드 요청 함수
+
+* `📁 ui` — 공통 UI 컴포넌트
+
+  <!-- -->
+
+  * **비즈니스 로직 제외**, **브랜드 테마 적용 가능**
+  * 로고, 레이아웃, 자동완성/검색창 등 UI 로직 포함 가능
+  * 자동완성/검색창 등 **UI 로직 컴포넌트**도 가능
+
+* `📁 lib` — 내부 라이브러리
+
+  <!-- -->
+
+  * 단순 `utils/helpers` 모음이 아님 ([이 글 참고](https://dev.to/sergeysova/why-utils-helpers-is-a-dump-45fo))
+  * 하나의 주제(날짜, 색상, 텍스트 등)에 집중
+  * README로 역할과 범위를 문서화
+
+* `📁 config` — 환경변수, 전역 Feature Flag
+
+* `📁 routes` — 라우트 상수/패턴
+
+* `📁 i18n` — 번역 설정, 전역 문자열
+
+> Segment 이름은 **무엇을 하는 폴더인지** 드러나야 합니다.<br />`components`, `hooks`, `types`처럼 역할이 불명확한 이름은 피하세요.
+
+### Entities[​](#entities "해당 헤딩으로 이동")
+
+프로젝트에서 다루는 **핵심 데이터 개념**을 나타냅니다.<br /><!-- -->비즈니스 용어(예: `User`, `Post`, `Product`)와 일치하는 경우가 많습니다.
+
+Entity Slice에는 다음을 포함할 수 있습니다:
+
+구성
+
+* `📁 model` — 데이터 상태와 검증 스키마
+
+* `📁 api` — 해당 Entity의 API 요청
+
+* `📁 ui` — Entity의 시각적 표현
+
+  <!-- -->
+
+  * 완전한 UI 블록이 아니어도 됨
+  * 여러 페이지에서 재사용 가능하게 설계
+  * 비즈니스 로직은 props/slot으로 연결 권장
+
+#### Entity 간 관계[​](#entity-간-관계 "해당 헤딩으로 이동")
+
+원칙적으로 Slice끼리는 서로 모르면 좋습니다.<br /><!-- -->하지만 현실적으로 **다른 Entity를 포함**하거나 **상호작용**하는 경우가 있습니다.<br /><!-- -->이때는 로직을 **상위 Layer(Feature/Page)** 로 올려 처리하세요.
+
+만약 한 Entity 데이터에 다른 Entity가 포함된다면,<br />`@x` 표기를 사용해 **교차 Public API**로 연결을 명시적으로 드러내세요.
+
+entities/artist/model/artist.ts
+
+```
+import type { Song } from "entities/song/@x/artist";
+
+export interface Artist {
+  name: string;
+  songs: Array<Song>;
+}
+```
+
+자세한 내용은 [Cross-Import를 위한 Public API](/documentation/kr/docs/reference/public-api.md#public-api-for-cross-imports)를 참고하세요.
+
+### Feature[​](#feature "해당 헤딩으로 이동")
+
+사용자가 앱에서 수행하는 주요 기능을 담습니다. 보통 특정 Entity와 연결됩니다.
+
+* 모든 기능을 Feature로 만들 필요는 없습니다. 여러 페이지에서 재사용되는 경우에만 고려하세요.
+* 예: 여러 에디터에서 같은 댓글 기능을 쓴다면, comments를 Feature로 만듭니다.
+* Feature가 너무 많으면 중요한 기능을 찾기 어려워집니다.
+
+구성
+
+* 📁 ui — 상호작용 UI(예: 폼)
+* 📁 api — 기능 관련 API 요청
+* 📁 model — 검증, 내부 상태
+* 📁 config — Feature Flag
+
+> 새로운 팀원이 들어왔을 때 Page와 Feature만 봐도 앱 기능 구조를 파악할 수 있도록 구성하세요.
+
+### Widget[​](#widget "해당 헤딩으로 이동")
+
+독립적으로 동작하는 큰 UI 블록입니다.<br /><!-- -->여러 페이지에서 재사용되거나, 한 페이지에 큰 블록이 여럿 있을 때 유용합니다.
+
+tip
+
+* 재사용되지 않고 특정 페이지의 핵심 콘텐츠라면 Widget으로 분리하지 말고 Page 안에 두세요.
+* Nested Routing(예: [Remix](https://remix.run)) 환경에서는 Widget이 **Page와 유사한 방식**으로 동작합니다.
+  <br />
+  <!-- -->
+  예를 들어, 데이터 로딩, 로딩 상태 표시, 에러 처리 등을 포함해 **하나의 라우터 단위 블록**을 구성할 수 있습니다.
+
+### Page[​](#page "해당 헤딩으로 이동")
+
+웹/앱의 **화면(screen) 또는 액티비티(activity)** 에 해당합니다. 대부분 페이지 1개 = Slice 1개이지만, 유사한 페이지는 하나의 Slice로 묶을 수 있습니다.
+
+* 코드 찾기만 쉽다면 Page Slice 크기 제한은 없습니다.
+* 재사용되지 않는 UI는 Page 안에 둡니다.
+* 보통 전용 모델은 없고, 간단한 상태만 컴포넌트 내부에서 관리합니다.
+
+구성 예
+
+* 📁 ui — UI, 로딩 상태, 에러 처리
+* 📁 api — 데이터 패칭/변경 요청
+
+### Process[​](#process "해당 헤딩으로 이동")
+
+caution
+
+Deprecated — 기존 코드는 feature나 app으로 옮기세요.
+
+과거에는 여러 페이지를 넘나드는 기능을 위한 탈출구 역할이었지만, 정의가 모호해 대부분의 앱에서는 사용하지 않습니다.<br /><!-- -->라우터, 서버 레벨 로직은 App Layer에 두고, App이 너무 커질 때만 제한적으로 고려하세요.
+
+### App[​](#app "해당 헤딩으로 이동")
+
+앱 전역에서 동작하는 **환경 설정**과 **공용 로직**을 관리하는 Layer입니다.<br /><!-- -->예를 들어, 라우터 설정, 전역 상태 관리, 글로벌 스타일, 진입점 설정 등 **앱 전체에 영향을 주는 코드**를 둡니다.
+
+* shared처럼 Slice 없이 Segment로 구성합니다.
+
+* 대표 Segment:
+
+  <!-- -->
+
+  * `📁 routes` — Router 설정
+  * `📁 store` — Global State Store 설정
+  * `📁 styles` — Global Style
+  * `📁 entrypoint` — Application Entry Point와 Framework 설정

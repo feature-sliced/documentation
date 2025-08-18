@@ -1,0 +1,66 @@
+# Feature-Sliced Design
+
+
+## documentation
+
+- [Namunalar](/examples.md): FSD yordamida yaratilgan veb-saytlar ro'yxati
+- [🧭 Navigatsiya](/nav.md): Feature-Sliced Design Navigation help page
+- [Search the documentation](/search.md)
+- [Feature-Sliced Design versiyalari](/versions.md): Feature-Sliced Design Versions page listing all documented site versions
+- [💫 Community](/community.md): Community resources, additional materials
+- [Team](/community/team.md): Core-team
+- [Hujjatlar](/docs.md): feature-sliced-banner
+- [🍰 About](/docs/about.md): BACKGROUND-ORIENTED
+- [Alternatives](/docs/about/alternatives.md): History of architecture approaches
+- [Mission](/docs/about/mission.md): Here we describe the goals and limitations of the applicability of the methodology-which we are guided by when developing the methodology
+- [Motivation](/docs/about/motivation.md): The main idea of Feature-Sliced Design is to facilitate and reduce the cost of developing complex and developing projects, based on combining research results, discussing the experience of various kinds of a wide range of developers.
+- [Promote in company](/docs/about/promote/for-company.md): Do the project and the company need a methodology?
+- [Promote in team](/docs/about/promote/for-team.md): - Onboard newcomers
+- [Integration aspects](/docs/about/promote/integration.md): Summary
+- [Partial Application](/docs/about/promote/partial-application.md): How to partially apply the methodology? Does it make sense? What if I ignore it?
+- [Abstractions](/docs/about/understanding/abstractions.md): The law of leaky abstractions
+- [About architecture](/docs/about/understanding/architecture.md): Problems
+- [Knowledge types in the project](/docs/about/understanding/knowledge-types.md): The following "types of knowledge" can be distinguished in any project:
+- [Naming](/docs/about/understanding/naming.md): Different developers have different experiences and contexts, which can lead to misunderstandings on the team when the same entities are called differently. For example:
+- [Needs driven](/docs/about/understanding/needs-driven.md): — Can't you formulate the goal that the new feature will solve? Or maybe the problem is that the task itself is not formulated? **The point is also that the methodology helps to pull out the problematic definition of tasks and goals**
+- [Signals of architecture](/docs/about/understanding/signals.md): If there is a limitation on the part of the architecture, then there are obvious reasons for this, and consequences if they are ignored
+- [Brending bo'yicha tavsiyalar](/docs/branding.md): FSD ning vizual identifikatsiyasi uning asosiy tushunchalariga asoslanadi: Layered, Sliced self-contained parts, Parts & Compose, Segmented.
+- [🚀 Get Started](/docs/get-started.md): Welcome! This section helps you to get acquainted with the application of Feature-Sliced Design and the basics of the methodology. You will also understand the key advantages of the methodology and the reasons for its creation.
+- [Decomposition cheatsheet](/docs/get-started/cheatsheet.md): Use this as a quick reference when you're deciding how to decompose your UI. PDF versions are also available below, so you can print it out and keep one under your pillow.
+- [FAQ](/docs/get-started/faq.md): You can ask your question in our Telegram chat, Discord community, and GitHub Discussions.
+- [Qisqacha](/docs/get-started/overview.md): Feature-Sliced Design (FSD) bu front-end ilovalarining tuzilishini shakllantirish uchun arxitektura metodologiyasi. Oddiy qilib aytganda, bu kodni tartibga solish uchun qoidalar va konvensiyalar to'plami. Bu metodologiyaning asosiy maqsadi - loyihani yanada tushunarli va o'zgaruvchan biznes talablariga moslashuvchan qilishdir.
+- [Tutorial](/docs/get-started/tutorial.md): Part 1. On paper
+- [🎯 Guides](/docs/guides.md): PRACTICE-ORIENTED
+- [Examples](/docs/guides/examples.md): Small practical examples of the methodology application
+- [Handling API Requests](/docs/guides/examples/api-requests.md): handling-api-requests}
+- [Authentication](/docs/guides/examples/auth.md): Broadly, authentication consists of the following steps:
+- [Autocomplete](/docs/guides/examples/autocompleted.md): About decomposition by layers
+- [Browser API](/docs/guides/examples/browser-api.md): About working with the Browser API: localStorage, audio Api, bluetooth API, etc.
+- [CMS](/docs/guides/examples/cms.md): Features may be different
+- [Feedback](/docs/guides/examples/feedback.md): Errors, Alerts, Notifications, ...
+- [i18n](/docs/guides/examples/i18n.md): Where to place it? How to work with this?
+- [Metric](/docs/guides/examples/metric.md): About ways to initialize metrics in the application
+- [Monorepositories](/docs/guides/examples/monorepo.md): About applicability for mono repositories, about bff, about microapps
+- [Page layouts](/docs/guides/examples/page-layout.md): This guide examines the abstraction of a page layout — when several pages share the same overall structure, and differ only in the main content.
+- [Desktop/Touch platforms](/docs/guides/examples/platforms.md): About the application of the methodology for desktop/touch
+- [SSR](/docs/guides/examples/ssr.md): About the implementation of SSR using the methodology
+- [Theme](/docs/guides/examples/theme.md): Where should I put my work with the theme and palette?
+- [Types](/docs/guides/examples/types.md): This guide concerns data types from typed languages like TypeScript and describes where they fit within FSD.
+- [White Labels](/docs/guides/examples/white-labels.md): Figma, brand uikit, templates, adaptability to brands
+- [Cross-imports](/docs/guides/issues/cross-imports.md): Cross-imports appear when the layer or abstraction begins to take too much responsibility than it should. That is why the methodology identifies new layers that allow you to uncouple these cross-imports
+- [Desegemented](/docs/guides/issues/desegmented.md): Situation
+- [Routing](/docs/guides/issues/routes.md): Situation
+- [Migration from a custom architecture](/docs/guides/migration/from-custom.md): This guide describes an approach that might be helpful when migrating from a custom self-made architecture to Feature-Sliced Design.
+- [Migration from v1 to v2](/docs/guides/migration/from-v1.md): Why v2?
+- [Migration from v2.0 to v2.1](/docs/guides/migration/from-v2-0.md): The main change in v2.1 is the new mental model for decomposing an interface — pages first.
+- [Usage with Electron](/docs/guides/tech/with-electron.md): Electron applications have a special architecture consisting of multiple processes with different responsibilities. Applying FSD in such a context requires adapting the structure to the Electron specifics.
+- [Usage with Next.js](/docs/guides/tech/with-nextjs.md): FSD is compatible with Next.js in both the App Router version and the Pages Router version if you solve the main conflict — the app and pages folders.
+- [Usage with NuxtJS](/docs/guides/tech/with-nuxtjs.md): It is possible to implement FSD in a NuxtJS project, but conflicts arise due to the differences between NuxtJS project structure requirements and FSD principles:
+- [Usage with React Query](/docs/guides/tech/with-react-query.md): The problem of “where to put the keys”
+- [Usage with SvelteKit](/docs/guides/tech/with-sveltekit.md): It is possible to implement FSD in a SvelteKit project, but conflicts arise due to the differences between the structure requirements of a SvelteKit project and the principles of FSD:
+- [Docs for LLMs](/docs/llms.md): This page provides links and guidance for LLM crawlers.
+- [📚 Malumot](/docs/reference.md): Feature-Sliced Design asosiy tushunchalarining batafsil tavsifi.
+- [Qatlamlar](/docs/reference/layers.md): Qatlamlar - Xususiyatlar bilan kesilgan dizayndagi tashkiliy ierarxiyaning birinchi darajasi. Ularning maqsadi kodni qanchalik mas'uliyatga muhtojligi va dasturda qancha boshqa modullarga bog'liqligi asosida ajratishdir.
+- [Public API](/docs/reference/public-api.md): A public API is a contract between a group of modules, like a slice, and the code that uses it. It also acts as a gate, only allowing access to certain objects, and only through that public API.
+- [Slices and segments](/docs/reference/slices-segments.md): Slices
+- [Feature-Sliced Design](/index.md): Architectural methodology for frontend projects

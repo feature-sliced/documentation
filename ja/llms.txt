@@ -1,0 +1,66 @@
+# Feature-Sliced Design
+
+
+## documentation
+
+- [実装例](/examples.md): FSDを使って作られたプロジェクト一覧
+- [🧭 ナビゲーション](/nav.md): Feature-Sliced Design Navigation help page
+- [ドキュメントを検索](/search.md)
+- [Feature-Sliced Designのバージョン](/versions.md): Feature-Sliced Design Versions page listing all documented site versions
+- [💫 Community](/community.md): Community resources, additional materials
+- [Team](/community/team.md): Core-team
+- [ドキュメント](/docs.md): feature-sliced-banner
+- [🍰 FSDについて](/docs/about.md): 背景指向
+- [代替案](/docs/about/alternatives.md): ビッグボールオブマッド
+- [ミッション](/docs/about/mission.md): ここでは、私たちがFSD方法論を開発する際に従う方法論適用の制限と目標について説明します。
+- [モチベーション](/docs/about/motivation.md): Feature-Sliced Designの主なアイデアは、さまざまな開発者の経験を議論し、研究結果を統合することに基づいて、複雑で発展するプロジェクトの開発を容易にし、開発コストを削減することです。
+- [会社での推進](/docs/about/promote/for-company.md)
+- [チームでの推進](/docs/about/promote/for-team.md)
+- [統合の側面](/docs/about/promote/integration.md): 利点:
+- [部分的な適用](/docs/about/promote/partial-application.md)
+- [抽象化](/docs/about/understanding/abstractions.md): 漏れのある抽象化の法則
+- [アーキテクチャ](/docs/about/understanding/architecture.md): 問題
+- [プロジェクトにおける知識の種類](/docs/about/understanding/knowledge-types.md): どのプロジェクトにも以下の「知識の種類」が存在します。
+- [ネーミング](/docs/about/understanding/naming.md): 異なる開発者は異なる経験と背景を持っているため、同じエンティティが異なる名前で呼ばれることによって、チーム内で誤解が生じる可能性があります。例えば
+- [ニーズの理解と課題の定義について](/docs/about/understanding/needs-driven.md): — 新しい機能が解決する目標を明確にできませんか？それとも、問題はタスク自体が明確にされていないことにありますか？**FSDは、問題の定義や目標を引き出す手助けをすることも目的にしています。**
+- [アーキテクチャのシグナル](/docs/about/understanding/signals.md)
+- [ブランドガイドライン](/docs/branding.md): FSDのビジュアルアイデンティティは、そのコアコンセプトである Layered、Sliced self-contained parts、Parts & Compose、Segmented に基づいています。しかし、私たちはFSDの哲学を反映し、簡単に認識できる美しいアイデンティティを目指しています。
+- [🚀 クイックスタート](/docs/get-started.md): ようこそ！このセクションでは、Feature-Sliced Designの適用方法とその基礎知識が簡単に紹介されます。また、FSDの主な利点とその作成理由についての内容も記載されています。
+- [分解のチートシート](/docs/get-started/cheatsheet.md): インターフェースをレイヤーに分割する際の参考書として使用してください。以下にPDFバージョンもあり、印刷して枕の下に置いておくことができます。
+- [FAQ](/docs/get-started/faq.md): 質問は、Discordコミュニティ、GitHub Discussions、およびTelegramチャットで聞くことができます。
+- [概要](/docs/get-started/overview.md): Feature-Sliced Design (FSD) とは、フロントエンドアプリケーションの設計方法論です。簡単に言えば、コードを整理するためのルールと規約の集大成です。FSDの主な目的は、ビジネス要件が絶えず変化する中で、プロジェクトをより理解しやすく、構造化されたものにすることです。
+- [チュートリアル](/docs/get-started/tutorial.md): 第１章 紙の上で
+- [🎯 ガイド](/docs/guides.md): 実践指向
+- [例](/docs/guides/examples.md): 小さな実践的な例を通じて、FSDの適用方法を示します。
+- [Handling API Requests](/docs/guides/examples/api-requests.md): handling-api-requests}
+- [認証](/docs/guides/examples/auth.md): 一般的に、認証は以下のステップで構成されます。
+- [自動補完](/docs/guides/examples/autocompleted.md)
+- [ブラウザAPI](/docs/guides/examples/browser-api.md)
+- [CMS](/docs/guides/examples/cms.md)
+- [フィードバック](/docs/guides/examples/feedback.md)
+- [i18n](/docs/guides/examples/i18n.md)
+- [メトリクス](/docs/guides/examples/metric.md)
+- [モノレポ](/docs/guides/examples/monorepo.md)
+- [ページレイアウト](/docs/guides/examples/page-layout.md): このガイドでは、複数のページが同じ構造を持ち、主な内容だけが異なる場合のページレイアウトの抽象化について説明します。
+- [デスクトップ/タッチプラットフォーム](/docs/guides/examples/platforms.md)
+- [SSR](/docs/guides/examples/ssr.md)
+- [テーマ化](/docs/guides/examples/theme.md)
+- [型](/docs/guides/examples/types.md): このガイドでは、TypeScriptのような型付き言語のデータの型と、それがFSDにどのように適合するかについて説明します。
+- [ホワイトラベル](/docs/guides/examples/white-labels.md)
+- [クロスインポート](/docs/guides/issues/cross-imports.md): クロスインポートは、レイヤーや抽象化が本来の責任以上に多くの責任を持ち始めると発生する。そのため、FSDは新しいレイヤーを設けて、これらのクロスインポートを分離することを可能にしている。
+- [デセグメンテーション](/docs/guides/issues/desegmented.md): 状況
+- [ルーティング](/docs/guides/issues/routes.md): 状況
+- [カスタムアーキテクチャからの移行](/docs/guides/migration/from-custom.md): このガイドは、カスタムのアーキテクチャからFeature-Sliced Designへの移行に役立つアプローチを説明します。
+- [v1からv2への移行](/docs/guides/migration/from-v1.md): なぜv2なのか？
+- [v2.0からv2.1への移行](/docs/guides/migration/from-v2-0.md): v2.1の主な変更点は、インターフェースを分解するための「ページファースト」という新しいメンタルモデルです。
+- [Usage with Electron](/docs/guides/tech/with-electron.md): Electron applications have a special architecture consisting of multiple processes with different responsibilities. Applying FSD in such a context requires adapting the structure to the Electron specifics.
+- [NextJSとの併用](/docs/guides/tech/with-nextjs.md): NextJSプロジェクトでFSDを実装することは可能ですが、プロジェクトの構造に関するNextJSの要件とFSDの原則の間に2つの点で対立が生じます。
+- [NuxtJSとの併用](/docs/guides/tech/with-nuxtjs.md): NuxtJSプロジェクトでFSDを実装することは可能ですが、NuxtJSのプロジェクト構造要件とFSDの原則の違いにより、以下の2点でコンフリクトが発生してしまいます。
+- [React Queryとの併用](/docs/guides/tech/with-react-query.md): キーをどこに置くか問題
+- [SvelteKitとの併用](/docs/guides/tech/with-sveltekit.md): SvelteKitプロジェクトでFSDを実装することは可能ですが、SvelteKitのプロジェクト構造要件とFSDの原則の違いにより、以下の2点でコンフリクトが発生してしまいます。
+- [Docs for LLMs](/docs/llms.md): This page provides links and guidance for LLM crawlers.
+- [📚 参考書](/docs/reference.md): FSDの重要な概念に関するセクション
+- [レイヤー](/docs/reference/layers.md): レイヤーは、Feature-Sliced Designにおける組織階層の最初のレベルです。その目的は、コードを責任の程度やアプリ内の他のモジュールへの依存度に基づいて分離することです。各レイヤーは、コードにどれだけの責任を割り当てるべきかを判断するための特別な意味を持っています。
+- [公開API](/docs/reference/public-api.md): 公開APIは、モジュールのグループ（スライスなど）とそれを使用するコードとの間の契約です。また、特定のオブジェクトへのアクセスを制限し、その公開APIを通じてのみアクセスを許可します。
+- [スライスとセグメント](/docs/reference/slices-segments.md): スライス
+- [Feature-Sliced Design](/index.md): Architectural methodology for frontend projects
