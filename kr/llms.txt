@@ -12,8 +12,8 @@
 - [문서](/docs.md): feature-sliced-banner
 - [🍰 About](/docs/about.md): BACKGROUND-ORIENTED
 - [Alternatives](/docs/about/alternatives.md): History of architecture approaches
-- [미션](/docs/about/mission.md): 이 문서에서는 방법론을 개발할 때 우리가 추구하는 목표와 적용 가능성의 한계를 설명합니다.
-- [동기](/docs/about/motivation.md): Feature-Sliced Design은 여러 개발자들의 연구와 경험을 결합하여 복잡하고 점점 더 커지는 프로젝트의 개발을 용이하게 하고, 비용을 줄이려는 아이디어에서 출발했습니다.
+- [Mission](/docs/about/mission.md): 이 문서는 우리가 방법론을 개발할 때 따르는 목표와 적용 가능성의 한계를 설명합니다.
+- [Motivation](/docs/about/motivation.md): Feature-Sliced Design은 여러 개발자들의 연구와 경험을 결합하여
 - [Promote in company](/docs/about/promote/for-company.md): Do the project and the company need a methodology?
 - [Promote in team](/docs/about/promote/for-team.md): - Onboard newcomers
 - [Integration aspects](/docs/about/promote/integration.md): Summary
