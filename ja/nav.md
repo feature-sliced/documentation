@@ -230,53 +230,53 @@
 
 [/docs/reference/layers#import-rule-on-layers](/documentation/ja/docs/reference/layers.md#import-rule-on-layers)
 
-[App splitting](/documentation/ja/docs/reference.md)
+[App splitting](/documentation/ja/docs/reference/layers.md)
 
-[**old**:](/documentation/ja/docs/reference.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/app-splitting](/documentation/ja/docs/reference.md)
-
-[**new**: ](/documentation/ja/docs/reference.md)
-
-<!-- -->
-
-[/docs/reference](/documentation/ja/docs/reference.md)
-
-[Decomposition](/documentation/ja/docs/reference.md)
-
-[**old**:](/documentation/ja/docs/reference.md)
+[**old**:](/documentation/ja/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/decomposition](/documentation/ja/docs/reference.md)
+[/docs/concepts/app-splitting](/documentation/ja/docs/reference/layers.md)
 
-[**new**: ](/documentation/ja/docs/reference.md)
-
-<!-- -->
-
-[/docs/reference](/documentation/ja/docs/reference.md)
-
-[Units](/documentation/ja/docs/reference.md)
-
-[**old**:](/documentation/ja/docs/reference.md)
+[**new**: ](/documentation/ja/docs/reference/layers.md)
 
 <!-- -->
 
+[/docs/reference/layers](/documentation/ja/docs/reference/layers.md)
+
+[Decomposition](/documentation/ja/docs/reference/layers.md)
+
+[**old**:](/documentation/ja/docs/reference/layers.md)
+
 <!-- -->
 
-[/docs/reference/units](/documentation/ja/docs/reference.md)
+<!-- -->
 
-[**new**: ](/documentation/ja/docs/reference.md)
+[/docs/reference/units/decomposition](/documentation/ja/docs/reference/layers.md)
+
+[**new**: ](/documentation/ja/docs/reference/layers.md)
 
 <!-- -->
 
-[/docs/reference](/documentation/ja/docs/reference.md)
+[/docs/reference/layers](/documentation/ja/docs/reference/layers.md)
+
+[Units](/documentation/ja/docs/reference/layers.md)
+
+[**old**:](/documentation/ja/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units](/documentation/ja/docs/reference/layers.md)
+
+[**new**: ](/documentation/ja/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/documentation/ja/docs/reference/layers.md)
 
 [Layers](/documentation/ja/docs/reference/layers.md)
 

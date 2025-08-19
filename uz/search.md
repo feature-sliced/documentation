@@ -2,11 +2,11 @@
 
 [![logo](/documentation/uz/img/brand/logo-primary.png)![logo](/documentation/uz/img/brand/logo-primary.png)](/documentation/uz/.md)
 
-[****](/documentation/uz/.md)[📖 Hujjatlar](/documentation/uz/docs.md)[💫 Jamiyat](/documentation/uz/community.md)[📝 Blog](/documentation/uz/blog)[🛠 Namunalar](/documentation/uz/examples.md)
+[****](/documentation/uz/.md)[📖 Hujjatlar](/documentation/uz/docs/get-started/overview.md)[💫 Jamiyat](/documentation/uz/community.md)[📝 Blog](/documentation/uz/blog)[🛠 Namunalar](/documentation/uz/examples.md)
 
-[v2.1](/documentation/uz/docs.md)
+[v2.1](/documentation/uz/docs/get-started/overview.md)
 
-* [v2.1](/documentation/uz/docs.md)
+* [v2.1](/documentation/uz/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
@@ -33,7 +33,7 @@ Type your search here
 
 Spetsifikatsiya
 
-* [Hujjatlar](/documentation/uz/docs.md)
+* [Hujjatlar](/documentation/uz/docs/get-started/overview.md)
 * [Jamiyat](/documentation/uz/community.md)
 * [Yordam](/documentation/uz/nav.md)
 * [Munozaralar](https://github.com/feature-sliced/documentation/discussions)

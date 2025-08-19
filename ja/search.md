@@ -2,11 +2,11 @@
 
 [![logo](/documentation/ja/img/brand/logo-primary.png)![logo](/documentation/ja/img/brand/logo-primary.png)](/documentation/ja/.md)
 
-[****](/documentation/ja/.md)[📖 ドキュメント](/documentation/ja/docs.md)[💫 コミュニティ](/documentation/ja/community.md)[📝 ブログ](/documentation/ja/blog)[🛠 実装例](/documentation/ja/examples.md)
+[****](/documentation/ja/.md)[📖 ドキュメント](/documentation/ja/docs/get-started/overview.md)[💫 コミュニティ](/documentation/ja/community.md)[📝 ブログ](/documentation/ja/blog)[🛠 実装例](/documentation/ja/examples.md)
 
-[v2.1](/documentation/ja/docs.md)
+[v2.1](/documentation/ja/docs/get-started/overview.md)
 
-* [v2.1](/documentation/ja/docs.md)
+* [v2.1](/documentation/ja/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
@@ -33,7 +33,7 @@
 
 仕様
 
-* [ドキュメント](/documentation/ja/docs.md)
+* [ドキュメント](/documentation/ja/docs/get-started/overview.md)
 * [コミュニティ](/documentation/ja/community.md)
 * [ヘルプ](/documentation/ja/nav.md)
 * [ディスカッション](https://github.com/feature-sliced/documentation/discussions)

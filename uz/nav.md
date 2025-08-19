@@ -230,53 +230,53 @@ Lekin moslik uchun eski havolalardan qayta yo'naltirishlar mavjud
 
 [/docs/reference/layers#import-rule-on-layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
 
-[App splitting](/documentation/uz/docs/reference.md)
+[App splitting](/documentation/uz/docs/reference/layers.md)
 
-[**old**:](/documentation/uz/docs/reference.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/app-splitting](/documentation/uz/docs/reference.md)
-
-[**new**: ](/documentation/uz/docs/reference.md)
-
-<!-- -->
-
-[/docs/reference](/documentation/uz/docs/reference.md)
-
-[Decomposition](/documentation/uz/docs/reference.md)
-
-[**old**:](/documentation/uz/docs/reference.md)
+[**old**:](/documentation/uz/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/decomposition](/documentation/uz/docs/reference.md)
+[/docs/concepts/app-splitting](/documentation/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference.md)
-
-<!-- -->
-
-[/docs/reference](/documentation/uz/docs/reference.md)
-
-[Units](/documentation/uz/docs/reference.md)
-
-[**old**:](/documentation/uz/docs/reference.md)
+[**new**: ](/documentation/uz/docs/reference/layers.md)
 
 <!-- -->
 
+[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
+
+[Decomposition](/documentation/uz/docs/reference/layers.md)
+
+[**old**:](/documentation/uz/docs/reference/layers.md)
+
 <!-- -->
 
-[/docs/reference/units](/documentation/uz/docs/reference.md)
+<!-- -->
 
-[**new**: ](/documentation/uz/docs/reference.md)
+[/docs/reference/units/decomposition](/documentation/uz/docs/reference/layers.md)
+
+[**new**: ](/documentation/uz/docs/reference/layers.md)
 
 <!-- -->
 
-[/docs/reference](/documentation/uz/docs/reference.md)
+[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
+
+[Units](/documentation/uz/docs/reference/layers.md)
+
+[**old**:](/documentation/uz/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units](/documentation/uz/docs/reference/layers.md)
+
+[**new**: ](/documentation/uz/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
 
 [Layers](/documentation/uz/docs/reference/layers.md)
 

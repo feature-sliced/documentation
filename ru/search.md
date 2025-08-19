@@ -2,11 +2,11 @@
 
 [![logo](/documentation/ru/img/brand/logo-primary.png)![logo](/documentation/ru/img/brand/logo-primary.png)](/documentation/ru/.md)
 
-[****](/documentation/ru/.md)[📖 Документация](/documentation/ru/docs.md)[💫 Сообщество](/documentation/ru/community.md)[📝 Блог](/documentation/ru/blog)[🛠 Примеры](/documentation/ru/examples.md)
+[****](/documentation/ru/.md)[📖 Документация](/documentation/ru/docs/get-started/overview.md)[💫 Сообщество](/documentation/ru/community.md)[📝 Блог](/documentation/ru/blog)[🛠 Примеры](/documentation/ru/examples.md)
 
-[v2.1](/documentation/ru/docs.md)
+[v2.1](/documentation/ru/docs/get-started/overview.md)
 
-* [v2.1](/documentation/ru/docs.md)
+* [v2.1](/documentation/ru/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
@@ -33,7 +33,7 @@
 
 Спецификация
 
-* [Документация](/documentation/ru/docs.md)
+* [Документация](/documentation/ru/docs/get-started/overview.md)
 * [Сообщество](/documentation/ru/community.md)
 * [Помощь](/documentation/ru/nav.md)
 * [Обсуждения](https://github.com/feature-sliced/documentation/discussions)

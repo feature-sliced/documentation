@@ -230,53 +230,53 @@
 
 [/docs/reference/layers#import-rule-on-layers](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
 
-[App splitting](/documentation/kr/docs/reference.md)
+[App splitting](/documentation/kr/docs/reference/layers.md)
 
-[**old**:](/documentation/kr/docs/reference.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/app-splitting](/documentation/kr/docs/reference.md)
-
-[**new**: ](/documentation/kr/docs/reference.md)
-
-<!-- -->
-
-[/docs/reference](/documentation/kr/docs/reference.md)
-
-[Decomposition](/documentation/kr/docs/reference.md)
-
-[**old**:](/documentation/kr/docs/reference.md)
+[**old**:](/documentation/kr/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/decomposition](/documentation/kr/docs/reference.md)
+[/docs/concepts/app-splitting](/documentation/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference.md)
-
-<!-- -->
-
-[/docs/reference](/documentation/kr/docs/reference.md)
-
-[Units](/documentation/kr/docs/reference.md)
-
-[**old**:](/documentation/kr/docs/reference.md)
+[**new**: ](/documentation/kr/docs/reference/layers.md)
 
 <!-- -->
 
+[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
+
+[Decomposition](/documentation/kr/docs/reference/layers.md)
+
+[**old**:](/documentation/kr/docs/reference/layers.md)
+
 <!-- -->
 
-[/docs/reference/units](/documentation/kr/docs/reference.md)
+<!-- -->
 
-[**new**: ](/documentation/kr/docs/reference.md)
+[/docs/reference/units/decomposition](/documentation/kr/docs/reference/layers.md)
+
+[**new**: ](/documentation/kr/docs/reference/layers.md)
 
 <!-- -->
 
-[/docs/reference](/documentation/kr/docs/reference.md)
+[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
+
+[Units](/documentation/kr/docs/reference/layers.md)
+
+[**old**:](/documentation/kr/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units](/documentation/kr/docs/reference/layers.md)
+
+[**new**: ](/documentation/kr/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
 
 [Layers](/documentation/kr/docs/reference/layers.md)
 

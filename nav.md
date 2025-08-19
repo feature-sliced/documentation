@@ -230,53 +230,53 @@ But there are redirects from old links for compatibility
 
 [/docs/reference/layers#import-rule-on-layers](/documentation/docs/reference/layers.md#import-rule-on-layers)
 
-[App splitting](/documentation/docs/reference.md)
+[App splitting](/documentation/docs/reference/layers.md)
 
-[**old**:](/documentation/docs/reference.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/app-splitting](/documentation/docs/reference.md)
-
-[**new**: ](/documentation/docs/reference.md)
-
-<!-- -->
-
-[/docs/reference](/documentation/docs/reference.md)
-
-[Decomposition](/documentation/docs/reference.md)
-
-[**old**:](/documentation/docs/reference.md)
+[**old**:](/documentation/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/decomposition](/documentation/docs/reference.md)
+[/docs/concepts/app-splitting](/documentation/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference.md)
-
-<!-- -->
-
-[/docs/reference](/documentation/docs/reference.md)
-
-[Units](/documentation/docs/reference.md)
-
-[**old**:](/documentation/docs/reference.md)
+[**new**: ](/documentation/docs/reference/layers.md)
 
 <!-- -->
 
+[/docs/reference/layers](/documentation/docs/reference/layers.md)
+
+[Decomposition](/documentation/docs/reference/layers.md)
+
+[**old**:](/documentation/docs/reference/layers.md)
+
 <!-- -->
 
-[/docs/reference/units](/documentation/docs/reference.md)
+<!-- -->
 
-[**new**: ](/documentation/docs/reference.md)
+[/docs/reference/units/decomposition](/documentation/docs/reference/layers.md)
+
+[**new**: ](/documentation/docs/reference/layers.md)
 
 <!-- -->
 
-[/docs/reference](/documentation/docs/reference.md)
+[/docs/reference/layers](/documentation/docs/reference/layers.md)
+
+[Units](/documentation/docs/reference/layers.md)
+
+[**old**:](/documentation/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units](/documentation/docs/reference/layers.md)
+
+[**new**: ](/documentation/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/documentation/docs/reference/layers.md)
 
 [Layers](/documentation/docs/reference/layers.md)
 

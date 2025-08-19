@@ -2,11 +2,11 @@
 
 [![logo](/documentation/img/brand/logo-primary.png)![logo](/documentation/img/brand/logo-primary.png)](/documentation/.md)
 
-[****](/documentation/.md)[📖 Docs](/documentation/docs.md)[💫 Community](/documentation/community.md)[📝 Blog](/documentation/blog)[🛠 Examples](/documentation/examples.md)
+[****](/documentation/.md)[📖 Docs](/documentation/docs/get-started/overview.md)[💫 Community](/documentation/community.md)[📝 Blog](/documentation/blog)[🛠 Examples](/documentation/examples.md)
 
-[v2.1](/documentation/docs.md)
+[v2.1](/documentation/docs/get-started/overview.md)
 
-* [v2.1](/documentation/docs.md)
+* [v2.1](/documentation/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
@@ -33,7 +33,7 @@ Type your search here
 
 Specs
 
-* [Documentation](/documentation/docs.md)
+* [Documentation](/documentation/docs/get-started/overview.md)
 * [Community](/documentation/community.md)
 * [Help](/documentation/nav.md)
 * [Discussions](https://github.com/feature-sliced/documentation/discussions)
