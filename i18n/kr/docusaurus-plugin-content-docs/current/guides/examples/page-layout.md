@@ -37,7 +37,7 @@ export function Layout({ siblingPages, headings }) {
         <nav>
           <ul>
             <li> <Link to="/">Home</Link> </li>
-            <li> <Link to="/docs/get-started/overview">Docs</Link> </li>
+            <li> <Link to="/docs">Docs</Link> </li>
             <li> <Link to="/blog">Blog</Link> </li>
           </ul>
         </nav>
