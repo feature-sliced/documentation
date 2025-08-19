@@ -1,0 +1,69 @@
+---
+sidebar_position: 1
+slug: /
+pagination_next: get-started/index
+---
+
+# 文档
+
+![feature-sliced-banner](/img/banner.jpg)
+
+**Feature-Sliced Design**（FSD）是一种用于构建前端应用程序的架构方法论。简单来说，它是组织代码的规则和约定的汇编。该方法论的主要目的是在不断变化的业务需求面前，使项目更加易于理解和结构化。
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { RocketOutlined, ThunderboltOutlined, FundViewOutlined } from "@ant-design/icons";
+import Link from "@docusaurus/Link";
+
+<NavCard
+    theme="primary"
+    Icon="🍰"
+    title="FSD 新手？"
+    description="通过方法论的快速概览学习基础知识"
+    to="/docs/get-started/overview"
+/>
+
+<!-- TODO: move to features/doc-index -->
+
+<br />
+
+<NavCard
+    theme="mini"
+    title="🚀 开始使用"
+    description="基本概念和结构的介绍以及 React 示例项目的全面评述"
+    to="/docs/get-started"
+    tags={['概览', '教程', '常见问题']}
+/>
+<NavCard
+    theme="mini"
+    title="🎯 指南"
+    description="实用指南和应用示例"
+    to="/docs/guides"
+    tags={['示例', '迁移', '技术']}
+/>
+<NavCard
+    theme="mini"
+    title="📚 参考"
+    description="核心概念的参考详情（为了更高效的应用）"
+    to="/docs/reference"
+    tags={['单元', '隔离', '公共 API']}
+/>
+<NavCard
+    theme="mini"
+    title="🍰 关于"
+    description="方法论的哲学、目标以及在现代前端中的地位"
+    to="/docs/about"
+    tags={['使命', '替代方案', '推广']}
+/>
+<NavCard
+    theme="mini"
+    title="💫 社区"
+    description="社区贡献的资源和补充材料"
+    to="/community"
+    tags={['精选', '团队', '示例']}
+/>
+<NavCard
+    theme="mini"
+    title="🛠 示例"
+    description="使用 Feature-Sliced Design 构建的项目"
+    to="/examples"
+/>

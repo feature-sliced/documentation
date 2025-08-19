@@ -1,0 +1,44 @@
+---
+hide_table_of_contents: true
+pagination_prev: reference/index
+---
+
+# 🍰 关于
+
+<span class="badge badge--violet margin-bottom--md">背景导向</span>
+
+<p class="summary">
+关于方法论、团队、社区和开发历史的一般信息
+</p>
+
+## Main
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { StarOutlined, TrophyOutlined, BulbOutlined, TeamOutlined } from "@ant-design/icons";
+
+<NavCard
+    title="使命" 
+    description="方法论的目标和限制"
+    to="/docs/about/mission"
+    Icon={TrophyOutlined}
+/>
+<NavCard
+    title="动机" 
+    description="创建和开发该方法论的原因"
+    to="/docs/about/motivation"
+    Icon={StarOutlined}
+/>
+<NavCard
+    title="理解" 
+    description="深入理解 FSD 概念"
+    to="/docs/about/understanding/architecture"
+    Icon={BulbOutlined}
+    tags={['关于架构', '需求驱动', '命名']}
+/>
+<NavCard
+    title="推广" 
+    description="关于在公司中推广和集成 FSD"
+    to="/docs/about/promote/integration"
+    Icon={TeamOutlined}
+    tags={['集成', '在团队中推广', '在公司中推广']}
+/>

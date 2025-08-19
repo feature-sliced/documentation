@@ -1,0 +1,33 @@
+---
+sidebar_position: 0
+hide_table_of_contents: true
+pagination_prev: guides/index
+---
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { ApiOutlined, GroupOutlined, AppstoreOutlined, NodeIndexOutlined } from "@ant-design/icons";
+
+# 📚 参考
+
+<p class="summary">
+Feature-Sliced Design 关键概念的详细描述。
+</p>
+
+<NavCard
+    title="Layers" 
+    description="Definition of a layer and explanations for all layers"
+    to="/docs/reference/layers"
+    Icon={GroupOutlined}
+/>
+<NavCard
+    title="Slices and segments" 
+    description="Definitions of a slice and segment, content examples for segments on different layers"
+    to="/docs/reference/slices-segments"
+    Icon={AppstoreOutlined}
+/>
+<NavCard
+    title="Public API" 
+    description="Definition and goals of public APIs, cross-imports with @x, troubleshooting"
+    to="/docs/reference/public-api"
+    Icon={ApiOutlined}
+/>

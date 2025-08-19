@@ -1,0 +1,100 @@
+---
+sidebar_position: 10
+---
+# Usage with SvelteKit
+
+It is possible to implement FSD in a SvelteKit project, but conflicts arise due to the differences between the structure requirements of a SvelteKit project and the principles of FSD:
+
+- Initially, SvelteKit offers a file structure inside the `src/routes` folder, while in FSD the routing must be part of the `app` layer.
+- SvelteKit suggests putting everything not related to routing in the `src/lib` folder.
+
+
+## Let's set up the config
+
+```ts title="svelte.config.ts"
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+/** @type {import('@sveltejs/kit').Config}*/
+const config = {
+  preprocess: [vitePreprocess()],
+  kit: {
+    adapter: adapter(),
+    files: {
+      routes: 'src/app/routes',             // move routing inside the app layer
+      lib: 'src',
+      appTemplate: 'src/app/index.html',    // Move the application entry point inside the app layer
+      assets: 'public'
+    },
+    alias: {
+      '@/*': 'src/*'                        // Create an alias for the src directory
+    }
+  }
+};
+export default config;
+```
+
+## Move file routing to `src/app`.
+
+Let's create an app layer, move the app's entry point `index.html` into it, and create a routes folder.
+Thus, your file structure should look like this:
+
+```sh
+├── src
+│   ├── app
+│   │   ├── index.html
+│   │   ├── routes
+│   ├── pages                               # FSD Pages folder
+```
+
+Now, you can create routes for pages within `app` and connect pages from `pages` to them.
+
+For example, to add a home page to your project, you need to do the following steps:
+- Add a page slice inside the `pages` layer
+- Add the corresponding rooute to the `routes` folder from the `app` layer
+- Align the page from the slice with the rooute
+
+To create a page slice, let's use the [CLI](https://github.com/feature-sliced/cli):
+
+```shell
+fsd pages home
+```
+
+Create a ``home-page.svelte`` file inside the ui segment, access it using the Public API
+
+```ts title="src/pages/home/index.ts"
+export { default as HomePage } from './ui/home-page.svelte';
+```
+
+Create a route for this page inside the `app` layer:
+
+```sh
+
+├── src
+│   ├── app
+│   │   ├── routes
+│   │   │   ├── +page.svelte
+│   │   ├── index.html
+│   ├── pages
+│   │   ├── home
+│   │   │   ├── ui
+│   │   │   │   ├── home-page.svelte
+│   │   │   ├── index.ts
+```
+
+Add your page component inside the `+page.svelte` file:
+
+```html title="src/app/routes/+page.svelte"
+<script>
+  import { HomePage } from '@/pages/home';
+</script>
+
+
+<HomePage/>
+```
+
+## See also.
+
+- [Documentation on changing directory config in SvelteKit](https://kit.svelte.dev/docs/configuration#files)
+
+
