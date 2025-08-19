@@ -17,7 +17,7 @@ export function Hero() {
                 <div className="button-group">
                     <Link
                         className="button button--primary button--lg"
-                        to="/docs"
+                        to="/docs/get-started/overview"
                     >
                         {translate({ id: "features.hero.get_started" })}
                     </Link>

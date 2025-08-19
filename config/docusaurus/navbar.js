@@ -12,7 +12,8 @@ const navbar = {
         // left
         {
             label: "📖 Docs",
-            to: "/docs",
+            to: "/docs/get-started/overview",
+            activeBaseRegex: "/docs(/.*)?$",
             position: "left",
         },
         {
