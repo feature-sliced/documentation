@@ -5,13 +5,13 @@ sidebar_class_name: sidebar-item--wip
 
 import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 
-# Routing
+# 路由
 
 <WIP ticket="169" />
 
-## Situation
+## 情况
 
-Urls to pages are hardcoded in the layers below pages
+页面的 URL 在页面下方的层中硬编码
 
 ```tsx title="entities/post/card"
 
@@ -24,23 +24,23 @@ Urls to pages are hardcoded in the layers below pages
 </Card>
 ```
 
-## Problem
+## 问题
 
-Urls are not concentrated in the page layer, where they belong according to the scope of responsibility
+URL 没有集中在页面层中，根据责任范围，它们应该属于页面层
 
-## If you ignore it
+## 如果您忽略它
 
-Then, when changing urls, you will have to keep in mind that these urls (and the logic of urls/redirects) can be in all layers except pages
+那么，在更改 URL 时，您必须记住这些 URL（以及 URL/重定向的逻辑）可以在除页面之外的所有层中
 
-And it also means that now even a simple product card takes part of the responsibility from the pages, which smears the logic of the project
+这也意味着现在即使是一个简单的产品卡片也承担了页面的部分责任，这模糊了项目的逻辑
 
-## Solution
+## 解决方案
 
-Determine how to work with urls/redirects from the page level and above
+确定如何从页面级别及以上处理 URL/重定向
 
-Transfer to the layers below via composition/props/factories
+通过组合/props/工厂传递到下面的层
 
-## See also
+## 另请参阅
 
-- [(Thread) What if I "sew up" routing in entities/features/widgets](https://t.me/feature_sliced/4389)
-- [(Thread) Why does it smear the logic of routes only in pages](https://t.me/feature_sliced/3756)
+- [(Thread) 如果我在 entities/features/widgets 中"缝合"路由会怎样](https://t.me/feature_sliced/4389)
+- [(Thread) 为什么只在页面中模糊路由逻辑](https://t.me/feature_sliced/3756)

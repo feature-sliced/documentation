@@ -2,19 +2,19 @@
 sidebar_position: 2
 ---
 
-# Types
+# 类型
 
-This guide concerns data types from typed languages like TypeScript and describes where they fit within FSD.
+本指南涉及来自类型化语言（如 TypeScript）的数据类型，并描述它们在 FSD 中的适用位置。
 
 :::info
 
-Is your question not covered by this guide? Post your question by leaving feedback on this article (blue button on the right) and we will consider expanding this guide!
+本指南没有涵盖您的问题？请通过在本文上留下反馈（右侧的蓝色按钮）来发布您的问题，我们将考虑扩展本指南！
 
 :::
 
-## Utility types
+## 实用类型
 
-Utility types are types that don't have much meaning on their own and are usually used with other types. For example:
+实用类型是本身没有太多意义的类型，通常与其他类型一起使用。例如：
 
 <figure>
 
@@ -28,9 +28,9 @@ type ArrayValues<T extends readonly unknown[]> = T[number];
 
 </figure>
 
-To make utility types available across your project, either install a library like [`type-fest`][ext-type-fest], or create your own library in `shared/lib`. Make sure to clearly indicate what new types _should_ be added to this library, and what types _don't belong_ there. For example, call it `shared/lib/utility-types` and add a README inside that describes what is a utility type in your team.
+要使实用类型在整个项目中可用，可以安装像 [`type-fest`][ext-type-fest] 这样的库，或者在 `shared/lib` 中创建您自己的库。确保清楚地指出哪些新类型_应该_添加到此库中，哪些类型_不属于_那里。例如，将其命名为 `shared/lib/utility-types` 并在其中添加一个 README，描述您团队中什么是实用类型。
 
-Don't overestimate the potential reusability of a utility type. Just because it can be reused, doesn't mean it will be, and as such, not every utility type needs to be in Shared. Some utility types are fine right next to where they are needed:
+不要高估实用类型的潜在可重用性。仅仅因为它可以被重用，并不意味着它会被重用，因此，并非每个实用类型都需要在 Shared 中。一些实用类型放在需要它们的地方就很好：
 
 - 📂 pages
   - 📂 home
@@ -40,17 +40,17 @@ Don't overestimate the potential reusability of a utility type. Just because it 
 
 :::warning
 
-Resist the temptation to create a `shared/types` folder, or to add a `types` segment to your slices. The category "types" is similar to the category "components" or "hooks" in that it describes what the contents are, not what they are for. Segments should describe the purpose of the code, not the essence.
+抵制创建 `shared/types` 文件夹或向您的 slices 添加 `types` segment 的诱惑。"types"类别类似于"components"或"hooks"类别，它描述的是内容是什么，而不是它们的用途。Segments 应该描述代码的目的，而不是本质。
 
 :::
 
-## Business entities and their cross-references
+## 业务实体及其交叉引用
 
-Among the most important types in an app are the types of business entities, i.e. the real-world things that your app works with. For example, in a music streaming app, you might have business entities _Song_, _Album_, etc.
+应用程序中最重要的类型之一是业务实体的类型，即您的应用程序处理的现实世界的事物。例如，在音乐流媒体应用程序中，您可能有业务实体 _Song_、_Album_ 等。
 
-Business entities often come from the backend, so the first step is to type the backend responses. It's convenient to have a function to make a request to every endpoint, and to type the response of this function. For extra type safety, you may want to run the response through a schema validation library like [Zod][ext-zod]. 
+业务实体通常来自后端，因此第一步是为后端响应添加类型。为每个端点创建一个请求函数，并为此函数的响应添加类型是很方便的。为了额外的类型安全，您可能希望通过像 [Zod][ext-zod] 这样的 schema 验证库来运行响应。
 
-For example, if you keep all your requests in Shared, you could do it like this:
+例如，如果您将所有请求保存在 Shared 中，您可以这样做：
 
 ```ts title="shared/api/songs.ts"
 import type { Artist } from "./artists";
@@ -66,14 +66,14 @@ export function listSongs() {
 }
 ```
 
-You might notice that the `Song` type references a different entity, `Artist`. This is a benefit of storing your requests in Shared — real-world types are often intertwined. If we kept this function in `entities/song/api`, we wouldn't be able to simply import `Artist` from `entities/artist`, because FSD restricts cross-imports between slices with [the import rule on layers][import-rule-on-layers]:
+您可能会注意到 `Song` 类型引用了不同的实体 `Artist`。这是将请求存储在 Shared 中的好处 — 现实世界的类型通常是相互交织的。如果我们将此函数保存在 `entities/song/api` 中，我们将无法简单地从 `entities/artist` 导入 `Artist`，因为 FSD 通过[层上的导入规则][import-rule-on-layers]限制 slices 之间的交叉导入：
 
-> A module in a slice can only import other slices when they are located on layers strictly below.
+> slice 中的模块只能在其他 slices 位于严格较低的层时导入它们。
 
-There are two ways to deal with this issue:
+有两种方法来处理这个问题：
 
-1. **Parametrize your types**  
-   You can make your types accept type arguments as slots for connections with other entities, and even impose constraints on those slots. For example:
+1. **参数化您的类型**  
+   您可以让您的类型接受类型参数作为与其他实体连接的插槽，甚至可以对这些插槽施加约束。例如：
 
    ```ts title="entities/song/model/song.ts"
    interface Song<ArtistType extends { id: string }> {
@@ -83,25 +83,25 @@ There are two ways to deal with this issue:
    }
    ```
 
-   This works better for some types than others. A simple type like `Cart = { items: Array<Product> }` can easily be made to work with any type of product. More connected types, like `Country` and `City`, may not be as easy to separate.
+   这对某些类型比其他类型效果更好。像 `Cart = { items: Array<Product> }` 这样的简单类型可以很容易地与任何类型的产品一起工作。更连接的类型，如 `Country` 和 `City`，可能不那么容易分离。
 
-2. **Cross-import (but do it right)**  
-   To make cross-imports between entities in FSD, you can use a special public API specifically for each slice that will be cross-importing. For example, if we have entities `song`, `artist`, and `playlist`, and the latter two need to reference `song`, we can make two special public APIs for both of them in the `song` entity with the `@x` notation:
+2. **交叉导入（但要正确地做）**  
+   要在 FSD 中的实体之间进行交叉导入，您可以为每个将要交叉导入的 slice 使用特殊的公共 API。例如，如果我们有实体 `song`、`artist` 和 `playlist`，后两者需要引用 `song`，我们可以在 `song` 实体中使用 `@x` 符号为它们创建两个特殊的公共 API：
 
    - 📂 entities
      - 📂 song
        - 📂 @x
-         - 📄 artist.ts (a public API for the `artist` entity to import from)
-         - 📄 playlist.ts (a public API for the `playlist` entity to import from)
-       - 📄 index.ts (regular public API)
+         - 📄 artist.ts (供 `artist` 实体导入的公共 API)
+         - 📄 playlist.ts (供 `playlist` 实体导入的公共 API)
+       - 📄 index.ts (常规公共 API)
    
-   The contents of a file `📄 entities/song/@x/artist.ts` are similar to `📄 entities/song/index.ts`:
+   文件 `📄 entities/song/@x/artist.ts` 的内容类似于 `📄 entities/song/index.ts`：
 
    ```ts title="entities/song/@x/artist.ts"
    export type { Song } from "../model/song.ts";
    ```
 
-   Then the `📄 entities/artist/model/artist.ts` can import `Song` like this:
+   然后 `📄 entities/artist/model/artist.ts` 可以像这样导入 `Song`：
 
    ```ts title="entities/artist/model/artist.ts"
    import type { Song } from "entities/song/@x/artist";
@@ -112,17 +112,17 @@ There are two ways to deal with this issue:
    }
    ```
 
-   By making explicit connections between entities, we stay on top of inter-dependencies and maintain a decent level of domain separation.
+   通过在实体之间建立显式连接，我们掌握相互依赖关系并保持良好的域分离水平。
 
-## Data transfer objects and mappers {#data-transfer-objects-and-mappers}
+## 数据传输对象和映射器 {#data-transfer-objects-and-mappers}
 
-Data transfer objects, or DTOs, is a term that describes the shape of data that comes from the backend. Sometimes, the DTO is fine to use as is, but sometimes it's inconvenient for the frontend. That's where mappers come in — they transform a DTO into a more convenient shape.
+数据传输对象，或 DTO，是一个描述来自后端的数据形状的术语。有时，DTO 可以直接使用，但有时对前端来说不太方便。这就是映射器发挥作用的地方 — 它们将 DTO 转换为更方便的形状。
 
-### Where to put DTOs
+### 在哪里放置 DTO
 
-If you have backend types in a separate package (for example, if you share code between the frontend and the backend), then just import your DTOs from there and you're done! If you don't share code between the backend and frontend, then you need to keep DTOs somewhere in your frontend codebase, and we will explore this case below.
+如果您在单独的包中有后端类型（例如，如果您在前端和后端之间共享代码），那么只需从那里导入您的 DTO 就完成了！如果您不在后端和前端之间共享代码，那么您需要将 DTO 保存在前端代码库的某个地方，我们将在下面探讨这种情况。
 
-If you have your request functions in `shared/api`, that's where the DTOs should be, right next to the function that uses them:
+如果您的请求函数在 `shared/api` 中，那么 DTO 应该放在那里，就在使用它们的函数旁边：
 
 ```ts title="shared/api/songs.ts"
 import type { ArtistDTO } from "./artists";
@@ -138,11 +138,11 @@ export function listSongs() {
 }
 ```
 
-As mentioned in the previous section, storing your requests and DTOs in Shared comes with the benefit of being able to reference other DTOs.
+如前一节所述，将请求和 DTO 存储在 Shared 中的好处是能够引用其他 DTO。
 
-### Where to put mappers
+### 在哪里放置映射器
 
-Mappers are functions that accept a DTO for transformation, and as such, they should be located near the definition of the DTO. In practice this means that if your requests and DTOs are defined in `shared/api`, then the mappers should go there as well:
+映射器是接受 DTO 进行转换的函数，因此，它们应该位于 DTO 定义附近。在实践中，这意味着如果您的请求和 DTO 在 `shared/api` 中定义，那么映射器也应该放在那里：
 
 ```ts title="shared/api/songs.ts"
 import type { ArtistDTO } from "./artists";
@@ -176,7 +176,7 @@ export function listSongs() {
 }
 ```
 
-If your requests and stores are defined in entity slices, then all this code would go there, keeping in mind the limitations of cross-imports between slices:
+如果您的请求和存储在实体 slices 中定义，那么所有这些代码都会放在那里，请记住 slices 之间交叉导入的限制：
 
 ```ts title="entities/song/api/dto.ts"
 import type { ArtistDTO } from "entities/artist/@x/song";
@@ -238,9 +238,9 @@ const songsSlice = createSlice({
 });
 ```
 
-### How to deal with nested DTOs
+### 如何处理嵌套 DTO
 
-The most problematic part is when a response from the backend contains several entities. For example, if the song included not just the authors' IDs, but the entire author objects. In this case, it is impossible for entities not to know about each other (unless we want to discard the data or have a firm conversation with the backend team). Instead of coming up with solutions for indirect connections between slices (such as a common middleware that would dispatch actions to other slices), prefer explicit cross-imports with the `@x` notation. Here is how we can implement it with Redux Toolkit:
+最有问题的部分是当来自后端的响应包含多个实体时。例如，如果歌曲不仅包含作者的 ID，还包含整个作者对象。在这种情况下，实体不可能不相互了解（除非我们想要丢弃数据或与后端团队进行坚定的对话）。与其想出 slices 之间间接连接的解决方案（例如将操作分派到其他 slices 的通用中间件），不如使用 `@x` 符号进行显式交叉导入。以下是我们如何使用 Redux Toolkit 实现它：
 
 ```ts title="entities/song/model/songs.ts"
 import {
@@ -253,7 +253,7 @@ import { normalize, schema } from 'normalizr'
 
 import { getSong } from "../api/getSong";
 
-// Define normalizr entity schemas
+// 定义 normalizr 实体 schemas
 export const artistEntity = new schema.Entity('artists')
 export const songEntity = new schema.Entity('songs', {
   artists: [artistEntity],
@@ -265,7 +265,7 @@ export const fetchSong = createAsyncThunk(
   'songs/fetchSong',
   async (id: string) => {
     const data = await getSong(id)
-    // Normalize the data so reducers can load a predictable payload, like:
+    // 规范化数据，以便 reducers 可以加载可预测的 payload，如：
     // `action.payload = { songs: {}, artists: {} }`
     const normalized = normalize(data, songEntity)
     return normalized.entities
@@ -304,7 +304,7 @@ export const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchSong.fulfilled, (state, action) => {
-      // And handle the same fetch result by inserting the artists here
+      // 通过在这里插入艺术家来处理相同的获取结果
       artistAdapter.upsertMany(state, action.payload.artists)
     })
   },
@@ -314,23 +314,23 @@ const reducer = slice.reducer
 export default reducer
 ```
 
-This slightly limits the benefits of slice isolation, but it accurately represents a connection between these two entities that we have no control over. If these entities are to ever be refactored, they have to be refactored together.
+这稍微限制了 slice 隔离的好处，但它准确地表示了我们无法控制的这两个实体之间的连接。如果这些实体要被重构，它们必须一起重构。
 
-## Global types and Redux
+## 全局类型和 Redux
 
-Global types are types that will be used across the whole application. There are two kinds of global types, based on what they need to know about:
-1. Generic types that don't have any application specifics
-2. Types that need to know about the whole application
+全局类型是将在整个应用程序中使用的类型。根据它们需要了解的内容，有两种全局类型：
+1. 没有任何应用程序特定内容的通用类型
+2. 需要了解整个应用程序的类型
 
-The first case is simple to resolve — place your types in Shared, in an appropriate segment. For example, if you have an interface for a global variable for analytics, you can put it in `shared/analytics`.
+第一种情况很容易解决 — 将您的类型放在 Shared 中的适当 segment 中。例如，如果您有一个用于分析的全局变量接口，您可以将其放在 `shared/analytics` 中。
 
 :::warning
 
-Avoid creating the `shared/types` folder. It groups unrelated things based only on the property of "being a type", and that property is usually not useful when searching for code in a project.
+避免创建 `shared/types` 文件夹。它仅基于"是一个类型"的属性将不相关的事物分组，而该属性在项目中搜索代码时通常没有用。
 
 :::
 
-The second case is commonly encountered in projects with Redux without RTK. Your final store type is only available once you add all the reducers together, but this store type needs to be available to selectors that you use across the app. For example, here's your typical store definition:
+第二种情况在没有 RTK 的 Redux 项目中很常见。您的最终存储类型只有在将所有 reducer 添加在一起后才可用，但此存储类型需要对您在应用程序中使用的选择器可用。例如，这是您的典型存储定义：
 
 ```ts title="app/store/index.ts"
 import { combineReducers, rootReducer } from "redux";
@@ -346,16 +346,16 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-It would be nice to have typed Redux hooks `useAppDispatch` and `useAppSelector` in `shared/store`, but they cannot import `RootState` and `AppDispatch` from the App layer due to the [import rule on layers][import-rule-on-layers]:
+在 `shared/store` 中拥有类型化的 Redux hooks `useAppDispatch` 和 `useAppSelector` 会很好，但由于[层上的导入规则][import-rule-on-layers]，它们无法从 App 层导入 `RootState` 和 `AppDispatch`：
 
-> A module in a slice can only import other slices when they are located on layers strictly below.
+> slice 中的模块只能在其他 slices 位于严格较低的层时导入它们。
 
-The recommended solution in this case is to create an implicit dependency between layers Shared and App. These two types, `RootState` and `AppDispatch` are unlikely to change, and they will be familiar to Redux developers, so we don't have to worry about them as much.
+在这种情况下，推荐的解决方案是在 Shared 和 App 层之间创建隐式依赖关系。这两种类型 `RootState` 和 `AppDispatch` 不太可能改变，Redux 开发者会熟悉它们，所以我们不必太担心它们。
 
-In TypeScript, you can do it by declaring the types as global like this:
+在 TypeScript 中，您可以通过将类型声明为全局来做到这一点：
 
 ```ts title="app/store/index.ts"
-/* same content as in the code block before… */
+/* 与之前代码块中的内容相同… */
 
 declare type RootState = ReturnType<typeof rootReducer>;
 declare type AppDispatch = typeof store.dispatch;
@@ -368,29 +368,29 @@ export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 ```
 
-## Enums
+## 枚举
 
-The general rule with enums is that they should be defined **as close to the usage locations as possible**. When an enum represents values specific to a single feature, it should be defined in that same feature.
+枚举的一般规则是它们应该**尽可能接近使用位置**定义。当枚举表示特定于单个功能的值时，它应该在同一功能中定义。
 
-The choice of segment should be dictated by usage locations as well. If your enum contains, for example, positions of a toast on the screen, it should be placed in the `ui` segment. If it represents the loading state of a backend operation, it should be placed in the `api` segment.
+segment 的选择也应该由使用位置决定。例如，如果您的枚举包含屏幕上 toast 的位置，它应该放在 `ui` segment 中。如果它表示后端操作的加载状态，它应该放在 `api` segment 中。
 
-Some enums are truly common across the whole project, like general backend response statuses or design system tokens. In this case, you can place them in Shared, and choose the segment based on what the enum represents (`api` for response statuses, `ui` for design tokens, etc.).
+一些枚举在整个项目中确实是通用的，如一般的后端响应状态或设计系统令牌。在这种情况下，您可以将它们放在 Shared 中，并根据枚举所代表的内容选择 segment（响应状态用 `api`，设计令牌用 `ui` 等）。
 
-## Type validation schemas and Zod
+## 类型验证 schemas 和 Zod
 
-If you want to validate that your data conforms to a certain shape or constraints, you can define a validation schema. In TypeScript, a popular library for this job is [Zod][ext-zod]. Validation schemas should also be colocated with the code that uses them, as much as possible.
+如果您想验证您的数据符合某种形状或约束，您可以定义一个验证 schema。在 TypeScript 中，这项工作的流行库是 [Zod][ext-zod]。验证 schemas 也应该尽可能与使用它们的代码放在一起。
 
-Validation schemas are similar to mappers (as discussed in the [Data transfer objects and mappers](#data-transfer-objects-and-mappers) section) in the sense that they take a data transfer object and parse it, producing an error if the parsing fails.
+验证 schemas 类似于映射器（如[数据传输对象和映射器](#data-transfer-objects-and-mappers)部分所讨论的），它们接受数据传输对象并解析它，如果解析失败则产生错误。
 
-One of the most common cases of validation is for the data that comes from the backend. Typically, you want to fail the request when the data doesn't match the schema, so it makes sense to put the schema in the same place as the request function, which is usually the `api` segment.
+验证最常见的情况之一是来自后端的数据。通常，当数据与 schema 不匹配时，您希望请求失败，因此将 schema 放在与请求函数相同的位置是有意义的，这通常是 `api` segment。
 
-If your data comes through user input, like a form, the validation should happen as the data is being entered. You can place your schema in the `ui` segment, next to the form component, or in the `model` segment, if the `ui` segment is too crowded.
+如果您的数据通过用户输入（如表单）传入，验证应该在输入数据时进行。您可以将 schema 放在 `ui` segment 中，紧挨着表单组件，或者如果 `ui` segment 太拥挤，可以放在 `model` segment 中。
 
-## Typings of component props and context
+## 组件 props 和 context 的类型定义
 
-In general, it's best to keep the props or context interface in the same file as the component or context that uses them. If you have a framework with single-file components, like Vue or Svelte, and you can't define the props interface in the same file, or you want to share that interface between several components, create a separate file in the same folder, typically, the `ui` segment.
+一般来说，最好将 props 或 context 接口保存在使用它们的组件或 context 的同一文件中。如果您有一个单文件组件的框架，如 Vue 或 Svelte，并且您无法在同一文件中定义 props 接口，或者您想在几个组件之间共享该接口，请在同一文件夹中创建一个单独的文件，通常是 `ui` segment。
 
-Here's an example with JSX (React or Solid):
+以下是 JSX（React 或 Solid）的示例：
 
 ```ts title="pages/home/ui/RecentActions.tsx"
 interface RecentActionsProps {
@@ -402,7 +402,7 @@ export function RecentActions({ actions }: RecentActionsProps) {
 }
 ```
 
-And here's an example with the interface stored in a separate file for Vue:
+以下是将接口存储在 Vue 的单独文件中的示例：
 
 ```ts title="pages/home/ui/RecentActionsProps.ts"
 export interface RecentActionsProps {
@@ -418,20 +418,20 @@ export interface RecentActionsProps {
 </script>
 ```
 
-## Ambient declaration files (`*.d.ts`)
+## 环境声明文件 (`*.d.ts`)
 
-Some packages, for example, [Vite][ext-vite] or [ts-reset][ext-ts-reset], require ambient declaration files to work across your app. Usually, they aren't large or complicated, so they often don't require any architecting, it's fine to just throw them in the `src/` folder. To keep the `src` more organized, you can keep them on the App layer, in `app/ambient/`.
+一些包，例如 [Vite][ext-vite] 或 [ts-reset][ext-ts-reset]，需要环境声明文件才能在您的应用程序中工作。通常，它们不大也不复杂，所以它们通常不需要任何架构，只需将它们放在 `src/` 文件夹中即可。为了保持 `src` 更有组织，您可以将它们保存在 App 层的 `app/ambient/` 中。
 
-Other packages simply don't have typings, and you might want to declare them as untyped or even write your own typings for them. A good place for those typings would be `shared/lib`, in a folder like `shared/lib/untyped-packages`. Create a `%LIBRARY_NAME%.d.ts` file there and declare the types you need:
+其他包根本没有类型定义，您可能希望将它们声明为无类型或甚至为它们编写自己的类型定义。这些类型定义的好地方是 `shared/lib`，在像 `shared/lib/untyped-packages` 这样的文件夹中。在那里创建一个 `%LIBRARY_NAME%.d.ts` 文件并声明您需要的类型：
 
 ```ts title="shared/lib/untyped-packages/use-react-screenshot.d.ts"
-// This library doesn't have typings, and we didn't want to bother writing our own.
+// 这个库没有类型定义，我们不想费心编写自己的。
 declare module "use-react-screenshot";
 ```
 
-## Auto-generation of types
+## 类型的自动生成
 
-It's common to generate types from external sources, for example, generating backend types from an OpenAPI schema. In this case, create a dedicated place in your codebase for these types, like `shared/api/openapi`. Ideally, you should also include a README in that folder that describes what these files are, how to regenerate them, etc.
+从外部源生成类型是很常见的，例如，从 OpenAPI schema 生成后端类型。在这种情况下，为这些类型在您的代码库中创建一个专门的位置，如 `shared/api/openapi`。理想情况下，您还应该在该文件夹中包含一个 README，描述这些文件是什么、如何重新生成它们等。
 
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
 [ext-type-fest]: https://github.com/sindresorhus/type-fest

@@ -28,9 +28,9 @@ sidebar_position: 1
 
 在这里我们创建了两个组件并在 slice 的 index 文件中导出它们。这些组件将包含表单，负责为用户提供可理解的控件来获取他们的凭据。
 
-### Dialog for login
+### 登录对话框
 
-If your app has a dialog for login that can be used on any page, consider making that dialog a widget. That way, you can still avoid too much decomposition, but have the freedom to reuse this dialog on any page.
+如果您的应用程序有一个可以在任何页面上使用的登录对话框，请考虑将该对话框设为 widget。这样，您仍然可以避免过多的分解，但可以自由地在任何页面上重用此对话框。
 
 - 📂 widgets
     - 📂 login-dialog
@@ -39,11 +39,11 @@ If your app has a dialog for login that can be used on any page, consider making
         - 📄 index.ts
     - other widgets…
 
-The rest of this guide is written for the dedicated page approach, but the same principles apply to the dialog widget.
+本指南的其余部分是为专用页面方法编写的，但相同的原则也适用于对话框 widget。
 
-### Client-side validation
+### 客户端验证
 
-Sometimes, especially for registration, it makes sense to perform client-side validation to let the user know quickly that they made a mistake. Validation can take place in the `model` segment of the login page. Use a schema validation library, for example, [Zod][ext-zod] for JS/TS, and expose that schema to the `ui` segment:
+有时，特别是对于注册，执行客户端验证是有意义的，可以让用户快速知道他们犯了错误。验证可以在登录页面的 `model` segment 中进行。使用 schema 验证库，例如 JS/TS 的 [Zod][ext-zod]，并将该 schema 暴露给 `ui` segment：
 
 ```ts title="pages/login/model/registration-schema.ts"
 import { z } from "zod";
@@ -58,7 +58,7 @@ export const registrationData = z.object({
 });
 ```
     
-Then, in the `ui` segment, you can use this schema to validate the user input:
+然后，在 `ui` segment 中，您可以使用此 schema 来验证用户输入：
 
 ```tsx title="pages/login/ui/RegisterPage.tsx"
 import { registrationData } from "../model/registration-schema";
@@ -88,47 +88,47 @@ export function RegisterPage() {
 }
 ```
 
-## How to send credentials to the backend
+## 如何将凭据发送到后端
 
-Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager. As explained in the [guide for API requests][examples-api-requests], you can put your request either in `shared/api` or in the `api` segment of your login page.
+创建一个向后端登录端点发出请求的函数。此函数可以使用 mutation 库（例如 TanStack Query）直接在组件代码中调用，也可以作为状态管理器中的副作用调用。如 [API 请求指南][examples-api-requests] 中所述，您可以将请求放在 `shared/api` 中或登录页面的 `api` segment 中。
 
-### Two-factor authentication
+### 双因素认证
 
-If your app supports two-factor authentication (2FA), you might have to redirect to another page where a user can enter a one-time password. Usually your `POST /login` request would return the user object with a flag indicating that the user has 2FA enabled. If that flag is set, redirect the user to the 2FA page.
+如果您的应用程序支持双因素认证（2FA），您可能需要重定向到另一个页面，用户可以在其中输入一次性密码。通常，您的 `POST /login` 请求会返回带有标志的用户对象，指示用户已启用 2FA。如果设置了该标志，请将用户重定向到 2FA 页面。
 
-Since this page is very related to logging in, you can also keep it in the same slice, `login` on the Pages layer.
+由于此页面与登录密切相关，您也可以将其保留在 Pages layer 上的同一个 slice `login` 中。
 
-You would also need another request function, similar to `login()` that we created above. Place them together, either in Shared, or in the `api` segment of the `login` page.
+您还需要另一个请求函数，类似于我们上面创建的 `login()`。将它们放在一起，要么在 Shared 中，要么在 `login` 页面的 `api` segment 中。
 
-## How to store the token for authenticated requests {#how-to-store-the-token-for-authenticated-requests}
+## 如何存储 token 以进行经过身份验证的请求 {#how-to-store-the-token-for-authenticated-requests}
 
-Regardless of the authentication scheme you have, be it a simple login & password, OAuth, or two-factor authentication, at the end you will receive a token. This token should be stored so that subsequent requests can identify themselves.
+无论您使用哪种身份验证方案，无论是简单的登录和密码、OAuth 还是双因素认证，最终您都会收到一个 token。应该存储此 token，以便后续请求可以识别自己。
 
-The ideal token storage for a web app is a **cookie** — it requires no manual token storage or handling. As such, cookie storage needs almost no consideration from the frontend architecture side. If your frontend framework has a server side (for example, [Remix][ext-remix]), then you should store the server-side cookie infrastructure in `shared/api`. There is an example in [the Authentication section of the tutorial][tutorial-authentication] of how to do that with Remix.
+Web 应用程序的理想 token 存储是 **cookie** — 它不需要手动 token 存储或处理。因此，cookie 存储几乎不需要从前端架构方面考虑。如果您的前端框架有服务器端（例如 [Remix][ext-remix]），那么您应该将服务器端 cookie 基础设施存储在 `shared/api` 中。在[教程的身份验证部分][tutorial-authentication]中有一个如何使用 Remix 做到这一点的示例。
 
-Sometimes, however, cookie storage is not an option. In this case, you will have to store the token manually. Apart from storing the token, you may also need to set up logic for refreshing your token when it expires. With FSD, there are several places where you can store the token, as well as several ways to make it available for the rest of the app.
+但是，有时 cookie 存储不是一个选项。在这种情况下，您将必须手动存储 token。除了存储 token 之外，您可能还需要设置在 token 过期时刷新 token 的逻辑。使用 FSD，有几个地方可以存储 token，以及几种方法可以使其对应用程序的其余部分可用。
 
-### In Shared
+### 在 Shared 中
 
-This approach plays well with an API client defined in `shared/api` because the token is freely available for other request functions that require authentication to succeed. You can make the API client hold state, either with a reactive store or simply a module-level variable, and update that state in your `login()`/`logout()` functions.
+这种方法与在 `shared/api` 中定义的 API 客户端配合得很好，因为 token 可以自由地用于其他需要身份验证才能成功的请求函数。您可以让 API 客户端保持状态，无论是使用响应式存储还是简单的模块级变量，并在您的 `login()`/`logout()` 函数中更新该状态。
 
-Automatic token refresh can be implemented as a middleware in the API client — something that can execute every time you make any request. It can work like this:
+自动 token 刷新可以作为 API 客户端中的中间件实现 — 每次您发出任何请求时都可以执行的东西。它可以这样工作：
 
-- Authenticate and store the access token as well as the refresh token
-- Make any request that requires authentication
-- If the request fails with a status code that indicates token expiration, and there is a token in the store, make a refresh request, store the new tokens, and retry the original request
+- 认证并存储访问 token 以及刷新 token
+- 发出任何需要身份验证的请求
+- 如果请求失败并返回指示 token 过期的状态码，并且存储中有 token，则发出刷新请求，存储新的 token，并重试原始请求
 
 One of the drawbacks of this approach is that the logic of managing and refreshing the token doesn't have a dedicated place. This can be fine for some apps or teams, but if the token management logic is more complex, it may be preferable to separate responsibilities of making requests and managing tokens. You can do that by keeping your requests and API client in `shared/api`, but the token store and management logic in `shared/auth`.
 
 Another drawback of this approach is that if your backend returns an object of your current user's information along with the token, you have to store that somewhere or discard that information and request it again from an endpoint like `/me` or `/users/current`.
 
-### In Entities
+### 在 Entities 中
 
-It's common for FSD projects to have an entity for a user and/or an entity for the current user. It can even be the same entity for both.
+FSD 项目通常有一个用户实体和/或当前用户实体。甚至可以是同一个实体。
 
 :::note
 
-The **current user** is also sometimes called "viewer" or "me". This is to distinguish the single authenticated user, with permissions and private information, from a list of all users with publicly accessible information.
+**当前用户**有时也被称为"viewer"或"me"。这是为了区分具有权限和私人信息的单个经过身份验证的用户与具有公开可访问信息的所有用户列表。
 
 :::
 
@@ -153,17 +153,17 @@ Once you overcome the challenge of exposing the token that is stored in the enti
 
 It is discouraged to store app-wide state like an access token in pages or widgets. Avoid placing your token store in the `model` segment of the login page, instead choose from the first two solutions, Shared or Entities.
 
-## Logout and token invalidation
+## 登出和 token 失效
 
-Usually, apps don't have an entire page for logging out, but the logout functionality is still very important. It consists of an authenticated request to the backend and an update to the token store.
+通常，应用程序没有专门的登出页面，但登出功能仍然非常重要。它包括对后端的经过身份验证的请求和对 token 存储的更新。
 
-If you store all your requests in `shared/api`, keep the logout request function there, close to the login function. Otherwise, consider keeping the logout request function next to the button that triggers it. For example, if you have a header widget that appears on every page and contains the logout link, put that request in the `api` segment of that widget.
+如果您将所有请求存储在 `shared/api` 中，请将登出请求函数保留在那里，靠近登录函数。否则，请考虑将登出请求函数保留在触发它的按钮旁边。例如，如果您有一个出现在每个页面上并包含登出链接的头部 widget，请将该请求放在该 widget 的 `api` segment 中。
 
-The update to the token store will have to be triggered from the place of the logout button, like a header widget. You can combine the request and the store update in the `model` segment of that widget.
+token 存储的更新必须从登出按钮的位置触发，比如头部 widget。您可以在该 widget 的 `model` segment 中组合请求和存储更新。
 
-### Automatic logout
+### 自动登出
 
-Don't forget to build failsafes for when a request to log out fails, or a request to refresh a login token fails. In both of these cases, you should clear the token store. If you keep your token in Entities, this code can be placed in the `model` segment as it is pure business logic. If you keep your token in Shared, placing this logic in `shared/api` might bloat the segment and dilute its purpose. If you're noticing that your API segment contains two several unrelated things, consider splitting out the token management logic into another segment, for example, `shared/auth`.
+不要忘记为登出请求失败或刷新登录 token 请求失败时构建故障保护。在这两种情况下，您都应该清除 token 存储。如果您将 token 保存在 Entities 中，此代码可以放在 `model` segment 中，因为它是纯业务逻辑。如果您将 token 保存在 Shared 中，将此逻辑放在 `shared/api` 中可能会使 segment 膨胀并稀释其目的。如果您注意到您的 API segment 包含几个不相关的东西，请考虑将 token 管理逻辑拆分到另一个 segment 中，例如 `shared/auth`。
 
 [tutorial-authentication]: /docs/get-started/tutorial#authentication
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers

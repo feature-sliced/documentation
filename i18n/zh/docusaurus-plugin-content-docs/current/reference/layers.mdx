@@ -22,31 +22,31 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 6. Entities
 7. Shared
 
-You don't have to use every layer in your project — only add them if you think it brings value to your project. Typically, most frontend projects will have at least the Shared, Pages, and App layers.
+您不必在项目中使用每一层 — 只有当您认为它们为您的项目带来价值时才添加它们。通常，大多数前端项目至少会有 Shared、Pages 和 App 层。
 
-In practice, layers are folders with lowercase names (for example, `📁 shared`, `📁 pages`, `📁 app`). Adding new layers is _not recommended_ because their semantics are standardized.
+在实践中，层是具有小写名称的文件夹（例如，`📁 shared`、`📁 pages`、`📁 app`）。_不建议_添加新层，因为它们的语义是标准化的。
 
-## Import rule on layers
+## 层上的导入规则
 
-Layers are made up of _slices_ — highly cohesive groups of modules. Dependencies between slices are regulated by **the import rule on layers**:
+层由 _slices_ 组成 — 高度内聚的模块组。slices 之间的依赖关系由**层上的导入规则**调节：
 
-> _A module (file) in a slice can only import other slices when they are located on layers strictly below._
+> _slice 中的模块（文件）只能在其他 slices 位于严格较低的层时导入它们。_
 
-For example, the folder `📁 ~/features/aaa` is a slice with the name "aaa". A file inside of it, `~/features/aaa/api/request.ts`, cannot import code from any file in `📁 ~/features/bbb`, but can import code from `📁 ~/entities` and `📁 ~/shared`, as well as any sibling code from `📁 ~/features/aaa`, for example, `~/features/aaa/lib/cache.ts`.
+例如，文件夹 `📁 ~/features/aaa` 是一个名为"aaa"的 slice。其中的文件 `~/features/aaa/api/request.ts` 不能从 `📁 ~/features/bbb` 中的任何文件导入代码，但可以从 `📁 ~/entities` 和 `📁 ~/shared` 导入代码，以及从 `📁 ~/features/aaa` 导入任何同级代码，例如 `~/features/aaa/lib/cache.ts`。
 
-Layers App and Shared are **exceptions** to this rule — they are both a layer and a slice at the same time. Slices partition code by business domain, and these two layers are exceptions because Shared does not have business domains, and App combines all business domains.
+App 和 Shared 层是此规则的**例外** — 它们既是层又是 slice。Slices 按业务域划分代码，这两层是例外，因为 Shared 没有业务域，而 App 结合了所有业务域。
 
-In practice, this means that layers App and Shared are made up of segments, and segments can import each other freely.
+在实践中，这意味着 App 和 Shared 层由 segments 组成，segments 可以自由地相互导入。
 
-## Layer definitions
+## 层定义
 
-This section describes the semantic meaning of each layer to create an intuition for what kind of code belongs there.
+本节描述每一层的语义含义，以便直观地了解什么样的代码属于那里。
 
 ### Shared
 
-This layer forms a foundation for the rest of the app. It's a place to create connections with the external world, for example, backends, third-party libraries, the environment. It is also a place to define your own highly contained libraries.
+这一层为应用程序的其余部分奠定了基础。这是与外部世界建立连接的地方，例如后端、第三方库、环境。这也是定义您自己的高度封装库的地方。
 
-This layer, like the App layer, _does not contain slices_. Slices are intended to divide the layer into business domains, but business domains do not exist in Shared. This means that all files in Shared can reference and import from each other.
+这一层，像 App 层一样，_不包含 slices_。Slices 旨在将层划分为业务域，但业务域在 Shared 中不存在。这意味着 Shared 中的所有文件都可以相互引用和导入。
 
 Here are the segments that you can typically find in this layer:
 

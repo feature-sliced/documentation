@@ -5,13 +5,13 @@ sidebar_class_name: sidebar-item--wip
 
 import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 
-# Desegemented
+# 去分段化
 
 <WIP ticket="148" />
 
-## Situation
+## 情况
 
-Very often, there is a situation on projects when modules related to a specific domain from the subject area are unnecessarily desegmented and scattered around the project
+在项目中经常出现这样的情况：与主题领域中特定域相关的模块被不必要地去分段化并分散在项目周围
 
 ```sh
 ├── components/
@@ -43,24 +43,24 @@ Very often, there is a situation on projects when modules related to a specific 
 |    ├── user/
 ```
 
-## Problem
+## 问题
 
-The problem manifests itself at least in violation of the principle of * * High Cohesion** and excessive stretching * * of the axis of changes**
+该问题至少表现为违反了**高内聚**原则和过度拉伸**变更轴**
 
-## If you ignore it
+## 如果您忽略它
 
-- If necessary, touch on the logic, for example, delivery - we will have to keep in mind that it lies in several places and touch on several places in the code-which unnecessarily stretches our * * Axis of changes**
-- If we need to study the logic of the user, we will have to go through the whole project to study in detail * * actions, epics, constants, entities, components** - instead of it lying in one place
-- Implicit connections and the uncontrollability of a growing subject area
-- With this approach, the eye is very often blurred and you may not notice how we "create constants for the sake of constants", creating a dump in the corresponding project directory
+- 如果需要涉及逻辑，例如交付 - 我们必须记住它位于多个地方，并涉及代码中的多个地方 - 这不必要地拉伸了我们的**变更轴**
+- 如果我们需要研究用户的逻辑，我们将不得不遍历整个项目来详细研究**actions、epics、constants、entities、components** - 而不是将其放在一个地方
+- 隐式连接和不断增长的主题领域的不可控性
+- 使用这种方法，眼睛经常会模糊，您可能不会注意到我们如何"为了常量而创建常量"，在相应的项目目录中创建垃圾场
 
-## Solution
+## 解决方案
 
-Place all modules related to a specific domain/user case - directly next to each other
+将与特定域/用户案例相关的所有模块 - 直接彼此相邻放置
 
-So that when studying a particular module, all its components lie side by side, and are not scattered around the project
+这样，在研究特定模块时，其所有组件都并排放置，而不是分散在项目周围
 
-> It also increases the discoverability and clarity of the code base and the relationships between modules
+> 它还增加了代码库的可发现性和清晰度以及模块之间的关系
 
 ```diff
 - ├── components/

@@ -48,15 +48,15 @@ _entity_ 是您的应用程序正在处理的现实生活概念。_feature_ 是�
 
 它帮助您和您的团队在主要价值组件方面快速概览项目。标准化架构有助于加快入职速度并解决关于代码结构的争议。请参阅[动机][motivation]页面了解更多关于为什么创建 FSD 的信息。
 
-### Does a novice developer need an architecture/methodology?
+### 新手开发者需要架构/方法论吗？
 
-Rather yes than no
+更倾向于需要
 
-*Usually, when you design and develop a project in one person, everything goes smoothly. But if there are pauses in development, new developers are added to the team - then problems come*
+*通常，当您独自设计和开发项目时，一切都很顺利。但如果开发过程中有暂停，团队中添加了新的开发者 - 那么问题就会出现*
 
-### How do I work with the authorization context?
+### 如何处理授权上下文？
 
-Answered [here](/docs/guides/examples/auth)
+在[这里](/docs/guides/examples/auth)有答案
 
 [ext-steiger]: https://github.com/feature-sliced/steiger
 [ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
