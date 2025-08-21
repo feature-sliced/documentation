@@ -1,0 +1,38 @@
+{
+    "version.label": {
+        "message": "v2.1",
+        "description": "The label for version current"
+    },
+    "sidebar.getstartedSidebar.category.Tutorials": {
+        "message": "教程",
+        "description": "The label for category Tutorials in sidebar getstartedSidebar"
+    },
+    "sidebar.aboutSidebar.category.Alternatives": {
+        "message": "替代方案",
+        "description": "The label for category Alternatives in sidebar aboutSidebar"
+    },
+    "sidebar.aboutSidebar.category.Promote": {
+        "message": "推广",
+        "description": "The label for category Promote in sidebar aboutSidebar"
+    },
+    "sidebar.guidesSidebar.category.Examples": {
+        "message": "示例",
+        "description": "The label for category Examples in sidebar guidesSidebar"
+    },
+    "sidebar.guidesSidebar.category.Migration": {
+        "message": "迁移",
+        "description": "The label for category Migration in sidebar guidesSidebar"
+    },
+    "sidebar.guidesSidebar.category.Tech": {
+        "message": "技术",
+        "description": "The label for category Tech in sidebar guidesSidebar"
+    },
+    "sidebar.conceptsSidebar.category.Issues": {
+        "message": "问题",
+        "description": "The label for category Issues in sidebar conceptsSidebar"
+    },
+    "sidebar.referenceSidebar.category.Layer": {
+        "message": "层",
+        "description": "The label for category Layer in sidebar referenceSidebar"
+    }
+}
