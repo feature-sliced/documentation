@@ -10,12 +10,124 @@ import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
 
 <WIP ticket="220" />
 
-> Cross-imports appear when the layer or abstraction begins to take too much responsibility than it should. That is why the methodology identifies new layers that allow you to uncouple these cross-imports
+> Cross-imports appear when a layer/abstraction starts taking on too much responsibility than it should. That is why the methodology allocates new layers that allow these cross-imports to be decoupled.
 
-## See also
+## Introduction {#start}
 
-- [(Thread) About the supposed inevitability of cross-ports](https://t.me/feature_sliced/4515)
-- [(Thread) About resolving cross-ports in entities](https://t.me/feature_sliced/3678)
+**Cross-import** is a situation in which, within a layer, there is a need to import data from one slice to another.
+
+:::warning Important
+
+The article only deals with conflict situations when importing between **slices**. Within one slice, fragments can import each other, such a situation is not prohibited.
+
+:::
+
+Let's imagine that we are developing a TODO List application for storing notes. We need to store several task cards and display them on a board. There can be several boards with cards. 
+Let's look at a simplified example of the structure of such an application:
+
+- `📂 entities`
+	- `📂 task`
+		- `📁 ui`
+			- `📄 TaskCard`
+	- `📁 board`
+		- `📁 ui`
+			- `📄 BoardTasks`
+
+In this example, the `BoardTasks` component needs to import the `TaskCard` component to display cards.
+You cannot import the `TaskCard` component directly, as this would violate the principle of low coupling and make it more difficult to maintain the project in the future.
+
+## Cross-import solutions options {#solutions}
+
+### Merging multiple slices into one {#slices-merge}
+As you can see from the example above, the domain of the `TaskCard` and `BoardTasks` components are quite similar, which means it is possible to create a derived slice from the two existing ones, where both methods would be in the same directory.
+
+The result of merging the `task` and `board` slices:
+- `📂 entities`
+	- `📂 board`
+		- `📁 ui`
+			- `📄 TaskCard`
+			- `📄 BoardTasks`
+
+As you can see from the example, we have eliminated the situation where one slice imports data from another and achieved high cohesion and low connectivity within a segment of a single slice.
+
+### Moving code to a higher layer {#slices-moving}
+This option is more suitable for those cases where combining several slices into one is difficult or impossible.
+
+It is likely that the slice into which you are importing data from another slice is highly logically rich and can be moved to a higher layer to eliminate the connectivity of slices within a single layer.
+
+Let's imagine that the `board` slice is more dense with business logic than in the example above, then merging it with the `task` slice will create additional clutter, so a good solution would be to restructure the logic of the `board` slice in a higher layer.
+
+The result of moving the logic of the `task` and `board` slices:
+
+- `📂 entities`
+	- `📂 task`
+		- `📁 ui`
+			- `📄 TaskCard`
+- `📂 features`
+	- `📁 view-board`
+		- `📁 ui`
+			- `📄 BoardTasks`
+
+By restructuring the logic of the `board` slice on the `features` layer (not necessarily on it, any layer higher in the hierarchy will do), its domain area was more specifically clarified, and it became possible to build a correct import mechanism from the point of view of the layer hierarchy.
+
+### Duplication code {#duplication-code}
+If the amount of data you are going to import from another slice is small, it may be worth duplicating it into the current slice. However, this option should not be a priority among all the above.
+
+## What if cross-import is inevitable? {#cross-import-is-inevitable}
+
+:::caution Warning
+
+The approach described in this section is experimental and has not yet been standardized. However, in exotic situations, the information in this section may be useful.
+
+:::
+
+If your project requires cross-import and the three methods described above did not help, the Feature Sliced ​​Design community offers the following solution to the problem.
+
+- `📂 entities`
+	- `📂 task`
+		- `📁 ui`
+			- `📄 TaskCard`
+	- `@x`
+	- `📁 board`
+		- `📁 ui`
+			- `📄 BoardTasks`
+	- `@x`
+
+### @x {#export-private-api}
+**@x** - this is an experimental approach where within a slice you can create an explicit public export of only those modules that can be used within multiple slices of the same layer.
+
+Let's look at an example (TSX markup):
+```ts title="entities/task/@x.ts"
+export { TaskCard } from './ui/TaskCard.tsx';
+```
+Component inside slice that needs cross import:
+```tsx title="entities/board/ui/BoardTasks.tsx"
+import { TaskCard } from '/entities/task/@x/TaskCard';
+
+export const BoardTasks = () => {  return (
+    <div>
+      <TaskCard title="Task#1" description="Description..." />
+      <TaskCard title="Task#2" description="Description..." />
+      <TaskCard title="Task#3" description="Description..." />
+    </div>
+  )
+}
+```
+As you can see from the import path in the `BoardTasks` file, thanks to the export from the @x file, it is clear that this module is not intended for public use, but exists only to be imported into another slice.
+
+### Lifting the ban on cross-imports {#disable-cross-imports-rule}
+If you have tried all the methods in the article, but for some reason still could not get rid of cross-imports, perhaps it is worth considering lifting the ban on them within specific slices, or the entire project as a whole.
+However, it is important to understand that lifting the ban on cross-imports could potentially have a negative impact on the overall structure of the project.
+
+## Useful links {#useful-links}
+
+1. The Feature Sliced ​​Design team has developed a tool that allows you to automatically check for cross-imports in a project: [Steiger](https://github.com/feature-sliced/steiger) 
+2. More information about the cross-import rule: [Steiger-Forbidden-Imports](https://github.com/feature-sliced/steiger/blob/master/packages/steiger-plugin-fsd/src/forbidden-imports/README.md) 
+
+## See also {#see-also}
+
+- [(Thread) On the supposed inevitability of cross-imports](https://t.me/feature_sliced/4515)
+- [(Thread) About resolving cross-imports in entities](https://t.me/feature_sliced/3678)
 - [(Thread) About cross-imports and responsibility](https://t.me/feature_sliced/3287)
 - [(Thread) About imports between segments](https://t.me/feature_sliced/4021)
 - [(Thread) About cross-imports inside shared](https://t.me/feature_sliced/3618)
