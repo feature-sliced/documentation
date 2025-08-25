@@ -1,0 +1,41 @@
+---
+sidebar_position: 5
+---
+
+# Entities
+
+`entities` layer in Feature-Sliced Design encapsulates core business logic, similar to entities in backend applications. However, its use in frontend applications is not always necessary and should be approached with caution to avoid overcomplicating the codebase.
+
+## When to Use the `entities` Layer
+
+Most frontend applications function as "thin clients" with minimal business logic, relying on the backend for data processing. In such cases, `entities` layer can often be omitted in favor of `shared/api`. Use `entities` layer only when the following conditions are met:
+
+- The application handles **client-only data structures** with significant **client-only business logic**.
+- The entity is **heavily reused** across multiple parts of the application.
+
+### Examples of Valid Use Cases
+1. **Client-Only Entities**: If the frontend manages an entity that does not exist on the backend and involves complex business logic, consider placing it in `entities` layer. This is appropriate only if the entity is used extensively across the application.
+2. **Aggregating Microservices Data**: When the backend is split across microservices and the frontend needs to combine data with significant client-side business logic, an aggregate entity in `entities` layer may be justified.
+
+:::note
+
+Both heavy client-side business logic and client-only data structures must be present to justify creating an entity. If either criterion is missing, avoid creating an entity.
+
+:::
+
+## Best Practices
+
+To maintain a clean and maintainable codebase, adhere to the following rules:
+
+- **Avoid Dangling Entities**: Do not create entities that are used only once. Treat `entities` layer like any other layer in a pages-first approach, ensuring entity is actually needed.
+- **Do Not Replicate Backend Entities**: Backend entities and API responses belong in `shared/api`, not `entities` layer. `entities` layer is for client-specific logic, not for mirroring server-side data structures.
+
+## Common Pitfalls
+
+Seasoned developers may be inclined to create an entity for every piece of data in the application. This is a mistake in FSD. Overusing the entities layer can lead to unnecessary complexity and maintenance overhead. Most frontend applications function effectively without `entities` layer, relying instead on `shared/api` for data fetching and minimal logic.
+
+:::note
+
+Prematurely introducing `entities` layer can harm the project's scalability and maintainability. Evaluate whether the layer is truly necessary before adding it.
+
+:::
