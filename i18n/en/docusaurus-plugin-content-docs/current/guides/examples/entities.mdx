@@ -13,6 +13,12 @@ Most frontend applications function as "thin clients" with minimal business logi
 - The application handles **client-only data structures** with significant **client-only business logic**.
 - The entity is **heavily reused** across multiple parts of the application.
 
+If you end it a situation where you can't create an entity, but you have a significant amount of reused client-only business logic, you can do a hybrid approach:
+
+- Keep all types/DTOs in `shared/api` without creating a new entity.
+- Use `shared/api` for data fetching operations like create, read, update, delete, filter, etc.
+- Use `entities/<name>/model` for client-only business logic.
+
 ### Examples of Valid Use Cases
 1. **Client-Only Entities**: If the frontend manages an entity that does not exist on the backend and involves complex business logic, consider placing it in `entities` layer. This is appropriate only if the entity is used extensively across the application.
 2. **Aggregating Microservices Data**: When the backend is split across microservices and the frontend needs to combine data with significant client-side business logic, an aggregate entity in `entities` layer may be justified.
