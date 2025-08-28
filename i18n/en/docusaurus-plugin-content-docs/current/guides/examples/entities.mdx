@@ -1,0 +1,59 @@
+---
+sidebar_position: 5
+---
+
+# Entities
+
+`entities` layer in Feature-Sliced Design encapsulates core business logic, similar to entities in backend applications. However, its use in frontend applications is not always necessary and should be approached with caution to avoid overcomplicating the codebase.
+
+## Types of Applications
+
+In client-server architecture there are two distinct types of clients based on how they operate. Here is a good article explaining it in more detail: [Difference Between Thin and Thick Clients?](https://www.geeksforgeeks.org/what-is-the-difference-between-thin-and-thick-clients/), here is a short summary:
+- Thin clients almost entirely rely on the server-side data processing.
+- Thick clients do the majority of data processing locally on the user's device.
+
+We will use the same classification for the frontend applications based on how much data processing they perform:
+- Thin clients: the backend handles the majority of processing and serves data to the frontend via some kind of transport like REST or GraphQL.
+- Thick clients: backend is still responsible for data storage and retrieval, but the frontend performs the majority of business logic.
+
+This classification is not strictly binary as different parts of the same application may have "thin" or "thick" parts, the key takeaway is that "thin" means backend-driven functionality and "thick" means frontend-driven functionality.
+
+## When to Use the `entities` Layer
+
+Most frontend applications function as "thin clients" with minimal business logic, relying on the backend for data processing. In such cases, `entities` layer can often be omitted in favor of `shared/api`. Use `entities` layer only when the following conditions are met:
+
+- The application handles **client-only data structures** with significant **client-only business logic**.
+- The entity is **[heavily](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming)) reused** across multiple parts of the application.
+
+However, you can use `entities` layer to store business logic without creating a new entity:
+
+- Keep all types/DTOs in `shared/api`.
+- Use `shared/api` for data fetching operations like create, read, update, delete, filter, etc.
+- Use `entities/<name>/model` for client-only business logic.
+
+### Examples of Valid Use Cases
+1. Client-Only Entities: If the frontend manages an entity that does not exist on the backend and involves complex business logic, consider placing it in `entities` layer. This is appropriate if the entity is used [extensively](https://en.wikipedia.org/wiki/Rule_of_three_(computer_programming)) across the application.
+2. Aggregating Data: When the frontend needs to combine data from different sources with significant client-side business logic, an aggregate entity in `entities` layer may be justified.
+
+:::note
+
+Both heavy client-side business logic and client-only data structures must be present to justify creating an entity. If either criterion is missing, avoid creating an entity.
+
+:::
+
+## Best Practices
+
+To maintain a clean and maintainable codebase, adhere to the following rules:
+
+- Avoid Dangling Entities: Do not create entities that are used only once. Treat `entities` layer like any other layer in a pages-first approach, ensuring entity is actually needed.
+- Do Not Replicate Backend Entities: Backend entities and API responses belong in `shared/api`, not `entities` layer. `entities` layer is for client-specific logic, not for mirroring server-side data structures.
+
+## Common Pitfalls
+
+Seasoned developers may be inclined to create an entity for every piece of data in the application. This is a mistake in FSD. Overusing the entities layer can lead to unnecessary complexity and maintenance overhead. Most frontend applications function effectively without `entities` layer, relying instead on `shared/api` for data fetching and minimal logic.
+
+:::note
+
+Prematurely introducing `entities` layer can harm the project's scalability and maintainability. Evaluate whether the layer is truly necessary before adding it.
+
+:::
