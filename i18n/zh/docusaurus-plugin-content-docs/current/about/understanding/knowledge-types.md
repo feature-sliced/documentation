@@ -1,29 +1,29 @@
 ---
 sidebar_position: 3
-sidebar_label: Knowledge types
+sidebar_label: 知识类型
 ---
 
-# Knowledge types in the project
+# 项目中的知识类型
 
-The following "types of knowledge" can be distinguished in any project:
+在任何项目中都可以区分以下"知识类型"：
 
-* **Fundamental knowledge**  
-  Knowledge that does not change much over time, such as algorithms, computer science, programming language mechanisms and its APIs.
+* **基础知识**  
+  随时间变化不大的知识，如算法、计算机科学、编程语言机制及其 API。
 
-* **Technology stack**  
-  Knowledge of the set of technical solutions used in a project, including programming languages, frameworks, and libraries.
+* **技术栈**  
+  对项目中使用的技术解决方案集合的了解，包括编程语言、框架和库。
 
-* **Project knowledge**  
-  Knowledge that is specific to the current project and not valuable outside of it. This knowledge is essential for newly-onboarded developers to be able to contribute effectively.
+* **项目知识**  
+  特定于当前项目且在项目外没有价值的知识。这种知识对于新入职的开发人员能够有效贡献至关重要。
 
 :::note
 
-**Feature-Sliced Design** is designed to reduce reliance on "project knowledge", take more responsibility, and make it easier to onboard new team members.
+**Feature-Sliced Design** 旨在减少对"项目知识"的依赖，承担更多责任，并让新团队成员更容易上手。
 
 :::
 
-## See also {#see-also}
+## 另请参阅 {#see-also}
 
-- [(Video 🇷🇺) Ilya Klimov - On Types of Knowledge][ext-klimov]
+- [（视频 🇷🇺）Ilya Klimov - 关于知识类型][ext-klimov]
 
 [ext-klimov]: https://youtu.be/4xyb_tA-uw0?t=249

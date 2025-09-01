@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-sidebar_label: From a custom architecture
+sidebar_label: 从自定义架构迁移
 ---
 
 # 从自定义架构迁移

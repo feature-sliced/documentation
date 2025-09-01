@@ -49,15 +49,15 @@ export default <RouterConfig> {
 fsd pages home
 ```
 
-Create a ``home-page.vue`` file inside the ui segment, access it using the Public API
+在 ui segment 内创建一个 `home-page.vue` 文件，使用 Public API 访问它
 
 ```ts title="src/pages/home/index.ts"
 export { default as HomePage } from './ui/home-page';
 ```
 
-Thus, the file structure will look like this:
+因此，文件结构将如下所示：
 ```sh
-|── src
+├── src
 │   ├── app
 │   │   ├── router.config.ts
 │   ├── pages
@@ -66,7 +66,7 @@ Thus, the file structure will look like this:
 │   │   │   │   ├── home-page.vue
 │   │   │   ├── index.ts
 ```
-Finally, let's add a route to the config:
+最后，让我们向配置添加一个路由：
 
 ```ts title="app/router.config.ts"
 import type { RouterConfig } from '@nuxt/schema'
@@ -94,7 +94,7 @@ export default <RouterConfig> {
 │   ├── pages                         # Pages folder, related to FSD
 ```
 
-In order for NuxtJS to use the routes folder inside the `app` layer for file routing, you need to modify `nuxt.config.ts` as follows:
+为了让 NuxtJS 使用 `app` 层内的 routes 文件夹进行文件路由，您需要按如下方式修改 `nuxt.config.ts`：
 ```ts title="nuxt.config.ts"
 export default defineNuxtConfig({
   devtools: { enabled: true }, // Not FSD related, enabled at project startup
@@ -109,24 +109,24 @@ export default defineNuxtConfig({
 
 现在，你可以在`app`内为页面创建路由，并将`pages`中的页面连接到它们。
 
-For example, to add a `Home` page to your project, you need to do the following steps:
-- Add a page slice inside the `pages` layer
-- Add the corresponding route inside the `app` layer
-- Connect the page from the slice with the route
+例如，要向项目添加 `Home` 页面，您需要执行以下步骤：
+- 在 `pages` 层内添加页面 slice
+- 在 `app` 层内添加相应的路由
+- 将 slice 中的页面与路由连接
 
-To create a page slice, let's use the [CLI](https://github.com/feature-sliced/cli):
+要创建页面 slice，让我们使用 [CLI](https://github.com/feature-sliced/cli)：
 
 ```shell
 fsd pages home
 ```
 
-Create a ``home-page.vue`` file inside the ui segment, access it using the Public API
+在 ui segment 内创建一个 `home-page.vue` 文件，使用 Public API 访问它
 
 ```ts title="src/pages/home/index.ts"
 export { default as HomePage } from './ui/home-page';
 ```
 
-Create a route for this page inside the `app` layer:
+在 `app` 层内为此页面创建路由：
 
 ```sh
 
@@ -141,7 +141,7 @@ Create a route for this page inside the `app` layer:
 │   │   │   ├── index.ts
 ```
 
-Add your page component inside the `index.vue` file:
+在 `index.vue` 文件内添加您的页面组件：
 
 ```html title="src/app/routes/index.vue"
 <script setup>
@@ -153,9 +153,9 @@ Add your page component inside the `index.vue` file:
 </template>
 ```
 
-## What to do with `layouts`?
+## `layouts` 怎么办？
 
-You can place layouts inside the `app` layer, to do this you need to modify the config as follows:
+您可以将布局放在 `app` 层内，为此您需要按如下方式修改配置：
 
 ```ts title="nuxt.config.ts"
 export default defineNuxtConfig({
@@ -171,9 +171,9 @@ export default defineNuxtConfig({
 ```
 
 
-## See also
+## 另请参阅
 
-- [Documentation on changing directory config in NuxtJS](https://nuxt.com/docs/api/nuxt-config#dir)
-- [Documentation on changing router config in NuxtJS](https://nuxt.com/docs/guide/recipes/custom-routing#router-config)
-- [Documentation on changing aliases in NuxtJS](https://nuxt.com/docs/api/nuxt-config#alias)
+- [NuxtJS 中更改目录配置的文档](https://nuxt.com/docs/api/nuxt-config#dir)
+- [NuxtJS 中更改路由器配置的文档](https://nuxt.com/docs/guide/recipes/custom-routing#router-config)
+- [NuxtJS 中更改别名的文档](https://nuxt.com/docs/api/nuxt-config#alias)
 
