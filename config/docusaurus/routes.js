@@ -124,17 +124,17 @@ const LEGACY_ROUTES = [
             {
                 title: "App splitting",
                 from: "/docs/concepts/app-splitting",
-                to: "/docs/reference",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Decomposition",
                 from: "/docs/reference/units/decomposition",
-                to: "/docs/reference",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Units",
                 from: "/docs/reference/units",
-                to: "/docs/reference",
+                to: "/docs/reference/layers",
             },
             {
                 title: "Layers",
@@ -305,10 +305,19 @@ const SECTIONS_REDIRECTS = Object.values(SECTIONS).map(
     }),
 );
 
+// Redirects for removed hub/landing pages
+const HUB_REDIRECTS = [
+    { from: "/docs", to: "/docs/get-started/overview" },
+    { from: "/docs/get-started", to: "/docs/get-started/overview" },
+    { from: "/docs/guides", to: "/docs/guides/examples/auth" },
+    { from: "/docs/guides/examples", to: "/docs/guides/examples/auth" },
+    { from: "/docs/reference", to: "/docs/reference/layers" },
+    { from: "/docs/about", to: "/docs/about/mission" },
+];
+
 // !!! FIXME: refactor later!
 // UPD: Removed new docs routes for simplifying
 const _TOTAL_ROUTES = [
-    "/docs/about",
     "/docs/about/alternatives",
     "/docs/about/mission",
     "/docs/about/motivation",
@@ -317,13 +326,10 @@ const _TOTAL_ROUTES = [
     "/docs/about/promote/integration",
     "/docs/about/promote/partial-application",
     "/docs/branding",
-    "/docs/get-started",
     "/docs/get-started/overview",
     "/docs/get-started/cheatsheet",
     "/docs/get-started/faq",
     "/docs/get-started/tutorial",
-    "/docs/guides",
-    "/docs/guides/examples",
     "/docs/guides/examples/auth",
     "/docs/guides/examples/autocompleted",
     "/docs/guides/examples/browser-api",
@@ -341,8 +347,6 @@ const _TOTAL_ROUTES = [
     "/docs/guides/migration/from-custom",
     "/docs/guides/migration/from-v1",
     "/docs/guides/tech/with-nextjs",
-    "/docs/",
-    "/docs/reference",
 ];
 // from: "/en/docs/*" to "/docs/*"
 const I18N_REDIRECTS = _TOTAL_ROUTES.map((route) => ({
@@ -355,6 +359,7 @@ const REDIRECTS = [
     ...SECTIONS_REDIRECTS,
     ...LEGACY_ROUTES_REDIRECTS,
     ...I18N_REDIRECTS,
+    ...HUB_REDIRECTS,
 ];
 
 module.exports = {

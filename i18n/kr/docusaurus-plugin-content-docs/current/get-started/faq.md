@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-pagination_next: guides/index
+pagination_next: guides/examples/auth
 ---
 
 # FAQ
