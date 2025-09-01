@@ -1,9 +1,9 @@
 ---
 sidebar_position: 10
 ---
-# Usage with Electron
+# 与 Electron 一起使用
 
-Electron applications have a special architecture consisting of multiple processes with different responsibilities. Applying FSD in such a context requires adapting the structure to the Electron specifics.
+Electron 应用程序具有特殊的架构，由具有不同职责的多个进程组成。在这种情况下应用 FSD 需要将结构适应 Electron 的特性。
 
 ```sh
 └── src
@@ -43,18 +43,18 @@ Electron applications have a special architecture consisting of multiple process
         └── ipc                             # IPC description (event names, contracts)
 ```
 
-## Public API rules
-Each process must have its own public API. For example, you can't import modules from `main` to `renderer`.
-Only the `src/shared` folder is public for both processes.
-It's also necessary for describing contracts for process interaction.
+## 公共 API 规则
+每个进程必须有自己的公共 API。例如，您不能将模块从 `main` 导入到 `renderer`。
+只有 `src/shared` 文件夹对两个进程都是公共的。
+描述进程交互的契约也是必要的。
 
-## Additional changes to the standard structure
-It's suggested to use a new `ipc` segment, where interaction between processes takes place.
-The `pages` and `widgets` layers, based on their names, should not be present in `src/main`. You can use `features`, `entities` and `shared`.
-The `app` layer in `src` contains entry points for `main` and `renderer`, as well as the IPC.
-It's not desirable for segments in the `app` layer to have intersection points
+## 额外更改标准结构
+建议使用新的 `ipc` 段，其中进程之间的交互发生。
+`pages` 和 `widgets` 层，基于其名称，不应出现在 `src/main` 中。您可以使用 `features`、`entities` 和 `shared`。
+`src/app` 层中的 `app` 层包含 `main` 和 `renderer` 的入口点，以及 IPC。
+不希望 `app` 层中的段有交集
 
-## Interaction example
+## 交互示例
 
 ```typescript title="src/shared/ipc/channels.ts"
 export const CHANNELS = {
@@ -127,7 +127,7 @@ export const getUser = () => {
 };
 ```
 
-## See also
+## 另请参阅
 - [Process Model Documentation](https://www.electronjs.org/docs/latest/tutorial/process-model)
 - [Context Isolation Documentation](https://www.electronjs.org/docs/latest/tutorial/context-isolation)
 - [Inter-Process Communication Documentation](https://www.electronjs.org/docs/latest/tutorial/ipc)

@@ -49,41 +49,41 @@ sidebar_label: From a custom architecture
 
 ## 在您开始之前 {#before-you-start}
 
-The most important question to ask your team when considering to switch to Feature-Sliced Design is — _do you really need it?_ We love Feature-Sliced Design, but even we recognize that some projects are perfectly fine without it.
+在考虑切换到Feature-Sliced Design时，向团队提出的最重要问题是——_你真的需要它吗？_我们喜爱Feature-Sliced Design，但即使是我们也认识到一些项目没有它也完全可以。
 
-Here are some reasons to consider making the switch:
+以下是考虑进行切换的一些原因：
 
-1. New team members are complaining that it's hard to get to a productive level
-2. Making modifications to one part of the code **often** causes another unrelated part to break
-3. Adding new functionality is difficult due to the sheer amount of things you need to think about
+1. 新团队成员抱怨很难达到高效水平
+2. 修改代码的一部分**经常**导致另一个不相关的部分出现问题
+3. 由于需要考虑的事情太多，添加新功能变得困难
 
-**Avoid switching to FSD against the will of your teammates**, even if you are the lead.  
-First, convince your teammates that the benefits outweigh the cost of migration and the cost of learning a new architecture instead of the established one.
+**避免违背队友意愿切换到FSD**，即使你是负责人。  
+首先，说服你的队友，让他们相信好处超过了迁移成本和学习新架构而不是既定架构的成本。
 
-Also keep in mind that any kind of architectural changes are not immediately observable to the management. Make sure they are on board with the switch before starting and explain to them why it might benefit the project.
+还要记住，任何类型的架构更改都不会立即被管理层观察到。在开始之前确保他们支持这种切换，并向他们解释为什么这可能对项目有益。
 
 :::tip
 
-If you need help convincing the project manager that FSD is beneficial, consider some of these points:
-1. Migration to FSD can happen incrementally, so it will not halt the development of new features
-2. A good architecture can significantly decrease the time that a new developer needs to get productive
-3. FSD is a documented architecture, so the team doesn't have to continuously spend time on maintaining their own documentation
+如果你需要帮助说服项目经理FSD是有益的，请考虑以下几点：
+1. 迁移到FSD可以增量进行，因此不会停止新功能的开发
+2. 良好的架构可以显著减少新开发者需要变得高效的时间
+3. FSD是一个有文档的架构，因此团队不必持续花时间维护自己的文档
 
 :::
 
 ---
 
-If you made the decision to start migrating, then the first thing you want to do is to set up an alias for `📁 src`. It will be helpful later to refer to top-level folders. We will consider `@` as an alias for `./src` for the rest of this guide.
+如果你决定开始迁移，那么你想要做的第一件事是为`📁 src`设置一个别名。稍后引用顶级文件夹时会很有帮助。在本指南的其余部分，我们将考虑`@`作为`./src`的别名。
 
-## Step 1. Divide the code by pages {#divide-code-by-pages}
+## 步骤1. 按页面划分代码 {#divide-code-by-pages}
 
-Most custom architectures already have a division by pages, however small or large in logic. If you already have `📁 pages`, you may skip this step.
+大多数自定义架构已经有按页面的划分，无论逻辑大小如何。如果你已经有`📁 pages`，可以跳过此步骤。
 
-If you only have `📁 routes`, create `📁 pages` and try to move as much component code from `📁 routes` as possible. Ideally, you would have a tiny route and a larger page. As you're moving code, create a folder for each page and add an index file:
+如果你只有`📁 routes`，创建`📁 pages`并尝试从`📁 routes`中移动尽可能多的组件代码。理想情况下，你会有一个小的路由和一个较大的页面。在移动代码时，为每个页面创建一个文件夹并添加一个索引文件：
 
 :::note
 
-For now, it's okay if your pages reference each other. You can tackle that later, but for now, focus on establishing a prominent division by pages.
+现在，如果你的页面相互引用是可以的。你可以稍后处理这个问题，但现在，专注于建立突出的按页面划分。
 
 :::
 
@@ -107,11 +107,11 @@ export function ProductPage(props) {
 }
 ```
 
-## Step 2. Separate everything else from the pages {#separate-everything-else-from-pages}
+## 步骤2. 将其他所有内容与页面分离 {#separate-everything-else-from-pages}
 
-Create a folder `📁 src/shared` and move everything that doesn't import from `📁 pages` or `📁 routes` there. Create a folder `📁 src/app` and move everything that does import the pages or routes there, including the routes themselves.
+创建一个文件夹`📁 src/shared`，并将所有不从`📁 pages`或`📁 routes`导入的内容移动到那里。创建一个文件夹`📁 src/app`，并将所有导入页面或路由的内容移动到那里，包括路由本身。
 
-Remember that the Shared layer doesn't have slices, so it's fine if segments import from each other.
+记住Shared层没有切片，所以段之间相互导入是可以的。
 
 You should end up with a file structure like this:
 
@@ -182,32 +182,32 @@ You should end up with a file structure like this:
       </ul>
 </details>
 
-## Step 3. Tackle cross-imports between pages {#tackle-cross-imports-between-pages}
+## 步骤3. 处理页面间的交叉导入 {#tackle-cross-imports-between-pages}
 
 <!-- A good way to approach this is by setting up [Steiger][ext-steiger], the linter for FSD.  -->
 <!-- TODO: add instructions once the new config format is standardized -->
 
-Find all instances where one page is importing from the other and do one of the two things:
+找到一个页面从另一个页面导入的所有实例，并执行以下两件事之一：
 
-1. Copy-paste the imported code into the depending page to remove the dependency
-2. Move the code to a proper segment in Shared: 
-      - if it's a part of the UI kit, move it to `📁 shared/ui`; 
-      - if it's a configuration constant, move it to `📁 shared/config`; 
-      - if it's a backend interaction, move it to `📁 shared/api`.
+1. 将导入的代码复制粘贴到依赖页面中以移除依赖关系
+2. 将代码移动到Shared中的适当段： 
+      - 如果它是UI工具包的一部分，将其移动到`📁 shared/ui`； 
+      - 如果它是配置常量，将其移动到`📁 shared/config`； 
+      - 如果它是后端交互，将其移动到`📁 shared/api`。
 
 :::note
 
-**Copy-pasting isn't architecturally wrong**, in fact, sometimes it may be more correct to duplicate than to abstract into a new reusable module. The reason is that sometimes the shared parts of pages start drifting apart, and you don't want dependencies getting in your way in these cases.
+**复制粘贴在架构上并不错误**，实际上，有时复制可能比抽象为新的可重用模块更正确。原因是有时页面的共享部分开始分离，在这些情况下你不希望依赖关系阻碍你。
 
-However, there is still sense in the DRY ("don't repeat yourself") principle, so make sure you're not copy-pasting business logic. Otherwise you will need to remember to fix bugs in several places at once.
+但是，DRY（"不要重复自己"）原则仍然有意义，所以确保你不是在复制粘贴业务逻辑。否则你需要记住同时在多个地方修复错误。
 
 :::
 
-## Step 4. Unpack the Shared layer {#unpack-shared-layer}
+## 步骤4. 拆解Shared层 {#unpack-shared-layer}
 
-You might have a lot of stuff in the Shared layer on this step, and you generally want to avoid that. The reason is that the Shared layer may be a dependency for any other layer in your codebase, so making changes to that code is automatically more prone to unintended consequences.
+在这一步你可能在Shared层中有很多东西，你通常想要避免这种情况。原因是Shared层可能是代码库中任何其他层的依赖项，因此对该代码进行更改自动更容易产生意外后果。
 
-Find all the objects that are only used on one page and move it to the slice of that page. And yes, _that applies to actions, reducers, and selectors, too_. There is no benefit in grouping all actions together, but there is benefit in colocating relevant actions close to their usage.
+找到所有只在一个页面上使用的对象，并将其移动到该页面的切片中。是的，_这也适用于actions、reducers和selectors_。将所有actions组合在一起没有好处，但将相关actions放置在接近其使用位置是有好处的。
 
 You should end up with a file structure like this:
 
@@ -266,46 +266,46 @@ You should end up with a file structure like this:
       </ul>
 </details>
 
-## Step 5. Organize code by technical purpose {#organize-by-technical-purpose}
+## 步骤5. 按技术目的组织代码 {#organize-by-technical-purpose}
 
-In FSD, division by technical purpose is done with _segments_. There are a few common ones:
+在FSD中，按技术目的划分是通过_段_来完成的。有几个常见的段：
 
-- `ui` — everything related to UI display: UI components, date formatters, styles, etc.
-- `api` — backend interactions: request functions, data types, mappers, etc.
-- `model` — the data model: schemas, interfaces, stores, and business logic.
-- `lib` — library code that other modules on this slice need.
-- `config` — configuration files and feature flags.
+- `ui` — 与UI显示相关的一切：UI组件、日期格式化器、样式等。
+- `api` — 后端交互：请求函数、数据类型、映射器等。
+- `model` — 数据模型：模式、接口、存储和业务逻辑。
+- `lib` — 此切片上其他模块需要的库代码。
+- `config` — 配置文件和功能标志。
 
-You can create your own segments, too, if you need. Make sure not to create segments that group code by what it is, like `components`, `actions`, `types`, `utils`. Instead, group the code by what it's for.
+如果需要，你也可以创建自己的段。确保不要创建按代码是什么分组的段，如`components`、`actions`、`types`、`utils`。相反，按代码的用途分组。
 
-Reorganize your pages to separate code by segments. You should already have a `ui` segment, now it's time to create other segments, like `model` for your actions, reducers, and selectors, or `api` for your thunks and mutations.
+重新组织你的页面以按段分离代码。你应该已经有一个`ui`段，现在是时候创建其他段了，如用于actions、reducers和selectors的`model`，或用于thunks和mutations的`api`。
 
-Also reorganize the Shared layer to remove these folders:
-- `📁 components`, `📁 containers` — most of it should become `📁 shared/ui`;
-- `📁 helpers`, `📁 utils` — if there are some reused helpers left, group them together by function, like dates or type conversions, and move theses groups to `📁 shared/lib`;
-- `📁 constants` — again, group by function and move to `📁 shared/config`.
+还要重新组织Shared层以移除这些文件夹：
+- `📁 components`、`📁 containers` — 其中大部分应该成为`📁 shared/ui`；
+- `📁 helpers`、`📁 utils` — 如果还有一些重用的helpers，按功能将它们组合在一起，如日期或类型转换，并将这些组移动到`📁 shared/lib`；
+- `📁 constants` — 再次，按功能分组并移动到`📁 shared/config`。
 
-## Optional steps {#optional-steps}
+## 可选步骤 {#optional-steps}
 
-### Step 6. Form entities/features from Redux slices that are used on several pages {#form-entities-features-from-redux}
+### 步骤6. 从在多个页面使用的Redux切片形成实体/功能 {#form-entities-features-from-redux}
 
-Usually, these reused Redux slices will describe something relevant to the business, for example, products or users, so these can be moved to the Entities layer, one entity per one folder. If the Redux slice is related to an action that your users want to do in your app, like comments, then you can move it to the Features layer.
+通常，这些重用的Redux切片将描述与业务相关的内容，例如产品或用户，因此这些可以移动到Entities层，每个文件夹一个实体。如果Redux切片与用户想要在你的应用中执行的操作相关，如评论，那么你可以将其移动到Features层。
 
-Entities and features are meant to be independent from each other. If your business domain contains inherent connections between entities, refer to the [guide on business entities][business-entities-cross-relations] for advice on how to organize these connections.
+实体和功能意味着彼此独立。如果你的业务域包含实体之间的固有连接，请参考[业务实体指南][business-entities-cross-relations]以获取如何组织这些连接的建议。
 
-The API functions related to these slices can stay in `📁 shared/api`.
+与这些切片相关的API函数可以保留在`📁 shared/api`中。
 
-### Step 7. Refactor your modules {#refactor-your-modules}
+### 步骤7. 重构你的模块 {#refactor-your-modules}
 
-The `📁 modules` folder is commonly used for business logic, so it's already pretty similar in nature to the Features layer from FSD. Some modules might also be describe large chunks of the UI, like an app header. In that case, you should migrate them to the Widgets layer.
+`📁 modules`文件夹通常用于业务逻辑，因此它在本质上已经与FSD的Features层非常相似。一些模块也可能描述UI的大块，如应用头部。在这种情况下，你应该将它们迁移到Widgets层。
 
-### Step 8. Form a clean UI foundation in `shared/ui` {#form-clean-ui-foundation}
+### 步骤8. 在`shared/ui`中形成干净的UI基础 {#form-clean-ui-foundation}
 
-`📁 shared/ui` should ideally contain a set of UI elements that don't have any business logic encoded in them. They should also be highly reusable.
+`📁 shared/ui`理想情况下应该包含一组没有编码任何业务逻辑的UI元素。它们也应该是高度可重用的。
 
-Refactor the UI components that used to be in `📁 components` and `📁 containers` to separate out the business logic. Move that business logic to the higher layers. If it's not used in too many places, you could even consider copy-pasting.
+重构曾经在`📁 components`和`📁 containers`中的UI组件以分离业务逻辑。将该业务逻辑移动到更高的层级。如果它没有在太多地方使用，你甚至可以考虑复制粘贴。
 
-## See also {#see-also}
+## 另请参阅 {#see-also}
 
 - [(Talk in Russian) Ilya Klimov — Крысиные бега бесконечного рефакторинга: как не дать техническому долгу убить мотивацию и продукт](https://youtu.be/aOiJ3k2UvO4)
 

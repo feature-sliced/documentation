@@ -1,17 +1,17 @@
 ---
 sidebar_position: 10
 ---
-# Usage with NuxtJS
+# 与 NuxtJS 一起使用
 
-It is possible to implement FSD in a NuxtJS project, but conflicts arise due to the differences between NuxtJS project structure requirements and FSD principles:
+可以在 NuxtJS 项目中实现 FSD，但由于 NuxtJS 项目结构要求与 FSD 原则之间的差异，会产生冲突：
 
-- Initially, NuxtJS offers a project file structure without a `src` folder, i.e. in the root of the project.
-- The file routing is in the `pages` folder, while in FSD this folder is reserved for the flat slice structure.
+- 最初，NuxtJS 提供的项目文件结构没有 `src` 文件夹，即在项目的根目录中。
+- 文件路由在 `pages` 文件夹中，而在 FSD 中，此文件夹保留用于扁平 slice 结构。
 
 
-## Adding an alias for the `src` directory
+## 为 `src` 目录添加别名
 
-Add an `alias` object to your config:
+将 `alias` 对象添加到您的配置中：
 ```ts title="nuxt.config.ts"
 export default defineNuxtConfig({
   devtools: { enabled: true }, // Not FSD related, enabled at project startup
@@ -20,15 +20,15 @@ export default defineNuxtConfig({
   },
 })
 ```
-## Choose how to configure the router
+## 选择如何配置路由器
 
-In NuxtJS, there are two ways to customize the routing - using a config and using a file structure.
-In the case of file-based routing, you will create index.vue files in folders inside the app/routes directory, and in the case of configure, you will configure the routers in the `router.options.ts` file.
+在 NuxtJS 中，有两种自定义路由的方法 - 使用配置和使用文件结构。
+在基于文件的路由情况下，您将在 app/routes 目录内的文件夹中创建 index.vue 文件，在配置情况下，您将在 `router.options.ts` 文件中配置路由器。
 
 
-### Routing using config
+### 使用配置进行路由
 
-In the `app` layer, create a `router.options.ts` file, and export a config object from it:
+在 `app` 层中，创建一个 `router.options.ts` 文件，并从中导出配置对象：
 ```ts title="app/router.options.ts"
 import type { RouterConfig } from '@nuxt/schema';
 
@@ -38,12 +38,12 @@ export default <RouterConfig> {
 
 ```
 
-To add a `Home` page to your project, you need to do the following steps:
-- Add a page slice inside the `pages` layer
-- Add the appropriate route to the `app/router.config.ts` config
+要向项目添加 `Home` 页面，您需要执行以下步骤：
+- 在 `pages` 层内添加页面 slice
+- 将适当的路由添加到 `app/router.config.ts` 配置中
 
 
-To create a page slice, let's use the [CLI](https://github.com/feature-sliced/cli):
+要创建页面 slice，让我们使用 [CLI](https://github.com/feature-sliced/cli)：
 
 ```shell
 fsd pages home
@@ -82,10 +82,10 @@ export default <RouterConfig> {
 }
 ```
 
-### File Routing
+### 文件路由
 
-First of all, create a `src` directory in the root of your project, and create app and pages layers inside this directory and a routes folder inside the app layer.
-Thus, your file structure should look like this:
+首先，在项目根目录中创建一个`src`目录，并在此目录内创建app和pages层，以及在app层内创建一个routes文件夹。
+因此，你的文件结构应该如下所示：
 
 ```sh
 ├── src
@@ -107,7 +107,7 @@ export default defineNuxtConfig({
 })
 ```
 
-Now, you can create routes for pages within `app` and connect pages from `pages` to them.
+现在，你可以在`app`内为页面创建路由，并将`pages`中的页面连接到它们。
 
 For example, to add a `Home` page to your project, you need to do the following steps:
 - Add a page slice inside the `pages` layer

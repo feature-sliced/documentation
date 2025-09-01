@@ -1,14 +1,14 @@
 ---
 sidebar_position: 10
 ---
-# Usage with React Query
+# 与 React Query 一起使用
 
-## The problem of “where to put the keys”
+## "键放在哪里"的问题
 
-### Solution — break down by entities
+### 解决方案——按实体分解
 
-If the project already has a division into entities, and each request corresponds to a single entity,
-the purest division will be by entity. In this case, we suggest using the following structure:
+如果项目已经有实体划分，并且每个请求对应单个实体，
+最纯粹的划分将按实体进行。在这种情况下，我们建议使用以下结构：
 ```sh
 └── src/                                        #
     ├── app/                                    #
@@ -33,12 +33,12 @@ the purest division will be by entity. In this case, we suggest using the follow
         ...                                     #
 ```
 
-If there are connections between the entities (for example, the Country entity has a field-list of City entities),
-then you can use the [public API for cross-imports][public-api-for-cross-imports] or consider the alternative solution below.
+如果实体之间有连接（例如，Country 实体有一个 City 实体的列表字段），
+则可以使用 [公共 API 跨导入][public-api-for-cross-imports] 或考虑以下替代方案。
 
-### Alternative solution — keep it in shared
+### 替代方案——保持共享
 
-In cases where entity separation is not appropriate, the following structure can be considered:
+在实体分离不合适的情况下，可以考虑以下结构：
 
 ```sh
 └── src/                                        #
@@ -52,17 +52,17 @@ In cases where entity separation is not appropriate, the following structure can
                └──  index.ts                    #
 ```
 
-Then in `@/shared/api/index.ts`:
+然后在 `@/shared/api/index.ts` 中：
 
 ```ts title="@/shared/api/index.ts"
 export { documentQueries } from "./queries/document";
 ```
 
-## The problem of “Where to insert mutations?”
+## "在哪里插入突变？"的问题
 
-It is not recommended to mix mutations with queries. There are two options:
+不建议将突变与查询混合。有两种选择：
 
-### 1. Define a custom hook in the `api` segment near the place of use
+### 1. 在 `api` 段附近定义一个自定义钩子
 
 ```tsx title="@/features/update-post/api/use-update-title.ts"
 export const useUpdateTitle = () => {
@@ -81,7 +81,7 @@ export const useUpdateTitle = () => {
 };
 ```
 
-### 2. Define a mutation function somewhere else (Shared or Entities) and use `useMutation` directly in the component
+### 2. 在其他地方（共享或实体）定义突变函数，并在组件中直接使用 `useMutation`
 
 ```tsx
 const { mutateAsync, isPending } = useMutation({
@@ -116,11 +116,11 @@ export const CreatePost = () => {
 };
 ```
 
-## Organization of requests
+## 请求组织
 
-### Query factory
+### 查询工厂
 
-A query factory is an object where the key values are functions that return a list of query keys. Here's how to use it:
+查询工厂是一个对象，其中键值是返回查询键列表的函数。以下是如何使用它：
 
 ```ts
 const keyFactory = {
@@ -130,7 +130,7 @@ const keyFactory = {
 ```
 
 :::info
-`queryOptions` is a built-in utility in react-query@v5 (optional)
+`queryOptions` 是 react-query@v5 的内置工具（可选）
 
 ```ts
 queryOptions({
@@ -139,12 +139,12 @@ queryOptions({
 });
 ```
 
-For greater type safety, further compatibility with future versions of react-query, and easy access to functions and query keys,
-you can use the built-in queryOptions function from “@tanstack/react-query”
+为了更好的类型安全性，进一步兼容 react-query 的未来版本，并易于访问函数和查询键，
+您可以使用 “@tanstack/react-query” 的内置 queryOptions 函数
 [(More details here)](https://tkdodo.eu/blog/the-query-options-api#queryoptions).
 :::
 
-### 1. Creating a Query Factory
+### 1. 创建查询工厂
 
 ```tsx title="@/entities/post/api/post.queries.ts"
 import { keepPreviousData, queryOptions } from "@tanstack/react-query";
@@ -173,7 +173,7 @@ export const postQueries = {
 };
 ```
 
-### 2. Using Query Factory in application code
+### 2. 在应用程序代码中使用查询工厂
 ```tsx
 import { useParams } from "react-router-dom";
 import { postApi } from "@/entities/post";
@@ -216,17 +216,17 @@ export const PostPage = () => {
 };
 ```
 
-### Benefits of using a Query Factory
-- **Request structuring:** A factory allows you to organize all API requests in one place, making your code more readable and maintainable.
-- **Convenient access to queries and keys:** The factory provides convenient methods for accessing different types of queries and their keys.
-- **Query Refetching Ability:** The factory allows easy refetching without the need to change query keys in different parts of the application.
+### 使用查询工厂的好处
+- **请求结构化：** 工厂允许您在一个地方组织所有 API 请求，使代码更易于阅读和维护。
+- **方便访问查询和键：** 工厂提供方便的方法来访问不同类型的查询及其键。
+- **查询刷新能力：** 工厂允许轻松刷新，无需在应用程序的不同部分更改查询键。
 
-## Pagination
+## 分页
 
-In this section, we'll look at an example of the `getPosts` function, which makes an API request to retrieve post entities using pagination.
+在本节中，我们将查看 `getPosts` 函数的示例，该函数通过分页 API 请求检索帖子实体。
 
-### 1. Creating a function `getPosts`
-The getPosts function is located in the `get-posts.ts` file, which is located in the `api` segment
+### 1. 创建 `getPosts` 函数
+`getPosts` 函数位于 `get-posts.ts` 文件中，位于 `api` 段
 
 ```tsx title="@/pages/post-feed/api/get-posts.ts"
 import { apiClient } from "@/shared/api/base";
@@ -257,9 +257,9 @@ export const getPosts = async (
 };
 ```
 
-### 2. Query factory for pagination
-The `postQueries` query factory defines various query options for working with posts,
-including requesting a list of posts with a specific page and limit.
+### 2. 分页查询工厂
+`postQueries` 查询工厂定义了各种查询选项，用于处理帖子，
+包括请求特定页面和限制的帖子列表。
 
 ```tsx
 import { keepPreviousData, queryOptions } from "@tanstack/react-query";
@@ -278,7 +278,7 @@ export const postQueries = {
 ```
 
 
-### 3. Use in application code
+### 3. 在应用程序代码中使用
 
 ```tsx title="@/pages/home/ui/index.tsx"
 export const HomePage = () => {
@@ -302,14 +302,14 @@ export const HomePage = () => {
 };
 ```
 :::note
-The example is simplified, the full version is available on [GitHub](https://github.com/ruslan4432013/fsd-react-query-example)
+该示例已简化，完整版本可在 [GitHub](https://github.com/ruslan4432013/fsd-react-query-example) 上找到
 :::
 
-## `QueryProvider` for managing queries
-In this guide, we will look at how to organize a `QueryProvider`.
+## `QueryProvider` 用于管理查询
+在本指南中，我们将查看如何组织 `QueryProvider`。
 
-### 1. Creating a `QueryProvider`
-The file `query-provider.tsx` is located at the path `@/app/providers/query-provider.tsx`.
+### 1. 创建 `QueryProvider`
+文件 `query-provider.tsx` 位于路径 `@/app/providers/query-provider.tsx`。
 
 ```tsx title="@/app/providers/query-provider.tsx"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -331,10 +331,10 @@ export const QueryProvider = ({ client, children }: Props) => {
 };
 ```
 
-### 2. Creating a `QueryClient`
-`QueryClient` is an instance used to manage API requests.
-The `query-client.ts` file is located at `@/shared/api/query-client.ts`.
-`QueryClient` is created with certain settings for query caching.
+### 2. 创建 `QueryClient`
+`QueryClient` 是一个用于管理 API 请求的实例。
+文件 `query-client.ts` 位于 `@/shared/api/query-client.ts`。
+`QueryClient` 使用某些设置进行查询缓存。
 
 ```tsx title="@/shared/api/query-client.ts"
 import { QueryClient } from "@tanstack/react-query";
@@ -349,21 +349,21 @@ export const queryClient = new QueryClient({
 });
 ```
 
-## Code generation
+## 代码生成
 
-There are tools that can generate API code for you, but they are less flexible than the manual approach described above.
-If your Swagger file is well-structured,
-and you're using one of these tools, it might make sense to generate all the code in the `@/shared/api` directory.
+有一些工具可以为您生成 API 代码，但它们比手动方法描述的更不灵活。
+如果您的 Swagger 文件结构良好，
+并且您使用其中之一，生成 `@/shared/api` 目录中的所有代码可能是有意义的。
 
 
-## Additional advice for organizing RQ
-### API Client
+## 额外的组织建议
+### API 客户端
 
-Using a custom API client class in the shared layer,
-you can standardize the configuration and work with the API in the project.
-This allows you to manage logging,
-headers and data exchange format (such as JSON or XML) from one place.
-This approach makes it easier to maintain and develop the project because it simplifies changes and updates to interactions with the API.
+在共享层使用自定义 API 客户端类，
+您可以标准化配置并处理项目中的 API。
+这使您可以管理日志，
+从一处管理头和数据交换格式（如 JSON 或 XML）。
+这种方法使项目更容易维护和开发，因为它简化了更改和更新与 API 的交互。
 
 ```tsx title="@/shared/api/api-client.ts"
 import { API_URL } from "@/shared/config";
@@ -427,7 +427,7 @@ export class ApiClient {
 export const apiClient = new ApiClient(API_URL);
 ```
 
-## See also {#see-also}
+## 另请参阅 {#see-also}
 
 - [(GitHub) Sample Project](https://github.com/ruslan4432013/fsd-react-query-example)
 - [(CodeSandbox) Sample Project](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)

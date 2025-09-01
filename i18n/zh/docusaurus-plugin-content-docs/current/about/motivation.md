@@ -2,143 +2,143 @@
 sidebar_position: 2
 ---
 
-# Motivation
+# 动机
 
-The main idea of **Feature-Sliced Design** is to facilitate and reduce the cost of developing complex and developing projects, based on [combining research results, discussing the experience of various kinds of a wide range of developers][ext-discussions].
+**Feature-Sliced Design**（特性分层设计）的主要理念是基于[结合研究成果，讨论各种类型开发者的广泛经验][ext-discussions]，来促进和降低复杂项目开发的成本。
 
-Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability][refs-mission].
+显然，这不会是万能的解决方案，当然，该方法论也会有自己的[适用限制][refs-mission]。
 
-Nevertheless, there are reasonable questions regarding *the feasibility of such a methodology as a whole*
+尽管如此，关于*这种方法论整体可行性*仍然存在合理的质疑。
 
 :::note
 
-More details [discussed in the discussion][disc-src]
+更多详情[在讨论中进行了探讨][disc-src]
 
 :::
 
-## Why are there not enough existing solutions?
+## 为什么现有解决方案还不够？
 <!--TODO: #existing-solutions -->
-> It usually, these arguments:
+> 通常会有这些论点：
 >
-> - *"Why you need some new methodology, if you already have long-established approaches and principles of design such as `SOLID`, `KISS`, `YAGNI`, `DDD`, `GRASP`, `DRY`, etc."*
-> - *"All the problems are solved by good project documentation, tests, and structured processes"*
-> - *"Problems would not have happened if all developers are following all the above"*
-> - *"Everything was invented before you, you just can't use it"*
-> - *"Take \{FRAMEWORK_NAME\} - everything has already been decided for you there"*
+> - *"为什么需要一些新的方法论，如果你已经有了长期建立的设计方法和原则，如 `SOLID`、`KISS`、`YAGNI`、`DDD`、`GRASP`、`DRY` 等。"*
+> - *"所有问题都可以通过良好的项目文档、测试和结构化流程来解决"*
+> - *"如果所有开发者都遵循上述所有原则，问题就不会发生"*
+> - *"一切都在你之前就被发明了，你只是不会使用它"*
+> - *"采用 \{框架名称\} - 那里已经为你决定了一切"*
 
-### Principles alone are not enough
+### 仅有原则是不够的
 
-**The existence of principles alone is not enough to design a good architecture**
+**仅仅存在原则并不足以设计出良好的架构**
 
-Not everyone knows them completely, even fewer understand and apply them correctly
+不是每个人都完全了解这些原则，更少的人能够正确理解和应用它们。
 
-*The design principles are too general, and do not give a specific answer to the question: "How to design the structure and architecture of a scalable and flexible application?"*
+*设计原则过于宽泛，没有给出具体问题的明确答案："如何设计可扩展和灵活应用程序的结构和架构？"*
 
-### Processes don't always work
+### 流程并不总是有效
 
-*Documentation/Tests/Processes* are, of course, good, but alas, even at high costs for them - **they do not always solve the problems posed by the architecture and the introduction of new people into the project**
+*文档/测试/流程*当然是好的，但遗憾的是，即使在它们上面投入高成本 - **它们也不总能解决架构提出的问题和新人加入项目的问题**
 
-- The time of entry of each developer into the project is not greatly reduced, because the documentation will most often come out huge / outdated
-- Constantly make sure that everyone understands architecture in the same way-it also requires a huge amount of resources
-- Do not forget about the bus-factor
+- 每个开发者进入项目的时间并没有大幅减少，因为文档往往会变得庞大/过时
+- 持续确保每个人都以相同方式理解架构 - 这也需要大量资源
+- 不要忘记总线因子（bus-factor）
 
-### Existing frameworks cannot be applied everywhere
+### 现有框架不能在所有地方应用
 
-- Existing solutions usually have a high entry threshold, which makes it difficult to find new developers
-- Also, most often, the choice of technology has already been determined before the onset of serious problems in the project, and therefore you need to be able to "work with what is" - **without being tied to the technology**
+- 现有解决方案通常有很高的入门门槛，这使得寻找新开发者变得困难
+- 此外，技术选择通常在项目出现严重问题之前就已经确定，因此你需要能够"使用现有的" - **而不被技术绑定**
 
-> Q: *"In my project `React/Vue/Redux/Effector/Mobx/{YOUR_TECH}` - how can I better build the structure of entities and the relationships between them?"*
+> 问：*"在我的项目 `React/Vue/Redux/Effector/Mobx/{你的技术}` 中 - 我如何更好地构建实体结构和它们之间的关系？"*
 
-### As a result
+### 结果
 
-We get *"unique as snowflakes"* projects, each of which requires a long immersion of the employee, and knowledge that is unlikely to be applicable on another project
+我们得到了*"像雪花一样独特"*的项目，每个项目都需要员工长时间的沉浸，而这些知识不太可能适用于另一个项目。
 
-> @sergeysova: *"This is exactly the situation that currently exists in our field of frontend development: each lead will invent different architectures and project structures, while it is not a fact that these structures will pass the test of time, as a result, a maximum of two people can develop the project besides him, and each new developer needs to be immersed again."*
+> @sergeysova: *"这正是我们前端开发领域目前存在的情况：每个技术负责人都会发明不同的架构和项目结构，虽然这些结构不一定能经受时间的考验，结果是除了他之外最多只有两个人可以开发项目，每个新开发者都需要重新沉浸其中。"*
 
-## Why do developers need the methodology?
+## 为什么开发者需要这个方法论？
 
-### Focus on business features, not on architecture problems
+### 专注于业务功能，而不是架构问题
 
-The methodology allows you to save resources on designing a scalable and flexible architecture, instead directing the attention of developers to the development of the main functionality. At the same time, the architectural solutions themselves are standardized from project to project.
+该方法论允许你节省设计可扩展和灵活架构的资源，而是将开发者的注意力引导到主要功能的开发上。同时，架构解决方案本身在项目之间是标准化的。
 
-*A separate question is that the methodology should earn the trust of the community, so that another developer can get acquainted with it and rely on it in solving the problems of his project within the time available to him*
+*一个单独的问题是，该方法论应该赢得社区的信任，这样其他开发者可以熟悉它，并在他可用的时间内依靠它来解决他项目的问题*
 
-### An experience-proven solution
+### 经过经验验证的解决方案
 
-The methodology is designed for developers who are aimed at *a proven solution for designing complex business logic*
+该方法论是为那些致力于*设计复杂业务逻辑的经过验证解决方案*的开发者而设计的。
 
-*However, it is clear that the methodology is generally about a set of best-practices, articles that address certain problems and cases during development. Therefore, the methodology will also be useful for the rest of the developers-who somehow face problems during development and design*
+*然而，很明显，该方法论通常是关于一套最佳实践、文章，这些文章解决开发过程中的某些问题和案例。因此，该方法论对其他开发者也会有用 - 那些在开发和设计过程中以某种方式面临问题的人*
 
-### Project Health
+### 项目健康
 
-The methodology will allow *to solve and track the problems of the project in advance, without requiring a huge amount of resources*
+该方法论将允许*提前解决和跟踪项目问题，而不需要大量资源*
 
-**Most often, technical debt accumulates and accumulates over time, and the responsibility for its resolution lies on both the lead and the team**
+**技术债务往往会随着时间的推移而积累，解决它的责任既在技术负责人身上，也在团队身上**
 
-The methodology will allow you to *warn* possible problems in the scaling and development of the project in advance
+该方法论将允许你提前*警告*项目扩展和开发中的可能问题。
 
-## Why does a business need a methodology?
+## 为什么企业需要方法论？
 
-### Fast onboarding
+### 快速入职
 
-With the methodology, you can hire a person to the project who **is already previously familiar with this approach, and not train again**
+有了方法论，你可以雇佣一个**已经熟悉这种方法的人到项目中，而不需要重新培训**
 
-*People start to understand and benefit the project faster, and there are additional guarantees to find people for the next iterations of the project*
+*人们开始更快地理解和为项目带来价值，并且有额外的保证为项目的下一次迭代找到人员*
 
-### An experience-proven solution
+### 经过经验验证的解决方案
 
-With the methodology, the business will get *a solution for most of the issues that arise during the development of systems*
+有了方法论，企业将获得*系统开发过程中出现的大多数问题的解决方案*
 
-Since most often a business wants to get a framework / solution that would solve the lion's share of problems during the development of the project
+因为企业最常想要获得一个框架/解决方案，能够解决项目开发过程中的大部分问题。
 
-### Applicability for different stages of the project
+### 对项目不同阶段的适用性
 
-The methodology can benefit the project *both at the stage of project support and development, and at the MVP stage*
+该方法论可以在*项目支持和开发阶段以及MVP阶段*为项目带来好处
 
-Yes, the most important thing for MVP is *"features, not the architecture laid down for the future"*. But even in conditions of limited deadlines, knowing the best-practices from the methodology, you can *"do with little blood"*, when designing the MVP version of the system, finding a reasonable compromise
-(rather than modeling features "at random")
+是的，对于MVP来说最重要的是*"功能，而不是为未来奠定的架构"*。但即使在有限的截止日期条件下，了解方法论中的最佳实践，你也可以在设计系统的MVP版本时*"用很少的代价"*找到合理的妥协
+（而不是"随机"建模功能）
 
-*The same can be said about testing*
+*测试也是如此*
 
-## When is our methodology not needed?
+## 什么时候我们的方法论不需要？
 
-- If the project will live for a short time
-- If the project does not need a supported architecture
-- If the business does not perceive the connection between the code base and the speed of feature delivery
-- If it is more important for the business to close orders as soon as possible, without further support
+- 如果项目只会存在很短时间
+- 如果项目不需要支持的架构
+- 如果企业不认为代码库和功能交付速度之间存在联系
+- 如果对企业来说更重要的是尽快完成订单，而不需要进一步支持
 
-### Business Size
+### 企业规模
 
-- **Small business** - most often needs a ready-made and very fast solution. Only when the business grows (at least to almost average), he understands that in order for customers to continue using, it is necessary, among other things, to devote time to the quality and stability of the solutions being developed
-- **Medium-sized business** - usually understands all the problems of development, and even if it is necessary to *"arrange a race for features"*, he still spends time on quality improvements, refactoring and tests (and of course-on an extensible architecture)
-- **Big business** - usually already has an extensive audience, staff, and a much more extensive set of its practices, and probably even its own approach to architecture, so the idea of taking someone else's comes to them not so often
+- **小企业** - 最常需要现成的和非常快速的解决方案。只有当企业增长（至少到接近平均水平）时，他才明白为了让客户继续使用，除其他外，有必要将时间投入到正在开发的解决方案的质量和稳定性上
+- **中型企业** - 通常理解开发的所有问题，即使有必要*"安排功能竞赛"*，他仍然会花时间进行质量改进、重构和测试（当然 - 还有可扩展的架构）
+- **大企业** - 通常已经有广泛的受众、员工和更广泛的实践集合，甚至可能有自己的架构方法，所以采用别人的想法对他们来说并不常见
 
-## Plans
+## 计划
 
-The main part of the goals [is set out here][refs-mission--goals], but in addition, it is worth talking about our expectations from the methodology in the future
+目标的主要部分[在这里阐述][refs-mission--goals]，但此外，值得谈论我们对未来方法论的期望。
 
-### Combining experience
+### 结合经验
 
-Now we are trying to combine all our diverse experience of the `core-team`, and get a methodology hardened by practice as a result
+现在我们正在尝试结合`核心团队`的所有多样化经验，并因此获得一个经过实践锤炼的方法论。
 
-Of course, we can get Angular 3.0 as a result, but it is much more important here to **investigate the very problem of designing the architecture of complex systems**
+当然，我们可能最终得到Angular 3.0，但这里更重要的是**调查设计复杂系统架构的根本问题**
 
-*And yes - we have complaints about the current version of the methodology, but we want to work together to come to a single and optimal solution (taking into account, among other things, the experience of the community)*
+*是的 - 我们对当前版本的方法论有抱怨，但我们希望共同努力达成一个单一和最优的解决方案（考虑到社区的经验等）*
 
-### Life outside the specification
+### 规范之外的生活
 
-If everything goes well, then the methodology will not be limited only to the specification and the toolkit
+如果一切顺利，那么方法论将不仅限于规范和工具包
 
-- Perhaps there will be reports, articles
-- There may be `CODE_MODEs` for migrations to other technologies of projects written according to the methodology
-- It is possible that as a result we will be able to reach the maintainers of large technological solutions
-  - *Especially for React, compared to other frameworks - this is the main problem, because it does not say how to solve certain problems*
+- 也许会有报告、文章
+- 可能会有用于将根据方法论编写的项目迁移到其他技术的`CODE_MOD`
+- 可能最终我们能够接触到大型技术解决方案的维护者
+  - *特别是对于React，与其他框架相比 - 这是主要问题，因为它没有说明如何解决某些问题*
 
-## See also
+## 另请参阅
 
-- [(Discussion) Don't need a methodology?][disc-src]
-- [About the methodology's mission: goals and limitations][refs-mission]
-- [Types of knowledge in the project][refs-knowledge]
+- [（讨论）不需要方法论？][disc-src]
+- [关于方法论的使命：目标和限制][refs-mission]
+- [项目中的知识类型][refs-knowledge]
 
 [refs-mission]: /docs/about/mission
 [refs-mission--goals]: /docs/about/mission#goals

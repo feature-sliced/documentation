@@ -59,19 +59,19 @@ Here are the segments that you can typically find in this layer:
 - `📁 routes` — route constants or patterns for matching routes.
 - `📁 i18n` — setup code for translations, global translation strings.
 
-You are free to add more segments, but make sure that the name of these segments describes the purpose of the content, not its essence. For example, `components`, `hooks`, and `types` are bad segment names because they aren't that helpful when you're looking for code.
+你可以自由添加更多段，但要确保这些段的名称描述内容的目的，而不是其本质。例如，`components`、`hooks`和`types`是不好的段名称，因为它们在你寻找代码时没有太大帮助。
 
 ### Entities
 
-Slices on this layer represent concepts from the real world that the project is working with. Commonly, they are the terms that the business uses to describe the product. For example, a social network might work with business entities like User, Post, and Group.
+这一层的切片代表项目正在处理的现实世界概念。通常，它们是业务用来描述产品的术语。例如，社交网络可能会处理用户（User）、帖子（Post）和群组（Group）等业务实体。
 
-An entity slice might contain the data storage (`📁 model`), data validation schemas (`📁 model`), entity-related API request functions (`📁 api`), as well as the visual representation of this entity in the interface (`📁 ui`). The visual representation doesn't have to produce a complete UI block — it is primarily meant to reuse the same appearance across several pages in the app, and different business logic may be attached to it through props or slots.
+实体切片可能包含数据存储（`📁 model`）、数据验证模式（`📁 model`）、与实体相关的API请求函数（`📁 api`），以及该实体在界面中的视觉表示（`📁 ui`）。视觉表示不必产生完整的UI块 — 它主要是为了在应用程序的多个页面中重用相同的外观，不同的业务逻辑可以通过props或slots附加到它上面。
 
-#### Entity relationships
+#### 实体关系
 
-Entities in FSD are slices, and by default, slices cannot know about each other. In real life, however, entities often interact with each other, and sometimes one entity owns or contains other entities. Because of that, the business logic of these interactions is preferably kept in higher layers, like Features or Pages.
+FSD中的实体是切片，默认情况下，切片不能相互了解。然而，在现实生活中，实体经常相互交互，有时一个实体拥有或包含其他实体。因此，这些交互的业务逻辑最好保存在更高的层级中，如功能（Features）或页面（Pages）。
 
-When one entity's data object contains other data objects, usually it's a good idea to make the connection between the entities explicit and side-step the slice isolation by making a cross-reference API with the `@x` notation. The reason is that connected entities need to be refactored together, so it's best to make the connection impossible to miss.
+当一个实体的数据对象包含其他数据对象时，通常最好明确实体之间的连接，并通过使用`@x`标记法创建交叉引用API来绕过切片隔离。原因是连接的实体需要一起重构，所以最好让连接不可能被忽略。
 
 For example:
 
@@ -88,66 +88,66 @@ export interface Artist {
 export type { Song } from "../model/song.ts";
 ```
 
-Learn more about the `@x` notation in the [Public API for cross-imports][public-api-for-cross-imports] section.
+在[交叉导入的公共API][public-api-for-cross-imports]部分了解更多关于`@x`标记法的信息。
 
 ### Features
 
-This layer is for the main interactions in your app, things that your users care to do. These interactions often involve business entities, because that's what the app is about.
+这一层用于应用程序中的主要交互，即用户关心要做的事情。这些交互通常涉及业务实体，因为这就是应用程序的核心内容。
 
-A crucial principle for using the Features layer effectively is: **not everything needs to be a feature**. A good indicator that something needs to be a feature is the fact that it is reused on several pages.
+有效使用功能层的一个关键原则是：**不是所有东西都需要成为功能**。某个东西需要成为功能的一个好指标是它在多个页面上被重用。
 
-For example, if the app has several editors, and all of them have comments, then comments are a reused feature. Remember that slices are a mechanism for finding code quickly, and if there are too many features, the important ones are drowned out.
+例如，如果应用程序有多个编辑器，并且所有编辑器都有评论功能，那么评论就是一个可重用的功能。记住，切片是快速查找代码的机制，如果功能太多，重要的功能就会被淹没。
 
-Ideally, when you arrive in a new project, you would discover its functionality by looking through the pages and features. When deciding on what should be a feature, optimize for the experience of a newcomer to the project to quickly discover large important areas of code.
+理想情况下，当你进入一个新项目时，你会通过查看页面和功能来发现其功能性。在决定什么应该成为功能时，要为项目新人的体验进行优化，让他们能够快速发现重要的大型代码区域。
 
-A feature slice might contain the UI to perform the interaction like a form (`📁 ui`), the API calls needed to make the action (`📁 api`), validation and internal state (`📁 model`), feature flags (`📁 config`).
+功能切片可能包含执行交互的UI（如表单）（`📁 ui`）、执行操作所需的API调用（`📁 api`）、验证和内部状态（`📁 model`）、功能标志（`📁 config`）。
 
 ### Widgets
 
-The Widgets layer is intended for large self-sufficient blocks of UI. Widgets are most useful when they are reused across multiple pages, or when the page that they belong to has multiple large independent blocks, and this is one of them.
+小部件层用于大型自给自足的UI块。小部件在跨多个页面重用时最有用，或者当它们所属的页面有多个大型独立块，而这是其中之一时。
 
-If a block of UI makes up most of the interesting content on a page, and is never reused, it **should not be a widget**, and instead it should be placed directly inside that page.
+如果一个UI块构成了页面上大部分有趣的内容，并且从不被重用，它**不应该是小部件**，而应该直接放在该页面内。
 
 :::tip
 
-If you're using a nested routing system (like the router of [Remix][ext-remix]), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create full router blocks, complete with related data fetching, loading states, and error boundaries.
+如果你使用嵌套路由系统（如[Remix][ext-remix]的路由器），使用小部件层的方式可能与扁平路由系统使用页面层的方式相同 — 创建完整的路由块，包括相关的数据获取、加载状态和错误边界。
 
-In the same way, you can store page layouts on this layer.
+同样，你可以在这一层存储页面布局。
 
 :::
 
 ### Pages
 
-Pages are what makes up websites and applications (also known as screens or activities). One page usually corresponds to one slice, however, if there are several very similar pages, they can be grouped into one slice, for example, registration and login forms.
+页面是构成网站和应用程序的内容（也称为屏幕或活动）。一个页面通常对应一个切片，但是，如果有几个非常相似的页面，它们可以组合成一个切片，例如注册和登录表单。
 
-There's no limit to how much code you can place in a page slice as long as your team still finds it easy to navigate. If a UI block on a page is not reused, it's perfectly fine to keep it inside the page slice.
+只要你的团队仍然觉得容易导航，你可以在页面切片中放置任意数量的代码。如果页面上的UI块不被重用，将其保留在页面切片内是完全可以的。
 
-In a page slice you can typically find the page's UI as well as loading states and error boundaries (`📁 ui`) and the data fetching and mutating requests (`📁 api`). It's not common for a page to have a dedicated data model, and tiny bits of state can be kept in the components themselves.
+在页面切片中，你通常可以找到页面的UI以及加载状态和错误边界（`📁 ui`）和数据获取和变更请求（`📁 api`）。页面拥有专用数据模型并不常见，少量状态可以保存在组件本身中。
 
 ### Processes
 
 :::caution
 
-This layer has been deprecated. The current version of the spec recommends avoiding it and moving its contents to `features` and `app` instead.
+这一层已被弃用。当前版本的规范建议避免使用它，并将其内容移至`features`和`app`。
 
 :::
 
-Processes are escape hatches for multi-page interactions.
+流程是多页面交互的逃生舱。
 
-This layer is deliberately left undefined. Most applications should not use this layer, and keep router-level and server-level logic on the App layer. Consider using this layer only when the App layer grows large enough to become unmaintainable and needs unloading.
+这一层故意保持未定义。大多数应用程序不应该使用这一层，应该将路由级和服务器级逻辑保留在App层。只有当App层变得足够大以至于无法维护并需要卸载时，才考虑使用这一层。
 
 ### App
 
-All kinds of app-wide matters, both in the technical sense (e.g., context providers) and in the business sense (e.g., analytics).
+各种应用程序范围的事务，包括技术意义上的（例如，上下文提供者）和业务意义上的（例如，分析）。
 
-This layer usually doesn't contain slices, as well as Shared, instead having segments directly.
+这一层通常不包含切片，与Shared层一样，而是直接包含段。
 
-Here are the segments that you can typically find in this layer:
+以下是你通常可以在这一层找到的段：
 
-- `📁 routes` — the router configuration
-- `📁 store` — global store configuration
-- `📁 styles` — global styles
-- `📁 entrypoint` — the entrypoint to the application code, framework-specific
+- `📁 routes` — 路由器配置
+- `📁 store` — 全局存储配置
+- `📁 styles` — 全局样式
+- `📁 entrypoint` — 应用程序代码的入口点，特定于框架
 
 [public-api-for-cross-imports]: /docs/reference/public-api#public-api-for-cross-imports
 [ext-remix]: https://remix.run

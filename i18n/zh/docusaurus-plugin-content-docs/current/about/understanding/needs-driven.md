@@ -2,157 +2,157 @@
 sidebar_position: 2
 ---
 
-# Needs driven
+# 需求驱动
 
 :::note TL;DR
 
-— _Can't you formulate the goal that the new feature will solve? Or maybe the problem is that the task itself is not formulated? **The point is also that the methodology helps to pull out the problematic definition of tasks and goals**_
+— _无法明确表述新功能要解决的目标？或者问题在于任务本身没有被明确表述？**重点是方法论有助于揭示任务和目标定义中的问题**_
 
-— _project does not live in static - requirements and functionality are constantly changing. Over time, the code turns into mush, because at the start the project was designed only for the initial impression of wishes. **And the task of a good architecture is also to be sharpened for changing development conditions.**_
+— _项目不是静态的 - 需求和功能在不断变化。随着时间推移，代码变成一团糟，因为在开始时项目只是为了初始的需求印象而设计的。**好架构的任务也是要为不断变化的开发条件做好准备。**_
 
 :::
 
 <!--TODO: Make each section later more independent by itself -->
 <!--TODO: Add more information on the changing requirements of the project -->
 
-## Why?
+## 为什么？
 
-To choose a clear name for an entity and understand its components, **you need to clearly understand what task will be solved with the help of all this code.**
+要为实体选择一个清晰的名称并理解其组件，**你需要清楚地理解所有这些代码要解决什么任务。**
 
-> _@sergeysova: During development, we try to give each entity or function a name that clearly reflects the intentions and meaning of the code being executed._
+> _@sergeysova: 在开发过程中，我们试图给每个实体或函数一个清楚反映代码执行意图和含义的名称。_
 
-_After all, without understanding the task, it is impossible to write the right tests that cover the most important cases, put down errors that help the user in the right places, even it is banal not to interrupt the user's flow because of fixable non-critical errors._
+_毕竟，如果不理解任务，就不可能编写覆盖最重要情况的正确测试，在正确的地方放置帮助用户的错误提示，甚至不能避免因为可修复的非关键错误而中断用户流程。_
 
-## What tasks are we talking about?
+## 我们在谈论什么任务？
 
-Frontend develops applications and interfaces for end users, so we solve the tasks of these consumers.
+前端开发为最终用户开发应用程序和界面，所以我们解决这些消费者的任务。
 
-When a person comes to us, **he wants to solve some of his pain or close a need.**
+当一个人来到我们这里时，**他想要解决自己的某个痛点或满足某个需求。**
 
-_The task of managers and analysts is to formulate this need, and implement developers taking into account the features of web development (loss of communication, backend error, typo, missed the cursor or finger)._
+_管理者和分析师的任务是明确表述这个需求，开发者在考虑Web开发特性（通信丢失、后端错误、拼写错误、鼠标或手指操作失误）的情况下实现它。_
 
-**This very goal, with which the user came, is the task of the developers.**
+**用户带着的这个目标，就是开发者的任务。**
 
-> _One small solved problem is a feature in the Feature-Sliced Design methodology — you need to cut the entire scope of project tasks into small goals._
+> _一个小的已解决问题就是Feature-Sliced Design方法论中的一个功能（feature）— 你需要将项目任务的整个范围切分为小目标。_
 
-## How does this affect development?
+## 这如何影响开发？
 
-### Task decomposition
+### 任务分解
 
-When a developer begins to implement a task, in order to simplify the understanding and support of the code, he mentally **cuts it into stages**:
+当开发者开始实现任务时，为了简化代码的理解和支持，他在心理上**将其切分为阶段**：
 
-* first _split into top-level entities_ and _implement them_,
-* then these entities _split into smaller ones_
-* and so on
+* 首先_分解为顶级实体_并_实现它们_，
+* 然后将这些实体_分解为更小的实体_
+* 以此类推
 
-_In the process of splitting into entities, the developer is forced to give them a name that would clearly reflect his idea and help to understand what task the code solves when reading the listing_
-_At the same time, we do not forget that we are trying to help the user reduce pain or realize needs_
+_在分解为实体的过程中，开发者被迫给它们起一个能清楚反映他的想法的名称，并在阅读代码清单时帮助理解代码解决什么任务_
+_同时，我们不要忘记我们正在努力帮助用户减少痛点或实现需求_
 
-### Understanding the essence of the task
+### 理解任务的本质
 
-But to give a clear name to an entity, **the developer must know enough about its purpose**
+但要给实体起一个清晰的名称，**开发者必须充分了解其目的**
 
-* how is he going to use this entity,
-* what part of the user's task does it implement, where else can this entity be applied,
-* in what other tasks can it participate,
-* and so on
+* 他将如何使用这个实体，
+* 它实现用户任务的哪一部分，这个实体还能在哪里应用，
+* 它还能参与哪些其他任务，
+* 等等
 
-It is not difficult to draw a conclusion: **while the developer will reflect on the name of entities within the framework of the methodology, he will be able to find poorly formulated tasks even before writing the code.**
+不难得出结论：**当开发者在方法论框架内思考实体名称时，他甚至能在编写代码之前就发现表述不清的任务。**
 
-> How to give a name to an entity if you do not understand well what tasks it can solve, how can you even divide a task into entities if you do not understand it well?
+> 如果你不能很好地理解一个实体能解决什么任务，如何给它起名？如果你不能很好地理解一个任务，又如何将任务分解为实体？
 
-## How to formulate it?
+## 如何表述？
 
-**To formulate a task that is solved by features, you need to understand the task itself**, and this is already the responsibility of the project manager and analysts.
+**要表述功能（features）解决的任务，你需要理解任务本身**，这已经是项目经理和分析师的责任。
 
-_The methodology can only tell the developer what tasks the product manager should pay close attention to._
+_方法论只能告诉开发者产品经理应该密切关注哪些任务。_
 
-> _@sergeysova: the Whole frontend is primarily a display of information, any component in the first turn, displays, and then the task "to show the user something" has no practical value._
+> _@sergeysova: 整个前端主要是信息显示，任何组件首先是显示，然后"向用户显示某些东西"的任务没有实际价值。_
 >
-> _Even without taking into account the specifics of the frontend can ask, "why do I have to show you", so you can continue to ask until't get out of pain or the need of the consumer._
+> _即使不考虑前端的特性，也可以问"为什么我必须向你显示"，这样你可以继续问下去，直到找到消费者的痛点或需求。_
 
-As soon as we were able to get to the basic needs or pains, we can go back and figure out **how exactly your product or service can help the user with his goals**
+一旦我们能够找到基本需求或痛点，我们就可以回过头来弄清楚**你的产品或服务如何帮助用户实现他的目标**
 
-Any new task in your tracker is aimed at solving business problems, and the business tries to solve the user's tasks at the same time earning money on it. This means that each task has certain goals, even if they are not spelled out in the description text.
+你跟踪器中的任何新任务都旨在解决业务问题，而业务试图在解决用户任务的同时从中赚钱。这意味着每个任务都有特定的目标，即使它们没有在描述文本中明确说明。
 
-_**The developer must clearly understand what goal this or that task is pursuing**, but not every company can afford to build processes perfectly, although this is a separate conversation, nevertheless, the developer may well "ping" the right managers himself to find out this and do his part of the work effectively._
+_**开发者必须清楚地理解这个或那个任务追求什么目标**，但不是每个公司都能完美地构建流程，虽然这是另一个话题，但开发者完全可以自己"ping"合适的管理者来了解这一点，并有效地完成自己的工作部分。_
 
-## And what is the benefit?
+## 有什么好处？
 
-Now let's look at the whole process from beginning to end.
+现在让我们从头到尾看整个过程。
 
-### 1. Understanding user tasks
+### 1. 理解用户任务
 
-When a developer understands his pain and how the business closes them, he can offer solutions that are not available to the business due to the specifics of web development.
+当开发者理解用户的痛点以及业务如何解决它们时，他可以提供由于Web开发特性而对业务不可见的解决方案。
 
-> But of course, all this can work only if the developer is not indifferent to what he is doing and for what, otherwise _why then the methodology and some approaches?_
+> 但当然，所有这些只有在开发者对自己在做什么以及为什么做不漠不关心的情况下才能起作用，否则_为什么还需要方法论和某些方法？_
 
-### 2. Structuring and ordering
+### 2. 结构化和排序
 
-With the understanding of tasks comes **a clear structure both in the head and in the tasks along with the code**
+随着对任务的理解，**在头脑中和任务以及代码中都有了清晰的结构**
 
-### 3. Understanding the feature and its components
+### 3. 理解功能及其组件
 
-**One feature is one useful functionality for the user**
+**一个功能就是为用户提供的一个有用功能**
 
-* When several features are implemented in one feature, this is **a violation of borders**
-* The feature can be indivisible and growing - **and this is not bad**
-* **Bad** - when the feature does not answer the question _"What is the business value for the user?"_
-* There can be no "map-office" feature
-  * But `booking-meeting-on-the-map`, `search-for-an-employee`, `change-of-workplace` - **yes**
+* 当在一个功能中实现多个功能时，这是**边界违反**
+* 功能可以是不可分割的和不断增长的 - **这并不坏**
+* **坏的** - 是当功能不能回答_"对用户的业务价值是什么？"_这个问题时
+* 不能有"地图-办公室"功能
+  * 但`在地图上预订会议`、`搜索员工`、`更换工作场所` - **可以**
 
-> _@sergeysova: The point is that the feature contains only code that implements the functionality itself_, without unnecessary details and internal solutions (ideally)*
+> _@sergeysova: 重点是功能只包含实现功能本身的代码_，没有不必要的细节和内部解决方案（理想情况下）*
 >
-> *Open the feature code **and see only what relates to the task** - no more*
+> *打开功能代码**只看到与任务相关的内容** - 不多不少*
 
-### 4. Profit
+### 4. 收益
 
-Business very rarely turns its course radically in the other direction, which means **the reflection of business tasks in the frontend application code is a very significant profit.**
+业务很少会彻底改变其方向，这意味着**在前端应用程序代码中反映业务任务是一个非常重要的收益。**
 
-_Then you don't have to explain to each new team member what this or that code does, and in general why it was added - **everything will be explained through the business tasks that are already reflected in the code.**_
+_然后你不必向每个新团队成员解释这段或那段代码做什么，以及为什么添加它 - **一切都将通过已经反映在代码中的业务任务来解释。**_
 
-> What is called ["Business Language" in Domain Driven Development][ext-ubiq-lang]
+> 这就是[领域驱动开发中所谓的"业务语言"][ext-ubiq-lang]
 
 ---
 
-## Back to reality
+## 回到现实
 
-If business processes are understood and good names are given at the design stage - _then it is not particularly problematic to transfer this understanding and logic to the code._
+如果在设计阶段理解了业务流程并给出了好的名称 - _那么将这种理解和逻辑转移到代码中就不是特别有问题的。_
 
-**However, in practice**, tasks and functionality are usually developed "too" iteratively and (or) there is no time to think through the design.
+**然而，在实践中**，任务和功能通常是"过度"迭代开发的，和/或没有时间思考设计。
 
-**As a result, the feature makes sense today, and if you expand this feature in a month, you can rewrite the gender of the project.**
+**结果，功能在今天是有意义的，如果你在一个月后扩展这个功能，你可能需要重写项目的一半。**
 
-> *[[From the discussion][disc-src]]: The developer tries to think 2-3 steps ahead, taking into account future wishes, but here he rests on his own experience*
+> *[[来自讨论][disc-src]]：开发者试图提前思考2-3步，考虑未来的需求，但在这里他依赖于自己的经验*
 >
-> _Burns experience engineer usually immediately looking 10 steps ahead, and understand where one feature to divide and combine with the other_
+> _有经验的工程师通常立即看到10步之前，并理解在哪里分割一个功能并与另一个功能结合_
 >
-> _But sometimes that comes the task which had to face the experience, and nowhere to take the understanding of how literacy to decompose, with the least unfortunate consequences in the future_
+> _但有时会遇到必须面对经验的任务，而无处获得如何正确分解的理解，以便在未来产生最少的不幸后果_
 
-## The role of methodology
+## 方法论的作用
 
-**The methodology helps to solve the problems of developers, so that it is easier to solve the problems of users.**
+**方法论帮助解决开发者的问题，以便更容易解决用户的问题。**
 
-There is no solution to the problems of developers only for the sake of developers
+没有仅仅为了开发者而解决开发者问题的方案
 
-But in order for the developer to solve his tasks, **you need to understand the user's tasks** - on the contrary, it will not work
+但为了让开发者解决他的任务，**需要理解用户的任务** - 反之则不行
 
-### Methodology requirements
+### 方法论要求
 
-It becomes clear that you need to identify at least two requirements for **Feature-Sliced Design**:
+很明显，需要为**Feature-Sliced Design**确定至少两个要求：
 
-1. The methodology should tell **how to create features, processes and entities**
+1. 方法论应该说明**如何创建功能、流程和实体**
 
-    * Which means it should clearly explain _how to divide the code between them_, which means that the naming of these entities should also be laid down in the specification.
+    * 这意味着它应该清楚地解释_如何在它们之间分配代码_，这意味着这些实体的命名也应该在规范中确定。
 
-2. The methodology should help the architecture **[easily adapt to the changing requirements of the project][refs-arch--adaptability]**
+2. 方法论应该帮助架构**[轻松适应项目不断变化的需求][refs-arch--adaptability]**
 
-## See also
+## 另请参阅
 
-* [(Post) Stimulation for a clear formulation of tasks (+ discussion)][disc-src]
-    > _**The current article** is an adaptation of this discussion, you can read the full uncut version at the link_
-* [(Discussion) How to break the functionality and what it is][tg-src]
-* [(Article) "How to better organize your applications"][ext-medium]
+* [(帖子) 清晰表述任务的激励（+ 讨论）][disc-src]
+    > _**当前文章**是这个讨论的改编，你可以在链接中阅读完整的未删减版本_
+* [(讨论) 如何分解功能以及它是什么][tg-src]
+* [(文章) "如何更好地组织你的应用程序"][ext-medium]
 
 [refs-arch--adaptability]: architecture#adaptability
 

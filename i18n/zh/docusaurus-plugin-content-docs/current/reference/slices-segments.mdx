@@ -30,43 +30,43 @@ Slices 旨在成为独立且高度聚合的代码文件组。下面的图形可�
 
 理想的 slice 独立于其 layer 上的其他 slices（零耦合）并包含与其主要目标相关的大部分代码（高聚合）。
 
-The independence of slices is enforced by the [import rule on layers][layers--import-rule]:
+切片的独立性由[层级导入规则][layers--import-rule]强制执行：
 
-> _A module (file) in a slice can only import other slices when they are located on layers strictly below._
+> _切片中的模块（文件）只能在其他切片位于严格较低的层级时导入它们。_
 
-### Public API rule on slices
+### 切片的公共API规则
 
-Inside a slice, the code could be organized in any way that you want. That doesn't pose any issues as long as the slice provides a good public API for other slices to use it. This is enforced with the **public API rule on slices**:
+在切片内部，代码可以按你想要的任何方式组织。只要切片为其他切片提供良好的公共API来使用它，这就不会造成任何问题。这通过**切片的公共API规则**来强制执行：
 
-> _Every slice (and segment on layers that don't have slices) must contain a public API definition._
+> _每个切片（以及没有切片的层级上的段）都必须包含公共API定义。_
 >
-> _Modules outside of this slice/segment can only reference the public API, not the internal file structure of the slice/segment._
+> _此切片/段之外的模块只能引用公共API，而不能引用切片/段的内部文件结构。_
 
-Read more about the rationale of public APIs and the best practices on creating one in the [Public API reference][ref-public-api].
+在[公共API参考][ref-public-api]中阅读更多关于公共API的基本原理和创建最佳实践的信息。
 
-### Slice groups
+### 切片组
 
-Closely related slices can be structurally grouped in a folder, but they should exercise the same isolation rules as other slices — there should be **no code sharing** in that folder.
+密切相关的切片可以在文件夹中进行结构化分组，但它们应该遵循与其他切片相同的隔离规则 — 该文件夹中应该**没有代码共享**。
 
 ![Features "compose", "like" and "delete" grouped in a folder "post". In that folder there is also a file "some-shared-code.ts" that is crossed out to imply that it's not allowed.](/img/graphic-nested-slices.svg)
 
 ## Segments
 
-Segments are the third and final level in the organizational hierarchy, and their purpose is to group code by its technical nature.
+段是组织层次结构中的第三级也是最后一级，其目的是按技术性质对代码进行分组。
 
-There a few standardized segment names:
+有几个标准化的段名称：
 
-- `ui` — everything related to UI display: UI components, date formatters, styles, etc.
-- `api` — backend interactions: request functions, data types, mappers, etc.
-- `model` — the data model: schemas, interfaces, stores, and business logic.
-- `lib` — library code that other modules on this slice need.
-- `config` — configuration files and feature flags.
+- `ui` — 与UI显示相关的一切：UI组件、日期格式化器、样式等。
+- `api` — 后端交互：请求函数、数据类型、映射器等。
+- `model` — 数据模型：模式、接口、存储和业务逻辑。
+- `lib` — 此切片上其他模块需要的库代码。
+- `config` — 配置文件和功能标志。
 
-See the [Layers page][layers--layer-definitions] for examples of what each of these segments might be used for on different layers.
+查看[层级页面][layers--layer-definitions]了解这些段在不同层级上可能用于什么的示例。
 
-You can also create custom segments. The most common places for custom segments are the App layer and the Shared layer, where slices don't make sense.
+你也可以创建自定义段。自定义段最常见的地方是App层和Shared层，在这些层中切片没有意义。
 
-Make sure that the name of these segments describes the purpose of the content, not its essence. For example, `components`, `hooks`, and `types` are bad segment names because they aren't that helpful when you're looking for code.
+确保这些段的名称描述内容的目的，而不是其本质。例如，`components`、`hooks`和`types`是不好的段名称，因为它们在你寻找代码时没有太大帮助。
 
 [layers--layer-definitions]: /docs/reference/layers#layer-definitions
 [layers--import-rule]: /docs/reference/layers#import-rule-on-layers

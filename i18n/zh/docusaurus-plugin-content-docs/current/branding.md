@@ -49,34 +49,34 @@ FSD 有几种适用于不同上下文的 logo 变体，但建议优先使用 **p
     <tr>
         <td style={{ color: "#FFF", background: "#3193FF" }}>flat <br/> (#3193FF)</td>
         <td><a href={useBaseUrl("/img/brand/logo-flat.png")} download><img src={useBaseUrl("/img/brand/logo-flat.png")} height="130" alt="logo-flat" /></a></td>
-        <td>For one-color context</td>
+        <td>用于单色上下文</td>
     </tr>
     <tr>
         <td style={{ color: "#000", background: "#FFF" }}>monochrome <br /> (#FFF)</td>
         <td style={{ color: "#000", background: "#242526" }}><a href={useBaseUrl("/img/brand/logo-monochrome.png")} download><img src={useBaseUrl("/img/brand/logo-monochrome.png")} height="130" alt="logo-monocrhome" /></a></td>
-        <td>For grayscale context</td>
+        <td>用于灰度上下文</td>
     </tr>
     <tr>
         <td style={{ color: "#FFF", background: "#3193FF" }}>square <br/> (#3193FF)</td>
         <td><a href={useBaseUrl("/img/brand/logo-square.png")} download><img src={useBaseUrl("/img/brand/logo-square.png")} height="130" alt="logo-square" /></a></td>
-        <td>For square boundaries</td>
+        <td>用于方形边界</td>
     </tr>
 </table>
 
-## Banners & Schemes
+## 横幅和方案
 
 <a href={useBaseUrl("/img/brand/banner-primary.jpg")} download><img src={useBaseUrl("/img/brand/banner-primary.jpg")} height="256" alt="banner-primary" /></a>
 <a href={useBaseUrl("/img/brand/banner-monochrome.jpg")} download><img src={useBaseUrl("/img/brand/banner-monochrome.jpg")} height="256" alt="banner-monochrome" /></a>
 
-## Social Preview
+## 社交预览
 
-Work in progress...
+正在进行中...
 
-## Presentation template
+## 演示模板
 
-Work in progress...
+正在进行中...
 
-## See also
+## 另请参阅
 
 - [Discussion (github)](https://github.com/feature-sliced/documentation/discussions/399)
 - [History of development with references (figma)](https://www.figma.com/file/RPphccpoeasVB0lMpZwPVR/FSD-Brand?node-id=0%3A1)

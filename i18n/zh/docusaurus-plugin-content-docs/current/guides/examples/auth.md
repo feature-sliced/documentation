@@ -118,9 +118,9 @@ Web 应用程序的理想 token 存储是 **cookie** — 它不需要手动 toke
 - 发出任何需要身份验证的请求
 - 如果请求失败并返回指示 token 过期的状态码，并且存储中有 token，则发出刷新请求，存储新的 token，并重试原始请求
 
-One of the drawbacks of this approach is that the logic of managing and refreshing the token doesn't have a dedicated place. This can be fine for some apps or teams, but if the token management logic is more complex, it may be preferable to separate responsibilities of making requests and managing tokens. You can do that by keeping your requests and API client in `shared/api`, but the token store and management logic in `shared/auth`.
+这种方法的缺点之一是管理和刷新token的逻辑没有专门的位置。对于某些应用程序或团队来说，这可能是可以接受的，但如果token管理逻辑更复杂，最好将发出请求和管理token的职责分开。你可以通过将请求和API客户端保留在`shared/api`中，但将token存储和管理逻辑放在`shared/auth`中来实现这一点。
 
-Another drawback of this approach is that if your backend returns an object of your current user's information along with the token, you have to store that somewhere or discard that information and request it again from an endpoint like `/me` or `/users/current`.
+这种方法的另一个缺点是，如果你的后端返回当前用户信息的对象以及token，你必须将其存储在某处或丢弃该信息，并从诸如`/me`或`/users/current`之类的端点再次请求它。
 
 ### 在 Entities 中
 
@@ -132,26 +132,26 @@ FSD 项目通常有一个用户实体和/或当前用户实体。甚至可以是
 
 :::
 
-To store the token in the User entity, create a reactive store in the `model` segment. That store can contain both the token and the user object.
+要在用户实体中存储token，请在`model`段中创建一个响应式存储。该存储可以同时包含token和用户对象。
 
-Since the API client is usually defined in `shared/api` or spreaded across the entities, the main challenge to this approach is making the token available to other requests that need it without breaking [the import rule on layers][import-rule-on-layers]:
+由于API客户端通常在`shared/api`中定义或分布在各个实体中，这种方法的主要挑战是在不违反[层级导入规则][import-rule-on-layers]的情况下使token对需要它的其他请求可用：
 
-> A module (file) in a slice can only import other slices when they are located on layers strictly below.
+> 切片中的模块（文件）只能在其他切片位于严格较低的层级时导入它们。
 
-There are several solutions to this challenge:
+有几种解决这个挑战的方案：
 
-1. **Pass the token manually every time you make a request**  
-    This is the simplest solution, but it quickly becomes cumbersome, and if you don't have type safety, it's easy to forget. It's also not compatible with middlewares pattern for the API client in Shared.
-1. **Expose the token to the entire app with a context or a global store like `localStorage`**  
-    The key to retrieve the token will be kept in `shared/api` so that the API client can access it. The reactive store of the token will be exported from the User entity, and the context provider (if needed) will be set up on the App layer. This gives more freedom for designing the API client, however, this creates an implicit dependency on higher layers to provide context. When following this approach, consider providing helpful error messages if the context or `localStorage` are not set up correctly.
-1. **Inject the token into the API client every time it changes**  
-    If your store is reactive, you can create a subscription that will update the API client's token store every time the store in the entity changes. This is similar to the previous solution in that they both create an implicit dependency on higher layers, but this one is more imperative ("push"), while the previous one is more declarative ("pull").
+1. **每次发出请求时手动传递token**  
+    这是最简单的解决方案，但很快就会变得繁琐，如果你没有类型安全，很容易忘记。它也与Shared中API客户端的中间件模式不兼容。
+1. **通过上下文或像`localStorage`这样的全局存储将token暴露给整个应用程序**  
+    检索token的键将保存在`shared/api`中，以便API客户端可以访问它。token的响应式存储将从用户实体导出，上下文提供者（如果需要）将在App层设置。这为设计API客户端提供了更多自由，但是，这会对更高层级提供上下文创建隐式依赖。遵循这种方法时，如果上下文或`localStorage`没有正确设置，请考虑提供有用的错误消息。
+1. **每次token更改时将其注入API客户端**  
+    如果你的存储是响应式的，你可以创建一个订阅，每次实体中的存储更改时都会更新API客户端的token存储。这与前一个解决方案类似，因为它们都对更高层级创建隐式依赖，但这个更具命令性（"推送"），而前一个更具声明性（"拉取"）。
 
-Once you overcome the challenge of exposing the token that is stored in the entity's model, you can encode more business logic related to token management. For example, the `model` segment can contain logic to invalidate the token after a certain period of time, or to refresh the token when it expires. To actually make requests to the backend, use the `api` segment of the User entity or `shared/api`.
+一旦你克服了暴露存储在实体模型中的token的挑战，你就可以编码更多与token管理相关的业务逻辑。例如，`model`段可以包含在一定时间后使token失效的逻辑，或在token过期时刷新token的逻辑。要实际向后端发出请求，请使用用户实体的`api`段或`shared/api`。
 
-### In Pages/Widgets (not recommended)
+### 在页面/小部件中（不推荐）
 
-It is discouraged to store app-wide state like an access token in pages or widgets. Avoid placing your token store in the `model` segment of the login page, instead choose from the first two solutions, Shared or Entities.
+不建议在页面或小部件中存储像访问token这样的应用程序范围状态。避免将token存储放在登录页面的`model`段中，而是从前两个解决方案中选择：Shared或Entities。
 
 ## 登出和 token 失效
 

@@ -2,42 +2,42 @@
 sidebar_position: 3
 ---
 
-# Migration from v2.0 to v2.1
+# 从v2.0到v2.1的迁移
 
-The main change in v2.1 is the new mental model for decomposing an interface — pages first.
+v2.1的主要变化是分解界面的新思维模型——页面优先。
 
-In v2.0, FSD would recommend identifying entities and features in your interface, considering even the smallest bits of entity representation and interactivity for decomposition. Then you would build widgets and pages from entities and features. In this model of decomposition, most of the logic was in entities and features, and pages were just compositional layers that didn't have much significance on their own.
+在v2.0中，FSD会建议识别界面中的实体和功能，甚至考虑实体表示和交互性的最小部分进行分解。然后你会从实体和功能构建小部件和页面。在这种分解模型中，大部分逻辑都在实体和功能中，页面只是组合层，本身没有太多意义。
 
-In v2.1, we recommend starting with pages, and possibly even stopping there. Most people already know how to separate the app into individual pages, and pages are also a common starting point when trying to locate a component in the codebase. In this new model of decomposition, you keep most of the UI and logic in each individual page, maintaining a reusable foundation in Shared. If a need arises to reuse business logic across several pages, you can move it to a layer below.
+在v2.1中，我们建议从页面开始，甚至可能就停在那里。大多数人已经知道如何将应用程序分离为单独的页面，页面也是在代码库中尝试定位组件时的常见起点。在这种新的分解模型中，你将大部分UI和逻辑保留在每个单独的页面中，在Shared中维护可重用的基础。如果需要在多个页面之间重用业务逻辑，你可以将其移动到下面的层级。
 
-Another addition to Feature-Sliced Design is the standardization of cross-imports between entities with the `@x`-notation.
+Feature-Sliced Design的另一个新增功能是使用`@x`标记法标准化实体之间的交叉导入。
 
-## How to migrate {#how-to-migrate}
+## 如何迁移 {#how-to-migrate}
 
-There are no breaking changes in v2.1, which means that a project written with FSD v2.0 is also a valid project in FSD v2.1. However, we believe that the new mental model is more beneficial for teams and especially onboarding new developers, so we recommend making minor adjustments to your decomposition.
+v2.1中没有破坏性更改，这意味着使用FSD v2.0编写的项目在FSD v2.1中也是有效的项目。但是，我们相信新的思维模型对团队更有益，特别是对新开发者的入职，所以我们建议对你的分解进行小的调整。
 
-### Merge slices
+### 合并切片
 
-A simple way to start is by running our linter, [Steiger][steiger], on the project. Steiger is built with the new mental model, and the most helpful rules will be:
+一个简单的开始方式是在项目上运行我们的linter，[Steiger][steiger]。Steiger是基于新的思维模型构建的，最有用的规则将是：
 
-- [`insignificant-slice`][insignificant-slice] — if an entity or feature is only used in one page, this rule will suggest merging that entity or feature into the page entirely.
-- [`excessive-slicing`][excessive-slicing] — if a layer has too many slices, it's usually a sign that the decomposition is too fine-grained. This rule will suggest merging or grouping some slices to help project navigation.
+- [`insignificant-slice`][insignificant-slice] — 如果一个实体或功能只在一个页面中使用，此规则将建议将该实体或功能完全合并到页面中。
+- [`excessive-slicing`][excessive-slicing] — 如果一个层级有太多切片，这通常是分解过于细粒度的标志。此规则将建议合并或分组一些切片以帮助项目导航。
 
 ```bash
 npx steiger src
 ```
 
-This will help you identify which slices are only used once, so that you could reconsider if they are really necessary. In such considerations, keep in mind that a layer forms some kind of global namespace for all the slices inside of it. Just as you wouldn't pollute the global namespace with variables that are only used once, you should treat a place in the namespace of a layer as valuable, to be used sparingly.
+这将帮助你识别哪些切片只使用一次，以便你可以重新考虑它们是否真的必要。在这种考虑中，请记住层级为其内部的所有切片形成某种全局命名空间。就像你不会用只使用一次的变量污染全局命名空间一样，你应该将层级命名空间中的位置视为有价值的，要谨慎使用。
 
-### Standardize cross-imports
+### 标准化交叉导入
 
-If you had cross-imports between in your project before (we don't judge!), you may now take advantage of a new notation for cross-importing in Feature-Sliced Design — the `@x`-notation. It looks like this:
+如果你的项目之前有交叉导入（我们不评判！），你现在可以利用Feature-Sliced Design中交叉导入的新标记法——`@x`标记法。它看起来像这样：
 
 ```ts title="entities/B/some/file.ts"
 import type { EntityA } from "entities/A/@x/B";
 ```
 
-For more details, check out the [Public API for cross-imports][public-api-for-cross-imports] section in the reference.
+更多详情，请查看参考中的[交叉导入的公共API][public-api-for-cross-imports]部分。
 
 [insignificant-slice]: https://github.com/feature-sliced/steiger/tree/master/packages/steiger-plugin-fsd/src/insignificant-slice
 [steiger]: https://github.com/feature-sliced/steiger

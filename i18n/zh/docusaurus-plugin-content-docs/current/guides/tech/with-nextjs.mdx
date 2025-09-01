@@ -5,19 +5,19 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Usage with Next.js
+# 与 Next.js 一起使用
 
-FSD is compatible with Next.js in both the App Router version and the Pages Router version if you solve the main conflict — the `app` and `pages` folders.
+如果您解决了主要冲突——`app` 和 `pages` 文件夹，FSD 与 Next.js 的 App Router 版本和 Pages Router 版本都兼容。
 
 ## App Router {#app-router}
 
-### Conflict between FSD and Next.js in the `app` layer {#conflict-between-fsd-and-nextjs-in-the-app-layer}
+### FSD 和 Next.js 在 `app` 层中的冲突 {#conflict-between-fsd-and-nextjs-in-the-app-layer}
 
-Next.js suggests using the `app` folder to define application routes. It expects files in the `app` folder to correspond to pathnames. This routing mechanism **does not align** with the FSD concept, as it's not possible to maintain a flat slice structure.
+Next.js 建议使用 `app` 文件夹来定义应用程序路由。它期望 `app` 文件夹中的文件对应于路径名。这种路由机制**与 FSD 概念不一致**，因为无法维护扁平的 slice 结构。
 
-The solution is to move the Next.js `app` folder to the project root and import FSD pages from `src`, where the FSD layers are, into the Next.js `app` folder.
+解决方案是将 Next.js 的 `app` 文件夹移动到项目根目录，并将 FSD 页面从 `src`（FSD 层所在的位置）导入到 Next.js 的 `app` 文件夹中。
 
-You will also need to add a `pages` folder to the project root, otherwise Next.js will try to use `src/pages` as the Pages Router even if you use the App Router, which will break the build. It's also a good idea to put a `README.md` file inside this root `pages` folder describing why it is necessary, even though it's empty.
+您还需要在项目根目录中添加一个 `pages` 文件夹，否则即使您使用 App Router，Next.js 也会尝试将 `src/pages` 用作 Pages Router，这会破坏构建。在这个根 `pages` 文件夹中放置一个 `README.md` 文件来描述为什么它是必要的也是一个好主意，即使它是空的。
 
 ```sh
 ├── app                              # App folder (Next.js)
@@ -42,25 +42,25 @@ You will also need to add a `pages` folder to the project root, otherwise Next.j
     └── shared
 ```
 
-Example of re-exporting a page from `src/pages` in the Next.js `app`:
+在 Next.js `app` 中从 `src/pages` 重新导出页面的示例：
 
 ```tsx title="app/example/page.tsx"
 export { ExamplePage as default, metadata } from '@/pages/example';
 ```
 
-### Middleware {#middleware}
+### 中间件 {#middleware}
 
-If you use middleware in your project, it must be located in the project root alongside the Next.js `app` and `pages` folders.
+如果您在项目中使用中间件，它必须位于项目根目录中，与 Next.js 的 `app` 和 `pages` 文件夹并列。
 
-### Instrumentation {#instrumentation}
+### 检测 {#instrumentation}
 
-The `instrumentation.js` file allows you to monitor the performance and behavior of your application. If you use it, it must be located in the project root, similar to `middleware.js`.
+`instrumentation.js` 文件允许您监控应用程序的性能和行为。如果您使用它，它必须位于项目根目录中，类似于 `middleware.js`。
 
 ## Pages Router {#pages-router}
 
-### Conflict between FSD and Next.js in the `pages` layer {#conflict-between-fsd-and-nextjs-in-the-pages-layer}
+### FSD 和 Next.js 在 `pages` 层中的冲突 {#conflict-between-fsd-and-nextjs-in-the-pages-layer}
 
-Routes should be placed in the `pages` folder in the root of the project, similar to `app` folder for the App Router. The structure inside `src` where the layer folders are located remains unchanged.
+路由应该放在项目根目录的 `pages` 文件夹中，类似于 App Router 的 `app` 文件夹。`src` 内部层文件夹所在的结构保持不变。
 
 ```sh
 ├── pages                            # Pages folder (Next.js)
@@ -86,15 +86,15 @@ Routes should be placed in the `pages` folder in the root of the project, simila
     └── shared
 ```
 
-Example of re-exporting a page from `src/pages` in the Next.js `pages`:
+在 Next.js `pages` 中从 `src/pages` 重新导出页面的示例：
 
 ```tsx title="pages/example/index.tsx"
 export { Example as default } from '@/pages/example';
 ```
 
-### Custom `_app` component {#custom-_app-component}
+### 自定义 `_app` 组件 {#custom-_app-component}
 
-You can place your Custom App component in `src/app/_app` or `src/app/custom-app`:
+您可以将自定义 App 组件放在 `src/app/_app` 或 `src/app/custom-app` 中：
 
 ```tsx title="src/app/custom-app/custom-app.tsx"
 import type { AppProps } from 'next/app';
@@ -113,12 +113,12 @@ export const MyApp = ({ Component, pageProps }: AppProps) => {
 export { App as default } from '@/app/custom-app';
 ```
 
-## Route Handlers (API routes) {#route-handlers-api-routes}
+## 路由处理程序（API 路由） {#route-handlers-api-routes}
 
-Use the `api-routes` segment in the `app` layer to work with Route Handlers.
+使用 `app` 层中的 `api-routes` segment 来处理路由处理程序。
 
-Be mindful when writing backend code in the FSD structure — FSD is primarily intended for frontends, meaning that's what people will expect to find.
-If you need a lot of endpoints, consider separating them into a different package in a monorepo.
+在 FSD 结构中编写后端代码时要谨慎——FSD 主要用于前端，这意味着人们会期望找到前端代码。
+如果您需要很多端点，请考虑将它们分离到 monorepo 中的不同包中。
 
 <Tabs>
 
