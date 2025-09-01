@@ -1,0 +1,40 @@
+---
+hide_table_of_contents: true
+---
+
+# 💫 社区
+
+<p class="summary">
+社区资源，补充材料
+</p>
+
+## 主要资源
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { StarOutlined, SearchOutlined, TeamOutlined, VerifiedOutlined } from "@ant-design/icons";
+
+<NavCard
+    title="精选资源" 
+    description="精心策划的 FSD 视频、文章、包列表"
+    to="https://github.com/feature-sliced/awesome"
+    Icon={StarOutlined}
+/>
+<NavCard
+    title="团队" 
+    description="核心团队、倡导者、贡献者、公司"
+    to="/community/team"
+    Icon={TeamOutlined}
+/>
+<NavCard
+    title="品牌指南" 
+    description="FSD 品牌使用建议"
+    to="/docs/branding"
+    Icon={VerifiedOutlined}
+/>
+<NavCard
+    title="贡献指南" 
+    description="方法、工作流程、支持"
+    to="#"
+    Icon={SearchOutlined}
+    disabled
+/>

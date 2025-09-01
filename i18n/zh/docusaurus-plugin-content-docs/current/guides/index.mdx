@@ -1,0 +1,46 @@
+---
+hide_table_of_contents: true
+pagination_prev: get-started/index
+---
+
+# 🎯 指南
+
+<span class="badge badge--primary margin-bottom--md">实践导向</span>
+
+<p class="summary">
+关于使用 Feature-Sliced Design 的实用指南和示例。还描述了迁移指南和有害实践手册。当您试图实现特定功能或想要看看方法论在"实战"中的表现时，这是最有用的。
+</p>
+
+## Main
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { ToolOutlined, ImportOutlined, BugOutlined, FunctionOutlined } from "@ant-design/icons";
+
+<NavCard
+    title="示例" 
+    description="关于应用该方法论的实际示例"
+    to="/docs/guides/examples"
+    Icon={ToolOutlined}
+    tags={['身份验证', '类型', '页面布局']}
+/>
+<NavCard
+    title="迁移" 
+    description="从其他架构迁移的指南"
+    to="/docs/guides/migration/from-v1"
+    Icon={ImportOutlined}
+    tags={['从自定义架构', '从 FSv1']}
+/>
+<NavCard
+    title="技术" 
+    description="FSD 使用的技术特定指南"
+    to="/docs/guides/tech/with-nextjs"
+    Icon={FunctionOutlined}
+/>
+
+<NavCard
+    title="代码问题（坏味道）" 
+    description="遗留代码的一般架构问题"
+    to="/docs/guides/issues/desegmented"
+    Icon={BugOutlined}
+    tags={['去分段化', '路由', "交叉导入"]}
+/>
