@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "FSD",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.📖 Docs": {
+    "message": "📖 Tài liệu",
+    "description": "Navbar item with label 📖 Docs"
+  },
+  "item.label.💫 Community": {
+    "message": "💫 Cộng đồng",
+    "description": "Navbar item with label 💫 Community"
+  },
+  "item.label.📝 Blog": {
+    "message": "📝 Blog",
+    "description": "Navbar item with label 📝 Blog"
+  },
+  "item.label.🛠 Examples": {
+    "message": "🛠 Ví dụ",
+    "description": "Navbar item with label 🛠 Examples"
+  }
+}

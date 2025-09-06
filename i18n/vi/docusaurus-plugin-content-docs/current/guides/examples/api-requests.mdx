@@ -1,0 +1,141 @@
+---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Xử lý API Requests {#handling-api-requests}
+
+## Shared API Requests {#shared-api-requests}
+
+Bắt đầu bằng cách đặt logic API request chung trong thư mục `shared/api`. Điều này giúp dễ dàng tái sử dụng các request trong toàn bộ ứng dụng và hỗ trợ prototyping nhanh hơn. Đối với nhiều dự án, đây là tất cả những gì bạn cần cho các API call.
+
+Cấu trúc file điển hình sẽ là:
+- 📂 shared
+    - 📂 api
+        - 📄 client.ts
+        - 📄 index.ts
+        - 📂 endpoints
+            - 📄 login.ts
+
+File `client.ts` tập trung thiết lập HTTP request của bạn. Nó bao bọc phương thức bạn chọn (như `fetch()` hoặc một instance `axios`) và xử lý các cấu hình chung, chẳng hạn như:
+
+- Backend base URL.
+- Default headers (ví dụ, cho authentication).
+- Data serialization.
+
+Dưới đây là các ví dụ cho `axios` và `fetch`:
+
+<Tabs>
+
+<TabItem value="axios" label="Axios">
+```ts title="shared/api/client.ts"
+// Example using axios
+import axios from 'axios';
+
+export const client = axios.create({
+  baseURL: 'https://your-api-domain.com/api/',
+  timeout: 5000,
+  headers: { 'X-Custom-Header': 'my-custom-value' }
+});
+```
+</TabItem>
+
+<TabItem value="fetch" label="Fetch">
+```ts title="shared/api/client.ts"
+export const client = {
+  async post(endpoint: string, body: any, options?: RequestInit) {
+    const response = await fetch(`https://your-api-domain.com/api${endpoint}`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Custom-Header': 'my-custom-value',
+        ...options?.headers,
+      },
+    });
+    return response.json();
+  }
+  // ... other methods like put, delete, etc.
+};
+```
+</TabItem>
+
+</Tabs>
+
+Tổ chức các function API request riêng lẻ của bạn trong `shared/api/endpoints`, nhóm chúng theo API endpoint.
+
+:::note
+
+Để giữ các ví dụ tập trung, chúng tôi bỏ qua form interaction và validation. Để biết chi tiết về các thư viện như Zod hoặc Valibot, hãy tham khảo bài viết [Type Validation và Schemas](/docs/guides/examples/types#type-validation-schemas-and-zod).
+
+:::
+
+```ts title="shared/api/endpoints/login.ts"
+import { client } from '../client';
+
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+Sử dụng file `index.ts` trong `shared/api` để export các function request của bạn.
+
+```ts title="shared/api/index.ts"
+export { client } from './client'; // Nếu bạn muốn export client
+export { login } from './endpoints/login';
+export type { LoginCredentials } from './endpoints/login';
+```
+
+## Slice-Specific API Requests {#slice-specific-api-requests}
+
+Nếu một API request chỉ được sử dụng bởi một slice cụ thể (như một page hoặc feature đơn lẻ) và sẽ không được tái sử dụng, hãy đặt nó trong segment api của slice đó. Điều này giúp logic slice-specific được chứa đóng một cách gọn gàng.
+
+- 📂 pages
+    - 📂 login
+        - 📄 index.ts
+        - 📂 api
+            - 📄 login.ts
+        - 📂 ui
+            - 📄 LoginPage.tsx
+
+```ts title="pages/login/api/login.ts"
+import { client } from 'shared/api';
+
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+
+Bạn không cần export function `login()` trong public API của page, vì không có khả năng nơi nào khác trong app sẽ cần request này.
+
+:::note
+
+Tránh đặt API calls và response types trong layer `entities` quá sớm. Backend responses có thể khác với những gì frontend entities của bạn cần. Logic API trong `shared/api` hoặc segment `api` của slice cho phép bạn transform data một cách phù hợp, giữ cho entities tập trung vào các mối quan tâm của frontend.
+
+:::
+
+## Sử dụng Client Generators {#client-generators}
+
+Nếu backend của bạn có OpenAPI specification, các công cụ như [orval](https://orval.dev/) hoặc [openapi-typescript](https://openapi-ts.dev/) có thể generate API types và request functions cho bạn. Đặt code được generate trong, ví dụ, `shared/api/openapi`. Đảm bảo bao gồm `README.md` để document những types đó là gì và cách generate chúng.
+
+## Tích hợp với Server State Libraries {#server-state-libraries}
+
+Khi sử dụng server state libraries như [TanStack Query (React Query)](https://tanstack.com/query/latest) hoặc [Pinia Colada](https://pinia-colada.esm.dev/), bạn có thể cần chia sẻ types hoặc cache keys giữa các slices. Sử dụng layer `shared` cho những thứ như:
+
+- API data types
+- Cache keys
+- Common query/mutation options
+
+Để biết thêm chi tiết về cách làm việc với server state libraries, hãy tham khảo [bài viết React Query](/docs/guides/tech/with-react-query) 

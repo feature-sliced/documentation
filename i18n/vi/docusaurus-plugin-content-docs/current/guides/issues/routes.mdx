@@ -1,0 +1,46 @@
+---
+sidebar_position: 3
+sidebar_class_name: sidebar-item--wip
+---
+
+import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+
+# Routing
+
+<WIP ticket="169" />
+
+## Tình huống
+
+URL đến các trang được hardcode trong các layer bên dưới pages
+
+```tsx title="entities/post/card"
+
+<Card>
+    <Card.Title 
+        href={`/post/${data.id}`}
+        title={data.name}
+    />
+    ...
+</Card>
+```
+
+## Vấn đề
+
+URL không được tập trung trong layer pages, nơi chúng thuộc về theo phạm vi trách nhiệm
+
+## Nếu bỏ qua
+
+Khi thay đổi URL, bạn sẽ phải nhớ rằng các URL này (và logic của URL/redirect) có thể nằm ở tất cả các layer trừ pages
+
+Và điều đó cũng có nghĩa là giờ đây ngay cả một product card đơn giản cũng đảm nhận một phần trách nhiệm từ pages, làm mờ logic của project
+
+## Giải pháp
+
+Xác định cách làm việc với URL/redirect từ cấp độ page trở lên
+
+Chuyển xuống các layer bên dưới thông qua composition/props/factories
+
+## Xem thêm
+
+- [(Thread) Điều gì xảy ra nếu tôi "may" routing trong entities/features/widgets](https://t.me/feature_sliced/4389)
+- [(Thread) Tại sao nó làm mờ logic của routes chỉ trong pages](https://t.me/feature_sliced/3756)

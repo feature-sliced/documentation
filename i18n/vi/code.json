@@ -1,0 +1,386 @@
+{
+    "pages.home.features.title": {
+        "message": "Tính năng",
+        "description": "Features"
+    },
+    "pages.home.features.logic.title": {
+        "message": "Business logic rõ ràng",
+        "description": "Feature title"
+    },
+    "pages.home.features.logic.description": {
+        "message": "Kiến trúc dễ khám phá nhờ phân chia theo domain scopes",
+        "description": "Feature description"
+    },
+    "pages.home.features.adaptability.title": {
+        "message": "Khả năng thích ứng",
+        "description": "Feature title"
+    },
+    "pages.home.features.adaptability.description": {
+        "message": "Các components trong kiến trúc có thể linh hoạt thay thế và thêm mới cho các requirements mới",
+        "description": "Feature description"
+    },
+    "pages.home.features.debt.title": {
+        "message": "Tech debt & Refactoring",
+        "description": "Feature title"
+    },
+    "pages.home.features.debt.description": {
+        "message": "Mỗi module có thể được chỉnh sửa / viết lại độc lập mà không có side effects",
+        "description": "Feature description"
+    },
+    "pages.home.features.shared.title": {
+        "message": "Code reuse rõ ràng",
+        "description": "Feature title"
+    },
+    "pages.home.features.shared.description": {
+        "message": "Duy trì sự cân bằng giữa DRY và customization cục bộ",
+        "description": "Feature description"
+    },
+    "pages.home.concepts.title": {
+        "message": "Khái niệm",
+        "description": "Concepts"
+    },
+    "pages.home.concepts.public.title": {
+        "message": "Public API",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.public.description": {
+        "message": "Mỗi module phải khai báo public API của nó ở top level",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.isolation.title": {
+        "message": "Isolation",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.isolation.description": {
+        "message": "Module không nên phụ thuộc trực tiếp vào các module khác cùng layer hoặc layer phía trên",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.needs.title": {
+        "message": "Needs Driven (Hướng theo nhu cầu)",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.needs.description": {
+        "message": "Định hướng theo nhu cầu business và người dùng",
+        "description": "Concept description"
+    },
+    "pages.home.scheme.title": {
+        "message": "Sơ đồ kiến trúc",
+        "description": "Scheme"
+    },
+    "pages.home.companies.using": {
+        "message": "Công ty đang dùng FSD",
+        "description": "Companies using FSD"
+    },
+    "pages.home.companies.add_me": {
+        "message": "Công ty bạn đang dùng FSD?",
+        "description": "FSD is used in your company?"
+    },
+    "pages.home.companies.tell_us": {
+        "message": "Hãy cho chúng tôi biết",
+        "description": "Tell us"
+    },
+    "pages.examples.title": {
+        "message": "Ví dụ",
+        "description": "Page title"
+    },
+    "pages.examples.subtitle": {
+        "message": "Danh sách các website được xây dựng với Feature-Sliced Design",
+        "description": "Page subtitle"
+    },
+    "pages.versions.title": {
+        "message": "Các phiên bản Feature-Sliced Design",
+        "description": "Feature-Sliced Design versions"
+    },
+    "pages.versions.current": {
+        "message": "Tài liệu cho phiên bản hiện tại có thể tìm thấy ở đây",
+        "description": "Description for current version"
+    },
+    "pages.versions.legacy": {
+        "message": "Tài liệu cho các phiên bản cũ của {of} có thể tìm thấy ở đây ",
+        "description": "Description for legacy version"
+    },
+    "pages.nav.title": {
+        "message": "🧭 Điều hướng",
+        "description": "NavPage title"
+    },
+    "pages.nav.legacy.title": {
+        "message": "Route cũ",
+        "description": "NavPage section=legacy title"
+    },
+    "pages.nav.legacy.details": {
+        "message": "Sau khi tái cấu trúc tài liệu, một số route đã thay đổi. Bên dưới bạn có thể tìm thấy trang mà bạn đang tìm kiếm.",
+        "description": "NavPage section=legacy details"
+    },
+    "pages.nav.legacy.subdetails": {
+        "message": "Nhưng có redirect từ các link cũ để đảm bảo tương thích",
+        "description": "NavPage section=legacy subdetails"
+    },
+    "features.feedback-badge.label": {
+        "message": "Chia sẻ phản hồi của bạn về tài liệu 🤙",
+        "description": "Feedback share button label"
+    },
+    "features.feedback-badge.url": {
+        "message": "https://forms.gle/nsYua6bMMG5iBB3v7",
+        "description": "Feedback share form url"
+    },
+    "features.feedback-doc.button-text": {
+        "message": "Phản hồi",
+        "description": "The text on a floating button to leave feedback about the docs"
+    },
+    "features.feedback-doc.email-placeholder": {
+        "message": "Email của bạn (tùy chọn)",
+        "description": "The placeholder for email input"
+    },
+    "features.feedback-doc.error-message": {
+        "message": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+        "description": "The error message displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-error-403": {
+        "message": "URL request không khớp với URL được định nghĩa trong PushFeedback cho project này.",
+        "description": "The title of the modal displayed when feedback form submission fails with 403 error"
+    },
+    "features.feedback-doc.modal-title-error-404": {
+        "message": "Chúng tôi không tìm thấy project id được cung cấp trong PushFeedback.",
+        "description": "The title of the modal displayed when feedback form submission fails with 404 error"
+    },
+    "features.feedback-doc.message-placeholder": {
+        "message": "Nhận xét",
+        "description": "The placeholder for message input"
+    },
+    "features.feedback-doc.modal-title": {
+        "message": "Chia sẻ phản hồi của bạn",
+        "description": "The title of the modal to leave feedback about the docs"
+    },
+    "features.feedback-doc.modal-title-error": {
+        "message": "Oops!",
+        "description": "The title of the modal displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-success": {
+        "message": "Cảm ơn phản hồi của bạn!",
+        "description": "The title of the modal displayed when feedback form submission succeeds"
+    },
+    "features.feedback-doc.screenshot-button-text": {
+        "message": "Chụp Screenshot",
+        "description": "The text on a button to take a screenshot"
+    },
+    "features.feedback-doc.screenshot-topbar-text": {
+        "message": "CHỌN MỘT ELEMENT TRÊN TRANG",
+        "description": "The text displayed in the top bar when selecting an element to take a screenshot"
+    },
+    "features.feedback-doc.send-button-text": {
+        "message": "Gửi",
+        "description": "The text on a button to send feedback"
+    },
+    "features.feedback-doc.rating-placeholder": {
+        "message": "Trang này có hữu ích không?",
+        "description": "The placeholder for rating input"
+    },
+    "features.feedback-doc.rating-stars-placeholder": {
+        "message": "Bạn đánh giá trang này như thế nào",
+        "description": "The placeholder for rating stars input"
+    },
+    "features.hero.tagline": {
+        "message": "Phương pháp luận kiến trúc cho các dự án frontend",
+        "description": "Architectural methodology for frontend projects"
+    },
+    "features.hero.get_started": {
+        "message": "Bắt đầu",
+        "description": "Get Started"
+    },
+    "features.hero.examples": {
+        "message": "Ví dụ",
+        "description": "Examples"
+    },
+    "features.hero.previous": {
+        "message": "Phiên bản trước",
+        "description": "Previous version"
+    },
+    "shared.wip.title": {
+        "message": "Bài viết đang trong quá trình hoàn thiện",
+        "description": "Admonition title"
+    },
+    "shared.wip.subtitle": {
+        "message": "Để đẩy nhanh việc phát hành bài viết, bạn có thể:",
+        "description": "Admonition subtitle"
+    },
+    "shared.wip.var.feedback.base": {
+        "message": "📢 Chia sẻ phản hồi của bạn ",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.feedback.link": {
+        "message": "tại bài viết (comment/emoji-reaction)",
+        "description": "Variant for contribute (link)"
+    },
+    "shared.wip.var.material.base": {
+        "message": "💬 Thu thập tài liệu liên quan ",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.material.link": {
+        "message": "về chủ đề từ chat",
+        "description": "Variant for contribute (link)"
+    },
+    "shared.wip.var.contribute.base": {
+        "message": "⚒️ Đóng góp ",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.contribute.link": {
+        "message": "bằng bất kỳ cách nào khác",
+        "description": "Variant for contribute (link)"
+    },
+    "theme.NotFound.title": {
+        "message": "Không tìm thấy trang",
+        "description": "The title of the 404 page"
+    },
+    "theme.NotFound.p1": {
+        "message": "Chúng tôi không thể tìm thấy nội dung bạn đang tìm kiếm.",
+        "description": "The first paragraph of the 404 page"
+    },
+    "theme.NotFound.p2": {
+        "message": "Vui lòng liên hệ với chủ sở hữu của trang đã link bạn đến URL gốc và cho họ biết link đã bị hỏng.",
+        "description": "The 2nd paragraph of the 404 page"
+    },
+    "theme.AnnouncementBar.closeButtonAriaLabel": {
+        "message": "Đóng",
+        "description": "The ARIA label for close button of announcement bar"
+    },
+    "theme.blog.paginator.navAriaLabel": {
+        "message": "Điều hướng trang danh sách blog",
+        "description": "The ARIA label for the blog pagination"
+    },
+    "theme.blog.paginator.newerEntries": {
+        "message": "Bài mới hơn",
+        "description": "The label used to navigate to the newer blog posts page (previous page)"
+    },
+    "theme.blog.paginator.olderEntries": {
+        "message": "Bài cũ hơn",
+        "description": "The label used to navigate to the older blog posts page (next page)"
+    },
+    "theme.blog.post.readingTime.plurals": {
+        "message": "1 phút đọc | {readingTime} phút đọc",
+        "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+    },
+    "theme.tags.tagsListLabel": {
+        "message": "Tags:",
+        "description": "The label alongside a tag list"
+    },
+    "theme.blog.post.readMore": {
+        "message": "Đọc thêm",
+        "description": "The label used in blog post item excerpts to link to full blog posts"
+    },
+    "theme.blog.post.paginator.navAriaLabel": {
+        "message": "Điều hướng trang blog post",
+        "description": "The ARIA label for the blog posts pagination"
+    },
+    "theme.blog.post.paginator.newerPost": {
+        "message": "Bài mới hơn",
+        "description": "The blog post button label to navigate to the newer/previous post"
+    },
+    "theme.blog.post.paginator.olderPost": {
+        "message": "Bài cũ hơn",
+        "description": "The blog post button label to navigate to the older/next post"
+    },
+    "theme.tags.tagsPageTitle": {
+        "message": "Tags",
+        "description": "The title of the tag list page"
+    },
+    "theme.blog.post.plurals": {
+        "message": "Một bài viết|{count} bài viết",
+        "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+    },
+    "theme.blog.tagTitle": {
+        "message": "{nPosts} được tag với \"{tagName}\"",
+        "description": "The title of the page for a blog tag"
+    },
+    "theme.tags.tagsPageLink": {
+        "message": "Xem tất cả Tags",
+        "description": "The label of the link targeting the tag list page"
+    },
+    "theme.CodeBlock.copyButtonAriaLabel": {
+        "message": "Copy code vào clipboard",
+        "description": "The ARIA label for copy code blocks button"
+    },
+    "theme.CodeBlock.copied": {
+        "message": "Đã copy",
+        "description": "The copied button label on code blocks"
+    },
+    "theme.CodeBlock.copy": {
+        "message": "Copy",
+        "description": "The copy button label on code blocks"
+    },
+    "theme.docs.sidebar.expandButtonTitle": {
+        "message": "Mở rộng sidebar",
+        "description": "The ARIA label and title attribute for expand button of doc sidebar"
+    },
+    "theme.docs.sidebar.expandButtonAriaLabel": {
+        "message": "Mở rộng sidebar",
+        "description": "The ARIA label and title attribute for expand button of doc sidebar"
+    },
+    "theme.docs.paginator.navAriaLabel": {
+        "message": "Điều hướng trang docs",
+        "description": "The ARIA label for the docs pagination"
+    },
+    "theme.docs.paginator.previous": {
+        "message": "Trước",
+        "description": "The label used to navigate to the previous doc"
+    },
+    "theme.docs.paginator.next": {
+        "message": "Tiếp",
+        "description": "The label used to navigate to the next doc"
+    },
+    "theme.docs.sidebar.collapseButtonTitle": {
+        "message": "Thu gọn sidebar",
+        "description": "The title attribute for collapse button of doc sidebar"
+    },
+    "theme.docs.sidebar.collapseButtonAriaLabel": {
+        "message": "Thu gọn sidebar",
+        "description": "The title attribute for collapse button of doc sidebar"
+    },
+    "theme.docs.sidebar.responsiveCloseButtonLabel": {
+        "message": "Đóng menu",
+        "description": "The ARIA label for close button of mobile doc sidebar"
+    },
+    "theme.docs.sidebar.responsiveOpenButtonLabel": {
+        "message": "Mở menu",
+        "description": "The ARIA label for open button of mobile doc sidebar"
+    },
+    "theme.docs.versions.unreleasedVersionLabel": {
+        "message": "Đây là tài liệu chưa phát hành cho {siteTitle} phiên bản {versionLabel}.",
+        "description": "The label used to tell the user that he's browsing an unreleased doc version"
+    },
+    "theme.docs.versions.unmaintainedVersionLabel": {
+        "message": "Đây là tài liệu cho {siteTitle} {versionLabel}, không còn được maintain tích cực.",
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+    },
+    "theme.docs.versions.latestVersionSuggestionLabel": {
+        "message": "Để xem tài liệu cập nhật, xem {latestVersionLink} ({versionLabel}).",
+        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+    },
+    "theme.docs.versions.latestVersionLinkLabel": {
+        "message": "phiên bản mới nhất",
+        "description": "The label used for the latest version suggestion link label"
+    },
+    "theme.common.editThisPage": {
+        "message": "Sửa trang này",
+        "description": "The link label to edit the current page"
+    },
+    "theme.common.headingLinkTitle": {
+        "message": "Link trực tiếp đến heading",
+        "description": "Title for link to heading"
+    },
+    "theme.lastUpdated.atDate": {
+        "message": " vào {date}",
+        "description": "The words used to describe on which date a page has been last updated"
+    },
+    "theme.lastUpdated.byUser": {
+        "message": " bởi {user}",
+        "description": "The words used to describe by who the page has been last updated"
+    },
+    "theme.lastUpdated.lastUpdatedAtBy": {
+        "message": "Cập nhật lần cuối{atDate}{byUser}",
+        "description": "The sentence used to display when a page has been last updated, and by who"
+    },
+    "theme.common.skipToMainContent": {
+        "message": "Chuyển đến nội dung chính",
+        "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+    }
+}

@@ -1,0 +1,40 @@
+---
+hide_table_of_contents: true
+---
+
+# 💫 Cộng đồng
+
+<p class="summary">
+Tài nguyên cộng đồng, tài liệu bổ sung
+</p>
+
+## Chính
+
+import NavCard from "@site/src/shared/ui/nav-card/tmpl.mdx"
+import { StarOutlined, SearchOutlined, TeamOutlined, VerifiedOutlined } from "@ant-design/icons";
+
+<NavCard
+    title="Tài nguyên tuyệt vời" 
+    description="Danh sách tuyển chọn các video, bài viết, package FSD tuyệt vời"
+    to="https://github.com/feature-sliced/awesome"
+    Icon={StarOutlined}
+/>
+<NavCard
+    title="Đội ngũ" 
+    description="Đội ngũ cốt lõi, Nhà vô địch, Người đóng góp, Công ty"
+    to="/community/team"
+    Icon={TeamOutlined}
+/>
+<NavCard
+    title="Brandbook" 
+    description="Khuyến nghị sử dụng thương hiệu FSD"
+    to="/docs/branding"
+    Icon={VerifiedOutlined}
+/>
+<NavCard
+    title="Đóng góp" 
+    description="Hướng dẫn, Quy trình làm việc, Hỗ trợ"
+    to="#"
+    Icon={SearchOutlined}
+    disabled
+/>
