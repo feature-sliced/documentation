@@ -1,0 +1,60 @@
+# Feature-Sliced Design
+
+
+## documentation
+
+- [Ví dụ](/examples.md): Danh sách các website được xây dựng với Feature-Sliced Design
+- [🧭 Điều hướng](/nav.md): Feature-Sliced Design Navigation help page
+- [Tìm kiếm](/search.md)
+- [Các phiên bản Feature-Sliced Design](/versions.md): Feature-Sliced Design Versions page listing all documented site versions
+- [💫 Community](/community.md): Community resources, additional materials
+- [Team](/community/team.md): Core-team
+- [Các phương án thay thế](/docs/about/alternatives.md): Lịch sử các cách tiếp cận kiến trúc
+- [Sứ mệnh](/docs/about/mission.md): Ở đây chúng tôi mô tả các mục tiêu và hạn chế của khả năng áp dụng của phương pháp - những gì chúng tôi được hướng dẫn khi phát triển phương pháp
+- [Động lực](/docs/about/motivation.md): Ý tưởng chính của Feature-Sliced Design là tạo điều kiện thuận lợi và giảm chi phí phát triển các dự án phức tạp và được phát triển, dựa trên việc kết hợp kết quả nghiên cứu, thảo luận kinh nghiệm của các loại developer khác nhau trong phạm vi rộng.
+- [Thúc đẩy trong công ty](/docs/about/promote/for-company.md): Dự án và công ty có cần methodology không?
+- [Thúc đẩy trong team](/docs/about/promote/for-team.md): - Onboard những người mới
+- [Các khía cạnh tích hợp](/docs/about/promote/integration.md): Tóm tắt
+- [Ứng dụng từng phần](/docs/about/promote/partial-application.md): Làm thế nào để áp dụng methodology từng phần? Có hợp lý không? Nếu tôi bỏ qua thì sao?
+- [Abstraction](/docs/about/understanding/abstractions.md): Quy luật của abstraction bị rò rỉ
+- [Về kiến trúc](/docs/about/understanding/architecture.md): Các vấn đề
+- [Các loại kiến thức trong dự án](/docs/about/understanding/knowledge-types.md): Có thể phân biệt các "loại kiến thức" sau trong bất kỳ dự án nào:
+- [Đặt tên](/docs/about/understanding/naming.md): Các developer khác nhau có kinh nghiệm và ngữ cảnh khác nhau, có thể dẫn đến hiểu lầm trong team khi cùng một entity được gọi khác nhau. Ví dụ:
+- [Hướng nhu cầu](/docs/about/understanding/needs-driven.md): — Không thể đưa ra mục tiêu mà tính năng mới sẽ giải quyết? Hoặc có thể vấn đề là bản thân task không được đưa ra? **Điềm mấu chốt cũng là methodology giúp rút ra định nghĩa có vấn đề của các task và mục tiêu**
+- [Signal của kiến trúc](/docs/about/understanding/signals.md): Nếu có giới hạn về phía kiến trúc, thì có những lý do rõ ràng cho điều này, và hậu quả nếu chúng bị bỏ qua
+- [Hướng dẫn Thương hiệu](/docs/branding.md): Bản sắc thị giác của FSD dựa trên các khái niệm cốt lõi: Layered, Sliced self-contained parts, Parts & Compose, Segmented.
+- [Decomposition cheatsheet](/docs/get-started/cheatsheet.md): Sử dụng làm tài liệu tham khảo nhanh khi bạn quyết định cách decompose UI của mình. Phiên bản PDF cũng có sẵn bên dưới, để bạn có thể in ra và giữ một bản dưới gối.
+- [FAQ](/docs/get-started/faq.md): Bạn có thể đặt câu hỏi trong Telegram chat, Discord community, và GitHub Discussions của chúng tôi.
+- [Tổng quan](/docs/get-started/overview.md): Feature-Sliced Design (FSD) là một phương pháp thiết kế kiến trúc để xây dựng các ứng dụng frontend. Nói đơn giản, đây là tập hợp các quy tắc và quy ước để tổ chức code. Mục đích chính của phương pháp này là làm cho dự án trở nên dễ hiểu và ổn định hơn khi đối mặt với những yêu cầu kinh doanh liên tục thay đổi.
+- [Tutorial](/docs/get-started/tutorial.md): Phần 1. Trên giấy
+- [Xử lý API Requests](/docs/guides/examples/api-requests.md): handling-api-requests}
+- [Authentication](/docs/guides/examples/auth.md): Nói chung, authentication bao gồm các bước sau:
+- [Autocomplete](/docs/guides/examples/autocompleted.md): Về decomposition theo layers
+- [Browser API](/docs/guides/examples/browser-api.md): Về việc làm việc với Browser API: localStorage, audio Api, bluetooth API, v.v.
+- [CMS](/docs/guides/examples/cms.md): Features có thể khác nhau
+- [Feedback](/docs/guides/examples/feedback.md): Errors, Alerts, Notifications, ...
+- [i18n](/docs/guides/examples/i18n.md): Đặt ở đâu? Làm thế nào để làm việc với điều này?
+- [Metric](/docs/guides/examples/metric.md): About ways to initialize metrics in the application
+- [Monorepositories](/docs/guides/examples/monorepo.md): About applicability for mono repositories, about bff, about microapps
+- [Page layouts](/docs/guides/examples/page-layout.md): Hướng dẫn này xem xét abstraction của một page layout — khi nhiều pages chia sẻ cùng một cấu trúc tổng thể, và chỉ khác nhau ở main content.
+- [Desktop/Touch platforms](/docs/guides/examples/platforms.md): About the application of the methodology for desktop/touch
+- [SSR](/docs/guides/examples/ssr.md): About the implementation of SSR using the methodology
+- [Theme](/docs/guides/examples/theme.md): Where should I put my work with the theme and palette?
+- [Types](/docs/guides/examples/types.md): Hướng dẫn này liên quan đến data types từ các typed languages như TypeScript và mô tả chúng phù hợp ở đâu trong FSD.
+- [White Labels](/docs/guides/examples/white-labels.md): Figma, brand uikit, templates, adaptability to brands
+- [Cross-imports](/docs/guides/issues/cross-imports.md): Cross-imports xuất hiện khi layer hoặc abstraction bắt đầu đảm nhận quá nhiều trách nhiệm hơn nó nên. Đó là lý do tại sao phương pháp luận xác định các layers mới cho phép bạn tách rời những cross-imports này
+- [Desegmented](/docs/guides/issues/desegmented.md): Tình huống
+- [Routing](/docs/guides/issues/routes.md): Tình huống
+- [Migration từ custom architecture](/docs/guides/migration/from-custom.md): Hướng dẫn này mô tả cách tiếp cận có thể hữu ích khi migration từ custom self-made architecture sang Feature-Sliced Design.
+- [Migration từ v1 sang v2](/docs/guides/migration/from-v1.md): Tại sao v2?
+- [Migration từ v2.0 sang v2.1](/docs/guides/migration/from-v2-0.md): Thay đổi chính trong v2.1 là mental model mới để phân tách interface — pages first.
+- [Sử dụng với Electron](/docs/guides/tech/with-electron.md): Các ứng dụng Electron có kiến trúc đặc biệt gồm nhiều process với các trách nhiệm khác nhau. Việc áp dụng FSD trong bối cảnh như vậy yêu cầu phải thích nghi cấu trúc với các đặc điểm của Electron.
+- [Sử dụng với Next.js](/docs/guides/tech/with-nextjs.md): FSD tương thích với Next.js trong cả phiên bản App Router và Pages Router nếu bạn giải quyết được xung đột chính — thư mục app và pages.
+- [Sử dụng với NuxtJS](/docs/guides/tech/with-nuxtjs.md): Có thể triển khai FSD trong dự án NuxtJS, nhưng xảy ra xung đột do sự khác biệt giữa yêu cầu cấu trúc dự án của NuxtJS và các nguyên tắc FSD:
+- [Sử dụng với React Query](/docs/guides/tech/with-react-query.md): Vấn đề "nên đặt các key ở đâu"
+- [Sử dụng với SvelteKit](/docs/guides/tech/with-sveltekit.md): Có thể triển khai FSD trong dự án SvelteKit, nhưng xảy ra xung đột do sự khác biệt giữa yêu cầu cấu trúc của dự án SvelteKit và các nguyên tắc của FSD:
+- [Tài liệu cho LLMs](/docs/llms.md): Trang này cung cấp các liên kết và hướng dẫn cho các LLM crawler.
+- [Layer](/docs/reference/layers.md): Layer là cấp độ đầu tiên của hệ thống phân cấp tổ chức trong Feature-Sliced Design. Mục đích của chúng là phân tách code dựa trên mức độ trách nhiệm cần thiết và số lượng module khác trong app mà nó phụ thuộc vào. Mỗi layer mang ý nghĩa ngữ nghĩa đặc biệt để giúp bạn xác định mức độ trách nhiệm mà bạn nên phân bổ cho code của mình.
+- [Public API](/docs/reference/public-api.md): Public API là một hợp đồng giữa một nhóm module, như một slice, và code sử dụng nó. Nó cũng hoạt động như một cổng kiểm soát, chỉ cho phép truy cập đến các đối tượng nhất định và chỉ thông qua public API đó.
+- [Slice và segment](/docs/reference/slices-segments.md): Slice
+- [Feature-Sliced Design](/index.md): Architectural methodology for frontend projects
