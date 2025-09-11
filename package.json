@@ -20,9 +20,7 @@
         "clear": "docusaurus clear",
         "serve": "docusaurus serve",
         "write-translations": "docusaurus write-translations",
-        "write-heading-ids": "docusaurus write-heading-ids",
-        "contributors:add": "all-contributors add",
-        "contributors:generate": "all-contributors generate"
+        "write-heading-ids": "docusaurus write-heading-ids"
     },
     "engines": {
         "node": ">= 20.0"
@@ -84,7 +82,6 @@
         "@types/react-dom": "^19.1.6",
         "@typescript-eslint/eslint-plugin": "^6.21.0",
         "@typescript-eslint/parser": "^6.21.0",
-        "all-contributors-cli": "^6.26.1",
         "docusaurus-plugin-sass": "^0.2.6",
         "eslint": "^7.32.0",
         "eslint-config-prettier": "^9.1.0",
