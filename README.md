@@ -75,5 +75,7 @@ Feature (green):
 - 📝 Suggest improvements to the documentation through PRs
 
 <div align="center">
+
 [![tg](static/img/social/tg.png)](https://t.me/feature_sliced "Telegram chat")
+
 </div>
