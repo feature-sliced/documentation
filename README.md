@@ -75,13 +75,5 @@ Feature (green):
 - 📝 Suggest improvements to the documentation through PRs
 
 <div align="center">
-
-[![discord](static/img/social/discord.png)](https://discord.gg/S8MzWTUsmp "Discord")
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 [![tg](static/img/social/tg.png)](https://t.me/feature_sliced "Telegram chat")
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![twitter](static/img/social/twitter.png)](https://twitter.com/feature_sliced "Twitter")
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- [![open-collective](static/img/social/opencollective.png)](https://opencollective.com/feature-sliced "Open Collective")
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
--->[![youtube](static/img/social/youtube.png)](https://www.youtube.com/c/FeatureSlicedDesign "YouTube")
 </div>
