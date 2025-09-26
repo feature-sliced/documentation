@@ -3,7 +3,7 @@ const { DEFAULT_LOCALE } = require("./consts");
 /** @type {import('@docusaurus/types').DocusaurusConfig["i18n"]} */
 const i18n = {
     defaultLocale: DEFAULT_LOCALE,
-    locales: ["ru", "en", "uz", "kr", "ja", "zh"],
+    locales: ["ru", "en", "uz", "kr", "ja", "vi", "zh"],
     localeConfigs: {
         ru: {
             label: "Русский",
@@ -22,6 +22,9 @@ const i18n = {
         },
         zh: {
             label: "中文",
+        },
+        vi: {
+            label: "Tiếng Việt",
         },
     },
 };
