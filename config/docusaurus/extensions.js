@@ -1,13 +1,5 @@
-const path = require("path");
 const { GITHUB_DOCS, DEFAULT_LOCALE } = require("./consts");
 const { REDIRECTS } = require("./routes");
-
-const DOCUSAURUS_PLUGIN_OG = [
-    path.resolve(__dirname, "./plugins/docusaurus-plugin-og"),
-    {
-        templatesDir: path.resolve(__dirname, "config/og"),
-    },
-];
 
 /**
  * Hide category index pages from sidebar ()
@@ -118,8 +110,6 @@ const plugins = [
         },
     ],
     "plugin-image-zoom",
-    // FIXME: Docusaurus Open Graph Plugin Experimental.
-    process.env.OG_EXP && DOCUSAURUS_PLUGIN_OG,
 ].filter(Boolean);
 
 /** @type {import('@docusaurus/types').DocusaurusConfig["themeConfig"]["algolia"]} */

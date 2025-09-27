@@ -13,9 +13,10 @@
         "start:vi": "docusaurus start --locale vi",
         "build": "docusaurus build",
         "swizzle": "docusaurus swizzle",
+        "format": "prettier --cache --experimental-cli --write .",
         "test": "pnpm run test:lint && pnpm run build",
-        "test:lint": "eslint --cache \"./**/*.{ts,tsx,js,jsx}\" && stylelint --cache ./**/*.scss && prettier --check --cache .",
-        "test:lint:fix": "eslint --cache --fix \"./**/*.{ts,tsx,js,jsx}\" && stylelint --cache **/*.scss --fix && prettier --write --cache .",
+        "test:lint": "eslint --cache \"./**/*.{ts,tsx,js,jsx}\" && stylelint --cache ./**/*.scss && prettier --check --experimental-cli --cache .",
+        "test:lint:fix": "eslint --cache --fix \"./**/*.{ts,tsx,js,jsx}\" && stylelint --cache **/*.scss --fix && prettier --write --experimental-cli --cache .",
         "deploy": "docusaurus deploy",
         "clear": "docusaurus clear",
         "serve": "docusaurus serve",
@@ -23,85 +24,55 @@
         "write-heading-ids": "docusaurus write-heading-ids"
     },
     "engines": {
-        "node": ">= 20.0"
+        "node": ">= 22"
     },
     "dependencies": {
-        "@ant-design/icons": "^6.0.0",
-        "@docusaurus/core": "^3.8.1",
-        "@docusaurus/faster": "^3.8.1",
-        "@docusaurus/plugin-client-redirects": "^3.8.1",
-        "@docusaurus/plugin-content-docs": "^3.8.1",
-        "@docusaurus/plugin-ideal-image": "^3.8.1",
-        "@docusaurus/preset-classic": "^3.8.1",
-        "@fontsource-variable/overpass": "^5.2.6",
-        "@mdx-js/react": "^3.1.0",
+        "@ant-design/icons": "^6.0.2",
+        "@docusaurus/core": "^3.9.1",
+        "@docusaurus/faster": "^3.9.1",
+        "@docusaurus/plugin-client-redirects": "^3.9.1",
+        "@docusaurus/plugin-content-docs": "^3.9.1",
+        "@docusaurus/plugin-ideal-image": "^3.9.1",
+        "@docusaurus/preset-classic": "^3.9.1",
+        "@fontsource-variable/overpass": "^5.2.8",
+        "@mdx-js/react": "^3.1.1",
         "@signalwire/docusaurus-plugin-llms-txt": "^1.2.2",
-        "@svgr/webpack": "^8.1.0",
-        "@types/lodash-es": "^4.17.12",
         "clsx": "^2.1.1",
-        "dotenv": "^16.5.0",
-        "file-loader": "^6.2.0",
         "lodash-es": "^4.17.21",
-        "picocolors": "^1.1.1",
         "plugin-image-zoom": "^1.2.0",
         "prism-react-renderer": "^2.4.1",
-        "pushfeedback": "^0.1.65",
-        "pushfeedback-react": "^0.1.65",
-        "react": "^19.1.0",
-        "react-dom": "^19.1.0",
-        "react-fast-marquee": "^1.6.5",
-        "sha1": "^1.1.1",
-        "sharp": "^0.34.2",
-        "superstruct": "^1.0.4",
-        "text-to-svg": "^3.1.5",
-        "url-loader": "^4.1.1"
-    },
-    "browserslist": {
-        "production": [
-            ">0.5%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+        "pushfeedback": "^0.1.76",
+        "pushfeedback-react": "^0.1.76",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1",
+        "react-fast-marquee": "^1.6.5"
     },
     "devDependencies": {
-        "@babel/eslint-parser": "^7.27.5",
-        "@docusaurus/module-type-aliases": "^3.8.1",
-        "@docusaurus/theme-classic": "^3.8.1",
-        "@docusaurus/tsconfig": "^3.8.1",
-        "@docusaurus/types": "^3.8.1",
+        "@babel/eslint-parser": "^7.28.4",
+        "@docusaurus/module-type-aliases": "^3.9.1",
+        "@docusaurus/theme-classic": "^3.9.1",
+        "@docusaurus/tsconfig": "^3.9.1",
+        "@docusaurus/types": "^3.9.1",
         "@eslint-kit/eslint-config-base": "4.1.0",
         "@eslint-kit/eslint-config-patch": "^1.0.0",
         "@eslint-kit/eslint-config-react": "^3.0.0",
-        "@types/node": "^22.15.32",
-        "@types/react": "^19.1.8",
-        "@types/react-dom": "^19.1.6",
+        "@types/lodash-es": "^4.17.12",
+        "@types/node": "^22.18.6",
+        "@types/react": "^19.1.13",
+        "@types/react-dom": "^19.1.9",
         "@typescript-eslint/eslint-plugin": "^6.21.0",
         "@typescript-eslint/parser": "^6.21.0",
         "docusaurus-plugin-sass": "^0.2.6",
         "eslint": "^7.32.0",
-        "eslint-config-prettier": "^9.1.0",
+        "eslint-config-prettier": "^9.1.2",
         "eslint-import-resolver-alias": "1.1.2",
-        "prettier": "^3.5.3",
-        "sass": "^1.89.2",
-        "stylelint": "^16.21.0",
+        "prettier": "^3.6.2",
+        "sass": "^1.93.2",
+        "stylelint": "^16.24.0",
         "stylelint-config-recess-order": "^5.1.1",
         "stylelint-config-recommended": "^14.0.1",
         "stylelint-config-standard-scss": "^13.1.0",
-        "typescript": "^5.8.3"
+        "typescript": "^5.9.2"
     },
-    "packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
-    "pnpm": {
-        "onlyBuiltDependencies": [
-            "@parcel/watcher",
-            "@swc/core",
-            "core-js",
-            "core-js-pure",
-            "sharp"
-        ]
-    }
+    "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
 }
