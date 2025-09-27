@@ -30,7 +30,7 @@ Search
 
 Type your search here
 
-[](https://www.algolia.com/)
+Powered by[](https://www.algolia.com/)
 
 Spetsifikatsiya
 

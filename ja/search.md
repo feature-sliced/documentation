@@ -30,7 +30,7 @@
 
 検索するキーワードを入力してください
 
-[](https://www.algolia.com/)
+Algolia提供[](https://www.algolia.com/)
 
 仕様
 

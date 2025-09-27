@@ -768,9 +768,9 @@ Tìm kiếm
 
 # Tìm kiếm
 
-Nhập từ khóa cần tìm vào đây
+Nhập tìm kiếm của bạn ở đây
 
-[](https://www.algolia.com/)
+Được cung cấp bởi Algolia[](https://www.algolia.com/)
 
 Specs
 

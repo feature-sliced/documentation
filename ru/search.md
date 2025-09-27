@@ -30,7 +30,7 @@
 
 Введите фразу для поиска
 
-[](https://www.algolia.com/)
+При поддержке Algolia[](https://www.algolia.com/)
 
 Спецификация
 
