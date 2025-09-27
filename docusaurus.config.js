@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { themes: prismThemes } = require("prism-react-renderer");
 const cfg = require("./config/docusaurus");
 
@@ -31,7 +30,11 @@ module.exports = {
     plugins: cfg.plugins,
     // Build & Dev
     onBrokenLinks: "throw",
-    onBrokenMarkdownLinks: "throw",
+    markdown: {
+        hooks: {
+            onBrokenMarkdownLinks: "throw"
+        }
+    },
     onDuplicateRoutes: "warn",
     customFields,
     trailingSlash: false,

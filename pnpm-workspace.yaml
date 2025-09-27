@@ -1,0 +1,8 @@
+minimumReleaseAge: 1440
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@swc/core'
+  - core-js
+  - core-js-pure
+  - sharp
