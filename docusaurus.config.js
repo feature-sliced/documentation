@@ -9,8 +9,6 @@ const cfg = require("./config/docusaurus");
  */
 const customFields = {
     legacyRoutes: cfg.LEGACY_ROUTES,
-    // FIXME: Open Graph Experimental Mode.
-    isOGExperimental: process.env.OG_EXP,
     pushFeedbackProjectId: "5i2vbxcpaz",
 };
 
@@ -32,8 +30,8 @@ module.exports = {
     onBrokenLinks: "throw",
     markdown: {
         hooks: {
-            onBrokenMarkdownLinks: "throw"
-        }
+            onBrokenMarkdownLinks: "throw",
+        },
     },
     onDuplicateRoutes: "warn",
     customFields,
