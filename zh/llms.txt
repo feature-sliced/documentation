@@ -1,0 +1,60 @@
+# Feature-Sliced Design
+
+
+## documentation
+
+- [示例](/examples.md): 使用 Feature-Sliced Design 构建的网站列表
+- [🧭 导航](/nav.md): Feature-Sliced Design Navigation help page
+- [在文档中搜索](/search.md)
+- [Feature-Sliced Design 版本](/versions.md): Feature-Sliced Design Versions page listing all documented site versions
+- [💫 Community](/community.md): Community resources, additional materials
+- [Team](/community/team.md): Core-team
+- [替代方案](/docs/about/alternatives.md): 架构方法的历史
+- [使命](/docs/about/mission.md): 在这里我们描述方法论适用性的目标和限制——这是我们在开发该方法论时所遵循的指导原则
+- [动机](/docs/about/motivation.md): Feature-Sliced Design（特性分层设计）的主要理念是基于结合研究成果，讨论各种类型开发者的广泛经验，来促进和降低复杂项目开发的成本。
+- [在公司中推广](/docs/about/promote/for-company.md): 项目和公司需要方法论吗？
+- [在团队中推广](/docs/about/promote/for-team.md): - 入职新成员
+- [集成方面](/docs/about/promote/integration.md): 总结
+- [部分应用](/docs/about/promote/partial-application.md): 如何部分应用方法论？这样做有意义吗？如果我忽略它会怎样？
+- [抽象](/docs/about/understanding/abstractions.md): 抽象泄漏定律
+- [关于架构](/docs/about/understanding/architecture.md): 问题
+- [项目中的知识类型](/docs/about/understanding/knowledge-types.md): 在任何项目中都可以区分以下"知识类型"：
+- [命名](/docs/about/understanding/naming.md): 不同的开发者有不同的经验和上下文，当相同的实体被不同地命名时，这可能导致团队中的误解。例如：
+- [需求驱动](/docs/about/understanding/needs-driven.md): — 无法明确表述新功能要解决的目标？或者问题在于任务本身没有被明确表述？**重点是方法论有助于揭示任务和目标定义中的问题**
+- [架构信号](/docs/about/understanding/signals.md): 如果架构方面存在限制，那么这是有明显原因的，如果忽略这些限制就会产生后果
+- [品牌指南](/docs/branding.md): FSD 的视觉身份基于其核心概念：分层、切片式自包含部分、部分和组合、分段。
+- [分解速查表](/docs/get-started/cheatsheet.md): 在您决定如何分解 UI 时，将此作为快速参考。下面还提供了 PDF 版本，您可以打印出来放在枕头下。
+- [常见问题](/docs/get-started/faq.md): 您可以在我们的 Telegram 聊天、Discord 社区 和 GitHub Discussions 中提问。
+- [概览](/docs/get-started/overview.md): Feature-Sliced Design（FSD）是一种用于构建前端应用程序的架构方法论。简单来说，它是组织代码的规则和约定的汇编。该方法论的主要目的是在不断变化的业务需求面前，使项目更加易于理解和稳定。
+- [教程](/docs/get-started/tutorial.md): 第一部分。理论上
+- [处理 API 请求](/docs/guides/examples/api-requests.md): handling-api-requests}
+- [身份验证](/docs/guides/examples/auth.md): 广义上，身份验证包含以下步骤：
+- [自动完成](/docs/guides/examples/autocompleted.md): 关于按层分解
+- [浏览器 API](/docs/guides/examples/browser-api.md): 关于使用浏览器 API：localStorage、音频 API、蓝牙 API 等。
+- [CMS](/docs/guides/examples/cms.md): 功能可能不同
+- [反馈](/docs/guides/examples/feedback.md): 错误、警告、通知……
+- [国际化](/docs/guides/examples/i18n.md): 在哪里放置它？如何使用它？
+- [指标](/docs/guides/examples/metric.md): 关于在应用程序中初始化指标的方法
+- [单体仓库](/docs/guides/examples/monorepo.md): 关于单体仓库的适用性，关于 bff，关于微应用
+- [页面布局](/docs/guides/examples/page-layout.md): 本指南探讨了页面布局的抽象 — 当多个页面共享相同的整体结构，仅在主要内容上有所不同时。
+- [桌面/触摸平台](/docs/guides/examples/platforms.md): 关于方法论在桌面/触摸平台上的应用
+- [SSR](/docs/guides/examples/ssr.md): 关于使用方法论实现 SSR
+- [主题](/docs/guides/examples/theme.md): 我应该把主题和调色板的工作放在哪里？
+- [类型](/docs/guides/examples/types.md): 本指南涉及来自类型化语言（如 TypeScript）的数据类型，并描述它们在 FSD 中的适用位置。
+- [白标](/docs/guides/examples/white-labels.md): Figma、品牌 uikit、模板、品牌适应性
+- [交叉导入](/docs/guides/issues/cross-imports.md): 当层或抽象开始承担超出其应有责任时，就会出现交叉导入。这就是为什么方法论识别出新的层，允许您解耦这些交叉导入
+- [去分段化](/docs/guides/issues/desegmented.md): 情况
+- [路由](/docs/guides/issues/routes.md): 情况
+- [从自定义架构迁移](/docs/guides/migration/from-custom.md): 本指南描述了一种在从自定义自制架构迁移到 Feature-Sliced Design 时可能有用的方法。
+- [从 v1 到 v2 的迁移](/docs/guides/migration/from-v1.md): 为什么是 v2？
+- [从v2.0到v2.1的迁移](/docs/guides/migration/from-v2-0.md): v2.1的主要变化是分解界面的新思维模型——页面优先。
+- [与 Electron 一起使用](/docs/guides/tech/with-electron.md): Electron 应用程序具有特殊的架构，由具有不同职责的多个进程组成。在这种情况下应用 FSD 需要将结构适应 Electron 的特性。
+- [与 Next.js 一起使用](/docs/guides/tech/with-nextjs.md): 如果您解决了主要冲突——app 和 pages 文件夹，FSD 与 Next.js 的 App Router 版本和 Pages Router 版本都兼容。
+- [与 NuxtJS 一起使用](/docs/guides/tech/with-nuxtjs.md): 可以在 NuxtJS 项目中实现 FSD，但由于 NuxtJS 项目结构要求与 FSD 原则之间的差异，会产生冲突：
+- [与 React Query 一起使用](/docs/guides/tech/with-react-query.md): "键放在哪里"的问题
+- [与 SvelteKit 一起使用](/docs/guides/tech/with-sveltekit.md): 可以在 SvelteKit 项目中实现 FSD，但由于 SvelteKit 项目的结构要求与 FSD 原则之间的差异，会产生冲突：
+- [大语言模型文档](/docs/llms.md): 本页面为大语言模型（LLM）爬虫提供链接和指导。
+- [层](/docs/reference/layers.md): 层是 Feature-Sliced Design 中组织层次结构的第一级。它们的目的是根据代码需要的责任程度以及它依赖应用程序中其他模块的程度来分离代码。每一层都承载着特殊的语义意义，帮助您确定应该为您的代码分配多少责任。
+- [Public API](/docs/reference/public-api.md): Public API 是一组模块（如 slice）与使用它的代码之间的契约。它也充当网关，只允许访问某些对象，并且只能通过该 public API 访问。
+- [Slices 和 segments](/docs/reference/slices-segments.md): Slices
+- [Feature-Sliced Design](/index.md): Architectural methodology for frontend projects

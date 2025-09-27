@@ -20,6 +20,7 @@
 * [한국어](/documentation/kr/search)
 * [日本語](/documentation/ja/search)
 * [Tiếng Việt](/documentation/vi/search.md)
+* [中文](/documentation/zh/search)
 * [Help Us Translate](https://github.com/feature-sliced/documentation/issues/244)
 
 [](https://discord.gg/S8MzWTUsmp)[](https://github.com/feature-sliced/documentation)
