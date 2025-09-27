@@ -1,0 +1,46 @@
+---
+sidebar_position: 3
+sidebar_class_name: sidebar-item--wip
+---
+
+import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+
+# 路由
+
+<WIP ticket="169" />
+
+## 情况
+
+页面的 URL 在页面下方的层中硬编码
+
+```tsx title="entities/post/card"
+
+<Card>
+    <Card.Title 
+        href={`/post/${data.id}`}
+        title={data.name}
+    />
+    ...
+</Card>
+```
+
+## 问题
+
+URL 没有集中在页面层中，根据责任范围，它们应该属于页面层
+
+## 如果您忽略它
+
+那么，在更改 URL 时，您必须记住这些 URL（以及 URL/重定向的逻辑）可以在除页面之外的所有层中
+
+这也意味着现在即使是一个简单的产品卡片也承担了页面的部分责任，这模糊了项目的逻辑
+
+## 解决方案
+
+确定如何从页面级别及以上处理 URL/重定向
+
+通过组合/props/工厂传递到下面的层
+
+## 另请参阅
+
+- [(Thread) 如果我在 entities/features/widgets 中"缝合"路由会怎样](https://t.me/feature_sliced/4389)
+- [(Thread) 为什么只在页面中模糊路由逻辑](https://t.me/feature_sliced/3756)

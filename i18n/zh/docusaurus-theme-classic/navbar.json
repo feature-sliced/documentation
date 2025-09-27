@@ -1,0 +1,50 @@
+{
+    "title": {
+        "message": "",
+        "description": "The title in the navbar"
+    },
+    "item.label.🛠 Examples": {
+        "message": "🛠 示例",
+        "description": "Navbar item with label Examples"
+    },
+    "item.label.📖 Docs": {
+        "message": "📖 文档",
+        "description": "Navbar item with label Docs"
+    },
+    "item.label.🔎 Intro": {
+        "message": "🔎 介绍",
+        "description": "Navbar item with label Intro"
+    },
+    "item.label.🚀 Get Started": {
+        "message": "🚀 开始使用",
+        "description": "Navbar item with label Get Started"
+    },
+    "item.label.🧩 Concepts": {
+        "message": "🧩 概念",
+        "description": "Navbar item with label Concepts"
+    },
+    "item.label.🎯 Guides": {
+        "message": "🎯 指南",
+        "description": "Navbar item with label Guides"
+    },
+    "item.label.📚 Reference": {
+        "message": "📚 参考",
+        "description": "Navbar item with label Reference"
+    },
+    "item.label.🍰 About": {
+        "message": "🍰 关于",
+        "description": "Navbar item with label About"
+    },
+    "item.label.💫 Community": {
+        "message": "💫 社区",
+        "description": "Navbar item with label Community"
+    },
+    "item.label.❔ Help": {
+        "message": "❔ 帮助",
+        "description": "Navbar item with label Help"
+    },
+    "item.label.📝 Blog": {
+        "message": "📝 博客",
+        "description": "Navbar item with label Blog"
+    }
+}

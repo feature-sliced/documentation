@@ -1,0 +1,386 @@
+{
+    "pages.home.features.title": {
+        "message": "特性",
+        "description": "Features"
+    },
+    "pages.home.features.logic.title": {
+        "message": "明确的业务逻辑",
+        "description": "Feature title"
+    },
+    "pages.home.features.logic.description": {
+        "message": "通过领域范围实现易于发现的架构",
+        "description": "Feature description"
+    },
+    "pages.home.features.adaptability.title": {
+        "message": "适应性",
+        "description": "Feature title"
+    },
+    "pages.home.features.adaptability.description": {
+        "message": "架构组件可以灵活地替换和添加以满足新需求",
+        "description": "Feature description"
+    },
+    "pages.home.features.debt.title": {
+        "message": "技术债务与重构",
+        "description": "Feature title"
+    },
+    "pages.home.features.debt.description": {
+        "message": "每个模块都可以独立修改/重写而不产生副作用",
+        "description": "Feature description"
+    },
+    "pages.home.features.shared.title": {
+        "message": "明确的代码复用",
+        "description": "Feature title"
+    },
+    "pages.home.features.shared.description": {
+        "message": "在 DRY 原则和本地定制之间保持平衡",
+        "description": "Feature description"
+    },
+    "pages.home.concepts.title": {
+        "message": "概念",
+        "description": "Concepts"
+    },
+    "pages.home.concepts.public.title": {
+        "message": "公共 API",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.public.description": {
+        "message": "每个模块必须在顶层声明其公共 API",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.isolation.title": {
+        "message": "隔离",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.isolation.description": {
+        "message": "模块不应直接依赖于同一层级或上层的其他模块",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.needs.title": {
+        "message": "需求驱动",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.needs.description": {
+        "message": "面向业务和用户需求",
+        "description": "Concept description"
+    },
+    "pages.home.scheme.title": {
+        "message": "架构图",
+        "description": "Scheme"
+    },
+    "pages.home.companies.using": {
+        "message": "使用 FSD 的公司",
+        "description": "Companies using FSD"
+    },
+    "pages.home.companies.add_me": {
+        "message": "您的公司正在使用 FSD？",
+        "description": "FSD is used in your company?"
+    },
+    "pages.home.companies.tell_us": {
+        "message": "告诉我们",
+        "description": "Tell us"
+    },
+    "pages.examples.title": {
+        "message": "示例",
+        "description": "Page title"
+    },
+    "pages.examples.subtitle": {
+        "message": "使用 Feature-Sliced Design 构建的网站列表",
+        "description": "Page subtitle"
+    },
+    "pages.versions.title": {
+        "message": "Feature-Sliced Design 版本",
+        "description": "Feature-Sliced Design versions"
+    },
+    "pages.versions.current": {
+        "message": "当前已发布版本的文档可以在这里找到",
+        "description": "Description for current version"
+    },
+    "pages.versions.legacy": {
+        "message": "{of} 旧版本的文档可以在这里找到",
+        "description": "Description for legacy version"
+    },
+    "pages.nav.title": {
+        "message": "🧭 导航",
+        "description": "NavPage title"
+    },
+    "pages.nav.legacy.title": {
+        "message": "旧版路由",
+        "description": "NavPage section=legacy title"
+    },
+    "pages.nav.legacy.details": {
+        "message": "在文档重构后，一些路由已经更改。下面您可以找到可能正在寻找的页面。",
+        "description": "NavPage section=legacy details"
+    },
+    "pages.nav.legacy.subdetails": {
+        "message": "但为了兼容性，旧链接会有重定向",
+        "description": "NavPage section=legacy subdetails"
+    },
+    "features.feedback-badge.label": {
+        "message": "分享您对文档的反馈 🤙",
+        "description": "Feedback share button label"
+    },
+    "features.feedback-badge.url": {
+        "message": "https://forms.gle/nsYua6bMMG5iBB3v7",
+        "description": "Feedback share form url"
+    },
+    "features.feedback-doc.button-text": {
+        "message": "反馈",
+        "description": "The text on a floating button to leave feedback about the docs"
+    },
+    "features.feedback-doc.email-placeholder": {
+        "message": "您的邮箱（可选）",
+        "description": "The placeholder for email input"
+    },
+    "features.feedback-doc.error-message": {
+        "message": "出了点问题。请稍后再试。",
+        "description": "The error message displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-error-403": {
+        "message": "请求 URL 与该项目在 PushFeedback 中定义的 URL 不匹配。",
+        "description": "The title of the modal displayed when feedback form submission fails with 403 error"
+    },
+    "features.feedback-doc.modal-title-error-404": {
+        "message": "我们在 PushFeedback 中找不到提供的项目 ID。",
+        "description": "The title of the modal displayed when feedback form submission fails with 404 error"
+    },
+    "features.feedback-doc.message-placeholder": {
+        "message": "评论",
+        "description": "The placeholder for message input"
+    },
+    "features.feedback-doc.modal-title": {
+        "message": "分享您的反馈",
+        "description": "The title of the modal to leave feedback about the docs"
+    },
+    "features.feedback-doc.modal-title-error": {
+        "message": "糟糕！",
+        "description": "The title of the modal displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-success": {
+        "message": "感谢您的反馈！",
+        "description": "The title of the modal displayed when feedback form submission succeeds"
+    },
+    "features.feedback-doc.screenshot-button-text": {
+        "message": "截图",
+        "description": "The text on a button to take a screenshot"
+    },
+    "features.feedback-doc.screenshot-topbar-text": {
+        "message": "选择页面上的一个元素",
+        "description": "The text displayed in the top bar when selecting an element to take a screenshot"
+    },
+    "features.feedback-doc.send-button-text": {
+        "message": "发送",
+        "description": "The text on a button to send feedback"
+    },
+    "features.feedback-doc.rating-placeholder": {
+        "message": "这个页面有帮助吗？",
+        "description": "The placeholder for rating input"
+    },
+    "features.feedback-doc.rating-stars-placeholder": {
+        "message": "您如何评价这个页面",
+        "description": "The placeholder for rating stars input"
+    },
+    "features.hero.tagline": {
+        "message": "前端项目的架构方法论",
+        "description": "Architectural methodology for frontend projects"
+    },
+    "features.hero.get_started": {
+        "message": "开始使用",
+        "description": "Get Started"
+    },
+    "features.hero.examples": {
+        "message": "示例",
+        "description": "Examples"
+    },
+    "features.hero.previous": {
+        "message": "旧版本",
+        "description": "Previous version"
+    },
+    "shared.wip.title": {
+        "message": "文章正在编写中",
+        "description": "Admonition title"
+    },
+    "shared.wip.subtitle": {
+        "message": "为了使文章更快发布，您可以：",
+        "description": "Admonition subtitle"
+    },
+    "shared.wip.var.feedback.base": {
+        "message": "📢 分享您的反馈",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.feedback.link": {
+        "message": "在文章中（评论/表情反应）",
+        "description": "Variant for contribute (link)"
+    },
+    "shared.wip.var.material.base": {
+        "message": "💬 收集相关的",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.material.link": {
+        "message": "来自聊天的主题相关资料",
+        "description": "Variant for contribute (link)"
+    },
+    "shared.wip.var.contribute.base": {
+        "message": "⚒️ 贡献",
+        "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.contribute.link": {
+        "message": "以任何其他方式",
+        "description": "Variant for contribute (link)"
+    },
+    "theme.NotFound.title": {
+        "message": "页面未找到",
+        "description": "The title of the 404 page"
+    },
+    "theme.NotFound.p1": {
+        "message": "我们找不到您要查找的内容。",
+        "description": "The first paragraph of the 404 page"
+    },
+    "theme.NotFound.p2": {
+        "message": "请联系链接到原始 URL 的网站所有者，告知他们链接已损坏。",
+        "description": "The 2nd paragraph of the 404 page"
+    },
+    "theme.AnnouncementBar.closeButtonAriaLabel": {
+        "message": "关闭",
+        "description": "The ARIA label for close button of announcement bar"
+    },
+    "theme.blog.paginator.navAriaLabel": {
+        "message": "博客列表页面导航",
+        "description": "The ARIA label for the blog pagination"
+    },
+    "theme.blog.paginator.newerEntries": {
+        "message": "较新的条目",
+        "description": "The label used to navigate to the newer blog posts page (previous page)"
+    },
+    "theme.blog.paginator.olderEntries": {
+        "message": "较旧的条目",
+        "description": "The label used to navigate to the older blog posts page (next page)"
+    },
+    "theme.blog.post.readingTime.plurals": {
+        "message": "阅读时间 1 分钟|阅读时间 {readingTime} 分钟",
+        "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+    },
+    "theme.tags.tagsListLabel": {
+        "message": "标签：",
+        "description": "The label alongside a tag list"
+    },
+    "theme.blog.post.readMore": {
+        "message": "阅读更多",
+        "description": "The label used in blog post item excerpts to link to full blog posts"
+    },
+    "theme.blog.post.paginator.navAriaLabel": {
+        "message": "博客文章页面导航",
+        "description": "The ARIA label for the blog posts pagination"
+    },
+    "theme.blog.post.paginator.newerPost": {
+        "message": "较新的文章",
+        "description": "The blog post button label to navigate to the newer/previous post"
+    },
+    "theme.blog.post.paginator.olderPost": {
+        "message": "较旧的文章",
+        "description": "The blog post button label to navigate to the older/next post"
+    },
+    "theme.tags.tagsPageTitle": {
+        "message": "标签",
+        "description": "The title of the tag list page"
+    },
+    "theme.blog.post.plurals": {
+        "message": "1 篇文章|{count} 篇文章",
+        "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+    },
+    "theme.blog.tagTitle": {
+        "message": "{nPosts} 篇标记为 \"{tagName}\" 的文章",
+        "description": "The title of the page for a blog tag"
+    },
+    "theme.tags.tagsPageLink": {
+        "message": "查看所有标签",
+        "description": "The label of the link targeting the tag list page"
+    },
+    "theme.CodeBlock.copyButtonAriaLabel": {
+        "message": "复制代码到剪贴板",
+        "description": "The ARIA label for copy code blocks button"
+    },
+    "theme.CodeBlock.copied": {
+        "message": "已复制",
+        "description": "The copied button label on code blocks"
+    },
+    "theme.CodeBlock.copy": {
+        "message": "复制",
+        "description": "The copy button label on code blocks"
+    },
+    "theme.docs.sidebar.expandButtonTitle": {
+        "message": "展开侧边栏",
+        "description": "The ARIA label and title attribute for expand button of doc sidebar"
+    },
+    "theme.docs.sidebar.expandButtonAriaLabel": {
+        "message": "展开侧边栏",
+        "description": "The ARIA label and title attribute for expand button of doc sidebar"
+    },
+    "theme.docs.paginator.navAriaLabel": {
+        "message": "文档页面导航",
+        "description": "The ARIA label for the docs pagination"
+    },
+    "theme.docs.paginator.previous": {
+        "message": "上一页",
+        "description": "The label used to navigate to the previous doc"
+    },
+    "theme.docs.paginator.next": {
+        "message": "下一页",
+        "description": "The label used to navigate to the next doc"
+    },
+    "theme.docs.sidebar.collapseButtonTitle": {
+        "message": "收起侧边栏",
+        "description": "The title attribute for collapse button of doc sidebar"
+    },
+    "theme.docs.sidebar.collapseButtonAriaLabel": {
+        "message": "收起侧边栏",
+        "description": "The title attribute for collapse button of doc sidebar"
+    },
+    "theme.docs.sidebar.responsiveCloseButtonLabel": {
+        "message": "关闭菜单",
+        "description": "The ARIA label for close button of mobile doc sidebar"
+    },
+    "theme.docs.sidebar.responsiveOpenButtonLabel": {
+        "message": "打开菜单",
+        "description": "The ARIA label for open button of mobile doc sidebar"
+    },
+    "theme.docs.versions.unreleasedVersionLabel": {
+        "message": "这是 {siteTitle} {versionLabel} 版本的未发布文档。",
+        "description": "The label used to tell the user that he's browsing an unreleased doc version"
+    },
+    "theme.docs.versions.unmaintainedVersionLabel": {
+        "message": "这是 {siteTitle} {versionLabel} 的文档，该版本不再积极维护。",
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+    },
+    "theme.docs.versions.latestVersionSuggestionLabel": {
+        "message": "如需最新文档，请参阅 {latestVersionLink}（{versionLabel}）。",
+        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+    },
+    "theme.docs.versions.latestVersionLinkLabel": {
+        "message": "最新版本",
+        "description": "The label used for the latest version suggestion link label"
+    },
+    "theme.common.editThisPage": {
+        "message": "编辑此页面",
+        "description": "The link label to edit the current page"
+    },
+    "theme.common.headingLinkTitle": {
+        "message": "标题的直接链接",
+        "description": "Title for link to heading"
+    },
+    "theme.lastUpdated.atDate": {
+        "message": " 于 {date}",
+        "description": "The words used to describe on which date a page has been last updated"
+    },
+    "theme.lastUpdated.byUser": {
+        "message": " 由 {user}",
+        "description": "The words used to describe by who the page has been last updated"
+    },
+    "theme.lastUpdated.lastUpdatedAtBy": {
+        "message": "最后更新{atDate}{byUser}",
+        "description": "The sentence used to display when a page has been last updated, and by who"
+    },
+    "theme.common.skipToMainContent": {
+        "message": "跳转到主要内容",
+        "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+    }
+}
