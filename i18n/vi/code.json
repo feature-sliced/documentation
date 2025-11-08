@@ -73,7 +73,7 @@
     },
     "pages.home.companies.add_me": {
         "message": "Công ty bạn đang dùng FSD?",
-        "description": "FSD is used in your company?"
+        "description": "Is FSD used in your company?"
     },
     "pages.home.companies.tell_us": {
         "message": "Hãy cho chúng tôi biết",
@@ -353,7 +353,7 @@
     },
     "theme.docs.versions.latestVersionSuggestionLabel": {
         "message": "Để xem tài liệu cập nhật, xem {latestVersionLink} ({versionLabel}).",
-        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionLinkLabel": {
         "message": "phiên bản mới nhất",
