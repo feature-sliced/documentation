@@ -73,7 +73,7 @@
     },
     "pages.home.companies.add_me": {
         "message": "귀사도 FSD를 사용하시나요?",
-        "description": "FSD is used in your company?"
+        "description": "Is FSD used in your company?"
     },
     "pages.home.companies.tell_us": {
         "message": "알려주세요",
@@ -353,7 +353,7 @@
     },
     "theme.docs.versions.latestVersionSuggestionLabel": {
         "message": "최신 문서는 {latestVersionLink}({versionLabel})에서 확인하세요.",
-        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionLinkLabel": {
         "message": "최신 버전",

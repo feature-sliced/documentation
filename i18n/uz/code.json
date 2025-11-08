@@ -365,7 +365,7 @@
     },
     "theme.docs.versions.latestVersionSuggestionLabel": {
         "message": "Eng yangi hujjatlar uchun {latestVersionLink} ({versionLabel}) ga qarang.",
-        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionLinkLabel": {
         "message": "so'ngi versiya",

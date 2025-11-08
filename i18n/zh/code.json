@@ -73,7 +73,7 @@
     },
     "pages.home.companies.add_me": {
         "message": "您的公司正在使用 FSD？",
-        "description": "FSD is used in your company?"
+        "description": "Is FSD used in your company?"
     },
     "pages.home.companies.tell_us": {
         "message": "告诉我们",
@@ -353,7 +353,7 @@
     },
     "theme.docs.versions.latestVersionSuggestionLabel": {
         "message": "如需最新文档，请参阅 {latestVersionLink}（{versionLabel}）。",
-        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionLinkLabel": {
         "message": "最新版本",
