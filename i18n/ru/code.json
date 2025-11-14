@@ -87,18 +87,6 @@
         "message": "Список сайтов, сделанных людьми с FSD",
         "description": "Page subtitle"
     },
-    "pages.examples.add_me.title": {
-        "message": "Добавить пример",
-        "description": "Request to add example"
-    },
-    "pages.examples.repo.title": {
-        "message": "Репозиторий",
-        "description": "Examples repository label"
-    },
-    "pages.examples.versions": {
-        "message": "См. также список версий",
-        "description": "Versions reminder"
-    },
     "pages.versions.title": {
         "message": "Версии Feature-Sliced Design",
         "description": "Feature-Sliced Design versions"
@@ -377,7 +365,7 @@
     },
     "theme.docs.versions.latestVersionSuggestionLabel": {
         "message": "Актуальная документация находится на странице {latestVersionLink} ({versionLabel}).",
-        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionLinkLabel": {
         "message": "последней версии",

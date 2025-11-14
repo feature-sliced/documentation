@@ -1,4 +1,3 @@
-require("dotenv").config();
 const { themes: prismThemes } = require("prism-react-renderer");
 const cfg = require("./config/docusaurus");
 
@@ -10,8 +9,6 @@ const cfg = require("./config/docusaurus");
  */
 const customFields = {
     legacyRoutes: cfg.LEGACY_ROUTES,
-    // FIXME: Open Graph Experimental Mode.
-    isOGExperimental: process.env.OG_EXP,
     pushFeedbackProjectId: "5i2vbxcpaz",
 };
 
@@ -24,14 +21,18 @@ module.exports = {
     projectName: "documentation", // Usually your repo name.
     url: cfg.consts.DOMAIN,
     favicon: "img/favicon/classic.png",
-    baseUrl: "/",
+    baseUrl: process.env.BASE_URL || "/documentation/",
     // Extensions
     i18n: cfg.i18n,
     presets: cfg.presets,
     plugins: cfg.plugins,
     // Build & Dev
     onBrokenLinks: "throw",
-    onBrokenMarkdownLinks: "throw",
+    markdown: {
+        hooks: {
+            onBrokenMarkdownLinks: "throw",
+        },
+    },
     onDuplicateRoutes: "warn",
     customFields,
     trailingSlash: false,
@@ -59,6 +60,9 @@ module.exports = {
     },
     future: {
         experimental_faster: true,
+        v4: {
+            removeLegacyPostBuildHeadAttribute: true,
+        },
     },
 };
 

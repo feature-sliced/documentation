@@ -247,7 +247,7 @@ npx fsd shared --segments api config
 그런 다음 `shared/config/backend.ts`를 만드세요.
 
 ```tsx title="shared/config/backend.ts"
-export const backendBaseUrl = "https://api.realworld.io/api";
+export { mockBackendUrl as backendBaseUrl } from "mocks/handlers";
 ```
 
 ```tsx title="shared/config/index.ts"

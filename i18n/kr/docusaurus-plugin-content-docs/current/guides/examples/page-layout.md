@@ -4,17 +4,25 @@ sidebar_position: 3
 
 # Page layouts
 
-이 가이드는 여러 페이지가 같은 기본 구조를 공유하고, 주요 내용만 다른 경우 사용할 수 있는 _페이지 레이아웃_ 에 대해 설명합니다.
+여러 페이지에서 **동일한 공통 layout(header, sidebar, footer)** 을 사용하고,  
+그 안의 **Content 영역**(각 페이지에서 렌더링할 컴포넌트)만 달라질 때 사용하는 _page layout_ 개념을 설명합니다.
 
 :::info
 
-이 가이드에서 다루지 않는 질문이 있으신가요? 오른쪽 파란색 버튼을 눌러 피드백을 남겨주세요. 여러분의 의견을 반영해 가이드를 확장해 나가겠습니다!
+더 궁금한 점이 있나요? 페이지 우측의 피드백 버튼을 눌러 의견을 남겨 주세요. 여러분의 제안은 문서 개선에 큰 도움이 됩니다!
 
 :::
 
-## 간단한 레이아웃
+## Simple layout
 
-간단한 레이아웃 예시로 설명 해 보겠습니다. 이 페이지는 사이트 내비게이션이 포함된 헤더, 두 개의 사이드바, 외부 링크가 포함된 푸터로 구성되어 있습니다. 복잡한 비즈니스 로직은 없으며, 동적인 부분은 사이드바와 헤더 오른쪽에 있는 테마 전환 버튼뿐입니다. 이러한 레이아웃은 shared/ui 또는 app/layouts에 포함시킬 수 있으며, props를 통해 전달받은 사이드바 콘텐츠를 표시합니다.
+simple layout은 아래 예시에서 볼 수 있습니다.  
+header, 두 개의 sidebar, 외부 링크(GitHub, Twitter)가 있는 footer로 구성되며, 복잡한 비즈니스 로직은 없습니다.  
+
+- **정적 요소**: 고정된 menu, logo, footer 등  
+- **동적 요소**: sidebar toggle, header 오른쪽의 theme switch button  
+
+이 Layout 컴포넌트는 `shared/ui` 또는 `app/layouts` 같은 common 폴더에 두고,  
+`siblingPages`(SiblingPageSidebar)와 `headings`(HeadingsSidebar) props로 sidebar content를 **주입(의존성 주입)** 받아 사용합니다.
 
 ```tsx title="shared/ui/layout/Layout.tsx"
 import { Link, Outlet } from "react-router-dom";
@@ -68,33 +76,41 @@ export function useThemeSwitcher() {
 }
 ```
 
-사이드바의 구체적인 코드는 여러분 상상에 맡기겠습니다 😉.
+사이드바 구현은 생략했습니다.
 
-## layout에 widget 사용하기
+## layout에 widget 적용하기
 
-상황에 따라 layout에 특정 비즈니스 로직을 추가하고 싶을 때가 있습니다. 특히 [React Router][ext-react-router]와 같은 라우터를 사용해 깊이 중첩된 경로를 다룰 때 이러한 요구가 발생합니다. 이러한 경우 layout을 shared나 widgets 폴더에 두는 것이 어려울 수 있습니다. 이는 [layer에 대한 import 규칙][import-rule-on-layers] 때문입니다:
+간혹 layout 컴포넌트에서 인증 처리나 데이터 로딩 같은 비즈니스 로직을 직접 실행해야 할 수 있습니다.
+예를 들어, [React Router][ext-react-router]의 deeply nested routes를 사용할 때, child routes(예: `/users`, `/users/:id`, `/users/:id/settings` 등)의 공통 로직(인증 처리, 데이터 로딩 등)을 layout 레벨에서 한 번에 처리하면 편리합니다.
+이 경우 layout 컴포넌트를 `shared`나 `widgets` 폴더에 두면 [layer에 대한 import 규칙][import-rule-on-layers]을 위반합니다.
 
-> slice의 module은 자신보다 하위 layers에 위치한 다른 slice만 import할 수 있습니다.
+> Slice의 module은 자신보다 하위 layer에만 있는 Slice를 import할 수 있습니다.
 
-이 문제가 정말 중요한지 먼저 고려해 봐야 합니다. 레이아웃이 _정말로 필요한가요?_ 그리고 그 레이아웃이 _정말로 widget이어야 할까요?_ 만약 해당 비즈니스 로직이 2-3개의 페이지에서만 사용되고, 레이아웃이 그 widget을 감싸는 역할이라면, 다음 두 가지 방법을 고려해 보세요:
+이 문제가 정말 중요한지 먼저 고려해 봐야 합니다.
 
-1. **App 레이어에서 인라인으로 레이아웃 작성하기**  
-   App 레이어에서 직접 레이아웃을 정의하는 것이 좋습니다. 이렇게 하면 중첩된 라우터를 사용할 때 특정 경로 그룹에만 해당 레이아웃을 적용할 수 있어 유연하게 사용할 수 있습니다.
+- _이 layout이 정말 필요한가요?_
+- _꼭 widget으로 구현해야 하나요?_
 
-2. **복사하여 붙여넣기**  
-   코드 추상화는 항상 좋은 선택은 아닙니다. 특히 레이아웃은 자주 변경되지 않기 때문에, 필요한 경우 해당 페이지만 수정하는 것이 더 효율적일 수 있습니다. 이렇게 하면 다른 페이지에 영향을 주지 않고 수정할 수 있습니다. 팀원들이 다른 페이지를 수정하는 걸 잊을까 봐 걱정된다면, 페이지 간의 관계를 주석으로 남겨보세요. 큰 프로젝트에서도 협업이 더 편해질 거예요.
+비즈니스 로직을 사용하는 layout이 2~3개 페이지만 적용된다면, layout 역할이 단순 wrapper인지 확인하고, 아래 대안을 고려하세요.
 
-위의 내용이 적절하지 않은 경우, 레이아웃에  widget을 포함하는 두 가지 해결책이 있습니다:
+1. **App layer에서 inline으로 작성하기**  
+    Router의 nesting 기능을 이용하면, 공통된 URL 패턴을 가진 여러 경로(예: /users, /users/profile, /users/settings)를 하나의 `route group` 으로 묶을 수 있습니다. 이렇게 만든 route group에 한 번만 layout을 지정하면, 해당 그룹의 모든 페이지에 동일한 layout이 적용됩니다.
 
-1. **render props나 slots 사용하기**  
-   대부분의 프레임워크에서는 컴포넌트 내부에 표시될 UI 요소를 외부에서 전달할 수 있는 기능을 제공합니다. React에서는 [render props][ext-render-props]라고 하며, Vue에서는 [slots][ext-vue-slots]이라고 부릅니다.
-2. **레이아웃을 App 레이어로 이동하기**  
-   레이아웃을 `app/layouts` 등 App 레이어에 저장하고 원하는 widget을 구성할 수도 있습니다.
+2. **코드 복사 & 붙여넣기**  
+   레이아웃은 자주 변경되지 않으므로, 필요한 페이지만 복사해 두고 수정할 때만 업데이트하세요.
+   이렇게 하면 다른 페이지에 영향을 주지 않으며, 페이지 간 관계를 주석으로 남겨 누락을 방지할 수 있습니다.
 
-## 추가 자료
+위 방식이 적합하지 않다면, layout에 widget을 포함하는 다음 두 가지 해결책을 검토하세요:
 
-React 및 Remix(React Router와 유사)의 인증 레이아웃 구축에 대한 예시는 [튜토리얼][tutorial]에서 확인하실 수 있습니다.
+1. **Render Props 또는 Slots 사용하기**  
+   React에서는 [render props][ext-render-props]를, Vue에서는 [slots][ext-vue-slots]를 사용해 `부모 layout 컴포넌트에 자식 UI를 props/slot 형태로 전달해 특정 위치에 주입(injection)` 하는 방식입니다.
 
+2. **layout을 App layer로 이동하기**  
+   `app/layouts` 등에 layout 파일을 두고, 필요한 widget을 조합해 사용하세요.
+
+## 참고 자료
+
+React 및 Remix(React Router와 유사)의 인증 layout 구축에 대한 예시는 [튜토리얼][tutorial]에서 확인하실 수 있습니다.
 
 [tutorial]: /docs/get-started/tutorial
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers

@@ -15,7 +15,7 @@ const footer = {
         {
             title: "Specs",
             items: [
-                { label: "Documentation", to: "/docs" },
+                { label: "Documentation", to: "/docs/get-started/overview" },
                 { label: "Community", to: "/community" },
                 { label: "Help", to: "/nav" },
                 { label: "Discussions", href: `${GITHUB_DOCS}/discussions` },
@@ -45,6 +45,7 @@ const footer = {
                     label: "License",
                     href: `${GITHUB_DOCS}/blob/master/LICENSE`,
                 },
+                { label: "Docs for LLMs", to: "/docs/llms" },
             ],
         },
     ],

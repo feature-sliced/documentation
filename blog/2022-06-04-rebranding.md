@@ -8,12 +8,14 @@ authors:
     url: https://github.com/azinit
     image_url: https://github.com/azinit.png
 tags: [brand, promo]
-image: https://feature-sliced.design/img/blog/rebranding-stable.png
+image: https://feature-sliced.github.io/documentation/img/blog/rebranding-stable.png
 hide_table_of_contents: false
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 <div class="container text--center margin-vert--md">
-    <img src="/img/blog/rebranding-stable.png" alt="logo-primary" width="100%" />
+    <img src={useBaseUrl("/img/blog/rebranding-stable.png")} alt="logo-primary" width="100%" />
 </div>
 
 TLDR:

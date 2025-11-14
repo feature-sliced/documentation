@@ -8,12 +8,14 @@ authors:
   url: https://github.com/unordinarity
   image_url: https://github.com/unordinarity.png
 tags: [community, discord, promo]
-image: https://feature-sliced.design/img/blog/international-community.png
+image: https://feature-sliced.github.io/documentation/img/blog/international-community.png
 hide_table_of_contents: false
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 <div class="container text--center margin-vert--md">
-    <img src="/img/blog/international-community.png" alt="post-cover" width="100%" />
+    <img src={useBaseUrl("/img/blog/international-community.png")} alt="post-cover" width="100%" />
 </div>
 
 TLDR:

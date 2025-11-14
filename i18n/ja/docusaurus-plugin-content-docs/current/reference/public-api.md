@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
+
 # 公開API
 
 公開APIは、モジュールのグループ（スライスなど）とそれを使用するコードとの間の**契約**です。また、特定のオブジェクトへのアクセスを制限し、その公開APIを通じてのみアクセスを許可します。
@@ -70,8 +72,8 @@ import type { EntityA } from "entities/A/@x/B";
 <!-- TODO: 画像に背景を追加し、モバイルで確認 -->
 
 <figure>
-    <img src="/img/circular-import-light.svg#light-mode-only" width="60%" alt="三つのファイルが循環的にインポートしている" />
-    <img src="/img/circular-import-dark.svg#dark-mode-only" width="60%" alt="三つのファイルが循環的にインポートしている" />
+    <img src={useBaseUrl("/img/circular-import-light.svg#light-mode-only")} width="60%" alt="三つのファイルが循環的にインポートしている" />
+    <img src={useBaseUrl("/img/circular-import-dark.svg#dark-mode-only")} width="60%" alt="三つのファイルが循環的にインポートしている" />
     <figcaption>
         上の図には、`fileA.js`、`fileB.js`、`fileC.js`の三つのファイルが循環的にインポートしている様子が示されています。
     </figcaption>

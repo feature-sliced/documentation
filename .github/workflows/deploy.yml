@@ -16,7 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: corepack enable
+      - run: |
+          npm install -g corepack@latest
+          corepack enable
 
       - uses: actions/setup-node@v4
         with:
@@ -30,7 +32,7 @@ jobs:
       - name: Retrieve Docusaurus build cache
         uses: actions/cache@v4
         with:
-          path: node_modules/.cache/webpack
+          path: node_modules/.cache/rspack
           key: docusaurus-${{ github.ref_name }}
           restore-keys: |
             docusaurus-${{ github.ref_name }}

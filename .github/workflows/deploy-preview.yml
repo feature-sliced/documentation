@@ -1,0 +1,38 @@
+# deploy-preview.yml
+name: Upload Preview Deployment
+on:
+  workflow_run:
+    workflows: ['Build Preview Deployment']
+    types:
+      - completed
+
+permissions:
+  actions: read
+  deployments: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Deploy Preview to Cloudflare Pages
+    steps:
+      # Downloads the build directory from the previous workflow
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        id: preview-build-artifact
+        with:
+          name: preview-build
+          path: build
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Deploy to Cloudflare Pages
+        uses: AdrianGonz97/refined-cf-pages-action@45ea15c1c69a7bce8ffbb79ba114daa2b52f0cff # v1.3.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: pr-fsd
+          directory: ${{ steps.preview-build-artifact.outputs.download-path }}

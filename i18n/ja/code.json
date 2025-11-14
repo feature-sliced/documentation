@@ -87,18 +87,6 @@
         "message": "FSDを使って作られたプロジェクト一覧",
         "description": "Page subtitle"
     },
-    "pages.examples.add_me.title": {
-        "message": "実装例を追加",
-        "description": "Request to add example"
-    },
-    "pages.examples.repo.title": {
-        "message": "リポジトリ",
-        "description": "Examples repository label"
-    },
-    "pages.examples.versions": {
-        "message": "バージョン一覧も参照してください",
-        "description": "Versions reminder"
-    },
     "pages.versions.title": {
         "message": "Feature-Sliced Designのバージョン",
         "description": "Feature-Sliced Design versions"
@@ -377,7 +365,7 @@
     },
     "theme.docs.versions.latestVersionSuggestionLabel": {
         "message": "最新のドキュメントは{latestVersionLink}（{versionLabel}）にあります。",
-        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionLinkLabel": {
         "message": "最新バージョン",

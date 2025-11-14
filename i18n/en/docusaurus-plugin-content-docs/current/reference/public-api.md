@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # Public API
 
 A public API is a _contract_ between a group of modules, like a slice, and the code that uses it. It also acts as a gate, only allowing access to certain objects, and only through that public API.
@@ -29,7 +31,7 @@ export * from "./ui/Comment";  // 👎 don't try this at home
 export * from "./model/comments";  // 💩 this is bad practice
 ```
 
-This hurts the discoverability of a slice because you can't easily tell what the interface of this slice is. Not knowing the interface means that you have to dig deep into the code of a slice to understand how to integrate it. Another problem is that you might accidentally expose the module internals accidentally, which will make refactoring difficult if someone starts depending on them.
+This hurts the discoverability of a slice because you can't easily tell what the interface of this slice is. Not knowing the interface means that you have to dig deep into the code of a slice to understand how to integrate it. Another problem is that you might accidentally expose the module internals, which will make refactoring difficult if someone starts depending on them.
 
 ## Public API for cross-imports {#public-api-for-cross-imports}
 
@@ -68,8 +70,8 @@ Circular import is when two or more files import each other in a circle.
 <!-- TODO: add backgrounds to the images below, check on mobile -->
 
 <figure>
-    <img src="/img/circular-import-light.svg#light-mode-only" width="60%" alt="Three files importing each other in a circle" />
-    <img src="/img/circular-import-dark.svg#dark-mode-only" width="60%" alt="Three files importing each other in a circle" />
+    <img src={useBaseUrl("/img/circular-import-light.svg#light-mode-only")} width="60%" alt="Three files importing each other in a circle" />
+    <img src={useBaseUrl("/img/circular-import-dark.svg#dark-mode-only")} width="60%" alt="Three files importing each other in a circle" />
     <figcaption>
         Pictured above: three files, `fileA.js`, `fileB.js`, and `fileC.js`, importing each other in a circle.
     </figcaption>
@@ -77,7 +79,7 @@ Circular import is when two or more files import each other in a circle.
 
 These situations are often difficult for bundlers to deal with, and in some cases they might even lead to runtime errors that might be difficult to debug.
 
-Circular imports can occur without index files, but having an index file presents a clear opporutnity to accidentally create a circular import. It often happens when you have two objects exposed in the public API of a slice, for example, `HomePage` and `loadUserStatistics`, and the `HomePage` needs to access `loadUserStatistics`, but it does it like this:
+Circular imports can occur without index files, but having an index file presents a clear opportunity to accidentally create a circular import. It often happens when you have two objects exposed in the public API of a slice, for example, `HomePage` and `loadUserStatistics`, and the `HomePage` needs to access `loadUserStatistics`, but it does it like this:
 
 ```jsx title="pages/home/ui/HomePage.jsx"
 import { loadUserStatistics } from "../"; // importing from pages/home/index.js

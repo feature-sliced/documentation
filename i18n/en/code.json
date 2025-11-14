@@ -72,8 +72,8 @@
         "description": "Companies using FSD"
     },
     "pages.home.companies.add_me": {
-        "message": "FSD is used in your company?",
-        "description": "FSD is used in your company?"
+        "message": "Is FSD used in your company?",
+        "description": "Is FSD used in your company?"
     },
     "pages.home.companies.tell_us": {
         "message": "Tell us",
@@ -86,18 +86,6 @@
     "pages.examples.subtitle": {
         "message": "List of websites people are building with Feature-Sliced Design",
         "description": "Page subtitle"
-    },
-    "pages.examples.add_me.title": {
-        "message": "Add example",
-        "description": "Request to add example"
-    },
-    "pages.examples.repo.title": {
-        "message": "Repository",
-        "description": "Examples repository label"
-    },
-    "pages.examples.versions": {
-        "message": "See also versions list",
-        "description": "Versions reminder"
     },
     "pages.versions.title": {
         "message": "Feature-Sliced Design versions",
@@ -208,7 +196,7 @@
         "description": "Previous version"
     },
     "shared.wip.title": {
-        "message": "The article is in the process of writing",
+        "message": "This article is in the process of being written",
         "description": "Admonition title"
     },
     "shared.wip.subtitle": {
@@ -365,7 +353,7 @@
     },
     "theme.docs.versions.latestVersionSuggestionLabel": {
         "message": "For up-to-date documentation, see the {latestVersionLink} ({versionLabel}).",
-        "description": "The label userd to tell the user that he's browsing an unmaintained doc version"
+        "description": "The label used to tell the user that he's browsing an unmaintained doc version"
     },
     "theme.docs.versions.latestVersionLinkLabel": {
         "message": "latest version",
