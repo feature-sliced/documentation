@@ -1,6 +1,8 @@
 # Excessive Entities
 
-The entities layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for Shared can access it. However, its global nature means changes to Entities can have a widespread impact, requiring careful design to avoid costly refactors.
+The `entities` layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for `shared` can access it. However, its global nature means that changes to `entities` can have a widespread impact, requiring careful design to avoid costly refactors.
+
+Excessive entities can lead to ambiguity (what code belongs to this layer), coupling, and constant import dilemmas (code scattered across sibling entities).
 
 ## How to keep `entities` layer clean
 
