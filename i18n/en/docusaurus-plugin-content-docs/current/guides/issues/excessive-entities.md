@@ -6,14 +6,26 @@ Excessive entities can lead to ambiguity (what code belongs to this layer), coup
 
 ## How to keep `entities` layer clean
 
-To keep a maintainable `entities` layer, consider the following principles based on the application's data processing needs. Keep in mind that this classification is not strictly binary, as different parts of the same application may have “thin” or “thick” parts:
+### 0. Consider having no `entities` layer
 
-- Thin Clients: These applications rely on the backend for most data processing. They often do not require an `entities` layer, as client-side business logic is minimal and involves only data retrieval.
-- Thick Clients: These handle significant client-side business logic, making them suitable candidates for the `entities` layer.
+You might think that your application won't be Feature-Sliced if you don't include this layer, but it is completely fine for the application to have no `entities` layer. It doesn't break FSD in any way, on the contrary, it simplifies the architecture and keeps the `entities` layer available for future scaling. For example, if your application acts as a thin client, most likely it doesn't need `entities` layer.
 
-It is acceptable for an application to lack an `entities` layer if it functions as a thin client. This simplifies the architecture and keeps the `entities` layer available for future scaling if needed.
+:::info[What are thick and thin clients?]
 
-### Avoid Unnecessary Entities
+_Thick_ vs. _thin client_ distinction refers to how the application processes data:
+
+- _Thin_ clients rely on the backend for most data processing. Client-side business logic is minimal and involves only exchanging data with the backend.
+- _Thick_ clients handle significant client-side business logic, making them suitable candidates for the `entities` layer.
+
+Keep in mind that this classification is not strictly binary, and different parts of the same application may act as a "thick" or a "thin" client.
+
+:::
+
+### 1. Avoid preemptive slicing
+
+In contrast to previous versions, FSD 2.1 encourages deferred decomposition of slices instead of preemptive, and this approach also extends to `entities` layer. At first, you can place all your code in the `model` segment of your page (widget, feature), and then consider refactoring it later, when business requirements are stable. Remember: it is much easier and safer to move something into `entities` later, than refactor code inside `entities` that can affect any upper level slice functionality.
+
+### 2. Avoid Unnecessary Entities
 
 Do not create an entity for every piece of business logic. Instead, leverage types from `shared/api` and place logic in the `model` segment of a current slice. For reusable business logic, use the `model` segment within an entity slice while keeping data definitions in `shared/api`:
 
@@ -30,7 +42,7 @@ Do not create an entity for every piece of business logic. Instead, leverage typ
       📄 order.ts
 ```
 
-### Exclude CRUD Operations from Entities
+### 3. Exclude CRUD Operations from Entities
 
 CRUD operations, while essential, often involve boilerplate code without significant business logic. Including them in the `entities` layer can clutter it and obscure meaningful code. Instead, place CRUD operations in `shared/api`:
 
@@ -47,9 +59,9 @@ CRUD operations, while essential, often involve boilerplate code without signifi
 
 For complex CRUD operations (e.g., atomic updates, rollbacks, or transactions), evaluate whether the `entities` layer is appropriate, but use it with caution.
 
-### Store Authentication Data in `shared`
+### 4. Store Authentication Data in `shared`
 
-Avoid creating a `user` entity for authentication data, such as tokens or user DTOs returned from the backend. These are context-specific and unlikely to be reused outside authentication:
+Prefer `shared` layer to creating a `user` entity for authentication data, such as tokens or user DTOs returned from the backend. These are context-specific and unlikely to be reused outside authentication scope:
 
 - Authentication responses (e.g., tokens or DTOs) often lack fields needed for broader reuse or vary by context (e.g., private vs. public user profiles).
 - Using entities for auth data can lead to cross-layer imports (e.g., `entities` into `shared`) or usage of `@x` notation, complicating the architecture.
@@ -59,7 +71,7 @@ Instead, store authentication-related data in `shared/auth` or `shared/api`:
 ```plaintext
 📂 shared
   📂 auth
-    📄 use-auth.ts // Hook returning authenticated user info or token
+    📄 use-auth.ts // authenticated user info or token
     📄 index.ts
   📂 api
     📄 client.ts
@@ -68,7 +80,7 @@ Instead, store authentication-related data in `shared/auth` or `shared/api`:
       📄 order.ts
 ```
 
-### Minimize Cross-Imports
+### 5. Minimize Cross-Imports
 
 FSD permits cross-imports via `@x` notation, but they can introduce technical issues like circular dependencies. To avoid this, design entities within isolated business contexts to eliminate the need for cross-imports:
 
