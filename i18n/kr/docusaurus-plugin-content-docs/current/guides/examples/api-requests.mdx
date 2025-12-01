@@ -9,26 +9,34 @@ import TabItem from '@theme/TabItem';
 
 ## Shared API Requests
 
-Shared API request 로직은 `shared/api` 폴더에 두세요.  
-이렇게 하면 애플리케이션 전체에서 손쉽게 재사용할 수 있고, 빠른 프로토타이핑이 가능합니다.
-대부분의 프로젝트에서는 이 폴더 구조와 client.ts 설정만으로 충분합니다.
+공통적으로 사용하는 API 요청 로직은 `shared/api` 폴더에 보관하는 것을 권장합니다.  
+이렇게 하면 애플리케이션 전체에서 **일관된 방식으로 재사용**할 수 있고,  
+초기 구현 속도(프로토타이핑)도 빠르게 유지할 수 있습니다.
+
+대부분의 프로젝트는 다음 구조와 `client.ts` 설정만으로 충분합니다.
 
 일반적인 파일 구조 예시:
+
+```bash
 - 📂 shared
     - 📂 api
         - 📄 client.ts
         - 📄 index.ts
         - 📂 endpoints
             - 📄 login.ts
+```
 
-`client.ts` 파일은 HTTP request 관련 설정을 **한 곳에서** 관리합니다.  
-`fetch()` 또는 `axios` instance에 공통 설정을 적용하여 다음을 처리합니다:
+`client.ts` 파일은 모든 HTTP request 관련 설정을 **한 곳에서** 관리합니다.  
+즉, 공통 설정을 client에 모아두면 개별 endpoint 로직에서는 **request를 보내는 데만** 집중할 수 있습니다.
+
+`client.ts`에서는 다음 항목들을 설정합니다:
+
 
 - 백엔드 기본 URL  
-- Default headers (예: 인증 header) 
-- 데이터 직렬화  
+- Default headers (예: 인증 header)  
+- JSON 직렬화/파싱  
 
-아래 예시를 참고하세요.
+아래 예시에서 axios 버전과 fetch 버전 모두 확인할 수 있습니다.
 
 <Tabs>
 
@@ -68,12 +76,14 @@ export const client = {
 
 </Tabs>
 
-`shared/api/endpoints` 폴더에 endpoint별 request 함수를 정리하세요.
+이제 `shared/api/endpoints` 폴더 안에 API endpoint별 request 함수를 작성합니다.  
+이렇게 endpoint 단위로 분리해두면 API 변경이 있을 때 유지보수가 매우 쉬워집니다.
 
 :::note
 
-예시의 가독성을 위해 form handling과 검증(Zod·Valibot 등)은 생략했습니다.
-자세한 내용은 [Type Validation and Schemas](/docs/guides/examples/types#type-validation-schemas-and-zod)에서 확인하세요.
+예제를 단순화하기 위해 form handling이나 입력 검증(Zod/Valibot)은 생략했습니다.  
+필요하다면 아래 문서를 참고하세요:   
+[Type Validation and Schemas](/docs/guides/examples/types#type-validation-schemas-and-zod)
 
 :::
 
@@ -90,7 +100,7 @@ export function login(credentials: LoginCredentials) {
 }
 ```
 
-`shared/api/index.ts`에서 request 함수와 타입을 내보내세요:
+그리고 다음처럼 `shared/api/index.ts`에서 request 함수와 타입들을 공개 API로 내보냅니다:
 
 ```ts title="shared/api/index.ts"
 export { client } from './client'; // If you want to export the client itself
@@ -100,9 +110,11 @@ export type { LoginCredentials } from './endpoints/login';
 
 ## Slice-specific API Requests
 
-특정 페이지나 feature에서만 쓰이는 request는 해당 slice의 api 폴더에 두어 정리하세요.
-이렇게 하면 slice별 로직이 깔끔하게 분리됩니다.
+특정 페이지나 feature 내부에서만 사용하는 request는 해당 slice의 api 폴더에 넣어 관리하는 것을 권장합니다.  
+이렇게 하면 slice별 코드가 서로 섞이지 않고, 책임이 명확하게 분리되며, 유지보수가 쉬워집니다.
 
+예시 구조:
+```bash
 - 📂 pages
     - 📂 login
         - 📄 index.ts
@@ -110,6 +122,7 @@ export type { LoginCredentials } from './endpoints/login';
             - 📄 login.ts
         - 📂 ui
             - 📄 LoginPage.tsx
+```
 
 ```ts title="pages/login/api/login.ts"
 import { client } from 'shared/api';
@@ -124,26 +137,38 @@ export function login(credentials: LoginCredentials) {
 }
 ```
 
-이 함수는 재사용 가능성이 낮으므로, slice의 public API로 내보낼 필요가 없습니다.
+이 함수는 **로그인 페이지 내부에서만 사용하는 API 요청** 이므로  
+slice의 public API(`index.ts`)로 다시 export할 필요는 없습니다.
 
 :::note
+entities layer에는 **backend response 타입**이나 **API 요청 함수**를 직접 두지 마세요.  
+그 이유는 backend 구조와 `entities` 구조가 서로 **역할과 책임이 다르기 때문입니다**.
 
-entities layer에 API request와 response 타입을 배치하지 마세요.
-백엔드 response 타입과 프론트엔드 `entities` 타입이 다를 수 있습니다.
-`shared/api`나 slice의 `api` 폴더에서 데이터를 변환하고, entities는 프론트엔드 관점에 집중하도록 설계하세요.
-
+- `shared/api` 또는 각 slice의 `api` 폴더에서는 **백엔드에서 온 데이터**를 다루고,
+- `entities`에서는 **프론트엔드 관점에서 필요한 데이터 구조**에 집중해야 합니다.  
+  (예: UI 표시용 데이터, 도메인 로직 처리용 데이터 등)
 :::
 
 ## API 타입과 클라이언트 자동 생성
 
-백엔드에 OpenAPI 스펙이 있다면 [orval](https://orval.dev/)이나 [openapi-typescript](https://openapi-ts.dev/) 같은 도구로 API 타입과 request 함수를 생성할 수 있습니다.
-생성된 코드는 `shared/api/openapi` 등에 두고 `README.md`에 생성 방법과 타입 설명을 문서화하세요.
+백엔드에 OpenAPI 스펙이 준비되어 있다면,  
+[orval](https://orval.dev/)이나 [openapi-typescript](https://openapi-ts.dev/) 같은 도구를 사용해  
+**API 타입과 request 함수**를 자동으로 생성할 수 있습니다.
+
+이렇게 생성된 코드는 보통 `shared/api/openapi` 같은 폴더에 두고,  
+`README.md`에 다음 내용을 함께 문서화하는 것을 권장합니다.
+
+- 생성 스크립트를 어떻게 실행하는지
+- 어떤 타입/클라이언트가 생성되는지
+- 사용하는 방법 예시
 
 ## 서버 상태 라이브러리 연동
 
-[TanStack Query (React Query)](https://tanstack.com/query/latest)나 [Pinia Colada](https://pinia-colada.esm.dev/) 같은 서버 상태 관리 라이브러리를 사용할 때는 slice 간 타입이나 cache key를 공유해야 할 수 있습니다.
-이럴 때는 `shared` layer에 다음을 배치하세요.
+[TanStack Query (React Query)](https://tanstack.com/query/latest)나 [Pinia Colada](https://pinia-colada.esm.dev/) 같은 **서버 상태 관리 라이브러리**를 사용할 때는,  
+서로 다른 slice에서 **타입이나 cache key를 공유**해야 할 때가 자주 생깁니다.
 
-- API 데이터 타입 (API data types)
-- 캐시 키 (cache keys)
-- 공통 query/mutation 옵션 (common query/mutation options)
+이런 경우에는 다음과 같은 항목들을 `shared` layer에 두고 같이 쓰는 것이 좋습니다.
+
+- API 데이터 타입 (API data types)  
+- 캐시 키 (cache keys)  
+- 공통 query/mutation 옵션 (common query/mutation options)  
