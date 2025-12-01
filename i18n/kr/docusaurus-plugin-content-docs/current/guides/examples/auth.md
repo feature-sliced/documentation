@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+sidebar_label: Authentication
+---
+
 # Authentication
 
 웹 애플리케이션에서의 **인증(Authentication)** 플로우는 보통 다음과 같은 세 단계로 진행됩니다.
