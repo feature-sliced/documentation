@@ -1,64 +1,55 @@
 # Authentication
 
-일반적으로 **인증(Authentication)** 플로우는 세 단계로 구성됩니다.
+웹 애플리케이션에서의 **인증(Authentication)** 플로우는 보통 다음과 같은 세 단계로 진행됩니다.
 
-1. **Credential 입력 수집** — 아이디, 패스워드(또는 OAuth redirect URL)를 입력받습니다.
-2. **백엔드 Endpoint 호출** — `/login`, `/oauth/callback`, `/2fa` 등 로그인 관련 API endpoint에 request을 보냅니다.
-3. **Token 저장** — 발급된 token을 **cookie** 또는 **store** 에 저장해 이후 request에 사용합니다.
+1. **Credential 입력 수집** — 아이디, 비밀번호(또는 OAuth redirect URL)를 사용자에게 입력받습니다.
+2. **백엔드 Endpoint 호출** — `/login`, `/oauth/callback`, `/2fa` 등 로그인 관련 API endpoint로 request를 보냅니다.
+3. **Token 저장** — 응답으로 받은 token을 **cookie** 또는 **store**에 저장해, 이후 request에 자동으로 포함되도록 합니다.
 
 ## 1. Credential 입력 수집[​](#1-credential-입력-수집 "해당 헤딩으로 이동")
 
-> OAuth 로그인을 사용한다면 **2단계를 건너뛰고 바로 [token 저장](#how-to-store-the-token-for-authenticated-requests)** 단계로 이동합니다.
+이 단계에서는 사용자가 로그인에 필요한 정보를 입력할 수 있는 UI를 준비합니다.
 
-### 1‑1. 로그인 전용 페이지[​](#11-로그인전용-페이지 "해당 헤딩으로 이동")
+> OAuth 로그인만 사용한다면, **2단계(credential 전송)** 에서 별도로 아이디/비밀번호를 보내지 않습니다.<br /><!-- -->이 경우 바로 [token 저장](#how-to-store-the-token-for-authenticated-requests) 단계로 넘어갑니다.
 
-웹 애플리케이션에서는 보통 **/login** 같은 로그인 전용 페이지를 제공해 사용자 이름과 패스워드를 입력받습니다.<br /><!-- -->페이지가 단순하므로 추가 **decomposition(구조 분할)** 이 필요 없으며, 로그인 폼과 회원가입 폼을 하나의 컴포넌트로 만들어 재사용할 수 있습니다.
+### 1-1. 로그인 전용 페이지[​](#1-1-로그인-전용-페이지 "해당 헤딩으로 이동")
 
-* 📂 pages
+웹 애플리케이션에서는 일반적으로 **/login** 같은 로그인 Form 전용 페이지를 만들어, 사용자가 **사용자 이름 / 이메일, 비밀번호**를 입력하도록 합니다.
 
-  * 📂 login
+이 페이지는 하는 일이 단순하기 때문에, 추가적인 **decomposition(구조 분할)** 이 크게 필요하지 않습니다.<br /><!-- -->대신, 로그인 폼과 회원가입 폼을 각각 **하나의 컴포넌트**로 만들어 두고 재사용하는 방식이 적합합니다.
 
-    <!-- -->
+```
+- 📂 pages
+    - 📂 login
+        - 📂 ui
+            - 📄 LoginPage.tsx (or your framework's component file format)
+            - 📄 RegisterPage.tsx
+        - 📄 index.ts
+    - other pages…
+```
 
-    * 📂 ui
+LoginPage와 RegisterPage 컴포넌트는 서로 **분리** 된 컴포넌트로 구현하고, 다른 곳에서 사용할 필요가 있다면 index.ts에서 export 합니다.<br /><!-- -->각 컴포넌트는 form element와 form submit handler만 포함하도록 해서,<br /><!-- -->복잡한 비즈니스 로직은 다른 segment로 분리하고 UI는 단순하게 유지합니다.
 
-      <!-- -->
+### 1-2. 로그인 dialog 만들기[​](#1-2-로그인-dialog-만들기 "해당 헤딩으로 이동")
 
-      * 📄 LoginPage.tsx (or your framework's component file format)
-      * 📄 RegisterPage.tsx
+어떤 페이지에서든 공통으로 사용할 수 있는 로그인 dialog가 필요하다면, 이를 **재사용 가능한 widget**으로 구현하는 것이 좋습니다.<br />**widget**으로 구현하면 페이지마다 로그인 로직을 따로 만들 필요 없이, 필요한 곳에서 동일한 dialog를 불러와 사용할 수 있고,<br /><!-- -->구조를 과하게 쪼개지 않으면서도 재사용성을 확보할 수 있습니다.
 
-    * 📄 index.ts
+```
+- 📂 widgets
+    - 📂 login-dialog
+        - 📂 ui
+            - 📄 LoginDialog.tsx
+        - 📄 index.ts
+    - other widgets…
+```
 
-  * other pages…
+> 이후 설명은 **로그인 전용 페이지** 를 기준으로 진행하지만,<br /><!-- -->여기서 다루는 원칙은 login dialog widget에도 동일하게 적용됩니다.
 
-* `LoginPage`·`RegisterPage` 두 컴포넌트를 **분리**해 구현하고, 필요 시 `index.ts`에서 export 합니다.
+### 1-3. Client-side Validation[​](#1-3-client-side-validation "해당 헤딩으로 이동")
 
-* 각 컴포넌트는 **form elements**와 form submit handler만 포함해 단순성을 유지합니다.
+회원가입 페이지에서 잘못된 입력을 즉시 알려주면 UX가 훨씬 좋아집니다.<br /><!-- -->이를 위해 client-side validation을 적용할 수 있습니다.
 
-### 1‑2. 로그인 dialog 만들기[​](#12-로그인dialog-만들기 "해당 헤딩으로 이동")
-
-모든 페이지에서 호출할 로그인 dialog가 필요하다면 **재사용 가능한 widget**으로 구현하세요.<br /><!-- -->widget으로 만들면 과도하게 구조를 쪼개지 않으면서도, 어떤 페이지에서도 동일한 dialog을 쉽게 띄울 수 있습니다.
-
-* 📂 widgets
-
-  <!-- -->
-
-  * 📂 login-dialog
-
-    <!-- -->
-
-    * 📂 ui
-      <!-- -->
-      * 📄 LoginDialog.tsx
-    * 📄 index.ts
-
-  * other widgets…
-
-> 이후 설명은 로그인 전용 페이지를 기준으로 하지만, 동일한 원칙이 dialog widget에도 적용됩니다.
-
-### 1‑3. Client‑side Validation[​](#13-clientsidevalidation "해당 헤딩으로 이동")
-
-회원가입 페이지에서 입력 오류를 즉시 알려 주는 것이 UX에 도움이 됩니다.<br /><!-- -->검증 schema는 `pages/login/model` segment에 정의하고 `ui` segment에서 재사용하세요.<br /><!-- -->아래 예시는 [Zod](https://zod.dev) 로 타입과 값을 동시에 검증하는 패턴입니다.
+검증 규칙은 `pages/login/model` segment에 schema 형태로 정의하고,`ui` segment에서는 이 schema를 불러와 재사용합니다.<br /><!-- -->아래 예시는 [Zod](https://zod.dev)를 사용해 타입과 값을 동시에 검증하는 패턴입니다.
 
 pages/login/model/registration-schema.ts
 
@@ -75,7 +66,7 @@ export const registrationData = z.object({
 });
 ```
 
-그런 다음, ui segment에서 이 schema를 사용해 사용자 입력을 검증할 수 있습니다:
+그런 다음, `ui` segment에서 이 schema를 사용해 form으로부터 받은 데이터를 검증할 수 있습니다:
 
 pages/login/ui/RegisterPage.tsx
 
@@ -109,39 +100,39 @@ export function RegisterPage() {
 
 ## 2. Send credentials[​](#2-send-credentials "해당 헤딩으로 이동")
 
-사용자 **credentials**(e‑mail, password)을 백엔드 **endpoint**로 전송하는 request 함수을 생성합니다.<br /><!-- -->이 함수는 Zustand, Redux Toolkit, **TanStack Query** `useMutation` 등에서 호출할 수 있습니다.
+이 단계에서는 사용자가 입력한 **credentials**(e-mail, password 등)를<br /><!-- -->백엔드 **endpoint**로 전송하는 **request 함수**를 만듭니다.
 
-### 2‑1. 함수 placement[​](#21-함수-placement "해당 헤딩으로 이동")
+이 함수는 다음과 같은 곳에서 호출할 수 있습니다.
 
-| 목적        | 권장 위치         | 이유                       |
-| ----------- | ----------------- | -------------------------- |
-| 전역 재사용 | `shared/api`      | 모든 slice에서 import 가능 |
-| 로그인 전용 | `pages/login/api` | slice 내부 capsule 유지    |
+* Zustand
+* Redux Toolkit
+* TanStack Query의 useMutation
+* 기타 state 관리/요청 로직
 
-#### `shared/api`에 저장하기[​](#sharedapi에-저장하기 "해당 헤딩으로 이동")
+즉, **어디에서나 재사용 가능한 로그인 요청 함수** 를 만든다고 보면 됩니다.
 
-모든 API request을 `shared/api`에 모아 endpoint로 그룹화합니다.
+### 2-1. 함수 placement[​](#2-1-함수-placement "해당 헤딩으로 이동")
 
-* 📂 shared
+| 목적        | 권장 위치       | 이유                       |
+| ----------- | --------------- | -------------------------- |
+| 전역 재사용 | shared/api      | 모든 slice에서 import 가능 |
+| 로그인 전용 | pages/login/api | slice 내부 capsule 유지    |
 
-  <!-- -->
+#### shared/api에 저장하기[​](#sharedapi에-저장하기 "해당 헤딩으로 이동")
 
-  * 📂 api
+로그인뿐 아니라 모든 API request를 shared/api에 모아두고,<br /><!-- -->각 요청을 endpoint별로 그룹화하는 방식입니다.
 
-    <!-- -->
+```
+- 📂 shared
+    - 📂 api
+        - 📂 endpoints
+            - 📄 login.ts
+            - other endpoint functions…
+        - 📄 client.ts
+        - 📄 index.ts
+```
 
-    * 📂 endpoints
-
-      <!-- -->
-
-      * 📄 login.ts
-      * other endpoint functions…
-
-    * 📄 client.ts
-
-    * 📄 index.ts
-
-`📄 client.ts`는 원시 request 함수(`fetch` 등)를 감싸 **기본 URL, 공통 헤더, 직렬화** 등을 처리합니다.
+`📄 client.ts`는 원시 request 함수(`fetch` 등)를 감싼 공용 API client로,<br />**기본 URL, 공통 헤더, request/response 직렬화** 등을 처리합니다.
 
 shared/api/endpoints/login.ts
 
@@ -159,27 +150,20 @@ shared/api/index.ts
 export { login } from "./endpoints/login";
 ```
 
-#### page의 `api` segment에 저장하기[​](#page의-api-segment에-저장하기 "해당 헤딩으로 이동")
+#### page의 api segment에 저장하기[​](#page의-api-segment에-저장하기 "해당 헤딩으로 이동")
 
-로그인 요청이 로그인 페이지에서만 필요하다면, 해당 페이지의 `api` segment에 함수를 두십시오.
+로그인 request가 로그인 페이지에서만 사용된다면,<br /><!-- -->해당 페이지의 api segment에 login 함수를 두는 것도 가능합니다.
 
-* 📂 pages
-
-  <!-- -->
-
-  * 📂 login
-
-    <!-- -->
-
-    * 📂 api
-      <!-- -->
-      * 📄 login.ts
-    * 📂 ui
-      <!-- -->
-      * 📄 LoginPage.tsx
-    * 📄 index.ts
-
-  * other pages…
+```
+- 📂 pages
+    - 📂 login
+        - 📂 api
+            - 📄 login.ts
+        - 📂 ui
+            - 📄 LoginPage.tsx
+        - 📄 index.ts
+    - other pages…
+```
 
 pages/login/api/login.ts
 
@@ -191,54 +175,76 @@ export function login({ email, password }: { email: string, password: string }) 
 }
 ```
 
-> 이 함수는 로그인 페이지 내부에서만 사용하므로 index.ts에 재-export할 필요가 없습니다.
+> 이 함수는 로그인 페이지 내부에서만 사용하므로,<br /><!-- -->index.ts에서 다시 export할 필요는 없습니다.
 
-### Two‑Factor Auth (2FA)[​](#twofactorauth2fa "해당 헤딩으로 이동")
+### Two-Factor Auth (2FA)[​](#two-factor-auth-2fa "해당 헤딩으로 이동")
 
-1. `/login` 응답에 `has2FA` 플래그가 있으면 `/login/2fa` 페이지로 redirect합니다.
-2. 2FA 페이지와 관련 API는 `pages/login` slice에 함께 둡니다.
-3. `/2fa/verify` 같은 별도 endpoint를 호출하는 함수를 `shared/api` 또는 `pages/login/api`에 배치합니다.
+2단계 인증(2FA)을 사용하는 경우에는 로그인 플로우에 한 단계가 더 추가됩니다.
+
+1. `/login` 응답에 `has2FA` 플래그가 있으면, `/login/2fa` 페이지로 redirect 합니다.
+2. 2FA 페이지와 관련 API들은 모두 `pages/login` slice에 함께 둡니다.
+3. `/2fa/verify`와 같이 별도의 endpoint를 호출하는 함수는 `shared/api` 또는 `pages/login/api`에 배치합니다.
+
+이렇게 하면, 일반 로그인과 2FA 관련 로직을 **login slice 내부**에 모아둘 수 있습니다.
 
 ## Authenticated Requests를 위한 token 저장[​](#how-to-store-the-token-for-authenticated-requests "해당 헤딩으로 이동")
 
-로그인, 비밀번호, OAuth, 2단계 인증 등 어떤 방식이든 인증 API 호출의 **응답(response)** 으로 token을 받습니다.<br /><!-- -->이 token을 저장해 두면 이후 **모든 API 요청(request)** 에 token을 자동으로 포함해 인증을 통과할 수 있습니다.
+로그인, 비밀번호 변경, OAuth, 2단계 인증 등 어떤 방법으로 인증을 하든,<br /><!-- -->인증 API 호출의 **응답(response)** 으로 보통 token이 함께 내려옵니다.
 
-웹 애플리케이션에서 token을 저장하기에 **가장 바람직한 방법은 cookie**입니다. cookie를 사용하면 token을 직접 저장하거나 관리할 필요가 없으므로, 프론트엔드 아키텍처 차원에서 별도의 고려가 거의 필요 없습니다. 프레임워크에 서버 사이드 기능이 있다면(예: [Remix](https://remix.run)), 서버 측 cookie 로직을 `shared/api`에 두세요. Remix 예제는 [튜토리얼의 Authentication 섹션](/documentation/kr/docs/get-started/tutorial.md#authentication)을 참고하면 됩니다.
+이 token을 어딘가에 저장해 두면,<br /><!-- -->이후 **모든 인증이 필요한 API 요청(request)** 에 token을 자동으로 포함시켜 백엔드 인증을 통과할 수 있습니다.
 
-그러나 cookie를 사용할 수 없는 환경도 있습니다. 이 경우 token을 **직접** 저장하고, 만료 시 token을 갱신(Refresh)하는 로직도 구현해야 합니다. FSD에서는 **어느 layer 또는 어느 segment에** token을 저장할지, 그리고 **어떻게** 앱 전역에 노출할지 다양한 선택지가 존재합니다.
+웹 애플리케이션에서 token을 저장하는 방법 중 **가장 권장되는 방식은 cookie**입니다.
 
-### 3‑1. Shared[​](#31-shared "해당 헤딩으로 이동")
+cookie를 사용하면, 브라우저가 요청마다 token을 자동으로 넣어 주기 때문에<br /><!-- -->프론트엔드에서 token을 직접 관리할 필요가 거의 없습니다.<br /><!-- -->따라서 프론트엔드 아키텍처 차원에서 신경 쓸 부분이 크게 줄어듭니다.
 
-이 접근법은 `shared/api`에 정의한 **API 클라이언트**와 잘 어울리는 방식입니다. token을 module scope나 reactive store에 담아 두면, 인증이 필요한 다른 API 호출 함수에서 그대로 참조할 수 있습니다.
+사용 중인 프레임워크가 서버 사이드 기능을 제공한다면(예: [Remix](https://remix.run)),<br /><!-- -->서버 측 cookie 관련 로직을 shared/api에 두는 것을 권장합니다.
 
-token 자동 재발급(Refresh)는 클라이언트 **middleware**로 구현합니다.
+Remix에서의 구현 예시는 [튜토리얼의 Authentication 섹션](/documentation/kr/docs/get-started/tutorial.md#authentication)을 참고하면 됩니다.
 
-1. 로그인 시 **access token, refresh token** 저장
-2. 인증이 필요한 request 실행
-3. 만료 코드가 오면 refresh token으로 새 token을 받아 저장하고 **기존 request**을 재시도
+하지만 cookie를 사용할 수 없는 환경도 있습니다.<br /><!-- -->이 경우에는 token을 클라이언트에서 직접 저장하고, token 만료를 감지하고,<br /><!-- -->refresh token을 사용해 새 token을 발급받고 기존 요청을 다시 실행하는 등의 로직을 함께 구현해야 합니다.
+
+FSD에서는 여기서 한 가지 추가 고민이 필요합니다.
+
+token을 **어느 layer 또는 어느 segment에** 저장할지,<br /><!-- -->그렇게 저장한 token을 앱 전역에서 **어떻게** 사용할 수 있게 할지에 따라 전체 구조가 달라지기 때문입니다.
+
+### 3-1. Shared[​](#3-1-shared "해당 헤딩으로 이동")
+
+Shared layer에 token을 두는 방식은 shared/api에 정의된 **공용 API 클라이언트**와 자연스럽게 결합되는 패턴입니다.
+
+token을 module scope나 어떤 reactive store에 저장해 두면,<br /><!-- -->인증이 필요한 다른 API 함수에서 이 token을 **그대로 참조**해 사용할 수 있습니다.
+
+token 자동 재발급(refresh)은 API client의 **middleware**에서 담당합니다.
+
+1. 로그인 시 **access token, refresh token**을 저장합니다.
+2. 인증이 필요한 request를 보냅니다.
+3. 응답에서 token 만료 코드를 받으면, refresh token으로 새 token을 발급해 저장한 뒤 실패한 request을 동일하게 다시 시도합니다.
 
 #### Token 관리 분리 전략[​](#token-관리-분리-전략 "해당 헤딩으로 이동")
 
-* **전담 segment 부재**<br /><!-- -->token 저장, 재발급 로직이 request 로직과 같은 파일에 섞이면<br /><!-- -->규모가 커질수록 유지보수가 어려워집니다.<br /><!-- -->→ **request 함수, 클라이언트**는 `shared/api`,<br />**token 관리 로직**은 `shared/auth` segment로 분리하세요.
+* **전담 segment 부재**<br /><!-- -->token 저장과 재발급 로직이 request 로직과 같은 파일에 뒤섞여 있으면, 코드가 많아질수록 유지보수가 점점 어려워집니다.<br /><!-- -->이런 경우에는 **request 함수와 client는 `shared/api`에 두고**,<br />**token 관리 로직은 `shared/auth` segment로 분리**하는 방식을 권장합니다.
 
-* **token과 사용자 정보를 함께 받는 경우**<br /><!-- -->백엔드가 token과 함께 **현재 사용자 정보**를 반환한다면
+* **token과 사용자 정보를 함께 받는 경우**<br /><!-- -->백엔드가 token과 동시에 **현재 사용자 정보**를 반환하는 API를 제공하는 경우도 있습니다.<br /><!-- -->이때는 다음 두 가지 방식 중 하나로 처리할 수 있습니다.
 
   1. 별도 store에 함께 저장하거나
-  2. `/me`·`/users/current` 엔드포인트를 다시 호출해 가져올 수 있습니다.
+  2. `/me`·`/users/current` 같은 endpoint를 따로 호출해 user 정보를 가져올 수 있습니다.
 
-### 3‑2. Entities[​](#32-entities "해당 헤딩으로 이동")
+### 3-2. Entities[​](#3-2-entities "해당 헤딩으로 이동")
 
-FSD 프로젝트에서는 **User entity**(또는 **Current User entity**)를 두는 경우가 많습니다.<br /><!-- -->두 entity가 하나로 합쳐져도 무방합니다.
+FSD 프로젝트에서는 보통 **User entity**(또는 **Current User entity**)를 두는 경우가 많습니다.<br /><!-- -->두 entity를 하나로 합쳐서 사용하는 것도 전혀 문제 없습니다.
 
 note
 
-**Current User**는 “viewer” 또는 “me”라고도 부릅니다.<br /><!-- -->권한·개인 정보가 있는 **단일 인증 사용자**와, 공개 목록에 나타나는 **모든 사용자 목록**를 구분하기 위해서입니다.
+**Current User**는 `viewer` 또는 `me`라고 부르기도 합니다.<br /><!-- -->이는 권한과 개인 정보가 있는 **현재 로그인한 단일 사용자**와,<br /><!-- -->공개적으로 표시되는 **여러 사용자 목록**을 구분하기 위해 쓰는 이름입니다.
 
 #### Token을 User Entities에 저장하기[​](#token을-user-entities에-저장하기 "해당 헤딩으로 이동")
 
-`model` segment에 **reactive store**를 만들고, token과 user 객체를 함께 보관하세요.
+User entity의 model segment에 **reactive store**를 만들고,<br /><!-- -->이곳에 token과 user 객체를 함께 보관할 수 있습니다.
 
-API 클라이언트는 일반적으로 `shared/api` 정의되거나 entity 전체에 분산되어 있습니다. 따라서 주요 과제는 layer의 import 규칙([import rule on layers](/documentation/kr/docs/reference/layers.md#import-rule-on-layers))을 위반하지 않으면서 다른 request에서도 token을 사용할 수 있도록 하는 것입니다.
+이렇게 하면: **현재 로그인한 사용자 정보** 와 **그 사용자가 가진 token**을 한 곳에서 관리할 수 있어서,<br /><!-- -->인증과 관련된 비즈니스 로직을 작성할 때 구조를 이해하기 쉬워집니다.
+
+다만 API client는 보통 shared/api에 정의되거나,<br /><!-- -->여러 entity에 분산되어 있는 경우가 많습니다.
+
+따라서 layer의 import 규칙([import rule on layers](/documentation/kr/docs/reference/layers.md#import-rule-on-layers))을 지키면서도 다른 request에서 이 token을 안전하게 사용할 수 있어야 합니다.
 
 > Layer 규칙 — Slice의 module은 **자기보다 아래 layer**의 Slice만 import할 수 있습니다.
 
@@ -246,17 +252,17 @@ API 클라이언트는 일반적으로 `shared/api` 정의되거나 entity 전�
 
 1. **request마다 token을 직접 넘기기**
 
-   * 구현은 단순하지만 반복적이고, 타입 안전성이 없으면 실수 위험이 큽니다.
-   * `shared/api`에 middleware pattern을 적용하기도 어렵습니다.
+   * 구현은 단순하지만 코드가 반복되기 쉽고, 타입 안전성이 없으면 실수 가능성이 커집니다.
+   * shared/api에 middleware pattern을 적용하기도 어렵습니다.
 
-2. **앱 전역(Context / `localStorage`)에 노출**
+2. **앱 전역(Context / localStorage)에 노출**
 
-   * token key는 `shared/api`에 두고, token store는 User entity에서 export합니다.
+   * token key는 shared/api에 두고, 실제 token 값이 담긴 store는 User entity에서 export 합니다.
    * Context Provider는 App layer에 배치합니다.
    * 설계 자유도가 높지만, 상위 layer에 **암묵적 의존성**이 생깁니다.
      <br />
      <!-- -->
-     ⇒ Context나 `localStorage`가 누락된 경우 **명확한 에러**를 제공해 주세요.
+     ⇒ Context나 localStorage가 누락된 경우 **명확한 에러**를 내도록 처리하는 것이 좋습니다.
 
 3. **token이 바뀔 때마다 API 클라이언트에 업데이트**
 
@@ -266,39 +272,47 @@ API 클라이언트는 일반적으로 `shared/api` 정의되거나 entity 전�
 
      <!-- -->
 
-     * 방법 2는 **선언형(pull)**,
-     * 방법 3은 **명령형(push)** 접근입니다.
+     * 방법 2는 필요할 때 값을 **가져오는(pull)** 방식이고,
+     * 방법 3은 변경될 때 값을 **밀어넣는(push)** 방식입니다.
 
-token을 노출한 뒤에는 `model` segment에 **비즈니스 로직**을 추가할 수 있습니다.
+token을 이렇게 외부에서 사용할 수 있도록 노출한 뒤에는<br /><!-- -->model segment에 **비즈니스 로직**을 더 추가할 수 있습니다.
 
-* 만료 시간 도달 시 token 갱신
-* 일정 시간이 지나면 token 자동 무효화
+예를 들면, token 만료 시간에 맞춰 자동으로 갱신하거나,<br /><!-- -->일정 시간이 지나면 token을 자동으로 무효화하도록 만들 수 있습니다.
 
-실제 백엔드 호출은 **User entity의 `api` segment**나 `shared/api`에서 수행하세요.
+실제 백엔드 호출은 **User entity의 api segment** 또는 shared/api에서 수행합니다.
 
-### 3‑3. Pages / Widgets — 권장하지 않음[​](#33pages--widgets권장하지-않음 "해당 헤딩으로 이동")
+### 3-3. Pages / Widgets — 권장하지 않음[​](#3-3-pages--widgets--권장하지-않음 "해당 헤딩으로 이동")
 
-* page, widget layer에 token을 저장하면 전역 의존성이 생기고 다른 slice에서 재사용하기 어려워집니다.
-* `Shared` 또는 `Entities` 중 한 곳에 token을 저장하는 것을 권장합니다.
+다음과 같은 이유로 page layer나 widget layer에 token을 저장하는 것은 권장하지 않습니다.
 
-## 4. Logout & Token Invalidation[​](#4logouttokeninvalidation "해당 헤딩으로 이동")
+page, widget layer에 token을 두면 전역에서 이 token에 의존하게 되는데,<br /><!-- -->이렇게 되면 다른 slice에서 재사용하기 어렵고, 구조가 쉽게 얽힙니다.
+
+따라서 token 저장 위치는 Shared 또는 Entities 중 하나로 결정하는 것을 권장합니다.
+
+## 4. Logout & Token Invalidation[​](#4-logout--token-invalidation "해당 헤딩으로 이동")
 
 ### 로그아웃과 token 무효화[​](#로그아웃과-token-무효화 "해당 헤딩으로 이동")
 
-일반적으로 애플리케이션에는 `로그아웃 전용 페이지`가 없습니다.<br /><!-- -->그러나 로그아웃 기능은 매우 중요하며 다음 두 단계로 이루어집니다.
+대부분의 애플리케이션에는 **로그아웃 전용 페이지**는 따로 두지 않습니다.<br /><!-- -->대신, 어느 화면에서든 호출할 수 있는 로그아웃 기능을 두는 것이 일반적입니다.
 
-1. 백엔드에 인증된 로그아웃 request (예: `POST /logout`)
-2. token store reset (access/refresh token 모두 제거)
+로그아웃은 일반적으로 다음 두 단계로 이루어집니다.
 
-> 모든 API request을 `shared/api`에 모아 관리한다면, 로그아웃 API는 `login()` 근처 (`shared/api/endpoints/logout.ts`)에 배치합니다.<br /><!-- -->특정 UI(예: Header)에서만 호출된다면 `widgets/header/api/logout.ts` 같이 버튼 근처에 두는 것도 좋습니다.
+1. 백엔드에 인증된 로그아웃 request 보내기 (예: `POST /logout`)
+2. token store reset (access token / refresh token 모두 제거)
 
-token store reset은 로그아웃 버튼을 가진 UI에서 트리거됩니다.<br /><!-- -->request와 reset를 widget의 `model` segment에 함께 둘 수도 있습니다.
+> 모든 API request을 shared/api에 모아 관리하고 있다면,<br /><!-- -->로그아웃 API는 login() 근처, 예를 들어 shared/api/endpoints/logout.ts에 두는 것이 자연스럽습니다.
+>
+> 반대로 특정 UI(예: Header)에만 로그아웃 버튼이 있고,<br /><!-- -->그곳에서만 이 API를 호출한다면 widgets/header/api/logout.ts처럼<br /><!-- -->버튼이 위치한 widget 근처에 두는 것도 가능합니다.
+
+token store reset은 실제로 로그아웃 버튼을 가진 UI에서 트리거됩니다.<br /><!-- -->로그아웃 request와 store reset을 같은 widget의 model segment에 함께 두어도 됩니다.
 
 ### 자동 로그아웃[​](#자동-로그아웃 "해당 헤딩으로 이동")
 
-다음 두 경우에는 반드시 token store를 초기화하세요.
+다음과 같은 경우에는 반드시 token store를 초기화해야 합니다.
 
-* 로그아웃 request 실패
-* 로그인 token 갱신(`/refresh`) 실패
+* 로그아웃 request가 실패했을 때
+* 로그인 token 갱신(`/refresh`)이 실패했을 때
 
-> token을 Entities(User)에 보관한다면 해당 entitle의 `model` segment에서 초기화 코드를 둡니다.<br /><!-- -->Shared layer라면 `shared/auth` segment로 분리하는 것도 좋습니다.
+이 상황에서 token이 그대로 남아 있으면,<br /><!-- -->화면 상으로는 **로그인된 것처럼** 보이지만 실제로는 대부분의 요청이 실패하는 애매한 상태가 될 수 있습니다.
+
+> token을 Entities(User)에 보관했다면,<br /><!-- -->해당 entity의 model segment에 token 초기화 코드를 두는 것이 좋습니다.<br /><!-- -->Shared layer에서 token을 관리한다면, shared/auth segment로 분리해 두는 것도 좋은 선택입니다.

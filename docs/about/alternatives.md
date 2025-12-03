@@ -2,7 +2,7 @@
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -20,7 +20,7 @@ History of architecture approaches
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -42,7 +42,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -66,7 +66,7 @@ Why component-containers approach is evil?
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -90,7 +90,7 @@ And how does it aggregate these practices
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -113,7 +113,7 @@ What is the difference, how does it improve applicability, where does it adopt p
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -140,7 +140,7 @@ How are they similar (to many), how are they different
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -206,7 +206,7 @@ A comparison of FSD and Atomic Design shows that both methodologies strive for m
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 

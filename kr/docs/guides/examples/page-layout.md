@@ -1,19 +1,25 @@
 # Page layouts
 
-여러 페이지에서 **동일한 공통 layout(header, sidebar, footer)** 을 사용하고,<br /><!-- -->그 안의 **Content 영역**(각 페이지에서 렌더링할 컴포넌트)만 달라질 때 사용하는 *page layout* 개념을 설명합니다.
+여러 페이지에서 **같은 layout(header, sidebar, footer 등 공통 영역)** 을 사용하고,<br /><!-- -->그 안의 **Content 영역**(각 페이지에서 실제로 바뀌는 컴포넌트)만 달라질 때 사용하는 *page layout* 개념을 설명합니다.
 
 info
 
-더 궁금한 점이 있나요? 페이지 우측의 피드백 버튼을 눌러 의견을 남겨 주세요. 여러분의 제안은 문서 개선에 큰 도움이 됩니다!
+더 궁금한 점이 있나요? 페이지 우측의 피드백 버튼을 눌러 의견을 남겨 주세요. 여러분의 제안은 이 문서를 개선하는 데 큰 도움이 됩니다!
 
 ## Simple layout[​](#simple-layout "해당 헤딩으로 이동")
 
-simple layout은 아래 예시에서 볼 수 있습니다.<br /><!-- -->header, 두 개의 sidebar, 외부 링크(GitHub, Twitter)가 있는 footer로 구성되며, 복잡한 비즈니스 로직은 없습니다.
+먼저 가장 기본적인 **simple layout** 예시를 살펴보겠습니다.<br /><!-- -->이 layout은 다음과 같은 요소들로 구성됩니다.
+
+* 상단 header
+* 좌우에 위치한 두 개의 sidebar
+* 외부 링크(GitHub, Twitter)가 포함된 footer
+
+여기에는 복잡한 비즈니스 로직은 거의 없고,<br /><!-- -->레이아웃 자체에 필요한 최소한의 동작만 포함됩니다.
 
 * **정적 요소**: 고정된 menu, logo, footer 등
-* **동적 요소**: sidebar toggle, header 오른쪽의 theme switch button
+* **동적 요소**: sidebar toggle, header 오른쪽의 theme switch button 등
 
-이 Layout 컴포넌트는 `shared/ui` 또는 `app/layouts` 같은 common 폴더에 두고,<br />`siblingPages`(SiblingPageSidebar)와 `headings`(HeadingsSidebar) props로 sidebar content를 **주입(의존성 주입)** 받아 사용합니다.
+이 Layout 컴포넌트는 보통 shared/ui 또는 app/layouts 같은 **common 폴더**에 두고 사용합니다.<br /><!-- -->이때, siblingPages(SiblingPageSidebar에서 사용할 데이터)와 headings(HeadingsSidebar에서 사용할 데이터)를 props로 받아서,<br /><!-- -->sidebar 내용은 **외부에서 주입(의존성 주입)** 받을 수 있도록 합니다.
 
 shared/ui/layout/Layout.tsx
 
@@ -71,31 +77,47 @@ export function useThemeSwitcher() {
 }
 ```
 
-사이드바 구현은 생략했습니다.
+위 예시에서 사이드바 UI 자체 구현 코드는 길어질 수 있으므로, 설명에서는 생략했습니다.<br /><!-- -->중요한 포인트는 layout이 **틀만 제공하고, 구체적인 내용은 props로 받아서 렌더링한다** 는 점입니다.
 
 ## layout에 widget 적용하기[​](#layout에-widget-적용하기 "해당 헤딩으로 이동")
 
-간혹 layout 컴포넌트에서 인증 처리나 데이터 로딩 같은 비즈니스 로직을 직접 실행해야 할 수 있습니다. 예를 들어, [React Router](https://reactrouter.com/)의 deeply nested routes를 사용할 때, child routes(예: `/users`, `/users/:id`, `/users/:id/settings` 등)의 공통 로직(인증 처리, 데이터 로딩 등)을 layout 레벨에서 한 번에 처리하면 편리합니다. 이 경우 layout 컴포넌트를 `shared`나 `widgets` 폴더에 두면 [layer에 대한 import 규칙](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)을 위반합니다.
+layout 컴포넌트에서 인증 처리나 데이터 로딩 같은 **비즈니스 로직**을 수행해야 할 때가 있습니다.<br /><!-- -->예를 들어, [React Router](https://reactrouter.com/)의 deeply nested routes 구조에서는 `/users`, `/users/:id`, `/users/:id/settings` 처럼<br /><!-- -->공통된 URL prefix를 가진 여러 child routes가 존재합니다.
 
-> Slice의 module은 자신보다 하위 layer에만 있는 Slice를 import할 수 있습니다.
+이 경우, 인증 확인이나 공통 데이터 로딩 같은 로직을<br /><!-- -->각 페이지마다 작성하기보다는 **layout 레벨에서 한 번에 처리**하는 방식이 훨씬 효율적입니다.
 
-이 문제가 정말 중요한지 먼저 고려해 봐야 합니다.
+다만 이런 layout을 shared나 widgets 폴더에 두면 [layer에 대한 import 규칙](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)을 위반할 수 있습니다.
 
-* *이 layout이 정말 필요한가요?*
-* *꼭 widget으로 구현해야 하나요?*
+> Slice의 module은 자신보다 **하위 layer**에 있는 Slice만 import할 수 있습니다.
 
-비즈니스 로직을 사용하는 layout이 2\~3개 페이지만 적용된다면, layout 역할이 단순 wrapper인지 확인하고, 아래 대안을 고려하세요.
+즉, layout에서 entity/feature/page를 직접 불러오게 되면<br />**위에서 아래를 가져오는** 잘못된 의존성이 생길 수 있습니다.
 
-1. **App layer에서 inline으로 작성하기**<br /><!-- -->Router의 nesting 기능을 이용하면, 공통된 URL 패턴을 가진 여러 경로(예: /users, /users/profile, /users/settings)를 하나의 `route group` 으로 묶을 수 있습니다. 이렇게 만든 route group에 한 번만 layout을 지정하면, 해당 그룹의 모든 페이지에 동일한 layout이 적용됩니다.
+그래서 먼저 아래와 같은 점을 고려하는 것이 좋습니다.
 
-2. **코드 복사 & 붙여넣기**<br /><!-- -->레이아웃은 자주 변경되지 않으므로, 필요한 페이지만 복사해 두고 수정할 때만 업데이트하세요. 이렇게 하면 다른 페이지에 영향을 주지 않으며, 페이지 간 관계를 주석으로 남겨 누락을 방지할 수 있습니다.
+* *이 layout이 정말 필요한가?*
+* *꼭 widget 형태로 만들 필요가 있는가?*
 
-위 방식이 적합하지 않다면, layout에 widget을 포함하는 다음 두 가지 해결책을 검토하세요:
+layout이 적용되는 페이지 수가 2\~3곳 정도라면,<br /><!-- -->이 layout이 사실상 **특정 페이지만을 위한 wrapper**일 수도 있으며 굳이 widget으로 승격시킬 필요가 없을 수 있습니다.
 
-1. **Render Props 또는 Slots 사용하기**<br /><!-- -->React에서는 [render props](https://www.patterns.dev/react/render-props-pattern/)를, Vue에서는 [slots](https://vuejs.org/guide/components/slots)를 사용해 `부모 layout 컴포넌트에 자식 UI를 props/slot 형태로 전달해 특정 위치에 주입(injection)` 하는 방식입니다.
+이런 상황에서는 아래 두 가지 대안을 먼저 고려하세요.
 
-2. **layout을 App layer로 이동하기**<br />`app/layouts` 등에 layout 파일을 두고, 필요한 widget을 조합해 사용하세요.
+1. **App layer에서 inline으로 작성하기**<br /><!-- -->URL 패턴이 공통된 여러 경로를 Router의 nesting 기능으로 묶어 하나의 route group으로 만들 수 있습니다.<br /><!-- -->이 route group에 layout을 한 번만 지정하면, 해당 그룹 아래 모든 페이지에 자동으로 동일한 layout이 적용됩니다.
+
+2. **코드 복사 & 붙여넣기**<br /><!-- -->layout은 자주 변경되는 코드가 아니므로, 필요한 페이지만 layout 코드를 복사해 사용해도 큰 문제가 없습니다.<br /><!-- -->수정이 필요할 때만 해당 layout들을 개별적으로 업데이트하면 되고, 페이지 간 관계를 주석으로 남겨 두면 누락을 방지할 수 있습니다.
+
+***
+
+위 방법들이 프로젝트에 맞지 않다면, layout 안에서 widget을 사용하는 다음 두 가지 해결책을 고려할 수 있습니다.
+
+### 1. Render Props 또는 Slots 사용하기[​](#1-render-props-또는-slots-사용하기 "해당 헤딩으로 이동")
+
+React에서는 [render props](https://www.patterns.dev/react/render-props-pattern/) 패턴을, Vue에서는 [slots](https://vuejs.org/guide/components/slots,) 기능을 사용합니다.
+
+이 방식은 부모인 layout 컴포넌트가 **UI 틀을 제공하고**,<br /><!-- -->자식 컴포넌트가 전달한 UI를 layout 내부 특정 위치에 **주입(injection)** 하는 구조입니다.<br /><!-- -->Layout이 비즈니스 로직을 직접 수행하면서도, UI 구성은 외부에서 유연하게 가져올 수 있다는 장점이 있습니다.
+
+### 2. layout을 App layer로 이동하기[​](#2-layout을-app-layer로-이동하기 "해당 헤딩으로 이동")
+
+layout을 app/layouts 같은 상위 layer로 옮기면,<br /><!-- -->App layer는 아래 layer(entities, features, shared)를 자유롭게 import할 수 있기 때문에<br /><!-- -->Layer 규칙을 위반하지 않고 layout 안에서 widget을 사용할 수 있습니다.
 
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 
-React 및 Remix(React Router와 유사)의 인증 layout 구축에 대한 예시는 [튜토리얼](/documentation/kr/docs/get-started/tutorial.md)에서 확인하실 수 있습니다.
+React 및 Remix(React Router와 구조가 유사)의<br /><!-- -->인증 layout 구현 예시는 [튜토리얼](/documentation/kr/docs/get-started/tutorial.md) 문서에서 확인할 수 있습니다.

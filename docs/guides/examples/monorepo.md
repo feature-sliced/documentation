@@ -2,7 +2,7 @@
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 

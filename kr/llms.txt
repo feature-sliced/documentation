@@ -25,10 +25,10 @@
 - [Branding Guidelines](/docs/branding.md): FSD's visual identity is based on its core-concepts: Layered, Sliced self-contained parts, Parts & Compose, Segmented.
 - [Decomposition cheatsheet](/docs/get-started/cheatsheet.md): Use this as a quick reference when you're deciding how to decompose your UI. PDF versions are also available below, so you can print it out and keep one under your pillow.
 - [FAQ](/docs/get-started/faq.md): 질문은 언제든 Telegram, Discord, GitHub Discussions에서 남겨 주세요.
-- [개요](/docs/get-started/overview.md): Feature-Sliced Design (FSD) 는 프론트엔드 애플리케이션 구조를 위한 아키텍처 방법론입니다.
+- [개요](/docs/get-started/overview.md): Feature-Sliced Design (FSD) 는 프론트엔드 애플리케이션의 코드를 구조화하기 위한 아키텍처 방법론입니다.
 - [튜토리얼](/docs/get-started/tutorial.md): Part 1. 설계
 - [Handling API Requests](/docs/guides/examples/api-requests.md): Shared API Requests
-- [Authentication](/docs/guides/examples/auth.md): 일반적으로 인증(Authentication) 플로우는 세 단계로 구성됩니다.
+- [Authentication](/docs/guides/examples/auth.md): 웹 애플리케이션에서의 인증(Authentication) 플로우는 보통 다음과 같은 세 단계로 진행됩니다.
 - [Autocomplete](/docs/guides/examples/autocompleted.md): About decomposition by layers
 - [Browser API](/docs/guides/examples/browser-api.md): About working with the Browser API: localStorage, audio Api, bluetooth API, etc.
 - [CMS](/docs/guides/examples/cms.md): Features may be different
@@ -36,7 +36,7 @@
 - [i18n](/docs/guides/examples/i18n.md): Where to place it? How to work with this?
 - [Metric](/docs/guides/examples/metric.md): About ways to initialize metrics in the application
 - [Monorepositories](/docs/guides/examples/monorepo.md): About applicability for mono repositories, about bff, about microapps
-- [Page layouts](/docs/guides/examples/page-layout.md): 여러 페이지에서 동일한 공통 layout(header, sidebar, footer) 을 사용하고,
+- [Page layouts](/docs/guides/examples/page-layout.md): 여러 페이지에서 같은 layout(header, sidebar, footer 등 공통 영역) 을 사용하고,
 - [Desktop/Touch platforms](/docs/guides/examples/platforms.md): About the application of the methodology for desktop/touch
 - [SSR](/docs/guides/examples/ssr.md): About the implementation of SSR using the methodology
 - [Theme](/docs/guides/examples/theme.md): Where should I put my work with the theme and palette?
@@ -47,7 +47,7 @@
 - [Routing](/docs/guides/issues/routes.md): 상황
 - [기존 아키텍처에서 FSD로의 마이그레이션](/docs/guides/migration/from-custom.md): 이 가이드는 기존 아키텍처를 Feature-Sliced Design(FSD) 으로 단계별 전환하는 방법을 설명합니다.
 - [v1 -> v2 마이그레이션 가이드](/docs/guides/migration/from-v1.md): v2 도입 배경
-- [v2.0 -> v2.1 마이그레이션 가이드](/docs/guides/migration/from-v2-0.md): v2.1의 핵심 변화는 Page 중심(Page-First) 접근 방식을 통한 인터페이스 구조화입니다.
+- [v2.0 -> v2.1 마이그레이션 가이드](/docs/guides/migration/from-v2-0.md): v2.1의 핵심 변화는 Page 중심(Page-First) 접근 방식을 기반으로 인터페이스 구조를 재정비한 것입니다.
 - [Electron와 함께 사용하기](/docs/guides/tech/with-electron.md): Electron 애플리케이션은 역할이 다른 여러 프로세스(Main, Renderer, Preload)로 구성됩니다.
 - [NextJS와 함께 사용하기](/docs/guides/tech/with-nextjs.md): NextJS 프로젝트에도 FSD 아키텍처를 적용할 수 있지만, 구조적 차이로 두 가지 충돌이 발생합니다.
 - [NuxtJS와 함께 사용하기](/docs/guides/tech/with-nuxtjs.md): NuxtJS 프로젝트에 FSD(Feature-Sliced Design)를 도입할 때는 기본 구조와 FSD 원칙 간에 다음과 같은 차이를 고려해야 합니다:

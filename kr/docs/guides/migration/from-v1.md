@@ -2,68 +2,56 @@
 
 ## v2 도입 배경[​](#v2-도입-배경 "해당 헤딩으로 이동")
 
-**feature-slices** 개념은 2018년 [첫 발표](https://t.me/feature_slices)된 이후, 다양한 프로젝트 경험과 커뮤니티 피드백을 거치며 발전해 왔습니다.<br /><!-- -->동시에 **[기본 원칙](https://feature-sliced.github.io/featureslices.dev/v1.0.html)**(표준화된 프로젝트 구조, 비즈니스 로직 우선 분리, isolated features, Public API)은 그대로 유지되었습니다.
+**feature-slices** 개념은 2018년 [첫 발표](https://t.me/feature_slices)된 이후 다양한 프로젝트 경험과 커뮤니티 피드백을 통해 지속적으로 발전해 왔습니다.<br /><!-- -->그 과정에서도 **[기본 원칙](https://feature-sliced.github.io/featureslices.dev/v1.0.html)**-표준화된 프로젝트 구조, 비즈니스 로직 기반 분리, isolated features, Public API—는 그대로 유지되었습니다.
 
-하지만 v1에는 다음과 같은 한계가 있었습니다:
+그러나 v1에는 다음과 같은 한계가 존재했습니다:
 
 * 과도한 **boilerplate** 발생
 * 추상화 규칙이 모호해 **코드베이스 복잡도** 상승
-* 암묵적 설계로 **확장·온보딩 어려움**
+* 암묵적 설계로 **확장/온보딩 어려움**
 
-이러한 한계를 해결하기 위해 ([`v2`](https://github.com/feature-sliced/documentation))는 기존 장점을 유지하면서도 위 과제들을 보완하도록 설계되었습니다.<br /><!-- -->또한 [Oleg Isonen](https://github.com/kof)이 발표한 [**feature-driven**](https://github.com/feature-sliced/documentation/tree/rc/feature-driven) 등 유사 방법론과 아이디어를 융합해 애플리케이션 구조를 한층 더 **유연**, **명확**, **효율적**으로 다듬었습니다.
+이를 해결하기 위해 등장한 것이 **[v2](https://github.com/feature-sliced/documentation)** 입니다.<br /><!-- -->v2는 기존 장점을 유지하는 동시에 이러한 문제들을 보완하도록 설계되었습니다.<br /><!-- -->또한 [Oleg Isonen](https://github.com/kof)이 발표한 [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven) 등 유사 방법론의 장점을 반영해 더 **유연하고**, **명확하며**, **효율적인** 구조로 발전했습니다.
 
-> 이 과정에서 방법론의 공식 명칭은 *feature-slice*에서 **feature-sliced**로 정식화되었습니다.
+> 이 과정에서 방법론의 공식 명칭은 feature-slice에서 **feature-sliced**로 정식화되었습니다.
 
 ## v2 마이그레이션 이유[​](#v2-마이그레이션-이유 "해당 헤딩으로 이동")
 
-> `WIP:` 작업이 진행 중이며, 일부 세부 사항이 변경될 수 있습니다.
+> `WIP:` 문서는 계속 업데이트 중이며, 일부 내용은 변경될 수 있습니다.
 
 ### 직관적 구조 제공[​](#직관적-구조-제공 "해당 헤딩으로 이동")
 
-v2는 **layer → slice → segment** 3단계만 알면 대부분 구조 결정을 내릴 수 있습니다.<br />덕분에 새로운 팀원이 **어디에 무엇을 둬야 하나** 부터 고민하지 않아 온보딩 속도가 빨라집니다.
+v2는 **layer → slice → segment** 라는 세 가지 개념만 이해하면 구조적 결정을 쉽게 내릴 수 있습니다.<br /><!-- -->덕분에 신규 팀원이 **어디에 어디에 둘지** 고민할 필요가 줄어들어 온보딩 속도가 크게 향상됩니다.
 
 ### 유연한 모듈화[​](#유연한-모듈화 "해당 헤딩으로 이동")
 
 * **독립 영역**은 slice 단위로, **전역 흐름**은 Processes layer로 분리해 확장성을 확보합니다.
-* 새 module을 추가할 때 *(layer → slice → segment)* 규칙만 따르면 폴더 재배치와 리팩터링 작업 부담이 크게 줄어듭니다.
+* 새로운 module을 추가할 때 *(layer → slice → segment)* 규칙만 따르면 폴더 재배치나 리팩터링 부담이 크게 줄어듭니다.
 
-#### 커뮤니티·도구 지원 확대[​](#커뮤니티도구-지원-확대 "해당 헤딩으로 이동")
+#### 커뮤니티/도구 지원 확대[​](#커뮤니티도구-지원-확대 "해당 헤딩으로 이동")
 
-v2 개발은 **코어 팀**과 커뮤니티 기여자들이 함께 이끌고 있습니다.
-
-다음 리소스를 활용해 보세요:
+v2는 **코어 팀** 과 커뮤니티가 함께 발전시키고 있으며, 다음과 같은 리소스도 제공됩니다.<br /><!-- -->다음 리소스를 활용해 보세요:
 
 * **실제 사례 공유**: 다양한 프로젝트 환경에서의 적용 사례
 * **단계별 가이드**: 설정·구성·운영 전 과정을 담은 튜토리얼
 * **코드 템플릿 & 예제**: 시작부터 배포까지 참고할 수 있는 실전 코드
 * **온보딩 문서**: 신규 개발자를 위한 개념 요약 및 학습 자료
-* **검증 툴킷**: steiger CLI 등 정책 준수·lint를 지원하는 유틸리티
+* **검증 툴킷**: steiger CLI 등 정책 준수/lint를 지원하는 유틸리티
 
-> v1 지원은 계속 유지되지만, 새로운 기능·개선 사항은 **v2**에 우선 반영됩니다.<br /><!-- -->주요 업데이트 시에도 **안정적 마이그레이션 경로**를 보장합니다.
+> v1도 계속 지원되지만, 새로운 기능과 개선은 **v2**에 우선 적용됩니다.<br /><!-- -->주요 업데이트 시 **안정적인 마이그레이션 경로**도 함께 제공합니다.
 
 ## 주요 변경 사항[​](#주요-변경-사항 "해당 헤딩으로 이동")
 
 ### Layer 구조 명확화[​](#layer-구조-명확화 "해당 헤딩으로 이동")
 
-v2에서는 layer를 최상위부터 최하위까지 명시적으로 구분합니다:
+v2는 layer를 다음과 같이 명확히 구분합니다:
 
-* `/app` > `/processes` > **`/pages`** > **`/features`** > `/entities` > `/shared`
+`/app` > `/processes` > **`/pages`** > **`/features`** > `/entities` > `/shared`
 
-* 모든 모듈이 `pages`/`features` layer에만 속하지 않습니다.
-
-* 이 구조를 통해 [layer별 의존 규칙](https://t.me/atomicdesign/18708)을 명시적으로 설정할 수 있습니다.
-
-* **상위 layer**는 더 넓은 **Context**를 제공합니다.
-
-  * 상위 layer 모듈은 **하위 layer** 모듈만 import할 수 있습니다.
-
-* **하위 layer**는 **변경 리스크(Risk)와 책임(Responsibility)** 이 더 큽니다.
-
-  * 재사용 빈도가 높아, 수정 시 영향 범위가 넓습니다.
+모든 모듈이 `pages, features`에만 속하지 않습니다.<br /><!-- -->이 구조는 [layer 의존 규칙](https://t.me/atomicdesign/18708)을 명확히 설정할 수 있도록 돕습니다.<br />**상위 layer**는 더 넓은 **context**를 제공하며, **하위 layer**는 더 낮은 **변경 리스크와 높은 재사용성**을 갖습니다.
 
 ### Shared 통합[​](#shared-통합 "해당 헤딩으로 이동")
 
-프로젝트 `src` 루트에 흩어져 있던 UI, lib, API 인프라 추상화를 `/src/shared` 폴더로 통합했습니다.
+`src` 루트에 흩어져 있던 UI, lib, API 인프라 추상화를 `/src/shared`로 통합했습니다.
 
 * `shared/ui` - 공통 UI components(선택 사항)
   <!-- -->
@@ -94,9 +82,9 @@ v2에서는 로직 복잡성과 높은 결합을 줄이기 위한 **새로운 �
   <!-- -->
   process *로직이 여러 페이지에 분산될 때* 도입을 권장합니다.
 
-### 추상화·네이밍 가이드[​](#추상화네이밍-가이드 "해당 헤딩으로 이동")
+### 추상화/네이밍 가이드[​](#추상화네이밍-가이드 "해당 헤딩으로 이동")
 
-아래에서는 v2 권장 layer·segment 명칭을 이전 명칭과 대응하여 정리했습니다.<br />추상화·네이밍 관련 상세 가이드는 [명확한 네이밍 권장사항](/documentation/kr/docs/about/understanding/naming.md)을 참고하세요.
+아래는 v2 권장 네이밍과 이전 명칭 간의 대응 관계입니다.<br /><!-- -->아래에서는 v2 권장 layer·segment 명칭을 이전 명칭과 대응하여 정리했습니다.<br /><!-- -->추상화/네이밍 관련 상세 가이드는 [명확한 네이밍 권장사항](/documentation/kr/docs/about/understanding/naming.md)을 참고하세요.
 
 #### Layer[​](#layer "해당 헤딩으로 이동")
 
@@ -131,9 +119,7 @@ v2에서는 로직 복잡성과 높은 결합을 줄이기 위한 **새로운 �
 
 ## 낮은 결합 원칙 강화[​](#낮은-결합-원칙-강화 "해당 헤딩으로 이동")
 
-새 layer 규칙 덕분에 [Zero-Coupling, High-Cohesion 원칙](/documentation/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)을 지키기 쉬워졌습니다.
-
-*단, 모듈을 완전히 분리할 수 없는 경우에는 Public API 등 명확한 인터페이스 경계를 정의하고, 해당 의존 코드는 가능한 한 하위 layer에 위치시키는 것을 권장합니다.*
+Layer 구조가 명확해지면서 [Zero-Coupling, High-Cohesion 원칙](/documentation/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)을 보다 쉽게 지킬 수 있게 되었습니다.<br /><!-- -->완전한 분리가 어렵다면 Public API 등 명확하게 드러나는 인터페이스를 두어 경계를 명확히 하고,<br /><!-- -->가능한 한 하위 layer에서 의존성이 내려가도록 구조화할 것을 권장합니다.
 
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 

@@ -861,7 +861,7 @@ Community resources, additional materials
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -888,7 +888,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -906,7 +906,7 @@ History of architecture approaches
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -928,7 +928,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -952,7 +952,7 @@ Why component-containers approach is evil?
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -976,7 +976,7 @@ And how does it aggregate these practices
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -999,7 +999,7 @@ What is the difference, how does it improve applicability, where does it adopt p
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -1026,7 +1026,7 @@ How are they similar (to many), how are they different
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -1092,7 +1092,7 @@ A comparison of FSD and Atomic Design shows that both methodologies strive for m
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -1307,7 +1307,7 @@ If everything goes well, then the methodology will not be limited only to the sp
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -1334,7 +1334,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -1388,7 +1388,7 @@ First 5 minutes (RU):
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -1409,7 +1409,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -1758,7 +1758,7 @@ It becomes clear that you need to identify at least two requirements for **Featu
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -4799,7 +4799,7 @@ Don't forget to build failsafes for when a request to log out fails, or a reques
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -4824,7 +4824,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -4847,7 +4847,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -4878,7 +4878,7 @@ In some projects, all the functionality is concentrated in data from the server
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -4899,7 +4899,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -4924,7 +4924,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -4945,7 +4945,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -5071,7 +5071,7 @@ If none of the above are applicable, there are two solutions to include a widget
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -5092,7 +5092,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -5113,7 +5113,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -5620,7 +5620,7 @@ It's common to generate types from external sources, for example, generating bac
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -5646,7 +5646,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -5675,7 +5675,7 @@ To bring the release of the article closer, you can:
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
@@ -5781,7 +5781,7 @@ So that when studying a particular module, all its components lie side by side, 
 
 WIP
 
-The article is in the process of writing
+This article is in the process of being written
 
 To bring the release of the article closer, you can:
 
