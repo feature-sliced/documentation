@@ -3,7 +3,7 @@ name: Deploy Documentation
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -47,3 +47,4 @@ jobs:
         with:
           branch: gh-pages
           folder: ./build
+
