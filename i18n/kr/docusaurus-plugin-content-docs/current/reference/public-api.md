@@ -10,7 +10,8 @@ Public API는 **Slice 기능을 외부에서 사용할 수 있는 공식 경로*
 외부 코드는 반드시 이 경로를 통해서만 Slice 내부의 특정 객체에 접근할 수 있습니다.  
 즉, **Slice와 외부 코드 간의 계약(Contract)** 이자 **접근 게이트(Gate)** 역할을 합니다.
 
-일반적으로 Public API는 **Re-export를 모아둔 index 파일**로 만듭니다.
+일반적으로 Public API는 **Re-export를 모아둔 `index` 파일**로 만듭니다.  
+예를 들어 `pages/auth/index.js` 파일에서 `LoginPage`, `RegisterPage` 등을 다시 내보내는 방식입니다.
 
 ```js title="pages/auth/index.js"
 export { LoginPage } from "./ui/LoginPage";
@@ -22,53 +23,69 @@ export { RegisterPage } from "./ui/RegisterPage";
 좋은 Public API는 Slice를 **다른 코드와 통합하기 쉽고, 안정적으로 유지보수**할 수 있게 해줍니다.  
 이를 위해 다음 세 가지 목표를 충족하는 것이 이상적입니다.
 
-1. **내부 구조 변경에 영향 없음** — Slice 내부 폴더 구조를 바꿔도 외부 코드는 그대로 동작해야 합니다.
-2. **주요 동작 변경 = API 변경** — Slice의 동작이 크게 바뀌어 기존 기대를 깨면, Public API도 변경되어야 합니다.
-3. **필요한 부분만 노출** — Slice 전체가 아니라 꼭 필요한 기능만 외부에 공개합니다.
+1. **내부 구조 변경에 영향 없음**
+    - Slice 내부 폴더 구조를 바꾸더라도, 외부 코드는 그대로 동작해야 합니다.
+2. **주요 동작 변경 = API 변경**
+    - Slice의 동작이 크게 바뀌어 기존 기대가 깨진다면, Public API도 함께 변경되어야 합니다.
+3. **필요한 부분만 노출**
+    - Slice 전체 구현을 공개하는 것이 아니라, 외부에서 꼭 필요한 기능만 선별해서 노출합니다.
 
 ### 안 좋은 예: 무분별한 Wildcard Re-export
 
-개발 초기에는 편의상 모든 `export *`를 한 번에 노출하고 싶을 때가 있습니다.  
-이 경우 `export *` 같은 와일드카드 Re-export를 쓰기 쉽지만, 이는 Slice의 인터페이스를 불명확하게 만듭니다.
+개발 초기에는 편의상 한 줄로 모든 것을 export하고 싶어서  
+`export *` 같은 와일드카드 Re-export를 사용하고 싶을 수 있습니다.  
+하지만 이런 방식은 Slice의 인터페이스를 흐리게 만들고, 나중에 큰 부담이 됩니다.
+
+예를 들어 `features/comments/index.js`에서 `./ui/Comment` 전체를 그대로 export 하거나  
+`./model/comments` 내부 모델을 통째로 export 하는 식입니다.
 
 ```js title="Bad practice, features/comments/index.js"
 // ❌ 이렇게 하지 마세요
-export * from "./ui/Comment";       // 👎 무분별한 UI export
-export * from "./model/comments";   // 💩 내부 모델 노출
+export * from "./ui/Comment"; // 👎 무분별한 UI export
+export * from "./model/comments"; // 💩 내부 모델 노출
 ```
 
-문제가 되는 이유:
+이 방식이 문제가 되는 이유:
 
-- **발견 가능성 저하** — Public API에서 어떤 기능을 제공하는지 한눈에 알기 어렵습니다.
-- **내부 구현 노출** — 의도치 않게 Slice 내부 코드를 외부에서 사용하게 되고, 그 코드에 의존하면 리팩터링이 매우 어려워집니다.
+- **발견 가능성 저하**
+    - Public API에서 어떤 기능을 제공하는지 한눈에 파악하기 어렵습니다.
+- **내부 구현 노출**
+    - 원래 외부에서 알 필요가 없는 내부 코드를 외부에서 직접 사용하게 되고,  
+      이 코드에 대한 의존성이 생기면 리팩터링이 매우 어려워집니다.
 
 ## Cross-Import를 위한 Public API {#public-api-for-cross-imports}
 
 **Cross-import**는 같은 Layer 안에서 한 Slice가 다른 Slice를 import하는 것을 말합니다.  
-[Layer Import Rule][import-rule-on-layers]에 따라 원칙적으로 금지되지만, **Entity 간 참조**처럼 불가피한 경우가 있습니다.
+[Layer Import Rule][import-rule-on-layers]에 따라 원칙적으로는 금지되지만,  
+**Entity 간 참조**처럼 현실적으로 불가피한 경우가 있습니다.
 
-예를 들어, 비즈니스 도메인에서 `Artist`와 `Song`이 서로 연결되는 관계가 있다면, 우회하기보다 코드에 그대로 반영하는 것이 좋습니다.
+예를 들어, 도메인 모델에서 `Artist`와 `Song`이 서로 연관 관계를 가진다면  
+이를 억지로 숨기기보다는 코드에도 그 관계를 드러내는 편이 낫습니다.
 
-이때는 `@x` 표기를 사용해 **전용 Public API**를 명시적으로 만듭니다.
+이럴 때는 `@x` 표기를 사용해 **교차 참조 전용 Public API**를 명시적으로 만듭니다.
 
-- `📂 entities`
-    - `📂 A`
-        - `📂 @x`
-            - `📄 B.ts` — `entities/B/` 전용 Public API
-        - `📄 index.ts` — 일반 Public API
+폴더 예시:
 
-`entities/song`에서는 이렇게 import합니다.
+```bash
+- 📂 entities
+    - 📂 artist
+        - 📂 @x
+            - song.ts — entities/song 전용 Public API
+        - index.ts — 일반 Public API
+```
 
-```ts
+`entities/song`에서는 다음과 같이 import 합니다.
+
+```bash
 import type { Artist } from "entities/artist/@x/song";
 ```
 
-`artist/@x/song`은 **Artist와 Song의 교차 지점** 을 의미합니다.
+여기서 `artist/@x/song`은 **Artist와 Song의 교차 지점**을 의미합니다.
 
 :::note
 
-Cross-import는 최소화해야 하며, **Entity Layer**에서만 사용하세요.  
-다른 Layer에서는 의존 관계를 제거하는 것이 좋습니다.
+Cross-import는 **반드시 최소화**해야 하며, 허용한다면 **Entity Layer에서만** 사용하는 것을 권장합니다.  
+다른 Layer에서는 가능한 한 의존 관계를 제거하거나, 설계를 다시 검토하는 것이 좋습니다.
 
 :::
 
@@ -77,11 +94,12 @@ Cross-import는 최소화해야 하며, **Entity Layer**에서만 사용하세�
 ### Circular Import (순환 참조)
 
 Circular Import는 두 개 이상의 파일이 서로를 참조하는 구조를 말합니다.  
-이 구조는 Bundler가 처리하기 어렵고, 디버그하기 힘든 런타임 오류를 유발할 수 있습니다.
+이 구조는 Bundler가 처리하기 어렵고, 디버그하기도 힘든 런타임 오류를 만들 수 있습니다.
 
-순환 참조는 Index 파일 없이도 발생할 수 있지만, Index 파일은 특히 이런 실수를 만들기 쉽습니다.  
-예를 들어, Slice의 Public API에서 `HomePage`와 `loadUserStatistics`를 export하고,
-`HomePage`가 다시 Public API를 통해 `loadUserStatistics`를 가져오면 다음과 같이 순환이 생깁니다.
+순환 참조는 Index 파일이 없어도 발생할 수 있지만,  
+Index 파일은 특히 이런 실수를 만들기 쉬운 환경을 제공합니다.
+
+예를 들어 Slice의 Public API(`pages/home/index.js`)에서 `HomePage`와 `loadUserStatistics`를 export합니다.
 
 <!-- TODO: add backgrounds to the images below, check on mobile -->
 
@@ -93,11 +111,12 @@ Circular Import는 두 개 이상의 파일이 서로를 참조하는 구조를 
     </figcaption>
 </figure>
 
-
 ```jsx title="pages/home/ui/HomePage.jsx"
 import { loadUserStatistics } from "../"; // pages/home/index.js에서 import
 
-export function HomePage() { /* … */ }
+export function HomePage() {
+    /* … */
+}
 ```
 
 ```js title="pages/home/index.js"
@@ -105,80 +124,110 @@ export { HomePage } from "./ui/HomePage";
 export { loadUserStatistics } from "./api/loadUserStatistics";
 ```
 
-위 구조에서는 `index.js`가 `HomePage`를 가져오고,
-`HomePage.jsx`는 다시 `index.js`를 통해 `loadUserStatistics`를 가져오면서 순환이 발생합니다.
+`HomePage` 컴포넌트(`HomePage.jsx`)는 다시 Public API를 통해 `loadUserStatistics`를 import합니다.
 
+이 경우 의존 관계는 다음과 같이 순환합니다.
 
-여기서는 `index.js` → `HomePage.jsx`→ `index.js` 순환이 발생합니다.
+- `index.js` → `HomePage.jsx` → 다시 `index.js`
 
+이렇게 되면, 빌드 시점이나 런타임 시점에 예측하기 어려운 문제가 생길 수 있습니다.
 
 #### 예방 원칙
 
-- 같은 Slice 내부: 상대 경로(`../api/loadUserStatistics`)로 import하고, 경로를 명확히 작성
-- 다른 Slice: 절대 경로(예: `@/features/...`)나 Alias를 사용 Index에서 export한 모듈이 다시 Index를 참조하지 않도록 주의
-
+- **같은 Slice 내부**에서 가져올 때는
+    - 상대 경로(`../api/loadUserStatistics`)를 사용해서
+    - 어느 파일을 참조하는지 명확히 작성합니다.
+- **다른 Slice**에서 가져올 때는
+    - 절대 경로(예: `@/features/...`)나 Alias를 사용합니다.
+- Index에서 export한 모듈이 다시 Index를 참조하지 않도록 주의합니다.
 
 ### Large Bundle & Tree-shaking 문제 {#large-bundles}
 
-일부 Bundler는 Index 파일에서 모든 모듈을 export할 때 **미사용 코드**를 제대로 제거(Tree-shaking)하지 못할 수 있습니다.
+일부 Bundler는 Index 파일에서 여러 모듈을 한 번에 export할 경우,  
+실제로 사용하지 않는 코드(Dead code)를 제대로 제거(Tree-shaking)하지 못할 수 있습니다.
 
-대부분의 Public API에서는 모듈 간 연관성이 높아 문제가 되지 않지만,
-`shared/ui`와 `shared/lib`처럼 **서로 관련 없는 모듈 집합**에서는 문제가 심각해집니다.
+대부분의 Public API에서는 모듈 간 연관성이 높아 크게 문제되지 않지만,  
+`shared/ui`, `shared/lib`처럼 **서로 관련성이 낮은 모듈 묶음**에서는 문제가 커집니다.
 
-- `📂 shared/ui/`
-    - `📁 button`
-    - `📁 text-field`
-    - `📁 carousel`
-    - `📁 accordion`
+예시 구조:
 
-여기서 `Button` 하나만 사용해도 `carousel`이나 `accordion` 같은 무거운 의존성이 번들에 포함될 수 있습니다.  
-특히 Syntax Highlighter, Drag-and-Drop 라이브러리처럼 용량이 큰 의존성은 영향을 크게 줍니다.
+```bash
+- 📂 shared/ui/
+    - 📂 button
+    - 📂 text-field
+    - 📂 carousel
+    - 📂 accordion
+```
+
+이 상황에서 단순히 `Button` 하나만 사용하고 싶어도,  
+만약 `shared/ui` 전체를 통째로 export하는 큰 Index가 있다면
+
+- `carousel`, `accordion` 등 무거운 의존성까지
+- 함께 번들에 포함될 수 있습니다.
+
+특히 Syntax Highlighter, Drag-and-Drop 라이브러리처럼  
+용량이 큰 의존성은 최종 번들 크기에 큰 영향을 줍니다.
 
 #### 해결 방법
 
-- 각 컴포넌트/라이브러리별로 별도 Index 파일 생성
+각 컴포넌트/라이브러리별로 **별도의 작은 Index 파일**을 만듭니다.
 
-- `📂 shared/ui/`
-    - `📂 button`
-        - `📄 index.js`
-    - `📂 text-field`
-        - `📄 index.js`
+예시:
 
-- 직접 import
+```bash
 
-```js title="pages/sign-in/ui/SignInPage.jsx"
-import { Button } from '@/shared/ui/button';
-import { TextField } from '@/shared/ui/text-field';
+- 📂 shared/ui/
+    - 📂 button
+        - index.ts
+    - 📂 text-field
+        - index.ts
 ```
 
-이렇게 하면 필요한 코드만 번들에 포함되어 Tree-shaking이 잘 동작합니다.
+그리고 사용하는 쪽에서는 `@/shared/ui/button`, `@/shared/ui/text-field`와 같이 **컴포넌트 단위로 직접 import**합니다.
 
+```js title="pages/sign-in/ui/SignInPage.jsx"
+import { Button } from "@/shared/ui/button";
+import { TextField } from "@/shared/ui/text-field";
+```
+
+이렇게 하면 Bundler가 사용되지 않는 컴포넌트 코드를 제거할 수 있어
+Tree-shaking이 더 잘 동작하게 됩니다.
 
 ### Public API 우회 방지의 한계
 
-Slice에 Index 파일을 만들어도 직접 경로 import를 완전히 막을 수 없습니다.  
-특히 IDE의 Auto Import 기능이 잘못된 경로를 선택해 Public API 규칙을 어길 수 있습니다.
+Slice에 Index 파일을 만들어도,
+개발자가 직접 내부 경로를 입력해 import하는 것을 완전히 막을 수는 없습니다.
+특히 IDE의 Auto Import 기능이 내부 파일 경로를 자동으로 선택해 버리면,
+Public API 규칙을 모르는 상태에서 내부 구현을 바로 import하게 될 수 있습니다.
 
 #### 해결 방법
 
-- [Steiger][ext-steiger]와 같은 FSD 전용 아키텍처 린터로 import 경로를 검사·강제
+- [Steiger][ext-steiger] 같은 **FSD 전용 아키텍처 린터**를 사용해
+  프로젝트의 import 경로를 검사하고, 규칙을 강제합니다.
 
-### 대규모 프로젝트에서의 Bundler 성능 문제
+## 대규모 프로젝트에서의 Bundler 성능 문제
 
-[TkDodo 글][ext-please-stop-using-barrel-files]에서도 지적했듯,  
-Index 파일이 많아지면 개발 서버(HMR) 속도가 느려질 수 있습니다.
+[TkDodo 글][ext-please-stop-using-barrel-files]에서도 언급되듯,  
+Index 파일(일명 **barrel 파일**)이 너무 많아지면
+개발 서버 실행 속도나 HMR(Hot Module Replacement) 성능이 저하될 수 있습니다.
 
 #### 최적화 방법
 
-1. [Large Bundle & Tree-shaking 문제](#large-bundles) 방식 적용 — `shared/ui`와 `shared/lib`에 대형 Index 대신 컴포넌트별 Index 사용
-2. Segment 단위의 불필요한 Index 파일 생성 방지  
-   예: `📄 features/comments/index.js`가 있다면, `📄 features/comments/ui/index.js` 같은 중첩 Index는 불필요
-3. 큰 프로젝트는 기능 단위로 여러 Chunk(또는 패키지)로 나누기  
-   - Google Docs처럼 Document Editor와 File Browser를 분리  
-   - Monorepo에서 각 패키지를 독립 FSD Root로 구성  
-     - 일부 패키지는 Shared·Entity Layer만 포함  
-     - 다른 패키지는 Page·App Layer만 포함  
-     - 필요한 경우 작은 Shared를 갖고 다른 패키지의 큰 Shared를 참조
+1. [Large Bundle & Tree-shaking 문제](#large-bundles)에서 설명한 것처럼,
+   `shared/ui`, `shared/lib`에 있는 큰 Index를 없애고
+   컴포넌트/모듈 단위로 쪼갠 작은 Index를 사용합니다.
+
+2. Segment 단위로 불필요한 Index 파일을 만들지 않습니다.
+    - 예: `features/comments/index.ts`가 이미 Slice의 Public API 역할을 하고 있다면,
+      `features/comments/ui/index.ts` 같이 중첩된 Index는 굳이 만들 필요가 없습니다.
+
+3. 큰 프로젝트는 **기능 단위 Chunk 또는 패키지**로 나눕니다.
+    - 예: Google Docs처럼 Document Editor와 File Browser를 서로 다른 Chunk/패키지로 분리
+    - Monorepo에서는 각 패키지를 독립적인 FSD Root로 구성할 수 있습니다.
+        - 일부 패키지는 Shared·Entity Layer만 포함
+        - 다른 패키지는 Page·App Layer만 포함
+        - 필요한 경우, 작은 Shared를 각 패키지에 두고
+          다른 패키지의 큰 Shared를 참조하는 방식으로 설계
 
 <!-- TODO: add a link to a page that explains this in more detail (when one will exist) -->
 
