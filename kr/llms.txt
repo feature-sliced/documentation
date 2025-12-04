@@ -54,7 +54,7 @@
 - [React Query와 함께 사용하기](/docs/guides/tech/with-react-query.md): Query Key 배치 문제
 - [SvelteKit와 함께 사용하기](/docs/guides/tech/with-sveltekit.md): SvelteKit 프로젝트에 FSD(Feature-Sliced Design)를 적용할 때는 다음 차이를 유의하세요:
 - [Docs for LLMs](/docs/llms.md): This page provides links and guidance for LLM crawlers.
-- [Layer](/docs/reference/layers.md): Layer는 Feature-Sliced Design에서 코드를 구분하는 가장 큰 범위입니다.
+- [Layer](/docs/reference/layers.md): Layer는 Feature-Sliced Design에서 코드를 나눌 때 사용하는 가장 큰 구분 단위입니다.
 - [Public API](/docs/reference/public-api.md): Public API는 Slice 기능을 외부에서 사용할 수 있는 공식 경로입니다.
 - [Slices and segments](/docs/reference/slices-segments.md): Slice
 - [Feature-Sliced Design](/index.md): Architectural methodology for frontend projects

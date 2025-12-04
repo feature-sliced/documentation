@@ -54,7 +54,7 @@
 - [React Query와 함께 사용하기](/docs/guides/tech/with-react-query.md): Query Key 배치 문제
 - [SvelteKit와 함께 사용하기](/docs/guides/tech/with-sveltekit.md): SvelteKit 프로젝트에 FSD(Feature-Sliced Design)를 적용할 때는 다음 차이를 유의하세요:
 - [Docs for LLMs](/docs/llms.md): This page provides links and guidance for LLM crawlers.
-- [Layer](/docs/reference/layers.md): Layer는 Feature-Sliced Design에서 코드를 구분하는 가장 큰 범위입니다.
+- [Layer](/docs/reference/layers.md): Layer는 Feature-Sliced Design에서 코드를 나눌 때 사용하는 가장 큰 구분 단위입니다.
 - [Public API](/docs/reference/public-api.md): Public API는 Slice 기능을 외부에서 사용할 수 있는 공식 경로입니다.
 - [Slices and segments](/docs/reference/slices-segments.md): Slice
 - [Feature-Sliced Design](/index.md): Architectural methodology for frontend projects
@@ -7659,9 +7659,9 @@ This page provides links and guidance for LLM crawlers.
 
 # Layer
 
-Layer는 Feature-Sliced Design에서 **코드를 구분하는 가장 큰 범위**입니다.<br /><!-- -->코드를 나눌 때는 각 부분이 **어떤 기능을 담당하는지**와 **다른 코드에 얼마나 의존하는지**를 기준으로 합니다.<br /><!-- -->Layer마다 **어떤 역할을 맡는지**에 대한 공통된 의미가 있습니다.
+Layer는 Feature-Sliced Design에서 코드를 나눌 때 사용하는 **가장 큰 구분 단위**입니다.<br /><!-- -->코드를 나눌 때는 각 부분이 **어떤 역할을 맡는지**, 그리고 **다른 코드에 얼마나 의존하는지**를 기준으로 합니다.<br /><!-- -->각 Layer는 **이 Layer에는 어떤 코드가 와야 하는지**에 대해 **공통된 의미와 책임**이 정해져 있습니다.
 
-총 **7개의 Layer**가 있으며, **담당 기능과 의존성이 많은 것**부터 **적은 것** 순으로 나열합니다.
+총 **7개의 Layer**가 있으며, 아래로 내려갈수록 **담당하는 기능과 의존성이 줄어드는 순서**입니다.
 
 ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/kr/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/kr/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
@@ -7673,54 +7673,54 @@ Layer는 Feature-Sliced Design에서 **코드를 구분하는 가장 큰 범위*
 6. Entities
 7. Shared
 
-> 모든 Layer를 꼭 써야 하는 건 아닙니다. **필요할 때만** 추가하세요.<br /><!-- -->대부분의 프론트엔드 프로젝트는 최소한 `shared`, `page`, `app`은 포함합니다.
+> 모든 Layer를 반드시 사용해야 하는 것은 아닙니다.<br />**필요한 경우에만** Layer를 추가하세요.<br /><!-- -->대부분의 프론트엔드 프로젝트는 보통 최소한 `shared`, `page`, `app` 정도는 사용합니다.
 
-실무에서는 폴더명을 소문자로 작성합니다(예: `📁 shared`, `📁 page`, `📁 app`).<br />**새로운 Layer를 만드는 것은 권장하지 않습니다**(역할이 이미 표준화되어 있음).
+실무에서는 폴더명을 보통 소문자로 작성합니다. (예: `📁 shared`, `📁 page`, `📁 app`)<br /><!-- -->또한, **새로운 Layer를 직접 정의해서 사용하는 것은 권장하지 않습니다.**<br /><!-- -->(각 Layer의 역할이 이미 표준으로 충분히 정리되어 있기 때문입니다.)
 
 ## Import 규칙[​](#import-규칙 "해당 헤딩으로 이동")
 
-Layer는 **Slice(서로 밀접하게 연관된 모듈 묶음)** 로 구성됩니다.<br /><!-- -->Slice 간 연결은 **Layer Import 규칙**으로 제한합니다.
+각 Layer는 여러 개의 **Slice(서로 밀접하게 연관된 모듈 묶음)** 로 구성됩니다.<br /><!-- -->Slice들 사이의 연결은 **Layer Import 규칙**을 통해 제한합니다.
 
-> **규칙**: Slice 안의 코드는 **자신보다 아래 Layer**의 *다른 Slice*만 Import할 수 있습니다.
+> **규칙:**<br /><!-- -->하나의 Slice 안에서 작성된 코드는<br />**자신이 속한 Layer보다 아래 Layer**에 있는 *다른 Slice*만 import할 수 있습니다.
 
-예: `📁 ~/features/aaa/api/request.ts`는
+예를 들어, `📁 ~/features/aaa/api/request.ts` 파일은 다음과 같습니다.
 
-* 같은 Layer의 `📁 ~/features/bbb` → **불가능**
-* 더 아래 Layer(`📁 ~/entities`, `📁 ~/shared`) → **가능**
-* 같은 Slice(`📁 ~/features/aaa/lib/cache.ts`) → **가능**
+* 같은 Layer의 `📁 ~/features/bbb` → **import 불가능**
+* 더 아래 Layer(`📁 ~/entities`, `📁 ~/shared`) → **import 가능**
+* 같은 Slice(`📁 ~/features/aaa/lib/cache.ts`) → **import 가능**
 
-`app`과 `shared`는 **예외**입니다.<br /><!-- -->두 Layer는 **Layer이면서 동시에 하나의 큰 Slice처럼 동작**하고, 내부는 **Segment**로 나눕니다.<br /><!-- -->이 경우 Segment끼리 자유롭게 Import할 수 있습니다.<br /><!-- -->(`shared`는 비즈니스 도메인이 없고, `app`은 모든 도메인을 묶는 역할을 합니다.)
+`app`과 `shared`는 조금 특이한 Layer입니다.<br /><!-- -->두 Layer는 **Layer이면서 동시에 하나의 큰 Slice처럼 동작**하고 내부 구조는 **Segment**로 나뉩니다.
+
+이 경우에는 Layer 내부에서 Segment끼리는 자유롭게 import할 수 있습니다.<br /><!-- -->(`shared`는 비즈니스 도메인이 없고, `app`은 모든 도메인을 묶는 상위 조정자 역할을 합니다.)
 
 ## Layer별 역할[​](#layer별-역할 "해당 헤딩으로 이동")
 
-각 Layer가 어떤 의미를 가지며, 어떤 코드를 포함하는지 정리했습니다.
+이제 각 Layer가 어떤 의미를 가지는지,<br /><!-- -->그리고 보통 어떤 종류의 코드가 해당 Layer에 들어오는지 정리해 보겠습니다.
 
 ### Shared[​](#shared "해당 헤딩으로 이동")
 
-앱의 **기본 구성 요소**를 모아둡니다.<br /><!-- -->백엔드, 서드파티 라이브러리, 실행 환경과의 연결, 그리고 **높은 응집도의 내부 라이브러리**를 포함합니다.
+Shared Layer는 앱의 **기본 구성 요소와 기반 도구들을 모아두는 곳**입니다.<br /><!-- -->백엔드, 서드파티 라이브러리, 실행 환경과의 연결,<br /><!-- -->그리고 여러 곳에서 사용하는 **응집도 높은 내부 라이브러리**가 여기에 위치합니다.
 
-* `app`과 마찬가지로 **Slice 없이 Segment로만 구성**합니다.
-* 비즈니스 도메인이 없으므로 **Shared 안의 파일끼리는 자유롭게 Import**할 수 있습니다.
+`app`과 마찬가지로 **Slice 없이 Segment로만 구성**합니다.<br /><!-- -->비즈니스 도메인이 없기 때문에, **Shared 내부의 파일들은 서로 자유롭게 import**할 수 있습니다.
 
-Segment 예시
+Segment 예시:
 
-* `📁 api` — API 클라이언트와 백엔드 요청 함수
+* `📁 api` — API 클라이언트와 공통 백엔드 요청 함수
 
 * `📁 ui` — 공통 UI 컴포넌트
 
   <!-- -->
 
-  * **비즈니스 로직 제외**, **브랜드 테마 적용 가능**
-  * 로고, 레이아웃, 자동완성/검색창 등 UI 로직 포함 가능
-  * 자동완성/검색창 등 **UI 로직 컴포넌트**도 가능
+  * **비즈니스 로직은 포함하지 않지만**, **브랜드 테마는 적용 가능**
+  * 로고, 레이아웃, 자동완성/검색창 등 **UI 자체 로직**을 포함하는 컴포넌트는 허용
 
 * `📁 lib` — 내부 라이브러리
 
   <!-- -->
 
-  * 단순 `utils/helpers` 모음이 아님 ([이 글 참고](https://dev.to/sergeysova/why-utils-helpers-is-a-dump-45fo))
-  * 하나의 주제(날짜, 색상, 텍스트 등)에 집중
-  * README로 역할과 범위를 문서화
+  * 단순히 `utils/helpers`를 모아두는 폴더가 아닙니다. ([이 글 참고](https://dev.to/sergeysova/why-utils-helpers-is-a-dump-45fo))
+  * 날짜, 색상, 텍스트 등 **하나의 주제에 집중**해야 합니다.
+  * README를 통해 역할과 범위를 문서화하는 것을 권장합니다.
 
 * `📁 config` — 환경변수, 전역 Feature Flag
 
@@ -7728,33 +7728,35 @@ Segment 예시
 
 * `📁 i18n` — 번역 설정, 전역 문자열
 
-> Segment 이름은 **무엇을 하는 폴더인지** 드러나야 합니다.<br />`components`, `hooks`, `types`처럼 역할이 불명확한 이름은 피하세요.
+> Segment 이름은 **이 폴더가 무엇을 하는지**를 명확하게 드러내야 합니다.<br />`components`, `hooks`, `types`처럼 역할이 모호한 이름은 가급적 피하세요.
 
 ### Entities[​](#entities "해당 헤딩으로 이동")
 
-프로젝트에서 다루는 **핵심 데이터 개념**을 나타냅니다.<br /><!-- -->비즈니스 용어(예: `User`, `Post`, `Product`)와 일치하는 경우가 많습니다.
+Entities Layer는 프로젝트에서 다루는 **핵심 비즈니스 개념**을 표현합니다.<br /><!-- -->대부분의 경우, 실제 도메인 용어(예: `User`, `Post`, `Product`)와 일치합니다.
 
-Entity Slice에는 다음을 포함할 수 있습니다:
+각 Entity Slice에는 다음과 같은 것들을 포함할 수 있습니다.
 
-구성
+구성:
 
-* `📁 model` — 데이터 상태와 검증 스키마
+* `📁 model` — 데이터 상태, 도메인 로직, 검증 스키마
 
-* `📁 api` — 해당 Entity의 API 요청
+* `📁 api` — 해당 Entity와 관련된 API 요청
 
 * `📁 ui` — Entity의 시각적 표현
 
   <!-- -->
 
-  * 완전한 UI 블록이 아니어도 됨
-  * 여러 페이지에서 재사용 가능하게 설계
-  * 비즈니스 로직은 props/slot으로 연결 권장
+  * 완성된 큰 UI 블록이 아니어도 됩니다.
+  * 여러 페이지에서 재사용 가능한 형태로 설계합니다.
+  * 비즈니스 로직은 가능하면 props/slot으로 외부에서 주입하는 방식을 권장합니다.
 
 #### Entity 간 관계[​](#entity-간-관계 "해당 헤딩으로 이동")
 
-원칙적으로 Slice끼리는 서로 모르면 좋습니다.<br /><!-- -->하지만 현실적으로 **다른 Entity를 포함**하거나 **상호작용**하는 경우가 있습니다.<br /><!-- -->이때는 로직을 **상위 Layer(Feature/Page)** 로 올려 처리하세요.
+원칙적으로는 Entity Slice끼리는 서로 **서로를 모르는 상태**가 이상적입니다.<br /><!-- -->하지만 실제 애플리케이션에서는 한 Entity가 다른 Entity를 **포함하거나**<br /><!-- -->여러 Entity가 서로 **상호작용**하는 일이 자주 발생합니다.
 
-만약 한 Entity 데이터에 다른 Entity가 포함된다면,<br />`@x` 표기를 사용해 **교차 Public API**로 연결을 명시적으로 드러내세요.
+이런 경우, 두 Entity 간의 구체적인 상호작용 로직은<br />**상위 Layer(Feature 또는 Page)** 로 올려서 처리하는 것이 좋습니다.
+
+만약 한 Entity의 데이터 안에 다른 Entity가 포함되어야 한다면,<br />`@x` 표기법을 사용해 **교차 Public API**를 통해 연결되었음을 명시해 주세요.
 
 entities/artist/model/artist.ts
 
@@ -7762,77 +7764,70 @@ entities/artist/model/artist.ts
 import type { Song } from "entities/song/@x/artist";
 
 export interface Artist {
-  name: string;
-  songs: Array<Song>;
+    name: string;
+    songs: Array<Song>;
 }
 ```
 
-자세한 내용은 [Cross-Import를 위한 Public API](/documentation/kr/docs/reference/public-api.md#public-api-for-cross-imports)를 참고하세요.
+자세한 내용은 [Cross-Import를 위한 Public API](/documentation/kr/docs/reference/public-api.md#public-api-for-cross-imports) 문서를 참고하세요.
 
 ### Feature[​](#feature "해당 헤딩으로 이동")
 
-사용자가 앱에서 수행하는 주요 기능을 담습니다. 보통 특정 Entity와 연결됩니다.
+Features Layer에는 **사용자가 애플리케이션에서 수행하는 주요 기능**이 들어갑니다.<br /><!-- -->보통 하나 이상의 Entity와 연관되어 동작합니다.
 
-* 모든 기능을 Feature로 만들 필요는 없습니다. 여러 페이지에서 재사용되는 경우에만 고려하세요.
-* 예: 여러 에디터에서 같은 댓글 기능을 쓴다면, comments를 Feature로 만듭니다.
-* Feature가 너무 많으면 중요한 기능을 찾기 어려워집니다.
+* 모든 동작을 무조건 Feature로 만들 필요는 없습니다.
+* **여러 페이지에서 재사용되는 기능**일 때 Feature로 추출하는 것을 고려하세요.
+* 예: 여러 종류의 에디터에서 동일한 댓글 기능을 사용한다면, `comments`를 Feature로 만들 수 있습니다.
+* Feature가 너무 많아지면, 중요한 기능이 어디 있는지 찾기 어려워질 수 있습니다.
 
-구성
+구성:
 
-* 📁 ui — 상호작용 UI(예: 폼)
-* 📁 api — 기능 관련 API 요청
-* 📁 model — 검증, 내부 상태
-* 📁 config — Feature Flag
+* `📁 ui` — 상호작용 UI (예: 폼, 검색 바 등)
+* `📁 api` — 해당 기능과 직접 관련된 API 요청
+* `📁 model` — 검증 로직, 내부 상태 관리
+* `📁 config` — Feature Flag 등 기능별 설정
 
-> 새로운 팀원이 들어왔을 때 Page와 Feature만 봐도 앱 기능 구조를 파악할 수 있도록 구성하세요.
+> 새로운 팀원이 프로젝트에 합류했을 때,<br /><!-- -->Page와 Feature만 훑어봐도 **이 앱이 어떤 기능을 제공하는지**를 대략 이해할 수 있도록 구성하는 것이 목표입니다.
 
 ### Widget[​](#widget "해당 헤딩으로 이동")
 
-독립적으로 동작하는 큰 UI 블록입니다.<br /><!-- -->여러 페이지에서 재사용되거나, 한 페이지에 큰 블록이 여럿 있을 때 유용합니다.
+Widgets Layer는 **독립적으로 동작하는 비교적 큰 UI 블록**을 두는 곳입니다.<br /><!-- -->여러 페이지에서 재사용되거나, 한 페이지에서 **큰 섹션 단위로 나누어지는 UI 블록**이 있을 때 유용합니다.
 
 tip
 
-* 재사용되지 않고 특정 페이지의 핵심 콘텐츠라면 Widget으로 분리하지 말고 Page 안에 두세요.
-* Nested Routing(예: [Remix](https://remix.run)) 환경에서는 Widget이 **Page와 유사한 방식**으로 동작합니다.
-  <br />
-  <!-- -->
-  예를 들어, 데이터 로딩, 로딩 상태 표시, 에러 처리 등을 포함해 **하나의 라우터 단위 블록**을 구성할 수 있습니다.
+재사용되지 않고 특정 페이지의 핵심 콘텐츠에만 쓰인다면, 굳이 Widget으로 분리하지 말고 Page 내부에 두는 것이 좋습니다.<br /><!-- -->Nested Routing(예: [Remix](https://remix.run)) 환경에서는 Widget이 **Page와 비슷한 역할**을 할 수 있습니다.<br /><!-- -->예를 들어 데이터 로딩, 로딩 상태 표시, 에러 처리 등을 모두 포함하는 **하나의 라우터 단위 UI 블록**으로 동작할 수 있습니다.
 
 ### Page[​](#page "해당 헤딩으로 이동")
 
-웹/앱의 **화면(screen) 또는 액티비티(activity)** 에 해당합니다. 대부분 페이지 1개 = Slice 1개이지만, 유사한 페이지는 하나의 Slice로 묶을 수 있습니다.
+Pages Layer는 웹/앱에서 보이는 **화면(screen) 또는 액티비티(activity)** 에 해당합니다.<br /><!-- -->일반적으로 “페이지 1개 = Slice 1개” 구조를 많이 사용하지만,<br /><!-- -->구조가 유사한 페이지들은 하나의 Slice로 묶는 것도 가능합니다.
 
-* 코드 찾기만 쉽다면 Page Slice 크기 제한은 없습니다.
-* 재사용되지 않는 UI는 Page 안에 둡니다.
-* 보통 전용 모델은 없고, 간단한 상태만 컴포넌트 내부에서 관리합니다.
+코드를 찾기만 쉽다면, Page Slice의 크기에 특별한 제한은 없습니다.<br /><!-- -->재사용되지 않는 UI는 그대로 Page 내부에 두면 됩니다.<br /><!-- -->Page Layer에는 보통 전용 model이 없으며, 필요한 경우 간단한 상태만 컴포넌트 내부에서 관리합니다.
 
-구성 예
+구성 예:
 
-* 📁 ui — UI, 로딩 상태, 에러 처리
-* 📁 api — 데이터 패칭/변경 요청
+* `📁 ui` — 페이지 UI, 로딩 상태, 에러 상태 처리
+* `📁 api` — 페이지에서 사용하는 데이터 패칭/변경 요청
 
 ### Process[​](#process "해당 헤딩으로 이동")
 
 caution
 
-Deprecated — 기존 코드는 feature나 app으로 옮기세요.
+**Deprecated** — 기존에 사용하던 코드는 가능하면 Feature나 App Layer로 이동하세요.
 
-과거에는 여러 페이지를 넘나드는 기능을 위한 탈출구 역할이었지만, 정의가 모호해 대부분의 앱에서는 사용하지 않습니다.<br /><!-- -->라우터, 서버 레벨 로직은 App Layer에 두고, App이 너무 커질 때만 제한적으로 고려하세요.
+과거에는 여러 페이지를 넘나드는 복잡한 기능을 처리하기 위한 **탈출구 같은 Layer**로 사용되었습니다.<br /><!-- -->하지만 역할이 모호하고, 대부분의 애플리케이션에서는 굳이 사용하지 않아도 충분히 설계가 가능합니다.
+
+라우터, 서버 연동 같은 전역적인 로직은 보통 App Layer에 둡니다.<br /><!-- -->App Layer가 너무 복잡해질 때 정말 필요한 경우에만 제한적으로 고려할 수 있습니다.
 
 ### App[​](#app "해당 헤딩으로 이동")
 
-앱 전역에서 동작하는 **환경 설정**과 **공용 로직**을 관리하는 Layer입니다.<br /><!-- -->예를 들어, 라우터 설정, 전역 상태 관리, 글로벌 스타일, 진입점 설정 등 **앱 전체에 영향을 주는 코드**를 둡니다.
+App Layer는 앱 전역에서 동작하는 **환경 설정**과 **공용 로직**을 관리하는 곳입니다.<br /><!-- -->예를 들어 라우터 설정, 전역 상태 관리(Store 설정), 글로벌 스타일 앱 진입점(Entry Point) 설정 등과 같이<br />**앱 전체에 영향을 주는 코드**가 위치합니다.<br />`shared`와 마찬가지로 Slice 없이 **Segment만으로 구성**합니다.
 
-* shared처럼 Slice 없이 Segment로 구성합니다.
+대표적인 Segment 예:
 
-* 대표 Segment:
-
-  <!-- -->
-
-  * `📁 routes` — Router 설정
-  * `📁 store` — Global State Store 설정
-  * `📁 styles` — Global Style
-  * `📁 entrypoint` — Application Entry Point와 Framework 설정
+* `📁 routes` — Router 설정
+* `📁 store` — Global State Store 설정
+* `📁 styles` — Global Style
+* `📁 entrypoint` — Application Entry Point와 Framework 설정
 
 
 ---
@@ -7841,7 +7836,7 @@ Deprecated — 기존 코드는 feature나 app으로 옮기세요.
 
 Public API는 **Slice 기능을 외부에서 사용할 수 있는 공식 경로**입니다.<br /><!-- -->외부 코드는 반드시 이 경로를 통해서만 Slice 내부의 특정 객체에 접근할 수 있습니다.<br /><!-- -->즉, **Slice와 외부 코드 간의 계약(Contract)** 이자 **접근 게이트(Gate)** 역할을 합니다.
 
-일반적으로 Public API는 **Re-export를 모아둔 index 파일**로 만듭니다.
+일반적으로 Public API는 **Re-export를 모아둔 `index` 파일**로 만듭니다.<br /><!-- -->예를 들어 `pages/auth/index.js` 파일에서 `LoginPage`, `RegisterPage` 등을 다시 내보내는 방식입니다.
 
 pages/auth/index.js
 
@@ -7854,62 +7849,76 @@ export { RegisterPage } from "./ui/RegisterPage";
 
 좋은 Public API는 Slice를 **다른 코드와 통합하기 쉽고, 안정적으로 유지보수**할 수 있게 해줍니다.<br /><!-- -->이를 위해 다음 세 가지 목표를 충족하는 것이 이상적입니다.
 
-1. **내부 구조 변경에 영향 없음** — Slice 내부 폴더 구조를 바꿔도 외부 코드는 그대로 동작해야 합니다.
-2. **주요 동작 변경 = API 변경** — Slice의 동작이 크게 바뀌어 기존 기대를 깨면, Public API도 변경되어야 합니다.
-3. **필요한 부분만 노출** — Slice 전체가 아니라 꼭 필요한 기능만 외부에 공개합니다.
+1. **내부 구조 변경에 영향 없음**
+   * Slice 내부 폴더 구조를 바꾸더라도, 외부 코드는 그대로 동작해야 합니다.
+2. **주요 동작 변경 = API 변경**
+   * Slice의 동작이 크게 바뀌어 기존 기대가 깨진다면, Public API도 함께 변경되어야 합니다.
+3. **필요한 부분만 노출**
+   * Slice 전체 구현을 공개하는 것이 아니라, 외부에서 꼭 필요한 기능만 선별해서 노출합니다.
 
 ### 안 좋은 예: 무분별한 Wildcard Re-export[​](#안-좋은-예-무분별한-wildcard-re-export "해당 헤딩으로 이동")
 
-개발 초기에는 편의상 모든 `export *`를 한 번에 노출하고 싶을 때가 있습니다.<br /><!-- -->이 경우 `export *` 같은 와일드카드 Re-export를 쓰기 쉽지만, 이는 Slice의 인터페이스를 불명확하게 만듭니다.
+개발 초기에는 편의상 한 줄로 모든 것을 export하고 싶어서<br />`export *` 같은 와일드카드 Re-export를 사용하고 싶을 수 있습니다.<br /><!-- -->하지만 이런 방식은 Slice의 인터페이스를 흐리게 만들고, 나중에 큰 부담이 됩니다.
+
+예를 들어 `features/comments/index.js`에서 `./ui/Comment` 전체를 그대로 export 하거나<br />`./model/comments` 내부 모델을 통째로 export 하는 식입니다.
 
 Bad practice, features/comments/index.js
 
 ```
 // ❌ 이렇게 하지 마세요
-export * from "./ui/Comment";       // 👎 무분별한 UI export
-export * from "./model/comments";   // 💩 내부 모델 노출
+export * from "./ui/Comment"; // 👎 무분별한 UI export
+export * from "./model/comments"; // 💩 내부 모델 노출
 ```
 
-문제가 되는 이유:
+이 방식이 문제가 되는 이유:
 
-* **발견 가능성 저하** — Public API에서 어떤 기능을 제공하는지 한눈에 알기 어렵습니다.
-* **내부 구현 노출** — 의도치 않게 Slice 내부 코드를 외부에서 사용하게 되고, 그 코드에 의존하면 리팩터링이 매우 어려워집니다.
+* **발견 가능성 저하**
+  * Public API에서 어떤 기능을 제공하는지 한눈에 파악하기 어렵습니다.
+* **내부 구현 노출**
+  * 원래 외부에서 알 필요가 없는 내부 코드를 외부에서 직접 사용하게 되고,
+    <br />
+    <!-- -->
+    이 코드에 대한 의존성이 생기면 리팩터링이 매우 어려워집니다.
 
 ## Cross-Import를 위한 Public API[​](#public-api-for-cross-imports "해당 헤딩으로 이동")
 
-**Cross-import**는 같은 Layer 안에서 한 Slice가 다른 Slice를 import하는 것을 말합니다.<br />[Layer Import Rule](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)에 따라 원칙적으로 금지되지만, **Entity 간 참조**처럼 불가피한 경우가 있습니다.
+**Cross-import**는 같은 Layer 안에서 한 Slice가 다른 Slice를 import하는 것을 말합니다.<br />[Layer Import Rule](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)에 따라 원칙적으로는 금지되지만,<br />**Entity 간 참조**처럼 현실적으로 불가피한 경우가 있습니다.
 
-예를 들어, 비즈니스 도메인에서 `Artist`와 `Song`이 서로 연결되는 관계가 있다면, 우회하기보다 코드에 그대로 반영하는 것이 좋습니다.
+예를 들어, 도메인 모델에서 `Artist`와 `Song`이 서로 연관 관계를 가진다면<br /><!-- -->이를 억지로 숨기기보다는 코드에도 그 관계를 드러내는 편이 낫습니다.
 
-이때는 `@x` 표기를 사용해 **전용 Public API**를 명시적으로 만듭니다.
+이럴 때는 `@x` 표기를 사용해 **교차 참조 전용 Public API**를 명시적으로 만듭니다.
 
-* `📂 entities`
+폴더 예시:
 
-  * `📂 A`
+```
+- 📂 entities
+    - 📂 artist
+        - 📂 @x
+            - song.ts — entities/song 전용 Public API
+        - index.ts — 일반 Public API
+```
 
-    * `📂 @x`
-      * `📄 B.ts` — `entities/B/` 전용 Public API
-    * `📄 index.ts` — 일반 Public API
-
-`entities/song`에서는 이렇게 import합니다.
+`entities/song`에서는 다음과 같이 import 합니다.
 
 ```
 import type { Artist } from "entities/artist/@x/song";
 ```
 
-`artist/@x/song`은 **Artist와 Song의 교차 지점** 을 의미합니다.
+여기서 `artist/@x/song`은 **Artist와 Song의 교차 지점**을 의미합니다.
 
 note
 
-Cross-import는 최소화해야 하며, **Entity Layer**에서만 사용하세요.<br /><!-- -->다른 Layer에서는 의존 관계를 제거하는 것이 좋습니다.
+Cross-import는 **반드시 최소화**해야 하며, 허용한다면 **Entity Layer에서만** 사용하는 것을 권장합니다.<br /><!-- -->다른 Layer에서는 가능한 한 의존 관계를 제거하거나, 설계를 다시 검토하는 것이 좋습니다.
 
 ## Index File 사용 시 주의사항[​](#index-file-사용-시-주의사항 "해당 헤딩으로 이동")
 
 ### Circular Import (순환 참조)[​](#circular-import-순환-참조 "해당 헤딩으로 이동")
 
-Circular Import는 두 개 이상의 파일이 서로를 참조하는 구조를 말합니다.<br /><!-- -->이 구조는 Bundler가 처리하기 어렵고, 디버그하기 힘든 런타임 오류를 유발할 수 있습니다.
+Circular Import는 두 개 이상의 파일이 서로를 참조하는 구조를 말합니다.<br /><!-- -->이 구조는 Bundler가 처리하기 어렵고, 디버그하기도 힘든 런타임 오류를 만들 수 있습니다.
 
-순환 참조는 Index 파일 없이도 발생할 수 있지만, Index 파일은 특히 이런 실수를 만들기 쉽습니다.<br /><!-- -->예를 들어, Slice의 Public API에서 `HomePage`와 `loadUserStatistics`를 export하고, `HomePage`가 다시 Public API를 통해 `loadUserStatistics`를 가져오면 다음과 같이 순환이 생깁니다.
+순환 참조는 Index 파일이 없어도 발생할 수 있지만,<br /><!-- -->Index 파일은 특히 이런 실수를 만들기 쉬운 환경을 제공합니다.
+
+예를 들어 Slice의 Public API(`pages/home/index.js`)에서 `HomePage`와 `loadUserStatistics`를 export합니다.
 
 ![세 파일이 서로 원형으로 import하는 모습](/documentation/kr/img/circular-import-light.svg#light-mode-only)![세 파일이 서로를 원형으로 import하고 있는 예시입니다.](/documentation/kr/img/circular-import-dark.svg#dark-mode-only)
 
@@ -7920,7 +7929,9 @@ pages/home/ui/HomePage.jsx
 ```
 import { loadUserStatistics } from "../"; // pages/home/index.js에서 import
 
-export function HomePage() { /* … */ }
+export function HomePage() {
+    /* … */
+}
 ```
 
 pages/home/index.js
@@ -7930,86 +7941,109 @@ export { HomePage } from "./ui/HomePage";
 export { loadUserStatistics } from "./api/loadUserStatistics";
 ```
 
-위 구조에서는 `index.js`가 `HomePage`를 가져오고, `HomePage.jsx`는 다시 `index.js`를 통해 `loadUserStatistics`를 가져오면서 순환이 발생합니다.
+`HomePage` 컴포넌트(`HomePage.jsx`)는 다시 Public API를 통해 `loadUserStatistics`를 import합니다.
 
-여기서는 `index.js` → `HomePage.jsx`→ `index.js` 순환이 발생합니다.
+이 경우 의존 관계는 다음과 같이 순환합니다.
+
+* `index.js` → `HomePage.jsx` → 다시 `index.js`
+
+이렇게 되면, 빌드 시점이나 런타임 시점에 예측하기 어려운 문제가 생길 수 있습니다.
 
 #### 예방 원칙[​](#예방-원칙 "해당 헤딩으로 이동")
 
-* 같은 Slice 내부: 상대 경로(`../api/loadUserStatistics`)로 import하고, 경로를 명확히 작성
-* 다른 Slice: 절대 경로(예: `@/features/...`)나 Alias를 사용 Index에서 export한 모듈이 다시 Index를 참조하지 않도록 주의
+* **같은 Slice 내부**에서 가져올 때는
+
+  <!-- -->
+
+  * 상대 경로(`../api/loadUserStatistics`)를 사용해서
+  * 어느 파일을 참조하는지 명확히 작성합니다.
+
+* **다른 Slice**에서 가져올 때는
+  <!-- -->
+  * 절대 경로(예: `@/features/...`)나 Alias를 사용합니다.
+
+* Index에서 export한 모듈이 다시 Index를 참조하지 않도록 주의합니다.
 
 ### Large Bundle & Tree-shaking 문제[​](#large-bundles "해당 헤딩으로 이동")
 
-일부 Bundler는 Index 파일에서 모든 모듈을 export할 때 **미사용 코드**를 제대로 제거(Tree-shaking)하지 못할 수 있습니다.
+일부 Bundler는 Index 파일에서 여러 모듈을 한 번에 export할 경우,<br /><!-- -->실제로 사용하지 않는 코드(Dead code)를 제대로 제거(Tree-shaking)하지 못할 수 있습니다.
 
-대부분의 Public API에서는 모듈 간 연관성이 높아 문제가 되지 않지만, `shared/ui`와 `shared/lib`처럼 **서로 관련 없는 모듈 집합**에서는 문제가 심각해집니다.
+대부분의 Public API에서는 모듈 간 연관성이 높아 크게 문제되지 않지만,<br />`shared/ui`, `shared/lib`처럼 **서로 관련성이 낮은 모듈 묶음**에서는 문제가 커집니다.
 
-* `📂 shared/ui/`
+예시 구조:
 
-  * `📁 button`
-  * `📁 text-field`
-  * `📁 carousel`
-  * `📁 accordion`
+```
+- 📂 shared/ui/
+    - 📂 button
+    - 📂 text-field
+    - 📂 carousel
+    - 📂 accordion
+```
 
-여기서 `Button` 하나만 사용해도 `carousel`이나 `accordion` 같은 무거운 의존성이 번들에 포함될 수 있습니다.<br /><!-- -->특히 Syntax Highlighter, Drag-and-Drop 라이브러리처럼 용량이 큰 의존성은 영향을 크게 줍니다.
+이 상황에서 단순히 `Button` 하나만 사용하고 싶어도,<br /><!-- -->만약 `shared/ui` 전체를 통째로 export하는 큰 Index가 있다면
+
+* `carousel`, `accordion` 등 무거운 의존성까지
+* 함께 번들에 포함될 수 있습니다.
+
+특히 Syntax Highlighter, Drag-and-Drop 라이브러리처럼<br /><!-- -->용량이 큰 의존성은 최종 번들 크기에 큰 영향을 줍니다.
 
 #### 해결 방법[​](#해결-방법 "해당 헤딩으로 이동")
 
-* 각 컴포넌트/라이브러리별로 별도 Index 파일 생성
+각 컴포넌트/라이브러리별로 **별도의 작은 Index 파일**을 만듭니다.
 
-* `📂 shared/ui/`
+예시:
 
-  * `📂 button`
-    * `📄 index.js`
-  * `📂 text-field`
-    * `📄 index.js`
+```
 
-* 직접 import
+- 📂 shared/ui/
+    - 📂 button
+        - index.ts
+    - 📂 text-field
+        - index.ts
+```
+
+그리고 사용하는 쪽에서는 `@/shared/ui/button`, `@/shared/ui/text-field`와 같이 **컴포넌트 단위로 직접 import**합니다.
 
 pages/sign-in/ui/SignInPage.jsx
 
 ```
-import { Button } from '@/shared/ui/button';
-import { TextField } from '@/shared/ui/text-field';
+import { Button } from "@/shared/ui/button";
+import { TextField } from "@/shared/ui/text-field";
 ```
 
-이렇게 하면 필요한 코드만 번들에 포함되어 Tree-shaking이 잘 동작합니다.
+이렇게 하면 Bundler가 사용되지 않는 컴포넌트 코드를 제거할 수 있어 Tree-shaking이 더 잘 동작하게 됩니다.
 
 ### Public API 우회 방지의 한계[​](#public-api-우회-방지의-한계 "해당 헤딩으로 이동")
 
-Slice에 Index 파일을 만들어도 직접 경로 import를 완전히 막을 수 없습니다.<br /><!-- -->특히 IDE의 Auto Import 기능이 잘못된 경로를 선택해 Public API 규칙을 어길 수 있습니다.
+Slice에 Index 파일을 만들어도, 개발자가 직접 내부 경로를 입력해 import하는 것을 완전히 막을 수는 없습니다. 특히 IDE의 Auto Import 기능이 내부 파일 경로를 자동으로 선택해 버리면, Public API 규칙을 모르는 상태에서 내부 구현을 바로 import하게 될 수 있습니다.
 
 #### 해결 방법[​](#해결-방법-1 "해당 헤딩으로 이동")
 
-* [Steiger](https://github.com/feature-sliced/steiger)와 같은 FSD 전용 아키텍처 린터로 import 경로를 검사·강제
+* [Steiger](https://github.com/feature-sliced/steiger) 같은 **FSD 전용 아키텍처 린터**를 사용해 프로젝트의 import 경로를 검사하고, 규칙을 강제합니다.
 
-### 대규모 프로젝트에서의 Bundler 성능 문제[​](#대규모-프로젝트에서의-bundler-성능-문제 "해당 헤딩으로 이동")
+## 대규모 프로젝트에서의 Bundler 성능 문제[​](#대규모-프로젝트에서의-bundler-성능-문제 "해당 헤딩으로 이동")
 
-[TkDodo 글](https://tkdodo.eu/blog/please-stop-using-barrel-files)에서도 지적했듯,<br /><!-- -->Index 파일이 많아지면 개발 서버(HMR) 속도가 느려질 수 있습니다.
+[TkDodo 글](https://tkdodo.eu/blog/please-stop-using-barrel-files)에서도 언급되듯,<br /><!-- -->Index 파일(일명 **barrel 파일**)이 너무 많아지면 개발 서버 실행 속도나 HMR(Hot Module Replacement) 성능이 저하될 수 있습니다.
 
 #### 최적화 방법[​](#최적화-방법 "해당 헤딩으로 이동")
 
-1. [Large Bundle & Tree-shaking 문제](#large-bundles) 방식 적용 — `shared/ui`와 `shared/lib`에 대형 Index 대신 컴포넌트별 Index 사용
+1. [Large Bundle & Tree-shaking 문제](#large-bundles)에서 설명한 것처럼, `shared/ui`, `shared/lib`에 있는 큰 Index를 없애고 컴포넌트/모듈 단위로 쪼갠 작은 Index를 사용합니다.
 
-2. Segment 단위의 불필요한 Index 파일 생성 방지
-   <br />
-   <!-- -->
-   예: `📄 features/comments/index.js`가 있다면, `📄 features/comments/ui/index.js` 같은 중첩 Index는 불필요
+2. Segment 단위로 불필요한 Index 파일을 만들지 않습니다.
 
-3. 큰 프로젝트는 기능 단위로 여러 Chunk(또는 패키지)로 나누기
+   * 예: `features/comments/index.ts`가 이미 Slice의 Public API 역할을 하고 있다면, `features/comments/ui/index.ts` 같이 중첩된 Index는 굳이 만들 필요가 없습니다.
 
-   <!-- -->
+3. 큰 프로젝트는 **기능 단위 Chunk 또는 패키지**로 나눕니다.
 
-   * Google Docs처럼 Document Editor와 File Browser를 분리
+   * 예: Google Docs처럼 Document Editor와 File Browser를 서로 다른 Chunk/패키지로 분리
 
-   * Monorepo에서 각 패키지를 독립 FSD Root로 구성
+   * Monorepo에서는 각 패키지를 독립적인 FSD Root로 구성할 수 있습니다.
 
      <!-- -->
 
      * 일부 패키지는 Shared·Entity Layer만 포함
      * 다른 패키지는 Page·App Layer만 포함
-     * 필요한 경우 작은 Shared를 갖고 다른 패키지의 큰 Shared를 참조
+     * 필요한 경우, 작은 Shared를 각 패키지에 두고 다른 패키지의 큰 Shared를 참조하는 방식으로 설계
 
 
 ---
@@ -8018,58 +8052,67 @@ Slice에 Index 파일을 만들어도 직접 경로 import를 완전히 막을 �
 
 ## Slice[​](#slice "해당 헤딩으로 이동")
 
-Slice는 Feature-Sliced Design 조직 구조의 **두 번째 계층**입니다.<br /><!-- -->주 목적은 제품, 비즈니스, 또는 단순히 애플리케이션 관점에서 **관련 있는 코드를 하나로 묶는 것**입니다.
+Slice는 Feature-Sliced Design 조직 구조에서 **두 번째 계층**입니다.<br /><!-- -->역할은 제품, 비즈니스, 또는 애플리케이션 관점에서 **서로 관련 있는 코드를 하나로 묶는 것**입니다.
 
-Slice의 이름은 표준화되어 있지 않고, 애플리케이션의 비즈니스 도메인에 따라 결정됩니다. 예를 들어:
+Slice 이름은 고정된 규칙이 없으며, 애플리케이션의 **비즈니스 도메인**에 맞춰 정합니다.
+
+예를 들어:
 
 * 사진 갤러리: `photo`, `effects`, `gallery-page`
 * 소셜 네트워크: `post`, `comments`, `news-feed`
 
-`Shared`와 `App` Layer는 Slice를 포함하지 않습니다.<br /><!-- -->Shared는 비즈니스 로직이 전혀 없어 제품 관점에서 의미가 없고, App은 애플리케이션 전체를 다루기 때문에 별도로 나눌 필요가 없습니다.
+`Shared` Layer와 `App` Layer는 Slice를 가지지 않습니다.
+
+* `Shared` Layer는 비즈니스 로직이 전혀 없으므로, 제품 관점에서 Slice로 나눌 의미가 없습니다.
+* `App` Layer는 애플리케이션 전체를 다루기 때문에, 여기서 다시 Slice로 나눌 필요가 없습니다.
 
 ### Zero 결합도와 높은 응집도[​](#zero-coupling-high-cohesion "해당 헤딩으로 이동")
 
-Slice는 **다른 Slice와 독립적**이며, **자신의 핵심 목적과 관련된 대부분의 코드**를 포함해야 합니다.<br /><!-- -->아래 그림은 **응집도(cohesion)** 와 **결합도(coupling)** 개념을 시각적으로 설명합니다.
+Slice는 **다른 Slice와 최대한 독립적**이어야 하고,<br /><!-- -->또한 **자신의 핵심 목적과 직접 관련된 코드 대부분을 내부에 포함**해야 합니다.
+
+아래 그림은 **응집도(cohesion)** 와 **결합도(coupling)** 개념을 시각적으로 보여 줍니다.
 
 ![](/documentation/kr/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/kr/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
-Slice의 독립성은 [Layer Import Rule](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)로 보장됩니다.
+Slice 간 독립성은 [Layer Import Rule](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)로 보장됩니다.
 
-> *Slice 내부의 모듈(파일)은 자신보다 아래 계층(Layer)에 있는 Slice만 import할 수 있습니다.*
+> *Slice 내부 모듈(파일)은 자신보다 아래 계층(Layer)에 있는 Slice만 import할 수 있습니다.*
 
 ### Slice의 Public API 규칙[​](#slice의-public-api-규칙 "해당 헤딩으로 이동")
 
-Slice 내부 구조는 **팀이 원하는 방식대로 자유롭게** 구성할 수 있습니다.<br /><!-- -->단, 다른 Slice가 사용할 수 있도록 **명확한 Public API**를 반드시 제공해야 합니다.<br /><!-- -->이 규칙은 **Slice Public API Rule**로 강제됩니다.
+Slice 내부 구조는 **팀이 원하는 방식으로 자유롭게** 설계할 수 있습니다.<br /><!-- -->하지만 다른 Slice에서 사용할 수 있도록 **명확한 Public API**를 반드시 제공해야 합니다.<br /><!-- -->이 규칙을 **Slice Public API Rule**이라고 부릅니다.
 
-> *모든 Slice(또는 Slice가 없는 Layer의 Segment)는 Public API를 정의해야 합니다.*<br />*외부 모듈은 Slice/Segment의 내부 구조가 아니라 Public API를 통해서만 접근할 수 있습니다.*
+> *모든 Slice(또는 Slice가 없는 Layer의 Segment)는 Public API를 정의해야 합니다.*<br />*외부 모듈은 Slice/Segment의 내부 구조에 직접 접근하지 않고, Public API를 통해서만 접근해야 합니다.*
 
-Public API의 목적과 작성 방법은 [Public API Reference](/documentation/kr/docs/reference/public-api.md)에서 자세히 설명합니다.
+Public API의 역할과 작성 방법은 [Public API Reference](/documentation/kr/docs/reference/public-api.md)에서 자세히 설명합니다.
 
 ### Slice Group[​](#slice-group "해당 헤딩으로 이동")
 
-연관성이 높은 Slice는 폴더로 묶어서 관리할 수 있습니다.<br /><!-- -->단, 다른 Slice와 동일하게 **격리 규칙**을 적용해야 하며, 그룹 내부에서도 **코드 공유는 불가능**합니다.
+서로 연관성이 높은 Slice들은 폴더로 묶어 **그룹처럼** 관리할 수 있습니다.<br /><!-- -->다만, 그룹으로 묶더라도 각 Slice에 대해 기존과 동일한 **격리 규칙**이 적용되며,<br />**그룹 내부라고 해서 코드 공유가 허용되는 것은 아닙니다.**
 
 ![Features \&quot;compose\&quot;, \&quot;like\&quot; 그리고 \&quot;delete\&quot;가 \&quot;post\&quot; 폴더에 그룹화되어 있습니다. 해당 폴더에는 허용되지 않음을 나타내기 위해 취소선이 그어진 \&quot;some-shared-code.ts\&quot; 파일도 있습니다.](/documentation/kr/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## Segment[​](#segment "해당 헤딩으로 이동")
 
-Segment는 FSD 구조에서 **세 번째이자 마지막 계층**이며,<br /><!-- -->코드를 **기술적 성격**에 따라 그룹화합니다.
+Segment는 FSD 구조에서 **세 번째이자 마지막 계층**으로,<br /><!-- -->코드를 **기술적인 역할과 성격**에 따라 나누는 기준입니다.
 
-표준 Segment:
+표준 Segment는 다음과 같습니다.
 
-* `ui` — UI 관련: Component, Date Formatter, Style 등
+* `ui` — UI 관련 코드: Component, Date Formatter, Style 등
 * `api` — Backend 통신: Request Function, Data Type, Mapper 등
-* `model` — Data Model: Schema, Interface, Store, Business Logic
-* `lib` — Slice 내부 Library 코드
-* `config` — Configuration과 Feature Flag
+* `model` — Data Model: Schema, Interface, Store, Business Logic 등
+* `lib` — Slice 내부에서 사용하는 Library 코드
+* `config` — Configuration, Feature Flag 등 설정 관련 코드
 
-각 Layer에서 Segment를 어떻게 활용하는지는 [Layer 페이지](/documentation/kr/docs/reference/layers.md#layer-definitions)를 참고하세요.
+각 Layer에서 Segment를 어떻게 사용하는지는 [Layer 페이지](/documentation/kr/docs/reference/layers.md#layer-definitions)에서 자세히 설명합니다.
 
-또한 **커스텀 Segment**를 만들 수 있습니다.<br /><!-- -->특히 `App` Layer와 `Shared` Layer는 Slice가 없기 때문에, 커스텀 Segment가 자주 사용됩니다.
+또한 프로젝트에 맞게 **커스텀 Segment**를 정의할 수도 있습니다.<br /><!-- -->특히 `App` Layer와 `Shared` Layer는 Slice가 없기 때문에,<br /><!-- -->이 두 Layer에서는 커스텀 Segment를 자주 사용하게 됩니다.
 
-Segment 이름은 **내용의 본질(components/hooks/types)** 이 아니라 **목적**을 설명해야 합니다.<br /><!-- -->예를 들어 `components`, `hooks`, `types` 같은 이름은 찾을 때 도움이 되지 않으므로 피하세요.
+Segment 이름을 정할 때는,<br /><!-- -->폴더 안에 **무슨 파일이 들어 있는지**가 아니라 **무엇을 위해 존재하는지(목적)** 가 드러나도록 작성하는 것이 좋습니다.
+
+예를 들어 `components`, `hooks`, `types` 같은 이름은 성격만 나타낼 뿐,<br />**역할이나 목적을 알기 어렵기 때문에** 가능한 한 피하는 편이 좋습니다.
 
 
 ---
