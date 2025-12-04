@@ -10,17 +10,17 @@
 - [💫 Community](/community.md): Community resources, additional materials
 - [Team](/community/team.md): Core-team
 - [Alternatives](/docs/about/alternatives.md): History of architecture approaches
-- [Mission](/docs/about/mission.md): 이 문서는 우리가 방법론을 개발할 때 따르는 목표와 적용 가능성의 한계를 설명합니다.
-- [Motivation](/docs/about/motivation.md): Feature-Sliced Design은 여러 개발자들의 연구와 경험을 결합하여
+- [Mission](/docs/about/mission.md): 이 문서는 우리가 이 방법론을 설계할 때 어떤 목표를 가지고 있는지,
+- [Motivation](/docs/about/motivation.md): Feature-Sliced Design은 여러 개발자들의 연구와 경험을 결합해
 - [Promote in company](/docs/about/promote/for-company.md): Do the project and the company need a methodology?
 - [Promote in team](/docs/about/promote/for-team.md): - Onboard newcomers
 - [Integration aspects](/docs/about/promote/integration.md): Summary
 - [Partial Application](/docs/about/promote/partial-application.md): How to partially apply the methodology? Does it make sense? What if I ignore it?
 - [Abstractions](/docs/about/understanding/abstractions.md): The law of leaky abstractions
 - [About architecture](/docs/about/understanding/architecture.md): 문제점들
-- [Knowledge types](/docs/about/understanding/knowledge-types.md): 소프트웨어 프로젝트를 개발할 때 다루게 되는 지식은 크게 세 가지로 나눌 수 있습니다:
-- [Naming](/docs/about/understanding/naming.md): 개발자들은 각자의 경험과 관점에 따라 같은 대상을 다르게 부르는 경우가 많습니다. 이는 팀 내에서 혼동을 유발할 수 있습니다. 예를 들어:
-- [Needs driven](/docs/about/understanding/needs-driven.md): 새로운 Feature의 목표가 불분명하거나 작업 정의가 모호한가요? **이 방법론의 핵심은 작업과 목표를 명확히 정의하는 데 있습니다.**
+- [Knowledge types](/docs/about/understanding/knowledge-types.md): 소프트웨어 프로젝트를 개발할 때 다루게 되는 지식은 크게 다음 세 가지 유형으로 나눌 수 있습니다.
+- [Naming](/docs/about/understanding/naming.md): 개발자들은 각자의 경험과 관점에 따라 같은 개념을 서로 다른 이름으로 부르는 경우가 많습니다.
+- [Needs driven](/docs/about/understanding/needs-driven.md): 새로운 Feature의 목표가 흐릿하거나, 해야 할 작업 정의가 모호한가요?
 - [Signals of architecture](/docs/about/understanding/signals.md): If there is a limitation on the part of the architecture, then there are obvious reasons for this, and consequences if they are ignored
 - [Branding Guidelines](/docs/branding.md): FSD's visual identity is based on its core-concepts: Layered, Sliced self-contained parts, Parts & Compose, Segmented.
 - [Decomposition cheatsheet](/docs/get-started/cheatsheet.md): Use this as a quick reference when you're deciding how to decompose your UI. PDF versions are also available below, so you can print it out and keep one under your pillow.
