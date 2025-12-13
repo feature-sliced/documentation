@@ -1,21 +1,566 @@
 ---
 sidebar_position: 4
-sidebar_class_name: sidebar-item--wip
 pagination_next: reference/layers
 ---
 
-import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+# Cross-import
 
-# Cross-imports
+This section gives a **high-level overview** of what this document covers.
 
-<WIP ticket="220" />
+Here, we define a cross-import as an import **between different slices within the same `layer`**.  
+The goal of this document is to explain, with code examples, why this is an important problem to solve in FSD and how to think about it.
 
-> Cross-imports appear when the layer or abstraction begins to take too much responsibility than it should. That is why the methodology identifies new layers that allow you to uncouple these cross-imports
+Most of the examples will use the `features/*` and `widgets/*` slices  
+(e.g. `features/cart` → `features/product`).
 
-## See also
+Cross-imports in the `entities` layer are only covered briefly in this document.  
+Here, we describe only the mechanisms currently used in real-world projects.
 
-- [(Thread) About the supposed inevitability of cross-ports](https://t.me/feature_sliced/4515)
-- [(Thread) About resolving cross-ports in entities](https://t.me/feature_sliced/3678)
-- [(Thread) About cross-imports and responsibility](https://t.me/feature_sliced/3287)
-- [(Thread) About imports between segments](https://t.me/feature_sliced/4021)
-- [(Thread) About cross-imports inside shared](https://t.me/feature_sliced/3618)
+We **do not** try to decide long-term design direction here, such as:
+
+- how strictly we should constrain `entities` as a domain/type-only layer,
+- whether to completely forbid UI in `entities`, etc.
+
+These topics are still under discussion and should be considered an evolving area.
+
+---
+
+## Scope
+
+This section clarifies **exactly what scope** this document addresses.
+
+In this document, **cross-import** is limited to the following case:
+
+> Two different `slice`s inside the same `layer` importing each other.
+
+In other words, this page only covers the situation where different slices inside the **same** layer import each other.  
+Import rules **between layers**, usage patterns of the `shared` layer, and the Public API principles are **out of scope** for this page.
+For those topics, see [Layers][layers] and [Public API][public-api].
+
+The general direction for the `entities` layer is to treat it as a **domain/model/type-centric layer**,  
+and we recommend that **new code does not place UI in `entities`**.
+
+Cross-imports between `entities` should only be allowed in a **limited fashion at the domain/type level**.
+
+This page focuses mainly on the `features` / `widgets` layers:
+
+- how to reason about cross-imports there,
+- and what strategies we can use to handle them.
+
+For the `entities` layer, we only give minimal guidance and rules.
+
+---
+
+## Why is this a code smell?
+
+This section explains why cross-import is not just a matter of style or personal preference,  
+but is generally considered a **code smell**.
+
+For example, if the `cart` slice depends directly on `product` UI or business logic,  
+the domain/responsibility boundaries become blurry.  
+Deep imports, path changes, and strong coupling to internal files of a `slice` make refactoring or splitting modules increasingly complex.
+
+With small code examples, we’ll illustrate these problems and define what it means when:
+
+- the folder structure *looks* well separated,
+- but the actual dependency graph is tangled underneath.
+
+---
+
+### Bad cross-import (features → features deep import)
+
+```tsx title="features/cart/ui/CartSummary.tsx"
+import React from 'react';
+import { useProductDetails } from '@/features/product/model/useProductDetails';
+import { ProductPrice } from '@/features/product/ui/ProductPrice';
+
+type CartItem = {
+    productId: string;
+    quantity: number;
+};
+
+interface CartSummaryProps {
+    items: CartItem[];
+}
+
+export function CartSummary(props: CartSummaryProps) {
+    return (
+        <div>
+            {props.items.map((item) => (
+                <CartItemRow key={item.productId} item={item} />
+            ))}
+        </div>
+    );
+}
+
+function CartItemRow({ item }: { item: CartItem }) {
+    const product = useProductDetails(item.productId); // cross-import into product model
+
+    return (
+        <div>
+            <span>{product.name}</span>
+                <ProductPrice price={product.price} /> {/* cross-import into product UI */}
+            <span>x {item.quantity}</span>
+        </div>
+    );
+}
+```
+
+Example of a problematic situation:
+
+- `features/cart` depends on both `features/product/model/*` and `features/product/ui/*`
+- a small structural change inside the `product` slice can immediately break `cart`
+- responsibility boundaries get blurred  
+  → the cart starts to handle not only **cart logic** but also **product UI**
+
+In such a situation, it’s more accurate to say that:
+
+The cart is deeply entangled with the internal implementation of product,  
+Rather than cart and product being well-separated slices.
+
+---
+
+### Better direction (orchestrate from an upper layer)
+
+```tsx title="pages/CheckoutPage.tsx"
+import React from 'react';
+import { CartSummary } from '@/features/cart';
+import { ProductListForCart } from '@/features/product';
+
+export function CheckoutPage() {
+    const cartItems = [
+        { productId: 'p1', quantity: 2 },
+        { productId: 'p2', quantity: 1 },
+    ];
+
+    return (
+        <div>
+            <h1>Checkout</h1>
+            <ProductListForCart cartItems={cartItems} />
+            <CartSummary items={cartItems} />
+        </div>
+    );
+}
+```
+
+```tsx title="features/product/index.ts"
+export { ProductListForCart } from './ui/ProductListForCart';
+```
+
+```tsx title="features/cart/index.ts"
+export { CartSummary } from './ui/CartSummary';
+```
+
+In the improved structure, `CheckoutPage` knows about both `cart` and `product` and composes them.  
+We **minimize direct cross-imports** between `features/cart` ↔ `features/product`.  
+Each `slice` exposes only its **Public API**, and does not access the internals of other slices directly.
+
+In other words:
+
+- orchestration/flow belongs to an upper layer,
+- each slice operates only within its own responsibility and boundaries.
+
+---
+
+## No cross-import concept in the shared layer
+
+The `shared` layer does not have the concept of `slice`.  
+Therefore, this document explicitly states that imports between components **inside `shared`** are **not considered cross-imports**.
+
+Most forms of reuse within `shared` are **allowed without additional constraints**.
+
+---
+
+### Internal reuse inside the shared layer
+
+```tsx title="shared/Button.tsx"
+import React from 'react';
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    variant?: 'primary' | 'secondary';
+}
+
+export function Button({ variant = 'primary', ...rest }: ButtonProps) {
+    return <button {...rest} />;
+}
+```
+
+```tsx title="shared/Dialog.tsx"
+import React from 'react';
+import { Button } from './Button';
+
+interface DialogProps {
+    title: string;
+    onConfirm(): void;
+    onCancel(): void;
+}
+
+export function Dialog(props: DialogProps) {
+    return (
+        <div>
+            <h2>{props.title}</h2>
+            <Button onClick={props.onCancel}>Cancel</Button>
+            <Button onClick={props.onConfirm}>OK</Button>
+        </div>
+    );
+}
+```
+
+If both components live inside `shared`,  
+imports between them are **not** considered “cross-imports” in the sense used in this document.
+
+For dependencies inside `shared`, it is enough to follow the kind of principles  
+we usually apply when designing a generic library (complexity, coupling, etc.).
+
+---
+
+## Entities Layer cross-imports
+
+This section describes, from a **practical standpoint**, how we currently deal with cross-imports in the `entities` layer.
+
+The `entities` layer is designed as a **domain/type-centered** layer.  
+It typically contains domain models, IDs, DTOs, and other domain primitives.
+
+Therefore, the baseline guideline is:
+
+- we recommend **not putting UI in `entities`**,
+- and when UI does exist in `entities`, we treat it as a **code smell** and as a candidate to gradually move to an upper layer (`features`, `widgets`, etc.).
+
+Reasons for discouraging UI in `entities` include:
+
+- the domain layer becomes directly dependent on presentation details (React, Router, design system, etc.)  
+  → domain reusability and stability decrease.
+- the direction of dependencies between layers becomes unclear,  
+  and cross-imports shift from **domain relationships** to **tangled UI relationships**.
+- UI tends to change frequently (experiments, redesigns),  
+  while domain should stay relatively stable. Mixing them in one layer makes change management much harder.
+- if we allow UI in `entities`, UI reuse between entities creates **new cross-import points**, making the overall structure more complex.
+
+In real projects, we often need to share types or DTOs between entities because of domain relationships  
+(for example, `Artist–Song`, `Order–OrderItem`, etc.).
+
+To express such domain-level relationships, we use `@x` as a dedicated **Public API surface** for cross-imports between `entities`.  
+Here, `@x` should be seen more as a **pragmatic compromise** that works in the current situation, rather than a final, ideal design.
+
+As the design of the `entities` layer becomes more refined,  
+and as we move remaining UI-related code smells out of `entities` into upper layers,  
+the role and structure of `@x` may also evolve.
+
+---
+
+### Defining domain types in entities
+
+```tsx title="entities/order/model/orderTypes.ts"
+export type OrderId = string;
+
+export interface OrderItemRef {
+    itemId: OrderItemId;
+    quantity: number;
+}
+
+export interface Order {
+    id: OrderId;
+    items: OrderItemRef[];
+    totalAmount: number;
+}
+```
+
+```tsx title="entities/orderItem/model/orderItemTypes.ts"
+export type OrderItemId = string;
+
+export interface OrderItem {
+    id: OrderItemId;
+    sku: string;
+    unitPrice: number;
+}
+```
+
+---
+
+### Cross-import via @x (domain types only)
+
+```tsx title="entities/order/@x/payment.ts"
+// Public API for other entities
+export type { OrderId, Order, OrderItemRef } from '../model/orderTypes';
+export type { OrderItemId } from '@/entities/orderItem/model/orderItemTypes';
+```
+
+```tsx title="entities/payment/model/paymentTypes.ts"
+import type { OrderId } from '@/entities/order/@x';
+
+export interface Payment {
+    id: string;
+    orderId: OrderId;
+    amount: number;
+}
+```
+
+Key points:
+
+- cross-imports are only allowed through paths like `@/entities/order/@x`.
+- `@x` exposes **types/domain data only**, without UI.
+- other entities always import related types **via `@x`**, and never from arbitrary internal paths.
+
+---
+
+### Example of code smell: UI inside Entities
+
+```tsx title="entities/product/ui/ProductCard.tsx"
+import React from 'react';
+import type { Product } from '../model/productTypes';
+
+interface ProductCardProps {
+    product: Product;
+}
+
+export function ProductCard(props: ProductCardProps) {
+    return (
+        <div>
+            <strong>{props.product.name}</strong>
+            <span>{props.product.price}</span>
+        </div>
+    );
+}
+```
+
+This type of UI causes several problems:
+
+- it introduces React as a dependency into `entities`,
+- it encourages other layers to import `entities/product/ui/ProductCard` directly,
+- in the end, the `entities` layer becomes a mix of **domain + UI**.  
+  → this is clearly a **code smell**.
+
+> Recommended direction:  
+> Move `ProductCard` to an upper layer such as `features/product/ui/ProductCard.tsx`,  
+> and leave only the Product type, ID, and domain logic in `entities`.
+
+---
+
+## Features/Widgets: Multiple Strategies
+
+For the `features` and `widgets` layers, it is more realistic to say that we have **multiple strategies** for dealing with cross-imports,
+rather than declaring cross-imports as **absolutely forbidden in all cases.**
+
+This section focuses less on specific code, and more on **which patterns (strategies)** we can use.
+
+---
+
+### Strategy A: Slice merge
+
+If two `slice`s are not actually independent enough to exist separately,  
+and they are always changed together, we can merge them into a larger `feature`/`widget` `slice`.
+
+Example (Before):
+
+- `features/profile`
+- `features/profileSettings`
+
+If these two keep cross-importing each other and always move together,  
+they are practically one feature.  
+→ In this case, it is often better to merge them into a single `features/profile` slice.
+
+---
+
+### Strategy B: Push shared domain flows down into `entities` (domain-only)
+
+If two `feature`s share the same domain-level flow,  
+we can push that flow down into a domain `slice` inside `entities` (e.g. `entities/session`).  
+Inside that slice, the flow is represented **only in terms of domain types/logic**.
+
+The important point is that this domain flow **must not depend on UI**.  
+UI remains in upper layers such as `features`/`widgets` or above.
+
+#### Domain logic in entities/session only
+
+```tsx title="entities/session/model/sessionTypes.ts"
+export interface Session {
+    userId: string;
+    roles: string[];
+    expiresAt: Date;
+}
+```
+
+```tsx title="entities/session/model/session.ts"
+import type { Session } from './sessionTypes';
+
+export function createSessionFromToken(token: string): Session {
+// parse token, extract claims, etc.
+    return {
+        userId: 'user-1',
+        roles: ['user'],
+        expiresAt: new Date(Date.now() + 3600 * 1000),
+    };
+}
+
+export function isSessionExpired(session: Session): boolean {
+    return session.expiresAt.getTime() <= Date.now();
+}
+```
+
+#### Using the domain logic from features (UI separated)
+
+```tsx title="features/auth/ui/AuthGate.tsx"
+import React from 'react';
+import type { ReactNode } from 'react';
+import { createSessionFromToken, isSessionExpired } from '@/entities/session/model/session';
+
+interface AuthGateProps {
+    token: string | null;
+    children: ReactNode;
+}
+
+export function AuthGate(props: AuthGateProps) {
+    if (!props.token) {
+        return <div>Please log in.</div>;
+    }
+
+    const session = createSessionFromToken(props.token);
+
+    if (isSessionExpired(session)) {
+        return <div>Session expired. Please log in again.</div>;
+    }
+
+    return <>{props.children}</>;
+}
+```
+
+In short:
+
+- domain logic (`createSessionFromToken`, `isSessionExpired`, etc.) lives in `entities`,
+- UI lives only in upper layers, e.g. `features/auth/ui`.
+
+---
+
+### Strategy C: Orchestrate from upper layers (pages / app)
+
+Instead of having slices within the same `layer` import each other,  
+we can compose them at a higher level—`pages` / `app`—using DI, slot patterns, or higher-level composition.
+
+In other words, instead of directly connecting slices with cross-imports,  
+we let an upper layer **orchestrate and assemble the flow**.
+
+#### Example:
+
+```tsx title="features/userProfile/index.ts"
+export { UserProfilePanel } from './ui/UserProfilePanel';
+```
+
+```tsx title="features/activityFeed/index.ts"
+export { ActivityFeed } from './ui/ActivityFeed';
+```
+
+```tsx title="pages/UserDashboardPage.tsx"
+import React from 'react';
+import { UserProfilePanel } from '@/features/userProfile';
+import { ActivityFeed } from '@/features/activityFeed';
+
+export function UserDashboardPage() {
+    return (
+        <div>
+            <UserProfilePanel />
+            <ActivityFeed />
+        </div>
+    );
+}
+```
+
+In this structure, `features/userProfile` and `features/activityFeed` don’t know about each other.  
+`pages/UserDashboardPage` composes them together to build the full screen.
+
+---
+
+### Strategy D: Cross-feature reuse only via Public API
+
+If cross-feature reuse is truly necessary, it should be allowed **only via a clear Public API**  
+(e.g. exported hooks, UI components).  
+Direct access to another slice’s `store`/`model` or internal implementation details should be avoided.
+
+#### Example Public API
+
+```tsx title="features/auth/index.ts"
+
+export { useAuth } from './model/useAuth';
+export { AuthButton } from './ui/AuthButton';
+```
+
+```tsx title="features/profile/ui/ProfileMenu.tsx"
+
+import React from 'react';
+import { useAuth, AuthButton } from '@/features/auth';
+
+export function ProfileMenu() {
+    const { user } = useAuth();
+
+    if (!user) {
+        return <AuthButton />;
+    }
+
+    return <div>{user.name}</div>;
+}
+```
+
+For example, we should prevent `features/profile` from accessing paths like `features/auth/model/internal/*`.  
+It should only rely on what `features/auth` has explicitly exposed as its Public API.
+
+---
+
+## When should cross-imports be treated as a problem?
+
+After going through the various strategies above, the next natural question is:
+
+> When is it acceptable to leave a cross-import as is?  
+> And when should we treat it as a **code smell** and consider refactoring?
+
+Typical warning signs include:
+
+- direct dependencies on another slice’s store/model/business logic
+- deep imports into another slice’s internal files
+- **bidirectional dependencies** between slices, such as A ↔ B
+- changes in one slice almost always breaking another slice
+- flows that would be much clearer if orchestrated in an upper layer (`pages` / `app`),  
+  but are instead forced into cross-imports within the same layer
+
+When you see these signals,  
+you should treat the cross-import as a **code smell**  
+and check whether at least one of the strategies above can be applied.
+
+---
+
+## How strict you are is a team/project decision
+
+Finally, this section emphasizes that:
+
+- how strictly to enforce these rules
+- depends on the team and the project.
+
+For example:
+
+- For **early-stage products** where experimentation and throwaway work are common,  
+  it may be reasonable to allow some cross-imports for short-term development speed.
+- On the other hand, for **long-lived or heavily regulated systems** (e.g. fintech, large-scale services),  
+  stricter boundaries and layer design may be preferable to achieve long-term stability and maintainability.
+
+We don’t treat cross-imports as an **absolute prohibition**.  
+Rather, we treat them as dependencies that are **generally best avoided**.
+
+When introducing a cross-import, we should always be aware that it is a **deliberate architectural choice**.  
+It’s also a good idea to document that choice, and review it periodically as the system evolves.
+
+Teams should align on questions such as:
+
+- What level of strictness do we want for this team/project?
+- How do we reflect that strictness in lint rules, code review, documentation, etc.?
+- As the domain and architecture mature, how often and according to what criteria do we revisit existing cross-imports?
+
+---
+
+## References
+
+- (Thread) Discussion of situations where cross-imports are unavoidable: [https://t.me/feature_sliced/4515](https://t.me/feature_sliced/4515)
+- (Thread) Approaches to solving cross-imports in Entity: [https://t.me/feature_sliced/3678](https://t.me/feature_sliced/3678)
+- (Thread) Cross-imports and responsibility boundaries: [https://t.me/feature_sliced/3287](https://t.me/feature_sliced/3287)
+- (Thread) Resolving import issues between segments: [https://t.me/feature_sliced/4021](https://t.me/feature_sliced/4021)
+- (Thread) Cross-imports within Shared internal structure: [https://t.me/feature_sliced/3618](https://t.me/feature_sliced/3618)
+
+[layers]: https://feature-sliced.github.io/documentation/docs/reference/layers
+[public-api]: https://feature-sliced.github.io/documentation/docs/reference/public-api
