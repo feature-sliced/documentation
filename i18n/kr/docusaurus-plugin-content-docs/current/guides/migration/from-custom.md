@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-sidebar_label: 기존 아키텍처에서 전환하기
+sidebar_label: From a custom architecture
 ---
 
 # 기존 아키텍처에서 FSD로의 마이그레이션

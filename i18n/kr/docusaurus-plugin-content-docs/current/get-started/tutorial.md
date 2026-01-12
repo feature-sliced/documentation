@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# 튜토리얼
+# Tutorial
 
 ## Part 1. 설계
 

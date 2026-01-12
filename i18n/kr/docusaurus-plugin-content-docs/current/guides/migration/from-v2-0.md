@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# v2.0 -> v2.1 마이그레이션 가이드
+# Migration from v2.0 to v2.1
 
 v2.1의 핵심 변화는 Page 중심(Page-First) 접근 방식을 기반으로 인터페이스 구조를 재정비한 것입니다.
 
