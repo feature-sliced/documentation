@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# v1 -> v2 마이그레이션 가이드
+# Migration from v1 to v2
 
 ## v2 도입 배경
 
