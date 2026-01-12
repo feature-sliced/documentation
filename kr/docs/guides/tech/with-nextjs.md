@@ -1,4 +1,4 @@
-# NextJS와 함께 사용하기
+# Usage with Electron
 
 NextJS 프로젝트에도 FSD 아키텍처를 적용할 수 있지만, 구조적 차이로 두 가지 충돌이 발생합니다.
 

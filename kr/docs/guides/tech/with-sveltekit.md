@@ -1,4 +1,4 @@
-# SvelteKit와 함께 사용하기
+# Usage with SvelteKit
 
 SvelteKit 프로젝트에 FSD(Feature-Sliced Design)를 적용할 때는 다음 차이를 유의하세요:
 

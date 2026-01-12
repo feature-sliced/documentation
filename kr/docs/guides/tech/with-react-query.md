@@ -1,4 +1,4 @@
-# React Query와 함께 사용하기
+# Usage with React Query
 
 ## Query Key 배치 문제[​](#query-key-배치-문제 "해당 헤딩으로 이동")
 

@@ -57,4 +57,4 @@ More
 
 [![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/kr/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/kr/img/brand/logo-primary.png)](https://github.com/feature-sliced)
 
-Copyright © 2025 Feature-Sliced Design
+Copyright © 2026 Feature-Sliced Design

@@ -25,8 +25,8 @@
 - [Branding Guidelines](/docs/branding.md): FSD's visual identity is based on its core-concepts: Layered, Sliced self-contained parts, Parts & Compose, Segmented.
 - [Decomposition cheatsheet](/docs/get-started/cheatsheet.md): Use this as a quick reference when you're deciding how to decompose your UI. PDF versions are also available below, so you can print it out and keep one under your pillow.
 - [FAQ](/docs/get-started/faq.md): 질문은 언제든 Telegram, Discord, GitHub Discussions에서 남겨 주세요.
-- [개요](/docs/get-started/overview.md): Feature-Sliced Design (FSD) 는 프론트엔드 애플리케이션의 코드를 구조화하기 위한 아키텍처 방법론입니다.
-- [튜토리얼](/docs/get-started/tutorial.md): Part 1. 설계
+- [Overview](/docs/get-started/overview.md): Feature-Sliced Design (FSD) 는 프론트엔드 애플리케이션의 코드를 구조화하기 위한 아키텍처 방법론입니다.
+- [Tutorial](/docs/get-started/tutorial.md): Part 1. 설계
 - [Handling API Requests](/docs/guides/examples/api-requests.md): Shared API Requests
 - [Authentication](/docs/guides/examples/auth.md): 웹 애플리케이션에서의 인증(Authentication) 플로우는 보통 다음과 같은 세 단계로 진행됩니다.
 - [Autocomplete](/docs/guides/examples/autocompleted.md): About decomposition by layers
@@ -40,19 +40,19 @@
 - [Desktop/Touch platforms](/docs/guides/examples/platforms.md): About the application of the methodology for desktop/touch
 - [SSR](/docs/guides/examples/ssr.md): About the implementation of SSR using the methodology
 - [Theme](/docs/guides/examples/theme.md): Where should I put my work with the theme and palette?
-- [Types](/docs/guides/examples/types.md): 이 가이드는 TypeScript 같은 정적 타입 언어에서 데이터를 정의·활용하는 방법과, FSD 구조 내에서 타입을 어디에 배치할지 설명합니다.
+- [Types](/docs/guides/examples/types.md): 이 가이드는 TypeScript 같은 정적 타입 언어에서 데이터를 어떻게 정의하고 활용할지,
 - [White Labels](/docs/guides/examples/white-labels.md): Figma, brand uikit, templates, adaptability to brands
 - [Cross-import](/docs/guides/issues/cross-imports.md): Cross-import는 Layer나 추상화가 원래의 책임 범위를 넘어설 때 발생합니다. 방법론에서는 이러한 Cross-import를 해결하기 위한 별도의 Layer를 정의합니다.
 - [Desegmentation](/docs/guides/issues/desegmented.md): 상황
 - [Routing](/docs/guides/issues/routes.md): 상황
 - [기존 아키텍처에서 FSD로의 마이그레이션](/docs/guides/migration/from-custom.md): 이 가이드는 기존 아키텍처를 Feature-Sliced Design(FSD) 으로 단계별 전환하는 방법을 설명합니다.
-- [v1 -> v2 마이그레이션 가이드](/docs/guides/migration/from-v1.md): v2 도입 배경
-- [v2.0 -> v2.1 마이그레이션 가이드](/docs/guides/migration/from-v2-0.md): v2.1의 핵심 변화는 Page 중심(Page-First) 접근 방식을 기반으로 인터페이스 구조를 재정비한 것입니다.
-- [Electron와 함께 사용하기](/docs/guides/tech/with-electron.md): Electron 애플리케이션은 역할이 다른 여러 프로세스(Main, Renderer, Preload)로 구성됩니다.
-- [NextJS와 함께 사용하기](/docs/guides/tech/with-nextjs.md): NextJS 프로젝트에도 FSD 아키텍처를 적용할 수 있지만, 구조적 차이로 두 가지 충돌이 발생합니다.
-- [NuxtJS와 함께 사용하기](/docs/guides/tech/with-nuxtjs.md): NuxtJS 프로젝트에 FSD(Feature-Sliced Design)를 도입할 때는 기본 구조와 FSD 원칙 간에 다음과 같은 차이를 고려해야 합니다:
-- [React Query와 함께 사용하기](/docs/guides/tech/with-react-query.md): Query Key 배치 문제
-- [SvelteKit와 함께 사용하기](/docs/guides/tech/with-sveltekit.md): SvelteKit 프로젝트에 FSD(Feature-Sliced Design)를 적용할 때는 다음 차이를 유의하세요:
+- [Migration from v1 to v2](/docs/guides/migration/from-v1.md): v2 도입 배경
+- [Migration from v2.0 to v2.1](/docs/guides/migration/from-v2-0.md): v2.1의 핵심 변화는 Page 중심(Page-First) 접근 방식을 기반으로 인터페이스 구조를 재정비한 것입니다.
+- [Usage with Next.js](/docs/guides/tech/with-electron.md): Electron 애플리케이션은 역할이 다른 여러 프로세스(Main, Renderer, Preload)로 구성됩니다.
+- [Usage with Electron](/docs/guides/tech/with-nextjs.md): NextJS 프로젝트에도 FSD 아키텍처를 적용할 수 있지만, 구조적 차이로 두 가지 충돌이 발생합니다.
+- [Usage with NuxtJS](/docs/guides/tech/with-nuxtjs.md): NuxtJS 프로젝트에 FSD(Feature-Sliced Design)를 도입할 때는 기본 구조와 FSD 원칙 간에 다음과 같은 차이를 고려해야 합니다:
+- [Usage with React Query](/docs/guides/tech/with-react-query.md): Query Key 배치 문제
+- [Usage with SvelteKit](/docs/guides/tech/with-sveltekit.md): SvelteKit 프로젝트에 FSD(Feature-Sliced Design)를 적용할 때는 다음 차이를 유의하세요:
 - [Docs for LLMs](/docs/llms.md): This page provides links and guidance for LLM crawlers.
 - [Layer](/docs/reference/layers.md): Layer는 Feature-Sliced Design에서 코드를 나눌 때 사용하는 가장 큰 구분 단위입니다.
 - [Public API](/docs/reference/public-api.md): Public API는 Slice 기능을 외부에서 사용할 수 있는 공식 경로입니다.
