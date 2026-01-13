@@ -44,6 +44,7 @@
 - [白标](/docs/guides/examples/white-labels.md): Figma、品牌 uikit、模板、品牌适应性
 - [交叉导入](/docs/guides/issues/cross-imports.md): 当层或抽象开始承担超出其应有责任时，就会出现交叉导入。这就是为什么方法论识别出新的层，允许您解耦这些交叉导入
 - [去分段化](/docs/guides/issues/desegmented.md): 情况
+- [Excessive Entities](/docs/guides/issues/excessive-entities.md): The entities layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for shared can access it. However, its global nature means that changes to entities can have a widespread impact, requiring careful design to avoid costly refactors.
 - [路由](/docs/guides/issues/routes.md): 情况
 - [从自定义架构迁移](/docs/guides/migration/from-custom.md): 本指南描述了一种在从自定义自制架构迁移到 Feature-Sliced Design 时可能有用的方法。
 - [从 v1 到 v2 的迁移](/docs/guides/migration/from-v1.md): 为什么是 v2？

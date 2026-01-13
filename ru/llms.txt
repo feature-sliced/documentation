@@ -44,6 +44,7 @@
 - [White Labels](/docs/guides/examples/white-labels.md): Figma, brand uikit, templates, адаптируемость к брендам
 - [Кросс-импорты](/docs/guides/issues/cross-imports.md): Кросс-импорты появляются тогда, когда слой/абстракция начинает брать слишком много ответственности, чем должна. Именно поэтому методология выделяет новые слои, которые позволяют расцепить эти кросс-импорты
 - [Десегментация](/docs/guides/issues/desegmented.md): Ситуация
+- [Excessive Entities](/docs/guides/issues/excessive-entities.md): The entities layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for shared can access it. However, its global nature means that changes to entities can have a widespread impact, requiring careful design to avoid costly refactors.
 - [Роутинг](/docs/guides/issues/routes.md): Ситуация
 - [Миграция с кастомной архитектуры](/docs/guides/migration/from-custom.md): Это руководство описывает подход, который может быть полезен при миграции с кастомной самодельной архитектуры на Feature-Sliced Design.
 - [Миграция с v1](/docs/guides/migration/from-v1.md): Зачем v2?

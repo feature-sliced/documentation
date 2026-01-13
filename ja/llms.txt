@@ -44,6 +44,7 @@
 - [ホワイトラベル](/docs/guides/examples/white-labels.md)
 - [クロスインポート](/docs/guides/issues/cross-imports.md): クロスインポートは、レイヤーや抽象化が本来の責任以上に多くの責任を持ち始めると発生する。そのため、FSDは新しいレイヤーを設けて、これらのクロスインポートを分離することを可能にしている。
 - [デセグメンテーション](/docs/guides/issues/desegmented.md): 状況
+- [Excessive Entities](/docs/guides/issues/excessive-entities.md): The entities layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for shared can access it. However, its global nature means that changes to entities can have a widespread impact, requiring careful design to avoid costly refactors.
 - [ルーティング](/docs/guides/issues/routes.md): 状況
 - [カスタムアーキテクチャからの移行](/docs/guides/migration/from-custom.md): このガイドは、カスタムのアーキテクチャからFeature-Sliced Designへの移行に役立つアプローチを説明します。
 - [v1からv2への移行](/docs/guides/migration/from-v1.md): なぜv2なのか？

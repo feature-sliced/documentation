@@ -44,6 +44,7 @@
 - [White Labels](/docs/guides/examples/white-labels.md): Figma, brand uikit, templates, adaptability to brands
 - [Cross-import](/docs/guides/issues/cross-imports.md): Cross-import는 Layer나 추상화가 원래의 책임 범위를 넘어설 때 발생합니다. 방법론에서는 이러한 Cross-import를 해결하기 위한 별도의 Layer를 정의합니다.
 - [Desegmentation](/docs/guides/issues/desegmented.md): 상황
+- [Excessive Entities](/docs/guides/issues/excessive-entities.md): The entities layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for shared can access it. However, its global nature means that changes to entities can have a widespread impact, requiring careful design to avoid costly refactors.
 - [Routing](/docs/guides/issues/routes.md): 상황
 - [기존 아키텍처에서 FSD로의 마이그레이션](/docs/guides/migration/from-custom.md): 이 가이드는 기존 아키텍처를 Feature-Sliced Design(FSD) 으로 단계별 전환하는 방법을 설명합니다.
 - [Migration from v1 to v2](/docs/guides/migration/from-v1.md): v2 도입 배경
