@@ -1,46 +1,438 @@
 ---
 sidebar_position: 3
-sidebar_class_name: sidebar-item--wip
+sidebar_label: Routing
 ---
 
-import WIP from '@site/src/shared/ui/wip/tmpl.mdx'
+# Routing 
 
-# Routing
+This document explains how to decide where routing and redirects should be handled in Feature-Sliced Design.
 
-<WIP ticket="169" />
+After reading this guide, you should be able to answer:
 
-## Situation
+- Which layer should handle URLs and routes?
+- How much routing responsibility (if any) can be delegated to lower layers?
+- How can you design routing so that changing the route structure requires minimal modifications?
 
-Urls to pages are hardcoded in the layers below pages
+---
 
-```tsx title="entities/post/card"
+## Core principles
 
-<Card>
-    <Card.Title 
-        href={`/post/${data.id}`}
-        title={data.name}
-    />
-    ...
-</Card>
+When dealing with routing in FSD, there are a few basic principles.
+
+UI flow logic such as URL, route, and redirect should be handled only in the `app` and `pages` layers.  
+Lower layers (`features`, `entities`, `widgets`) should be designed so they don’t need to know actual path strings.
+
+Path strings should be centralized in a single place such as `shared/config/routes`, and actual usage should be concentrated in `app` and `pages`.
+
+Domain logic and UI flow must be separated.  
+**“Login succeeded”** is a domain state/result (what happened), while **“navigate to the dashboard because it succeeded”** is UI flow. Do not handle both in the same place.
+
+For lower layers, pass only behavior via callbacks, props, or composition.  
+Path strings should be managed in one place via a configuration object like `ROUTES`.
+
+The strictness of these rules can vary depending on the team or project.  
+However, it’s generally best to avoid a structure where route strings are hard-coded across lower layers.
+
+---
+
+## Layer responsibilities
+
+### `app` layer
+
+The `app` layer is the entry point of the application.  
+It initializes the global router and connects URLs to pages.
+
+What this layer knows is **which path matches which page**.  
+Decisions such as “where to send the user” based on domain conditions (login status/permissions) are usually handled in `pages`.
+
+```tsx title="app/router.tsx"
+import { HomePage } from 'src/pages/home';
+import { ProfilePage } from 'src/pages/profile';
+import { ROUTES } from 'src/shared/config/routes';
+
+export const routes = [
+  { path: ROUTES.home, component: HomePage },
+  { path: ROUTES.profile, component: ProfilePage },
+];
 ```
 
-## Problem
+This code only connects paths to page components.
+Decisions like **“where should we redirect after login?”** are handled by each page.
 
-Urls are not concentrated in the page layer, where they belong according to the scope of responsibility
+---
 
-## If you ignore it
+### `pages` layer
 
-Then, when changing urls, you will have to keep in mind that these urls (and the logic of urls/redirects) can be in all layers except pages
+The `pages` layer is responsible for screens that correspond to specific URLs.
+It composes page components and handles page-level redirects.
 
-And it also means that now even a simple product card takes part of the responsibility from the pages, which smears the logic of the project
+Domain state itself is managed by `features` and `entities`, and
+`pages` simply decides where to navigate based on the result.
 
-## Solution
+For example, consider a login page:
 
-Determine how to work with urls/redirects from the page level and above
+```tsx title="pages/login/ui.tsx"
+import { LoginForm } from 'src/features/auth-by-email';
+import { ROUTES } from 'src/shared/config/routes';
+import { useRouter } from 'src/shared/lib/router';
 
-Transfer to the layers below via composition/props/factories
+export function LoginPage() {
+  const router = useRouter();
 
-## See also
+  return (
+    <LoginForm
+      onSuccess={(user) => {
+        if (user.role === 'admin') router.push(ROUTES.admin);
+        else router.push(ROUTES.dashboard);
+      }}
+    />
+  );
+}
+```
 
-- [(Thread) What if I "sew up" routing in entities/features/widgets](https://t.me/feature_sliced/4389)
-- [(Thread) Why does it smear the logic of routes only in pages](https://t.me/feature_sliced/3756)
+`LoginForm` is responsible only for attempting and validating login.
+The decision to navigate to `ROUTES.admin` for admins or `ROUTES.dashboard` for regular users is known only by `LoginPage`.
+
+---
+
+### `widgets` layer
+
+The `widgets` layer composes multiple features and entities into reusable UI blocks.
+Large reusable components used across pages, such as Header or Sidebar, belong here.
+
+Components in this layer only need to know that a button was clicked.
+They should not know where to navigate or what the actual route is.
+
+Let’s use a Header as an example:
+
+```tsx title="widgets/header/ui.tsx"
+type HeaderProps = {
+  onLogoClick: () => void;
+  onProfileClick: () => void;
+};
+
+export function Header({ onLogoClick, onProfileClick }: HeaderProps) {
+  return (
+    <header>
+      <button onClick={onLogoClick}>Logo</button>
+      <button onClick={onProfileClick}>My Profile</button>
+    </header>
+  );
+}
+```
+
+This Header only reports that the logo/profile button was clicked.
+The `pages` layer decides where to navigate:
+
+```tsx title="pages/home/ui.tsx"
+import { Header } from 'src/widgets/header';
+import { ROUTES } from 'src/shared/config/routes';
+import { useRouter } from 'src/shared/lib/router';
+
+export function HomePage() {
+  const router = useRouter();
+
+  return (
+    <>
+      <Header
+        onLogoClick={() => router.push(ROUTES.home)}
+        onProfileClick={() => router.push(ROUTES.profile)}
+      />
+    {/* Page content */}
+    </>
+  );
+}
+```
+
+This way, Header doesn’t need to know any paths and can be reused even if the path structure changes.
+
+---
+
+### `features` layer
+
+The `features` layer implements a single business action such as login, search, or creating an order.
+This layer performs the action and is responsible for reporting success or failure.
+
+It’s best if this layer does not need to know where to navigate after success or what routes should be used.
+
+For example, a login form:
+
+```tsx title="features/auth-by-email/ui/login-form.tsx"
+import { useState, type FormEvent } from 'react';
+import { loginUser } from '../api/login-user';
+import { useAuthStore, type User } from 'src/entities/user';
+
+type LoginFormProps = {
+  onSuccess?: (user: User) => void;
+  onError?: (error: Error) => void;
+};
+
+export function LoginForm({ onSuccess, onError }: LoginFormProps) {
+  const { setUser } = useAuthStore();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const user = await loginUser({ email, password });
+      setUser(user);     // Update domain state
+      onSuccess?.(user); // Notify success + pass required result
+    } catch (error) {
+      onError?.(error as Error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button type="submit">Log in</button>
+    </form>
+  );
+}
+```
+
+This form handles login attempts, validation, and error handling.
+It only calls `onSuccess(user)` when login succeeds; the `pages` layer decides where to navigate.
+
+---
+
+### `entities` layer
+
+The `entities` layer deals with domain models and state such as users, products, and orders.
+It manages facts like **“the user is logged in”** or **“there are 3 items in the cart.”**
+
+Deciding where to redirect or which URL to navigate to is not the responsibility of this layer.
+
+```tsx title="entities/user/model/auth-store.ts"
+import { create } from 'zustand';
+
+export type User = {
+  id: string;
+  email: string;
+  role: 'admin' | 'user';
+  profileCompleted?: boolean;
+};
+
+type AuthStore = {
+  user: User | null;
+  setUser: (user: User) => void;
+  clearUser: () => void;
+};
+
+export const useAuthStore = create<AuthStore>((set) => ({
+  user: null,
+  setUser: (user) => set({ user }),
+  clearUser: () => set({ user: null }),
+}));
+```
+
+---
+
+### `shared` layer
+
+The `shared` layer contains technical utilities and common components reused across the project.
+Code closer to environment/infrastructure—such as router adapters, history wrappers, and route configuration—lives here.
+
+For example, you can define a centralized `ROUTES` configuration:
+
+```tsx title="shared/config/routes.ts"
+export const ROUTES = {
+  home: '/',
+  profile: '/my-account',
+  settings: '/settings',
+  dashboard: '/dashboard',
+  admin: '/admin',
+  onboarding: '/onboarding',
+} as const;
+```
+
+You can also wrap the routing library so switching libraries later has minimal impact:
+
+```tsx title="shared/lib/router.ts"
+export function useRouter() {
+  // Wrap the actual router library here
+  // If you change libraries later, only this file needs updates
+  return {
+    push: (path: string) => { /* ... */ },
+    replace: (path: string) => { /* ... */ },
+    back: () => { /* ... */ },
+  };
+}
+```
+
+This kind of wrapper helps minimize changes across the codebase if the router library changes.
+
+---
+
+## Domain logic vs UI flow
+
+Mixing domain logic and UI flow in the same code leads to problems.
+
+> Note: Imports are omitted for brevity.
+
+```tsx 
+// ❌ Anti-pattern: domain logic and UI flow are mixed
+export function LoginManager() {
+  const router = useRouter();
+
+  const handleLogin = async (email: string, password: string) => {
+    const result = await fetch('/api/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+    const userData = await result.json();
+
+    // Domain state update + navigation are mixed in one place
+    // ...update domain state...
+    router.push('/dashboard');
+  };
+
+  return <form>{/* ... */}</form>;
+}
+```
+
+As requirements grow, conditions keep piling up:
+
+```tsx 
+if (user.role === 'admin') router.push('/admin');
+else if (!user.profileCompleted) router.push('/onboarding');
+else router.push('/dashboard');
+```
+
+From an FSD perspective, it’s better to separate responsibilities:
+
+- **The `feature` handles authentication/state update/success notification (passing only required result)**.
+- **The `page` owns the redirect policy based on that result**.
+
+```tsx 
+import { LoginForm } from 'src/features/auth-by-email';
+import { ROUTES } from 'src/shared/config/routes';
+import { useRouter } from 'src/shared/lib/router';
+
+export function LoginPage() {
+  const router = useRouter();
+
+  return (
+    <LoginForm
+      onSuccess={(user) => {
+        if (user.role === 'admin') router.push(ROUTES.admin);
+        else if (!user.profileCompleted) router.push(ROUTES.onboarding);
+        else router.push(ROUTES.dashboard);
+      }}
+    />
+  );
+}
+```
+
+---
+
+## Problems caused by scattered URLs
+
+If path strings are used directly across multiple layers, maintenance becomes difficult.
+
+> Note: Imports are omitted for brevity.
+
+```tsx
+// ❌ Anti-pattern
+export function Header() {
+  const router = useRouter();
+  return <button onClick={() => router.push('/profile')}>My Profile</button>;
+}
+```
+
+Now requirements change: you need to change the `profile` URL from `/profile` to `/my-account`.
+
+If strings are scattered, you must search and update them one by one, and missing one can cause a 404.
+
+To avoid this:
+
+1. Centralize paths in one place `(ROUTES)`.
+
+```tsx 
+export const ROUTES = {
+  home: '/',
+  profile: '/my-account', // e.g. only change here when requirements change
+  settings: '/settings',
+} as const;
+```
+
+2. Use `ROUTES` in router configuration and pages.
+
+```tsx 
+import { ROUTES } from 'src/shared/config/routes';
+
+const routes = [
+  { path: ROUTES.profile, component: ProfilePage },
+];
+```
+
+3. Pass only behavior via callbacks to lower layers.
+
+```tsx 
+type HeaderProps = { onProfileClick: () => void };
+
+export function Header({ onProfileClick }: HeaderProps) {
+  return <button onClick={onProfileClick}>My Profile</button>;
+}
+```
+
+```tsx 
+import { Header } from 'src/widgets/header';
+import { ROUTES } from 'src/shared/config/routes';
+import { useRouter } from 'src/shared/lib/router';
+
+export function HomePage() {
+  const router = useRouter();
+  return <Header onProfileClick={() => router.push(ROUTES.profile)} />;
+}
+```
+
+---
+
+## Recommended patterns
+
+### Separate domain logic and UI flow
+
+A feature is responsible only for “what happened” (success/failure, state updates).
+A page is responsible for “where to go next.”
+
+### Handle redirects in pages
+
+```tsx
+// ✅ Recommended: feature passes result, page decides navigation
+<LoginForm onSuccess={(user) => handleLoginSuccess(user)} />
+
+// ❌ Avoid: feature calls router.push(...) internally
+```
+
+### Centralize path strings
+
+Centralize paths in a configuration object like `ROUTES`, and use them only in `app` and `pages`.
+
+### Use callbacks in widgets and features
+
+Lower layers do not perform navigation directly; they only report events such as click/complete to upper layers.
+
+---
+
+## Rule strictness
+
+Not every team needs to apply these rules with the same strictness.
+However, it’s recommended to keep at least these two rules:
+
+- Do not hard-code route strings in lower layers.
+- Do not handle domain logic and redirect in the same function/component.
+
+Even following just these two rules can significantly reduce costs when scaling the architecture or changing the URL structure.
+
