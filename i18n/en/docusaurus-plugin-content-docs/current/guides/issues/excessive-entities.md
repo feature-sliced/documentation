@@ -82,6 +82,8 @@ Instead, store authentication-related data in `shared/auth` or `shared/api`:
       📄 order.ts
 ```
 
+For more details on implementing authentication, see [the Authentication guide](/docs/guides/examples/auth).
+
 ### 5. Minimize Cross-Imports
 
 FSD permits cross-imports via `@x` notation, but they can introduce technical issues like circular dependencies. To avoid this, design entities within isolated business contexts to eliminate the need for cross-imports:
