@@ -23,7 +23,9 @@ Keep in mind that this classification is not strictly binary, and different part
 
 ### 1. Avoid preemptive slicing
 
-In contrast to previous versions, FSD 2.1 encourages deferred decomposition of slices instead of preemptive, and this approach also extends to `entities` layer. At first, you can place all your code in the `model` segment of your page (widget, feature), and then consider refactoring it later, when business requirements are stable. Remember: it is much easier and safer to move something into `entities` later, than refactor code inside `entities` that can affect any upper level slice functionality.
+In contrast to previous versions, FSD 2.1 encourages deferred decomposition of slices instead of preemptive, and this approach also extends to `entities` layer. At first, you can place all your code in the `model` segment of your page (widget, feature), and then consider refactoring it later, when business requirements are stable. 
+
+Remember: the later you move code to the `entities` layer, the less dangerous your potential refactors will be — code in Entities may affect functionality of any slice on higher layers.
 
 ### 2. Avoid Unnecessary Entities
 
