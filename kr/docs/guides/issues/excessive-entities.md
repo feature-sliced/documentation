@@ -1,33 +1,51 @@
 # Excessive Entities
 
-The `entities` layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for `shared` can access it. However, its global nature means that changes to `entities` can have a widespread impact, requiring careful design to avoid costly refactors.
+Feature-Sliced Design에서 `entities` Layer는 하위 Layer에 속하며, 재사용 가능한 도메인(비지니스) 로직을 담는 곳입니다.<br /><!-- -->이 Layer는 접근성이 높아서, `shared`를 제외한 거의 모든 Layer가 `entities`를 참조할 수 있어 접근 범위가 넓습니다.
 
-Excessive entities can lead to ambiguity (what code belongs to this layer), coupling, and constant import dilemmas (code scattered across sibling entities).
+다만 접근성이 높은 만큼 주의할 점도 있습니다.<br />`entities`에 코드가 추가/수정되거나 파일 경로가 바뀌면, 상위 Layer의 여러 Slice에서 그 변경을 함께 따라가야 할 수 있습니다.<br /><!-- -->그래서 리팩토링 비용이 커지기 전에, `entities`는 특히 경계와 역할을 더 명확하게 정의하고 관리하는 편이 좋습니다.
 
-## How to keep `entities` layer clean[​](#how-to-keep-entities-layer-clean "해당 헤딩으로 이동")
+`entities`에 코드가 불필요하게 많이 쌓이면 보통 다음 문제가 같이 나타납니다.
 
-### 0. Consider having no `entities` layer[​](#0-consider-having-no-entities-layer "해당 헤딩으로 이동")
+* **경계가 모호해집니다**: “이 로직을 `entities`에 두는 게 맞나?” 같은 판단이 계속 필요해집니다.
+* **결합도가 올라갑니다**: 여러 도메인이 서로 얽히면서 수정이 어려워집니다.
+* **Import 딜레마가 생깁니다**: 코드가 동일 Layer의 다른 entity Slice로 흩어지면서, Import가 복잡해지고 선택이 어려워집니다.
 
-You might think that your application won't be Feature-Sliced if you don't include this layer, but it is completely fine for the application to have no `entities` layer. It doesn't break FSD in any way, on the contrary, it simplifies the architecture and keeps the `entities` layer available for future scaling. For example, if your application acts as a thin client, most likely it doesn't need `entities` layer.
+## How to keep `entities` Layer clean[​](#how-to-keep-entities-layer-clean "해당 헤딩으로 이동")
+
+### 0. `entities` Layer 없이 시작하는 것도 가능합니다[​](#0-entities-layer-없이-시작하는-것도-가능합니다 "해당 헤딩으로 이동")
+
+`entities` Layer를 만들지 않으면 FSD가 아니라고 생각하기 쉽지만, 그렇지 않습니다.<br /><!-- -->애플리케이션에 `entities` Layer가 없어도 FSD 규칙이 깨지지 않습니다.<br /><!-- -->오히려 구조가 단순해지고, 나중에 규모가 커졌을 때 `entities`를 도입할 수 있도록 확장성을 확보할 수 있습니다.
+
+예를 들어 애플리케이션이 **thin client**에 가깝다면, 대부분 `entities` Layer가 필요하지 않습니다.
 
 What are thick and thin clients?
 
-*Thick* vs. *thin client* distinction refers to how the application processes data:
+thick client와 thin client의 구분은 “데이터 처리와 비즈니스 로직을 어디서 처리하느냐”를 기준으로 합니다.
 
-* *Thin* clients rely on the backend for most data processing. Client-side business logic is minimal and involves only exchanging data with the backend.
-* *Thick* clients handle significant client-side business logic, making them suitable candidates for the `entities` layer.
+* **thin client**: 대부분의 처리를 백엔드에서 수행합니다. 클라이언트에서는 비즈니스 로직을 최소화하고, 주로 백엔드와 데이터를 주고받습니다.
+* **thick client**: 클라이언트에서 의미 있는 비즈니스 로직을 많이 처리합니다. 이런 경우 `entities` Layer를 두면 도메인 로직을 구조적으로 정리하기가 더 수월합니다.
 
-Keep in mind that this classification is not strictly binary, and different parts of the same application may act as a "thick" or a "thin" client.
+이 구분은 딱 둘 중 하나로만 나뉘지 않습니다.<br /><!-- -->같은 애플리케이션이라도 일부는 thick client처럼, 다른 일부는 thin client처럼 동작할 수 있습니다.
 
-### 1. Avoid preemptive slicing[​](#1-avoid-preemptive-slicing "해당 헤딩으로 이동")
+### 1. Slice를 처음부터 잘게 나누지 않습니다[​](#1-slice를-처음부터-잘게-나누지-않습니다 "해당 헤딩으로 이동")
 
-In contrast to previous versions, FSD 2.1 encourages deferred decomposition of slices instead of preemptive, and this approach also extends to `entities` layer. At first, you can place all your code in the `model` segment of your page (widget, feature), and then consider refactoring it later, when business requirements are stable.
+FSD 2.1은 Slice를 미리 잘게 쪼개기보다, 필요해졌을 때 분리하는 접근을 권장합니다.<br /><!-- -->이 원칙은 `entities` Layer에도 그대로 적용됩니다.
 
-Remember: the later you move code to the `entities` layer, the less dangerous your potential refactors will be — code in Entities may affect functionality of any slice on higher layers.
+처음에는 다음처럼 시작해도 됩니다.
 
-### 2. Avoid Unnecessary Entities[​](#2-avoid-unnecessary-entities "해당 헤딩으로 이동")
+1. page 또는 widget/feature Slice의 `model` Segment에 로직을 둡니다.
+2. 요구사항이 어느 정도 안정되고, “이 로직은 여러 곳에서 재사용된다”가 분명해졌을 때 `entities`로 옮기는 리팩토링을 고려합니다.
 
-Do not create an entity for every piece of business logic. Instead, leverage types from `shared/api` and place logic in the `model` segment of a current slice. For reusable business logic, use the `model` segment within an entity slice while keeping data definitions in `shared/api`:
+여기서 중요한 점은 "언제 옮기느냐"입니다.<br /><!-- -->코드를 `entities`로 옮기는 시점이 늦을수록, 리팩토링 리스크가 줄어듭니다. `entities`의 코드는 `shared`를 제외한 모든 Layer에서 쓰일 수 있어서, 변경이 여러 곳의 동작에 영향을 줄 수 있기 때문입니다.
+
+### 2. 불필요한 Entities를 만들지 않습니다[​](#2-불필요한-entities를-만들지-않습니다 "해당 헤딩으로 이동")
+
+비즈니스 로직이 있다고 해서 항상 entity를 만들어야 하는 것은 아닙니다.<br /><!-- -->먼저 `shared/api`의 타입을 활용하고, 로직은 현재 Slice의 `model` Segment에 두는 방식을 우선 고려합니다.
+
+재사용 가능한 비즈니스 로직이 정말 필요하다면, 다음처럼 역할을 나누는 편이 좋습니다.
+
+* 데이터 정의(예: 백엔드 응답 타입)는 `shared/api`에 둡니다.
+* 재사용 로직은 entity Slice의 `model` Segment에 둡니다.
 
 ```
 📂 entities
@@ -42,9 +60,9 @@ Do not create an entity for every piece of business logic. Instead, leverage typ
       📄 order.ts
 ```
 
-### 3. Exclude CRUD Operations from Entities[​](#3-exclude-crud-operations-from-entities "해당 헤딩으로 이동")
+### 3. CRUD는 `entities`에 두지 않는 편이 좋습니다[​](#3-crud는-entities에-두지-않는-편이-좋습니다 "해당 헤딩으로 이동")
 
-CRUD operations, while essential, often involve boilerplate code without significant business logic. Including them in the `entities` layer can clutter it and obscure meaningful code. Instead, place CRUD operations in `shared/api`:
+CRUD는 필수지만, 많은 경우 비즈니스 의미가 크지 않은 반복 코드가 됩니다.<br /><!-- -->이런 코드가 `entities`에 쌓이면 Layer가 지저분해지고, 중요한 로직이 눈에 잘 띄지 않게 됩니다.
 
 ```
 📂 shared
@@ -57,16 +75,21 @@ CRUD operations, while essential, often involve boilerplate code without signifi
       📄 cart.ts
 ```
 
-For complex CRUD operations (e.g., atomic updates, rollbacks, or transactions), evaluate whether the `entities` layer is appropriate, but use it with caution.
+대신 CRUD는 `shared/api`에 둡니다.
 
-### 4. Store Authentication Data in `shared`[​](#4-store-authentication-data-in-shared "해당 헤딩으로 이동")
+CRUD가 단순 호출 수준을 넘어, 예를 들어 여러 요청을 묶어서 일관성을 보장해야 하거나, 실패 시 rollback, transaction 같은 처리가 필요한 경우에는 `entities`가 맞는지 다시 판단할 수 있지만, 신중하게 적용하는 편이 좋습니다.
 
-Prefer `shared` layer to creating a `user` entity for authentication data, such as tokens or user DTOs returned from the backend. These are context-specific and unlikely to be reused outside authentication scope:
+### 4. 인증 데이터는 `shared`에 둡니다[​](#4-인증-데이터는-shared에-둡니다 "해당 헤딩으로 이동")
 
-* Authentication responses (e.g., tokens or DTOs) often lack fields needed for broader reuse or vary by context (e.g., private vs. public user profiles).
-* Using entities for auth data can lead to cross-layer imports (e.g., `entities` into `shared`) or usage of `@x` notation, complicating the architecture.
+토큰이나 로그인 응답에 포함된 사용자 DTO처럼 인증 과정에서만 쓰이는 데이터는 `user` entity를 만들기보다 `shared`에 두는 편이 좋습니다.<br /><!-- -->이 데이터는 인증 Context에 종속적이며, 인증 범위를 벗어나 재사용될 가능성이 낮습니다.
 
-Instead, store authentication-related data in `shared/auth` or `shared/api`:
+* 로그인 응답은 상황에 따라 포함하는 정보가 달라질 수 있습니다(예: 공개/비공개 프로필).
+* 이런 데이터를 entity로 올려버리면, 다른 곳에서 재사용하려다가 `shared`와 `entities` 사이 의존 관계가 꼬이거나,
+  <br />
+  <!-- -->
+  cross-import를 표시하기 위한 `@x` 사용이 늘면서 구조가 더 복잡해질 수 있습니다.
+
+따라서 인증과 직접 관련된 데이터는 `shared/auth` 또는 `shared/api`에 두는 방식을 권장합니다.
 
 ```
 📂 shared
@@ -80,13 +103,15 @@ Instead, store authentication-related data in `shared/auth` or `shared/api`:
       📄 order.ts
 ```
 
-For more details on implementing authentication, see [the Authentication guide](/documentation/kr/docs/guides/examples/auth.md).
+인증 구현은 [Authentication 가이드](/documentation/kr/docs/guides/examples/auth.md)를 참고하세요.
 
-### 5. Minimize Cross-Imports[​](#5-minimize-cross-imports "해당 헤딩으로 이동")
+### 5. Cross-import를 최소화합니다[​](#5-cross-import를-최소화합니다 "해당 헤딩으로 이동")
 
-FSD permits cross-imports via `@x` notation, but they can introduce technical issues like circular dependencies. To avoid this, design entities within isolated business contexts to eliminate the need for cross-imports:
+FSD는 `@x` 표기를 통해 cross-import를 허용하지만, 이 방식은 기술적 문제(예: 순환 의존)를 만들 수 있습니다.<br /><!-- -->이를 피하려면 entity를 서로 섞이지 않게 분리된 도메인 단위로 설계해 cross-import 자체가 필요 없도록 만드는 편이 좋습니다.
 
-Non-Isolated Business Context (Avoid):
+예를 들어 주문 아이템, 고객 정보처럼 항상 함께 움직이는 로직이 있다면, 이를 여러 entity로 쪼개기보다 order-info 같은 하나의 entity slice(모듈) 안에 캡슐화하는 방식이 더 낫습니다.
+
+**Non-Isolated Business Context (Avoid):**
 
 ```
 📂 entities
@@ -101,7 +126,7 @@ Non-Isolated Business Context (Avoid):
     📂 model
 ```
 
-Isolated Business Context (Preferred):
+**Isolated Business Context (Preferred):**
 
 ```
 📂 entities
@@ -111,4 +136,4 @@ Isolated Business Context (Preferred):
       📄 order-info.ts
 ```
 
-An isolated context encapsulates all related logic (e.g., order items and customer info) within a single module, reducing complexity and preventing external modifications to tightly coupled logic.
+이렇게 하면 관련 코드가 한 곳에 모여 구조가 단순해지고, 강하게 결합된 로직이 여러 모듈로 흩어져 생기는 **변경 여파**도 줄일 수 있습니다.<br /><!-- -->또한 강하게 결합된 로직을 외부에서 수정/변경해야 하는 상황을 줄일 수 있습니다.
