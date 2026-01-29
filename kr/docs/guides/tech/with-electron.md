@@ -1,4 +1,4 @@
-# Usage with Next.js
+# Usage with Electron
 
 Electron 애플리케이션은 역할이 다른 여러 **프로세스**(Main, Renderer, Preload)로 구성됩니다.<br /><!-- -->따라서 FSD를 적용하려면 Electron 특성에 맞게 구조를 조정해야 합니다.
 

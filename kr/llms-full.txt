@@ -49,8 +49,8 @@
 - [기존 아키텍처에서 FSD로의 마이그레이션](/docs/guides/migration/from-custom.md): 이 가이드는 기존 아키텍처를 Feature-Sliced Design(FSD) 으로 단계별 전환하는 방법을 설명합니다.
 - [Migration from v1 to v2](/docs/guides/migration/from-v1.md): v2 도입 배경
 - [Migration from v2.0 to v2.1](/docs/guides/migration/from-v2-0.md): v2.1의 핵심 변화는 Page 중심(Page-First) 접근 방식을 기반으로 인터페이스 구조를 재정비한 것입니다.
-- [Usage with Next.js](/docs/guides/tech/with-electron.md): Electron 애플리케이션은 역할이 다른 여러 프로세스(Main, Renderer, Preload)로 구성됩니다.
-- [Usage with Electron](/docs/guides/tech/with-nextjs.md): NextJS 프로젝트에도 FSD 아키텍처를 적용할 수 있지만, 구조적 차이로 두 가지 충돌이 발생합니다.
+- [Usage with Electron](/docs/guides/tech/with-electron.md): Electron 애플리케이션은 역할이 다른 여러 프로세스(Main, Renderer, Preload)로 구성됩니다.
+- [Usage with Next.js](/docs/guides/tech/with-nextjs.md): NextJS 프로젝트에도 FSD 아키텍처를 적용할 수 있지만, 구조적 차이로 두 가지 충돌이 발생합니다.
 - [Usage with NuxtJS](/docs/guides/tech/with-nuxtjs.md): NuxtJS 프로젝트에 FSD(Feature-Sliced Design)를 도입할 때는 기본 구조와 FSD 원칙 간에 다음과 같은 차이를 고려해야 합니다:
 - [Usage with React Query](/docs/guides/tech/with-react-query.md): Query Key 배치 문제
 - [Usage with SvelteKit](/docs/guides/tech/with-sveltekit.md): SvelteKit 프로젝트에 FSD(Feature-Sliced Design)를 적용할 때는 다음 차이를 유의하세요:
@@ -6768,7 +6768,7 @@ import type { EntityA } from "entities/A/@x/B";
 
 ---
 
-# Usage with Next.js
+# Usage with Electron
 
 Electron 애플리케이션은 역할이 다른 여러 **프로세스**(Main, Renderer, Preload)로 구성됩니다.<br /><!-- -->따라서 FSD를 적용하려면 Electron 특성에 맞게 구조를 조정해야 합니다.
 
@@ -6925,7 +6925,7 @@ export const getUser = () => {
 
 ---
 
-# Usage with Electron
+# Usage with Next.js
 
 NextJS 프로젝트에도 FSD 아키텍처를 적용할 수 있지만, 구조적 차이로 두 가지 충돌이 발생합니다.
 
