@@ -7,6 +7,15 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Feature-Sliced Design',
+      defaultLocale: 'en',
+      locales: {
+        en: {
+          label: 'English',
+        },
+        ru: {
+          label: 'Русский',
+        }
+      },
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
       sidebar: [
         {
