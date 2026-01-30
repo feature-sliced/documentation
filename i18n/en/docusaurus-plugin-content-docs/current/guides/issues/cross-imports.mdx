@@ -38,11 +38,7 @@ In the sections below, we outline how these issues typically appear in real proj
 
 ## Entities layer cross-imports
 
-The `entities` layer is designed as a **domain/type-centric** layer. It typically contains domain types, IDs, DTOs, and domain-level logic.
-
-In real-world projects, entity-to-entity relationships often require sharing types or DTOs (for example, `Order` and `OrderItem`, `Artist` and `Song`).
-
-In practice, cross-imports in `entities` are often caused by splitting entities too granularly. Before reaching for `@x`, consider whether the boundaries should be merged instead.
+Cross-imports in `entities` are often caused by splitting entities too granularly. Before reaching for `@x`, consider whether the boundaries should be merged instead.
 Some teams use `@x` as a dedicated cross-import surface for `entities`, but it should be treated as a **last resort** — a **necessary compromise**, not a recommended approach.
 
 Think of `@x` as an explicit gateway for unavoidable domain references—not a general-purpose reuse mechanism. Overuse tends to lock entity boundaries together and makes refactoring more costly over time.
