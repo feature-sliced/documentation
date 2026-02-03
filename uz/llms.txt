@@ -42,7 +42,7 @@
 - [Theme](/docs/guides/examples/theme.md): Where should I put my work with the theme and palette?
 - [Types](/docs/guides/examples/types.md): This guide concerns data types from typed languages like TypeScript and describes where they fit within FSD.
 - [White Labels](/docs/guides/examples/white-labels.md): Figma, brand uikit, templates, adaptability to brands
-- [Cross-imports](/docs/guides/issues/cross-imports.md): Cross-imports appear when the layer or abstraction begins to take too much responsibility than it should. That is why the methodology identifies new layers that allow you to uncouple these cross-imports
+- [Cross-import](/docs/guides/issues/cross-imports.md): A cross-import is an import between different slices within the same layer.
 - [Desegemented](/docs/guides/issues/desegmented.md): Situation
 - [Excessive Entities](/docs/guides/issues/excessive-entities.md): The entities layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for shared can access it. However, its global nature means that changes to entities can have a widespread impact, requiring careful design to avoid costly refactors.
 - [Routing](/docs/guides/issues/routes.md): Situation
