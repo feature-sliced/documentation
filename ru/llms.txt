@@ -43,7 +43,7 @@
 - [Типы](/docs/guides/examples/types.md): В этом руководстве рассматриваются типы данных из типизированных языков, таких как TypeScript, и где они вписываются в FSD.
 - [White Labels](/docs/guides/examples/white-labels.md): Figma, brand uikit, templates, адаптируемость к брендам
 - [Кросс-импорты](/docs/guides/issues/cross-imports.md): Кросс-импорты появляются тогда, когда слой/абстракция начинает брать слишком много ответственности, чем должна. Именно поэтому методология выделяет новые слои, которые позволяют расцепить эти кросс-импорты
-- [Десегментация](/docs/guides/issues/desegmented.md): Ситуация
+- [Desegmentation](/docs/guides/issues/desegmented.md): Desegmentation (also known as horizontal slicing or packaging by layer) is a code organization pattern where files are grouped by their technical roles rather than by the business domains they serve. This means code with similar technical functions is stored in the same place, regardless of the business logic it handles.
 - [Excessive Entities](/docs/guides/issues/excessive-entities.md): The entities layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for shared can access it. However, its global nature means that changes to entities can have a widespread impact, requiring careful design to avoid costly refactors.
 - [Роутинг](/docs/guides/issues/routes.md): Ситуация
 - [Миграция с кастомной архитектуры](/docs/guides/migration/from-custom.md): Это руководство описывает подход, который может быть полезен при миграции с кастомной самодельной архитектуры на Feature-Sliced Design.

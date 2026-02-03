@@ -1,102 +1,198 @@
-# デセグメンテーション
+# Desegmentation
 
-WIP
+Desegmentation (also known as horizontal slicing or packaging by layer) is a code organization pattern where files are grouped by their technical roles rather than by the business domains they serve. This means code with similar technical functions is stored in the same place, regardless of the business logic it handles.
 
-この記事は執筆中です
+This approach is popular in meta-frameworks like Next and Nuxt due to its simplicity, as it's easy to get started and enables features like auto-imports and file-based routing:
 
-その公開を早めるために、以下の方法があります。
+* 📂 app
 
-* 📢 フィードバックを共有する [（チケットでのコメント/絵文字リアクション）](https://github.com/feature-sliced/documentation/issues/148)
-* 💬 チャットでの議論結果をチケットにまとめる [（チャットURL）](https://t.me/feature_sliced)
-* ⚒️ 他の方法で[貢献する](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
-
-<br />
-
-*🍰 Stay tuned!*
-
-## 状況[​](#situation "この見出しへの直接リンク")
-
-プロジェクトでは、特定のドメインに関連するモジュールが過度にデセグメント化され、プロジェクト全体に散らばっていることがよくあります。
-
-```
-├── components/
-|    ├── DeliveryCard
-|    ├── DeliveryChoice
-|    ├── RegionSelect
-|    ├── UserAvatar
-├── actions/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── epics/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── constants/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── helpers/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── entities/
-|    ├── delivery/
-|    |      ├── getters.js
-|    |      ├── selectors.js
-|    ├── region/
-|    ├── user/
-```
-
-## 問題[​](#problem "この見出しへの直接リンク")
-
-問題は、**高い凝集性**の原則の違反と、**変更の軸**の過度な拡張として現れます。
-
-## 無視する場合[​](#if-you-ignore-it "この見出しへの直接リンク")
-
-* 例えば、配達に関するロジックに触れる必要がある場合、このロジックが複数の箇所に分散していることを考慮しなければならず、コード内で複数の箇所に触れる必要がある。これにより、**変更の軸**が過度に引き伸ばされる
-* ユーザーに関するロジックを調べる必要がある場合、**actions、epics、constants、entities、components**の詳細を調べるためにプロジェクト全体を巡回しなければならない
-* 暗黙関係と拡大するドメインの制御不能
   <!-- -->
-  * このアプローチでは、視野が狭くなり、「定数のための定数」を作成し、プロジェクトの該当ディレクトリをごちゃごちゃさせてしまうことに気づかないことがよくある
 
-## 解決策[​](#solution "この見出しへの直接リンク")
+  * 📂 components
 
-特定のドメイン/ユースケースに関連するすべてのモジュールを近くに配置することです。
+    <!-- -->
 
-これは特定のモジュールを調べる際に、そのすべての構成要素がプロジェクト全体に散らばらず、近くに配置されるためです。
+    * 📄 DeliveryCard.jsx
+    * 📄 DeliveryChoice.jsx
+    * 📄 RegionSelect.jsx
+    * 📄 UserAvatar.jsx
 
-> これにより、コードベースとモジュール間の関係の発見しやすさと明確さが向上します。
+  * 📂 actions
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 composables
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 constants
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 utils
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 stores
+
+    <!-- -->
+
+    * 📂 delivery
+
+      <!-- -->
+
+      * 📄 getters.js
+      * 📄 actions.js
+
+This pattern also occurs in FSD codebases, in the form of generic folders:
+
+* 📂 features
+  <!-- -->
+  * 📂 delivery
+    <!-- -->
+    * 📂 ui
+      <!-- -->
+      * 📂 components ⚠️
+* 📂 entities
+  <!-- -->
+  * 📂 recommendations
+    <!-- -->
+    * 📂 utils ⚠️
+
+Files can also be a source of desegmentation. Files like `types.ts` can aggregate multiple domains, complicating navigation and future refactoring, especially in layers like `pages` or `widgets`:
+
+* 📂 pages
+
+  <!-- -->
+
+  * 📂 delivery
+
+    <!-- -->
+
+    * 📄 index.ts
+
+    * 📂 ui
+
+      <!-- -->
+
+      * 📄 DeliveryCard.tsx
+      * 📄 DeliveryChoice.tsx
+      * 📄 UserAvatar.tsx
+
+    * 📂 model
+
+      <!-- -->
+
+      * 📄 types.ts ⚠️
+      * 📄 utils.ts ⚠️
+
+    * 📂 api
+      <!-- -->
+      * 📄 endpoints.ts ⚠️
+
+- types.ts
+- utils.ts
+- endpoints.ts
+
+pages/delivery/model/types.ts
 
 ```
-- ├── components/
-- |    ├── DeliveryCard
-- |    ├── DeliveryChoice
-- |    ├── RegionSelect
-- |    ├── UserAvatar
-- ├── actions/
-- |    ├── delivery.js
-- |    ├── region.js
-- |    ├── user.js
-- ├── epics/{...}
-- ├── constants/{...}
-- ├── helpers/{...}
-  ├── entities/
-  |    ├── delivery/
-+ |    |      ├── ui/ # ~ components/
-+ |    |      |   ├── card.js
-+ |    |      |   ├── choice.js
-+ |    |      ├── model/
-+ |    |      |   ├── actions.js
-+ |    |      |   ├── constants.js
-+ |    |      |   ├── epics.js
-+ |    |      |   ├── getters.js
-+ |    |      |   ├── selectors.js
-+ |    |      ├── lib/ # ~ helpers
-  |    ├── region/
-  |    ├── user/
+// ❌ Bad: Mixed business domains in generic file
+export interface DeliveryOption {
+  id: string;
+  name: string;
+  price: number;
+}
+
+export interface UserInfo {
+  id: string;
+  name: string;
+  avatar: string;
+}
 ```
 
-## 参照[​](#see-also "この見出しへの直接リンク")
+pages/delivery/model/utils.ts
 
-* [(記事) Cohesion and Coupling: the difference](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
+```
+// ❌ Bad: Mixed business domains in generic file
+export function formatDeliveryPrice(price: number) {
+  return `$${price.toFixed(2)}`;
+}
+
+export function getUserInitials(name: string) {
+  return name.split(' ').map(n => n[0]).join('');
+}
+```
+
+pages/delivery/api/endpoints.ts
+
+```
+// ❌ Bad: Mixed business domains in generic file
+export async function fetchDeliveryOptions() { /* ... */ }
+export async function fetchUserInfo() { /* ... */ }
+```
+
+## The Problem[​](#the-problem "この見出しへの直接リンク")
+
+While this structure is easy to start with, it can lead to scalability issues in larger projects:
+
+* Low Cohesion: Modifying a single feature often requires editing files in multiple large folders, such as `pages`, `components`, and `stores`.
+
+* Tight Coupling: Components can have unexpected dependencies, leading to complex and tangled dependency chains.
+
+* Difficult Refactoring: It requires additional effort to manually extract code related to a specific domain.
+
+## Solution[​](#solution "この見出しへの直接リンク")
+
+Group all code that relates to a specific domain in one place.
+
+Avoid generic folder names such as `types`, `components`, `utils`, as well as generic file names like `types.ts`, `utils.ts`, or `helpers.ts`. Instead, use names that directly reflect the domain they represent.
+
+Avoid generic file names like `types.ts` if possible, especially in slices with multiple domains:
+
+* 📂 pages
+
+  <!-- -->
+
+  * 📂 delivery
+
+    <!-- -->
+
+    * 📄 index.tsx
+
+    * 📂 ui
+
+      <!-- -->
+
+      * 📄 DeliveryPage.tsx
+      * 📄 DeliveryCard.tsx
+      * 📄 DeliveryChoice.tsx
+      * 📄 UserInfo.tsx
+
+    * 📂 model
+
+      <!-- -->
+
+      * 📄 delivery.ts
+      * 📄 user.ts
+
+## See Also[​](#see-also "この見出しへの直接リンク")
+
+* [(Article) About Low Coupling and High Cohesion clearly](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
+* [(Article) Low Coupling and High Cohesion. The Law of Demeter](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)

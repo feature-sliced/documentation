@@ -43,7 +43,7 @@
 - [型](/docs/guides/examples/types.md): このガイドでは、TypeScriptのような型付き言語のデータの型と、それがFSDにどのように適合するかについて説明します。
 - [ホワイトラベル](/docs/guides/examples/white-labels.md)
 - [クロスインポート](/docs/guides/issues/cross-imports.md): クロスインポートは、レイヤーや抽象化が本来の責任以上に多くの責任を持ち始めると発生する。そのため、FSDは新しいレイヤーを設けて、これらのクロスインポートを分離することを可能にしている。
-- [デセグメンテーション](/docs/guides/issues/desegmented.md): 状況
+- [Desegmentation](/docs/guides/issues/desegmented.md): Desegmentation (also known as horizontal slicing or packaging by layer) is a code organization pattern where files are grouped by their technical roles rather than by the business domains they serve. This means code with similar technical functions is stored in the same place, regardless of the business logic it handles.
 - [Excessive Entities](/docs/guides/issues/excessive-entities.md): The entities layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for shared can access it. However, its global nature means that changes to entities can have a widespread impact, requiring careful design to avoid costly refactors.
 - [ルーティング](/docs/guides/issues/routes.md): 状況
 - [カスタムアーキテクチャからの移行](/docs/guides/migration/from-custom.md): このガイドは、カスタムのアーキテクチャからFeature-Sliced Designへの移行に役立つアプローチを説明します。

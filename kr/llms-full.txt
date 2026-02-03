@@ -43,7 +43,7 @@
 - [Types](/docs/guides/examples/types.md): 이 가이드는 TypeScript 같은 정적 타입 언어에서 데이터를 어떻게 정의하고 활용할지,
 - [White Labels](/docs/guides/examples/white-labels.md): Figma, brand uikit, templates, adaptability to brands
 - [Cross-import](/docs/guides/issues/cross-imports.md): Cross-import는 Layer나 추상화가 원래의 책임 범위를 넘어설 때 발생합니다. 방법론에서는 이러한 Cross-import를 해결하기 위한 별도의 Layer를 정의합니다.
-- [Desegmentation](/docs/guides/issues/desegmented.md): 상황
+- [Desegmentation](/docs/guides/issues/desegmented.md): Desegmentation (also known as horizontal slicing or packaging by layer) is a code organization pattern where files are grouped by their technical roles rather than by the business domains they serve. This means code with similar technical functions is stored in the same place, regardless of the business logic it handles.
 - [Excessive Entities](/docs/guides/issues/excessive-entities.md): Feature-Sliced Design에서 entities Layer는 하위 Layer에 속하며, 재사용 가능한 도메인(비지니스) 로직을 담는 곳입니다.
 - [Routing](/docs/guides/issues/routes.md): 상황
 - [기존 아키텍처에서 FSD로의 마이그레이션](/docs/guides/migration/from-custom.md): 이 가이드는 기존 아키텍처를 Feature-Sliced Design(FSD) 으로 단계별 전환하는 방법을 설명합니다.
@@ -5991,106 +5991,202 @@ WIP
 
 # Desegmentation
 
-WIP
+Desegmentation (also known as horizontal slicing or packaging by layer) is a code organization pattern where files are grouped by their technical roles rather than by the business domains they serve. This means code with similar technical functions is stored in the same place, regardless of the business logic it handles.
 
-작성 진행 중
+This approach is popular in meta-frameworks like Next and Nuxt due to its simplicity, as it's easy to get started and enables features like auto-imports and file-based routing:
 
-행을 앞당기고 싶다면 다음을 도와주세요:
+* 📂 app
 
-* 📢 의견 공유 [글에 댓글·이모지 달기](https://github.com/feature-sliced/documentation/issues/148)
-* 💬 자료 모으기 [채팅방에 관련 자료 남기기](https://t.me/feature_sliced)
-* ⚒️ 기여하기 [다른 방식으로 기여](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
+  <!-- -->
 
-<br />
+  * 📂 components
 
-*🍰 Stay tuned!*
+    <!-- -->
 
-## 상황[​](#상황 "해당 헤딩으로 이동")
+    * 📄 DeliveryCard.jsx
+    * 📄 DeliveryChoice.jsx
+    * 📄 RegionSelect.jsx
+    * 📄 UserAvatar.jsx
 
-프로젝트에서 동일한 도메인의 모듈들이 서로 연관되어 있음에도 불구하고, 프로젝트 전체에 불필요하게 분산되어 있는 경우가 많습니다.
+  * 📂 actions
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 composables
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 constants
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 utils
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 stores
+
+    <!-- -->
+
+    * 📂 delivery
+
+      <!-- -->
+
+      * 📄 getters.js
+      * 📄 actions.js
+
+This pattern also occurs in FSD codebases, in the form of generic folders:
+
+* 📂 features
+  <!-- -->
+  * 📂 delivery
+    <!-- -->
+    * 📂 ui
+      <!-- -->
+      * 📂 components ⚠️
+* 📂 entities
+  <!-- -->
+  * 📂 recommendations
+    <!-- -->
+    * 📂 utils ⚠️
+
+Files can also be a source of desegmentation. Files like `types.ts` can aggregate multiple domains, complicating navigation and future refactoring, especially in layers like `pages` or `widgets`:
+
+* 📂 pages
+
+  <!-- -->
+
+  * 📂 delivery
+
+    <!-- -->
+
+    * 📄 index.ts
+
+    * 📂 ui
+
+      <!-- -->
+
+      * 📄 DeliveryCard.tsx
+      * 📄 DeliveryChoice.tsx
+      * 📄 UserAvatar.tsx
+
+    * 📂 model
+
+      <!-- -->
+
+      * 📄 types.ts ⚠️
+      * 📄 utils.ts ⚠️
+
+    * 📂 api
+      <!-- -->
+      * 📄 endpoints.ts ⚠️
+
+- types.ts
+- utils.ts
+- endpoints.ts
+
+pages/delivery/model/types.ts
 
 ```
-├── components/
-|    ├── DeliveryCard
-|    ├── DeliveryChoice
-|    ├── RegionSelect
-|    ├── UserAvatar
-├── actions/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── epics/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── constants/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── helpers/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── entities/
-|    ├── delivery/
-|    |      ├── getters.js
-|    |      ├── selectors.js
-|    ├── region/
-|    ├── user/
+// ❌ Bad: Mixed business domains in generic file
+export interface DeliveryOption {
+  id: string;
+  name: string;
+  price: number;
+}
+
+export interface UserInfo {
+  id: string;
+  name: string;
+  avatar: string;
+}
 ```
 
-## 문제점[​](#문제점 "해당 헤딩으로 이동")
-
-이는 높은 응집도 원칙을 위반하며, **Changes Axis의 과도한 확장**을 초래합니다.
-
-## 무시했을 때의 결과[​](#무시했을-때의-결과 "해당 헤딩으로 이동")
-
-* delivery 관련 로직 수정 시 여러 위치의 코드를 찾아 수정해야 하며, 이는 **Changes Axis를 불필요하게 확장**합니다
-* user 관련 로직을 이해하려면 프로젝트 전반의 **actions, epics, constants, entities, components**를 모두 찾아봐야 합니다
-* 암묵적 연결로 인해 도메인 영역이 비대해지고 관리가 어려워집니다
-* 불필요한 파일들이 쌓여 문제 인식이 어려워집니다
-
-## 해결 방안[​](#해결-방안 "해당 헤딩으로 이동")
-
-도메인이나 use case와 관련된 모듈들을 한 곳에 모아 배치합니다.
-
-이를 통해 모듈 학습이나 수정 시 필요한 모든 요소를 쉽게 찾을 수 있습니다.
-
-> 이 접근은 코드베이스의 탐색성과 가독성을 높이고, 모듈 간 관계를 더 명확하게 보여줍니다.
+pages/delivery/model/utils.ts
 
 ```
-- ├── components/
-- |    ├── DeliveryCard
-- |    ├── DeliveryChoice
-- |    ├── RegionSelect
-- |    ├── UserAvatar
-- ├── actions/
-- |    ├── delivery.js
-- |    ├── region.js
-- |    ├── user.js
-- ├── epics/{...}
-- ├── constants/{...}
-- ├── helpers/{...}
-  ├── entities/
-  |    ├── delivery/
-+ |    |      ├── ui/ # ~ components/
-+ |    |      |   ├── card.js
-+ |    |      |   ├── choice.js
-+ |    |      ├── model/
-+ |    |      |   ├── actions.js
-+ |    |      |   ├── constants.js
-+ |    |      |   ├── epics.js
-+ |    |      |   ├── getters.js
-+ |    |      |   ├── selectors.js
-+ |    |      ├── lib/ # ~ helpers
-  |    ├── region/
-  |    ├── user/
+// ❌ Bad: Mixed business domains in generic file
+export function formatDeliveryPrice(price: number) {
+  return `$${price.toFixed(2)}`;
+}
+
+export function getUserInitials(name: string) {
+  return name.split(' ').map(n => n[0]).join('');
+}
 ```
 
-## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
+pages/delivery/api/endpoints.ts
 
-* [(아티클) Coupling과 Cohesion의 명확한 이해](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
-* [(아티클) Coupling, Cohesion과 Law of Demeter](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
+```
+// ❌ Bad: Mixed business domains in generic file
+export async function fetchDeliveryOptions() { /* ... */ }
+export async function fetchUserInfo() { /* ... */ }
+```
+
+## The Problem[​](#the-problem "해당 헤딩으로 이동")
+
+While this structure is easy to start with, it can lead to scalability issues in larger projects:
+
+* Low Cohesion: Modifying a single feature often requires editing files in multiple large folders, such as `pages`, `components`, and `stores`.
+
+* Tight Coupling: Components can have unexpected dependencies, leading to complex and tangled dependency chains.
+
+* Difficult Refactoring: It requires additional effort to manually extract code related to a specific domain.
+
+## Solution[​](#solution "해당 헤딩으로 이동")
+
+Group all code that relates to a specific domain in one place.
+
+Avoid generic folder names such as `types`, `components`, `utils`, as well as generic file names like `types.ts`, `utils.ts`, or `helpers.ts`. Instead, use names that directly reflect the domain they represent.
+
+Avoid generic file names like `types.ts` if possible, especially in slices with multiple domains:
+
+* 📂 pages
+
+  <!-- -->
+
+  * 📂 delivery
+
+    <!-- -->
+
+    * 📄 index.tsx
+
+    * 📂 ui
+
+      <!-- -->
+
+      * 📄 DeliveryPage.tsx
+      * 📄 DeliveryCard.tsx
+      * 📄 DeliveryChoice.tsx
+      * 📄 UserInfo.tsx
+
+    * 📂 model
+
+      <!-- -->
+
+      * 📄 delivery.ts
+      * 📄 user.ts
+
+## See Also[​](#see-also "해당 헤딩으로 이동")
+
+* [(Article) About Low Coupling and High Cohesion clearly](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
+* [(Article) Low Coupling and High Cohesion. The Law of Demeter](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
 
 
 ---

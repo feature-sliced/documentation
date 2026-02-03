@@ -43,7 +43,7 @@
 - [Types](/docs/guides/examples/types.md): 이 가이드는 TypeScript 같은 정적 타입 언어에서 데이터를 어떻게 정의하고 활용할지,
 - [White Labels](/docs/guides/examples/white-labels.md): Figma, brand uikit, templates, adaptability to brands
 - [Cross-import](/docs/guides/issues/cross-imports.md): Cross-import는 Layer나 추상화가 원래의 책임 범위를 넘어설 때 발생합니다. 방법론에서는 이러한 Cross-import를 해결하기 위한 별도의 Layer를 정의합니다.
-- [Desegmentation](/docs/guides/issues/desegmented.md): 상황
+- [Desegmentation](/docs/guides/issues/desegmented.md): Desegmentation (also known as horizontal slicing or packaging by layer) is a code organization pattern where files are grouped by their technical roles rather than by the business domains they serve. This means code with similar technical functions is stored in the same place, regardless of the business logic it handles.
 - [Excessive Entities](/docs/guides/issues/excessive-entities.md): Feature-Sliced Design에서 entities Layer는 하위 Layer에 속하며, 재사용 가능한 도메인(비지니스) 로직을 담는 곳입니다.
 - [Routing](/docs/guides/issues/routes.md): 상황
 - [기존 아키텍처에서 FSD로의 마이그레이션](/docs/guides/migration/from-custom.md): 이 가이드는 기존 아키텍처를 Feature-Sliced Design(FSD) 으로 단계별 전환하는 방법을 설명합니다.

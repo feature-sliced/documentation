@@ -43,7 +43,7 @@
 - [类型](/docs/guides/examples/types.md): 本指南涉及来自类型化语言（如 TypeScript）的数据类型，并描述它们在 FSD 中的适用位置。
 - [白标](/docs/guides/examples/white-labels.md): Figma、品牌 uikit、模板、品牌适应性
 - [交叉导入](/docs/guides/issues/cross-imports.md): 当层或抽象开始承担超出其应有责任时，就会出现交叉导入。这就是为什么方法论识别出新的层，允许您解耦这些交叉导入
-- [去分段化](/docs/guides/issues/desegmented.md): 情况
+- [Desegmentation](/docs/guides/issues/desegmented.md): Desegmentation (also known as horizontal slicing or packaging by layer) is a code organization pattern where files are grouped by their technical roles rather than by the business domains they serve. This means code with similar technical functions is stored in the same place, regardless of the business logic it handles.
 - [Excessive Entities](/docs/guides/issues/excessive-entities.md): The entities layer in Feature-Sliced Design is one of the lower layers that's primarily for business logic. That makes it widely accessible — all layers except for shared can access it. However, its global nature means that changes to entities can have a widespread impact, requiring careful design to avoid costly refactors.
 - [路由](/docs/guides/issues/routes.md): 情况
 - [从自定义架构迁移](/docs/guides/migration/from-custom.md): 本指南描述了一种在从自定义自制架构迁移到 Feature-Sliced Design 时可能有用的方法。
@@ -5672,105 +5672,201 @@ WIP
 
 ---
 
-# 去分段化
+# Desegmentation
 
-WIP
+Desegmentation (also known as horizontal slicing or packaging by layer) is a code organization pattern where files are grouped by their technical roles rather than by the business domains they serve. This means code with similar technical functions is stored in the same place, regardless of the business logic it handles.
 
-文章正在编写中
+This approach is popular in meta-frameworks like Next and Nuxt due to its simplicity, as it's easy to get started and enables features like auto-imports and file-based routing:
 
-为了使文章更快发布，您可以：
+* 📂 app
 
-* 📢 分享您的反馈[在文章中（评论/表情反应）](https://github.com/feature-sliced/documentation/issues/148)
-* 💬 收集相关的[来自聊天的主题相关资料](https://t.me/feature_sliced)
-* ⚒️ 贡献[以任何其他方式](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
+  <!-- -->
 
-<br />
+  * 📂 components
 
-*🍰 Stay tuned!*
+    <!-- -->
 
-## 情况[​](#情况 "标题的直接链接")
+    * 📄 DeliveryCard.jsx
+    * 📄 DeliveryChoice.jsx
+    * 📄 RegionSelect.jsx
+    * 📄 UserAvatar.jsx
 
-在项目中经常出现这样的情况：与主题领域中特定域相关的模块被不必要地去分段化并分散在项目周围
+  * 📂 actions
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 composables
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 constants
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 utils
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 stores
+
+    <!-- -->
+
+    * 📂 delivery
+
+      <!-- -->
+
+      * 📄 getters.js
+      * 📄 actions.js
+
+This pattern also occurs in FSD codebases, in the form of generic folders:
+
+* 📂 features
+  <!-- -->
+  * 📂 delivery
+    <!-- -->
+    * 📂 ui
+      <!-- -->
+      * 📂 components ⚠️
+* 📂 entities
+  <!-- -->
+  * 📂 recommendations
+    <!-- -->
+    * 📂 utils ⚠️
+
+Files can also be a source of desegmentation. Files like `types.ts` can aggregate multiple domains, complicating navigation and future refactoring, especially in layers like `pages` or `widgets`:
+
+* 📂 pages
+
+  <!-- -->
+
+  * 📂 delivery
+
+    <!-- -->
+
+    * 📄 index.ts
+
+    * 📂 ui
+
+      <!-- -->
+
+      * 📄 DeliveryCard.tsx
+      * 📄 DeliveryChoice.tsx
+      * 📄 UserAvatar.tsx
+
+    * 📂 model
+
+      <!-- -->
+
+      * 📄 types.ts ⚠️
+      * 📄 utils.ts ⚠️
+
+    * 📂 api
+      <!-- -->
+      * 📄 endpoints.ts ⚠️
+
+- types.ts
+- utils.ts
+- endpoints.ts
+
+pages/delivery/model/types.ts
 
 ```
-├── components/
-|    ├── DeliveryCard
-|    ├── DeliveryChoice
-|    ├── RegionSelect
-|    ├── UserAvatar
-├── actions/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── epics/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── constants/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── helpers/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── entities/
-|    ├── delivery/
-|    |      ├── getters.js
-|    |      ├── selectors.js
-|    ├── region/
-|    ├── user/
+// ❌ Bad: Mixed business domains in generic file
+export interface DeliveryOption {
+  id: string;
+  name: string;
+  price: number;
+}
+
+export interface UserInfo {
+  id: string;
+  name: string;
+  avatar: string;
+}
 ```
 
-## 问题[​](#问题 "标题的直接链接")
-
-该问题至少表现为违反了**高内聚**原则和过度拉伸**变更轴**
-
-## 如果您忽略它[​](#如果您忽略它 "标题的直接链接")
-
-* 如果需要涉及逻辑，例如交付 - 我们必须记住它位于多个地方，并涉及代码中的多个地方 - 这不必要地拉伸了我们的**变更轴**
-* 如果我们需要研究用户的逻辑，我们将不得不遍历整个项目来详细研究**actions、epics、constants、entities、components** - 而不是将其放在一个地方
-* 隐式连接和不断增长的主题领域的不可控性
-* 使用这种方法，眼睛经常会模糊，您可能不会注意到我们如何"为了常量而创建常量"，在相应的项目目录中创建垃圾场
-
-## 解决方案[​](#解决方案 "标题的直接链接")
-
-将与特定域/用户案例相关的所有模块 - 直接彼此相邻放置
-
-这样，在研究特定模块时，其所有组件都并排放置，而不是分散在项目周围
-
-> 它还增加了代码库的可发现性和清晰度以及模块之间的关系
+pages/delivery/model/utils.ts
 
 ```
-- ├── components/
-- |    ├── DeliveryCard
-- |    ├── DeliveryChoice
-- |    ├── RegionSelect
-- |    ├── UserAvatar
-- ├── actions/
-- |    ├── delivery.js
-- |    ├── region.js
-- |    ├── user.js
-- ├── epics/{...}
-- ├── constants/{...}
-- ├── helpers/{...}
-  ├── entities/
-  |    ├── delivery/
-+ |    |      ├── ui/ # ~ components/
-+ |    |      |   ├── card.js
-+ |    |      |   ├── choice.js
-+ |    |      ├── model/
-+ |    |      |   ├── actions.js
-+ |    |      |   ├── constants.js
-+ |    |      |   ├── epics.js
-+ |    |      |   ├── getters.js
-+ |    |      |   ├── selectors.js
-+ |    |      ├── lib/ # ~ helpers
-  |    ├── region/
-  |    ├── user/
+// ❌ Bad: Mixed business domains in generic file
+export function formatDeliveryPrice(price: number) {
+  return `$${price.toFixed(2)}`;
+}
+
+export function getUserInitials(name: string) {
+  return name.split(' ').map(n => n[0]).join('');
+}
 ```
 
-## See also[​](#see-also "标题的直接链接")
+pages/delivery/api/endpoints.ts
+
+```
+// ❌ Bad: Mixed business domains in generic file
+export async function fetchDeliveryOptions() { /* ... */ }
+export async function fetchUserInfo() { /* ... */ }
+```
+
+## The Problem[​](#the-problem "标题的直接链接")
+
+While this structure is easy to start with, it can lead to scalability issues in larger projects:
+
+* Low Cohesion: Modifying a single feature often requires editing files in multiple large folders, such as `pages`, `components`, and `stores`.
+
+* Tight Coupling: Components can have unexpected dependencies, leading to complex and tangled dependency chains.
+
+* Difficult Refactoring: It requires additional effort to manually extract code related to a specific domain.
+
+## Solution[​](#solution "标题的直接链接")
+
+Group all code that relates to a specific domain in one place.
+
+Avoid generic folder names such as `types`, `components`, `utils`, as well as generic file names like `types.ts`, `utils.ts`, or `helpers.ts`. Instead, use names that directly reflect the domain they represent.
+
+Avoid generic file names like `types.ts` if possible, especially in slices with multiple domains:
+
+* 📂 pages
+
+  <!-- -->
+
+  * 📂 delivery
+
+    <!-- -->
+
+    * 📄 index.tsx
+
+    * 📂 ui
+
+      <!-- -->
+
+      * 📄 DeliveryPage.tsx
+      * 📄 DeliveryCard.tsx
+      * 📄 DeliveryChoice.tsx
+      * 📄 UserInfo.tsx
+
+    * 📂 model
+
+      <!-- -->
+
+      * 📄 delivery.ts
+      * 📄 user.ts
+
+## See Also[​](#see-also "标题的直接链接")
 
 * [(Article) About Low Coupling and High Cohesion clearly](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
 * [(Article) Low Coupling and High Cohesion. The Law of Demeter](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)

@@ -1,102 +1,198 @@
-# Desegmented
+# Desegmentation
 
-WIP
+Desegmentation (also known as horizontal slicing or packaging by layer) is a code organization pattern where files are grouped by their technical roles rather than by the business domains they serve. This means code with similar technical functions is stored in the same place, regardless of the business logic it handles.
 
-Bài viết đang trong quá trình hoàn thiện
+This approach is popular in meta-frameworks like Next and Nuxt due to its simplicity, as it's easy to get started and enables features like auto-imports and file-based routing:
 
-Để đẩy nhanh việc phát hành bài viết, bạn có thể:
+* 📂 app
 
-* 📢 Chia sẻ phản hồi của bạn [tại bài viết (comment/emoji-reaction)](https://github.com/feature-sliced/documentation/issues/148)
-* 💬 Thu thập tài liệu liên quan [về chủ đề từ chat](https://t.me/feature_sliced)
-* ⚒️ Đóng góp [bằng bất kỳ cách nào khác](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
+  <!-- -->
 
-<br />
+  * 📂 components
 
-*🍰 Stay tuned!*
+    <!-- -->
 
-## Tình huống[​](#tình-huống "Link trực tiếp đến heading")
+    * 📄 DeliveryCard.jsx
+    * 📄 DeliveryChoice.jsx
+    * 📄 RegionSelect.jsx
+    * 📄 UserAvatar.jsx
 
-Rất thường xuyên xảy ra tình huống trên các project khi các module liên quan đến một domain cụ thể từ lĩnh vực chủ đề bị phân tách không cần thiết và nằm rải rác khắp project
+  * 📂 actions
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 composables
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 constants
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 utils
+
+    <!-- -->
+
+    * 📄 delivery.js
+    * 📄 region.js
+    * 📄 user.js
+
+  * 📂 stores
+
+    <!-- -->
+
+    * 📂 delivery
+
+      <!-- -->
+
+      * 📄 getters.js
+      * 📄 actions.js
+
+This pattern also occurs in FSD codebases, in the form of generic folders:
+
+* 📂 features
+  <!-- -->
+  * 📂 delivery
+    <!-- -->
+    * 📂 ui
+      <!-- -->
+      * 📂 components ⚠️
+* 📂 entities
+  <!-- -->
+  * 📂 recommendations
+    <!-- -->
+    * 📂 utils ⚠️
+
+Files can also be a source of desegmentation. Files like `types.ts` can aggregate multiple domains, complicating navigation and future refactoring, especially in layers like `pages` or `widgets`:
+
+* 📂 pages
+
+  <!-- -->
+
+  * 📂 delivery
+
+    <!-- -->
+
+    * 📄 index.ts
+
+    * 📂 ui
+
+      <!-- -->
+
+      * 📄 DeliveryCard.tsx
+      * 📄 DeliveryChoice.tsx
+      * 📄 UserAvatar.tsx
+
+    * 📂 model
+
+      <!-- -->
+
+      * 📄 types.ts ⚠️
+      * 📄 utils.ts ⚠️
+
+    * 📂 api
+      <!-- -->
+      * 📄 endpoints.ts ⚠️
+
+- types.ts
+- utils.ts
+- endpoints.ts
+
+pages/delivery/model/types.ts
 
 ```
-├── components/
-|    ├── DeliveryCard
-|    ├── DeliveryChoice
-|    ├── RegionSelect
-|    ├── UserAvatar
-├── actions/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── epics/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── constants/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── helpers/
-|    ├── delivery.js
-|    ├── region.js
-|    ├── user.js
-├── entities/
-|    ├── delivery/
-|    |      ├── getters.js
-|    |      ├── selectors.js
-|    ├── region/
-|    ├── user/
+// ❌ Bad: Mixed business domains in generic file
+export interface DeliveryOption {
+  id: string;
+  name: string;
+  price: number;
+}
+
+export interface UserInfo {
+  id: string;
+  name: string;
+  avatar: string;
+}
 ```
 
-## Vấn đề[​](#vấn-đề "Link trực tiếp đến heading")
-
-Vấn đề thể hiện ít nhất là vi phạm nguyên tắc **High Cohesion** và kéo dài quá mức **trục thay đổi**
-
-## Nếu bỏ qua[​](#nếu-bỏ-qua "Link trực tiếp đến heading")
-
-* Nếu cần chạm vào logic, ví dụ delivery - chúng ta sẽ phải nhớ rằng nó nằm ở nhiều nơi và phải chạm vào nhiều chỗ trong code - điều này kéo dài không cần thiết **Trục thay đổi** của chúng ta
-* Nếu cần nghiên cứu logic của user, chúng ta sẽ phải đi khắp project để tìm hiểu chi tiết **actions, epics, constants, entities, components** - thay vì để nó nằm ở một chỗ
-* Các liên kết ngầm và sự mất kiểm soát của domain area đang phát triển
-* Với cách tiếp cận này, mắt rất dễ bị mờ đi và bạn có thể không nhận ra khi chúng ta "tạo constants vì constants", tạo ra một đống rác trong thư mục tương ứng của project
-
-## Giải pháp[​](#giải-pháp "Link trực tiếp đến heading")
-
-Đặt tất cả các module liên quan đến một domain/use case cụ thể - ngay cạnh nhau
-
-Để khi nghiên cứu một module cụ thể, tất cả các thành phần của nó nằm cạnh nhau, không bị rải rác khắp project
-
-> Điều này cũng tăng khả năng khám phá và sự rõ ràng của code base và mối quan hệ giữa các module
+pages/delivery/model/utils.ts
 
 ```
-- ├── components/
-- |    ├── DeliveryCard
-- |    ├── DeliveryChoice
-- |    ├── RegionSelect
-- |    ├── UserAvatar
-- ├── actions/
-- |    ├── delivery.js
-- |    ├── region.js
-- |    ├── user.js
-- ├── epics/{...}
-- ├── constants/{...}
-- ├── helpers/{...}
-  ├── entities/
-  |    ├── delivery/
-+ |    |      ├── ui/ # ~ components/
-+ |    |      |   ├── card.js
-+ |    |      |   ├── choice.js
-+ |    |      ├── model/
-+ |    |      |   ├── actions.js
-+ |    |      |   ├── constants.js
-+ |    |      |   ├── epics.js
-+ |    |      |   ├── getters.js
-+ |    |      |   ├── selectors.js
-+ |    |      ├── lib/ # ~ helpers
-  |    ├── region/
-  |    ├── user/
+// ❌ Bad: Mixed business domains in generic file
+export function formatDeliveryPrice(price: number) {
+  return `$${price.toFixed(2)}`;
+}
+
+export function getUserInitials(name: string) {
+  return name.split(' ').map(n => n[0]).join('');
+}
 ```
 
-## Xem thêm[​](#xem-thêm "Link trực tiếp đến heading")
+pages/delivery/api/endpoints.ts
 
-* [(Article) Về Low Coupling và High Cohesion một cách rõ ràng](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
-* [(Article) Low Coupling và High Cohesion. Law of Demeter](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
+```
+// ❌ Bad: Mixed business domains in generic file
+export async function fetchDeliveryOptions() { /* ... */ }
+export async function fetchUserInfo() { /* ... */ }
+```
+
+## The Problem[​](#the-problem "Link trực tiếp đến heading")
+
+While this structure is easy to start with, it can lead to scalability issues in larger projects:
+
+* Low Cohesion: Modifying a single feature often requires editing files in multiple large folders, such as `pages`, `components`, and `stores`.
+
+* Tight Coupling: Components can have unexpected dependencies, leading to complex and tangled dependency chains.
+
+* Difficult Refactoring: It requires additional effort to manually extract code related to a specific domain.
+
+## Solution[​](#solution "Link trực tiếp đến heading")
+
+Group all code that relates to a specific domain in one place.
+
+Avoid generic folder names such as `types`, `components`, `utils`, as well as generic file names like `types.ts`, `utils.ts`, or `helpers.ts`. Instead, use names that directly reflect the domain they represent.
+
+Avoid generic file names like `types.ts` if possible, especially in slices with multiple domains:
+
+* 📂 pages
+
+  <!-- -->
+
+  * 📂 delivery
+
+    <!-- -->
+
+    * 📄 index.tsx
+
+    * 📂 ui
+
+      <!-- -->
+
+      * 📄 DeliveryPage.tsx
+      * 📄 DeliveryCard.tsx
+      * 📄 DeliveryChoice.tsx
+      * 📄 UserInfo.tsx
+
+    * 📂 model
+
+      <!-- -->
+
+      * 📄 delivery.ts
+      * 📄 user.ts
+
+## See Also[​](#see-also "Link trực tiếp đến heading")
+
+* [(Article) About Low Coupling and High Cohesion clearly](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
+* [(Article) Low Coupling and High Cohesion. The Law of Demeter](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)
