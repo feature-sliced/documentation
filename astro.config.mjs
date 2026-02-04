@@ -21,7 +21,7 @@ export default defineConfig({
           label: 'Русский',
         }
       },
-      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }, { icon: 'discord', label: 'Discord', href: 'https://discord.gg/S8MzWTUsmp' }],
       sidebar: [
         {
           label: '🚀 Get Started',
