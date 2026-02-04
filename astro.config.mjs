@@ -27,6 +27,15 @@ export default defineConfig({
           label: '🚀 Get Started',
           autogenerate: { directory: 'get-started' }
         },
+        {
+          label: '🎯 Guides',
+          items: [
+            {
+              label: 'Examples',
+              autogenerate: { directory: 'guides/examples' }
+            },
+          ],
+        }
       ],
     }),
   ],
