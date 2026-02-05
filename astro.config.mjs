@@ -15,6 +15,10 @@ export default defineConfig({
       customCss: [
         './src/styles/custom.css',
       ],
+      logo: {
+        src: './static/img/brand/logo-primary.png',
+        replacesTitle: true,
+      },
       locales: {
         root: {
           label: 'English',
