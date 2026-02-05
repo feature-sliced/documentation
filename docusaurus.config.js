@@ -21,7 +21,7 @@ module.exports = {
     projectName: "documentation", // Usually your repo name.
     url: cfg.consts.DOMAIN,
     favicon: "img/favicon/classic.png",
-    baseUrl: process.env.BASE_URL || "/documentation/",
+    baseUrl: process.env.BASE_URL || "/",
     // Extensions
     i18n: cfg.i18n,
     presets: cfg.presets,
