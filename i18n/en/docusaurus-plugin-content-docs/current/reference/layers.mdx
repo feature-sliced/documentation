@@ -78,35 +78,21 @@ This approach aligns with:
 
 Decision tree:
 
-┌──────────────────────────────────┐
-│ Used in one place only?          │
-└────────────┬─────────────────────┘
-             │
-       ┌─────┴─────┐
-       │           │
-      YES         NO
-       │           │
-       ▼           ▼
-┌─────────────┐ ┌──────────────────┐
-│ Keep in     │ │ Check            │
-│ pages/      │ │ complexity       │
-└─────────────┘ └────────┬─────────┘
-                         │
-                         ▼
-              ┌────────────────────┐
-              │ Simple CRUD only?  │
-              └────────┬───────────┘
-                       │
-                 ┌─────┴─────┐
-                 │           │
-                YES         NO
-                 │           │
-                 ▼           ▼
-          ┌──────────┐  ┌─────────┐
-          │ API +    │  │ Entity  │
-          │ types    │  │ (rules  │
-          │ (shared) │  │ 2-4)    │
-          └──────────┘  └─────────┘
+```mermaid
+flowchart TD
+
+A[Used in one place only?]
+
+A -->| Yes | B[Keep in pages/]
+
+A -->| No | C[Check complexity]
+
+C --> D[Simple CRUD only?]
+
+D -->| Yes | E[API + Types<br/>shared/api]
+
+D -->| No | F[Create Entity<br/>model + rules]
+```
 
 Rules for creating Entities:
 
