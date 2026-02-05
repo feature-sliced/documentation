@@ -12,6 +12,9 @@ export default defineConfig({
     starlight({
       title: 'Feature-Sliced Design',
       defaultLocale: 'root',
+      customCss: [
+        './src/styles/custom.css',
+      ],
       locales: {
         root: {
           label: 'English',
@@ -44,6 +47,10 @@ export default defineConfig({
             }
           ],
         },
+        {
+          label: '📚 Reference',
+          autogenerate: { directory: 'reference' }
+        }
       ],
     }),
   ],
