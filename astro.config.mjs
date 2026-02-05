@@ -35,6 +35,10 @@ export default defineConfig({
               autogenerate: { directory: 'guides/examples' }
             },
           ],
+        },
+        {
+          label: 'Migration',
+          autogenerate: { directory: 'guides/migration' }
         }
       ],
     }),
