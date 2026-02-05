@@ -34,12 +34,16 @@ export default defineConfig({
               label: 'Examples',
               autogenerate: { directory: 'guides/examples' }
             },
+            {
+              label: 'Migration',
+              autogenerate: { directory: 'guides/migration' }
+            },
+            {
+              label: 'Tech',
+              autogenerate: { directory: 'guides/tech' }
+            }
           ],
         },
-        {
-          label: 'Migration',
-          autogenerate: { directory: 'guides/migration' }
-        }
       ],
     }),
   ],
