@@ -5,6 +5,7 @@ import remarkHeaderId from 'remark-heading-id';
 
 // https://astro.build/config
 export default defineConfig({
+  outDir: './build',
   markdown: {
     remarkPlugins: [remarkHeaderId],
   },
