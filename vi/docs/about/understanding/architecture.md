@@ -45,7 +45,7 @@ Do đó, có vẻ hợp lý khi trình bày các *yêu cầu mong muốn cho m�
 
 ghi chú
 
-Bất cứ đâu nói "dễ dàng", điều đó có nghĩa là "tương đối dễ dàng cho một nhóm rộng các developer", vì rõ ràng là [sẽ không thể tạo ra một giải pháp lý tưởng cho tất cả mọi người](/documentation/vi/docs/about/mission.md#limitations)
+Bất cứ đâu nói "dễ dàng", điều đó có nghĩa là "tương đối dễ dàng cho một nhóm rộng các developer", vì rõ ràng là [sẽ không thể tạo ra một giải pháp lý tưởng cho tất cả mọi người](/vi/docs/about/mission.md#limitations)
 
 ### Tính rõ ràng[​](#tính-rõ-ràng "Link trực tiếp đến heading")
 

@@ -33,7 +33,7 @@ This hurts the discoverability of a slice because you can't easily tell what the
 
 ## Public API for cross-imports[​](#public-api-for-cross-imports "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Cross-imports are a situation when one slice imports from another slice on the same layer. Usually that is prohibited by the [import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers), but often there are legitimate reasons to cross-import. For example, business entities often reference each other in the real world, and it's best to reflect these relationships in the code instead of working around them.
+Cross-imports are a situation when one slice imports from another slice on the same layer. Usually that is prohibited by the [import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers), but often there are legitimate reasons to cross-import. For example, business entities often reference each other in the real world, and it's best to reflect these relationships in the code instead of working around them.
 
 For this purpose, there's a special kind of public API, also known as the `@x`-notation. If you have entities A and B, and entity B needs to import from entity A, then entity A can declare a separate public API just for entity B.
 
@@ -65,7 +65,7 @@ Index files like `index.js`, also known as barrel files, are the most common way
 
 Circular import is when two or more files import each other in a circle.
 
-![Three files importing each other in a circle](/documentation/uz/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/documentation/uz/img/circular-import-dark.svg#dark-mode-only)
+![Three files importing each other in a circle](/uz/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/uz/img/circular-import-dark.svg#dark-mode-only)
 
 Pictured above: three files, `fileA.js`, `fileB.js`, and `fileC.js`, importing each other in a circle.
 

@@ -30,7 +30,7 @@ Nếu dự án đã có sự phân chia thành các entity, và mỗi request t�
         ...                                     #
 ```
 
-Nếu có kết nối giữa các entity (ví dụ, entity Country có field-list của các entity City), thì bạn có thể sử dụng [public API for cross-imports](/documentation/vi/docs/reference/public-api.md#public-api-for-cross-imports) hoặc cân nhắc giải pháp thay thế bên dưới.
+Nếu có kết nối giữa các entity (ví dụ, entity Country có field-list của các entity City), thì bạn có thể sử dụng [public API for cross-imports](/vi/docs/reference/public-api.md#public-api-for-cross-imports) hoặc cân nhắc giải pháp thay thế bên dưới.
 
 ### Giải pháp thay thế — giữ trong shared[​](#giải-pháp-thay-thế--giữ-trong-shared "Link trực tiếp đến heading")
 

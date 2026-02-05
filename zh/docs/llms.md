@@ -6,8 +6,8 @@
 
 ### 文件[​](#文件 "标题的直接链接")
 
-* [llms.txt](/documentation/zh/llms.txt)
-* [llms-full.txt](/documentation/zh/llms-full.txt)
+* [llms.txt](/zh/llms.txt)
+* [llms-full.txt](/zh/llms-full.txt)
 
 ### 说明[​](#说明 "标题的直接链接")
 

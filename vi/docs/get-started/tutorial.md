@@ -4,7 +4,7 @@
 
 Tutorial này sẽ xem xét một app thực tế, còn được biết đến với tên Conduit. Conduit là một bản clone cơ bản của [Medium](https://medium.com/) — nó cho phép bạn đọc và viết bài, cũng như bình luận trên các bài viết của người khác.
 
-![Conduit home page](/documentation/vi/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Conduit home page](/vi/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 Đây là một ứng dụng khá nhỏ, vì vậy chúng ta sẽ giữ nó đơn giản và tránh phân tách quá mức. Rất có thể toàn bộ ứng dụng sẽ chỉ cần ba layer: **App**, **Pages**, và **Shared**. Nếu không, chúng ta sẽ giới thiệu thêm các layer khi cần. Sẵn sàng chưa?
 
@@ -41,11 +41,11 @@ Trong trường hợp này, một trang là một slice, vì vậy các module (
 
 ### Nhìn kỹ hơn vào feed[​](#nhìn-kỹ-hơn-vào-feed "Link trực tiếp đến heading")
 
-![Anonymous user\&#39;s perspective](/documentation/vi/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Anonymous user\&#39;s perspective](/vi/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 *Từ góc nhìn của người dùng ẩn danh*
 
-![Authenticated user\&#39;s perspective](/documentation/vi/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
+![Authenticated user\&#39;s perspective](/vi/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
 
 *Từ góc nhìn của người dùng đã xác thực*
 
@@ -139,7 +139,7 @@ Trong trường hợp của chúng ta, header rất đơn giản — đó là lo
 
 Hãy cũng kiểm tra một trang được thiết kế để chỉnh sửa, không phải đọc. Ví dụ, trình soạn thảo article:
 
-![Conduit post editor](/documentation/vi/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
+![Conduit post editor](/vi/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
 
 Nó trông đơn giản, nhưng chứa một số khía cạnh của phát triển ứng dụng mà chúng ta chưa khám phá — validation form, trạng thái lỗi, và data persistence.
 
@@ -237,7 +237,7 @@ export default FeedPage;
 
 Sau đó, nếu bạn chạy dev server và mở ứng dụng, bạn sẽ thấy banner của Conduit!
 
-![The banner of Conduit](/documentation/vi/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
+![The banner of Conduit](/vi/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
 
 ### API client[​](#api-client "Link trực tiếp đến heading")
 
@@ -1285,7 +1285,7 @@ export default function App() {
 
 Tại thời điểm này, bạn sẽ có kết quả sau trên trang chủ:
 
-![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/documentation/vi/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
+![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/vi/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
 
 Trang feed của Conduit, bao gồm header, feed, và các tag. Các tab vẫn còn thiếu.
 
@@ -2057,7 +2057,7 @@ export function Comments() {
 
 Và với điều đó, trình đọc article của chúng ta cũng hoàn thành! Các button theo dõi tác giả, thích bài viết, và để lại comment giờ đây sẽ hoạt động như mong đợi.
 
-![Article reader with functioning buttons to like and follow](/documentation/vi/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
+![Article reader with functioning buttons to like and follow](/vi/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
 
 Trình đọc article với các button hoạt động để thích và theo dõi
 
@@ -2369,7 +2369,7 @@ export default ArticleEditPage;
 
 Chúng ta hoàn thành rồi! Đăng nhập và thử tạo article mới. Hoặc "quên" viết article và xem validation hoạt động.
 
-![The Conduit article editor, with the title field saying \&quot;New article\&quot; and the rest of the fields empty. Above the form there are two errors: \&quot;Describe what this article is about\&quot; and \&quot;Write the article itself\&quot;.](/documentation/vi/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
+![The Conduit article editor, with the title field saying \&quot;New article\&quot; and the rest of the fields empty. Above the form there are two errors: \&quot;Describe what this article is about\&quot; and \&quot;Write the article itself\&quot;.](/vi/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
 
 Trình chỉnh sửa article Conduit, với trường tiêu đề nói "New article" và phần còn lại của các trường trống. Phía trên form có hai lỗi: **"Describe what this article is about"** và **"Write the article itself"**.
 

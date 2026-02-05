@@ -45,7 +45,7 @@
 
 备注
 
-无论何处提到"容易"，都意味着"对广泛的开发者来说相对容易"，因为很明显[不可能为绝对所有人制作理想的解决方案](/documentation/zh/docs/about/mission.md#limitations)
+无论何处提到"容易"，都意味着"对广泛的开发者来说相对容易"，因为很明显[不可能为绝对所有人制作理想的解决方案](/zh/docs/about/mission.md#limitations)
 
 ### 明确性[​](#明确性 "标题的直接链接")
 

@@ -19,13 +19,13 @@ If you need plain markup layouts, you can keep them in `shared/ui`. If you need 
 
 An *entity* is a real-life concept that your app is working with. A *feature* is an interaction that provides real-life value to your app’s users, the thing people want to do with your entities.
 
-For more information, along with examples, see the Reference page on [slices](/documentation/uz/docs/reference/layers.md#entities).
+For more information, along with examples, see the Reference page on [slices](/uz/docs/reference/layers.md#entities).
 
 ### Can I embed pages/features/entities into each other?[​](#can-i-embed-pagesfeaturesentities-into-each-other "Sarlavhaga to'g'ridan-to'g'ri havola")
 
 Yes, but this embedding should happen in higher layers. For example, inside a widget, you can import both features and then insert one feature into another as props/children.
 
-You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**](/documentation/uz/docs/reference/layers.md#import-rule-on-layers).
+You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**](/uz/docs/reference/layers.md#import-rule-on-layers).
 
 ### What about Atomic Design?[​](#what-about-atomic-design "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -39,7 +39,7 @@ Yes! <https://github.com/feature-sliced/awesome>
 
 ### Why do I need Feature-Sliced Design?[​](#why-do-i-need-feature-sliced-design "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-It helps you and your team to quickly overview the project in terms of its main value-bringing components. A standardized architecture helps to speed up onboarding and resolves debates about code structure. See the [motivation](/documentation/uz/docs/about/motivation.md) page to learn more about why FSD was created.
+It helps you and your team to quickly overview the project in terms of its main value-bringing components. A standardized architecture helps to speed up onboarding and resolves debates about code structure. See the [motivation](/uz/docs/about/motivation.md) page to learn more about why FSD was created.
 
 ### Does a novice developer need an architecture/methodology?[​](#does-a-novice-developer-need-an-architecturemethodology "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -49,4 +49,4 @@ Rather yes than no
 
 ### How do I work with the authorization context?[​](#how-do-i-work-with-the-authorization-context "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Answered [here](/documentation/uz/docs/guides/examples/auth.md)
+Answered [here](/uz/docs/guides/examples/auth.md)

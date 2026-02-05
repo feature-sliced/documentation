@@ -4,7 +4,7 @@ Layer là cấp độ đầu tiên của hệ thống phân cấp tổ chức tr
 
 Có tổng cộng **7 layer**, được sắp xếp từ nhiều trách nhiệm và dependency nhất đến ít nhất:
 
-![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/vi/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/vi/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/vi/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/vi/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App
 2. Processes (deprecated)
@@ -88,7 +88,7 @@ entities/song/@x/artist.ts
 export type { Song } from "../model/song.ts";
 ```
 
-Tìm hiểu thêm về ký hiệu `@x` trong phần [Public API cho cross-import](/documentation/vi/docs/reference/public-api.md#public-api-for-cross-imports).
+Tìm hiểu thêm về ký hiệu `@x` trong phần [Public API cho cross-import](/vi/docs/reference/public-api.md#public-api-for-cross-imports).
 
 ### Features[​](#features "Link trực tiếp đến heading")
 

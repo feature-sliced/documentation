@@ -8,7 +8,7 @@ Ushbu sahifada *module* ilovadagi ichki modul - indeks fayli bo'lgan fayl yoki k
 
 Har bir qatlam o'ziga xos semantik ma'noga ega bo'lib, kodingizdagi modulga qanday mas'uliyat yuklanishi kerakligini aniqlashga yordam beradi. Qatlam nomlari va qiymatlari Feature-Sliced ​​Design yordamida qurilgan barcha loyihalar uchun standartlashtirilgan. Hammasi bo'lib **7 ta qatlam** mavjud bo'lib, ular eng katta mas'uliyat va bog'liqlikdan tortib to eng kichikgacha tartiblangan:
 
-![Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло.](/documentation/uz/img/layers/folders-graphic-light.svg#light-mode-only) ![Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло.](/documentation/uz/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло.](/uz/img/layers/folders-graphic-light.svg#light-mode-only) ![Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло.](/uz/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App (Ilova)
 2. Processes (Jarayonlar, eski qatlam)

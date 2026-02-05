@@ -4,19 +4,19 @@ Use this as a quick reference when you're deciding how to decompose your UI. PDF
 
 ## Choosing a layer[​](#choosing-a-layer "해당 헤딩으로 이동")
 
-[Download PDF](/documentation/kr/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
+[Download PDF](/kr/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
 
-![Definitions of all layers and self-check questions](/documentation/kr/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
+![Definitions of all layers and self-check questions](/kr/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
 
 ## Examples[​](#examples "해당 헤딩으로 이동")
 
 ### Tweet[​](#tweet "해당 헤딩으로 이동")
 
-![decomposed-tweet-bordered-bgLight](/documentation/kr/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/kr/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "해당 헤딩으로 이동")
 
-![decomposed-github-bordered](/documentation/kr/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/kr/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## See also[​](#see-also "해당 헤딩으로 이동")
 

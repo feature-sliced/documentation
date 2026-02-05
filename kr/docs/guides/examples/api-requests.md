@@ -68,7 +68,7 @@ export const client = {
 
 note
 
-예제를 단순화하기 위해 form handling이나 입력 검증(Zod/Valibot)은 생략했습니다.<br /><!-- -->필요하다면 아래 문서를 참고하세요:<br />[Type Validation and Schemas](/documentation/kr/docs/guides/examples/types.md#type-validation-schemas-and-zod)
+예제를 단순화하기 위해 form handling이나 입력 검증(Zod/Valibot)은 생략했습니다.<br /><!-- -->필요하다면 아래 문서를 참고하세요:<br />[Type Validation and Schemas](/kr/docs/guides/examples/types.md#type-validation-schemas-and-zod)
 
 shared/api/endpoints/login.ts
 

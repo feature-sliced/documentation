@@ -43,4 +43,4 @@ Everyone has their own level of experience in designing and developing systems, 
 
 ## See also[​](#see-also "Direct link to heading")
 
-* [Architecture problems](/documentation/docs/about/understanding/architecture.md#problems)
+* [Architecture problems](/docs/about/understanding/architecture.md#problems)

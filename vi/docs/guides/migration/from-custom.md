@@ -245,7 +245,7 @@ Cũng tổ chức lại Shared layer để loại bỏ các folder này:
 
 Thường thì các Redux slice được tái sử dụng này sẽ mô tả điều gì đó liên quan đến nghiệp vụ, ví dụ như products hoặc users, vì vậy chúng có thể được di chuyển vào Entities layer, một entity một folder. Nếu Redux slice liên quan đến một action mà người dùng của bạn muốn thực hiện trong app, như comments, thì bạn có thể di chuyển nó vào Features layer.
 
-Entities và features có ý định độc lập với nhau. Nếu business domain của bạn chứa các kết nối bẩm sinh giữa các entity, hãy tham khảo [hướng dẫn về business entities](/documentation/vi/docs/guides/examples/types.md#business-entities-and-their-cross-references) để có lời khuyên về cách tổ chức các kết nối này.
+Entities và features có ý định độc lập với nhau. Nếu business domain của bạn chứa các kết nối bẩm sinh giữa các entity, hãy tham khảo [hướng dẫn về business entities](/vi/docs/guides/examples/types.md#business-entities-and-their-cross-references) để có lời khuyên về cách tổ chức các kết nối này.
 
 Các API functions liên quan đến các slice này có thể giữ lại trong `📁 shared/api`.
 

@@ -2,7 +2,7 @@
 
 **Feature-Sliced Design** (FSD) is an architectural methodology for scaffolding front-end applications. Simply put, it's a compilation of rules and conventions on organizing code. The main purpose of this methodology is to make the project more understandable and stable in the face of ever-changing business requirements.
 
-Apart from a set of conventions, FSD is also a toolchain. We have a [linter](https://github.com/feature-sliced/steiger) to check your project's architecture, [folder generators](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) through a CLI or IDEs, as well as a rich library of [examples](/documentation/examples.md).
+Apart from a set of conventions, FSD is also a toolchain. We have a [linter](https://github.com/feature-sliced/steiger) to check your project's architecture, [folder generators](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) through a CLI or IDEs, as well as a rich library of [examples](/examples.md).
 
 ## Is it right for me?[​](#is-it-right-for-me "Direct link to heading")
 
@@ -13,7 +13,7 @@ FSD can be implemented in projects and teams of any size. It is right for your p
 
 And that's it! There are no restrictions on what programming language, UI framework, or state manager you use. You can also adopt FSD incrementally, use it in monorepos, and scale to great lengths by breaking your app into packages and implementing FSD individually within them.
 
-If you already have an architecture and you're considering a switch to FSD, make sure that the current architecture is **causing trouble** in your team. For example, if your project has grown too large and inter-connected to efficiently implement new features, or if you're expecting a lot of new members to join the team. If the current architecture works, maybe it's not worth changing. But if you do decide to migrate, see the [Migration](/documentation/docs/guides/migration/from-custom.md) section for guidance.
+If you already have an architecture and you're considering a switch to FSD, make sure that the current architecture is **causing trouble** in your team. For example, if your project has grown too large and inter-connected to efficiently implement new features, or if you're expecting a lot of new members to join the team. If the current architecture works, maybe it's not worth changing. But if you do decide to migrate, see the [Migration](/docs/guides/migration/from-custom.md) section for guidance.
 
 ## Basic example[​](#basic-example "Direct link to heading")
 
@@ -54,7 +54,7 @@ Folders inside `📂 app`, `📂 shared`, and `📂 pages/article-reader` are ca
 
 Layers, slices, and segments form a hierarchy like this:
 
-![Hierarchy of FSD concepts, described below](/documentation/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
+![Hierarchy of FSD concepts, described below](/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
 Pictured above: three pillars, labeled left to right as "Layers", "Slices", and "Segments" respectively.
 
@@ -126,6 +126,6 @@ It's advised to refrain from adding new large entities while refactoring or refa
 
 ## Next steps[​](#next-steps "Direct link to heading")
 
-* **Want to get a good grasp of how to think in FSD?** Check out the [Tutorial](/documentation/docs/get-started/tutorial.md).
-* **Prefer to learn from examples?** We have a lot in the [Examples](/documentation/examples.md) section.
+* **Want to get a good grasp of how to think in FSD?** Check out the [Tutorial](/docs/get-started/tutorial.md).
+* **Prefer to learn from examples?** We have a lot in the [Examples](/examples.md) section.
 * **Have questions?** Drop by our [Telegram chat](https://t.me/feature_sliced) and get help from the community.

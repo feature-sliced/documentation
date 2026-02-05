@@ -63,7 +63,7 @@ export function listSongs() {
 }
 ```
 
-You might notice that the `Song` type references a different entity, `Artist`. This is a benefit of storing your requests in Shared — real-world types are often intertwined. If we kept this function in `entities/song/api`, we wouldn't be able to simply import `Artist` from `entities/artist`, because FSD restricts cross-imports between slices with [the import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers):
+You might notice that the `Song` type references a different entity, `Artist`. This is a benefit of storing your requests in Shared — real-world types are often intertwined. If we kept this function in `entities/song/api`, we wouldn't be able to simply import `Artist` from `entities/artist`, because FSD restricts cross-imports between slices with [the import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers):
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 
@@ -376,7 +376,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-It would be nice to have typed Redux hooks `useAppDispatch` and `useAppSelector` in `shared/store`, but they cannot import `RootState` and `AppDispatch` from the App layer due to the [import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers):
+It would be nice to have typed Redux hooks `useAppDispatch` and `useAppSelector` in `shared/store`, but they cannot import `RootState` and `AppDispatch` from the App layer due to the [import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers):
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 

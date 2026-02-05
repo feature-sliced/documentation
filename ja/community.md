@@ -10,13 +10,13 @@ Community resources, additional materials
 
 [A curated list of awesome FSD videos, articles, packages](https://github.com/feature-sliced/awesome)
 
-[Team](/documentation/ja/community/team.md)
+[Team](/ja/community/team.md)
 
-[Core-team, Champions, Contributors, Companies](/documentation/ja/community/team.md)
+[Core-team, Champions, Contributors, Companies](/ja/community/team.md)
 
-[Brandbook](/documentation/ja/docs/branding.md)
+[Brandbook](/ja/docs/branding.md)
 
-[Recommendations for FSD's branding usage](/documentation/ja/docs/branding.md)
+[Recommendations for FSD's branding usage](/ja/docs/branding.md)
 
 [Contributing](#)
 

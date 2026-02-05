@@ -37,12 +37,12 @@ Cross-imports in `entities` are often caused by splitting entities too granularl
 
 Think of `@x` as an explicit gateway for unavoidable domain references—not a general-purpose reuse mechanism. Overuse tends to lock entity boundaries together and makes refactoring more costly over time.
 
-For details about `@x`, see the [Public API documentation](/documentation/docs/reference/public-api.md).
+For details about `@x`, see the [Public API documentation](/docs/reference/public-api.md).
 
 For concrete examples of cross-references between business entities, see:
 
-* [Types guide — Business entities and their cross-references](/documentation/docs/guides/examples/types.md#business-entities-and-their-cross-references)
-* [Layers reference — Entities](/documentation/docs/reference/layers.md#entities)
+* [Types guide — Business entities and their cross-references](/docs/guides/examples/types.md#business-entities-and-their-cross-references)
+* [Layers reference — Entities](/docs/reference/layers.md#entities)
 
 ## Features and widgets: Multiple strategies[​](#features-and-widgets-multiple-strategies "Direct link to heading")
 
@@ -71,7 +71,7 @@ Key principles:
 
 For example, if both `features/auth` and `features/profile` need session validation, place session-related domain functions in `entities/session` and reuse them from both features.
 
-For more guidance, see [Layers reference — Entities](/documentation/docs/reference/layers.md#entities).
+For more guidance, see [Layers reference — Entities](/docs/reference/layers.md#entities).
 
 ### Strategy C: Compose from an upper layer (pages / app)[​](#strategy-c-compose-from-an-upper-layer-pages--app "Direct link to heading")
 

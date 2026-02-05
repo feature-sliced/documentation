@@ -35,4 +35,4 @@ entities/B/some/file.ts
 import type { EntityA } from "entities/A/@x/B";
 ```
 
-Để biết thêm chi tiết, hãy xem phần [Public API for cross-imports](/documentation/vi/docs/reference/public-api.md#public-api-for-cross-imports) trong reference.
+Để biết thêm chi tiết, hãy xem phần [Public API for cross-imports](/vi/docs/reference/public-api.md#public-api-for-cross-imports) trong reference.

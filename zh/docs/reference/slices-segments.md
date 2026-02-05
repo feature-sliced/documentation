@@ -12,13 +12,13 @@ Layers Shared 和 App 不包含 slices。这是因为 Shared 应该不包含任�
 
 Slices 旨在成为独立且高度聚合的代码文件组。下面的图形可能有助于可视化\_聚合性\_和\_耦合性\_这些复杂的概念：
 
-![](/documentation/zh/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/zh/img/coupling-cohesion-dark.svg#dark-mode-only)
+![](/zh/img/coupling-cohesion-light.svg#light-mode-only)![](/zh/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
 理想的 slice 独立于其 layer 上的其他 slices（零耦合）并包含与其主要目标相关的大部分代码（高聚合）。
 
-切片的独立性由[层级导入规则](/documentation/zh/docs/reference/layers.md#import-rule-on-layers)强制执行：
+切片的独立性由[层级导入规则](/zh/docs/reference/layers.md#import-rule-on-layers)强制执行：
 
 > *切片中的模块（文件）只能在其他切片位于严格较低的层级时导入它们。*
 
@@ -30,13 +30,13 @@ Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-d
 >
 > *此切片/段之外的模块只能引用公共API，而不能引用切片/段的内部文件结构。*
 
-在[公共API参考](/documentation/zh/docs/reference/public-api.md)中阅读更多关于公共API的基本原理和创建最佳实践的信息。
+在[公共API参考](/zh/docs/reference/public-api.md)中阅读更多关于公共API的基本原理和创建最佳实践的信息。
 
 ### 切片组[​](#切片组 "标题的直接链接")
 
 密切相关的切片可以在文件夹中进行结构化分组，但它们应该遵循与其他切片相同的隔离规则 — 该文件夹中应该**没有代码共享**。
 
-![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/documentation/zh/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
+![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/zh/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## Segments[​](#segments "标题的直接链接")
 
@@ -50,7 +50,7 @@ Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-d
 * `lib` — 此切片上其他模块需要的库代码。
 * `config` — 配置文件和功能标志。
 
-查看[层级页面](/documentation/zh/docs/reference/layers.md#layer-definitions)了解这些段在不同层级上可能用于什么的示例。
+查看[层级页面](/zh/docs/reference/layers.md#layer-definitions)了解这些段在不同层级上可能用于什么的示例。
 
 你也可以创建自定义段。自定义段最常见的地方是App层和Shared层，在这些层中切片没有意义。
 

@@ -63,7 +63,7 @@ export function listSongs() {
 }
 ```
 
-Bạn có thể nhận thấy rằng type `Song` tham chiếu đến một entity khác, `Artist`. Đây là lợi ích của việc lưu trữ requests của bạn trong Shared — các types thế giới thực thường đan xen. Nếu chúng ta giữ function này trong `entities/song/api`, chúng ta sẽ không thể đơn giản import `Artist` từ `entities/artist`, vì FSD hạn chế cross-imports giữa các slices với [import rule trên các layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Bạn có thể nhận thấy rằng type `Song` tham chiếu đến một entity khác, `Artist`. Đây là lợi ích của việc lưu trữ requests của bạn trong Shared — các types thế giới thực thường đan xen. Nếu chúng ta giữ function này trong `entities/song/api`, chúng ta sẽ không thể đơn giản import `Artist` từ `entities/artist`, vì FSD hạn chế cross-imports giữa các slices với [import rule trên các layers](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > Một module trong slice chỉ có thể import các slices khác khi chúng được đặt trên các layers ở phía dưới.
 
@@ -376,7 +376,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-Sẽ tốt nếu có typed Redux hooks `useAppDispatch` và `useAppSelector` trong `shared/store`, nhưng chúng không thể import `RootState` và `AppDispatch` từ App layer do [import rule trên layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Sẽ tốt nếu có typed Redux hooks `useAppDispatch` và `useAppSelector` trong `shared/store`, nhưng chúng không thể import `RootState` và `AppDispatch` từ App layer do [import rule trên layers](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > Một module trong slice chỉ có thể import các slices khác khi chúng được đặt trên layers nghiêm ngặt bên dưới.
 

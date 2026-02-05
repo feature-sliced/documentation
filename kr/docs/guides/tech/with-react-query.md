@@ -30,7 +30,7 @@
         ...                                     #
 ```
 
-entities 간에 데이터를 참조해야 하면 [공용 Public API](/documentation/kr/docs/reference/public-api.md#public-api-for-cross-imports)를 사용하거나,<br /><!-- -->아래 예시처럼 `shared/api/queries`에 모아두는 방법도 있습니다.
+entities 간에 데이터를 참조해야 하면 [공용 Public API](/kr/docs/reference/public-api.md#public-api-for-cross-imports)를 사용하거나,<br /><!-- -->아래 예시처럼 `shared/api/queries`에 모아두는 방법도 있습니다.
 
 ### 대안 — shared에 모아두기[​](#대안--shared에-모아두기 "해당 헤딩으로 이동")
 

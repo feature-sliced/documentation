@@ -2,7 +2,7 @@
 
 Ý tưởng chính của **Feature-Sliced Design** là tạo điều kiện thuận lợi và giảm chi phí phát triển các dự án phức tạp và được phát triển, dựa trên việc [kết hợp kết quả nghiên cứu, thảo luận kinh nghiệm của các loại developer khác nhau trong phạm vi rộng](https://github.com/feature-sliced/documentation/discussions).
 
-Hiển nhiên, đây sẽ không phải là giải pháp vạn năng, và tất nhiên, phương pháp này sẽ có [giới hạn khả năng áp dụng](/documentation/vi/docs/about/mission.md) riêng của mình.
+Hiển nhiên, đây sẽ không phải là giải pháp vạn năng, và tất nhiên, phương pháp này sẽ có [giới hạn khả năng áp dụng](/vi/docs/about/mission.md) riêng của mình.
 
 Tuy nhiên, có những câu hỏi hợp lý về *tính khả thi của một phương pháp như vậy nói chung*
 
@@ -108,7 +108,7 @@ Vâng, điều quan trọng nhất đối với MVP là *"các tính năng, khô
 
 ## Kế hoạch[​](#kế-hoạch "Link trực tiếp đến heading")
 
-Phần chính của các mục tiêu [được trình bày ở đây](/documentation/vi/docs/about/mission.md#goals), nhưng ngoài ra, đáng nói về kỳ vọng của chúng tôi từ methodology trong tương lai
+Phần chính của các mục tiêu [được trình bày ở đây](/vi/docs/about/mission.md#goals), nhưng ngoài ra, đáng nói về kỳ vọng của chúng tôi từ methodology trong tương lai
 
 ### Kết hợp kinh nghiệm[​](#kết-hợp-kinh-nghiệm "Link trực tiếp đến heading")
 
@@ -131,5 +131,5 @@ Nếu mọi thứ điễn ra tốt, thì methodology sẽ không chỉ giới h�
 ## Xem thêm[​](#xem-thêm "Link trực tiếp đến heading")
 
 * [(Thảo luận) Không cần methodology?](https://github.com/feature-sliced/documentation/discussions/27)
-* [Về sứ mệnh của methodology: mục tiêu và giới hạn](/documentation/vi/docs/about/mission.md)
-* [Các loại kiến thức trong dự án](/documentation/vi/docs/about/understanding/knowledge-types.md)
+* [Về sứ mệnh của methodology: mục tiêu và giới hạn](/vi/docs/about/mission.md)
+* [Các loại kiến thức trong dự án](/vi/docs/about/understanding/knowledge-types.md)

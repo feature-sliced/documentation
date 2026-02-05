@@ -6,8 +6,8 @@ This page provides links and guidance for LLM crawlers.
 
 ### Files[​](#files "この見出しへの直接リンク")
 
-* [llms.txt](/documentation/ja/llms.txt)
-* [llms-full.txt](/documentation/ja/llms-full.txt)
+* [llms.txt](/ja/llms.txt)
+* [llms-full.txt](/ja/llms-full.txt)
 
 ### Notes[​](#notes "この見出しへの直接リンク")
 

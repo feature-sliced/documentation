@@ -1,7 +1,7 @@
 # Feature-Sliced Design
 
 
-## documentation
+## ja
 
 - [実装例](/examples.md): FSDを使って作られたプロジェクト一覧
 - [🧭 ナビゲーション](/nav.md): Feature-Sliced Design Navigation help page

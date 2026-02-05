@@ -45,4 +45,4 @@
 
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 
-* [아키텍쳐 문제들](/documentation/kr/docs/about/understanding/architecture.md#problems)
+* [아키텍쳐 문제들](/kr/docs/about/understanding/architecture.md#problems)

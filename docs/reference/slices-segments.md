@@ -12,13 +12,13 @@ The layers Shared and App don't contain slices. That is because Shared should co
 
 Slices are meant to be independent and highly cohesive groups of code files. The graphic below might help to visualize the tricky concepts of *cohesion* and *coupling*:
 
-![](/documentation/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/img/coupling-cohesion-dark.svg#dark-mode-only)
+![](/img/coupling-cohesion-light.svg#light-mode-only)![](/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
 An ideal slice is independent from other slices on its layer (zero coupling) and contains most of the code related to its primary goal (high cohesion).
 
-The independence of slices is enforced by the [import rule on layers](/documentation/docs/reference/layers.md#import-rule-on-layers):
+The independence of slices is enforced by the [import rule on layers](/docs/reference/layers.md#import-rule-on-layers):
 
 > *A module (file) in a slice can only import other slices when they are located on layers strictly below.*
 
@@ -30,13 +30,13 @@ Inside a slice, the code could be organized in any way that you want. That doesn
 >
 > *Modules outside of this slice/segment can only reference the public API, not the internal file structure of the slice/segment.*
 
-Read more about the rationale of public APIs and the best practices on creating one in the [Public API reference](/documentation/docs/reference/public-api.md).
+Read more about the rationale of public APIs and the best practices on creating one in the [Public API reference](/docs/reference/public-api.md).
 
 ### Slice groups[​](#slice-groups "Direct link to heading")
 
 Closely related slices can be structurally grouped in a folder, but they should exercise the same isolation rules as other slices — there should be **no code sharing** in that folder.
 
-![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/documentation/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
+![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## Segments[​](#segments "Direct link to heading")
 
@@ -50,7 +50,7 @@ There a few standardized segment names:
 * `lib` — library code that other modules on this slice need.
 * `config` — configuration files and feature flags.
 
-See the [Layers page](/documentation/docs/reference/layers.md#layer-definitions) for examples of what each of these segments might be used for on different layers.
+See the [Layers page](/docs/reference/layers.md#layer-definitions) for examples of what each of these segments might be used for on different layers.
 
 You can also create custom segments. The most common places for custom segments are the App layer and the Shared layer, where slices don't make sense.
 

@@ -1,7 +1,7 @@
 # Feature-Sliced Design
 
 
-## documentation
+## vi
 
 - [Ví dụ](/examples.md): Danh sách các website được xây dựng với Feature-Sliced Design
 - [🧭 Điều hướng](/nav.md): Feature-Sliced Design Navigation help page

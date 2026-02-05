@@ -27,17 +27,17 @@ Hình ảnh bánh 🍰 thể hiện khá tốt các khái niệm cốt lõi củ
 
 FSD có một vài biến thể logo cho các ngữ cảnh khác nhau, nhưng được khuyến nghị ưu tiên **primary**
 
-|                                 |                                                                                                                        |                                  |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| Theme                           | Logo (Ctrl/Cmd + Click để tải xuống)                                                                                   | Sử dụng                          |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/vi/img/brand/logo-primary.png)](/documentation/vi/img/brand/logo-primary.png)          | Ưu tiên trong hầu hết trường hợp |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/vi/img/brand/logo-flat.png)](/documentation/vi/img/brand/logo-flat.png)                   | Cho ngữ cảnh một màu             |
-| monochrome<br />(#FFF)          | [![logo-monocrhome](/documentation/vi/img/brand/logo-monochrome.png)](/documentation/vi/img/brand/logo-monochrome.png) | Cho ngữ cảnh thang màu xám       |
-| square<br />(#3193FF)           | [![logo-square](/documentation/vi/img/brand/logo-square.png)](/documentation/vi/img/brand/logo-square.png)             | Cho biên hình vuông              |
+|                                 |                                                                                            |                                  |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------- |
+| Theme                           | Logo (Ctrl/Cmd + Click để tải xuống)                                                       | Sử dụng                          |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/vi/img/brand/logo-primary.png)](/vi/img/brand/logo-primary.png)          | Ưu tiên trong hầu hết trường hợp |
+| flat<br />(#3193FF)             | [![logo-flat](/vi/img/brand/logo-flat.png)](/vi/img/brand/logo-flat.png)                   | Cho ngữ cảnh một màu             |
+| monochrome<br />(#FFF)          | [![logo-monocrhome](/vi/img/brand/logo-monochrome.png)](/vi/img/brand/logo-monochrome.png) | Cho ngữ cảnh thang màu xám       |
+| square<br />(#3193FF)           | [![logo-square](/vi/img/brand/logo-square.png)](/vi/img/brand/logo-square.png)             | Cho biên hình vuông              |
 
 ## Banner & Sơ đồ[​](#banner--sơ-đồ "Link trực tiếp đến heading")
 
-[![banner-primary](/documentation/vi/img/brand/banner-primary.jpg)](/documentation/vi/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/vi/img/brand/banner-monochrome.jpg)](/documentation/vi/img/brand/banner-monochrome.jpg)
+[![banner-primary](/vi/img/brand/banner-primary.jpg)](/vi/img/brand/banner-primary.jpg) [![banner-monochrome](/vi/img/brand/banner-monochrome.jpg)](/vi/img/brand/banner-monochrome.jpg)
 
 ## Social Preview[​](#social-preview "Link trực tiếp đến heading")
 

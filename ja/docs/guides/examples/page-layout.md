@@ -70,7 +70,7 @@ export function useThemeSwitcher() {
 
 ## レイアウトでのウィジェットの使用[​](#レイアウトでのウィジェットの使用 "この見出しへの直接リンク")
 
-時には、特定のビジネスロジックをレイアウトに組み込む必要があります。特に、[React Router](https://reactrouter.com/)のような深くネストされたルートを使用している場合、Shared層やWidgets層にレイアウトを保存することはできません。これは[レイヤーのインポートルール](/documentation/ja/docs/reference/layers.md#import-rule-on-layers)に違反しています。
+時には、特定のビジネスロジックをレイアウトに組み込む必要があります。特に、[React Router](https://reactrouter.com/)のような深くネストされたルートを使用している場合、Shared層やWidgets層にレイアウトを保存することはできません。これは[レイヤーのインポートルール](/ja/docs/reference/layers.md#import-rule-on-layers)に違反しています。
 
 > スライス内のモジュールは、下層にあるスライスのみをインポートできる。
 
@@ -88,4 +88,4 @@ export function useThemeSwitcher() {
 
 ## 追加資料[​](#追加資料 "この見出しへの直接リンク")
 
-* ReactとRemixを使用した認証付きレイアウトの作成例は[チュートリアル](/documentation/ja/docs/get-started/tutorial.md)で見つけることができます（React Routerに類似する）。
+* ReactとRemixを使用した認証付きレイアウトの作成例は[チュートリアル](/ja/docs/get-started/tutorial.md)で見つけることができます（React Routerに類似する）。

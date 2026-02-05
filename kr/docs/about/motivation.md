@@ -2,7 +2,7 @@
 
 **Feature-Sliced Design**은 [여러 개발자들의 연구와 경험을 결합해](https://github.com/feature-sliced/documentation/discussions)<br /><!-- -->복잡하고 점점 더 커지는 프로젝트를 더 단순하게 개발하고, 비용을 줄이려는 아이디어에서 출발했습니다.
 
-물론 이 방법론이 모든 문제를 해결하는 만능 열쇠는 아니며, [적용상의 한계](/documentation/kr/docs/about/mission.md)도 분명히 존재합니다.
+물론 이 방법론이 모든 문제를 해결하는 만능 열쇠는 아니며, [적용상의 한계](/kr/docs/about/mission.md)도 분명히 존재합니다.
 
 그럼에도 불구하고, *이 방법론이 제공하는 실질적인 효용성* 때문에 많은 개발자들이 관심을 갖고 있습니다.
 
@@ -122,7 +122,7 @@ MVP의 직접적인 목표는 “장기 아키텍처”가 아니라 **실제 �
 
 ## 계획[​](#계획 "해당 헤딩으로 이동")
 
-이 방법론의 주요 목표는 [여기](/documentation/kr/docs/about/mission.md#goals)에 정의되어 있으며,<br /><!-- -->앞으로 이 방법론이 어떤 방향으로 발전해야 할지에 대해서도 함께 고민하고 있습니다.
+이 방법론의 주요 목표는 [여기](/kr/docs/about/mission.md#goals)에 정의되어 있으며,<br /><!-- -->앞으로 이 방법론이 어떤 방향으로 발전해야 할지에 대해서도 함께 고민하고 있습니다.
 
 ### 경험 결합[​](#경험-결합 "해당 헤딩으로 이동")
 
@@ -145,5 +145,5 @@ MVP의 직접적인 목표는 “장기 아키텍처”가 아니라 **실제 �
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 
 * [(토론) 방법론이 필요하지 않나요?](https://github.com/feature-sliced/documentation/discussions/27)
-* [방법론의 목표와 한계](/documentation/kr/docs/about/mission.md)
-* [프로젝트에서 다루는 지식의 유형](/documentation/kr/docs/about/understanding/knowledge-types.md)
+* [방법론의 목표와 한계](/kr/docs/about/mission.md)
+* [프로젝트에서 다루는 지식의 유형](/kr/docs/about/understanding/knowledge-types.md)

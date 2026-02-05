@@ -63,7 +63,7 @@ export function listSongs() {
 }
 ```
 
-您可能会注意到 `Song` 类型引用了不同的实体 `Artist`。这是将请求存储在 Shared 中的好处 — 现实世界的类型通常是相互交织的。如果我们将此函数保存在 `entities/song/api` 中，我们将无法简单地从 `entities/artist` 导入 `Artist`，因为 FSD 通过[层上的导入规则](/documentation/zh/docs/reference/layers.md#import-rule-on-layers)限制 slices 之间的交叉导入：
+您可能会注意到 `Song` 类型引用了不同的实体 `Artist`。这是将请求存储在 Shared 中的好处 — 现实世界的类型通常是相互交织的。如果我们将此函数保存在 `entities/song/api` 中，我们将无法简单地从 `entities/artist` 导入 `Artist`，因为 FSD 通过[层上的导入规则](/zh/docs/reference/layers.md#import-rule-on-layers)限制 slices 之间的交叉导入：
 
 > slice 中的模块只能在其他 slices 位于严格较低的层时导入它们。
 
@@ -376,7 +376,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-在 `shared/store` 中拥有类型化的 Redux hooks `useAppDispatch` 和 `useAppSelector` 会很好，但由于[层上的导入规则](/documentation/zh/docs/reference/layers.md#import-rule-on-layers)，它们无法从 App 层导入 `RootState` 和 `AppDispatch`：
+在 `shared/store` 中拥有类型化的 Redux hooks `useAppDispatch` 和 `useAppSelector` 会很好，但由于[层上的导入规则](/zh/docs/reference/layers.md#import-rule-on-layers)，它们无法从 App 层导入 `RootState` 和 `AppDispatch`：
 
 > slice 中的模块只能在其他 slices 位于严格较低的层时导入它们。
 

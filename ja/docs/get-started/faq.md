@@ -19,13 +19,13 @@
 
 *エンティティ*はアプリケーションが扱う現実世界の概念です。*フィーチャー*はユーザーに実際の価値を提供するインタラクションであり、ユーザーがエンティティで行いたいことです。
 
-詳細および例については、参考書セクションの[スライスについてのページ](/documentation/ja/docs/reference/layers.md#entities)を参照してください。
+詳細および例については、参考書セクションの[スライスについてのページ](/ja/docs/reference/layers.md#entities)を参照してください。
 
 ### ページ/フィーチャー/エンティティを相互に埋め込むことはできますか？[​](#can-i-embed-pagesfeaturesentities-into-each-other "この見出しへの直接リンク")
 
 はい、しかし、この埋め込みはより上層のレイヤーで行う必要があります。例えば、ウィジェット内で両方のフィーチャーをインポートし、プロップス/子要素として一方のフィーチャーを他方に挿入することができます。
 
-一方のフィーチャーを他方のフィーチャーからインポートすることはできません。これは[**レイヤーのインポートルール**](/documentation/ja/docs/reference/layers.md#import-rule-on-layers)で禁止されています。
+一方のフィーチャーを他方のフィーチャーからインポートすることはできません。これは[**レイヤーのインポートルール**](/ja/docs/reference/layers.md#import-rule-on-layers)で禁止されています。
 
 ### Atomic Designはどうですか？[​](#what-about-atomic-design "この見出しへの直接リンク")
 
@@ -39,7 +39,7 @@
 
 ### なぜFeature-Sliced Designが必要なのですか？[​](#why-do-i-need-feature-sliced-design "この見出しへの直接リンク")
 
-FSDは、プロジェクトの主要な価値を提供するコンポーネントの観点から、あなたとあなたのチームが迅速にプロジェクトを把握するのに役立ちます。標準化されたアーキテクチャは、オンボーディングを迅速化し、コード構造に関する議論を解決するのに役立ちます。FSDが作成された理由については、[モチベーション](/documentation/ja/docs/about/motivation.md)のページを参照してください。
+FSDは、プロジェクトの主要な価値を提供するコンポーネントの観点から、あなたとあなたのチームが迅速にプロジェクトを把握するのに役立ちます。標準化されたアーキテクチャは、オンボーディングを迅速化し、コード構造に関する議論を解決するのに役立ちます。FSDが作成された理由については、[モチベーション](/ja/docs/about/motivation.md)のページを参照してください。
 
 ### 初心者の開発者にFSDのアーキテクチャ/設計方法論は必要ですか？[​](#does-a-novice-developer-need-an-architecturemethodology "この見出しへの直接リンク")
 
@@ -49,4 +49,4 @@ FSDは、プロジェクトの主要な価値を提供するコンポーネン�
 
 ### 認証コンテキストをどのように扱えばよいですか？[​](#how-do-i-work-with-the-authorization-context "この見出しへの直接リンク")
 
-[こちら](/documentation/ja/docs/guides/examples/auth.md)で回答しています。
+[こちら](/ja/docs/guides/examples/auth.md)で回答しています。

@@ -73,7 +73,7 @@ export function listSongs() {
 
 반대로 이 Request 함수를 `entities/song/api` 내부에 두면 다음과 같은 문제가 생깁니다.
 
-`entities/artist` slice에서 `Song` 타입을 **참조하고 싶어도**,<br /><!-- -->FSD의 [layer별 import 규칙](/documentation/kr/docs/reference/layers.md#import-rule-on-layers) 때문에 **동일 layer 간(import)** 의존은 금지됩니다.
+`entities/artist` slice에서 `Song` 타입을 **참조하고 싶어도**,<br /><!-- -->FSD의 [layer별 import 규칙](/kr/docs/reference/layers.md#import-rule-on-layers) 때문에 **동일 layer 간(import)** 의존은 금지됩니다.
 
 * 규칙 요약:
 
@@ -409,7 +409,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-이때, `shared/store`에서 `useAppDispatch`, `useAppSelector` 같은 커스텀 훅을 만들고 싶어도,<br />[import 규칙](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)에 의해 App layer에 있는 `RootState`, `AppDispatch` 타입을 바로 가져올 수 없습니다.
+이때, `shared/store`에서 `useAppDispatch`, `useAppSelector` 같은 커스텀 훅을 만들고 싶어도,<br />[import 규칙](/kr/docs/reference/layers.md#import-rule-on-layers)에 의해 App layer에 있는 `RootState`, `AppDispatch` 타입을 바로 가져올 수 없습니다.
 
 > 한 slice의 module은 자신보다 하위 layer에 있는 slice만 import할 수 있습니다.
 

@@ -4,8 +4,8 @@
 
 Tài liệu cho phiên bản hiện tại có thể tìm thấy ở đây
 
-| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/documentation/vi/docs/get-started/overview.md) | [Migration from v1](/documentation/vi/docs/guides/migration/from-v1.md) | [Migration from v2.0](/documentation/vi/docs/guides/migration/from-v1.md) |
-| ---- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/vi/docs/get-started/overview.md) | [Migration from v1](/vi/docs/guides/migration/from-v1.md) | [Migration from v2.0](/vi/docs/guides/migration/from-v1.md) |
+| ---- | ---------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
 
 ### Feature Slices v1 (Legacy)
 

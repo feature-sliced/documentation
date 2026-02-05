@@ -4,7 +4,7 @@ Layer는 Feature-Sliced Design에서 코드를 나눌 때 사용하는 **가장 
 
 총 **7개의 Layer**가 있으며, 아래로 내려갈수록 **담당하는 기능과 의존성이 줄어드는 순서**입니다.
 
-![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/kr/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/kr/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/kr/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/kr/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App
 2. Processes (deprecated)
@@ -110,7 +110,7 @@ export interface Artist {
 }
 ```
 
-자세한 내용은 [Cross-Import를 위한 Public API](/documentation/kr/docs/reference/public-api.md#public-api-for-cross-imports) 문서를 참고하세요.
+자세한 내용은 [Cross-Import를 위한 Public API](/kr/docs/reference/public-api.md#public-api-for-cross-imports) 문서를 참고하세요.
 
 ### Feature[​](#feature "해당 헤딩으로 이동")
 

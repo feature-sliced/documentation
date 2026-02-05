@@ -43,4 +43,4 @@ Mọi người đều có mức độ kinh nghiệm riêng trong việc thiết 
 
 ## Xem thêm[​](#xem-thêm "Link trực tiếp đến heading")
 
-* [Các vấn đề kiến trúc](/documentation/vi/docs/about/understanding/architecture.md#problems)
+* [Các vấn đề kiến trúc](/vi/docs/about/understanding/architecture.md#problems)

@@ -112,7 +112,7 @@ In v2 **, other new abstractions** have been added to eliminate the problems of 
 
 ### `BREAKING` Abstractions & Naming[​](#breaking-abstractions--naming "Direct link to heading")
 
-Now specific abstractions and [clear recommendations for naming them](/documentation/docs/about/understanding/naming.md)are defined
+Now specific abstractions and [clear recommendations for naming them](/docs/about/understanding/naming.md)are defined
 
 #### Layers[​](#layers "Direct link to heading")
 
@@ -147,7 +147,7 @@ Now specific abstractions and [clear recommendations for naming them](/documenta
 
 ### `REFINED` Low coupling[​](#refined-low-coupling "Direct link to heading")
 
-Now it is much easier to [observe the principle of low coupling](/documentation/docs/reference/slices-segments.md#zero-coupling-high-cohesion) between modules, thanks to the new layers.
+Now it is much easier to [observe the principle of low coupling](/docs/reference/slices-segments.md#zero-coupling-high-cohesion) between modules, thanks to the new layers.
 
 *At the same time, it is still recommended to avoid as much as possible cases where it is extremely difficult to "uncouple" modules*
 

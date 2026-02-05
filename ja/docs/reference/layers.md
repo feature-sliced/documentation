@@ -4,7 +4,7 @@
 
 合計で**7つのレイヤー**があり、責任と依存度が最も高いものから最も低いものへと配置されています。
 
-![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/ja/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/ja/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/ja/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/ja/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App (アップ)
 2. Processes (プロセス、非推奨)
@@ -88,7 +88,7 @@ entities/song/@x/artist.ts
 export type { Song } from "../model/song.ts";
 ```
 
-`@x`表記の詳細については、[クロスインポートの公開API](/documentation/ja/docs/reference/public-api.md#public-api-for-cross-imports)セクションを参照してください。
+`@x`表記の詳細については、[クロスインポートの公開API](/ja/docs/reference/public-api.md#public-api-for-cross-imports)セクションを参照してください。
 
 ### Features[​](#features "この見出しへの直接リンク")
 

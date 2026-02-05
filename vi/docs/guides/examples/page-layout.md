@@ -70,7 +70,7 @@ Code của các sidebars được để lại như bài tập cho độc giả �
 
 ## Sử dụng widgets trong layout[​](#sử-dụng-widgets-trong-layout "Link trực tiếp đến heading")
 
-Thiệng thoảng bạn muốn bao gồm business logic nhất định trong layout, đặc biệt nếu bạn đang sử dụng deeply nested routes với router như [React Router](https://reactrouter.com/). Khi đó bạn không thể lưu trữ layout trong Shared hoặc trong Widgets do [import rule trên các layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Thiệng thoảng bạn muốn bao gồm business logic nhất định trong layout, đặc biệt nếu bạn đang sử dụng deeply nested routes với router như [React Router](https://reactrouter.com/). Khi đó bạn không thể lưu trữ layout trong Shared hoặc trong Widgets do [import rule trên các layers](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > Một module trong slice chỉ có thể import các slices khác khi chúng được đặt trên các layers ở phía dưới.
 
@@ -93,4 +93,4 @@ Nếu không có điều nào ở trên áp dụng được, có hai giải phá
 
 ## Đọc thêm[​](#đọc-thêm "Link trực tiếp đến heading")
 
-* Có một ví dụ về cách xây dựng layout với authentication sử dụng React và Remix (tương đương với React Router) trong [tutorial](/documentation/vi/docs/get-started/tutorial.md).
+* Có một ví dụ về cách xây dựng layout với authentication sử dụng React và Remix (tương đương với React Router) trong [tutorial](/vi/docs/get-started/tutorial.md).

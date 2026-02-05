@@ -4,19 +4,19 @@ Use this as a quick reference when you're deciding how to decompose your UI. PDF
 
 ## Choosing a layer[​](#choosing-a-layer "Direct link to heading")
 
-[Download PDF](/documentation/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
+[Download PDF](/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
 
-![Definitions of all layers and self-check questions](/documentation/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
+![Definitions of all layers and self-check questions](/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
 
 ## Examples[​](#examples "Direct link to heading")
 
 ### Tweet[​](#tweet "Direct link to heading")
 
-![decomposed-tweet-bordered-bgLight](/documentation/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "Direct link to heading")
 
-![decomposed-github-bordered](/documentation/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## See also[​](#see-also "Direct link to heading")
 

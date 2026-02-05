@@ -70,7 +70,7 @@ export function useThemeSwitcher() {
 
 ## 在布局中使用 widgets[​](#在布局中使用-widgets "标题的直接链接")
 
-有时您希望在布局中包含某些业务逻辑，特别是如果您使用像 [React Router](https://reactrouter.com/) 这样的路由器的深度嵌套路由。然后由于[层上的导入规则](/documentation/zh/docs/reference/layers.md#import-rule-on-layers)，您无法将布局存储在 Shared 或 Widgets 中：
+有时您希望在布局中包含某些业务逻辑，特别是如果您使用像 [React Router](https://reactrouter.com/) 这样的路由器的深度嵌套路由。然后由于[层上的导入规则](/zh/docs/reference/layers.md#import-rule-on-layers)，您无法将布局存储在 Shared 或 Widgets 中：
 
 > slice 中的模块只能在其他 slices 位于严格较低的层时导入它们。
 
@@ -93,4 +93,4 @@ export function useThemeSwitcher() {
 
 ## 延伸阅读[​](#延伸阅读 "标题的直接链接")
 
-* 在[教程](/documentation/zh/docs/get-started/tutorial.md)中有一个如何使用 React 和 Remix（相当于 React Router）构建带有身份验证的布局的示例。
+* 在[教程](/zh/docs/get-started/tutorial.md)中有一个如何使用 React 和 Remix（相当于 React Router）构建带有身份验证的布局的示例。

@@ -63,7 +63,7 @@ export function listSongs() {
 }
 ```
 
-Вы могли заметить, что тип `Song` ссылается на другую сущность, `Artist`. Это преимущество хранения ваших запросов в Shared — реальные типы часто ссылаются друг на друга. Если бы мы положили эту функцию в `entities/song/api`, мы бы не смогли просто импортировать `Artist` из `entities/artist`, потому что FSD ограничивает кросс-импорт между слайсами через [правило импорта для слоёв](/documentation/ru/docs/reference/layers.md#import-rule-on-layers):
+Вы могли заметить, что тип `Song` ссылается на другую сущность, `Artist`. Это преимущество хранения ваших запросов в Shared — реальные типы часто ссылаются друг на друга. Если бы мы положили эту функцию в `entities/song/api`, мы бы не смогли просто импортировать `Artist` из `entities/artist`, потому что FSD ограничивает кросс-импорт между слайсами через [правило импорта для слоёв](/ru/docs/reference/layers.md#import-rule-on-layers):
 
 > Модуль в слайсе может импортировать другие слайсы только в том случае, если они расположены на слоях строго ниже.
 
@@ -376,7 +376,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-Было бы неплохо иметь типизированные хуки `useAppDispatch` и `useAppSelector` в `shared/store`, но они не могут импортировать `RootState` и `AppDispatch` из слоя App из-за [правила импорта для слоёв](/documentation/ru/docs/reference/layers.md#import-rule-on-layers):
+Было бы неплохо иметь типизированные хуки `useAppDispatch` и `useAppSelector` в `shared/store`, но они не могут импортировать `RootState` и `AppDispatch` из слоя App из-за [правила импорта для слоёв](/ru/docs/reference/layers.md#import-rule-on-layers):
 
 > Модуль в слайсе может импортировать другие слайсы только в том случае, если они расположены на слоях строго ниже.
 

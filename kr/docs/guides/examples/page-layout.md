@@ -85,7 +85,7 @@ layout 컴포넌트에서 인증 처리나 데이터 로딩 같은 **비즈니�
 
 이 경우, 인증 확인이나 공통 데이터 로딩 같은 로직을<br /><!-- -->각 페이지마다 작성하기보다는 **layout 레벨에서 한 번에 처리**하는 방식이 훨씬 효율적입니다.
 
-다만 이런 layout을 shared나 widgets 폴더에 두면 [layer에 대한 import 규칙](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)을 위반할 수 있습니다.
+다만 이런 layout을 shared나 widgets 폴더에 두면 [layer에 대한 import 규칙](/kr/docs/reference/layers.md#import-rule-on-layers)을 위반할 수 있습니다.
 
 > Slice의 module은 자신보다 **하위 layer**에 있는 Slice만 import할 수 있습니다.
 
@@ -120,4 +120,4 @@ layout을 app/layouts 같은 상위 layer로 옮기면,<br /><!-- -->App layer�
 
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 
-React 및 Remix(React Router와 구조가 유사)의<br /><!-- -->인증 layout 구현 예시는 [튜토리얼](/documentation/kr/docs/get-started/tutorial.md) 문서에서 확인할 수 있습니다.
+React 및 Remix(React Router와 구조가 유사)의<br /><!-- -->인증 layout 구현 예시는 [튜토리얼](/kr/docs/get-started/tutorial.md) 문서에서 확인할 수 있습니다.

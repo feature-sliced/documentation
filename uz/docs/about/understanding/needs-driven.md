@@ -136,7 +136,7 @@ It becomes clear that you need to identify at least two requirements for **Featu
 
    * Which means it should clearly explain *how to divide the code between them*, which means that the naming of these entities should also be laid down in the specification.
 
-2. The methodology should help the architecture **[easily adapt to the changing requirements of the project](/documentation/uz/docs/about/understanding/architecture.md#adaptability)**
+2. The methodology should help the architecture **[easily adapt to the changing requirements of the project](/uz/docs/about/understanding/architecture.md#adaptability)**
 
 ## See also[​](#see-also "Sarlavhaga to'g'ridan-to'g'ri havola")
 

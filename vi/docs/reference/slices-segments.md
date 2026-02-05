@@ -12,13 +12,13 @@ Các layer Shared và App không chứa slice. Đó là vì Shared không nên c
 
 Slice được thiết kế để là các nhóm file code độc lập và có tính gắn kết cao. Hình minh họa dưới đây có thể giúp hình dung các khái niệm khó hiểu về *cohesion* và *coupling*:
 
-![](/documentation/vi/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/vi/img/coupling-cohesion-dark.svg#dark-mode-only)
+![](/vi/img/coupling-cohesion-light.svg#light-mode-only)![](/vi/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
 Một slice lý tưởng là độc lập với các slice khác trên layer của nó (zero coupling) và chứa hầu hết code liên quan đến mục tiêu chính của nó (high cohesion).
 
-Tính độc lập của các slice được thực thi bởi [import rule trên layer](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Tính độc lập của các slice được thực thi bởi [import rule trên layer](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > *Một module (file) trong slice chỉ có thể import các slice khác khi chúng được đặt trên các layer thấp hơn một cách nghiêm ngặt.*
 
@@ -30,13 +30,13 @@ Bên trong slice, code có thể được tổ chức theo bất kỳ cách nào
 >
 > *Các module bên ngoài slice/segment này chỉ có thể tham chiếu public API, không phải cấu trúc file nội bộ của slice/segment.*
 
-Đọc thêm về lý lẽ của public API và best practice để tạo một cái trong [Public API reference](/documentation/vi/docs/reference/public-api.md).
+Đọc thêm về lý lẽ của public API và best practice để tạo một cái trong [Public API reference](/vi/docs/reference/public-api.md).
 
 ### Nhóm slice[​](#nhóm-slice "Link trực tiếp đến heading")
 
 Các slice liên quan chặt chẽ có thể được nhóm về mặt cấu trúc trong một folder, nhưng chúng nên thực hiện các quy tắc cô lập giống như các slice khác — không nên có **code sharing** trong folder đó.
 
-![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/documentation/vi/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
+![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/vi/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## Segment[​](#segment "Link trực tiếp đến heading")
 
@@ -50,7 +50,7 @@ Có một số tên segment được chuẩn hóa:
 * `lib` — library code mà các module khác trên slice này cần.
 * `config` — configuration file và feature flag.
 
-Xem [trang Layer](/documentation/vi/docs/reference/layers.md#layer-definitions) để biết ví dụ về cách sử dụng từng segment này trên các layer khác nhau.
+Xem [trang Layer](/vi/docs/reference/layers.md#layer-definitions) để biết ví dụ về cách sử dụng từng segment này trên các layer khác nhau.
 
 Bạn cũng có thể tạo custom segment. Những nơi phổ biến nhất cho custom segment là layer App và layer Shared, nơi mà slice không có ý nghĩa.
 

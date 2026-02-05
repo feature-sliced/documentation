@@ -43,4 +43,4 @@ Everyone has their own level of experience in designing and developing systems, 
 
 ## See also[​](#see-also "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-* [Architecture problems](/documentation/uz/docs/about/understanding/architecture.md#problems)
+* [Architecture problems](/uz/docs/about/understanding/architecture.md#problems)

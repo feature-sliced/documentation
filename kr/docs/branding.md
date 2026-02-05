@@ -27,17 +27,17 @@ The cake 🍰 image represents FSD core concepts quite well, so it has been chos
 
 FSD has few variations of logo for different context, but it recommended to prefer **primary**
 
-|                                 |                                                                                                                        |                         |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| Theme                           | Logo (Ctrl/Cmd + Click for download)                                                                                   | Usage                   |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/kr/img/brand/logo-primary.png)](/documentation/kr/img/brand/logo-primary.png)          | Preferred in most cases |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/kr/img/brand/logo-flat.png)](/documentation/kr/img/brand/logo-flat.png)                   | For one-color context   |
-| monochrome<br />(#FFF)          | [![logo-monocrhome](/documentation/kr/img/brand/logo-monochrome.png)](/documentation/kr/img/brand/logo-monochrome.png) | For grayscale context   |
-| square<br />(#3193FF)           | [![logo-square](/documentation/kr/img/brand/logo-square.png)](/documentation/kr/img/brand/logo-square.png)             | For square boundaries   |
+|                                 |                                                                                            |                         |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------- |
+| Theme                           | Logo (Ctrl/Cmd + Click for download)                                                       | Usage                   |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/kr/img/brand/logo-primary.png)](/kr/img/brand/logo-primary.png)          | Preferred in most cases |
+| flat<br />(#3193FF)             | [![logo-flat](/kr/img/brand/logo-flat.png)](/kr/img/brand/logo-flat.png)                   | For one-color context   |
+| monochrome<br />(#FFF)          | [![logo-monocrhome](/kr/img/brand/logo-monochrome.png)](/kr/img/brand/logo-monochrome.png) | For grayscale context   |
+| square<br />(#3193FF)           | [![logo-square](/kr/img/brand/logo-square.png)](/kr/img/brand/logo-square.png)             | For square boundaries   |
 
 ## Banners & Schemes[​](#banners--schemes "해당 헤딩으로 이동")
 
-[![banner-primary](/documentation/kr/img/brand/banner-primary.jpg)](/documentation/kr/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/kr/img/brand/banner-monochrome.jpg)](/documentation/kr/img/brand/banner-monochrome.jpg)
+[![banner-primary](/kr/img/brand/banner-primary.jpg)](/kr/img/brand/banner-primary.jpg) [![banner-monochrome](/kr/img/brand/banner-monochrome.jpg)](/kr/img/brand/banner-monochrome.jpg)
 
 ## Social Preview[​](#social-preview "해당 헤딩으로 이동")
 

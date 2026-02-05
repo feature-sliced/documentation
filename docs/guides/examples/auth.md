@@ -109,7 +109,7 @@ export function RegisterPage() {
 
 ## How to send credentials to the backend[​](#how-to-send-credentials-to-the-backend "Direct link to heading")
 
-Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager. As explained in the [guide for API requests](/documentation/docs/guides/examples/api-requests.md), you can put your request either in `shared/api` or in the `api` segment of your login page.
+Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager. As explained in the [guide for API requests](/docs/guides/examples/api-requests.md), you can put your request either in `shared/api` or in the `api` segment of your login page.
 
 ### Two-factor authentication[​](#two-factor-authentication "Direct link to heading")
 
@@ -123,7 +123,7 @@ You would also need another request function, similar to `login()` that we creat
 
 Regardless of the authentication scheme you have, be it a simple login & password, OAuth, or two-factor authentication, at the end you will receive a token. This token should be stored so that subsequent requests can identify themselves.
 
-The ideal token storage for a web app is a **cookie** — it requires no manual token storage or handling. As such, cookie storage needs almost no consideration from the frontend architecture side. If your frontend framework has a server side (for example, [Remix](https://remix.run)), then you should store the server-side cookie infrastructure in `shared/api`. There is an example in [the Authentication section of the tutorial](/documentation/docs/get-started/tutorial.md#authentication) of how to do that with Remix.
+The ideal token storage for a web app is a **cookie** — it requires no manual token storage or handling. As such, cookie storage needs almost no consideration from the frontend architecture side. If your frontend framework has a server side (for example, [Remix](https://remix.run)), then you should store the server-side cookie infrastructure in `shared/api`. There is an example in [the Authentication section of the tutorial](/docs/get-started/tutorial.md#authentication) of how to do that with Remix.
 
 Sometimes, however, cookie storage is not an option. In this case, you will have to store the token manually. Apart from storing the token, you may also need to set up logic for refreshing your token when it expires. With FSD, there are several places where you can store the token, as well as several ways to make it available for the rest of the app.
 
@@ -151,7 +151,7 @@ The **current user** is also sometimes called "viewer" or "me". This is to disti
 
 To store the token in the User entity, create a reactive store in the `model` segment. That store can contain both the token and the user object.
 
-Since the API client is usually defined in `shared/api` or spreaded across the entities, the main challenge to this approach is making the token available to other requests that need it without breaking [the import rule on layers](/documentation/docs/reference/layers.md#import-rule-on-layers):
+Since the API client is usually defined in `shared/api` or spreaded across the entities, the main challenge to this approach is making the token available to other requests that need it without breaking [the import rule on layers](/docs/reference/layers.md#import-rule-on-layers):
 
 > A module (file) in a slice can only import other slices when they are located on layers strictly below.
 

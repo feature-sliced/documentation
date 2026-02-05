@@ -1,26 +1,26 @@
 [주요 콘텐츠로 건너뛰기](#__docusaurus_skipToContent_fallback)
 
-[![logo](/documentation/kr/img/brand/logo-primary.png)![logo](/documentation/kr/img/brand/logo-primary.png)](/documentation/kr/.md)
+[![logo](/kr/img/brand/logo-primary.png)![logo](/kr/img/brand/logo-primary.png)](/kr/.md)
 
-[****](/documentation/kr/.md)[📖 Docs](/documentation/kr/docs/get-started/overview.md)[💫 Community](/documentation/kr/community.md)[📝 Blog](/documentation/kr/blog)[🛠 Examples](/documentation/kr/examples.md)
+[****](/kr/.md)[📖 Docs](/kr/docs/get-started/overview.md)[💫 Community](/kr/community.md)[📝 Blog](/kr/blog)[🛠 Examples](/kr/examples.md)
 
-[v2.1](/documentation/kr/docs/get-started/overview.md)
+[v2.1](/kr/docs/get-started/overview.md)
 
-* [v2.1](/documentation/kr/docs/get-started/overview.md)
+* [v2.1](/kr/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
-* [All versions](/documentation/kr/versions.md)
+* [All versions](/kr/versions.md)
 
 [한국어](#)
 
-* [Русский](/documentation/ru/search)
-* [English](/documentation/search)
-* [O'zbekcha](/documentation/uz/search)
-* [한국어](/documentation/kr/search.md)
-* [日本語](/documentation/ja/search)
-* [Tiếng Việt](/documentation/vi/search)
-* [中文](/documentation/zh/search)
+* [Русский](/ru/search)
+* [English](/search)
+* [O'zbekcha](/uz/search)
+* [한국어](/kr/search.md)
+* [日本語](/ja/search)
+* [Tiếng Việt](/vi/search)
+* [中文](/zh/search)
 * [Help Us Translate](https://github.com/feature-sliced/documentation/issues/244)
 
 [](https://discord.gg/S8MzWTUsmp)[](https://github.com/feature-sliced/documentation)
@@ -35,9 +35,9 @@ Powered by[](https://www.algolia.com/)
 
 Specs
 
-* [Documentation](/documentation/kr/docs/get-started/overview.md)
-* [Community](/documentation/kr/community.md)
-* [Help](/documentation/kr/nav.md)
+* [Documentation](/kr/docs/get-started/overview.md)
+* [Community](/kr/community.md)
+* [Help](/kr/nav.md)
 * [Discussions](https://github.com/feature-sliced/documentation/discussions)
 
 Community
@@ -53,8 +53,8 @@ More
 * [GitHub](https://github.com/feature-sliced)
 * [Contribution Guide](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
 * [License](https://github.com/feature-sliced/documentation/blob/master/LICENSE)
-* [Docs for LLMs](/documentation/kr/docs/llms.md)
+* [Docs for LLMs](/kr/docs/llms.md)
 
-[![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/kr/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/kr/img/brand/logo-primary.png)](https://github.com/feature-sliced)
+[![Feature-Sliced Design - Architectural methodology for frontend projects](/kr/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/kr/img/brand/logo-primary.png)](https://github.com/feature-sliced)
 
 Copyright © 2026 Feature-Sliced Design

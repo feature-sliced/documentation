@@ -120,7 +120,7 @@ WIP
 
 *🍰 Stay tuned!*
 
-* [(記事) FSDの作成理由 (フレームワークに関する断片)](/documentation/ja/docs/about/motivation.md)
+* [(記事) FSDの作成理由 (フレームワークに関する断片)](/ja/docs/about/motivation.md)
 
 ## Atomic Design[​](#atomic-design "この見出しへの直接リンク")
 

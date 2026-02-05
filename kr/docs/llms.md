@@ -6,8 +6,8 @@ This page provides links and guidance for LLM crawlers.
 
 ### Files[​](#files "해당 헤딩으로 이동")
 
-* [llms.txt](/documentation/kr/llms.txt)
-* [llms-full.txt](/documentation/kr/llms-full.txt)
+* [llms.txt](/kr/llms.txt)
+* [llms-full.txt](/kr/llms-full.txt)
 
 ### Notes[​](#notes "해당 헤딩으로 이동")
 

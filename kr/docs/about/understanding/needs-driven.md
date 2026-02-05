@@ -131,7 +131,7 @@ Entity의 이름을 정하려면,<br /><!-- -->해당 Entity의 **목적과 역�
 
 * 코드 분할 기준과 명명 규칙 정의
 
-#### 2. **[변화하는 요구사항에 유연한 아키텍처 제공](/documentation/kr/docs/about/understanding/architecture.md#adaptability)**[​](#2-변화하는-요구사항에-유연한-아키텍처-제공 "해당 헤딩으로 이동")
+#### 2. **[변화하는 요구사항에 유연한 아키텍처 제공](/kr/docs/about/understanding/architecture.md#adaptability)**[​](#2-변화하는-요구사항에-유연한-아키텍처-제공 "해당 헤딩으로 이동")
 
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 

@@ -33,7 +33,7 @@ export * from "./model/comments";  // 💩
 
 ## クロスインポートのための公開API[​](#public-api-for-cross-imports "この見出しへの直接リンク")
 
-クロスインポートは、同じレイヤーの別のスライスからインポートする状況です。通常、これは[レイヤーに関するインポートルール](/documentation/ja/docs/reference/layers.md#import-rule-on-layers)によって禁止されていますが、しばしば正当な理由でクロスインポートが必要です。たとえば、ビジネスエンティティは現実世界で互いに参照し合うことが多く、これらの関係をコードに反映させるのが最善です。
+クロスインポートは、同じレイヤーの別のスライスからインポートする状況です。通常、これは[レイヤーに関するインポートルール](/ja/docs/reference/layers.md#import-rule-on-layers)によって禁止されていますが、しばしば正当な理由でクロスインポートが必要です。たとえば、ビジネスエンティティは現実世界で互いに参照し合うことが多く、これらの関係をコードに反映させるのが最善です。
 
 この目的のために、`@x`表記として知られる特別な種類の公開APIがあります。エンティティAとBがあり、エンティティBがエンティティAからインポートする必要がある場合、エンティティAはエンティティB専用の別の公開APIを宣言できます。
 
@@ -65,7 +65,7 @@ import type { EntityA } from "entities/A/@x/B";
 
 循環インポートとは、2つ以上のファイルが互いに循環的にインポートすることです。
 
-![三つのファイルが循環的にインポートしている](/documentation/ja/img/circular-import-light.svg#light-mode-only)![三つのファイルが循環的にインポートしている](/documentation/ja/img/circular-import-dark.svg#dark-mode-only)
+![三つのファイルが循環的にインポートしている](/ja/img/circular-import-light.svg#light-mode-only)![三つのファイルが循環的にインポートしている](/ja/img/circular-import-dark.svg#dark-mode-only)
 
 上の図には、`fileA.js`、`fileB.js`、`fileC.js`の三つのファイルが循環的にインポートしている様子が示されています。
 

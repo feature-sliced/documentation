@@ -112,7 +112,7 @@ Trong v2 **, các abstraction mới khác** đã được thêm vào để loạ
 
 ### `BREAKING` Abstractions & Naming[​](#breaking-abstractions--naming "Link trực tiếp đến heading")
 
-Bây giờ các abstraction cụ thể và [khuyến nghị rõ ràng cho việc đặt tên chúng](/documentation/vi/docs/about/understanding/naming.md) đã được định nghĩa
+Bây giờ các abstraction cụ thể và [khuyến nghị rõ ràng cho việc đặt tên chúng](/vi/docs/about/understanding/naming.md) đã được định nghĩa
 
 #### Layers[​](#layers "Link trực tiếp đến heading")
 
@@ -147,7 +147,7 @@ Bây giờ các abstraction cụ thể và [khuyến nghị rõ ràng cho việc
 
 ### `REFINED` Low coupling[​](#refined-low-coupling "Link trực tiếp đến heading")
 
-Bây giờ việc [tuân thủ nguyên tắc low coupling](/documentation/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion) giữa các module dễ dàng hơn nhiều, nhờ vào các layer mới.
+Bây giờ việc [tuân thủ nguyên tắc low coupling](/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion) giữa các module dễ dàng hơn nhiều, nhờ vào các layer mới.
 
 *Đồng thời, vẫn được khuyến khích tránh càng nhiều càng tốt các trường hợp khi cực kỳ khó để "uncouple" các module*
 

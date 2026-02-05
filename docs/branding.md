@@ -27,17 +27,17 @@ The cake 🍰 image represents FSD core concepts quite well, so it has been chos
 
 FSD has few variations of logo for different context, but it recommended to prefer **primary**
 
-|                                 |                                                                                                                  |                         |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| Theme                           | Logo (Ctrl/Cmd + Click for download)                                                                             | Usage                   |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/img/brand/logo-primary.png)](/documentation/img/brand/logo-primary.png)          | Preferred in most cases |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/img/brand/logo-flat.png)](/documentation/img/brand/logo-flat.png)                   | For one-color context   |
-| monochrome<br />(#FFF)          | [![logo-monocrhome](/documentation/img/brand/logo-monochrome.png)](/documentation/img/brand/logo-monochrome.png) | For grayscale context   |
-| square<br />(#3193FF)           | [![logo-square](/documentation/img/brand/logo-square.png)](/documentation/img/brand/logo-square.png)             | For square boundaries   |
+|                                 |                                                                                      |                         |
+| ------------------------------- | ------------------------------------------------------------------------------------ | ----------------------- |
+| Theme                           | Logo (Ctrl/Cmd + Click for download)                                                 | Usage                   |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/img/brand/logo-primary.png)](/img/brand/logo-primary.png)          | Preferred in most cases |
+| flat<br />(#3193FF)             | [![logo-flat](/img/brand/logo-flat.png)](/img/brand/logo-flat.png)                   | For one-color context   |
+| monochrome<br />(#FFF)          | [![logo-monocrhome](/img/brand/logo-monochrome.png)](/img/brand/logo-monochrome.png) | For grayscale context   |
+| square<br />(#3193FF)           | [![logo-square](/img/brand/logo-square.png)](/img/brand/logo-square.png)             | For square boundaries   |
 
 ## Banners & Schemes[​](#banners--schemes "Direct link to heading")
 
-[![banner-primary](/documentation/img/brand/banner-primary.jpg)](/documentation/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/img/brand/banner-monochrome.jpg)](/documentation/img/brand/banner-monochrome.jpg)
+[![banner-primary](/img/brand/banner-primary.jpg)](/img/brand/banner-primary.jpg) [![banner-monochrome](/img/brand/banner-monochrome.jpg)](/img/brand/banner-monochrome.jpg)
 
 ## Social Preview[​](#social-preview "Direct link to heading")
 

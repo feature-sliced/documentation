@@ -156,7 +156,7 @@ WIP
 
 框架无关，约定方法
 
-* [(文章) 关于创建方法论的原因（关于框架的片段）](/documentation/zh/docs/about/motivation.md)
+* [(文章) 关于创建方法论的原因（关于框架的片段）](/zh/docs/about/motivation.md)
 * [(讨论串) 关于方法论对不同框架的适用性](https://t.me/feature_sliced/3867)
 
 ## 原子设计（Atomic Design）[​](#原子设计atomic-design "标题的直接链接")

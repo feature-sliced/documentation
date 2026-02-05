@@ -12,13 +12,13 @@ Shared層とApp層にはスライスが含まれていません。これは、Sh
 
 スライスは、独立した強く凝集しているコードファイルのグループとして設計されています。以下の図は、凝集（cohesion）と結合（coupling）といった複雑な概念を視覚化するのに役立ちます。
 
-![](/documentation/ja/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/ja/img/coupling-cohesion-dark.svg#dark-mode-only)
+![](/ja/img/coupling-cohesion-light.svg#light-mode-only)![](/ja/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 この図は、<https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/> に触発されています。
 
 理想的なスライスは、同じレベルの他のスライスから独立しており（低結合）、その主な目的に関連するコードの大部分を含んでいます（高凝集）。
 
-スライスの独立性は、[層のインポートルール](/documentation/ja/docs/reference/layers.md#import-rule-on-layers)によって保証されます。
+スライスの独立性は、[層のインポートルール](/ja/docs/reference/layers.md#import-rule-on-layers)によって保証されます。
 
 > *スライス内のモジュール（ファイル）は、厳密に下の層にあるスライスのみをインポートできます。*
 
@@ -30,13 +30,13 @@ Shared層とApp層にはスライスが含まれていません。これは、Sh
 >
 > *あるスライス/セグメントの外部モジュールは、そのスライス/セグメントの内部ファイル構造ではなく、公開APIのみを参照できます。*
 
-公開APIの要求の理由や、作成のベストプラクティスについては、[公開APIのガイド](/documentation/ja/docs/reference/public-api.md)を参照してください。
+公開APIの要求の理由や、作成のベストプラクティスについては、[公開APIのガイド](/ja/docs/reference/public-api.md)を参照してください。
 
 ### スライスのグループ[​](#スライスのグループ "この見出しへの直接リンク")
 
 密接に関連するスライスは、フォルダに構造的にグループ化できますが、他のスライスと同じ隔離ルールを遵守する必要があります。グループ化用のフォルダ内での**コードの共有は許可されていません**。
 
-![「compose」、「like」、「delete」機能が「post」フォルダにグループ化されています。このフォルダには、禁止を示すために取り消し線が引かれた「some-shared-code.ts」ファイルもあります。](/documentation/ja/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
+![「compose」、「like」、「delete」機能が「post」フォルダにグループ化されています。このフォルダには、禁止を示すために取り消し線が引かれた「some-shared-code.ts」ファイルもあります。](/ja/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## セグメント[​](#セグメント "この見出しへの直接リンク")
 
@@ -50,7 +50,7 @@ Shared層とApp層にはスライスが含まれていません。これは、Sh
 * `lib` — スライス内のモジュールに必要なライブラリコード。
 * `config` — 設定ファイルとフィーチャーフラグ。
 
-[レイヤーに関するページ](/documentation/ja/docs/reference/layers.md#layer-definitions)には、これらのセグメントが異なる層でどのように使用されるかの例があります。
+[レイヤーに関するページ](/ja/docs/reference/layers.md#layer-definitions)には、これらのセグメントが異なる層でどのように使用されるかの例があります。
 
 独自のセグメントを作成することもできます。カスタムセグメントの最も一般的な場所は、スライスが意味を持たないApp層とShared層です。
 

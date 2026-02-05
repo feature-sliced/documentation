@@ -4,19 +4,19 @@ Sử dụng làm tài liệu tham khảo nhanh khi bạn quyết định cách d
 
 ## Chọn layer[​](#chọn-layer "Link trực tiếp đến heading")
 
-[Download PDF](/documentation/vi/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
+[Download PDF](/vi/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
 
-![Definitions of all layers and self-check questions](/documentation/vi/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
+![Definitions of all layers and self-check questions](/vi/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
 
 ## Ví dụ[​](#ví-dụ "Link trực tiếp đến heading")
 
 ### Tweet[​](#tweet "Link trực tiếp đến heading")
 
-![decomposed-tweet-bordered-bgLight](/documentation/vi/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/vi/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "Link trực tiếp đến heading")
 
-![decomposed-github-bordered](/documentation/vi/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/vi/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## Xem thêm[​](#xem-thêm "Link trực tiếp đến heading")
 

@@ -10,7 +10,7 @@
 
 **Ưu điểm**:
 
-* [Tổng quan](/documentation/vi/docs/get-started/overview.md)
+* [Tổng quan](/vi/docs/get-started/overview.md)
 * CodeReview
 * Onboarding
 

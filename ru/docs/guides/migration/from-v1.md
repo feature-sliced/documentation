@@ -115,7 +115,7 @@
 
 ### `BREAKING` Abstractions & Naming[​](#breaking-abstractions--naming "Прямая ссылка на этот заголовок")
 
-Теперь определены конкретные абстракции и [четкие рекомендации для их нейминга](/documentation/ru/docs/about/understanding/naming.md)
+Теперь определены конкретные абстракции и [четкие рекомендации для их нейминга](/ru/docs/about/understanding/naming.md)
 
 #### Layers[​](#layers "Прямая ссылка на этот заголовок")
 
@@ -150,7 +150,7 @@
 
 ### `REFINED` Low coupling[​](#refined-low-coupling "Прямая ссылка на этот заголовок")
 
-Теперь гораздо проще [соблюдать принцип низкой связности](/documentation/ru/docs/reference/slices-segments.md#zero-coupling-high-cohesion) между модулями, благодаря новым слоям.
+Теперь гораздо проще [соблюдать принцип низкой связности](/ru/docs/reference/slices-segments.md#zero-coupling-high-cohesion) между модулями, благодаря новым слоям.
 
 *При этом по-прежнему рекомендуется максимально избегать случаев, где крайне трудно "расцепить" модули*
 

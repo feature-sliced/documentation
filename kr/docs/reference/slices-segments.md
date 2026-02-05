@@ -22,11 +22,11 @@ Slice는 **다른 Slice와 최대한 독립적**이어야 하고,<br /><!-- -->�
 
 아래 그림은 **응집도(cohesion)** 와 **결합도(coupling)** 개념을 시각적으로 보여 줍니다.
 
-![](/documentation/kr/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/kr/img/coupling-cohesion-dark.svg#dark-mode-only)
+![](/kr/img/coupling-cohesion-light.svg#light-mode-only)![](/kr/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
-Slice 간 독립성은 [Layer Import Rule](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)로 보장됩니다.
+Slice 간 독립성은 [Layer Import Rule](/kr/docs/reference/layers.md#import-rule-on-layers)로 보장됩니다.
 
 > *Slice 내부 모듈(파일)은 자신보다 아래 계층(Layer)에 있는 Slice만 import할 수 있습니다.*
 
@@ -36,13 +36,13 @@ Slice 내부 구조는 **팀이 원하는 방식으로 자유롭게** 설계할 
 
 > *모든 Slice(또는 Slice가 없는 Layer의 Segment)는 Public API를 정의해야 합니다.*<br />*외부 모듈은 Slice/Segment의 내부 구조에 직접 접근하지 않고, Public API를 통해서만 접근해야 합니다.*
 
-Public API의 역할과 작성 방법은 [Public API Reference](/documentation/kr/docs/reference/public-api.md)에서 자세히 설명합니다.
+Public API의 역할과 작성 방법은 [Public API Reference](/kr/docs/reference/public-api.md)에서 자세히 설명합니다.
 
 ### Slice Group[​](#slice-group "해당 헤딩으로 이동")
 
 서로 연관성이 높은 Slice들은 폴더로 묶어 **그룹처럼** 관리할 수 있습니다.<br /><!-- -->다만, 그룹으로 묶더라도 각 Slice에 대해 기존과 동일한 **격리 규칙**이 적용되며,<br />**그룹 내부라고 해서 코드 공유가 허용되는 것은 아닙니다.**
 
-![Features \&quot;compose\&quot;, \&quot;like\&quot; 그리고 \&quot;delete\&quot;가 \&quot;post\&quot; 폴더에 그룹화되어 있습니다. 해당 폴더에는 허용되지 않음을 나타내기 위해 취소선이 그어진 \&quot;some-shared-code.ts\&quot; 파일도 있습니다.](/documentation/kr/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
+![Features \&quot;compose\&quot;, \&quot;like\&quot; 그리고 \&quot;delete\&quot;가 \&quot;post\&quot; 폴더에 그룹화되어 있습니다. 해당 폴더에는 허용되지 않음을 나타내기 위해 취소선이 그어진 \&quot;some-shared-code.ts\&quot; 파일도 있습니다.](/kr/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## Segment[​](#segment "해당 헤딩으로 이동")
 
@@ -56,7 +56,7 @@ Segment는 FSD 구조에서 **세 번째이자 마지막 계층**으로,<br /><!
 * `lib` — Slice 내부에서 사용하는 Library 코드
 * `config` — Configuration, Feature Flag 등 설정 관련 코드
 
-각 Layer에서 Segment를 어떻게 사용하는지는 [Layer 페이지](/documentation/kr/docs/reference/layers.md#layer-definitions)에서 자세히 설명합니다.
+각 Layer에서 Segment를 어떻게 사용하는지는 [Layer 페이지](/kr/docs/reference/layers.md#layer-definitions)에서 자세히 설명합니다.
 
 또한 프로젝트에 맞게 **커스텀 Segment**를 정의할 수도 있습니다.<br /><!-- -->특히 `App` Layer와 `Shared` Layer는 Slice가 없기 때문에,<br /><!-- -->이 두 Layer에서는 커스텀 Segment를 자주 사용하게 됩니다.
 

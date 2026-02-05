@@ -10,7 +10,7 @@ First 5 minutes (RU):
 
 **Advantages**:
 
-* [Overview](/documentation/kr/docs/get-started/overview.md)
+* [Overview](/kr/docs/get-started/overview.md)
 * CodeReview
 * Onboarding
 

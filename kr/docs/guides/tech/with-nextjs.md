@@ -40,7 +40,7 @@ FSD의 `pages` layer 이름을 변경해 NextJS `pages` 폴더와 충돌을 방�
 ├── widgets
 ```
 
-폴더 이름을 변경했다면 프로젝트 README나 내부 문서에 반드시 기록해야 합니다.<br /><!-- -->이 내용을 [프로젝트 지식](/documentation/kr/docs/about/understanding/knowledge-types.md)에 포함해 팀원들이 쉽게 확인할 수 있도록 하세요.
+폴더 이름을 변경했다면 프로젝트 README나 내부 문서에 반드시 기록해야 합니다.<br /><!-- -->이 내용을 [프로젝트 지식](/kr/docs/about/understanding/knowledge-types.md)에 포함해 팀원들이 쉽게 확인할 수 있도록 하세요.
 
 ## NextJS에서 `app` layer 구현하기[​](#app-absence "해당 헤딩으로 이동")
 

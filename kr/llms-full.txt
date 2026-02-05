@@ -1,7 +1,7 @@
 # Feature-Sliced Design
 
 
-## documentation
+## kr
 
 - [예제](/examples.md): Feature‑Sliced Design으로 제작된 웹사이트 모음
 - [🧭 내비게이션](/nav.md): Feature-Sliced Design Navigation help page
@@ -67,7 +67,7 @@
 
 v2
 
-![](/documentation/kr/assets/ideal-img/tiny-bunny.dd60f55.640.png)
+![](/kr/assets/ideal-img/tiny-bunny.dd60f55.640.png)
 
 Tiny Bunny Mini Game
 
@@ -92,676 +92,676 @@ reactredux-toolkittypescript
 
 ⚡️ <!-- -->Simplified and merged
 
-[Tutorial](/documentation/kr/docs/get-started/tutorial.md)
+[Tutorial](/kr/docs/get-started/tutorial.md)
 
-[**old**:](/documentation/kr/docs/get-started/tutorial.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/get-started/quick-start](/documentation/kr/docs/get-started/tutorial.md)
-
-[**new**: ](/documentation/kr/docs/get-started/tutorial.md)
-
-<!-- -->
-
-[/docs/get-started/tutorial](/documentation/kr/docs/get-started/tutorial.md)
-
-[Basics](/documentation/kr/docs/get-started/overview.md)
-
-[**old**:](/documentation/kr/docs/get-started/overview.md)
+[**old**:](/kr/docs/get-started/tutorial.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/get-started/basics](/documentation/kr/docs/get-started/overview.md)
+[/docs/get-started/quick-start](/kr/docs/get-started/tutorial.md)
 
-[**new**: ](/documentation/kr/docs/get-started/overview.md)
-
-<!-- -->
-
-[/docs/get-started/overview](/documentation/kr/docs/get-started/overview.md)
-
-[Decompose Cheatsheet](/documentation/kr/docs/get-started/cheatsheet.md)
-
-[**old**:](/documentation/kr/docs/get-started/cheatsheet.md)
+[**new**: ](/kr/docs/get-started/tutorial.md)
 
 <!-- -->
 
+[/docs/get-started/tutorial](/kr/docs/get-started/tutorial.md)
+
+[Basics](/kr/docs/get-started/overview.md)
+
+[**old**:](/kr/docs/get-started/overview.md)
+
 <!-- -->
 
-[/docs/get-started/tutorial/decompose; /docs/get-started/tutorial/design-mockup; /docs/get-started/onboard/cheatsheet](/documentation/kr/docs/get-started/cheatsheet.md)
+<!-- -->
 
-[**new**: ](/documentation/kr/docs/get-started/cheatsheet.md)
+[/docs/get-started/basics](/kr/docs/get-started/overview.md)
+
+[**new**: ](/kr/docs/get-started/overview.md)
 
 <!-- -->
 
-[/docs/get-started/cheatsheet](/documentation/kr/docs/get-started/cheatsheet.md)
+[/docs/get-started/overview](/kr/docs/get-started/overview.md)
+
+[Decompose Cheatsheet](/kr/docs/get-started/cheatsheet.md)
+
+[**old**:](/kr/docs/get-started/cheatsheet.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/get-started/tutorial/decompose; /docs/get-started/tutorial/design-mockup; /docs/get-started/onboard/cheatsheet](/kr/docs/get-started/cheatsheet.md)
+
+[**new**: ](/kr/docs/get-started/cheatsheet.md)
+
+<!-- -->
+
+[/docs/get-started/cheatsheet](/kr/docs/get-started/cheatsheet.md)
 
 ### 🍰 Alternatives
 
 ⚡️ <!-- -->Moved and merged to /about/alternatives as advanced materials
 
-[Architecture approaches alternatives](/documentation/kr/docs/about/alternatives.md)
+[Architecture approaches alternatives](/kr/docs/about/alternatives.md)
 
-[**old**:](/documentation/kr/docs/about/alternatives.md)
-
-<!-- -->
+[**old**:](/kr/docs/about/alternatives.md)
 
 <!-- -->
 
-[/docs/about/alternatives/big-ball-of-mud; /docs/about/alternatives/design-principles; /docs/about/alternatives/ddd; /docs/about/alternatives/clean-architecture; /docs/about/alternatives/frameworks; /docs/about/alternatives/atomic-design; /docs/about/alternatives/smart-dumb-components; /docs/about/alternatives/feature-driven](/documentation/kr/docs/about/alternatives.md)
+<!-- -->
 
-[**new**: ](/documentation/kr/docs/about/alternatives.md)
+[/docs/about/alternatives/big-ball-of-mud; /docs/about/alternatives/design-principles; /docs/about/alternatives/ddd; /docs/about/alternatives/clean-architecture; /docs/about/alternatives/frameworks; /docs/about/alternatives/atomic-design; /docs/about/alternatives/smart-dumb-components; /docs/about/alternatives/feature-driven](/kr/docs/about/alternatives.md)
+
+[**new**: ](/kr/docs/about/alternatives.md)
 
 <!-- -->
 
-[/docs/about/alternatives](/documentation/kr/docs/about/alternatives.md)
+[/docs/about/alternatives](/kr/docs/about/alternatives.md)
 
 ### 🍰 Promote & Understanding
 
 ⚡️ <!-- -->Moved to /about as advanced materials
 
-[Knowledge types](/documentation/kr/docs/about/understanding/knowledge-types.md)
+[Knowledge types](/kr/docs/about/understanding/knowledge-types.md)
 
-[**old**:](/documentation/kr/docs/about/understanding/knowledge-types.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/reference/knowledge-types](/documentation/kr/docs/about/understanding/knowledge-types.md)
-
-[**new**: ](/documentation/kr/docs/about/understanding/knowledge-types.md)
-
-<!-- -->
-
-[/docs/about/understanding/knowledge-types](/documentation/kr/docs/about/understanding/knowledge-types.md)
-
-[Needs driven](/documentation/kr/docs/about/understanding/needs-driven.md)
-
-[**old**:](/documentation/kr/docs/about/understanding/needs-driven.md)
+[**old**:](/kr/docs/about/understanding/knowledge-types.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/needs-driven](/documentation/kr/docs/about/understanding/needs-driven.md)
+[/docs/reference/knowledge-types](/kr/docs/about/understanding/knowledge-types.md)
 
-[**new**: ](/documentation/kr/docs/about/understanding/needs-driven.md)
-
-<!-- -->
-
-[/docs/about/understanding/needs-driven](/documentation/kr/docs/about/understanding/needs-driven.md)
-
-[About architecture](/documentation/kr/docs/about/understanding/architecture.md)
-
-[**old**:](/documentation/kr/docs/about/understanding/architecture.md)
+[**new**: ](/kr/docs/about/understanding/knowledge-types.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/about/understanding/knowledge-types](/kr/docs/about/understanding/knowledge-types.md)
 
-[/docs/concepts/architecture](/documentation/kr/docs/about/understanding/architecture.md)
+[Needs driven](/kr/docs/about/understanding/needs-driven.md)
 
-[**new**: ](/documentation/kr/docs/about/understanding/architecture.md)
-
-<!-- -->
-
-[/docs/about/understanding/architecture](/documentation/kr/docs/about/understanding/architecture.md)
-
-[Naming adaptability](/documentation/kr/docs/about/understanding/naming.md)
-
-[**old**:](/documentation/kr/docs/about/understanding/naming.md)
+[**old**:](/kr/docs/about/understanding/needs-driven.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/naming-adaptability](/documentation/kr/docs/about/understanding/naming.md)
+[/docs/concepts/needs-driven](/kr/docs/about/understanding/needs-driven.md)
 
-[**new**: ](/documentation/kr/docs/about/understanding/naming.md)
-
-<!-- -->
-
-[/docs/about/understanding/naming](/documentation/kr/docs/about/understanding/naming.md)
-
-[Signals of architecture](/documentation/kr/docs/about/understanding/signals.md)
-
-[**old**:](/documentation/kr/docs/about/understanding/signals.md)
+[**new**: ](/kr/docs/about/understanding/needs-driven.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/about/understanding/needs-driven](/kr/docs/about/understanding/needs-driven.md)
 
-[/docs/concepts/signals](/documentation/kr/docs/about/understanding/signals.md)
+[About architecture](/kr/docs/about/understanding/architecture.md)
 
-[**new**: ](/documentation/kr/docs/about/understanding/signals.md)
-
-<!-- -->
-
-[/docs/about/understanding/signals](/documentation/kr/docs/about/understanding/signals.md)
-
-[Abstractions of architecture](/documentation/kr/docs/about/understanding/abstractions.md)
-
-[**old**:](/documentation/kr/docs/about/understanding/abstractions.md)
+[**old**:](/kr/docs/about/understanding/architecture.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/abstractions](/documentation/kr/docs/about/understanding/abstractions.md)
+[/docs/concepts/architecture](/kr/docs/about/understanding/architecture.md)
 
-[**new**: ](/documentation/kr/docs/about/understanding/abstractions.md)
+[**new**: ](/kr/docs/about/understanding/architecture.md)
 
 <!-- -->
 
-[/docs/about/understanding/abstractions](/documentation/kr/docs/about/understanding/abstractions.md)
+[/docs/about/understanding/architecture](/kr/docs/about/understanding/architecture.md)
+
+[Naming adaptability](/kr/docs/about/understanding/naming.md)
+
+[**old**:](/kr/docs/about/understanding/naming.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/naming-adaptability](/kr/docs/about/understanding/naming.md)
+
+[**new**: ](/kr/docs/about/understanding/naming.md)
+
+<!-- -->
+
+[/docs/about/understanding/naming](/kr/docs/about/understanding/naming.md)
+
+[Signals of architecture](/kr/docs/about/understanding/signals.md)
+
+[**old**:](/kr/docs/about/understanding/signals.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/signals](/kr/docs/about/understanding/signals.md)
+
+[**new**: ](/kr/docs/about/understanding/signals.md)
+
+<!-- -->
+
+[/docs/about/understanding/signals](/kr/docs/about/understanding/signals.md)
+
+[Abstractions of architecture](/kr/docs/about/understanding/abstractions.md)
+
+[**old**:](/kr/docs/about/understanding/abstractions.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/abstractions](/kr/docs/about/understanding/abstractions.md)
+
+[**new**: ](/kr/docs/about/understanding/abstractions.md)
+
+<!-- -->
+
+[/docs/about/understanding/abstractions](/kr/docs/about/understanding/abstractions.md)
 
 ### 📚 Reference guidelines (isolation & units)
 
 ⚡️ <!-- -->Moved to /reference as theoretical materials (old concepts)
 
-[Decouple of entities](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
+[Decouple of entities](/kr/docs/reference/layers.md#import-rule-on-layers)
 
-[**old**:](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/decouple-entities](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
-
-[**new**: ](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-[/docs/reference/layers#import-rule-on-layers](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
-
-[Low Coupling & High Cohesion](/documentation/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-[**old**:](/documentation/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
+[**old**:](/kr/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/low-coupling](/documentation/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
+[/docs/concepts/decouple-entities](/kr/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-<!-- -->
-
-[/docs/reference/slices-segments#zero-coupling-high-cohesion](/documentation/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-[Cross-communication](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
-
-[**old**:](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
+[**new**: ](/kr/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers#import-rule-on-layers](/kr/docs/reference/layers.md#import-rule-on-layers)
 
-[/docs/concepts/cross-communication](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
+[Low Coupling & High Cohesion](/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-[/docs/reference/layers#import-rule-on-layers](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
-
-[App splitting](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**old**:](/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/app-splitting](/documentation/kr/docs/reference/layers.md)
+[/docs/concepts/low-coupling](/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Decomposition](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**new**: ](/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/slices-segments#zero-coupling-high-cohesion](/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[/docs/reference/units/decomposition](/documentation/kr/docs/reference/layers.md)
+[Cross-communication](/kr/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Units](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**old**:](/kr/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units](/documentation/kr/docs/reference/layers.md)
+[/docs/concepts/cross-communication](/kr/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Layers](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**new**: ](/kr/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers#import-rule-on-layers](/kr/docs/reference/layers.md#import-rule-on-layers)
 
-[/docs/reference/units/layers](/documentation/kr/docs/reference/layers.md)
+[App splitting](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Layer overview](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**old**:](/kr/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/layers/overview](/documentation/kr/docs/reference/layers.md)
+[/docs/concepts/app-splitting](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[App layer](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**new**: ](/kr/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/kr/docs/reference/layers.md)
 
-[/docs/reference/units/layers/app](/documentation/kr/docs/reference/layers.md)
+[Decomposition](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Processes layer](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**old**:](/kr/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/processes](/documentation/kr/docs/reference/layers.md)
+[/docs/reference/units/decomposition](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Pages layer](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**new**: ](/kr/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/kr/docs/reference/layers.md)
 
-[/docs/reference/units/layers/pages](/documentation/kr/docs/reference/layers.md)
+[Units](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Widgets layer](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**old**:](/kr/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/widgets](/documentation/kr/docs/reference/layers.md)
+[/docs/reference/units](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Widgets layer](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**new**: ](/kr/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/kr/docs/reference/layers.md)
 
-[/docs/reference/layers/widgets](/documentation/kr/docs/reference/layers.md)
+[Layers](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Features layer](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**old**:](/kr/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/features](/documentation/kr/docs/reference/layers.md)
+[/docs/reference/units/layers](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Entities layer](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**new**: ](/kr/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/kr/docs/reference/layers.md)
 
-[/docs/reference/units/layers/entities](/documentation/kr/docs/reference/layers.md)
+[Layer overview](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Shared layer](/documentation/kr/docs/reference/layers.md)
-
-[**old**:](/documentation/kr/docs/reference/layers.md)
+[**old**:](/kr/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/shared](/documentation/kr/docs/reference/layers.md)
+[/docs/reference/layers/overview](/kr/docs/reference/layers.md)
 
-[**new**: ](/documentation/kr/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/kr/docs/reference/layers.md)
-
-[Segments](/documentation/kr/docs/reference/slices-segments.md)
-
-[**old**:](/documentation/kr/docs/reference/slices-segments.md)
+[**new**: ](/kr/docs/reference/layers.md)
 
 <!-- -->
 
+[/docs/reference/layers](/kr/docs/reference/layers.md)
+
+[App layer](/kr/docs/reference/layers.md)
+
+[**old**:](/kr/docs/reference/layers.md)
+
 <!-- -->
 
-[/docs/reference/units/segments](/documentation/kr/docs/reference/slices-segments.md)
+<!-- -->
 
-[**new**: ](/documentation/kr/docs/reference/slices-segments.md)
+[/docs/reference/units/layers/app](/kr/docs/reference/layers.md)
+
+[**new**: ](/kr/docs/reference/layers.md)
 
 <!-- -->
 
-[/docs/reference/slices-segments](/documentation/kr/docs/reference/slices-segments.md)
+[/docs/reference/layers](/kr/docs/reference/layers.md)
+
+[Processes layer](/kr/docs/reference/layers.md)
+
+[**old**:](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/processes](/kr/docs/reference/layers.md)
+
+[**new**: ](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/kr/docs/reference/layers.md)
+
+[Pages layer](/kr/docs/reference/layers.md)
+
+[**old**:](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/pages](/kr/docs/reference/layers.md)
+
+[**new**: ](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/kr/docs/reference/layers.md)
+
+[Widgets layer](/kr/docs/reference/layers.md)
+
+[**old**:](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/widgets](/kr/docs/reference/layers.md)
+
+[**new**: ](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/kr/docs/reference/layers.md)
+
+[Widgets layer](/kr/docs/reference/layers.md)
+
+[**old**:](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/layers/widgets](/kr/docs/reference/layers.md)
+
+[**new**: ](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/kr/docs/reference/layers.md)
+
+[Features layer](/kr/docs/reference/layers.md)
+
+[**old**:](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/features](/kr/docs/reference/layers.md)
+
+[**new**: ](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/kr/docs/reference/layers.md)
+
+[Entities layer](/kr/docs/reference/layers.md)
+
+[**old**:](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/entities](/kr/docs/reference/layers.md)
+
+[**new**: ](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/kr/docs/reference/layers.md)
+
+[Shared layer](/kr/docs/reference/layers.md)
+
+[**old**:](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/shared](/kr/docs/reference/layers.md)
+
+[**new**: ](/kr/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/kr/docs/reference/layers.md)
+
+[Segments](/kr/docs/reference/slices-segments.md)
+
+[**old**:](/kr/docs/reference/slices-segments.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/segments](/kr/docs/reference/slices-segments.md)
+
+[**new**: ](/kr/docs/reference/slices-segments.md)
+
+<!-- -->
+
+[/docs/reference/slices-segments](/kr/docs/reference/slices-segments.md)
 
 ### 🎯 Bad Practices handbook
 
 ⚡️ <!-- -->Moved to /guides as practice materials
 
-[Cross-imports](/documentation/kr/docs/guides/issues/cross-imports.md)
+[Cross-imports](/kr/docs/guides/issues/cross-imports.md)
 
-[**old**:](/documentation/kr/docs/guides/issues/cross-imports.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/issues/cross-imports](/documentation/kr/docs/guides/issues/cross-imports.md)
-
-[**new**: ](/documentation/kr/docs/guides/issues/cross-imports.md)
-
-<!-- -->
-
-[/docs/guides/issues/cross-imports](/documentation/kr/docs/guides/issues/cross-imports.md)
-
-[Desegmented](/documentation/kr/docs/guides/issues/desegmented.md)
-
-[**old**:](/documentation/kr/docs/guides/issues/desegmented.md)
+[**old**:](/kr/docs/guides/issues/cross-imports.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/issues/desegmented](/documentation/kr/docs/guides/issues/desegmented.md)
+[/docs/concepts/issues/cross-imports](/kr/docs/guides/issues/cross-imports.md)
 
-[**new**: ](/documentation/kr/docs/guides/issues/desegmented.md)
-
-<!-- -->
-
-[/docs/guides/issues/desegmented](/documentation/kr/docs/guides/issues/desegmented.md)
-
-[Routes](/documentation/kr/docs/guides/issues/routes.md)
-
-[**old**:](/documentation/kr/docs/guides/issues/routes.md)
+[**new**: ](/kr/docs/guides/issues/cross-imports.md)
 
 <!-- -->
 
+[/docs/guides/issues/cross-imports](/kr/docs/guides/issues/cross-imports.md)
+
+[Desegmented](/kr/docs/guides/issues/desegmented.md)
+
+[**old**:](/kr/docs/guides/issues/desegmented.md)
+
 <!-- -->
 
-[/docs/concepts/issues/routes](/documentation/kr/docs/guides/issues/routes.md)
+<!-- -->
 
-[**new**: ](/documentation/kr/docs/guides/issues/routes.md)
+[/docs/concepts/issues/desegmented](/kr/docs/guides/issues/desegmented.md)
+
+[**new**: ](/kr/docs/guides/issues/desegmented.md)
 
 <!-- -->
 
-[/docs/guides/issues/routes](/documentation/kr/docs/guides/issues/routes.md)
+[/docs/guides/issues/desegmented](/kr/docs/guides/issues/desegmented.md)
+
+[Routes](/kr/docs/guides/issues/routes.md)
+
+[**old**:](/kr/docs/guides/issues/routes.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/issues/routes](/kr/docs/guides/issues/routes.md)
+
+[**new**: ](/kr/docs/guides/issues/routes.md)
+
+<!-- -->
+
+[/docs/guides/issues/routes](/kr/docs/guides/issues/routes.md)
 
 ### 🎯 Examples
 
 ⚡️ <!-- -->Grouped and simplified into /guides/examples as practical examples
 
-[Viewer logic](/documentation/kr/docs/guides/examples/auth.md)
+[Viewer logic](/kr/docs/guides/examples/auth.md)
 
-[**old**:](/documentation/kr/docs/guides/examples/auth.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/guides/examples/viewer](/documentation/kr/docs/guides/examples/auth.md)
-
-[**new**: ](/documentation/kr/docs/guides/examples/auth.md)
-
-<!-- -->
-
-[/docs/guides/examples/auth](/documentation/kr/docs/guides/examples/auth.md)
-
-[Monorepo](/documentation/kr/docs/guides/examples/monorepo.md)
-
-[**old**:](/documentation/kr/docs/guides/examples/monorepo.md)
+[**old**:](/kr/docs/guides/examples/auth.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/guides/monorepo](/documentation/kr/docs/guides/examples/monorepo.md)
+[/docs/guides/examples/viewer](/kr/docs/guides/examples/auth.md)
 
-[**new**: ](/documentation/kr/docs/guides/examples/monorepo.md)
-
-<!-- -->
-
-[/docs/guides/examples/monorepo](/documentation/kr/docs/guides/examples/monorepo.md)
-
-[White Labels](/documentation/kr/docs/guides/examples/white-labels.md)
-
-[**old**:](/documentation/kr/docs/guides/examples/white-labels.md)
+[**new**: ](/kr/docs/guides/examples/auth.md)
 
 <!-- -->
 
+[/docs/guides/examples/auth](/kr/docs/guides/examples/auth.md)
+
+[Monorepo](/kr/docs/guides/examples/monorepo.md)
+
+[**old**:](/kr/docs/guides/examples/monorepo.md)
+
 <!-- -->
 
-[/docs/guides/white-labels](/documentation/kr/docs/guides/examples/white-labels.md)
+<!-- -->
 
-[**new**: ](/documentation/kr/docs/guides/examples/white-labels.md)
+[/docs/guides/monorepo](/kr/docs/guides/examples/monorepo.md)
+
+[**new**: ](/kr/docs/guides/examples/monorepo.md)
 
 <!-- -->
 
-[/docs/guides/examples/white-labels](/documentation/kr/docs/guides/examples/white-labels.md)
+[/docs/guides/examples/monorepo](/kr/docs/guides/examples/monorepo.md)
+
+[White Labels](/kr/docs/guides/examples/white-labels.md)
+
+[**old**:](/kr/docs/guides/examples/white-labels.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/guides/white-labels](/kr/docs/guides/examples/white-labels.md)
+
+[**new**: ](/kr/docs/guides/examples/white-labels.md)
+
+<!-- -->
+
+[/docs/guides/examples/white-labels](/kr/docs/guides/examples/white-labels.md)
 
 ### 🎯 Migration
 
 ⚡️ <!-- -->Grouped and simplified into /guides/migration as migration guidelines
 
-[Migration from V1](/documentation/kr/docs/guides/migration/from-v1.md)
+[Migration from V1](/kr/docs/guides/migration/from-v1.md)
 
-[**old**:](/documentation/kr/docs/guides/migration/from-v1.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/guides/migration-from-v1](/documentation/kr/docs/guides/migration/from-v1.md)
-
-[**new**: ](/documentation/kr/docs/guides/migration/from-v1.md)
-
-<!-- -->
-
-[/docs/guides/migration/from-v1](/documentation/kr/docs/guides/migration/from-v1.md)
-
-[Migration from Legacy](/documentation/kr/docs/guides/migration/from-custom.md)
-
-[**old**:](/documentation/kr/docs/guides/migration/from-custom.md)
+[**old**:](/kr/docs/guides/migration/from-v1.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/guides/migration-from-legacy](/documentation/kr/docs/guides/migration/from-custom.md)
+[/docs/guides/migration-from-v1](/kr/docs/guides/migration/from-v1.md)
 
-[**new**: ](/documentation/kr/docs/guides/migration/from-custom.md)
+[**new**: ](/kr/docs/guides/migration/from-v1.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-custom](/documentation/kr/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-v1](/kr/docs/guides/migration/from-v1.md)
+
+[Migration from Legacy](/kr/docs/guides/migration/from-custom.md)
+
+[**old**:](/kr/docs/guides/migration/from-custom.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/guides/migration-from-legacy](/kr/docs/guides/migration/from-custom.md)
+
+[**new**: ](/kr/docs/guides/migration/from-custom.md)
+
+<!-- -->
+
+[/docs/guides/migration/from-custom](/kr/docs/guides/migration/from-custom.md)
 
 ### 🎯 Tech
 
 ⚡️ <!-- -->Grouped into /guides/tech as tech-specific usage guidelines
 
-[Usage with NextJS](/documentation/kr/docs/guides/tech/with-nextjs.md)
+[Usage with NextJS](/kr/docs/guides/tech/with-nextjs.md)
 
-[**old**:](/documentation/kr/docs/guides/tech/with-nextjs.md)
-
-<!-- -->
+[**old**:](/kr/docs/guides/tech/with-nextjs.md)
 
 <!-- -->
 
-[/docs/guides/usage-with-nextjs](/documentation/kr/docs/guides/tech/with-nextjs.md)
+<!-- -->
 
-[**new**: ](/documentation/kr/docs/guides/tech/with-nextjs.md)
+[/docs/guides/usage-with-nextjs](/kr/docs/guides/tech/with-nextjs.md)
+
+[**new**: ](/kr/docs/guides/tech/with-nextjs.md)
 
 <!-- -->
 
-[/docs/guides/tech/with-nextjs](/documentation/kr/docs/guides/tech/with-nextjs.md)
+[/docs/guides/tech/with-nextjs](/kr/docs/guides/tech/with-nextjs.md)
 
 ### Rename 'legacy' to 'custom'
 
 ⚡️ <!-- -->'Legacy' is derogatory, we don't get to call people's projects legacy
 
-[Rename 'legacy' to custom](/documentation/kr/docs/guides/migration/from-custom.md)
+[Rename 'legacy' to custom](/kr/docs/guides/migration/from-custom.md)
 
-[**old**:](/documentation/kr/docs/guides/migration/from-custom.md)
-
-<!-- -->
+[**old**:](/kr/docs/guides/migration/from-custom.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-legacy](/documentation/kr/docs/guides/migration/from-custom.md)
+<!-- -->
 
-[**new**: ](/documentation/kr/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-legacy](/kr/docs/guides/migration/from-custom.md)
+
+[**new**: ](/kr/docs/guides/migration/from-custom.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-custom](/documentation/kr/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-custom](/kr/docs/guides/migration/from-custom.md)
 
 ### Deduplication of Reference
 
 ⚡️ <!-- -->Cleaned up the Reference section and deduplicated the material
 
-[Isolation of modules](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
+[Isolation of modules](/kr/docs/reference/layers.md#import-rule-on-layers)
 
-[**old**:](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
+[**old**:](/kr/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-[/docs/reference/isolation](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
+<!-- -->
 
-[**new**: ](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
+[/docs/reference/isolation](/kr/docs/reference/layers.md#import-rule-on-layers)
+
+[**new**: ](/kr/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-[/docs/reference/layers#import-rule-on-layers](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)
+[/docs/reference/layers#import-rule-on-layers](/kr/docs/reference/layers.md#import-rule-on-layers)
 
 
 ---
 
 [주요 콘텐츠로 건너뛰기](#__docusaurus_skipToContent_fallback)
 
-[![logo](/documentation/kr/img/brand/logo-primary.png)![logo](/documentation/kr/img/brand/logo-primary.png)](/documentation/kr/.md)
+[![logo](/kr/img/brand/logo-primary.png)![logo](/kr/img/brand/logo-primary.png)](/kr/.md)
 
-[****](/documentation/kr/.md)[📖 Docs](/documentation/kr/docs/get-started/overview.md)[💫 Community](/documentation/kr/community.md)[📝 Blog](/documentation/kr/blog)[🛠 Examples](/documentation/kr/examples.md)
+[****](/kr/.md)[📖 Docs](/kr/docs/get-started/overview.md)[💫 Community](/kr/community.md)[📝 Blog](/kr/blog)[🛠 Examples](/kr/examples.md)
 
-[v2.1](/documentation/kr/docs/get-started/overview.md)
+[v2.1](/kr/docs/get-started/overview.md)
 
-* [v2.1](/documentation/kr/docs/get-started/overview.md)
+* [v2.1](/kr/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
-* [All versions](/documentation/kr/versions.md)
+* [All versions](/kr/versions.md)
 
 [한국어](#)
 
-* [Русский](/documentation/ru/search)
-* [English](/documentation/search)
-* [O'zbekcha](/documentation/uz/search)
-* [한국어](/documentation/kr/search.md)
-* [日本語](/documentation/ja/search)
-* [Tiếng Việt](/documentation/vi/search)
-* [中文](/documentation/zh/search)
+* [Русский](/ru/search)
+* [English](/search)
+* [O'zbekcha](/uz/search)
+* [한국어](/kr/search.md)
+* [日本語](/ja/search)
+* [Tiếng Việt](/vi/search)
+* [中文](/zh/search)
 * [Help Us Translate](https://github.com/feature-sliced/documentation/issues/244)
 
 [](https://discord.gg/S8MzWTUsmp)[](https://github.com/feature-sliced/documentation)
@@ -776,9 +776,9 @@ Powered by[](https://www.algolia.com/)
 
 Specs
 
-* [Documentation](/documentation/kr/docs/get-started/overview.md)
-* [Community](/documentation/kr/community.md)
-* [Help](/documentation/kr/nav.md)
+* [Documentation](/kr/docs/get-started/overview.md)
+* [Community](/kr/community.md)
+* [Help](/kr/nav.md)
 * [Discussions](https://github.com/feature-sliced/documentation/discussions)
 
 Community
@@ -794,9 +794,9 @@ More
 * [GitHub](https://github.com/feature-sliced)
 * [Contribution Guide](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
 * [License](https://github.com/feature-sliced/documentation/blob/master/LICENSE)
-* [Docs for LLMs](/documentation/kr/docs/llms.md)
+* [Docs for LLMs](/kr/docs/llms.md)
 
-[![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/kr/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/kr/img/brand/logo-primary.png)](https://github.com/feature-sliced)
+[![Feature-Sliced Design - Architectural methodology for frontend projects](/kr/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/kr/img/brand/logo-primary.png)](https://github.com/feature-sliced)
 
 Copyright © 2026 Feature-Sliced Design
 
@@ -809,8 +809,8 @@ Copyright © 2026 Feature-Sliced Design
 
 현재 배포된 문서는 여기에서 확인할 수 있습니다.
 
-| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/documentation/kr/docs/get-started/overview.md) | [Migration from v1](/documentation/kr/docs/guides/migration/from-v1.md) | [Migration from v2.0](/documentation/kr/docs/guides/migration/from-v1.md) |
-| ---- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/kr/docs/get-started/overview.md) | [Migration from v1](/kr/docs/guides/migration/from-v1.md) | [Migration from v2.0](/kr/docs/guides/migration/from-v1.md) |
+| ---- | ---------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
 
 ### Feature Slices v1 (Legacy)
 
@@ -843,13 +843,13 @@ Community resources, additional materials
 
 [A curated list of awesome FSD videos, articles, packages](https://github.com/feature-sliced/awesome)
 
-[Team](/documentation/kr/community/team.md)
+[Team](/kr/community/team.md)
 
-[Core-team, Champions, Contributors, Companies](/documentation/kr/community/team.md)
+[Core-team, Champions, Contributors, Companies](/kr/community/team.md)
 
-[Brandbook](/documentation/kr/docs/branding.md)
+[Brandbook](/kr/docs/branding.md)
 
-[Recommendations for FSD's branding usage](/documentation/kr/docs/branding.md)
+[Recommendations for FSD's branding usage](/kr/docs/branding.md)
 
 [Contributing](#)
 
@@ -1043,7 +1043,7 @@ WIP
 
 Framework-agnostic, conventional-approach
 
-* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/documentation/kr/docs/about/motivation.md)
+* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/kr/docs/about/motivation.md)
 * [(Thread) About the applicability of the methodology for different frameworks](https://t.me/feature_sliced/3867)
 
 ## Atomic Design[​](#atomic-design "해당 헤딩으로 이동")
@@ -1162,7 +1162,7 @@ About compatibility, historical development and comparison
 
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 
-* [아키텍쳐 문제들](/documentation/kr/docs/about/understanding/architecture.md#problems)
+* [아키텍쳐 문제들](/kr/docs/about/understanding/architecture.md#problems)
 
 
 ---
@@ -1171,7 +1171,7 @@ About compatibility, historical development and comparison
 
 **Feature-Sliced Design**은 [여러 개발자들의 연구와 경험을 결합해](https://github.com/feature-sliced/documentation/discussions)<br /><!-- -->복잡하고 점점 더 커지는 프로젝트를 더 단순하게 개발하고, 비용을 줄이려는 아이디어에서 출발했습니다.
 
-물론 이 방법론이 모든 문제를 해결하는 만능 열쇠는 아니며, [적용상의 한계](/documentation/kr/docs/about/mission.md)도 분명히 존재합니다.
+물론 이 방법론이 모든 문제를 해결하는 만능 열쇠는 아니며, [적용상의 한계](/kr/docs/about/mission.md)도 분명히 존재합니다.
 
 그럼에도 불구하고, *이 방법론이 제공하는 실질적인 효용성* 때문에 많은 개발자들이 관심을 갖고 있습니다.
 
@@ -1291,7 +1291,7 @@ MVP의 직접적인 목표는 “장기 아키텍처”가 아니라 **실제 �
 
 ## 계획[​](#계획 "해당 헤딩으로 이동")
 
-이 방법론의 주요 목표는 [여기](/documentation/kr/docs/about/mission.md#goals)에 정의되어 있으며,<br /><!-- -->앞으로 이 방법론이 어떤 방향으로 발전해야 할지에 대해서도 함께 고민하고 있습니다.
+이 방법론의 주요 목표는 [여기](/kr/docs/about/mission.md#goals)에 정의되어 있으며,<br /><!-- -->앞으로 이 방법론이 어떤 방향으로 발전해야 할지에 대해서도 함께 고민하고 있습니다.
 
 ### 경험 결합[​](#경험-결합 "해당 헤딩으로 이동")
 
@@ -1314,8 +1314,8 @@ MVP의 직접적인 목표는 “장기 아키텍처”가 아니라 **실제 �
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 
 * [(토론) 방법론이 필요하지 않나요?](https://github.com/feature-sliced/documentation/discussions/27)
-* [방법론의 목표와 한계](/documentation/kr/docs/about/mission.md)
-* [프로젝트에서 다루는 지식의 유형](/documentation/kr/docs/about/understanding/knowledge-types.md)
+* [방법론의 목표와 한계](/kr/docs/about/mission.md)
+* [프로젝트에서 다루는 지식의 유형](/kr/docs/about/understanding/knowledge-types.md)
 
 
 ---
@@ -1387,7 +1387,7 @@ First 5 minutes (RU):
 
 **Advantages**:
 
-* [Overview](/documentation/kr/docs/get-started/overview.md)
+* [Overview](/kr/docs/get-started/overview.md)
 * CodeReview
 * Onboarding
 
@@ -1513,7 +1513,7 @@ note
 
 여기서 “쉽다”라는 말은<br />**“대부분의 개발자가 합리적인 시간 안에 이해하고 실제로 적용할 수 있다”** 는 의미입니다.
 
-[모든 상황에 완벽히 들어맞는 아키텍처는 없기 때문에](/documentation/kr/docs/about/mission.md#limitations),<br /><!-- -->실제 팀과 프로젝트에 맞는 **실용적인 합의**가 더 중요합니다.
+[모든 상황에 완벽히 들어맞는 아키텍처는 없기 때문에](/kr/docs/about/mission.md#limitations),<br /><!-- -->실제 팀과 프로젝트에 맞는 **실용적인 합의**가 더 중요합니다.
 
 ### 명시성[​](#명시성 "해당 헤딩으로 이동")
 
@@ -1840,7 +1840,7 @@ Entity의 이름을 정하려면,<br /><!-- -->해당 Entity의 **목적과 역�
 
 * 코드 분할 기준과 명명 규칙 정의
 
-#### 2. **[변화하는 요구사항에 유연한 아키텍처 제공](/documentation/kr/docs/about/understanding/architecture.md#adaptability)**[​](#2-변화하는-요구사항에-유연한-아키텍처-제공 "해당 헤딩으로 이동")
+#### 2. **[변화하는 요구사항에 유연한 아키텍처 제공](/kr/docs/about/understanding/architecture.md#adaptability)**[​](#2-변화하는-요구사항에-유연한-아키텍처-제공 "해당 헤딩으로 이동")
 
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 
@@ -1914,17 +1914,17 @@ The cake 🍰 image represents FSD core concepts quite well, so it has been chos
 
 FSD has few variations of logo for different context, but it recommended to prefer **primary**
 
-|                                 |                                                                                                                        |                         |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| Theme                           | Logo (Ctrl/Cmd + Click for download)                                                                                   | Usage                   |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/kr/img/brand/logo-primary.png)](/documentation/kr/img/brand/logo-primary.png)          | Preferred in most cases |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/kr/img/brand/logo-flat.png)](/documentation/kr/img/brand/logo-flat.png)                   | For one-color context   |
-| monochrome<br />(#FFF)          | [![logo-monocrhome](/documentation/kr/img/brand/logo-monochrome.png)](/documentation/kr/img/brand/logo-monochrome.png) | For grayscale context   |
-| square<br />(#3193FF)           | [![logo-square](/documentation/kr/img/brand/logo-square.png)](/documentation/kr/img/brand/logo-square.png)             | For square boundaries   |
+|                                 |                                                                                            |                         |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------- |
+| Theme                           | Logo (Ctrl/Cmd + Click for download)                                                       | Usage                   |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/kr/img/brand/logo-primary.png)](/kr/img/brand/logo-primary.png)          | Preferred in most cases |
+| flat<br />(#3193FF)             | [![logo-flat](/kr/img/brand/logo-flat.png)](/kr/img/brand/logo-flat.png)                   | For one-color context   |
+| monochrome<br />(#FFF)          | [![logo-monocrhome](/kr/img/brand/logo-monochrome.png)](/kr/img/brand/logo-monochrome.png) | For grayscale context   |
+| square<br />(#3193FF)           | [![logo-square](/kr/img/brand/logo-square.png)](/kr/img/brand/logo-square.png)             | For square boundaries   |
 
 ## Banners & Schemes[​](#banners--schemes "해당 헤딩으로 이동")
 
-[![banner-primary](/documentation/kr/img/brand/banner-primary.jpg)](/documentation/kr/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/kr/img/brand/banner-monochrome.jpg)](/documentation/kr/img/brand/banner-monochrome.jpg)
+[![banner-primary](/kr/img/brand/banner-primary.jpg)](/kr/img/brand/banner-primary.jpg) [![banner-monochrome](/kr/img/brand/banner-monochrome.jpg)](/kr/img/brand/banner-monochrome.jpg)
 
 ## Social Preview[​](#social-preview "해당 헤딩으로 이동")
 
@@ -1948,19 +1948,19 @@ Use this as a quick reference when you're deciding how to decompose your UI. PDF
 
 ## Choosing a layer[​](#choosing-a-layer "해당 헤딩으로 이동")
 
-[Download PDF](/documentation/kr/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
+[Download PDF](/kr/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
 
-![Definitions of all layers and self-check questions](/documentation/kr/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
+![Definitions of all layers and self-check questions](/kr/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
 
 ## Examples[​](#examples "해당 헤딩으로 이동")
 
 ### Tweet[​](#tweet "해당 헤딩으로 이동")
 
-![decomposed-tweet-bordered-bgLight](/documentation/kr/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/kr/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "해당 헤딩으로 이동")
 
-![decomposed-github-bordered](/documentation/kr/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/kr/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## See also[​](#see-also "해당 헤딩으로 이동")
 
@@ -1997,11 +1997,11 @@ info
 | **Entity**  | 애플리케이션이 다루는 **비즈니스 개체** | `user`, `product`     |
 | **Feature** | 사용자가 Entity로 수행하는 **상호작용** | 로그인, 장바구니 담기 |
 
-더 자세한 설명과 코드 예시는 [Slices](/documentation/kr/docs/reference/layers.md#entities) 문서에서 확인할 수 있습니다.
+더 자세한 설명과 코드 예시는 [Slices](/kr/docs/reference/layers.md#entities) 문서에서 확인할 수 있습니다.
 
 ### Pages, Features, Entities를 서로 포함할 수 있나요?[​](#pages-features-entities를-서로-포함할-수-있나요 "해당 헤딩으로 이동")
 
-가능합니다. 다만 **상위 Layer**에서만 조합해야 합니다.<br /><!-- -->예를 들어, Widget 내부에서는 여러 Feature를 **props**나 **children** 형태로 조합할 수 있습니다.<br /><!-- -->하지만 한 Feature가 다른 Feature를 직접 import 하는 것은 [**Layer Import 규칙**](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)에 따라 금지됩니다.
+가능합니다. 다만 **상위 Layer**에서만 조합해야 합니다.<br /><!-- -->예를 들어, Widget 내부에서는 여러 Feature를 **props**나 **children** 형태로 조합할 수 있습니다.<br /><!-- -->하지만 한 Feature가 다른 Feature를 직접 import 하는 것은 [**Layer Import 규칙**](/kr/docs/reference/layers.md#import-rule-on-layers)에 따라 금지됩니다.
 
 ### Atomic Design을 함께 사용할 수 있나요?[​](#atomic-design을-함께-사용할-수-있나요 "해당 헤딩으로 이동")
 
@@ -2013,7 +2013,7 @@ info
 
 ### Feature-Sliced Design이 필요한 이유는 무엇인가요?[​](#feature-sliced-design이-필요한-이유는-무엇인가요 "해당 헤딩으로 이동")
 
-FSD는 프로젝트를 **핵심 기능 단위로 명확하게 구조화**할 수 있도록 돕습니다.<br /><!-- -->표준화된 구조는 온보딩 속도를 높이고, 폴더 구조에 대한 불필요한 논쟁을 줄여 줍니다.<br /><!-- -->자세한 배경은 [Motivation](/documentation/kr/docs/about/motivation.md) 페이지를 참고하세요.
+FSD는 프로젝트를 **핵심 기능 단위로 명확하게 구조화**할 수 있도록 돕습니다.<br /><!-- -->표준화된 구조는 온보딩 속도를 높이고, 폴더 구조에 대한 불필요한 논쟁을 줄여 줍니다.<br /><!-- -->자세한 배경은 [Motivation](/kr/docs/about/motivation.md) 페이지를 참고하세요.
 
 ### 주니어 개발자도 아키텍처 방법론이 필요할까요?[​](#주니어-개발자도-아키텍처-방법론이-필요할까요 "해당 헤딩으로 이동")
 
@@ -2021,7 +2021,7 @@ FSD는 프로젝트를 **핵심 기능 단위로 명확하게 구조화**할 수
 
 ### 인증(Auth) Context는 어떻게 다루나요?[​](#인증auth-context는-어떻게-다루나요 "해당 헤딩으로 이동")
 
-관련 예시는 [Auth 예제 가이드](/documentation/kr/docs/guides/examples/auth.md)에서 확인할 수 있습니다.
+관련 예시는 [Auth 예제 가이드](/kr/docs/guides/examples/auth.md)에서 확인할 수 있습니다.
 
 
 ---
@@ -2034,7 +2034,7 @@ FSD는 단순한 폴더 규칙이 아닙니다.<br /><!-- -->실제 개발 환�
 
 * [Steiger](https://github.com/feature-sliced/steiger) — 프로젝트 구조가 FSD 기준에 맞는지 검사합니다.
 * [Awesome](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) — FSD 예제와 도구를 모아둔 참고 리스트입니다.
-* [예제 모음](/documentation/kr/examples.md) — 다양한 프로젝트에서 사용된 폴더 구조 예시를 볼 수 있습니다.
+* [예제 모음](/kr/examples.md) — 다양한 프로젝트에서 사용된 폴더 구조 예시를 볼 수 있습니다.
 
 ## 내 프로젝트에 적합할까요?[​](#is-it-right-for-me "해당 헤딩으로 이동")
 
@@ -2049,7 +2049,7 @@ FSD는 웹, 모바일, 데스크톱 등 **프론트엔드 애플리케이션을 
 
 다만 모든 프로젝트가 FSD에 꼭 맞는 것은 아닙니다.<br /><!-- -->예시로 각 페이지가 독립적인 특성을 가진 프로젝트에서는 오히려 구조가 복잡해질 수 있습니다.<br /><!-- -->따라서 도입 전에는 **파일럿 프로젝트로 먼저 검증해보는 것**을 적극 추천합니다.
 
-구조를 전환하기로 했다면 [Migration 가이드](/documentation/kr/docs/guides/migration/from-custom.md)를 참고하세요.
+구조를 전환하기로 했다면 [Migration 가이드](/kr/docs/guides/migration/from-custom.md)를 참고하세요.
 
 ## 구조 예시[​](#basic-example "해당 헤딩으로 이동")
 
@@ -2092,7 +2092,7 @@ FSD는 웹, 모바일, 데스크톱 등 **프론트엔드 애플리케이션을 
 
 FSD는 다음과 같은 3단계 계층 구조를 따릅니다:
 
-![아래에 설명된 FSD 개념의 계층 구조](/documentation/kr/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
+![아래에 설명된 FSD 개념의 계층 구조](/kr/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
 위 다이어그램은 FSD의 계층 구조를 시각적으로 보여줍니다.<br />세 개의 수직 블록 그룹은 각각 **Layer**, **Slice**, **Segment**를 나타냅니다.
 
@@ -2152,12 +2152,12 @@ FSD 구조를 사용하면 다음과 같은 장점을 얻을 수 있습니다:
 2. 기존 UI를 `widgets`, `pages` Layer로 분배합니다. 이 과정에서 FSD 규칙을 위반해도 괜찮습니다.
 3. Import 위반을 하나씩 해결하면서, 코드에서 로직을 분리해 `entities`와 `features`로 옮깁니다.
 
-> 도입 단계에서는 새로운 대규모 Entity나 복잡한 기능을 추가하지 않는 것이 좋습니다.<br /><!-- -->구조를 안정적으로 정리하는 데 집중하는 것이 우선입니다.<br /><!-- -->자세한 절차는 [Migration 가이드](/documentation/kr/docs/guides/migration/from-custom.md)를 참고하세요.
+> 도입 단계에서는 새로운 대규모 Entity나 복잡한 기능을 추가하지 않는 것이 좋습니다.<br /><!-- -->구조를 안정적으로 정리하는 데 집중하는 것이 우선입니다.<br /><!-- -->자세한 절차는 [Migration 가이드](/kr/docs/guides/migration/from-custom.md)를 참고하세요.
 
 ## 다음 단계[​](#next-steps "해당 헤딩으로 이동")
 
-* [Tutorial](/documentation/kr/docs/get-started/tutorial.md)을 통해 FSD 방식의 사고를 익혀보세요.
-* 다양한 [예제](/documentation/kr/examples.md)를 통해 실제 프로젝트 구조를 살펴보세요.
+* [Tutorial](/kr/docs/get-started/tutorial.md)을 통해 FSD 방식의 사고를 익혀보세요.
+* 다양한 [예제](/kr/examples.md)를 통해 실제 프로젝트 구조를 살펴보세요.
 * 궁금한 점은 [Telegram 커뮤니티](https://t.me/feature_sliced)에서 질문해보세요.
 
 
@@ -2169,7 +2169,7 @@ FSD 구조를 사용하면 다음과 같은 장점을 얻을 수 있습니다:
 
 이 튜토리얼에서는 Real World App이라고도 알려진 Conduit를 살펴보겠습니다. Conduit는 기본적인 [Medium](https://medium.com/) 클론입니다 - 글을 읽고 쓸 수 있으며 다른 사람의 글에 댓글을 달 수 있습니다.
 
-![Conduit home page](/documentation/kr/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Conduit home page](/kr/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 이 애플리케이션은 매우 작은 애플리케이션이므로 과도한 분해를 피하고 간단하게 유지할 것입니다. 전체 애플리케이션이 세 개의 레이어인 **App**, **Pages**, 그리고 **Shared**에 맞춰 들어갈 것입니다. 그렇지 않다면 우리는 계속해서 추가적인 레이어를 도입할 것입니다. 준비되셨나요?
 
@@ -2206,11 +2206,11 @@ Feature-Sliced Design이 규제되지 않은 코드 구조와 다른 주요 차�
 
 ### 피드 자세히 보기[​](#피드-자세히-보기 "해당 헤딩으로 이동")
 
-![Anonymous user’s perspective](/documentation/kr/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Anonymous user’s perspective](/kr/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 *익명 사용자의 관점*
 
-![Authenticated user’s perspective](/documentation/kr/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
+![Authenticated user’s perspective](/kr/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
 
 *인증된 사용자의 관점*
 
@@ -2304,7 +2304,7 @@ Shared와 Pages 사이에는 Entities, Features, Widgets의 세 가지 다른 �
 
 읽기가 아닌 편집을 위한 페이지도 살펴보겠습니다.
 
-![Conduit post editor](/documentation/kr/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
+![Conduit post editor](/kr/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
 
 간단해 보이지만, 폼 유효성 검사, 오류 상태, 데이터 지속성 등 아직 탐구하지 않은 애플리케이션 개발의 여러 측면을 포함하고 있습니다.
 
@@ -2402,7 +2402,7 @@ export default FeedPage;
 
 그런 다음 개발 서버를 실행하고 애플리케이션을 열면 Conduit 배너가 보일 것입니다!
 
-![The banner of Conduit](/documentation/kr/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
+![The banner of Conduit](/kr/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
 
 ### API 클라이언트[​](#api-클라이언트 "해당 헤딩으로 이동")
 
@@ -3450,7 +3450,7 @@ export default function App() {
 
 이 시점에서 홈 페이지에 다음과 같은 내용이 표시되어야 합니다.
 
-![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/documentation/kr/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
+![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/kr/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
 
 헤더, 피드, 태그를 포함한 Conduit의 피드 페이지. 탭은 아직 없습니다.
 
@@ -4222,7 +4222,7 @@ export function Comments() {
 
 이것으로 우리의 글 읽기 페이지도 완성되었습니다! 이제 작성자를 팔로우하고, 글에 좋아요를 누르고, 댓글을 남기는 버튼들이 예상대로 작동해야 합니다.
 
-![Article reader with functioning buttons to like and follow](/documentation/kr/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
+![Article reader with functioning buttons to like and follow](/kr/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
 
 기능하는 좋아요와 팔로우 버튼이 있는 글 읽기 페이지
 
@@ -4534,7 +4534,7 @@ export default ArticleEditPage;
 
 이제 완료되었습니다! 로그인하고 새 글을 작성해보세요. 또는 글을 "잊어버리고" 검증이 작동하는 것을 확인해보세요.
 
-![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/documentation/kr/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
+![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/kr/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
 
 제목 필드에 "새 글"이라고 쓰여 있고 나머지 필드는 비어 있는 Conduit 글 편집기. 폼 위에 두 개의 오류가 있습니다. **"이 글이 무엇에 관한 것인지 설명해주세요"**, **"글 본문을 작성해주세요"**.
 
@@ -4613,7 +4613,7 @@ export const client = {
 
 note
 
-예제를 단순화하기 위해 form handling이나 입력 검증(Zod/Valibot)은 생략했습니다.<br /><!-- -->필요하다면 아래 문서를 참고하세요:<br />[Type Validation and Schemas](/documentation/kr/docs/guides/examples/types.md#type-validation-schemas-and-zod)
+예제를 단순화하기 위해 form handling이나 입력 검증(Zod/Valibot)은 생략했습니다.<br /><!-- -->필요하다면 아래 문서를 참고하세요:<br />[Type Validation and Schemas](/kr/docs/guides/examples/types.md#type-validation-schemas-and-zod)
 
 shared/api/endpoints/login.ts
 
@@ -4907,7 +4907,7 @@ cookie를 사용하면, 브라우저가 요청마다 token을 자동으로 넣�
 
 사용 중인 프레임워크가 서버 사이드 기능을 제공한다면(예: [Remix](https://remix.run)),<br /><!-- -->서버 측 cookie 관련 로직을 shared/api에 두는 것을 권장합니다.
 
-Remix에서의 구현 예시는 [튜토리얼의 Authentication 섹션](/documentation/kr/docs/get-started/tutorial.md#authentication)을 참고하면 됩니다.
+Remix에서의 구현 예시는 [튜토리얼의 Authentication 섹션](/kr/docs/get-started/tutorial.md#authentication)을 참고하면 됩니다.
 
 하지만 cookie를 사용할 수 없는 환경도 있습니다.<br /><!-- -->이 경우에는 token을 클라이언트에서 직접 저장하고, token 만료를 감지하고,<br /><!-- -->refresh token을 사용해 새 token을 발급받고 기존 요청을 다시 실행하는 등의 로직을 함께 구현해야 합니다.
 
@@ -4952,7 +4952,7 @@ User entity의 model segment에 **reactive store**를 만들고,<br /><!-- -->�
 
 다만 API client는 보통 shared/api에 정의되거나,<br /><!-- -->여러 entity에 분산되어 있는 경우가 많습니다.
 
-따라서 layer의 import 규칙([import rule on layers](/documentation/kr/docs/reference/layers.md#import-rule-on-layers))을 지키면서도 다른 request에서 이 token을 안전하게 사용할 수 있어야 합니다.
+따라서 layer의 import 규칙([import rule on layers](/kr/docs/reference/layers.md#import-rule-on-layers))을 지키면서도 다른 request에서 이 token을 안전하게 사용할 수 있어야 합니다.
 
 > Layer 규칙 — Slice의 module은 **자기보다 아래 layer**의 Slice만 import할 수 있습니다.
 
@@ -5287,7 +5287,7 @@ layout 컴포넌트에서 인증 처리나 데이터 로딩 같은 **비즈니�
 
 이 경우, 인증 확인이나 공통 데이터 로딩 같은 로직을<br /><!-- -->각 페이지마다 작성하기보다는 **layout 레벨에서 한 번에 처리**하는 방식이 훨씬 효율적입니다.
 
-다만 이런 layout을 shared나 widgets 폴더에 두면 [layer에 대한 import 규칙](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)을 위반할 수 있습니다.
+다만 이런 layout을 shared나 widgets 폴더에 두면 [layer에 대한 import 규칙](/kr/docs/reference/layers.md#import-rule-on-layers)을 위반할 수 있습니다.
 
 > Slice의 module은 자신보다 **하위 layer**에 있는 Slice만 import할 수 있습니다.
 
@@ -5322,7 +5322,7 @@ layout을 app/layouts 같은 상위 layer로 옮기면,<br /><!-- -->App layer�
 
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 
-React 및 Remix(React Router와 구조가 유사)의<br /><!-- -->인증 layout 구현 예시는 [튜토리얼](/documentation/kr/docs/get-started/tutorial.md) 문서에서 확인할 수 있습니다.
+React 및 Remix(React Router와 구조가 유사)의<br /><!-- -->인증 layout 구현 예시는 [튜토리얼](/kr/docs/get-started/tutorial.md) 문서에서 확인할 수 있습니다.
 
 
 ---
@@ -5471,7 +5471,7 @@ export function listSongs() {
 
 반대로 이 Request 함수를 `entities/song/api` 내부에 두면 다음과 같은 문제가 생깁니다.
 
-`entities/artist` slice에서 `Song` 타입을 **참조하고 싶어도**,<br /><!-- -->FSD의 [layer별 import 규칙](/documentation/kr/docs/reference/layers.md#import-rule-on-layers) 때문에 **동일 layer 간(import)** 의존은 금지됩니다.
+`entities/artist` slice에서 `Song` 타입을 **참조하고 싶어도**,<br /><!-- -->FSD의 [layer별 import 규칙](/kr/docs/reference/layers.md#import-rule-on-layers) 때문에 **동일 layer 간(import)** 의존은 금지됩니다.
 
 * 규칙 요약:
 
@@ -5807,7 +5807,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-이때, `shared/store`에서 `useAppDispatch`, `useAppSelector` 같은 커스텀 훅을 만들고 싶어도,<br />[import 규칙](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)에 의해 App layer에 있는 `RootState`, `AppDispatch` 타입을 바로 가져올 수 없습니다.
+이때, `shared/store`에서 `useAppDispatch`, `useAppSelector` 같은 커스텀 훅을 만들고 싶어도,<br />[import 규칙](/kr/docs/reference/layers.md#import-rule-on-layers)에 의해 App layer에 있는 `RootState`, `AppDispatch` 타입을 바로 가져올 수 없습니다.
 
 > 한 slice의 module은 자신보다 하위 layer에 있는 slice만 import할 수 있습니다.
 
@@ -6296,7 +6296,7 @@ CRUD가 단순 호출 수준을 넘어, 예를 들어 여러 요청을 묶어서
       📄 order.ts
 ```
 
-인증 구현은 [Authentication 가이드](/documentation/kr/docs/guides/examples/auth.md)를 참고하세요.
+인증 구현은 [Authentication 가이드](/kr/docs/guides/examples/auth.md)를 참고하세요.
 
 ### 5. Cross-import를 최소화합니다[​](#5-cross-import를-최소화합니다 "해당 헤딩으로 이동")
 
@@ -6636,7 +6636,7 @@ Shared는 모든 layer가 의존할 수 있는 **공통 의존 지점이**기 �
 
 여러 페이지에서 반복적으로 사용되는 Redux **slice**는 대부분 **product, user**처럼 명확한 **business entity**를 표현합니다.<br /><!-- -->이러한 slice는 **Entities layer**로 이동하며, **entity**마다 별도의 폴더를 구성합니다.<br /><!-- -->반대로, 댓글 작성처럼 **사용자의 특정 행동(action)** 을 중심으로 한 **slice**는 **Features layer**로 옮겨 독립적으로 관리합니다.
 
-**Entities**와 **Features**는 서로 의존하지 않고 사용할 수 있도록 설계해야 합니다.<br /><!-- -->Entity 간의 관계가 필요하다면 [Business-Entities Cross-Relations 가이드](/documentation/kr/docs/guides/examples/types.md#business-entities-and-their-cross-references)를 참고해 구조화하면 됩니다.<br /><!-- -->해당 **slice**와 연관된 API 함수는 `📁 shared/api`에 그대로 두어도 괜찮습니다.
+**Entities**와 **Features**는 서로 의존하지 않고 사용할 수 있도록 설계해야 합니다.<br /><!-- -->Entity 간의 관계가 필요하다면 [Business-Entities Cross-Relations 가이드](/kr/docs/guides/examples/types.md#business-entities-and-their-cross-references)를 참고해 구조화하면 됩니다.<br /><!-- -->해당 **slice**와 연관된 API 함수는 `📁 shared/api`에 그대로 두어도 괜찮습니다.
 
 ### 7단계: modules 폴더 리팩터링[​](#refactor-your-modules "해당 헤딩으로 이동")
 
@@ -6739,7 +6739,7 @@ v2에서는 로직 복잡성과 높은 결합을 줄이기 위한 **새로운 �
 
 ### 추상화/네이밍 가이드[​](#추상화네이밍-가이드 "해당 헤딩으로 이동")
 
-아래는 v2 권장 네이밍과 이전 명칭 간의 대응 관계입니다.<br /><!-- -->아래에서는 v2 권장 layer·segment 명칭을 이전 명칭과 대응하여 정리했습니다.<br /><!-- -->추상화/네이밍 관련 상세 가이드는 [명확한 네이밍 권장사항](/documentation/kr/docs/about/understanding/naming.md)을 참고하세요.
+아래는 v2 권장 네이밍과 이전 명칭 간의 대응 관계입니다.<br /><!-- -->아래에서는 v2 권장 layer·segment 명칭을 이전 명칭과 대응하여 정리했습니다.<br /><!-- -->추상화/네이밍 관련 상세 가이드는 [명확한 네이밍 권장사항](/kr/docs/about/understanding/naming.md)을 참고하세요.
 
 #### Layer[​](#layer "해당 헤딩으로 이동")
 
@@ -6774,7 +6774,7 @@ v2에서는 로직 복잡성과 높은 결합을 줄이기 위한 **새로운 �
 
 ## 낮은 결합 원칙 강화[​](#낮은-결합-원칙-강화 "해당 헤딩으로 이동")
 
-Layer 구조가 명확해지면서 [Zero-Coupling, High-Cohesion 원칙](/documentation/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)을 보다 쉽게 지킬 수 있게 되었습니다.<br /><!-- -->완전한 분리가 어렵다면 Public API 등 명확하게 드러나는 인터페이스를 두어 경계를 명확히 하고,<br /><!-- -->가능한 한 하위 layer에서 의존성이 내려가도록 구조화할 것을 권장합니다.
+Layer 구조가 명확해지면서 [Zero-Coupling, High-Cohesion 원칙](/kr/docs/reference/slices-segments.md#zero-coupling-high-cohesion)을 보다 쉽게 지킬 수 있게 되었습니다.<br /><!-- -->완전한 분리가 어렵다면 Public API 등 명확하게 드러나는 인터페이스를 두어 경계를 명확히 하고,<br /><!-- -->가능한 한 하위 layer에서 의존성이 내려가도록 구조화할 것을 권장합니다.
 
 ## 참고 자료[​](#참고-자료 "해당 헤딩으로 이동")
 
@@ -6859,7 +6859,7 @@ entities/B/some/file.ts
 import type { EntityA } from "entities/A/@x/B";
 ```
 
-자세한 내용은 [Public API for cross-imports](/documentation/kr/docs/reference/public-api.md#public-api-for-cross-imports) 문서를 참고하세요.
+자세한 내용은 [Public API for cross-imports](/kr/docs/reference/public-api.md#public-api-for-cross-imports) 문서를 참고하세요.
 
 
 ---
@@ -7063,7 +7063,7 @@ FSD의 `pages` layer 이름을 변경해 NextJS `pages` 폴더와 충돌을 방�
 ├── widgets
 ```
 
-폴더 이름을 변경했다면 프로젝트 README나 내부 문서에 반드시 기록해야 합니다.<br /><!-- -->이 내용을 [프로젝트 지식](/documentation/kr/docs/about/understanding/knowledge-types.md)에 포함해 팀원들이 쉽게 확인할 수 있도록 하세요.
+폴더 이름을 변경했다면 프로젝트 README나 내부 문서에 반드시 기록해야 합니다.<br /><!-- -->이 내용을 [프로젝트 지식](/kr/docs/about/understanding/knowledge-types.md)에 포함해 팀원들이 쉽게 확인할 수 있도록 하세요.
 
 ## NextJS에서 `app` layer 구현하기[​](#app-absence "해당 헤딩으로 이동")
 
@@ -7376,7 +7376,7 @@ export default defineNuxtConfig({
         ...                                     #
 ```
 
-entities 간에 데이터를 참조해야 하면 [공용 Public API](/documentation/kr/docs/reference/public-api.md#public-api-for-cross-imports)를 사용하거나,<br /><!-- -->아래 예시처럼 `shared/api/queries`에 모아두는 방법도 있습니다.
+entities 간에 데이터를 참조해야 하면 [공용 Public API](/kr/docs/reference/public-api.md#public-api-for-cross-imports)를 사용하거나,<br /><!-- -->아래 예시처럼 `shared/api/queries`에 모아두는 방법도 있습니다.
 
 ### 대안 — shared에 모아두기[​](#대안--shared에-모아두기 "해당 헤딩으로 이동")
 
@@ -7911,8 +7911,8 @@ This page provides links and guidance for LLM crawlers.
 
 ### Files[​](#files "해당 헤딩으로 이동")
 
-* [llms.txt](/documentation/kr/llms.txt)
-* [llms-full.txt](/documentation/kr/llms-full.txt)
+* [llms.txt](/kr/llms.txt)
+* [llms-full.txt](/kr/llms-full.txt)
 
 ### Notes[​](#notes "해당 헤딩으로 이동")
 
@@ -7928,7 +7928,7 @@ Layer는 Feature-Sliced Design에서 코드를 나눌 때 사용하는 **가장 
 
 총 **7개의 Layer**가 있으며, 아래로 내려갈수록 **담당하는 기능과 의존성이 줄어드는 순서**입니다.
 
-![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/kr/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/kr/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/kr/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/kr/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App
 2. Processes (deprecated)
@@ -8034,7 +8034,7 @@ export interface Artist {
 }
 ```
 
-자세한 내용은 [Cross-Import를 위한 Public API](/documentation/kr/docs/reference/public-api.md#public-api-for-cross-imports) 문서를 참고하세요.
+자세한 내용은 [Cross-Import를 위한 Public API](/kr/docs/reference/public-api.md#public-api-for-cross-imports) 문서를 참고하세요.
 
 ### Feature[​](#feature "해당 헤딩으로 이동")
 
@@ -8147,7 +8147,7 @@ export * from "./model/comments"; // 💩 내부 모델 노출
 
 ## Cross-Import를 위한 Public API[​](#public-api-for-cross-imports "해당 헤딩으로 이동")
 
-**Cross-import**는 같은 Layer 안에서 한 Slice가 다른 Slice를 import하는 것을 말합니다.<br />[Layer Import Rule](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)에 따라 원칙적으로는 금지되지만,<br />**Entity 간 참조**처럼 현실적으로 불가피한 경우가 있습니다.
+**Cross-import**는 같은 Layer 안에서 한 Slice가 다른 Slice를 import하는 것을 말합니다.<br />[Layer Import Rule](/kr/docs/reference/layers.md#import-rule-on-layers)에 따라 원칙적으로는 금지되지만,<br />**Entity 간 참조**처럼 현실적으로 불가피한 경우가 있습니다.
 
 예를 들어, 도메인 모델에서 `Artist`와 `Song`이 서로 연관 관계를 가진다면<br /><!-- -->이를 억지로 숨기기보다는 코드에도 그 관계를 드러내는 편이 낫습니다.
 
@@ -8185,7 +8185,7 @@ Circular Import는 두 개 이상의 파일이 서로를 참조하는 구조를 
 
 예를 들어 Slice의 Public API(`pages/home/index.js`)에서 `HomePage`와 `loadUserStatistics`를 export합니다.
 
-![세 파일이 서로 원형으로 import하는 모습](/documentation/kr/img/circular-import-light.svg#light-mode-only)![세 파일이 서로를 원형으로 import하고 있는 예시입니다.](/documentation/kr/img/circular-import-dark.svg#dark-mode-only)
+![세 파일이 서로 원형으로 import하는 모습](/kr/img/circular-import-light.svg#light-mode-only)![세 파일이 서로를 원형으로 import하고 있는 예시입니다.](/kr/img/circular-import-dark.svg#dark-mode-only)
 
 위 그림: `fileA.js`, `fileB.js`, `fileC.js` 파일의 Circular Import 예시
 
@@ -8337,11 +8337,11 @@ Slice는 **다른 Slice와 최대한 독립적**이어야 하고,<br /><!-- -->�
 
 아래 그림은 **응집도(cohesion)** 와 **결합도(coupling)** 개념을 시각적으로 보여 줍니다.
 
-![](/documentation/kr/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/kr/img/coupling-cohesion-dark.svg#dark-mode-only)
+![](/kr/img/coupling-cohesion-light.svg#light-mode-only)![](/kr/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
-Slice 간 독립성은 [Layer Import Rule](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)로 보장됩니다.
+Slice 간 독립성은 [Layer Import Rule](/kr/docs/reference/layers.md#import-rule-on-layers)로 보장됩니다.
 
 > *Slice 내부 모듈(파일)은 자신보다 아래 계층(Layer)에 있는 Slice만 import할 수 있습니다.*
 
@@ -8351,13 +8351,13 @@ Slice 내부 구조는 **팀이 원하는 방식으로 자유롭게** 설계할 
 
 > *모든 Slice(또는 Slice가 없는 Layer의 Segment)는 Public API를 정의해야 합니다.*<br />*외부 모듈은 Slice/Segment의 내부 구조에 직접 접근하지 않고, Public API를 통해서만 접근해야 합니다.*
 
-Public API의 역할과 작성 방법은 [Public API Reference](/documentation/kr/docs/reference/public-api.md)에서 자세히 설명합니다.
+Public API의 역할과 작성 방법은 [Public API Reference](/kr/docs/reference/public-api.md)에서 자세히 설명합니다.
 
 ### Slice Group[​](#slice-group "해당 헤딩으로 이동")
 
 서로 연관성이 높은 Slice들은 폴더로 묶어 **그룹처럼** 관리할 수 있습니다.<br /><!-- -->다만, 그룹으로 묶더라도 각 Slice에 대해 기존과 동일한 **격리 규칙**이 적용되며,<br />**그룹 내부라고 해서 코드 공유가 허용되는 것은 아닙니다.**
 
-![Features \&quot;compose\&quot;, \&quot;like\&quot; 그리고 \&quot;delete\&quot;가 \&quot;post\&quot; 폴더에 그룹화되어 있습니다. 해당 폴더에는 허용되지 않음을 나타내기 위해 취소선이 그어진 \&quot;some-shared-code.ts\&quot; 파일도 있습니다.](/documentation/kr/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
+![Features \&quot;compose\&quot;, \&quot;like\&quot; 그리고 \&quot;delete\&quot;가 \&quot;post\&quot; 폴더에 그룹화되어 있습니다. 해당 폴더에는 허용되지 않음을 나타내기 위해 취소선이 그어진 \&quot;some-shared-code.ts\&quot; 파일도 있습니다.](/kr/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## Segment[​](#segment "해당 헤딩으로 이동")
 
@@ -8371,7 +8371,7 @@ Segment는 FSD 구조에서 **세 번째이자 마지막 계층**으로,<br /><!
 * `lib` — Slice 내부에서 사용하는 Library 코드
 * `config` — Configuration, Feature Flag 등 설정 관련 코드
 
-각 Layer에서 Segment를 어떻게 사용하는지는 [Layer 페이지](/documentation/kr/docs/reference/layers.md#layer-definitions)에서 자세히 설명합니다.
+각 Layer에서 Segment를 어떻게 사용하는지는 [Layer 페이지](/kr/docs/reference/layers.md#layer-definitions)에서 자세히 설명합니다.
 
 또한 프로젝트에 맞게 **커스텀 Segment**를 정의할 수도 있습니다.<br /><!-- -->특히 `App` Layer와 `Shared` Layer는 Slice가 없기 때문에,<br /><!-- -->이 두 Layer에서는 커스텀 Segment를 자주 사용하게 됩니다.
 

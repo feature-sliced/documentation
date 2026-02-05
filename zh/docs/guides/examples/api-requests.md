@@ -69,7 +69,7 @@ export const client = {
 
 备注
 
-为了保持示例的重点，我们省略了表单交互和验证。有关 Zod 或 Valibot 等库的详细信息，请参阅[类型验证和 Schemas](/documentation/zh/docs/guides/examples/types.md#type-validation-schemas-and-zod) 文章。
+为了保持示例的重点，我们省略了表单交互和验证。有关 Zod 或 Valibot 等库的详细信息，请参阅[类型验证和 Schemas](/zh/docs/guides/examples/types.md#type-validation-schemas-and-zod) 文章。
 
 shared/api/endpoints/login.ts
 
@@ -149,4 +149,4 @@ export function login(credentials: LoginCredentials) {
 * 缓存键
 * 通用查询/变更选项
 
-有关如何使用服务器状态库的更多详细信息，请参阅 [React Query 文章](/documentation/zh/docs/guides/tech/with-react-query.md)
+有关如何使用服务器状态库的更多详细信息，请参阅 [React Query 文章](/zh/docs/guides/tech/with-react-query.md)

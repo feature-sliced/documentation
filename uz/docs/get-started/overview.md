@@ -2,7 +2,7 @@
 
 **Feature-Sliced Design** (FSD) bu front-end ilovalarining tuzilishini shakllantirish uchun arxitektura metodologiyasi. Oddiy qilib aytganda, bu kodni tartibga solish uchun qoidalar va konvensiyalar to'plami. Bu metodologiyaning asosiy maqsadi - loyihani yanada tushunarli va o'zgaruvchan biznes talablariga moslashuvchan qilishdir.
 
-FSD nafaqat konvensiyalar to'plami, balki vositalar to'plamini ham o'z ichiga oladi. Bizda [linter](https://github.com/feature-sliced/steiger) sizning loyihangizning arxitekturasini tekshirish uchun, [papka generatorlari](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) CLI yoki IDE lar orqali, shuningdek, ko'plab [misollar](/documentation/uz/examples.md) jamlanmasiga ega.
+FSD nafaqat konvensiyalar to'plami, balki vositalar to'plamini ham o'z ichiga oladi. Bizda [linter](https://github.com/feature-sliced/steiger) sizning loyihangizning arxitekturasini tekshirish uchun, [papka generatorlari](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) CLI yoki IDE lar orqali, shuningdek, ko'plab [misollar](/uz/examples.md) jamlanmasiga ega.
 
 ## Menga to'g'ri keladimi?[​](#is-it-right-for-me "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -13,7 +13,7 @@ FSD har qanday hajmdagi jamoalarda joriy qilinishi mumkin. Sizga to'g'ri keladi 
 
 Shu bilan birga, bu yerda qaysi dasturlash tili, UI(foydalanuvchi interfeysi) freymvorki, yoki holat boshqaruvchisi(state manager)ni ishlatish bo'yicha hech qanday cheklov yo'q. Shuningdek, FSD ni bosqichma-bosqich joriy qilishingiz, monorepo(yagona repozitoriya)larda ishlatishingiz va ilovangizni modullarga bo'lib, FSD ni ularning har birida alohida amalga oshirishingiz mumkin.
 
-Agar sizda allaqachon arxitektura mavjud bo‘lsa va FSDga o‘tishni o‘ylayotgan bo‘lsangiz, avvalo joriy arxitektura jamoangizga muammo tug‘dirayotganiga ishonch hosil qiling. Masalan, agar loyihangiz juda katta va o‘zaro juda bog‘lanib ketgan bo‘lsa, bu yangi xususiyatlarni samarali joriy etishni qiyinlashtirishi mumkin. Yoki jamoangizga ko‘plab yangi a’zolar qo‘shilishi kutilayotgan bo‘lsa, FSDga o‘tish foydali bo‘lishi mumkin. Agar hozirgi arxitektura yaxshi ishlayotgan bo‘lsa, ehtimol uni o‘zgartirishga hojat yo‘q. Ammo agar migratsiya qilishga qaror qilsangiz, yo‘riqnoma uchun [Migratsiya](/documentation/uz/docs/guides/migration/from-custom.md) sahifasini ko'rib chiqishingiz mumkin.
+Agar sizda allaqachon arxitektura mavjud bo‘lsa va FSDga o‘tishni o‘ylayotgan bo‘lsangiz, avvalo joriy arxitektura jamoangizga muammo tug‘dirayotganiga ishonch hosil qiling. Masalan, agar loyihangiz juda katta va o‘zaro juda bog‘lanib ketgan bo‘lsa, bu yangi xususiyatlarni samarali joriy etishni qiyinlashtirishi mumkin. Yoki jamoangizga ko‘plab yangi a’zolar qo‘shilishi kutilayotgan bo‘lsa, FSDga o‘tish foydali bo‘lishi mumkin. Agar hozirgi arxitektura yaxshi ishlayotgan bo‘lsa, ehtimol uni o‘zgartirishga hojat yo‘q. Ammo agar migratsiya qilishga qaror qilsangiz, yo‘riqnoma uchun [Migratsiya](/uz/docs/guides/migration/from-custom.md) sahifasini ko'rib chiqishingiz mumkin.
 
 ## Asosiy misollar[​](#basic-example "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -54,7 +54,7 @@ Bu yuqori darajadagi papkalar ular *layerlar* deyiladi. Keling chuqurroq qaraymi
 
 Layerlar, slicelar va segmentlar quyidagi iyerarxiyani hosil qiladi:
 
-![FSD konsepsiyalari iyearxiyasi, quyida tasvirlangan](/documentation/uz/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
+![FSD konsepsiyalari iyearxiyasi, quyida tasvirlangan](/uz/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
 Tepadagi rasmda: uchta ustunlar, chapdan o'ngga qarab mos ravishda "Layerlar", "Slicelar" va "Segmentlar" deb belgilangan.
 
@@ -126,6 +126,6 @@ Refaktoring jarayonida yoki loyihaning faqat ayrim qismlarini o‘zgartirayotgan
 
 ## Keyingi qadamlar[​](#next-steps "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-* **FSD haqida chuqur tushuncha hosil qilmoqchimisiz?** [Bu yerda](/documentation/uz/docs/get-started/tutorial.md).
-* **Misollar bilan o'rganishni afzal ko'rasizmi?** Bizda juda ko'plab [Misollar](/documentation/uz/examples.md) bo'limi mavjud.
+* **FSD haqida chuqur tushuncha hosil qilmoqchimisiz?** [Bu yerda](/uz/docs/get-started/tutorial.md).
+* **Misollar bilan o'rganishni afzal ko'rasizmi?** Bizda juda ko'plab [Misollar](/uz/examples.md) bo'limi mavjud.
 * **Savolingiz bormi?** Bizning [Telegram chat](https://t.me/feature_sliced) ga qo'shiling va yordam oling.

@@ -27,17 +27,17 @@ FSDは以前、[別のレガシーアイデンティティ](https://drive.google
 
 FSDには異なるコンテキスト用のいくつかのロゴバリエーションがありますが、**primary**の使用が推奨されます。
 
-|                                 |                                                                                                                        |                              |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| テーマ                          | ロゴ (Ctrl/Cmd + Clickでダウンロード)                                                                                  | 使用法                       |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/ja/img/brand/logo-primary.png)](/documentation/ja/img/brand/logo-primary.png)          | ほとんどの場合に推奨されます |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/ja/img/brand/logo-flat.png)](/documentation/ja/img/brand/logo-flat.png)                   | 単色コンテキスト用           |
-| monochrome<br />(#FFF)          | [![logo-monochrome](/documentation/ja/img/brand/logo-monochrome.png)](/documentation/ja/img/brand/logo-monochrome.png) | 白黒コンテキスト用           |
-| square<br />(#3193FF)           | [![logo-square](/documentation/ja/img/brand/logo-square.png)](/documentation/ja/img/brand/logo-square.png)             | 正方形サイズ用               |
+|                                 |                                                                                            |                              |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------- |
+| テーマ                          | ロゴ (Ctrl/Cmd + Clickでダウンロード)                                                      | 使用法                       |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/ja/img/brand/logo-primary.png)](/ja/img/brand/logo-primary.png)          | ほとんどの場合に推奨されます |
+| flat<br />(#3193FF)             | [![logo-flat](/ja/img/brand/logo-flat.png)](/ja/img/brand/logo-flat.png)                   | 単色コンテキスト用           |
+| monochrome<br />(#FFF)          | [![logo-monochrome](/ja/img/brand/logo-monochrome.png)](/ja/img/brand/logo-monochrome.png) | 白黒コンテキスト用           |
+| square<br />(#3193FF)           | [![logo-square](/ja/img/brand/logo-square.png)](/ja/img/brand/logo-square.png)             | 正方形サイズ用               |
 
 ## バナーとスキーム[​](#banners--schemes "この見出しへの直接リンク")
 
-[![banner-primary](/documentation/ja/img/brand/banner-primary.jpg)](/documentation/ja/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/ja/img/brand/banner-monochrome.jpg)](/documentation/ja/img/brand/banner-monochrome.jpg)
+[![banner-primary](/ja/img/brand/banner-primary.jpg)](/ja/img/brand/banner-primary.jpg) [![banner-monochrome](/ja/img/brand/banner-monochrome.jpg)](/ja/img/brand/banner-monochrome.jpg)
 
 ## ソーシャルプレビュー[​](#ソーシャルプレビュー "この見出しへの直接リンク")
 

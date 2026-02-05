@@ -158,7 +158,7 @@ WIP
 
 Framework-agnostic, conventional-подход
 
-* [(Статья) Про причины создания методологии (фрагмент про фреймворки)](/documentation/ru/docs/about/motivation.md)
+* [(Статья) Про причины создания методологии (фрагмент про фреймворки)](/ru/docs/about/motivation.md)
 * [(Тред) Про применимость методологии для разных фреймворков](https://t.me/feature_sliced/3867)
 
 ## Atomic Design[​](#atomic-design "Прямая ссылка на этот заголовок")

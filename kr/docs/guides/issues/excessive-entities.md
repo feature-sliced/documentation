@@ -103,7 +103,7 @@ CRUD가 단순 호출 수준을 넘어, 예를 들어 여러 요청을 묶어서
       📄 order.ts
 ```
 
-인증 구현은 [Authentication 가이드](/documentation/kr/docs/guides/examples/auth.md)를 참고하세요.
+인증 구현은 [Authentication 가이드](/kr/docs/guides/examples/auth.md)를 참고하세요.
 
 ### 5. Cross-import를 최소화합니다[​](#5-cross-import를-최소화합니다 "해당 헤딩으로 이동")
 

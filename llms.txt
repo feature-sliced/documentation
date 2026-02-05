@@ -1,14 +1,32 @@
 # Feature-Sliced Design
 
+> Architectural methodology for frontend projects
 
-## documentation
+- [Feature-Sliced Design](/index.md)
+
+## examples
 
 - [Examples](/examples.md): List of websites people are building with Feature-Sliced Design
+
+## nav
+
 - [🧭 Navigation](/nav.md): Feature-Sliced Design Navigation help page
+
+## search
+
 - [Search the documentation](/search.md)
+
+## versions
+
 - [Feature-Sliced Design versions](/versions.md): Feature-Sliced Design Versions page listing all documented site versions
+
+## community
+
 - [💫 Community](/community.md): Community resources, additional materials
 - [Team](/community/team.md): Core-team
+
+## docs
+
 - [Alternatives](/docs/about/alternatives.md): History of architecture approaches
 - [Mission](/docs/about/mission.md): Here we describe the goals and limitations of the applicability of the methodology-which we are guided by when developing the methodology
 - [Motivation](/docs/about/motivation.md): The main idea of Feature-Sliced Design is to facilitate and reduce the cost of developing complex and developing projects, based on combining research results, discussing the experience of various kinds of a wide range of developers.
@@ -58,4 +76,3 @@
 - [Layers](/docs/reference/layers.md): Layers are the first level of organisational hierarchy in Feature-Sliced Design. Their purpose is to separate code based on how much responsibility it needs and how many other modules in the app it depends on. Every layer carries special semantic meaning to help you determine how much responsibility you should allocate to your code.
 - [Public API](/docs/reference/public-api.md): A public API is a contract between a group of modules, like a slice, and the code that uses it. It also acts as a gate, only allowing access to certain objects, and only through that public API.
 - [Slices and segments](/docs/reference/slices-segments.md): Slices
-- [Feature-Sliced Design](/index.md): Architectural methodology for frontend projects

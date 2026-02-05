@@ -1,14 +1,32 @@
 # Feature-Sliced Design
 
+> Architectural methodology for frontend projects
 
-## documentation
+- [Feature-Sliced Design](/index.md)
+
+## examples
 
 - [Examples](/examples.md): List of websites people are building with Feature-Sliced Design
+
+## nav
+
 - [🧭 Navigation](/nav.md): Feature-Sliced Design Navigation help page
+
+## search
+
 - [Search the documentation](/search.md)
+
+## versions
+
 - [Feature-Sliced Design versions](/versions.md): Feature-Sliced Design Versions page listing all documented site versions
+
+## community
+
 - [💫 Community](/community.md): Community resources, additional materials
 - [Team](/community/team.md): Core-team
+
+## docs
+
 - [Alternatives](/docs/about/alternatives.md): History of architecture approaches
 - [Mission](/docs/about/mission.md): Here we describe the goals and limitations of the applicability of the methodology-which we are guided by when developing the methodology
 - [Motivation](/docs/about/motivation.md): The main idea of Feature-Sliced Design is to facilitate and reduce the cost of developing complex and developing projects, based on combining research results, discussing the experience of various kinds of a wide range of developers.
@@ -58,7 +76,6 @@
 - [Layers](/docs/reference/layers.md): Layers are the first level of organisational hierarchy in Feature-Sliced Design. Their purpose is to separate code based on how much responsibility it needs and how many other modules in the app it depends on. Every layer carries special semantic meaning to help you determine how much responsibility you should allocate to your code.
 - [Public API](/docs/reference/public-api.md): A public API is a contract between a group of modules, like a slice, and the code that uses it. It also acts as a gate, only allowing access to certain objects, and only through that public API.
 - [Slices and segments](/docs/reference/slices-segments.md): Slices
-- [Feature-Sliced Design](/index.md): Architectural methodology for frontend projects
 
 
 ---
@@ -67,7 +84,7 @@
 
 v2
 
-![](/documentation/assets/ideal-img/tiny-bunny.dd60f55.640.png)
+![](/assets/ideal-img/tiny-bunny.dd60f55.640.png)
 
 Tiny Bunny Mini Game
 
@@ -92,676 +109,676 @@ But there are redirects from old links for compatibility
 
 ⚡️ <!-- -->Simplified and merged
 
-[Tutorial](/documentation/docs/get-started/tutorial.md)
+[Tutorial](/docs/get-started/tutorial.md)
 
-[**old**:](/documentation/docs/get-started/tutorial.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/get-started/quick-start](/documentation/docs/get-started/tutorial.md)
-
-[**new**: ](/documentation/docs/get-started/tutorial.md)
-
-<!-- -->
-
-[/docs/get-started/tutorial](/documentation/docs/get-started/tutorial.md)
-
-[Basics](/documentation/docs/get-started/overview.md)
-
-[**old**:](/documentation/docs/get-started/overview.md)
+[**old**:](/docs/get-started/tutorial.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/get-started/basics](/documentation/docs/get-started/overview.md)
+[/docs/get-started/quick-start](/docs/get-started/tutorial.md)
 
-[**new**: ](/documentation/docs/get-started/overview.md)
-
-<!-- -->
-
-[/docs/get-started/overview](/documentation/docs/get-started/overview.md)
-
-[Decompose Cheatsheet](/documentation/docs/get-started/cheatsheet.md)
-
-[**old**:](/documentation/docs/get-started/cheatsheet.md)
+[**new**: ](/docs/get-started/tutorial.md)
 
 <!-- -->
 
+[/docs/get-started/tutorial](/docs/get-started/tutorial.md)
+
+[Basics](/docs/get-started/overview.md)
+
+[**old**:](/docs/get-started/overview.md)
+
 <!-- -->
 
-[/docs/get-started/tutorial/decompose; /docs/get-started/tutorial/design-mockup; /docs/get-started/onboard/cheatsheet](/documentation/docs/get-started/cheatsheet.md)
+<!-- -->
 
-[**new**: ](/documentation/docs/get-started/cheatsheet.md)
+[/docs/get-started/basics](/docs/get-started/overview.md)
+
+[**new**: ](/docs/get-started/overview.md)
 
 <!-- -->
 
-[/docs/get-started/cheatsheet](/documentation/docs/get-started/cheatsheet.md)
+[/docs/get-started/overview](/docs/get-started/overview.md)
+
+[Decompose Cheatsheet](/docs/get-started/cheatsheet.md)
+
+[**old**:](/docs/get-started/cheatsheet.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/get-started/tutorial/decompose; /docs/get-started/tutorial/design-mockup; /docs/get-started/onboard/cheatsheet](/docs/get-started/cheatsheet.md)
+
+[**new**: ](/docs/get-started/cheatsheet.md)
+
+<!-- -->
+
+[/docs/get-started/cheatsheet](/docs/get-started/cheatsheet.md)
 
 ### 🍰 Alternatives
 
 ⚡️ <!-- -->Moved and merged to /about/alternatives as advanced materials
 
-[Architecture approaches alternatives](/documentation/docs/about/alternatives.md)
+[Architecture approaches alternatives](/docs/about/alternatives.md)
 
-[**old**:](/documentation/docs/about/alternatives.md)
-
-<!-- -->
+[**old**:](/docs/about/alternatives.md)
 
 <!-- -->
 
-[/docs/about/alternatives/big-ball-of-mud; /docs/about/alternatives/design-principles; /docs/about/alternatives/ddd; /docs/about/alternatives/clean-architecture; /docs/about/alternatives/frameworks; /docs/about/alternatives/atomic-design; /docs/about/alternatives/smart-dumb-components; /docs/about/alternatives/feature-driven](/documentation/docs/about/alternatives.md)
+<!-- -->
 
-[**new**: ](/documentation/docs/about/alternatives.md)
+[/docs/about/alternatives/big-ball-of-mud; /docs/about/alternatives/design-principles; /docs/about/alternatives/ddd; /docs/about/alternatives/clean-architecture; /docs/about/alternatives/frameworks; /docs/about/alternatives/atomic-design; /docs/about/alternatives/smart-dumb-components; /docs/about/alternatives/feature-driven](/docs/about/alternatives.md)
+
+[**new**: ](/docs/about/alternatives.md)
 
 <!-- -->
 
-[/docs/about/alternatives](/documentation/docs/about/alternatives.md)
+[/docs/about/alternatives](/docs/about/alternatives.md)
 
 ### 🍰 Promote & Understanding
 
 ⚡️ <!-- -->Moved to /about as advanced materials
 
-[Knowledge types](/documentation/docs/about/understanding/knowledge-types.md)
+[Knowledge types](/docs/about/understanding/knowledge-types.md)
 
-[**old**:](/documentation/docs/about/understanding/knowledge-types.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/reference/knowledge-types](/documentation/docs/about/understanding/knowledge-types.md)
-
-[**new**: ](/documentation/docs/about/understanding/knowledge-types.md)
-
-<!-- -->
-
-[/docs/about/understanding/knowledge-types](/documentation/docs/about/understanding/knowledge-types.md)
-
-[Needs driven](/documentation/docs/about/understanding/needs-driven.md)
-
-[**old**:](/documentation/docs/about/understanding/needs-driven.md)
+[**old**:](/docs/about/understanding/knowledge-types.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/needs-driven](/documentation/docs/about/understanding/needs-driven.md)
+[/docs/reference/knowledge-types](/docs/about/understanding/knowledge-types.md)
 
-[**new**: ](/documentation/docs/about/understanding/needs-driven.md)
-
-<!-- -->
-
-[/docs/about/understanding/needs-driven](/documentation/docs/about/understanding/needs-driven.md)
-
-[About architecture](/documentation/docs/about/understanding/architecture.md)
-
-[**old**:](/documentation/docs/about/understanding/architecture.md)
+[**new**: ](/docs/about/understanding/knowledge-types.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/about/understanding/knowledge-types](/docs/about/understanding/knowledge-types.md)
 
-[/docs/concepts/architecture](/documentation/docs/about/understanding/architecture.md)
+[Needs driven](/docs/about/understanding/needs-driven.md)
 
-[**new**: ](/documentation/docs/about/understanding/architecture.md)
-
-<!-- -->
-
-[/docs/about/understanding/architecture](/documentation/docs/about/understanding/architecture.md)
-
-[Naming adaptability](/documentation/docs/about/understanding/naming.md)
-
-[**old**:](/documentation/docs/about/understanding/naming.md)
+[**old**:](/docs/about/understanding/needs-driven.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/naming-adaptability](/documentation/docs/about/understanding/naming.md)
+[/docs/concepts/needs-driven](/docs/about/understanding/needs-driven.md)
 
-[**new**: ](/documentation/docs/about/understanding/naming.md)
-
-<!-- -->
-
-[/docs/about/understanding/naming](/documentation/docs/about/understanding/naming.md)
-
-[Signals of architecture](/documentation/docs/about/understanding/signals.md)
-
-[**old**:](/documentation/docs/about/understanding/signals.md)
+[**new**: ](/docs/about/understanding/needs-driven.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/about/understanding/needs-driven](/docs/about/understanding/needs-driven.md)
 
-[/docs/concepts/signals](/documentation/docs/about/understanding/signals.md)
+[About architecture](/docs/about/understanding/architecture.md)
 
-[**new**: ](/documentation/docs/about/understanding/signals.md)
-
-<!-- -->
-
-[/docs/about/understanding/signals](/documentation/docs/about/understanding/signals.md)
-
-[Abstractions of architecture](/documentation/docs/about/understanding/abstractions.md)
-
-[**old**:](/documentation/docs/about/understanding/abstractions.md)
+[**old**:](/docs/about/understanding/architecture.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/abstractions](/documentation/docs/about/understanding/abstractions.md)
+[/docs/concepts/architecture](/docs/about/understanding/architecture.md)
 
-[**new**: ](/documentation/docs/about/understanding/abstractions.md)
+[**new**: ](/docs/about/understanding/architecture.md)
 
 <!-- -->
 
-[/docs/about/understanding/abstractions](/documentation/docs/about/understanding/abstractions.md)
+[/docs/about/understanding/architecture](/docs/about/understanding/architecture.md)
+
+[Naming adaptability](/docs/about/understanding/naming.md)
+
+[**old**:](/docs/about/understanding/naming.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/naming-adaptability](/docs/about/understanding/naming.md)
+
+[**new**: ](/docs/about/understanding/naming.md)
+
+<!-- -->
+
+[/docs/about/understanding/naming](/docs/about/understanding/naming.md)
+
+[Signals of architecture](/docs/about/understanding/signals.md)
+
+[**old**:](/docs/about/understanding/signals.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/signals](/docs/about/understanding/signals.md)
+
+[**new**: ](/docs/about/understanding/signals.md)
+
+<!-- -->
+
+[/docs/about/understanding/signals](/docs/about/understanding/signals.md)
+
+[Abstractions of architecture](/docs/about/understanding/abstractions.md)
+
+[**old**:](/docs/about/understanding/abstractions.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/abstractions](/docs/about/understanding/abstractions.md)
+
+[**new**: ](/docs/about/understanding/abstractions.md)
+
+<!-- -->
+
+[/docs/about/understanding/abstractions](/docs/about/understanding/abstractions.md)
 
 ### 📚 Reference guidelines (isolation & units)
 
 ⚡️ <!-- -->Moved to /reference as theoretical materials (old concepts)
 
-[Decouple of entities](/documentation/docs/reference/layers.md#import-rule-on-layers)
+[Decouple of entities](/docs/reference/layers.md#import-rule-on-layers)
 
-[**old**:](/documentation/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/decouple-entities](/documentation/docs/reference/layers.md#import-rule-on-layers)
-
-[**new**: ](/documentation/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-[/docs/reference/layers#import-rule-on-layers](/documentation/docs/reference/layers.md#import-rule-on-layers)
-
-[Low Coupling & High Cohesion](/documentation/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-[**old**:](/documentation/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
+[**old**:](/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/low-coupling](/documentation/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
+[/docs/concepts/decouple-entities](/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-<!-- -->
-
-[/docs/reference/slices-segments#zero-coupling-high-cohesion](/documentation/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-[Cross-communication](/documentation/docs/reference/layers.md#import-rule-on-layers)
-
-[**old**:](/documentation/docs/reference/layers.md#import-rule-on-layers)
+[**new**: ](/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers#import-rule-on-layers](/docs/reference/layers.md#import-rule-on-layers)
 
-[/docs/concepts/cross-communication](/documentation/docs/reference/layers.md#import-rule-on-layers)
+[Low Coupling & High Cohesion](/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[**new**: ](/documentation/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-[/docs/reference/layers#import-rule-on-layers](/documentation/docs/reference/layers.md#import-rule-on-layers)
-
-[App splitting](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**old**:](/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/app-splitting](/documentation/docs/reference/layers.md)
+[/docs/concepts/low-coupling](/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Decomposition](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**new**: ](/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/slices-segments#zero-coupling-high-cohesion](/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[/docs/reference/units/decomposition](/documentation/docs/reference/layers.md)
+[Cross-communication](/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Units](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**old**:](/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units](/documentation/docs/reference/layers.md)
+[/docs/concepts/cross-communication](/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Layers](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**new**: ](/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers#import-rule-on-layers](/docs/reference/layers.md#import-rule-on-layers)
 
-[/docs/reference/units/layers](/documentation/docs/reference/layers.md)
+[App splitting](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Layer overview](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**old**:](/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/layers/overview](/documentation/docs/reference/layers.md)
+[/docs/concepts/app-splitting](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[App layer](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**new**: ](/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/docs/reference/layers.md)
 
-[/docs/reference/units/layers/app](/documentation/docs/reference/layers.md)
+[Decomposition](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Processes layer](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**old**:](/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/processes](/documentation/docs/reference/layers.md)
+[/docs/reference/units/decomposition](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Pages layer](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**new**: ](/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/docs/reference/layers.md)
 
-[/docs/reference/units/layers/pages](/documentation/docs/reference/layers.md)
+[Units](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Widgets layer](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**old**:](/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/widgets](/documentation/docs/reference/layers.md)
+[/docs/reference/units](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Widgets layer](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**new**: ](/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/docs/reference/layers.md)
 
-[/docs/reference/layers/widgets](/documentation/docs/reference/layers.md)
+[Layers](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Features layer](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**old**:](/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/features](/documentation/docs/reference/layers.md)
+[/docs/reference/units/layers](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Entities layer](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**new**: ](/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/docs/reference/layers.md)
 
-[/docs/reference/units/layers/entities](/documentation/docs/reference/layers.md)
+[Layer overview](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Shared layer](/documentation/docs/reference/layers.md)
-
-[**old**:](/documentation/docs/reference/layers.md)
+[**old**:](/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/shared](/documentation/docs/reference/layers.md)
+[/docs/reference/layers/overview](/docs/reference/layers.md)
 
-[**new**: ](/documentation/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/docs/reference/layers.md)
-
-[Segments](/documentation/docs/reference/slices-segments.md)
-
-[**old**:](/documentation/docs/reference/slices-segments.md)
+[**new**: ](/docs/reference/layers.md)
 
 <!-- -->
 
+[/docs/reference/layers](/docs/reference/layers.md)
+
+[App layer](/docs/reference/layers.md)
+
+[**old**:](/docs/reference/layers.md)
+
 <!-- -->
 
-[/docs/reference/units/segments](/documentation/docs/reference/slices-segments.md)
+<!-- -->
 
-[**new**: ](/documentation/docs/reference/slices-segments.md)
+[/docs/reference/units/layers/app](/docs/reference/layers.md)
+
+[**new**: ](/docs/reference/layers.md)
 
 <!-- -->
 
-[/docs/reference/slices-segments](/documentation/docs/reference/slices-segments.md)
+[/docs/reference/layers](/docs/reference/layers.md)
+
+[Processes layer](/docs/reference/layers.md)
+
+[**old**:](/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/processes](/docs/reference/layers.md)
+
+[**new**: ](/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/docs/reference/layers.md)
+
+[Pages layer](/docs/reference/layers.md)
+
+[**old**:](/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/pages](/docs/reference/layers.md)
+
+[**new**: ](/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/docs/reference/layers.md)
+
+[Widgets layer](/docs/reference/layers.md)
+
+[**old**:](/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/widgets](/docs/reference/layers.md)
+
+[**new**: ](/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/docs/reference/layers.md)
+
+[Widgets layer](/docs/reference/layers.md)
+
+[**old**:](/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/layers/widgets](/docs/reference/layers.md)
+
+[**new**: ](/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/docs/reference/layers.md)
+
+[Features layer](/docs/reference/layers.md)
+
+[**old**:](/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/features](/docs/reference/layers.md)
+
+[**new**: ](/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/docs/reference/layers.md)
+
+[Entities layer](/docs/reference/layers.md)
+
+[**old**:](/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/entities](/docs/reference/layers.md)
+
+[**new**: ](/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/docs/reference/layers.md)
+
+[Shared layer](/docs/reference/layers.md)
+
+[**old**:](/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/shared](/docs/reference/layers.md)
+
+[**new**: ](/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/docs/reference/layers.md)
+
+[Segments](/docs/reference/slices-segments.md)
+
+[**old**:](/docs/reference/slices-segments.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/segments](/docs/reference/slices-segments.md)
+
+[**new**: ](/docs/reference/slices-segments.md)
+
+<!-- -->
+
+[/docs/reference/slices-segments](/docs/reference/slices-segments.md)
 
 ### 🎯 Bad Practices handbook
 
 ⚡️ <!-- -->Moved to /guides as practice materials
 
-[Cross-imports](/documentation/docs/guides/issues/cross-imports.md)
+[Cross-imports](/docs/guides/issues/cross-imports.md)
 
-[**old**:](/documentation/docs/guides/issues/cross-imports.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/issues/cross-imports](/documentation/docs/guides/issues/cross-imports.md)
-
-[**new**: ](/documentation/docs/guides/issues/cross-imports.md)
-
-<!-- -->
-
-[/docs/guides/issues/cross-imports](/documentation/docs/guides/issues/cross-imports.md)
-
-[Desegmented](/documentation/docs/guides/issues/desegmented.md)
-
-[**old**:](/documentation/docs/guides/issues/desegmented.md)
+[**old**:](/docs/guides/issues/cross-imports.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/issues/desegmented](/documentation/docs/guides/issues/desegmented.md)
+[/docs/concepts/issues/cross-imports](/docs/guides/issues/cross-imports.md)
 
-[**new**: ](/documentation/docs/guides/issues/desegmented.md)
-
-<!-- -->
-
-[/docs/guides/issues/desegmented](/documentation/docs/guides/issues/desegmented.md)
-
-[Routes](/documentation/docs/guides/issues/routes.md)
-
-[**old**:](/documentation/docs/guides/issues/routes.md)
+[**new**: ](/docs/guides/issues/cross-imports.md)
 
 <!-- -->
 
+[/docs/guides/issues/cross-imports](/docs/guides/issues/cross-imports.md)
+
+[Desegmented](/docs/guides/issues/desegmented.md)
+
+[**old**:](/docs/guides/issues/desegmented.md)
+
 <!-- -->
 
-[/docs/concepts/issues/routes](/documentation/docs/guides/issues/routes.md)
+<!-- -->
 
-[**new**: ](/documentation/docs/guides/issues/routes.md)
+[/docs/concepts/issues/desegmented](/docs/guides/issues/desegmented.md)
+
+[**new**: ](/docs/guides/issues/desegmented.md)
 
 <!-- -->
 
-[/docs/guides/issues/routes](/documentation/docs/guides/issues/routes.md)
+[/docs/guides/issues/desegmented](/docs/guides/issues/desegmented.md)
+
+[Routes](/docs/guides/issues/routes.md)
+
+[**old**:](/docs/guides/issues/routes.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/issues/routes](/docs/guides/issues/routes.md)
+
+[**new**: ](/docs/guides/issues/routes.md)
+
+<!-- -->
+
+[/docs/guides/issues/routes](/docs/guides/issues/routes.md)
 
 ### 🎯 Examples
 
 ⚡️ <!-- -->Grouped and simplified into /guides/examples as practical examples
 
-[Viewer logic](/documentation/docs/guides/examples/auth.md)
+[Viewer logic](/docs/guides/examples/auth.md)
 
-[**old**:](/documentation/docs/guides/examples/auth.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/guides/examples/viewer](/documentation/docs/guides/examples/auth.md)
-
-[**new**: ](/documentation/docs/guides/examples/auth.md)
-
-<!-- -->
-
-[/docs/guides/examples/auth](/documentation/docs/guides/examples/auth.md)
-
-[Monorepo](/documentation/docs/guides/examples/monorepo.md)
-
-[**old**:](/documentation/docs/guides/examples/monorepo.md)
+[**old**:](/docs/guides/examples/auth.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/guides/monorepo](/documentation/docs/guides/examples/monorepo.md)
+[/docs/guides/examples/viewer](/docs/guides/examples/auth.md)
 
-[**new**: ](/documentation/docs/guides/examples/monorepo.md)
-
-<!-- -->
-
-[/docs/guides/examples/monorepo](/documentation/docs/guides/examples/monorepo.md)
-
-[White Labels](/documentation/docs/guides/examples/white-labels.md)
-
-[**old**:](/documentation/docs/guides/examples/white-labels.md)
+[**new**: ](/docs/guides/examples/auth.md)
 
 <!-- -->
 
+[/docs/guides/examples/auth](/docs/guides/examples/auth.md)
+
+[Monorepo](/docs/guides/examples/monorepo.md)
+
+[**old**:](/docs/guides/examples/monorepo.md)
+
 <!-- -->
 
-[/docs/guides/white-labels](/documentation/docs/guides/examples/white-labels.md)
+<!-- -->
 
-[**new**: ](/documentation/docs/guides/examples/white-labels.md)
+[/docs/guides/monorepo](/docs/guides/examples/monorepo.md)
+
+[**new**: ](/docs/guides/examples/monorepo.md)
 
 <!-- -->
 
-[/docs/guides/examples/white-labels](/documentation/docs/guides/examples/white-labels.md)
+[/docs/guides/examples/monorepo](/docs/guides/examples/monorepo.md)
+
+[White Labels](/docs/guides/examples/white-labels.md)
+
+[**old**:](/docs/guides/examples/white-labels.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/guides/white-labels](/docs/guides/examples/white-labels.md)
+
+[**new**: ](/docs/guides/examples/white-labels.md)
+
+<!-- -->
+
+[/docs/guides/examples/white-labels](/docs/guides/examples/white-labels.md)
 
 ### 🎯 Migration
 
 ⚡️ <!-- -->Grouped and simplified into /guides/migration as migration guidelines
 
-[Migration from V1](/documentation/docs/guides/migration/from-v1.md)
+[Migration from V1](/docs/guides/migration/from-v1.md)
 
-[**old**:](/documentation/docs/guides/migration/from-v1.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/guides/migration-from-v1](/documentation/docs/guides/migration/from-v1.md)
-
-[**new**: ](/documentation/docs/guides/migration/from-v1.md)
-
-<!-- -->
-
-[/docs/guides/migration/from-v1](/documentation/docs/guides/migration/from-v1.md)
-
-[Migration from Legacy](/documentation/docs/guides/migration/from-custom.md)
-
-[**old**:](/documentation/docs/guides/migration/from-custom.md)
+[**old**:](/docs/guides/migration/from-v1.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/guides/migration-from-legacy](/documentation/docs/guides/migration/from-custom.md)
+[/docs/guides/migration-from-v1](/docs/guides/migration/from-v1.md)
 
-[**new**: ](/documentation/docs/guides/migration/from-custom.md)
+[**new**: ](/docs/guides/migration/from-v1.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-custom](/documentation/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-v1](/docs/guides/migration/from-v1.md)
+
+[Migration from Legacy](/docs/guides/migration/from-custom.md)
+
+[**old**:](/docs/guides/migration/from-custom.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/guides/migration-from-legacy](/docs/guides/migration/from-custom.md)
+
+[**new**: ](/docs/guides/migration/from-custom.md)
+
+<!-- -->
+
+[/docs/guides/migration/from-custom](/docs/guides/migration/from-custom.md)
 
 ### 🎯 Tech
 
 ⚡️ <!-- -->Grouped into /guides/tech as tech-specific usage guidelines
 
-[Usage with NextJS](/documentation/docs/guides/tech/with-nextjs.md)
+[Usage with NextJS](/docs/guides/tech/with-nextjs.md)
 
-[**old**:](/documentation/docs/guides/tech/with-nextjs.md)
-
-<!-- -->
+[**old**:](/docs/guides/tech/with-nextjs.md)
 
 <!-- -->
 
-[/docs/guides/usage-with-nextjs](/documentation/docs/guides/tech/with-nextjs.md)
+<!-- -->
 
-[**new**: ](/documentation/docs/guides/tech/with-nextjs.md)
+[/docs/guides/usage-with-nextjs](/docs/guides/tech/with-nextjs.md)
+
+[**new**: ](/docs/guides/tech/with-nextjs.md)
 
 <!-- -->
 
-[/docs/guides/tech/with-nextjs](/documentation/docs/guides/tech/with-nextjs.md)
+[/docs/guides/tech/with-nextjs](/docs/guides/tech/with-nextjs.md)
 
 ### Rename 'legacy' to 'custom'
 
 ⚡️ <!-- -->'Legacy' is derogatory, we don't get to call people's projects legacy
 
-[Rename 'legacy' to custom](/documentation/docs/guides/migration/from-custom.md)
+[Rename 'legacy' to custom](/docs/guides/migration/from-custom.md)
 
-[**old**:](/documentation/docs/guides/migration/from-custom.md)
-
-<!-- -->
+[**old**:](/docs/guides/migration/from-custom.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-legacy](/documentation/docs/guides/migration/from-custom.md)
+<!-- -->
 
-[**new**: ](/documentation/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-legacy](/docs/guides/migration/from-custom.md)
+
+[**new**: ](/docs/guides/migration/from-custom.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-custom](/documentation/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-custom](/docs/guides/migration/from-custom.md)
 
 ### Deduplication of Reference
 
 ⚡️ <!-- -->Cleaned up the Reference section and deduplicated the material
 
-[Isolation of modules](/documentation/docs/reference/layers.md#import-rule-on-layers)
+[Isolation of modules](/docs/reference/layers.md#import-rule-on-layers)
 
-[**old**:](/documentation/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
+[**old**:](/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-[/docs/reference/isolation](/documentation/docs/reference/layers.md#import-rule-on-layers)
+<!-- -->
 
-[**new**: ](/documentation/docs/reference/layers.md#import-rule-on-layers)
+[/docs/reference/isolation](/docs/reference/layers.md#import-rule-on-layers)
+
+[**new**: ](/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-[/docs/reference/layers#import-rule-on-layers](/documentation/docs/reference/layers.md#import-rule-on-layers)
+[/docs/reference/layers#import-rule-on-layers](/docs/reference/layers.md#import-rule-on-layers)
 
 
 ---
 
 [Skip to main content](#__docusaurus_skipToContent_fallback)
 
-[![logo](/documentation/img/brand/logo-primary.png)![logo](/documentation/img/brand/logo-primary.png)](/documentation/.md)
+[![logo](/img/brand/logo-primary.png)![logo](/img/brand/logo-primary.png)](/index.md)
 
-[****](/documentation/.md)[📖 Docs](/documentation/docs/get-started/overview.md)[💫 Community](/documentation/community.md)[📝 Blog](/documentation/blog)[🛠 Examples](/documentation/examples.md)
+[****](/index.md)[📖 Docs](/docs/get-started/overview.md)[💫 Community](/community.md)[📝 Blog](/blog)[🛠 Examples](/examples.md)
 
-[v2.1](/documentation/docs/get-started/overview.md)
+[v2.1](/docs/get-started/overview.md)
 
-* [v2.1](/documentation/docs/get-started/overview.md)
+* [v2.1](/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
-* [All versions](/documentation/versions.md)
+* [All versions](/versions.md)
 
 [English](#)
 
-* [Русский](/documentation/ru/search)
-* [English](/documentation/search.md)
-* [O'zbekcha](/documentation/uz/search)
-* [한국어](/documentation/kr/search)
-* [日本語](/documentation/ja/search)
-* [Tiếng Việt](/documentation/vi/search)
-* [中文](/documentation/zh/search)
+* [Русский](/ru/search)
+* [English](/search.md)
+* [O'zbekcha](/uz/search)
+* [한국어](/kr/search)
+* [日本語](/ja/search)
+* [Tiếng Việt](/vi/search)
+* [中文](/zh/search)
 * [Help Us Translate](https://github.com/feature-sliced/documentation/issues/244)
 
 [](https://discord.gg/S8MzWTUsmp)[](https://github.com/feature-sliced/documentation)
@@ -776,9 +793,9 @@ Powered by[](https://www.algolia.com/)
 
 Specs
 
-* [Documentation](/documentation/docs/get-started/overview.md)
-* [Community](/documentation/community.md)
-* [Help](/documentation/nav.md)
+* [Documentation](/docs/get-started/overview.md)
+* [Community](/community.md)
+* [Help](/nav.md)
 * [Discussions](https://github.com/feature-sliced/documentation/discussions)
 
 Community
@@ -794,9 +811,9 @@ More
 * [GitHub](https://github.com/feature-sliced)
 * [Contribution Guide](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
 * [License](https://github.com/feature-sliced/documentation/blob/master/LICENSE)
-* [Docs for LLMs](/documentation/docs/llms.md)
+* [Docs for LLMs](/docs/llms.md)
 
-[![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/img/brand/logo-primary.png)](https://github.com/feature-sliced)
+[![Feature-Sliced Design - Architectural methodology for frontend projects](/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/img/brand/logo-primary.png)](https://github.com/feature-sliced)
 
 Copyright © 2018-2025 Feature-Sliced Design
 
@@ -809,8 +826,8 @@ Copyright © 2018-2025 Feature-Sliced Design
 
 The documentation for the currently published version can be found here
 
-| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/documentation/docs/get-started/overview.md) | [Migration from v1](/documentation/docs/guides/migration/from-v1.md) | [Migration from v2.0](/documentation/docs/guides/migration/from-v1.md) |
-| ---- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/docs/get-started/overview.md) | [Migration from v1](/docs/guides/migration/from-v1.md) | [Migration from v2.0](/docs/guides/migration/from-v1.md) |
+| ---- | ---------------------------------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------- |
 
 ### Feature Slices v1 (Legacy)
 
@@ -843,13 +860,13 @@ Community resources, additional materials
 
 [A curated list of awesome FSD videos, articles, packages](https://github.com/feature-sliced/awesome)
 
-[Team](/documentation/community/team.md)
+[Team](/community/team.md)
 
-[Core-team, Champions, Contributors, Companies](/documentation/community/team.md)
+[Core-team, Champions, Contributors, Companies](/community/team.md)
 
-[Brandbook](/documentation/docs/branding.md)
+[Brandbook](/docs/branding.md)
 
-[Recommendations for FSD's branding usage](/documentation/docs/branding.md)
+[Recommendations for FSD's branding usage](/docs/branding.md)
 
 [Contributing](#)
 
@@ -1043,7 +1060,7 @@ To bring the release of the article closer, you can:
 
 Framework-agnostic, conventional-approach
 
-* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/documentation/docs/about/motivation.md)
+* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/docs/about/motivation.md)
 * [(Thread) About the applicability of the methodology for different frameworks](https://t.me/feature_sliced/3867)
 
 ## Atomic Design[​](#atomic-design "Direct link to heading")
@@ -1160,7 +1177,7 @@ Everyone has their own level of experience in designing and developing systems, 
 
 ## See also[​](#see-also "Direct link to heading")
 
-* [Architecture problems](/documentation/docs/about/understanding/architecture.md#problems)
+* [Architecture problems](/docs/about/understanding/architecture.md#problems)
 
 
 ---
@@ -1169,7 +1186,7 @@ Everyone has their own level of experience in designing and developing systems, 
 
 The main idea of **Feature-Sliced Design** is to facilitate and reduce the cost of developing complex and developing projects, based on [combining research results, discussing the experience of various kinds of a wide range of developers](https://github.com/feature-sliced/documentation/discussions).
 
-Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability](/documentation/docs/about/mission.md).
+Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability](/docs/about/mission.md).
 
 Nevertheless, there are reasonable questions regarding *the feasibility of such a methodology as a whole*
 
@@ -1275,7 +1292,7 @@ Yes, the most important thing for MVP is *"features, not the architecture laid d
 
 ## Plans[​](#plans "Direct link to heading")
 
-The main part of the goals [is set out here](/documentation/docs/about/mission.md#goals), but in addition, it is worth talking about our expectations from the methodology in the future
+The main part of the goals [is set out here](/docs/about/mission.md#goals), but in addition, it is worth talking about our expectations from the methodology in the future
 
 ### Combining experience[​](#combining-experience "Direct link to heading")
 
@@ -1298,8 +1315,8 @@ If everything goes well, then the methodology will not be limited only to the sp
 ## See also[​](#see-also "Direct link to heading")
 
 * [(Discussion) Don't need a methodology?](https://github.com/feature-sliced/documentation/discussions/27)
-* [About the methodology's mission: goals and limitations](/documentation/docs/about/mission.md)
-* [Types of knowledge in the project](/documentation/docs/about/understanding/knowledge-types.md)
+* [About the methodology's mission: goals and limitations](/docs/about/mission.md)
+* [Types of knowledge in the project](/docs/about/understanding/knowledge-types.md)
 
 
 ---
@@ -1371,7 +1388,7 @@ First 5 minutes (RU):
 
 **Advantages**:
 
-* [Overview](/documentation/docs/get-started/overview.md)
+* [Overview](/docs/get-started/overview.md)
 * CodeReview
 * Onboarding
 
@@ -1489,7 +1506,7 @@ Therefore, it seems logical to present the desired *requirements for an ideal ar
 
 note
 
-Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/documentation/docs/about/mission.md#limitations)
+Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/docs/about/mission.md#limitations)
 
 ### Explicitness[​](#explicitness "Direct link to heading")
 
@@ -1740,7 +1757,7 @@ It becomes clear that you need to identify at least two requirements for **Featu
 
    * Which means it should clearly explain *how to divide the code between them*, which means that the naming of these entities should also be laid down in the specification.
 
-2. The methodology should help the architecture **[easily adapt to the changing requirements of the project](/documentation/docs/about/understanding/architecture.md#adaptability)**
+2. The methodology should help the architecture **[easily adapt to the changing requirements of the project](/docs/about/understanding/architecture.md#adaptability)**
 
 ## See also[​](#see-also "Direct link to heading")
 
@@ -1814,17 +1831,17 @@ The cake 🍰 image represents FSD core concepts quite well, so it has been chos
 
 FSD has few variations of logo for different context, but it recommended to prefer **primary**
 
-|                                 |                                                                                                                  |                         |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| Theme                           | Logo (Ctrl/Cmd + Click for download)                                                                             | Usage                   |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/img/brand/logo-primary.png)](/documentation/img/brand/logo-primary.png)          | Preferred in most cases |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/img/brand/logo-flat.png)](/documentation/img/brand/logo-flat.png)                   | For one-color context   |
-| monochrome<br />(#FFF)          | [![logo-monocrhome](/documentation/img/brand/logo-monochrome.png)](/documentation/img/brand/logo-monochrome.png) | For grayscale context   |
-| square<br />(#3193FF)           | [![logo-square](/documentation/img/brand/logo-square.png)](/documentation/img/brand/logo-square.png)             | For square boundaries   |
+|                                 |                                                                                      |                         |
+| ------------------------------- | ------------------------------------------------------------------------------------ | ----------------------- |
+| Theme                           | Logo (Ctrl/Cmd + Click for download)                                                 | Usage                   |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/img/brand/logo-primary.png)](/img/brand/logo-primary.png)          | Preferred in most cases |
+| flat<br />(#3193FF)             | [![logo-flat](/img/brand/logo-flat.png)](/img/brand/logo-flat.png)                   | For one-color context   |
+| monochrome<br />(#FFF)          | [![logo-monocrhome](/img/brand/logo-monochrome.png)](/img/brand/logo-monochrome.png) | For grayscale context   |
+| square<br />(#3193FF)           | [![logo-square](/img/brand/logo-square.png)](/img/brand/logo-square.png)             | For square boundaries   |
 
 ## Banners & Schemes[​](#banners--schemes "Direct link to heading")
 
-[![banner-primary](/documentation/img/brand/banner-primary.jpg)](/documentation/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/img/brand/banner-monochrome.jpg)](/documentation/img/brand/banner-monochrome.jpg)
+[![banner-primary](/img/brand/banner-primary.jpg)](/img/brand/banner-primary.jpg) [![banner-monochrome](/img/brand/banner-monochrome.jpg)](/img/brand/banner-monochrome.jpg)
 
 ## Social Preview[​](#social-preview "Direct link to heading")
 
@@ -1848,19 +1865,19 @@ Use this as a quick reference when you're deciding how to decompose your UI. PDF
 
 ## Choosing a layer[​](#choosing-a-layer "Direct link to heading")
 
-[Download PDF](/documentation/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
+[Download PDF](/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
 
-![Definitions of all layers and self-check questions](/documentation/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
+![Definitions of all layers and self-check questions](/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
 
 ## Examples[​](#examples "Direct link to heading")
 
 ### Tweet[​](#tweet "Direct link to heading")
 
-![decomposed-tweet-bordered-bgLight](/documentation/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "Direct link to heading")
 
-![decomposed-github-bordered](/documentation/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## See also[​](#see-also "Direct link to heading")
 
@@ -1897,13 +1914,13 @@ If you need plain markup layouts, you can keep them in `shared/ui`. If you need 
 
 An *entity* is a real-life concept that your app is working with. A *feature* is an interaction that provides real-life value to your app’s users, the thing people want to do with your entities.
 
-For more information, along with examples, see the Reference page on [slices](/documentation/docs/reference/layers.md#entities).
+For more information, along with examples, see the Reference page on [slices](/docs/reference/layers.md#entities).
 
 ### Can I embed pages/features/entities into each other?[​](#can-i-embed-pagesfeaturesentities-into-each-other "Direct link to heading")
 
 Yes, but this embedding should happen in higher layers. For example, inside a widget, you can import both features and then insert one feature into another as props/children.
 
-You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**](/documentation/docs/reference/layers.md#import-rule-on-layers).
+You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**](/docs/reference/layers.md#import-rule-on-layers).
 
 ### What about Atomic Design?[​](#what-about-atomic-design "Direct link to heading")
 
@@ -1917,7 +1934,7 @@ Yes! <https://github.com/feature-sliced/awesome>
 
 ### Why do I need Feature-Sliced Design?[​](#why-do-i-need-feature-sliced-design "Direct link to heading")
 
-It helps you and your team to quickly overview the project in terms of its main value-bringing components. A standardized architecture helps to speed up onboarding and resolves debates about code structure. See the [motivation](/documentation/docs/about/motivation.md) page to learn more about why FSD was created.
+It helps you and your team to quickly overview the project in terms of its main value-bringing components. A standardized architecture helps to speed up onboarding and resolves debates about code structure. See the [motivation](/docs/about/motivation.md) page to learn more about why FSD was created.
 
 ### Does a novice developer need an architecture/methodology?[​](#does-a-novice-developer-need-an-architecturemethodology "Direct link to heading")
 
@@ -1927,7 +1944,7 @@ Rather yes than no
 
 ### How do I work with the authorization context?[​](#how-do-i-work-with-the-authorization-context "Direct link to heading")
 
-Answered [here](/documentation/docs/guides/examples/auth.md)
+Answered [here](/docs/guides/examples/auth.md)
 
 
 ---
@@ -1936,7 +1953,7 @@ Answered [here](/documentation/docs/guides/examples/auth.md)
 
 **Feature-Sliced Design** (FSD) is an architectural methodology for scaffolding front-end applications. Simply put, it's a compilation of rules and conventions on organizing code. The main purpose of this methodology is to make the project more understandable and stable in the face of ever-changing business requirements.
 
-Apart from a set of conventions, FSD is also a toolchain. We have a [linter](https://github.com/feature-sliced/steiger) to check your project's architecture, [folder generators](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) through a CLI or IDEs, as well as a rich library of [examples](/documentation/examples.md).
+Apart from a set of conventions, FSD is also a toolchain. We have a [linter](https://github.com/feature-sliced/steiger) to check your project's architecture, [folder generators](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) through a CLI or IDEs, as well as a rich library of [examples](/examples.md).
 
 ## Is it right for me?[​](#is-it-right-for-me "Direct link to heading")
 
@@ -1947,7 +1964,7 @@ FSD can be implemented in projects and teams of any size. It is right for your p
 
 And that's it! There are no restrictions on what programming language, UI framework, or state manager you use. You can also adopt FSD incrementally, use it in monorepos, and scale to great lengths by breaking your app into packages and implementing FSD individually within them.
 
-If you already have an architecture and you're considering a switch to FSD, make sure that the current architecture is **causing trouble** in your team. For example, if your project has grown too large and inter-connected to efficiently implement new features, or if you're expecting a lot of new members to join the team. If the current architecture works, maybe it's not worth changing. But if you do decide to migrate, see the [Migration](/documentation/docs/guides/migration/from-custom.md) section for guidance.
+If you already have an architecture and you're considering a switch to FSD, make sure that the current architecture is **causing trouble** in your team. For example, if your project has grown too large and inter-connected to efficiently implement new features, or if you're expecting a lot of new members to join the team. If the current architecture works, maybe it's not worth changing. But if you do decide to migrate, see the [Migration](/docs/guides/migration/from-custom.md) section for guidance.
 
 ## Basic example[​](#basic-example "Direct link to heading")
 
@@ -1988,7 +2005,7 @@ Folders inside `📂 app`, `📂 shared`, and `📂 pages/article-reader` are ca
 
 Layers, slices, and segments form a hierarchy like this:
 
-![Hierarchy of FSD concepts, described below](/documentation/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
+![Hierarchy of FSD concepts, described below](/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
 Pictured above: three pillars, labeled left to right as "Layers", "Slices", and "Segments" respectively.
 
@@ -2060,8 +2077,8 @@ It's advised to refrain from adding new large entities while refactoring or refa
 
 ## Next steps[​](#next-steps "Direct link to heading")
 
-* **Want to get a good grasp of how to think in FSD?** Check out the [Tutorial](/documentation/docs/get-started/tutorial.md).
-* **Prefer to learn from examples?** We have a lot in the [Examples](/documentation/examples.md) section.
+* **Want to get a good grasp of how to think in FSD?** Check out the [Tutorial](/docs/get-started/tutorial.md).
+* **Prefer to learn from examples?** We have a lot in the [Examples](/examples.md) section.
 * **Have questions?** Drop by our [Telegram chat](https://t.me/feature_sliced) and get help from the community.
 
 
@@ -2073,7 +2090,7 @@ It's advised to refrain from adding new large entities while refactoring or refa
 
 This tutorial will examine the Real World App, also known as Conduit. Conduit is a basic [Medium](https://medium.com/) clone — it lets you read and write articles as well as comment on the articles of others.
 
-![Conduit home page](/documentation/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Conduit home page](/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 This is a pretty small application, so we will keep it simple and avoid excessive decomposition. It’s highly likely that the entire app will fit into just three layers: **App**, **Pages**, and **Shared**. If not, we will introduce additional layers as we go. Ready?
 
@@ -2110,11 +2127,11 @@ In this case, a page is a slice, so modules (files) inside this page can only re
 
 ### Close look at the feed[​](#close-look-at-the-feed "Direct link to heading")
 
-![Anonymous user’s perspective](/documentation/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Anonymous user’s perspective](/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 *Anonymous user’s perspective*
 
-![Authenticated user’s perspective](/documentation/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
+![Authenticated user’s perspective](/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
 
 *Authenticated user’s perspective*
 
@@ -2208,7 +2225,7 @@ In our case, the header is very simple — it’s a static logo and top-level na
 
 Let’s also examine a page that’s intended for editing, not reading. For example, the article writer:
 
-![Conduit post editor](/documentation/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
+![Conduit post editor](/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
 
 It looks trivial, but contains several aspects of application development that we haven’t explored yet — form validation, error states, and data persistence.
 
@@ -2306,7 +2323,7 @@ export default FeedPage;
 
 Then, if you run the dev server and open the application, you should see the Conduit banner!
 
-![The banner of Conduit](/documentation/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
+![The banner of Conduit](/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
 
 ### API client[​](#api-client "Direct link to heading")
 
@@ -3354,7 +3371,7 @@ export default function App() {
 
 At this point, you should end up with the following on the home page:
 
-![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/documentation/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
+![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
 
 The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.
 
@@ -4126,7 +4143,7 @@ export function Comments() {
 
 And with that our article reader is also complete! The buttons to follow the author, like a post, and leave a comment should now function as expected.
 
-![Article reader with functioning buttons to like and follow](/documentation/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
+![Article reader with functioning buttons to like and follow](/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
 
 Article reader with functioning buttons to like and follow
 
@@ -4438,7 +4455,7 @@ export default ArticleEditPage;
 
 We’re done now! Log in and try creating a new article. Or “forget” to write the article and see the validation kick in.
 
-![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/documentation/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
+![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
 
 The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: **“Describe what this article is about”** and **“Write the article itself”**.
 
@@ -4518,7 +4535,7 @@ Organize your individual API request functions in `shared/api/endpoints`, groupi
 
 note
 
-To keep examples focused, we omit form interaction and validation. For details on libraries like Zod or Valibot, refer to the [Type Validation and Schemas](/documentation/docs/guides/examples/types.md#type-validation-schemas-and-zod) article.
+To keep examples focused, we omit form interaction and validation. For details on libraries like Zod or Valibot, refer to the [Type Validation and Schemas](/docs/guides/examples/types.md#type-validation-schemas-and-zod) article.
 
 shared/api/endpoints/login.ts
 
@@ -4598,7 +4615,7 @@ When using server state libraries like [TanStack Query (React Query)](https://ta
 * Cache keys
 * Common query/mutation options
 
-For more details on how to work with server state libraries, refer to [React Query article](/documentation/docs/guides/tech/with-react-query.md)
+For more details on how to work with server state libraries, refer to [React Query article](/docs/guides/tech/with-react-query.md)
 
 
 ---
@@ -4714,7 +4731,7 @@ export function RegisterPage() {
 
 ## How to send credentials to the backend[​](#how-to-send-credentials-to-the-backend "Direct link to heading")
 
-Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager. As explained in the [guide for API requests](/documentation/docs/guides/examples/api-requests.md), you can put your request either in `shared/api` or in the `api` segment of your login page.
+Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager. As explained in the [guide for API requests](/docs/guides/examples/api-requests.md), you can put your request either in `shared/api` or in the `api` segment of your login page.
 
 ### Two-factor authentication[​](#two-factor-authentication "Direct link to heading")
 
@@ -4728,7 +4745,7 @@ You would also need another request function, similar to `login()` that we creat
 
 Regardless of the authentication scheme you have, be it a simple login & password, OAuth, or two-factor authentication, at the end you will receive a token. This token should be stored so that subsequent requests can identify themselves.
 
-The ideal token storage for a web app is a **cookie** — it requires no manual token storage or handling. As such, cookie storage needs almost no consideration from the frontend architecture side. If your frontend framework has a server side (for example, [Remix](https://remix.run)), then you should store the server-side cookie infrastructure in `shared/api`. There is an example in [the Authentication section of the tutorial](/documentation/docs/get-started/tutorial.md#authentication) of how to do that with Remix.
+The ideal token storage for a web app is a **cookie** — it requires no manual token storage or handling. As such, cookie storage needs almost no consideration from the frontend architecture side. If your frontend framework has a server side (for example, [Remix](https://remix.run)), then you should store the server-side cookie infrastructure in `shared/api`. There is an example in [the Authentication section of the tutorial](/docs/get-started/tutorial.md#authentication) of how to do that with Remix.
 
 Sometimes, however, cookie storage is not an option. In this case, you will have to store the token manually. Apart from storing the token, you may also need to set up logic for refreshing your token when it expires. With FSD, there are several places where you can store the token, as well as several ways to make it available for the rest of the app.
 
@@ -4756,7 +4773,7 @@ The **current user** is also sometimes called "viewer" or "me". This is to disti
 
 To store the token in the User entity, create a reactive store in the `model` segment. That store can contain both the token and the user object.
 
-Since the API client is usually defined in `shared/api` or spreaded across the entities, the main challenge to this approach is making the token available to other requests that need it without breaking [the import rule on layers](/documentation/docs/reference/layers.md#import-rule-on-layers):
+Since the API client is usually defined in `shared/api` or spreaded across the entities, the main challenge to this approach is making the token available to other requests that need it without breaking [the import rule on layers](/docs/reference/layers.md#import-rule-on-layers):
 
 > A module (file) in a slice can only import other slices when they are located on layers strictly below.
 
@@ -5040,7 +5057,7 @@ The code of sidebars is left as an exercise for the reader 😉.
 
 ## Using widgets in the layout[​](#using-widgets-in-the-layout "Direct link to heading")
 
-Sometimes you want to include certain business logic in the layout, especially if you're using deeply nested routes with a router like [React Router](https://reactrouter.com/). Then you can't store the layout in Shared or in Widgets due to [the import rule on layers](/documentation/docs/reference/layers.md#import-rule-on-layers):
+Sometimes you want to include certain business logic in the layout, especially if you're using deeply nested routes with a router like [React Router](https://reactrouter.com/). Then you can't store the layout in Shared or in Widgets due to [the import rule on layers](/docs/reference/layers.md#import-rule-on-layers):
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 
@@ -5063,7 +5080,7 @@ If none of the above are applicable, there are two solutions to include a widget
 
 ## Further reading[​](#further-reading "Direct link to heading")
 
-* There's an example of how to build a layout with authentication with React and Remix (equivalent to React Router) in the [tutorial](/documentation/docs/get-started/tutorial.md).
+* There's an example of how to build a layout with authentication with React and Remix (equivalent to React Router) in the [tutorial](/docs/get-started/tutorial.md).
 
 
 ---
@@ -5202,7 +5219,7 @@ export function listSongs() {
 }
 ```
 
-You might notice that the `Song` type references a different entity, `Artist`. This is a benefit of storing your requests in Shared — real-world types are often intertwined. If we kept this function in `entities/song/api`, we wouldn't be able to simply import `Artist` from `entities/artist`, because FSD restricts cross-imports between slices with [the import rule on layers](/documentation/docs/reference/layers.md#import-rule-on-layers):
+You might notice that the `Song` type references a different entity, `Artist`. This is a benefit of storing your requests in Shared — real-world types are often intertwined. If we kept this function in `entities/song/api`, we wouldn't be able to simply import `Artist` from `entities/artist`, because FSD restricts cross-imports between slices with [the import rule on layers](/docs/reference/layers.md#import-rule-on-layers):
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 
@@ -5515,7 +5532,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-It would be nice to have typed Redux hooks `useAppDispatch` and `useAppSelector` in `shared/store`, but they cannot import `RootState` and `AppDispatch` from the App layer due to the [import rule on layers](/documentation/docs/reference/layers.md#import-rule-on-layers):
+It would be nice to have typed Redux hooks `useAppDispatch` and `useAppSelector` in `shared/store`, but they cannot import `RootState` and `AppDispatch` from the App layer due to the [import rule on layers](/docs/reference/layers.md#import-rule-on-layers):
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 
@@ -5682,12 +5699,12 @@ Cross-imports in `entities` are often caused by splitting entities too granularl
 
 Think of `@x` as an explicit gateway for unavoidable domain references—not a general-purpose reuse mechanism. Overuse tends to lock entity boundaries together and makes refactoring more costly over time.
 
-For details about `@x`, see the [Public API documentation](/documentation/docs/reference/public-api.md).
+For details about `@x`, see the [Public API documentation](/docs/reference/public-api.md).
 
 For concrete examples of cross-references between business entities, see:
 
-* [Types guide — Business entities and their cross-references](/documentation/docs/guides/examples/types.md#business-entities-and-their-cross-references)
-* [Layers reference — Entities](/documentation/docs/reference/layers.md#entities)
+* [Types guide — Business entities and their cross-references](/docs/guides/examples/types.md#business-entities-and-their-cross-references)
+* [Layers reference — Entities](/docs/reference/layers.md#entities)
 
 ## Features and widgets: Multiple strategies[​](#features-and-widgets-multiple-strategies "Direct link to heading")
 
@@ -5716,7 +5733,7 @@ Key principles:
 
 For example, if both `features/auth` and `features/profile` need session validation, place session-related domain functions in `entities/session` and reuse them from both features.
 
-For more guidance, see [Layers reference — Entities](/documentation/docs/reference/layers.md#entities).
+For more guidance, see [Layers reference — Entities](/docs/reference/layers.md#entities).
 
 ### Strategy C: Compose from an upper layer (pages / app)[​](#strategy-c-compose-from-an-upper-layer-pages--app "Direct link to heading")
 
@@ -6217,7 +6234,7 @@ Instead, store authentication-related data in `shared/auth` or `shared/api`:
       📄 order.ts
 ```
 
-For more details on implementing authentication, see [the Authentication guide](/documentation/docs/guides/examples/auth.md).
+For more details on implementing authentication, see [the Authentication guide](/docs/guides/examples/auth.md).
 
 ### 5. Minimize Cross-Imports[​](#5-minimize-cross-imports "Direct link to heading")
 
@@ -6557,7 +6574,7 @@ Also reorganize the Shared layer to remove these folders:
 
 Usually, these reused Redux slices will describe something relevant to the business, for example, products or users, so these can be moved to the Entities layer, one entity per one folder. If the Redux slice is related to an action that your users want to do in your app, like comments, then you can move it to the Features layer.
 
-Entities and features are meant to be independent from each other. If your business domain contains inherent connections between entities, refer to the [guide on business entities](/documentation/docs/guides/examples/types.md#business-entities-and-their-cross-references) for advice on how to organize these connections.
+Entities and features are meant to be independent from each other. If your business domain contains inherent connections between entities, refer to the [guide on business entities](/docs/guides/examples/types.md#business-entities-and-their-cross-references) for advice on how to organize these connections.
 
 The API functions related to these slices can stay in `📁 shared/api`.
 
@@ -6692,7 +6709,7 @@ In v2 **, other new abstractions** have been added to eliminate the problems of 
 
 ### `BREAKING` Abstractions & Naming[​](#breaking-abstractions--naming "Direct link to heading")
 
-Now specific abstractions and [clear recommendations for naming them](/documentation/docs/about/understanding/naming.md)are defined
+Now specific abstractions and [clear recommendations for naming them](/docs/about/understanding/naming.md)are defined
 
 #### Layers[​](#layers "Direct link to heading")
 
@@ -6727,7 +6744,7 @@ Now specific abstractions and [clear recommendations for naming them](/documenta
 
 ### `REFINED` Low coupling[​](#refined-low-coupling "Direct link to heading")
 
-Now it is much easier to [observe the principle of low coupling](/documentation/docs/reference/slices-segments.md#zero-coupling-high-cohesion) between modules, thanks to the new layers.
+Now it is much easier to [observe the principle of low coupling](/docs/reference/slices-segments.md#zero-coupling-high-cohesion) between modules, thanks to the new layers.
 
 *At the same time, it is still recommended to avoid as much as possible cases where it is extremely difficult to "uncouple" modules*
 
@@ -6779,7 +6796,7 @@ entities/B/some/file.ts
 import type { EntityA } from "entities/A/@x/B";
 ```
 
-For more details, check out the [Public API for cross-imports](/documentation/docs/reference/public-api.md#public-api-for-cross-imports) section in the reference.
+For more details, check out the [Public API for cross-imports](/docs/reference/public-api.md#public-api-for-cross-imports) section in the reference.
 
 
 ---
@@ -7356,7 +7373,7 @@ If the project already has a division into entities, and each request correspond
         ...                                     #
 ```
 
-If there are connections between the entities (for example, the Country entity has a field-list of City entities), then you can use the [public API for cross-imports](/documentation/docs/reference/public-api.md#public-api-for-cross-imports) or consider the alternative solution below.
+If there are connections between the entities (for example, the Country entity has a field-list of City entities), then you can use the [public API for cross-imports](/docs/reference/public-api.md#public-api-for-cross-imports) or consider the alternative solution below.
 
 ### Alternative solution — keep it in shared[​](#alternative-solution--keep-it-in-shared "Direct link to heading")
 
@@ -7884,8 +7901,8 @@ This page provides links and guidance for LLM crawlers.
 
 ### Files[​](#files "Direct link to heading")
 
-* [llms.txt](/documentation/llms.txt)
-* [llms-full.txt](/documentation/llms-full.txt)
+* [llms.txt](/llms.txt)
+* [llms-full.txt](/llms-full.txt)
 
 ### Notes[​](#notes "Direct link to heading")
 
@@ -7901,7 +7918,7 @@ Layers are the first level of organisational hierarchy in Feature-Sliced Design.
 
 There are **7 layers** in total, arranged from most responsibility and dependency to least:
 
-![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App
 2. Processes (deprecated)
@@ -7985,7 +8002,7 @@ entities/song/@x/artist.ts
 export type { Song } from "../model/song.ts";
 ```
 
-Learn more about the `@x` notation in the [Public API for cross-imports](/documentation/docs/reference/public-api.md#public-api-for-cross-imports) section.
+Learn more about the `@x` notation in the [Public API for cross-imports](/docs/reference/public-api.md#public-api-for-cross-imports) section.
 
 ### Features[​](#features "Direct link to heading")
 
@@ -8080,7 +8097,7 @@ This hurts the discoverability of a slice because you can't easily tell what the
 
 ## Public API for cross-imports[​](#public-api-for-cross-imports "Direct link to heading")
 
-Cross-imports are a situation when one slice imports from another slice on the same layer. Usually that is prohibited by the [import rule on layers](/documentation/docs/reference/layers.md#import-rule-on-layers), but often there are legitimate reasons to cross-import. For example, business entities often reference each other in the real world, and it's best to reflect these relationships in the code instead of working around them.
+Cross-imports are a situation when one slice imports from another slice on the same layer. Usually that is prohibited by the [import rule on layers](/docs/reference/layers.md#import-rule-on-layers), but often there are legitimate reasons to cross-import. For example, business entities often reference each other in the real world, and it's best to reflect these relationships in the code instead of working around them.
 
 For this purpose, there's a special kind of public API, also known as the `@x`-notation. If you have entities A and B, and entity B needs to import from entity A, then entity A can declare a separate public API just for entity B.
 
@@ -8112,7 +8129,7 @@ Index files like `index.js`, also known as barrel files, are the most common way
 
 Circular import is when two or more files import each other in a circle.
 
-![Three files importing each other in a circle](/documentation/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/documentation/img/circular-import-dark.svg#dark-mode-only)
+![Three files importing each other in a circle](/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/img/circular-import-dark.svg#dark-mode-only)
 
 Pictured above: three files, `fileA.js`, `fileB.js`, and `fileC.js`, importing each other in a circle.
 
@@ -8212,13 +8229,13 @@ The layers Shared and App don't contain slices. That is because Shared should co
 
 Slices are meant to be independent and highly cohesive groups of code files. The graphic below might help to visualize the tricky concepts of *cohesion* and *coupling*:
 
-![](/documentation/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/img/coupling-cohesion-dark.svg#dark-mode-only)
+![](/img/coupling-cohesion-light.svg#light-mode-only)![](/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
 An ideal slice is independent from other slices on its layer (zero coupling) and contains most of the code related to its primary goal (high cohesion).
 
-The independence of slices is enforced by the [import rule on layers](/documentation/docs/reference/layers.md#import-rule-on-layers):
+The independence of slices is enforced by the [import rule on layers](/docs/reference/layers.md#import-rule-on-layers):
 
 > *A module (file) in a slice can only import other slices when they are located on layers strictly below.*
 
@@ -8230,13 +8247,13 @@ Inside a slice, the code could be organized in any way that you want. That doesn
 >
 > *Modules outside of this slice/segment can only reference the public API, not the internal file structure of the slice/segment.*
 
-Read more about the rationale of public APIs and the best practices on creating one in the [Public API reference](/documentation/docs/reference/public-api.md).
+Read more about the rationale of public APIs and the best practices on creating one in the [Public API reference](/docs/reference/public-api.md).
 
 ### Slice groups[​](#slice-groups "Direct link to heading")
 
 Closely related slices can be structurally grouped in a folder, but they should exercise the same isolation rules as other slices — there should be **no code sharing** in that folder.
 
-![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/documentation/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
+![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## Segments[​](#segments "Direct link to heading")
 
@@ -8250,18 +8267,11 @@ There a few standardized segment names:
 * `lib` — library code that other modules on this slice need.
 * `config` — configuration files and feature flags.
 
-See the [Layers page](/documentation/docs/reference/layers.md#layer-definitions) for examples of what each of these segments might be used for on different layers.
+See the [Layers page](/docs/reference/layers.md#layer-definitions) for examples of what each of these segments might be used for on different layers.
 
 You can also create custom segments. The most common places for custom segments are the App layer and the Shared layer, where slices don't make sense.
 
 Make sure that the name of these segments describes the purpose of the content, not its essence. For example, `components`, `hooks`, and `types` are bad segment names because they aren't that helpful when you're looking for code.
-
-
----
-
-### Explicit business logic
-
-Easily discoverable architecture thanks to domain scopes
 
 
 ---

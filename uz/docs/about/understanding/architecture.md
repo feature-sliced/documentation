@@ -45,7 +45,7 @@ Therefore, it seems logical to present the desired *requirements for an ideal ar
 
 note
 
-Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/documentation/uz/docs/about/mission.md#limitations)
+Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/uz/docs/about/mission.md#limitations)
 
 ### Explicitness[​](#explicitness "Sarlavhaga to'g'ridan-to'g'ri havola")
 

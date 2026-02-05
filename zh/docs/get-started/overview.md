@@ -2,7 +2,7 @@
 
 **Feature-Sliced Design**（FSD）是一种用于构建前端应用程序的架构方法论。简单来说，它是组织代码的规则和约定的汇编。该方法论的主要目的是在不断变化的业务需求面前，使项目更加易于理解和稳定。
 
-除了一系列约定外，FSD 还是一个工具链。我们有一个 [代码检查器](https://github.com/feature-sliced/steiger) 来检查您项目的架构，通过 CLI 或 IDE 的[文件夹生成器](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools)，以及丰富的[示例](/documentation/zh/examples.md)库。
+除了一系列约定外，FSD 还是一个工具链。我们有一个 [代码检查器](https://github.com/feature-sliced/steiger) 来检查您项目的架构，通过 CLI 或 IDE 的[文件夹生成器](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools)，以及丰富的[示例](/zh/examples.md)库。
 
 ## 它适合我吗？[​](#is-it-right-for-me "标题的直接链接")
 
@@ -13,7 +13,7 @@ FSD 可以在任何规模的项目和团队中实施。如果您的项目符合�
 
 就是这样！对于您使用的编程语言、UI 框架或状态管理器没有任何限制。您也可以逐步采用 FSD，在 monorepos 中使用它，并通过将应用程序分解为包并在其中单独实施 FSD 来扩展到很大的长度。
 
-如果您已经有了一个架构并正在考虑切换到 FSD，请确保当前的架构在您的团队中**造成了麻烦**。例如，如果您的项目变得过于庞大和相互连接，无法高效地实现新功能，或者如果您期望有很多新成员加入团队。如果当前的架构运作良好，也许不值得更改。但如果您确实决定迁移，请参阅[迁移](/documentation/zh/docs/guides/migration/from-custom.md)部分获取指导。
+如果您已经有了一个架构并正在考虑切换到 FSD，请确保当前的架构在您的团队中**造成了麻烦**。例如，如果您的项目变得过于庞大和相互连接，无法高效地实现新功能，或者如果您期望有很多新成员加入团队。如果当前的架构运作良好，也许不值得更改。但如果您确实决定迁移，请参阅[迁移](/zh/docs/guides/migration/from-custom.md)部分获取指导。
 
 ## 基本示例[​](#basic-example "标题的直接链接")
 
@@ -54,7 +54,7 @@ FSD 可以在任何规模的项目和团队中实施。如果您的项目符合�
 
 Layers、slices 和 segments 形成这样的层次结构：
 
-![Hierarchy of FSD concepts, described below](/documentation/zh/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
+![Hierarchy of FSD concepts, described below](/zh/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
 上图显示：三个支柱，从左到右分别标记为 "Layers"、"Slices" 和 "Segments"。
 
@@ -126,6 +126,6 @@ Slices 以及 layers App 和 Shared 由 segments 组成，segments 按代码的�
 
 ## 下一步[​](#next-steps "标题的直接链接")
 
-* \*\*想要好好掌握如何用 FSD 思维？\*\*查看[Tutorial](/documentation/zh/docs/get-started/tutorial.md)。
-* \*\*喜欢从示例中学习？\*\*我们在 [Examples](/documentation/zh/examples.md) 部分有很多内容。
+* \*\*想要好好掌握如何用 FSD 思维？\*\*查看[Tutorial](/zh/docs/get-started/tutorial.md)。
+* \*\*喜欢从示例中学习？\*\*我们在 [Examples](/zh/examples.md) 部分有很多内容。
 * \*\*有问题？\*\*访问我们的 [Telegram 聊天](https://t.me/feature_sliced) 并从社区获得帮助。

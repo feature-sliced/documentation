@@ -4,8 +4,8 @@
   <ShortName>Feature-Sliced Design</ShortName>
   <Description>Search Feature-Sliced Design</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://feature-sliced.github.io/documentation/kr/img/favicon/classic.png</Image>
-  <Url type="text/html" method="get" template="https://feature-sliced.github.io/documentation/kr/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://feature-sliced.github.io/documentation/kr/opensearch.xml" />
-  <moz:SearchForm>https://feature-sliced.github.io/documentation/kr/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://feature-sliced.github.io/kr/img/favicon/classic.png</Image>
+  <Url type="text/html" method="get" template="https://feature-sliced.github.io/kr/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://feature-sliced.github.io/kr/opensearch.xml" />
+  <moz:SearchForm>https://feature-sliced.github.io/kr/</moz:SearchForm>
 </OpenSearchDescription>

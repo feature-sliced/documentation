@@ -4,8 +4,8 @@
 
 Bu yerda siz joriy nashr etilgan versiya uchun hujjatlarni topishingiz mumkin
 
-| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/documentation/uz/docs/get-started/overview.md) | [Migration from v1](/documentation/uz/docs/guides/migration/from-v1.md) | [Migration from v2.0](/documentation/uz/docs/guides/migration/from-v1.md) |
-| ---- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/uz/docs/get-started/overview.md) | [Migration from v1](/uz/docs/guides/migration/from-v1.md) | [Migration from v2.0](/uz/docs/guides/migration/from-v1.md) |
+| ---- | ---------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
 
 ### Feature Slices v1 (Legacy)
 

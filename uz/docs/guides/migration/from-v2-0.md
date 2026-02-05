@@ -35,4 +35,4 @@ entities/B/some/file.ts
 import type { EntityA } from "entities/A/@x/B";
 ```
 
-For more details, check out the [Public API for cross-imports](/documentation/uz/docs/reference/public-api.md#public-api-for-cross-imports) section in the reference.
+For more details, check out the [Public API for cross-imports](/uz/docs/reference/public-api.md#public-api-for-cross-imports) section in the reference.

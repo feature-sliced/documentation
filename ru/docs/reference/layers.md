@@ -4,7 +4,7 @@
 
 Всего существует **7 слоев**, расположенных от наибольшей ответственности и зависимости к наименьшей:
 
-![Дерево файловой системы с одной корневой папкой под названием src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes слегка выцвечена.](/documentation/ru/img/layers/folders-graphic-light.svg#light-mode-only) ![Дерево файловой системы с одной корневой папкой под названием src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes слегка выцвечена.](/documentation/ru/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![Дерево файловой системы с одной корневой папкой под названием src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes слегка выцвечена.](/ru/img/layers/folders-graphic-light.svg#light-mode-only) ![Дерево файловой системы с одной корневой папкой под названием src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes слегка выцвечена.](/ru/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App (Эпп)
 2. Processes (Процессы, устаревший слой)
@@ -88,7 +88,7 @@ entities/song/@x/artist.ts
 export type { Song } from "../model/song.ts";
 ```
 
-Вы можете узнать больше о `@x`-нотации в разделе [Публичный API для кросс-импортов](/documentation/ru/docs/reference/public-api.md#public-api-for-cross-imports).
+Вы можете узнать больше о `@x`-нотации в разделе [Публичный API для кросс-импортов](/ru/docs/reference/public-api.md#public-api-for-cross-imports).
 
 ### Features[​](#features "Прямая ссылка на этот заголовок")
 

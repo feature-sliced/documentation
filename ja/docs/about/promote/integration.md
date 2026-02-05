@@ -2,7 +2,7 @@
 
 **利点**:
 
-* [概要](/documentation/ja/docs/get-started/overview.md#advantages)
+* [概要](/ja/docs/get-started/overview.md#advantages)
 * コードレビュー
 * オンボーディング
 

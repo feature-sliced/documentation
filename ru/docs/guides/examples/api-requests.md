@@ -69,7 +69,7 @@ export const client = {
 
 примечание
 
-Для простоты, в примерах ниже мы опускаем взаимодействие с формами и валидацию. Для получения подробной информации о том, как работать с такими библиотеками как Zod или Valibot, обратитесь к секции [Проверка типов и схемы](/documentation/ru/docs/guides/examples/types.md#type-validation-schemas-and-zod).
+Для простоты, в примерах ниже мы опускаем взаимодействие с формами и валидацию. Для получения подробной информации о том, как работать с такими библиотеками как Zod или Valibot, обратитесь к секции [Проверка типов и схемы](/ru/docs/guides/examples/types.md#type-validation-schemas-and-zod).
 
 shared/api/endpoints/login.ts
 
@@ -149,4 +149,4 @@ export function login(credentials: LoginCredentials) {
 * Ключи кеша
 * Общие параметры запросов и мутаций
 
-Подробнее о том, как работать с server state библиотеками, читайте в статье [React Query](/documentation/ru/docs/guides/tech/with-react-query.md)
+Подробнее о том, как работать с server state библиотеками, читайте в статье [React Query](/ru/docs/guides/tech/with-react-query.md)

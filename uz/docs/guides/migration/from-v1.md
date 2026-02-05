@@ -112,7 +112,7 @@ In v2 **, other new abstractions** have been added to eliminate the problems of 
 
 ### `BREAKING` Abstractions & Naming[​](#breaking-abstractions--naming "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Now specific abstractions and [clear recommendations for naming them](/documentation/uz/docs/about/understanding/naming.md)are defined
+Now specific abstractions and [clear recommendations for naming them](/uz/docs/about/understanding/naming.md)are defined
 
 #### Layers[​](#layers "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -147,7 +147,7 @@ Now specific abstractions and [clear recommendations for naming them](/documenta
 
 ### `REFINED` Low coupling[​](#refined-low-coupling "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Now it is much easier to [observe the principle of low coupling](/documentation/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion) between modules, thanks to the new layers.
+Now it is much easier to [observe the principle of low coupling](/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion) between modules, thanks to the new layers.
 
 *At the same time, it is still recommended to avoid as much as possible cases where it is extremely difficult to "uncouple" modules*
 

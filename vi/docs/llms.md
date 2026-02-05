@@ -6,8 +6,8 @@ Trang này cung cấp các liên kết và hướng dẫn cho các LLM crawler.
 
 ### Files[​](#files "Link trực tiếp đến heading")
 
-* [llms.txt](/documentation/vi/llms.txt)
-* [llms-full.txt](/documentation/vi/llms-full.txt)
+* [llms.txt](/vi/llms.txt)
+* [llms-full.txt](/vi/llms-full.txt)
 
 ### Ghi chú[​](#ghi-chú "Link trực tiếp đến heading")
 

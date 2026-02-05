@@ -1,7 +1,7 @@
 # Feature-Sliced Design
 
 
-## documentation
+## zh
 
 - [示例](/examples.md): 使用 Feature-Sliced Design 构建的网站列表
 - [🧭 导航](/nav.md): Feature-Sliced Design Navigation help page

@@ -30,7 +30,7 @@
         ...                                     #
 ```
 
-如果实体之间有连接（例如，Country 实体有一个 City 实体的列表字段）， 则可以使用 [公共 API 跨导入](/documentation/zh/docs/reference/public-api.md#public-api-for-cross-imports) 或考虑以下替代方案。
+如果实体之间有连接（例如，Country 实体有一个 City 实体的列表字段）， 则可以使用 [公共 API 跨导入](/zh/docs/reference/public-api.md#public-api-for-cross-imports) 或考虑以下替代方案。
 
 ### 替代方案——保持共享[​](#替代方案保持共享 "标题的直接链接")
 

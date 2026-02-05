@@ -245,7 +245,7 @@ Also reorganize the Shared layer to remove these folders:
 
 Usually, these reused Redux slices will describe something relevant to the business, for example, products or users, so these can be moved to the Entities layer, one entity per one folder. If the Redux slice is related to an action that your users want to do in your app, like comments, then you can move it to the Features layer.
 
-Entities and features are meant to be independent from each other. If your business domain contains inherent connections between entities, refer to the [guide on business entities](/documentation/uz/docs/guides/examples/types.md#business-entities-and-their-cross-references) for advice on how to organize these connections.
+Entities and features are meant to be independent from each other. If your business domain contains inherent connections between entities, refer to the [guide on business entities](/uz/docs/guides/examples/types.md#business-entities-and-their-cross-references) for advice on how to organize these connections.
 
 The API functions related to these slices can stay in `📁 shared/api`.
 

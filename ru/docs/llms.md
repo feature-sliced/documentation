@@ -6,8 +6,8 @@ This page provides links and guidance for LLM crawlers.
 
 ### Files[​](#files "Прямая ссылка на этот заголовок")
 
-* [llms.txt](/documentation/ru/llms.txt)
-* [llms-full.txt](/documentation/ru/llms-full.txt)
+* [llms.txt](/ru/llms.txt)
+* [llms-full.txt](/ru/llms-full.txt)
 
 ### Notes[​](#notes "Прямая ссылка на этот заголовок")
 

@@ -1,7 +1,7 @@
 # Feature-Sliced Design
 
 
-## documentation
+## uz
 
 - [Namunalar](/examples.md): FSD yordamida yaratilgan veb-saytlar ro'yxati
 - [🧭 Navigatsiya](/nav.md): Feature-Sliced Design Navigation help page
@@ -67,7 +67,7 @@
 
 v2
 
-![](/documentation/uz/assets/ideal-img/tiny-bunny.dd60f55.640.png)
+![](/uz/assets/ideal-img/tiny-bunny.dd60f55.640.png)
 
 Tiny Bunny Mini Game
 
@@ -92,676 +92,676 @@ Lekin moslik uchun eski havolalardan qayta yo'naltirishlar mavjud
 
 ⚡️ <!-- -->Simplified and merged
 
-[Tutorial](/documentation/uz/docs/get-started/tutorial.md)
+[Tutorial](/uz/docs/get-started/tutorial.md)
 
-[**old**:](/documentation/uz/docs/get-started/tutorial.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/get-started/quick-start](/documentation/uz/docs/get-started/tutorial.md)
-
-[**new**: ](/documentation/uz/docs/get-started/tutorial.md)
-
-<!-- -->
-
-[/docs/get-started/tutorial](/documentation/uz/docs/get-started/tutorial.md)
-
-[Basics](/documentation/uz/docs/get-started/overview.md)
-
-[**old**:](/documentation/uz/docs/get-started/overview.md)
+[**old**:](/uz/docs/get-started/tutorial.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/get-started/basics](/documentation/uz/docs/get-started/overview.md)
+[/docs/get-started/quick-start](/uz/docs/get-started/tutorial.md)
 
-[**new**: ](/documentation/uz/docs/get-started/overview.md)
-
-<!-- -->
-
-[/docs/get-started/overview](/documentation/uz/docs/get-started/overview.md)
-
-[Decompose Cheatsheet](/documentation/uz/docs/get-started/cheatsheet.md)
-
-[**old**:](/documentation/uz/docs/get-started/cheatsheet.md)
+[**new**: ](/uz/docs/get-started/tutorial.md)
 
 <!-- -->
 
+[/docs/get-started/tutorial](/uz/docs/get-started/tutorial.md)
+
+[Basics](/uz/docs/get-started/overview.md)
+
+[**old**:](/uz/docs/get-started/overview.md)
+
 <!-- -->
 
-[/docs/get-started/tutorial/decompose; /docs/get-started/tutorial/design-mockup; /docs/get-started/onboard/cheatsheet](/documentation/uz/docs/get-started/cheatsheet.md)
+<!-- -->
 
-[**new**: ](/documentation/uz/docs/get-started/cheatsheet.md)
+[/docs/get-started/basics](/uz/docs/get-started/overview.md)
+
+[**new**: ](/uz/docs/get-started/overview.md)
 
 <!-- -->
 
-[/docs/get-started/cheatsheet](/documentation/uz/docs/get-started/cheatsheet.md)
+[/docs/get-started/overview](/uz/docs/get-started/overview.md)
+
+[Decompose Cheatsheet](/uz/docs/get-started/cheatsheet.md)
+
+[**old**:](/uz/docs/get-started/cheatsheet.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/get-started/tutorial/decompose; /docs/get-started/tutorial/design-mockup; /docs/get-started/onboard/cheatsheet](/uz/docs/get-started/cheatsheet.md)
+
+[**new**: ](/uz/docs/get-started/cheatsheet.md)
+
+<!-- -->
+
+[/docs/get-started/cheatsheet](/uz/docs/get-started/cheatsheet.md)
 
 ### 🍰 Alternatives
 
 ⚡️ <!-- -->Moved and merged to /about/alternatives as advanced materials
 
-[Architecture approaches alternatives](/documentation/uz/docs/about/alternatives.md)
+[Architecture approaches alternatives](/uz/docs/about/alternatives.md)
 
-[**old**:](/documentation/uz/docs/about/alternatives.md)
-
-<!-- -->
+[**old**:](/uz/docs/about/alternatives.md)
 
 <!-- -->
 
-[/docs/about/alternatives/big-ball-of-mud; /docs/about/alternatives/design-principles; /docs/about/alternatives/ddd; /docs/about/alternatives/clean-architecture; /docs/about/alternatives/frameworks; /docs/about/alternatives/atomic-design; /docs/about/alternatives/smart-dumb-components; /docs/about/alternatives/feature-driven](/documentation/uz/docs/about/alternatives.md)
+<!-- -->
 
-[**new**: ](/documentation/uz/docs/about/alternatives.md)
+[/docs/about/alternatives/big-ball-of-mud; /docs/about/alternatives/design-principles; /docs/about/alternatives/ddd; /docs/about/alternatives/clean-architecture; /docs/about/alternatives/frameworks; /docs/about/alternatives/atomic-design; /docs/about/alternatives/smart-dumb-components; /docs/about/alternatives/feature-driven](/uz/docs/about/alternatives.md)
+
+[**new**: ](/uz/docs/about/alternatives.md)
 
 <!-- -->
 
-[/docs/about/alternatives](/documentation/uz/docs/about/alternatives.md)
+[/docs/about/alternatives](/uz/docs/about/alternatives.md)
 
 ### 🍰 Promote & Understanding
 
 ⚡️ <!-- -->Moved to /about as advanced materials
 
-[Knowledge types](/documentation/uz/docs/about/understanding/knowledge-types.md)
+[Knowledge types](/uz/docs/about/understanding/knowledge-types.md)
 
-[**old**:](/documentation/uz/docs/about/understanding/knowledge-types.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/reference/knowledge-types](/documentation/uz/docs/about/understanding/knowledge-types.md)
-
-[**new**: ](/documentation/uz/docs/about/understanding/knowledge-types.md)
-
-<!-- -->
-
-[/docs/about/understanding/knowledge-types](/documentation/uz/docs/about/understanding/knowledge-types.md)
-
-[Needs driven](/documentation/uz/docs/about/understanding/needs-driven.md)
-
-[**old**:](/documentation/uz/docs/about/understanding/needs-driven.md)
+[**old**:](/uz/docs/about/understanding/knowledge-types.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/needs-driven](/documentation/uz/docs/about/understanding/needs-driven.md)
+[/docs/reference/knowledge-types](/uz/docs/about/understanding/knowledge-types.md)
 
-[**new**: ](/documentation/uz/docs/about/understanding/needs-driven.md)
-
-<!-- -->
-
-[/docs/about/understanding/needs-driven](/documentation/uz/docs/about/understanding/needs-driven.md)
-
-[About architecture](/documentation/uz/docs/about/understanding/architecture.md)
-
-[**old**:](/documentation/uz/docs/about/understanding/architecture.md)
+[**new**: ](/uz/docs/about/understanding/knowledge-types.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/about/understanding/knowledge-types](/uz/docs/about/understanding/knowledge-types.md)
 
-[/docs/concepts/architecture](/documentation/uz/docs/about/understanding/architecture.md)
+[Needs driven](/uz/docs/about/understanding/needs-driven.md)
 
-[**new**: ](/documentation/uz/docs/about/understanding/architecture.md)
-
-<!-- -->
-
-[/docs/about/understanding/architecture](/documentation/uz/docs/about/understanding/architecture.md)
-
-[Naming adaptability](/documentation/uz/docs/about/understanding/naming.md)
-
-[**old**:](/documentation/uz/docs/about/understanding/naming.md)
+[**old**:](/uz/docs/about/understanding/needs-driven.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/naming-adaptability](/documentation/uz/docs/about/understanding/naming.md)
+[/docs/concepts/needs-driven](/uz/docs/about/understanding/needs-driven.md)
 
-[**new**: ](/documentation/uz/docs/about/understanding/naming.md)
-
-<!-- -->
-
-[/docs/about/understanding/naming](/documentation/uz/docs/about/understanding/naming.md)
-
-[Signals of architecture](/documentation/uz/docs/about/understanding/signals.md)
-
-[**old**:](/documentation/uz/docs/about/understanding/signals.md)
+[**new**: ](/uz/docs/about/understanding/needs-driven.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/about/understanding/needs-driven](/uz/docs/about/understanding/needs-driven.md)
 
-[/docs/concepts/signals](/documentation/uz/docs/about/understanding/signals.md)
+[About architecture](/uz/docs/about/understanding/architecture.md)
 
-[**new**: ](/documentation/uz/docs/about/understanding/signals.md)
-
-<!-- -->
-
-[/docs/about/understanding/signals](/documentation/uz/docs/about/understanding/signals.md)
-
-[Abstractions of architecture](/documentation/uz/docs/about/understanding/abstractions.md)
-
-[**old**:](/documentation/uz/docs/about/understanding/abstractions.md)
+[**old**:](/uz/docs/about/understanding/architecture.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/abstractions](/documentation/uz/docs/about/understanding/abstractions.md)
+[/docs/concepts/architecture](/uz/docs/about/understanding/architecture.md)
 
-[**new**: ](/documentation/uz/docs/about/understanding/abstractions.md)
+[**new**: ](/uz/docs/about/understanding/architecture.md)
 
 <!-- -->
 
-[/docs/about/understanding/abstractions](/documentation/uz/docs/about/understanding/abstractions.md)
+[/docs/about/understanding/architecture](/uz/docs/about/understanding/architecture.md)
+
+[Naming adaptability](/uz/docs/about/understanding/naming.md)
+
+[**old**:](/uz/docs/about/understanding/naming.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/naming-adaptability](/uz/docs/about/understanding/naming.md)
+
+[**new**: ](/uz/docs/about/understanding/naming.md)
+
+<!-- -->
+
+[/docs/about/understanding/naming](/uz/docs/about/understanding/naming.md)
+
+[Signals of architecture](/uz/docs/about/understanding/signals.md)
+
+[**old**:](/uz/docs/about/understanding/signals.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/signals](/uz/docs/about/understanding/signals.md)
+
+[**new**: ](/uz/docs/about/understanding/signals.md)
+
+<!-- -->
+
+[/docs/about/understanding/signals](/uz/docs/about/understanding/signals.md)
+
+[Abstractions of architecture](/uz/docs/about/understanding/abstractions.md)
+
+[**old**:](/uz/docs/about/understanding/abstractions.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/abstractions](/uz/docs/about/understanding/abstractions.md)
+
+[**new**: ](/uz/docs/about/understanding/abstractions.md)
+
+<!-- -->
+
+[/docs/about/understanding/abstractions](/uz/docs/about/understanding/abstractions.md)
 
 ### 📚 Reference guidelines (isolation & units)
 
 ⚡️ <!-- -->Moved to /reference as theoretical materials (old concepts)
 
-[Decouple of entities](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
+[Decouple of entities](/uz/docs/reference/layers.md#import-rule-on-layers)
 
-[**old**:](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/decouple-entities](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
-
-[**new**: ](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-[/docs/reference/layers#import-rule-on-layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
-
-[Low Coupling & High Cohesion](/documentation/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-[**old**:](/documentation/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
+[**old**:](/uz/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/low-coupling](/documentation/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
+[/docs/concepts/decouple-entities](/uz/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-<!-- -->
-
-[/docs/reference/slices-segments#zero-coupling-high-cohesion](/documentation/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-[Cross-communication](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
-
-[**old**:](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
+[**new**: ](/uz/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers#import-rule-on-layers](/uz/docs/reference/layers.md#import-rule-on-layers)
 
-[/docs/concepts/cross-communication](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
+[Low Coupling & High Cohesion](/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-[/docs/reference/layers#import-rule-on-layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
-
-[App splitting](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**old**:](/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/app-splitting](/documentation/uz/docs/reference/layers.md)
+[/docs/concepts/low-coupling](/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Decomposition](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**new**: ](/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/slices-segments#zero-coupling-high-cohesion](/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[/docs/reference/units/decomposition](/documentation/uz/docs/reference/layers.md)
+[Cross-communication](/uz/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Units](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**old**:](/uz/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units](/documentation/uz/docs/reference/layers.md)
+[/docs/concepts/cross-communication](/uz/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Layers](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**new**: ](/uz/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers#import-rule-on-layers](/uz/docs/reference/layers.md#import-rule-on-layers)
 
-[/docs/reference/units/layers](/documentation/uz/docs/reference/layers.md)
+[App splitting](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Layer overview](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**old**:](/uz/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/layers/overview](/documentation/uz/docs/reference/layers.md)
+[/docs/concepts/app-splitting](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[App layer](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**new**: ](/uz/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/uz/docs/reference/layers.md)
 
-[/docs/reference/units/layers/app](/documentation/uz/docs/reference/layers.md)
+[Decomposition](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Processes layer](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**old**:](/uz/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/processes](/documentation/uz/docs/reference/layers.md)
+[/docs/reference/units/decomposition](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Pages layer](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**new**: ](/uz/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/uz/docs/reference/layers.md)
 
-[/docs/reference/units/layers/pages](/documentation/uz/docs/reference/layers.md)
+[Units](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Widgets layer](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**old**:](/uz/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/widgets](/documentation/uz/docs/reference/layers.md)
+[/docs/reference/units](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Widgets layer](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**new**: ](/uz/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/uz/docs/reference/layers.md)
 
-[/docs/reference/layers/widgets](/documentation/uz/docs/reference/layers.md)
+[Layers](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Features layer](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**old**:](/uz/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/features](/documentation/uz/docs/reference/layers.md)
+[/docs/reference/units/layers](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Entities layer](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**new**: ](/uz/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/uz/docs/reference/layers.md)
 
-[/docs/reference/units/layers/entities](/documentation/uz/docs/reference/layers.md)
+[Layer overview](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Shared layer](/documentation/uz/docs/reference/layers.md)
-
-[**old**:](/documentation/uz/docs/reference/layers.md)
+[**old**:](/uz/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/shared](/documentation/uz/docs/reference/layers.md)
+[/docs/reference/layers/overview](/uz/docs/reference/layers.md)
 
-[**new**: ](/documentation/uz/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/uz/docs/reference/layers.md)
-
-[Segments](/documentation/uz/docs/reference/slices-segments.md)
-
-[**old**:](/documentation/uz/docs/reference/slices-segments.md)
+[**new**: ](/uz/docs/reference/layers.md)
 
 <!-- -->
 
+[/docs/reference/layers](/uz/docs/reference/layers.md)
+
+[App layer](/uz/docs/reference/layers.md)
+
+[**old**:](/uz/docs/reference/layers.md)
+
 <!-- -->
 
-[/docs/reference/units/segments](/documentation/uz/docs/reference/slices-segments.md)
+<!-- -->
 
-[**new**: ](/documentation/uz/docs/reference/slices-segments.md)
+[/docs/reference/units/layers/app](/uz/docs/reference/layers.md)
+
+[**new**: ](/uz/docs/reference/layers.md)
 
 <!-- -->
 
-[/docs/reference/slices-segments](/documentation/uz/docs/reference/slices-segments.md)
+[/docs/reference/layers](/uz/docs/reference/layers.md)
+
+[Processes layer](/uz/docs/reference/layers.md)
+
+[**old**:](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/processes](/uz/docs/reference/layers.md)
+
+[**new**: ](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/uz/docs/reference/layers.md)
+
+[Pages layer](/uz/docs/reference/layers.md)
+
+[**old**:](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/pages](/uz/docs/reference/layers.md)
+
+[**new**: ](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/uz/docs/reference/layers.md)
+
+[Widgets layer](/uz/docs/reference/layers.md)
+
+[**old**:](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/widgets](/uz/docs/reference/layers.md)
+
+[**new**: ](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/uz/docs/reference/layers.md)
+
+[Widgets layer](/uz/docs/reference/layers.md)
+
+[**old**:](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/layers/widgets](/uz/docs/reference/layers.md)
+
+[**new**: ](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/uz/docs/reference/layers.md)
+
+[Features layer](/uz/docs/reference/layers.md)
+
+[**old**:](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/features](/uz/docs/reference/layers.md)
+
+[**new**: ](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/uz/docs/reference/layers.md)
+
+[Entities layer](/uz/docs/reference/layers.md)
+
+[**old**:](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/entities](/uz/docs/reference/layers.md)
+
+[**new**: ](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/uz/docs/reference/layers.md)
+
+[Shared layer](/uz/docs/reference/layers.md)
+
+[**old**:](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/shared](/uz/docs/reference/layers.md)
+
+[**new**: ](/uz/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/uz/docs/reference/layers.md)
+
+[Segments](/uz/docs/reference/slices-segments.md)
+
+[**old**:](/uz/docs/reference/slices-segments.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/segments](/uz/docs/reference/slices-segments.md)
+
+[**new**: ](/uz/docs/reference/slices-segments.md)
+
+<!-- -->
+
+[/docs/reference/slices-segments](/uz/docs/reference/slices-segments.md)
 
 ### 🎯 Bad Practices handbook
 
 ⚡️ <!-- -->Moved to /guides as practice materials
 
-[Cross-imports](/documentation/uz/docs/guides/issues/cross-imports.md)
+[Cross-imports](/uz/docs/guides/issues/cross-imports.md)
 
-[**old**:](/documentation/uz/docs/guides/issues/cross-imports.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/issues/cross-imports](/documentation/uz/docs/guides/issues/cross-imports.md)
-
-[**new**: ](/documentation/uz/docs/guides/issues/cross-imports.md)
-
-<!-- -->
-
-[/docs/guides/issues/cross-imports](/documentation/uz/docs/guides/issues/cross-imports.md)
-
-[Desegmented](/documentation/uz/docs/guides/issues/desegmented.md)
-
-[**old**:](/documentation/uz/docs/guides/issues/desegmented.md)
+[**old**:](/uz/docs/guides/issues/cross-imports.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/issues/desegmented](/documentation/uz/docs/guides/issues/desegmented.md)
+[/docs/concepts/issues/cross-imports](/uz/docs/guides/issues/cross-imports.md)
 
-[**new**: ](/documentation/uz/docs/guides/issues/desegmented.md)
-
-<!-- -->
-
-[/docs/guides/issues/desegmented](/documentation/uz/docs/guides/issues/desegmented.md)
-
-[Routes](/documentation/uz/docs/guides/issues/routes.md)
-
-[**old**:](/documentation/uz/docs/guides/issues/routes.md)
+[**new**: ](/uz/docs/guides/issues/cross-imports.md)
 
 <!-- -->
 
+[/docs/guides/issues/cross-imports](/uz/docs/guides/issues/cross-imports.md)
+
+[Desegmented](/uz/docs/guides/issues/desegmented.md)
+
+[**old**:](/uz/docs/guides/issues/desegmented.md)
+
 <!-- -->
 
-[/docs/concepts/issues/routes](/documentation/uz/docs/guides/issues/routes.md)
+<!-- -->
 
-[**new**: ](/documentation/uz/docs/guides/issues/routes.md)
+[/docs/concepts/issues/desegmented](/uz/docs/guides/issues/desegmented.md)
+
+[**new**: ](/uz/docs/guides/issues/desegmented.md)
 
 <!-- -->
 
-[/docs/guides/issues/routes](/documentation/uz/docs/guides/issues/routes.md)
+[/docs/guides/issues/desegmented](/uz/docs/guides/issues/desegmented.md)
+
+[Routes](/uz/docs/guides/issues/routes.md)
+
+[**old**:](/uz/docs/guides/issues/routes.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/issues/routes](/uz/docs/guides/issues/routes.md)
+
+[**new**: ](/uz/docs/guides/issues/routes.md)
+
+<!-- -->
+
+[/docs/guides/issues/routes](/uz/docs/guides/issues/routes.md)
 
 ### 🎯 Examples
 
 ⚡️ <!-- -->Grouped and simplified into /guides/examples as practical examples
 
-[Viewer logic](/documentation/uz/docs/guides/examples/auth.md)
+[Viewer logic](/uz/docs/guides/examples/auth.md)
 
-[**old**:](/documentation/uz/docs/guides/examples/auth.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/guides/examples/viewer](/documentation/uz/docs/guides/examples/auth.md)
-
-[**new**: ](/documentation/uz/docs/guides/examples/auth.md)
-
-<!-- -->
-
-[/docs/guides/examples/auth](/documentation/uz/docs/guides/examples/auth.md)
-
-[Monorepo](/documentation/uz/docs/guides/examples/monorepo.md)
-
-[**old**:](/documentation/uz/docs/guides/examples/monorepo.md)
+[**old**:](/uz/docs/guides/examples/auth.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/guides/monorepo](/documentation/uz/docs/guides/examples/monorepo.md)
+[/docs/guides/examples/viewer](/uz/docs/guides/examples/auth.md)
 
-[**new**: ](/documentation/uz/docs/guides/examples/monorepo.md)
-
-<!-- -->
-
-[/docs/guides/examples/monorepo](/documentation/uz/docs/guides/examples/monorepo.md)
-
-[White Labels](/documentation/uz/docs/guides/examples/white-labels.md)
-
-[**old**:](/documentation/uz/docs/guides/examples/white-labels.md)
+[**new**: ](/uz/docs/guides/examples/auth.md)
 
 <!-- -->
 
+[/docs/guides/examples/auth](/uz/docs/guides/examples/auth.md)
+
+[Monorepo](/uz/docs/guides/examples/monorepo.md)
+
+[**old**:](/uz/docs/guides/examples/monorepo.md)
+
 <!-- -->
 
-[/docs/guides/white-labels](/documentation/uz/docs/guides/examples/white-labels.md)
+<!-- -->
 
-[**new**: ](/documentation/uz/docs/guides/examples/white-labels.md)
+[/docs/guides/monorepo](/uz/docs/guides/examples/monorepo.md)
+
+[**new**: ](/uz/docs/guides/examples/monorepo.md)
 
 <!-- -->
 
-[/docs/guides/examples/white-labels](/documentation/uz/docs/guides/examples/white-labels.md)
+[/docs/guides/examples/monorepo](/uz/docs/guides/examples/monorepo.md)
+
+[White Labels](/uz/docs/guides/examples/white-labels.md)
+
+[**old**:](/uz/docs/guides/examples/white-labels.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/guides/white-labels](/uz/docs/guides/examples/white-labels.md)
+
+[**new**: ](/uz/docs/guides/examples/white-labels.md)
+
+<!-- -->
+
+[/docs/guides/examples/white-labels](/uz/docs/guides/examples/white-labels.md)
 
 ### 🎯 Migration
 
 ⚡️ <!-- -->Grouped and simplified into /guides/migration as migration guidelines
 
-[Migration from V1](/documentation/uz/docs/guides/migration/from-v1.md)
+[Migration from V1](/uz/docs/guides/migration/from-v1.md)
 
-[**old**:](/documentation/uz/docs/guides/migration/from-v1.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/guides/migration-from-v1](/documentation/uz/docs/guides/migration/from-v1.md)
-
-[**new**: ](/documentation/uz/docs/guides/migration/from-v1.md)
-
-<!-- -->
-
-[/docs/guides/migration/from-v1](/documentation/uz/docs/guides/migration/from-v1.md)
-
-[Migration from Legacy](/documentation/uz/docs/guides/migration/from-custom.md)
-
-[**old**:](/documentation/uz/docs/guides/migration/from-custom.md)
+[**old**:](/uz/docs/guides/migration/from-v1.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/guides/migration-from-legacy](/documentation/uz/docs/guides/migration/from-custom.md)
+[/docs/guides/migration-from-v1](/uz/docs/guides/migration/from-v1.md)
 
-[**new**: ](/documentation/uz/docs/guides/migration/from-custom.md)
+[**new**: ](/uz/docs/guides/migration/from-v1.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-custom](/documentation/uz/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-v1](/uz/docs/guides/migration/from-v1.md)
+
+[Migration from Legacy](/uz/docs/guides/migration/from-custom.md)
+
+[**old**:](/uz/docs/guides/migration/from-custom.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/guides/migration-from-legacy](/uz/docs/guides/migration/from-custom.md)
+
+[**new**: ](/uz/docs/guides/migration/from-custom.md)
+
+<!-- -->
+
+[/docs/guides/migration/from-custom](/uz/docs/guides/migration/from-custom.md)
 
 ### 🎯 Tech
 
 ⚡️ <!-- -->Grouped into /guides/tech as tech-specific usage guidelines
 
-[Usage with NextJS](/documentation/uz/docs/guides/tech/with-nextjs.md)
+[Usage with NextJS](/uz/docs/guides/tech/with-nextjs.md)
 
-[**old**:](/documentation/uz/docs/guides/tech/with-nextjs.md)
-
-<!-- -->
+[**old**:](/uz/docs/guides/tech/with-nextjs.md)
 
 <!-- -->
 
-[/docs/guides/usage-with-nextjs](/documentation/uz/docs/guides/tech/with-nextjs.md)
+<!-- -->
 
-[**new**: ](/documentation/uz/docs/guides/tech/with-nextjs.md)
+[/docs/guides/usage-with-nextjs](/uz/docs/guides/tech/with-nextjs.md)
+
+[**new**: ](/uz/docs/guides/tech/with-nextjs.md)
 
 <!-- -->
 
-[/docs/guides/tech/with-nextjs](/documentation/uz/docs/guides/tech/with-nextjs.md)
+[/docs/guides/tech/with-nextjs](/uz/docs/guides/tech/with-nextjs.md)
 
 ### Rename 'legacy' to 'custom'
 
 ⚡️ <!-- -->'Legacy' is derogatory, we don't get to call people's projects legacy
 
-[Rename 'legacy' to custom](/documentation/uz/docs/guides/migration/from-custom.md)
+[Rename 'legacy' to custom](/uz/docs/guides/migration/from-custom.md)
 
-[**old**:](/documentation/uz/docs/guides/migration/from-custom.md)
-
-<!-- -->
+[**old**:](/uz/docs/guides/migration/from-custom.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-legacy](/documentation/uz/docs/guides/migration/from-custom.md)
+<!-- -->
 
-[**new**: ](/documentation/uz/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-legacy](/uz/docs/guides/migration/from-custom.md)
+
+[**new**: ](/uz/docs/guides/migration/from-custom.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-custom](/documentation/uz/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-custom](/uz/docs/guides/migration/from-custom.md)
 
 ### Deduplication of Reference
 
 ⚡️ <!-- -->Cleaned up the Reference section and deduplicated the material
 
-[Isolation of modules](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
+[Isolation of modules](/uz/docs/reference/layers.md#import-rule-on-layers)
 
-[**old**:](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
+[**old**:](/uz/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-[/docs/reference/isolation](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
+<!-- -->
 
-[**new**: ](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
+[/docs/reference/isolation](/uz/docs/reference/layers.md#import-rule-on-layers)
+
+[**new**: ](/uz/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-[/docs/reference/layers#import-rule-on-layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers)
+[/docs/reference/layers#import-rule-on-layers](/uz/docs/reference/layers.md#import-rule-on-layers)
 
 
 ---
 
 [Asosiy tarkibga o'tish](#__docusaurus_skipToContent_fallback)
 
-[![logo](/documentation/uz/img/brand/logo-primary.png)![logo](/documentation/uz/img/brand/logo-primary.png)](/documentation/uz/.md)
+[![logo](/uz/img/brand/logo-primary.png)![logo](/uz/img/brand/logo-primary.png)](/uz/.md)
 
-[****](/documentation/uz/.md)[📖 Hujjatlar](/documentation/uz/docs/get-started/overview.md)[💫 Jamiyat](/documentation/uz/community.md)[📝 Blog](/documentation/uz/blog)[🛠 Namunalar](/documentation/uz/examples.md)
+[****](/uz/.md)[📖 Hujjatlar](/uz/docs/get-started/overview.md)[💫 Jamiyat](/uz/community.md)[📝 Blog](/uz/blog)[🛠 Namunalar](/uz/examples.md)
 
-[v2.1](/documentation/uz/docs/get-started/overview.md)
+[v2.1](/uz/docs/get-started/overview.md)
 
-* [v2.1](/documentation/uz/docs/get-started/overview.md)
+* [v2.1](/uz/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
-* [All versions](/documentation/uz/versions.md)
+* [All versions](/uz/versions.md)
 
 [O'zbekcha](#)
 
-* [Русский](/documentation/ru/search)
-* [English](/documentation/search)
-* [O'zbekcha](/documentation/uz/search.md)
-* [한국어](/documentation/kr/search)
-* [日本語](/documentation/ja/search)
-* [Tiếng Việt](/documentation/vi/search)
-* [中文](/documentation/zh/search)
+* [Русский](/ru/search)
+* [English](/search)
+* [O'zbekcha](/uz/search.md)
+* [한국어](/kr/search)
+* [日本語](/ja/search)
+* [Tiếng Việt](/vi/search)
+* [中文](/zh/search)
 * [Help Us Translate](https://github.com/feature-sliced/documentation/issues/244)
 
 [](https://discord.gg/S8MzWTUsmp)[](https://github.com/feature-sliced/documentation)
@@ -776,9 +776,9 @@ Powered by[](https://www.algolia.com/)
 
 Spetsifikatsiya
 
-* [Hujjatlar](/documentation/uz/docs/get-started/overview.md)
-* [Jamiyat](/documentation/uz/community.md)
-* [Yordam](/documentation/uz/nav.md)
+* [Hujjatlar](/uz/docs/get-started/overview.md)
+* [Jamiyat](/uz/community.md)
+* [Yordam](/uz/nav.md)
 * [Munozaralar](https://github.com/feature-sliced/documentation/discussions)
 
 Jamiyat
@@ -794,9 +794,9 @@ Yana
 * [GitHub](https://github.com/feature-sliced)
 * [Contribution Guide](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
 * [Litsenziya](https://github.com/feature-sliced/documentation/blob/master/LICENSE)
-* [Docs for LLMs](/documentation/uz/docs/llms.md)
+* [Docs for LLMs](/uz/docs/llms.md)
 
-[![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/uz/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/uz/img/brand/logo-primary.png)](https://github.com/feature-sliced)
+[![Feature-Sliced Design - Architectural methodology for frontend projects](/uz/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/uz/img/brand/logo-primary.png)](https://github.com/feature-sliced)
 
 Copyright © 2018-2025 Feature-Sliced Design
 
@@ -809,8 +809,8 @@ Copyright © 2018-2025 Feature-Sliced Design
 
 Bu yerda siz joriy nashr etilgan versiya uchun hujjatlarni topishingiz mumkin
 
-| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/documentation/uz/docs/get-started/overview.md) | [Migration from v1](/documentation/uz/docs/guides/migration/from-v1.md) | [Migration from v2.0](/documentation/uz/docs/guides/migration/from-v1.md) |
-| ---- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/uz/docs/get-started/overview.md) | [Migration from v1](/uz/docs/guides/migration/from-v1.md) | [Migration from v2.0](/uz/docs/guides/migration/from-v1.md) |
+| ---- | ---------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
 
 ### Feature Slices v1 (Legacy)
 
@@ -843,13 +843,13 @@ Community resources, additional materials
 
 [A curated list of awesome FSD videos, articles, packages](https://github.com/feature-sliced/awesome)
 
-[Team](/documentation/uz/community/team.md)
+[Team](/uz/community/team.md)
 
-[Core-team, Champions, Contributors, Companies](/documentation/uz/community/team.md)
+[Core-team, Champions, Contributors, Companies](/uz/community/team.md)
 
-[Brandbook](/documentation/uz/docs/branding.md)
+[Brandbook](/uz/docs/branding.md)
 
-[Recommendations for FSD's branding usage](/documentation/uz/docs/branding.md)
+[Recommendations for FSD's branding usage](/uz/docs/branding.md)
 
 [Contributing](#)
 
@@ -1043,7 +1043,7 @@ Uning yaratilishini tezlashtirish uchun siz:
 
 Framework-agnostic, conventional-approach
 
-* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/documentation/uz/docs/about/motivation.md)
+* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/uz/docs/about/motivation.md)
 * [(Thread) About the applicability of the methodology for different frameworks](https://t.me/feature_sliced/3867)
 
 ## Atomic Design[​](#atomic-design "Sarlavhaga to'g'ridan-to'g'ri havola")
@@ -1160,7 +1160,7 @@ Everyone has their own level of experience in designing and developing systems, 
 
 ## See also[​](#see-also "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-* [Architecture problems](/documentation/uz/docs/about/understanding/architecture.md#problems)
+* [Architecture problems](/uz/docs/about/understanding/architecture.md#problems)
 
 
 ---
@@ -1169,7 +1169,7 @@ Everyone has their own level of experience in designing and developing systems, 
 
 The main idea of **Feature-Sliced Design** is to facilitate and reduce the cost of developing complex and developing projects, based on [combining research results, discussing the experience of various kinds of a wide range of developers](https://github.com/feature-sliced/documentation/discussions).
 
-Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability](/documentation/uz/docs/about/mission.md).
+Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability](/uz/docs/about/mission.md).
 
 Nevertheless, there are reasonable questions regarding *the feasibility of such a methodology as a whole*
 
@@ -1275,7 +1275,7 @@ Yes, the most important thing for MVP is *"features, not the architecture laid d
 
 ## Plans[​](#plans "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-The main part of the goals [is set out here](/documentation/uz/docs/about/mission.md#goals), but in addition, it is worth talking about our expectations from the methodology in the future
+The main part of the goals [is set out here](/uz/docs/about/mission.md#goals), but in addition, it is worth talking about our expectations from the methodology in the future
 
 ### Combining experience[​](#combining-experience "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -1298,8 +1298,8 @@ If everything goes well, then the methodology will not be limited only to the sp
 ## See also[​](#see-also "Sarlavhaga to'g'ridan-to'g'ri havola")
 
 * [(Discussion) Don't need a methodology?](https://github.com/feature-sliced/documentation/discussions/27)
-* [About the methodology's mission: goals and limitations](/documentation/uz/docs/about/mission.md)
-* [Types of knowledge in the project](/documentation/uz/docs/about/understanding/knowledge-types.md)
+* [About the methodology's mission: goals and limitations](/uz/docs/about/mission.md)
+* [Types of knowledge in the project](/uz/docs/about/understanding/knowledge-types.md)
 
 
 ---
@@ -1371,7 +1371,7 @@ First 5 minutes (RU):
 
 **Advantages**:
 
-* [Overview](/documentation/uz/docs/get-started/overview.md)
+* [Overview](/uz/docs/get-started/overview.md)
 * CodeReview
 * Onboarding
 
@@ -1489,7 +1489,7 @@ Therefore, it seems logical to present the desired *requirements for an ideal ar
 
 note
 
-Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/documentation/uz/docs/about/mission.md#limitations)
+Wherever it says "easy", it means "relatively easy for a wide range of developers", because it is clear that [it will not be possible to make an ideal solution for absolutely everyone](/uz/docs/about/mission.md#limitations)
 
 ### Explicitness[​](#explicitness "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -1740,7 +1740,7 @@ It becomes clear that you need to identify at least two requirements for **Featu
 
    * Which means it should clearly explain *how to divide the code between them*, which means that the naming of these entities should also be laid down in the specification.
 
-2. The methodology should help the architecture **[easily adapt to the changing requirements of the project](/documentation/uz/docs/about/understanding/architecture.md#adaptability)**
+2. The methodology should help the architecture **[easily adapt to the changing requirements of the project](/uz/docs/about/understanding/architecture.md#adaptability)**
 
 ## See also[​](#see-also "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -1816,17 +1816,17 @@ Tort tasviri 🍰 FSD-ning asosiy tushunchalarini yaxshi aks ettiradi, shuning u
 
 FSD har xil konteksda bir nechta logotipga ega, lekin **primary** dan foydalanish tavsiya etiladi
 
-|                                 |                                                                                                                        |                                    |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| Tema                            | Logo (Ctrl/Cmd + Click yuklab olish uchun)                                                                             | Foydalanish                        |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/uz/img/brand/logo-primary.png)](/documentation/uz/img/brand/logo-primary.png)          | Aksariyat hollarda afzal ko'riladi |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/uz/img/brand/logo-flat.png)](/documentation/uz/img/brand/logo-flat.png)                   | Bir rangli kontekst uchun          |
-| monochrome<br />(#FFF)          | [![logo-monochrome](/documentation/uz/img/brand/logo-monochrome.png)](/documentation/uz/img/brand/logo-monochrome.png) | Oq qora kontekst uchun             |
-| square<br />(#3193FF)           | [![logo-square](/documentation/uz/img/brand/logo-square.png)](/documentation/uz/img/brand/logo-square.png)             | Kvadrat o'lchamlar uchun           |
+|                                 |                                                                                            |                                    |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------- |
+| Tema                            | Logo (Ctrl/Cmd + Click yuklab olish uchun)                                                 | Foydalanish                        |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/uz/img/brand/logo-primary.png)](/uz/img/brand/logo-primary.png)          | Aksariyat hollarda afzal ko'riladi |
+| flat<br />(#3193FF)             | [![logo-flat](/uz/img/brand/logo-flat.png)](/uz/img/brand/logo-flat.png)                   | Bir rangli kontekst uchun          |
+| monochrome<br />(#FFF)          | [![logo-monochrome](/uz/img/brand/logo-monochrome.png)](/uz/img/brand/logo-monochrome.png) | Oq qora kontekst uchun             |
+| square<br />(#3193FF)           | [![logo-square](/uz/img/brand/logo-square.png)](/uz/img/brand/logo-square.png)             | Kvadrat o'lchamlar uchun           |
 
 ## Bannerlar & Sxemalar[​](#banners--schemes "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-[![banner-primary](/documentation/uz/img/brand/banner-primary.jpg)](/documentation/uz/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/uz/img/brand/banner-monochrome.jpg)](/documentation/uz/img/brand/banner-monochrome.jpg)
+[![banner-primary](/uz/img/brand/banner-primary.jpg)](/uz/img/brand/banner-primary.jpg) [![banner-monochrome](/uz/img/brand/banner-monochrome.jpg)](/uz/img/brand/banner-monochrome.jpg)
 
 ## Social Preview[​](#social-preview "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -1850,19 +1850,19 @@ Use this as a quick reference when you're deciding how to decompose your UI. PDF
 
 ## Choosing a layer[​](#choosing-a-layer "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-[Download PDF](/documentation/uz/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
+[Download PDF](/uz/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
 
-![Definitions of all layers and self-check questions](/documentation/uz/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
+![Definitions of all layers and self-check questions](/uz/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
 
 ## Examples[​](#examples "Sarlavhaga to'g'ridan-to'g'ri havola")
 
 ### Tweet[​](#tweet "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-![decomposed-tweet-bordered-bgLight](/documentation/uz/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/uz/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-![decomposed-github-bordered](/documentation/uz/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/uz/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## See also[​](#see-also "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -1899,13 +1899,13 @@ If you need plain markup layouts, you can keep them in `shared/ui`. If you need 
 
 An *entity* is a real-life concept that your app is working with. A *feature* is an interaction that provides real-life value to your app’s users, the thing people want to do with your entities.
 
-For more information, along with examples, see the Reference page on [slices](/documentation/uz/docs/reference/layers.md#entities).
+For more information, along with examples, see the Reference page on [slices](/uz/docs/reference/layers.md#entities).
 
 ### Can I embed pages/features/entities into each other?[​](#can-i-embed-pagesfeaturesentities-into-each-other "Sarlavhaga to'g'ridan-to'g'ri havola")
 
 Yes, but this embedding should happen in higher layers. For example, inside a widget, you can import both features and then insert one feature into another as props/children.
 
-You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**](/documentation/uz/docs/reference/layers.md#import-rule-on-layers).
+You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**](/uz/docs/reference/layers.md#import-rule-on-layers).
 
 ### What about Atomic Design?[​](#what-about-atomic-design "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -1919,7 +1919,7 @@ Yes! <https://github.com/feature-sliced/awesome>
 
 ### Why do I need Feature-Sliced Design?[​](#why-do-i-need-feature-sliced-design "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-It helps you and your team to quickly overview the project in terms of its main value-bringing components. A standardized architecture helps to speed up onboarding and resolves debates about code structure. See the [motivation](/documentation/uz/docs/about/motivation.md) page to learn more about why FSD was created.
+It helps you and your team to quickly overview the project in terms of its main value-bringing components. A standardized architecture helps to speed up onboarding and resolves debates about code structure. See the [motivation](/uz/docs/about/motivation.md) page to learn more about why FSD was created.
 
 ### Does a novice developer need an architecture/methodology?[​](#does-a-novice-developer-need-an-architecturemethodology "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -1929,7 +1929,7 @@ Rather yes than no
 
 ### How do I work with the authorization context?[​](#how-do-i-work-with-the-authorization-context "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Answered [here](/documentation/uz/docs/guides/examples/auth.md)
+Answered [here](/uz/docs/guides/examples/auth.md)
 
 
 ---
@@ -1938,7 +1938,7 @@ Answered [here](/documentation/uz/docs/guides/examples/auth.md)
 
 **Feature-Sliced Design** (FSD) bu front-end ilovalarining tuzilishini shakllantirish uchun arxitektura metodologiyasi. Oddiy qilib aytganda, bu kodni tartibga solish uchun qoidalar va konvensiyalar to'plami. Bu metodologiyaning asosiy maqsadi - loyihani yanada tushunarli va o'zgaruvchan biznes talablariga moslashuvchan qilishdir.
 
-FSD nafaqat konvensiyalar to'plami, balki vositalar to'plamini ham o'z ichiga oladi. Bizda [linter](https://github.com/feature-sliced/steiger) sizning loyihangizning arxitekturasini tekshirish uchun, [papka generatorlari](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) CLI yoki IDE lar orqali, shuningdek, ko'plab [misollar](/documentation/uz/examples.md) jamlanmasiga ega.
+FSD nafaqat konvensiyalar to'plami, balki vositalar to'plamini ham o'z ichiga oladi. Bizda [linter](https://github.com/feature-sliced/steiger) sizning loyihangizning arxitekturasini tekshirish uchun, [papka generatorlari](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) CLI yoki IDE lar orqali, shuningdek, ko'plab [misollar](/uz/examples.md) jamlanmasiga ega.
 
 ## Menga to'g'ri keladimi?[​](#is-it-right-for-me "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -1949,7 +1949,7 @@ FSD har qanday hajmdagi jamoalarda joriy qilinishi mumkin. Sizga to'g'ri keladi 
 
 Shu bilan birga, bu yerda qaysi dasturlash tili, UI(foydalanuvchi interfeysi) freymvorki, yoki holat boshqaruvchisi(state manager)ni ishlatish bo'yicha hech qanday cheklov yo'q. Shuningdek, FSD ni bosqichma-bosqich joriy qilishingiz, monorepo(yagona repozitoriya)larda ishlatishingiz va ilovangizni modullarga bo'lib, FSD ni ularning har birida alohida amalga oshirishingiz mumkin.
 
-Agar sizda allaqachon arxitektura mavjud bo‘lsa va FSDga o‘tishni o‘ylayotgan bo‘lsangiz, avvalo joriy arxitektura jamoangizga muammo tug‘dirayotganiga ishonch hosil qiling. Masalan, agar loyihangiz juda katta va o‘zaro juda bog‘lanib ketgan bo‘lsa, bu yangi xususiyatlarni samarali joriy etishni qiyinlashtirishi mumkin. Yoki jamoangizga ko‘plab yangi a’zolar qo‘shilishi kutilayotgan bo‘lsa, FSDga o‘tish foydali bo‘lishi mumkin. Agar hozirgi arxitektura yaxshi ishlayotgan bo‘lsa, ehtimol uni o‘zgartirishga hojat yo‘q. Ammo agar migratsiya qilishga qaror qilsangiz, yo‘riqnoma uchun [Migratsiya](/documentation/uz/docs/guides/migration/from-custom.md) sahifasini ko'rib chiqishingiz mumkin.
+Agar sizda allaqachon arxitektura mavjud bo‘lsa va FSDga o‘tishni o‘ylayotgan bo‘lsangiz, avvalo joriy arxitektura jamoangizga muammo tug‘dirayotganiga ishonch hosil qiling. Masalan, agar loyihangiz juda katta va o‘zaro juda bog‘lanib ketgan bo‘lsa, bu yangi xususiyatlarni samarali joriy etishni qiyinlashtirishi mumkin. Yoki jamoangizga ko‘plab yangi a’zolar qo‘shilishi kutilayotgan bo‘lsa, FSDga o‘tish foydali bo‘lishi mumkin. Agar hozirgi arxitektura yaxshi ishlayotgan bo‘lsa, ehtimol uni o‘zgartirishga hojat yo‘q. Ammo agar migratsiya qilishga qaror qilsangiz, yo‘riqnoma uchun [Migratsiya](/uz/docs/guides/migration/from-custom.md) sahifasini ko'rib chiqishingiz mumkin.
 
 ## Asosiy misollar[​](#basic-example "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -1990,7 +1990,7 @@ Bu yuqori darajadagi papkalar ular *layerlar* deyiladi. Keling chuqurroq qaraymi
 
 Layerlar, slicelar va segmentlar quyidagi iyerarxiyani hosil qiladi:
 
-![FSD konsepsiyalari iyearxiyasi, quyida tasvirlangan](/documentation/uz/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
+![FSD konsepsiyalari iyearxiyasi, quyida tasvirlangan](/uz/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
 Tepadagi rasmda: uchta ustunlar, chapdan o'ngga qarab mos ravishda "Layerlar", "Slicelar" va "Segmentlar" deb belgilangan.
 
@@ -2062,8 +2062,8 @@ Refaktoring jarayonida yoki loyihaning faqat ayrim qismlarini o‘zgartirayotgan
 
 ## Keyingi qadamlar[​](#next-steps "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-* **FSD haqida chuqur tushuncha hosil qilmoqchimisiz?** [Bu yerda](/documentation/uz/docs/get-started/tutorial.md).
-* **Misollar bilan o'rganishni afzal ko'rasizmi?** Bizda juda ko'plab [Misollar](/documentation/uz/examples.md) bo'limi mavjud.
+* **FSD haqida chuqur tushuncha hosil qilmoqchimisiz?** [Bu yerda](/uz/docs/get-started/tutorial.md).
+* **Misollar bilan o'rganishni afzal ko'rasizmi?** Bizda juda ko'plab [Misollar](/uz/examples.md) bo'limi mavjud.
 * **Savolingiz bormi?** Bizning [Telegram chat](https://t.me/feature_sliced) ga qo'shiling va yordam oling.
 
 
@@ -2075,7 +2075,7 @@ Refaktoring jarayonida yoki loyihaning faqat ayrim qismlarini o‘zgartirayotgan
 
 This tutorial will examine the Real World App, also known as Conduit. Conduit is a basic [Medium](https://medium.com/) clone — it lets you read and write articles as well as comment on the articles of others.
 
-![Conduit home page](/documentation/uz/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Conduit home page](/uz/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 This is a pretty small application, so we will keep it simple and avoid excessive decomposition. It’s highly likely that the entire app will fit into just three layers: **App**, **Pages**, and **Shared**. If not, we will introduce additional layers as we go. Ready?
 
@@ -2112,11 +2112,11 @@ In this case, a page is a slice, so modules (files) inside this page can only re
 
 ### Close look at the feed[​](#close-look-at-the-feed "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-![Anonymous user’s perspective](/documentation/uz/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Anonymous user’s perspective](/uz/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 *Anonymous user’s perspective*
 
-![Authenticated user’s perspective](/documentation/uz/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
+![Authenticated user’s perspective](/uz/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
 
 *Authenticated user’s perspective*
 
@@ -2210,7 +2210,7 @@ In our case, the header is very simple — it’s a static logo and top-level na
 
 Let’s also examine a page that’s intended for editing, not reading. For example, the article writer:
 
-![Conduit post editor](/documentation/uz/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
+![Conduit post editor](/uz/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
 
 It looks trivial, but contains several aspects of application development that we haven’t explored yet — form validation, error states, and data persistence.
 
@@ -2308,7 +2308,7 @@ export default FeedPage;
 
 Then, if you run the dev server and open the application, you should see the Conduit banner!
 
-![The banner of Conduit](/documentation/uz/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
+![The banner of Conduit](/uz/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
 
 ### API client[​](#api-client "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -3356,7 +3356,7 @@ export default function App() {
 
 At this point, you should end up with the following on the home page:
 
-![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/documentation/uz/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
+![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/uz/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
 
 The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.
 
@@ -4128,7 +4128,7 @@ export function Comments() {
 
 And with that our article reader is also complete! The buttons to follow the author, like a post, and leave a comment should now function as expected.
 
-![Article reader with functioning buttons to like and follow](/documentation/uz/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
+![Article reader with functioning buttons to like and follow](/uz/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
 
 Article reader with functioning buttons to like and follow
 
@@ -4440,7 +4440,7 @@ export default ArticleEditPage;
 
 We’re done now! Log in and try creating a new article. Or “forget” to write the article and see the validation kick in.
 
-![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/documentation/uz/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
+![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/uz/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
 
 The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: **“Describe what this article is about”** and **“Write the article itself”**.
 
@@ -4520,7 +4520,7 @@ Organize your individual API request functions in `shared/api/endpoints`, groupi
 
 note
 
-To keep examples focused, we omit form interaction and validation. For details on libraries like Zod or Valibot, refer to the [Type Validation and Schemas](/documentation/uz/docs/guides/examples/types.md#type-validation-schemas-and-zod) article.
+To keep examples focused, we omit form interaction and validation. For details on libraries like Zod or Valibot, refer to the [Type Validation and Schemas](/uz/docs/guides/examples/types.md#type-validation-schemas-and-zod) article.
 
 shared/api/endpoints/login.ts
 
@@ -4600,7 +4600,7 @@ When using server state libraries like [TanStack Query (React Query)](https://ta
 * Cache keys
 * Common query/mutation options
 
-For more details on how to work with server state libraries, refer to [React Query article](/documentation/uz/docs/guides/tech/with-react-query.md)
+For more details on how to work with server state libraries, refer to [React Query article](/uz/docs/guides/tech/with-react-query.md)
 
 
 ---
@@ -4716,7 +4716,7 @@ export function RegisterPage() {
 
 ## How to send credentials to the backend[​](#how-to-send-credentials-to-the-backend "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager. As explained in the [guide for API requests](/documentation/uz/docs/guides/examples/api-requests.md), you can put your request either in `shared/api` or in the `api` segment of your login page.
+Create a function that makes a request to your backend's login endpoint. This function can either be called directly in the component code using a mutation library (e.g. TanStack Query), or it can be called as a side effect in a state manager. As explained in the [guide for API requests](/uz/docs/guides/examples/api-requests.md), you can put your request either in `shared/api` or in the `api` segment of your login page.
 
 ### Two-factor authentication[​](#two-factor-authentication "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -4730,7 +4730,7 @@ You would also need another request function, similar to `login()` that we creat
 
 Regardless of the authentication scheme you have, be it a simple login & password, OAuth, or two-factor authentication, at the end you will receive a token. This token should be stored so that subsequent requests can identify themselves.
 
-The ideal token storage for a web app is a **cookie** — it requires no manual token storage or handling. As such, cookie storage needs almost no consideration from the frontend architecture side. If your frontend framework has a server side (for example, [Remix](https://remix.run)), then you should store the server-side cookie infrastructure in `shared/api`. There is an example in [the Authentication section of the tutorial](/documentation/uz/docs/get-started/tutorial.md#authentication) of how to do that with Remix.
+The ideal token storage for a web app is a **cookie** — it requires no manual token storage or handling. As such, cookie storage needs almost no consideration from the frontend architecture side. If your frontend framework has a server side (for example, [Remix](https://remix.run)), then you should store the server-side cookie infrastructure in `shared/api`. There is an example in [the Authentication section of the tutorial](/uz/docs/get-started/tutorial.md#authentication) of how to do that with Remix.
 
 Sometimes, however, cookie storage is not an option. In this case, you will have to store the token manually. Apart from storing the token, you may also need to set up logic for refreshing your token when it expires. With FSD, there are several places where you can store the token, as well as several ways to make it available for the rest of the app.
 
@@ -4758,7 +4758,7 @@ The **current user** is also sometimes called "viewer" or "me". This is to disti
 
 To store the token in the User entity, create a reactive store in the `model` segment. That store can contain both the token and the user object.
 
-Since the API client is usually defined in `shared/api` or spreaded across the entities, the main challenge to this approach is making the token available to other requests that need it without breaking [the import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers):
+Since the API client is usually defined in `shared/api` or spreaded across the entities, the main challenge to this approach is making the token available to other requests that need it without breaking [the import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers):
 
 > A module (file) in a slice can only import other slices when they are located on layers strictly below.
 
@@ -5042,7 +5042,7 @@ The code of sidebars is left as an exercise for the reader 😉.
 
 ## Using widgets in the layout[​](#using-widgets-in-the-layout "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Sometimes you want to include certain business logic in the layout, especially if you're using deeply nested routes with a router like [React Router](https://reactrouter.com/). Then you can't store the layout in Shared or in Widgets due to [the import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers):
+Sometimes you want to include certain business logic in the layout, especially if you're using deeply nested routes with a router like [React Router](https://reactrouter.com/). Then you can't store the layout in Shared or in Widgets due to [the import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers):
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 
@@ -5065,7 +5065,7 @@ If none of the above are applicable, there are two solutions to include a widget
 
 ## Further reading[​](#further-reading "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-* There's an example of how to build a layout with authentication with React and Remix (equivalent to React Router) in the [tutorial](/documentation/uz/docs/get-started/tutorial.md).
+* There's an example of how to build a layout with authentication with React and Remix (equivalent to React Router) in the [tutorial](/uz/docs/get-started/tutorial.md).
 
 
 ---
@@ -5204,7 +5204,7 @@ export function listSongs() {
 }
 ```
 
-You might notice that the `Song` type references a different entity, `Artist`. This is a benefit of storing your requests in Shared — real-world types are often intertwined. If we kept this function in `entities/song/api`, we wouldn't be able to simply import `Artist` from `entities/artist`, because FSD restricts cross-imports between slices with [the import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers):
+You might notice that the `Song` type references a different entity, `Artist`. This is a benefit of storing your requests in Shared — real-world types are often intertwined. If we kept this function in `entities/song/api`, we wouldn't be able to simply import `Artist` from `entities/artist`, because FSD restricts cross-imports between slices with [the import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers):
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 
@@ -5517,7 +5517,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-It would be nice to have typed Redux hooks `useAppDispatch` and `useAppSelector` in `shared/store`, but they cannot import `RootState` and `AppDispatch` from the App layer due to the [import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers):
+It would be nice to have typed Redux hooks `useAppDispatch` and `useAppSelector` in `shared/store`, but they cannot import `RootState` and `AppDispatch` from the App layer due to the [import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers):
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 
@@ -5684,12 +5684,12 @@ Cross-imports in `entities` are often caused by splitting entities too granularl
 
 Think of `@x` as an explicit gateway for unavoidable domain references—not a general-purpose reuse mechanism. Overuse tends to lock entity boundaries together and makes refactoring more costly over time.
 
-For details about `@x`, see the [Public API documentation](/documentation/uz/docs/reference/public-api.md).
+For details about `@x`, see the [Public API documentation](/uz/docs/reference/public-api.md).
 
 For concrete examples of cross-references between business entities, see:
 
-* [Types guide — Business entities and their cross-references](/documentation/uz/docs/guides/examples/types.md#business-entities-and-their-cross-references)
-* [Layers reference — Entities](/documentation/uz/docs/reference/layers.md#entities)
+* [Types guide — Business entities and their cross-references](/uz/docs/guides/examples/types.md#business-entities-and-their-cross-references)
+* [Layers reference — Entities](/uz/docs/reference/layers.md#entities)
 
 ## Features and widgets: Multiple strategies[​](#features-and-widgets-multiple-strategies "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -5718,7 +5718,7 @@ Key principles:
 
 For example, if both `features/auth` and `features/profile` need session validation, place session-related domain functions in `entities/session` and reuse them from both features.
 
-For more guidance, see [Layers reference — Entities](/documentation/uz/docs/reference/layers.md#entities).
+For more guidance, see [Layers reference — Entities](/uz/docs/reference/layers.md#entities).
 
 ### Strategy C: Compose from an upper layer (pages / app)[​](#strategy-c-compose-from-an-upper-layer-pages--app "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -6219,7 +6219,7 @@ Instead, store authentication-related data in `shared/auth` or `shared/api`:
       📄 order.ts
 ```
 
-For more details on implementing authentication, see [the Authentication guide](/documentation/uz/docs/guides/examples/auth.md).
+For more details on implementing authentication, see [the Authentication guide](/uz/docs/guides/examples/auth.md).
 
 ### 5. Minimize Cross-Imports[​](#5-minimize-cross-imports "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -6559,7 +6559,7 @@ Also reorganize the Shared layer to remove these folders:
 
 Usually, these reused Redux slices will describe something relevant to the business, for example, products or users, so these can be moved to the Entities layer, one entity per one folder. If the Redux slice is related to an action that your users want to do in your app, like comments, then you can move it to the Features layer.
 
-Entities and features are meant to be independent from each other. If your business domain contains inherent connections between entities, refer to the [guide on business entities](/documentation/uz/docs/guides/examples/types.md#business-entities-and-their-cross-references) for advice on how to organize these connections.
+Entities and features are meant to be independent from each other. If your business domain contains inherent connections between entities, refer to the [guide on business entities](/uz/docs/guides/examples/types.md#business-entities-and-their-cross-references) for advice on how to organize these connections.
 
 The API functions related to these slices can stay in `📁 shared/api`.
 
@@ -6694,7 +6694,7 @@ In v2 **, other new abstractions** have been added to eliminate the problems of 
 
 ### `BREAKING` Abstractions & Naming[​](#breaking-abstractions--naming "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Now specific abstractions and [clear recommendations for naming them](/documentation/uz/docs/about/understanding/naming.md)are defined
+Now specific abstractions and [clear recommendations for naming them](/uz/docs/about/understanding/naming.md)are defined
 
 #### Layers[​](#layers "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -6729,7 +6729,7 @@ Now specific abstractions and [clear recommendations for naming them](/documenta
 
 ### `REFINED` Low coupling[​](#refined-low-coupling "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Now it is much easier to [observe the principle of low coupling](/documentation/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion) between modules, thanks to the new layers.
+Now it is much easier to [observe the principle of low coupling](/uz/docs/reference/slices-segments.md#zero-coupling-high-cohesion) between modules, thanks to the new layers.
 
 *At the same time, it is still recommended to avoid as much as possible cases where it is extremely difficult to "uncouple" modules*
 
@@ -6781,7 +6781,7 @@ entities/B/some/file.ts
 import type { EntityA } from "entities/A/@x/B";
 ```
 
-For more details, check out the [Public API for cross-imports](/documentation/uz/docs/reference/public-api.md#public-api-for-cross-imports) section in the reference.
+For more details, check out the [Public API for cross-imports](/uz/docs/reference/public-api.md#public-api-for-cross-imports) section in the reference.
 
 
 ---
@@ -7358,7 +7358,7 @@ If the project already has a division into entities, and each request correspond
         ...                                     #
 ```
 
-If there are connections between the entities (for example, the Country entity has a field-list of City entities), then you can use the [public API for cross-imports](/documentation/uz/docs/reference/public-api.md#public-api-for-cross-imports) or consider the alternative solution below.
+If there are connections between the entities (for example, the Country entity has a field-list of City entities), then you can use the [public API for cross-imports](/uz/docs/reference/public-api.md#public-api-for-cross-imports) or consider the alternative solution below.
 
 ### Alternative solution — keep it in shared[​](#alternative-solution--keep-it-in-shared "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -7886,8 +7886,8 @@ This page provides links and guidance for LLM crawlers.
 
 ### Files[​](#files "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-* [llms.txt](/documentation/uz/llms.txt)
-* [llms-full.txt](/documentation/uz/llms-full.txt)
+* [llms.txt](/uz/llms.txt)
+* [llms-full.txt](/uz/llms-full.txt)
 
 ### Notes[​](#notes "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -7907,7 +7907,7 @@ Ushbu sahifada *module* ilovadagi ichki modul - indeks fayli bo'lgan fayl yoki k
 
 Har bir qatlam o'ziga xos semantik ma'noga ega bo'lib, kodingizdagi modulga qanday mas'uliyat yuklanishi kerakligini aniqlashga yordam beradi. Qatlam nomlari va qiymatlari Feature-Sliced ​​Design yordamida qurilgan barcha loyihalar uchun standartlashtirilgan. Hammasi bo'lib **7 ta qatlam** mavjud bo'lib, ular eng katta mas'uliyat va bog'liqlikdan tortib to eng kichikgacha tartiblangan:
 
-![Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло.](/documentation/uz/img/layers/folders-graphic-light.svg#light-mode-only) ![Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло.](/documentation/uz/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло.](/uz/img/layers/folders-graphic-light.svg#light-mode-only) ![Дерево файловой системы с одной корневой папкой src и семью подпапками: app, processes, pages, widgets, features, entities, shared. Папка processes отображена немного тускло.](/uz/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App (Ilova)
 2. Processes (Jarayonlar, eski qatlam)
@@ -8066,7 +8066,7 @@ This hurts the discoverability of a slice because you can't easily tell what the
 
 ## Public API for cross-imports[​](#public-api-for-cross-imports "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Cross-imports are a situation when one slice imports from another slice on the same layer. Usually that is prohibited by the [import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers), but often there are legitimate reasons to cross-import. For example, business entities often reference each other in the real world, and it's best to reflect these relationships in the code instead of working around them.
+Cross-imports are a situation when one slice imports from another slice on the same layer. Usually that is prohibited by the [import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers), but often there are legitimate reasons to cross-import. For example, business entities often reference each other in the real world, and it's best to reflect these relationships in the code instead of working around them.
 
 For this purpose, there's a special kind of public API, also known as the `@x`-notation. If you have entities A and B, and entity B needs to import from entity A, then entity A can declare a separate public API just for entity B.
 
@@ -8098,7 +8098,7 @@ Index files like `index.js`, also known as barrel files, are the most common way
 
 Circular import is when two or more files import each other in a circle.
 
-![Three files importing each other in a circle](/documentation/uz/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/documentation/uz/img/circular-import-dark.svg#dark-mode-only)
+![Three files importing each other in a circle](/uz/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/uz/img/circular-import-dark.svg#dark-mode-only)
 
 Pictured above: three files, `fileA.js`, `fileB.js`, and `fileC.js`, importing each other in a circle.
 
@@ -8198,13 +8198,13 @@ The layers Shared and App don't contain slices. That is because Shared should co
 
 Slices are meant to be independent and highly cohesive groups of code files. The graphic below might help to visualize the tricky concepts of *cohesion* and *coupling*:
 
-![](/documentation/uz/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/uz/img/coupling-cohesion-dark.svg#dark-mode-only)
+![](/uz/img/coupling-cohesion-light.svg#light-mode-only)![](/uz/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
 An ideal slice is independent from other slices on its layer (zero coupling) and contains most of the code related to its primary goal (high cohesion).
 
-The independence of slices is enforced by the [import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers):
+The independence of slices is enforced by the [import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers):
 
 > *A module (file) in a slice can only import other slices when they are located on layers strictly below.*
 
@@ -8216,13 +8216,13 @@ Inside a slice, the code could be organized in any way that you want. That doesn
 >
 > *Modules outside of this slice/segment can only reference the public API, not the internal file structure of the slice/segment.*
 
-Read more about the rationale of public APIs and the best practices on creating one in the [Public API reference](/documentation/uz/docs/reference/public-api.md).
+Read more about the rationale of public APIs and the best practices on creating one in the [Public API reference](/uz/docs/reference/public-api.md).
 
 ### Slice groups[​](#slice-groups "Sarlavhaga to'g'ridan-to'g'ri havola")
 
 Closely related slices can be structurally grouped in a folder, but they should exercise the same isolation rules as other slices — there should be **no code sharing** in that folder.
 
-![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/documentation/uz/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
+![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/uz/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## Segments[​](#segments "Sarlavhaga to'g'ridan-to'g'ri havola")
 
@@ -8236,7 +8236,7 @@ There a few standardized segment names:
 * `lib` — library code that other modules on this slice need.
 * `config` — configuration files and feature flags.
 
-See the [Layers page](/documentation/uz/docs/reference/layers.md#layer-definitions) for examples of what each of these segments might be used for on different layers.
+See the [Layers page](/uz/docs/reference/layers.md#layer-definitions) for examples of what each of these segments might be used for on different layers.
 
 You can also create custom segments. The most common places for custom segments are the App layer and the Shared layer, where slices don't make sense.
 

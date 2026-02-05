@@ -244,7 +244,7 @@ Shared는 모든 layer가 의존할 수 있는 **공통 의존 지점이**기 �
 
 여러 페이지에서 반복적으로 사용되는 Redux **slice**는 대부분 **product, user**처럼 명확한 **business entity**를 표현합니다.<br /><!-- -->이러한 slice는 **Entities layer**로 이동하며, **entity**마다 별도의 폴더를 구성합니다.<br /><!-- -->반대로, 댓글 작성처럼 **사용자의 특정 행동(action)** 을 중심으로 한 **slice**는 **Features layer**로 옮겨 독립적으로 관리합니다.
 
-**Entities**와 **Features**는 서로 의존하지 않고 사용할 수 있도록 설계해야 합니다.<br /><!-- -->Entity 간의 관계가 필요하다면 [Business-Entities Cross-Relations 가이드](/documentation/kr/docs/guides/examples/types.md#business-entities-and-their-cross-references)를 참고해 구조화하면 됩니다.<br /><!-- -->해당 **slice**와 연관된 API 함수는 `📁 shared/api`에 그대로 두어도 괜찮습니다.
+**Entities**와 **Features**는 서로 의존하지 않고 사용할 수 있도록 설계해야 합니다.<br /><!-- -->Entity 간의 관계가 필요하다면 [Business-Entities Cross-Relations 가이드](/kr/docs/guides/examples/types.md#business-entities-and-their-cross-references)를 참고해 구조화하면 됩니다.<br /><!-- -->해당 **slice**와 연관된 API 함수는 `📁 shared/api`에 그대로 두어도 괜찮습니다.
 
 ### 7단계: modules 폴더 리팩터링[​](#refactor-your-modules "해당 헤딩으로 이동")
 

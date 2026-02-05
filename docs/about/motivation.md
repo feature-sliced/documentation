@@ -2,7 +2,7 @@
 
 The main idea of **Feature-Sliced Design** is to facilitate and reduce the cost of developing complex and developing projects, based on [combining research results, discussing the experience of various kinds of a wide range of developers](https://github.com/feature-sliced/documentation/discussions).
 
-Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability](/documentation/docs/about/mission.md).
+Obviously, this will not be a silver bullet, and of course, the methodology will have its own [limits of applicability](/docs/about/mission.md).
 
 Nevertheless, there are reasonable questions regarding *the feasibility of such a methodology as a whole*
 
@@ -108,7 +108,7 @@ Yes, the most important thing for MVP is *"features, not the architecture laid d
 
 ## Plans[​](#plans "Direct link to heading")
 
-The main part of the goals [is set out here](/documentation/docs/about/mission.md#goals), but in addition, it is worth talking about our expectations from the methodology in the future
+The main part of the goals [is set out here](/docs/about/mission.md#goals), but in addition, it is worth talking about our expectations from the methodology in the future
 
 ### Combining experience[​](#combining-experience "Direct link to heading")
 
@@ -131,5 +131,5 @@ If everything goes well, then the methodology will not be limited only to the sp
 ## See also[​](#see-also "Direct link to heading")
 
 * [(Discussion) Don't need a methodology?](https://github.com/feature-sliced/documentation/discussions/27)
-* [About the methodology's mission: goals and limitations](/documentation/docs/about/mission.md)
-* [Types of knowledge in the project](/documentation/docs/about/understanding/knowledge-types.md)
+* [About the methodology's mission: goals and limitations](/docs/about/mission.md)
+* [Types of knowledge in the project](/docs/about/understanding/knowledge-types.md)

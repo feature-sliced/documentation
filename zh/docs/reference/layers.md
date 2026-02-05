@@ -4,7 +4,7 @@
 
 总共有 **7 个 layers**，按从最高责任和 依赖到最低排列：
 
-![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/zh/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/zh/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/zh/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/zh/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App
 2. Processes (deprecated)
@@ -88,7 +88,7 @@ entities/song/@x/artist.ts
 export type { Song } from "../model/song.ts";
 ```
 
-在[交叉导入的公共API](/documentation/zh/docs/reference/public-api.md#public-api-for-cross-imports)部分了解更多关于`@x`标记法的信息。
+在[交叉导入的公共API](/zh/docs/reference/public-api.md#public-api-for-cross-imports)部分了解更多关于`@x`标记法的信息。
 
 ### Features[​](#features "标题的直接链接")
 

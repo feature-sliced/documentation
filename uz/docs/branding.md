@@ -29,17 +29,17 @@ Tort tasviri 🍰 FSD-ning asosiy tushunchalarini yaxshi aks ettiradi, shuning u
 
 FSD har xil konteksda bir nechta logotipga ega, lekin **primary** dan foydalanish tavsiya etiladi
 
-|                                 |                                                                                                                        |                                    |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| Tema                            | Logo (Ctrl/Cmd + Click yuklab olish uchun)                                                                             | Foydalanish                        |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/uz/img/brand/logo-primary.png)](/documentation/uz/img/brand/logo-primary.png)          | Aksariyat hollarda afzal ko'riladi |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/uz/img/brand/logo-flat.png)](/documentation/uz/img/brand/logo-flat.png)                   | Bir rangli kontekst uchun          |
-| monochrome<br />(#FFF)          | [![logo-monochrome](/documentation/uz/img/brand/logo-monochrome.png)](/documentation/uz/img/brand/logo-monochrome.png) | Oq qora kontekst uchun             |
-| square<br />(#3193FF)           | [![logo-square](/documentation/uz/img/brand/logo-square.png)](/documentation/uz/img/brand/logo-square.png)             | Kvadrat o'lchamlar uchun           |
+|                                 |                                                                                            |                                    |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------- |
+| Tema                            | Logo (Ctrl/Cmd + Click yuklab olish uchun)                                                 | Foydalanish                        |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/uz/img/brand/logo-primary.png)](/uz/img/brand/logo-primary.png)          | Aksariyat hollarda afzal ko'riladi |
+| flat<br />(#3193FF)             | [![logo-flat](/uz/img/brand/logo-flat.png)](/uz/img/brand/logo-flat.png)                   | Bir rangli kontekst uchun          |
+| monochrome<br />(#FFF)          | [![logo-monochrome](/uz/img/brand/logo-monochrome.png)](/uz/img/brand/logo-monochrome.png) | Oq qora kontekst uchun             |
+| square<br />(#3193FF)           | [![logo-square](/uz/img/brand/logo-square.png)](/uz/img/brand/logo-square.png)             | Kvadrat o'lchamlar uchun           |
 
 ## Bannerlar & Sxemalar[​](#banners--schemes "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-[![banner-primary](/documentation/uz/img/brand/banner-primary.jpg)](/documentation/uz/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/uz/img/brand/banner-monochrome.jpg)](/documentation/uz/img/brand/banner-monochrome.jpg)
+[![banner-primary](/uz/img/brand/banner-primary.jpg)](/uz/img/brand/banner-primary.jpg) [![banner-monochrome](/uz/img/brand/banner-monochrome.jpg)](/uz/img/brand/banner-monochrome.jpg)
 
 ## Social Preview[​](#social-preview "Sarlavhaga to'g'ridan-to'g'ri havola")
 

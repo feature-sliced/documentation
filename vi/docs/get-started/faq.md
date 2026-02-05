@@ -19,13 +19,13 @@ Nếu bạn cần layout markup thuần túy, bạn có thể giữ chúng trong
 
 *Entity* là khái niệm thực tế mà app của bạn đang làm việc với. *Feature* là tương tác cung cấp giá trị thực tế cho người dùng app của bạn, điều mà mọi người muốn làm với các entity của bạn.
 
-Để biết thêm thông tin cùng với ví dụ, xem trang Reference về [slice](/documentation/vi/docs/reference/layers.md#entities).
+Để biết thêm thông tin cùng với ví dụ, xem trang Reference về [slice](/vi/docs/reference/layers.md#entities).
 
 ### Tôi có thể embed page/feature/entity vào nhau không?[​](#tôi-có-thể-embed-pagefeatureentity-vào-nhau-không "Link trực tiếp đến heading")
 
 Có, nhưng việc embedding này nên xảy ra ở các layer cao hơn. Ví dụ, bên trong widget, bạn có thể import cả feature rồi insert feature này vào feature khác như props/children.
 
-Bạn không thể import feature này từ feature khác, điều này bị cấm bởi [**import rule on layers**](/documentation/vi/docs/reference/layers.md#import-rule-on-layers).
+Bạn không thể import feature này từ feature khác, điều này bị cấm bởi [**import rule on layers**](/vi/docs/reference/layers.md#import-rule-on-layers).
 
 ### Còn Atomic Design thì sao?[​](#còn-atomic-design-thì-sao "Link trực tiếp đến heading")
 
@@ -39,7 +39,7 @@ Có! <https://github.com/feature-sliced/awesome>
 
 ### Tại sao tôi cần Feature-Sliced Design?[​](#tại-sao-tôi-cần-feature-sliced-design "Link trực tiếp đến heading")
 
-Nó giúp bạn và team của bạn nhanh chóng tổng quan project theo các component mang lại giá trị chính. Kiến trúc được tiêu chuẩn hóa giúp tăng tốc onboarding và giải quyết các tranh luận về cấu trúc code. Xem trang [motivation](/documentation/vi/docs/about/motivation.md) để tìm hiểu thêm về lý do FSD được tạo ra.
+Nó giúp bạn và team của bạn nhanh chóng tổng quan project theo các component mang lại giá trị chính. Kiến trúc được tiêu chuẩn hóa giúp tăng tốc onboarding và giải quyết các tranh luận về cấu trúc code. Xem trang [motivation](/vi/docs/about/motivation.md) để tìm hiểu thêm về lý do FSD được tạo ra.
 
 ### Developer mới có cần architecture/methodology không?[​](#developer-mới-có-cần-architecturemethodology-không "Link trực tiếp đến heading")
 
@@ -49,4 +49,4 @@ Có thì tốt hơn là không
 
 ### Làm thế nào để làm việc với authorization context?[​](#làm-thế-nào-để-làm-việc-với-authorization-context "Link trực tiếp đến heading")
 
-Trả lời [ở đây](/documentation/vi/docs/guides/examples/auth.md)
+Trả lời [ở đây](/vi/docs/guides/examples/auth.md)

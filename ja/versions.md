@@ -4,8 +4,8 @@
 
 ここで現在公開されているバージョンのドキュメントを見つけることができます
 
-| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/documentation/ja/docs/get-started/overview.md) | [Migration from v1](/documentation/ja/docs/guides/migration/from-v1.md) | [Migration from v2.0](/documentation/ja/docs/guides/migration/from-v1.md) |
-| ---- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/ja/docs/get-started/overview.md) | [Migration from v1](/ja/docs/guides/migration/from-v1.md) | [Migration from v2.0](/ja/docs/guides/migration/from-v1.md) |
+| ---- | ---------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
 
 ### Feature Slices v1 (Legacy)
 

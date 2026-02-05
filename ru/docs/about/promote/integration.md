@@ -10,7 +10,7 @@
 
 **Преимущества**:
 
-* [Overview](/documentation/ru/docs/get-started/overview.md#advantages)
+* [Overview](/ru/docs/get-started/overview.md#advantages)
 * CodeReview
 * Onboarding
 

@@ -156,7 +156,7 @@ To bring the release of the article closer, you can:
 
 Framework-agnostic, conventional-approach
 
-* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/documentation/docs/about/motivation.md)
+* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/docs/about/motivation.md)
 * [(Thread) About the applicability of the methodology for different frameworks](https://t.me/feature_sliced/3867)
 
 ## Atomic Design[​](#atomic-design "Direct link to heading")

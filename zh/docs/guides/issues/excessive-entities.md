@@ -80,7 +80,7 @@ Instead, store authentication-related data in `shared/auth` or `shared/api`:
       📄 order.ts
 ```
 
-For more details on implementing authentication, see [the Authentication guide](/documentation/zh/docs/guides/examples/auth.md).
+For more details on implementing authentication, see [the Authentication guide](/zh/docs/guides/examples/auth.md).
 
 ### 5. Minimize Cross-Imports[​](#5-minimize-cross-imports "标题的直接链接")
 

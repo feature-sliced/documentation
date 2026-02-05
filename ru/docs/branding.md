@@ -27,17 +27,17 @@ FSD прежде имел [другую легаси-айдентику](https:/
 
 FSD имеет несколько вариаций логотипа для разных контекстов, но рекомендовано использовать **primary**
 
-|                                 |                                                                                                                        |                                       |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| Тема                            | Лого (Ctrl/Cmd + Click для скачивания)                                                                                 | Использование                         |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/ru/img/brand/logo-primary.png)](/documentation/ru/img/brand/logo-primary.png)          | Предпочтительно в большинстве случаев |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/ru/img/brand/logo-flat.png)](/documentation/ru/img/brand/logo-flat.png)                   | Для одноцветного контекста            |
-| monochrome<br />(#FFF)          | [![logo-monocrhome](/documentation/ru/img/brand/logo-monochrome.png)](/documentation/ru/img/brand/logo-monochrome.png) | Для черно-белого контекста            |
-| square<br />(#3193FF)           | [![logo-square](/documentation/ru/img/brand/logo-square.png)](/documentation/ru/img/brand/logo-square.png)             | Для квадратных размеров               |
+|                                 |                                                                                            |                                       |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------- |
+| Тема                            | Лого (Ctrl/Cmd + Click для скачивания)                                                     | Использование                         |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/ru/img/brand/logo-primary.png)](/ru/img/brand/logo-primary.png)          | Предпочтительно в большинстве случаев |
+| flat<br />(#3193FF)             | [![logo-flat](/ru/img/brand/logo-flat.png)](/ru/img/brand/logo-flat.png)                   | Для одноцветного контекста            |
+| monochrome<br />(#FFF)          | [![logo-monocrhome](/ru/img/brand/logo-monochrome.png)](/ru/img/brand/logo-monochrome.png) | Для черно-белого контекста            |
+| square<br />(#3193FF)           | [![logo-square](/ru/img/brand/logo-square.png)](/ru/img/brand/logo-square.png)             | Для квадратных размеров               |
 
 ## Баннеры & Схемы[​](#banners--schemes "Прямая ссылка на этот заголовок")
 
-[![banner-primary](/documentation/ru/img/brand/banner-primary.jpg)](/documentation/ru/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/ru/img/brand/banner-monochrome.jpg)](/documentation/ru/img/brand/banner-monochrome.jpg)
+[![banner-primary](/ru/img/brand/banner-primary.jpg)](/ru/img/brand/banner-primary.jpg) [![banner-monochrome](/ru/img/brand/banner-monochrome.jpg)](/ru/img/brand/banner-monochrome.jpg)
 
 ## Social Preview[​](#social-preview "Прямая ссылка на этот заголовок")
 

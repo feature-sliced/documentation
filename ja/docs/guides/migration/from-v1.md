@@ -115,7 +115,7 @@ v2では、**ロジックの複雑さと強い結合の問題を解消するた�
 
 ### `BREAKING` 抽象化と命名[​](#breaking-抽象化と命名 "この見出しへの直接リンク")
 
-具体的な抽象化とその命名に関する[明確なガイドライン](/documentation/ja/docs/about/understanding/naming.md)が定義されています。
+具体的な抽象化とその命名に関する[明確なガイドライン](/ja/docs/about/understanding/naming.md)が定義されています。
 
 #### Layers[​](#layers "この見出しへの直接リンク")
 
@@ -150,7 +150,7 @@ v2では、**ロジックの複雑さと強い結合の問題を解消するた�
 
 ### `REFINED` 低結合[​](#refined-低結合 "この見出しへの直接リンク")
 
-新しいレイヤーのおかげで、モジュール間の[低結合の原則](/documentation/ja/docs/reference/slices-segments.md#zero-coupling-high-cohesion)を遵守することがはるかに簡単になりました。
+新しいレイヤーのおかげで、モジュール間の[低結合の原則](/ja/docs/reference/slices-segments.md#zero-coupling-high-cohesion)を遵守することがはるかに簡単になりました。
 
 *それでも、モジュールを「切り離す」ことが非常に難しい場合は、できるだけ避けることが推奨されます*。
 

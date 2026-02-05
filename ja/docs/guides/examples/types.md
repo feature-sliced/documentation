@@ -63,7 +63,7 @@ export function listSongs() {
 }
 ```
 
-`Song`型が他の`Artist`エンティティを参照していることに気付くかもしれません。これはリクエストをShared層に保存する利点です。実際の型が相互に参照されることが多いです。この関数を`entities/song/api`に置いた場合、`entities/artist`から`Artist`を単純にインポートすることはできません。なぜなら、FSDはスライス間のクロスインポートを[レイヤーのインポートルール](/documentation/ja/docs/reference/layers.md#import-rule-on-layers)によって制限しているからです。
+`Song`型が他の`Artist`エンティティを参照していることに気付くかもしれません。これはリクエストをShared層に保存する利点です。実際の型が相互に参照されることが多いです。この関数を`entities/song/api`に置いた場合、`entities/artist`から`Artist`を単純にインポートすることはできません。なぜなら、FSDはスライス間のクロスインポートを[レイヤーのインポートルール](/ja/docs/reference/layers.md#import-rule-on-layers)によって制限しているからです。
 
 > スライス内のモジュールは、下層にあるスライスのみをインポートできる。
 
@@ -376,7 +376,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-`shared/store`に型付けされた`useAppDispatch`と`useAppSelector`のフックを持つことは良いアイデアですが、[レイヤーのインポートルール](/documentation/ja/docs/reference/layers.md#import-rule-on-layers)のために、App層から`RootState`と`AppDispatch`をインポートすることはできません。
+`shared/store`に型付けされた`useAppDispatch`と`useAppSelector`のフックを持つことは良いアイデアですが、[レイヤーのインポートルール](/ja/docs/reference/layers.md#import-rule-on-layers)のために、App層から`RootState`と`AppDispatch`をインポートすることはできません。
 
 > スライス内のモジュールは、下層にあるスライスのみをインポートできる。
 

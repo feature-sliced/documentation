@@ -80,7 +80,7 @@ Instead, store authentication-related data in `shared/auth` or `shared/api`:
       📄 order.ts
 ```
 
-For more details on implementing authentication, see [the Authentication guide](/documentation/ru/docs/guides/examples/auth.md).
+For more details on implementing authentication, see [the Authentication guide](/ru/docs/guides/examples/auth.md).
 
 ### 5. Minimize Cross-Imports[​](#5-minimize-cross-imports "Прямая ссылка на этот заголовок")
 

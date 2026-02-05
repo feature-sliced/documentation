@@ -1,26 +1,26 @@
 [跳转到主要内容](#__docusaurus_skipToContent_fallback)
 
-[![logo](/documentation/zh/img/brand/logo-primary.png)![logo](/documentation/zh/img/brand/logo-primary.png)](/documentation/zh/.md)
+[![logo](/zh/img/brand/logo-primary.png)![logo](/zh/img/brand/logo-primary.png)](/zh/.md)
 
-[****](/documentation/zh/.md)[📖 文档](/documentation/zh/docs/get-started/overview.md)[💫 社区](/documentation/zh/community.md)[📝 博客](/documentation/zh/blog)[🛠 示例](/documentation/zh/examples.md)
+[****](/zh/.md)[📖 文档](/zh/docs/get-started/overview.md)[💫 社区](/zh/community.md)[📝 博客](/zh/blog)[🛠 示例](/zh/examples.md)
 
-[v2.1](/documentation/zh/docs/get-started/overview.md)
+[v2.1](/zh/docs/get-started/overview.md)
 
-* [v2.1](/documentation/zh/docs/get-started/overview.md)
+* [v2.1](/zh/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
-* [All versions](/documentation/zh/versions.md)
+* [All versions](/zh/versions.md)
 
 [中文](#)
 
-* [Русский](/documentation/ru/search)
-* [English](/documentation/search)
-* [O'zbekcha](/documentation/uz/search)
-* [한국어](/documentation/kr/search)
-* [日本語](/documentation/ja/search)
-* [Tiếng Việt](/documentation/vi/search)
-* [中文](/documentation/zh/search.md)
+* [Русский](/ru/search)
+* [English](/search)
+* [O'zbekcha](/uz/search)
+* [한국어](/kr/search)
+* [日本語](/ja/search)
+* [Tiếng Việt](/vi/search)
+* [中文](/zh/search.md)
 * [Help Us Translate](https://github.com/feature-sliced/documentation/issues/244)
 
 [](https://discord.gg/S8MzWTUsmp)[](https://github.com/feature-sliced/documentation)
@@ -35,9 +35,9 @@
 
 规范
 
-* [文档](/documentation/zh/docs/get-started/overview.md)
-* [社区](/documentation/zh/community.md)
-* [帮助](/documentation/zh/nav.md)
+* [文档](/zh/docs/get-started/overview.md)
+* [社区](/zh/community.md)
+* [帮助](/zh/nav.md)
 * [讨论](https://github.com/feature-sliced/documentation/discussions)
 
 社区
@@ -53,8 +53,8 @@
 * [GitHub](https://github.com/feature-sliced)
 * [Contribution Guide](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
 * [许可证](https://github.com/feature-sliced/documentation/blob/master/LICENSE)
-* [Docs for LLMs](/documentation/zh/docs/llms.md)
+* [Docs for LLMs](/zh/docs/llms.md)
 
-[![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/zh/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/zh/img/brand/logo-primary.png)](https://github.com/feature-sliced)
+[![Feature-Sliced Design - Architectural methodology for frontend projects](/zh/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/zh/img/brand/logo-primary.png)](https://github.com/feature-sliced)
 
 版权所有 © 2018-2025 Feature-Sliced Design

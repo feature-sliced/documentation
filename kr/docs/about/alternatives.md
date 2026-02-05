@@ -156,7 +156,7 @@ WIP
 
 Framework-agnostic, conventional-approach
 
-* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/documentation/kr/docs/about/motivation.md)
+* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/kr/docs/about/motivation.md)
 * [(Thread) About the applicability of the methodology for different frameworks](https://t.me/feature_sliced/3867)
 
 ## Atomic Design[​](#atomic-design "해당 헤딩으로 이동")

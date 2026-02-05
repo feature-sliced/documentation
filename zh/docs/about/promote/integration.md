@@ -10,7 +10,7 @@
 
 **优势：**
 
-* [概览](/documentation/zh/docs/get-started/overview.md)
+* [概览](/zh/docs/get-started/overview.md)
 * 代码审查
 * 入职
 

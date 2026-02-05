@@ -6,7 +6,7 @@ FSD는 단순한 폴더 규칙이 아닙니다.<br /><!-- -->실제 개발 환�
 
 * [Steiger](https://github.com/feature-sliced/steiger) — 프로젝트 구조가 FSD 기준에 맞는지 검사합니다.
 * [Awesome](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) — FSD 예제와 도구를 모아둔 참고 리스트입니다.
-* [예제 모음](/documentation/kr/examples.md) — 다양한 프로젝트에서 사용된 폴더 구조 예시를 볼 수 있습니다.
+* [예제 모음](/kr/examples.md) — 다양한 프로젝트에서 사용된 폴더 구조 예시를 볼 수 있습니다.
 
 ## 내 프로젝트에 적합할까요?[​](#is-it-right-for-me "해당 헤딩으로 이동")
 
@@ -21,7 +21,7 @@ FSD는 웹, 모바일, 데스크톱 등 **프론트엔드 애플리케이션을 
 
 다만 모든 프로젝트가 FSD에 꼭 맞는 것은 아닙니다.<br /><!-- -->예시로 각 페이지가 독립적인 특성을 가진 프로젝트에서는 오히려 구조가 복잡해질 수 있습니다.<br /><!-- -->따라서 도입 전에는 **파일럿 프로젝트로 먼저 검증해보는 것**을 적극 추천합니다.
 
-구조를 전환하기로 했다면 [Migration 가이드](/documentation/kr/docs/guides/migration/from-custom.md)를 참고하세요.
+구조를 전환하기로 했다면 [Migration 가이드](/kr/docs/guides/migration/from-custom.md)를 참고하세요.
 
 ## 구조 예시[​](#basic-example "해당 헤딩으로 이동")
 
@@ -64,7 +64,7 @@ FSD는 웹, 모바일, 데스크톱 등 **프론트엔드 애플리케이션을 
 
 FSD는 다음과 같은 3단계 계층 구조를 따릅니다:
 
-![아래에 설명된 FSD 개념의 계층 구조](/documentation/kr/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
+![아래에 설명된 FSD 개념의 계층 구조](/kr/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
 위 다이어그램은 FSD의 계층 구조를 시각적으로 보여줍니다.<br />세 개의 수직 블록 그룹은 각각 **Layer**, **Slice**, **Segment**를 나타냅니다.
 
@@ -124,10 +124,10 @@ FSD 구조를 사용하면 다음과 같은 장점을 얻을 수 있습니다:
 2. 기존 UI를 `widgets`, `pages` Layer로 분배합니다. 이 과정에서 FSD 규칙을 위반해도 괜찮습니다.
 3. Import 위반을 하나씩 해결하면서, 코드에서 로직을 분리해 `entities`와 `features`로 옮깁니다.
 
-> 도입 단계에서는 새로운 대규모 Entity나 복잡한 기능을 추가하지 않는 것이 좋습니다.<br /><!-- -->구조를 안정적으로 정리하는 데 집중하는 것이 우선입니다.<br /><!-- -->자세한 절차는 [Migration 가이드](/documentation/kr/docs/guides/migration/from-custom.md)를 참고하세요.
+> 도입 단계에서는 새로운 대규모 Entity나 복잡한 기능을 추가하지 않는 것이 좋습니다.<br /><!-- -->구조를 안정적으로 정리하는 데 집중하는 것이 우선입니다.<br /><!-- -->자세한 절차는 [Migration 가이드](/kr/docs/guides/migration/from-custom.md)를 참고하세요.
 
 ## 다음 단계[​](#next-steps "해당 헤딩으로 이동")
 
-* [Tutorial](/documentation/kr/docs/get-started/tutorial.md)을 통해 FSD 방식의 사고를 익혀보세요.
-* 다양한 [예제](/documentation/kr/examples.md)를 통해 실제 프로젝트 구조를 살펴보세요.
+* [Tutorial](/kr/docs/get-started/tutorial.md)을 통해 FSD 방식의 사고를 익혀보세요.
+* 다양한 [예제](/kr/examples.md)를 통해 실제 프로젝트 구조를 살펴보세요.
 * 궁금한 점은 [Telegram 커뮤니티](https://t.me/feature_sliced)에서 질문해보세요.

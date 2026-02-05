@@ -136,7 +136,7 @@ TL;DR
 
    * 这意味着它应该清楚地解释\_如何在它们之间分配代码\_，这意味着这些实体的命名也应该在规范中确定。
 
-2. 方法论应该帮助架构\*\*[轻松适应项目不断变化的需求](/documentation/zh/docs/about/understanding/architecture.md#adaptability)\*\*
+2. 方法论应该帮助架构\*\*[轻松适应项目不断变化的需求](/zh/docs/about/understanding/architecture.md#adaptability)\*\*
 
 ## 另请参阅[​](#另请参阅 "标题的直接链接")
 

@@ -4,19 +4,19 @@
 
 ## 选择层[​](#选择层 "标题的直接链接")
 
-[下载 PDF](/documentation/zh/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
+[下载 PDF](/zh/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
 
-![所有层的定义和自检问题](/documentation/zh/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
+![所有层的定义和自检问题](/zh/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
 
 ## 示例[​](#示例 "标题的直接链接")
 
 ### Tweet[​](#tweet "标题的直接链接")
 
-![decomposed-tweet-bordered-bgLight](/documentation/zh/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/zh/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "标题的直接链接")
 
-![decomposed-github-bordered](/documentation/zh/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/zh/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## 另请参阅[​](#另请参阅 "标题的直接链接")
 

@@ -113,7 +113,7 @@
 
 ### `BREAKING` 抽象和命名[​](#breaking-抽象和命名 "标题的直接链接")
 
-现在定义了具体的抽象和[明确的命名建议](/documentation/zh/docs/about/understanding/naming.md)
+现在定义了具体的抽象和[明确的命名建议](/zh/docs/about/understanding/naming.md)
 
 #### 层级[​](#层级 "标题的直接链接")
 
@@ -148,7 +148,7 @@
 
 ### `REFINED` 低耦合[​](#refined-低耦合 "标题的直接链接")
 
-现在由于新的层级，[遵循模块间低耦合原则](/documentation/zh/docs/reference/slices-segments.md#zero-coupling-high-cohesion)变得更加容易。
+现在由于新的层级，[遵循模块间低耦合原则](/zh/docs/reference/slices-segments.md#zero-coupling-high-cohesion)变得更加容易。
 
 *同时，仍然建议尽可能避免极难"解耦"模块的情况*
 

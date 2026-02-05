@@ -199,7 +199,7 @@ cookie를 사용하면, 브라우저가 요청마다 token을 자동으로 넣�
 
 사용 중인 프레임워크가 서버 사이드 기능을 제공한다면(예: [Remix](https://remix.run)),<br /><!-- -->서버 측 cookie 관련 로직을 shared/api에 두는 것을 권장합니다.
 
-Remix에서의 구현 예시는 [튜토리얼의 Authentication 섹션](/documentation/kr/docs/get-started/tutorial.md#authentication)을 참고하면 됩니다.
+Remix에서의 구현 예시는 [튜토리얼의 Authentication 섹션](/kr/docs/get-started/tutorial.md#authentication)을 참고하면 됩니다.
 
 하지만 cookie를 사용할 수 없는 환경도 있습니다.<br /><!-- -->이 경우에는 token을 클라이언트에서 직접 저장하고, token 만료를 감지하고,<br /><!-- -->refresh token을 사용해 새 token을 발급받고 기존 요청을 다시 실행하는 등의 로직을 함께 구현해야 합니다.
 
@@ -244,7 +244,7 @@ User entity의 model segment에 **reactive store**를 만들고,<br /><!-- -->�
 
 다만 API client는 보통 shared/api에 정의되거나,<br /><!-- -->여러 entity에 분산되어 있는 경우가 많습니다.
 
-따라서 layer의 import 규칙([import rule on layers](/documentation/kr/docs/reference/layers.md#import-rule-on-layers))을 지키면서도 다른 request에서 이 token을 안전하게 사용할 수 있어야 합니다.
+따라서 layer의 import 규칙([import rule on layers](/kr/docs/reference/layers.md#import-rule-on-layers))을 지키면서도 다른 request에서 이 token을 안전하게 사용할 수 있어야 합니다.
 
 > Layer 규칙 — Slice의 module은 **자기보다 아래 layer**의 Slice만 import할 수 있습니다.
 

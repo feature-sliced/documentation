@@ -70,4 +70,4 @@ entities/B/some/file.ts
 import type { EntityA } from "entities/A/@x/B";
 ```
 
-자세한 내용은 [Public API for cross-imports](/documentation/kr/docs/reference/public-api.md#public-api-for-cross-imports) 문서를 참고하세요.
+자세한 내용은 [Public API for cross-imports](/kr/docs/reference/public-api.md#public-api-for-cross-imports) 문서를 참고하세요.

@@ -1,26 +1,26 @@
 [Asosiy tarkibga o'tish](#__docusaurus_skipToContent_fallback)
 
-[![logo](/documentation/uz/img/brand/logo-primary.png)![logo](/documentation/uz/img/brand/logo-primary.png)](/documentation/uz/.md)
+[![logo](/uz/img/brand/logo-primary.png)![logo](/uz/img/brand/logo-primary.png)](/uz/.md)
 
-[****](/documentation/uz/.md)[📖 Hujjatlar](/documentation/uz/docs/get-started/overview.md)[💫 Jamiyat](/documentation/uz/community.md)[📝 Blog](/documentation/uz/blog)[🛠 Namunalar](/documentation/uz/examples.md)
+[****](/uz/.md)[📖 Hujjatlar](/uz/docs/get-started/overview.md)[💫 Jamiyat](/uz/community.md)[📝 Blog](/uz/blog)[🛠 Namunalar](/uz/examples.md)
 
-[v2.1](/documentation/uz/docs/get-started/overview.md)
+[v2.1](/uz/docs/get-started/overview.md)
 
-* [v2.1](/documentation/uz/docs/get-started/overview.md)
+* [v2.1](/uz/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
-* [All versions](/documentation/uz/versions.md)
+* [All versions](/uz/versions.md)
 
 [O'zbekcha](#)
 
-* [Русский](/documentation/ru/search)
-* [English](/documentation/search)
-* [O'zbekcha](/documentation/uz/search.md)
-* [한국어](/documentation/kr/search)
-* [日本語](/documentation/ja/search)
-* [Tiếng Việt](/documentation/vi/search)
-* [中文](/documentation/zh/search)
+* [Русский](/ru/search)
+* [English](/search)
+* [O'zbekcha](/uz/search.md)
+* [한국어](/kr/search)
+* [日本語](/ja/search)
+* [Tiếng Việt](/vi/search)
+* [中文](/zh/search)
 * [Help Us Translate](https://github.com/feature-sliced/documentation/issues/244)
 
 [](https://discord.gg/S8MzWTUsmp)[](https://github.com/feature-sliced/documentation)
@@ -35,9 +35,9 @@ Powered by[](https://www.algolia.com/)
 
 Spetsifikatsiya
 
-* [Hujjatlar](/documentation/uz/docs/get-started/overview.md)
-* [Jamiyat](/documentation/uz/community.md)
-* [Yordam](/documentation/uz/nav.md)
+* [Hujjatlar](/uz/docs/get-started/overview.md)
+* [Jamiyat](/uz/community.md)
+* [Yordam](/uz/nav.md)
 * [Munozaralar](https://github.com/feature-sliced/documentation/discussions)
 
 Jamiyat
@@ -53,8 +53,8 @@ Yana
 * [GitHub](https://github.com/feature-sliced)
 * [Contribution Guide](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
 * [Litsenziya](https://github.com/feature-sliced/documentation/blob/master/LICENSE)
-* [Docs for LLMs](/documentation/uz/docs/llms.md)
+* [Docs for LLMs](/uz/docs/llms.md)
 
-[![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/uz/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/uz/img/brand/logo-primary.png)](https://github.com/feature-sliced)
+[![Feature-Sliced Design - Architectural methodology for frontend projects](/uz/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/uz/img/brand/logo-primary.png)](https://github.com/feature-sliced)
 
 Copyright © 2018-2025 Feature-Sliced Design

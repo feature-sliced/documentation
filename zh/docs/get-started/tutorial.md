@@ -4,7 +4,7 @@
 
 本教程将检查 Real World App，也称为 Conduit。Conduit 是一个基本的 [Medium](https://medium.com/) 克隆 — 它让您阅读和编写文章，以及对他人的文章进行评论。
 
-![Conduit home page](/documentation/zh/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Conduit home page](/zh/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 这是一个相当小的应用程序，所以我们将保持简单并避免过度分解。整个应用程序很可能只需要三个 layers：**App**、**Pages** 和 **Shared**。如果不是，我们将在过程中引入额外的 layers。准备好了吗？
 
@@ -41,11 +41,11 @@ Feature-Sliced Design 与无规则代码结构的关键区别是页面不能相�
 
 ### 仔细查看 feed[​](#仔细查看-feed "标题的直接链接")
 
-![Anonymous user’s perspective](/documentation/zh/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Anonymous user’s perspective](/zh/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 *Anonymous user’s perspective*
 
-![Authenticated user’s perspective](/documentation/zh/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
+![Authenticated user’s perspective](/zh/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
 
 *Authenticated user’s perspective*
 
@@ -139,7 +139,7 @@ Shared 与其他 layers 不同，它包含 segments 而不是 slices。这样，
 
 让我们也检查一个用于编辑而不是阅读的页面。例如，文章编写器：
 
-![Conduit post editor](/documentation/zh/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
+![Conduit post editor](/zh/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
 
 它看起来微不足道，但包含了我们尚未探索的应用程序开发的几个方面 — 表单验证、错误状态和数据持久化。
 
@@ -237,7 +237,7 @@ export default FeedPage;
 
 然后，如果您运行开发服务器并打开应用程序，您应该会看到 Conduit 横幅！
 
-![The banner of Conduit](/documentation/zh/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
+![The banner of Conduit](/zh/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
 
 ### API 客户端[​](#api-客户端 "标题的直接链接")
 
@@ -1285,7 +1285,7 @@ export default function App() {
 
 在这一点，您应该在主页上得到以下结果：
 
-![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/documentation/zh/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
+![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/zh/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
 
 The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.
 
@@ -2057,7 +2057,7 @@ export function Comments() {
 
 这样我们的文章阅读器也完成了！关注作者、点赞帖子和留下评论的按钮现在应该能按预期工作。
 
-![Article reader with functioning buttons to like and follow](/documentation/zh/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
+![Article reader with functioning buttons to like and follow](/zh/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
 
 Article reader with functioning buttons to like and follow
 
@@ -2369,7 +2369,7 @@ export default ArticleEditPage;
 
 我们现在完成了！登录并尝试创建一篇新文章。或者“忘记”编写文章并看到验证生效。
 
-![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/documentation/zh/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
+![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/zh/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
 
 The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: **“Describe what this article is about”** and **“Write the article itself”**.
 

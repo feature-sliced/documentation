@@ -27,17 +27,17 @@ FSD 以前有[另一个遗留身份](https://drive.google.com/drive/folders/11Y-
 
 FSD 有几种适用于不同上下文的 logo 变体，但建议优先使用 **primary**
 
-|                                 |                                                                                                                        |                    |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| 主题                            | Logo (Ctrl/Cmd + 点击下载)                                                                                             | 用法               |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/zh/img/brand/logo-primary.png)](/documentation/zh/img/brand/logo-primary.png)          | 在大多数情况下首选 |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/zh/img/brand/logo-flat.png)](/documentation/zh/img/brand/logo-flat.png)                   | 用于单色上下文     |
-| monochrome<br />(#FFF)          | [![logo-monocrhome](/documentation/zh/img/brand/logo-monochrome.png)](/documentation/zh/img/brand/logo-monochrome.png) | 用于灰度上下文     |
-| square<br />(#3193FF)           | [![logo-square](/documentation/zh/img/brand/logo-square.png)](/documentation/zh/img/brand/logo-square.png)             | 用于方形边界       |
+|                                 |                                                                                            |                    |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | ------------------ |
+| 主题                            | Logo (Ctrl/Cmd + 点击下载)                                                                 | 用法               |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/zh/img/brand/logo-primary.png)](/zh/img/brand/logo-primary.png)          | 在大多数情况下首选 |
+| flat<br />(#3193FF)             | [![logo-flat](/zh/img/brand/logo-flat.png)](/zh/img/brand/logo-flat.png)                   | 用于单色上下文     |
+| monochrome<br />(#FFF)          | [![logo-monocrhome](/zh/img/brand/logo-monochrome.png)](/zh/img/brand/logo-monochrome.png) | 用于灰度上下文     |
+| square<br />(#3193FF)           | [![logo-square](/zh/img/brand/logo-square.png)](/zh/img/brand/logo-square.png)             | 用于方形边界       |
 
 ## 横幅和方案[​](#横幅和方案 "标题的直接链接")
 
-[![banner-primary](/documentation/zh/img/brand/banner-primary.jpg)](/documentation/zh/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/zh/img/brand/banner-monochrome.jpg)](/documentation/zh/img/brand/banner-monochrome.jpg)
+[![banner-primary](/zh/img/brand/banner-primary.jpg)](/zh/img/brand/banner-primary.jpg) [![banner-monochrome](/zh/img/brand/banner-monochrome.jpg)](/zh/img/brand/banner-monochrome.jpg)
 
 ## 社交预览[​](#社交预览 "标题的直接链接")
 

@@ -4,19 +4,19 @@ Use this as a quick reference when you're deciding how to decompose your UI. PDF
 
 ## Choosing a layer[​](#choosing-a-layer "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-[Download PDF](/documentation/uz/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
+[Download PDF](/uz/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
 
-![Definitions of all layers and self-check questions](/documentation/uz/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
+![Definitions of all layers and self-check questions](/uz/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
 
 ## Examples[​](#examples "Sarlavhaga to'g'ridan-to'g'ri havola")
 
 ### Tweet[​](#tweet "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-![decomposed-tweet-bordered-bgLight](/documentation/uz/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/uz/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-![decomposed-github-bordered](/documentation/uz/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/uz/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## See also[​](#see-also "Sarlavhaga to'g'ridan-to'g'ri havola")
 

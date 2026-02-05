@@ -6,8 +6,8 @@ This page provides links and guidance for LLM crawlers.
 
 ### Files[​](#files "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-* [llms.txt](/documentation/uz/llms.txt)
-* [llms-full.txt](/documentation/uz/llms-full.txt)
+* [llms.txt](/uz/llms.txt)
+* [llms-full.txt](/uz/llms-full.txt)
 
 ### Notes[​](#notes "Sarlavhaga to'g'ridan-to'g'ri havola")
 

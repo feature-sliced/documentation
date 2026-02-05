@@ -4,19 +4,19 @@
 
 ## Выбор слоя[​](#choosing-a-layer "Прямая ссылка на этот заголовок")
 
-[Скачать PDF](/documentation/ru/assets/files/choosing-a-layer-ru-da11f37d28524420f3c747671072cf49.pdf)
+[Скачать PDF](/ru/assets/files/choosing-a-layer-ru-da11f37d28524420f3c747671072cf49.pdf)
 
-![Определения всех слоёв и вопросы для самопроверки](/documentation/ru/assets/images/choosing-a-layer-ru-b9d9bdfa29418ef5443937d8d2dc479e.jpg)
+![Определения всех слоёв и вопросы для самопроверки](/ru/assets/images/choosing-a-layer-ru-b9d9bdfa29418ef5443937d8d2dc479e.jpg)
 
 ## Примеры[​](#examples "Прямая ссылка на этот заголовок")
 
 ### Tweet[​](#tweet "Прямая ссылка на этот заголовок")
 
-![decomposed-tweet-bordered-bgLight](/documentation/ru/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/ru/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "Прямая ссылка на этот заголовок")
 
-![decomposed-github-bordered](/documentation/ru/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/ru/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## См. также[​](#see-also "Прямая ссылка на этот заголовок")
 

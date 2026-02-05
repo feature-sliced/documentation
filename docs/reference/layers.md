@@ -4,7 +4,7 @@ Layers are the first level of organisational hierarchy in Feature-Sliced Design.
 
 There are **7 layers** in total, arranged from most responsibility and dependency to least:
 
-![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App
 2. Processes (deprecated)
@@ -88,7 +88,7 @@ entities/song/@x/artist.ts
 export type { Song } from "../model/song.ts";
 ```
 
-Learn more about the `@x` notation in the [Public API for cross-imports](/documentation/docs/reference/public-api.md#public-api-for-cross-imports) section.
+Learn more about the `@x` notation in the [Public API for cross-imports](/docs/reference/public-api.md#public-api-for-cross-imports) section.
 
 ### Features[​](#features "Direct link to heading")
 

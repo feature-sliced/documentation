@@ -43,4 +43,4 @@ FSD方法論には、プロジェクト開発における日常的な問題の�
 
 ## 参照[​](#see-also "この見出しへの直接リンク")
 
-* [アーキテクチャの問題](/documentation/ja/docs/about/understanding/architecture.md#problems)
+* [アーキテクチャの問題](/ja/docs/about/understanding/architecture.md#problems)

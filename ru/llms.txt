@@ -1,7 +1,7 @@
 # Feature-Sliced Design
 
 
-## documentation
+## ru
 
 - [Примеры](/examples.md): Список сайтов, сделанных людьми с FSD
 - [🧭 Навигация](/nav.md): Feature-Sliced Design Navigation help page

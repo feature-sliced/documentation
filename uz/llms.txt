@@ -1,7 +1,7 @@
 # Feature-Sliced Design
 
 
-## documentation
+## uz
 
 - [Namunalar](/examples.md): FSD yordamida yaratilgan veb-saytlar ro'yxati
 - [🧭 Navigatsiya](/nav.md): Feature-Sliced Design Navigation help page

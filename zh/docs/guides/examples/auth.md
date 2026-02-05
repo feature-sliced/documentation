@@ -109,7 +109,7 @@ export function RegisterPage() {
 
 ## 如何将凭据发送到后端[​](#如何将凭据发送到后端 "标题的直接链接")
 
-创建一个向后端登录端点发出请求的函数。此函数可以使用 mutation 库（例如 TanStack Query）直接在组件代码中调用，也可以作为状态管理器中的副作用调用。如 [API 请求指南](/documentation/zh/docs/guides/examples/api-requests.md) 中所述，您可以将请求放在 `shared/api` 中或登录页面的 `api` segment 中。
+创建一个向后端登录端点发出请求的函数。此函数可以使用 mutation 库（例如 TanStack Query）直接在组件代码中调用，也可以作为状态管理器中的副作用调用。如 [API 请求指南](/zh/docs/guides/examples/api-requests.md) 中所述，您可以将请求放在 `shared/api` 中或登录页面的 `api` segment 中。
 
 ### 双因素认证[​](#双因素认证 "标题的直接链接")
 
@@ -123,7 +123,7 @@ export function RegisterPage() {
 
 无论您使用哪种身份验证方案，无论是简单的登录和密码、OAuth 还是双因素认证，最终您都会收到一个 token。应该存储此 token，以便后续请求可以识别自己。
 
-Web 应用程序的理想 token 存储是 **cookie** — 它不需要手动 token 存储或处理。因此，cookie 存储几乎不需要从前端架构方面考虑。如果您的前端框架有服务器端（例如 [Remix](https://remix.run)），那么您应该将服务器端 cookie 基础设施存储在 `shared/api` 中。在[教程的身份验证部分](/documentation/zh/docs/get-started/tutorial.md#authentication)中有一个如何使用 Remix 做到这一点的示例。
+Web 应用程序的理想 token 存储是 **cookie** — 它不需要手动 token 存储或处理。因此，cookie 存储几乎不需要从前端架构方面考虑。如果您的前端框架有服务器端（例如 [Remix](https://remix.run)），那么您应该将服务器端 cookie 基础设施存储在 `shared/api` 中。在[教程的身份验证部分](/zh/docs/get-started/tutorial.md#authentication)中有一个如何使用 Remix 做到这一点的示例。
 
 但是，有时 cookie 存储不是一个选项。在这种情况下，您将必须手动存储 token。除了存储 token 之外，您可能还需要设置在 token 过期时刷新 token 的逻辑。使用 FSD，有几个地方可以存储 token，以及几种方法可以使其对应用程序的其余部分可用。
 
@@ -151,7 +151,7 @@ FSD 项目通常有一个用户实体和/或当前用户实体。甚至可以是
 
 要在用户实体中存储token，请在`model`段中创建一个响应式存储。该存储可以同时包含token和用户对象。
 
-由于API客户端通常在`shared/api`中定义或分布在各个实体中，这种方法的主要挑战是在不违反[层级导入规则](/documentation/zh/docs/reference/layers.md#import-rule-on-layers)的情况下使token对需要它的其他请求可用：
+由于API客户端通常在`shared/api`中定义或分布在各个实体中，这种方法的主要挑战是在不违反[层级导入规则](/zh/docs/reference/layers.md#import-rule-on-layers)的情况下使token对需要它的其他请求可用：
 
 > 切片中的模块（文件）只能在其他切片位于严格较低的层级时导入它们。
 

@@ -43,4 +43,4 @@
 
 ## 参见[​](#参见 "标题的直接链接")
 
-* [架构问题](/documentation/zh/docs/about/understanding/architecture.md#problems)
+* [架构问题](/zh/docs/about/understanding/architecture.md#problems)

@@ -69,7 +69,7 @@ Organize your individual API request functions in `shared/api/endpoints`, groupi
 
 note
 
-To keep examples focused, we omit form interaction and validation. For details on libraries like Zod or Valibot, refer to the [Type Validation and Schemas](/documentation/docs/guides/examples/types.md#type-validation-schemas-and-zod) article.
+To keep examples focused, we omit form interaction and validation. For details on libraries like Zod or Valibot, refer to the [Type Validation and Schemas](/docs/guides/examples/types.md#type-validation-schemas-and-zod) article.
 
 shared/api/endpoints/login.ts
 
@@ -149,4 +149,4 @@ When using server state libraries like [TanStack Query (React Query)](https://ta
 * Cache keys
 * Common query/mutation options
 
-For more details on how to work with server state libraries, refer to [React Query article](/documentation/docs/guides/tech/with-react-query.md)
+For more details on how to work with server state libraries, refer to [React Query article](/docs/guides/tech/with-react-query.md)

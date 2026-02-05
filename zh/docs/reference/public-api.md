@@ -33,7 +33,7 @@ export * from "./model/comments";  // 💩 this is bad practice
 
 ## 用于交叉导入的 Public API[​](#public-api-for-cross-imports "标题的直接链接")
 
-交叉导入是指同一 layer 上的一个 slice 从另一个 slice 导入的情况。通常这被 [layers 上的导入规则](/documentation/zh/docs/reference/layers.md#import-rule-on-layers) 禁止，但经常有合理的交叉导入理由。例如，业务 entities 在现实世界中经常相互引用，最好在代码中反映这些关系而不是绕过它们。
+交叉导入是指同一 layer 上的一个 slice 从另一个 slice 导入的情况。通常这被 [layers 上的导入规则](/zh/docs/reference/layers.md#import-rule-on-layers) 禁止，但经常有合理的交叉导入理由。例如，业务 entities 在现实世界中经常相互引用，最好在代码中反映这些关系而不是绕过它们。
 
 为此，有一种特殊的 public API，也称为 `@x` 记号法。如果您有 entities A 和 B，并且 entity B 需要从 entity A 导入，那么 entity A 可以为 entity B 声明一个单独的 public API。
 
@@ -65,7 +65,7 @@ import type { EntityA } from "entities/A/@x/B";
 
 循环导入是指两个或多个文件在一个循环中相互导入。
 
-![Three files importing each other in a circle](/documentation/zh/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/documentation/zh/img/circular-import-dark.svg#dark-mode-only)
+![Three files importing each other in a circle](/zh/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/zh/img/circular-import-dark.svg#dark-mode-only)
 
 Pictured above: three files, `fileA.js`, `fileB.js`, and `fileC.js`, importing each other in a circle.
 

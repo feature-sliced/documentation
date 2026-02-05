@@ -2,7 +2,7 @@
 
 **Feature-Sliced Design** (FSD) là một phương pháp thiết kế kiến trúc để xây dựng các ứng dụng frontend. Nói đơn giản, đây là tập hợp các quy tắc và quy ước để tổ chức code. Mục đích chính của phương pháp này là làm cho dự án trở nên dễ hiểu và ổn định hơn khi đối mặt với những yêu cầu kinh doanh liên tục thay đổi.
 
-Ngoài tập hợp các quy ước, FSD còn là một bộ công cụ. Chúng tôi có [linter](https://github.com/feature-sliced/steiger) để kiểm tra kiến trúc dự án của bạn, [trình tạo thư mục](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) thông qua CLI hoặc IDE, cũng như thư viện phong phú các [ví dụ](/documentation/vi/examples.md).
+Ngoài tập hợp các quy ước, FSD còn là một bộ công cụ. Chúng tôi có [linter](https://github.com/feature-sliced/steiger) để kiểm tra kiến trúc dự án của bạn, [trình tạo thư mục](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) thông qua CLI hoặc IDE, cũng như thư viện phong phú các [ví dụ](/vi/examples.md).
 
 ## Có phù hợp với tôi không?[​](#is-it-right-for-me "Link trực tiếp đến heading")
 
@@ -13,7 +13,7 @@ FSD có thể được triển khai trong các dự án và nhóm với bất k�
 
 Vâng, chỉ đơn giản thế thôi! Không có ràng buộc nào về ngôn ngữ lập trình, UI framework, hoặc state manager bạn sử dụng. Bạn cũng có thể áp dụng FSD từng bước một, sử dụng nó trong monorepo, và mở rộng quy mô lớn bằng cách chia ứng dụng thành các package và triển khai FSD riêng lẻ trong từng package.
 
-Nếu bạn đã có một kiến trúc và đang cân nhắc chuyển sang FSD, hãy đảm bảo rằng kiến trúc hiện tại đang **gây ra vấn đề** trong nhóm của bạn. Ví dụ, nếu dự án của bạn đã trở nên quá lớn và liên kết chặt chẽ với nhau khiến việc triển khai tính năng mới trở nên kém hiệu quả, hoặc nếu bạn dự kiến có nhiều thành viên mới tham gia nhóm. Nếu kiến trúc hiện tại hoạt động tốt, có lẽ không đáng để thay đổi. Nhưng nếu bạn quyết định migrate, hãy xem phần [Migration](/documentation/vi/docs/guides/migration/from-custom.md) để được hướng dẫn.
+Nếu bạn đã có một kiến trúc và đang cân nhắc chuyển sang FSD, hãy đảm bảo rằng kiến trúc hiện tại đang **gây ra vấn đề** trong nhóm của bạn. Ví dụ, nếu dự án của bạn đã trở nên quá lớn và liên kết chặt chẽ với nhau khiến việc triển khai tính năng mới trở nên kém hiệu quả, hoặc nếu bạn dự kiến có nhiều thành viên mới tham gia nhóm. Nếu kiến trúc hiện tại hoạt động tốt, có lẽ không đáng để thay đổi. Nhưng nếu bạn quyết định migrate, hãy xem phần [Migration](/vi/docs/guides/migration/from-custom.md) để được hướng dẫn.
 
 ## Ví dụ cơ bản[​](#basic-example "Link trực tiếp đến heading")
 
@@ -54,7 +54,7 @@ Các thư mục bên trong `📂 app`, `📂 shared`, và `📂 pages/article-re
 
 Layer, slice, và segment tạo thành một hệ thống phân cấp như sau:
 
-![Hierarchy of FSD concepts, described below](/documentation/vi/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
+![Hierarchy of FSD concepts, described below](/vi/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
 Hình minh họa: ba cột, được gắn nhãn từ trái sang phải lần lượt là "Layers", "Slices", và "Segments".
 
@@ -126,6 +126,6 @@ Nên tránh thêm các entity lớn mới trong khi refactor hoặc chỉ refact
 
 ## Bước tiếp theo[​](#next-steps "Link trực tiếp đến heading")
 
-* **Muốn nắm bắt tốt cách tư duy trong FSD?** Xem [Tutorial](/documentation/vi/docs/get-started/tutorial.md).
-* **Bạn thích học từ ví dụ?** Chúng tôi có rất nhiều trong phần [Examples](/documentation/vi/examples.md).
+* **Muốn nắm bắt tốt cách tư duy trong FSD?** Xem [Tutorial](/vi/docs/get-started/tutorial.md).
+* **Bạn thích học từ ví dụ?** Chúng tôi có rất nhiều trong phần [Examples](/vi/examples.md).
 * **Bạn có câu hỏi?** Ghé thăm [Telegram chat](https://t.me/feature_sliced) của chúng tôi và nhận trợ giúp từ cộng đồng.

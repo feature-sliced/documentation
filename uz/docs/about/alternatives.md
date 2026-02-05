@@ -156,7 +156,7 @@ Uning yaratilishini tezlashtirish uchun siz:
 
 Framework-agnostic, conventional-approach
 
-* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/documentation/uz/docs/about/motivation.md)
+* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/uz/docs/about/motivation.md)
 * [(Thread) About the applicability of the methodology for different frameworks](https://t.me/feature_sliced/3867)
 
 ## Atomic Design[​](#atomic-design "Sarlavhaga to'g'ridan-to'g'ri havola")

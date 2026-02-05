@@ -43,4 +43,4 @@
 
 ## См. также[​](#see-also "Прямая ссылка на этот заголовок")
 
-* [Проблемы архитектуры](/documentation/ru/docs/about/understanding/architecture.md#problems)
+* [Проблемы архитектуры](/ru/docs/about/understanding/architecture.md#problems)

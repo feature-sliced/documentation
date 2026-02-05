@@ -109,7 +109,7 @@ export function RegisterPage() {
 
 ## Cách gửi credentials đến backend[​](#cách-gửi-credentials-đến-backend "Link trực tiếp đến heading")
 
-Tạo một function thực hiện request đến login endpoint của backend. Function này có thể được gọi trực tiếp trong component code sử dụng mutation library (ví dụ TanStack Query), hoặc có thể được gọi như side effect trong state manager. Như được giải thích trong [hướng dẫn cho API requests](/documentation/vi/docs/guides/examples/api-requests.md), bạn có thể đặt request của mình trong `shared/api` hoặc trong segment `api` của login page.
+Tạo một function thực hiện request đến login endpoint của backend. Function này có thể được gọi trực tiếp trong component code sử dụng mutation library (ví dụ TanStack Query), hoặc có thể được gọi như side effect trong state manager. Như được giải thích trong [hướng dẫn cho API requests](/vi/docs/guides/examples/api-requests.md), bạn có thể đặt request của mình trong `shared/api` hoặc trong segment `api` của login page.
 
 ### Two-factor authentication[​](#two-factor-authentication "Link trực tiếp đến heading")
 
@@ -123,7 +123,7 @@ Bạn cũng cần một request function khác, tương tự như `login()` mà 
 
 Bất kể authentication scheme nào bạn có, cho dù là login & password đơn giản, OAuth, hoặc two-factor authentication, cuối cùng bạn sẽ nhận được một token. Token này nên được lưu trữ để các requests tiếp theo có thể identify chính chúng.
 
-Lưu trữ token lý tưởng cho web app là **cookie** — nó không yêu cầu token storage hoặc handling thủ công. Vì vậy, cookie storage hầu như không cần cân nhắc gì từ phía frontend architecture. Nếu frontend framework của bạn có server side (ví dụ, [Remix](https://remix.run)), thì bạn nên lưu trữ server-side cookie infrastructure trong `shared/api`. Có một ví dụ trong [phần Authentication của tutorial](/documentation/vi/docs/get-started/tutorial.md#authentication) về cách thực hiện điều đó với Remix.
+Lưu trữ token lý tưởng cho web app là **cookie** — nó không yêu cầu token storage hoặc handling thủ công. Vì vậy, cookie storage hầu như không cần cân nhắc gì từ phía frontend architecture. Nếu frontend framework của bạn có server side (ví dụ, [Remix](https://remix.run)), thì bạn nên lưu trữ server-side cookie infrastructure trong `shared/api`. Có một ví dụ trong [phần Authentication của tutorial](/vi/docs/get-started/tutorial.md#authentication) về cách thực hiện điều đó với Remix.
 
 Tuy nhiên, đôi khi cookie storage không phải là lựa chọn. Trong trường hợp này, bạn sẽ phải lưu trữ token thủ công. Ngoài việc lưu trữ token, bạn cũng có thể cần thiết lập logic để refresh token khi nó expires. Với FSD, có nhiều nơi bạn có thể lưu trữ token, cũng như nhiều cách để làm cho nó available cho phần còn lại của app.
 
@@ -151,7 +151,7 @@ ghi chú
 
 Để lưu trữ token trong User entity, tạo reactive store trong segment `model`. Store đó có thể chứa cả token và user object.
 
-Vì API client thường được define trong `shared/api` hoặc spread qua các entities, thách thức chính của cách tiếp cận này là làm cho token available cho các requests khác cần nó mà không vi phạm [import rule trên các layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Vì API client thường được define trong `shared/api` hoặc spread qua các entities, thách thức chính của cách tiếp cận này là làm cho token available cho các requests khác cần nó mà không vi phạm [import rule trên các layers](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > Một module (file) trong slice chỉ có thể import các slices khác khi chúng được đặt trên các layers ở phía dưới.
 

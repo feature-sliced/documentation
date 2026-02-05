@@ -30,7 +30,7 @@ If the project already has a division into entities, and each request correspond
         ...                                     #
 ```
 
-If there are connections between the entities (for example, the Country entity has a field-list of City entities), then you can use the [public API for cross-imports](/documentation/docs/reference/public-api.md#public-api-for-cross-imports) or consider the alternative solution below.
+If there are connections between the entities (for example, the Country entity has a field-list of City entities), then you can use the [public API for cross-imports](/docs/reference/public-api.md#public-api-for-cross-imports) or consider the alternative solution below.
 
 ### Alternative solution — keep it in shared[​](#alternative-solution--keep-it-in-shared "Direct link to heading")
 

@@ -69,7 +69,7 @@ Tổ chức các function API request riêng lẻ của bạn trong `shared/api/
 
 ghi chú
 
-Để giữ các ví dụ tập trung, chúng tôi bỏ qua form interaction và validation. Để biết chi tiết về các thư viện như Zod hoặc Valibot, hãy tham khảo bài viết [Type Validation và Schemas](/documentation/vi/docs/guides/examples/types.md#type-validation-schemas-and-zod).
+Để giữ các ví dụ tập trung, chúng tôi bỏ qua form interaction và validation. Để biết chi tiết về các thư viện như Zod hoặc Valibot, hãy tham khảo bài viết [Type Validation và Schemas](/vi/docs/guides/examples/types.md#type-validation-schemas-and-zod).
 
 shared/api/endpoints/login.ts
 
@@ -149,4 +149,4 @@ Khi sử dụng server state libraries như [TanStack Query (React Query)](https
 * Cache keys
 * Common query/mutation options
 
-Để biết thêm chi tiết về cách làm việc với server state libraries, hãy tham khảo [bài viết React Query](/documentation/vi/docs/guides/tech/with-react-query.md)
+Để biết thêm chi tiết về cách làm việc với server state libraries, hãy tham khảo [bài viết React Query](/vi/docs/guides/tech/with-react-query.md)

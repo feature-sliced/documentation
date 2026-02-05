@@ -35,4 +35,4 @@ entities/B/some/file.ts
 import type { EntityA } from "entities/A/@x/B";
 ```
 
-更多详情，请查看参考中的[交叉导入的公共API](/documentation/zh/docs/reference/public-api.md#public-api-for-cross-imports)部分。
+更多详情，请查看参考中的[交叉导入的公共API](/zh/docs/reference/public-api.md#public-api-for-cross-imports)部分。

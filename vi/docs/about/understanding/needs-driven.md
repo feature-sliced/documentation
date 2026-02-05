@@ -136,7 +136,7 @@ Rõ ràng là bạn cần xác định ít nhất hai yêu cầu cho **Feature-S
 
    * Có nghĩa là nó nên giải thích rõ ràng *cách chia code giữa chúng*, có nghĩa là việc đặt tên các entities này cũng nên được quy định trong specification.
 
-2. Methodology nên giúp kiến trúc **[dễ dàng thích ứng với yêu cầu thay đổi của dự án](/documentation/vi/docs/about/understanding/architecture.md#adaptability)**
+2. Methodology nên giúp kiến trúc **[dễ dàng thích ứng với yêu cầu thay đổi của dự án](/vi/docs/about/understanding/architecture.md#adaptability)**
 
 ## Xem thêm[​](#xem-thêm "Link trực tiếp đến heading")
 

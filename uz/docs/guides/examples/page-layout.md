@@ -70,7 +70,7 @@ The code of sidebars is left as an exercise for the reader 😉.
 
 ## Using widgets in the layout[​](#using-widgets-in-the-layout "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-Sometimes you want to include certain business logic in the layout, especially if you're using deeply nested routes with a router like [React Router](https://reactrouter.com/). Then you can't store the layout in Shared or in Widgets due to [the import rule on layers](/documentation/uz/docs/reference/layers.md#import-rule-on-layers):
+Sometimes you want to include certain business logic in the layout, especially if you're using deeply nested routes with a router like [React Router](https://reactrouter.com/). Then you can't store the layout in Shared or in Widgets due to [the import rule on layers](/uz/docs/reference/layers.md#import-rule-on-layers):
 
 > A module in a slice can only import other slices when they are located on layers strictly below.
 
@@ -93,4 +93,4 @@ If none of the above are applicable, there are two solutions to include a widget
 
 ## Further reading[​](#further-reading "Sarlavhaga to'g'ridan-to'g'ri havola")
 
-* There's an example of how to build a layout with authentication with React and Remix (equivalent to React Router) in the [tutorial](/documentation/uz/docs/get-started/tutorial.md).
+* There's an example of how to build a layout with authentication with React and Remix (equivalent to React Router) in the [tutorial](/uz/docs/get-started/tutorial.md).

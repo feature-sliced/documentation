@@ -4,7 +4,7 @@
 
 이 튜토리얼에서는 Real World App이라고도 알려진 Conduit를 살펴보겠습니다. Conduit는 기본적인 [Medium](https://medium.com/) 클론입니다 - 글을 읽고 쓸 수 있으며 다른 사람의 글에 댓글을 달 수 있습니다.
 
-![Conduit home page](/documentation/kr/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Conduit home page](/kr/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 이 애플리케이션은 매우 작은 애플리케이션이므로 과도한 분해를 피하고 간단하게 유지할 것입니다. 전체 애플리케이션이 세 개의 레이어인 **App**, **Pages**, 그리고 **Shared**에 맞춰 들어갈 것입니다. 그렇지 않다면 우리는 계속해서 추가적인 레이어를 도입할 것입니다. 준비되셨나요?
 
@@ -41,11 +41,11 @@ Feature-Sliced Design이 규제되지 않은 코드 구조와 다른 주요 차�
 
 ### 피드 자세히 보기[​](#피드-자세히-보기 "해당 헤딩으로 이동")
 
-![Anonymous user’s perspective](/documentation/kr/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Anonymous user’s perspective](/kr/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 *익명 사용자의 관점*
 
-![Authenticated user’s perspective](/documentation/kr/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
+![Authenticated user’s perspective](/kr/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
 
 *인증된 사용자의 관점*
 
@@ -139,7 +139,7 @@ Shared와 Pages 사이에는 Entities, Features, Widgets의 세 가지 다른 �
 
 읽기가 아닌 편집을 위한 페이지도 살펴보겠습니다.
 
-![Conduit post editor](/documentation/kr/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
+![Conduit post editor](/kr/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
 
 간단해 보이지만, 폼 유효성 검사, 오류 상태, 데이터 지속성 등 아직 탐구하지 않은 애플리케이션 개발의 여러 측면을 포함하고 있습니다.
 
@@ -237,7 +237,7 @@ export default FeedPage;
 
 그런 다음 개발 서버를 실행하고 애플리케이션을 열면 Conduit 배너가 보일 것입니다!
 
-![The banner of Conduit](/documentation/kr/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
+![The banner of Conduit](/kr/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
 
 ### API 클라이언트[​](#api-클라이언트 "해당 헤딩으로 이동")
 
@@ -1285,7 +1285,7 @@ export default function App() {
 
 이 시점에서 홈 페이지에 다음과 같은 내용이 표시되어야 합니다.
 
-![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/documentation/kr/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
+![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/kr/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
 
 헤더, 피드, 태그를 포함한 Conduit의 피드 페이지. 탭은 아직 없습니다.
 
@@ -2057,7 +2057,7 @@ export function Comments() {
 
 이것으로 우리의 글 읽기 페이지도 완성되었습니다! 이제 작성자를 팔로우하고, 글에 좋아요를 누르고, 댓글을 남기는 버튼들이 예상대로 작동해야 합니다.
 
-![Article reader with functioning buttons to like and follow](/documentation/kr/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
+![Article reader with functioning buttons to like and follow](/kr/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
 
 기능하는 좋아요와 팔로우 버튼이 있는 글 읽기 페이지
 
@@ -2369,7 +2369,7 @@ export default ArticleEditPage;
 
 이제 완료되었습니다! 로그인하고 새 글을 작성해보세요. 또는 글을 "잊어버리고" 검증이 작동하는 것을 확인해보세요.
 
-![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/documentation/kr/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
+![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/kr/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
 
 제목 필드에 "새 글"이라고 쓰여 있고 나머지 필드는 비어 있는 Conduit 글 편집기. 폼 위에 두 개의 오류가 있습니다. **"이 글이 무엇에 관한 것인지 설명해주세요"**, **"글 본문을 작성해주세요"**.
 

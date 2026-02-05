@@ -2,7 +2,7 @@
 
 **Feature-Sliced Design**の主なアイデアは、さまざまな開発者の経験を議論し、研究結果を統合することに基づいて、複雑で発展するプロジェクトの開発を容易にし、開発コストを削減することです。
 
-明らかに、これは銀の弾丸ではなく、当然ながら、FSDには独自の[適用範囲の限界](/documentation/ja/docs/about/mission.md)があります。
+明らかに、これは銀の弾丸ではなく、当然ながら、FSDには独自の[適用範囲の限界](/ja/docs/about/mission.md)があります。
 
 ## 既存の解決策が不足している理由[​](#intuitive-clarity-for-a-wide-range-of-developers "この見出しへの直接リンク")
 
@@ -100,7 +100,7 @@ FSDは、*プロジェクトのサポートと発展の段階でも、MVPの段�
 
 ## 目標[​](#plans "この見出しへの直接リンク")
 
-主要な目標の大部分は[ここに記載されています](/documentation/ja/docs/about/mission.md#goals)が、今後のFSD方法論に対する私たちの期待についても話しておく必要があります。
+主要な目標の大部分は[ここに記載されています](/ja/docs/about/mission.md#goals)が、今後のFSD方法論に対する私たちの期待についても話しておく必要があります。
 
 ### 経験の統合[​](#combining-experience "この見出しへの直接リンク")
 
@@ -122,5 +122,5 @@ FSDは、*プロジェクトのサポートと発展の段階でも、MVPの段�
 
 ## 参照[​](#see-also "この見出しへの直接リンク")
 
-* [方法論の使命について：目標と制限](/documentation/ja/docs/about/mission.md)
-* [プロジェクトにおける知識の種類](/documentation/ja/docs/about/understanding/knowledge-types.md)
+* [方法論の使命について：目標と制限](/ja/docs/about/mission.md)
+* [プロジェクトにおける知識の種類](/ja/docs/about/understanding/knowledge-types.md)

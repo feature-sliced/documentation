@@ -38,7 +38,7 @@ NextJSは、アプリケーションのルートを定義するために`pages`�
 ├── widgets
 ```
 
-この場合、プロジェクトのREADMEや内部ドキュメントなど、目立つ場所にこの名前変更を文書化することをお勧めします。この名前変更は、[「プロジェクト知識」](/documentation/ja/docs/about/understanding/knowledge-types.md)の一部です。
+この場合、プロジェクトのREADMEや内部ドキュメントなど、目立つ場所にこの名前変更を文書化することをお勧めします。この名前変更は、[「プロジェクト知識」](/ja/docs/about/understanding/knowledge-types.md)の一部です。
 
 ## NextJSにおける`app`フォルダーの欠如[​](#app-absence "この見出しへの直接リンク")
 

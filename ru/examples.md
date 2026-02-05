@@ -1,6 +1,6 @@
 v2
 
-![](/documentation/ru/assets/ideal-img/tiny-bunny.dd60f55.640.png)
+![](/ru/assets/ideal-img/tiny-bunny.dd60f55.640.png)
 
 Tiny Bunny Mini Game
 

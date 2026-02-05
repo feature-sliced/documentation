@@ -1,7 +1,7 @@
 # Feature-Sliced Design
 
 
-## documentation
+## kr
 
 - [예제](/examples.md): Feature‑Sliced Design으로 제작된 웹사이트 모음
 - [🧭 내비게이션](/nav.md): Feature-Sliced Design Navigation help page

@@ -2,7 +2,7 @@
 
 **Feature-Sliced Design**（特性分层设计）的主要理念是基于[结合研究成果，讨论各种类型开发者的广泛经验](https://github.com/feature-sliced/documentation/discussions)，来促进和降低复杂项目开发的成本。
 
-显然，这不会是万能的解决方案，当然，该方法论也会有自己的[适用限制](/documentation/zh/docs/about/mission.md)。
+显然，这不会是万能的解决方案，当然，该方法论也会有自己的[适用限制](/zh/docs/about/mission.md)。
 
 尽管如此，关于*这种方法论整体可行性*仍然存在合理的质疑。
 
@@ -108,7 +108,7 @@
 
 ## 计划[​](#计划 "标题的直接链接")
 
-目标的主要部分[在这里阐述](/documentation/zh/docs/about/mission.md#goals)，但此外，值得谈论我们对未来方法论的期望。
+目标的主要部分[在这里阐述](/zh/docs/about/mission.md#goals)，但此外，值得谈论我们对未来方法论的期望。
 
 ### 结合经验[​](#结合经验 "标题的直接链接")
 
@@ -131,5 +131,5 @@
 ## 另请参阅[​](#另请参阅 "标题的直接链接")
 
 * [（讨论）不需要方法论？](https://github.com/feature-sliced/documentation/discussions/27)
-* [关于方法论的使命：目标和限制](/documentation/zh/docs/about/mission.md)
-* [项目中的知识类型](/documentation/zh/docs/about/understanding/knowledge-types.md)
+* [关于方法论的使命：目标和限制](/zh/docs/about/mission.md)
+* [项目中的知识类型](/zh/docs/about/understanding/knowledge-types.md)

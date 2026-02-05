@@ -4,7 +4,7 @@
 
 This tutorial will examine the Real World App, also known as Conduit. Conduit is a basic [Medium](https://medium.com/) clone — it lets you read and write articles as well as comment on the articles of others.
 
-![Conduit home page](/documentation/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Conduit home page](/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 This is a pretty small application, so we will keep it simple and avoid excessive decomposition. It’s highly likely that the entire app will fit into just three layers: **App**, **Pages**, and **Shared**. If not, we will introduce additional layers as we go. Ready?
 
@@ -41,11 +41,11 @@ In this case, a page is a slice, so modules (files) inside this page can only re
 
 ### Close look at the feed[​](#close-look-at-the-feed "Direct link to heading")
 
-![Anonymous user’s perspective](/documentation/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Anonymous user’s perspective](/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 *Anonymous user’s perspective*
 
-![Authenticated user’s perspective](/documentation/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
+![Authenticated user’s perspective](/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
 
 *Authenticated user’s perspective*
 
@@ -139,7 +139,7 @@ In our case, the header is very simple — it’s a static logo and top-level na
 
 Let’s also examine a page that’s intended for editing, not reading. For example, the article writer:
 
-![Conduit post editor](/documentation/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
+![Conduit post editor](/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
 
 It looks trivial, but contains several aspects of application development that we haven’t explored yet — form validation, error states, and data persistence.
 
@@ -237,7 +237,7 @@ export default FeedPage;
 
 Then, if you run the dev server and open the application, you should see the Conduit banner!
 
-![The banner of Conduit](/documentation/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
+![The banner of Conduit](/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
 
 ### API client[​](#api-client "Direct link to heading")
 
@@ -1285,7 +1285,7 @@ export default function App() {
 
 At this point, you should end up with the following on the home page:
 
-![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/documentation/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
+![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
 
 The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.
 
@@ -2057,7 +2057,7 @@ export function Comments() {
 
 And with that our article reader is also complete! The buttons to follow the author, like a post, and leave a comment should now function as expected.
 
-![Article reader with functioning buttons to like and follow](/documentation/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
+![Article reader with functioning buttons to like and follow](/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
 
 Article reader with functioning buttons to like and follow
 
@@ -2369,7 +2369,7 @@ export default ArticleEditPage;
 
 We’re done now! Log in and try creating a new article. Or “forget” to write the article and see the validation kick in.
 
-![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/documentation/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
+![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
 
 The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: **“Describe what this article is about”** and **“Write the article itself”**.
 

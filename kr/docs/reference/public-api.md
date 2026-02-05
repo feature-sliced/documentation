@@ -48,7 +48,7 @@ export * from "./model/comments"; // 💩 내부 모델 노출
 
 ## Cross-Import를 위한 Public API[​](#public-api-for-cross-imports "해당 헤딩으로 이동")
 
-**Cross-import**는 같은 Layer 안에서 한 Slice가 다른 Slice를 import하는 것을 말합니다.<br />[Layer Import Rule](/documentation/kr/docs/reference/layers.md#import-rule-on-layers)에 따라 원칙적으로는 금지되지만,<br />**Entity 간 참조**처럼 현실적으로 불가피한 경우가 있습니다.
+**Cross-import**는 같은 Layer 안에서 한 Slice가 다른 Slice를 import하는 것을 말합니다.<br />[Layer Import Rule](/kr/docs/reference/layers.md#import-rule-on-layers)에 따라 원칙적으로는 금지되지만,<br />**Entity 간 참조**처럼 현실적으로 불가피한 경우가 있습니다.
 
 예를 들어, 도메인 모델에서 `Artist`와 `Song`이 서로 연관 관계를 가진다면<br /><!-- -->이를 억지로 숨기기보다는 코드에도 그 관계를 드러내는 편이 낫습니다.
 
@@ -86,7 +86,7 @@ Circular Import는 두 개 이상의 파일이 서로를 참조하는 구조를 
 
 예를 들어 Slice의 Public API(`pages/home/index.js`)에서 `HomePage`와 `loadUserStatistics`를 export합니다.
 
-![세 파일이 서로 원형으로 import하는 모습](/documentation/kr/img/circular-import-light.svg#light-mode-only)![세 파일이 서로를 원형으로 import하고 있는 예시입니다.](/documentation/kr/img/circular-import-dark.svg#dark-mode-only)
+![세 파일이 서로 원형으로 import하는 모습](/kr/img/circular-import-light.svg#light-mode-only)![세 파일이 서로를 원형으로 import하고 있는 예시입니다.](/kr/img/circular-import-dark.svg#dark-mode-only)
 
 위 그림: `fileA.js`, `fileB.js`, `fileC.js` 파일의 Circular Import 예시
 

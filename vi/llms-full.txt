@@ -1,7 +1,7 @@
 # Feature-Sliced Design
 
 
-## documentation
+## vi
 
 - [Ví dụ](/examples.md): Danh sách các website được xây dựng với Feature-Sliced Design
 - [🧭 Điều hướng](/nav.md): Feature-Sliced Design Navigation help page
@@ -67,7 +67,7 @@
 
 v2
 
-![](/documentation/vi/assets/ideal-img/tiny-bunny.dd60f55.640.png)
+![](/vi/assets/ideal-img/tiny-bunny.dd60f55.640.png)
 
 Tiny Bunny Mini Game
 
@@ -92,676 +92,676 @@ Nhưng có redirect từ các link cũ để đảm bảo tương thích
 
 ⚡️ <!-- -->Simplified and merged
 
-[Tutorial](/documentation/vi/docs/get-started/tutorial.md)
+[Tutorial](/vi/docs/get-started/tutorial.md)
 
-[**old**:](/documentation/vi/docs/get-started/tutorial.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/get-started/quick-start](/documentation/vi/docs/get-started/tutorial.md)
-
-[**new**: ](/documentation/vi/docs/get-started/tutorial.md)
-
-<!-- -->
-
-[/docs/get-started/tutorial](/documentation/vi/docs/get-started/tutorial.md)
-
-[Basics](/documentation/vi/docs/get-started/overview.md)
-
-[**old**:](/documentation/vi/docs/get-started/overview.md)
+[**old**:](/vi/docs/get-started/tutorial.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/get-started/basics](/documentation/vi/docs/get-started/overview.md)
+[/docs/get-started/quick-start](/vi/docs/get-started/tutorial.md)
 
-[**new**: ](/documentation/vi/docs/get-started/overview.md)
-
-<!-- -->
-
-[/docs/get-started/overview](/documentation/vi/docs/get-started/overview.md)
-
-[Decompose Cheatsheet](/documentation/vi/docs/get-started/cheatsheet.md)
-
-[**old**:](/documentation/vi/docs/get-started/cheatsheet.md)
+[**new**: ](/vi/docs/get-started/tutorial.md)
 
 <!-- -->
 
+[/docs/get-started/tutorial](/vi/docs/get-started/tutorial.md)
+
+[Basics](/vi/docs/get-started/overview.md)
+
+[**old**:](/vi/docs/get-started/overview.md)
+
 <!-- -->
 
-[/docs/get-started/tutorial/decompose; /docs/get-started/tutorial/design-mockup; /docs/get-started/onboard/cheatsheet](/documentation/vi/docs/get-started/cheatsheet.md)
+<!-- -->
 
-[**new**: ](/documentation/vi/docs/get-started/cheatsheet.md)
+[/docs/get-started/basics](/vi/docs/get-started/overview.md)
+
+[**new**: ](/vi/docs/get-started/overview.md)
 
 <!-- -->
 
-[/docs/get-started/cheatsheet](/documentation/vi/docs/get-started/cheatsheet.md)
+[/docs/get-started/overview](/vi/docs/get-started/overview.md)
+
+[Decompose Cheatsheet](/vi/docs/get-started/cheatsheet.md)
+
+[**old**:](/vi/docs/get-started/cheatsheet.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/get-started/tutorial/decompose; /docs/get-started/tutorial/design-mockup; /docs/get-started/onboard/cheatsheet](/vi/docs/get-started/cheatsheet.md)
+
+[**new**: ](/vi/docs/get-started/cheatsheet.md)
+
+<!-- -->
+
+[/docs/get-started/cheatsheet](/vi/docs/get-started/cheatsheet.md)
 
 ### 🍰 Alternatives
 
 ⚡️ <!-- -->Moved and merged to /about/alternatives as advanced materials
 
-[Architecture approaches alternatives](/documentation/vi/docs/about/alternatives.md)
+[Architecture approaches alternatives](/vi/docs/about/alternatives.md)
 
-[**old**:](/documentation/vi/docs/about/alternatives.md)
-
-<!-- -->
+[**old**:](/vi/docs/about/alternatives.md)
 
 <!-- -->
 
-[/docs/about/alternatives/big-ball-of-mud; /docs/about/alternatives/design-principles; /docs/about/alternatives/ddd; /docs/about/alternatives/clean-architecture; /docs/about/alternatives/frameworks; /docs/about/alternatives/atomic-design; /docs/about/alternatives/smart-dumb-components; /docs/about/alternatives/feature-driven](/documentation/vi/docs/about/alternatives.md)
+<!-- -->
 
-[**new**: ](/documentation/vi/docs/about/alternatives.md)
+[/docs/about/alternatives/big-ball-of-mud; /docs/about/alternatives/design-principles; /docs/about/alternatives/ddd; /docs/about/alternatives/clean-architecture; /docs/about/alternatives/frameworks; /docs/about/alternatives/atomic-design; /docs/about/alternatives/smart-dumb-components; /docs/about/alternatives/feature-driven](/vi/docs/about/alternatives.md)
+
+[**new**: ](/vi/docs/about/alternatives.md)
 
 <!-- -->
 
-[/docs/about/alternatives](/documentation/vi/docs/about/alternatives.md)
+[/docs/about/alternatives](/vi/docs/about/alternatives.md)
 
 ### 🍰 Promote & Understanding
 
 ⚡️ <!-- -->Moved to /about as advanced materials
 
-[Knowledge types](/documentation/vi/docs/about/understanding/knowledge-types.md)
+[Knowledge types](/vi/docs/about/understanding/knowledge-types.md)
 
-[**old**:](/documentation/vi/docs/about/understanding/knowledge-types.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/reference/knowledge-types](/documentation/vi/docs/about/understanding/knowledge-types.md)
-
-[**new**: ](/documentation/vi/docs/about/understanding/knowledge-types.md)
-
-<!-- -->
-
-[/docs/about/understanding/knowledge-types](/documentation/vi/docs/about/understanding/knowledge-types.md)
-
-[Needs driven](/documentation/vi/docs/about/understanding/needs-driven.md)
-
-[**old**:](/documentation/vi/docs/about/understanding/needs-driven.md)
+[**old**:](/vi/docs/about/understanding/knowledge-types.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/needs-driven](/documentation/vi/docs/about/understanding/needs-driven.md)
+[/docs/reference/knowledge-types](/vi/docs/about/understanding/knowledge-types.md)
 
-[**new**: ](/documentation/vi/docs/about/understanding/needs-driven.md)
-
-<!-- -->
-
-[/docs/about/understanding/needs-driven](/documentation/vi/docs/about/understanding/needs-driven.md)
-
-[About architecture](/documentation/vi/docs/about/understanding/architecture.md)
-
-[**old**:](/documentation/vi/docs/about/understanding/architecture.md)
+[**new**: ](/vi/docs/about/understanding/knowledge-types.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/about/understanding/knowledge-types](/vi/docs/about/understanding/knowledge-types.md)
 
-[/docs/concepts/architecture](/documentation/vi/docs/about/understanding/architecture.md)
+[Needs driven](/vi/docs/about/understanding/needs-driven.md)
 
-[**new**: ](/documentation/vi/docs/about/understanding/architecture.md)
-
-<!-- -->
-
-[/docs/about/understanding/architecture](/documentation/vi/docs/about/understanding/architecture.md)
-
-[Naming adaptability](/documentation/vi/docs/about/understanding/naming.md)
-
-[**old**:](/documentation/vi/docs/about/understanding/naming.md)
+[**old**:](/vi/docs/about/understanding/needs-driven.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/naming-adaptability](/documentation/vi/docs/about/understanding/naming.md)
+[/docs/concepts/needs-driven](/vi/docs/about/understanding/needs-driven.md)
 
-[**new**: ](/documentation/vi/docs/about/understanding/naming.md)
-
-<!-- -->
-
-[/docs/about/understanding/naming](/documentation/vi/docs/about/understanding/naming.md)
-
-[Signals of architecture](/documentation/vi/docs/about/understanding/signals.md)
-
-[**old**:](/documentation/vi/docs/about/understanding/signals.md)
+[**new**: ](/vi/docs/about/understanding/needs-driven.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/about/understanding/needs-driven](/vi/docs/about/understanding/needs-driven.md)
 
-[/docs/concepts/signals](/documentation/vi/docs/about/understanding/signals.md)
+[About architecture](/vi/docs/about/understanding/architecture.md)
 
-[**new**: ](/documentation/vi/docs/about/understanding/signals.md)
-
-<!-- -->
-
-[/docs/about/understanding/signals](/documentation/vi/docs/about/understanding/signals.md)
-
-[Abstractions of architecture](/documentation/vi/docs/about/understanding/abstractions.md)
-
-[**old**:](/documentation/vi/docs/about/understanding/abstractions.md)
+[**old**:](/vi/docs/about/understanding/architecture.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/abstractions](/documentation/vi/docs/about/understanding/abstractions.md)
+[/docs/concepts/architecture](/vi/docs/about/understanding/architecture.md)
 
-[**new**: ](/documentation/vi/docs/about/understanding/abstractions.md)
+[**new**: ](/vi/docs/about/understanding/architecture.md)
 
 <!-- -->
 
-[/docs/about/understanding/abstractions](/documentation/vi/docs/about/understanding/abstractions.md)
+[/docs/about/understanding/architecture](/vi/docs/about/understanding/architecture.md)
+
+[Naming adaptability](/vi/docs/about/understanding/naming.md)
+
+[**old**:](/vi/docs/about/understanding/naming.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/naming-adaptability](/vi/docs/about/understanding/naming.md)
+
+[**new**: ](/vi/docs/about/understanding/naming.md)
+
+<!-- -->
+
+[/docs/about/understanding/naming](/vi/docs/about/understanding/naming.md)
+
+[Signals of architecture](/vi/docs/about/understanding/signals.md)
+
+[**old**:](/vi/docs/about/understanding/signals.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/signals](/vi/docs/about/understanding/signals.md)
+
+[**new**: ](/vi/docs/about/understanding/signals.md)
+
+<!-- -->
+
+[/docs/about/understanding/signals](/vi/docs/about/understanding/signals.md)
+
+[Abstractions of architecture](/vi/docs/about/understanding/abstractions.md)
+
+[**old**:](/vi/docs/about/understanding/abstractions.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/abstractions](/vi/docs/about/understanding/abstractions.md)
+
+[**new**: ](/vi/docs/about/understanding/abstractions.md)
+
+<!-- -->
+
+[/docs/about/understanding/abstractions](/vi/docs/about/understanding/abstractions.md)
 
 ### 📚 Reference guidelines (isolation & units)
 
 ⚡️ <!-- -->Moved to /reference as theoretical materials (old concepts)
 
-[Decouple of entities](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
+[Decouple of entities](/vi/docs/reference/layers.md#import-rule-on-layers)
 
-[**old**:](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/decouple-entities](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
-
-[**new**: ](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-[/docs/reference/layers#import-rule-on-layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
-
-[Low Coupling & High Cohesion](/documentation/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-[**old**:](/documentation/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
+[**old**:](/vi/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/low-coupling](/documentation/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
+[/docs/concepts/decouple-entities](/vi/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-<!-- -->
-
-[/docs/reference/slices-segments#zero-coupling-high-cohesion](/documentation/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
-
-[Cross-communication](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
-
-[**old**:](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
+[**new**: ](/vi/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers#import-rule-on-layers](/vi/docs/reference/layers.md#import-rule-on-layers)
 
-[/docs/concepts/cross-communication](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
+[Low Coupling & High Cohesion](/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
-
-[/docs/reference/layers#import-rule-on-layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
-
-[App splitting](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**old**:](/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/app-splitting](/documentation/vi/docs/reference/layers.md)
+[/docs/concepts/low-coupling](/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Decomposition](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**new**: ](/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/slices-segments#zero-coupling-high-cohesion](/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion)
 
-[/docs/reference/units/decomposition](/documentation/vi/docs/reference/layers.md)
+[Cross-communication](/vi/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Units](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**old**:](/vi/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units](/documentation/vi/docs/reference/layers.md)
+[/docs/concepts/cross-communication](/vi/docs/reference/layers.md#import-rule-on-layers)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Layers](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**new**: ](/vi/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers#import-rule-on-layers](/vi/docs/reference/layers.md#import-rule-on-layers)
 
-[/docs/reference/units/layers](/documentation/vi/docs/reference/layers.md)
+[App splitting](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Layer overview](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**old**:](/vi/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/layers/overview](/documentation/vi/docs/reference/layers.md)
+[/docs/concepts/app-splitting](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[App layer](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**new**: ](/vi/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/vi/docs/reference/layers.md)
 
-[/docs/reference/units/layers/app](/documentation/vi/docs/reference/layers.md)
+[Decomposition](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Processes layer](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**old**:](/vi/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/processes](/documentation/vi/docs/reference/layers.md)
+[/docs/reference/units/decomposition](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Pages layer](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**new**: ](/vi/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/vi/docs/reference/layers.md)
 
-[/docs/reference/units/layers/pages](/documentation/vi/docs/reference/layers.md)
+[Units](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Widgets layer](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**old**:](/vi/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/widgets](/documentation/vi/docs/reference/layers.md)
+[/docs/reference/units](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Widgets layer](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**new**: ](/vi/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/vi/docs/reference/layers.md)
 
-[/docs/reference/layers/widgets](/documentation/vi/docs/reference/layers.md)
+[Layers](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Features layer](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**old**:](/vi/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/features](/documentation/vi/docs/reference/layers.md)
+[/docs/reference/units/layers](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Entities layer](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**new**: ](/vi/docs/reference/layers.md)
 
 <!-- -->
 
-<!-- -->
+[/docs/reference/layers](/vi/docs/reference/layers.md)
 
-[/docs/reference/units/layers/entities](/documentation/vi/docs/reference/layers.md)
+[Layer overview](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Shared layer](/documentation/vi/docs/reference/layers.md)
-
-[**old**:](/documentation/vi/docs/reference/layers.md)
+[**old**:](/vi/docs/reference/layers.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/reference/units/layers/shared](/documentation/vi/docs/reference/layers.md)
+[/docs/reference/layers/overview](/vi/docs/reference/layers.md)
 
-[**new**: ](/documentation/vi/docs/reference/layers.md)
-
-<!-- -->
-
-[/docs/reference/layers](/documentation/vi/docs/reference/layers.md)
-
-[Segments](/documentation/vi/docs/reference/slices-segments.md)
-
-[**old**:](/documentation/vi/docs/reference/slices-segments.md)
+[**new**: ](/vi/docs/reference/layers.md)
 
 <!-- -->
 
+[/docs/reference/layers](/vi/docs/reference/layers.md)
+
+[App layer](/vi/docs/reference/layers.md)
+
+[**old**:](/vi/docs/reference/layers.md)
+
 <!-- -->
 
-[/docs/reference/units/segments](/documentation/vi/docs/reference/slices-segments.md)
+<!-- -->
 
-[**new**: ](/documentation/vi/docs/reference/slices-segments.md)
+[/docs/reference/units/layers/app](/vi/docs/reference/layers.md)
+
+[**new**: ](/vi/docs/reference/layers.md)
 
 <!-- -->
 
-[/docs/reference/slices-segments](/documentation/vi/docs/reference/slices-segments.md)
+[/docs/reference/layers](/vi/docs/reference/layers.md)
+
+[Processes layer](/vi/docs/reference/layers.md)
+
+[**old**:](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/processes](/vi/docs/reference/layers.md)
+
+[**new**: ](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/vi/docs/reference/layers.md)
+
+[Pages layer](/vi/docs/reference/layers.md)
+
+[**old**:](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/pages](/vi/docs/reference/layers.md)
+
+[**new**: ](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/vi/docs/reference/layers.md)
+
+[Widgets layer](/vi/docs/reference/layers.md)
+
+[**old**:](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/widgets](/vi/docs/reference/layers.md)
+
+[**new**: ](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/vi/docs/reference/layers.md)
+
+[Widgets layer](/vi/docs/reference/layers.md)
+
+[**old**:](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/layers/widgets](/vi/docs/reference/layers.md)
+
+[**new**: ](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/vi/docs/reference/layers.md)
+
+[Features layer](/vi/docs/reference/layers.md)
+
+[**old**:](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/features](/vi/docs/reference/layers.md)
+
+[**new**: ](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/vi/docs/reference/layers.md)
+
+[Entities layer](/vi/docs/reference/layers.md)
+
+[**old**:](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/entities](/vi/docs/reference/layers.md)
+
+[**new**: ](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/vi/docs/reference/layers.md)
+
+[Shared layer](/vi/docs/reference/layers.md)
+
+[**old**:](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/layers/shared](/vi/docs/reference/layers.md)
+
+[**new**: ](/vi/docs/reference/layers.md)
+
+<!-- -->
+
+[/docs/reference/layers](/vi/docs/reference/layers.md)
+
+[Segments](/vi/docs/reference/slices-segments.md)
+
+[**old**:](/vi/docs/reference/slices-segments.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/reference/units/segments](/vi/docs/reference/slices-segments.md)
+
+[**new**: ](/vi/docs/reference/slices-segments.md)
+
+<!-- -->
+
+[/docs/reference/slices-segments](/vi/docs/reference/slices-segments.md)
 
 ### 🎯 Bad Practices handbook
 
 ⚡️ <!-- -->Moved to /guides as practice materials
 
-[Cross-imports](/documentation/vi/docs/guides/issues/cross-imports.md)
+[Cross-imports](/vi/docs/guides/issues/cross-imports.md)
 
-[**old**:](/documentation/vi/docs/guides/issues/cross-imports.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/concepts/issues/cross-imports](/documentation/vi/docs/guides/issues/cross-imports.md)
-
-[**new**: ](/documentation/vi/docs/guides/issues/cross-imports.md)
-
-<!-- -->
-
-[/docs/guides/issues/cross-imports](/documentation/vi/docs/guides/issues/cross-imports.md)
-
-[Desegmented](/documentation/vi/docs/guides/issues/desegmented.md)
-
-[**old**:](/documentation/vi/docs/guides/issues/desegmented.md)
+[**old**:](/vi/docs/guides/issues/cross-imports.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/concepts/issues/desegmented](/documentation/vi/docs/guides/issues/desegmented.md)
+[/docs/concepts/issues/cross-imports](/vi/docs/guides/issues/cross-imports.md)
 
-[**new**: ](/documentation/vi/docs/guides/issues/desegmented.md)
-
-<!-- -->
-
-[/docs/guides/issues/desegmented](/documentation/vi/docs/guides/issues/desegmented.md)
-
-[Routes](/documentation/vi/docs/guides/issues/routes.md)
-
-[**old**:](/documentation/vi/docs/guides/issues/routes.md)
+[**new**: ](/vi/docs/guides/issues/cross-imports.md)
 
 <!-- -->
 
+[/docs/guides/issues/cross-imports](/vi/docs/guides/issues/cross-imports.md)
+
+[Desegmented](/vi/docs/guides/issues/desegmented.md)
+
+[**old**:](/vi/docs/guides/issues/desegmented.md)
+
 <!-- -->
 
-[/docs/concepts/issues/routes](/documentation/vi/docs/guides/issues/routes.md)
+<!-- -->
 
-[**new**: ](/documentation/vi/docs/guides/issues/routes.md)
+[/docs/concepts/issues/desegmented](/vi/docs/guides/issues/desegmented.md)
+
+[**new**: ](/vi/docs/guides/issues/desegmented.md)
 
 <!-- -->
 
-[/docs/guides/issues/routes](/documentation/vi/docs/guides/issues/routes.md)
+[/docs/guides/issues/desegmented](/vi/docs/guides/issues/desegmented.md)
+
+[Routes](/vi/docs/guides/issues/routes.md)
+
+[**old**:](/vi/docs/guides/issues/routes.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/concepts/issues/routes](/vi/docs/guides/issues/routes.md)
+
+[**new**: ](/vi/docs/guides/issues/routes.md)
+
+<!-- -->
+
+[/docs/guides/issues/routes](/vi/docs/guides/issues/routes.md)
 
 ### 🎯 Examples
 
 ⚡️ <!-- -->Grouped and simplified into /guides/examples as practical examples
 
-[Viewer logic](/documentation/vi/docs/guides/examples/auth.md)
+[Viewer logic](/vi/docs/guides/examples/auth.md)
 
-[**old**:](/documentation/vi/docs/guides/examples/auth.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/guides/examples/viewer](/documentation/vi/docs/guides/examples/auth.md)
-
-[**new**: ](/documentation/vi/docs/guides/examples/auth.md)
-
-<!-- -->
-
-[/docs/guides/examples/auth](/documentation/vi/docs/guides/examples/auth.md)
-
-[Monorepo](/documentation/vi/docs/guides/examples/monorepo.md)
-
-[**old**:](/documentation/vi/docs/guides/examples/monorepo.md)
+[**old**:](/vi/docs/guides/examples/auth.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/guides/monorepo](/documentation/vi/docs/guides/examples/monorepo.md)
+[/docs/guides/examples/viewer](/vi/docs/guides/examples/auth.md)
 
-[**new**: ](/documentation/vi/docs/guides/examples/monorepo.md)
-
-<!-- -->
-
-[/docs/guides/examples/monorepo](/documentation/vi/docs/guides/examples/monorepo.md)
-
-[White Labels](/documentation/vi/docs/guides/examples/white-labels.md)
-
-[**old**:](/documentation/vi/docs/guides/examples/white-labels.md)
+[**new**: ](/vi/docs/guides/examples/auth.md)
 
 <!-- -->
 
+[/docs/guides/examples/auth](/vi/docs/guides/examples/auth.md)
+
+[Monorepo](/vi/docs/guides/examples/monorepo.md)
+
+[**old**:](/vi/docs/guides/examples/monorepo.md)
+
 <!-- -->
 
-[/docs/guides/white-labels](/documentation/vi/docs/guides/examples/white-labels.md)
+<!-- -->
 
-[**new**: ](/documentation/vi/docs/guides/examples/white-labels.md)
+[/docs/guides/monorepo](/vi/docs/guides/examples/monorepo.md)
+
+[**new**: ](/vi/docs/guides/examples/monorepo.md)
 
 <!-- -->
 
-[/docs/guides/examples/white-labels](/documentation/vi/docs/guides/examples/white-labels.md)
+[/docs/guides/examples/monorepo](/vi/docs/guides/examples/monorepo.md)
+
+[White Labels](/vi/docs/guides/examples/white-labels.md)
+
+[**old**:](/vi/docs/guides/examples/white-labels.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/guides/white-labels](/vi/docs/guides/examples/white-labels.md)
+
+[**new**: ](/vi/docs/guides/examples/white-labels.md)
+
+<!-- -->
+
+[/docs/guides/examples/white-labels](/vi/docs/guides/examples/white-labels.md)
 
 ### 🎯 Migration
 
 ⚡️ <!-- -->Grouped and simplified into /guides/migration as migration guidelines
 
-[Migration from V1](/documentation/vi/docs/guides/migration/from-v1.md)
+[Migration from V1](/vi/docs/guides/migration/from-v1.md)
 
-[**old**:](/documentation/vi/docs/guides/migration/from-v1.md)
-
-<!-- -->
-
-<!-- -->
-
-[/docs/guides/migration-from-v1](/documentation/vi/docs/guides/migration/from-v1.md)
-
-[**new**: ](/documentation/vi/docs/guides/migration/from-v1.md)
-
-<!-- -->
-
-[/docs/guides/migration/from-v1](/documentation/vi/docs/guides/migration/from-v1.md)
-
-[Migration from Legacy](/documentation/vi/docs/guides/migration/from-custom.md)
-
-[**old**:](/documentation/vi/docs/guides/migration/from-custom.md)
+[**old**:](/vi/docs/guides/migration/from-v1.md)
 
 <!-- -->
 
 <!-- -->
 
-[/docs/guides/migration-from-legacy](/documentation/vi/docs/guides/migration/from-custom.md)
+[/docs/guides/migration-from-v1](/vi/docs/guides/migration/from-v1.md)
 
-[**new**: ](/documentation/vi/docs/guides/migration/from-custom.md)
+[**new**: ](/vi/docs/guides/migration/from-v1.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-custom](/documentation/vi/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-v1](/vi/docs/guides/migration/from-v1.md)
+
+[Migration from Legacy](/vi/docs/guides/migration/from-custom.md)
+
+[**old**:](/vi/docs/guides/migration/from-custom.md)
+
+<!-- -->
+
+<!-- -->
+
+[/docs/guides/migration-from-legacy](/vi/docs/guides/migration/from-custom.md)
+
+[**new**: ](/vi/docs/guides/migration/from-custom.md)
+
+<!-- -->
+
+[/docs/guides/migration/from-custom](/vi/docs/guides/migration/from-custom.md)
 
 ### 🎯 Tech
 
 ⚡️ <!-- -->Grouped into /guides/tech as tech-specific usage guidelines
 
-[Usage with NextJS](/documentation/vi/docs/guides/tech/with-nextjs.md)
+[Usage with NextJS](/vi/docs/guides/tech/with-nextjs.md)
 
-[**old**:](/documentation/vi/docs/guides/tech/with-nextjs.md)
-
-<!-- -->
+[**old**:](/vi/docs/guides/tech/with-nextjs.md)
 
 <!-- -->
 
-[/docs/guides/usage-with-nextjs](/documentation/vi/docs/guides/tech/with-nextjs.md)
+<!-- -->
 
-[**new**: ](/documentation/vi/docs/guides/tech/with-nextjs.md)
+[/docs/guides/usage-with-nextjs](/vi/docs/guides/tech/with-nextjs.md)
+
+[**new**: ](/vi/docs/guides/tech/with-nextjs.md)
 
 <!-- -->
 
-[/docs/guides/tech/with-nextjs](/documentation/vi/docs/guides/tech/with-nextjs.md)
+[/docs/guides/tech/with-nextjs](/vi/docs/guides/tech/with-nextjs.md)
 
 ### Rename 'legacy' to 'custom'
 
 ⚡️ <!-- -->'Legacy' is derogatory, we don't get to call people's projects legacy
 
-[Rename 'legacy' to custom](/documentation/vi/docs/guides/migration/from-custom.md)
+[Rename 'legacy' to custom](/vi/docs/guides/migration/from-custom.md)
 
-[**old**:](/documentation/vi/docs/guides/migration/from-custom.md)
-
-<!-- -->
+[**old**:](/vi/docs/guides/migration/from-custom.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-legacy](/documentation/vi/docs/guides/migration/from-custom.md)
+<!-- -->
 
-[**new**: ](/documentation/vi/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-legacy](/vi/docs/guides/migration/from-custom.md)
+
+[**new**: ](/vi/docs/guides/migration/from-custom.md)
 
 <!-- -->
 
-[/docs/guides/migration/from-custom](/documentation/vi/docs/guides/migration/from-custom.md)
+[/docs/guides/migration/from-custom](/vi/docs/guides/migration/from-custom.md)
 
 ### Deduplication of Reference
 
 ⚡️ <!-- -->Cleaned up the Reference section and deduplicated the material
 
-[Isolation of modules](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
+[Isolation of modules](/vi/docs/reference/layers.md#import-rule-on-layers)
 
-[**old**:](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
-
-<!-- -->
+[**old**:](/vi/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-[/docs/reference/isolation](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
+<!-- -->
 
-[**new**: ](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
+[/docs/reference/isolation](/vi/docs/reference/layers.md#import-rule-on-layers)
+
+[**new**: ](/vi/docs/reference/layers.md#import-rule-on-layers)
 
 <!-- -->
 
-[/docs/reference/layers#import-rule-on-layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers)
+[/docs/reference/layers#import-rule-on-layers](/vi/docs/reference/layers.md#import-rule-on-layers)
 
 
 ---
 
 [Chuyển đến nội dung chính](#__docusaurus_skipToContent_fallback)
 
-[![Logo](/documentation/vi/img/brand/logo-primary.png)![Logo](/documentation/vi/img/brand/logo-primary.png)](/documentation/vi/.md)
+[![Logo](/vi/img/brand/logo-primary.png)![Logo](/vi/img/brand/logo-primary.png)](/vi/.md)
 
-[**FSD**](/documentation/vi/.md)[📖 Tài liệu](/documentation/vi/docs/get-started/overview.md)[💫 Cộng đồng](/documentation/vi/community.md)[📝 Blog](/documentation/vi/blog)[🛠 Ví dụ](/documentation/vi/examples.md)
+[**FSD**](/vi/.md)[📖 Tài liệu](/vi/docs/get-started/overview.md)[💫 Cộng đồng](/vi/community.md)[📝 Blog](/vi/blog)[🛠 Ví dụ](/vi/examples.md)
 
-[v2.1](/documentation/vi/docs/get-started/overview.md)
+[v2.1](/vi/docs/get-started/overview.md)
 
-* [v2.1](/documentation/vi/docs/get-started/overview.md)
+* [v2.1](/vi/docs/get-started/overview.md)
 * [v1.0](https://feature-sliced.github.io/featureslices.dev/v1.0.html)
 * [v0.1](https://feature-sliced.github.io/featureslices.dev/v0.1.html)
 * [feature-driven](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
-* [All versions](/documentation/vi/versions.md)
+* [All versions](/vi/versions.md)
 
 [Tiếng Việt](#)
 
-* [Русский](/documentation/ru/search)
-* [English](/documentation/search)
-* [O'zbekcha](/documentation/uz/search)
-* [한국어](/documentation/kr/search)
-* [日本語](/documentation/ja/search)
-* [Tiếng Việt](/documentation/vi/search.md)
-* [中文](/documentation/zh/search)
+* [Русский](/ru/search)
+* [English](/search)
+* [O'zbekcha](/uz/search)
+* [한국어](/kr/search)
+* [日本語](/ja/search)
+* [Tiếng Việt](/vi/search.md)
+* [中文](/zh/search)
 * [Help Us Translate](https://github.com/feature-sliced/documentation/issues/244)
 
 [](https://discord.gg/S8MzWTUsmp)[](https://github.com/feature-sliced/documentation)
@@ -776,9 +776,9 @@ Nhập tìm kiếm của bạn ở đây
 
 Specs
 
-* [Tài liệu](/documentation/vi/docs/get-started/overview.md)
-* [Cộng đồng](/documentation/vi/community.md)
-* [Trợ giúp](/documentation/vi/nav.md)
+* [Tài liệu](/vi/docs/get-started/overview.md)
+* [Cộng đồng](/vi/community.md)
+* [Trợ giúp](/vi/nav.md)
 * [Thảo luận](https://github.com/feature-sliced/documentation/discussions)
 
 Cộng đồng
@@ -794,9 +794,9 @@ Thêm
 * [GitHub](https://github.com/feature-sliced)
 * [Contribution Guide](https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md)
 * [License](https://github.com/feature-sliced/documentation/blob/master/LICENSE)
-* [Docs for LLMs](/documentation/vi/docs/llms.md)
+* [Docs for LLMs](/vi/docs/llms.md)
 
-[![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/vi/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/documentation/vi/img/brand/logo-primary.png)](https://github.com/feature-sliced)
+[![Feature-Sliced Design - Architectural methodology for frontend projects](/vi/img/brand/logo-primary.png)![Feature-Sliced Design - Architectural methodology for frontend projects](/vi/img/brand/logo-primary.png)](https://github.com/feature-sliced)
 
 Bản quyền © 2018-2025 Feature-Sliced Design
 
@@ -809,8 +809,8 @@ Bản quyền © 2018-2025 Feature-Sliced Design
 
 Tài liệu cho phiên bản hiện tại có thể tìm thấy ở đây
 
-| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/documentation/vi/docs/get-started/overview.md) | [Migration from v1](/documentation/vi/docs/guides/migration/from-v1.md) | [Migration from v2.0](/documentation/vi/docs/guides/migration/from-v1.md) |
-| ---- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| v2.1 | [Release Notes](https://github.com/feature-sliced/documentation/releases/tag/v2.1) | [Documentation](/vi/docs/get-started/overview.md) | [Migration from v1](/vi/docs/guides/migration/from-v1.md) | [Migration from v2.0](/vi/docs/guides/migration/from-v1.md) |
+| ---- | ---------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
 
 ### Feature Slices v1 (Legacy)
 
@@ -843,13 +843,13 @@ Community resources, additional materials
 
 [A curated list of awesome FSD videos, articles, packages](https://github.com/feature-sliced/awesome)
 
-[Team](/documentation/vi/community/team.md)
+[Team](/vi/community/team.md)
 
-[Core-team, Champions, Contributors, Companies](/documentation/vi/community/team.md)
+[Core-team, Champions, Contributors, Companies](/vi/community/team.md)
 
-[Brandbook](/documentation/vi/docs/branding.md)
+[Brandbook](/vi/docs/branding.md)
 
-[Recommendations for FSD's branding usage](/documentation/vi/docs/branding.md)
+[Recommendations for FSD's branding usage](/vi/docs/branding.md)
 
 [Contributing](#)
 
@@ -1043,7 +1043,7 @@ Bài viết đang trong quá trình hoàn thiện
 
 Không phụ thuộc vào framework, cách tiếp cận thông thường
 
-* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/documentation/vi/docs/about/motivation.md)
+* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/vi/docs/about/motivation.md)
 * [(Thread) About the applicability of the methodology for different frameworks](https://t.me/feature_sliced/3867)
 
 ## Atomic Design[​](#atomic-design "Link trực tiếp đến heading")
@@ -1160,7 +1160,7 @@ Mọi người đều có mức độ kinh nghiệm riêng trong việc thiết 
 
 ## Xem thêm[​](#xem-thêm "Link trực tiếp đến heading")
 
-* [Các vấn đề kiến trúc](/documentation/vi/docs/about/understanding/architecture.md#problems)
+* [Các vấn đề kiến trúc](/vi/docs/about/understanding/architecture.md#problems)
 
 
 ---
@@ -1169,7 +1169,7 @@ Mọi người đều có mức độ kinh nghiệm riêng trong việc thiết 
 
 Ý tưởng chính của **Feature-Sliced Design** là tạo điều kiện thuận lợi và giảm chi phí phát triển các dự án phức tạp và được phát triển, dựa trên việc [kết hợp kết quả nghiên cứu, thảo luận kinh nghiệm của các loại developer khác nhau trong phạm vi rộng](https://github.com/feature-sliced/documentation/discussions).
 
-Hiển nhiên, đây sẽ không phải là giải pháp vạn năng, và tất nhiên, phương pháp này sẽ có [giới hạn khả năng áp dụng](/documentation/vi/docs/about/mission.md) riêng của mình.
+Hiển nhiên, đây sẽ không phải là giải pháp vạn năng, và tất nhiên, phương pháp này sẽ có [giới hạn khả năng áp dụng](/vi/docs/about/mission.md) riêng của mình.
 
 Tuy nhiên, có những câu hỏi hợp lý về *tính khả thi của một phương pháp như vậy nói chung*
 
@@ -1275,7 +1275,7 @@ Vâng, điều quan trọng nhất đối với MVP là *"các tính năng, khô
 
 ## Kế hoạch[​](#kế-hoạch "Link trực tiếp đến heading")
 
-Phần chính của các mục tiêu [được trình bày ở đây](/documentation/vi/docs/about/mission.md#goals), nhưng ngoài ra, đáng nói về kỳ vọng của chúng tôi từ methodology trong tương lai
+Phần chính của các mục tiêu [được trình bày ở đây](/vi/docs/about/mission.md#goals), nhưng ngoài ra, đáng nói về kỳ vọng của chúng tôi từ methodology trong tương lai
 
 ### Kết hợp kinh nghiệm[​](#kết-hợp-kinh-nghiệm "Link trực tiếp đến heading")
 
@@ -1298,8 +1298,8 @@ Nếu mọi thứ điễn ra tốt, thì methodology sẽ không chỉ giới h�
 ## Xem thêm[​](#xem-thêm "Link trực tiếp đến heading")
 
 * [(Thảo luận) Không cần methodology?](https://github.com/feature-sliced/documentation/discussions/27)
-* [Về sứ mệnh của methodology: mục tiêu và giới hạn](/documentation/vi/docs/about/mission.md)
-* [Các loại kiến thức trong dự án](/documentation/vi/docs/about/understanding/knowledge-types.md)
+* [Về sứ mệnh của methodology: mục tiêu và giới hạn](/vi/docs/about/mission.md)
+* [Các loại kiến thức trong dự án](/vi/docs/about/understanding/knowledge-types.md)
 
 
 ---
@@ -1371,7 +1371,7 @@ Bài viết đang trong quá trình hoàn thiện
 
 **Ưu điểm**:
 
-* [Tổng quan](/documentation/vi/docs/get-started/overview.md)
+* [Tổng quan](/vi/docs/get-started/overview.md)
 * CodeReview
 * Onboarding
 
@@ -1489,7 +1489,7 @@ Do đó, có vẻ hợp lý khi trình bày các *yêu cầu mong muốn cho m�
 
 ghi chú
 
-Bất cứ đâu nói "dễ dàng", điều đó có nghĩa là "tương đối dễ dàng cho một nhóm rộng các developer", vì rõ ràng là [sẽ không thể tạo ra một giải pháp lý tưởng cho tất cả mọi người](/documentation/vi/docs/about/mission.md#limitations)
+Bất cứ đâu nói "dễ dàng", điều đó có nghĩa là "tương đối dễ dàng cho một nhóm rộng các developer", vì rõ ràng là [sẽ không thể tạo ra một giải pháp lý tưởng cho tất cả mọi người](/vi/docs/about/mission.md#limitations)
 
 ### Tính rõ ràng[​](#tính-rõ-ràng "Link trực tiếp đến heading")
 
@@ -1740,7 +1740,7 @@ Rõ ràng là bạn cần xác định ít nhất hai yêu cầu cho **Feature-S
 
    * Có nghĩa là nó nên giải thích rõ ràng *cách chia code giữa chúng*, có nghĩa là việc đặt tên các entities này cũng nên được quy định trong specification.
 
-2. Methodology nên giúp kiến trúc **[dễ dàng thích ứng với yêu cầu thay đổi của dự án](/documentation/vi/docs/about/understanding/architecture.md#adaptability)**
+2. Methodology nên giúp kiến trúc **[dễ dàng thích ứng với yêu cầu thay đổi của dự án](/vi/docs/about/understanding/architecture.md#adaptability)**
 
 ## Xem thêm[​](#xem-thêm "Link trực tiếp đến heading")
 
@@ -1814,17 +1814,17 @@ Hình ảnh bánh 🍰 thể hiện khá tốt các khái niệm cốt lõi củ
 
 FSD có một vài biến thể logo cho các ngữ cảnh khác nhau, nhưng được khuyến nghị ưu tiên **primary**
 
-|                                 |                                                                                                                        |                                  |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| Theme                           | Logo (Ctrl/Cmd + Click để tải xuống)                                                                                   | Sử dụng                          |
-| primary<br />(#29BEDC, #517AED) | [![logo-primary](/documentation/vi/img/brand/logo-primary.png)](/documentation/vi/img/brand/logo-primary.png)          | Ưu tiên trong hầu hết trường hợp |
-| flat<br />(#3193FF)             | [![logo-flat](/documentation/vi/img/brand/logo-flat.png)](/documentation/vi/img/brand/logo-flat.png)                   | Cho ngữ cảnh một màu             |
-| monochrome<br />(#FFF)          | [![logo-monocrhome](/documentation/vi/img/brand/logo-monochrome.png)](/documentation/vi/img/brand/logo-monochrome.png) | Cho ngữ cảnh thang màu xám       |
-| square<br />(#3193FF)           | [![logo-square](/documentation/vi/img/brand/logo-square.png)](/documentation/vi/img/brand/logo-square.png)             | Cho biên hình vuông              |
+|                                 |                                                                                            |                                  |
+| ------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------- |
+| Theme                           | Logo (Ctrl/Cmd + Click để tải xuống)                                                       | Sử dụng                          |
+| primary<br />(#29BEDC, #517AED) | [![logo-primary](/vi/img/brand/logo-primary.png)](/vi/img/brand/logo-primary.png)          | Ưu tiên trong hầu hết trường hợp |
+| flat<br />(#3193FF)             | [![logo-flat](/vi/img/brand/logo-flat.png)](/vi/img/brand/logo-flat.png)                   | Cho ngữ cảnh một màu             |
+| monochrome<br />(#FFF)          | [![logo-monocrhome](/vi/img/brand/logo-monochrome.png)](/vi/img/brand/logo-monochrome.png) | Cho ngữ cảnh thang màu xám       |
+| square<br />(#3193FF)           | [![logo-square](/vi/img/brand/logo-square.png)](/vi/img/brand/logo-square.png)             | Cho biên hình vuông              |
 
 ## Banner & Sơ đồ[​](#banner--sơ-đồ "Link trực tiếp đến heading")
 
-[![banner-primary](/documentation/vi/img/brand/banner-primary.jpg)](/documentation/vi/img/brand/banner-primary.jpg) [![banner-monochrome](/documentation/vi/img/brand/banner-monochrome.jpg)](/documentation/vi/img/brand/banner-monochrome.jpg)
+[![banner-primary](/vi/img/brand/banner-primary.jpg)](/vi/img/brand/banner-primary.jpg) [![banner-monochrome](/vi/img/brand/banner-monochrome.jpg)](/vi/img/brand/banner-monochrome.jpg)
 
 ## Social Preview[​](#social-preview "Link trực tiếp đến heading")
 
@@ -1848,19 +1848,19 @@ Sử dụng làm tài liệu tham khảo nhanh khi bạn quyết định cách d
 
 ## Chọn layer[​](#chọn-layer "Link trực tiếp đến heading")
 
-[Download PDF](/documentation/vi/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
+[Download PDF](/vi/assets/files/choosing-a-layer-en-12fdf3265c8fc4f6b58687352b81fce7.pdf)
 
-![Definitions of all layers and self-check questions](/documentation/vi/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
+![Definitions of all layers and self-check questions](/vi/assets/images/choosing-a-layer-en-5b67f20bb921ba17d78a56c0dc7654a9.jpg)
 
 ## Ví dụ[​](#ví-dụ "Link trực tiếp đến heading")
 
 ### Tweet[​](#tweet "Link trực tiếp đến heading")
 
-![decomposed-tweet-bordered-bgLight](/documentation/vi/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
+![decomposed-tweet-bordered-bgLight](/vi/assets/images/decompose-twitter-7b9a50f879d763c49305b3bf0751ee35.png)
 
 ### GitHub[​](#github "Link trực tiếp đến heading")
 
-![decomposed-github-bordered](/documentation/vi/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
+![decomposed-github-bordered](/vi/assets/images/decompose-github-a0eeb839a4b5ef5c480a73726a4451b0.jpg)
 
 ## Xem thêm[​](#xem-thêm "Link trực tiếp đến heading")
 
@@ -1897,13 +1897,13 @@ Nếu bạn cần layout markup thuần túy, bạn có thể giữ chúng trong
 
 *Entity* là khái niệm thực tế mà app của bạn đang làm việc với. *Feature* là tương tác cung cấp giá trị thực tế cho người dùng app của bạn, điều mà mọi người muốn làm với các entity của bạn.
 
-Để biết thêm thông tin cùng với ví dụ, xem trang Reference về [slice](/documentation/vi/docs/reference/layers.md#entities).
+Để biết thêm thông tin cùng với ví dụ, xem trang Reference về [slice](/vi/docs/reference/layers.md#entities).
 
 ### Tôi có thể embed page/feature/entity vào nhau không?[​](#tôi-có-thể-embed-pagefeatureentity-vào-nhau-không "Link trực tiếp đến heading")
 
 Có, nhưng việc embedding này nên xảy ra ở các layer cao hơn. Ví dụ, bên trong widget, bạn có thể import cả feature rồi insert feature này vào feature khác như props/children.
 
-Bạn không thể import feature này từ feature khác, điều này bị cấm bởi [**import rule on layers**](/documentation/vi/docs/reference/layers.md#import-rule-on-layers).
+Bạn không thể import feature này từ feature khác, điều này bị cấm bởi [**import rule on layers**](/vi/docs/reference/layers.md#import-rule-on-layers).
 
 ### Còn Atomic Design thì sao?[​](#còn-atomic-design-thì-sao "Link trực tiếp đến heading")
 
@@ -1917,7 +1917,7 @@ Có! <https://github.com/feature-sliced/awesome>
 
 ### Tại sao tôi cần Feature-Sliced Design?[​](#tại-sao-tôi-cần-feature-sliced-design "Link trực tiếp đến heading")
 
-Nó giúp bạn và team của bạn nhanh chóng tổng quan project theo các component mang lại giá trị chính. Kiến trúc được tiêu chuẩn hóa giúp tăng tốc onboarding và giải quyết các tranh luận về cấu trúc code. Xem trang [motivation](/documentation/vi/docs/about/motivation.md) để tìm hiểu thêm về lý do FSD được tạo ra.
+Nó giúp bạn và team của bạn nhanh chóng tổng quan project theo các component mang lại giá trị chính. Kiến trúc được tiêu chuẩn hóa giúp tăng tốc onboarding và giải quyết các tranh luận về cấu trúc code. Xem trang [motivation](/vi/docs/about/motivation.md) để tìm hiểu thêm về lý do FSD được tạo ra.
 
 ### Developer mới có cần architecture/methodology không?[​](#developer-mới-có-cần-architecturemethodology-không "Link trực tiếp đến heading")
 
@@ -1927,7 +1927,7 @@ Có thì tốt hơn là không
 
 ### Làm thế nào để làm việc với authorization context?[​](#làm-thế-nào-để-làm-việc-với-authorization-context "Link trực tiếp đến heading")
 
-Trả lời [ở đây](/documentation/vi/docs/guides/examples/auth.md)
+Trả lời [ở đây](/vi/docs/guides/examples/auth.md)
 
 
 ---
@@ -1936,7 +1936,7 @@ Trả lời [ở đây](/documentation/vi/docs/guides/examples/auth.md)
 
 **Feature-Sliced Design** (FSD) là một phương pháp thiết kế kiến trúc để xây dựng các ứng dụng frontend. Nói đơn giản, đây là tập hợp các quy tắc và quy ước để tổ chức code. Mục đích chính của phương pháp này là làm cho dự án trở nên dễ hiểu và ổn định hơn khi đối mặt với những yêu cầu kinh doanh liên tục thay đổi.
 
-Ngoài tập hợp các quy ước, FSD còn là một bộ công cụ. Chúng tôi có [linter](https://github.com/feature-sliced/steiger) để kiểm tra kiến trúc dự án của bạn, [trình tạo thư mục](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) thông qua CLI hoặc IDE, cũng như thư viện phong phú các [ví dụ](/documentation/vi/examples.md).
+Ngoài tập hợp các quy ước, FSD còn là một bộ công cụ. Chúng tôi có [linter](https://github.com/feature-sliced/steiger) để kiểm tra kiến trúc dự án của bạn, [trình tạo thư mục](https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools) thông qua CLI hoặc IDE, cũng như thư viện phong phú các [ví dụ](/vi/examples.md).
 
 ## Có phù hợp với tôi không?[​](#is-it-right-for-me "Link trực tiếp đến heading")
 
@@ -1947,7 +1947,7 @@ FSD có thể được triển khai trong các dự án và nhóm với bất k�
 
 Vâng, chỉ đơn giản thế thôi! Không có ràng buộc nào về ngôn ngữ lập trình, UI framework, hoặc state manager bạn sử dụng. Bạn cũng có thể áp dụng FSD từng bước một, sử dụng nó trong monorepo, và mở rộng quy mô lớn bằng cách chia ứng dụng thành các package và triển khai FSD riêng lẻ trong từng package.
 
-Nếu bạn đã có một kiến trúc và đang cân nhắc chuyển sang FSD, hãy đảm bảo rằng kiến trúc hiện tại đang **gây ra vấn đề** trong nhóm của bạn. Ví dụ, nếu dự án của bạn đã trở nên quá lớn và liên kết chặt chẽ với nhau khiến việc triển khai tính năng mới trở nên kém hiệu quả, hoặc nếu bạn dự kiến có nhiều thành viên mới tham gia nhóm. Nếu kiến trúc hiện tại hoạt động tốt, có lẽ không đáng để thay đổi. Nhưng nếu bạn quyết định migrate, hãy xem phần [Migration](/documentation/vi/docs/guides/migration/from-custom.md) để được hướng dẫn.
+Nếu bạn đã có một kiến trúc và đang cân nhắc chuyển sang FSD, hãy đảm bảo rằng kiến trúc hiện tại đang **gây ra vấn đề** trong nhóm của bạn. Ví dụ, nếu dự án của bạn đã trở nên quá lớn và liên kết chặt chẽ với nhau khiến việc triển khai tính năng mới trở nên kém hiệu quả, hoặc nếu bạn dự kiến có nhiều thành viên mới tham gia nhóm. Nếu kiến trúc hiện tại hoạt động tốt, có lẽ không đáng để thay đổi. Nhưng nếu bạn quyết định migrate, hãy xem phần [Migration](/vi/docs/guides/migration/from-custom.md) để được hướng dẫn.
 
 ## Ví dụ cơ bản[​](#basic-example "Link trực tiếp đến heading")
 
@@ -1988,7 +1988,7 @@ Các thư mục bên trong `📂 app`, `📂 shared`, và `📂 pages/article-re
 
 Layer, slice, và segment tạo thành một hệ thống phân cấp như sau:
 
-![Hierarchy of FSD concepts, described below](/documentation/vi/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
+![Hierarchy of FSD concepts, described below](/vi/assets/images/visual_schema-e826067f573946613dcdc76e3f585082.jpg)
 
 Hình minh họa: ba cột, được gắn nhãn từ trái sang phải lần lượt là "Layers", "Slices", và "Segments".
 
@@ -2060,8 +2060,8 @@ Nên tránh thêm các entity lớn mới trong khi refactor hoặc chỉ refact
 
 ## Bước tiếp theo[​](#next-steps "Link trực tiếp đến heading")
 
-* **Muốn nắm bắt tốt cách tư duy trong FSD?** Xem [Tutorial](/documentation/vi/docs/get-started/tutorial.md).
-* **Bạn thích học từ ví dụ?** Chúng tôi có rất nhiều trong phần [Examples](/documentation/vi/examples.md).
+* **Muốn nắm bắt tốt cách tư duy trong FSD?** Xem [Tutorial](/vi/docs/get-started/tutorial.md).
+* **Bạn thích học từ ví dụ?** Chúng tôi có rất nhiều trong phần [Examples](/vi/examples.md).
 * **Bạn có câu hỏi?** Ghé thăm [Telegram chat](https://t.me/feature_sliced) của chúng tôi và nhận trợ giúp từ cộng đồng.
 
 
@@ -2073,7 +2073,7 @@ Nên tránh thêm các entity lớn mới trong khi refactor hoặc chỉ refact
 
 Tutorial này sẽ xem xét một app thực tế, còn được biết đến với tên Conduit. Conduit là một bản clone cơ bản của [Medium](https://medium.com/) — nó cho phép bạn đọc và viết bài, cũng như bình luận trên các bài viết của người khác.
 
-![Conduit home page](/documentation/vi/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Conduit home page](/vi/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 Đây là một ứng dụng khá nhỏ, vì vậy chúng ta sẽ giữ nó đơn giản và tránh phân tách quá mức. Rất có thể toàn bộ ứng dụng sẽ chỉ cần ba layer: **App**, **Pages**, và **Shared**. Nếu không, chúng ta sẽ giới thiệu thêm các layer khi cần. Sẵn sàng chưa?
 
@@ -2110,11 +2110,11 @@ Trong trường hợp này, một trang là một slice, vì vậy các module (
 
 ### Nhìn kỹ hơn vào feed[​](#nhìn-kỹ-hơn-vào-feed "Link trực tiếp đến heading")
 
-![Anonymous user\&#39;s perspective](/documentation/vi/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
+![Anonymous user\&#39;s perspective](/vi/assets/images/realworld-feed-anonymous-8cbba45f488931979f6c8da8968ad685.jpg)
 
 *Từ góc nhìn của người dùng ẩn danh*
 
-![Authenticated user\&#39;s perspective](/documentation/vi/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
+![Authenticated user\&#39;s perspective](/vi/assets/images/realworld-feed-authenticated-15427d9ff7baae009b47b501bee6c059.jpg)
 
 *Từ góc nhìn của người dùng đã xác thực*
 
@@ -2208,7 +2208,7 @@ Trong trường hợp của chúng ta, header rất đơn giản — đó là lo
 
 Hãy cũng kiểm tra một trang được thiết kế để chỉnh sửa, không phải đọc. Ví dụ, trình soạn thảo article:
 
-![Conduit post editor](/documentation/vi/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
+![Conduit post editor](/vi/assets/images/realworld-editor-authenticated-10de4d01479270886859e08592045b1e.jpg)
 
 Nó trông đơn giản, nhưng chứa một số khía cạnh của phát triển ứng dụng mà chúng ta chưa khám phá — validation form, trạng thái lỗi, và data persistence.
 
@@ -2306,7 +2306,7 @@ export default FeedPage;
 
 Sau đó, nếu bạn chạy dev server và mở ứng dụng, bạn sẽ thấy banner của Conduit!
 
-![The banner of Conduit](/documentation/vi/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
+![The banner of Conduit](/vi/assets/images/conduit-banner-a20e38edcd109ee21a8b1426d93a66b3.jpg)
 
 ### API client[​](#api-client "Link trực tiếp đến heading")
 
@@ -3354,7 +3354,7 @@ export default function App() {
 
 Tại thời điểm này, bạn sẽ có kết quả sau trên trang chủ:
 
-![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/documentation/vi/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
+![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/vi/assets/images/realworld-feed-without-tabs-5da4c9072101ac20e82e2234bd3badbe.jpg)
 
 Trang feed của Conduit, bao gồm header, feed, và các tag. Các tab vẫn còn thiếu.
 
@@ -4126,7 +4126,7 @@ export function Comments() {
 
 Và với điều đó, trình đọc article của chúng ta cũng hoàn thành! Các button theo dõi tác giả, thích bài viết, và để lại comment giờ đây sẽ hoạt động như mong đợi.
 
-![Article reader with functioning buttons to like and follow](/documentation/vi/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
+![Article reader with functioning buttons to like and follow](/vi/assets/images/realworld-article-reader-6a420e4f2afe139d2bdd54d62974f0b9.jpg)
 
 Trình đọc article với các button hoạt động để thích và theo dõi
 
@@ -4438,7 +4438,7 @@ export default ArticleEditPage;
 
 Chúng ta hoàn thành rồi! Đăng nhập và thử tạo article mới. Hoặc "quên" viết article và xem validation hoạt động.
 
-![The Conduit article editor, with the title field saying \&quot;New article\&quot; and the rest of the fields empty. Above the form there are two errors: \&quot;Describe what this article is about\&quot; and \&quot;Write the article itself\&quot;.](/documentation/vi/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
+![The Conduit article editor, with the title field saying \&quot;New article\&quot; and the rest of the fields empty. Above the form there are two errors: \&quot;Describe what this article is about\&quot; and \&quot;Write the article itself\&quot;.](/vi/assets/images/realworld-article-editor-bc3ee45c96ae905fdbb54d6463d12723.jpg)
 
 Trình chỉnh sửa article Conduit, với trường tiêu đề nói "New article" và phần còn lại của các trường trống. Phía trên form có hai lỗi: **"Describe what this article is about"** và **"Write the article itself"**.
 
@@ -4518,7 +4518,7 @@ Tổ chức các function API request riêng lẻ của bạn trong `shared/api/
 
 ghi chú
 
-Để giữ các ví dụ tập trung, chúng tôi bỏ qua form interaction và validation. Để biết chi tiết về các thư viện như Zod hoặc Valibot, hãy tham khảo bài viết [Type Validation và Schemas](/documentation/vi/docs/guides/examples/types.md#type-validation-schemas-and-zod).
+Để giữ các ví dụ tập trung, chúng tôi bỏ qua form interaction và validation. Để biết chi tiết về các thư viện như Zod hoặc Valibot, hãy tham khảo bài viết [Type Validation và Schemas](/vi/docs/guides/examples/types.md#type-validation-schemas-and-zod).
 
 shared/api/endpoints/login.ts
 
@@ -4598,7 +4598,7 @@ Khi sử dụng server state libraries như [TanStack Query (React Query)](https
 * Cache keys
 * Common query/mutation options
 
-Để biết thêm chi tiết về cách làm việc với server state libraries, hãy tham khảo [bài viết React Query](/documentation/vi/docs/guides/tech/with-react-query.md)
+Để biết thêm chi tiết về cách làm việc với server state libraries, hãy tham khảo [bài viết React Query](/vi/docs/guides/tech/with-react-query.md)
 
 
 ---
@@ -4714,7 +4714,7 @@ export function RegisterPage() {
 
 ## Cách gửi credentials đến backend[​](#cách-gửi-credentials-đến-backend "Link trực tiếp đến heading")
 
-Tạo một function thực hiện request đến login endpoint của backend. Function này có thể được gọi trực tiếp trong component code sử dụng mutation library (ví dụ TanStack Query), hoặc có thể được gọi như side effect trong state manager. Như được giải thích trong [hướng dẫn cho API requests](/documentation/vi/docs/guides/examples/api-requests.md), bạn có thể đặt request của mình trong `shared/api` hoặc trong segment `api` của login page.
+Tạo một function thực hiện request đến login endpoint của backend. Function này có thể được gọi trực tiếp trong component code sử dụng mutation library (ví dụ TanStack Query), hoặc có thể được gọi như side effect trong state manager. Như được giải thích trong [hướng dẫn cho API requests](/vi/docs/guides/examples/api-requests.md), bạn có thể đặt request của mình trong `shared/api` hoặc trong segment `api` của login page.
 
 ### Two-factor authentication[​](#two-factor-authentication "Link trực tiếp đến heading")
 
@@ -4728,7 +4728,7 @@ Bạn cũng cần một request function khác, tương tự như `login()` mà 
 
 Bất kể authentication scheme nào bạn có, cho dù là login & password đơn giản, OAuth, hoặc two-factor authentication, cuối cùng bạn sẽ nhận được một token. Token này nên được lưu trữ để các requests tiếp theo có thể identify chính chúng.
 
-Lưu trữ token lý tưởng cho web app là **cookie** — nó không yêu cầu token storage hoặc handling thủ công. Vì vậy, cookie storage hầu như không cần cân nhắc gì từ phía frontend architecture. Nếu frontend framework của bạn có server side (ví dụ, [Remix](https://remix.run)), thì bạn nên lưu trữ server-side cookie infrastructure trong `shared/api`. Có một ví dụ trong [phần Authentication của tutorial](/documentation/vi/docs/get-started/tutorial.md#authentication) về cách thực hiện điều đó với Remix.
+Lưu trữ token lý tưởng cho web app là **cookie** — nó không yêu cầu token storage hoặc handling thủ công. Vì vậy, cookie storage hầu như không cần cân nhắc gì từ phía frontend architecture. Nếu frontend framework của bạn có server side (ví dụ, [Remix](https://remix.run)), thì bạn nên lưu trữ server-side cookie infrastructure trong `shared/api`. Có một ví dụ trong [phần Authentication của tutorial](/vi/docs/get-started/tutorial.md#authentication) về cách thực hiện điều đó với Remix.
 
 Tuy nhiên, đôi khi cookie storage không phải là lựa chọn. Trong trường hợp này, bạn sẽ phải lưu trữ token thủ công. Ngoài việc lưu trữ token, bạn cũng có thể cần thiết lập logic để refresh token khi nó expires. Với FSD, có nhiều nơi bạn có thể lưu trữ token, cũng như nhiều cách để làm cho nó available cho phần còn lại của app.
 
@@ -4756,7 +4756,7 @@ ghi chú
 
 Để lưu trữ token trong User entity, tạo reactive store trong segment `model`. Store đó có thể chứa cả token và user object.
 
-Vì API client thường được define trong `shared/api` hoặc spread qua các entities, thách thức chính của cách tiếp cận này là làm cho token available cho các requests khác cần nó mà không vi phạm [import rule trên các layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Vì API client thường được define trong `shared/api` hoặc spread qua các entities, thách thức chính của cách tiếp cận này là làm cho token available cho các requests khác cần nó mà không vi phạm [import rule trên các layers](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > Một module (file) trong slice chỉ có thể import các slices khác khi chúng được đặt trên các layers ở phía dưới.
 
@@ -5040,7 +5040,7 @@ Code của các sidebars được để lại như bài tập cho độc giả �
 
 ## Sử dụng widgets trong layout[​](#sử-dụng-widgets-trong-layout "Link trực tiếp đến heading")
 
-Thiệng thoảng bạn muốn bao gồm business logic nhất định trong layout, đặc biệt nếu bạn đang sử dụng deeply nested routes với router như [React Router](https://reactrouter.com/). Khi đó bạn không thể lưu trữ layout trong Shared hoặc trong Widgets do [import rule trên các layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Thiệng thoảng bạn muốn bao gồm business logic nhất định trong layout, đặc biệt nếu bạn đang sử dụng deeply nested routes với router như [React Router](https://reactrouter.com/). Khi đó bạn không thể lưu trữ layout trong Shared hoặc trong Widgets do [import rule trên các layers](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > Một module trong slice chỉ có thể import các slices khác khi chúng được đặt trên các layers ở phía dưới.
 
@@ -5063,7 +5063,7 @@ Nếu không có điều nào ở trên áp dụng được, có hai giải phá
 
 ## Đọc thêm[​](#đọc-thêm "Link trực tiếp đến heading")
 
-* Có một ví dụ về cách xây dựng layout với authentication sử dụng React và Remix (tương đương với React Router) trong [tutorial](/documentation/vi/docs/get-started/tutorial.md).
+* Có một ví dụ về cách xây dựng layout với authentication sử dụng React và Remix (tương đương với React Router) trong [tutorial](/vi/docs/get-started/tutorial.md).
 
 
 ---
@@ -5202,7 +5202,7 @@ export function listSongs() {
 }
 ```
 
-Bạn có thể nhận thấy rằng type `Song` tham chiếu đến một entity khác, `Artist`. Đây là lợi ích của việc lưu trữ requests của bạn trong Shared — các types thế giới thực thường đan xen. Nếu chúng ta giữ function này trong `entities/song/api`, chúng ta sẽ không thể đơn giản import `Artist` từ `entities/artist`, vì FSD hạn chế cross-imports giữa các slices với [import rule trên các layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Bạn có thể nhận thấy rằng type `Song` tham chiếu đến một entity khác, `Artist`. Đây là lợi ích của việc lưu trữ requests của bạn trong Shared — các types thế giới thực thường đan xen. Nếu chúng ta giữ function này trong `entities/song/api`, chúng ta sẽ không thể đơn giản import `Artist` từ `entities/artist`, vì FSD hạn chế cross-imports giữa các slices với [import rule trên các layers](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > Một module trong slice chỉ có thể import các slices khác khi chúng được đặt trên các layers ở phía dưới.
 
@@ -5515,7 +5515,7 @@ type RootState = ReturnType<typeof rootReducer>;
 type AppDispatch = typeof store.dispatch;
 ```
 
-Sẽ tốt nếu có typed Redux hooks `useAppDispatch` và `useAppSelector` trong `shared/store`, nhưng chúng không thể import `RootState` và `AppDispatch` từ App layer do [import rule trên layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Sẽ tốt nếu có typed Redux hooks `useAppDispatch` và `useAppSelector` trong `shared/store`, nhưng chúng không thể import `RootState` và `AppDispatch` từ App layer do [import rule trên layers](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > Một module trong slice chỉ có thể import các slices khác khi chúng được đặt trên layers nghiêm ngặt bên dưới.
 
@@ -5956,7 +5956,7 @@ Instead, store authentication-related data in `shared/auth` or `shared/api`:
       📄 order.ts
 ```
 
-For more details on implementing authentication, see [the Authentication guide](/documentation/vi/docs/guides/examples/auth.md).
+For more details on implementing authentication, see [the Authentication guide](/vi/docs/guides/examples/auth.md).
 
 ### 5. Minimize Cross-Imports[​](#5-minimize-cross-imports "Link trực tiếp đến heading")
 
@@ -6296,7 +6296,7 @@ Cũng tổ chức lại Shared layer để loại bỏ các folder này:
 
 Thường thì các Redux slice được tái sử dụng này sẽ mô tả điều gì đó liên quan đến nghiệp vụ, ví dụ như products hoặc users, vì vậy chúng có thể được di chuyển vào Entities layer, một entity một folder. Nếu Redux slice liên quan đến một action mà người dùng của bạn muốn thực hiện trong app, như comments, thì bạn có thể di chuyển nó vào Features layer.
 
-Entities và features có ý định độc lập với nhau. Nếu business domain của bạn chứa các kết nối bẩm sinh giữa các entity, hãy tham khảo [hướng dẫn về business entities](/documentation/vi/docs/guides/examples/types.md#business-entities-and-their-cross-references) để có lời khuyên về cách tổ chức các kết nối này.
+Entities và features có ý định độc lập với nhau. Nếu business domain của bạn chứa các kết nối bẩm sinh giữa các entity, hãy tham khảo [hướng dẫn về business entities](/vi/docs/guides/examples/types.md#business-entities-and-their-cross-references) để có lời khuyên về cách tổ chức các kết nối này.
 
 Các API functions liên quan đến các slice này có thể giữ lại trong `📁 shared/api`.
 
@@ -6431,7 +6431,7 @@ Trong v2 **, các abstraction mới khác** đã được thêm vào để loạ
 
 ### `BREAKING` Abstractions & Naming[​](#breaking-abstractions--naming "Link trực tiếp đến heading")
 
-Bây giờ các abstraction cụ thể và [khuyến nghị rõ ràng cho việc đặt tên chúng](/documentation/vi/docs/about/understanding/naming.md) đã được định nghĩa
+Bây giờ các abstraction cụ thể và [khuyến nghị rõ ràng cho việc đặt tên chúng](/vi/docs/about/understanding/naming.md) đã được định nghĩa
 
 #### Layers[​](#layers "Link trực tiếp đến heading")
 
@@ -6466,7 +6466,7 @@ Bây giờ các abstraction cụ thể và [khuyến nghị rõ ràng cho việc
 
 ### `REFINED` Low coupling[​](#refined-low-coupling "Link trực tiếp đến heading")
 
-Bây giờ việc [tuân thủ nguyên tắc low coupling](/documentation/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion) giữa các module dễ dàng hơn nhiều, nhờ vào các layer mới.
+Bây giờ việc [tuân thủ nguyên tắc low coupling](/vi/docs/reference/slices-segments.md#zero-coupling-high-cohesion) giữa các module dễ dàng hơn nhiều, nhờ vào các layer mới.
 
 *Đồng thời, vẫn được khuyến khích tránh càng nhiều càng tốt các trường hợp khi cực kỳ khó để "uncouple" các module*
 
@@ -6518,7 +6518,7 @@ entities/B/some/file.ts
 import type { EntityA } from "entities/A/@x/B";
 ```
 
-Để biết thêm chi tiết, hãy xem phần [Public API for cross-imports](/documentation/vi/docs/reference/public-api.md#public-api-for-cross-imports) trong reference.
+Để biết thêm chi tiết, hãy xem phần [Public API for cross-imports](/vi/docs/reference/public-api.md#public-api-for-cross-imports) trong reference.
 
 
 ---
@@ -7095,7 +7095,7 @@ Nếu dự án đã có sự phân chia thành các entity, và mỗi request t�
         ...                                     #
 ```
 
-Nếu có kết nối giữa các entity (ví dụ, entity Country có field-list của các entity City), thì bạn có thể sử dụng [public API for cross-imports](/documentation/vi/docs/reference/public-api.md#public-api-for-cross-imports) hoặc cân nhắc giải pháp thay thế bên dưới.
+Nếu có kết nối giữa các entity (ví dụ, entity Country có field-list của các entity City), thì bạn có thể sử dụng [public API for cross-imports](/vi/docs/reference/public-api.md#public-api-for-cross-imports) hoặc cân nhắc giải pháp thay thế bên dưới.
 
 ### Giải pháp thay thế — giữ trong shared[​](#giải-pháp-thay-thế--giữ-trong-shared "Link trực tiếp đến heading")
 
@@ -7623,8 +7623,8 @@ Trang này cung cấp các liên kết và hướng dẫn cho các LLM crawler.
 
 ### Files[​](#files "Link trực tiếp đến heading")
 
-* [llms.txt](/documentation/vi/llms.txt)
-* [llms-full.txt](/documentation/vi/llms-full.txt)
+* [llms.txt](/vi/llms.txt)
+* [llms-full.txt](/vi/llms-full.txt)
 
 ### Ghi chú[​](#ghi-chú "Link trực tiếp đến heading")
 
@@ -7640,7 +7640,7 @@ Layer là cấp độ đầu tiên của hệ thống phân cấp tổ chức tr
 
 Có tổng cộng **7 layer**, được sắp xếp từ nhiều trách nhiệm và dependency nhất đến ít nhất:
 
-![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/vi/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/documentation/vi/img/layers/folders-graphic-dark.svg#dark-mode-only)
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/vi/img/layers/folders-graphic-light.svg#light-mode-only) ![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/vi/img/layers/folders-graphic-dark.svg#dark-mode-only)
 
 1. App
 2. Processes (deprecated)
@@ -7724,7 +7724,7 @@ entities/song/@x/artist.ts
 export type { Song } from "../model/song.ts";
 ```
 
-Tìm hiểu thêm về ký hiệu `@x` trong phần [Public API cho cross-import](/documentation/vi/docs/reference/public-api.md#public-api-for-cross-imports).
+Tìm hiểu thêm về ký hiệu `@x` trong phần [Public API cho cross-import](/vi/docs/reference/public-api.md#public-api-for-cross-imports).
 
 ### Features[​](#features "Link trực tiếp đến heading")
 
@@ -7819,7 +7819,7 @@ export * from "./model/comments";  // 💩 this is bad practice
 
 ## Public API cho cross-imports[​](#public-api-for-cross-imports "Link trực tiếp đến heading")
 
-Cross-import là tình huống khi một slice import từ slice khác trên cùng layer. Thông thường điều này bị cấm bởi [import rule on layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers), nhưng thường có những lý do chính đáng để cross-import. Ví dụ, các business entity thường tham chiếu lẫn nhau trong thế giới thực, và tốt nhất là phản ánh những mối quan hệ này trong code thay vì tránh chúng.
+Cross-import là tình huống khi một slice import từ slice khác trên cùng layer. Thông thường điều này bị cấm bởi [import rule on layers](/vi/docs/reference/layers.md#import-rule-on-layers), nhưng thường có những lý do chính đáng để cross-import. Ví dụ, các business entity thường tham chiếu lẫn nhau trong thế giới thực, và tốt nhất là phản ánh những mối quan hệ này trong code thay vì tránh chúng.
 
 Cho mục đích này, có một loại public API đặc biệt, còn được biết đến với tên gọi `@x`-notation. Nếu bạn có entity A và B, và entity B cần import từ entity A, thì entity A có thể khai báo một public API riêng chỉ dành cho entity B.
 
@@ -7851,7 +7851,7 @@ Các index file như `index.js`, còn được gọi là barrel file, là cách 
 
 Circular import là khi hai hoặc nhiều file import lẫn nhau theo vòng tròn.
 
-![Three files importing each other in a circle](/documentation/vi/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/documentation/vi/img/circular-import-dark.svg#dark-mode-only)
+![Three files importing each other in a circle](/vi/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/vi/img/circular-import-dark.svg#dark-mode-only)
 
 Minh họa ở trên: ba file, `fileA.js`, `fileB.js`, và `fileC.js`, import lẫn nhau theo vòng tròn.
 
@@ -7951,13 +7951,13 @@ Các layer Shared và App không chứa slice. Đó là vì Shared không nên c
 
 Slice được thiết kế để là các nhóm file code độc lập và có tính gắn kết cao. Hình minh họa dưới đây có thể giúp hình dung các khái niệm khó hiểu về *cohesion* và *coupling*:
 
-![](/documentation/vi/img/coupling-cohesion-light.svg#light-mode-only)![](/documentation/vi/img/coupling-cohesion-dark.svg#dark-mode-only)
+![](/vi/img/coupling-cohesion-light.svg#light-mode-only)![](/vi/img/coupling-cohesion-dark.svg#dark-mode-only)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
 Một slice lý tưởng là độc lập với các slice khác trên layer của nó (zero coupling) và chứa hầu hết code liên quan đến mục tiêu chính của nó (high cohesion).
 
-Tính độc lập của các slice được thực thi bởi [import rule trên layer](/documentation/vi/docs/reference/layers.md#import-rule-on-layers):
+Tính độc lập của các slice được thực thi bởi [import rule trên layer](/vi/docs/reference/layers.md#import-rule-on-layers):
 
 > *Một module (file) trong slice chỉ có thể import các slice khác khi chúng được đặt trên các layer thấp hơn một cách nghiêm ngặt.*
 
@@ -7969,13 +7969,13 @@ Bên trong slice, code có thể được tổ chức theo bất kỳ cách nào
 >
 > *Các module bên ngoài slice/segment này chỉ có thể tham chiếu public API, không phải cấu trúc file nội bộ của slice/segment.*
 
-Đọc thêm về lý lẽ của public API và best practice để tạo một cái trong [Public API reference](/documentation/vi/docs/reference/public-api.md).
+Đọc thêm về lý lẽ của public API và best practice để tạo một cái trong [Public API reference](/vi/docs/reference/public-api.md).
 
 ### Nhóm slice[​](#nhóm-slice "Link trực tiếp đến heading")
 
 Các slice liên quan chặt chẽ có thể được nhóm về mặt cấu trúc trong một folder, nhưng chúng nên thực hiện các quy tắc cô lập giống như các slice khác — không nên có **code sharing** trong folder đó.
 
-![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/documentation/vi/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
+![Features \&quot;compose\&quot;, \&quot;like\&quot; and \&quot;delete\&quot; grouped in a folder \&quot;post\&quot;. In that folder there is also a file \&quot;some-shared-code.ts\&quot; that is crossed out to imply that it\&#39;s not allowed.](/vi/assets/images/graphic-nested-slices-b9c44e6cc55ecdbf3e50bf40a61e5a27.svg)
 
 ## Segment[​](#segment "Link trực tiếp đến heading")
 
@@ -7989,7 +7989,7 @@ Có một số tên segment được chuẩn hóa:
 * `lib` — library code mà các module khác trên slice này cần.
 * `config` — configuration file và feature flag.
 
-Xem [trang Layer](/documentation/vi/docs/reference/layers.md#layer-definitions) để biết ví dụ về cách sử dụng từng segment này trên các layer khác nhau.
+Xem [trang Layer](/vi/docs/reference/layers.md#layer-definitions) để biết ví dụ về cách sử dụng từng segment này trên các layer khác nhau.
 
 Bạn cũng có thể tạo custom segment. Những nơi phổ biến nhất cho custom segment là layer App và layer Shared, nơi mà slice không có ý nghĩa.
 

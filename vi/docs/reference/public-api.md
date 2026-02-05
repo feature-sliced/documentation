@@ -33,7 +33,7 @@ export * from "./model/comments";  // 💩 this is bad practice
 
 ## Public API cho cross-imports[​](#public-api-for-cross-imports "Link trực tiếp đến heading")
 
-Cross-import là tình huống khi một slice import từ slice khác trên cùng layer. Thông thường điều này bị cấm bởi [import rule on layers](/documentation/vi/docs/reference/layers.md#import-rule-on-layers), nhưng thường có những lý do chính đáng để cross-import. Ví dụ, các business entity thường tham chiếu lẫn nhau trong thế giới thực, và tốt nhất là phản ánh những mối quan hệ này trong code thay vì tránh chúng.
+Cross-import là tình huống khi một slice import từ slice khác trên cùng layer. Thông thường điều này bị cấm bởi [import rule on layers](/vi/docs/reference/layers.md#import-rule-on-layers), nhưng thường có những lý do chính đáng để cross-import. Ví dụ, các business entity thường tham chiếu lẫn nhau trong thế giới thực, và tốt nhất là phản ánh những mối quan hệ này trong code thay vì tránh chúng.
 
 Cho mục đích này, có một loại public API đặc biệt, còn được biết đến với tên gọi `@x`-notation. Nếu bạn có entity A và B, và entity B cần import từ entity A, thì entity A có thể khai báo một public API riêng chỉ dành cho entity B.
 
@@ -65,7 +65,7 @@ Các index file như `index.js`, còn được gọi là barrel file, là cách 
 
 Circular import là khi hai hoặc nhiều file import lẫn nhau theo vòng tròn.
 
-![Three files importing each other in a circle](/documentation/vi/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/documentation/vi/img/circular-import-dark.svg#dark-mode-only)
+![Three files importing each other in a circle](/vi/img/circular-import-light.svg#light-mode-only)![Three files importing each other in a circle](/vi/img/circular-import-dark.svg#dark-mode-only)
 
 Minh họa ở trên: ba file, `fileA.js`, `fileB.js`, và `fileC.js`, import lẫn nhau theo vòng tròn.
 

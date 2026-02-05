@@ -156,7 +156,7 @@ Bài viết đang trong quá trình hoàn thiện
 
 Không phụ thuộc vào framework, cách tiếp cận thông thường
 
-* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/documentation/vi/docs/about/motivation.md)
+* [(Article) About the reasons for creating the methodology (fragment about frameworks)](/vi/docs/about/motivation.md)
 * [(Thread) About the applicability of the methodology for different frameworks](https://t.me/feature_sliced/3867)
 
 ## Atomic Design[​](#atomic-design "Link trực tiếp đến heading")
