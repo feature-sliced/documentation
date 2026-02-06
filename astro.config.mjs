@@ -58,46 +58,89 @@ export default defineConfig({
       sidebar: [
         {
           label: '🚀 Get Started',
+          translations: {
+            ru: '🚀 Начало работы',
+          },
           autogenerate: { directory: 'docs/get-started' }
         },
         {
           label: '🎯 Guides',
+          translations: {
+            ru: '🎯 Гайды',
+          },
           items: [
             {
               label: 'Examples',
+              translations: {
+                ru: 'Примеры',
+              },
               autogenerate: { directory: 'docs/guides/examples' }
             },
             {
               label: 'Migration',
+              translations: {
+                ru: 'Миграция',
+              },
               autogenerate: { directory: 'docs/guides/migration' }
             },
             {
               label: 'Tech',
+              translations: {
+                ru: 'Технологии',
+              },
               autogenerate: { directory: 'docs/guides/tech' }
+            },
+            {
+              label: 'Code smells & Issues',
+              translations: {
+                ru: 'Известные проблемы',
+              },
+              autogenerate: { directory: 'docs/guides/issues' }
             }
           ],
         },
         {
           label: '📚 Reference',
+          translations: {
+            ru: '📚 Справочник',
+          },
           autogenerate: { directory: 'docs/reference' }
         },
         {
           label: '🍰 About',
+          translations: {
+            ru: '🍰 О нас',
+          },
           items: [{
             label: 'Mission',
+            translations: {
+              ru: 'Миссия',
+            },
             slug: 'docs/about/mission'
           }, {
             label: 'Motivation',
+            translations: {
+              ru: 'Мотивация',
+            },
             slug: 'docs/about/motivation'
           }, {
             label: 'Alternatives',
+            translations: {
+              ru: 'Альтернативы',
+            },
             slug: 'docs/about/alternatives'
           }, {
             label: 'Understanding',
+            translations: {
+              ru: 'Понимание',
+            },
             autogenerate: { directory: 'docs/about/understanding' },
             collapsed: true,
           }, {
             label: 'Promote',
+            translations: {
+              ru: 'Продвижение',
+            },
             autogenerate: { directory: 'docs/about/promote' },
             collapsed: true,
           }],
