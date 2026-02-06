@@ -138,6 +138,9 @@ importers:
       sharp:
         specifier: ^0.34.5
         version: 0.34.5
+      starlight-llms-txt:
+        specifier: ^0.7.0
+        version: 0.7.0(@astrojs/starlight@0.37.4(astro@5.16.16(@types/node@22.18.6)(jiti@1.21.7)(lightningcss@1.30.1)(rollup@4.57.0)(sass@1.93.2)(terser@5.44.0)(typescript@5.9.2)))(astro@5.16.16(@types/node@22.18.6)(jiti@1.21.7)(lightningcss@1.30.1)(rollup@4.57.0)(sass@1.93.2)(terser@5.44.0)(typescript@5.9.2))
       stylelint:
         specifier: ^16.24.0
         version: 16.24.0(typescript@5.9.2)
@@ -2603,6 +2606,9 @@ packages:
   '@types/bonjour@3.5.13':
     resolution: {integrity: sha512-z9fJ5Im06zvUL548KvYNecEVlA7cVDkGUi6kZusb04mpyEFKCIZJvloCcmpmLaIahDpOQGHaHmG6imtPMmPXGQ==}
 
+  '@types/braces@3.0.5':
+    resolution: {integrity: sha512-SQFof9H+LXeWNz8wDe7oN5zu7ket0qwMu5vZubW4GCJ8Kkeh6nBWUz87+KTz/G3Kqsrp0j/W253XJb3KMEeg3w==}
+
   '@types/connect-history-api-fallback@1.5.4':
     resolution: {integrity: sha512-n6Cr2xS1h4uAulPRdlw6Jl6s1oG8KrVilPN2yUITEs+K48EzMJJ3W1xy8K5eWuFvjp3R74AOIGSmp2UfBJ8HFw==}
 
@@ -2680,6 +2686,9 @@ packages:
 
   '@types/mdx@2.0.13':
     resolution: {integrity: sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==}
+
+  '@types/micromatch@4.0.10':
+    resolution: {integrity: sha512-5jOhFDElqr4DKTrTEbnW8DZ4Hz5LRUEmyrGpCMrD/NphYv3nUnaF08xmSLx1rGGnyEs/kFnhiw6dCgcDqMr5PQ==}
 
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
@@ -7159,6 +7168,13 @@ packages:
     resolution: {integrity: sha512-wvLeHgcVHKO8Sc/H/5lkGreJQVeYMm9rlmt8PuR1xE31rIuXhuzznUUqAt8MqLhB3MqJdFzlNAfpcWnxiFUcPw==}
     engines: {node: '>=12'}
 
+  starlight-llms-txt@0.7.0:
+    resolution: {integrity: sha512-KAay6JLXqB0GiNQ481z3Z/h/y4xeAU55TUGLz+npjxcRvN3h/7rDxjmyLiphZF8xfoqqSTduQPanl5Ct4Je6kA==}
+    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.31'
+      astro: ^5.15.9
+
   statuses@1.5.0:
     resolution: {integrity: sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==}
     engines: {node: '>= 0.6'}
@@ -7621,6 +7637,9 @@ packages:
 
   unist-util-remove-position@5.0.0:
     resolution: {integrity: sha512-Hp5Kh3wLxv0PHj9m2yZhhLt58KzPtEYKQQ4yxfYFEO7EvHwzyDYnduhHnY1mDxoqr7VUwVuHXk9RXKIiYS1N8Q==}
+
+  unist-util-remove@4.0.0:
+    resolution: {integrity: sha512-b4gokeGId57UVRX/eVKej5gXqGlc9+trkORhFJpu9raqZkZhU0zm8Doi05+HaiBsMEIJowL+2WtQ5ItjsngPXg==}
 
   unist-util-stringify-position@4.0.0:
     resolution: {integrity: sha512-0ASV06AAoKCDkS2+xw5RXJywruurpbC4JZSm7nr7MOt1ojAzvyyaO+UxZf18j8FCF6kmzCZKcAgN/yu2gm2XgQ==}
@@ -11254,6 +11273,8 @@ snapshots:
     dependencies:
       '@types/node': 22.18.6
 
+  '@types/braces@3.0.5': {}
+
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 4.19.6
@@ -11342,6 +11363,10 @@ snapshots:
       '@types/unist': 3.0.3
 
   '@types/mdx@2.0.13': {}
+
+  '@types/micromatch@4.0.10':
+    dependencies:
+      '@types/braces': 3.0.5
 
   '@types/mime@1.3.5': {}
 
@@ -16838,6 +16863,25 @@ snapshots:
 
   srcset@4.0.0: {}
 
+  starlight-llms-txt@0.7.0(@astrojs/starlight@0.37.4(astro@5.16.16(@types/node@22.18.6)(jiti@1.21.7)(lightningcss@1.30.1)(rollup@4.57.0)(sass@1.93.2)(terser@5.44.0)(typescript@5.9.2)))(astro@5.16.16(@types/node@22.18.6)(jiti@1.21.7)(lightningcss@1.30.1)(rollup@4.57.0)(sass@1.93.2)(terser@5.44.0)(typescript@5.9.2)):
+    dependencies:
+      '@astrojs/mdx': 4.3.13(astro@5.16.16(@types/node@22.18.6)(jiti@1.21.7)(lightningcss@1.30.1)(rollup@4.57.0)(sass@1.93.2)(terser@5.44.0)(typescript@5.9.2))
+      '@astrojs/starlight': 0.37.4(astro@5.16.16(@types/node@22.18.6)(jiti@1.21.7)(lightningcss@1.30.1)(rollup@4.57.0)(sass@1.93.2)(terser@5.44.0)(typescript@5.9.2))
+      '@types/hast': 3.0.4
+      '@types/micromatch': 4.0.10
+      astro: 5.16.16(@types/node@22.18.6)(jiti@1.21.7)(lightningcss@1.30.1)(rollup@4.57.0)(sass@1.93.2)(terser@5.44.0)(typescript@5.9.2)
+      github-slugger: 2.0.0
+      hast-util-select: 6.0.4
+      micromatch: 4.0.8
+      rehype-parse: 9.0.1
+      rehype-remark: 10.0.1
+      remark-gfm: 4.0.1
+      remark-stringify: 11.0.0
+      unified: 11.0.5
+      unist-util-remove: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+
   statuses@1.5.0: {}
 
   statuses@2.0.1: {}
@@ -17385,6 +17429,12 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       unist-util-visit: 5.0.0
+
+  unist-util-remove@4.0.0:
+    dependencies:
+      '@types/unist': 3.0.3
+      unist-util-is: 6.0.0
+      unist-util-visit-parents: 6.0.2
 
   unist-util-stringify-position@4.0.0:
     dependencies:

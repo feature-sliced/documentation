@@ -2,10 +2,12 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkHeaderId from 'remark-heading-id';
+import starlightLlmsTxt from 'starlight-llms-txt';
 
 // https://astro.build/config
 export default defineConfig({
   outDir: './build',
+  site: 'https://fsd.how',
   markdown: {
     remarkPlugins: [remarkHeaderId],
   },
@@ -21,6 +23,9 @@ export default defineConfig({
         src: './static/img/brand/logo-primary.png',
         replacesTitle: true,
       },
+      plugins: [
+        starlightLlmsTxt(),
+      ],
       locales: {
         root: {
           label: 'English',
