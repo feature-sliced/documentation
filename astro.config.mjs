@@ -56,6 +56,27 @@ export default defineConfig({
         {
           label: '📚 Reference',
           autogenerate: { directory: 'reference' }
+        },
+        {
+          label: '🍰 About',
+          items: [{
+            label: 'Mission',
+            slug: 'about/mission'
+          }, {
+            label: 'Motivation',
+            slug: 'about/motivation'
+          }, {
+            label: 'Alternatives',
+            slug: 'about/alternatives'
+          }, {
+            label: 'Understanding',
+            autogenerate: { directory: 'about/understanding' },
+            collapsed: true,
+          }, {
+            label: 'Promote',
+            autogenerate: { directory: 'about/promote' },
+            collapsed: true,
+          }],
         }
       ],
     }),
