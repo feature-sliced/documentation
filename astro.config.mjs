@@ -39,47 +39,47 @@ export default defineConfig({
       sidebar: [
         {
           label: '🚀 Get Started',
-          autogenerate: { directory: 'get-started' }
+          autogenerate: { directory: 'docs/get-started' }
         },
         {
           label: '🎯 Guides',
           items: [
             {
               label: 'Examples',
-              autogenerate: { directory: 'guides/examples' }
+              autogenerate: { directory: 'docs/guides/examples' }
             },
             {
               label: 'Migration',
-              autogenerate: { directory: 'guides/migration' }
+              autogenerate: { directory: 'docs/guides/migration' }
             },
             {
               label: 'Tech',
-              autogenerate: { directory: 'guides/tech' }
+              autogenerate: { directory: 'docs/guides/tech' }
             }
           ],
         },
         {
           label: '📚 Reference',
-          autogenerate: { directory: 'reference' }
+          autogenerate: { directory: 'docs/reference' }
         },
         {
           label: '🍰 About',
           items: [{
             label: 'Mission',
-            slug: 'about/mission'
+            slug: 'docs/about/mission'
           }, {
             label: 'Motivation',
-            slug: 'about/motivation'
+            slug: 'docs/about/motivation'
           }, {
             label: 'Alternatives',
-            slug: 'about/alternatives'
+            slug: 'docs/about/alternatives'
           }, {
             label: 'Understanding',
-            autogenerate: { directory: 'about/understanding' },
+            autogenerate: { directory: 'docs/about/understanding' },
             collapsed: true,
           }, {
             label: 'Promote',
-            autogenerate: { directory: 'about/promote' },
+            autogenerate: { directory: 'docs/about/promote' },
             collapsed: true,
           }],
         }

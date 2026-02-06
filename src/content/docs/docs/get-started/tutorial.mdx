@@ -10,7 +10,7 @@ import { FileTree, Code } from '@astrojs/starlight/components';
 
 This tutorial will examine the Real World App, also known as Conduit. Conduit is a basic [Medium](https://medium.com/) clone — it lets you read and write articles as well as comment on the articles of others.
 
-![Conduit home page](../../../../static/img/tutorial/realworld-feed-anonymous.jpg)
+![Conduit home page](../../../../../static/img/tutorial/realworld-feed-anonymous.jpg)
 
 This is a pretty small application, so we will keep it simple and avoid excessive decomposition. It’s highly likely that the entire app will fit into just three layers: **App**, **Pages**, and **Shared**. If not, we will introduce additional layers as we go. Ready?
 
@@ -48,14 +48,14 @@ In this case, a page is a slice, so modules (files) inside this page can only re
 ### Close look at the feed
 
 <figure>
-  ![Anonymous user’s perspective](../../../../static/img/tutorial/realworld-feed-anonymous.jpg)
+  ![Anonymous user’s perspective](../../../../../static/img/tutorial/realworld-feed-anonymous.jpg)
   <figcaption>
     _Anonymous user’s perspective_
   </figcaption>
 </figure>
 
 <figure>
-  ![Authenticated user’s perspective](../../../../static/img/tutorial/realworld-feed-authenticated.jpg)
+  ![Authenticated user’s perspective](../../../../../static/img/tutorial/realworld-feed-authenticated.jpg)
   <figcaption>
     _Authenticated user’s perspective_
   </figcaption>
@@ -146,7 +146,7 @@ In our case, the header is very simple — it’s a static logo and top-level na
 
 Let’s also examine a page that’s intended for editing, not reading. For example, the article writer:
 
-![Conduit post editor](../../../../static/img/tutorial/realworld-editor-authenticated.jpg)
+![Conduit post editor](../../../../../static/img/tutorial/realworld-editor-authenticated.jpg)
 
 It looks trivial, but contains several aspects of application development that we haven’t explored yet — form validation, error states, and data persistence.
 
@@ -234,7 +234,7 @@ export default FeedPage;
 
 Then, if you run the dev server and open the application, you should see the Conduit banner!
 
-![The banner of Conduit](../../../../static/img/tutorial/conduit-banner.jpg)
+![The banner of Conduit](../../../../../static/img/tutorial/conduit-banner.jpg)
 
 ### API client
 
@@ -1215,7 +1215,7 @@ export default function App() {
 At this point, you should end up with the following on the home page:
 
 <figure>
-  ![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](../../../../static/img/tutorial/realworld-feed-without-tabs.jpg)
+  ![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](../../../../../static/img/tutorial/realworld-feed-without-tabs.jpg)
 
   <figcaption>The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.</figcaption>
 </figure>
@@ -1959,7 +1959,7 @@ export function Comments() {
 And with that our article reader is also complete! The buttons to follow the author, like a post, and leave a comment should now function as expected.
 
 <figure>
-  ![Article reader with functioning buttons to like and follow](../../../../static/img/tutorial/realworld-article-reader.jpg)
+  ![Article reader with functioning buttons to like and follow](../../../../../static/img/tutorial/realworld-article-reader.jpg)
 
   <figcaption>Article reader with functioning buttons to like and follow</figcaption>
 </figure>
@@ -2257,7 +2257,7 @@ export default ArticleEditPage;
 We’re done now! Log in and try creating a new article. Or “forget” to write the article and see the validation kick in.
 
 <figure>
-  ![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “**Describe what this article is about” and “Write the article itself”.**](../../../../static/img/tutorial/realworld-article-editor.jpg)
+  ![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “**Describe what this article is about” and “Write the article itself”.**](../../../../../static/img/tutorial/realworld-article-editor.jpg)
 
   <figcaption>The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: **“Describe what this article is about”** and **“Write the article itself”**.</figcaption>
 </figure>
