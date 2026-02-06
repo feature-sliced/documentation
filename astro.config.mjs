@@ -12,6 +12,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Feature-Sliced Design',
+      favicon: './static/img/favicon/adaptive.svg',
       defaultLocale: 'root',
       customCss: [
         './src/styles/custom.css',
