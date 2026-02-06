@@ -33,9 +33,28 @@ export default defineConfig({
         },
         ru: {
           label: 'Русский',
-        }
+        },
+        uz: {
+          label: 'O\'zbekcha',
+        },
+        kr: {
+          label: '한국어',
+          lang: 'ko',
+        },
+        ja: {
+          label: '日本語',
+        },
+        vi: {
+          label: 'Tiếng Việt',
+        },
+        zh: {
+          label: '中文',
+        },
       },
-      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }, { icon: 'discord', label: 'Discord', href: 'https://discord.gg/S8MzWTUsmp' }],
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/feature-sliced/documentation' },
+        { icon: 'discord', label: 'Discord', href: 'https://discord.gg/S8MzWTUsmp' }
+      ],
       sidebar: [
         {
           label: '🚀 Get Started',
