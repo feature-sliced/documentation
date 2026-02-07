@@ -112,22 +112,22 @@ export default defineConfig({
             ru: '🍰 О нас',
           },
           items: [{
-            label: 'Mission',
-            translations: {
-              ru: 'Миссия',
-            },
+            // label: 'Mission',
+            // translations: {
+            // ru: 'Миссия',
+            // },
             slug: 'docs/about/mission'
           }, {
-            label: 'Motivation',
-            translations: {
-              ru: 'Мотивация',
-            },
+            // label: 'Motivation',
+            // translations: {
+            // ru: 'Мотивация',
+            // },
             slug: 'docs/about/motivation'
           }, {
-            label: 'Alternatives',
-            translations: {
-              ru: 'Альтернативы',
-            },
+            // label: 'Alternatives',
+            // translations: {
+            // ru: 'Альтернативы',
+            // },
             slug: 'docs/about/alternatives'
           }, {
             label: 'Understanding',
