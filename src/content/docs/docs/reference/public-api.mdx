@@ -4,7 +4,7 @@ sidebar:
   order: 3
 ---
 
-import { FileTree } from '@astrojs/starlight/components';
+import { FileTree, Aside } from '@astrojs/starlight/components';
 
 A public API is a _contract_ between a group of modules, like a slice, and the code that uses it. It also acts as a gate, only allowing access to certain objects, and only through that public API.
 
@@ -55,11 +55,11 @@ import type { EntityA } from "entities/A/@x/B";
 
 The notation `A/@x/B` is meant to be read as "A crossed with B".
 
-:::note
+<Aside type="note">
 
 Try to keep cross-imports to a minimum, and **only use this notation on the Entities layer**, where eliminating cross-imports is often unreasonable.
 
-:::
+</Aside>
 
 ## Issues with index files
 
