@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+pagination_next: reference/when-create-entity
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
