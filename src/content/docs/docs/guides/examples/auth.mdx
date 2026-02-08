@@ -4,7 +4,7 @@ sidebar:
   order: 1
 ---
 
-import { FileTree } from '@astrojs/starlight/components';
+import { FileTree, Aside } from '@astrojs/starlight/components';
 
 Broadly, authentication consists of the following steps:
 
@@ -36,12 +36,14 @@ Here we created two components and exported them both in the index file of the s
 
 If your app has a dialog for login that can be used on any page, consider making that dialog a widget. That way, you can still avoid too much decomposition, but have the freedom to reuse this dialog on any page.
 
-- 📂 widgets
-    - 📂 login-dialog
-        - 📂 ui
-            - 📄 LoginDialog.tsx
-        - 📄 index.ts
-    - other widgets…
+<FileTree>
+- widgets/
+  - login-dialog/
+    - ui/
+      - LoginDialog.tsx
+    - index.ts
+  - ...
+</FileTree>
 
 The rest of this guide is written for the dedicated page approach, but the same principles apply to the dialog widget.
 
@@ -130,11 +132,11 @@ Another drawback of this approach is that if your backend returns an object of y
 
 It's common for FSD projects to have an entity for a user and/or an entity for the current user. It can even be the same entity for both.
 
-:::note
+<Aside>
 
 The **current user** is also sometimes called "viewer" or "me". This is to distinguish the single authenticated user, with permissions and private information, from a list of all users with publicly accessible information.
 
-:::
+</Aside>
 
 To store the token in the User entity, create a reactive store in the `model` segment. That store can contain both the token and the user object.
 
