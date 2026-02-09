@@ -320,11 +320,11 @@ Global types are types that will be used across the whole application. There are
 
 The first case is simple to resolve — place your types in Shared, in an appropriate segment. For example, if you have an interface for a global variable for analytics, you can put it in `shared/analytics`.
 
-:::warning
+<Aside type="caution">
 
 Avoid creating the `shared/types` folder. It groups unrelated things based only on the property of "being a type", and that property is usually not useful when searching for code in a project.
 
-:::
+</Aside>
 
 The second case is commonly encountered in projects with Redux without RTK. Your final store type is only available once you add all the reducers together, but this store type needs to be available to selectors that you use across the app. For example, here's your typical store definition:
 

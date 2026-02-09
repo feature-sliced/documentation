@@ -4,7 +4,7 @@ sidebar:
   order: 4
 ---
 
-import { FileTree, Tabs, TabItem } from '@astrojs/starlight/components';
+import { FileTree, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
 
 ## Shared API Requests \{#shared-api-requests\}
 
@@ -68,11 +68,11 @@ export const client = {
 
 Organize your individual API request functions in `shared/api/endpoints`, grouping them by the API endpoint.
 
-:::note
+<Aside>
 
 To keep examples focused, we omit form interaction and validation. For details on libraries like Zod or Valibot, refer to the [Type Validation and Schemas](/docs/guides/examples/types#type-validation-schemas-and-zod) article.
 
-:::
+</Aside>
 
 ```ts title="shared/api/endpoints/login.ts"
 import { client } from '../client';
@@ -123,11 +123,11 @@ export function login(credentials: LoginCredentials) {
 
 You don't need to export `login()` function in the page's public API, because it's unlikely that any other place in the app will need this request.
 
-:::note
+<Aside>
 
 Avoid placing API calls and response types in the `entities` layer prematurely. Backend responses may differ from what your frontend entities need. API logic in `shared/api` or a slice's `api` segment allows you to transform data appropriately, keeping entities focused on frontend concerns.
 
-:::
+</Aside>
 
 ## Using Client Generators \{#client-generators\}
 
