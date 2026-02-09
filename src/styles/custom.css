@@ -1,4 +1,4 @@
-:root[data-theme=dark] [src$=\#light-mode-only],
-:root[data-theme=light] [src$=\#dark-mode-only] {
-    display: none
+:root[data-theme="dark"] [src$="\#light-mode-only"],
+:root[data-theme="light"] [src$="\#dark-mode-only"] {
+    display: none;
 }
