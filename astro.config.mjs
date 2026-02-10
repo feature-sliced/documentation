@@ -64,6 +64,7 @@ export default defineConfig({
                     label: "🚀 Get Started",
                     translations: {
                         ru: "🚀 Начало работы",
+                        ja: "🚀  はじめに",
                     },
                     autogenerate: { directory: "docs/get-started" },
                 },
@@ -71,12 +72,14 @@ export default defineConfig({
                     label: "🎯 Guides",
                     translations: {
                         ru: "🎯 Гайды",
+                        ja: "🎯  ガイド",
                     },
                     items: [
                         {
                             label: "Examples",
                             translations: {
                                 ru: "Примеры",
+                                ja: "例",
                             },
                             autogenerate: { directory: "docs/guides/examples" },
                         },
@@ -84,6 +87,8 @@ export default defineConfig({
                             label: "Migration",
                             translations: {
                                 ru: "Миграция",
+                                ja: "移行",
+                                uz: "Migratsiya",
                             },
                             autogenerate: {
                                 directory: "docs/guides/migration",
@@ -93,6 +98,8 @@ export default defineConfig({
                             label: "Tech",
                             translations: {
                                 ru: "Технологии",
+                                ja: "技術",
+                                uz: "Texnologiya",
                             },
                             autogenerate: { directory: "docs/guides/tech" },
                         },
@@ -100,6 +107,8 @@ export default defineConfig({
                             label: "Code smells & Issues",
                             translations: {
                                 ru: "Известные проблемы",
+                                ja: "コード臭いと問題",
+                                uz: "Muammolar",
                             },
                             autogenerate: { directory: "docs/guides/issues" },
                         },
@@ -109,6 +118,7 @@ export default defineConfig({
                     label: "📚 Reference",
                     translations: {
                         ru: "📚 Справочник",
+                        ja: "📚  参考書",
                     },
                     autogenerate: { directory: "docs/reference" },
                 },
@@ -116,33 +126,23 @@ export default defineConfig({
                     label: "🍰 About",
                     translations: {
                         ru: "🍰 О нас",
+                        ja: "🍰 メソッドについて",
                     },
                     items: [
                         {
-                            // label: 'Mission',
-                            // translations: {
-                            // ru: 'Миссия',
-                            // },
                             slug: "docs/about/mission",
                         },
                         {
-                            // label: 'Motivation',
-                            // translations: {
-                            // ru: 'Мотивация',
-                            // },
                             slug: "docs/about/motivation",
                         },
                         {
-                            // label: 'Alternatives',
-                            // translations: {
-                            // ru: 'Альтернативы',
-                            // },
                             slug: "docs/about/alternatives",
                         },
                         {
                             label: "Understanding",
                             translations: {
                                 ru: "Понимание",
+                                ja: "理解",
                             },
                             autogenerate: {
                                 directory: "docs/about/understanding",
@@ -153,6 +153,7 @@ export default defineConfig({
                             label: "Promote",
                             translations: {
                                 ru: "Продвижение",
+                                ja: "プロモート",
                             },
                             autogenerate: { directory: "docs/about/promote" },
                             collapsed: true,
