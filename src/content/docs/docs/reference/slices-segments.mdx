@@ -1,0 +1,69 @@
+---
+title: Slices and segments
+sidebar:
+  order: 2
+---
+
+## Slices
+
+Slices are the second level in the organizational hierarchy of Feature-Sliced Design. Their main purpose is to group code by its meaning for the product, business, or just the application.
+
+The names of slices are not standardized because they are directly determined by the business domain of your application. For example, a photo gallery might have slices `photo`, `effects`, `gallery-page`. A social network would require different slices, for example, `post`, `comments`, `news-feed`.
+
+The layers Shared and App don't contain slices. That is because Shared should contain no business logic at all, hence has no meaning for the product, and App should contain only code that concerns the entire application, so no splitting is necessary.
+
+### Zero coupling and high cohesion \{#zero-coupling-high-cohesion\}
+
+Slices are meant to be independent and highly cohesive groups of code files. The graphic below might help to visualize the tricky concepts of _cohesion_ and _coupling_:
+
+<figure>
+    <img src="../../../../../static/img/coupling-cohesion-light.svg" data-theme-only="light" alt="" />
+    <img src="../../../../../static/img/coupling-cohesion-dark.svg" data-theme-only="dark" alt="" />
+    <figcaption>
+        Image inspired by https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/
+    </figcaption>
+</figure>
+
+An ideal slice is independent from other slices on its layer (zero coupling) and contains most of the code related to its primary goal (high cohesion).
+
+The independence of slices is enforced by the [import rule on layers][layers--import-rule]:
+
+> _A module (file) in a slice can only import other slices when they are located on layers strictly below._
+
+### Public API rule on slices
+
+Inside a slice, the code could be organized in any way that you want. That doesn't pose any issues as long as the slice provides a good public API for other slices to use it. This is enforced with the **public API rule on slices**:
+
+> _Every slice (and segment on layers that don't have slices) must contain a public API definition._
+>
+> _Modules outside of this slice/segment can only reference the public API, not the internal file structure of the slice/segment._
+
+Read more about the rationale of public APIs and the best practices on creating one in the [Public API reference][ref-public-api].
+
+### Slice groups
+
+Closely related slices can be structurally grouped in a folder, but they should exercise the same isolation rules as other slices — there should be **no code sharing** in that folder.
+
+![Features "compose", "like" and "delete" grouped in a folder "post". In that folder there is also a file "some-shared-code.ts" that is crossed out to imply that it's not allowed.](../../../../../static/img/graphic-nested-slices.svg)
+
+## Segments
+
+Segments are the third and final level in the organizational hierarchy, and their purpose is to group code by its technical nature.
+
+There a few standardized segment names:
+
+- `ui` — everything related to UI display: UI components, date formatters, styles, etc.
+- `api` — backend interactions: request functions, data types, mappers, etc.
+- `model` — the data model: schemas, interfaces, stores, and business logic.
+- `lib` — library code that other modules on this slice need.
+- `config` — configuration files and feature flags.
+
+See the [Layers page][layers--layer-definitions] for examples of what each of these segments might be used for on different layers.
+
+You can also create custom segments. The most common places for custom segments are the App layer and the Shared layer, where slices don't make sense.
+
+Make sure that the name of these segments describes the purpose of the content, not its essence. For example, `components`, `hooks`, and `types` are bad segment names because they aren't that helpful when you're looking for code.
+
+[layers--layer-definitions]: /docs/reference/layers#layer-definitions
+[layers--import-rule]: /docs/reference/layers#import-rule-on-layers
+[ref-public-api]: /docs/reference/public-api

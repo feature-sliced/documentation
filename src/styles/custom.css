@@ -1,0 +1,4 @@
+:root[data-theme="dark"] [data-theme-only="light"],
+:root[data-theme="light"] [data-theme-only="dark"] {
+    display: none;
+}

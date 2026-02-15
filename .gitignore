@@ -1,6 +1,9 @@
 # IDE
 .idea
 
+# Astro
+.astro
+
 # Dependencies
 node_modules
 
