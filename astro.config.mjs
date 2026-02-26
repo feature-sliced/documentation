@@ -28,6 +28,9 @@ export default defineConfig({
             description: "Architectural methodology for frontend projects",
             defaultLocale: "root",
             customCss: ["./src/styles/custom.css"],
+            components: {
+                ThemeProvider: "./src/components/ThemeProvider.astro",
+            },
             head: [
                 {
                     tag: "meta",
