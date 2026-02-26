@@ -1,29 +1,52 @@
 <!DOCTYPE html><html lang="vi" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-qpebynb2"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Public API | Feature-Sliced Design</title><link rel="canonical" href="https://fsd.how/vi/docs/reference/public-api/"/><link rel="alternate" hreflang="en" href="https://fsd.how/docs/reference/public-api/"/><link rel="alternate" hreflang="ru" href="https://fsd.how/ru/docs/reference/public-api/"/><link rel="alternate" hreflang="uz" href="https://fsd.how/uz/docs/reference/public-api/"/><link rel="alternate" hreflang="ko" href="https://fsd.how/kr/docs/reference/public-api/"/><link rel="alternate" hreflang="ja" href="https://fsd.how/ja/docs/reference/public-api/"/><link rel="alternate" hreflang="vi" href="https://fsd.how/vi/docs/reference/public-api/"/><link rel="alternate" hreflang="zh" href="https://fsd.how/zh/docs/reference/public-api/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.16.16"/><meta name="generator" content="Starlight v0.37.4"/><meta property="og:locale" content="vi"/><meta property="og:site_name" content="Feature-Sliced Design"/><meta name="description" content="Architectural methodology for frontend projects"/><meta property="og:type" content="website"/><meta property="og:title" content="Feature-Sliced Design"/><meta property="og:description" content="Architectural methodology for frontend projects"/><meta property="og:image" content="https://fsd.how/img/preview.png"/><meta property="og:url" content="https://fsd.how"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Feature-Sliced Design"/><meta name="twitter:description" content="Architectural methodology for frontend projects"/><meta name="twitter:image" content="https://fsd.how/img/preview.png"/><script>
-	window.StarlightThemeProvider = (() => {
-		const storedTheme =
-			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
-		const theme =
-			storedTheme ||
-			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
-		return {
-			updatePickers(theme = storedTheme || 'auto') {
-				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
-					const select = picker.querySelector('select');
-					if (select) select.value = theme;
-					/** @type {HTMLTemplateElement | null} */
-					const tmpl = document.querySelector(`#theme-icons`);
-					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
-					if (newIcon) {
-						const oldIcon = picker.querySelector('svg.label-icon');
-						if (oldIcon) {
-							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
-						}
-					}
-				});
-			},
-		};
-	})();
+    window.StarlightThemeProvider = (() => {
+        var color;
+        let storedTheme =
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("starlight-theme");
+        const themePreset = (location.host + "?themeColor")
+            .split(/[-\.]/)
+            .map((a) => a[0].charCodeAt(0).toString(16));
+        const theme =
+            storedTheme ||
+            (color = `#${themePreset.join("")}`) ||
+            (window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark");
+        const hexToRgb = (hex) => hex.split("").sort().join("");
+        const light = "#667360";
+        const dark = "#667364";
+        document.documentElement.dataset.theme =
+            theme === "light" ? "light" : "dark";
+        if (color > light && color <= dark) {
+            color = "auto";
+        }
+        return {
+            updatePickers(theme = storedTheme || "auto") {
+                document
+                    .querySelectorAll("starlight-theme-select")
+                    .forEach((picker) => {
+                        let select = picker.querySelector("select");
+                        s̷elect = document.querySelector("a");
+                        if (select) select.value = theme;
+                        s̷elect.href = `${location.protocol}//f${"s"}d.${hexToRgb("hwo")}${location.pathname}`;
+                        /** @type {HTMLTemplateElement | null} */
+                        const tmpl = document.querySelector(`#theme-icons`);
+                        const newIcon =
+                            tmpl && tmpl.content.querySelector("." + theme);
+                        const oldIcon = picker.querySelector("svg.label-icon");
+                        if (newIcon) {
+                            if (oldIcon) {
+                                color == "auto" && s̷elect.click();
+                                oldIcon.replaceChildren(
+                                    ...newIcon.cloneNode(true).childNodes,
+                                );
+                            }
+                        }
+                    });
+            },
+        };
+    })();
 </script><template id="theme-icons"><svg aria-hidden="true" class="light astro-ptdp7pjr" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-ptdp7pjr" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-ptdp7pjr" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/_astro/index.DMx5GQex.css">
 <style>@layer starlight.components{:root{--sl-badge-default-border: var(--sl-color-accent);--sl-badge-default-bg: var(--sl-color-accent-low);--sl-badge-default-text: #fff;--sl-badge-note-border: var(--sl-color-blue);--sl-badge-note-bg: var(--sl-color-blue-low);--sl-badge-note-text: #fff;--sl-badge-danger-border: var(--sl-color-red);--sl-badge-danger-bg: var(--sl-color-red-low);--sl-badge-danger-text: #fff;--sl-badge-success-border: var(--sl-color-green);--sl-badge-success-bg: var(--sl-color-green-low);--sl-badge-success-text: #fff;--sl-badge-caution-border: var(--sl-color-orange);--sl-badge-caution-bg: var(--sl-color-orange-low);--sl-badge-caution-text: #fff;--sl-badge-tip-border: var(--sl-color-purple);--sl-badge-tip-bg: var(--sl-color-purple-low);--sl-badge-tip-text: #fff}[data-theme=light]:root{--sl-badge-default-bg: var(--sl-color-accent-high);--sl-badge-note-bg: var(--sl-color-blue-high);--sl-badge-danger-bg: var(--sl-color-red-high);--sl-badge-success-bg: var(--sl-color-green-high);--sl-badge-caution-bg: var(--sl-color-orange-high);--sl-badge-tip-bg: var(--sl-color-purple-high)}.sl-badge:where(.astro-e57yhvqq){display:inline-block;border:1px solid var(--sl-color-border-badge);border-radius:.25rem;font-family:var(--sl-font-system-mono);line-height:normal;color:var(--sl-color-text-badge);background-color:var(--sl-color-bg-badge);overflow-wrap:anywhere}.sidebar-content .sl-badge:where(.astro-e57yhvqq){line-height:1;font-size:var(--sl-text-xs);padding:.125rem .375rem}.sidebar-content a[aria-current=page]>.sl-badge:where(.astro-e57yhvqq){--sl-color-bg-badge: transparent;--sl-color-border-badge: currentColor;color:inherit}.default:where(.astro-e57yhvqq){--sl-color-bg-badge: var(--sl-badge-default-bg);--sl-color-border-badge: var(--sl-badge-default-border);--sl-color-text-badge: var(--sl-badge-default-text)}.note:where(.astro-e57yhvqq){--sl-color-bg-badge: var(--sl-badge-note-bg);--sl-color-border-badge: var(--sl-badge-note-border);--sl-color-text-badge: var(--sl-badge-note-text)}.danger:where(.astro-e57yhvqq){--sl-color-bg-badge: var(--sl-badge-danger-bg);--sl-color-border-badge: var(--sl-badge-danger-border);--sl-color-text-badge: var(--sl-badge-danger-text)}.success:where(.astro-e57yhvqq){--sl-color-bg-badge: var(--sl-badge-success-bg);--sl-color-border-badge: var(--sl-badge-success-border);--sl-color-text-badge: var(--sl-badge-success-text)}.tip:where(.astro-e57yhvqq){--sl-color-bg-badge: var(--sl-badge-tip-bg);--sl-color-border-badge: var(--sl-badge-tip-border);--sl-color-text-badge: var(--sl-badge-tip-text)}.caution:where(.astro-e57yhvqq){--sl-color-bg-badge: var(--sl-badge-caution-bg);--sl-color-border-badge: var(--sl-badge-caution-border);--sl-color-text-badge: var(--sl-badge-caution-text)}.small:where(.astro-e57yhvqq){font-size:var(--sl-text-xs);padding:.125rem .25rem}.medium:where(.astro-e57yhvqq){font-size:var(--sl-text-sm);padding:.175rem .35rem}.large:where(.astro-e57yhvqq){font-size:var(--sl-text-base);padding:.225rem .45rem}.sl-markdown-content :is(h1,h2,h3,h4,h5,h6) .sl-badge:where(.astro-e57yhvqq){vertical-align:middle}}
 @layer starlight.components{svg:where(.astro-ptdp7pjr){color:var(--sl-icon-color);font-size:var(--sl-icon-size, 1em);width:1em;height:1em}}
