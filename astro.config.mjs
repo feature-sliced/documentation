@@ -204,6 +204,20 @@ export default defineConfig({
                     autogenerate: { directory: "docs/reference" },
                 },
                 {
+                    label: "Resources",
+                    translations: {
+                        ru: "Ресурсы",
+                    },
+                    items: [
+                        {
+                            slug: "docs/llms",
+                        },
+                        {
+                            slug: "docs/branding",
+                        },
+                    ],
+                },
+                {
                     label: "About",
                     translations: {
                         ru: "О нас",
