@@ -6,19 +6,19 @@ sidebar:
 
 import { FileTree, Aside } from '@astrojs/starlight/components';
 
-Feature-Sliced Design is the result of years of evolving architectural patterns in frontend development. By exploring this history, you’ll gain a more in-depth understanding of why FSD structures code the way it does. Understanding past approaches will help you spot common pitfalls, make informed decisions, and apply FSD more effectively in your projects.
+Feature-Sliced Design has evolved from years of architectural patterns in frontend development. By exploring this history and related approaches, you'll gain a deeper understanding of why FSD structures code the way it does. This knowledge will help you avoid common pitfalls, make better decisions, and apply FSD more effectively in your projects.
 
 <Aside>
-    Keep in mind that this is an overview, and some aspects might be missing.
+  Please note that this is an overview, and some details might be omitted for brevity.
 </Aside>
 
-## Why frameworks are not enough
+## Why frameworks alone aren't sufficient
 
-Libraries are helping a lot by handling technical aspects like rendering and data fetching, while frameworks provide a foundation in the form of reusable and isolated building blocks (components). But this is simply not enough to solve architectural problems, as those blocks need to be composed together to handle growing complexity, developer collaboration, and knowledge sharing.
+Frameworks and libraries do an excellent job handling technical details like rendering and data fetching, offering reusable and isolated building blocks such as components. However, this foundation isn't enough to tackle architectural challenges on its own. As projects grow, you need to compose these blocks effectively to manage increasing complexity, facilitate team collaboration, and enable smooth knowledge sharing.
 
 ## Horizontal slicing
 
-This is one of the earliest ways to organize frontend code, splitting by technical layers like `components` `pages`, `utils`, and `stores`.
+One of the earliest methods for organizing frontend code involves dividing it by technical layers, such as `components`, `pages`, `utils`, and `stores`.
 
 <FileTree>
 - src/
@@ -29,74 +29,85 @@ This is one of the earliest ways to organize frontend code, splitting by technic
   - stores/
 </FileTree>
 
-This approach is still widely used in frameworks like Next.js, Nuxt and Astro.
+This structure remains popular in frameworks like Next.js, Nuxt, and Astro.
 
-The most prominent issue of this approach is the fact that domain is not considered: all code related to specific domain gets scattered across several top-level folders. Top-level folders like `components` can grow indefinitely and provide no isolation between modules.
+A key drawback is that it doesn't account for the domain: code related to a specific business area gets scattered across multiple top-level folders. Folders like `components` can expand endlessly without providing isolation between modules.
 
-In FSD terms this pattern is called [desegmentation](/docs/guides/issues/desegmented/) and considered a code smell that should be avoided. FSD also introduces a concept of layers, but FSD layers are not tied to technical aspects.
+In FSD terminology, this is known as [desegmentation](/docs/guides/issues/desegmented/), which is considered a code smell to avoid. While FSD also uses layers, they focus on logical separation rather than purely technical aspects.
 
+## Presentational and container components
 
-## Presentational and Container components
+Popularized by Dan Abramov in React's early days, this pattern (also known as smart and dumb components) divides components into two categories: presentational (dumb) components, which handle appearance, and container (smart) components, which manage functionality.
 
-Also called smart and dumb components, this approach was popularized by Dan Abramov during the early days of React. The idea behind this pattern is to split components into two distinct groups: Presentational (also called dumb) and Container (also called smart). With presentational components focusing on how things look and container components focusing on how things work.
+| Presentational                  | Container                          |
+|---------------------------------|------------------------------------|
+| Regular DOM and styles          | Minimal DOM, no styles             |
+| No dependency on stores         | Interact with stores and pass data/callbacks to presentational components |
+| No data fetching or mutation    | Act as data sources for presentational components |
 
-Presentational | Container
-Regular DOM and styles | minimal DOM, no styles
-No dependency on stores | Call stores and provide them as props/callbacks to presentational components
-No data fetching or mutation | Serves as data source for presentational components
+This was a helpful starting point for newcomers, but it faced criticism in larger projects:
+- Presentational components become tightly coupled to the data shapes and callbacks from containers, so changes in logic ripple through the UI.
+- Containers can evolve into "god objects," shouldering too much responsibility and becoming hard to reuse or test.
+- As features grow, nested container hierarchies (e.g., AppContainer > UserContainer > PostContainer) create complex data flows that are tough to trace.
+- Logic spread across containers complicates debugging compared to more centralized approaches.
 
-This approach was a good starting point for beginners, but over time it gathered some criticism, especially in larger projects:
-Presentational components are tightly coupled to the containers' data shape and callbacks. Changing a container's logic forces updates across the UI layer.
-Over time containers become "god objects," centralizing too much responsibility, which leads to fat containers that are difficult to reuse or test in isolation.
-As features multiply, you end up with a hierarchy of nested containers (e.g., AppContainer > UserContainer > PostContainer). This creates a tangled web where tracing data flow is a nightmare.
-Scattered logic across containers makes debugging tougher than if everything were in one place.
-
-Nowadays this approach is considered outdated even by the creator because of how modern frameworks approach composition via hooks (React), composables (Vue), runes (Svelte), and signals (Angular): things that previously required a container component due to the class-based component approach to handle domain logic can now be replaced with built-in framework features.
+Today, even its creator views this pattern as outdated, thanks to modern framework features like hooks in React, composables in Vue, runes in Svelte, and signals in Angular. These allow domain logic to be handled without relying on class-based container components.
 
 - [(Article) Dan Abramov - Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
+## Design principles
 
-## Design Principles
+Over the past few decades, numerous design principles have emerged, including SOLID, GRASP, KISS, YAGNI, and DRY. Some, like GRASP, are geared toward object-oriented design, while others, such as KISS and DRY, apply more broadly.
 
-For the last couple of decades, a lot of design principles have been created: SOLID, GRASP, KISS, YAGNI, DRY, and so on. Some of them are more oriented towards object-oriented design, like GRASP, while others are general, like KISS and DRY.
+These principles remain valuable and are embraced by developers of all backgrounds.
 
-Those principles are still relevant to this day and popular with all types of developers.
+However, they can be quite abstract and don't offer concrete structural guidelines. Additionally, they sometimes conflict; for instance, adhering strictly to DRY might violate KISS or YAGNI.
 
-But they are too abstract and don't provide concrete implementations of the structure. Moreover, some of those patterns contradict each other; for example, if you follow the DRY principle, you might break KISS and YAGNI.
-
-FSD provides a holistic approach to those principles: how to approach specific functionality, when it's a good time to decompose, what to prioritize, and so on.
+FSD builds on these principles by providing practical guidance: how to structure specific functionality, when to decompose elements, what to prioritize, and more.
 
 - [(Talk) Ilya Azin - Feature-Sliced Design (fragment about Design Principles)](https://youtu.be/SnzPAr_FJ7w?t=380)
 
-## DDD, Onion, Clean Architecture
+## DDD, Onion, and Clean Architecture
 
-In contrast to architectural patterns like MVC, those approaches are focusing on modeling business domain and separating infrastructure and UI code.
-even backend developers struggle with finding a common approach
-focuses on backend development, doesn’t tackle frontend specific issues where logic and UI intertwine
-heavily relies on inversion of control pattern, especially on IoC container
+Unlike patterns like MVC, these approaches emphasize modeling the business domain while separating infrastructure and UI code.
 
-- [(Article) DDD, Hexagonal, Onion, Clean, CQRS, ... How I put it all together](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
+However, these approaches come with certain limitations, especially in the fast-paced frontend context:
+
+- Even backend developers often debate the best implementation.
+- They primarily address backend concerns and don't fully handle frontend challenges, where logic and UI are closely intertwined.
+- They rely heavily on the inversion of control pattern, particularly IoC containers.
+
+Feature-Sliced Design places a domain-centric focus through its `model` segment and `entities` layer, which models business entities and rules independently, similar to DDD's entities and bounded contexts, while slices provide vertical modularity. FSD layered structure mirrors Onion and Clean Architecture concentric layers, with inner layers like `entities` and `features` handling core domain logic and use cases, ensuring dependencies flow inward without relying on heavy IoC containers, making these backend-oriented principles more practical for component-based frontend apps.
+
+
+- [(Article) DDD, Hexagonal, Onion, Clean, CQRS... How I put it all together](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
 - [(Talk) Ilya Azin - Feature-Sliced Design (fragment about Clean Architecture, DDD)](https://youtu.be/SnzPAr_FJ7w?t=528)
 - [(Article) Alex Bespoyasov - Clean Architecture on frontend](https://bespoyasov.me/blog/clean-architecture-on-frontend/)
 
 ## Atomic Design
 
-Introduced by Brad Frost, Atomic Design treats UI as a hierarchy of building blocks, from atoms to pages. It breaks down into atoms (basic elements), molecules (simple components), organisms (complex modules), templates (structures), and pages.
+Developed by Brad Frost, Atomic Design views the UI as a hierarchy of building blocks, ranging from atoms (basic elements) to molecules (simple components), organisms (complex modules), templates (layouts), and pages.
 
-With web development shifting towards utility-first solutions and component libraries, this approach is no longer so prominent in frontend development. Yet it is still widely used in design systems.
+As web development has leaned toward utility-first CSS and component libraries, this method has become less dominant in general frontend work, though it's still common in design systems.
 
-focuses on design systems and UI/UX design overall, doesn’t cover business logic
-difficult to structure logic in terms of atomic design
-might be too rigid and inflexible for
+However, this approach comes with certain limitations:
 
-FSD integrates Atomic ideas in `shared/ui` for reusable UI primitives and extends it by adding layers and segments for logic, ensuring business concerns aren't neglected.
+- It primarily focuses on design systems and UI/UX, often overlooking business logic.
+- Structuring logic within Atomic Design can be challenging.
+- The approach may feel too rigid for some dynamic projects.
+
+FSD incorporates Atomic Design concepts in the `shared/ui` layer for reusable UI primitives, while extending it with additional layers and segments to accommodate business logic effectively.
 
 - [Atomic Design Methodology](https://atomicdesign.bradfrost.com/table-of-contents/)
 - [(Talk) Ilya Azin - Feature-Sliced Design (fragment about Atomic Design)](https://youtu.be/SnzPAr_FJ7w?t=587)
 
 ## Feature-driven architecture
 
-Feature-driven architecture is a direct predecessor of feature-sliced design, with a clear focus on domain logic in the form of features.
+Feature-driven architecture serves as a direct predecessor to Feature-Sliced Design, emphasizing the organization of code around domain-specific features. This approach prioritizes grouping related functionality such as UI components, logic, and data handling into self-contained feature modules. By doing so, it aims to improve modularity, scalability, and maintainability in growing applications.
+
+In FDA, features are typically isolated units that encapsulate everything needed for a particular business capability, reducing dependencies and making it easier for teams to work on different parts of the application independently. This can include feature-specific components, services, and state management, all aligned with user stories or business requirements.
+
+While FDA provides a strong foundation for domain-centric organization, it can sometimes lack the granular layering that FSD introduces, such as explicit separation of shared utilities, entities, and UI concerns. FSD builds upon FDA by adding these layers and slices, offering more precise guidelines for decomposition and reuse.
 
 - [(Talk) Oleg Isonen - Feature Driven Architecture](https://youtu.be/BWAeYuWFHhs)
 - [Feature Driven-Short specification (from the point of view of FSD)](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
