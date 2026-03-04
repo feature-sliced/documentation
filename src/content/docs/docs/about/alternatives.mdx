@@ -6,6 +6,8 @@ sidebar:
 
 import { FileTree, Aside } from '@astrojs/starlight/components';
 
+import StaticImage from '../../../../components/StaticImage.astro';
+
 Feature-Sliced Design has evolved from years of architectural patterns in frontend development. By exploring this history and related approaches, you'll gain a deeper understanding of why FSD structures code the way it does. This knowledge will help you avoid common pitfalls, make better decisions, and apply FSD more effectively in your projects.
 
 <Aside>
@@ -69,6 +71,8 @@ FSD builds on these principles by providing practical guidance: how to structure
 
 ## DDD, Onion, and Clean Architecture
 
+<StaticImage path="/img/alternatives/080-explicit-architecture-svg.png" alt="explicit architecture" />
+
 Unlike patterns like MVC, these approaches emphasize modeling the business domain while separating infrastructure and UI code.
 
 However, these approaches come with certain limitations, especially in the fast-paced frontend context:
@@ -85,6 +89,8 @@ Feature-Sliced Design places a domain-centric focus through its `model` segment 
 - [(Article) Alex Bespoyasov - Clean Architecture on frontend](https://bespoyasov.me/blog/clean-architecture-on-frontend/)
 
 ## Atomic Design
+
+<StaticImage path="/img/alternatives/atomic-design-abstract-concrete.png" alt="atomic design" />
 
 Developed by Brad Frost, Atomic Design views the UI as a hierarchy of building blocks, ranging from atoms (basic elements) to molecules (simple components), organisms (complex modules), templates (layouts), and pages.
 
