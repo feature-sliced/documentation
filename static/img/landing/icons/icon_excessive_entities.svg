@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48">
+  <rect width="48" height="48" fill="#FFF0D9" rx="4"/>
+  <g stroke="#D97706" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+    <!-- 메인 박스 (과도하게 분할된 그리드) -->
+    <rect x="14" y="14" width="15" height="15"/>
+    <!-- 내부 분할선들 (너무 많이 쪼갬) -->
+    <line x1="19" y1="14" x2="19" y2="29"/>
+    <line x1="24" y1="14" x2="24" y2="29"/>
+    <line x1="14" y1="19" x2="29" y2="19"/>
+    <line x1="14" y1="24" x2="29" y2="24"/>
+    <!-- 떨어져나간 조각들 (오른쪽 아래로 흩어짐) -->
+    <rect x="31.5" y="22" width="4" height="4" transform="rotate(10 33.5 24)"/>
+    <rect x="31" y="29" width="4" height="4" transform="rotate(-15 33 31)"/>
+    <rect x="22" y="31.5" width="4" height="4" transform="rotate(8 24 33.5)"/>
+  </g>
+</svg>

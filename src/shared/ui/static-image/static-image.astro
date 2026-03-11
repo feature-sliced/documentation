@@ -9,11 +9,11 @@ interface Props {
 
 const { path, alt, ...rest } = Astro.props;
 const actualPaths = Array.isArray(path)
-    ? path.map((p) => `../../static${p}`)
-    : [`../../static${path}`];
+    ? path.map((p) => `../../../../static${p}`)
+    : [`../../../../static${path}`];
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-    "../../static/**/*.{jpeg,jpg,png,gif,svg}",
+    "../../../../static/**/*.{jpeg,jpg,png,gif,svg}",
 );
 
 for (const path of actualPaths) {
