@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48">
+  <rect width="48" height="48" fill="#ECFDF5" rx="4"/>
+  <g stroke="#059669" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+    <!-- 왼쪽 모듈 -->
+    <rect x="13.5" y="18" width="8" height="12" rx="1.5"/>
+    <!-- 오른쪽 모듈 -->
+    <rect x="26.5" y="18" width="8" height="12" rx="1.5"/>
+    <!-- X 표시 (금지된 교차 임포트) -->
+    <path d="M22 21l4 6" stroke-width="1.8"/>
+    <path d="M26 21l-4 6" stroke-width="1.8"/>
+  </g>
+</svg>

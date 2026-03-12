@@ -2,9 +2,61 @@
 
 # Feature-Sliced Design
 
-> Architectural methodology for frontend projects
+# A clearer structure for frontend codebases
 
+Rules and conventions for organizing front-end code to keep projects clear and stable as requirements change.
 
+[Get Started ](/docs/get-started/overview/)
+
+[ Community](https://t.me/feature_sliced)
+
+[Join active discussions around real FSD questions, with community help and FastTrack Bot support.](https://t.me/feature_sliced)
+
+[ Steiger](https://github.com/feature-sliced/steiger)
+
+[Turn FSD rules into automated checks for code structure.](https://github.com/feature-sliced/steiger)
+
+[ Docs for LLMs](/docs/llms)
+
+[FSD docs and resources for LLM-powered tools and AI use cases.](/docs/llms)
+
+## Popular guides
+
+[![Icon: Layers](/img/landing/icons/icon_layers.svg)](/docs/reference/layers)
+
+### [Layers](/docs/reference/layers)
+
+[Understand how layers structure your app](/docs/reference/layers)
+
+[![Icon: From a custom architecture](/img/landing/icons/icon_from_custom_architecture.svg)](/docs/guides/migration/from-custom)
+
+### [From a custom architecture](/docs/guides/migration/from-custom)
+
+[Migrate your existing project to FSD incrementally](/docs/guides/migration/from-custom)
+
+[![Icon: Public API](/img/landing/icons/icon_public_api.svg)](/docs/reference/public-api)
+
+### [Public API](/docs/reference/public-api)
+
+[Define clear boundaries between slices](/docs/reference/public-api)
+
+[![Icon: Cross-imports](/img/landing/icons/icon_cross_imports.svg)](/docs/guides/issues/cross-imports)
+
+### [Cross-imports](/docs/guides/issues/cross-imports)
+
+[Avoid the most common architectural violation](/docs/guides/issues/cross-imports)
+
+[![Icon: Excessive Entities](/img/landing/icons/icon_excessive_entities.svg)](/docs/guides/issues/excessive-entities)
+
+### [Excessive Entities](/docs/guides/issues/excessive-entities)
+
+[Avoid over-splitting your domain into too many entities](/docs/guides/issues/excessive-entities)
+
+[![Icon: FAQ](/img/landing/icons/icon_faq.svg)](/docs/get-started/faq)
+
+### [FAQ](/docs/get-started/faq)
+
+[Find answers about adopting FSD in practice](/docs/get-started/faq)
 
 # Alternatives
 
@@ -875,19 +927,19 @@ The cake 🍰 image represents FSD core concepts quite well, so it has been chos
 
 FSD has few variations of logo for different context, but it recommended to prefer **primary**
 
-|                            |                                                                                                           |                         |
-| -------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------- |
-| Theme                      | Logo (Ctrl/Cmd + Click for download)                                                                      | Usage                   |
-| primary (#29BEDC, #517AED) | [![logo-primary](/_astro/logo-primary.CDj-FIdD_5VYB2.webp)](/_astro/logo-primary.CDj-FIdD.png)            | Preferred in most cases |
-| flat (#3193FF)             | [![logo-flat](/_astro/logo-flat.DtIserW__Z2pyWbU.webp)](/_astro/logo-flat.DtIserW_.png)                   | For one-color context   |
-| monochrome (#FFF)          | [![logo-monochrome](/_astro/logo-monochrome.0p3AxdYi_Z1W3OHw.webp)](/_astro/logo-monochrome.0p3AxdYi.png) | For grayscale context   |
-| square (#3193FF)           | [![logo-square](/_astro/logo-square.BjrpqCvQ_1yxNy9.webp)](/_astro/logo-square.BjrpqCvQ.png)              | For square boundaries   |
+|                            |                                                                                                          |                         |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------- |
+| Theme                      | Logo (Ctrl/Cmd + Click for download)                                                                     | Usage                   |
+| primary (#29BEDC, #517AED) | [![logo-primary](/_astro/logo-primary.CDj-FIdD_1C97sP.webp)](/_astro/logo-primary.CDj-FIdD.png)          | Preferred in most cases |
+| flat (#3193FF)             | [![logo-flat](/_astro/logo-flat.DtIserW__Z2t655E.webp)](/_astro/logo-flat.DtIserW_.png)                  | For one-color context   |
+| monochrome (#FFF)          | [![logo-monochrome](/_astro/logo-monochrome.0p3AxdYi_1oyFJP.webp)](/_astro/logo-monochrome.0p3AxdYi.png) | For grayscale context   |
+| square (#3193FF)           | [![logo-square](/_astro/logo-square.BjrpqCvQ_1VyYdu.webp)](/_astro/logo-square.BjrpqCvQ.png)             | For square boundaries   |
 
 ## Banners & Schemes
 
 [Section titled “Banners & Schemes”](#banners--schemes)
 
-[![banner-primary](/_astro/banner-primary.CctEYme2_uO9zz.webp) ](/_astro/banner-primary.CctEYme2.jpg)[![banner-monochrome](/_astro/banner-monochrome.DFz3Ww19_Z1SDs63.webp)](/_astro/banner-monochrome.DFz3Ww19.jpg)
+[![banner-primary](/_astro/banner-primary.CctEYme2_ZQCH7w.webp) ](/_astro/banner-primary.CctEYme2.jpg)[![banner-monochrome](/_astro/banner-monochrome.DFz3Ww19_Z295phS.webp)](/_astro/banner-monochrome.DFz3Ww19.jpg)
 
 ## Social Preview
 
@@ -1068,7 +1120,7 @@ Folders inside `📂 app`, `📂 shared`, and `📂 pages/article-reader` are ca
 
 Layers, slices, and segments form a hierarchy like this:
 
-![Hierarchy of FSD concepts, described below](/_astro/visual_schema.SC2t6WGo_Z2urm5V.webp)
+![Hierarchy of FSD concepts, described below](/_astro/visual_schema.SC2t6WGo_ZT4ECr.webp)
 
 Pictured above: three pillars, labeled left to right as “Layers”, “Slices”, and “Segments” respectively.
 
@@ -1164,7 +1216,7 @@ It’s advised to refrain from adding new large entities while refactoring or re
 
 This tutorial will examine the Real World App, also known as Conduit. Conduit is a basic [Medium](https://medium.com/) clone — it lets you read and write articles as well as comment on the articles of others.
 
-![Conduit home page](/_astro/realworld-feed-anonymous.D_qjBKT-_ZsXCDD.webp)
+![Conduit home page](/_astro/realworld-feed-anonymous.D_qjBKT-_1J5PBP.webp)
 
 This is a pretty small application, so we will keep it simple and avoid excessive decomposition. It’s highly likely that the entire app will fit into just three layers: **App**, **Pages**, and **Shared**. If not, we will introduce additional layers as we go. Ready?
 
@@ -1221,11 +1273,11 @@ In this case, a page is a slice, so modules (files) inside this page can only re
 
 [Section titled “Close look at the feed”](#close-look-at-the-feed)
 
-![Anonymous user’s perspective](/_astro/realworld-feed-anonymous.D_qjBKT-_ZsXCDD.webp)
+![Anonymous user’s perspective](/_astro/realworld-feed-anonymous.D_qjBKT-_1J5PBP.webp)
 
 *Anonymous user’s perspective*
 
-![Authenticated user’s perspective](/_astro/realworld-feed-authenticated.C8sxEgXZ_Z2dcnle.webp)
+![Authenticated user’s perspective](/_astro/realworld-feed-authenticated.C8sxEgXZ_Z27drBu.webp)
 
 *Authenticated user’s perspective*
 
@@ -1340,7 +1392,7 @@ In our case, the header is very simple — it’s a static logo and top-level na
 
 Let’s also examine a page that’s intended for editing, not reading. For example, the article writer:
 
-![Conduit post editor](/_astro/realworld-editor-authenticated.BlQVl7sz_Z1Eryq5.webp)
+![Conduit post editor](/_astro/realworld-editor-authenticated.BlQVl7sz_136BD2.webp)
 
 It looks trivial, but contains several aspects of application development that we haven’t explored yet — form validation, error states, and data persistence.
 
@@ -1444,7 +1496,7 @@ export default FeedPage;
 
 Then, if you run the dev server and open the application, you should see the Conduit banner!
 
-![The banner of Conduit](/_astro/conduit-banner.BDGXatKB_1T1zR3.webp)
+![The banner of Conduit](/_astro/conduit-banner.BDGXatKB_wyI9W.webp)
 
 ### API client
 
@@ -2601,7 +2653,7 @@ export default function App() {
 
 At this point, you should end up with the following on the home page:
 
-![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/_astro/realworld-feed-without-tabs.D9jRoHoq_ZFEXhM.webp)
+![The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.](/_astro/realworld-feed-without-tabs.D9jRoHoq_syx4L.webp)
 
 The feed page of Conduit, including the header, the feed, and the tags. The tabs are still missing.
 
@@ -3434,7 +3486,7 @@ export function Comments() {
 
 And with that our article reader is also complete! The buttons to follow the author, like a post, and leave a comment should now function as expected.
 
-![Article reader with functioning buttons to like and follow](/_astro/realworld-article-reader.sPAk2gad_iz6NA.webp)
+![Article reader with functioning buttons to like and follow](/_astro/realworld-article-reader.sPAk2gad_2vDA54.webp)
 
 Article reader with functioning buttons to like and follow
 
@@ -3780,7 +3832,7 @@ export default ArticleEditPage;
 
 We’re done now! Log in and try creating a new article. Or “forget” to write the article and see the validation kick in.
 
-![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/_astro/realworld-article-editor.DqBN0Kbw_2naDAy.webp)
+![The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: “Describe what this article is about” and “Write the article itself”.](/_astro/realworld-article-editor.DqBN0Kbw_ZtW0VT.webp)
 
 The Conduit article editor, with the title field saying “New article” and the rest of the fields empty. Above the form there are two errors: **“Describe what this article is about”** and **“Write the article itself”**.
 
@@ -7410,13 +7462,27 @@ This page provides links and guidance for LLM crawlers.
 * Files are served from the site root, regardless of the current page path.
 * In deployments with a non-root base URL (e.g., `/documentation/`), the links above are automatically prefixed.
 
+### AI Skills
+
+[Section titled “AI Skills”](#ai-skills)
+
+[Skills](https://vercel.com/docs/agent-resources/skills) are reusable instruction packages for AI coding agents. Unlike the static llms.txt files above, a Skill can be installed in your project and used when relevant.
+
+* [Feature-Sliced Design Skill](https://skills.sh/feature-sliced/skills/feature-sliced-design) — A community-maintained Skill based on the official FSD documentation, available for agents that support the Skills standard.
+
+```bash
+npx skills add https://github.com/feature-sliced/skills --skill feature-sliced-design
+```
+
+These resources can help AI systems apply FSD concepts more effectively, but final architectural and design decisions should still be made by your team in the context of your project.
+
 # Layers
 
 Layers are the first level of organisational hierarchy in Feature-Sliced Design. Their purpose is to separate code based on how much responsibility it needs and how many other modules in the app it depends on. Every layer carries special semantic meaning to help you determine how much responsibility you should allocate to your code.
 
 There are **7 layers** in total, arranged from most responsibility and dependency to least:
 
-![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/_astro/folders-graphic-light.BBZRGyjc_Z22m7XV.svg)![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/_astro/folders-graphic-dark.CvHbWg7G_Z22m7XV.svg)
+![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/_astro/folders-graphic-light.BBZRGyjc_IOGPH.svg)![A file system tree, with a single root folder called src and then seven subfolders: app, processes, pages, widgets, features, entities, shared. The processes folder is slightly faded out.](/_astro/folders-graphic-dark.CvHbWg7G_IOGPH.svg)
 
 1. App
 2. Processes (deprecated)
@@ -7649,7 +7715,7 @@ Index files like `index.js`, also known as barrel files, are the most common way
 
 Circular import is when two or more files import each other in a circle.
 
-![Three files importing each other in a circle](/_astro/circular-import-light.DFMtjA79_ZVcXSD.svg)![Three files importing each other in a circle](/_astro/circular-import-dark.BUJjU6uF_ZVcXSD.svg)
+![Three files importing each other in a circle](/_astro/circular-import-light.DFMtjA79_1OXPV0.svg)![Three files importing each other in a circle](/_astro/circular-import-dark.BUJjU6uF_1OXPV0.svg)
 
 Pictured above: three files, `fileA.js`, `fileB.js`, and `fileC.js`, importing each other in a circle.
 
@@ -7773,7 +7839,7 @@ The layers Shared and App don’t contain slices. That is because Shared should 
 
 Slices are meant to be independent and highly cohesive groups of code files. The graphic below might help to visualize the tricky concepts of *cohesion* and *coupling*:
 
-![Coupling and cohesion](/_astro/coupling-cohesion-light.CqnotwBT_Z13nunz.svg)![Coupling and cohesion](/_astro/coupling-cohesion-dark.D-HXG9Ti_Z13nunz.svg)
+![Coupling and cohesion](/_astro/coupling-cohesion-light.CqnotwBT_ZdhsxN.svg)![Coupling and cohesion](/_astro/coupling-cohesion-dark.D-HXG9Ti_ZdhsxN.svg)
 
 Image inspired by <https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/>
 
@@ -7801,7 +7867,7 @@ Read more about the rationale of public APIs and the best practices on creating 
 
 Closely related slices can be structurally grouped in a folder, but they should exercise the same isolation rules as other slices — there should be **no code sharing** in that folder.
 
-![Features 'compose', 'like' and 'delete' grouped in a folder 'post'. In that folder there is also a file 'some-shared-code.ts' that is crossed out to imply that it's not allowed.](/_astro/graphic-nested-slices.Co_xBHAZ_ZR5BtN.svg)
+![Features 'compose', 'like' and 'delete' grouped in a folder 'post'. In that folder there is also a file 'some-shared-code.ts' that is crossed out to imply that it's not allowed.](/_astro/graphic-nested-slices.Co_xBHAZ_1T6dkP.svg)
 
 ## Segments
 

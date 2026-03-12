@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48">
+  <rect width="48" height="48" fill="#FFEAF1" rx="4"/>
+  <g stroke="#F83F23" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+    <!-- Layer 1 (top) -->
+    <path d="M24 14.25l-9.75 4.875L24 24l9.75-4.875z"/>
+    <!-- Layer 2 (middle) -->
+    <path d="M14.25 24L24 28.875 33.75 24"/>
+    <!-- Layer 3 (bottom) -->
+    <path d="M14.25 29.625L24 34.5l9.75-4.875"/>
+  </g>
+</svg>
