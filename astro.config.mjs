@@ -10,6 +10,13 @@ export default defineConfig({
     outDir: "./build",
     publicDir: "./static",
     site: "https://fsd.how",
+    vite: {
+        resolve: {
+            alias: {
+                "@": new URL("./src", import.meta.url).pathname,
+            },
+        },
+    },
     redirects: {
         "/ru": "/ru/docs/get-started/overview",
         "/uz": "/uz/docs/get-started/overview",
@@ -30,7 +37,7 @@ export default defineConfig({
             customCss: ["./src/styles/custom.css"],
             components: {
                 ThemeProvider:
-                    "./src/shared/ui/static-image/ThemeProvider.astro",
+                    "./src/shared/ui/ThemeProvider.astro",
             },
             head: [
                 {
