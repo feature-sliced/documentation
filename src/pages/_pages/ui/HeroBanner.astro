@@ -5,7 +5,9 @@
                 A clearer structure for frontend codebases
             </h1>
             <p class="HeroBanner__summary">
-                Rules and conventions for organizing front-end code<br />
+                Rules and conventions for organizing front-end code<br
+                    class="HeroBanner__break"
+                />
                 to keep projects clear and stable as requirements change.
             </p>
             <a class="HeroBanner__button" href="/docs/get-started/overview/">
@@ -133,6 +135,15 @@
         color: var(--sl-color-gray-2);
         margin-bottom: 1rem;
         max-width: 70ch;
+    }
+
+    .HeroBanner__break {
+        display: none;
+    }
+    @media (min-width: 480px) {
+        .HeroBanner__break {
+            display: inline;
+        }
     }
 
     .HeroBanner__button {
