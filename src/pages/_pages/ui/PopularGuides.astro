@@ -1,0 +1,156 @@
+---
+const guides = [
+    {
+        id: "layers",
+        title: "Layers",
+        summary: "Understand how layers structure your app",
+        href: "/docs/reference/layers",
+    },
+    {
+        id: "from_custom_architecture",
+        title: "From a custom architecture",
+        summary: "Migrate your existing project to FSD incrementally",
+        href: "/docs/guides/migration/from-custom",
+    },
+    {
+        id: "public_api",
+        title: "Public API",
+        summary: "Define clear boundaries between slices",
+        href: "/docs/reference/public-api",
+    },
+    {
+        id: "cross_imports",
+        title: "Cross-imports",
+        summary: "Avoid the most common architectural violation",
+        href: "/docs/guides/issues/cross-imports",
+    },
+    {
+        id: "excessive_entities",
+        title: "Excessive Entities",
+        summary: "Avoid over-splitting your domain into too many entities",
+        href: "/docs/guides/issues/excessive-entities",
+    },
+    {
+        id: "faq",
+        title: "FAQ",
+        summary: "Find answers about adopting FSD in practice",
+        href: "/docs/get-started/faq",
+    },
+];
+
+const iconFiles: Record<string, string> = {
+    layers: "/img/landing/icons/icon_layers.svg",
+    from_custom_architecture:
+        "/img/landing/icons/icon_from_custom_architecture.svg",
+    public_api: "/img/landing/icons/icon_public_api.svg",
+    cross_imports: "/img/landing/icons/icon_cross_imports.svg",
+    excessive_entities: "/img/landing/icons/icon_excessive_entities.svg",
+    faq: "/img/landing/icons/icon_faq.svg",
+};
+---
+
+<section class="PopularGuides">
+    <div class="PopularGuides__inner">
+        <h2 class="PopularGuides__heading">Popular guides</h2>
+        <div class="PopularGuides__grid">
+            {
+                guides.map((guide) => (
+                    <a class="PopularGuide" href={guide.href}>
+                        <img
+                            alt={`Icon: ${guide.title}`}
+                            class="PopularGuide__img"
+                            src={iconFiles[guide.id]}
+                        />
+                        <div>
+                            <h3 class="PopularGuide__title">{guide.title}</h3>
+                            <p class="PopularGuide__summary">{guide.summary}</p>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .PopularGuides {
+        margin-bottom: 4rem;
+        margin-top: 4rem;
+    }
+
+    .PopularGuides__inner {
+        max-width: 960px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    .PopularGuides__heading {
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.3;
+        color: var(--sl-color-white);
+        margin-top: 1.75em;
+        margin-bottom: 0.4em;
+    }
+
+    .PopularGuides__grid {
+        display: grid;
+        margin-left: -16px;
+        margin-right: -16px;
+        margin-top: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .PopularGuides__grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 960px) {
+        .PopularGuides__grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .PopularGuide {
+        border-radius: 6px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px;
+        text-decoration: none;
+        transition:
+            background-color 150ms,
+            box-shadow 150ms;
+    }
+
+    .PopularGuide:hover {
+        background-color: var(--hp-hover-bg);
+        box-shadow: var(--hp-card-hover-shadow);
+        text-decoration: none;
+    }
+
+    .PopularGuide__img {
+        height: 48px;
+        width: 48px;
+        flex-shrink: 0;
+    }
+
+    .PopularGuide__title {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--sl-color-white);
+        margin: 0 0 0.24rem 0;
+        padding: 0;
+        line-height: 1.3;
+    }
+
+    .PopularGuide__summary {
+        color: var(--sl-color-gray-3);
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+    }
+</style>

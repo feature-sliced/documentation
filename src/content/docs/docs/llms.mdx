@@ -16,3 +16,15 @@ This page provides links and guidance for LLM crawlers.
 
 - Files are served from the site root, regardless of the current page path.
 - In deployments with a non-root base URL (e.g., `/documentation/`), the links above are automatically prefixed.
+
+### AI Skills
+
+[Skills](https://vercel.com/docs/agent-resources/skills) are reusable instruction packages for AI coding agents. Unlike the static llms.txt files above, a Skill can be installed in your project and used when relevant.
+
+- [Feature-Sliced Design Skill](https://skills.sh/feature-sliced/skills/feature-sliced-design) — A community-maintained Skill based on the official FSD documentation, available for agents that support the Skills standard.
+
+```bash
+npx skills add https://github.com/feature-sliced/skills --skill feature-sliced-design
+```
+
+These resources can help AI systems apply FSD concepts more effectively, but final architectural and design decisions should still be made by your team in the context of your project.
