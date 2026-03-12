@@ -36,8 +36,7 @@ export default defineConfig({
             defaultLocale: "root",
             customCss: ["./src/styles/custom.css"],
             components: {
-                ThemeProvider:
-                    "./src/shared/ui/ThemeProvider.astro",
+                ThemeProvider: "./src/shared/ui/ThemeProvider.astro",
             },
             head: [
                 {
