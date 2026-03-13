@@ -1,0 +1,88 @@
+---
+title: Naming
+sidebar:
+  order: 4
+---
+
+개발자들은 각자의 경험과 관점에 따라 **같은 개념을 서로 다른 이름으로 부르는 경우**가 많습니다.  
+이런 차이는 팀 내에서 혼동을 만들고, 코드 이해 속도를 떨어뜨릴 수 있습니다. 예를 들어:
+
+- UI 컴포넌트를 `ui`, `components`, `ui-kit`, `views` 등으로 부르는 경우
+- 공통 코드를 `core`, `shared`, `app` 등으로 지칭하는 경우
+- 비즈니스 로직을 `store`, `model`, `state` 등으로 명명하는 경우
+
+이 문서에서는 Feature-Sliced Design(FSD)에서 사용하는 **표준 네이밍 규칙**을 정리하고,  
+프로젝트 내 다른 용어들과 충돌할 때 어떻게 다루면 좋을지 설명합니다.
+
+## Feature-Sliced Design의 표준 네이밍 \{#naming-in-fsd}
+
+FSD는 layer와 segment에 대해 다음과 같은 **공통된 네이밍 규칙**을 사용합니다.
+
+### Layers
+
+- `app`
+- `processes`
+- `pages`
+- `features`
+- `entities`
+- `shared`
+
+### Segments
+
+- `ui`
+- `model`
+- `lib`
+- `api`
+- `config`
+
+이러한 표준 용어를 프로젝트 전반에서 통일해 사용하는 것은 매우 중요합니다.
+
+- 팀 내 의사소통이 더 명확해집니다.
+- 새로운 팀원이 구조를 이해하고 적응하는 속도가 빨라집니다.
+- 커뮤니티에 도움을 요청하거나, 다른 프로젝트와 경험을 공유할 때도 원활한 소통이 가능합니다.
+
+## 네이밍 충돌 해결 \{#when-can-naming-interfere}
+
+FSD에서 사용하는 용어가 **프로젝트의 비즈니스 용어와 겹치는 경우**가 있을 수 있습니다. 예를 들어:
+
+- `FSD#process` vs 애플리케이션의 “시뮬레이션 프로세스”
+- `FSD#page` vs “로그 페이지”
+- `FSD#model` vs “자동차 모델”
+
+이런 상황에서는, 개발자가 코드에서 `process`, `page`, `model` 같은 단어를 보았을 때  
+**지금 이게 FSD의 용어인지, 비즈니스 도메인 용어인지**를 먼저 구분해야 하므로  
+짧게나마 해석 비용이 추가됩니다. 이런 **용어 충돌은 개발 효율을 떨어뜨릴 수 있습니다.**
+
+따라서 프로젝트 용어집(glossary)에 FSD 특유의 용어가 포함되어 있다면,  
+팀원뿐 아니라 **비기술적 이해관계자(기획, 디자이너 등)** 와 이야기할 때도  
+이 용어가 어떤 의미인지 혼동되지 않도록 특히 신경 써야 합니다.
+
+### 용어 사용 가이드
+
+1. **기술적 커뮤니케이션**
+    - 개발자끼리 FSD 관점에서 이야기할 때는,  
+      가능한 한 **FSD 용어라는 것을 분명히 드러내며** 사용하는 것을 권장합니다.
+    - 예:
+        > “이 기능은 FSD `features` layer로 올리는 게 좋겠습니다.”  
+        > “이 부분은 `entities`로 분리하는 쪽이 구조상 더 자연스러워 보여요.”
+
+2. **비기술적 커뮤니케이션**
+    - 비개발자나 비즈니스 이해관계자와의 대화에서는  
+      가능한 한 FSD 관련 용어 사용을 줄이고, **일반적인 비즈니스 언어**를 사용하는 편이 좋습니다.
+    - 예:
+        - “코드 구조” 대신 “기능 단위로 나누어 개발하고 있습니다.”
+        - “`entities` layer” 대신 “사용자/상품 같은 핵심 데이터 단위” 등으로 풀어서 설명
+
+## 참고 자료 \{#see-also}
+
+FSD 네이밍과 관련된 더 깊은 논의는 아래 토론 스레드들을 참고하세요.
+
+- [(토론) Naming의 적응성][disc-src]
+- [(토론) Entities Naming 설문조사][disc-naming]
+- [(토론) "processes" vs "flows" vs ...][disc-processes]
+- [(토론) "model" vs "store" vs ...][disc-model]
+
+[disc-model]: https://github.com/feature-sliced/documentation/discussions/68
+[disc-naming]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-464894
+[disc-processes]: https://github.com/feature-sliced/documentation/discussions/20
+[disc-src]: https://github.com/feature-sliced/documentation/discussions/16

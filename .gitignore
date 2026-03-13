@@ -1,9 +1,12 @@
 # IDE
 .idea
 
+# Astro
+.astro
+
 # Dependencies
 node_modules
-
+.pnpm-store
 # Production
 build
 

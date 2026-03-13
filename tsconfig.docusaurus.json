@@ -1,0 +1,14 @@
+{
+    "extends": "@docusaurus/tsconfig",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "lib": ["DOM", "ESNext"]
+    },
+    "exclude": [
+        ".astro/types.d.ts",
+        "src/content.config.ts",
+        "src/content/**",
+        "dist",
+        "build"
+    ]
+}

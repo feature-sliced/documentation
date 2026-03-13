@@ -1,0 +1,99 @@
+---
+title: 关于架构
+sidebar:
+  order: 1
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## 问题 \{#problems}
+
+通常，当由于项目中的某些问题导致开发停止时，就会提出关于架构的讨论。
+
+### Bus-factor 和入职
+
+只有有限的人数理解项目及其架构
+
+**示例：**
+
+- *"很难将一个人加入开发中"*
+- *"对于每个问题，每个人都有自己的解决方案意见"（让我们嫌妒 angular）*
+- *"我不理解这个大型单体块中发生了什么"*
+
+### 隐式和不可控制的后果
+
+开发/重构过程中有很多隐式的副作用 *（"一切都依赖于一切"）*
+
+**示例：**
+
+- *"feature 导入 feature"*
+- *"我更新了一个页面的 store，另一个页面的功能就失效了"*
+- *"逻辑散布在整个应用程序中，无法追踪哪里是开始，哪里是结束"*
+
+### 不可控制的逻辑重用
+
+很难重用/修改现有逻辑
+
+同时，通常存在[两个极端](https://github.com/feature-sliced/documentation/discussions/14)：
+
+- 要么为每个模块完全从头开始编写逻辑 *（在现有代码库中可能存在重复）*
+- 要么倾向于将所有实现的模块转移到 `shared` 文件夹，从而创建一个大型的模块转储场 *（其中大多数只在一个地方使用）*
+
+**示例：**
+
+- *"我的项目中有 **N** 个相同业务逻辑的实现，我仍然在为此付出代价"*
+- *"项目中有 6 个不同的按钮/弹窗/... 组件"*
+- *"helpers 的转储场"*
+
+## 需求
+
+因此，提出*理想架构的期望需求*似乎是合乎逻辑的：
+
+<Aside>
+
+无论何处提到"容易"，都意味着"对广泛的开发者来说相对容易"，因为很明显[不可能为绝对所有人制作理想的解决方案](/zh/docs/about/mission#limitations)
+
+</Aside>
+
+### 明确性
+
+- 应该**易于掌握和解释**项目及其架构给团队
+- 结构应该反映项目的真实**业务价值**
+- 抽象之间必须有明确的**副作用和连接**
+- 应该**易于检测重复逻辑**而不干扰独特实现
+- 项目中不应该有**逻辑分散**
+- 对于良好的架构，不应该有**太多异构抽象和规则**
+
+### 控制
+
+- 良好的架构应该**加速任务解决和功能引入**
+- 应该能够控制项目的开发
+- 应该易于**扩展、修改、删除代码**
+- 必须遵守功能的**分解和隔离**
+- 系统的每个组件都必须**易于替换和移除**
+  - *[无需为变更优化][ext-kof-not-modification] - 我们无法预测未来*
+  - *[更好地为删除优化][ext-kof-but-removing] - 基于已存在的上下文*
+
+### 适应性 \{#adaptability}
+
+- 良好的架构应该适用于**大多数项目**
+  - *具有现有基础设施解决方案*
+  - *在开发的任何阶段*
+- 不应该依赖于框架和平台
+- 应该能够**轻松扩展项目和团队**，具有开发并行化的可能性
+- 应该易于**适应不断变化的需求和环境**
+
+## 参见
+
+- [(React Berlin Talk) Oleg Isonen - Feature Driven Architecture][ext-kof]
+- [(React SPB Meetup #1) Sergey Sova - Feature Slices][ext-slices-spb]
+- [(文章) 关于项目模块化][ext-medium]
+- [(文章) 关于关注点分离和按功能构建][ext-ryanlanciaux]
+
+[ext-kof-not-modification]: https://youtu.be/BWAeYuWFHhs?t=1631
+[ext-kof-but-removing]: https://youtu.be/BWAeYuWFHhs?t=1666
+
+[ext-slices-spb]: https://t.me/feature_slices
+[ext-kof]: https://youtu.be/BWAeYuWFHhs
+[ext-medium]: https://alexmngn.medium.com/why-react-developers-should-modularize-their-applications-d26d381854c1
+[ext-ryanlanciaux]: https://ryanlanciaux.com/blog/2017/08/20/a-feature-based-approach-to-react-development/

@@ -1,0 +1,148 @@
+---
+title: Обработка API-запросов
+sidebar:
+  order: 4
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { FileTree } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+
+## API-запросы в `shared` \{#shared-api-requests\}
+
+Начните с размещения общей логики API-запросов в каталоге `shared/api`. Это упрощает повторное использование запросов во всем приложении, что ускоряет разработку. Для многих проектов этого будет достаточно.
+
+Типичная структура файлов будет такой:
+
+<FileTree>
+- shared
+  - api
+    - client.ts
+    - index.ts
+    - endpoints
+      - login.ts
+</FileTree>
+
+Файл `client.ts` централизует настройку HTTP-запросов. Он оборачивает выбранный вами подход (например, `fetch()` или экземпляр `axios`) и обрабатывает общие конфигурации, такие как:
+
+- Базовый URL бэкенда.
+- Заголовки по умолчанию (например, для аутентификации).
+- Сериализация данных.
+
+Вот примеры для `axios` и `fetch`:
+
+<Tabs>
+
+<TabItem label="Axios">
+```ts title="shared/api/client.ts"
+// Example using axios
+import axios from 'axios';
+
+export const client = axios.create({
+  baseURL: 'https://your-api-domain.com/api/',
+  timeout: 5000,
+  headers: { 'X-Custom-Header': 'my-custom-value' }
+});
+```
+</TabItem>
+
+<TabItem label="Fetch">
+```ts title="shared/api/client.ts"
+export const client = {
+  async post(endpoint: string, body: any, options?: RequestInit) {
+    const response = await fetch(`https://your-api-domain.com/api${endpoint}`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Custom-Header': 'my-custom-value',
+        ...options?.headers,
+      },
+    });
+    return response.json();
+  }
+  // ... другие методы put, delete, и т.д.
+};
+```
+</TabItem>
+
+</Tabs>
+
+Организуйте свои отдельные функции API-запросов в shared/api/endpoints, группируя их по API эндпоинтам.
+
+<Aside>
+
+Для простоты, в примерах ниже мы опускаем взаимодействие с формами и валидацию. Для получения подробной информации о том, как работать с такими библиотеками как Zod или Valibot, обратитесь к секции [Проверка типов и схемы](/ru/docs/guides/examples/types#type-validation-schemas-and-zod).
+
+</Aside>
+
+```ts title="shared/api/endpoints/login.ts"
+import { client } from '../client';
+
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+
+Используйте файл `index.ts` в `shared/api` для экспорта ваших функций запросов.
+
+```ts title="shared/api/index.ts"
+export { client } from './client'; // Если нужно экспортировать клиент
+export { login } from './endpoints/login';
+export type { LoginCredentials } from './endpoints/login';
+```
+
+## API-запросы, специфичные для слайса \{#slice-specific-api-requests\}
+
+Если API-запрос используется только определенным слайсом (например, одной страницей или фичей) и не будет использоваться повторно, поместите его в сегмент `api` этого слайса. Это позволит аккуратно отделить логику, специфичную для слайса, от всего остального приложения.
+
+<FileTree>
+- pages
+  - login
+    - index.ts
+    - api
+      - login.ts
+    - ui
+      - LoginPage.tsx
+</FileTree>
+
+```ts title="pages/login/api/login.ts"
+import { client } from 'shared/api';
+
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+
+Вам не нужно экспортировать функцию `login()` через публичный API страницы, потому что маловероятно, что какое-либо другое место в приложении будет нуждаться в этом запросе.
+
+<Aside>
+
+Избегайте преждевременного размещения API-запросов и типов ответов бэкенда в слое `entities`. Ответы бэкенда могут отличаться от того, что нужно вашим сущностям фронтенда. Логика API в `shared/api` или сегменте `api` слайса позволяет вам преобразовывать данные при необходимости, сохраняя фокус сущностей на проблемах фронтенда.
+
+</Aside>
+
+## Использование генераторов клиентов \{#client-generators\}
+
+Если ваш бэкенд предоставляет OpenAPI спецификацию, инструменты как [orval](https://orval.dev/) или [openapi-typescript](https://openapi-ts.dev/), могут генерировать типы API и функции запросов. Разместите сгенерированный код, например, в `shared/api/openapi`. Обязательно включите `README.md` для документирования того, что это за типы и как их генерировать.
+
+## Интеграция с библиотеками состояния сервера \{#server-state-libraries\}
+
+При использовании библиотек состояния сервера, таких как [TanStack Query (React Query)](https://tanstack.com/query/latest) или [Pinia Colada](https://pinia-colada.esm.dev/) вам может потребоваться совместное использование типов или ключей кеша между срезами. Используйте общий слой `shared` для таких вещей, как:
+
+- Типы данных API
+- Ключи кеша
+- Общие параметры запросов и мутаций
+
+Подробнее о том, как работать с server state библиотеками, читайте в статье [React Query](/ru/docs/guides/tech/with-react-query)

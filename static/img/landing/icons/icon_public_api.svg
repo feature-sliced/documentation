@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48">
+  <rect width="48" height="48" fill="#EEE7FF" rx="4"/>
+  <g stroke="#7C3AED" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+    <!-- 왼쪽 모듈 (내부 콘텐츠) -->
+    <path d="M14 19h7"/>
+    <path d="M14 23h7"/>
+    <path d="M14 27h7"/>
+    <!-- 중앙 경계선 (API boundary) -->
+    <line x1="24" y1="14.5" x2="24" y2="33.5" stroke-dasharray="2 2"/>
+    <!-- 중앙 포인트 (API 게이트) -->
+    <circle cx="24" cy="24" r="2.5" fill="#EEE7FF"/>
+    <!-- 허용된 화살표 (API를 통한 접근) -->
+    <path d="M27.5 24h6.5"/>
+    <path d="M32 22l2 2-2 2"/>
+  </g>
+</svg>

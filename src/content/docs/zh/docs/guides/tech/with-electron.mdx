@@ -1,0 +1,137 @@
+---
+title: 与 Electron 一起使用
+sidebar:
+  order: 10
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+Electron 应用程序具有特殊的架构，由具有不同职责的多个进程组成。在这种情况下应用 FSD 需要将结构适应 Electron 的特性。
+
+<FileTree>
+- src
+  - app Common app layer
+    - main Main process
+      - index.ts Main process entry point
+    - preload Preload script and Context Bridge
+      - index.ts Preload entry point
+    - renderer Renderer process
+      - index.html Renderer process entry point
+  - main
+    - features
+      - user
+        - ipc
+          - get-user.ts
+          - send-user.ts
+    - entities
+    - shared
+  - renderer
+    - pages
+      - settings
+        - ipc
+          - get-user.ts
+          - save-user.ts
+        - ui
+          - user.tsx
+        - index.ts
+      - home
+        - ui
+          - home.tsx
+        - index.ts
+    - widgets
+    - features
+    - entities
+    - shared
+  - shared Common code between main and renderer
+    - ipc IPC description (event names, contracts)
+</FileTree>
+
+## 公共 API 规则
+每个进程必须有自己的公共 API。例如，您不能将模块从 `main` 导入到 `renderer`。
+只有 `src/shared` 文件夹对两个进程都是公共的。
+描述进程交互的契约也是必要的。
+
+## 额外更改标准结构
+建议使用新的 `ipc` 段，其中进程之间的交互发生。
+`pages` 和 `widgets` 层，基于其名称，不应出现在 `src/main` 中。您可以使用 `features`、`entities` 和 `shared`。
+`src/app` 层中的 `app` 层包含 `main` 和 `renderer` 的入口点，以及 IPC。
+不希望 `app` 层中的段有交集
+
+## 交互示例
+
+```typescript title="src/shared/ipc/channels.ts"
+export const CHANNELS = {
+    GET_USER_DATA: 'GET_USER_DATA',
+    SAVE_USER: 'SAVE_USER',
+} as const;
+
+export type TChannelKeys = keyof typeof CHANNELS;
+```
+
+```typescript title="src/shared/ipc/events.ts"
+import { CHANNELS } from './channels';
+
+export interface IEvents {
+    [CHANNELS.GET_USER_DATA]: {
+        args: void,
+        response?: { name: string; email: string; };
+    };
+    [CHANNELS.SAVE_USER]: {
+        args: { name: string; };
+        response: void;
+    };
+}
+```
+
+```typescript title="src/shared/ipc/preload.ts"
+import { CHANNELS } from './channels';
+import type { IEvents } from './events';
+
+type TOptionalArgs<T> = T extends void ? [] : [args: T];
+
+export type TElectronAPI = {
+    [K in keyof typeof CHANNELS]: (...args: TOptionalArgs<IEvents[typeof CHANNELS[K]]['args']>) => IEvents[typeof CHANNELS[K]]['response'];
+};
+```
+
+```typescript title="src/app/preload/index.ts"
+import { contextBridge, ipcRenderer } from 'electron';
+import { CHANNELS, type TElectronAPI } from 'shared/ipc';
+
+const API: TElectronAPI = {
+    [CHANNELS.GET_USER_DATA]: () => ipcRenderer.sendSync(CHANNELS.GET_USER_DATA),
+    [CHANNELS.SAVE_USER]: args => ipcRenderer.invoke(CHANNELS.SAVE_USER, args),
+} as const;
+
+contextBridge.exposeInMainWorld('electron', API);
+```
+
+```typescript title="src/main/features/user/ipc/send-user.ts"
+import { ipcMain } from 'electron';
+import { CHANNELS } from 'shared/ipc';
+
+export const sendUser = () => {
+    ipcMain.on(CHANNELS.GET_USER_DATA, ev => {
+        ev.returnValue = {
+            name: 'John Doe',
+            email: 'john.doe@example.com',
+        };
+    });
+};
+```
+
+```typescript title="src/renderer/pages/user-settings/ipc/get-user.ts"
+import { CHANNELS } from 'shared/ipc';
+
+export const getUser = () => {
+    const user = window.electron[CHANNELS.GET_USER_DATA]();
+
+    return user ?? { name: 'John Donte', email: 'john.donte@example.com' };
+};
+```
+
+## 另请参阅
+- [Process Model Documentation](https://www.electronjs.org/docs/latest/tutorial/process-model)
+- [Context Isolation Documentation](https://www.electronjs.org/docs/latest/tutorial/context-isolation)
+- [Inter-Process Communication Documentation](https://www.electronjs.org/docs/latest/tutorial/ipc)
+- [Example](https://github.com/feature-sliced/examples/tree/master/examples/electron)

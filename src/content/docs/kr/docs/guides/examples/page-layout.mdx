@@ -1,0 +1,159 @@
+---
+title: Page layouts
+sidebar:
+  order: 3
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+여러 페이지에서 **같은 layout(header, sidebar, footer 등 공통 영역)** 을 사용하고,   
+그 안의 **Content 영역**(각 페이지에서 실제로 바뀌는 컴포넌트)만 달라질 때 사용하는 _page layout_ 개념을 설명합니다.
+
+<Aside>
+
+더 궁금한 점이 있나요? 페이지 우측의 피드백 버튼을 눌러 의견을 남겨 주세요. 여러분의 제안은 이 문서를 개선하는 데 큰 도움이 됩니다!
+
+</Aside>
+
+## Simple layout
+
+먼저 가장 기본적인 **simple layout** 예시를 살펴보겠습니다.   
+이 layout은 다음과 같은 요소들로 구성됩니다.
+
+- 상단 header 
+- 좌우에 위치한 두 개의 sidebar 
+- 외부 링크(GitHub, Twitter)가 포함된 footer
+
+여기에는 복잡한 비즈니스 로직은 거의 없고,  
+레이아웃 자체에 필요한 최소한의 동작만 포함됩니다.
+
+- **정적 요소**: 고정된 menu, logo, footer 등 
+- **동적 요소**: sidebar toggle, header 오른쪽의 theme switch button 등
+
+이 Layout 컴포넌트는 보통 shared/ui 또는 app/layouts 같은 **common 폴더**에 두고 사용합니다.   
+이때, siblingPages(SiblingPageSidebar에서 사용할 데이터)와 headings(HeadingsSidebar에서 사용할 데이터)를 props로 받아서,  
+sidebar 내용은 **외부에서 주입(의존성 주입)** 받을 수 있도록 합니다.
+
+
+```tsx title="shared/ui/layout/Layout.tsx"
+import { Link, Outlet } from "react-router-dom";
+import { useThemeSwitcher } from "./useThemeSwitcher";
+
+export function Layout({ siblingPages, headings }) {
+  const [theme, toggleTheme] = useThemeSwitcher();
+
+  return (
+    <div>
+      <header>
+        <nav>
+          <ul>
+            <li> <Link to="/">Home</Link> </li>
+            <li> <Link to="/docs">Docs</Link> </li>
+            <li> <Link to="/blog">Blog</Link> </li>
+          </ul>
+        </nav>
+        <button onClick={toggleTheme}>{theme}</button>
+      </header>
+      <main>
+        <SiblingPageSidebar siblingPages={siblingPages} />
+        <Outlet /> {/* 여기에 주요 콘텐츠가 들어갑니다 */}
+        <HeadingsSidebar headings={headings} />
+      </main>
+      <footer>
+        <ul>
+          <li>GitHub</li>
+          <li>Twitter</li>
+        </ul>
+      </footer>
+    </div>
+  );
+}
+```
+
+```ts title="shared/ui/layout/useThemeSwitcher.ts"
+export function useThemeSwitcher() {
+  const [theme, setTheme] = useState("light");
+
+  function toggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
+
+  useEffect(() => {
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(theme);
+  }, [theme]);
+
+  return [theme, toggleTheme] as const;
+}
+```
+
+위 예시에서 사이드바 UI 자체 구현 코드는 길어질 수 있으므로, 설명에서는 생략했습니다.   
+중요한 포인트는 layout이 **틀만 제공하고, 구체적인 내용은 props로 받아서 렌더링한다** 는 점입니다.
+
+## layout에 widget 적용하기
+
+layout 컴포넌트에서 인증 처리나 데이터 로딩 같은 **비즈니스 로직**을 수행해야 할 때가 있습니다.   
+예를 들어, [React Router][ext-react-router]의 deeply nested routes 구조에서는 `/users`, `/users/:id`, `/users/:id/settings` 처럼   
+공통된 URL prefix를 가진 여러 child routes가 존재합니다.  
+
+이 경우, 인증 확인이나 공통 데이터 로딩 같은 로직을   
+각 페이지마다 작성하기보다는 **layout 레벨에서 한 번에 처리**하는 방식이 훨씬 효율적입니다. 
+
+다만 이런 layout을 shared나 widgets 폴더에 두면 
+[layer에 대한 import 규칙][import-rule-on-layers]을 위반할 수 있습니다. 
+
+> Slice의 module은 자신보다 **하위 layer**에 있는 Slice만 import할 수 있습니다. 
+
+즉, layout에서 entity/feature/page를 직접 불러오게 되면   
+**위에서 아래를 가져오는** 잘못된 의존성이 생길 수 있습니다. 
+
+그래서 먼저 아래와 같은 점을 고려하는 것이 좋습니다. 
+
+- _이 layout이 정말 필요한가?_ 
+- _꼭 widget 형태로 만들 필요가 있는가?_ 
+
+layout이 적용되는 페이지 수가 2~3곳 정도라면,   
+이 layout이 사실상 **특정 페이지만을 위한 wrapper**일 수도 있으며 굳이 widget으로 승격시킬 필요가 없을 수 있습니다. 
+
+이런 상황에서는 아래 두 가지 대안을 먼저 고려하세요. 
+
+1. **App layer에서 inline으로 작성하기**   
+URL 패턴이 공통된 여러 경로를 Router의 nesting 기능으로 묶어 하나의 route group으로 만들 수 있습니다.   
+이 route group에 layout을 한 번만 지정하면, 해당 그룹 아래 모든 페이지에 자동으로 동일한 layout이 적용됩니다. 
+
+1. **코드 복사 & 붙여넣기**  
+layout은 자주 변경되는 코드가 아니므로, 
+필요한 페이지만 layout 코드를 복사해 사용해도 큰 문제가 없습니다.  
+수정이 필요할 때만 해당 layout들을 개별적으로 업데이트하면 되고, 
+페이지 간 관계를 주석으로 남겨 두면 누락을 방지할 수 있습니다. 
+
+--- 
+
+위 방법들이 프로젝트에 맞지 않다면, 
+layout 안에서 widget을 사용하는 다음 두 가지 해결책을 고려할 수 있습니다. 
+
+### 1. Render Props 또는 Slots 사용하기 
+
+React에서는 [render props][ext-render-props] 패턴을, Vue에서는 [slots][ext-vue-slots] 기능을 사용합니다. 
+
+이 방식은 부모인 layout 컴포넌트가 **UI 틀을 제공하고**,   
+자식 컴포넌트가 전달한 UI를 layout 내부 특정 위치에 **주입(injection)** 하는 구조입니다.   
+Layout이 비즈니스 로직을 직접 수행하면서도,
+UI 구성은 외부에서 유연하게 가져올 수 있다는 장점이 있습니다. 
+
+### 2. layout을 App layer로 이동하기 
+
+layout을 app/layouts 같은 상위 layer로 옮기면,   
+App layer는 아래 layer(entities, features, shared)를 자유롭게 import할 수 있기 때문에  
+Layer 규칙을 위반하지 않고 layout 안에서 widget을 사용할 수 있습니다.
+
+## 참고 자료 
+
+React 및 Remix(React Router와 구조가 유사)의  
+인증 layout 구현 예시는 [튜토리얼][tutorial] 문서에서 확인할 수 있습니다. 
+
+[tutorial]: /kr/docs/get-started/tutorial 
+[import-rule-on-layers]: /kr/docs/reference/layers#import-rule-on-layers 
+[ext-react-router]: https://reactrouter.com/ 
+[ext-render-props]: https://www.patterns.dev/react/render-props-pattern/ 
+[ext-vue-slots]: https://vuejs.org/guide/components/slots,

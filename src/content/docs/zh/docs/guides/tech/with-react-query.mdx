@@ -1,0 +1,440 @@
+---
+title: 与 React Query 一起使用
+sidebar:
+  order: 10
+---
+
+import { FileTree, Aside } from '@astrojs/starlight/components';
+
+## "键放在哪里"的问题
+
+### 解决方案——按实体分解
+
+如果项目已经有实体划分，并且每个请求对应单个实体，
+最纯粹的划分将按实体进行。在这种情况下，我们建议使用以下结构：
+<FileTree>
+- src/
+  - app/
+    - ...
+  - pages/
+    - ...
+  - entities/
+    - \{entity\}/
+      - ...
+      - api/
+        - `{entity}.query` Query-factory where are the keys and functions
+        - `get-{entity}` Entity getter function
+        - `create-{entity}` Entity creation function
+        - `update-{entity}` Entity update function
+        - `delete-{entity}` Entity delete function
+        - ...
+  - features/
+    - ...
+  - widgets/
+    - ...
+  - shared/
+    - ...
+</FileTree>
+
+如果实体之间有连接（例如，Country 实体有一个 City 实体的列表字段），
+则可以使用 [公共 API 跨导入][public-api-for-cross-imports] 或考虑以下替代方案。
+
+### 替代方案——保持共享
+
+在实体分离不合适的情况下，可以考虑以下结构：
+
+<FileTree>
+- src/
+  - ...
+  - shared/
+    - api/
+      - ...
+      - queries Query-factories
+        - document.ts
+        - background-jobs.ts
+        - ...
+      - index.ts
+</FileTree>
+
+然后在 `@/shared/api/index.ts` 中：
+
+```ts title="@/shared/api/index.ts"
+export { documentQueries } from "./queries/document";
+```
+
+## "在哪里插入突变？"的问题
+
+不建议将突变与查询混合。有两种选择：
+
+### 1. 在 `api` 段附近定义一个自定义钩子
+
+```tsx title="@/features/update-post/api/use-update-title.ts"
+export const useUpdateTitle = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, newTitle }) =>
+      apiClient
+        .patch(`/posts/${id}`, { title: newTitle })
+        .then((data) => console.log(data)),
+
+    onSuccess: (newPost) => {
+      queryClient.setQueryData(postsQueries.ids(id), newPost);
+    },
+  });
+};
+```
+
+### 2. 在其他地方（共享或实体）定义突变函数，并在组件中直接使用 `useMutation`
+
+```tsx
+const { mutateAsync, isPending } = useMutation({
+  mutationFn: postApi.createPost,
+});
+```
+
+```tsx title="@/pages/post-create/ui/post-create-page.tsx"
+export const CreatePost = () => {
+  const { classes } = useStyles();
+  const [title, setTitle] = useState("");
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: postApi.createPost,
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setTitle(e.target.value);
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    mutate({ title, userId: DEFAULT_USER_ID });
+  };
+
+  return (
+    <form className={classes.create_form} onSubmit={handleSubmit}>
+      <TextField onChange={handleChange} value={title} />
+      <LoadingButton type="submit" variant="contained" loading={isPending}>
+        Create
+      </LoadingButton>
+    </form>
+  );
+};
+```
+
+## 请求组织
+
+### 查询工厂
+
+查询工厂是一个对象，其中键值是返回查询键列表的函数。以下是如何使用它：
+
+```ts
+const keyFactory = {
+  all: () => ["entity"],
+  lists: () => [...postQueries.all(), "list"],
+};
+```
+
+<Aside>
+`queryOptions` 是 react-query@v5 的内置工具（可选）
+
+```ts
+queryOptions({
+  queryKey,
+  ...options,
+});
+```
+
+为了更好的类型安全性，进一步兼容 react-query 的未来版本，并易于访问函数和查询键，
+您可以使用 “@tanstack/react-query” 的内置 queryOptions 函数
+[(More details here)](https://tkdodo.eu/blog/the-query-options-api#queryoptions).
+</Aside>
+
+### 1. 创建查询工厂
+
+```tsx title="@/entities/post/api/post.queries.ts"
+import { keepPreviousData, queryOptions } from "@tanstack/react-query";
+import { getPosts } from "./get-posts";
+import { getDetailPost } from "./get-detail-post";
+import { PostDetailQuery } from "./query/post.query";
+
+export const postQueries = {
+  all: () => ["posts"],
+
+  lists: () => [...postQueries.all(), "list"],
+  list: (page: number, limit: number) =>
+    queryOptions({
+      queryKey: [...postQueries.lists(), page, limit],
+      queryFn: () => getPosts(page, limit),
+      placeholderData: keepPreviousData,
+    }),
+
+  details: () => [...postQueries.all(), "detail"],
+  detail: (query?: PostDetailQuery) =>
+    queryOptions({
+      queryKey: [...postQueries.details(), query?.id],
+      queryFn: () => getDetailPost({ id: query?.id }),
+      staleTime: 5000,
+    }),
+};
+```
+
+### 2. 在应用程序代码中使用查询工厂
+```tsx
+import { useParams } from "react-router-dom";
+import { postApi } from "@/entities/post";
+import { useQuery } from "@tanstack/react-query";
+
+type Params = {
+  postId: string;
+};
+
+export const PostPage = () => {
+  const { postId } = useParams<Params>();
+  const id = parseInt(postId || "");
+  const {
+    data: post,
+    error,
+    isLoading,
+    isError,
+  } = useQuery(postApi.postQueries.detail({ id }));
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError || !post) {
+    return <>{error?.message}</>;
+  }
+
+  return (
+    <div>
+      <p>Post id: {post.id}</p>
+      <div>
+        <h1>{post.title}</h1>
+        <div>
+          <p>{post.body}</p>
+        </div>
+      </div>
+      <div>Owner: {post.userId}</div>
+    </div>
+  );
+};
+```
+
+### 使用查询工厂的好处
+- **请求结构化：** 工厂允许您在一个地方组织所有 API 请求，使代码更易于阅读和维护。
+- **方便访问查询和键：** 工厂提供方便的方法来访问不同类型的查询及其键。
+- **查询刷新能力：** 工厂允许轻松刷新，无需在应用程序的不同部分更改查询键。
+
+## 分页
+
+在本节中，我们将查看 `getPosts` 函数的示例，该函数通过分页 API 请求检索帖子实体。
+
+### 1. 创建 `getPosts` 函数
+`getPosts` 函数位于 `get-posts.ts` 文件中，位于 `api` 段
+
+```tsx title="@/pages/post-feed/api/get-posts.ts"
+import { apiClient } from "@/shared/api/base";
+
+import { PostWithPaginationDto } from "./dto/post-with-pagination.dto";
+import { PostQuery } from "./query/post.query";
+import { mapPost } from "./mapper/map-post";
+import { PostWithPagination } from "../model/post-with-pagination";
+
+const calculatePostPage = (totalCount: number, limit: number) =>
+  Math.floor(totalCount / limit);
+
+export const getPosts = async (
+  page: number,
+  limit: number,
+): Promise<PostWithPagination> => {
+  const skip = page * limit;
+  const query: PostQuery = { skip, limit };
+  const result = await apiClient.get<PostWithPaginationDto>("/posts", query);
+
+  return {
+    posts: result.posts.map((post) => mapPost(post)),
+    limit: result.limit,
+    skip: result.skip,
+    total: result.total,
+    totalPages: calculatePostPage(result.total, limit),
+  };
+};
+```
+
+### 2. 分页查询工厂
+`postQueries` 查询工厂定义了各种查询选项，用于处理帖子，
+包括请求特定页面和限制的帖子列表。
+
+```tsx
+import { keepPreviousData, queryOptions } from "@tanstack/react-query";
+import { getPosts } from "./get-posts";
+
+export const postQueries = {
+  all: () => ["posts"],
+  lists: () => [...postQueries.all(), "list"],
+  list: (page: number, limit: number) =>
+    queryOptions({
+      queryKey: [...postQueries.lists(), page, limit],
+      queryFn: () => getPosts(page, limit),
+      placeholderData: keepPreviousData,
+    }),
+};
+```
+
+
+### 3. 在应用程序代码中使用
+
+```tsx title="@/pages/home/ui/index.tsx"
+export const HomePage = () => {
+  const itemsOnScreen = DEFAULT_ITEMS_ON_SCREEN;
+  const [page, setPage] = usePageParam(DEFAULT_PAGE);
+  const { data, isFetching, isLoading } = useQuery(
+    postApi.postQueries.list(page, itemsOnScreen),
+  );
+  return (
+    <>
+      <Pagination
+        onChange={(_, page) => setPage(page)}
+        page={page}
+        count={data?.totalPages}
+        variant="outlined"
+        color="primary"
+      />
+      <Posts posts={data?.posts} />
+    </>
+  );
+};
+```
+<Aside>
+该示例已简化，完整版本可在 [GitHub](https://github.com/ruslan4432013/fsd-react-query-example) 上找到
+</Aside>
+
+## `QueryProvider` 用于管理查询
+在本指南中，我们将查看如何组织 `QueryProvider`。
+
+### 1. 创建 `QueryProvider`
+文件 `query-provider.tsx` 位于路径 `@/app/providers/query-provider.tsx`。
+
+```tsx title="@/app/providers/query-provider.tsx"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ReactNode } from "react";
+
+type Props = {
+  children: ReactNode;
+  client: QueryClient;
+};
+
+export const QueryProvider = ({ client, children }: Props) => {
+  return (
+    <QueryClientProvider client={client}>
+      {children}
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  );
+};
+```
+
+### 2. 创建 `QueryClient`
+`QueryClient` 是一个用于管理 API 请求的实例。
+文件 `query-client.ts` 位于 `@/shared/api/query-client.ts`。
+`QueryClient` 使用某些设置进行查询缓存。
+
+```tsx title="@/shared/api/query-client.ts"
+import { QueryClient } from "@tanstack/react-query";
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+      gcTime: 5 * 60 * 1000,
+    },
+  },
+});
+```
+
+## 代码生成
+
+有一些工具可以为您生成 API 代码，但它们比手动方法描述的更不灵活。
+如果您的 Swagger 文件结构良好，
+并且您使用其中之一，生成 `@/shared/api` 目录中的所有代码可能是有意义的。
+
+
+## 额外的组织建议
+### API 客户端
+
+在共享层使用自定义 API 客户端类，
+您可以标准化配置并处理项目中的 API。
+这使您可以管理日志，
+从一处管理头和数据交换格式（如 JSON 或 XML）。
+这种方法使项目更容易维护和开发，因为它简化了更改和更新与 API 的交互。
+
+```tsx title="@/shared/api/api-client.ts"
+import { API_URL } from "@/shared/config";
+
+export class ApiClient {
+  private baseUrl: string;
+
+  constructor(url: string) {
+    this.baseUrl = url;
+  }
+
+  async handleResponse<TResult>(response: Response): Promise<TResult> {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    try {
+      return await response.json();
+    } catch (error) {
+      throw new Error("Error parsing JSON response");
+    }
+  }
+
+  public async get<TResult = unknown>(
+    endpoint: string,
+    queryParams?: Record<string, string | number>,
+  ): Promise<TResult> {
+    const url = new URL(endpoint, this.baseUrl);
+
+    if (queryParams) {
+      Object.entries(queryParams).forEach(([key, value]) => {
+        url.searchParams.append(key, value.toString());
+      });
+    }
+    const response = await fetch(url.toString(), {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return this.handleResponse<TResult>(response);
+  }
+
+  public async post<TResult = unknown, TData = Record<string, unknown>>(
+    endpoint: string,
+    body: TData,
+  ): Promise<TResult> {
+    const response = await fetch(`${this.baseUrl}${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    return this.handleResponse<TResult>(response);
+  }
+}
+
+export const apiClient = new ApiClient(API_URL);
+```
+
+## 另请参阅 \{#see-also}
+
+- [(GitHub) Sample Project](https://github.com/ruslan4432013/fsd-react-query-example)
+- [(CodeSandbox) Sample Project](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
+- [About the query factory](https://tkdodo.eu/blog/the-query-options-api)
+
+[public-api-for-cross-imports]: /zh/docs/reference/public-api#public-api-for-cross-imports

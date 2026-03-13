@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48">
+  <rect width="48" height="48" fill="#FEF0CF" rx="4"/>
+  <g stroke="#F8790B" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+    <!-- 왼쪽: 어지러운 블록들 -->
+    <path d="M13 17.5l4.2-0.8 0.7 3.2-4.2 0.8z"/>
+    <path d="M14.5 23l5 0.5 -0.3 2.8-5-0.5z"/>
+    <path d="M13.5 29.5l3.8-1 0.8 3-3.8 1z"/>
+    <!-- 가운데: 화살표 -->
+    <path d="M22 24h4"/>
+    <path d="M24.5 22l1.5 2-1.5 2"/>
+    <!-- 오른쪽: 정돈된 수평 레이어 -->
+    <path d="M29 17.5h5.5"/>
+    <path d="M29 20.5h5.5"/>
+    <path d="M29 24h5.5"/>
+    <path d="M29 27.5h5.5"/>
+    <path d="M29 30.5h5.5"/>
+  </g>
+</svg>

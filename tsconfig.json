@@ -1,7 +1,11 @@
 {
-    "extends": "@docusaurus/tsconfig",
-    "compilerOptions": {
-        "baseUrl": ".",
-        "lib": ["DOM", "ESNext"]
-    }
+    "files": [],
+    "references": [
+        {
+            "path": "./tsconfig.astro.json"
+        },
+        {
+            "path": "./tsconfig.docusaurus.json"
+        }
+    ]
 }

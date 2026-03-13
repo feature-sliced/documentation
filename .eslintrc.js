@@ -31,7 +31,13 @@ module.exports = {
         "linebreak-style": [2, "unix"],
         "import/no-unresolved": [
             2,
-            { ignore: ["^@theme", "^@docusaurus/plugin-content-docs/client"] },
+            {
+                ignore: [
+                    "^@theme",
+                    "^@docusaurus/plugin-content-docs/client",
+                    "astro:content",
+                ],
+            },
         ],
         "import/extensions": 0,
         "import/no-extraneous-dependencies": 0,
