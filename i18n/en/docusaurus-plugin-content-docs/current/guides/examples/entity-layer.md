@@ -28,7 +28,8 @@ When code starts being reused, there are **three valid approaches** to organizin
 - Migration to `entities/` when complexity grows
 
 **Approach B: Domain API** (`entities/*/api/`)
-- API tied to business entity
+- Driven by business domain understanding — if an object has a unique business identifier and meaningful behavior, it warrants its own slice
+- API placement inside the entity slice follows from that decision, not the other way around
 - Full encapsulation from day one
 
 All three approaches align with **FSD philosophy**: avoid premature decomposition and add layers as needed.
@@ -37,33 +38,44 @@ All three approaches align with **FSD philosophy**: avoid premature decompositio
 
 ## Signs of a Business Entity
 
-Before deciding where to place code, it helps to recognize whether an object is a business entity.
+Before deciding where to place code, it helps to recognize whether an object is a business entity. Business entities are the core concepts your product is built around — they have identity, behavior, and meaning to the people using the product, not just to the code. The following signs help identify them, though no single sign is sufficient on its own.
 
 **1. Unique Identity**
 
-An object can be distinguished from other instances of the same type by a unique attribute:
+A business entity can be distinguished from other instances of the same type by a unique attribute — something meaningful to the business, not just a database row:
 
 ```typescript
-// Business uniqueness
-Order { orderNumber: "ORD-2024-001" }
-Product { sku: "LAPTOP-XPS-15" }
-
-// Technical uniqueness
-User { id: "uuid-123" }
-Payment { id: 456 }
+// Business uniqueness — the identifier has meaning in the domain
+Order { orderNumber: "ORD-2024-001" }  // referenced in emails, invoices, support tickets
+Product { sku: "LAPTOP-XPS-15" }       // used in catalogues, warehouses, orders
+Payment { type: "card", last4: "4242" } // meaningful to the customer and accounting
 ```
 
-Having a unique identifier **does not mean** automatic Entity creation. It's just a sign that an object might become one.
+A technical `id` alone is not enough to define an entity. Consider a `LogEntry`:
+
+```typescript
+LogEntry { id: 789, message: "User logged in", timestamp: "..." }
+```
+
+`LogEntry` has a unique `id`, but it has no business meaning, no lifecycle, and no relationships that matter to the domain. It's infrastructure — keep it local or in `shared/`.
+
+The presence of a unique identifier is a **hint**, not a rule.
 
 **2. Business Term**
 
-The object is a term the business uses to describe the product:
+The object is a term the business uses when talking about the product. A good signal: if a product manager, support agent, or customer would use this word in a sentence, it's likely a business entity.
+
+| How the business says it | How it appears in code |
+|--------------------------|------------------------|
+| "create a user account" | `User` |
+| "place an order" | `Order` |
+| "issue an invoice" | `Invoice` |
+| "renew the subscription" | `Subscription` |
+
+Technical objects that never appear in business conversations are not entities:
 
 ```typescript
-// Business terms (potential entities)
-User, Customer, Order, Product, Invoice, Payment, Subscription
-
-// Technical terms (NOT entities)
+// NOT entities — these are implementation details
 Form, Modal, Layout, Component, State, Config
 ```
 
@@ -87,6 +99,21 @@ Subscription {
 Order -> belongs to -> User
 Order -> contains -> Products
 User -> has -> Subscription
+```
+
+In code, these relationships appear as references between types:
+
+```typescript
+interface Order {
+  id: string
+  userId: string          // belongs to User
+  productIds: string[]    // contains Products
+}
+
+interface User {
+  id: string
+  subscriptionId: string  // has Subscription
+}
 ```
 
 ### Business Glossary (Recommended)
@@ -149,52 +176,50 @@ interface UserProfileDTO {
   full_name: string
   email: string
   joined_days_ago: number
+  internal_flags: string[]   // backend-specific, not needed in the UI
 }
 
-export interface UserProfile {
+export interface ProfileModel {
   id: string
-  name: string
+  displayName: string        // derived: formatted for display
   email: string
-  joinedDaysAgo: number
+  isNewUser: boolean         // derived: business rule applied at mapping time
 }
 
-function mapProfile(dto: UserProfileDTO): UserProfile {
+function mapProfile(dto: UserProfileDTO): ProfileModel {
   return {
     id: String(dto.user_id),
-    name: dto.full_name,
+    displayName: dto.full_name || 'Anonymous',
     email: dto.email,
-    joinedDaysAgo: dto.joined_days_ago,
+    isNewUser: dto.joined_days_ago < 7,
   }
 }
 
-export async function getUserProfile(id: string): Promise<UserProfile> {
+export async function getUserProfile(id: string): Promise<ProfileModel> {
   const response = await fetch(`/api/users/${id}/profile`)
   const dto: UserProfileDTO = await response.json()
   return mapProfile(dto)
 }
 ```
 
-Note that `UserProfile` is constructed from a single endpoint. If other endpoints return a different shape of user data, each should have its own local type — don't create a shared abstraction prematurely.
+A separate domain type makes sense when the domain model genuinely differs from the DTO — derived fields, renamed properties, filtered-out backend internals. If your type would be a field-for-field copy of the DTO, skip the mapping and use the DTO type directly. Unnecessary mappers add friction: a backend change means updating the DTO, the domain type, and the mapper all at once for no benefit.
 
 ```tsx title="pages/user-profile/ui/ProfilePage.tsx"
 import { useState, useEffect } from 'react'
-import { getUserProfile, type UserProfile } from '../api'
+import { getUserProfile, type ProfileModel } from '../api'
 
 export function ProfilePage() {
-  const [profile, setProfile] = useState<UserProfile | null>(null)
+  const [profile, setProfile] = useState<ProfileModel | null>(null)
 
   useEffect(() => {
     getUserProfile('123').then(setProfile)
   }, [])
 
-  const displayName = profile?.name || 'Anonymous'
-  const isNewUser = (profile?.joinedDaysAgo ?? Infinity) < 7
-
   return (
     <div>
-      <h1>{displayName}</h1>
-      {isNewUser && <span className="badge">Newbie</span>}
-      <p>{profile?.bio}</p>
+      <h1>{profile?.displayName}</h1>
+      {profile?.isNewUser && <span className="badge">Newbie</span>}
+      <p>{profile?.email}</p>
     </div>
   )
 }
@@ -207,7 +232,7 @@ export function ProfilePage() {
 - Unknown what other fields will be needed elsewhere
 - YAGNI — don't create structure "for the future"
 
-### Triggers for Moving to Approach A or B
+### Triggers to Move Code to `shared/api` or `entities/`
 
 **1. Used in a second place (main trigger)**
 
@@ -238,6 +263,7 @@ For a detailed guide with code examples, see [API Requests](https://fsd.how/docs
 - Small projects (fewer than ~10 screens)
 - Projects with frequently changing business logic
 - When it's unclear which entities have stabilized
+- When using API code generators like [orval](https://orval.dev/) or [openapi-typescript](https://openapi-ts.dev/) — generated code naturally fits in `shared/api/` as a single source of truth for transport types
 
 ### Structure
 
@@ -254,6 +280,8 @@ shared/
 The key difference from Approach B: domain types (`User`, `Order`) live in `shared/api/` alongside the API functions, rather than in `entities/*/model/`.
 
 ### Triggers for Migrating to `entities/`
+
+`shared/api` works well as long as it stays focused on transport concerns. Once domain logic starts leaking in — permissions, aggregations, repeated derivations — it becomes harder to maintain and the separation of concerns breaks down. These are the signals to move toward `entities/`:
 
 **Business logic starts accumulating**
 
@@ -301,14 +329,11 @@ In this approach, each entity lives fully inside its own slice — including the
 
 ### Why the Mapping Layer Matters
 
-When the backend changes its contract, the impact is localized:
+The mapper in `entities/*/api/` separates the backend's transport shape (DTO) from your domain model. This means your domain code — components, business logic, tests — works with a stable interface regardless of how the backend names its fields.
 
-```
-// Backend changed: { user_id: number } -> { id: string }
+However, mappers are not a shield against all backend changes. When a field is **renamed**, the fix is indeed limited to one mapper file. But when a field is **added or removed**, you still need to update the domain model and the places that use it. The mapper doesn't change that.
 
-// Approach A: ~15 files need updates
-// Approach B: 1 file (the mapper in entities/user/api/)
-```
+The real value is clarity: the DTO represents what the backend sends, and the domain type represents what your application needs. Keeping them separate makes each concern explicit and easier to reason about independently.
 
 ### Structure
 
@@ -356,7 +381,7 @@ export interface User {
 
 ```typescript title="entities/user/api/user-api.ts"
 import { apiClient } from 'shared/api/client'
-import type { User } from '../model/types'
+import type { User } from '../model/user'
 
 interface UserDTO {
   user_id: number
@@ -525,6 +550,8 @@ Create `entities/*/model/` — regardless of whether the API lives in `shared/ap
 
 ### 1. Data Aggregation
 
+When a meaningful model needs to be constructed from multiple data sources, that composition logic belongs in `model/`. This is not just fetching related data — it's creating a new unified model that the rest of the application can work with as a single concept.
+
 ```typescript title="entities/user/model/user-with-team.ts"
 import { getUserById } from '../api'
 import { getTeamById } from 'entities/team/@x/user'
@@ -541,7 +568,9 @@ export async function getUserWithTeam(userId: string) {
 }
 ```
 
-### 2. Business Rules and Invariants
+### 2. Business Rules
+
+When domain objects have rules that govern what operations are allowed — based on their current state, relationships, or time constraints — those rules belong in `model/`. Keeping them centralized prevents the same checks from being scattered and duplicated across the codebase.
 
 ```typescript title="entities/order/model/validation.ts"
 import type { Order } from './order.ts'

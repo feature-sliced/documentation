@@ -28,7 +28,8 @@ FSD следует принципу **"Local First"** — начинайте с 
 - Миграция в `entities/` при усложнении
 
 **Подход Б: Доменное API** (`entities/*/api/`)
-- API привязано к бизнес-сущности
+- Определяется пониманием бизнес-домена — если объект имеет уникальный бизнес-идентификатор и значимое поведение, он заслуживает собственного слайса
+- Размещение API внутри слайса сущности — следствие этого решения, а не основание для него
 - Полная инкапсуляция с первого дня
 
 Все три подхода согласуются с **философией FSD**: избегать преждевременной декомпозиции и добавлять слои по мере необходимости.
@@ -37,33 +38,44 @@ FSD следует принципу **"Local First"** — начинайте с 
 
 ## Признаки бизнес-сущности
 
-Прежде чем принимать решение о размещении кода, стоит понять — является ли объект бизнес-сущностью.
+Прежде чем принимать решение о размещении кода, стоит понять — является ли объект бизнес-сущностью. Бизнес-сущности — это ключевые понятия, вокруг которых построен продукт. Они обладают идентичностью, поведением и смыслом для пользователей продукта, а не только для кода. Следующие признаки помогают их распознать, хотя ни один из них сам по себе не является достаточным.
 
 **1. Уникальная идентичность**
 
-Объект можно отличить от других экземпляров того же типа по уникальному атрибуту:
+Бизнес-сущность можно отличить от других экземпляров того же типа по уникальному атрибуту — значимому для бизнеса, а не просто строке в базе данных:
 
 ```typescript
-// Бизнес-уникальность
-Order { orderNumber: "ORD-2024-001" }
-Product { sku: "LAPTOP-XPS-15" }
-
-// Техническая уникальность
-User { id: "uuid-123" }
-Payment { id: 456 }
+// Бизнес-уникальность — идентификатор имеет смысл в домене
+Order { orderNumber: "ORD-2024-001" }   // фигурирует в письмах, счетах, обращениях в поддержку
+Product { sku: "LAPTOP-XPS-15" }        // используется в каталогах, складах, заказах
+Payment { type: "card", last4: "4242" } // значим для покупателя и бухгалтерии
 ```
 
-Наличие уникального идентификатора **не означает** автоматического создания Entity. Это лишь признак того, что объект может ею стать.
+Технический `id` сам по себе не делает объект сущностью. Рассмотрим `LogEntry`:
+
+```typescript
+LogEntry { id: 789, message: "User logged in", timestamp: "..." }
+```
+
+У `LogEntry` есть уникальный `id`, но нет бизнес-смысла, жизненного цикла и связей, важных для домена. Это инфраструктура — держите локально или в `shared/`.
+
+Наличие уникального идентификатора — это **подсказка**, а не правило.
 
 **2. Бизнес-термин**
 
-Объект — это термин, который использует бизнес для описания продукта:
+Объект — это термин, который бизнес использует в разговоре о продукте. Хороший признак: если менеджер продукта, сотрудник поддержки или клиент произносят это слово в предложении — скорее всего, это бизнес-сущность.
+
+| Как говорит бизнес | Как выглядит в коде |
+|--------------------|---------------------|
+| "создать аккаунт пользователя" | `User` |
+| "оформить заказ" | `Order` |
+| "выставить счёт" | `Invoice` |
+| "продлить подписку" | `Subscription` |
+
+Технические объекты, которые никогда не звучат в бизнес-разговорах — не сущности:
 
 ```typescript
-// Бизнес-термины (потенциальные сущности)
-User, Customer, Order, Product, Invoice, Payment, Subscription
-
-// Технические термины (НЕ сущности)
+// НЕ сущности — это детали реализации
 Form, Modal, Layout, Component, State, Config
 ```
 
@@ -87,6 +99,21 @@ Subscription {
 Order -> belongs to -> User
 Order -> contains -> Products
 User -> has -> Subscription
+```
+
+В коде эти связи выражаются как ссылки между типами:
+
+```typescript
+interface Order {
+  id: string
+  userId: string          // belongs to User
+  productIds: string[]    // contains Products
+}
+
+interface User {
+  id: string
+  subscriptionId: string  // has Subscription
+}
 ```
 
 ### Бизнес-глоссарий (рекомендуется)
@@ -131,10 +158,8 @@ User -> has -> Subscription
 pages/
   user-profile/
     api/
-      index.ts
       profile.ts        # API-запросы + маппинг DTO
     ui/
-      index.ts
       ProfilePage.tsx
       ProfileForm.tsx
 ```
@@ -149,52 +174,50 @@ interface UserProfileDTO {
   full_name: string
   email: string
   joined_days_ago: number
+  internal_flags: string[]   // специфика бэкенда, в UI не нужна
 }
 
-export interface UserProfile {
+export interface ProfileModel {
   id: string
-  name: string
+  displayName: string        // производное: форматировано для отображения
   email: string
-  joinedDaysAgo: number
+  isNewUser: boolean         // производное: бизнес-правило применяется при маппинге
 }
 
-function mapProfile(dto: UserProfileDTO): UserProfile {
+function mapProfile(dto: UserProfileDTO): ProfileModel {
   return {
     id: String(dto.user_id),
-    name: dto.full_name,
+    displayName: dto.full_name || 'Аноним',
     email: dto.email,
-    joinedDaysAgo: dto.joined_days_ago,
+    isNewUser: dto.joined_days_ago < 7,
   }
 }
 
-export async function getUserProfile(id: string): Promise<UserProfile> {
+export async function getUserProfile(id: string): Promise<ProfileModel> {
   const response = await fetch(`/api/users/${id}/profile`)
   const dto: UserProfileDTO = await response.json()
   return mapProfile(dto)
 }
 ```
 
-Обратите внимание: `UserProfile` строится из одного эндпоинта. Если другие эндпоинты возвращают иную форму данных о пользователе, у каждого должен быть свой локальный тип — не стоит создавать общую абстракцию преждевременно.
+Отдельный доменный тип оправдан, когда доменная модель реально отличается от DTO — производные поля, переименованные свойства, отфильтрованные внутренние данные бэкенда. Если тип будет копировать DTO поле в поле — пропустите маппинг и используйте DTO напрямую. Лишние маппинги создают трение: изменение бэкенда потребует обновить DTO, доменный тип и маппер одновременно — без какой-либо пользы.
 
 ```tsx title="pages/user-profile/ui/ProfilePage.tsx"
 import { useState, useEffect } from 'react'
-import { getUserProfile, type UserProfile } from '../api'
+import { getUserProfile, type ProfileModel } from '../api'
 
 export function ProfilePage() {
-  const [profile, setProfile] = useState<UserProfile | null>(null)
+  const [profile, setProfile] = useState<ProfileModel | null>(null)
 
   useEffect(() => {
     getUserProfile('123').then(setProfile)
   }, [])
 
-  const displayName = profile?.name || 'Аноним'
-  const isNewUser = (profile?.joinedDaysAgo ?? Infinity) < 7
-
   return (
     <div>
-      <h1>{displayName}</h1>
-      {isNewUser && <span className="badge">Новичок</span>}
-      <p>{profile?.bio}</p>
+      <h1>{profile?.displayName}</h1>
+      {profile?.isNewUser && <span className="badge">Новичок</span>}
+      <p>{profile?.email}</p>
     </div>
   )
 }
@@ -207,7 +230,7 @@ export function ProfilePage() {
 - Неизвестно, какие поля понадобятся в других местах
 - YAGNI — не создаём структуру "на будущее"
 
-### Триггеры для перехода к Подходу А или Б
+### Триггеры для переноса кода в `shared/api` или `entities/`
 
 **1. Второе использование (главный триггер)**
 
@@ -238,6 +261,7 @@ pages/settings/api/profile.ts         // getUserProfile() — дубликат!
 - Небольшие проекты (менее ~10 экранов)
 - Проекты с часто меняющейся бизнес-логикой
 - Когда неясно, какие сущности уже устоялись
+- При использовании генераторов кода из OpenAPI-схемы ([orval](https://orval.dev/), [openapi-typescript](https://openapi-ts.dev/)) — сгенерированный код естественно живёт в `shared/api/` как единый источник транспортных типов
 
 ### Структура
 
@@ -254,6 +278,8 @@ shared/
 Ключевое отличие от Подхода Б: доменные типы (`User`, `Order`) живут в `shared/api/` рядом с API-функциями, а не в `entities/*/model/`.
 
 ### Триггеры для миграции в `entities/`
+
+`shared/api` хорошо работает, пока остаётся сфокусированным на транспортных задачах. Как только туда начинает просачиваться доменная логика — права доступа, агрегации, повторяющиеся вычисления — поддерживать его становится сложнее, и разделение ответственности нарушается. Вот сигналы для перехода к `entities/`:
 
 **Начинает накапливаться бизнес-логика**
 
@@ -301,41 +327,33 @@ const isAdmin = user.role === 'admin'
 
 ### Почему важен слой маппинга
 
-При изменении контракта backend, последствия локализованы:
+Маппер в `entities/*/api/` разделяет транспортную форму данных бэкенда (DTO) и доменную модель. Это значит, что доменный код — компоненты, бизнес-логика, тесты — работает со стабильным интерфейсом независимо от того, как бэкенд называет свои поля.
 
-```
-// Backend изменил: { user_id: number } -> { id: string }
+Однако маппер не защищает от любых изменений бэкенда. Если поле **переименовали** — правка действительно локализована в одном файле. Но если поле **добавили или удалили** — вам всё равно нужно обновить доменную модель и все места, где она используется. Маппер это не меняет.
 
-// Подход А: ~15 файлов требуют обновления
-// Подход Б: 1 файл (маппер в entities/user/api/)
-```
+Реальная ценность в другом: DTO показывает, что присылает бэкенд, а доменный тип — что нужно вашему приложению. Разделение делает каждую из этих задач явной и позволяет рассуждать о них независимо.
 
 ### Структура
 
 ```
 shared/
   api/
-    index.ts
     client.ts           # только HTTP-клиент
     contracts.ts        # только инфраструктурные типы
 
 entities/
   user/
     api/
-      index.ts
       user-api.ts       # API-функции + маппинг DTO
     model/
-      index.ts
       user.ts           # доменный тип User
       permissions.ts    # бизнес-правила
     index.ts
 
   order/
     api/
-      index.ts
       order-api.ts
     model/
-      index.ts
       order.ts
       validation.ts
     index.ts
@@ -356,7 +374,7 @@ export interface User {
 
 ```typescript title="entities/user/api/user-api.ts"
 import { apiClient } from 'shared/api/client'
-import type { User } from '../model/types'
+import type { User } from '../model/user'
 
 interface UserDTO {
   user_id: number
@@ -386,8 +404,8 @@ export async function getUsers(): Promise<User[]> {
 ```
 
 ```typescript title="entities/user/index.ts"
-export { getUserById, getUsers } from './api'
-export type { User } from './model'
+export { getUserById, getUsers } from './api/user-api'
+export type { User } from './model/user'
 ```
 
 ### Эволюция при росте проекта
@@ -525,9 +543,11 @@ interface FormState {
 
 ### 1. Агрегация данных
 
+Когда значимая модель должна быть собрана из нескольких источников данных, логика этой сборки принадлежит `model/`. Это не просто загрузка связанных данных — это создание единой модели, с которой остальная часть приложения работает как с одним понятием.
+
 ```typescript title="entities/user/model/user-with-team.ts"
-import { getUserById } from '../api'
-import { getTeamById } from 'entities/team/@x/user'
+import { getUserById } from '../api/user-api'
+import { getTeamById } from 'entities/team/api/team-api'
 
 export async function getUserWithTeam(userId: string) {
   const user = await getUserById(userId)
@@ -541,10 +561,12 @@ export async function getUserWithTeam(userId: string) {
 }
 ```
 
-### 2. Бизнес-правила и инварианты
+### 2. Бизнес-правила
+
+Когда у доменных объектов есть правила, определяющие допустимые операции — на основе текущего состояния, связей или временных ограничений — эти правила принадлежат `model/`. Централизация предотвращает дублирование одних и тех же проверок по всей кодовой базе.
 
 ```typescript title="entities/order/model/validation.ts"
-import type { Order } from './order.ts'
+import type { Order } from './types'
 
 // Бизнес-правило из глоссария:
 // Заказ можно отменить только в состоянии pending или confirmed
@@ -564,7 +586,7 @@ export function canBeRefunded(order: Order): boolean {
 ### 3. Множественные взаимосвязанные бизнес-правила
 
 ```typescript title="entities/user/model/permissions.ts"
-import type { User } from './user.ts'
+import type { User } from './types'
 
 export function getPermissions(user: User) {
   const isAdmin = user.role === 'admin'
@@ -594,7 +616,7 @@ export function getPermissions(user: User) {
 ### 4. Правила переходов между состояниями
 
 ```typescript title="entities/subscription/model/transitions.ts"
-import type { Subscription } from './subscription.ts'
+import type { Subscription } from './types'
 
 const ALLOWED_TRANSITIONS: Record<Subscription['status'], Subscription['status'][]> = {
   trial: ['active', 'cancelled'],
