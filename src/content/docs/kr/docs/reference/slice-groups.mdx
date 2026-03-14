@@ -1,0 +1,306 @@
+---
+title: Slice groups
+sidebar:
+  order: 3
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+Slice group은 관련된 slice를 보기 쉽게 묶어 두는 폴더입니다.
+FSD의 필수 요소는 아니며, slice 수가 많아져 탐색이 어려워질 때 선택적으로 도입할 수 있습니다.
+
+이 문서는 slice group이 무엇인지, 어떤 문제를 해결하는지, 언제 도입할지, 적용할 때 어떤 규칙을 지켜야 하는지를 설명합니다.
+
+> Slice group은 structural grouping, slice grouping 등으로도 불립니다. 이 문서에서는 **slice group**이라고 합니다.
+
+## Slice group이란
+
+Slice group은 같은 layer 안에서 관련 slice를 묶는 폴더입니다.  
+slice group 자체는 slice가 아니며, 자체 segment나 public API를 갖지 않습니다.
+
+즉, slice group은 FSD의 의존성 규칙을 바꾸지 않고, 폴더 구조를 더 찾기 쉽고 읽기 쉽게 만들기 위한 방법입니다.
+
+### 핵심 규칙
+
+> **규칙 1: 그룹 폴더는 구조를 위한 폴더일 뿐입니다**
+>
+> 그룹 폴더에는 자체 `model`, `ui`, `api` 같은 segment를 두지 않습니다. `index.ts` 같은 public API도 두지 않습니다.
+
+> **규칙 2: 그룹 안의 slice도 여전히 독립적입니다**
+>
+> 같은 그룹 아래에 있어도, slice 사이의 격리 규칙은 그룹 밖과 똑같이 적용됩니다.
+
+> **규칙 3: 그룹은 탐색을 위한 구조일 뿐, 별도의 기능 단위처럼 사용하지 않습니다**
+>
+> slice group을 새로운 layer, 하위 layer, 공유 모듈처럼 사용하지 않습니다.
+
+이 규칙을 지키지 않으면 group 폴더가 단순 정리된 폴더가 아니라 별도의 구조 단위처럼 사용될 수 있습니다.   
+그러면 어떤 폴더가 실제 slice인지 구분하기 어려워지고, 의존 관계도 더 복잡해질 수 있습니다.
+
+## 왜 필요한가
+
+slice가 적을 때는 평평한 구조에서도 충분히 탐색할 수 있습니다.  
+하지만 같은 성격의 slice가 많아지면, 관련 코드를 찾기 위해 layer 전체를 여러 번 살펴봐야 합니다.
+
+예를 들어 `entities` layer에 결제와 관련된 slice가 많아졌다고 가정해 보겠습니다.
+
+**그룹핑 전:**
+
+<FileTree>
+- entities/
+  - invoice/
+    - model/
+    - ui/
+  - receipt/
+    - model/
+    - ui/
+  - transaction/
+    - model/
+    - ui/
+  - user/
+    - model/
+    - ui/
+  - product/
+    - model/
+    - ui/
+  - ...
+</FileTree>
+
+결제 관련 slice(`invoice`, `receipt`, `transaction`)를 찾으려면 layer 전체를 훑어보면서 관련 항목을 찾아야 합니다.
+
+**그룹핑 후:**
+
+<FileTree>
+- entities/
+  - payment/ slice group
+    - invoice/ slice
+      - model/
+      - ui/
+    - receipt/ slice
+      - model/
+      - ui/
+    - transaction/ slice
+      - model/
+      - ui/
+  - user/ slice (그룹 아님)
+    - model/
+    - ui/
+  - product/ slice (그룹 아님)
+    - model/
+    - ui/
+  - ...
+</FileTree>
+
+이제 결제 도메인 관련 slice는 `payment/` 아래에서 바로 찾을 수 있습니다.
+
+slice group은 이런 식으로 관련 slice를 가까이 배치해서 **관련 slice를 더 빨리 찾을 수 있게 돕는 역할**을 합니다.  
+특히 새로 합류한 팀원이나, 해당 영역을 처음 보는 개발자가 구조를 파악할 때 도움이 됩니다.
+
+### pages에서도 같은 문제가 생길 수 있습니다
+ 
+비슷한 문제는 pages layer에서도 나타날 수 있습니다.  
+특정 도메인의 목록, 상세, 생성, 수정 page가 layer 전체에 흩어져 있으면 탐색성이 떨어집니다.
+ 
+<FileTree>
+- pages/
+  - orderCreate/
+    - ui/
+  - orderDetail/
+    - ui/
+  - orderList/
+    - ui/
+  - customerDetail/
+    - ui/
+  - customerList/
+    - ui/
+  - settings/
+    - ui/
+  - ...
+</FileTree>
+ 
+`order` 관련 page와 `customer` 관련 page가 flat하게 나열돼 있어, 특정 도메인의 page를 찾으려면 layer 전체를 훑어봐야 합니다.
+slice group을 도입하면 같은 도메인의 page를 한곳에서 확인할 수 있습니다.
+ 
+<FileTree>
+- pages/
+  - order/ slice group
+    - orderCreate/ slice
+      - ui/
+    - orderDetail/ slice
+      - ui/
+    - orderList/ slice
+      - ui/
+  - customer/ slice group
+    - customerDetail/ slice
+      - ui/
+    - customerList/ slice
+      - ui/
+  - settings/ slice (그룹 아님)
+    - ui/
+  - ...
+</FileTree>
+ 
+이처럼 slice group은 entities뿐 아니라, 관련된 page가 많아져 탐색이 어려워지는 pages layer에도 적용할 수 있습니다.
+ 
+## 언제 도입을 고려하는가
+
+slice group은 기본 구조가 아니며, 탐색 문제를 해결해야 할 때 선택적으로 도입하는 구조입니다.
+
+### 도입을 고려할 신호
+
+- **동일한 비즈니스 맥락의 slice가 layer 안에 여러 개 흩어져 있다.**  
+  예를 들어 `invoice`, `receipt`, `transaction`이 모두 payment 맥락을 다루지만 flat하게 나열되어 있는 경우입니다.
+
+- **slice 이름만 보아도 공통된 상위 맥락이 자연스럽게 드러난다.**  
+  예를 들어 `orderCreate`, `orderDetail`, `orderList`는 모두 `order`라는 공통 맥락 아래에서 이해됩니다.  
+  마찬가지로 `invoice`, `receipt`, `transaction`도 `payment` 맥락으로 함께 인식될 수 있습니다.
+
+- **관련 slice를 찾기 위해 layer 전체를 반복해서 살펴보게 된다.**
+
+- **새 팀원이 구조를 이해하기 위해 layer 전체를 반복해서 살펴보게 된다.**
+
+### 아직 필요 없을 신호
+
+- slice 수가 많아도 이름만으로 충분히 빠르게 탐색된다.
+
+- 그룹 기준이 자연스럽지 않고, 팀마다 묶는 방식이 계속 달라진다.
+
+- 그룹을 만들어도 그 안에 slice가 1~2개뿐이라 정리 효과가 거의 없다.
+
+- 그룹을 만들면 오히려 "이게 slice인가, 그룹인가"를 추가로 설명해야 한다.
+
+핵심은 폴더 구조 깊이를 늘리는 데 있지 않고, 실제로 구조를 더 쉽게 찾고 이해할 수 있게 하느냐에 있습니다.
+
+## 어떻게 적용하는가
+
+### entities — 도메인 기반 그룹핑
+
+도메인 모델 관점에서 가까운 slice를 묶습니다.
+
+<FileTree>
+- entities/
+  - payment/ slice group
+    - invoice/ slice
+      - model/
+      - ui/
+    - receipt/ slice
+      - model/
+      - ui/
+    - transaction/ slice
+      - model/
+      - ui/
+  - user/ slice (그룹 아님)
+    - model/
+    - ui/
+  - ...
+</FileTree>
+
+`payment/`은 slice가 아니므로, 자체 `model.ts`, `index.ts`, `api/`를 두지 않습니다.
+
+모든 slice를 그룹에 넣을 필요도 없습니다.  
+`user/`처럼 그 자체로 의미가 분명한 slice는 그룹 없이 그대로 둘 수 있습니다.
+
+### pages — 도메인별 페이지 그룹핑
+
+같은 도메인의 여러 page를 함께 다뤄야 할 때 사용할 수 있습니다.
+
+<FileTree>
+- pages/
+  - order/ slice group
+    - orderCreate/ slice
+      - ui/
+    - orderDetail/ slice
+      - ui/
+    - orderList/ slice
+      - ui/
+  - customer/ slice group
+    - customerDetail/ slice
+      - ui/
+    - customerList/ slice
+      - ui/
+  - settings/ slice (그룹 아님)
+    - ui/
+  - ...
+</FileTree>
+
+이 구조는 목록, 상세, 생성, 수정처럼 같은 주제의 page가 많을 때 도움이 됩니다.
+상위 폴더 하나만 열어도 관련 page를 함께 확인할 수 있기 때문입니다.
+
+### features에서도 사용할 수 있나요?
+
+가능합니다.  
+다만 feature는 여러 entity와 여러 사용 흐름에 걸쳐 있는 경우가 많아, entities나 pages보다 그룹 기준이 덜 분명할 수 있습니다.
+
+따라서 features에서의 slice group은 예외적으로 사용할 수 있는 선택지 정도로 보는 편이 좋습니다.
+자연스러운 그룹 기준이 없다면 억지로 도입하지 않는 편이 낫습니다.
+
+## 피해야 할 패턴
+
+slice group은 구조화용 폴더여야 합니다.  
+그룹 폴더에 공용 코드나 여러 `slice`를 다시 묶어 내보내는 파일을 두기 시작하면, 그룹이 사실상 하나의 모듈처럼 동작하게 됩니다.
+
+**피해야 할 패턴:**
+
+<FileTree>
+- entities/
+  - payment/
+    - model.ts 그룹 레벨 공유 모델
+    - index.ts 그룹 레벨 re-export
+    - invoice/
+      - model/
+      - ui/
+    - receipt/
+      - model/
+      - ui/
+</FileTree>
+
+이 구조에서는 `payment/model.ts`나 `payment/index.ts`를 통해  
+하위 slice들이 독립적으로 보이더라도 실제로는 그룹 단위로 함께 엮이기 쉽습니다.
+
+그 결과 slice 경계가 흐려지고, 의존성 방향을 파악하기 어려워지며, 실제 독립 단위가 무엇인지도 헷갈리게 됩니다.
+
+**올바른 패턴:**
+
+<FileTree>
+- entities/
+  - payment/
+    - invoice/
+      - model/
+      - ui/
+    - receipt/
+      - model/
+      - ui/
+</FileTree>
+
+공통 로직이 실제로 필요하다면, 그것을 그룹 폴더에 억지로 두기보다 더 적절한 layer나 별도의 `slice`로 분리할 수 있는지 먼저 검토해야 합니다.
+
+## FAQ
+
+### 모든 slice를 그룹에 넣어야 하나요?
+
+아닙니다.  
+자연스럽게 함께 묶이는 slice만 그룹으로 묶고, 나머지는 그대로 둡니다.
+
+예를 들어 `payment/invoice`, `payment/receipt`처럼 함께 보는 편이 자연스러운 경우만 그룹핑하고,  
+`user`, `settings`처럼 독립적으로 이해되는 slice는 그룹 없이 둘 수 있습니다.
+
+### import 경로에 그룹명이 포함되어도 괜찮나요?
+
+괜찮습니다.  
+예를 들어 `@/entities/payment/invoice`처럼 그룹명이 경로에 포함되면, 어떤 주제 아래의 slice인지 경로만으로도 드러납니다.
+
+다만 경로를 어떻게 노출할지는 팀의 import convention 문제입니다.  
+
+### slice group이 있으면 slice 간 import가 더 자유로워지나요?
+
+아닙니다.  
+같은 그룹 안에 있다는 이유만으로 slice 간 import 규칙이 완화되지는 않습니다.
+
+group은 탐색을 위한 구조일 뿐이며, slice 경계와 의존성 규칙은 기존과 동일하게 유지됩니다.
+
+## 참고 자료 
+
+- [카카오페이 - pages layer에서 slice grouping을 적용한 사례](https://tech.kakaopay.com/post/fsd/#2-slice-grouping-%ED%97%88%EC%9A%A9-%EB%B0%8F-pages-%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B5%AC%EC%84%B1)
+- [러시아 텔레그램 FSD 커뮤니티 - 구조적 그룹핑, slice group, 계층 확장에 대한 논의](https://t.me/c/1216849846/1/2785)
+- [러시아 텔레그램 FSD 커뮤니티 - 중첩 구조와 flat 구조, slice group의 형태와 허용 범위](https://t.me/c/1216849846/1/5051)
+- [러시아 텔레그램 FSD 커뮤니티 - 왜 features에서는 그룹핑 예시가 적은가, features에서도 slice group이 가능한가](https://t.me/c/1216849846/1/80620)
