@@ -1,0 +1,307 @@
+---
+title: Slice groups
+sidebar:
+  order: 3
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+A slice group is a folder that visually groups related slices together.
+It is not a required part of FSD and can be optionally introduced when the number of slices grows large enough to make navigation difficult.
+
+This document explains what a slice group is, what problem it solves, when to introduce it, and what rules to follow when applying it.
+
+> Slice groups are also referred to as structural grouping or slice grouping. In this document, we call them **slice groups**.
+
+## What is a slice group
+
+A slice group is a folder that groups related slices within the same layer.  
+A slice group itself is not a slice — it does not have its own segments or public API.
+
+In other words, a slice group is a way to make the folder structure easier to find and read without changing FSD's dependency rules.
+
+### Core rules
+
+> **Rule 1: A group folder is just a structural folder**
+>
+> A group folder does not have its own segments like `model`, `ui`, or `api`. It also does not have a public API like `index.ts`.
+
+> **Rule 2: Slices inside a group are still independent**
+>
+> Even when slices are under the same group, the isolation rules between slices apply exactly the same as outside the group.
+
+> **Rule 3: A group is only for navigation, not as a separate functional unit**
+>
+> Do not use a slice group as a new layer, sub-layer, or shared module.
+
+If these rules are not followed, the group folder may end up being used as a separate structural unit rather than a simple organizational folder.  
+This makes it harder to distinguish which folders are actual slices and can make dependency relationships more complex.
+
+## Why it is needed
+
+When there are few slices, a flat structure is sufficient for navigation.  
+However, as slices of the same nature grow in number, you have to scan through the entire layer multiple times to find related code.
+
+For example, suppose the `entities` layer has accumulated many payment-related slices.
+
+**Before grouping:**
+
+<FileTree>
+- entities/
+  - invoice/
+    - model/
+    - ui/
+  - receipt/
+    - model/
+    - ui/
+  - transaction/
+    - model/
+    - ui/
+  - user/
+    - model/
+    - ui/
+  - product/
+    - model/
+    - ui/
+  - ...
+</FileTree>
+
+To find the payment-related slices (`invoice`, `receipt`, `transaction`), you have to scan through the entire layer to locate them.
+
+**After grouping:**
+
+<FileTree>
+- entities/
+  - payment/ slice group
+    - invoice/ slice
+      - model/
+      - ui/
+    - receipt/ slice
+      - model/
+      - ui/
+    - transaction/ slice
+      - model/
+      - ui/
+  - user/ slice (not a group)
+    - model/
+    - ui/
+  - product/ slice (not a group)
+    - model/
+    - ui/
+  - ...
+</FileTree>
+
+Now, payment-domain-related slices can be found directly under `payment/`.
+
+Slice groups work this way — by placing related slices close together, they **help you find related slices faster**.  
+This is especially helpful for new team members or developers seeing the area for the first time to understand the structure.
+
+### The same problem can occur in pages
+
+A similar problem can appear in the pages layer.  
+When list, detail, create, and edit pages for a specific domain are scattered across the entire layer, discoverability suffers.
+
+<FileTree>
+- pages/
+  - orderCreate/
+    - ui/
+  - orderDetail/
+    - ui/
+  - orderList/
+    - ui/
+  - customerDetail/
+    - ui/
+  - customerList/
+    - ui/
+  - settings/
+    - ui/
+  - ...
+</FileTree>
+
+With `order`-related and `customer`-related pages listed flat, you have to scan the entire layer to find pages for a specific domain.
+
+Introducing slice groups allows you to see all pages of the same domain in one place.
+
+<FileTree>
+- pages/
+  - order/ slice group
+    - orderCreate/ slice
+      - ui/
+    - orderDetail/ slice
+      - ui/
+    - orderList/ slice
+      - ui/
+  - customer/ slice group
+    - customerDetail/ slice
+      - ui/
+    - customerList/ slice
+      - ui/
+  - settings/ slice (not a group)
+    - ui/
+  - ...
+</FileTree>
+
+In this way, slice groups can be applied not only to entities but also to the pages layer when related pages grow numerous enough to make navigation difficult.
+
+## When to consider introducing them
+
+Slice groups are not a default structure — they are introduced optionally when you need to solve a navigation problem.
+
+### Signals to consider introduction
+
+- **Multiple slices sharing the same business context are scattered within a layer.**  
+  For example, `invoice`, `receipt`, and `transaction` all deal with the payment context but are listed flat.
+
+- **A common parent context is naturally apparent just from the slice names.**  
+  For example, `orderCreate`, `orderDetail`, and `orderList` are all understood under the common context of `order`.  
+  Similarly, `invoice`, `receipt`, and `transaction` can be recognized together under the `payment` context.
+
+- **You find yourself repeatedly scanning the entire layer to find related slices.**
+
+- **New team members find themselves repeatedly scanning the entire layer to understand the structure.**
+
+### Signals it is not needed yet
+
+- Even with many slices, names alone are sufficient for quick navigation.
+
+- The grouping criteria feel unnatural, and different team members keep grouping things differently.
+
+- Even after creating a group, it only contains 1–2 slices, so the organizational benefit is minimal.
+
+- Creating a group actually requires additional explanation like "is this a slice or a group?"
+
+The key point is not about increasing folder depth, but about whether the structure actually becomes easier to find and understand.
+
+## How to apply
+
+### entities — domain-based grouping
+
+Group slices that are close from a domain model perspective.
+
+<FileTree>
+- entities/
+  - payment/ slice group
+    - invoice/ slice
+      - model/
+      - ui/
+    - receipt/ slice
+      - model/
+      - ui/
+    - transaction/ slice
+      - model/
+      - ui/
+  - user/ slice (not a group)
+    - model/
+    - ui/
+  - ...
+</FileTree>
+
+Since `payment/` is not a slice, it does not have its own `model.ts`, `index.ts`, or `api/`.
+
+Not all slices need to be placed in a group.  
+Slices like `user/`, whose meaning is clear on its own, can remain without a group.
+
+### pages — domain-based page grouping
+
+This can be used when multiple pages of the same domain need to be handled together.
+
+<FileTree>
+- pages/
+  - order/ slice group
+    - orderCreate/ slice
+      - ui/
+    - orderDetail/ slice
+      - ui/
+    - orderList/ slice
+      - ui/
+  - customer/ slice group
+    - customerDetail/ slice
+      - ui/
+    - customerList/ slice
+      - ui/
+  - settings/ slice (not a group)
+    - ui/
+  - ...
+</FileTree>
+
+This structure is helpful when there are many pages on the same topic, such as list, detail, create, and edit.
+Opening just one parent folder lets you see all related pages together.
+
+### Can it be used in features too?
+
+Yes, it can.  
+However, since features often span multiple entities and multiple user flows, the grouping criteria may be less clear than in entities or pages.
+
+Therefore, it is better to view slice groups in features as an option to be used exceptionally.
+If there is no natural grouping criterion, it is better not to force their introduction.
+
+## Patterns to avoid
+
+A slice group should be a structural folder only.  
+If you start placing shared code or files that re-export multiple slices in the group folder, the group effectively starts behaving as a module.
+
+**Pattern to avoid:**
+
+<FileTree>
+- entities/
+  - payment/
+    - model.ts group-level shared model
+    - index.ts group-level re-export
+    - invoice/
+      - model/
+      - ui/
+    - receipt/
+      - model/
+      - ui/
+</FileTree>
+
+In this structure, through `payment/model.ts` or `payment/index.ts`,  
+even though the child slices appear independent, they easily become coupled at the group level in practice.
+
+As a result, slice boundaries become blurred, dependency directions become harder to trace, and it becomes confusing what the actual independent units are.
+
+**Correct pattern:**
+
+<FileTree>
+- entities/
+  - payment/
+    - invoice/
+      - model/
+      - ui/
+    - receipt/
+      - model/
+      - ui/
+</FileTree>
+
+If shared logic is genuinely needed, you should first consider whether it can be separated into a more appropriate layer or a separate slice, rather than forcing it into the group folder.
+
+## FAQ
+
+### Do all slices need to be placed in a group?
+
+No.  
+Only group slices that naturally belong together, and leave the rest as they are.
+
+For example, group only cases where viewing them together is natural, like `payment/invoice` and `payment/receipt`,  
+while slices that are independently understood like `user` and `settings` can remain without a group.
+
+### Is it okay if the group name is included in the import path?
+
+Yes, it is fine.  
+For example, if the group name is included in the path like `@/entities/payment/invoice`, the path itself reveals which topic the slice belongs to.
+
+However, how to expose the path is a matter of the team's import convention.  
+
+### Does having a slice group make imports between slices more flexible?
+
+No.  
+Import rules between slices are not relaxed just because they are in the same group.
+
+A group is only a structure for navigation, and slice boundaries and dependency rules remain the same as before.
+
+## References
+
+- [KakaoPay — A case of applying slice grouping in the pages layer](https://tech.kakaopay.com/post/fsd/#2-slice-grouping-%ED%97%88%EC%9A%A9-%EB%B0%8F-pages-%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B5%AC%EC%84%B1)
+- [Russian Telegram FSD community — Discussion on structural grouping, slice groups, and layer extension](https://t.me/c/1216849846/1/2785)
+- [Russian Telegram FSD community — Nested vs. flat structures, forms and allowed scope of slice groups](https://t.me/c/1216849846/1/5051)
+- [Russian Telegram FSD community — Why there are fewer grouping examples in features, and whether slice groups are possible in features](https://t.me/c/1216849846/1/80620)
