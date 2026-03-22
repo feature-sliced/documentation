@@ -134,7 +134,7 @@ Create a document (not code!) describing your application's business domain:
 - **Relationships:** belongs to Category, included in Orders
 ```
 
-The glossary is maintained by the business side. Developers update the entities layer to reflect what the glossary describes — not the other way around.
+The glossary is a shared artifact — ideally maintained collaboratively by developers, product managers, and domain experts. The key principle is that code should reflect the domain language, not define it.
 
 **Purpose of the glossary:**
 - Document domain understanding
