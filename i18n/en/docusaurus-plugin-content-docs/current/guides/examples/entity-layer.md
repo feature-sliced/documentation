@@ -514,14 +514,18 @@ export const formatDate = (date: Date) =>
 
 ### Pure Data Loading Without Logic
 
+If fetching data is all that happens — no filtering, no aggregation, no business rules applied to the result — there's no reason to introduce `model/`. The key criterion is the absence of business logic, not the tool used to fetch.
+
 ```typescript
-// A query library already handles state and caching.
-// An API function is sufficient — no entity model needed.
+// No business logic here — just loading and displaying.
+// An API function is sufficient, model/ is not needed.
 const { data: users } = useQuery({
   queryKey: ['users'],
   queryFn: getUsers,
 })
 ```
+
+Once you find yourself deriving, filtering, or combining that data based on domain rules, that's when model/ earns its place.
 
 ### A Single Computed Value
 
