@@ -23,11 +23,11 @@ When code starts being reused, there are **three valid approaches** to organizin
 - Code stays in `pages/`
 - Used in only one place
 
-**Approach A: Centralized API** (`shared/api`)
+**Approach 1: Centralized API** (`shared/api`)
 - API and types in one place
 - Migration to `entities/` when complexity grows
 
-**Approach B: Domain API** (`entities/*/api/`)
+**Approach 2: Domain API** (`entities/*/api/`)
 - Driven by business domain understanding — if an object has a unique business identifier and meaningful behavior, it warrants its own slice
 - API placement inside the entity slice follows from that decision, not the other way around
 - Full encapsulation from day one
@@ -251,7 +251,7 @@ If the business starts treating an object as a core concept across multiple feat
 
 ---
 
-## Approach A: Centralized API (`shared/api`)
+## Approach 1: Centralized API (`shared/api`)
 
 In this approach, API functions and domain types live in `shared/api/`, grouped by entity. This is a good fit when entities are in active flux or the project is small.
 
@@ -277,7 +277,7 @@ shared/
     index.ts        # re-exports
 ```
 
-The key difference from Approach B: domain types (`User`, `Order`) live in `shared/api/` alongside the API functions, rather than in `entities/*/model/`.
+The key difference from Approach 2: domain types (`User`, `Order`) live in `shared/api/` alongside the API functions, rather than in `entities/*/model/`.
 
 ### Triggers for Migrating to `entities/`
 
@@ -316,7 +316,7 @@ const isAdmin = user.role === 'admin'
 
 ---
 
-## Approach B: Domain API (`entities/*/api/`)
+## Approach 2: Domain API (`entities/*/api/`)
 
 In this approach, each entity lives fully inside its own slice — including the API, DTO mapping, domain types, and business logic.
 
@@ -687,8 +687,8 @@ Keep it local. If used in 2+ places, proceed to step 3.
 
 **3. Which API approach fits your project?**
 
-- Need backend isolation? -> Approach B
-- Fast iteration more important? -> Approach A
+- Need backend isolation? -> Approach 2
+- Fast iteration more important? -> Approach 1
 
 **4. Do you need `model/`?**
 
