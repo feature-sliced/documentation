@@ -6102,6 +6102,96 @@ import type { EntityA } from "entities/A/@x/B";
 
 For more details, check out the [Public API for cross-imports](/docs/reference/public-api#public-api-for-cross-imports) section in the reference.
 
+# Usage with Astro
+
+## File-based routing
+
+[Section titled “File-based routing”](#file-based-routing)
+
+Astro expects routes in `📁 src/pages`, but FSD uses it as a layer for page slices. We can’t use the same folder for both. To fix this, use `📁 src/_pages` as an FSD `🥞 pages` layer, and use `📁 src/pages` only for routing.
+
+* src
+
+  * pages Astro routing (thin entry points)
+
+    * 404.astro built-in 404 error page
+    * index.astro
+
+  * \_pages FSD pages layer
+
+    * home
+
+      * ui
+
+        * HomePage.astro
+
+      * index.ts
+
+The route file only imports and renders the page from the FSD layer.
+
+src/pages/index.astro
+
+```astro
+---
+import { HomePage } from '@/_pages/home';
+---
+
+
+<HomePage />
+```
+
+## Setting up path aliases
+
+[Section titled “Setting up path aliases”](#setting-up-path-aliases)
+
+Add a path alias in `tsconfig.json` to import from `src` using `@/`:
+
+tsconfig.json
+
+```json
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+## Working with integrations
+
+[Section titled “Working with integrations”](#working-with-integrations)
+
+Some Astro integrations like [Starlight](https://starlight.astro.build/) use content collections for their content. These integrations often expect content in specific folders like `📁 src/content/docs`.
+
+If the integration doesn’t let you change the root path, that’s fine — keep it as is. Usually content collection folders don’t conflict with FSD layers so FSD layers (`🥞 _pages`, `🥞 shared`, etc.) can live alongside these folders:
+
+* src
+
+  * \_pages FSD pages layer
+
+    * …
+
+  * content Integration content (Starlight docs, etc.)
+
+    * docs
+
+      * getting-started.md
+
+  * shared FSD shared layer
+
+    * …
+
+Let the integration handle its own routing and rendering, while your FSD structure manages the application-specific code.
+
+## See also
+
+[Section titled “See also”](#see-also)
+
+* [Astro Routing](https://docs.astro.build/en/guides/routing/)
+* [Astro Project Structure](https://docs.astro.build/en/basics/project-structure/)
+
 # Usage with Electron
 
 Electron applications have a special architecture consisting of multiple processes with different responsibilities. Applying FSD in such a context requires adapting the structure to the Electron specifics.
