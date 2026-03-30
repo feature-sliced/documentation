@@ -622,8 +622,6 @@ export function getPermissions(user: User) {
 }
 ```
 
-Notice this is pure TypeScript — no framework reactivity. This makes the logic portable and easy to test across any framework.
-
 ### 4. State Transition Rules
 
 ```typescript title="entities/subscription/model/transitions.ts"
