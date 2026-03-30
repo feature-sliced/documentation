@@ -615,8 +615,6 @@ export function getPermissions(user: User) {
 }
 ```
 
-Обратите внимание: это чистый TypeScript без фреймворковой реактивности. Такой код легко тестировать и переиспользовать в любом фреймворке.
-
 ### 4. Правила переходов между состояниями
 
 ```typescript title="entities/subscription/model/transitions.ts"
