@@ -6,17 +6,17 @@ sidebar:
 
 import { FileTree, Aside } from '@astrojs/starlight/components';
 
-Assets are static resources that your application use. In FSD, the placement of assets follows the same principles as code — assets should be grouped based not on the type, but on the use case and should be near the component that uses it.
+Assets are static resources that your application uses. In FSD, assets follow the same placement principles as code. Group them by use case, not by type, and keep them close to the components that use them.
 
 <Aside type="caution">
 
-It's a common practice to implement a [custom `assets` segment](/docs/reference/slices-segments/#segments), but just like the code, this creates an issue of [desegmentation](/docs/guides/issues/desegmented/) and should be generally avoided.
+It's a common practice to implement a [custom `assets` segment](/docs/reference/slices-segments/#segments), but just like with code, this creates an issue of [desegmentation](/docs/guides/issues/desegmented/) and should be generally avoided.
 
 </Aside>
 
 ## Global Assets \{#global-assets}
 
-Global assets include things like global stylesheets (like css reset), fonts and so on. `app` is the appropriate layer for those kind of files, as they are not used by any other component except for the application entrypoint.
+Global assets include things like global stylesheets (such as a CSS reset) and fonts. The `🥞 app` layer is the right place for these files since they're only used by the application entrypoint.
 
 <FileTree>
 - app/
@@ -39,7 +39,7 @@ When an asset is only used by one page, widget, or feature, keep it inside that 
     - index.ts
 </FileTree>
 
-If your UI has a lot of static assets like images, you can create a subfolder in the `ui` segment:
+If your UI has many static assets like images, you can create a subfolder in the `ui` segment:
 
 <FileTree>
 - pages/
@@ -56,7 +56,7 @@ If your UI has a lot of static assets like images, you can create a subfolder in
 
 ## Non-UI Assets \{#non-ui-assets}
 
-There are cases when asset is not part of UI, but a crucial part of business logic. Consider this example:
+Sometimes an asset is not part of the UI but is a crucial part of business logic. Consider this example:
 
 <FileTree>
 - features/
@@ -67,22 +67,22 @@ There are cases when asset is not part of UI, but a crucial part of business log
     - index.ts
 </FileTree>
 
-In this example, while `invoicing-template.pdf` is a static asset, it is tightly coupled with the core business logic in `create-invoice.ts`. In cases like that, it is preferrable to place `invoice-template.pdf` in the `model` segment to maintain high cohesion.
+Here, `invoice-template.pdf` is tightly coupled with the business logic in `create-invoice.ts`. In cases like this, it's preferable to place the file in the `model` segment to maintain high cohesion and localize changes.
 
 ## Public Folder \{#public}
 
-Most bundlers and frameworks provide a `public` folder at the root of your project. Files here are served as-is without processing.
+Most bundlers and frameworks provide a `📁 public` folder at the root of your project. Files here are served as-is without processing.
 
-Some build tools like [Vite](https://vite.dev/config/shared-options#publicdir) allows public folder to be changed, while others like [Astro](https://docs.astro.build/en/basics/project-structure/#public) don't have this option. If your build tool doesn't support this change, it is ok to leave it as it is, as the `public` folder is not part of the FSD structure and won't have name collisions with it.
+Some build tools like [Vite](https://vite.dev/config/shared-options#publicdir) allow the public folder location to be changed, while others like [Astro](https://docs.astro.build/en/basics/project-structure/#public) don't have this option. If your build tool doesn't support this change, that's fine. The `📁 public` folder is not part of the FSD structure and won't cause naming collisions.
 
 ## Summary \{#summary}
 
 | Asset Type | Location |
 |------------|----------|
-| Reusable icons and images | `shared/ui/` |
-| Global styles | `app/styles/` |
-| Fonts | `app/fonts/` or `public/` |
-| Slice-specific assets | Inside the slice (e.g., `pages/home/ui/`) |
-| Static files, favicon | `public/` or `app/public` |
+| Reusable icons and images | `📁 shared/ui/` |
+| Global styles | `📁 app/styles/` |
+| Fonts | `📁 app/fonts/` or `📁 public/` |
+| Slice-specific assets | Inside the slice (e.g., `📁 pages/home/ui/`) |
+| Static files, favicon | `📁 public/` or `📁 app/public` |
 
-Follow the FSD principle: place assets where they are used, and move them to `shared` when there's an actual need for reuse across slices.
+Follow the FSD principle: place assets where they are used, and move them to `🥞 shared` when there's an actual need for reuse across slices.
