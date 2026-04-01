@@ -31,6 +31,7 @@ export default defineConfig({
     },
     integrations: [
         starlight({
+            favicon: "/img/favicon/adaptive.svg",
             title: "Feature-Sliced Design",
             description: "Architectural methodology for frontend projects",
             defaultLocale: "root",
