@@ -16,7 +16,7 @@ It's a common practice to implement a [custom `assets` segment](/docs/reference/
 
 ## Global Assets \{#global-assets}
 
-Global assets include things like global stylesheets (such as a CSS reset) and fonts. The `🥞 app` layer is the right place for these files since they're only used by the application entrypoint.
+Global assets include things like global stylesheets (such as a CSS reset) and fonts. The `app` layer is the right place for these files since they're only used by the application entrypoint.
 
 <FileTree>
 - app/
@@ -71,18 +71,18 @@ Here, `invoice-template.pdf` is tightly coupled with the business logic in `crea
 
 ## Public Folder \{#public}
 
-Most bundlers and frameworks provide a `📁 public` folder at the root of your project. Files here are served as-is without processing.
+Most bundlers and frameworks provide a `public` folder at the root of your project. Files here are served as-is without processing.
 
-Some build tools like [Vite](https://vite.dev/config/shared-options#publicdir) allow the public folder location to be changed, while others like [Astro](https://docs.astro.build/en/basics/project-structure/#public) don't have this option. If your build tool doesn't support this change, that's fine. The `📁 public` folder is not part of the FSD structure and won't cause naming collisions.
+Some build tools like [Vite](https://vite.dev/config/shared-options#publicdir) allow the public folder location to be changed, while others like [Astro](https://docs.astro.build/en/basics/project-structure/#public) don't have this option. If your build tool doesn't support this change, that's fine. The `public` folder is not part of the FSD structure and won't cause naming collisions.
 
 ## Summary \{#summary}
 
 | Asset Type | Location |
 |------------|----------|
-| Reusable icons and images | `📁 shared/ui/` |
-| Global styles | `📁 app/styles/` |
-| Fonts | `📁 app/fonts/` or `📁 public/` |
-| Slice-specific assets | Inside the slice (e.g., `📁 pages/home/ui/`) |
-| Static files, favicon | `📁 public/` or `📁 app/public` |
+| Reusable icons and images | `shared/ui/` |
+| Global styles | `app/styles/` |
+| Fonts | `app/fonts/` or `public/` |
+| Slice-specific assets | Inside the slice (e.g., `pages/home/ui/`) |
+| Static files, favicon | `public/` or `app/public` |
 
-Follow the FSD principle: place assets where they are used, and move them to `🥞 shared` when there's an actual need for reuse across slices.
+Follow the FSD principle: place assets where they are used, and move them to `shared` when there's an actual need for reuse across slices.
