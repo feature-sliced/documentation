@@ -12,7 +12,7 @@ Assets are static resources that your application uses. In FSD, assets follow th
 
 It's a common practice to implement a custom `assets` segment for all static files, but this pattern is generally discouraged, as it violates FSD principles of high cohesion and locality of changes.
 
-If you are interested in more detailed explanation, you can check articles on [Desegmentation](/docs/guides/issues/desegmented/) and [Slices and segments](/docs/reference/slices-segments/).
+If you are interested in a more detailed explanation, you can check articles on [Desegmentation](/docs/guides/issues/desegmented/) and [Slices and segments](/docs/reference/slices-segments/).
 
 </Aside>
 
@@ -60,7 +60,7 @@ Here, `invoice-template.pdf` is tightly coupled with the business logic in `crea
 
 ## Shared Assets \{#shared-assets}
 
-If a static asset is used multiple times, you can move it to `shared/ui`, so it is accessible to every other part of application.
+If a static asset is used multiple times, you can move it to `shared/ui`, so it is accessible to every other part of the application.
 
 <FileTree>
 - shared/
@@ -69,6 +69,15 @@ If a static asset is used multiple times, you can move it to `shared/ui`, so it 
       - cake.jpg
       - pizza.jpg
       - ...
+</FileTree>
+
+The same approach can be applied for static assets that are used by shared components:
+
+<FileTree>
+- shared/
+  - ui/
+    - Dropdown.tsx
+    - chevron.svg
 </FileTree>
 
 ## Global Assets \{#global-assets}
