@@ -4201,6 +4201,132 @@ The update to the token store will have to be triggered from the place of the lo
 
 Don’t forget to build failsafes for when a request to log out fails, or a request to refresh a login token fails. In both of these cases, you should clear the token store. If you keep your token in Entities, this code can be placed in the `model` segment as it is pure business logic. If you keep your token in Shared, placing this logic in `shared/api` might bloat the segment and dilute its purpose. If you’re noticing that your API segment contains two several unrelated things, consider splitting out the token management logic into another segment, for example, `shared/auth`.
 
+# Handling Assets
+
+Assets are static resources that your application uses. In FSD, assets follow the same placement principles as code. Group them by use case, not by type, and keep them close to the components that use them.
+
+Caution
+
+It’s a common practice to implement a custom `assets` segment for all static files, but this pattern is generally discouraged, as it violates FSD principles of high cohesion and locality of changes.
+
+If you are interested in a more detailed explanation, you can check articles on [Desegmentation](/docs/guides/issues/desegmented/) and [Slices and segments](/docs/reference/slices-segments/).
+
+## Slice-specific Assets
+
+[Section titled “Slice-specific Assets”](#slice-specific-assets)
+
+When an asset is only used by one page, widget, or feature, keep it inside that slice. This maintains encapsulation and makes it clear where the asset belongs:
+
+* pages/
+
+  * home/
+
+    * ui/
+
+      * hero-image.jpg
+      * HomePage.tsx
+
+    * index.ts
+
+If your UI has many static assets like images, you can create a subfolder in the `ui` segment:
+
+* pages/
+
+  * home/
+
+    * ui/
+
+      * previews/
+
+        * cake.jpg
+        * pizza.jpg
+        * …
+
+      * HomePage.tsx
+
+    * index.ts
+
+### Non-UI Assets
+
+[Section titled “Non-UI Assets”](#non-ui-assets)
+
+Sometimes an asset is not part of the UI but is a crucial part of business logic. Consider this example:
+
+* features/
+
+  * billing/
+
+    * model/
+
+      * invoice-template.pdf
+      * create-invoice.ts
+
+    * index.ts
+
+Here, `invoice-template.pdf` is tightly coupled with the business logic in `create-invoice.ts`. In cases like this, it’s preferable to place the file in the `model` segment to maintain high cohesion and localize changes.
+
+## Shared Assets
+
+[Section titled “Shared Assets”](#shared-assets)
+
+If a static asset is used multiple times, you can move it to `shared/ui`, so it is accessible to every other part of the application.
+
+* shared/
+
+  * ui/
+
+    * placeholders/
+
+      * cake.jpg
+      * pizza.jpg
+      * …
+
+The same approach can be applied for static assets that are used by shared components:
+
+* shared/
+
+  * ui/
+
+    * Dropdown.tsx
+    * chevron.svg
+
+## Global Assets
+
+[Section titled “Global Assets”](#global-assets)
+
+Global assets include things like global stylesheets (such as a CSS reset) and fonts. The `app` layer is the right place for these files since they’re only used by the application entrypoint.
+
+* app/
+
+  * styles/
+
+    * reset.css
+    * global.css
+
+  * main.ts
+
+## Public Folder
+
+[Section titled “Public Folder”](#public)
+
+Most bundlers and frameworks provide a `public` folder at the root of your project. Files here are served as-is without processing.
+
+Some build tools like [Vite](https://vite.dev/config/shared-options#publicdir) allow the public folder location to be changed, while others like [Astro](https://docs.astro.build/en/basics/project-structure/#public) don’t have this option. If your build tool doesn’t support this change, that’s fine. The `public` folder is not part of the FSD structure and won’t cause naming collisions.
+
+## Summary
+
+[Section titled “Summary”](#summary)
+
+| Asset Type                | Location                                  |
+| ------------------------- | ----------------------------------------- |
+| Slice-specific assets     | Inside the slice (e.g., `pages/home/ui/`) |
+| Reusable icons and images | `shared/ui/`                              |
+| Global styles             | `app/styles/`                             |
+| Fonts                     | `app/fonts/`, `public/` or `app/public`   |
+| Static files, favicon     | `public/` or `app/public`                 |
+
+Follow the FSD principle: place assets where they are used, and move them to `shared` when there’s an actual need for reuse across slices.
+
 # Page Layouts
 
 This guide examines the abstraction of a *page layout* — when several pages share the same overall structure, and differ only in the main content.
