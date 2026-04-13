@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 360" width="100%" height="100%">
+  <style>
+    .font-base { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 600; fill: #000; }
+    .font-red { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 600; fill: #a10000; }
+    .tree-line { stroke: #888; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .strike-line { stroke: #a10000; stroke-width: 2.5; stroke-linecap: round; }
+    .arrow { stroke: #a10000; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <defs>
+    <g id="folder">
+      <path d="M2,4 L2,16 C2,17.1 2.9,18 4,18 L20,18 C21.1,18 22,17.1 22,16 L22,6 C22,4.9 21.1,4 20,4 L12,4 L10,2 L4,2 C2.9,2 2,2.9 2,4 Z" fill="#fff9c4" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+    </g>
+    <g id="file-code">
+      <polyline points="6,8 2,12 6,16" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline points="14,8 18,12 14,16" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </defs>
+
+  <use href="#folder" x="20" y="20" />
+  <text x="50" y="37" class="font-base">features</text>
+
+  <path d="M28,42 L28,58 L42,58" class="tree-line" />
+
+  <use href="#folder" x="45" y="50" />
+  <text x="75" y="67" class="font-base">post</text>
+
+  <path d="M53,75 L53,300" class="tree-line" />
+
+  <path d="M53,92 L68,92" class="tree-line" />
+  <use href="#folder" x="70" y="80" />
+  <text x="100" y="97" class="font-base">compose</text>
+
+  <path d="M53,132 L68,132" class="tree-line" />
+  <use href="#folder" x="70" y="120" />
+  <text x="100" y="137" class="font-base">like</text>
+
+  <path d="M53,172 L68,172" class="tree-line" />
+  <use href="#folder" x="70" y="160" />
+  <text x="100" y="177" class="font-base" fill="#a10000">model</text>
+  <line x1="95" y1="172" x2="160" y2="172" class="strike-line" />
+
+  <path d="M53,212 L68,212" class="tree-line" />
+  <use href="#folder" x="70" y="200" />
+  <text x="100" y="217" class="font-base" fill="#a10000">ui</text>
+  <line x1="95" y1="212" x2="130" y2="212" class="strike-line" />
+
+  <path d="M53,252 L68,252" class="tree-line" />
+  <use href="#folder" x="70" y="240" />
+  <text x="100" y="257" class="font-base" fill="#a10000">api</text>
+  <line x1="95" y1="252" x2="135" y2="252" class="strike-line" />
+
+  <path d="M53,300 L68,300" class="tree-line" />
+  <use href="#file-code" x="70" y="288" />
+  <text x="100" y="305" class="font-base" fill="#a10000">index.ts</text>
+  <line x1="95" y1="300" x2="170" y2="300" class="strike-line" />
+
+  <text x="240" y="195" class="font-red">not allowed</text>
+  
+  <path d="M265,205 Q260,240 240,265" class="arrow" />
+  <polyline points="248,265 240,265 243,256" class="arrow" />
+  
+  <path d="M265,180 Q255,150 215,168" class="arrow" />
+  <polyline points="222,162 215,168 223,172" class="arrow" />
+
+</svg>
