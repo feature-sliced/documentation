@@ -7001,531 +7001,694 @@ export default defineNuxtConfig({
 * [Documentation on changing router config in NuxtJS](https://nuxt.com/docs/guide/recipes/custom-routing#router-config)
 * [Documentation on changing aliases in NuxtJS](https://nuxt.com/docs/api/nuxt-config#alias)
 
-# Usage with React Query
+# Usage with TanStack Query
 
-## The problem of “where to put the keys”
+## Where to store keys
 
-[Section titled “The problem of “where to put the keys””](#the-problem-of-where-to-put-the-keys)
+[Section titled “Where to store keys”](#where-to-store-keys)
 
-### Solution — break down by entities
+* In shared
 
-[Section titled “Solution — break down by entities”](#solution--break-down-by-entities)
+  * src/
 
-If the project already has a division into entities, and each request corresponds to a single entity, the purest division will be by entity. In this case, we suggest using the following structure:
-
-* src/
-
-  * app/
-
-    * …
-
-  * pages/
-
-    * …
-
-  * entities/
-
-    * {entity}/
+    * app/
 
       * …
+
+    * pages/
+
+      * …
+
+    * widgets/
+
+      * …
+
+    * features/
+
+      * …
+
+    * entities/
+
+      * …
+
+    * shared/
 
       * api/
 
-        * `{entity}.query` Query-factory where are the keys and functions
-        * `get-{entity}` Entity getter function
-        * `create-{entity}` Entity creation function
-        * `update-{entity}` Entity update function
-        * `delete-{entity}` Entity delete function
-        * …
+        * queries/ Query factories
 
-  * features/
+          * example.ts
+          * another-example.ts
 
-    * …
+  src/shared/api/index.ts
 
-  * widgets/
+  ```ts
+  export { exampleQueries } from './queries/example';
+  ```
 
-    * …
+* In shared split by controllers
 
-  * shared/
+  If the number of endpoints is large enough and you also want to store them in `shared`, it is better to split everything by controllers and use a public API for each of them.
 
-    * …
+  * src/
 
-If there are connections between the entities (for example, the Country entity has a field-list of City entities), then you can use the [public API for cross-imports](/docs/reference/public-api#public-api-for-cross-imports) or consider the alternative solution below.
-
-### Alternative solution — keep it in shared
-
-[Section titled “Alternative solution — keep it in shared”](#alternative-solution--keep-it-in-shared)
-
-In cases where entity separation is not appropriate, the following structure can be considered:
-
-* src/
-
-  * …
-
-  * shared/
-
-    * api/
+    * app/
 
       * …
 
-      * queries Query-factories
+    * pages/
 
-        * document.ts
-        * background-jobs.ts
-        * …
+      * …
 
-      * index.ts
+    * widgets/
 
-Then in `@/shared/api/index.ts`:
+      * …
 
-@/shared/api/index.ts
+    * features/
 
-```ts
-export { documentQueries } from "./queries/document";
-```
+      * …
 
-## The problem of “Where to insert mutations?”
+    * entities/
 
-[Section titled “The problem of “Where to insert mutations?””](#the-problem-of-where-to-insert-mutations)
+      * …
 
-It is not recommended to mix mutations with queries. There are two options:
+    * shared/
 
-### 1. Define a custom hook in the `api` segment near the place of use
+      * api/
 
-[Section titled “1. Define a custom hook in the api segment near the place of use”](#1-define-a-custom-hook-in-the-api-segment-near-the-place-of-use)
+        * example/
 
-@/features/update-post/api/use-update-title.ts
+          * index.ts
+          * example.query.ts Query factory with keys and functions for the example controller
+          * get-example.ts
+          * create-example.ts
+          * update-example.ts
+          * delete-example.ts
 
-```tsx
-export const useUpdateTitle = () => {
-  const queryClient = useQueryClient();
+        * another-example/
+
+          * index.ts
+          * another-example.query.ts Query factory with keys and functions for the another-example controller
+          * get-another-example.ts
+          * create-another-example.ts
+          * update-another-example.ts
+          * delete-another-example.ts
+
+  src/shared/api/example/index.ts
+
+  ```ts
+  export { exampleQueries } from "./example.query";
+  ```
+
+* In entities
+
+  *If the project already has a division into entities*, and each request corresponds to a single entity, the cleanest approach is to split by entity. In this case, we suggest using the following structure:
+
+  * src/
+
+    * app/
+
+      * …
+
+    * pages/
+
+      * …
+
+    * widgets/
+
+      * …
+
+    * features/
+
+      * …
+
+    * entities/
+
+      * example/
+
+        * api/
+
+          * example.query.ts Query factory with keys and functions
+          * get-example.ts
+          * create-example.ts
+          * update-example.ts
+          * delete-example.ts
+
+    * shared/
+
+      * …
+
+  If there are connections between entities (for example, the Country entity has a field-list of City entities), you can use the [public API for cross-imports](/docs/reference/public-api#public-api-for-cross-imports).
+
+## Where to store mutations
+
+[Section titled “Where to store mutations”](#where-to-store-mutations)
+
+It is not recommended to mix mutations with queries. There are several options:
+
+* In the api segment near the place of use
+
+  src/pages/example/api/use-update-example.ts
+
+  ```tsx
+  export const useUpdateExample = () => {
+      const queryClient = useQueryClient();
 
 
-  return useMutation({
-    mutationFn: ({ id, newTitle }) =>
-      apiClient
-        .patch(`/posts/${id}`, { title: newTitle })
-        .then((data) => console.log(data)),
+      return useMutation({
+          mutationFn: async ({ id, newTitle }) => {
+              const { data } = await apiClient.patch(`/posts/${ id }`, { title: newTitle });
 
 
-    onSuccess: (newPost) => {
-      queryClient.setQueryData(postsQueries.ids(id), newPost);
-    },
-  });
-};
-```
-
-### 2. Define a mutation function somewhere else (Shared or Entities) and use `useMutation` directly in the component
-
-[Section titled “2. Define a mutation function somewhere else (Shared or Entities) and use useMutation directly in the component”](#2-define-a-mutation-function-somewhere-else-shared-or-entities-and-use-usemutation-directly-in-the-component)
-
-```tsx
-const { mutateAsync, isPending } = useMutation({
-  mutationFn: postApi.createPost,
-});
-```
-
-@/pages/post-create/ui/post-create-page.tsx
-
-```tsx
-export const CreatePost = () => {
-  const { classes } = useStyles();
-  const [title, setTitle] = useState("");
-
-
-  const { mutate, isPending } = useMutation({
-    mutationFn: postApi.createPost,
-  });
-
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
-    setTitle(e.target.value);
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    mutate({ title, userId: DEFAULT_USER_ID });
+              return data;
+          },
+          onSuccess: newPost => {
+              queryClient.setQueryData(postsQueries.ids(id), newPost);
+          },
+      });
   };
+  ```
+
+* In shared or entities via mutationFn
+
+  src/pages/example/ui/example.tsx
+
+  ```tsx
+  export const Example = () => {
+      const [title, setTitle] = useState('');
 
 
-  return (
-    <form className={classes.create_form} onSubmit={handleSubmit}>
-      <TextField onChange={handleChange} value={title} />
-      <LoadingButton type="submit" variant="contained" loading={isPending}>
-        Create
-      </LoadingButton>
-    </form>
-  );
-};
-```
+      const { mutate, isPending } = useMutation({
+          mutationFn: mutations.createExample,
+      });
 
-## Organization of requests
 
-[Section titled “Organization of requests”](#organization-of-requests)
+      const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+          setTitle(value);
+      };
+
+
+      const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+          mutate({ title, userId: DEFAULT_USER_ID });
+      };
+
+
+      return (
+          <form onSubmit={ handleSubmit }>
+              <Input onChange={ handleChange } value={ title } />
+              <Button type="submit" disabled={ isPending }>Create</Button>
+          </form>
+      );
+  };
+  ```
+
+## Organising queries
+
+[Section titled “Organising queries”](#organizing-queries)
 
 ### Query factory
 
 [Section titled “Query factory”](#query-factory)
 
-A query factory is an object where the key values are functions that return a list of query keys. Here’s how to use it:
+A query factory is an object where key values are functions that return a list of query keys.
 
-```tsx
+```ts
 const keyFactory = {
-  all: () => ["entity"],
-  lists: () => [...postQueries.all(), "list"],
+    all: () => ["entity"],
+    lists: () => [...keyFactory.all(), "list"],
 };
 ```
 
-Note
+`queryOptions` — a built-in utility in react-query\@v5
 
-`queryOptions` is a built-in utility in react-query\@v5 (optional)
+One of the best ways to share `queryKey` and `queryFn` in multiple places is to use the `queryOptions` helper function [(more details here)](https://tanstack.com/query/latest/docs/framework/react/guides/query-options).
 
 ```ts
-queryOptions({
-  queryKey,
-  ...options,
+import { queryOptions } from '@tanstack/react-query';
+
+
+const groupOptions = (id: number) => queryOptions({
+    queryKey: ['groups', id],
+    queryFn: () => fetchGroups(id),
+    gcTime: 5 * 1000,
 });
 ```
 
-For greater type safety, further compatibility with future versions of react-query, and easy access to functions and query keys, you can use the built-in queryOptions function from “@tanstack/react-query” [(More details here)](https://tkdodo.eu/blog/the-query-options-api#queryoptions).
+### 1. Creating a query factory
 
-### 1. Creating a Query Factory
+[Section titled “1. Creating a query factory”](#creating-query-factory)
 
-[Section titled “1. Creating a Query Factory”](#1-creating-a-query-factory)
-
-@/entities/post/api/post.queries.ts
+src/shared/api/post/post.queries.ts
 
 ```tsx
-import { keepPreviousData, queryOptions } from "@tanstack/react-query";
-import { getPosts } from "./get-posts";
-import { getDetailPost } from "./get-detail-post";
-import { PostDetailQuery } from "./query/post.query";
+import { queryOptions } from '@tanstack/react-query';
+import { getPosts } from './get-posts';
+import { getDetailPost, type DetailPostQuery } from './get-detail-post';
 
 
-export const postQueries = {
-  all: () => ["posts"],
-
-
-  lists: () => [...postQueries.all(), "list"],
-  list: (page: number, limit: number) =>
-    queryOptions({
-      queryKey: [...postQueries.lists(), page, limit],
-      queryFn: () => getPosts(page, limit),
-      placeholderData: keepPreviousData,
+export const POST_QUERIES = {
+    all: () => ['posts'],
+    lists: () => [...POST_QUERIES.all(), 'list'],
+    list: (page: number, limit: number) => queryOptions({
+        queryKey: [...POST_QUERIES.lists(), page, limit],
+        queryFn: () => getPosts(page, limit),
+        placeholderData: prev => prev,
     }),
-
-
-  details: () => [...postQueries.all(), "detail"],
-  detail: (query?: PostDetailQuery) =>
-    queryOptions({
-      queryKey: [...postQueries.details(), query?.id],
-      queryFn: () => getDetailPost({ id: query?.id }),
-      staleTime: 5000,
+    details: () => [...POST_QUERIES.all(), 'detail'],
+    detail: (query?: DetailPostQuery) => queryOptions({
+        queryKey: [...POST_QUERIES.details(), query?.id],
+        queryFn: () => getDetailPost({ id: query?.id }),
     }),
 };
 ```
 
-### 2. Using Query Factory in application code
+### 2. Using a query factory in application code
 
-[Section titled “2. Using Query Factory in application code”](#2-using-query-factory-in-application-code)
+[Section titled “2. Using a query factory in application code”](#using-query-factory)
+
+src/pages/post/ui/post.tsx
 
 ```tsx
-import { useParams } from "react-router-dom";
-import { postApi } from "@/entities/post";
-import { useQuery } from "@tanstack/react-query";
+import { useParams } from 'react-router';
+import { postApi } from '@/shared/api/post';
+import { useQuery } from '@tanstack/react-query';
 
 
-type Params = {
-  postId: string;
-};
+interface Params {
+    postId: string;
+}
 
 
-export const PostPage = () => {
-  const { postId } = useParams<Params>();
-  const id = parseInt(postId || "");
-  const {
-    data: post,
-    error,
-    isLoading,
-    isError,
-  } = useQuery(postApi.postQueries.detail({ id }));
+export const Post = () => {
+    const { postId } = useParams<Params>();
 
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+    const {
+        data: post,
+        error,
+        isLoading,
+        isError
+    } = useQuery(postApi.POST_QUERIES.detail({ id: parseInt(postId ?? '', 10) }));
 
 
-  if (isError || !post) {
-    return <>{error?.message}</>;
-  }
+    if (isLoading) {
+        return (
+            <div>Loading...</div>
+        );
+    }
 
 
-  return (
-    <div>
-      <p>Post id: {post.id}</p>
-      <div>
-        <h1>{post.title}</h1>
+    if (isError || !post) {
+        return (
+            <div>{ error?.message }</div>
+        );
+    }
+
+
+    return (
         <div>
-          <p>{post.body}</p>
+            <p>Post id: { post.id }</p>
+            <div>
+                <h1>{ post.title }</h1>
+                <div>
+                    <p>{ post.body }</p>
+                </div>
+            </div>
+            <div>Owner: { post.userId }</div>
         </div>
-      </div>
-      <div>Owner: {post.userId}</div>
-    </div>
-  );
+    );
 };
 ```
 
-### Benefits of using a Query Factory
+### Benefits of using a query factory
 
-[Section titled “Benefits of using a Query Factory”](#benefits-of-using-a-query-factory)
+[Section titled “Benefits of using a query factory”](#query-factory-benefits)
 
-* **Request structuring:** A factory allows you to organize all API requests in one place, making your code more readable and maintainable.
+* **Structured requests:** A factory allows you to organise all API requests in one place, making your code more readable and maintainable.
 * **Convenient access to queries and keys:** The factory provides convenient methods for accessing different types of queries and their keys.
-* **Query Refetching Ability:** The factory allows easy refetching without the need to change query keys in different parts of the application.
+* **Easy refetching:** The factory makes it easy to refetch without needing to change query keys in different parts of the application.
 
 ## Pagination
 
 [Section titled “Pagination”](#pagination)
 
-In this section, we’ll look at an example of the `getPosts` function, which makes an API request to retrieve post entities using pagination.
+Pagination uses the same query factory from the [organising queries](#organizing-queries) section above, with the addition of `placeholderData` to prevent the UI from flickering when navigating between pages.
 
-### 1. Creating a function `getPosts`
+### Usage in a component
 
-[Section titled “1. Creating a function getPosts”](#1-creating-a-function-getposts)
+[Section titled “Usage in a component”](#pagination-usage)
 
-The getPosts function is located in the `get-posts.ts` file, which is located in the `api` segment
-
-@/pages/post-feed/api/get-posts.ts
+src/pages/home/ui/home.tsx
 
 ```tsx
-import { apiClient } from "@/shared/api/base";
+export const Home = () => {
+    const [page, setPage] = usePageParam(DEFAULT_PAGE);
 
 
-import { PostWithPaginationDto } from "./dto/post-with-pagination.dto";
-import { PostQuery } from "./query/post.query";
-import { mapPost } from "./mapper/map-post";
-import { PostWithPagination } from "../model/post-with-pagination";
+    const { data, isFetching, isLoading } = useQuery(postApi.POST_QUERIES.list(page, DEFAULT_ITEMS_ON_SCREEN));
 
 
-const calculatePostPage = (totalCount: number, limit: number) =>
-  Math.floor(totalCount / limit);
-
-
-export const getPosts = async (
-  page: number,
-  limit: number,
-): Promise<PostWithPagination> => {
-  const skip = page * limit;
-  const query: PostQuery = { skip, limit };
-  const result = await apiClient.get<PostWithPaginationDto>("/posts", query);
-
-
-  return {
-    posts: result.posts.map((post) => mapPost(post)),
-    limit: result.limit,
-    skip: result.skip,
-    total: result.total,
-    totalPages: calculatePostPage(result.total, limit),
-  };
+    return (
+        <>
+            <Pagination
+                onChange={ (_, page) => setPage(page) }
+                page={ page }
+                count={ data?.totalPages }
+                variant="outlined"
+                color="primary"
+            />
+            <Posts posts={ data?.posts } />
+        </>
+    );
 };
 ```
 
-### 2. Query factory for pagination
+## Infinite scroll
 
-[Section titled “2. Query factory for pagination”](#2-query-factory-for-pagination)
+[Section titled “Infinite scroll”](#infinite-scroll)
 
-The `postQueries` query factory defines various query options for working with posts, including requesting a list of posts with a specific page and limit.
+`useInfiniteQuery` is used to implement “load more” or infinite scroll patterns.
+
+### 1. Query factory with `infiniteQueryOptions`
+
+[Section titled “1. Query factory with infiniteQueryOptions”](#infinite-query-factory)
+
+src/shared/api/post/post.queries.ts
 
 ```tsx
-import { keepPreviousData, queryOptions } from "@tanstack/react-query";
-import { getPosts } from "./get-posts";
+import { infiniteQueryOptions } from '@tanstack/react-query';
+import { getPosts } from './get-posts';
 
 
-export const postQueries = {
-  all: () => ["posts"],
-  lists: () => [...postQueries.all(), "list"],
-  list: (page: number, limit: number) =>
-    queryOptions({
-      queryKey: [...postQueries.lists(), page, limit],
-      queryFn: () => getPosts(page, limit),
-      placeholderData: keepPreviousData,
+export const POST_QUERIES = {
+    all: () => ['posts'],
+    lists: () => [...POST_QUERIES.all(), 'list'],
+    infinite: (limit: number) => infiniteQueryOptions({
+        queryKey: [...POST_QUERIES.lists(), 'infinite', limit],
+        queryFn: ({ pageParam }) => getPosts(pageParam, limit),
+        initialPageParam: 0,
+        getNextPageParam: (lastPage) =>
+            lastPage.skip + lastPage.limit < lastPage.total
+                ? lastPage.skip / lastPage.limit + 1
+                : undefined,
     }),
 };
 ```
 
-### 3. Use in application code
+### 2. Usage in a component
 
-[Section titled “3. Use in application code”](#3-use-in-application-code)
+[Section titled “2. Usage in a component”](#infinite-query-usage)
 
-@/pages/home/ui/index.tsx
+src/pages/post-feed/ui/post-feed.tsx
 
 ```tsx
-export const HomePage = () => {
-  const itemsOnScreen = DEFAULT_ITEMS_ON_SCREEN;
-  const [page, setPage] = usePageParam(DEFAULT_PAGE);
-  const { data, isFetching, isLoading } = useQuery(
-    postApi.postQueries.list(page, itemsOnScreen),
-  );
-  return (
-    <>
-      <Pagination
-        onChange={(_, page) => setPage(page)}
-        page={page}
-        count={data?.totalPages}
-        variant="outlined"
-        color="primary"
-      />
-      <Posts posts={data?.posts} />
-    </>
-  );
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { postApi } from '@/shared/api/post';
+
+
+export const PostFeed = () => {
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+        useInfiniteQuery(postApi.POST_QUERIES.infinite(10));
+
+
+    const posts = data?.pages.flatMap((page) => page.posts) ?? [];
+
+
+    return (
+        <>
+            <Posts posts={ posts } />
+            { hasNextPage && (
+                <button onClick={ () => fetchNextPage() } disabled={ isFetchingNextPage }>
+                    { isFetchingNextPage ? 'Loading...' : 'Load more' }
+                </button>
+            ) }
+        </>
+    );
 };
 ```
 
-Note
+## Suspense mode
 
-The example is simplified, the full version is available on [GitHub](https://github.com/ruslan4432013/fsd-react-query-example)
+[Section titled “Suspense mode”](#suspense-mode)
 
-## `QueryProvider` for managing queries
+`useSuspenseQuery` allows you to use React Suspense for handling loading states, removing the need to check `isLoading` manually.
 
-[Section titled “QueryProvider for managing queries”](#queryprovider-for-managing-queries)
+### 1. The query factory remains the same
 
-In this guide, we will look at how to organize a `QueryProvider`.
+[Section titled “1. The query factory remains the same”](#suspense-query-factory)
 
-### 1. Creating a `QueryProvider`
+`queryOptions` and `useSuspenseQuery` are compatible — no changes to the factory are needed.
 
-[Section titled “1. Creating a QueryProvider”](#1-creating-a-queryprovider)
+### 2. Usage in a component
 
-The file `query-provider.tsx` is located at the path `@/app/providers/query-provider.tsx`.
+[Section titled “2. Usage in a component”](#suspense-usage)
 
-@/app/providers/query-provider.tsx
+src/pages/post/ui/post.tsx
 
 ```tsx
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { ReactNode } from "react";
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { postApi } from '@/shared/api/post';
 
 
-type Props = {
-  children: ReactNode;
-  client: QueryClient;
-};
+interface PostProps {
+    id: number;
+}
 
 
-export const QueryProvider = ({ client, children }: Props) => {
-  return (
-    <QueryClientProvider client={client}>
-      {children}
-      <ReactQueryDevtools />
-    </QueryClientProvider>
-  );
+// isLoading is no longer needed — the component only renders when data is ready
+export const Post = ({ id }: PostProps) => {
+    const { data: post } = useSuspenseQuery(postApi.POST_QUERIES.detail({ id }));
+
+
+    return (
+        <div>
+            <h1>{ post.title }</h1>
+            <p>{ post.body }</p>
+        </div>
+    );
 };
 ```
 
-### 2. Creating a `QueryClient`
+### 3. Wrapper in the `app` layer
 
-[Section titled “2. Creating a QueryClient”](#2-creating-a-queryclient)
+[Section titled “3. Wrapper in the app layer”](#suspense-app-wrapper)
 
-`QueryClient` is an instance used to manage API requests. The `query-client.ts` file is located at `@/shared/api/query-client.ts`. `QueryClient` is created with certain settings for query caching.
-
-@/shared/api/query-client.ts
+src/app/providers/suspense-provider.tsx
 
 ```tsx
-import { QueryClient } from "@tanstack/react-query";
+import { Suspense, type ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 
 
-export const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 5 * 60 * 1000,
-      gcTime: 5 * 60 * 1000,
+interface SuspenseProviderProps {
+    children: ReactNode;
+}
+
+
+export const SuspenseProvider = ({ children }: SuspenseProviderProps) => (
+    <ErrorBoundary fallback={ <div>Something went wrong</div> }>
+        <Suspense fallback={ <div>Loading...</div> }>
+            { children }
+        </Suspense>
+    </ErrorBoundary>
+);
+```
+
+## `useMutationState`
+
+[Section titled “useMutationState”](#use-mutation-state)
+
+`useMutationState` allows you to read the state of mutations from any component without passing props — useful for global loading indicators or displaying the status of an operation.
+
+### 1. Storing mutation keys
+
+[Section titled “1. Storing mutation keys”](#storing-mutation-keys)
+
+By analogy with the query factory, mutation keys should be stored in one place alongside the factory:
+
+src/shared/api/post/post.queries.ts
+
+```ts
+export const POST_MUTATIONS = {
+    updateTitle: () => ['post', 'update-title'],
+    create: () => ['post', 'create'],
+};
+```
+
+### 2. Naming mutations via `mutationKey`
+
+[Section titled “2. Naming mutations via mutationKey”](#naming-mutations)
+
+src/features/update-post/api/use-update-post-title.ts
+
+```tsx
+import { POST_MUTATIONS } from '@/shared/api/post';
+
+
+interface UpdatePostTitle {
+    id: number;
+    newTitle: string;
+}
+
+
+export const useUpdatePostTitle = () =>
+    useMutation({
+        mutationKey: POST_MUTATIONS.updateTitle(),
+        mutationFn: ({ id, newTitle }: UpdatePostTitle) =>
+            apiClient.patch(`/posts/${id}`, { title: newTitle }),
+    });
+```
+
+### 3. Reading state in another component
+
+[Section titled “3. Reading state in another component”](#reading-mutation-state)
+
+src/widgets/save-indicator/ui/save-indicator.tsx
+
+```tsx
+import { useMutationState } from '@tanstack/react-query';
+import { POST_MUTATIONS } from '@/shared/api/post';
+
+
+export const SaveIndicator = () => {
+    const isPending = useMutationState({
+        filters: { mutationKey: POST_MUTATIONS.updateTitle(), status: 'pending' },
+        select: mutation => mutation.state.status,
+    }).length > 0;
+
+
+    return isPending && (
+        <span>Saving...</span>
+    );
+};
+```
+
+## Organising `QueryProvider`
+
+[Section titled “Organising QueryProvider”](#query-provider)
+
+src/app/providers/query-provider.tsx
+
+```tsx
+import { type ReactNode } from 'react';
+import { QueryClient, QueryClientProvider, MutationCache, QueryCache } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { toast } from 'sonner';
+
+
+interface QueryProviderProps {
+    children: ReactNode;
+    client: QueryClient;
+}
+
+
+const queryClient = new QueryClient({
+    queryCache: new QueryCache({
+        onError: error => {
+            toast.error(error.message);
+        },
+    }),
+    mutationCache: new MutationCache({
+        onError: error => {
+            toast.error(error.message);
+        },
+    }),
+    defaultOptions: {
+        queries: {
+            staleTime: 5 * 60 * 1000,
+            gcTime: 5 * 60 * 1000,
+        },
     },
-  },
 });
+
+
+export const QueryProvider = ({ client, children }: QueryProviderProps) => {
+    return (
+        <QueryClientProvider client={ client }>
+            { children }
+            <ReactQueryDevtools />
+        </QueryClientProvider>
+    );
+};
 ```
 
 ## Code generation
 
 [Section titled “Code generation”](#code-generation)
 
-There are tools that can generate API code for you, but they are less flexible than the manual approach described above. If your Swagger file is well-structured, and you’re using one of these tools, it might make sense to generate all the code in the `@/shared/api` directory.
+There are tools for automatic code generation that are less flexible than the manual approach described above. If your Swagger file is well-structured and you are using one of these tools, it may make sense to generate all the code in the `@/shared/api` directory.
 
-## Additional advice for organizing RQ
+## Additional advice on API interaction
 
-[Section titled “Additional advice for organizing RQ”](#additional-advice-for-organizing-rq)
+[Section titled “Additional advice on API interaction”](#api-client)
 
-### API Client
+By using a custom API client class in the `shared` layer, you can standardise the configuration and work with the API across the project. This allows you to manage logging, headers, and the data exchange format (such as JSON or XML) from one place. This approach simplifies maintenance and development by making changes and updates to API interactions easier.
 
-[Section titled “API Client”](#api-client)
-
-Using a custom API client class in the shared layer, you can standardize the configuration and work with the API in the project. This allows you to manage logging, headers and data exchange format (such as JSON or XML) from one place. This approach makes it easier to maintain and develop the project because it simplifies changes and updates to interactions with the API.
-
-@/shared/api/api-client.ts
+src/shared/api/api-client.ts
 
 ```tsx
 import { API_URL } from "@/shared/config";
 
 
 export class ApiClient {
-  private baseUrl: string;
+    #baseUrl: string;
 
 
-  constructor(url: string) {
-    this.baseUrl = url;
-  }
-
-
-  async handleResponse<TResult>(response: Response): Promise<TResult> {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+    constructor(url: string) {
+        this.#baseUrl = url;
     }
 
 
-    try {
-      return await response.json();
-    } catch (error) {
-      throw new Error("Error parsing JSON response");
+    async handleResponse<TResult>(response: Response): Promise<TResult> {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${ response.status }`);
+        }
+
+
+        try {
+            return await response.json();
+        } catch (error) {
+            throw new Error("Error parsing JSON response");
+        }
     }
-  }
 
 
-  public async get<TResult = unknown>(
-    endpoint: string,
-    queryParams?: Record<string, string | number>,
-  ): Promise<TResult> {
-    const url = new URL(endpoint, this.baseUrl);
+    public async get<TResult = unknown>(endpoint: string, queryParams?: Record<string, string | number>): Promise<TResult> {
+        const url = new URL(endpoint, this.#baseUrl);
 
 
-    if (queryParams) {
-      Object.entries(queryParams).forEach(([key, value]) => {
-        url.searchParams.append(key, value.toString());
-      });
+        if (queryParams) {
+            Object.entries(queryParams).forEach(([key, value]) => {
+                url.searchParams.append(key, value.toString());
+            });
+        }
+
+
+        const response = await fetch(url.toString(), {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+
+        return this.handleResponse<TResult>(response);
     }
-    const response = await fetch(url.toString(), {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
 
 
-    return this.handleResponse<TResult>(response);
-  }
+    public async post<TResult = unknown, TData = Record<string, unknown>>(endpoint: string, body: TData): Promise<TResult> {
+        const response = await fetch(`${ this.#baseUrl }${ endpoint }`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
 
 
-  public async post<TResult = unknown, TData = Record<string, unknown>>(
-    endpoint: string,
-    body: TData,
-  ): Promise<TResult> {
-    const response = await fetch(`${this.baseUrl}${endpoint}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-
-
-    return this.handleResponse<TResult>(response);
-  }
+        return this.handleResponse<TResult>(response);
+    }
 }
 
 
