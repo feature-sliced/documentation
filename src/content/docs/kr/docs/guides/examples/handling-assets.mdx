@@ -1,0 +1,118 @@
+---
+title: Handling Assets
+sidebar:
+  order: 5
+---
+
+import { FileTree, Aside } from '@astrojs/starlight/components';
+
+Assets는 프로젝트에서 사용하는 정적 파일입니다. FSD에서는 assets도 코드와 같은 기준으로 배치합니다.   
+파일 유형별로 모으지 말고, 사용하는 곳을 기준으로 묶어야 합니다. 그리고 해당 assets를 사용하는 컴포넌트 가까이에 두는 것이 좋습니다.
+
+<Aside type="caution">
+
+모든 정적 파일을 한곳에 모으기 위해 별도의 `assets` segment를 만드는 경우가 많지만, 이 방식은 일반적으로 권장하지 않습니다.   
+이런 구조는 FSD가 지향하는 높은 응집도와 변경의 지역성을 해치기 때문입니다.
+
+자세한 설명이 필요하다면 [Desegmentation](/kr/docs/guides/issues/desegmented/)과 [Slices and segments](/kr/docs/reference/slices-segments/) 문서를 참고하세요.
+
+</Aside>
+
+## Slice 내부의 Assets \{#slice-specific-assets}
+
+asset이 하나의 page, widget, feature 에서만 사용된다면, 그 slice 내부에 두는 것을 권장합니다.  
+이렇게 하면 캡슐화를 유지할 수 있고, 그 asset이 어디에 속하는지도 분명해집니다.
+
+<FileTree>
+- pages/
+  - home/
+    - ui/
+      - hero-image.jpg
+      - HomePage.tsx
+    - index.ts
+</FileTree>
+
+UI에서 이미지처럼 정적 파일을 많이 사용한다면 `ui` segment 안에 하위 폴더를 만들어 정리할 수 있습니다.
+
+<FileTree>
+- pages/
+  - home/
+    - ui/
+      - previews/
+        - cake.jpg
+        - pizza.jpg
+        - ...
+      - HomePage.tsx
+    - index.ts
+</FileTree>
+
+### UI가 아닌 Assets \{#non-ui-assets}
+
+UI에 직접 표시되지 않는 asset이라도 특정 비즈니스 로직과 함께 사용된다면 model segment에 둡니다.  
+예를 들어, 아래 구조에서 `invoice-template.pdf`는 UI 요소는 아니지만 `create-invoice.ts`와 함께 사용되는 asset입니다.
+
+<FileTree>
+- features/
+  - billing/
+    - model/
+      - invoice-template.pdf
+      - create-invoice.ts
+    - index.ts
+</FileTree>
+
+이렇게 관련 파일을 가까이 배치하면 함께 변경하거나 검토하기 쉬워지고, 변경 영향도도 더 쉽게 추적할 수 있습니다.
+
+## Shared Assets \{#shared-assets}
+
+정적 asset을 여러 곳에서 재사용한다면 `shared/ui`로 옮길 수 있습니다.   
+이렇게 하면 프로젝트의 다른 부분에서도 같은 asset을 공통으로 사용할 수 있습니다.
+
+<FileTree>
+- shared/
+  - ui/
+    - placeholders/
+      - cake.jpg
+      - pizza.jpg
+      - ...
+</FileTree>
+
+이 방식은 `shared` layer의 컴포넌트가 사용하는 정적 asset에도 동일하게 적용할 수 있습니다.
+
+<FileTree>
+- shared/
+  - ui/
+    - Dropdown.tsx
+    - chevron.svg
+</FileTree>
+
+## Global Assets \{#global-assets}
+
+Global assets에는 전역 스타일시트(CSS reset 등)와 폰트가 포함됩니다.   
+이런 파일은 프로젝트 전체에서 공통으로 사용되며, 보통 진입 지점에서 설정됩니다. 따라서 `app` layer에 두는 것이 적절합니다.
+
+<FileTree>
+- app/
+  - styles/
+    - reset.css
+    - global.css
+  - main.ts
+</FileTree>
+
+## Public 폴더 \{#public}
+
+대부분의 bundler와 framework는 프로젝트 루트에 `public` 폴더를 제공합니다.   
+이 폴더에 있는 파일은 별도의 처리 없이 그대로 제공됩니다.
+
+[Vite](https://vite.dev/config/shared-options#publicdir)처럼 `public` 폴더 위치를 바꿀 수 있는 도구도 있고, [Astro](https://docs.astro.build/en/basics/project-structure/#public)처럼 이를 지원하지 않는 도구도 있습니다. 빌드 도구가 이 위치 변경을 지원하지 않아도 문제는 없습니다. `public` 폴더는 FSD 구조의 일부가 아니므로 이름 충돌도 일으키지 않습니다.
+
+## 요약 \{#summary}
+
+| Asset 종류 | 위치 |
+|------------|----------|
+| Slice별 assets | 해당 slice 내부 (예: `pages/home/ui/`) |
+| 재사용하는 아이콘, 이미지 | `shared/ui/` |
+| 전역 스타일 | `app/styles/` |
+| 폰트 | `app/fonts/`, `public/` 또는 `app/public` |
+| 정적 파일, favicon | `public/` 또는 `app/public` |
+
+원칙은 단순합니다. asset은 사용하는 slice에 배치하고, 여러 slice에서 재사용하는 경우에만 `shared`로 옮깁니다.
