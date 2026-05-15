@@ -1,13 +1,12 @@
 # Website
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website is built using [Astro](https://astro.build/) with the [Starlight](https://starlight.astro.build/) documentation theme.
 
 ## i18n
 
-- [Russian docs version](i18n/ru)
-- [English docs version](i18n/en)
-- [Uzbek docs version](i18n/uz)
-- [Japanese docs version](i18n/ja)
+Localization is managed via Starlight's built-in locale support. Locale content lives under `src/content/<locale>/docs/`.
+
+Supported locales: English (root), Russian, Uzbek, Korean, Japanese, Vietnamese, Chinese.
 
 ## Installation
 
@@ -18,29 +17,23 @@ pnpm install
 ## Local Development
 
 ```bash
-pnpm start       # for default locale
-pnpm start:ru    # for RU locale
-pnpm start:en    # for EN locale
-pnpm start:uz    # for UZ locale
-pnpm start:ja    # for JA locale
+pnpm dev
 ```
-
-> About [docusaurus/i18n commands](https://docusaurus.io/docs/i18n/git#translate-the-files)
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
 ## Build
 
-```console
+```bash
 pnpm build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-## Deployment
+## Preview
 
-```console
-GIT_USER=<Your GitHub username> USE_SSH=true pnpm deploy
+```bash
+pnpm preview
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Serves the built site locally for review before deployment.
