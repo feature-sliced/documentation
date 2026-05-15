@@ -16,22 +16,20 @@
     "engines": {
         "node": ">= 22"
     },
-    "dependencies": {},
     "devDependencies": {
         "@astrojs/starlight": "^0.37.4",
         "@types/node": "^22.18.6",
-        "@typescript-eslint/eslint-plugin": "^6.21.0",
-        "@typescript-eslint/parser": "^6.21.0",
         "astro": "^5.16.16",
-        "eslint": "^7.32.0",
-        "eslint-config-prettier": "^9.1.2",
+        "eslint": "^10.3.0",
+        "eslint-config-prettier": "^10.1.8",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
         "remark-heading-id": "^1.0.1",
         "sharp": "^0.34.5",
         "starlight-links-validator": "^0.19.2",
         "starlight-llms-txt": "^0.7.0",
-        "typescript": "^5.9.2"
+        "typescript": "^5.9.2",
+        "typescript-eslint": "^8.59.3"
     },
     "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
 }
