@@ -11,7 +11,10 @@
         "description": "Translation progress for the Feature-Sliced Design documentation.",
         "site": "https://fsd.how/translation-status/",
         "basesToHide": ["src/content/docs"],
-        "customCss": ["./src/styles/lunaria.css"]
+        "customCss": ["./src/styles/lunaria.css"],
+        "favicon": {
+            "inline": "./static/img/favicon/adaptive.svg"
+        }
     },
     "defaultLocale": {
         "lang": "en",
