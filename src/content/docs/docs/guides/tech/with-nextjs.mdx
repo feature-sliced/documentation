@@ -47,6 +47,14 @@ Example of re-exporting a page from `src/pages` in the Next.js `app`:
 export { ExamplePage as default, metadata } from '@/pages/example';
 ```
 
+### Server and client public APIs \{#server-and-client-public-apis\}
+
+In Next.js App Router, modules that can be used on the client and server-only modules may exist together within a single slice. If a server-only module is exported from `index.ts`, server-only side effects can propagate into the client module graph when a Client Component imports that slice, which can lead to build errors.
+
+When this problem occurs, add `index.server.ts` to the public API.
+
+- `index.server.ts`: Modules that must only be imported on the server, such as Server Components or data access functions marked with `server-only`
+
 ### Middleware \{#middleware\}
 
 If you use middleware in your project, it must be located in the project root alongside the Next.js `app` and `pages` folders.
