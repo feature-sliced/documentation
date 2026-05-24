@@ -223,6 +223,11 @@ export default defineConfig({
                         {
                             slug: "docs/branding",
                         },
+                        {
+                            label: "Translation Status",
+                            link: "https://fsd.how/translation-status/",
+                            attrs: { target: "_blank", rel: "noopener" },
+                        },
                     ],
                 },
                 {
