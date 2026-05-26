@@ -10,9 +10,6 @@ node_modules
 # Production
 build
 
-# Lunaria (translation status dashboard)
-static/translation-status
-
 # Misc
 .DS_Store
 .env
