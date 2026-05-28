@@ -4,6 +4,7 @@ import starlight from "@astrojs/starlight";
 import remarkHeaderId from "remark-heading-id";
 import starlightLlmsTxt from "starlight-llms-txt";
 import starlightLinksValidator from "starlight-links-validator";
+import lunaria from "@lunariajs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
@@ -110,6 +111,7 @@ export default defineConfig({
                     errorOnFallbackPages: false,
                     errorOnInconsistentLocale: true,
                 }),
+                lunaria({ route: "translation-status" }),
             ],
             locales: {
                 root: {
@@ -222,6 +224,10 @@ export default defineConfig({
                         },
                         {
                             slug: "docs/branding",
+                        },
+                        {
+                            label: "Translation Status",
+                            link: "/translation-status/",
                         },
                     ],
                 },

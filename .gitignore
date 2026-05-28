@@ -21,3 +21,4 @@ build
 npm-debug.log*
 
 .eslintcache
+.stylelintcache
