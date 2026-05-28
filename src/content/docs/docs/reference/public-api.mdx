@@ -62,6 +62,12 @@ Try to keep cross-imports to a minimum, and **only use this notation on the Enti
 
 </Aside>
 
+## Environment-specific Public APIs
+
+A slice’s public API should generally be represented by `index.ts`, and freely customizing it is not recommended.
+
+However, even modules within the same slice may need to run in different environments. If these modules are exported together from a single `index.ts`, the environment boundary may be broken, or the bundler may incorrectly include code that should not be bundled together. When this problem actually occurs, separate the public API by adding files that match the runtime environment. For an example, see [Server and client public APIs in Usage with Next.js](/docs/guides/tech/with-nextjs#server-and-client-public-apis).
+
 ## Issues with index files
 
 Index files like `index.js`, also known as barrel files, are the most common way to define a public API. They are easy to make, but they are known to cause problems with certain bundlers and frameworks.
