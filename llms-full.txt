@@ -6581,6 +6581,16 @@ app/example/page.tsx
 export { ExamplePage as default, metadata } from '@/pages/example';
 ```
 
+### Server and client public APIs
+
+[Section titled “Server and client public APIs”](#server-and-client-public-apis)
+
+In Next.js App Router, modules that can be used on the client and server-only modules may exist together within a single slice. If a server-only module is exported from `index.ts`, server-only side effects can propagate into the client module graph when a Client Component imports that slice, which can lead to build errors.
+
+When this problem occurs, add `index.server.ts` to the public API.
+
+* `index.server.ts`: Modules that must only be imported on the server, such as Server Components or data access functions marked with `server-only`
+
 ### Middleware
 
 [Section titled “Middleware”](#middleware)
@@ -8080,6 +8090,14 @@ The notation `A/@x/B` is meant to be read as “A crossed with B”.
 Note
 
 Try to keep cross-imports to a minimum, and **only use this notation on the Entities layer**, where eliminating cross-imports is often unreasonable.
+
+## Environment-specific Public APIs
+
+[Section titled “Environment-specific Public APIs”](#environment-specific-public-apis)
+
+A slice’s public API should generally be represented by `index.ts`, and freely customizing it is not recommended.
+
+However, even modules within the same slice may need to run in different environments. If these modules are exported together from a single `index.ts`, the environment boundary may be broken, or the bundler may incorrectly include code that should not be bundled together. When this problem actually occurs, separate the public API by adding files that match the runtime environment. For an example, see [Server and client public APIs in Usage with Next.js](/docs/guides/tech/with-nextjs#server-and-client-public-apis).
 
 ## Issues with index files
 
