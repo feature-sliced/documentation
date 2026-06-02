@@ -1,0 +1,74 @@
+---
+title: Usage with Astro
+sidebar:
+  order: 10
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+Astro와 FSD는 모두 `pages`라는 명칭을 사용하지만, 의미는 다릅니다.   
+Astro에서 `📁 src/pages`는 파일 기반 라우팅을 위한 폴더이고, FSD에서 `pages`는 페이지 단위를 나타내는 layer입니다.  
+FSD의 `pages` layer를 Astro 폴더 구조에 반영하면 `📁 src/pages`를 사용하게 되는데, Astro도 같은 경로를 파일 기반 라우팅에 사용하므로 두 구조가 충돌합니다.  
+이를 구분하기 위해 FSD의 `pages` layer는 `📁 src/_pages`에 두고, `📁 src/pages`는 Astro의 파일 기반 라우팅 전용으로 유지합니다.
+
+
+<FileTree>
+- src
+  - pages Astro 라우트 
+    - 404.astro
+    - index.astro
+  - _pages FSD pages layer
+    - home
+      - ui
+        - HomePage.astro
+      - index.ts
+</FileTree>
+
+`src/pages`의 파일은 FSD Layer의 페이지 컴포넌트를 불러와 렌더링하는 역할만 합니다.
+
+```astro title="src/pages/index.astro"
+---
+import { HomePage } from '@/_pages/home';
+---
+
+<HomePage />
+```
+
+## Setting up path aliases
+
+`src` 아래 파일을 `@/`로 불러오려면 `tsconfig.json`에 경로 별칭을 추가합니다.
+
+```json title="tsconfig.json"
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+## Integration과 함께 사용하기
+
+[Starlight](https://starlight.astro.build/) 같은 일부 Astro integration은 Markdown이나 MDX로 작성한 문서를 구조화해 다루는 **Content Collections** 기능을 사용합니다. 이런 integration은 보통 `📁 src/content/docs`처럼 정해진 위치에 파일이 있어야 동작합니다.
+
+Integration이 요구하는 폴더 위치는 바꾸지 않고 그대로 둡니다. Content Collections 폴더는 FSD Layer와 이름이 겹치지 않는 경우가 대부분이라, `_pages`나 `shared` 같은 FSD Layer를 이 폴더들과 나란히 둘 수 있습니다.
+
+<FileTree>
+- src
+  - _pages FSD pages layer
+    - ...
+  - content Integration이 사용하는 폴더 (Starlight docs 등)
+    - docs
+      - getting-started.md
+  - shared FSD shared layer
+    - ...
+</FileTree>
+
+라우팅과 렌더링은 integration에 맡기고, 프로젝트에서 만드는 나머지 화면과 기능은 FSD 구조로 관리합니다.
+
+## 참고 자료
+
+- [Astro Routing](https://docs.astro.build/en/guides/routing/)
+- [Astro Project Structure](https://docs.astro.build/en/basics/project-structure/)

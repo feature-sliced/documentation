@@ -1,0 +1,440 @@
+---
+title: Sử dụng với React Query
+sidebar:
+  order: 10
+---
+
+import { FileTree, Aside } from '@astrojs/starlight/components';
+
+## Vấn đề "nên đặt các key ở đâu"
+
+### Giải pháp — phân chia theo entities
+
+Nếu dự án đã có sự phân chia thành các entity, và mỗi request tương ứng với một entity duy nhất,
+cách phân chia thuần khiết nhất sẽ là theo entity. Trong trường hợp này, chúng tôi đề xuất sử dụng cấu trúc sau:
+<FileTree>
+- src/
+  - app/
+    - ...
+  - pages/
+    - ...
+  - entities/
+    - \{entity\}/
+      - ...
+      - api/
+        - `{entity}.query` Query-factory where are the keys and functions
+        - `get-{entity}` Entity getter function
+        - `create-{entity}` Entity creation function
+        - `update-{entity}` Entity update function
+        - `delete-{entity}` Entity delete function
+        - ...
+  - features/
+    - ...
+  - widgets/
+    - ...
+  - shared/
+    - ...
+</FileTree>
+
+Nếu có kết nối giữa các entity (ví dụ, entity Country có field-list của các entity City),
+thì bạn có thể sử dụng [public API for cross-imports][public-api-for-cross-imports] hoặc cân nhắc giải pháp thay thế bên dưới.
+
+### Giải pháp thay thế — giữ trong shared
+
+Trong các trường hợp mà việc tách biệt entity không phù hợp, có thể cân nhắc cấu trúc sau:
+
+<FileTree>
+- src/
+  - ...
+  - shared/
+    - api/
+      - ...
+      - queries Query-factories
+        - document.ts
+        - background-jobs.ts
+        - ...
+      - index.ts
+</FileTree>
+
+Sau đó trong `@/shared/api/index.ts`:
+
+```ts title="@/shared/api/index.ts"
+export { documentQueries } from "./queries/document";
+```
+
+## Vấn đề "Đặt mutations ở đâu?"
+
+Không nên trộn lẫn mutations với queries. Có hai lựa chọn:
+
+### 1. Định nghĩa một custom hook trong segment `api` gần nơi sử dụng
+
+```tsx title="@/features/update-post/api/use-update-title.ts"
+export const useUpdateTitle = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, newTitle }) =>
+      apiClient
+        .patch(`/posts/${id}`, { title: newTitle })
+        .then((data) => console.log(data)),
+
+    onSuccess: (newPost) => {
+      queryClient.setQueryData(postsQueries.ids(id), newPost);
+    },
+  });
+};
+```
+
+### 2. Định nghĩa một mutation function ở nơi khác (Shared hoặc Entities) và sử dụng `useMutation` trực tiếp trong component
+
+```tsx
+const { mutateAsync, isPending } = useMutation({
+  mutationFn: postApi.createPost,
+});
+```
+
+```tsx title="@/pages/post-create/ui/post-create-page.tsx"
+export const CreatePost = () => {
+  const { classes } = useStyles();
+  const [title, setTitle] = useState("");
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: postApi.createPost,
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setTitle(e.target.value);
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    mutate({ title, userId: DEFAULT_USER_ID });
+  };
+
+  return (
+    <form className={classes.create_form} onSubmit={handleSubmit}>
+      <TextField onChange={handleChange} value={title} />
+      <LoadingButton type="submit" variant="contained" loading={isPending}>
+        Create
+      </LoadingButton>
+    </form>
+  );
+};
+```
+
+## Tổ chức các request
+
+### Query factory
+
+Một query factory là một object mà các giá trị key là các function trả về một danh sách các query key. Đây là cách sử dụng nó:
+
+```ts
+const keyFactory = {
+  all: () => ["entity"],
+  lists: () => [...postQueries.all(), "list"],
+};
+```
+
+:::info
+`queryOptions` là một utility tích hợp sẵn trong react-query@v5 (tùy chọn)
+
+```ts
+queryOptions({
+  queryKey,
+  ...options,
+});
+```
+
+Để có type safety tốt hơn, tương thích với các phiên bản tương lai của react-query, và dễ dàng truy cập các function và query key,
+bạn có thể sử dụng function queryOptions tích hợp sẵn từ "@tanstack/react-query"
+[(Chi tiết thêm tại đây)](https://tkdodo.eu/blog/the-query-options-api#queryoptions).
+:::
+
+### 1. Tạo một Query Factory
+
+```tsx title="@/entities/post/api/post.queries.ts"
+import { keepPreviousData, queryOptions } from "@tanstack/react-query";
+import { getPosts } from "./get-posts";
+import { getDetailPost } from "./get-detail-post";
+import { PostDetailQuery } from "./query/post.query";
+
+export const postQueries = {
+  all: () => ["posts"],
+
+  lists: () => [...postQueries.all(), "list"],
+  list: (page: number, limit: number) =>
+    queryOptions({
+      queryKey: [...postQueries.lists(), page, limit],
+      queryFn: () => getPosts(page, limit),
+      placeholderData: keepPreviousData,
+    }),
+
+  details: () => [...postQueries.all(), "detail"],
+  detail: (query?: PostDetailQuery) =>
+    queryOptions({
+      queryKey: [...postQueries.details(), query?.id],
+      queryFn: () => getDetailPost({ id: query?.id }),
+      staleTime: 5000,
+    }),
+};
+```
+
+### 2. Sử dụng Query Factory trong code ứng dụng
+```tsx
+import { useParams } from "react-router-dom";
+import { postApi } from "@/entities/post";
+import { useQuery } from "@tanstack/react-query";
+
+type Params = {
+  postId: string;
+};
+
+export const PostPage = () => {
+  const { postId } = useParams<Params>();
+  const id = parseInt(postId || "");
+  const {
+    data: post,
+    error,
+    isLoading,
+    isError,
+  } = useQuery(postApi.postQueries.detail({ id }));
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError || !post) {
+    return <>{error?.message}</>;
+  }
+
+  return (
+    <div>
+      <p>Post id: {post.id}</p>
+      <div>
+        <h1>{post.title}</h1>
+        <div>
+          <p>{post.body}</p>
+        </div>
+      </div>
+      <div>Owner: {post.userId}</div>
+    </div>
+  );
+};
+```
+
+### Lợi ích của việc sử dụng Query Factory
+- **Cấu trúc hóa request:** Factory cho phép bạn tổ chức tất cả API request tại một nơi, giúp code dễ đọc và bảo trì hơn.
+- **Truy cập thuận tiện vào query và key:** Factory cung cấp các method thuận tiện để truy cập các loại query khác nhau và key của chúng.
+- **Khả năng refetch query:** Factory cho phép refetch dễ dàng mà không cần thay đổi query key ở các phần khác nhau của ứng dụng.
+
+## Phân trang
+
+Trong phần này, chúng ta sẽ xem xét ví dụ về function `getPosts`, thực hiện API request để lấy các post entity sử dụng phân trang.
+
+### 1. Tạo function `getPosts`
+Function getPosts nằm trong file `get-posts.ts`, được đặt trong segment `api`
+
+```tsx title="@/pages/post-feed/api/get-posts.ts"
+import { apiClient } from "@/shared/api/base";
+
+import { PostWithPaginationDto } from "./dto/post-with-pagination.dto";
+import { PostQuery } from "./query/post.query";
+import { mapPost } from "./mapper/map-post";
+import { PostWithPagination } from "../model/post-with-pagination";
+
+const calculatePostPage = (totalCount: number, limit: number) =>
+  Math.floor(totalCount / limit);
+
+export const getPosts = async (
+  page: number,
+  limit: number,
+): Promise<PostWithPagination> => {
+  const skip = page * limit;
+  const query: PostQuery = { skip, limit };
+  const result = await apiClient.get<PostWithPaginationDto>("/posts", query);
+
+  return {
+    posts: result.posts.map((post) => mapPost(post)),
+    limit: result.limit,
+    skip: result.skip,
+    total: result.total,
+    totalPages: calculatePostPage(result.total, limit),
+  };
+};
+```
+
+### 2. Query factory cho phân trang
+Query factory `postQueries` định nghĩa các query option khác nhau để làm việc với post,
+bao gồm request danh sách post với page và limit cụ thể.
+
+```tsx
+import { keepPreviousData, queryOptions } from "@tanstack/react-query";
+import { getPosts } from "./get-posts";
+
+export const postQueries = {
+  all: () => ["posts"],
+  lists: () => [...postQueries.all(), "list"],
+  list: (page: number, limit: number) =>
+    queryOptions({
+      queryKey: [...postQueries.lists(), page, limit],
+      queryFn: () => getPosts(page, limit),
+      placeholderData: keepPreviousData,
+    }),
+};
+```
+
+
+### 3. Sử dụng trong code ứng dụng
+
+```tsx title="@/pages/home/ui/index.tsx"
+export const HomePage = () => {
+  const itemsOnScreen = DEFAULT_ITEMS_ON_SCREEN;
+  const [page, setPage] = usePageParam(DEFAULT_PAGE);
+  const { data, isFetching, isLoading } = useQuery(
+    postApi.postQueries.list(page, itemsOnScreen),
+  );
+  return (
+    <>
+      <Pagination
+        onChange={(_, page) => setPage(page)}
+        page={page}
+        count={data?.totalPages}
+        variant="outlined"
+        color="primary"
+      />
+      <Posts posts={data?.posts} />
+    </>
+  );
+};
+```
+<Aside>
+Ví dụ đã được đơn giản hóa, phiên bản đầy đủ có sẵn trên [GitHub](https://github.com/ruslan4432013/fsd-react-query-example)
+</Aside>
+
+## `QueryProvider` để quản lý queries
+Trong hướng dẫn này, chúng ta sẽ xem cách tổ chức một `QueryProvider`.
+
+### 1. Tạo một `QueryProvider`
+File `query-provider.tsx` nằm tại đường dẫn `@/app/providers/query-provider.tsx`.
+
+```tsx title="@/app/providers/query-provider.tsx"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ReactNode } from "react";
+
+type Props = {
+  children: ReactNode;
+  client: QueryClient;
+};
+
+export const QueryProvider = ({ client, children }: Props) => {
+  return (
+    <QueryClientProvider client={client}>
+      {children}
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  );
+};
+```
+
+### 2. Tạo một `QueryClient`
+`QueryClient` là một instance được sử dụng để quản lý các API request.
+File `query-client.ts` nằm tại `@/shared/api/query-client.ts`.
+`QueryClient` được tạo với các cài đặt nhất định cho việc cache query.
+
+```tsx title="@/shared/api/query-client.ts"
+import { QueryClient } from "@tanstack/react-query";
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+      gcTime: 5 * 60 * 1000,
+    },
+  },
+});
+```
+
+## Tự động sinh code
+
+Có các công cụ có thể tự động sinh API code cho bạn, nhưng chúng kém linh hoạt hơn so với cách tiếp cận thủ công được mô tả ở trên.
+Nếu file Swagger của bạn có cấu trúc tốt,
+và bạn đang sử dụng một trong những công cụ này, việc sinh tất cả code trong thư mục `@/shared/api` có thể hợp lý.
+
+
+## Lời khuyên bổ sung cho việc tổ chức RQ
+### API Client
+
+Sử dụng một class API client tùy chỉnh trong layer shared,
+bạn có thể chuẩn hóa cấu hình và làm việc với API trong dự án.
+Điều này cho phép bạn quản lý logging,
+header và định dạng trao đổi dữ liệu (như JSON hoặc XML) từ một nơi.
+Cách tiếp cận này giúp dễ dàng bảo trì và phát triển dự án vì nó đơn giản hóa các thay đổi và cập nhật tương tác với API.
+
+```tsx title="@/shared/api/api-client.ts"
+import { API_URL } from "@/shared/config";
+
+export class ApiClient {
+  private baseUrl: string;
+
+  constructor(url: string) {
+    this.baseUrl = url;
+  }
+
+  async handleResponse<TResult>(response: Response): Promise<TResult> {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    try {
+      return await response.json();
+    } catch (error) {
+      throw new Error("Error parsing JSON response");
+    }
+  }
+
+  public async get<TResult = unknown>(
+    endpoint: string,
+    queryParams?: Record<string, string | number>,
+  ): Promise<TResult> {
+    const url = new URL(endpoint, this.baseUrl);
+
+    if (queryParams) {
+      Object.entries(queryParams).forEach(([key, value]) => {
+        url.searchParams.append(key, value.toString());
+      });
+    }
+    const response = await fetch(url.toString(), {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return this.handleResponse<TResult>(response);
+  }
+
+  public async post<TResult = unknown, TData = Record<string, unknown>>(
+    endpoint: string,
+    body: TData,
+  ): Promise<TResult> {
+    const response = await fetch(`${this.baseUrl}${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    return this.handleResponse<TResult>(response);
+  }
+}
+
+export const apiClient = new ApiClient(API_URL);
+```
+
+## Xem thêm \{#see-also}
+
+- [(GitHub) Project mẫu](https://github.com/ruslan4432013/fsd-react-query-example)
+- [(CodeSandbox) Project mẫu](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
+- [Về query factory](https://tkdodo.eu/blog/the-query-options-api)
+
+[public-api-for-cross-imports]: /vi/docs/reference/public-api#public-api-for-cross-imports

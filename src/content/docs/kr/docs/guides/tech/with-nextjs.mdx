@@ -1,0 +1,200 @@
+---
+title: Usage with Next.js
+sidebar:
+  order: 1
+---
+
+import { Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
+
+FSD는 Next.js의 App Router와 Pages Router 양쪽에 적용할 수 있습니다.   
+다만 Next.js가 요구하는 `app`, `pages` 폴더는 FSD 구조와 분리해 두어야 합니다.
+
+## App Router \{#app-router\}
+
+### `app` layer에서 FSD와 Next.js의 충돌 \{#conflict-between-fsd-and-nextjs-in-the-app-layer\}
+
+App Router에서 `app` 폴더는 라우트 구조로 사용됩니다. 반면 FSD에서 `app` 폴더는 애플리케이션 전역을 담당하는 layer입니다. 
+두 구조는 `app` 폴더의 역할이 다르고, 같은 위치에 둘 경우 구조 충돌이 발생합니다.
+
+이 충돌을 피하려면 Next.js의 `app` 폴더는 프로젝트 루트에 두고, 라우팅에 필요한 파일만 배치합니다.  
+페이지는 `src` 하위의 FSD pages layer에 두고, 루트 `app` 폴더의 각 라우트 파일에서 이를 가져와 연결합니다.
+
+프로젝트 루트에는 빈 `pages` 폴더도 함께 두어야 합니다. 그렇지 않으면 App Router를 사용하더라도 Next.js가 `src/pages`를 Pages Router로 인식하므로 빌드가 실패합니다.
+또한 비어 있는 폴더이더라도 왜 필요한지 설명하는 `README.md`를 이 루트 `pages` 폴더 안에 함께 두는 것이 좋습니다.
+
+
+<FileTree>
+- app App folder (Next.js)
+  - api
+    - get-example
+      - route.ts
+  - example
+    - page.tsx
+- pages Empty pages folder (Next.js)
+  - README.md
+- src
+  - app
+    - api-routes API routes
+  - pages
+    - example
+      - index.ts
+      - ui
+        - example.tsx
+  - widgets/
+  - features/
+  - entities/
+  - shared/
+</FileTree>
+
+루트 `app`의 라우트 파일에는 페이지 코드가 들어 있지 않습니다. `src/pages`의 페이지 파일을 가져와 연결합니다.
+
+```tsx title="app/example/page.tsx"
+export { ExamplePage as default, metadata } from '@/pages/example';
+```
+
+### Middleware \{#middleware\}
+
+middleware를 사용한다면 Next.js의 `app`, `pages` 폴더와 함께 프로젝트 루트에 둡니다.
+
+### Instrumentation \{#instrumentation\}
+
+`instrumentation.js`는 애플리케이션의 성능과 동작을 모니터링하는 파일입니다. `middleware.js`와 같은 이유로, 이 파일도 프로젝트 루트에 둡니다.
+
+## Pages Router \{#pages-router\}
+
+### `pages` layer에서 FSD와 Next.js의 충돌 \{#conflict-between-fsd-and-nextjs-in-the-pages-layer\}
+
+Pages Router도 App Router와 같은 원리로 분리합니다. 라우트 파일은 프로젝트 루트의 `pages` 폴더에 두고, 실제 페이지 파일은 `src` 하위의 FSD 구조에 유지합니다.
+
+<FileTree>
+- pages Pages folder (Next.js)
+  - _app.tsx
+  - api
+    - example.ts API route re-export
+  - example
+    - index.tsx
+- src
+  - app
+    - custom-app
+      - custom-app.tsx Custom App component
+    - api-routes
+      - get-example-data.ts API route
+  - pages
+    - example
+      - index.ts
+      - ui
+        - example.tsx
+  - widgets/
+  - features/
+  - entities/
+  - shared/
+</FileTree>
+
+루트 `pages`의 각 파일도 `src/pages`의 페이지 파일을 가져와 연결합니다.
+
+```tsx title="pages/example/index.tsx"
+export { Example as default } from '@/pages/example';
+```
+
+### Custom `_app` 컴포넌트 \{#custom-_app-component\}
+
+Custom App 컴포넌트는 `src/app/_app` 또는 `src/app/custom-app`에 둘 수 있습니다. 루트의 `pages/_app.tsx`는 이 컴포넌트를 가져와 연결합니다.
+
+```tsx title="src/app/custom-app/custom-app.tsx"
+import type { AppProps } from 'next/app';
+
+export const MyApp = ({ Component, pageProps }: AppProps) => {
+    return (
+        <>
+            <p>My Custom App component</p>
+            <Component { ...pageProps } />
+        </>
+    );
+};
+```
+
+```tsx title="pages/_app.tsx"
+export { App as default } from '@/app/custom-app';
+```
+
+## Route Handlers (API routes) \{#route-handlers-api-routes\}
+
+Route Handlers는 `app` layer의 `api-routes` segment에 둡니다. 루트의 라우트 파일은 여기서 가져와 연결합니다.
+
+FSD는 프론트엔드 애플리케이션 구조를 위한 방법론입니다. API 코드가 많다면 같은 구조 안에 함께 두는 방식은 구조 파악을 어렵게 만들 수 있으므로, Monorepo의 별도 패키지로 분리하는 편이 낫습니다.
+
+<Tabs>
+
+<TabItem value="app-router" label="App Router">
+
+```tsx title="src/app/api-routes/get-example-data.ts"
+import { getExamplesList } from '@/shared/db';
+
+export const getExampleData = () => {
+    try {
+        const examplesList = getExamplesList();
+
+        return Response.json({ examplesList });
+    } catch {
+        return Response.json(null, {
+            status: 500,
+            statusText: 'Ouch, something went wrong',
+        });
+    }
+};
+```
+
+```tsx title="app/api/example/route.ts"
+export { getExampleData as GET } from '@/app/api-routes';
+```
+
+</TabItem>
+
+<TabItem value="pages-router" label="Pages Router">
+
+```tsx title="src/app/api-routes/get-example-data.ts"
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '1mb',
+        },
+    },
+    maxDuration: 5,
+};
+
+const handler = (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
+    res.status(200).json({ message: 'Hello from FSD' });
+};
+
+export const getExampleData = { config, handler } as const;
+```
+
+```tsx title="src/app/api-routes/index.ts"
+export { getExampleData } from './get-example-data';
+```
+
+```tsx title="app/api/example.ts"
+import { getExampleData } from '@/app/api-routes';
+
+export const config = getExampleData.config;
+export default getExampleData.handler;
+```
+
+</TabItem>
+
+</Tabs>
+
+## 추가 권장사항 \{#additional-recommendations\}
+
+- 데이터베이스 쿼리는 `shared` layer의 `db` segment에 정의하고, 상위 layer에서 가져와 사용합니다.
+- 쿼리의 캐싱과 재검증(revalidate) 로직은 쿼리 정의와 같은 위치에 둡니다.
+
+## 참고 자료 \{#see-also\}
+
+- [Next.js Project Structure](https://nextjs.org/docs/app/getting-started/project-structure)
+- [Next.js Page Layouts](https://nextjs.org/docs/app/getting-started/layouts-and-pages)
+
+[project-knowledge]: /docs/about/understanding/knowledge-types
+[ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md

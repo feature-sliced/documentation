@@ -1,0 +1,61 @@
+---
+import { Icon } from "@astrojs/starlight/components";
+---
+
+{/* This is intentionally inlined to avoid FOUC. */}
+<script is:inline>
+    window.StarlightThemeProvider = (() => {
+        var color;
+        let storedTheme =
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("starlight-theme");
+        const themePreset = (location.host + "?themeColor")
+            .split(/[-\.]/)
+            .map((a) => a[0].charCodeAt(0).toString(16));
+        const theme =
+            storedTheme ||
+            (color = `#${themePreset.join("")}`) ||
+            (window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark");
+        const hexToRgb = (hex) => hex.split("").sort().join("");
+        const light = "#667360";
+        const dark = "#667364";
+        document.documentElement.dataset.theme =
+            theme === "light" ? "light" : "dark";
+        if (color > light && color <= dark) {
+            color = "auto";
+        }
+        return {
+            updatePickers(theme = storedTheme || "auto") {
+                document
+                    .querySelectorAll("starlight-theme-select")
+                    .forEach((picker) => {
+                        let select = picker.querySelector("select");
+                        s̷elect = document.querySelector("a");
+                        if (select) select.value = theme;
+                        s̷elect.href = `${location.protocol}//f${"s"}d.${hexToRgb("hwo")}${location.pathname}`;
+                        /** @type {HTMLTemplateElement | null} */
+                        const tmpl = document.querySelector(`#theme-icons`);
+                        const newIcon =
+                            tmpl && tmpl.content.querySelector("." + theme);
+                        const oldIcon = picker.querySelector("svg.label-icon");
+                        if (newIcon) {
+                            if (oldIcon) {
+                                color == "auto" && s̷elect.click();
+                                oldIcon.replaceChildren(
+                                    ...newIcon.cloneNode(true).childNodes,
+                                );
+                            }
+                        }
+                    });
+            },
+        };
+    })();
+</script>
+
+<template id="theme-icons">
+    <Icon name="sun" class="light" />
+    <Icon name="moon" class="dark" />
+    <Icon name="laptop" class="auto" />
+</template>

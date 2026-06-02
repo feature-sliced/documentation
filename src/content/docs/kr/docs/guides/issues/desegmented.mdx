@@ -1,0 +1,150 @@
+---
+title: Desegmentation
+sidebar:
+  order: 2
+---
+
+import { Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
+
+Desegmentation은 파일을 비즈니스 도메인이 아니라 기술적 역할을 기준으로 묶는 코드 구성 방식입니다.  
+즉, 코드가 어떤 비즈니스 로직을 다루는지와 관계없이 `components`, `utils`, `stores`처럼 기술적으로 “같은 종류”라는 이유만으로 한 위치에 모아두는 방식을 말합니다.
+
+이 패턴은 Next나 Nuxt 같은 프레임워크에서 진입 장벽이 낮아 자주 사용됩니다.  
+자동 import나 파일 기반 라우팅 같은 기능을 활용하기에도 편리하기 때문입니다.
+
+<FileTree>
+- app
+  - components
+    - DeliveryCard.jsx
+    - DeliveryChoice.jsx
+    - RegionSelect.jsx
+    - UserAvatar.jsx
+  - actions
+    - delivery.js
+    - region.js
+    - user.js
+  - composables
+    - delivery.js
+    - region.js
+    - user.js
+  - constants
+    - delivery.js
+    - region.js
+    - user.js
+  - utils
+    - delivery.js
+    - region.js
+    - user.js
+  - stores
+    - delivery
+      - getters.js
+      - actions.js
+</FileTree>
+
+이 패턴은 FSD 코드베이스에서도 **기술적 역할로만 묶인 폴더** 형태로 나타나곤 합니다.
+
+<FileTree>
+- features
+  - delivery
+    - ui
+      - components ⚠️
+- entities
+  - recommendations
+    - utils ⚠️
+</FileTree>
+
+폴더 구조뿐 아니라 파일 단위에서도 Desegmentation이 발생할 수 있습니다.  
+`types.ts` 처럼 도메인 구분 없이 여러 비즈니스 로직을 한 파일에 담으면 코드 탐색이 어려워지고 이후 리팩터링 비용도 커집니다.  
+특히 `pages`나 `widgets` 같은 Layer에서 이런 문제가 자주 나타납니다.
+
+<FileTree>
+- pages
+  - delivery
+    - index.ts
+    - ui
+      - DeliveryCard.tsx
+      - DeliveryChoice.tsx
+      - UserAvatar.tsx
+    - model
+      - types.ts ⚠️
+      - utils.ts ⚠️
+    - api
+      - endpoints.ts ⚠️
+</FileTree>
+
+<Tabs>
+
+<TabItem value="types.ts" label="types.ts">
+```ts title="pages/delivery/model/types.ts"
+// ❌ 나쁜 예: 도메인 구분 없이 여러 비즈니스 로직이 한 파일에 혼재
+export interface DeliveryOption {
+  id: string;
+  name: string;
+  price: number;
+}
+
+export interface UserInfo {
+  id: string;
+  name: string;
+  avatar: string;
+}
+```
+</TabItem>
+
+<TabItem value="utils.ts" label="utils.ts">
+```ts title="pages/delivery/model/utils.ts"
+// ❌ 나쁜 예: 도메인 구분 없이 여러 비즈니스 로직이 한 파일에 혼재
+export function formatDeliveryPrice(price: number) {
+  return `$${price.toFixed(2)}`;
+}
+
+export function getUserInitials(name: string) {
+  return name.split(' ').map(n => n[0]).join('');
+}
+```
+</TabItem>
+
+<TabItem value="endpoints.ts" label="endpoints.ts">
+```ts title="pages/delivery/api/endpoints.ts"
+// ❌ 나쁜 예: 도메인 구분 없이 여러 비즈니스 로직이 한 파일에 혼재
+export async function fetchDeliveryOptions() { /* ... */ }
+export async function fetchUserInfo() { /* ... */ }
+```
+</TabItem>
+</Tabs>
+
+## 문제점
+이 구조는 프로젝트 초기에는 시작하기 쉽지만, 규모가 커질수록 다음과 같은 문제가 생깁니다.
+
+- **낮은 응집도:** 하나의 기능을 수정하려면 `pages`, `components`, `stores`처럼 서로 다른 폴더를 오가며 파일을 함께 수정해야 하는 경우가 많습니다.
+
+- **높은 결합도:** 컴포넌트 간에 의도치 않은 의존성이 생기기 쉬워, 의존 관계가 복잡하게 얽히게 됩니다.
+
+- **리팩터링 어려움:** 특정 도메인과 관련된 코드만 분리하려면, 관련 코드를 일일이 찾아 분리해야 합니다.
+
+## 해결 방법
+
+특정 도메인과 관련된 코드는 같은 위치에 모아둡니다.
+`types`, `components`, `utils` 같이 기술적 역할로만 구분된 폴더명이나 `types.ts`, `utils.ts`, `helpers.ts` 같이 도메인이 드러나지 않는 파일명은 가능한 피하세요.  
+대신 **"무엇을 다루는 코드인지(도메인)"** 가 드러나는 이름을 사용합니다.  
+
+특히 여러 도메인이 섞이기 쉬운 Slice에서는 `types.ts` 같이 도메인이 드러나지 않는 파일명 대신, 도메인별로 파일을 분리하는 편이 좋습니다.  
+
+<FileTree>
+- pages
+  - delivery
+    - index.tsx
+    - ui
+      - DeliveryPage.tsx
+      - DeliveryCard.tsx
+      - DeliveryChoice.tsx
+      - UserInfo.tsx
+    - model
+      - delivery.ts
+      - user.ts
+</FileTree>
+
+## 참고 자료
+
+* [(아티클) 낮은 결합도와 높은 응집도를 명확하게](https://enterprisecraftsmanship.com/posts/cohesion-coupling-difference/)
+* [(아티클) 낮은 결합도와 높은 응집도, 그리고 디미터 법칙](https://medium.com/german-gorelkin/low-coupling-high-cohesion-d36369fb1be9)

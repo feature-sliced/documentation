@@ -1,0 +1,557 @@
+---
+title: Использование с TanStack Query
+sidebar:
+  order: 2
+---
+
+import { Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
+
+## Где располагать ключи \{#where-to-store-keys\}
+
+<Tabs>
+    <TabItem value="shared" label="В shared">
+
+        <FileTree>
+        - src/
+          - app/
+          - pages/
+          - widgets/
+          - features/
+          - entities/
+          - shared/
+            - api/
+              - queries/ Фабрики запросов
+                - example.ts
+                - another-example.ts
+        </FileTree>
+
+        ```ts title="src/shared/api/index.ts"
+        export { exampleQueries } from './queries/example';
+        ```
+
+    </TabItem>
+
+    <TabItem value="shared-with-controllers" label="В shared с разделением по контроллерам">
+
+        Если объём эндпоинтов оказывается достаточно большим и Вы также хотите хранить их в `shared`, то лучше разбить всё по контроллерам и использовать публичный API для каждого из них
+
+        <FileTree>
+        - src/
+          - app/
+          - pages/
+          - widgets/
+          - features/
+          - entities/
+          - shared/
+            - api/
+              - example/
+                - index.ts
+                - example.query.ts Фабрика запросов, где определены ключи и функции для контроллера example
+                - get-example.ts
+                - create-example.ts
+                - update-example.ts
+                - delete-example.ts
+              - another-example/
+                - index.ts
+                - another-example.query.ts Фабрика запросов, где определены ключи и функции для контроллера another-example
+                - get-another-example.ts
+                - create-another-example.ts
+                - update-another-example.ts
+                - delete-another-example.ts
+        </FileTree>
+
+        ```ts title="src/shared/api/example/index.ts"
+        export { exampleQueries } from "./example.query";
+        ```
+
+    </TabItem>
+
+    <TabItem value="entities" label="В entities">
+
+        *Если в проекте уже присутствует разделение на сущности*, и каждый запрос соответствует одной сущности,
+        наиболее чистым будет разделение по сущностям. В таком случае, предлагаем использовать следующую структуру:
+
+        <FileTree>
+        - src/
+          - app/
+          - pages/
+          - widgets/
+          - features/
+          - entities/
+            - example/
+              - api/
+                - example.query.ts Фабрика запросов, где определены ключи и функции
+                - get-example.ts
+                - create-example.ts
+                - update-example.ts
+                - delete-example.ts
+          - shared/
+        </FileTree>
+
+        Если среди сущностей есть связи (например, у сущности Страна есть поле-список сущностей Город), то можно воспользоваться [публичным API для кросс-импортов][public-api-for-cross-imports].
+
+    </TabItem>
+
+</Tabs>
+
+## Где располагать мутации \{#where-to-store-mutations\}
+
+Мутации не рекомендуется смешивать с запросами. Исходя из этого можно предложить несколько вариантов:
+
+<Tabs>
+
+    <TabItem value="custom-hook" label="В сегменте api рядом с местом использования">
+
+        ```tsx title="src/pages/example/api/use-update-example.ts"
+        export const useUpdateExample = () => {
+            const queryClient = useQueryClient();
+
+            return useMutation({
+                mutationFn: async ({ id, newTitle }) => {
+                    const { data } = await apiClient.patch(`/posts/${ id }`, { title: newTitle });
+
+                    return data;
+                },
+                onSuccess: newPost => {
+                    queryClient.setQueryData(postsQueries.ids(id), newPost);
+                },
+            });
+        };
+        ```
+
+    </TabItem>
+
+    <TabItem value="В shared" label="В shared или entities через mutationFn">
+
+        ```tsx title="src/pages/example/ui/example.tsx"
+        export const Example = () => {
+            const [title, setTitle] = useState('');
+
+            const { mutate, isPending } = useMutation({
+                mutationFn: mutations.createExample,
+            });
+
+            const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+                setTitle(value);
+            };
+
+            const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+                e.preventDefault();
+                mutate({ title, userId: DEFAULT_USER_ID });
+            };
+
+            return (
+                <form onSubmit={ handleSubmit }>
+                    <Input onChange={ handleChange } value={ title } />
+                    <Button type="submit" disabled={ isPending }>Create</Button>
+                </form>
+            );
+        };
+    ```
+</TabItem>
+
+</Tabs>
+
+## Организация запросов \{#organizing-queries\}
+
+### Фабрика запросов \{#query-factory\}
+
+В этом гайде рассмотрим, как использовать фабрику запросов (объект, где значениями ключа - являются функции, возвращающие список ключей запроса)
+
+```ts
+const keyFactory = {
+    all: () => ["entity"],
+    lists: () => [...postQueries.all(), "list"],
+};
+```
+
+:::info
+    `queryOptions` - встроенная утилита react-query@v5
+
+Одним из лучших способов совместного использования `queryKey` и `queryFn` в нескольких местах — это использование вспомогательной функции `queryOptions` [(подробнее здесь)](https://tanstack.com/query/latest/docs/framework/react/guides/query-options)
+
+```ts
+import { queryOptions } from '@tanstack/react-query';
+
+const groupOptions = (id: number) => queryOptions({
+    queryKey: ['groups', id],
+    queryFn: () => fetchGroups(id),
+    gcTime: 5 * 1000,
+});
+```
+:::
+
+### 1. Создание Фабрики запросов \{#creating-query-factory\}
+
+```tsx title="src/shared/api/post/post.queries.ts"
+import { queryOptions } from '@tanstack/react-query';
+import { getPosts } from './get-posts';
+import { getDetailPost, type DetailPostQuery } from './get-detail-post';
+
+export const POST_QUERIES = {
+    all: () => ['posts'],
+    lists: () => [...POST_QUERIES.all(), 'list'],
+    list: (page: number, limit: number) => queryOptions({
+        queryKey: [...POST_QUERIES.lists(), page, limit],
+        queryFn: () => getPosts(page, limit),
+        placeholderData: prev => prev,
+    }),
+    details: () => [...POST_QUERIES.all(), 'detail'],
+    detail: (query?: DetailPostQuery) => queryOptions({
+        queryKey: [...POST_QUERIES.details(), query?.id],
+        queryFn: () => getDetailPost({ id: query?.id }),
+    }),
+};
+```
+
+### 2. Применение Фабрики запросов в коде приложения \{#using-query-factory\}
+
+```tsx title="src/pages/post/ui/post.tsx"
+import { useParams } from 'react-router';
+import { postApi } from '@/shared/api/post';
+import { useQuery } from '@tanstack/react-query';
+
+interface Params {
+    postId: string;
+}
+
+export const Post = () => {
+    const { postId } = useParams<IParams>();
+
+    const {
+        data: post,
+        error,
+        isLoading,
+        isError
+    } = useQuery(postApi.postQueries.detail({ id: parseInt(postId ?? '', 10) }));
+
+    if (isLoading) {
+        return (
+            <div>Loading...</div>
+        );
+    }
+
+    if (isError || !post) {
+        return (
+            <div>{ error?.message }</div>
+        );
+    }
+
+    return (
+        <div>
+            <p>Post id: { post.id }</p>
+            <div>
+                <h1>{ post.title }</h1>
+                <div>
+                    <p>{ post.body }</p>
+                </div>
+            </div>
+            <div>Owner: { post.userId }</div>
+        </div>
+    );
+};
+```
+
+### Преимущества использования Фабрики запросов \{#query-factory-benefits\}
+- **Структурирование запросов:** Фабрика позволяет организовать все запросы к API в одном месте, что делает код более читаемым и поддерживаемым.
+- **Удобный доступ к запросам и ключам:** Фабрика предоставляет удобные методы для доступа к различным типам запросов и их ключам.
+- **Возможность рефетчинга запросов:** Фабрика обеспечивает возможность легкой рефетчинга без необходимости изменения ключей запросов в разных частях приложения.
+
+## Пагинация \{#pagination\}
+
+Для пагинации используется та же фабрика запросов из раздела [«Организация запросов»](#organizing-queries) с добавлением `placeholderData`
+
+### Использование в компоненте \{#pagination-usage\}
+
+```tsx title="src/pages/home/ui/home.tsx"
+export const Home = () => {
+    const [page, setPage] = usePageParam(DEFAULT_PAGE);
+
+    const { data, isFetching, isLoading } = useQuery(postApi.POST_QUERIES.list(page, DEFAULT_ITEMS_ON_SCREEN));
+
+    return (
+        <>
+            <Pagination
+                onChange={ (_, page) => setPage(page) }
+                page={ page }
+                count={ data?.totalPages }
+                variant="outlined"
+                color="primary"
+            />
+            <Posts posts={ data?.posts } />
+        </>
+    );
+};
+```
+
+## Бесконечная прокрутка \{#infinite-scroll\}
+
+`useInfiniteQuery` используется для реализации паттернов «загрузить ещё» или бесконечной прокрутки.
+
+### 1. Фабрика запросов с `infiniteQueryOptions` \{#infinite-query-factory\}
+
+```tsx title="src/shared/api/post/post.queries.ts"
+import { infiniteQueryOptions } from '@tanstack/react-query';
+import { getPosts } from './get-posts';
+
+export const POST_QUERIES = {
+    all: () => ['posts'],
+    lists: () => [...POST_QUERIES.all(), 'list'],
+    infinite: (limit: number) => infiniteQueryOptions({
+        queryKey: [...POST_QUERIES.lists(), 'infinite', limit],
+        queryFn: ({ pageParam }) => getPosts(pageParam, limit),
+        initialPageParam: 0,
+        getNextPageParam: lastPage =>
+            lastPage.skip + lastPage.limit < lastPage.total
+                ? lastPage.skip / lastPage.limit + 1
+                : undefined,
+    }),
+};
+```
+
+### 2. Использование в компоненте \{#infinite-query-usage\}
+
+```tsx title="src/pages/post-feed/ui/post-feed.tsx"
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { postApi } from '@/shared/api/post';
+
+export const PostFeed = () => {
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+        useInfiniteQuery(postApi.POST_QUERIES.infinite(10));
+
+    const posts = data?.pages.flatMap(page => page.posts) ?? [];
+
+    return (
+        <>
+            <Posts posts={ posts } />
+            { hasNextPage && (
+                <button onClick={ () => fetchNextPage() } disabled={ isFetchingNextPage }>
+                    { isFetchingNextPage ? 'Загрузка...' : 'Загрузить ещё' }
+                </button>
+            ) }
+        </>
+    );
+};
+```
+
+## Suspense mode \{#suspense-mode\}
+
+`useSuspenseQuery` позволяет использовать React Suspense для обработки состояния загрузки, убирая необходимость проверять `isLoading` вручную.
+
+### 1. Фабрика запросов остаётся прежней \{#suspense-query-factory\}
+
+`queryOptions` и `useSuspenseQuery` совместимы — менять фабрику не нужно.
+
+### 2. Использование в компоненте \{#suspense-usage\}
+
+```tsx title="src/pages/post/ui/post.tsx"
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { postApi } from '@/shared/api/post';
+
+interface PostProps {
+    id: number;
+}
+
+export const Post = ({ id }: PostProps) => {
+    const { data: post } = useSuspenseQuery(postApi.POST_QUERIES.detail({ id }));
+
+    return (
+        <div>
+            <h1>{ post.title }</h1>
+            <p>{ post.body }</p>
+        </div>
+    );
+};
+```
+
+### 3. Обёртка в `app` слое \{#suspense-app-wrapper\}
+
+```tsx title="src/app/providers/suspense-provider.tsx"
+import { Suspense, type ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+
+interface SuspenseProviderProps {
+    children: ReactNode;
+}
+
+export const SuspenseProvider = ({ children }: SuspenseProviderProps) => (
+    <ErrorBoundary fallback={ <div>Что-то пошло не так</div> }>
+        <Suspense fallback={ <div>Загрузка...</div> }>
+            { children }
+        </Suspense>
+    </ErrorBoundary>
+);
+```
+
+## `useMutationState` \{#use-mutation-state\}
+
+`useMutationState` позволяет читать состояние мутаций из любого компонента без передачи пропсов — удобно для глобальных индикаторов загрузки или отображения статуса операции.
+
+### 1. Хранение ключей мутаций \{#storing-mutation-keys\}
+
+По аналогии с фабрикой запросов, ключи мутаций стоит хранить в одном месте рядом с фабрикой:
+
+```ts title="src/shared/api/post/post.queries.ts"
+export const POST_MUTATIONS = {
+    updateTitle: () => ['post', 'update-title'],
+    create: () => ['post', 'create'],
+};
+```
+
+### 2. Именование мутации через `mutationKey` \{#naming-mutations\}
+
+```tsx title="src/features/update-post/api/use-update-post-title.ts"
+import { POST_MUTATIONS } from '@/shared/api/post';
+
+interface UpdatePostTitle {
+    id: number;
+    newTitle: string;
+}
+
+export const useUpdatePostTitle = () =>
+    useMutation({
+        mutationKey: POST_MUTATIONS.updateTitle(),
+        mutationFn: ({ id, newTitle }: UpdatePostTitle) =>
+            apiClient.patch(`/posts/${id}`, { title: newTitle }),
+    });
+```
+
+### 3. Чтение состояния в другом компоненте \{#reading-mutation-state\}
+
+```tsx title="src/features/update-post/ui/save-indicator.tsx"
+import { useMutationState } from '@tanstack/react-query';
+import { POST_MUTATIONS } from '@/shared/api/post';
+
+export const SaveIndicator = () => {
+    const isPending = useMutationState({
+        filters: { mutationKey: POST_MUTATIONS.updateTitle(), status: 'pending' },
+        select: mutation => mutation.state.status,
+    }).length > 0;
+
+    return isPending && (
+        <span>Сохранение...</span>
+    );
+};
+```
+
+## Организация `QueryProvider` \{#query-provider\}
+
+```tsx title="@/app/providers/query-provider.tsx"
+import { type ReactNode } from 'react';
+import { QueryClient, QueryClientProvider, MutationCache, QueryCache } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { toast } from 'sonner';
+
+interface QueryProviderProps {
+    children: ReactNode;
+    client: QueryClient;
+}
+
+const queryClient = new QueryClient({
+    queryCache: new QueryCache({
+        onError: error => {
+            toast.error(error.message);
+        },
+    }),
+    mutationCache: new MutationCache({
+        onError: error => {
+            toast.error(error.message);
+        },
+    }),
+    defaultOptions: {
+        queries: {
+            staleTime: 5 * 60 * 1000,
+            gcTime: 5 * 60 * 1000,
+        },
+    },
+});
+
+export const QueryProvider = ({ client, children }: QueryProviderProps) => {
+    return (
+        <QueryClientProvider client={ client }>
+            { children }
+            <ReactQueryDevtools />
+        </QueryClientProvider>
+    );
+};
+```
+
+## Кодогенерация \{#code-generation\}
+
+Существуют инструменты для автоматической генерации кода,
+    которые менее гибкие, по сравнению с теми, что можно настроить,
+    как описано выше. Если ваш Swagger-файл хорошо структурирован, и вы используете одно из таких инструментов,
+    то возможно имеет смысл сгенерировать весь код в каталоге @/shared/api.
+
+
+## Дополнительный совет по взаимодействию с запросами \{#api-client\}
+
+Используя собственный класс клиента API в общем слое shared,
+    можно стандартизировать настройку и работу с API в проекте.
+    Это позволяет управлять логированием, заголовками и форматом обмена данными (например, JSON или XML) из одного места.
+    Такой подход облегчает поддержку и развитие проекта, поскольку упрощает изменения и обновления взаимодействия с API.
+
+```tsx title="@/shared/api/api-client.ts"
+import { API_URL } from "@/shared/config";
+
+export class ApiClient {
+    #baseUrl: string;
+
+    constructor(url: string) {
+        this.#baseUrl = url;
+    }
+
+    async handleResponse<TResult>(response: Response): Promise<TResult> {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${ response.status }`);
+        }
+
+        try {
+            return await response.json();
+        } catch (error) {
+            throw new Error("Error parsing JSON response");
+        }
+    }
+
+  public async get<TResult = unknown>(endpoint: string, queryParams?: Record<string, string | number>): Promise<TResult> {
+    const url = new URL(endpoint, this.#baseUrl);
+
+    if (queryParams) {
+        Object.entries(queryParams).forEach(([key, value]) => {
+            url.searchParams.append(key, value.toString());
+        });
+    }
+
+    const response = await fetch(url.toString(), {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return this.handleResponse<TResult>(response);
+  }
+
+  public async post<TResult = unknown, TData = Record<string, unknown>>(endpoint: string, body: TData): Promise<TResult> {
+    const response = await fetch(`${ this.#baseUrl }${ endpoint }`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    return this.handleResponse<TResult>(response);
+  }
+}
+
+export const apiClient = new ApiClient(API_URL);
+```
+
+## Полезные ссылки \{#see-also\}
+
+- [(GitHub) Пример проекта](https://github.com/ruslan4432013/fsd-react-query-example)
+- [(CodeSandbox) Пример проекта](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
+- [О фабрике запросов](https://tkdodo.eu/blog/the-query-options-api)
+
+[public-api-for-cross-imports]: /ru/docs/reference/public-api#public-api-for-cross-imports

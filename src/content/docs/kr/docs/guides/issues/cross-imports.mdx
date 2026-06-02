@@ -1,0 +1,309 @@
+---
+title: Cross-imports
+sidebar:
+  order: 4
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Cross-import는 **같은 `layer` 내부에 있는 서로 다른 `slice` 간의 import**를 의미합니다.
+
+예를 들어 `features/cart`에서 `features/product`를 import하거나,
+`widgets/header`에서 `widgets/sidebar`를 import하는 경우입니다.
+
+Cross-import는 code smell이며, slice 간의 결합도가 높아지고 있다는 경고 신호입니다.
+불가피하게 사용해야 한다면, 단순히 가져다 쓰는 게 아닌 왜 필요한지 명확히 판단하고 사용해야 합니다.
+그리고 이런 예외적인 의존 관계는 반드시 팀 내에서 서로 합의된 내용이어야 합니다.
+
+:::note
+`shared`와 `app` layer는 `slice` 개념이 없으므로, 해당 layer 내부 import는 cross-import로 보지 않습니다.
+:::
+
+
+## Cross-import는 왜 code smell 인가요?
+
+Cross-import는 단순히 코딩 스타일의 문제가 아닙니다.
+도메인 간의 경계를 흐리고, 변경 사항이 어디까지 영향을 줄지 알 수 없게 만드는 위험 신호로 간주됩니다.
+
+예를 들어 `cart` slice가 `product`의 비즈니스 로직에 직접 의존하는 상황을 생각해 봅시다.
+당장은 구현이 편해 보일 수 있지만, 시간이 지나면 다음과 같은 문제들이 발생합니다.
+
+1. **코드의 책임과 관리 주체가 모호해집니다**
+  `cart`가 `product` 내부 로직을 직접 가져다 쓰기 시작하면, 해당 로직의 '적절한 위치'가 어디인지 판단하기 어려워집니다.
+  `product` 내부 코드를 리팩토링하거나 로직을 바꿀 때, 그 로직을 `cart`도 함께 사용한다는 점을 놓치면 `cart`에서 런타임 오류나 동작 변경이 발생할 수 있습니다.
+   이런 숨은 의존성은 코드 탐색과 수정 난도를 올리고, 문제 발생 시 어느 `slice`에서 고쳐야 하는지 판단을 어렵게 만들어 결과적으로 리뷰/커뮤니케이션 비용을 키울 수 있습니다.
+
+2. **독립적인 실행과 테스트가 어려워집니다**
+   Sliced Architecture의 가장 큰 장점은 각 Slice를 독립적으로 개발하고 테스트하며 배포할 수 있다는 점입니다.
+   하지만 Cross-import가 늘어나면 이 격리 상태가 깨집니다. `cart`만 테스트하고 싶어도 `product`의 정보를 불러와야 하며,
+   한 Slice에서의 수정이 다른 Slice의 기능이 예기치 않게 오작동하는 부작용이 발생할 수 있습니다
+
+3. **코드 탐색 비용이 증가합니다.**
+   `cart`를 수정할 때 의존 중인 `product`의 설계와 동작 방식까지 모두 파악해야 합니다.
+   하나의 Slice 안에서 작업을 끝내지 못하고, 연관된 여러 Slice 파일을 오가며 로직의 흐름을 쫓아야 합니다.
+   작은 부분을 수정할 때도 여러 Slice의 맥락을 동시에 고려해야 하므로 실수가 잦아집니다.
+
+4. **순환 의존성의 원인이 됩니다**
+   cross-import는 처음엔 A→B 단방향으로 시작하더라도 시간이 지나면서 B→A가 생겨 **양방향(순환) 의존성**이 되기 쉽습니다.
+   이렇게 되면 slice들이 사실상 하나로 묶여버리고, 의존성을 풀거나 리팩터링하는 비용이 크게 올라갑니다.
+
+도메인 경계를 나누는 목적은 각 Slice가 자신의 책임에 집중하고 독립적으로 변화하게 만들기 위함입니다.
+의존 관계가 느슨할수록 변경 영향을 예측하기 쉽고, 리뷰와 테스트 범위도 좁게 유지할 수 있습니다.
+cross-import는 이 분리를 약화시키기 때문에, 일반적으로는 피하는 것이 좋은 의존성으로 다루는 편이 안전합니다.
+
+
+## Entities Layer cross-imports
+
+`entities`에서 cross-import가 자주 보인다면, 우선 `entity` 경계를 너무 잘게 쪼갠 것은 아닌지 점검해야 합니다.
+`@x` 패턴을 도입하기 전에, 분리된 Slice들을 하나로 병합하는 것이 설계상 더 자연스럽지 않은지 먼저 검토하세요.
+
+일부 팀에서는 `entities` 간의 불가피한 교차 참조를 해결하기 위해 `@x`를 별도의 entry point로 운영하기도 합니다.
+하지만 `@x`는 권장되는 패턴이라기보다 불가피한 타협에 가깝습니다.
+따라서 다른 대안이 없을 때 선택하는 마지막 수단으로 취급하는 것이 좋습니다.
+
+`@x`는 도메인 간의 피할 수 없는 의존 관계를 감추지 않고 명확히 드러내기 위한 공식 통로에 가깝습니다.
+이를 남발하면 `entity` 경계가 서로 강하게 엮이고, 시간이 지날수록 리팩터링 비용이 커지기 쉽습니다.
+
+`@x`에 대한 자세한 내용은 [Public API 문서](/kr/docs/reference/public-api)를 참고하세요.
+
+비즈니스 `entity` 간 상호 참조(타입/관계)의 구체 예시는 아래 문서를 참고하세요:
+- [Types 가이드 — 비즈니스 엔티티와 상호 참조](/kr/docs/guides/examples/types#business-entities-and-their-cross-references)
+- [Layers 레퍼런스 — Entities](/kr/docs/reference/layers#entities)
+
+
+## Features와 Widgets: 다양한 설계 전략
+
+`features`와 `widgets`에서는 cross-import를 항상 금지라고 선언하기보다,
+실제로는 팀/도메인/제품 상황에 따라 선택 가능한 여러 전략이 있다고 보는 편이 현실적입니다.
+이 섹션은 코드 자체보다, 상황에 따라 고를 수 있는 패턴 중심으로 설명합니다.
+
+
+### Strategy A: Slice merge
+
+두 slice가 실제로 독립적이지 않고 항상 같이 변경된다면, 둘을 하나의 더 큰 slice로 합치는 방법이 있습니다.
+
+예시 (before):
+
+- `features/profile`
+- `features/profileSettings`
+
+서로 계속 cross-import하고 사실상 한 단위로 움직인다면, 사실상 하나의 기능에 가까울 가능성이 큽니다.
+그 경우 `features/profile`로 합치는 편이 구조적으로 더 단순하고 유지보수도 쉬워지는 경우가 많습니다.
+
+
+### Strategy B: 여러 `features`에서 공유하는 도메인 로직을 `entities`로 내리기
+
+여러 `feature`가 같은 도메인 로직(예: 세션 검증)을 반복해서 사용한다면,
+그 로직을 `entities` 내부의 도메인 slice(예: `entities/session`)로 옮길 수 있습니다.
+
+**핵심 원칙**:
+- `entities`에는 도메인 타입과 로직만 둡니다. (예: createSessionFromToken(), isSessionExpired())
+- UI는 `features` / `widgets`에 유지합니다.
+- 각 `feature`들은 `entities`의 도메인 로직을 import하여 재사용합니다.
+
+예를 들어 `features/auth`와 `features/profile`이 모두 세션 검증이 필요하다면,
+세션 관련 도메인 함수들을 `entities/session`에 두고 두 feature에서 공통으로 사용합니다.
+
+자세한 예시는 [Layers reference — Entities](/kr/docs/reference/layers#entities)를 참고하세요.
+
+
+### Strategy C: 상위 레이어(pages / app)에서 조립하기
+
+같은 layer 내부에서 slice끼리 cross-import 하는 대신, 상위 `pages` / `app`에서 필요한 것들을 조립하는 방식입니다.
+Slice들이 서로를 직접 참조하지 않도록 하고, 상위 layer가 화면/플로우를 구성하면서 연결을 담당하는 방식으로 **Inversion of Control (IoC)** 패턴을 적용합니다.
+
+대표적인 IoC 기법은 아래와 같습니다.
+- **Render props (React)**: Component 또는 render 함수를 props로 전달해 조립합니다
+- **Slots (Vue)**: named slot을 사용해 부모가 콘텐츠를 주입합니다.
+- **Dependency injection**: props 또는 Context로 의존성을 전달합니다.
+
+#### Basic composition example (React)
+
+```tsx title="features/userProfile/index.ts"
+export { UserProfilePanel } from './ui/UserProfilePanel';
+```
+
+```tsx title="features/activityFeed/index.ts"
+export { ActivityFeed } from './ui/ActivityFeed';
+```
+
+```tsx title="pages/UserDashboardPage.tsx"
+import React from 'react';
+import { UserProfilePanel } from '@/features/userProfile';
+import { ActivityFeed } from '@/features/activityFeed';
+
+export function UserDashboardPage() {
+    return (
+        <div>
+            <UserProfilePanel />
+            <ActivityFeed />
+        </div>
+    );
+}
+```
+
+이 구조에서는 `features/userProfile`와 `features/activityFeed`가 서로를 import하지 않습니다.
+대신 `pages/UserDashboardPage`가 두 `feature`를 조합해 화면을 구성합니다.
+
+#### Render props example (React)
+
+특정 feature가 다른 feature의 UI를 렌더링해야 하는 경우,
+render props를 통해 렌더링을 주입함으로써 의존성을 상위 layer로 이동시킬 수 있습니다.
+
+```tsx title="features/commentList/ui/CommentList.tsx"
+interface CommentListProps {
+    comments: Comment[];
+    renderUserAvatar?: (userId: string) => React.ReactNode;
+}
+
+export function CommentList({ comments, renderUserAvatar }: CommentListProps) {
+    return (
+        <ul>
+            {comments.map(comment => (
+                <li key={comment.id}>
+                    {renderUserAvatar?.(comment.userId)}
+                    <span>{comment.text}</span>
+                </li>
+            ))}
+        </ul>
+    );
+}
+```
+
+```tsx title="pages/PostPage.tsx"
+import { CommentList } from '@/features/commentList';
+import { UserAvatar } from '@/features/userProfile';
+
+export function PostPage() {
+    return (
+        <CommentList
+            comments={comments}
+            renderUserAvatar={(userId) => <UserAvatar userId={userId} />}
+        />
+    );
+}
+```
+
+이렇게 하면 `CommentList`는 `UserAvatar`를 직접 import하지 않습니다.
+대신 `pages/PostPage`에서 `UserAvatar`를 import한 뒤, `renderUserAvatar` prop으로 전달합니다.
+
+#### Slots example (Vue)
+
+Vue에서는 named slot으로 부모(pages)가 콘텐츠를 주입해 cross-import 없이 조립할 수 있습니다.
+
+```vue title="features/commentList/ui/CommentList.vue"
+<template>
+    <ul>
+        <li v-for="comment in comments" :key="comment.id">
+            <slot name="avatar" :userId="comment.userId" />
+            <span>{{ comment.text }}</span>
+        </li>
+    </ul>
+</template>
+
+<script setup lang="ts">
+defineProps<{
+    comments: Comment[];
+}>();
+</script>
+```
+
+```vue title="pages/PostPage.vue"
+<template>
+    <CommentList :comments="comments">
+        <template #avatar="{ userId }">
+            <UserAvatar :userId="userId" />
+        </template>
+    </CommentList>
+</template>
+
+<script setup lang="ts">
+import { CommentList } from '@/features/commentList';
+import { UserAvatar } from '@/features/userProfile';
+</script>
+```
+
+`CommentList`는 `userProfile`을 import하지 않고, `PostPage`가 `slot`으로 조립합니다.
+
+### Strategy D: Cross-feature 재사용은 Public API를 통해서만
+
+A–C는 cross-import 자체를 없애려는 전략입니다.
+반면 D는 cross-import가 불가피한 경우, 공개된 Public API만 사용하게 제한해서 결합과 변경 영향을 관리하는 전략입니다.
+
+cross-feature 재사용이 필요한 상황이라면, 다른 slice의 내부 구현(예: store/model/internal)에 직접 접근하지 말고,
+Public API를 통해서만 사용하도록 제한합니다.
+
+#### Example code:
+
+```tsx title="features/auth/index.ts"
+export { useAuth } from './model/useAuth';
+export { AuthButton } from './ui/AuthButton';
+```
+
+```tsx title="features/profile/ui/ProfileMenu.tsx"
+
+import React from 'react';
+import { useAuth, AuthButton } from '@/features/auth';
+
+export function ProfileMenu() {
+    const { user } = useAuth();
+
+    if (!user) {
+        return <AuthButton />;
+    }
+
+    return <div>{user.name}</div>;
+}
+```
+
+예를 들어 `features/profile`이 `features/auth/model/internal/*` 같은 경로에 직접 접근하지 않도록 합니다.
+`features/auth`가 공식적으로 공개한 Public API만 사용하도록 제한합니다.
+
+## cross-import를 문제로 간주해야 하는 경우
+
+위에서 여러 전략을 살펴봤다면, 이제 다음 질문이 생길 수 있습니다.
+
+> cross-import를 그냥 두어도 되는 상황은 언제일까?
+> 그리고 언제는 “이건 code smell이다”라고 보고 리팩터링을 검토해야 할까?
+
+대표적인 경고 신호는 다음과 같습니다.
+
+- 다른 slice의 store/model/비즈니스 로직에 직접 의존하는 경우
+- slice들 간에 서로 직접 의존하는 **양방향 의존성**이 생긴 경우
+- 하나의 slice 변경이 거의 항상 다른 slice를 함께 깨뜨리는 경우
+- 원래는 상위 layer(`pages` / `app`)에서 조립해야 할 플로우를,
+  같은 layer의 cross-import로 억지로 구현하고 있는 경우
+
+이런 신호들이 보인다면,
+그 cross-import는 **code smell**로 보고 위에서 소개한 전략들 중 최소 하나는 적용할 수 있는지 검토해야 합니다.
+
+## 적용 범위와 기준은 팀 및 프로젝트의 결정 사항입니다.
+
+마지막으로, 다음 내용에서는 이 규칙들을 얼마나 엄격하게 적용할지는 팀과 프로젝트에 따라 달라진다는 점을 강조합니다.
+
+예를 들어:
+
+- **초기 단계 제품**처럼 요구사항 변동이 크고 빠른 반복이 잦은 서비스라면,
+  단기적인 개발 속도를 위해 어느 정도의 cross-import를 허용할 수도 있습니다.
+- 반대로, **장기 운영이 전제되거나 규제 요구사항이 높은 시스템**은
+  더 엄격한 경계와 layer 설계를 통해 장기적인 안정성과 유지보수성을 얻는 편이 낫습니다.
+
+우리는 cross-import를 **절대 금지 규칙**으로 보지 않습니다.
+대신, **일반적으로는 피해야 하는 의존성**으로 취급합니다.
+
+cross-import를 도입할 때에는, 그것이 **의도적이고 의식적인 설계 선택**인지 인지해야 합니다.
+또한 이 선택을 문서화하고, 시스템이 진화함에 따라 주기적으로 다시 검토하는 것이 좋습니다.
+
+팀은 다음과 같은 점들에 대해 서로 합의를 맞출 필요가 있습니다.
+
+- 우리 팀/프로젝트에서 원하는 엄격함 수준은 어느 정도인지
+- 그 엄격함을 lint, 코드 리뷰, 문서 등에 어떻게 반영할지
+- 도메인과 아키텍처가 성숙해지면서 cross-import를 어떤 주기와 기준으로 다시 점검할지
+
+## 참고 자료
+
+- [(스레드) Cross-import가 불가피한 상황 논의](https://t.me/feature_sliced/4515)
+- [(스레드) Entity에서 Cross-import 해결 방법](https://t.me/feature_sliced/3678)
+- [(스레드) Cross-import와 책임 범위 관계](https://t.me/feature_sliced/3287)
+- [(스레드) Segment 간 import 이슈 해결](https://t.me/feature_sliced/4021)
+- [(스레드) Shared 내부 구조의 Cross-import 해결](https://t.me/feature_sliced/3618)

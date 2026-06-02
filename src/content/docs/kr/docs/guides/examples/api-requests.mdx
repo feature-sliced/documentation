@@ -1,0 +1,173 @@
+---
+title: Handling API Requests
+sidebar:
+  order: 4
+---
+
+import { FileTree, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
+
+## Shared API Requests
+
+공통적으로 사용하는 API 요청 로직은 `shared/api` 폴더에 보관하는 것을 권장합니다.
+이렇게 하면 애플리케이션 전체에서 **일관된 방식으로 재사용**할 수 있고,
+초기 구현 속도(프로토타이핑)도 빠르게 유지할 수 있습니다.
+
+대부분의 프로젝트는 다음 구조와 `client.ts` 설정만으로 충분합니다.
+
+일반적인 파일 구조 예시:
+
+<FileTree>
+- shared/
+  - api/
+    - client.ts
+    - index.ts
+    - endpoints/
+      - login.ts
+</FileTree>
+
+`client.ts` 파일은 모든 HTTP request 관련 설정을 **한 곳에서** 관리합니다.
+즉, 공통 설정을 client에 모아두면 개별 endpoint 로직에서는 **request를 보내는 데만** 집중할 수 있습니다.
+
+`client.ts`에서는 다음 항목들을 설정합니다:
+
+
+- 백엔드 기본 URL
+- Default headers (예: 인증 header)
+- JSON 직렬화/파싱
+
+아래 예시에서 axios 버전과 fetch 버전 모두 확인할 수 있습니다.
+
+<Tabs>
+
+<TabItem value="axios" label="Axios">
+```ts title="shared/api/client.ts"
+// Axios 예시
+import axios from 'axios';
+
+export const client = axios.create({
+  baseURL: 'https://your-api-domain.com/api/',
+  timeout: 5000,
+  headers: { 'X-Custom-Header': 'my-custom-value' }
+});
+```
+</TabItem>
+
+<TabItem value="fetch" label="Fetch">
+```ts title="shared/api/client.ts"
+export const client = {
+  async post(endpoint: string, body: any, options?: RequestInit) {
+    const response = await fetch(`https://your-api-domain.com/api${endpoint}`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Custom-Header': 'my-custom-value',
+        ...options?.headers,
+      },
+    });
+    return response.json();
+  }
+  // ... other methods like put, delete, etc.
+};
+```
+</TabItem>
+
+</Tabs>
+
+이제 `shared/api/endpoints` 폴더 안에 API endpoint별 request 함수를 작성합니다.
+이렇게 endpoint 단위로 분리해두면 API 변경이 있을 때 유지보수가 매우 쉬워집니다.
+
+<Aside>
+
+예제를 단순화하기 위해 form handling이나 입력 검증(Zod/Valibot)은 생략했습니다.
+필요하다면 아래 문서를 참고하세요:
+[Type Validation and Schemas](/kr/docs/guides/examples/types#type-validation-schemas-and-zod)
+
+</Aside>
+
+```ts title="shared/api/endpoints/login.ts"
+import { client } from '../client';
+
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+
+그리고 다음처럼 `shared/api/index.ts`에서 request 함수와 타입들을 공개 API로 내보냅니다:
+
+```ts title="shared/api/index.ts"
+export { client } from './client'; // If you want to export the client itself
+export { login } from './endpoints/login';
+export type { LoginCredentials } from './endpoints/login';
+```
+
+## Slice-specific API Requests
+
+특정 페이지나 feature 내부에서만 사용하는 request는 해당 slice의 api 폴더에 넣어 관리하는 것을 권장합니다.
+이렇게 하면 slice별 코드가 서로 섞이지 않고, 책임이 명확하게 분리되며, 유지보수가 쉬워집니다.
+
+예시 구조:
+<FileTree>
+- pages/
+  - login/
+    - index.ts
+    - api/
+      - login.ts
+    - ui/
+      - LoginPage.tsx
+</FileTree>
+
+```ts title="pages/login/api/login.ts"
+import { client } from 'shared/api';
+
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+
+이 함수는 **로그인 페이지 내부에서만 사용하는 API 요청** 이므로
+slice의 public API(`index.ts`)로 다시 export할 필요는 없습니다.
+
+<Aside>
+entities layer에는 **backend response 타입**이나 **API 요청 함수**를 직접 두지 마세요.
+그 이유는 backend 구조와 `entities` 구조가 서로 **역할과 책임이 다르기 때문입니다**.
+
+- `shared/api` 또는 각 slice의 `api` 폴더에서는 **백엔드에서 온 데이터**를 다루고,
+- `entities`에서는 **프론트엔드 관점에서 필요한 데이터 구조**에 집중해야 합니다.
+  (예: UI 표시용 데이터, 도메인 로직 처리용 데이터 등)
+</Aside>
+
+## API 타입과 클라이언트 자동 생성
+
+백엔드에 OpenAPI 스펙이 준비되어 있다면,
+[orval](https://orval.dev/)이나 [openapi-typescript](https://openapi-ts.dev/) 같은 도구를 사용해
+**API 타입과 request 함수**를 자동으로 생성할 수 있습니다.
+
+이렇게 생성된 코드는 보통 `shared/api/openapi` 같은 폴더에 두고,
+`README.md`에 다음 내용을 함께 문서화하는 것을 권장합니다.
+
+- 생성 스크립트를 어떻게 실행하는지
+- 어떤 타입/클라이언트가 생성되는지
+- 사용하는 방법 예시
+
+## 서버 상태 라이브러리 연동
+
+[TanStack Query (React Query)](https://tanstack.com/query/latest)나 [Pinia Colada](https://pinia-colada.esm.dev/) 같은 **서버 상태 관리 라이브러리**를 사용할 때는,
+서로 다른 slice에서 **타입이나 cache key를 공유**해야 할 때가 자주 생깁니다.
+
+이런 경우에는 다음과 같은 항목들을 `shared` layer에 두고 같이 쓰는 것이 좋습니다.
+
+- API 데이터 타입 (API data types)
+- 캐시 키 (cache keys)
+- 공통 query/mutation 옵션 (common query/mutation options)

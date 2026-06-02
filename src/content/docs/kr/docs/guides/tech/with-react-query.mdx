@@ -1,0 +1,551 @@
+---
+title: Usage with TanStack Query
+sidebar:
+  order: 2
+---
+
+import { Tabs, TabItem, FileTree, Aside } from '@astrojs/starlight/components';
+
+## query key를 어디에 둘 것인가 \{#where-to-store-keys\}
+
+query key는 보통 query factory와 API 호출 함수를 같은 곳에 관리합니다.  
+어느 layer에 두는지는 프로젝트 구성에 따라 달라집니다.
+
+<Tabs>
+    <TabItem value="shared" label="shared에 두기">
+        프로젝트 전반의 API를 `shared/api` 한곳에 모아 관리하려는 경우에 사용합니다.   
+        query factory는 `shared/api/queries` 아래에 두고, `shared/api/index.ts`의 public API로 노출합니다.
+
+        <FileTree>
+        - src/
+          - app/
+          - pages/
+          - widgets/
+          - features/
+          - entities/
+          - shared/
+            - api/
+              - queries/ Query factories
+                - example.ts
+                - another-example.ts
+        </FileTree>
+
+        ```ts title="src/shared/api/index.ts"
+        export { exampleQueries } from './queries/example';
+        ```
+    </TabItem>
+    <TabItem value="shared-with-controllers" label="shared에 두되 controller 단위로 나누기">
+        endpoint 수가 많아지면 `shared/api/queries` 한 폴더에 모두 모으는 방식은 관리하기 어려워질 수 있습니다.   
+        이 경우에는 controller 단위로 폴더를 나누고, 각 controller마다 `index.ts`로 public API를 따로 둡니다.
+
+        <FileTree>
+        - src/
+          - app/
+          - pages/
+          - widgets/
+          - features/
+          - entities/
+          - shared/
+            - api/
+              - example/
+                - index.ts
+                - example.query.ts Query factory with keys and functions for the example controller
+                - get-example.ts
+                - create-example.ts
+                - update-example.ts
+                - delete-example.ts
+              - another-example/
+                - index.ts
+                - another-example.query.ts Query factory with keys and functions for the another-example controller
+                - get-another-example.ts
+                - create-another-example.ts
+                - update-another-example.ts
+                - delete-another-example.ts
+        </FileTree>
+
+        ```ts title="src/shared/api/example/index.ts"
+        export { exampleQueries } from "./example.query";
+        ```
+    </TabItem>
+    <TabItem value="entities" label="entities에 두기">
+        프로젝트가 이미 entity 단위로 나뉘어 있고, 각 요청이 하나의 entity에 대응한다면 entity 단위로 나누는 방식이 가장 자연스럽습니다.  
+        해당 entity의 `api` segment에 query factory와 실제 API 호출 함수를 함께 둡니다.
+
+        <FileTree>
+        - src/
+          - app/
+          - pages/
+          - widgets/
+          - features/
+          - entities/
+            - example/
+              - api/
+                - example.query.ts Query factory with keys and functions
+                - get-example.ts
+                - create-example.ts
+                - update-example.ts
+                - delete-example.ts
+          - shared/
+        </FileTree>
+
+        한 entity가 다른 entity를 참조한다면(예: `Country` entity가 `City` entity 목록을 필드로 갖는 경우) [public API를 이용한 cross-import][public-api-for-cross-imports]를 사용합니다.
+    </TabItem>
+</Tabs>
+
+## mutation은 어디에 둘 것인가 \{#where-to-store-mutations\}
+
+mutation은 query와 같은 파일에 함께 두지 않는 것을 권장합니다. 배치 방식은 여러 가지가 있습니다.
+
+<Tabs>
+    <TabItem value="custom-hook" label="사용처와 가까운 api segment에 custom hook으로 두기">
+        mutation은 저장, 삭제, 수정처럼 특정 사용자 동작 뒤에 실행되는 경우가 많고, 이후의 캐시 갱신이나 UI 처리도 함께 달라지기 쉽습니다.  
+        화면 흐름과 밀접하게 연결되는 mutation은 사용하는 위치와 가까운 `api` segment에 custom hook 형태로 둡니다.
+
+        ```tsx title="src/pages/example/api/use-update-example.ts"
+        export const useUpdateExample = () => {
+            const queryClient = useQueryClient();
+
+            return useMutation({
+                mutationFn: async ({ id, newTitle }) => {
+                    const { data } = await apiClient.patch(`/posts/${ id }`, { title: newTitle });
+                    return data;
+                },
+                onSuccess: newPost => {
+                    queryClient.setQueryData(postsQueries.ids(id), newPost);
+                },
+            });
+        };
+        ```
+    </TabItem>
+    <TabItem value="shared" label="shared 또는 entities에 두고 mutationFn으로 사용하기">
+        mutation 함수는 `shared`나 `entities`에 두고, 컴포넌트에서는 `useMutation`을 직접 구성하면서 `mutationFn`으로 연결합니다.   
+        mutation 로직의 재사용 단위와 hook을 구성하는 위치를 나누는 방식입니다.
+
+        ```tsx title="src/pages/example/ui/example.tsx"
+        export const Example = () => {
+            const [title, setTitle] = useState('');
+
+            const { mutate, isPending } = useMutation({
+                mutationFn: mutations.createExample,
+            });
+
+            const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+                setTitle(value);
+            };
+
+            const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+                e.preventDefault();
+                mutate({ title, userId: DEFAULT_USER_ID });
+            };
+
+            return (
+                <form onSubmit={ handleSubmit }>
+                    <Input onChange={ handleChange } value={ title } />
+                    <Button type="submit" disabled={ isPending }>Create</Button>
+                </form>
+            );
+        };
+        ```
+    </TabItem>
+</Tabs>
+
+## query factory로 요청 구성하기 \{#organizing-queries\}
+
+### Query factory \{#query-factory\}
+
+Query factory는 query key를 생성하는 함수를 모아 둔 객체입니다.
+
+```ts
+const keyFactory = {
+    all: () => ["entity"],
+    lists: () => [...keyFactory.all(), "list"],
+};
+```
+
+<Aside>
+`queryOptions`는 react-query v5에 포함된 유틸리티입니다.
+
+`queryKey`와 `queryFn`을 함께 정의해 여러 위치에서 재사용하려면 `queryOptions` 헬퍼 함수를 사용하는 것이 좋습니다([자세한 내용](https://tanstack.com/query/latest/docs/framework/react/guides/query-options)).
+
+```ts
+import { queryOptions } from '@tanstack/react-query';
+
+const groupOptions = (id: number) => queryOptions({
+    queryKey: ['groups', id],
+    queryFn: () => fetchGroups(id),
+    gcTime: 5 * 1000,
+});
+```
+</Aside>
+
+### 1. query factory 만들기 \{#creating-query-factory\}
+
+```tsx title="src/shared/api/post/post.queries.ts"
+import { queryOptions } from '@tanstack/react-query';
+import { getPosts } from './get-posts';
+import { getDetailPost, type DetailPostQuery } from './get-detail-post';
+
+export const POST_QUERIES = {
+    all: () => ['posts'],
+
+    lists: () => [...POST_QUERIES.all(), 'list'],
+    list: (page: number, limit: number) => queryOptions({
+        queryKey: [...POST_QUERIES.lists(), page, limit],
+        queryFn: () => getPosts(page, limit),
+        placeholderData: prev => prev,
+    }),
+
+    details: () => [...POST_QUERIES.all(), 'detail'],
+    detail: (query?: DetailPostQuery) => queryOptions({
+        queryKey: [...POST_QUERIES.details(), query?.id],
+        queryFn: () => getDetailPost({ id: query?.id }),
+    }),
+};
+```
+
+### 2. 프로젝트 코드에서 query factory 사용하기 \{#using-query-factory\}
+
+```tsx title="src/pages/post/ui/post.tsx"
+import { useParams } from 'react-router';
+import { postApi } from '@/shared/api/post';
+import { useQuery } from '@tanstack/react-query';
+
+interface Params {
+    postId: string;
+}
+
+export const Post = () => {
+    const { postId } = useParams<Params>();
+    const {
+        data: post,
+        error,
+        isLoading,
+        isError
+    } = useQuery(postApi.POST_QUERIES.detail({ id: parseInt(postId ?? '', 10) }));
+
+    if (isLoading) {
+        return (
+            <div>Loading...</div>
+        );
+    }
+
+    if (isError || !post) {
+        return (
+            <div>{ error?.message }</div>
+        );
+    }
+
+    return (
+        <div>
+            <p>Post id: { post.id }</p>
+            <div>
+                <h1>{ post.title }</h1>
+                <div>
+                    <p>{ post.body }</p>
+                </div>
+            </div>
+            <div>Owner: { post.userId }</div>
+        </div>
+    );
+};
+```
+
+### Query factory의 장점 \{#query-factory-benefits\}
+
+- 요청을 한곳에서 관리할 수 있습니다.
+- query와 query key를 일관된 방식으로 구성할 수 있습니다.
+- 같은 query key를 여러 위치에서 재사용할 수 있습니다.
+
+## 페이지네이션 \{#pagination\}
+
+페이지네이션은 [query factory로 요청 구성하기](#organizing-queries)에서 정의한 query factory를 그대로 사용합니다. 여기에 `placeholderData` 옵션을 추가해, 페이지 전환 중에도 이전 데이터를 유지합니다. 이렇게 하면 UI가 갑자기 비어 보이거나 크게 바뀌는 것을 줄일 수 있습니다.
+
+### 컴포넌트에서 사용 \{#pagination-usage\}
+
+```tsx title="src/pages/home/ui/home.tsx"
+export const Home = () => {
+    const [page, setPage] = usePageParam(DEFAULT_PAGE);
+    const { data, isFetching, isLoading } = useQuery(postApi.POST_QUERIES.list(page, DEFAULT_ITEMS_ON_SCREEN));
+    return (
+        <>
+            <Pagination
+                onChange={ (_, page) => setPage(page) }
+                page={ page }
+                count={ data?.totalPages }
+                variant="outlined"
+                color="primary"
+            />
+            <Posts posts={ data?.posts } />
+        </>
+    );
+};
+```
+
+## 무한 스크롤 \{#infinite-scroll\}
+
+무한 스크롤이나 '더보기' 버튼 형태의 UI는 `useInfiniteQuery`로 구성합니다. 앞에서 정의한 query factory 패턴은 `infiniteQueryOptions`로도 그대로 확장할 수 있습니다.
+
+### 1. `infiniteQueryOptions`로 구성한 query factory \{#infinite-query-factory\}
+
+```tsx title="src/shared/api/post/post.queries.ts"
+import { infiniteQueryOptions } from '@tanstack/react-query';
+import { getPosts } from './get-posts';
+
+export const POST_QUERIES = {
+    all: () => ['posts'],
+    lists: () => [...POST_QUERIES.all(), 'list'],
+    infinite: (limit: number) => infiniteQueryOptions({
+        queryKey: [...POST_QUERIES.lists(), 'infinite', limit],
+        queryFn: ({ pageParam }) => getPosts(pageParam, limit),
+        initialPageParam: 0,
+        getNextPageParam: (lastPage) =>
+            lastPage.skip + lastPage.limit < lastPage.total
+                ? lastPage.skip / lastPage.limit + 1
+                : undefined,
+    }),
+};
+```
+
+### 2. 컴포넌트에서 사용 \{#infinite-query-usage\}
+
+```tsx title="src/pages/post-feed/ui/post-feed.tsx"
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { postApi } from '@/shared/api/post';
+
+export const PostFeed = () => {
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+        useInfiniteQuery(postApi.POST_QUERIES.infinite(10));
+
+    const posts = data?.pages.flatMap((page) => page.posts) ?? [];
+
+    return (
+        <>
+            <Posts posts={ posts } />
+            { hasNextPage && (
+                <button onClick={ () => fetchNextPage() } disabled={ isFetchingNextPage }>
+                    { isFetchingNextPage ? 'Loading...' : 'Load more' }
+                </button>
+            ) }
+        </>
+    );
+};
+```
+
+## Suspense 모드 \{#suspense-mode\}
+
+`useSuspenseQuery`를 사용하면 로딩 상태를 React Suspense로 처리할 수 있습니다. 컴포넌트에서 `isLoading`을 직접 확인할 필요가 없어지고, 로딩 표시는 상위 `Suspense` 경계가 담당합니다.
+
+### 1. query factory는 그대로 재사용합니다 \{#suspense-query-factory\}
+
+`useSuspenseQuery`는 `queryOptions` 기반 구성과 호환되므로, 앞에서 정의한 query factory를 그대로 재사용할 수 있습니다.
+
+### 2. 컴포넌트에서 사용 \{#suspense-usage\}
+
+```tsx title="src/pages/post/ui/post.tsx"
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { postApi } from '@/shared/api/post';
+
+interface PostProps {
+    id: number;
+}
+
+// isLoading is no longer needed — the component only renders when data is ready
+export const Post = ({ id }: PostProps) => {
+    const { data: post } = useSuspenseQuery(postApi.POST_QUERIES.detail({ id }));
+
+    return (
+        <div>
+            <h1>{ post.title }</h1>
+            <p>{ post.body }</p>
+        </div>
+    );
+};
+```
+
+### 3. `app` layer에 Suspense 경계 두기 \{#suspense-app-wrapper\}
+
+Suspense 경계는 `app` layer의 provider로 두고, 앱 전역 또는 필요한 라우트 단위에서 감싸 사용할 수 있습니다.
+
+```tsx title="src/app/providers/suspense-provider.tsx"
+import { Suspense, type ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+
+interface SuspenseProviderProps {
+    children: ReactNode;
+}
+
+export const SuspenseProvider = ({ children }: SuspenseProviderProps) => (
+    <ErrorBoundary fallback={ <div>Something went wrong</div> }>
+        <Suspense fallback={ <div>Loading...</div> }>
+            { children }
+        </Suspense>
+    </ErrorBoundary>
+);
+```
+
+## `useMutationState` \{#use-mutation-state\}
+
+`useMutationState`를 사용하면 이 상태를 다른 컴포넌트에서도 확인할 수 있습니다. 예를 들어 페이지 내부의 폼에서 mutation이 진행되는 동안, 폼과 별도의 전역 헤더에서 진행 상태를 표시할 때 유용합니다. mutation key는 query factory와 비슷한 방식으로 한곳에서 관리합니다.
+
+### 1. mutation key 한곳에서 관리하기 \{#storing-mutation-keys\}
+
+mutation key는 query factory와 같은 파일에 모아 둡니다.
+
+```ts title="src/shared/api/post/post.queries.ts"
+export const POST_MUTATIONS = {
+    updateTitle: () => ['post', 'update-title'],
+    create: () => ['post', 'create'],
+};
+```
+
+### 2. `mutationKey`로 mutation 식별하기 \{#naming-mutations\}
+
+```tsx title="src/features/update-post/api/use-update-post-title.ts"
+import { POST_MUTATIONS } from '@/shared/api/post';
+
+interface UpdatePostTitle {
+    id: number;
+    newTitle: string;
+}
+
+export const useUpdatePostTitle = () =>
+    useMutation({
+        mutationKey: POST_MUTATIONS.updateTitle(),
+        mutationFn: ({ id, newTitle }: UpdatePostTitle) =>
+            apiClient.patch(`/posts/${id}`, { title: newTitle }),
+    });
+```
+
+### 3. 다른 컴포넌트에서 mutation 상태 읽기 \{#reading-mutation-state\}
+
+```tsx title="src/widgets/save-indicator/ui/save-indicator.tsx"
+import { useMutationState } from '@tanstack/react-query';
+import { POST_MUTATIONS } from '@/shared/api/post';
+
+export const SaveIndicator = () => {
+    const isPending = useMutationState({
+        filters: { mutationKey: POST_MUTATIONS.updateTitle(), status: 'pending' },
+        select: mutation => mutation.state.status,
+    }).length > 0;
+
+    return isPending && (
+        <span>Saving...</span>
+    );
+};
+```
+
+## `QueryProvider` 구성하기 \{#query-provider\}
+
+`QueryProvider`는 `QueryClient` 설정을 앱 전역에 적용하는 위치입니다. query와 mutation의 기본 옵션, 그리고 `QueryCache`와 `MutationCache`의 공통 에러 처리도 이곳에서 함께 구성합니다.
+
+```tsx title="src/app/providers/query-provider.tsx"
+import { type ReactNode } from 'react';
+import { QueryClient, QueryClientProvider, MutationCache, QueryCache } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { toast } from 'sonner';
+
+interface QueryProviderProps {
+    children: ReactNode;
+    client: QueryClient;
+}
+
+const queryClient = new QueryClient({
+    queryCache: new QueryCache({
+        onError: error => {
+            toast.error(error.message);
+        },
+    }),
+    mutationCache: new MutationCache({
+        onError: error => {
+            toast.error(error.message);
+        },
+    }),
+    defaultOptions: {
+        queries: {
+            staleTime: 5 * 60 * 1000,
+            gcTime: 5 * 60 * 1000,
+        },
+    },
+});
+
+export const QueryProvider = ({ client, children }: QueryProviderProps) => {
+    return (
+        <QueryClientProvider client={ client }>
+            { children }
+            <ReactQueryDevtools />
+        </QueryClientProvider>
+    );
+};
+```
+
+## 코드 생성 \{#code-generation\}
+
+API 코드를 자동으로 생성하는 도구를 사용할 수도 있지만, 위에서 설명한 수동 구성만큼 세밀하게 맞추기는 어렵습니다. Swagger 파일이 잘 정리되어 있고 생성 도구를 중심으로 API 계층을 운영한다면, 생성된 코드를 `@/shared/api`에 모아 두는 방식을 고려할 수 있습니다.
+
+## API 구성에 대한 추가 권장사항 \{#api-client\}
+
+`shared` layer에 API client 클래스를 두면, 프로젝트 전반의 API 호출 방식을 공통으로 관리할 수 있습니다. 로깅, 헤더, 데이터 형식(JSON, XML 등) 같은 설정도 이 위치에 함께 둘 수 있습니다. 호출 규칙이 바뀌거나 공통 설정을 추가해야 할 때는 이 위치만 수정하면 됩니다.
+
+```tsx title="src/shared/api/api-client.ts"
+import { API_URL } from "@/shared/config";
+
+export class ApiClient {
+    #baseUrl: string;
+
+    constructor(url: string) {
+        this.#baseUrl = url;
+    }
+
+    async handleResponse<TResult>(response: Response): Promise<TResult> {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${ response.status }`);
+        }
+
+        try {
+            return await response.json();
+        } catch (error) {
+            throw new Error("Error parsing JSON response");
+        }
+    }
+
+    public async get<TResult = unknown>(endpoint: string, queryParams?: Record<string, string | number>): Promise<TResult> {
+        const url = new URL(endpoint, this.#baseUrl);
+
+        if (queryParams) {
+            Object.entries(queryParams).forEach(([key, value]) => {
+                url.searchParams.append(key, value.toString());
+            });
+        }
+        const response = await fetch(url.toString(), {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        return this.handleResponse<TResult>(response);
+    }
+
+    public async post<TResult = unknown, TData = Record<string, unknown>>(endpoint: string, body: TData): Promise<TResult> {
+        const response = await fetch(`${ this.#baseUrl }${ endpoint }`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+
+        return this.handleResponse<TResult>(response);
+    }
+}
+
+export const apiClient = new ApiClient(API_URL);
+```
+
+## 참고 자료 \{#see-also\}
+
+- [(GitHub) 예제 프로젝트](https://github.com/ruslan4432013/fsd-react-query-example)
+- [(CodeSandbox) 예제 프로젝트](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
+- [query factory 관련 글](https://tkdodo.eu/blog/the-query-options-api)
+
+[public-api-for-cross-imports]: /kr/docs/reference/public-api#public-api-for-cross-imports

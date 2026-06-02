@@ -1,0 +1,46 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+    path: string | string[];
+    alt: string;
+}
+
+const { path, alt, ...rest } = Astro.props;
+const actualPaths = Array.isArray(path)
+    ? path.map((p) => `../../../../static${p}`)
+    : [`../../../../static${path}`];
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+    "../../../../static/**/*.{jpeg,jpg,png,gif,svg}",
+);
+
+for (const path of actualPaths) {
+    if (!images[path])
+        throw new Error(
+            `"${path}" does not exist in glob: "static/*.{jpeg,jpg,png,gif,svg}"`,
+        );
+}
+---
+
+{
+    actualPaths.length === 1 ? (
+        <Image src={images[actualPaths[0]]()} alt={alt} {...rest} />
+    ) : (
+        <>
+            <Image
+                src={images[actualPaths[0]]()}
+                alt={alt}
+                {...rest}
+                data-theme-only="light"
+            />
+            <Image
+                src={images[actualPaths[1]]()}
+                alt={alt}
+                {...rest}
+                data-theme-only="dark"
+            />
+        </>
+    )
+}

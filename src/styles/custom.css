@@ -1,0 +1,40 @@
+:root {
+    /* Layout */
+    --sl-content-width: 55rem; /* default: 45rem */
+    --sl-font: system-ui, sans-serif;
+}
+
+:root,
+:root[data-theme="dark"] {
+    --sl-color-accent-low: #102a4d;
+    --sl-color-accent: #3193ff;
+    --sl-color-accent-high: #b8dcff;
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #f1f5f9;
+    --sl-color-gray-2: #e2e8f0;
+    --sl-color-gray-3: #94a3b8;
+    --sl-color-gray-4: #64748b;
+    --sl-color-gray-5: #1e293b;
+    --sl-color-gray-6: #172033;
+    --sl-color-black: #0f172a;
+}
+
+:root[data-theme="light"] {
+    --sl-color-accent-low: #dbeafe;
+    --sl-color-accent: #3193ff;
+    --sl-color-accent-high: #004080;
+    --sl-color-white: #0f172a;
+    --sl-color-gray-1: #334155;
+    --sl-color-gray-2: #475569;
+    --sl-color-gray-3: #64748b;
+    --sl-color-gray-4: #94a3b8;
+    --sl-color-gray-5: #cbd5e1;
+    --sl-color-gray-6: #e2e8f0;
+    --sl-color-gray-7: #f1f5f9;
+    --sl-color-black: #ffffff;
+}
+
+:root[data-theme="dark"] [data-theme-only="light"],
+:root[data-theme="light"] [data-theme-only="dark"] {
+    display: none;
+}
