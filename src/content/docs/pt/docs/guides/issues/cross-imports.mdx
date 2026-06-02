@@ -1,0 +1,266 @@
+---
+title: Cross-imports
+sidebar:
+  order: 4
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+A **cross-import** is an import **between different slices within the same layer**.
+
+For example:
+- importing `features/product` from `features/cart`
+- importing `widgets/sidebar` from `widgets/header`
+
+Cross-imports are a code smell: a warning sign that slices are becoming coupled. In some situations they may be hard to avoid, but they should always be deliberate and either documented or shared within the team/project.
+
+<Aside>
+The `shared` and `app` layers do not have the concept of a slice, so imports *within* those layers are **not** considered cross-imports.
+</Aside>
+
+## Why is this a code smell?
+
+Cross-imports are not just a matter of style—they are generally considered a **code smell** because they blur the boundaries between domains and introduce implicit dependencies.
+
+Consider a case where the `cart` slice directly depends on `product` business logic. At first glance, this might seem convenient. However, this creates several problems:
+
+1. **Unclear ownership and responsibility.** When `cart` imports from `product`, it becomes unclear which slice "owns" the shared logic. If the `product` team changes their internal implementation, they might unknowingly break `cart`. This ambiguity makes it harder to reason about the codebase and assign responsibility for bugs or features.
+
+2. **Reduced isolation and testability.** One of the main benefits of sliced architecture is that each slice can be developed, tested, and deployed independently. Cross-imports break this isolation—testing `cart` now requires setting up `product` as well, and changes in one slice can cause unexpected test failures in another.
+
+3. **Increased cognitive load.** Working on `cart` also requires accounting for how `product` is structured and how it behaves. As cross-imports accumulate, tracing the impact of a change requires following more code across slice boundaries, and even small edits demand more context to be held in mind.
+
+4. **Path to circular dependencies.** Cross-imports often start as one-way dependencies but can evolve into bidirectional ones (A imports B, B imports A). This tends to lock slices together, making dependencies harder to untangle and increasing refactoring cost over time.
+
+The purpose of clear domain boundaries is to keep each slice focused and changeable within its own responsibility. When dependencies are loose, it becomes easier to predict the impact of a change and to keep review and testing scope contained. Cross-imports weaken this separation, expanding the impact of changes and increasing refactoring cost over time—this is why they are treated as a code smell worth addressing.
+
+In the sections below, we outline how these issues typically appear in real projects and what strategies you can use to address them.
+
+## Entities layer cross-imports
+
+Cross-imports in `entities` are often caused by splitting entities too granularly. Before reaching for `@x`, consider whether the boundaries should be merged instead.
+Some teams use `@x` as a dedicated cross-import surface for `entities`, but it should be treated as a **last resort** — a **necessary compromise**, not a recommended approach.
+
+Think of `@x` as an explicit gateway for unavoidable domain references—not a general-purpose reuse mechanism. Overuse tends to lock entity boundaries together and makes refactoring more costly over time.
+
+For details about `@x`, see the [Public API documentation](/docs/reference/public-api).
+
+For concrete examples of cross-references between business entities, see:
+- [Types guide — Business entities and their cross-references](/docs/guides/examples/types#business-entities-and-their-cross-references)
+- [Layers reference — Entities](/docs/reference/layers#entities)
+
+## Features and widgets: Multiple strategies
+
+In the `features` and `widgets` layers, it's usually more realistic to say there are **multiple strategies** for handling cross-imports, rather than declaring them **always forbidden**. This section focuses less on code and more on the **patterns** you can choose from depending on your team and product context.
+
+### Strategy A: Slice merge
+
+If two slices are not truly independent and they are always changed together, merge them into a single larger slice.
+
+Example (before):
+- `features/profile`
+- `features/profileSettings`
+
+If these keep cross-importing each other and effectively move as one unit, they are likely one feature in practice. In that case, merging into `features/profile` is often the simpler and cleaner choice.
+
+### Strategy B: Push shared domain flows down into `entities` (domain-only)
+
+If multiple features share a domain-level flow, move that flow into a domain slice inside `entities` (for example, `entities/session`).
+
+Key principles:
+- `entities` contains **domain types and domain logic only**
+- UI remains in `features` / `widgets`
+- features import and use the domain logic from `entities`
+
+For example, if both `features/auth` and `features/profile` need session validation, place session-related domain functions in `entities/session` and reuse them from both features.
+
+For more guidance, see [Layers reference — Entities](/docs/reference/layers#entities).
+
+### Strategy C: Compose from an upper layer (pages / app)
+
+Instead of connecting slices within the same layer via cross-imports, compose them at a higher level (`pages` / `app`). This approach uses **Inversion of Control (IoC)** patterns—rather than slices knowing about each other, an upper layer assembles and connects them.
+
+Common IoC techniques include:
+- **Render props (React)**: Pass components or render functions as props
+- **Slots (Vue)**: Use named slots to inject content from parent components
+- **Dependency injection**: Pass dependencies through props or context
+
+#### Basic composition example (React):
+
+```tsx title="features/userProfile/index.ts"
+export { UserProfilePanel } from './ui/UserProfilePanel';
+```
+
+```tsx title="features/activityFeed/index.ts"
+export { ActivityFeed } from './ui/ActivityFeed';
+```
+
+```tsx title="pages/UserDashboardPage.tsx"
+import React from 'react';
+import { UserProfilePanel } from '@/features/userProfile';
+import { ActivityFeed } from '@/features/activityFeed';
+
+export function UserDashboardPage() {
+    return (
+        <div>
+            <UserProfilePanel />
+            <ActivityFeed />
+        </div>
+    );
+}
+```
+
+With this structure, `features/userProfile` and `features/activityFeed` do not know about each other. `pages/UserDashboardPage` composes them to build the full screen.
+
+#### Render props example (React):
+
+When one feature needs to render content from another, use render props to invert the dependency:
+
+```tsx title="features/commentList/ui/CommentList.tsx"
+interface CommentListProps {
+    comments: Comment[];
+    renderUserAvatar?: (userId: string) => React.ReactNode;
+}
+
+export function CommentList({ comments, renderUserAvatar }: CommentListProps) {
+    return (
+        <ul>
+            {comments.map(comment => (
+                <li key={comment.id}>
+                    {renderUserAvatar?.(comment.userId)}
+                    <span>{comment.text}</span>
+                </li>
+            ))}
+        </ul>
+    );
+}
+```
+
+```tsx title="pages/PostPage.tsx"
+import { CommentList } from '@/features/commentList';
+import { UserAvatar } from '@/features/userProfile';
+
+export function PostPage() {
+    return (
+        <CommentList
+            comments={comments}
+            renderUserAvatar={(userId) => <UserAvatar userId={userId} />}
+        />
+    );
+}
+```
+
+Now `CommentList` doesn't import from `userProfile`—the page injects the avatar component.
+
+#### Slots example (Vue):
+
+Vue's slot system provides a natural way to compose features without cross-imports:
+
+```vue title="features/commentList/ui/CommentList.vue"
+<template>
+    <ul>
+        <li v-for="comment in comments" :key="comment.id">
+            <slot name="avatar" :userId="comment.userId" />
+            <span>{{ comment.text }}</span>
+        </li>
+    </ul>
+</template>
+
+<script setup lang="ts">
+defineProps<{
+    comments: Comment[];
+}>();
+</script>
+```
+
+```vue title="pages/PostPage.vue"
+<template>
+    <CommentList :comments="comments">
+        <template #avatar="{ userId }">
+            <UserAvatar :userId="userId" />
+        </template>
+    </CommentList>
+</template>
+
+<script setup lang="ts">
+import { CommentList } from '@/features/commentList';
+import { UserAvatar } from '@/features/userProfile';
+</script>
+```
+
+The `CommentList` feature remains independent of `userProfile`. The page uses slots to compose them together.
+
+### Strategy D: Cross-feature reuse only via Public API
+
+If the above strategies don't fit your case and cross-feature reuse is truly unavoidable, allow it only through an explicit **Public API** (for example: exported hooks or UI components). Avoid directly accessing another slice's `store`/`model` or internal implementation details.
+
+Unlike strategies A-C which aim to eliminate cross-imports, this strategy accepts them while minimizing the risks through strict boundaries.
+
+#### Example code:
+
+```tsx title="features/auth/index.ts"
+
+export { useAuth } from './model/useAuth';
+export { AuthButton } from './ui/AuthButton';
+```
+
+```tsx title="features/profile/ui/ProfileMenu.tsx"
+
+import React from 'react';
+import { useAuth, AuthButton } from '@/features/auth';
+
+export function ProfileMenu() {
+    const { user } = useAuth();
+
+    if (!user) {
+        return <AuthButton />;
+    }
+
+    return <div>{user.name}</div>;
+}
+```
+
+For example, prevent `features/profile` from importing from paths like `features/auth/model/internal/*`. Restrict usage to only what `features/auth` explicitly exposes as its Public API.
+
+## When should cross-imports be treated as a problem?
+
+After reviewing these strategies, a natural question is:
+
+> When is a cross-import acceptable to keep, and when should it be treated as a code smell and refactored?
+
+Common warning signs:
+- directly depending on another slice's store/model/business logic
+- deep imports into another slice's internal files
+- **bidirectional dependencies** (A imports B, and B imports A)
+- changes in one slice frequently breaking another slice
+- flows that should be composed in `pages` / `app`, but are forced into cross-imports within the same layer
+
+When you see these signals, treat the cross-import as a **code smell** and consider applying at least one of the strategies above.
+
+## How strict you are is a team/project decision
+
+How strictly to enforce these rules depends on the team and project.
+
+For example:
+- In **early-stage products** with heavy experimentation, allowing some cross-imports may be a pragmatic speed trade-off.
+- In **long-lived or regulated systems** (for example, fintech or large-scale services), stricter boundaries often pay off in maintainability and stability.
+
+Cross-imports are not an absolute prohibition here. They are dependencies that are **generally best avoided**, but sometimes used intentionally.
+
+If you do introduce a cross-import:
+- treat it as a deliberate architectural choice
+- document the reasoning
+- revisit it periodically as the system evolves
+
+Teams should align on:
+- what strictness level they want
+- how to reflect it in lint rules, code review, and documentation
+- when and how to reevaluate existing cross-imports over time
+
+## References
+
+- [(Thread) About the supposed inevitability of cross-ports](https://t.me/feature_sliced/4515)
+- [(Thread) About resolving cross-ports in entities](https://t.me/feature_sliced/3678)
+- [(Thread) About cross-imports and responsibility](https://t.me/feature_sliced/3287)
+- [(Thread) About imports between segments](https://t.me/feature_sliced/4021)
+- [(Thread) About cross-imports inside shared](https://t.me/feature_sliced/3618)

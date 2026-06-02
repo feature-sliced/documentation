@@ -1,0 +1,72 @@
+---
+title: Usage with Astro
+sidebar:
+  order: 10
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+## File-based routing
+
+Astro expects routes in `📁 src/pages`, but FSD uses it as a layer for page slices. We can't use the same folder for both. To fix this, use `📁 src/_pages` as an FSD `🥞 pages` layer, and use `📁 src/pages` only for routing.
+
+<FileTree>
+- src
+  - pages Astro routing (thin entry points)
+    - 404.astro built-in 404 error page
+    - index.astro
+  - _pages FSD pages layer
+    - home
+      - ui
+        - HomePage.astro
+      - index.ts
+</FileTree>
+
+The route file only imports and renders the page from the FSD layer.
+
+```astro title="src/pages/index.astro"
+---
+import { HomePage } from '@/_pages/home';
+---
+
+<HomePage />
+```
+
+## Setting up path aliases
+
+Add a path alias in `tsconfig.json` to import from `src` using `@/`:
+
+```json title="tsconfig.json"
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+## Working with integrations
+
+Some Astro integrations like [Starlight](https://starlight.astro.build/) use content collections for their content. These integrations often expect content in specific folders like `📁 src/content/docs`.
+
+If the integration doesn't let you change the root path, that's fine — keep it as is. Usually content collection folders don't conflict with FSD layers so FSD layers (`🥞 _pages`, `🥞 shared`, etc.) can live alongside these folders:
+
+<FileTree>
+- src
+  - _pages FSD pages layer
+    - ...
+  - content Integration content (Starlight docs, etc.)
+    - docs
+      - getting-started.md
+  - shared FSD shared layer
+    - ...
+</FileTree>
+
+Let the integration handle its own routing and rendering, while your FSD structure manages the application-specific code.
+
+## See also
+
+- [Astro Routing](https://docs.astro.build/en/guides/routing/)
+- [Astro Project Structure](https://docs.astro.build/en/basics/project-structure/)
