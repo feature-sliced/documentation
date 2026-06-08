@@ -4,47 +4,45 @@ sidebar:
   order: 1
 ---
 
-import { Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
+import { Tabs, TabItem, FileTree, Aside } from '@astrojs/starlight/components';
 
-FSD is compatible with Next.js in both the App Router version and the Pages Router version if you solve the main conflict — the `app` and `pages` folders.
+<Aside type="caution">
+To avoid conflicts, rename **both** `app` and `pages` FSD layers to `_app` and `_pages`, regardless of which router you use.
+</Aside>
+
+## src Folder
+
+Next.js expects special `app` or `pages` folders either in the root of the project or in the `src` folder. Generally, it is easier to place Next.js folders in the root of the project so that the `src` folder contains only FSD code, but it is not mandatory.
 
 ## App Router \{#app-router\}
 
-### Conflict between FSD and Next.js in the `app` layer \{#conflict-between-fsd-and-nextjs-in-the-app-layer\}
-
-Next.js suggests using the `app` folder to define application routes. It expects files in the `app` folder to correspond to pathnames. This routing mechanism **does not align** with the FSD concept, as it's not possible to maintain a flat slice structure.
-
-The solution is to move the Next.js `app` folder to the project root and import FSD pages from `src`, where the FSD layers are, into the Next.js `app` folder.
-
-You will also need to add a `pages` folder to the project root, otherwise Next.js will try to use `src/pages` as the Pages Router even if you use the App Router, which will break the build. It's also a good idea to put a `README.md` file inside this root `pages` folder describing why it is necessary, even though it's empty.
+Next.js uses the `app` folder for the App Router and the `pages` folder for the Pages Router, which conflicts with FSD layer names. To solve this conflict, use prefixed names for FSD layers, such as `_app` instead of `app` and `_pages` instead of `pages`. This approach is also compatible with the official [linter](https://github.com/feature-sliced/steiger).
 
 <FileTree>
-- app App folder (Next.js)
-  - api
-    - get-example
-      - route.ts
-  - example
-    - page.tsx
-- pages Empty pages folder (Next.js)
-  - README.md
-- src
-  - app
-    - api-routes API routes
-  - pages
-    - example
-      - index.ts
-      - ui
-        - example.tsx
-  - widgets/
-  - features/
-  - entities/
-  - shared/
+- app Next.js app folder
+    - api/
+        - get-example/
+            - route.ts
+    - example/
+        - page.tsx
+- src/
+    - _app/ FSD layer
+        - api-routes/ API routes
+    - _pages/ FSD layer
+        - example/
+            - index.ts
+            - ui/
+                - example.tsx
+    - widgets/
+    - features/
+    - entities/
+    - shared/
 </FileTree>
 
-Example of re-exporting a page from `src/pages` in the Next.js `app`:
+Example of re-exporting a page from `src/_pages` in the Next.js `app`:
 
 ```tsx title="app/example/page.tsx"
-export { ExamplePage as default, metadata } from '@/pages/example';
+export { ExamplePage as default, metadata } from '@/_pages/example';
 ```
 
 ### Server and client public APIs \{#server-and-client-public-apis\}
@@ -70,22 +68,22 @@ The `instrumentation.js` file allows you to monitor the performance and behavior
 Routes should be placed in the `pages` folder in the root of the project, similar to `app` folder for the App Router. The structure inside `src` where the layer folders are located remains unchanged.
 
 <FileTree>
-- pages Pages folder (Next.js)
+- pages/ Pages folder (Next.js)
   - _app.tsx
-  - api
+  - api/
     - example.ts API route re-export
-  - example
+  - example/
     - index.tsx
-- src
-  - app
-    - custom-app
+- src/
+  - _app/ FSD layer
+    - custom-app/
       - custom-app.tsx Custom App component
-    - api-routes
+    - api-routes/
       - get-example-data.ts API route
-  - pages
-    - example
+  - _pages/ FSD layer
+    - example/
       - index.ts
-      - ui
+      - ui/
         - example.tsx
   - widgets/
   - features/
@@ -93,17 +91,17 @@ Routes should be placed in the `pages` folder in the root of the project, simila
   - shared/
 </FileTree>
 
-Example of re-exporting a page from `src/pages` in the Next.js `pages`:
+Example of re-exporting a page from `src/_pages` in the Next.js `pages`:
 
 ```tsx title="pages/example/index.tsx"
-export { Example as default } from '@/pages/example';
+export { Example as default } from '@/_pages/example';
 ```
 
 ### Custom `_app` component \{#custom-_app-component\}
 
-You can place your Custom App component in `src/app/_app` or `src/app/custom-app`:
+You can place your Custom App component in `src/_app/_app` or `src/_app/custom-app`:
 
-```tsx title="src/app/custom-app/custom-app.tsx"
+```tsx title="src/_app/custom-app/custom-app.tsx"
 import type { AppProps } from 'next/app';
 
 export const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -117,12 +115,12 @@ export const MyApp = ({ Component, pageProps }: AppProps) => {
 ```
 
 ```tsx title="pages/_app.tsx"
-export { App as default } from '@/app/custom-app';
+export { App as default } from '@/_app/custom-app';
 ```
 
 ## Route Handlers (API routes) \{#route-handlers-api-routes\}
 
-Use the `api-routes` segment in the `app` layer to work with Route Handlers.
+Use the `api-routes` segment in the `_app` layer to work with Route Handlers.
 
 Be mindful when writing backend code in the FSD structure — FSD is primarily intended for frontends, meaning that's what people will expect to find.
 If you need a lot of endpoints, consider separating them into a different package in a monorepo.
@@ -131,7 +129,7 @@ If you need a lot of endpoints, consider separating them into a different packag
 
 <TabItem value="app-router" label="App Router">
 
-```tsx title="src/app/api-routes/get-example-data.ts"
+```tsx title="src/_app/api-routes/get-example-data.ts"
 import { getExamplesList } from '@/shared/db';
 
 export const getExampleData = () => {
@@ -149,14 +147,14 @@ export const getExampleData = () => {
 ```
 
 ```tsx title="app/api/example/route.ts"
-export { getExampleData as GET } from '@/app/api-routes';
+export { getExampleData as GET } from '@/_app/api-routes';
 ```
 
 </TabItem>
 
 <TabItem value="pages-router" label="Pages Router">
 
-```tsx title="src/app/api-routes/get-example-data.ts"
+```tsx title="src/_app/api-routes/get-example-data.ts"
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const config = {
@@ -175,12 +173,12 @@ const handler = (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
 export const getExampleData = { config, handler } as const;
 ```
 
-```tsx title="src/app/api-routes/index.ts"
+```tsx title="src/_app/api-routes/index.ts"
 export { getExampleData } from './get-example-data';
 ```
 
 ```tsx title="app/api/example.ts"
-import { getExampleData } from '@/app/api-routes';
+import { getExampleData } from '@/_app/api-routes';
 
 export const config = getExampleData.config;
 export default getExampleData.handler;
