@@ -4,109 +4,199 @@ sidebar:
   order: 1
 ---
 
-import { Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
+import { Tabs, TabItem, FileTree, Aside } from '@astrojs/starlight/components';
 
-NextJSプロジェクトでFSDを実装することは可能ですが、プロジェクトの構造に関するNextJSの要件とFSDの原則の間に2つの点で対立が生じます。
+<Aside type="caution">
+競合を避けるため、使用するルーターに関わらず、`app`と`pages`の**両方**のFSD層を`_app`と`_pages`に名前変更してください。
+</Aside>
 
-- `pages`のファイルルーティング
-- NextJSにおける`app`の対立、または欠如
+## srcフォルダー
 
-## `pages`におけるFSDとNextJSの対立 \{#pages-conflict}
+NextJSは、プロジェクトのルートまたは`src`フォルダーのいずれかに、特別な`app`または`pages`フォルダーを期待します。一般的には、`src`フォルダーにFSDコードのみが含まれるように、NextJSのフォルダーをプロジェクトのルートに配置する方が簡単ですが、必須ではありません。
 
-NextJSは、アプリケーションのルートを定義するために`pages`フォルダーを使用することを提案しています。`pages`フォルダー内のファイルがURLに対応することを期待しています。このルーティングメカニズムは、FSDの概念に**適合しません**。なぜなら、このようなルーティングメカニズムでは、スライスの平坦な構造を維持することができないからです。
+## App Router \{#app-router\}
 
-### NextJSの`pages`フォルダーをプロジェクトのルートフォルダーに移動する（推奨）
-
-このアプローチは、NextJSの`pages`フォルダーをプロジェクトのルートフォルダーに移動し、FSDのページをNextJSの`pages`フォルダーにインポートすることにあります。これにより、`src`フォルダー内でFSDのプロジェクト構造を維持できます。
-
-<FileTree>
-- pages NextJSのpagesフォルダー
-- src
-  - app
-  - entities
-  - features
-  - pages FSDのpagesフォルダー
-  - shared
-  - widgets
-</FileTree>
-
-### FSD構造における`pages`フォルダーの名前変更
-
-もう一つの解決策は、FSD構造内の`pages`層の名前を変更して、NextJSの`pages`フォルダーとの名前衝突を避けることです。
-FSDの`pages`層を`views`層に変更することができます。
-このようにすることで、`src`フォルダー内のプロジェクト構造は、NextJSの要件と矛盾することなく保持されます。
-
+NextJSはApp Routerに`app`フォルダーを、Pages Routerに`pages`フォルダーを使用しますが、これはFSDの層名と競合します。この競合を解決するには、`app`の代わりに`_app`、`pages`の代わりに`_pages`のように、FSD層にプレフィックス付きの名前を使用してください。このアプローチは公式の[リンター](https://github.com/feature-sliced/steiger)とも互換性があります。
 
 <FileTree>
-- app
-- entities
-- features
-- pages NextJSのpagesフォルダー
-- views 名前が変更されたFSDのページフォルダー
-- shared
-- widgets
+- app NextJSのappフォルダー
+    - api/
+        - get-example/
+            - route.ts
+    - example/
+        - page.tsx
+- src/
+    - _app/ FSD層
+        - api-routes/ APIルート
+    - _pages/ FSD層
+        - example/
+            - index.ts
+            - ui/
+                - example.tsx
+    - widgets/
+    - features/
+    - entities/
+    - shared/
 </FileTree>
 
-この場合、プロジェクトのREADMEや内部ドキュメントなど、目立つ場所にこの名前変更を文書化することをお勧めします。この名前変更は、[「プロジェクト知識」][project-knowledge]の一部です。
+NextJSの`app`内で`src/_pages`からページを再エクスポートする例：
 
-## NextJSにおける`app`フォルダーの欠如 \{#app-absence}
+```tsx title="app/example/page.tsx"
+export { ExamplePage as default, metadata } from '@/_pages/example';
+```
 
-NextJSのバージョン13未満では、明示的な`app`フォルダーは存在せず、代わりにNextJSは`_app.tsx`ファイルを提供しています。このファイルは、プロジェクトのすべてのページのラッピングコンポーネントとして機能しています。
+### サーバーとクライアントのパブリックAPI \{#server-and-client-public-apis\}
 
-### `pages/_app.tsx`ファイルへの機能のインポート
+NextJSのApp Routerでは、クライアントで使用できるモジュールとサーバー専用のモジュールが、1つのスライス内に共存することがあります。サーバー専用のモジュールが`index.ts`からエクスポートされている場合、クライアントコンポーネントがそのスライスをインポートすると、サーバー専用の副作用がクライアントのモジュールグラフに伝播し、ビルドエラーにつながる可能性があります。
 
-NextJSの構造における`app`フォルダーの欠如の問題を解決するために、`app`層内に`App`コンポーネントを作成し、NextJSがそれを使用できるように`pages/_app.tsx`に`App`コンポーネントをインポートすることができます。例えば
+この問題が発生した場合は、パブリックAPIに`index.server.ts`を追加してください。
 
+- `index.server.ts`: サーバーコンポーネントや`server-only`でマークされたデータアクセス関数など、サーバーでのみインポートされる必要があるモジュール
 
-```tsx
-// app/providers/index.tsx
+### Middleware \{#middleware\}
 
-const App = ({ Component, pageProps }: AppProps) => {
-  return (
-    <Provider1>
-      <Provider2>
-        <BaseLayout>
-            <Component {...pageProps} />
-        </BaseLayout>
-      </Provider2>
-    </Provider1>
-  );
+プロジェクトでミドルウェアを使用する場合は、NextJSの`app`および`pages`フォルダーと並んでプロジェクトのルートに配置する必要があります。
+
+### Instrumentation \{#instrumentation\}
+
+`instrumentation.js`ファイルを使用すると、アプリケーションのパフォーマンスと動作を監視できます。使用する場合は、`middleware.js`と同様にプロジェクトのルートに配置する必要があります。
+
+## Pages Router \{#pages-router\}
+
+### `pages`層におけるFSDとNextJSの競合 \{#conflict-between-fsd-and-nextjs-in-the-pages-layer\}
+
+App Routerの`app`フォルダーと同様に、ルートはプロジェクトのルートにある`pages`フォルダーに配置する必要があります。層フォルダーが配置されている`src`内の構造は変わりません。
+
+<FileTree>
+- pages/ pagesフォルダー（NextJS）
+  - _app.tsx
+  - api/
+    - example.ts APIルートの再エクスポート
+  - example/
+    - index.tsx
+- src/
+  - _app/ FSD層
+    - custom-app/
+      - custom-app.tsx カスタムAppコンポーネント
+    - api-routes/
+      - get-example-data.ts APIルート
+  - _pages/ FSD層
+    - example/
+      - index.ts
+      - ui/
+        - example.tsx
+  - widgets/
+  - features/
+  - entities/
+  - shared/
+</FileTree>
+
+NextJSの`pages`内で`src/_pages`からページを再エクスポートする例：
+
+```tsx title="pages/example/index.tsx"
+export { Example as default } from '@/_pages/example';
+```
+
+### カスタム`_app`コンポーネント \{#custom-_app-component\}
+
+カスタムAppコンポーネントは`src/_app/_app`または`src/_app/custom-app`に配置できます：
+
+```tsx title="src/_app/custom-app/custom-app.tsx"
+import type { AppProps } from 'next/app';
+
+export const MyApp = ({ Component, pageProps }: AppProps) => {
+    return (
+        <>
+            <p>My Custom App component</p>
+            <Component { ...pageProps } />
+        </>
+    );
+};
+```
+
+```tsx title="pages/_app.tsx"
+export { App as default } from '@/_app/custom-app';
+```
+
+## ルートハンドラー（APIルート） \{#route-handlers-api-routes\}
+
+ルートハンドラーを扱うには、`_app`層の`api-routes`セグメントを使用します。
+
+FSD構造内でバックエンドのコードを書く際は注意してください。FSDは主にフロントエンドを対象としており、それが人々が見つけることを期待するものだからです。
+多くのエンドポイントが必要な場合は、モノレポ内の別のパッケージに分離することを検討してください。
+
+<Tabs>
+
+<TabItem value="app-router" label="App Router">
+
+```tsx title="src/_app/api-routes/get-example-data.ts"
+import { getExamplesList } from '@/shared/db';
+
+export const getExampleData = () => {
+    try {
+        const examplesList = getExamplesList();
+
+        return Response.json({ examplesList });
+    } catch {
+        return Response.json(null, {
+            status: 500,
+            statusText: 'Ouch, something went wrong',
+        });
+    }
+};
+```
+
+```tsx title="app/api/example/route.ts"
+export { getExampleData as GET } from '@/_app/api-routes';
+```
+
+</TabItem>
+
+<TabItem value="pages-router" label="Pages Router">
+
+```tsx title="src/_app/api-routes/get-example-data.ts"
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '1mb',
+        },
+    },
+    maxDuration: 5,
 };
 
-export default App;
-```
-その後、`App`コンポーネントとプロジェクトのグローバルスタイルを`pages/_app.tsx`に次のようにインポートできます。
+const handler = (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
+    res.status(200).json({ message: 'Hello from FSD' });
+};
 
-```tsx
-// pages/_app.tsx
-
-import 'app/styles/index.scss'
-
-export { default } from 'app/providers';
+export const getExampleData = { config, handler } as const;
 ```
 
+```tsx title="src/_app/api-routes/index.ts"
+export { getExampleData } from './get-example-data';
+```
 
-## App Routerの使用 \{#app-router}
+```tsx title="app/api/example.ts"
+import { getExampleData } from '@/_app/api-routes';
 
-App Routerは、Next.jsのバージョン13.4で安定版として登場しました。App Routerを使用すると、`pages`フォルダーの代わりに`app`フォルダーをルーティングに使用できます。
-FSDの原則に従うために、NextJSの`app`フォルダーを`pages`フォルダーとの名前衝突を解消するために推奨される方法で扱うべきです。
+export const config = getExampleData.config;
+export default getExampleData.handler;
+```
 
-このアプローチは、NextJSの`app`フォルダーをプロジェクトのルートフォルダーに移動し、FSDのページをNextJSの`app`フォルダーにインポートすることに基づいています。これにより、`src`フォルダー内のFSDプロジェクト構造が保持されます。また、プロジェクトのルートフォルダーに`pages`フォルダーを追加することもお勧めします。なぜなら、App RouterはPages Routerと互換性があるからです。
+</TabItem>
 
-<FileTree>
-- app/ NextJSのappフォルダー
-- pages/ 空のNextJSのpagesフォルダー
-  - README.md このフォルダーの目的に関する説明
-- src/
-  - app/ FSDのappフォルダー
-  - entities/
-  - features/
-  - pages/ FSDのpagesフォルダー
-  - shared/
-  - widgets/
-</FileTree>
+</Tabs>
 
-[![StackBlitzで開く](https://developer.stackblitz.com/img/open_in_stackblitz.svg)][ext-app-router-stackblitz]
+## 追加の推奨事項 \{#additional-recommendations\}
+
+- データベースクエリの記述と上位層でのその利用には、`shared`層の`db`セグメントを使用してください。
+- クエリのキャッシュと再検証のロジックは、クエリ自体と同じ場所に保持する方が良いでしょう。
+
+## 関連項目 \{#see-also\}
+
+- [NextJSのプロジェクト構造](https://nextjs.org/docs/app/getting-started/project-structure)
+- [NextJSのページレイアウト](https://nextjs.org/docs/app/getting-started/layouts-and-pages)
 
 [project-knowledge]: /ja/docs/about/understanding/knowledge-types
 [ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md
