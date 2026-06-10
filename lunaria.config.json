@@ -13,7 +13,12 @@
         "basesToHide": ["src/content/docs"],
         "customCss": ["./src/styles/lunaria.css"],
         "favicon": {
-            "inline": "./static/img/favicon/adaptive.svg"
+            "external": [
+                {
+                    "link": "https://fsd.how/img/favicon/adaptive.svg",
+                    "type": "image/svg+xml"
+                }
+            ]
         }
     },
     "defaultLocale": {
