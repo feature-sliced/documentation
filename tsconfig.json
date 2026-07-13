@@ -3,9 +3,6 @@
     "references": [
         {
             "path": "./tsconfig.astro.json"
-        },
-        {
-            "path": "./tsconfig.docusaurus.json"
         }
     ]
 }

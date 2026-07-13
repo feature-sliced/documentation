@@ -2,11 +2,16 @@
 title: Feature-Sliced Design
 template: splash
 hero:
-  tagline:
-    Architectural methodology for frontend projects
-  actions:
-    - text: Get started
-      link: /docs/get-started/overview
-      icon: right-arrow
-      variant: primary
+  tagline: ""
 ---
+
+import HeroBanner from "../../pages/_pages/ui/HeroBanner.astro";
+import Products from "../../pages/_pages/ui/Products.astro";
+import PopularGuides from "../../pages/_pages/ui/PopularGuides.astro";
+import "../../pages/_pages/ui/index.css";
+
+<div class="HomePage__container">
+  <HeroBanner />
+  <Products />
+  <PopularGuides />
+</div>

@@ -1,11 +1,11 @@
 ---
 title: Public API
 sidebar:
-  order: 3
+  order: 4
 ---
 
 import { FileTree, Aside } from '@astrojs/starlight/components';
-import StaticImage from '../../../../components/StaticImage.astro';
+import StaticImage from '../../../../shared/ui/static-image/StaticImage.astro';
 
 A public API is a _contract_ between a group of modules, like a slice, and the code that uses it. It also acts as a gate, only allowing access to certain objects, and only through that public API.
 
@@ -61,6 +61,12 @@ The notation `A/@x/B` is meant to be read as "A crossed with B".
 Try to keep cross-imports to a minimum, and **only use this notation on the Entities layer**, where eliminating cross-imports is often unreasonable.
 
 </Aside>
+
+## Environment-specific Public APIs
+
+A slice’s public API should generally be represented by `index.ts`, and freely customizing it is not recommended.
+
+However, even modules within the same slice may need to run in different environments. If these modules are exported together from a single `index.ts`, the environment boundary may be broken, or the bundler may incorrectly include code that should not be bundled together. When this problem actually occurs, separate the public API by adding files that match the runtime environment. For an example, see [Server and client public APIs in Usage with Next.js](/docs/guides/tech/with-nextjs#server-and-client-public-apis).
 
 ## Issues with index files
 

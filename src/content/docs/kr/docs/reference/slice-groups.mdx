@@ -1,0 +1,150 @@
+---
+title: Slice groups
+sidebar:
+  order: 3
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+import StaticImage from '../../../../../shared/ui/static-image/StaticImage.astro';
+
+Slice group은 같은 layer 안에서 관련된 slice를 가까이 배치해, 구조를 더 쉽게 탐색할 수 있게 하는 방식입니다.
+ 
+Slice group은 FSD에서 반드시 적용해야 하는 구조는 아닙니다.  
+slice 수가 많아져 flat한 구조만으로 탐색하기 어려울 때 선택적으로 도입할 수 있습니다.
+## 개요
+ 
+코드를 읽고 탐색하기 쉽게 만들기 위한 구조이며, slice 간 의존성 규칙에는 영향을 주지 않습니다.
+ 
+Slice group은 slice가 아닙니다.  
+따라서 `model`, `ui`, `api` 같은 segment나 `index.ts` 같은 public API를 갖지 않습니다.  
+여러 slice가 함께 쓰는 공용 코드도 slice group에 포함하지 않습니다.
+
+<StaticImage path={['/img/slice-group-not-a-slice-light.svg', '/img/slice-group-not-a-slice-dark.svg']} alt="Slice group은 segment나 public API를 갖지 않는다" />
+
+같은 slice group에 속하더라도 각 slice는 독립적으로 유지됩니다.   
+slice 사이의 격리와 의존성 규칙도 달라지지 않습니다.
+
+## 왜 필요한가
+
+slice가 많아지면 flat한 구조만으로는 관련 코드를 찾기 어려워질 수 있습니다.  
+특히 같은 맥락의 slice가 여러 곳에 흩어져 있으면 layer 전체를 여러 번 훑게 됩니다.
+
+slice group은 이런 상황에서 관련된 slice를 가까이 모아 구조를 더 쉽게 탐색할 수 있게 합니다.
+
+## 언제 도입을 고려하는가
+
+한눈에 같은 묶음으로 보이는 기준이 있고, 실제로 구조를 나누는 편이 더 읽기 쉬울 때 도입을 고려합니다.   
+판단 기준은 다음과 같습니다.
+
+- 같은 비즈니스 맥락의 slice가 layer 안에 여러 개 흩어져 있다.
+- slice 이름만 봐도 같은 주제로 묶이는 게 자연스럽게 보인다.
+- layer 안의 slice 수가 많아져 스크롤 없이 전체를 파악하기 어렵다.
+
+반대로 다음과 같은 경우에는 아직 필요하지 않을 수 있습니다.
+
+- 이름만으로도 충분히 빠르게 탐색된다.
+- 그룹 기준이 자연스럽지 않다.
+- 그룹 안에 들어갈 slice가 너무 적다.
+
+## 어떻게 적용하는가
+
+### entities
+
+도메인 모델 관점에서 가까운 slice를 묶을 수 있습니다.
+
+예를 들어 `entities` layer에 결제와 관련된 slice가 많아졌다고 가정해 보겠습니다.
+
+**group 없이 두면:**
+
+<FileTree>
+- entities/
+  - invoice/
+    - model/
+    - ui/
+  - receipt/
+    - model/
+    - ui/
+  - transaction/
+    - model/
+    - ui/
+  - user/
+    - model/
+    - ui/
+  - product/
+    - model/
+    - ui/
+  - ...
+</FileTree>
+
+결제 관련 slice(`invoice`, `receipt`, `transaction`)를 찾으려면 layer 전체를 보면서 관련 항목을 골라내야 합니다.
+
+**group으로 묶으면:**
+
+<FileTree>
+- entities/
+  - payment/ 
+    - invoice/ 
+      - model/
+      - ui/
+    - receipt/ 
+      - model/
+      - ui/
+    - transaction/ 
+      - model/
+      - ui/
+  - user/ 
+    - model/
+    - ui/
+  - product/ 
+    - model/
+    - ui/
+  - ...
+</FileTree>
+
+이제 결제와 관련된 slice는 `payment/` 아래에서 바로 확인할 수 있습니다.
+
+모든 slice를 그룹에 넣을 필요는 없습니다.  
+`user/`처럼 그 자체로 의미가 분명한 slice는 그룹 없이 그대로 둘 수 있습니다.
+
+### pages
+
+pages layer에서도 비슷한 방식으로 관련 page를 묶을 수 있습니다.  
+이는 가능한 예시 중 하나이며, pages layer의 기본 구조를 뜻하지는 않습니다.
+
+<FileTree>
+- pages/
+  - order/ 
+    - create/ 
+      - ui/
+    - detail/ 
+      - ui/
+    - list/ 
+      - ui/
+  - customer/ 
+    - detail/ 
+      - ui/
+    - list/ 
+      - ui/
+  - settings/
+    - ui/
+  - ...
+</FileTree>
+
+이 구조는 목록, 상세, 생성, 수정처럼 같은 주제의 page가 여러 개 있을 때 도움이 됩니다.
+
+### features에서도 사용할 수 있나요?
+
+features layer에도 slice group을 적용할 수 있습니다. 
+다만 feature는 하나의 도메인에만 묶이지 않고 여러 entity에 걸치는 경우가 많습니다. 그래서 entities에 비해 자연스러운 그룹핑 기준을 잡기 어렵습니다.
+
+기준이 명확하지 않은 상태에서 `features/cart/` 같은 그룹을 만들면, `add-to-cart`, `remove-from-cart` 같은 use case뿐 아니라 cart와 관련된 DTO, mapper까지 그 아래에 모이기 시작할 수 있습니다. 그러면 group 폴더가 탐색 구조가 아니라 cart 도메인 전체를 담는 폴더처럼 쓰이게 되고, feature가 use case 단위로 나뉘어야 한다는 원칙이 약해집니다.
+
+features에서 slice group을 도입하려면, 먼저 그룹에 들어갈 slice가 충분히 많은지 확인합니다. slice가 두세 개뿐이라면 그룹 없이도 탐색에 문제가 없을 가능성이 높습니다. 그리고 그룹 안에 feature slice만 남아 있는지, entities에 속해야 할 코드가 함께 놓이고 있지는 않은지를 살펴봐야 합니다.
+
+## 참고 자료
+
+- [러시아 텔레그램 FSD 커뮤니티 - 구조적 그룹핑, slice group, 계층 확장에 대한 논의](https://t.me/c/1216849846/1/2785)
+- [러시아 텔레그램 FSD 커뮤니티 - 중첩 구조와 flat 구조, slice group의 형태와 허용 범위](https://t.me/c/1216849846/1/5051)
+- [러시아 텔레그램 FSD 커뮤니티 - 왜 features에서는 그룹핑 예시가 적은가, features에서도 slice group이 가능한가](https://t.me/c/1216849846/1/80620)
+- [카카오페이 - pages layer에서 slice grouping을 적용한 사례](https://tech.kakaopay.com/post/fsd/#2-slice-grouping-%ED%97%88%EC%9A%A9-%EB%B0%8F-pages-%EB%A0%88%EC%9D%B4%EC%96%B4-%EA%B5%AC%EC%84%B1)

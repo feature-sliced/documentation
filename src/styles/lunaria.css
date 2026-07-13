@@ -1,0 +1,54 @@
+/*
+ * Styles for the Lunaria translation status dashboard.
+ * Based on the FSD documentation theme, with colors adapted from src/styles/custom.css.
+ */
+
+:root {
+    --ln-font-body: system-ui, sans-serif;
+
+    /* Light theme (default) — mirrors :root[data-theme="light"] in custom.css */
+    --ln-color-white: #ffffff;
+    --ln-color-gray-1: #f1f5f9;
+    --ln-color-gray-2: #e2e8f0;
+    --ln-color-gray-3: #cbd5e1;
+    --ln-color-gray-4: #94a3b8;
+    --ln-color-gray-5: #64748b;
+    --ln-color-gray-6: #475569;
+    --ln-color-gray-7: #334155;
+    --ln-color-black: #0f172a;
+
+    --ln-color-blue: #3193ff;
+    --ln-color-orange: #f97316;
+    --ln-color-purple: #8b5cf6;
+
+    --ln-color-background: var(--ln-color-white);
+    --ln-color-link: var(--ln-color-blue);
+    --ln-color-done: var(--ln-color-purple);
+    --ln-color-outdated: var(--ln-color-orange);
+    --ln-color-missing: var(--ln-color-gray-4);
+    --ln-color-table-border: var(--ln-color-gray-2);
+    --ln-color-table-background: var(--ln-color-gray-1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Dark theme — mirrors :root[data-theme="dark"] in custom.css */
+        --ln-color-white: #0f172a;
+        --ln-color-gray-1: #172033;
+        --ln-color-gray-2: #1e293b;
+        --ln-color-gray-3: #334155;
+        --ln-color-gray-4: #64748b;
+        --ln-color-gray-5: #94a3b8;
+        --ln-color-gray-6: #cbd5e1;
+        --ln-color-gray-7: #e2e8f0;
+        --ln-color-black: #f1f5f9;
+
+        --ln-color-blue: #60a5fa;
+        --ln-color-orange: #fb923c;
+        --ln-color-purple: #a78bfa;
+
+        --ln-color-missing: var(--ln-color-gray-5);
+        --ln-color-table-border: var(--ln-color-gray-3);
+        --ln-color-table-background: var(--ln-color-gray-2);
+    }
+}

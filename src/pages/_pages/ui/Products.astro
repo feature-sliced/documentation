@@ -1,0 +1,175 @@
+---
+const products = [
+    {
+        href: "https://t.me/feature_sliced",
+        target: "_blank" as const,
+        name: "Community",
+        color: "#34D399",
+        summary:
+            "Join active discussions around real FSD questions, with community help and FastTrack Bot support.",
+        icon: `<svg style="color:#34D399" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+        <circle cx="9" cy="8.5" r="2.5"/>
+        <circle cx="15" cy="8.5" r="2.5"/>
+        <path d="M4.5 19c0-2.4853 2.0147-4.5 4.5-4.5h6c2.4853 0 4.5 2.0147 4.5 4.5"/>
+      </g>
+    </svg>`,
+    },
+    {
+        href: "https://github.com/feature-sliced/steiger",
+        target: "_blank" as const,
+        name: "Steiger",
+        color: "#A78BFA",
+        summary: "Turn FSD rules into automated checks for code structure.",
+        icon: `<svg style="color:#A78BFA" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+        <circle cx="11" cy="11" r="5.25"/>
+        <path d="M15 15l4.5 4.5"/>
+        <path d="M8.75 11l1.5 1.5 3-3"/>
+      </g>
+    </svg>`,
+    },
+    {
+        href: "/docs/llms",
+        target: "_self" as const,
+        name: "Docs for LLMs",
+        color: "#DB2777",
+        summary:
+            "FSD docs and resources for LLM-powered tools and AI use cases.",
+        icon: `<svg style="color:#DB2777" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+        <path d="M12 3.5L4.5 7.5v8L12 19.5l7.5-4v-8z"/>
+        <path d="M12 11.5v8"/>
+        <path d="M12 11.5l7.5-4"/>
+        <path d="M12 11.5L4.5 7.5"/>
+      </g>
+    </svg>`,
+    },
+];
+---
+
+<section class="Products">
+    <div class="Products__inner">
+        <div class="Products__row">
+            {
+                products.map((product) => (
+                    <a
+                        href={product.href}
+                        target={product.target}
+                        rel={
+                            product.target === "_blank"
+                                ? "noopener noreferrer"
+                                : undefined
+                        }
+                        class="Products__link"
+                    >
+                        <article class="ProductCard">
+                            <div>
+                                <div class="ProductBadge">
+                                    <Fragment set:html={product.icon} />
+                                    {product.name}
+                                </div>
+                                <p class="ProductCard__summary">
+                                    {product.summary}
+                                </p>
+                            </div>
+                        </article>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .Products {
+        margin-bottom: 4rem;
+        margin-top: 3rem;
+    }
+
+    .Products__inner {
+        max-width: 960px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    .Products__row {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+        .Products__row {
+            flex-direction: row;
+            align-items: stretch;
+            gap: 24px;
+        }
+    }
+
+    .Products__link {
+        text-decoration: none;
+        flex: 1;
+        color: inherit;
+    }
+
+    .ProductCard {
+        box-sizing: border-box;
+        background-color: var(--hp-surface);
+        border-radius: 6px;
+        border: 1px solid var(--hp-border);
+        box-shadow: var(--hp-card-shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        transition:
+            box-shadow 150ms,
+            border-color 150ms;
+        height: 100%;
+    }
+
+    @media (min-width: 480px) {
+        .ProductCard {
+            flex-direction: row;
+        }
+    }
+
+    .Products__link:hover .ProductCard {
+        box-shadow: var(--hp-card-hover-shadow);
+    }
+
+    .ProductCard__summary {
+        color: var(--sl-color-gray-3);
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .ProductBadge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 12px;
+        border: 1px solid var(--hp-badge-border);
+        padding-right: 12px;
+        background: var(--hp-badge-bg);
+        font-size: 15px;
+        color: var(--hp-badge-text);
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+    .ProductBadge :global(svg) {
+        display: block;
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        min-height: 24px;
+        padding: 8px;
+        box-sizing: content-box;
+        flex-shrink: 0;
+        border-right: 1px solid var(--hp-badge-svg-border);
+        margin-right: 12px;
+    }
+</style>
