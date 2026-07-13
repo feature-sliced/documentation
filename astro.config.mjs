@@ -137,6 +137,10 @@ export default defineConfig({
                 zh: {
                     label: "中文",
                 },
+                pt: {
+                    label: "Português",
+                    lang: "pt"
+                }
             },
             social: [
                 {

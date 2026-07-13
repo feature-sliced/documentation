@@ -1,0 +1,386 @@
+{
+    "pages.home.features.title": {
+        "message": "Funcionalidades",
+        "description": "Features"
+    },
+    "pages.home.features.logic.title": {
+        "message": "Lógica de Negócios Explícita",
+        "description": "Feature title"
+    },
+    "pages.home.features.logic.description": {
+        "message": "Arquitetura fácil de entender graças aos domínios bem definidos",
+        "description": "Feature description"
+    },
+    "pages.home.features.adaptability.title": {
+        "message": "Adaptabilidade",
+        "description": "Feature title"
+    },
+    "pages.home.features.adaptability.description": {
+        "message": "Componentes arquiteturais podem ser substituídos ou adicionados de forma flexível para atender novos requisitos",
+        "description": "Feature description"
+    },
+    "pages.home.features.debt.title": {
+        "message": "Debto Técnico e Refatoração",
+        "description": "Feature title"
+    },
+    "pages.home.features.debt.description": {
+        "message": "Cada módulo pode ser modificado ou reescrito de forma independente, sem efeitos colaterais.",
+        "description": "Feature description"
+    },
+    "pages.home.features.shared.title": {
+        "message": "Reutilização explícita de código",
+        "description": "Feature title"
+    },
+    "pages.home.features.shared.description": {
+        "message": "É mantido um equilíbrio entre DRY e a customização local",
+        "description": "Feature description"
+    },
+    "pages.home.concepts.title": {
+        "message": "Conceitos",
+        "description": "Concepts"
+    },
+    "pages.home.concepts.public.title": {
+        "message": "API Pública",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.public.description": {
+        "message": "Cada módulo deve ter uma declaração da sua API pública no nível superior",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.isolation.title": {
+        "message": "Isolamento",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.isolation.description": {
+        "message": "O módulo não deve depender diretamente de outros módulos da mesma camada ou de camadas superiores.",
+        "description": "Concept description"
+    },
+    "pages.home.concepts.needs.title": {
+        "message": "Orientado por necessidades",
+        "description": "Concept title"
+    },
+    "pages.home.concepts.needs.description": {
+        "message": "Orientação às necessidades do negócio e dos usuários",
+        "description": "Concept description"
+    },
+    "pages.home.scheme.title": {
+        "message": "Esquema",
+        "description": "Scheme"
+    },
+    "pages.home.companies.using": {
+        "message": "Empresas que utilizam FSD",
+        "description": "Companies using FSD"
+    },
+    "pages.home.companies.add_me": {
+        "message": "FSD é utilizado na sua empresa?",
+        "description": "Is FSD used in your company?"
+    },
+    "pages.home.companies.tell_us": {
+        "message": "Conte-nos",
+        "description": "Tell us"
+    },
+    "pages.examples.title": {
+        "message": "Exemplos",
+        "description": "Page title"
+    },
+    "pages.examples.subtitle": {
+        "message": "Lista de sites que as pessoas estão desenvolvendo com Feature-Sliced Design",
+        "description": "Page subtitle"
+    },
+    "pages.versions.title": {
+        "message": "Versões do Feature-Sliced Design",
+        "description": "Feature-Sliced Design versions"
+    },
+    "pages.versions.current": {
+    "message": "A documentação da versão atualmente publicada pode ser encontrada aqui",
+    "description": "Description for current version"
+    },
+    "pages.versions.legacy": {
+    "message": "A documentação de versões anteriores de {of} pode ser encontrada aqui",
+    "description": "Description for legacy version"
+    },
+    "pages.nav.title": {
+    "message": "🧭 Navegação",
+    "description": "NavPage title"
+    },
+    "pages.nav.legacy.title": {
+    "message": "Rotas legadas",
+    "description": "NavPage section=legacy title"
+    },
+    "pages.nav.legacy.details": {
+    "message": "Após a reestruturação da documentação, algumas rotas foram alteradas. Abaixo você pode encontrar a página que estava procurando.",
+    "description": "NavPage section=legacy details"
+    },
+    "pages.nav.legacy.subdetails": {
+    "message": "Mas existem redirecionamentos a partir de links antigos para compatibilidade",
+    "description": "NavPage section=legacy subdetails"
+    },
+    "features.feedback-badge.label": {
+    "message": "Compartilhe seu feedback sobre a documentação 🤙",
+    "description": "Feedback share button label"
+    },
+    "features.feedback-badge.url": {
+    "message": "https://forms.gle/nsYua6bMMG5iBB3v7",
+    "description": "Feedback share form url"
+    },
+    "features.feedback-doc.button-text": {
+    "message": "Feedback",
+    "description": "The text on a floating button to leave feedback about the docs"
+    },
+    "features.feedback-doc.email-placeholder": {
+    "message": "Seu e-mail (opcional)",
+    "description": "The placeholder for email input"
+    },
+    "features.feedback-doc.error-message": {
+    "message": "Algo deu errado. Tente novamente mais tarde.",
+    "description": "The error message displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-error-403": {
+    "message": "A URL da requisição não corresponde à definida no PushFeedback para este projeto.",
+    "description": "The title of the modal displayed when feedback form submission fails with 403 error"
+    },
+    "features.feedback-doc.modal-title-error-404": {
+    "message": "Não foi possível encontrar o ID do projeto informado no PushFeedback.",
+    "description": "The title of the modal displayed when feedback form submission fails with 404 error"
+    },
+    "features.feedback-doc.message-placeholder": {
+    "message": "Comentários",
+    "description": "The placeholder for message input"
+    },
+    "features.feedback-doc.modal-title": {
+    "message": "Compartilhe seu feedback",
+    "description": "The title of the modal to leave feedback about the docs"
+    },
+    "features.feedback-doc.modal-title-error": {
+    "message": "Ops!",
+    "description": "The title of the modal displayed when feedback form submission fails"
+    },
+    "features.feedback-doc.modal-title-success": {
+    "message": "Obrigado pelo seu feedback!",
+    "description": "The title of the modal displayed when feedback form submission succeeds"
+    },
+    "features.feedback-doc.screenshot-button-text": {
+    "message": "Tirar uma captura de tela",
+    "description": "The text on a button to take a screenshot"
+    },
+    "features.feedback-doc.screenshot-topbar-text": {
+    "message": "SELECIONE UM ELEMENTO NA PÁGINA",
+    "description": "The text displayed in the top bar when selecting an element to take a screenshot"
+    },
+    "features.feedback-doc.send-button-text": {
+    "message": "Enviar",
+    "description": "The text on a button to send feedback"
+    },
+    "features.feedback-doc.rating-placeholder": {
+    "message": "Esta página foi útil?",
+    "description": "The placeholder for rating input"
+    },
+    "features.feedback-doc.rating-stars-placeholder": {
+    "message": "Como você avaliaria esta página",
+    "description": "The placeholder for rating stars input"
+    },
+    "features.hero.tagline": {
+    "message": "Metodologia arquitetural para projetos frontend",
+    "description": "Architectural methodology for frontend projects"
+    },
+    "features.hero.get_started": {
+    "message": "Começar",
+    "description": "Get Started"
+    },
+    "features.hero.examples": {
+    "message": "Exemplos",
+    "description": "Examples"
+    },
+    "features.hero.previous": {
+    "message": "Versão anterior",
+    "description": "Previous version"
+    },
+    "shared.wip.title": {
+    "message": "Este artigo está em processo de escrita",
+    "description": "Admonition title"
+    },
+    "shared.wip.subtitle": {
+    "message": "Para ajudar a acelerar o lançamento do artigo, você pode:",
+    "description": "Admonition subtitle"
+    },
+    "shared.wip.var.feedback.base": {
+    "message": "📢 Compartilhar seu feedback ",
+    "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.feedback.link": {
+    "message": "no artigo (comentário/reação com emoji)",
+    "description": "Variant for contribute (link)"
+    },
+    "shared.wip.var.material.base": {
+    "message": "💬 Reunir material relevante ",
+    "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.material.link": {
+    "message": "sobre o tema a partir de conversas",
+    "description": "Variant for contribute (link)"
+    },
+    "shared.wip.var.contribute.base": {
+    "message": "⚒️ Contribuir ",
+    "description": "Variant for contribute (base)"
+    },
+    "shared.wip.var.contribute.link": {
+    "message": "de qualquer outra forma",
+    "description": "Variant for contribute (link)"
+    },
+    "theme.NotFound.title": {
+    "message": "Página não encontrada",
+    "description": "The title of the 404 page"
+    },
+    "theme.NotFound.p1": {
+    "message": "Não foi possível encontrar o que você estava procurando.",
+    "description": "The first paragraph of the 404 page"
+    },
+    "theme.NotFound.p2": {
+    "message": "Entre em contato com o responsável pelo site que direcionou você para a URL original e informe que o link está quebrado.",
+    "description": "The 2nd paragraph of the 404 page"
+    },
+    "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Fechar",
+    "description": "The ARIA label for close button of announcement bar"
+    },
+    "theme.blog.paginator.navAriaLabel": {
+    "message": "Navegação da lista do blog",
+    "description": "The ARIA label for the blog pagination"
+    },
+    "theme.blog.paginator.newerEntries": {
+    "message": "Publicações mais recentes",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+    },
+    "theme.blog.paginator.olderEntries": {
+    "message": "Publicações mais antigas",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+    },
+    "theme.blog.post.readingTime.plurals": {
+    "message": "Leitura de 1 min|Leitura de {readingTime} min",
+    "description": "Pluralized label for \"{readingTime} min read\""
+    },
+    "theme.tags.tagsListLabel": {
+    "message": "Tags:",
+    "description": "The label alongside a tag list"
+    },
+    "theme.blog.post.readMore": {
+    "message": "Ler mais",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+    },
+    "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Navegação da página do post",
+    "description": "The ARIA label for the blog posts pagination"
+    },
+    "theme.blog.post.paginator.newerPost": {
+    "message": "Post mais recente",
+    "description": "The blog post button label to navigate to the newer/previous post"
+    },
+    "theme.blog.post.paginator.olderPost": {
+    "message": "Post mais antigo",
+    "description": "The blog post button label to navigate to the older/next post"
+    },
+    "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+    },
+    "theme.blog.post.plurals": {
+    "message": "1 post|{count} posts",
+    "description": "Pluralized label for \"{count} posts\""
+    },
+    "theme.blog.tagTitle": {
+    "message": "{nPosts} marcados com \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+    },
+    "theme.tags.tagsPageLink": {
+    "message": "Ver todas as tags",
+    "description": "The label of the link targeting the tag list page"
+    },
+    "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Copiar código para a área de transferência",
+    "description": "The ARIA label for copy code blocks button"
+    },
+    "theme.CodeBlock.copied": {
+    "message": "Copiado",
+    "description": "The copied button label on code blocks"
+    },
+    "theme.CodeBlock.copy": {
+    "message": "Copiar",
+    "description": "The copy button label on code blocks"
+    },
+    "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Expandir barra lateral",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+    },
+    "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Expandir barra lateral",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+    },
+    "theme.docs.paginator.navAriaLabel": {
+    "message": "Navegação das páginas da documentação",
+    "description": "The ARIA label for the docs pagination"
+    },
+    "theme.docs.paginator.previous": {
+    "message": "Anterior",
+    "description": "The label used to navigate to the previous doc"
+    },
+    "theme.docs.paginator.next": {
+    "message": "Próximo",
+    "description": "The label used to navigate to the next doc"
+    },
+    "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Recolher barra lateral",
+    "description": "The title attribute for collapse button of doc sidebar"
+    },
+    "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Recolher barra lateral",
+    "description": "The title attribute for collapse button of doc sidebar"
+    },
+    "theme.docs.sidebar.responsiveCloseButtonLabel": {
+    "message": "Fechar menu",
+    "description": "The ARIA label for close button of mobile doc sidebar"
+    },
+    "theme.docs.sidebar.responsiveOpenButtonLabel": {
+    "message": "Abrir menu",
+    "description": "The ARIA label for open button of mobile doc sidebar"
+    },
+    "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Esta é uma documentação ainda não lançada da versão {versionLabel} do {siteTitle}.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+    },
+    "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Esta é a documentação do {siteTitle} {versionLabel}, que não é mais mantida ativamente.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+    },
+    "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "Para a documentação mais atualizada, veja a {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+    },
+    "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "versão mais recente",
+    "description": "The label used for the latest version suggestion link label"
+    },
+    "theme.common.editThisPage": {
+    "message": "Editar esta página",
+    "description": "The link label to edit the current page"
+    },
+    "theme.common.headingLinkTitle": {
+    "message": "Link direto para o título",
+    "description": "Title for link to heading"
+    },
+    "theme.lastUpdated.atDate": {
+    "message": " em {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+    },
+    "theme.lastUpdated.byUser": {
+    "message": " por {user}",
+    "description": "The words used to describe by who the page has been last updated"
+    },
+    "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Última atualização{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+    },
+    "theme.common.skipToMainContent": {
+    "message": "Pular para o conteúdo principal",
+    "description": "The skip to content label used for accessibility"
+    }
+}
