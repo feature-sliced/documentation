@@ -106,19 +106,19 @@ Ideally, when you arrive in a new project, you would discover its functionality 
 
 A feature slice might contain the UI to perform the interaction like a form (`📁 ui`), the API calls needed to make the action (`📁 api`), validation and internal state (`📁 model`), feature flags (`📁 config`).
 
-### Widgets
+### Widget
 
-The Widgets layer is intended for large self-sufficient blocks of UI. Widgets are most useful when they are reused across multiple pages, or when the page that they belong to has multiple large independent blocks, and this is one of them.
+Widgets are a layer for placing reusable UI blocks. They can be composed from multiple UI elements into a meaningful section of a screen and then used in upper layers such as Pages or App.
 
-If a block of UI makes up most of the interesting content on a page, and is never reused, it **should not be a widget**, and instead it should be placed directly inside that page.
+<Aside type="caution">
 
-<Aside type="tip">
-
-If you're using a nested routing system (like the router of [Remix][ext-remix]), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create full router blocks, complete with related data fetching, loading states, and error boundaries.
-
-In the same way, you can store page layouts on this layer.
+This guide discourages using the Widgets layer.
 
 </Aside>
+
+Widgets may seem useful for representing independent UI blocks. However, in real frontend code, UI blocks often include logic required for user flows, such as data fetching, state management, and event handling. In this case, the responsibilities of Features, which handle user flows, and Widgets, which handle UI blocks, can overlap, making the boundary between the two layers unclear.
+
+Not creating a Widget does not mean simply moving that UI block to another layer. Compositions that are specific to a particular screen should stay in Pages. When a user action is reused across multiple Pages, both the action and the UI composition required to perform it should be extracted into Features. Shared UI without business context should be separated into Shared. UI such as app-wide layouts can be handled in App.
 
 ### Pages
 
