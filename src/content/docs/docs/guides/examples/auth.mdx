@@ -34,18 +34,42 @@ Here we created two components and exported them both in the index file of the s
 
 ### Dialog for login
 
-If your app has a dialog for login that can be used on any page, consider making that dialog a widget. That way, you can still avoid too much decomposition, but have the freedom to reuse this dialog on any page.
+If you need a login dialog that can be reused across multiple Pages, you can implement it as a **Feature** responsible for the login user action and flow.
+A login dialog typically includes logic such as form state management, input validation, authentication requests and error handling. These responsibilities belong in the `features` Layer because they handle user actions and flows.
 
 <FileTree>
-- widgets/
-  - login-dialog/
+- features/
+  - login/
     - ui/
       - LoginDialog.tsx
+    - model/
+    - api/
     - index.ts
-  - ...
 </FileTree>
 
-The rest of this guide is written for the dedicated page approach, but the same principles apply to the dialog widget.
+When multiple Pages need the login dialog, they can import and use the Feature from each Page or from the Route configuration in `app`.
+
+A component responsible only for the common Dialog UI and basic interactions can be placed in `shared/ui`. This component should not include login-specific logic such as authentication requests, input validation or authentication state management.
+
+The UI and logic required for login should be managed in `features/login`. When necessary, `LoginDialog` can be implemented by composing the Dialog component from `shared/ui`.
+
+<FileTree>
+- shared/
+  - ui/
+    - modal/
+      - Modal.tsx
+      - index.ts
+- features/
+  - login/
+    - ui/
+      - LoginDialog.tsx
+    - model/
+    - api/
+    - index.ts
+</FileTree>
+
+> The following sections use a dedicated **login Page** as the primary example. However, the principles for structuring the login flow also apply to a login dialog.
+
 
 ### Client-side validation
 
@@ -157,19 +181,75 @@ Once you overcome the challenge of exposing the token that is stored in the enti
 
 ### In Pages/Widgets (not recommended)
 
-It is discouraged to store app-wide state like an access token in pages or widgets. Avoid placing your token store in the `model` segment of the login page, instead choose from the first two solutions, Shared or Entities.
+It is not recommended to place the token store in `pages` or in a specific `features` Slice.
 
-## Logout and token invalidation
+Tokens are not state that belongs only to a specific Page or a single user action. They are application-wide state used by multiple authenticated API requests and user flows.
+For example, if the token store is placed in `features/login`, another Feature cannot directly import it. Different Feature Slices on the same Layer should remain independent from one another.
 
-Usually, apps don't have an entire page for logging out, but the logout functionality is still very important. It consists of an authenticated request to the backend and an update to the token store.
+Similarly, if the token store is placed in `pages`, modules on lower Layers cannot access it. This makes it difficult to reuse the token store in authenticated API requests or other user flows.
+Place the token store in `shared` or in an `entities` Slice representing the current user or session, according to the criteria described above.
 
-If you store all your requests in `shared/api`, keep the logout request function there, close to the login function. Otherwise, consider keeping the logout request function next to the button that triggers it. For example, if you have a header widget that appears on every page and contains the logout link, put that request in the `api` segment of that widget.
+### Logout and token invalidation
 
-The update to the token store will have to be triggered from the place of the logout button, like a header widget. You can combine the request and the store update in the `model` segment of that widget.
+Most applications do not provide a separate Page exclusively for logout. Instead, logout functionality is made available wherever it is needed, such as in a Header, settings screen, or user menu.
+
+Logout generally consists of the following steps.
+
+1. Send an authenticated logout request to the backend.
+   For example, `POST /logout`.
+2. Reset the token store.
+   Remove both the access token and refresh token.
+3. Reset the current user information and authentication state when necessary.
+4. Navigate to the login Page or another screen when necessary.
+
+The location of the logout request should be determined by the project's API organization and the scope in which the request is reused.
+If all API endpoints are managed in `shared/api`, authentication-related requests such as login, logout, and token refresh can be placed together.
+
+<FileTree>
+- shared/
+  - api/
+    - client.ts
+    - endpoints/
+      - login.ts
+      - logout.ts
+      - refresh-token.ts
+    - index.ts
+</FileTree>
+
+If the logout request is used only as part of a specific logout flow, it can be placed in the `api` Segment of `features/logout`.
+If logout is reused across multiple screens and represents an independent user flow that includes token cleanup, user state cleanup, error handling, and navigation, the flow can be extracted into `features/logout`.
+
+<FileTree>
+- features/
+  - logout/
+    - api/
+      - logout.ts
+    - ui/
+      - LogoutButton.tsx
+    - index.ts
+</FileTree>
+
+If logout requires its own state or reusable processing logic, a `model` Segment can be added. There is no need to create unused Segments in advance for a simple logout feature.
+
+`features/logout` coordinates tasks such as sending the logout request and resetting the token store as a single user flow. The token store itself and the token management logic should remain in the previously selected location under `shared` or `entities`.
+
+On the other hand, if the logout logic is simple and used in only one or two places, it does not necessarily need to be extracted into a separate Feature. It can be composed directly in the Page or Route configuration where it is used.
+
+> Slice names should be based on user actions and flows rather than the UI location where they are displayed. Therefore, even when logout is triggered from a Header, `features/logout` is more appropriate than `features/header` when the behavior is extracted as an independent user flow.
 
 ### Automatic logout
 
-Don't forget to build failsafes for when a request to log out fails, or a request to refresh a login token fails. In both of these cases, you should clear the token store. If you keep your token in Entities, this code can be placed in the `model` segment as it is pure business logic. If you keep your token in Shared, placing this logic in `shared/api` might bloat the segment and dilute its purpose. If you're noticing that your API segment contains two several unrelated things, consider splitting out the token management logic into another segment, for example, `shared/auth`.
+The token store and current user state should be reset when the client's authentication state can no longer be maintained, such as in the following cases
+
+* The user requests to log out.
+* The refresh token has expired or is invalid, causing the token refresh request to be rejected.
+
+If the authentication state is not reset, the UI may appear as though the user is still logged in while authenticated API requests continue to fail.
+Even if the logout request fails, the client can still reset the token store and current user state. However, the server-side session or refresh token may not have been invalidated, so the backend authentication policy should also be taken into account.
+
+> If tokens are managed in an Entity representing the current user or session, the token reset logic can be placed in the Slice's `model` Segment. If tokens are managed on the Shared Layer, they can be separated into a module responsible for authentication, such as `shared/auth`.
+
+
 
 [tutorial-authentication]: /docs/get-started/tutorial#authentication
 [import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
