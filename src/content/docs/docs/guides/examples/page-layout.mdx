@@ -72,26 +72,42 @@ export function useThemeSwitcher() {
 
 The code of sidebars is left as an exercise for the reader 😉.
 
-## Using widgets in the layout
+## Where should Layouts be placed?
 
-Sometimes you want to include certain business logic in the layout, especially if you're using deeply nested routes with a router like [React Router][ext-react-router]. Then you can't store the layout in Shared or in Widgets due to [the import rule on layers][import-rule-on-layers]:
+Layout components often need to compose data handling, state management, access control and user actions that are shared across multiple Routes.
 
-> A module in a slice can only import other slices when they are located on layers strictly below.
+In [React Router][ext-react-router] nested child Routes may share a common URL path such as `/users`, `/users/:id` and `/users/:id/settings`. Instead of repeating the same handling in each Page you can use the Router's nesting capabilities to apply a common Layout and Route-level logic in one place.
 
-Before we discuss solutions, we need to discuss if it's even a problem in the first place. Do you _really need_ that layout, and if so, does it _really need_ to be a Widget? If the block of business logic in question is reused on 2-3 pages, and the layout is simply a small wrapper for that widget, consider one of these two options:
+The location of a Layout should be determined based on its **scope and responsibility** rather than its structural complexity.
 
-1. **Write the layout inline on the App layer, where you configure the routing**  
-   This is great for routers that support nesting, because you can group certain routes and apply the layout only to them.
+* Layouts responsible for the entire application or Routing structure should be placed in `app`.
+* Layouts specific to a particular Page or Route group should be placed in `pages`.
+* Layout UI that is reusable without business context can be placed in `shared/ui`.
+* Layouts centered around a specific user action or user flow and reused across multiple Pages can be implemented in the corresponding `features` Slice.
 
-2. **Just copy-paste it**  
-   The urge to abstract code is often very overrated. It is especially the case for layouts, which rarely change. At some point, if one of these pages will need to change, you can simply do the change without needlessly affecting other pages. If you're worried that someone might forget to update the other pages, you can always leave a comment that describes the relationship between the pages.
+A Layout in `shared` that directly imports from `features`, `entities` or `pages` violates the [Layer Import rule][import-rule-on-layers]. Modules in `app` and `pages` can import modules from lower Layers to compose a screen.
 
-If none of the above are applicable, there are two solutions to include a widget in the layout:
+> A module can only import modules from Layers below the Layer it belongs to.
 
-1. **Use render props or slots**  
-   Most frameworks allow you to pass a piece of UI externally. In React, it's called [render props][ext-render-props], in Vue it's called [slots][ext-vue-slots].
-2. **Move the layout to the App layer**  
-   You can also store your layout on the App layer, for example, in `app/layouts`, and compose any widgets you want.
+Before extracting a Layout into a separate module consider the following:
+
+* Is this Layout actually reused across multiple Routes?
+* Is it specific to a particular Page or Route structure?
+* Is the Layout itself the reusable unit or is it only the user action used within the Layout?
+
+A Layout used by only a small number of Pages and tied to a particular screen structure may be simpler to define directly in the corresponding `page` or Route configuration.
+
+1. **Configure a Route Layout in the App Layer**  
+   You can group multiple Routes with a common URL path using the Router's nesting capabilities and assign a single Layout in `app`.
+   A Layout located in `app` can compose modules from `pages`, `features`, `entities` and `shared` without violating the Layer Import rule.
+
+2. **Pass Feature UI through Render Props or Slots**  
+   In React you can use the [Render Props][ext-render-props] pattern. In Vue you can use [Slots][ext-vue-slots].
+   In this approach the Layout in `shared` provides only the common UI structure while the required Feature UI is passed from `app` or `pages`. This allows the Layout to compose the required screen without directly depending on a specific Feature.
+
+3. **Define it directly in a Page**  
+   A Layout used only by a specific Page can be defined directly in the corresponding `page` without introducing a separate abstraction.
+   When there is little duplicated code and the Layout is unlikely to change frequently there is no need to extract it into a shared module.
 
 ## Further reading
 
