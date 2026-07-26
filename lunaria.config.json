@@ -31,7 +31,8 @@
         { "lang": "kr", "label": "한국어" },
         { "lang": "ja", "label": "日本語" },
         { "lang": "vi", "label": "Tiếng Việt" },
-        { "lang": "zh", "label": "中文" }
+        { "lang": "zh", "label": "中文" },
+        { "lang": "tr", "label": "Türkçe" }
     ],
     "files": [
         {

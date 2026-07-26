@@ -25,6 +25,7 @@ export default defineConfig({
         "/ja": "/ja/docs/get-started/overview",
         "/vi": "/vi/docs/get-started/overview",
         "/zh": "/zh/docs/get-started/overview",
+        "/tr": "/tr/docs/get-started/overview",
     },
     markdown: {
         // @ts-ignore
@@ -137,6 +138,9 @@ export default defineConfig({
                 zh: {
                     label: "中文",
                 },
+                tr: {
+                    label: "Türkçe",
+                },
             },
             social: [
                 {
@@ -156,6 +160,7 @@ export default defineConfig({
                     translations: {
                         ru: "Начало работы",
                         ja: "はじめに",
+                        tr: "Başlangıç",
                     },
                     autogenerate: { directory: "docs/get-started" },
                 },
@@ -164,6 +169,7 @@ export default defineConfig({
                     translations: {
                         ru: "Гайды",
                         ja: "ガイド",
+                        tr: "Rehberler",
                     },
                     items: [
                         {
@@ -171,6 +177,7 @@ export default defineConfig({
                             translations: {
                                 ru: "Примеры",
                                 ja: "例",
+                                tr: "Örnekler",
                             },
                             autogenerate: { directory: "docs/guides/examples" },
                         },
@@ -180,6 +187,7 @@ export default defineConfig({
                                 ru: "Миграция",
                                 ja: "移行",
                                 uz: "Migratsiya",
+                                tr: "Geçiş",
                             },
                             autogenerate: {
                                 directory: "docs/guides/migration",
@@ -191,6 +199,7 @@ export default defineConfig({
                                 ru: "Технологии",
                                 ja: "技術",
                                 uz: "Texnologiya",
+                                tr: "Teknolojiler",
                             },
                             autogenerate: { directory: "docs/guides/tech" },
                         },
@@ -200,6 +209,7 @@ export default defineConfig({
                                 ru: "Известные проблемы",
                                 ja: "コード臭いと問題",
                                 uz: "Muammolar",
+                                tr: "Bilinen Sorunlar",
                             },
                             autogenerate: { directory: "docs/guides/issues" },
                         },
@@ -210,6 +220,7 @@ export default defineConfig({
                     translations: {
                         ru: "Справочник",
                         ja: "参考書",
+                        tr: "Referans",
                     },
                     autogenerate: { directory: "docs/reference" },
                 },
@@ -217,6 +228,7 @@ export default defineConfig({
                     label: "Resources",
                     translations: {
                         ru: "Ресурсы",
+                        tr: "Kaynaklar",
                     },
                     items: [
                         {
@@ -236,6 +248,7 @@ export default defineConfig({
                     translations: {
                         ru: "О нас",
                         ja: "メソッドについて",
+                        tr: "Hakkında",
                     },
                     items: [
                         {
@@ -252,6 +265,7 @@ export default defineConfig({
                             translations: {
                                 ru: "Понимание",
                                 ja: "理解",
+                                tr: "Anlama",
                             },
                             autogenerate: {
                                 directory: "docs/about/understanding",
@@ -263,6 +277,7 @@ export default defineConfig({
                             translations: {
                                 ru: "Продвижение",
                                 ja: "プロモート",
+                                tr: "Tanıtım",
                             },
                             autogenerate: { directory: "docs/about/promote" },
                             collapsed: true,
