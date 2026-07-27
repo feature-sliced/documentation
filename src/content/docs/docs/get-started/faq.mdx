@@ -16,10 +16,9 @@ Yes! We have a linter called [Steiger][ext-steiger] to check your project's arch
 
 ### Where to store the layout/template of pages?
 
-Layouts used only for a specific screen can be defined directly in the corresponding `page`. Layouts that are reusable across multiple screens without any business context can be placed in `shared/ui`. Layouts applied to the entire application or to the Route structure should be managed in `app`.
+Layouts used only for a specific screen can be defined directly in the corresponding `page`. Layouts that are reusable across multiple screens without any business context can be placed in `shared/ui`. Layouts applied to the entire application or to the route structure should be managed in `app`.
 
-For more detailed criteria and examples, see the [Page layouts guide][page-layouts].
-
+For more detailed criteria and examples, see the [page layouts guide][page-layouts].
 
 ### What is the difference between a feature and an entity?
 
@@ -29,9 +28,9 @@ For more information, along with examples, see the Reference page on [slices][re
 
 ### Can I embed pages/features/entities into each other?
 
-This is possible, but the composition must happen in a higher Layer. For example, a Page can import multiple `Features` and `Entities` to compose a complete screen. When necessary, components can also be passed through props or children for composition.
+This is possible, but the composition must happen in a higher layer. For example, a page can import multiple features and entities to compose a complete screen. When necessary, components can also be passed through props or children for composition.
 
-However, one `Feature` must not directly import another `Feature` according to the [Layer Import rule][import-rule-layers].
+However, one feature must not directly import another feature according to the [layer import rule][import-rule-layers].
 
 ### What about Atomic Design?
 

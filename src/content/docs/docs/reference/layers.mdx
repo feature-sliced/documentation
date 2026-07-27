@@ -118,7 +118,7 @@ This guide discourages using the Widgets layer.
 
 Widgets may seem useful for representing independent UI blocks. However, in real frontend code, UI blocks often include logic required for user flows, such as data fetching, state management, and event handling. In this case, the responsibilities of Features, which handle user flows, and Widgets, which handle UI blocks, can overlap, making the boundary between the two layers unclear.
 
-Not creating a Widget does not mean simply moving that UI block to another layer. Compositions that are specific to a particular screen should stay in Pages. When a user action is reused across multiple Pages, both the action and the UI composition required to perform it should be extracted into Features. Shared UI without business context should be separated into Shared. UI such as app-wide layouts can be handled in App.
+Not creating a widget does not mean simply moving that UI block to another layer. Compositions that are specific to a particular screen should stay in `pages`. When a user action is reused across multiple pages, both the action and the UI composition required to perform it should be extracted into `features`. Shared UI without business context should be separated into `shared`. UI such as app-wide layouts can be handled in `app`.
 
 ### Pages
 
