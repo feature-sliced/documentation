@@ -1,0 +1,163 @@
+---
+title: Genel Bakış
+sidebar:
+  order: 1
+---
+
+import { FileTree, LinkCard, Aside } from '@astrojs/starlight/components';
+import StaticImage from '../../../../../shared/ui/static-image/StaticImage.astro';
+
+**Feature-Sliced Design** (FSD), front-end (önyüz) uygulamalarını yapılandırmak için kullanılan mimari bir metodolojidir. Basitçe ifade etmek gerekirse, kodun nasıl organize edileceğine dair kurallar ve standartlar (conventions) bütünüdür. Bu metodolojinin temel amacı, projeyi sürekli değişen iş gereksinimleri karşısında daha anlaşılır ve stabil hale getirmektir.
+
+FSD, bir dizi standardın ötesinde aynı zamanda bir araç takımıdır (toolchain). Projenizin mimarisini denetleyen bir [linter'a][ext-steiger], CLI veya IDE'ler üzerinden çalışan [klasör oluşturucularına (generators)][ext-tools] ve zengin bir örnek kütüphanesine sahiptir.
+
+## Bana uygun mu? \{#is-it-right-for-me\}
+
+FSD, her ölçekteki proje ve ekipte uygulanabilir. Şu durumlarda projeniz için uygundur:
+
+- **Frontend** (web, mobil, masaüstü vb. platformlarda kullanıcı arayüzü - UI) geliştiriyorsanız
+- Bir kütüphane (library) değil, bir **uygulama** geliştiriyorsanız
+
+Hepsi bu kadar! Hangi programlama dilini, UI framework'ünü veya state manager'ı (durum yöneticisini) kullandığınıza dair hiçbir kısıtlama yoktur. Ayrıca FSD'yi projenize aşamalı olarak entegre edebilir, monorepo'larda kullanabilir ve uygulamanızı paketlere bölüp her birine ayrı ayrı FSD uygulayarak devasa ölçeklere taşıyabilirsiniz.
+
+Eğer halihazırda bir mimariniz varsa ve FSD'ye geçiş yapmayı düşünüyorsanız, mevcut mimarinin ekibinize gerçekten **sorun yarattığından** emin olun. Örneğin; projeniz yeni özellikleri verimli bir şekilde ekleyemeyeceğiniz kadar büyümüş ve birbirine iç içe geçmiş (bağımlı) hale gelmişse ya da ekibe çok sayıda yeni üyenin katılmasını bekliyorsanız bu değişimi yapabilirsiniz. Eğer mevcut mimari işinizi görüyorsa, değiştirmeye değmeyebilir. Ancak geçiş yapmaya (migrate) karar verirseniz, rehberlik için [Geçiş (Migration)][migration] bölümüne göz atabilirsiniz.
+
+## Temel örnek \{#basic-example\}
+
+İşte FSD'yi uygulayan basit bir proje:
+
+<FileTree>
+
+- app/
+- pages/
+- shared/
+
+</FileTree>
+
+Bu en üst düzey klasörlere _katman_ (layer) denir. Biraz daha derinlere inelim:
+
+<FileTree>
+
+- app/
+  - routes/
+  - analytics/
+- pages/
+  - home/
+  - article-reader/
+    - ui/
+    - api/
+  - setings/
+- shared/
+  - ui/
+  - api/
+
+</FileTree>
+
+`📂 pages` içindeki klasörlere _dilim_ (slice) denir. Bunlar katmanı iş alanına (domain) göre (bu örnekte sayfalara göre) bölerler.
+
+`📂 app`, `📂 shared` ve `📂 pages/article-reader` içindeki klasörlere ise _segment_ denir ve bunlar dilimleri (veya katmanları) teknik amacına göre, yani kodun ne için kullanıldığına göre bölerler.
+
+## Temel Kavramlar \{#concepts\}
+
+Katmanlar, dilimler ve segmentler şu şekilde bir hiyerarşi oluşturur:
+
+<figure>
+    <StaticImage
+        path="/img/visual_schema.jpg"
+        alt="Aşağıda açıklanan FSD kavramlarının hiyerarşisi"
+    />
+
+   <figcaption style={{ fontStyle: "italic", fontSize: "0.9em" }}>
+      <p>Yukarıdaki resimde: Soldan sağa sırasıyla "Layers", "Slices" ve "Segments" olarak etiketlenmiş üç sütun görülmektedir.</p>
+      <p>"Layers" sütunu yukarıdan aşağıya doğru sıralanmış ve "app", "processes", "pages", "widgets", "features", "entities" ve "shared" olarak etiketlenmiş yedi bölüm içerir. "processes" bölümünün üzeri çizilmiştir. "entities" bölümü, ikinci sütun olan "Slices" sütununa, bu ikinci sütunun "entities" içeriği olduğunu ifade edecek şekilde bağlanmıştır.</p>
+      <p>"Slices" sütunu yukarıdan aşağıya doğru sıralanmış ve "user", "post" ve "comment" olarak etiketlenmiş üç bölüm içerir. "post" bölümü, aynı şekilde, üçüncü sütun olan "Segments" sütununun "post"un içeriği olduğunu gösterecek biçimde ona bağlanmıştır.</p>
+      <p>"Segments" sütunu yukarıdan aşağıya doğru sıralanmış ve "ui", "model" ve "api" olarak etiketlenmiş üç bölüm içerir.</p>
+   </figcaption>
+</figure>
+
+### Katmanlar \{#layers\}
+
+Katmanlar tüm FSD projelerinde standartlaştırılmıştır. Tüm katmanları kullanmak zorunda değilsiniz, ancak isimleri önemlidir. Şu anda (yukarıdan aşağıya doğru) yedi tanedir:
+
+1. **App** — uygulamanın çalışmasını sağlayan her şey — yönlendirme, giriş noktaları, global stiller, sağlayıcılar.
+2. **Processes** (kullanımdan kaldırıldı) — karmaşık sayfalar arası senaryolar.
+3. **Pages** — tam sayfalar veya iç içe yönlendirmedeki bir sayfanın büyük bölümleri.
+4. **Widgets** — genellikle bütün bir kullanım senaryosunu sunan, işlevselliğin veya kullanıcı arayüzünün büyük, bağımsız parçaları.
+5. **Features** — tüm ürün özelliklerinin _yeniden kullanılan_ uygulamaları, yani kullanıcıya iş değeri sağlayan eylemler.
+6. **Entities** — projenin birlikte çalıştığı `user` (kullanıcı) veya `product` (ürün) gibi iş varlıkları.
+7. **Shared** — özellikle projenin/işin spesifik özelliklerinden bağımsız olduğunda, yeniden kullanılabilir işlevsellik (böyle olması zorunlu olmasa da).
+
+<Aside type="caution">
+
+**App** ve **Shared** katmanları, diğer katmanların aksine dilimlere (slices) sahip değildir ve doğrudan segmentlere (segments) ayrılır.
+
+Ancak, diğer tüm katmanlar — **Entities**, **Features**, **Widgets** ve **Pages**, içinde segmentleri oluşturduğunuz dilimleri öncelikle oluşturmanızı gerektiren yapıyı korur.
+
+</Aside>
+Katmanlar ile ilgili püf nokta, bir katmandaki modüllerin yalnızca ondan daha alttaki katmanlardaki modülleri bilebilmesi ve içe aktarabilmesidir.
+
+### Slices \{#slices\}
+
+Sırada, kodun iş alanına göre bölümlendirildiği dilimler var. Bunlar için istediğiniz isimleri seçebilir ve istediğiniz kadar oluşturabilirsiniz. Dilimler, birbiriyle mantıksal olarak ilişkili modülleri bir arada tutarak kod tabanınızda gezinmeyi kolaylaştırır.
+
+Dilimler, aynı katmandaki diğer dilimleri kullanamaz, ve bu da yüksek bağ (cohesion) ve düşük bağ (coupling) oluşturmaya yardımcı olur.
+
+### Segments \{#segments\}
+
+Dilimler, tıpkı App ve Shared katmanları gibi, segmentlerden oluşur ve segmentler kodunuzu amacına göre gruplandırır. Segment isimleri standart tarafından kısıtlanmamıştır, ancak en yaygın amaçlar için birkaç geleneksel isim vardır:
+
+- `ui` — UI bileşenleri, tarih formatlayıcıları, stiller vb. ile ilgili her şey.
+- `api` — arka uç etkileşimleri: istek fonksiyonları, veri türleri, eşlemeler vb.
+- `model` — veri modeli: şemalar, arayüzler, depolar ve iş mantığı.
+- `lib` — bu dilimdeki diğer modüllerin ihtiyaç duyduğu kütüphane kodu.
+- `config` — yapılandırma dosyaları ve özellik bayrakları.
+
+Genellikle bu segmentler çoğu katman için yeterlidir, ancak kendi segmentlerinizi yalnızca Shared veya App'te oluşturursunuz, bu bir kural değildir.
+
+## Avantajları \{#advantages\}
+
+- **Tekdüzelik (Uniformity)**
+  Yapı standartlaştırıldığı için projeler daha tekdüze hale gelir, bu da ekibin yeni üyeleri için adaptasyonu kolaylaştırır.
+
+- **Değişimlere ve yeniden düzenlemelere karşı kararlılık (Stability in face of changes and refactoring)**
+  Bir katmandaki bir modül, aynı katmandaki veya daha üstteki katmanlardaki diğer modülleri kullanamaz.
+  Bu, uygulamanın geri kalanı üzerinde beklenmedik sonuçlar doğurmadan izole edilmiş değişiklikler yapmanıza olanak tanır.
+
+- **Mantığın kontrollü yeniden kullanımı (Controlled reuse of logic)**
+  Katmana bağlı olarak kodu çok yeniden kullanılabilir veya çok yerel yapabilirsiniz.
+  Bu, **DRY** prensibini takip etmek ile pratiklik arasında bir denge kurar.
+
+- **İş ve kullanıcı ihtiyaçlarına yönelim (Orientation to business and users needs)**
+  Uygulama, iş alanlarına göre bölünür ve iş dilinin kullanımını teşvik eder, böylece projenin diğer ilgisiz kısımlarını tam olarak anlamadan faydalı ürün çalışmaları yapabilirsiniz.
+
+## Kademeli Geçiş (Incremental Adoption) \{#incremental-adoption\}
+
+Mevcut bir kod tabanını FSD'ye dönüştürmek istiyorsanız, şu stratejiyi öneriyoruz. Bunu kendi geçiş deneyimimizde faydalı bulduk.
+
+1. Temel oluşturmak için App ve Shared katmanlarını yavaşça modül modül şekillendirmeye başlayın.
+
+2. Mevcut tüm arayüzü, FSD kurallarını ihlal eden bağımlılıkları olsa bile, geniş hatlarıyla Widgets ve Pages katmanlarına dağıtın.
+
+3. Kademeli olarak import ihlallerini düzeltmeye başlayın ve aynı zamanda Entities ve hatta Features katmanlarını ayıklayın.
+
+Refactoring yaparken veya projenin sadece belirli bölümlerini refactor ederken büyük yeni entities eklemekten kaçınılması tavsiye edilir.
+
+## Sonraki Adımlar \{#next-steps\}
+
+<LinkCard
+  title="FSD ile düşünme biçimini kavramak ister misiniz?"
+  href="/docs/get-started/tutorial"
+  description="Eğiticiye göz atın"
+/>
+
+<LinkCard
+  title="Sorularınız mı var?"
+  href="https://t.me/feature_sliced"
+  description="Telegram sohbetimize katılın ve topluluktan yardım alın"
+/>
+
+[tutorial]: /docs/get-started/tutorial
+[migration]: /docs/guides/migration/from-custom
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
+[ext-telegram]: https://t.me/feature_sliced
