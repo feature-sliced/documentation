@@ -976,10 +976,9 @@ Yes! We have a linter called [Steiger](https://github.com/feature-sliced/steiger
 
 [Section titled “Where to store the layout/template of pages?”](#where-to-store-the-layouttemplate-of-pages)
 
-If you need plain markup layouts, you can keep them in `shared/ui`. If you need to use higher layers inside, there are a few options:
+Layouts used only for a specific screen can be defined directly in the corresponding `page`. Layouts that are reusable across multiple screens without any business context can be placed in `shared/ui`. Layouts applied to the entire application or to the route structure should be managed in `app`.
 
-* Perhaps you don’t need layouts at all? If the layout is only a few lines, it might be reasonable to duplicate the code in each page rather than try to abstract it.
-* If you do need layouts, you can have them as separate widgets or pages, and compose them in your router configuration in App. Nested routing is another option.
+For more detailed criteria and examples, see the [page layouts guide](/docs/guides/examples/page-layout#where-to-put-layouts).
 
 ### What is the difference between a feature and an entity?
 
@@ -993,9 +992,9 @@ For more information, along with examples, see the Reference page on [slices](/d
 
 [Section titled “Can I embed pages/features/entities into each other?”](#can-i-embed-pagesfeaturesentities-into-each-other)
 
-Yes, but this embedding should happen in higher layers. For example, inside a widget, you can import both features and then insert one feature into another as props/children.
+This is possible, but the composition must happen in a higher layer. For example, a page can import multiple features and entities to compose a complete screen. When necessary, components can also be passed through props or children for composition.
 
-You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**](/docs/reference/layers#import-rule-on-layers).
+However, one feature must not directly import another feature according to the [layer import rule](/docs/reference/layers#import-rule-on-layers).
 
 ### What about Atomic Design?
 
@@ -1144,7 +1143,11 @@ Layers are standardized across all FSD projects. You don’t have to use all of 
 6. **Entities** — business entities that the project works with, like `user` or `product`.
 7. **Shared** — reusable functionality, especially when it’s detached from the specifics of the project/business, though not necessarily.
 
-Caution
+Using the Widgets layer
+
+As widgets compose UI, they may also take on responsibility for handling user actions. This can cause their role to overlap with that of features. Therefore, using the Widgets layer is generally discouraged. For more details, see the [Widgets layer guide](/docs/reference/layers#widget).
+
+Note
 
 Layers **App** and **Shared**, unlike other layers, do not have slices and are divided into segments directly.
 
@@ -4036,21 +4039,60 @@ Here we created two components and exported them both in the index file of the s
 
 [Section titled “Dialog for login”](#dialog-for-login)
 
-If your app has a dialog for login that can be used on any page, consider making that dialog a widget. That way, you can still avoid too much decomposition, but have the freedom to reuse this dialog on any page.
+If you need a login dialog that can be reused across multiple pages, you can implement it as a **feature** responsible for the login user action and flow. A login dialog typically includes logic such as form state management, input validation, authentication requests and error handling. These responsibilities belong in the `features` layer because they handle user actions and flows.
 
-* widgets/
+* features/
 
-  * login-dialog/
+  * login/
 
     * ui/
 
       * LoginDialog.tsx
 
+    * model/
+
+      * …
+
+    * api/
+
+      * …
+
     * index.ts
 
-  * …
+When multiple pages need the login dialog, they can import and use the feature from each page or from the route configuration in `app`.
 
-The rest of this guide is written for the dedicated page approach, but the same principles apply to the dialog widget.
+A component responsible only for the common dialog UI and basic interactions can be placed in `shared/ui`. This component should not include login-specific logic such as authentication requests, input validation or authentication state management.
+
+The UI and logic required for login should be managed in `features/login`. When necessary, `LoginDialog` can be implemented by composing the dialog component from `shared/ui`.
+
+* shared/
+
+  * ui/
+
+    * modal/
+
+      * Modal.tsx
+      * index.ts
+
+* features/
+
+  * login/
+
+    * ui/
+
+      * LoginDialog.tsx
+
+    * model/
+
+      * …
+
+    * api/
+
+      * …
+
+    * index.ts
+
+> The following sections use a dedicated **login page** as the primary example. However, the principles for structuring the login flow also apply to a login dialog.
 
 ### Client-side validation
 
@@ -4183,23 +4225,77 @@ Once you overcome the challenge of exposing the token that is stored in the enti
 
 [Section titled “In Pages/Widgets (not recommended)”](#in-pageswidgets-not-recommended)
 
-It is discouraged to store app-wide state like an access token in pages or widgets. Avoid placing your token store in the `model` segment of the login page, instead choose from the first two solutions, Shared or Entities.
+It is not recommended to place the token store in `pages` or in a specific `features` slice.
 
-## Logout and token invalidation
+Tokens are not state that belongs only to a specific page or a single user action. They are application-wide state used by multiple authenticated API requests and user flows. For example, if the token store is placed in `features/login`, another feature cannot directly import it. Different feature slices on the same layer should remain independent from one another.
+
+Similarly, if the token store is placed in `pages`, modules on lower layers cannot access it. This makes it difficult to reuse the token store in authenticated API requests or other user flows. Place the token store in `shared` or in an `entities` slice representing the current user or session, according to the criteria described above.
+
+### Logout and token invalidation
 
 [Section titled “Logout and token invalidation”](#logout-and-token-invalidation)
 
-Usually, apps don’t have an entire page for logging out, but the logout functionality is still very important. It consists of an authenticated request to the backend and an update to the token store.
+Most applications do not provide a separate page exclusively for logout. Instead, logout functionality is made available wherever it is needed, such as in a header, settings screen, or user menu.
 
-If you store all your requests in `shared/api`, keep the logout request function there, close to the login function. Otherwise, consider keeping the logout request function next to the button that triggers it. For example, if you have a header widget that appears on every page and contains the logout link, put that request in the `api` segment of that widget.
+Logout generally consists of the following steps.
 
-The update to the token store will have to be triggered from the place of the logout button, like a header widget. You can combine the request and the store update in the `model` segment of that widget.
+1. Send an authenticated logout request to the backend. For example, `POST /logout`.
+2. Reset the token store. Remove both the access token and refresh token.
+3. Reset the current user information and authentication state when necessary.
+4. Navigate to the login page or another screen when necessary.
+
+The location of the logout request should be determined by the project’s API organization and the scope in which the request is reused. If all API endpoints are managed in `shared/api`, authentication-related requests such as login, logout, and token refresh can be placed together.
+
+* shared/
+
+  * api/
+
+    * client.ts
+
+    * endpoints/
+
+      * login.ts
+      * logout.ts
+      * refresh-token.ts
+
+    * index.ts
+
+If the logout request is used only as part of a specific logout flow, it can be placed in the `api` segment of `features/logout`. If logout is reused across multiple screens and represents an independent user flow that includes token cleanup, user state cleanup, error handling, and navigation, the flow can be extracted into `features/logout`.
+
+* features/
+
+  * logout/
+
+    * api/
+
+      * logout.ts
+
+    * ui/
+
+      * LogoutButton.tsx
+
+    * index.ts
+
+If logout requires its own state or reusable processing logic, a `model` segment can be added. There is no need to create unused segments in advance for a simple logout feature.
+
+`features/logout` coordinates tasks such as sending the logout request and resetting the token store as a single user flow. The token store itself and the token management logic should remain in the previously selected location under `shared` or `entities`.
+
+On the other hand, if the logout logic is simple and used in only one or two places, it does not necessarily need to be extracted into a separate feature. It can be composed directly in the page or route configuration where it is used.
+
+> Slice names should be based on user actions and flows rather than the UI location where they are displayed. Therefore, even when logout is triggered from a header, `features/logout` is more appropriate than `features/header` when the behavior is extracted as an independent user flow.
 
 ### Automatic logout
 
 [Section titled “Automatic logout”](#automatic-logout)
 
-Don’t forget to build failsafes for when a request to log out fails, or a request to refresh a login token fails. In both of these cases, you should clear the token store. If you keep your token in Entities, this code can be placed in the `model` segment as it is pure business logic. If you keep your token in Shared, placing this logic in `shared/api` might bloat the segment and dilute its purpose. If you’re noticing that your API segment contains two several unrelated things, consider splitting out the token management logic into another segment, for example, `shared/auth`.
+The token store and current user state should be reset when the client’s authentication state can no longer be maintained, such as in the following cases
+
+* The user requests to log out.
+* The refresh token has expired or is invalid, causing the token refresh request to be rejected.
+
+If the authentication state is not reset, the UI may appear as though the user is still logged in while authenticated API requests continue to fail. Even if the logout request fails, the client can still reset the token store and current user state. However, the server-side session or refresh token may not have been invalidated, so the backend authentication policy should also be taken into account.
+
+> If tokens are managed in an entity representing the current user or session, the token reset logic can be placed in the slice’s `model` segment. If tokens are managed on the Shared layer, they can be separated into a module responsible for authentication, such as `shared/auth`.
 
 # Handling Assets
 
@@ -4404,28 +4500,41 @@ export function useThemeSwitcher() {
 
 The code of sidebars is left as an exercise for the reader 😉.
 
-## Using widgets in the layout
+## Where should layouts be placed?
 
-[Section titled “Using widgets in the layout”](#using-widgets-in-the-layout)
+[Section titled “Where should layouts be placed?”](#where-to-put-layouts)
 
-Sometimes you want to include certain business logic in the layout, especially if you’re using deeply nested routes with a router like [React Router](https://reactrouter.com/). Then you can’t store the layout in Shared or in Widgets due to [the import rule on layers](/docs/reference/layers#import-rule-on-layers):
+Layout components often need to compose data handling, state management, access control and user actions that are shared across multiple routes.
 
-> A module in a slice can only import other slices when they are located on layers strictly below.
+In [React Router](https://reactrouter.com/) nested child routes may share a common URL path such as `/users`, `/users/:id` and `/users/:id/settings`. Instead of repeating the same handling in each page you can use the router’s nesting capabilities to apply a common layout and route-level logic in one place.
 
-Before we discuss solutions, we need to discuss if it’s even a problem in the first place. Do you *really need* that layout, and if so, does it *really need* to be a Widget? If the block of business logic in question is reused on 2-3 pages, and the layout is simply a small wrapper for that widget, consider one of these two options:
+The location of a layout should be determined based on its **scope and responsibility** rather than its structural complexity.
 
-1. **Write the layout inline on the App layer, where you configure the routing**\
-   This is great for routers that support nesting, because you can group certain routes and apply the layout only to them.
+* Layouts responsible for the entire application or routing structure should be placed in `app`.
+* Layouts specific to a particular page or route group should be placed in `pages`.
+* Layout UI that is reusable without business context can be placed in `shared/ui`.
+* Layouts centered around a specific user action or user flow and reused across multiple pages can be implemented in the corresponding `features` slice.
 
-2. **Just copy-paste it**\
-   The urge to abstract code is often very overrated. It is especially the case for layouts, which rarely change. At some point, if one of these pages will need to change, you can simply do the change without needlessly affecting other pages. If you’re worried that someone might forget to update the other pages, you can always leave a comment that describes the relationship between the pages.
+A layout in `shared` that directly imports from `features`, `entities` or `pages` violates the [layer import rule](/docs/reference/layers#import-rule-on-layers). Modules in `app` and `pages` can import modules from lower layers to compose a screen.
 
-If none of the above are applicable, there are two solutions to include a widget in the layout:
+> A module can only import modules from layers below the layer it belongs to.
 
-1. **Use render props or slots**\
-   Most frameworks allow you to pass a piece of UI externally. In React, it’s called [render props](https://www.patterns.dev/react/render-props-pattern/), in Vue it’s called [slots](https://vuejs.org/guide/components/slots).
-2. **Move the layout to the App layer**\
-   You can also store your layout on the App layer, for example, in `app/layouts`, and compose any widgets you want.
+Before extracting a layout into a separate module consider the following:
+
+* Is this layout actually reused across multiple routes?
+* Is it specific to a particular page or route structure?
+* Is the layout itself the reusable unit or is it only the user action used within the layout?
+
+A layout used by only a small number of pages and tied to a particular screen structure may be simpler to define directly in the corresponding `page` or route configuration.
+
+1. **Configure a route layout in the App layer**\
+   You can group multiple routes with a common URL path using the router’s nesting capabilities and assign a single layout in `app`. A layout located in `app` can compose modules from `pages`, `features`, `entities` and `shared` without violating the layer import rule.
+
+2. **Pass feature UI through render props or slots**\
+   In React you can use the [render props](https://www.patterns.dev/react/render-props-pattern/) pattern. In Vue you can use [slots](https://vuejs.org/guide/components/slots). In this approach the layout in `shared` provides only the common UI structure while the required feature UI is passed from `app` or `pages`. This allows the layout to compose the required screen without directly depending on a specific feature.
+
+3. **Define it directly in a page**\
+   A layout used only by a specific page can be defined directly in the corresponding `page` without introducing a separate abstraction. When there is little duplicated code and the layout is unlikely to change frequently there is no need to extract it into a shared module.
 
 ## Further reading
 
@@ -7973,19 +8082,19 @@ Ideally, when you arrive in a new project, you would discover its functionality 
 
 A feature slice might contain the UI to perform the interaction like a form (`📁 ui`), the API calls needed to make the action (`📁 api`), validation and internal state (`📁 model`), feature flags (`📁 config`).
 
-### Widgets
+### Widget
 
-[Section titled “Widgets”](#widgets)
+[Section titled “Widget”](#widget)
 
-The Widgets layer is intended for large self-sufficient blocks of UI. Widgets are most useful when they are reused across multiple pages, or when the page that they belong to has multiple large independent blocks, and this is one of them.
+Widgets are a layer for placing reusable UI blocks. They can be composed from multiple UI elements into a meaningful section of a screen and then used in upper layers such as Pages or App.
 
-If a block of UI makes up most of the interesting content on a page, and is never reused, it **should not be a widget**, and instead it should be placed directly inside that page.
+Caution
 
-Tip
+This guide discourages using the Widgets layer.
 
-If you’re using a nested routing system (like the router of [Remix](https://remix.run)), it may be helpful to use the Widgets layer in the same way as a flat routing system would use the Pages layer — to create full router blocks, complete with related data fetching, loading states, and error boundaries.
+Widgets may seem useful for representing independent UI blocks. However, in real frontend code, UI blocks often include logic required for user flows, such as data fetching, state management, and event handling. In this case, the responsibilities of Features, which handle user flows, and Widgets, which handle UI blocks, can overlap, making the boundary between the two layers unclear.
 
-In the same way, you can store page layouts on this layer.
+Not creating a widget does not mean simply moving that UI block to another layer. Compositions that are specific to a particular screen should stay in `pages`. When a user action is reused across multiple pages, both the action and the UI composition required to perform it should be extracted into `features`. Shared UI without business context should be separated into `shared`. UI such as app-wide layouts can be handled in `app`.
 
 ### Pages
 
