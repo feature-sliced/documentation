@@ -16,10 +16,9 @@ Yes! We have a linter called [Steiger][ext-steiger] to check your project's arch
 
 ### Where to store the layout/template of pages?
 
-If you need plain markup layouts, you can keep them in `shared/ui`. If you need to use higher layers inside, there are a few options:
+Layouts used only for a specific screen can be defined directly in the corresponding `page`. Layouts that are reusable across multiple screens without any business context can be placed in `shared/ui`. Layouts applied to the entire application or to the route structure should be managed in `app`.
 
-- Perhaps you don't need layouts at all? If the layout is only a few lines, it might be reasonable to duplicate the code in each page rather than try to abstract it.
-- If you do need layouts, you can have them as separate widgets or pages, and compose them in your router configuration in App. Nested routing is another option.
+For more detailed criteria and examples, see the [page layouts guide][page-layouts].
 
 ### What is the difference between a feature and an entity?
 
@@ -29,9 +28,9 @@ For more information, along with examples, see the Reference page on [slices][re
 
 ### Can I embed pages/features/entities into each other?
 
-Yes, but this embedding should happen in higher layers. For example, inside a widget, you can import both features and then insert one feature into another as props/children.
+This is possible, but the composition must happen in a higher layer. For example, a page can import multiple features and entities to compose a complete screen. When necessary, components can also be passed through props or children for composition.
 
-You cannot import one feature from another feature, this is prohibited by the [**import rule on layers**][import-rule-layers].
+However, one feature must not directly import another feature according to the [layer import rule][import-rule-layers].
 
 ### What about Atomic Design?
 
@@ -60,6 +59,7 @@ Answered [here](/docs/guides/examples/auth)
 [ext-steiger]: https://github.com/feature-sliced/steiger
 [ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
 [import-rule-layers]: /docs/reference/layers#import-rule-on-layers
+[page-layouts]: /docs/guides/examples/page-layout#where-to-put-layouts
 [reference-entities]: /docs/reference/layers#entities
 [motivation]: /docs/about/motivation
 [telegram]: https://t.me/feature_sliced
