@@ -1,0 +1,67 @@
+---
+title: SSS
+sidebar:
+  order: 20
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside>
+Sorularınızı [Telegram sohbetimizde][telegram], [Discord topluluğumuzda][discord] ve [GitHub Discussions][github-discussions]'da sorabilirsiniz.
+</Aside>
+
+### Bir araç takımı (toolkit) veya linter var mı?
+
+Evet! Projenizin mimarisini denetlemek için [Steiger][ext-steiger] adında bir linter'ımız ve CLI veya IDE'ler üzerinden çalışan [klasör oluşturucularımız][ext-tools] mevcut.
+
+### Sayfaların şablonlarını (layout/template) nerede saklamalıyım?
+
+Sadece basit işaretleme (markup) şablonlarına ihtiyacınız varsa, bunları `shared/ui` içinde tutabilirsiniz. Eğer içlerinde daha üst katmanları kullanmanız gerekiyorsa, birkaç seçeneğiniz var:
+
+- Belki de şablonlara hiç ihtiyacınız yoktur? Eğer şablon sadece birkaç satırdan oluşuyorsa, onu soyutlamaya çalışmak yerine kodu her sayfada tekrarlamak daha mantıklı olabilir.
+- Şablonlara gerçekten ihtiyacınız varsa, bunları ayrı widget'lar veya sayfalar olarak tutabilir ve App katmanındaki yönlendirici (router) yapılandırmanızda birleştirebilirsiniz. İç içe yönlendirme (nested routing) başka bir seçenektir.
+
+### Feature (Özellik) ve Entity (Varlık) arasındaki fark nedir?
+
+_Entity_ (Varlık), uygulamanızın üzerinde çalıştığı gerçek hayattaki bir kavramdır. _Feature_ (Özellik) ise uygulamanızın kullanıcılarına gerçek hayatta değer sağlayan bir etkileşimdir; yani insanların varlıklarınızla (entities) yapmak istediği eylemlerdir.
+
+Örneklerle birlikte daha fazla bilgi için, [dilimler (slices)][reference-entities] hakkındaki Referans sayfasına bakabilirsiniz.
+
+### Sayfaları/özellikleri/varlıkları (pages/features/entities) birbirlerinin içine yerleştirebilir miyim?
+
+Evet, ancak bu yerleştirme işlemi daha üst katmanlarda gerçekleşmelidir. Örneğin, bir widget içinde iki özelliği (feature) içe aktarabilir (import) ve ardından bir özelliği diğerine props/children olarak yerleştirebilirsiniz.
+
+Bir özelliği başka bir özellikten içe aktaramazsınız, bu durum [**katmanlardaki içe aktarma kuralı (import rule on layers)**][import-rule-layers] tarafından yasaklanmıştır.
+
+### Peki ya Atomic Design?
+
+Metodolojinin mevcut sürümü, Atomic Design'ın Feature-Sliced Design ile birlikte kullanılmasını ne gerektirir ne de yasaklar.
+
+Örneğin Atomic Design, modüllerin `ui` segmenti için [oldukça iyi uygulanabilir](https://t.me/feature_sliced/1653).
+
+### FSD hakkında faydalı kaynaklar/makaleler vb. var mı?
+
+Evet! https://github.com/feature-sliced/awesome
+
+### Neden Feature-Sliced Design'a ihtiyacım var?
+
+Sizin ve ekibinizin, projeyi ana değer katan bileşenleri açısından hızlıca gözden geçirmenize yardımcı olur. Standartlaştırılmış bir mimari, projeye katılım (onboarding) sürecini hızlandırır ve kod yapısı hakkındaki tartışmaları çözer. FSD'nin neden yaratıldığı hakkında daha fazla bilgi edinmek için [motivasyon][motivation] sayfasına bakabilirsiniz.
+
+### Acemi bir geliştiricinin bir mimariye/metodolojiye ihtiyacı var mı?
+
+Hayır'dan çok evet.
+
+*Genellikle, bir projeyi tek başınıza tasarlayıp geliştirdiğinizde her şey sorunsuz ilerler. Ancak geliştirmeye ara verildiğinde veya ekibe yeni geliştiriciler eklendiğinde sorunlar ortaya çıkmaya başlar.*
+
+### Yetkilendirme (authorization) context'i ile nasıl çalışırım?
+
+Cevabı [burada](/tr/docs/guides/examples/auth) bulabilirsiniz.
+
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
+[import-rule-layers]: /tr/docs/reference/layers#import-rule-on-layers
+[reference-entities]: /tr/docs/reference/layers#entities
+[motivation]: /tr/docs/about/motivation
+[telegram]: https://t.me/feature_sliced
+[discord]: https://discord.gg/S8MzWTUsmp
+[github-discussions]: https://github.com/feature-sliced/documentation/discussions
