@@ -1,8 +1,4 @@
-import {
-    getDocsSegmentIndex,
-    getIdSegments,
-    isLandingPage,
-} from "./document-id";
+import { getSourceId, isLandingPage } from "./document-id";
 
 /** Separator between breadcrumb sections (U+203A, single right-pointing angle quotation mark). */
 const SEPARATOR = " › ";
@@ -15,7 +11,9 @@ function toTitleCase(segment: string): string {
 }
 
 /**
- * Builds a label out of the sections a document belongs to, based on its collection id.
+ * Builds a label out of the sections a document belongs to, based on its
+ * collection id. The leading segment is the collection root, which every path
+ * repeats, and the trailing one is the page itself.
  *
  * @example
  * getBreadcrumbs("docs/guides/examples/handling-assets"); // "Guides › Examples"
@@ -26,7 +24,7 @@ function toTitleCase(segment: string): string {
 export function getBreadcrumbs(id: string): string {
     if (isLandingPage(id)) return "";
 
-    const sections = getIdSegments(id).slice(getDocsSegmentIndex(id) + 1, -1);
+    const sections = getSourceId(id).split("/").slice(1, -1);
 
     return sections.map(toTitleCase).join(SEPARATOR);
 }

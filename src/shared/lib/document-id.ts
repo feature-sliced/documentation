@@ -1,33 +1,37 @@
-/** Segment that separates the locale prefix from the document path in a collection id. */
-const DOCS_SEGMENT = "docs";
-
-export function getIdSegments(id: string): string[] {
-    return id.split("/").filter(Boolean);
-}
-
-/** Position of the document path within a collection id, past any locale prefix. */
-export function getDocsSegmentIndex(id: string): number {
-    return getIdSegments(id).indexOf(DOCS_SEGMENT);
-}
+import { pathHasLocale } from "astro:i18n";
 
 /**
- * Landing pages are the only documents outside the `docs` directory, so their
- * ids are either empty (`src/content/docs/index.mdx`) or a bare locale
- * (`src/content/docs/ru/index.mdx`). Routes injected by plugins carry no `docs`
- * segment either, so they land here too.
+ * Starlight normalizes the id of a locale's index document to an empty string,
+ * while the content collection keeps the file name. Both spellings reach this
+ * module and collapse to the same id.
  */
-export function isLandingPage(id: string): boolean {
-    return getDocsSegmentIndex(id) === -1;
-}
+const ROOT_DOCUMENT_ID = "index";
 
 /**
  * Drops the locale prefix from a collection id, which maps a translation onto
  * the document it was translated from.
  *
+ * Starlight derives Astro's i18n configuration from its own `locales` option,
+ * so the segments `pathHasLocale` matches are the locales configured for the
+ * site. Only the leading segment is checked, because it matches any segment of
+ * a path and a document further down the tree may be named after a locale.
+ *
  * @example
  * getSourceId("kr/docs/reference/layers"); // "docs/reference/layers"
  * getSourceId("docs/reference/layers");    // "docs/reference/layers"
+ * getSourceId("ru/index");                 // ""
  */
 export function getSourceId(id: string): string {
-    return getIdSegments(id).slice(getDocsSegmentIndex(id)).join("/");
+    const [maybeLocale, ...rest] = id.split("/");
+    const sourceId = pathHasLocale(maybeLocale) ? rest.join("/") : id;
+
+    return sourceId === ROOT_DOCUMENT_ID ? "" : sourceId;
+}
+
+/**
+ * Landing pages are the only documents that live at the root of a locale:
+ * `src/content/docs/index.mdx` and `src/content/docs/<locale>/index.mdx`.
+ */
+export function isLandingPage(id: string): boolean {
+    return getSourceId(id) === "";
 }
