@@ -38,9 +38,9 @@ Lunaria uses git history to detect outdated translations, so CI needs the full g
 
 ## Social preview images
 
-Every document gets an Open Graph image, rendered at build time by [`astro-og-canvas`](https://github.com/delucis/astro-og-canvas) in `src/pages/og/[...path].ts` and served from `/og/<document id>.png`. It shows the page title and the sections the page sits in (`Guides › Examples`), both derived from the document id in `src/shared/lib/og/`.
+Every document gets an Open Graph image, rendered at build time by [`astro-og-canvas`](https://github.com/delucis/astro-og-canvas) in `src/pages/og/[...path].ts` and served from `/og/<document id>.png`. It shows the page title and the sections the page sits in (`Guides › Examples`), both derived from the document id in `src/shared/lib/`.
 
-Only English documents get an image; each translation reuses the image of the document it was translated from. Landing pages keep the hand-made `static/img/preview.png`, and so does any translation without an English original.
+Every translation gets its own image, so a Korean page carries its Korean title. An untranslated page shows the document of the default locale, and its preview comes from there too. Landing pages keep the hand-made `static/img/preview.png`.
 
 `src/shared/ui/Head.astro` adds `og:image` and `twitter:image` per page. The rest of the Open Graph tags come from Starlight, so avoid adding global `og:*` entries to the `head` option in `astro.config.mjs`: they replace Starlight's per-page values, and every page ends up advertising the same title and URL.
 
@@ -58,7 +58,9 @@ The background is committed. Regenerate it when the brand background changes:
 pnpm og:background
 ```
 
-Titles render in Roboto Mono, committed under `src/pages/og/_fonts/`, the typeface the Docusaurus-era generator used. The file has to live in the repository: CanvasKit draws with the font data it is given, so there is no system font stack to inherit, and CI runners bring no fonts of their own. Glyphs outside the family are dropped rather than substituted, so a preview containing non-Latin text needs a font that covers it, added to `FONT_FAMILIES`. The build logs the families it loaded, which is the quickest way to check a new file.
+Fonts live in `src/pages/og/_fonts/` and are committed because CanvasKit only draws with the font data it is handed, and CI runners carry no fonts of their own. A locale in a script the current fonts do not cover needs one of its own, listed in `FONT_FAMILIES`.
+
+The Noto subsets come from Fontsource (`https://cdn.jsdelivr.net/fontsource/fonts/<family>@latest/<file>`), which packages them under a `… Thin` family name, so a replacement has to match the names the build logs on load.
 
 ## Preview
 
