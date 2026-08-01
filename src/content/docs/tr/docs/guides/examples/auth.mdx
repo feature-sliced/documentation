@@ -1,0 +1,255 @@
+---
+title: Kimlik Doğrulama
+sidebar:
+  order: 1
+---
+
+import { FileTree, Aside } from '@astrojs/starlight/components';
+
+Genel olarak kimlik doğrulama (authentication) şu adımlardan oluşur:
+
+1. Kullanıcıdan kimlik bilgilerini (credentials) almak
+1. Bunları backend'e göndermek
+1. Kimliği doğrulanmış istekler yapmak için token'ı saklamak
+
+## Kullanıcıdan kimlik bilgileri nasıl alınır
+
+Uygulamanızın kimlik bilgilerini almaktan sorumlu olduğunu varsayıyoruz. OAuth ile kimlik doğrulama kullanıyorsanız, OAuth sağlayıcısının giriş sayfasına yönlendiren bir bağlantı içeren basit bir giriş sayfası oluşturabilir ve doğrudan [3. adıma](#kimligi-dogrulanmis-istekler-icin-token-nasil-saklanir) geçebilirsiniz.
+
+### Giriş için özel sayfa
+
+Genellikle web sitelerinde kullanıcı adı ve şifrenizi girdiğiniz giriş sayfaları bulunur. Bu sayfalar oldukça basittir, bu yüzden parçalara ayrılmaları (decomposition) gerekmez. Giriş ve kayıt formları görünüm olarak birbirine oldukça benzediğinden aynı sayfada da gruplanabilirler. Pages katmanında giriş/kayıt sayfanız için bir dilim (slice) oluşturun:
+
+<FileTree>
+- pages/
+  - login/
+    - ui/
+      - LoginPage.tsx
+      - RegisterPage.tsx
+      - index.ts
+      - ...
+</FileTree>
+
+Burada iki bileşen oluşturduk ve her ikisini de dilimin index dosyasından dışa aktardık (export). Bu bileşenler, kullanıcının kimlik bilgilerini almak üzere onlara anlaşılır kontroller sunmaktan sorumlu formları içerecektir.
+
+### Giriş için diyalog (modal)
+
+Birden fazla sayfada yeniden kullanılabilen bir giriş diyaloğuna ihtiyacınız varsa, bunu giriş kullanıcı eylemi ve akışından sorumlu bir **feature** (özellik) olarak uygulayabilirsiniz.
+Bir giriş diyaloğu genellikle form durumu yönetimi, girdi doğrulama (input validation), kimlik doğrulama istekleri ve hata yönetimi gibi mantıkları içerir. Bu sorumluluklar kullanıcı eylemlerini ve akışlarını ele aldığı için `features` katmanında yer alır.
+
+<FileTree>
+- features/
+  - login/
+    - ui/
+      - LoginDialog.tsx
+    - model/
+    - api/
+    - index.ts
+</FileTree>
+
+Birden fazla sayfa giriş diyaloğuna ihtiyaç duyduğunda, bu özelliği her sayfadan veya `app` katmanındaki rota (route) yapılandırmasından içe aktarıp (import) kullanabilir.
+
+Yalnızca genel diyalog kullanıcı arayüzünden (UI) ve temel etkileşimlerden sorumlu bir bileşen `shared/ui` içinde yer alabilir. Bu bileşen; kimlik doğrulama istekleri, girdi doğrulama veya kimlik doğrulama durumu yönetimi gibi girişe özel mantıkları içermemelidir.
+
+Giriş için gerekli olan kullanıcı arayüzü ve mantık `features/login` içinde yönetilmelidir. Gerektiğinde `LoginDialog`, `shared/ui` katmanındaki diyalog bileşeni bileştirilerek (composing) uygulanabilir.
+
+<FileTree>
+- shared/
+  - ui/
+    - modal/
+      - Modal.tsx
+      - index.ts
+- features/
+  - login/
+    - ui/
+      - LoginDialog.tsx
+    - model/
+    - api/
+    - index.ts
+</FileTree>
+
+> Takip eden bölümlerde ana örnek olarak özel bir **giriş sayfası** (login page) kullanılmaktadır. Ancak giriş akışını yapılandırma ilkeleri giriş diyaloğu için de geçerlidir.
+
+### İstemci tarafı doğrulama (Client-side validation)
+
+Bazen, özellikle kayıt olma aşamasında, kullanıcının bir hata yaptığını hızlıca bildirmek için istemci tarafı doğrulama (client-side validation) yapmak mantıklıdır. Doğrulama, giriş sayfasının `model` segmentinde gerçekleşebilir. Örneğin JS/TS için [Zod][ext-zod] gibi bir şema doğrulama kütüphanesi kullanın ve bu şemayı `ui` segmentine sunun:
+
+```ts title="pages/login/model/registration-schema.ts"
+import { z } from "zod";
+
+export const registrationData = z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+    confirmPassword: z.string(),
+}).refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+});
+```
+
+Ardından `ui` segmentinde bu şemayı kullanıcı girdisini doğrulamak için kullanabilirsiniz:
+
+```tsx title="pages/login/ui/RegisterPage.tsx"
+import { registrationData } from "../model/registration-schema";
+
+function validate(formData: FormData) {
+    const data = Object.fromEntries(formData.entries());
+    try {
+        registrationData.parse(data);
+    } catch (error) {
+        // TODO: Kullanıcıya hata mesajını göster
+    }
+}
+
+export function RegisterPage() {
+    return (
+        <form onSubmit={(e) => validate(new FormData(e.target))}>
+            <label htmlFor="email">E-posta</label>
+            <input id="email" name="email" required />
+
+            <label htmlFor="password">Şifre (en az 6 karakter)</label>
+            <input id="password" name="password" type="password" required />
+
+            <label htmlFor="confirmPassword">Şifreyi onayla</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" required />
+        </form>
+    )
+}
+```
+
+## Kimlik bilgileri backend'e nasıl gönderilir
+
+Backend'inizin giriş endpoint'ine istek atan bir fonksiyon oluşturun. Bu fonksiyon, bir mutation kütüphanesi (örn. TanStack Query) kullanılarak doğrudan bileşen kodunda çağrılabileceği gibi, bir durum yöneticisinde (state manager) yan etki (side effect) olarak da çağrılabilir. [API istekleri kılavuzunda][examples-api-requests] açıklandığı gibi, isteğinizi `shared/api` içine veya giriş sayfanızın `api` segmentine koyabilirsiniz.
+
+### İki faktörlü kimlik doğrulama (2FA)
+
+Uygulamanız iki faktörlü kimlik doğrulamayı (2FA) destekliyorsa, kullanıcıyı tek kullanımlık bir şifre girebileceği başka bir sayfaya yönlendirmeniz gerekebilir. Genellikle `POST /login` isteğiniz, kullanıcının 2FA'sının etkin olduğunu belirten bir bayrakla (flag) birlikte kullanıcı nesnesini döndürür. Bu bayrak ayarlanmışsa kullanıcıyı 2FA sayfasına yönlendirin.
+
+Bu sayfa giriş yapma ile oldukça ilişkili olduğundan, onu da Pages katmanındaki aynı `login` diliminde tutabilirsiniz.
+
+Ayrıca yukarıda oluşturduğumuz `login()` fonksiyonuna benzer başka bir istek fonksiyonuna da ihtiyacınız olacaktır. Bunları Shared katmanında veya `login` sayfasının `api` segmentinde bir arada konumlandırın.
+
+## Kimliği doğrulanmış istekler için token nasıl saklanır \{#kimligi-dogrulanmis-istekler-icin-token-nasil-saklanir\}
+
+Hangi kimlik doğrulama yöntemine sahip olursanız olun — ister basit kullanıcı adı & şifre, ister OAuth, ister iki faktörlü kimlik doğrulama olsun — sonucunda bir token alırsınız. Sonraki isteklerin kendilerini tanıtabilmesi için bu token saklanmalıdır.
+
+Bir web uygulaması için ideal token saklama yöntemi **cookie**'dir (çerez) — manuel token saklama veya yönetimi gerektirmez. Bu nedenle cookie kullanımı, ön yüz (frontend) mimarisi açısından neredeyse hiçbir ek planlama gerektirmez. Eğer ön yüz çerçeveniz (framework) sunucu tarafına (server-side) sahipse (örneğin [Remix][ext-remix]), sunucu tarafı cookie altyapısını `shared/api` içinde saklamalısınız. [Rehberdeki Kimlik Doğrulama bölümünde][tutorial-authentication] Remix ile bunun nasıl yapılacağına dair bir örnek bulunmaktadır.
+
+Ancak bazen cookie kullanmak bir seçenek değildir. Bu durumda token'ı manuel olarak saklamanız gerekecektir. Token'ı saklamanın yanı sıra, süresi dolduğunda yenilemek (refresh) için de bir mantık kurmanız gerekebilir. FSD ile token'ı saklayabileceğiniz birkaç farklı yer ve uygulamanın geri kalanı için erişilebilir kılmanın birden fazla yolu vardır.
+
+### Shared Katmanında
+
+Bu yaklaşım `shared/api` içinde tanımlanan bir API istemcisi ile oldukça uyumludur; çünkü token, kimlik doğrulama gerektiren diğer tüm istek fonksiyonları için doğrudan erişilebilirdir. API istemcisinin, reaktif bir store veya modül düzeyinde basit bir değişken ile durum (state) tutmasını sağlayabilir ve bu durumu `login()`/`logout()` fonksiyonlarınızda güncelleyebilirsiniz.
+
+Otomatik token yenileme (refresh), API istemcisinde bir middleware olarak uygulanabilir — her istek yapıldığında çalışabilecek bir yapı. Süreç şu şekilde işleyebilir:
+
+- Kimlik doğrulamasını gerçekleştirin, access token ve refresh token'ı saklayın
+- Kimlik doğrulama gerektiren herhangi bir istek yapın
+- İstek, token süresinin dolduğunu belirten bir durum kodu (status code) ile başarısız olursa ve store'da bir token varsa, yenileme (refresh) isteği yapın, yeni token'ları saklayın ve orijinal isteği tekrar deneyin
+
+Bu yaklaşımın dezavantajlarından biri, token yönetimi ve yenileme mantığının özel bir yere sahip olmamasıdır. Bu durum bazı uygulamalar veya ekipler için sorun olmayabilir, ancak token yönetim mantığı daha karmaşıksa, istek yapma ve token yönetme sorumluluklarını ayırmak daha iyi bir tercih olabilir. İsteklerinizi ve API istemcinizi `shared/api` içinde tutarken, token store ve yönetim mantığını `shared/auth` içinde tutarak bu ayrımı sağlayabilirsiniz.
+
+Bu yaklaşımın bir diğer dezavantajı ise, backend'iniz token ile birlikte mevcut kullanıcınızın bilgilerini içeren bir nesne döndürüyorsa, bunu bir yerde saklamanız veya bu bilgiyi göz ardı edip `/me` ya da `/users/current` gibi bir endpoint'ten tekrar istemeniz gerekmesidir.
+
+### Entities Katmanında
+
+FSD projelerinde bir kullanıcı (user) için ve/veya mevcut kullanıcı (current user) için bir entity (varlık) bulunması yaygındır. Hatta her ikisi için de aynı entity kullanılabilir.
+
+<Aside>
+
+**Mevcut kullanıcı** (current user) bazen "viewer" veya "me" olarak da adlandırılır. Bunun amacı; yetkileri ve özel bilgileri olan kimliği doğrulanmış tek kullanıcıyı, herkes tarafından erişilebilen bilgilere sahip tüm kullanıcılar listesinden ayırt etmektir.
+
+</Aside>
+
+Token'ı User entity'sinde saklamak için `model` segmentinde reaktif bir store oluşturun. Bu store hem token'ı hem de kullanıcı nesnesini içerebilir.
+
+API istemcisi genellikle `shared/api` içinde tanımlandığı veya entity'lere dağıtıldığı için, bu yaklaşımdaki temel zorluk, [katmanlardaki içe aktarma kuralını (import rule on layers)][import-rule-on-layers] ihlal etmeden token'ı ona ihtiyaç duyan diğer istekler için erişilebilir kılmaktır:
+
+> Bir dilimdeki (slice) modül (dosya), yalnızca kesinlikle alt katmanlarda yer alan diğer dilimleri içe aktarabilir (import).
+
+Bu zorluğun birkaç çözümü vardır:
+
+1. **Her istek yaptığınızda token'ı manuel olarak geçirin**  
+    Bu en basit çözümdür, ancak kısa sürede zahmetli hale gelir ve tip güvenliğine (type safety) sahip değilseniz unutulması kolaydır. Ayrıca Shared katmanındaki API istemcisine yönelik middleware deseni ile uyumlu değildir.
+1. **Token'ı bir context veya `localStorage` gibi küresel bir store ile tüm uygulamaya açın**  
+    Token'ı alma anahtarı (key) `shared/api` içinde tutulur, böylece API istemcisi buna erişebilir. Token'ın reaktif store'u User entity'sinden dışa aktarılır ve bağlam sağlayıcı (context provider, gerekiyorsa) App katmanında kurulur. Bu, API istemcisini tasarlamak için daha fazla özgürlük sağlar; ancak bağlam sağlamak için üst katmanlara bağımlı bir örtük bağımlılık (implicit dependency) oluşturur. Bu yaklaşımı takip ederken, context veya `localStorage` doğru kurulmadığında açıklayıcı hata mesajları sağlamayı düşünün.
+1. **Her değiştiğinde token'ı API istemcisine enjekte edin**  
+    Store'unuz reaktifse, entity'deki store her değiştiğinde API istemcisinin token store'unu güncelleyecek bir abonelik (subscription) oluşturabilirsiniz. Bu, üst katmanlara örtük bir bağımlılık oluşturması açısından önceki çözüme benzer, ancak önceki çözüm daha bildirisel (declarative - "pull") iken bu çözüm daha emredicidir (imperative - "push").
+
+Entity'nin modelinde saklanan token'ı dışa açma zorluğunu aştıktan sonra, token yönetimi ile ilgili daha fazla iş mantığı (business logic) ekleyebilirsiniz. Örneğin, `model` segmenti belirli bir süre sonra token'ı geçersiz kılma (invalidate) veya süresi dolduğunda token'ı yenileme mantığını içerebilir. Backend'e fiili olarak istek atmak için User entity'sinin `api` segmentini veya `shared/api` katmanını kullanın.
+
+### Pages/Widgets Katmanlarında (önerilmez)
+
+Token store'unu `pages` katmanına veya belirli bir `features` dilimine yerleştirmek önerilmez.
+
+Token'lar yalnızca belirli bir sayfaya veya tek bir kullanıcı eylemine ait durumlar (state) değildir. Birden fazla kimliği doğrulanmış API isteği ve kullanıcı akışı tarafından kullanılan uygulama genelinde (application-wide) bir durumdur.
+Örneğin, token store `features/login` içine yerleştirilirse, başka bir özellik (feature) onu doğrudan içe aktaramaz (import). Aynı katmandaki farklı özellik dilimleri birbirinden bağımsız kalmalıdır.
+
+Benzer şekilde, token store `pages` katmanına yerleştirilirse, alt katmanlardaki modüller buna erişemez. Bu da token store'un kimliği doğrulanmış API isteklerinde veya diğer kullanıcı akışlarında yeniden kullanılmasını zorlaştırır.
+Token store'u, yukarıda açıklanan kriterlere göre `shared` katmanına veya mevcut kullanıcıyı ya da oturumu temsil eden bir `entities` dilimine yerleştirin.
+
+### Çıkış yapma ve token geçersiz kılma
+
+Çoğu uygulama yalnızca çıkış yapma (logout) işlemine özel ayrı bir sayfa sunmaz. Bunun yerine çıkış yapma işlevi başlık (header), ayarlar ekranı veya kullanıcı menüsü gibi ihtiyaç duyulan her yerde erişilebilir kılınır.
+
+Çıkış yapma işlemi genel olarak şu adımlardan oluşur:
+
+1. Backend'e kimliği doğrulanmış bir çıkış yapma isteği gönderin.
+   Örneğin, `POST /logout`.
+2. Token store'u sıfırlayın.
+   Hem access token hem de refresh token'ı kaldırın.
+3. Gerektiğinde mevcut kullanıcı bilgilerini ve kimlik doğrulama durumunu sıfırlayın.
+4. Gerektiğinde giriş sayfasına veya başka bir ekrana yönlendirin.
+
+Çıkış yapma isteğinin konumu, projenin API organizasyonuna ve isteğin yeniden kullanılma kapsamına göre belirlenmelidir.
+Tüm API endpoint'leri `shared/api` içinde yönetiliyorsa; giriş (login), çıkış (logout) ve token yenileme (token refresh) gibi kimlik doğrulama ile ilgili istekler bir arada yer alabilir.
+
+<FileTree>
+- shared/
+  - api/
+    - client.ts
+    - endpoints/
+      - login.ts
+      - logout.ts
+      - refresh-token.ts
+    - index.ts
+</FileTree>
+
+Çıkış yapma isteği yalnızca belirli bir çıkış akışının parçası olarak kullanılıyorsa, `features/logout` diliminin `api` segmentine yerleştirilebilir.
+Çıkış yapma işlemi birden fazla ekranda yeniden kullanılıyorsa ve token temizleme, kullanıcı durumu temizleme, hata yönetimi ve yönlendirmeyi içeren bağımsız bir kullanıcı akışını temsil ediyorsa, bu akış `features/logout` içine çıkartılabilir.
+
+<FileTree>
+- features/
+  - logout/
+    - api/
+      - logout.ts
+    - ui/
+      - LogoutButton.tsx
+    - index.ts
+</FileTree>
+
+Çıkış yapma işlemi kendi durumunu (state) veya yeniden kullanılabilir işleme mantığını gerektiriyorsa, bir `model` segmenti eklenebilir. Basit bir çıkış yapma özelliği için önceden kullanılmayan segmentler oluşturmaya gerek yoktur.
+
+`features/logout`, çıkış isteği gönderme ve token store'unu sıfırlama gibi görevleri tek bir kullanıcı akışı olarak koordine eder. Token store'un kendisi ve token yönetim mantığı, daha önce seçilen `shared` veya `entities` altındaki konumda kalmalıdır.
+
+Öte yandan, çıkış yapma mantığı basitse ve yalnızca bir veya iki yerde kullanılıyorsa, mutlaka ayrı bir özelliğe (feature) çıkartılması gerekmez. Doğrudan kullanıldığı sayfada veya rota yapılandırmasında bileştirilebilir.
+
+> Dilim (slice) isimleri, görüntülendikleri UI konumuna değil, kullanıcı eylemlerine ve akışlarına göre belirlenmelidir. Bu nedenle, çıkış yapma bir header'dan tetiklense bile, davranış bağımsız bir kullanıcı akışı olarak çıkartıldığında `features/header` yerine `features/logout` kullanımı daha uygundur.
+
+### Otomatik çıkış yapma
+
+İstemcinin kimlik doğrulama durumu artık sürdürülemediğinde (örneğin aşağıdaki durumlarda) token store ve mevcut kullanıcı durumu sıfırlanmalıdır:
+
+* Kullanıcı çıkış yapma isteğinde bulunduğunda.
+* Refresh token'ın süresi dolduğunda veya geçersiz olduğunda ve bu nedenle token yenileme isteği reddedildiğinde.
+
+Kimlik doğrulama durumu sıfırlanmazsa, kimliği doğrulanmış API istekleri başarısız olmaya devam ederken kullanıcı arayüzü kullanıcı hala giriş yapmış gibi görünebilir.
+Çıkış yapma isteği başarısız olsa bile istemci yine de token store'unu ve mevcut kullanıcı durumunu sıfırlayabilir. Ancak sunucu tarafındaki oturum veya refresh token geçersiz kılınmamış olabileceğinden, backend kimlik doğrulama politikası da dikkate alınmalıdır.
+
+> Token'lar mevcut kullanıcıyı veya oturumu temsil eden bir entity içinde yönetiliyorsa, token sıfırlama mantığı dilimin `model` segmentine yerleştirilebilir. Token'lar Shared katmanında yönetiliyorsa, `shared/auth` gibi kimlik doğrulamadan sorumlu bir modüle ayrılabilir.
+
+[tutorial-authentication]: /tr/docs/get-started/tutorial#authentication
+[import-rule-on-layers]: /tr/docs/reference/layers#import-rule-on-layers
+[examples-api-requests]: /tr/docs/guides/examples/api-requests
+[ext-remix]: https://remix.run
+[ext-zod]: https://zod.dev
