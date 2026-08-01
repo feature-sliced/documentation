@@ -1,6 +1,6 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
-import { getSourceId, isLandingPage } from "@/shared/lib";
+import { isLandingPage } from "@/shared/lib";
 
 /** Route that serves the generated preview images, see `src/pages/og/[...path].ts`. */
 const PREVIEW_ROUTE = "/og";
@@ -22,9 +22,8 @@ type PreviewImage = {
 };
 
 /**
- * Documents with a generated preview: the English originals. Translations reuse
- * the preview of the document they were translated from, which keeps one image
- * per document and lets the renderer load a single Latin font.
+ * Documents with a generated preview, one per translation, so a Korean page
+ * carries its Korean title rather than the English one.
  *
  * Landing pages keep the hand-made {@link FALLBACK_PREVIEW_IMAGE}, which
  * already includes the logo and the tagline. Drafts are left out to match
@@ -34,10 +33,7 @@ export async function getPreviewPages(): Promise<PreviewPage[]> {
     const docs = await getCollection("docs");
 
     return docs
-        .filter(
-            ({ id, data }) =>
-                !isLandingPage(id) && !data.draft && getSourceId(id) === id,
-        )
+        .filter(({ id, data }) => !isLandingPage(id) && !data.draft)
         .map(({ id, data }) => ({ id, data }));
 }
 
@@ -52,14 +48,15 @@ async function getPreviewTitles(): Promise<Map<string, string>> {
 }
 
 /**
- * Preview image for a document, falling back to the brand image when none was
- * generated so the tag never points at a missing file.
+ * Preview image for a document. On an untranslated page Starlight renders the
+ * document of the default locale and passes its id here, so the preview matches
+ * the text on the page. Documents without a generated image fall back to the
+ * brand preview, so the tag never points at a missing file.
  */
 export async function getPreviewImage(id: string): Promise<PreviewImage> {
-    const sourceId = getSourceId(id);
-    const title = (await getPreviewTitles()).get(sourceId);
+    const title = (await getPreviewTitles()).get(id);
 
     return title === undefined
         ? { path: FALLBACK_PREVIEW_IMAGE }
-        : { path: `${PREVIEW_ROUTE}/${sourceId}.png`, title };
+        : { path: `${PREVIEW_ROUTE}/${id}.png`, title };
 }

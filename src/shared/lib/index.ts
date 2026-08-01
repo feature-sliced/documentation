@@ -1,2 +1,2 @@
 export { getBreadcrumbs } from "./breadcrumbs";
-export { getSourceId, isLandingPage } from "./document-id";
+export { isLandingPage } from "./document-id";

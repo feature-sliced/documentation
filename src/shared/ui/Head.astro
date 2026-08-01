@@ -7,9 +7,9 @@ import { getBreadcrumbs } from "@/shared/lib";
 const { entry, siteTitle } = Astro.locals.starlightRoute;
 
 /*
- * Untranslated pages fall back to the content of the default locale, so the
- * preview follows `entry.id` (the document being rendered) rather than the
- * route id (the localized URL it is served at).
+ * The preview follows `entry.id`, the document being rendered, rather than the
+ * route id it is served at. The two differ on an untranslated page, which shows
+ * the document of the default locale.
  */
 const preview = await getPreviewImage(entry.id);
 const breadcrumbs = getBreadcrumbs(entry.id);
@@ -18,7 +18,6 @@ const imageUrl = Astro.site
     ? new URL(preview.path, Astro.site).href
     : preview.path;
 
-/* The image carries the English title, so the alt text describes it, not the page. */
 const imageAlt = preview.title
     ? [breadcrumbs, preview.title].filter(Boolean).join(" › ")
     : siteTitle;

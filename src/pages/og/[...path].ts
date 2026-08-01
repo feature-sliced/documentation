@@ -6,16 +6,28 @@ import { getBreadcrumbs } from "@/shared/lib";
 const FONTS_DIR = "./src/pages/og/_fonts";
 
 /**
- * Previews only ever contain English text, which `Roboto Mono` covers on its
- * own. CanvasKit draws with the font data it is given and has no system font to
- * fall back on, so a glyph outside this family is dropped from the image.
+ * CanvasKit draws with the font data it is given and has no system font to fall
+ * back on, so every script needs a family of its own. It picks one by walking
+ * the `families` list below and drops any glyph none of them covers.
+ *
+ * `Roboto Mono` covers Latin, Cyrillic and Vietnamese. Hangul, kana and Han
+ * come from Fontsource, which packages them under a `… Thin` family name, so
+ * the names below are the ones CanvasKit reports on load.
  */
 const FONTS = [
     `${FONTS_DIR}/roboto-mono/RobotoMono-Regular.ttf`,
     `${FONTS_DIR}/roboto-mono/RobotoMono-Bold.ttf`,
+    `${FONTS_DIR}/noto-sans-kr/korean-500-normal.woff2`,
+    `${FONTS_DIR}/noto-sans-jp/japanese-500-normal.woff2`,
+    `${FONTS_DIR}/noto-sans-sc/chinese-simplified-500-normal.woff2`,
 ];
 
-const FONT_FAMILIES = ["Roboto Mono"];
+const FONT_FAMILIES = [
+    "Roboto Mono",
+    "Noto Sans KR Thin",
+    "Noto Sans JP Thin",
+    "Noto Sans SC Thin",
+];
 
 type RGBColor = [red: number, green: number, blue: number];
 
@@ -27,7 +39,7 @@ const PADDING = 80;
  * the longest title wraps to two lines at this size and stays above the logo
  * watermark in the background.
  */
-const TITLE_FONT_SIZE = 72;
+const TITLE_FONT_SIZE = 68;
 
 const TITLE_COLOR: RGBColor = [255, 255, 255];
 
