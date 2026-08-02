@@ -17,9 +17,9 @@ import { Aside } from '@astrojs/starlight/components';
 
 ### Page Layout / Template은 어디에 보관해야 하나요?
 
-단순한 마크업이라면 `shared/ui`에 두는 것이 일반적입니다.
-레이아웃이 간단하다면 **별도 추상화 없이 각 페이지에 직접 작성해도 됩니다.**
-복잡한 구조라면 별도 **Widget**이나 **Page**로 분리해 App Router(Nested Routing 포함)에서 조합하세요.
+특정 화면에만 사용되는 레이아웃은 해당 Page에 직접 작성하고 비즈니스 맥락 없이 여러 화면에서 재사용되는 레이아웃은 `shared/ui`에 둘 수 있습니다. 애플리케이션 전체나 Route 구조에 적용되는 레이아웃은 `app`에서 관리합니다.
+
+자세한 기준과 예시는 [Page layouts 가이드][page-layouts]를 참고하세요.
 
 ### Feature와 Entity의 차이는 무엇인가요?
 | 구분 | 정의 | 예시 |
@@ -30,9 +30,9 @@ import { Aside } from '@astrojs/starlight/components';
 더 자세한 설명과 코드 예시는 [Slices][reference-entities] 문서에서 확인할 수 있습니다.
 
 ### Pages, Features, Entities를 서로 포함할 수 있나요?
-가능합니다. 다만 **상위 Layer**에서만 조합해야 합니다.
-예를 들어, Widget 내부에서는 여러 Feature를 **props**나 **children** 형태로 조합할 수 있습니다.
-하지만 한 Feature가 다른 Feature를 직접 import 하는 것은 [**Layer Import 규칙**][import-rule-layers]에 따라 금지됩니다.
+가능합니다. 다만 상위 Layer에서만 조합해야 합니다.
+예를 들어 Pages에서는 여러 Features와 Entities를 import하여 하나의 화면으로 구성할 수 있습니다. 필요한 경우 컴포넌트를 props나 children으로 전달해 조합할 수도 있습니다.
+하지만 한 feature가 다른 feature를 직접 import 하는 것은 [**Layer Import 규칙**][import-rule-layers]에 따라 금지됩니다.
 
 ### Atomic Design을 함께 사용할 수 있나요?
 
@@ -60,6 +60,7 @@ FSD는 프로젝트를 **핵심 기능 단위로 명확하게 구조화**할 수
 [ext-steiger]: https://github.com/feature-sliced/steiger
 [ext-tools]: https://github.com/feature-sliced/awesome?tab=readme-ov-file#tools
 [import-rule-layers]: /kr/docs/reference/layers#import-rule-on-layers
+[page-layouts]: /kr/docs/guides/examples/page-layout#where-to-put-layouts
 [reference-entities]: /kr/docs/reference/layers#entities
 [motivation]: /kr/docs/about/motivation
 [telegram]: https://t.me/feature_sliced
