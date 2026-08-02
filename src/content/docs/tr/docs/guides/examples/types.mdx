@@ -1,0 +1,436 @@
+---
+title: Tipler
+sidebar:
+  order: 2
+---
+
+import { FileTree, Aside } from '@astrojs/starlight/components';
+
+Bu rehber, TypeScript gibi tipli (typed) dillerdeki veri tiplerini (data types) ele alır ve bunların FSD içinde nereye karşılık geldiğini açıklar.
+
+<Aside>
+Sorunuz bu rehberde kapsanmadı mı? Bu makale hakkında geri bildirim bırakarak (sağdaki mavi buton) sorunuzu iletin, rehberi genişletmeyi değerlendirelim!
+</Aside>
+
+## Yardımcı tipler (Utility types)
+
+Yardımcı tipler, tek başlarına pek anlam ifade etmeyen ve genellikle diğer tiplerle birlikte kullanılan tiplerdir. Örneğin:
+
+```ts
+type ArrayValues<T extends readonly unknown[]> = T[number];
+```
+
+Yardımcı tipleri projenizin genelinde erişilebilir kılmak için, [`type-fest`][ext-type-fest] gibi bir kütüphane yükleyebilir veya `shared/lib` içinde kendi kütüphanenizi oluşturabilirsiniz. Bu kütüphaneye hangi yeni tiplerin eklenmesi *gerektiğini* ve nelerin buraya *ait olmadığını* açıkça belirttiğinizden emin olun. Örneğin, bu klasörü `shared/lib/utility-types` olarak adlandırabilir ve ekibinizde neyin yardımcı tip sayıldığını açıklayan bir README ekleyebilirsiniz.
+
+Bir yardımcı tipin yeniden kullanılabilirlik potansiyelini gözünüzde büyütmeyin. Bir tipin yeniden kullanılabilir olması, mutlaka kullanılacağı anlamına gelmez. Bu nedenle her yardımcı tipin Shared katmanında olması gerekmez. Bazı yardımcı tipler, tam da ihtiyaç duyuldukları yerin yanında durabilir:
+
+<FileTree>
+- pages/
+  - home/
+    - api/
+      - ArrayValues.ts yardımcı tipi
+      - getMemoryUsageMetrics.ts bu yardımcı tipi kullanır
+</FileTree>
+
+<Aside type="caution">
+
+Bir `shared/types` klasörü oluşturma veya dilimlerinize bir `types` segmenti ekleme isteğine karşı koyun. "types" kategorisi, "components" veya "hooks" kategorilerine benzer; içeriklerin ne olduğunu tanımlar, ne *için* olduklarını değil. Segmentler kodun özünü değil, amacını tanımlamalıdır.
+
+</Aside>
+
+## İş varlıkları (Business entities) ve çapraz referansları
+
+Bir uygulamadaki en önemli tipler arasında iş varlıklarının (business entities) tipleri yer alır; yani uygulamanızın çalıştığı gerçek dünya nesneleri. Örneğin, bir müzik akış uygulamasında *Song* (Şarkı), *Album* (Albüm) vb. iş varlıklarınız olabilir.
+
+İş varlıkları genellikle backend'den gelir, bu yüzden ilk adım backend yanıtlarını tiplemektir. Her endpoint'e istek atan bir fonksiyona sahip olmak ve bu fonksiyonun yanıtını tiplemek oldukça pratiktir. Ekstra tip güvenliği için yanıtı [Zod][ext-zod] gibi bir şema doğrulama kütüphanesinden geçirmek isteyebilirsiniz.
+
+Örneğin, tüm isteklerinizi Shared katmanında tutuyorsanız bunu şu şekilde yapabilirsiniz:
+
+```ts title="shared/api/songs.ts"
+import type { Artist } from "./artists";
+
+interface Song {
+  id: number;
+  title: string;
+  artists: Array<Artist>;
+}
+
+export function listSongs() {
+  return fetch('/api/songs').then((res) => res.json() as Promise<Array<Song>>);
+}
+```
+
+`Song` tipinin farklı bir varlığa, `Artist`'e referans verdiğini fark etmiş olabilirsiniz. İsteklerinizi Shared katmanında saklamanın avantajlarından biri de budur — gerçek dünya tipleri genellikle birbiriyle ilişkilidir. Bu fonksiyonu `entities/song/api` içinde tutsaydık, `entities/artist` içinden `Artist` tipini doğrudan içe aktaramazdık; çünkü FSD, dilimler arası çapraz içe aktarmaları (cross-imports) [katmanlardaki içe aktarma kuralı][import-rule-on-layers] ile kısıtlar:
+
+> Bir dilimdeki modül, yalnızca kesinlikle alt katmanlarda yer alan diğer dilimleri içe aktarabilir.
+
+Bu sorunla başa çıkmanın iki yolu vardır:
+
+1. **Tiplerinizi parametreleştirin**  
+   Tiplerinizin diğer varlıklarla bağlantı kurması için tip bağımsız değişkenlerini (type arguments) slot olarak kabul etmesini sağlayabilir, hatta bu slot'lara kısıtlamalar koyabilirsiniz. Örneğin:
+
+   ```ts title="entities/song/model/song.ts"
+   interface Song<ArtistType extends { id: string }> {
+     id: number;
+     title: string;
+     artists: Array<ArtistType>;
+   }
+   ```
+
+   Bu yöntem bazı tipler için diğerlerine kıyasla daha iyi çalışır. `Cart = { items: Array<Product> }` gibi basit bir tip, her türlü ürün tipiyle çalışacak şekilde kolayca uyarlanabilir. `Country` ve `City` gibi birbirine daha sıkı bağlı tipleri ayırmak bu kadar kolay olmayabilir.
+
+2. **Çapraz içe aktarma yapın (ama doğru şekilde yapın)**  
+   FSD'de varlıklar arasında çapraz içe aktarma yapmak için, çapraz içe aktarma yapacak her dilime özel tanımlanmış halka açık API'ler (public API) kullanabilirsiniz. Örneğin `song`, `artist` ve `playlist` varlıklarımız varsa ve son ikisinin `song` varlığına referans vermesi gerekiyorsa, `@x` notasyonu ile `song` varlığı içinde her ikisi için de iki özel public API oluşturabiliriz:
+
+   <FileTree>
+   - entities/
+     - song/
+       - @x/
+         - artist.ts `artist` varlığının içe aktarması için halka açık API
+         - playlist.ts `playlist` varlığının içe aktarması için halka açık API
+       - index.ts normal halka açık API
+   </FileTree>
+   
+   `📄 entities/song/@x/artist.ts` dosyasının içeriği `📄 entities/song/index.ts` dosyasına benzer:
+
+   ```ts title="entities/song/@x/artist.ts"
+   export type { Song } from "../model/song.ts";
+   ```
+
+   Ardından `📄 entities/artist/model/artist.ts`, `Song` tipini şu şekilde içe aktarabilir:
+
+   ```ts title="entities/artist/model/artist.ts"
+   import type { Song } from "entities/song/@x/artist";
+
+   export interface Artist {
+     name: string;
+     songs: Array<Song>;
+   }
+   ```
+
+   Varlıklar arasında açık bağlantılar kurarak, bağımlılıkların kontrolünü elimizde tutar ve alan (domain) ayrımını makul bir seviyede korumuş oluruz.
+
+## Veri transfer nesneleri ve dönüştürücüler (mappers) \{#data-transfer-objects-and-mappers\}
+
+Veri transfer nesneleri (Data transfer objects veya DTO'lar), backend'den gelen verinin şeklini tanımlayan bir terimdir. Bazen DTO olduğu gibi kullanılabilir, ancak bazen ön yüz (frontend) için kullanışsız olabilir. Dönüştürücüler (mappers) tam da bu noktada devreye girer — DTO'yu daha kullanışlı bir şekle dönüştürürler.
+
+### DTO'lar nereye konur
+
+Backend tipleriniz ayrı bir pakette yer alıyorsa (örneğin ön yüz ve backend arasında kod paylaşıyorsanız), DTO'larınızı oradan içe aktarmanız yeterlidir! Backend ve frontend arasında kod paylaşmıyorsanız, DTO'ları frontend kod tabanınızda bir yerde tutmanız gerekir; bu durumu aşağıda inceleyeceğiz.
+
+İstek fonksiyonlarınız `shared/api` içindeyse, DTO'lar da tam olarak onları kullanan fonksiyonun yanında yer almalıdır:
+
+```ts title="shared/api/songs.ts"
+import type { ArtistDTO } from "./artists";
+
+interface SongDTO {
+  id: number;
+  title: string;
+  artist_ids: Array<ArtistDTO["id"]>;
+}
+
+export function listSongs() {
+  return fetch('/api/songs').then((res) => res.json() as Promise<Array<SongDTO>>);
+}
+```
+
+Önceki bölümde belirtildiği gibi, isteklerinizi ve DTO'larınızı Shared katmanında saklamak, diğer DTO'lara referans verebilme avantajını da beraberinde getirir.
+
+### Dönüştürücüler (mappers) nereye konur
+
+Mappers, dönüşüm için bir DTO kabul eden fonksiyonlardır ve bu nedenle DTO tanımının yakınında yer almalıdırlar. Pratikte bu, istekleriniz ve DTO'larınız `shared/api` içinde tanımlanmışsa, mapper'ların da orada yer alması gerektiği anlamına gelir:
+
+```ts title="shared/api/songs.ts"
+import type { ArtistDTO } from "./artists";
+
+interface SongDTO {
+  id: number;
+  title: string;
+  disc_no: number;
+  artist_ids: Array<ArtistDTO["id"]>;
+}
+
+interface Song {
+  id: string;
+  title: string;
+  /** Disk numarasını da içeren şarkının tam başlığı. */
+  fullTitle: string;
+  artistIds: Array<string>;
+}
+
+function adaptSongDTO(dto: SongDTO): Song {
+  return {
+    id: String(dto.id),
+    title: dto.title,
+    fullTitle: `${dto.disc_no} / ${dto.title}`,
+    artistIds: dto.artist_ids.map(String),
+  };
+}
+
+export function listSongs() {
+  return fetch('/api/songs').then(async (res) => (await res.json()).map(adaptSongDTO));
+}
+```
+
+İstekleriniz ve store'larınız entity dilimlerinde tanımlanmışsa, dilimler arası çapraz içe aktarma kısıtlamaları göz önünde bulundurularak tüm bu kodlar orada yer alacaktır:
+
+```ts title="entities/song/api/dto.ts"
+import type { ArtistDTO } from "entities/artist/@x/song";
+
+export interface SongDTO {
+  id: number;
+  title: string;
+  disc_no: number;
+  artist_ids: Array<ArtistDTO["id"]>;
+}
+```
+
+```ts title="entities/song/api/mapper.ts"
+import type { SongDTO } from "./dto";
+
+export interface Song {
+  id: string;
+  title: string;
+  /** Disk numarasını da içeren şarkının tam başlığı. */
+  fullTitle: string;
+  artistIds: Array<string>;
+}
+
+export function adaptSongDTO(dto: SongDTO): Song {
+  return {
+    id: String(dto.id),
+    title: dto.title,
+    fullTitle: `${dto.disc_no} / ${dto.title}`,
+    artistIds: dto.artist_ids.map(String),
+  };
+}
+```
+
+```ts title="entities/song/api/listSongs.ts"
+import { adaptSongDTO } from "./mapper";
+
+export function listSongs() {
+  return fetch('/api/songs').then(async (res) => (await res.json()).map(adaptSongDTO));
+}
+```
+
+```ts title="entities/song/model/songs.ts"
+import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
+
+import { listSongs } from "../api/listSongs";
+
+export const fetchSongs = createAsyncThunk('songs/fetchSongs', listSongs);
+
+const songAdapter = createEntityAdapter();
+const songsSlice = createSlice({
+  name: "songs",
+  initialState: songAdapter.getInitialState(),
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchSongs.fulfilled, (state, action) => {
+      songAdapter.upsertMany(state, action.payload);
+    })
+  },
+});
+```
+
+### İç içe geçmiş (nested) DTO'larla nasıl başa çıkılır
+
+En sorunlu kısım, backend'den gelen yanıtın birkaç varlık içermesidir. Örneğin, şarkı yanıtı yalnızca yazarların ID'lerini değil, tüm yazar nesnelerini içeriyorsa. Bu durumda, varlıkların birbirinden haberdar olmaması imkansızdır (veriyi gözden çıkarmak veya backend ekibiyle ciddi bir konuşma yapmak istemiyorsanız). Dilimler arasında dolaylı bağlantılar için çözümler üretmek yerine (diğer dilimlere eylemler dağıtacak ortak bir middleware gibi), `@x` notasyonu ile açık çapraz içe aktarmaları tercih edin. Redux Toolkit ile bunu şu şekilde uygulayabiliriz:
+
+```ts title="entities/song/model/songs.ts"
+import {
+  createSlice,
+  createEntityAdapter,
+  createAsyncThunk,
+  createSelector,
+} from '@reduxjs/toolkit'
+import { normalize, schema } from 'normalizr'
+
+import { getSong } from "../api/getSong";
+
+// normalizr entity şemalarını tanımlayın
+export const artistEntity = new schema.Entity('artists')
+export const songEntity = new schema.Entity('songs', {
+  artists: [artistEntity],
+})
+
+const songAdapter = createEntityAdapter()
+
+export const fetchSong = createAsyncThunk(
+  'songs/fetchSong',
+  async (id: string) => {
+    const data = await getSong(id)
+    // Veriyi normalleştirin (normalize), böylece reducer'lar tahmin edilebilir bir yük (payload) yükleyebilir:
+    // `action.payload = { songs: {}, artists: {} }`
+    const normalized = normalize(data, songEntity)
+    return normalized.entities
+  }
+)
+
+export const slice = createSlice({
+  name: 'songs',
+  initialState: songAdapter.getInitialState(),
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchSong.fulfilled, (state, action) => {
+      songAdapter.upsertMany(state, action.payload.songs)
+    })
+  },
+})
+
+const reducer = slice.reducer
+export default reducer
+```
+
+```ts title="entities/song/@x/artist.ts"
+export { fetchSong } from "../model/songs";
+```
+
+```ts title="entities/artist/model/artists.ts"
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit'
+
+import { fetchSong } from 'entities/song/@x/artist'
+
+const artistAdapter = createEntityAdapter()
+
+export const slice = createSlice({
+  name: 'users',
+  initialState: artistAdapter.getInitialState(),
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchSong.fulfilled, (state, action) => {
+      // Ve aynı getirme sonucunu burada sanatçıları (artists) ekleyerek ele alın
+      artistAdapter.upsertMany(state, action.payload.artists)
+    })
+  },
+})
+
+const reducer = slice.reducer
+export default reducer
+```
+
+Bu durum dilim izolasyonunun faydalarını bir miktar sınırlasa da, kontrolümüz dışındaki bu iki varlık arasındaki bağlantıyı doğru bir şekilde temsil eder. Bu varlıkların refactor edilmesi gerekirse, birlikte refactor edilmelidirler.
+
+## Küresel tipler ve Redux
+
+Küresel tipler, tüm uygulama genelinde kullanılacak tiplerdir. Neleri bilmeleri gerektiğine bağlı olarak iki tür küresel tip vardır:
+1. Uygulamaya özel detaylar içermeyen jenerik (generic) tipler
+2. Tüm uygulama hakkında bilgi sahibi olması gereken tipler
+
+İlk durumu çözmek basittir — tiplerinizi Shared katmanında uygun bir segmente yerleştirin. Örneğin, analitik (analytics) için küresel bir değişkene ait interface'iniz varsa, bunu `shared/analytics` içine koyabilirsiniz.
+
+<Aside type="caution">
+
+`shared/types` klasörü oluşturmaktan kaçının. Yalnızca "bir tip olma" özelliğine dayanarak ilişkisiz şeyleri bir araya toplar ve bu özellik bir projede kod ararken genellikle yararlı değildir.
+
+</Aside>
+
+İkinci durum, RTK kullanılmayan Redux projelerinde yaygın olarak görülür. Nihai store tipiniz yalnızca tüm reducer'ları bir araya getirdiğinizde kullanılabilir hale gelir, ancak bu store tipinin uygulama genelinde kullandığınız selector'lar tarafından erişilebilir olması gerekir. Örneğin, işte tipik bir store tanımınız:
+
+```ts title="app/store/index.ts"
+import { combineReducers, rootReducer } from "redux";
+
+import { songReducer } from "entities/song";
+import { artistReducer } from "entities/artist";
+
+const rootReducer = combineReducers(songReducer, artistReducer);
+
+const store = createStore(rootReducer);
+
+type RootState = ReturnType<typeof rootReducer>;
+type AppDispatch = typeof store.dispatch;
+```
+
+`shared/store` içinde tiplenmiş `useAppDispatch` ve `useAppSelector` Redux hook'larına sahip olmak harika olurdu, ancak bunlar [katmanlardaki içe aktarma kuralı][import-rule-on-layers] nedeniyle App katmanından `RootState` ve `AppDispatch`'i içe aktaramazlar:
+
+> Bir dilimdeki modül, yalnızca kesinlikle alt katmanlarda yer alan diğer dilimleri içe aktarabilir.
+
+Bu durumda önerilen çözüm, Shared ve App katmanları arasında örtük bir bağımlılık (implicit dependency) oluşturmaktır. Bu iki tip (`RootState` ve `AppDispatch`) pek değişme eğiliminde değildir ve Redux geliştiricilerine tanıdık geleceğinden, onlar hakkında fazla endişelenmemiz gerekmez.
+
+TypeScript'te bunu, tipleri şu şekilde küresel (global) olarak bildirerek yapabilirsiniz:
+
+```ts title="app/store/index.ts"
+/* önceki kod bloğundaki içerik ile aynı… */
+
+declare type RootState = ReturnType<typeof rootReducer>;
+declare type AppDispatch = typeof store.dispatch;
+```
+
+```ts title="shared/store/index.ts"
+import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
+
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+```
+
+## Enum'lar
+
+Enum'lar için genel kural, **kullanım konumlarına mümkün olduğunca yakın** tanımlanmaları gerektiğidir. Bir enum tek bir özelliğe (feature) özel değerleri temsil ediyorsa, o özelliğin içinde tanımlanmalıdır.
+
+Segment seçimi de kullanım konumlarına göre belirlenmelidir. Örneğin enum'ınız ekrandaki bildirim (toast) konumlarını içeriyorsa, `ui` segmentine yerleştirilmelidir. Bir backend işleminin yüklenme durumunu temsil ediyorsa, `api` segmentine yerleştirilmelidir.
+
+Genel backend yanıt durumları veya tasarım sistemi token'ları gibi bazı enum'lar projenin tamamında gerçekten ortaktır. Bu durumda bunları Shared katmanına yerleştirebilir ve enum'ın temsil ettiği şeye göre segmenti seçebilirsiniz (yanıt durumları için `api`, tasarım token'ları için `ui` vb.).
+
+## Tip doğrulama şemaları ve Zod
+
+Verilerinizin belirli bir şekle veya kısıtlamalara uyup uymadığını doğrulamak istiyorsanız, bir doğrulama şeması (validation schema) tanımlayabilirsiniz. TypeScript'te bu iş için popüler bir kütüphane [Zod][ext-zod]'dur. Doğrulama şemaları da mümkün olduğunca onları kullanan kodla aynı yerde (colocated) bulunmalıdır.
+
+Doğrulama şemaları, bir veri transfer nesnesini alıp ayrıştırmaları (parse) ve ayrıştırma başarısız olursa hata üretmeleri bakımından dönüştürücülere ([Veri transfer nesneleri ve dönüştürücüler](#data-transfer-objects-and-mappers) bölümünde tartışıldığı gibi) benzer.
+
+Doğrulamanın en yaygın kullanım durumlarından biri backend'den gelen verilerdir. Tipik olarak, veri şemayla eşleşmediğinde isteğin başarısız olmasını istersiniz; bu nedenle şemayı, genellikle `api` segmenti olan istek fonksiyonuyla aynı yere koymak mantıklıdır.
+
+Verileriniz bir form gibi kullanıcı girdisi yoluyla geliyorsa, doğrulama veri girilirken gerçekleşmelidir. Şemanızı `ui` segmentine, form bileşeninin yanına veya `ui` segmenti çok kalabalıksa `model` segmentine yerleştirebilirsiniz.
+
+## Bileşen prop ve context tipleri
+
+Genel olarak, prop veya context arabirimini (interface) bunları kullanan bileşen veya context ile aynı dosyada tutmak en iyisidir. Vue veya Svelte gibi tek dosyalı bileşenlere (single-file components) sahip bir çerçeveniz varsa ve prop arabirimini aynı dosyada tanımlayamıyorsanız ya da bu arabirimi birkaç bileşen arasında paylaşmak istiyorsanız, aynı klasörde (genellikle `ui` segmentinde) ayrı bir dosya oluşturun.
+
+İşte JSX (React veya Solid) ile bir örnek:
+
+```ts title="pages/home/ui/RecentActions.tsx"
+interface RecentActionsProps {
+  actions: Array<{ id: string; text: string }>;
+}
+
+export function RecentActions({ actions }: RecentActionsProps) {
+  /* … */
+}
+```
+
+Ve işte Vue için ayrı bir dosyada saklanan arabirim örneği:
+
+```ts title="pages/home/ui/RecentActionsProps.ts"
+export interface RecentActionsProps {
+  actions: Array<{ id: string; text: string }>;
+}
+```
+
+```html title="pages/home/ui/RecentActions.vue"
+<script setup lang="ts">
+  import type { RecentActionsProps } from "./RecentActionsProps";
+
+  const props = defineProps<RecentActionsProps>();
+</script>
+```
+
+## Ortam bildirimi dosyaları (`*.d.ts`)
+
+[Vite][ext-vite] veya [ts-reset][ext-ts-reset] gibi bazı paketler, uygulamanız boyunca çalışabilmek için ortam bildirimi (ambient declaration) dosyalarına ihtiyaç duyar. Genellikle büyük veya karmaşık değillerdir, bu nedenle herhangi bir mimari yapılandırma gerektirmezler; onları doğrudan `src/` klasörüne atmanızda bir sakınca yoktur. `src` klasörünü daha düzenli tutmak için bunları App katmanında, `app/ambient/` içinde de tutabilirsiniz.
+
+Diğer bazı paketlerin ise tip tanımları yoktur; bunları tipsiz (untyped) olarak bildirmek veya hatta kendiniz için tip yazmak isteyebilirsiniz. Bu tür tipler için uygun bir yer `shared/lib` altında `shared/lib/untyped-packages` gibi bir klasör olacaktır. Burada bir `%LIBRARY_NAME%.d.ts` dosyası oluşturun ve ihtiyacınız olan tipleri bildirin:
+
+```ts title="shared/lib/untyped-packages/use-react-screenshot.d.ts"
+// Bu kütüphanenin tip tanımları yok ve biz de kendi tiplerimizi yazmakla uğraşmak istemedik.
+declare module "use-react-screenshot";
+```
+
+## Tiplerin otomatik üretimi
+
+OpenAPI şemasından backend tipleri üretmek gibi harici kaynaklardan tipler üretmek yaygın bir durumdur. Bu durumda, kod tabanınızda bu tipler için `shared/api/openapi` gibi özel bir yer oluşturun. İdeal olarak, bu klasöre bu dosyaların ne olduğunu, nasıl yeniden üretileceğini vb. açıklayan bir README de eklemelisiniz.
+
+[import-rule-on-layers]: /tr/docs/reference/layers#import-rule-on-layers
+[ext-type-fest]: https://github.com/sindresorhus/type-fest
+[ext-zod]: https://zod.dev
+[ext-vite]: https://vitejs.dev
+[ext-ts-reset]: https://www.totaltypescript.com/ts-reset
