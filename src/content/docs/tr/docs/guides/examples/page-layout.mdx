@@ -1,0 +1,120 @@
+---
+title: Sayfa Düzenleri
+sidebar:
+  order: 3
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Bu kılavuz, bir _sayfa düzeni_ (page layout) soyutlamasını inceler — birkaç sayfa aynı genel yapıyı paylaştığında ve yalnızca ana içerik bakımından farklılık gösterdiğinde kullanılır.
+
+<Aside>
+
+Aradığınız soru bu kılavuzda kapsanmıyor mu? Bu makaleye geri bildirim bırakarak (sağdaki mavi buton) sorunuzu paylaşın; biz de bu kılavuzu genişletmeyi değerlendirelim!
+
+</Aside>
+
+## Basit düzen
+
+En basit düzen bu sayfada görülebilir. Site navigasyonuna sahip bir üst bilgi (header), iki yan çubuk (sidebar) ve dış bağlantılar içeren bir alt bilgi (footer) bulunur. Karmaşık bir iş mantığı (business logic) yoktur ve tek dinamik parçalar yan çubuklar ile üst bilginin sağ tarafındaki değiştiricilerdir (switcher). Böyle bir düzen tamamen `shared/ui` veya `app/layouts` içine yerleştirilebilir ve props aracılığıyla yan çubukların içeriği doldurulabilir:
+
+```tsx title="shared/ui/layout/Layout.tsx"
+import { Link, Outlet } from "react-router-dom";
+import { useThemeSwitcher } from "./useThemeSwitcher";
+
+export function Layout({ siblingPages, headings }) {
+  const [theme, toggleTheme] = useThemeSwitcher();
+
+  return (
+    <div>
+      <header>
+        <nav>
+          <ul>
+            <li> <Link to="/">Home</Link> </li>
+            <li> <Link to="/docs">Docs</Link> </li>
+            <li> <Link to="/blog">Blog</Link> </li>
+          </ul>
+        </nav>
+        <button onClick={toggleTheme}>{theme}</button>
+      </header>
+      <main>
+        <SiblingPageSidebar siblingPages={siblingPages} />
+        <Outlet /> {/* Ana içerik buraya gelir */}
+        <HeadingsSidebar headings={headings} />
+      </main>
+      <footer>
+        <ul>
+          <li>GitHub</li>
+          <li>Twitter</li>
+        </ul>
+      </footer>
+    </div>
+  );
+}
+```
+
+```ts title="shared/ui/layout/useThemeSwitcher.ts"
+export function useThemeSwitcher() {
+  const [theme, setTheme] = useState("light");
+
+  function toggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
+
+  useEffect(() => {
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(theme);
+  }, [theme]);
+
+  return [theme, toggleTheme] as const;
+}
+```
+
+Yan çubukların kodu okuyucuya bir alıştırma olarak bırakılmıştır 😉.
+
+## Düzenler nerede konumlandırılmalıdır? \{#where-to-put-layouts\}
+
+Düzen bileşenleri genellikle birden fazla rota (route) arasında paylaşılan veri işleme, durum yönetimi (state management), erişim kontrolü ve kullanıcı eylemlerini bir araya getirme (compose) ihtiyacı duyar.
+
+[React Router][ext-react-router]'da iç içe geçmiş (nested) alt rotalar `/users`, `/users/:id` ve `/users/:id/settings` gibi ortak bir URL yolunu paylaşabilir. Aynı mantığı her sayfada tekrarlamak yerine, yönlendiricinin (router) iç içe geçme özelliklerini kullanarak ortak bir düzeni ve rota seviyesindeki mantığı tek bir yerde uygulayabilirsiniz.
+
+Bir düzenin konumu, yapısal karmaşıklığından ziyade **kapsamı ve sorumluluğu** temel alınarak belirlenmelidir.
+
+* Tüm uygulamadan veya yönlendirme yapısından sorumlu düzenler `app` katmanına yerleştirilmelidir.
+* Belirli bir sayfaya veya rota grubuna özgü düzenler `pages` katmanına yerleştirilmelidir.
+* İş bağlamı (business context) olmadan yeniden kullanılabilir olan düzen UI bileşenleri `shared/ui` katmanına yerleştirilebilir.
+* Belirli bir kullanıcı eylemi veya kullanıcı akışı etrafında merkezlenen ve birden fazla sayfada yeniden kullanılan düzenler, ilgili `features` diliminde (slice) uygulanabilir.
+
+`shared` katmanındaki bir düzenin doğrudan `features`, `entities` veya `pages` katmanlarından içe aktarım (import) yapması [katmanlardaki içe aktarma kuralını][import-rule-on-layers] ihlal eder. `app` ve `pages` katmanlarındaki modüller bir ekranı oluşturmak (compose) için alt katmanlardaki modülleri içe aktarabilir.
+
+> Bir modül yalnızca ait olduğu katmanın altındaki katmanlardan modül içe aktarabilir.
+
+Bir düzeni ayrı bir modüle çıkarmadan önce şunları göz önünde bulundurun:
+
+* Bu düzen gerçekten birden fazla rota genelinde yeniden kullanılıyor mu?
+* Belirli bir sayfaya veya rota yapısına özgü mü?
+* Yeniden kullanılabilir birim düzenin kendisi mi, yoksa yalnızca düzen içinde kullanılan kullanıcı eylemi mi?
+
+Yalnızca az sayıda sayfa tarafından kullanılan ve belirli bir ekran yapısına bağlı olan bir düzeni, doğrudan ilgili `page` veya rota yapılandırmasında tanımlamak daha basit olabilir.
+
+1. **App katmanında bir rota düzeni yapılandırın**  
+   Yönlendiricinin iç içe geçme özelliklerini kullanarak ortak URL yoluna sahip birden fazla rotayı gruplayabilir ve `app` katmanında tek bir düzen atayabilirsiniz.
+   `app` içinde yer alan bir düzen, katmanlardaki içe aktarma kuralını ihlal etmeden `pages`, `features`, `entities` ve `shared` katmanlarındaki modülleri bir araya getirebilir (compose).
+
+2. **Özellik (Feature) UI bileşenlerini render props veya slot'lar aracılığıyla aktarın**  
+   React'te [render props][ext-render-props] desenini kullanabilirsiniz. Vue'da ise [slots][ext-vue-slots] kullanabilirsiniz.
+   Bu yaklaşımda `shared` içindeki düzen yalnızca ortak UI yapısını sağlarken, gerekli olan özellik UI bileşeni `app` veya `pages` katmanından aktarılır. Bu, düzenin belirli bir özelliğe doğrudan bağımlı olmadan gerekli ekranı oluşturmasını (compose) sağlar.
+
+3. **Doğrudan bir sayfa içinde tanımlayın**  
+   Yalnızca belirli bir sayfa tarafından kullanılan bir düzen, ayrı bir soyutlama eklenmeden doğrudan ilgili `page` içinde tanımlanabilir.
+   Kod tekrarı az olduğunda ve düzenin sık sık değişmesi muhtemel olmadığından, onu ortak bir modüle ayırmaya gerek yoktur.
+
+## Daha fazla okuma
+
+- React ve Remix (React Router'a eşdeğer) ile kimlik doğrulama içeren bir düzenin nasıl kurulacağına dair bir örnek [öğreticide][tutorial] bulunmaktadır.
+
+[tutorial]: /tr/docs/get-started/tutorial
+[import-rule-on-layers]: /tr/docs/reference/layers#import-rule-on-layers
+[ext-react-router]: https://reactrouter.com/
+[ext-render-props]: https://www.patterns.dev/react/render-props-pattern/
+[ext-vue-slots]: https://vuejs.org/guide/components/slots
