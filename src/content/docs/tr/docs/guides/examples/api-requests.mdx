@@ -1,0 +1,144 @@
+---
+title: API İsteklerini Yönetme
+sidebar:
+  order: 4
+---
+
+import { FileTree, Tabs, TabItem, Aside } from '@astrojs/starlight/components';
+
+## Paylaşılan API İstekleri \{#shared-api-requests\}
+
+Yaygın API istek mantığını `shared/api` dizinine yerleştirerek başlayın. Bu, istekleri uygulamanız genelinde yeniden kullanmayı kolaylaştırır ve daha hızlı prototipleme yapmanıza yardımcı olur. Birçok proje için API çağrıları için ihtiyacınız olan tek şey budur.
+
+Tipik bir dosya yapısı şu şekilde olacaktır:
+
+<FileTree>
+- shared/
+  - client.ts
+  - index.ts
+  - endpoints/
+    - login.ts
+</FileTree>
+
+`client.ts` dosyası HTTP istek kurulumunuzu merkezileştirir. Seçtiğiniz yöntemi (`fetch()` veya bir `axios` örneği gibi) sarar ve aşağıdakiler gibi yaygın yapılandırmaları işler:
+
+- Backend temel URL'si.
+- Varsayılan başlıklar (ör. kimlik doğrulama için).
+- Veri serileştirme.
+
+İşte `axios` ve `fetch` için örnekler:
+
+<Tabs>
+
+<TabItem label="Axios">
+```ts title="shared/api/client.ts"
+// axios kullanan bir örnek
+import axios from 'axios';
+
+export const client = axios.create({
+  baseURL: 'https://your-api-domain.com/api/',
+  timeout: 5000,
+  headers: { 'X-Custom-Header': 'my-custom-value' }
+});
+```
+</TabItem>
+
+<TabItem label="Fetch">
+```ts title="shared/api/client.ts"
+export const client = {
+  async post(endpoint: string, body: any, options?: RequestInit) {
+    const response = await fetch(`https://your-api-domain.com/api${endpoint}`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Custom-Header': 'my-custom-value',
+        ...options?.headers,
+      },
+    });
+    return response.json();
+  }
+  // ... put, delete, vb. gibi diğer metodlar
+};
+```
+</TabItem>
+
+</Tabs>
+
+Bireysel API istek işlevlerinizi `shared/api/endpoints` içinde düzenleyin ve bunları API uç noktasına göre gruplandırın.
+
+<Aside>
+
+Örneklerin odak noktasını korumak için form etkileşimini ve doğrulamayı atlıyoruz. Zod veya Valibot gibi kütüphaneler hakkında daha fazla bilgi için [Tip Doğrulama ve Şemalar](/tr/docs/guides/examples/types#type-validation-schemas-and-zod) makalesine bakın.
+
+</Aside>
+
+```ts title="shared/api/endpoints/login.ts"
+import { client } from '../client';
+
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+İstek işlevlerinizi dışa aktarmak için `shared/api` içinde bir `index.ts` dosyası kullanın.
+
+```ts title="shared/api/index.ts"
+export { client } from './client'; // Eğer istemcinin kendisini dışa aktarmak istiyorsanız
+export { login } from './endpoints/login';
+export type { LoginCredentials } from './endpoints/login';
+```
+
+## Dilim Özel API İstekleri \{#slice-specific-api-requests\}
+
+Bir API isteği yalnızca belirli bir dilim (tek bir sayfa veya özellik gibi) tarafından kullanılıyorsa ve yeniden kullanılmayacaksa, onu o dilimin `api` segmentine yerleştirin. Bu, dilime özgü mantığı düzgün bir şekilde içeride tutar.
+
+<FileTree>
+- pages/
+  - login/
+    - index.ts
+    - api/
+      - login.ts
+    - ui/
+      - LoginPage.tsx
+</FileTree>
+
+```ts title="pages/login/api/login.ts"
+import { client } from 'shared/api';
+
+interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export function login(credentials: LoginCredentials) {
+  return client.post('/login', credentials);
+}
+```
+
+Uygulamadaki başka hiçbir yerin bu isteğe ihtiyaç duyması olası olmadığından, sayfanın genel API'sinde `login()` işlevini dışa aktarmanıza gerek yoktur.
+
+<Aside>
+
+API çağrılarını ve yanıt tiplerini zamanından önce `entities` katmanına yerleştirmekten kaçının. Backend yanıtları, frontend varlıklarınızın ihtiyaç duyduğundan farklı olabilir. `shared/api` veya bir dilimin `api` segmentindeki API mantığı, verileri uygun şekilde dönüştürmenize olanak tanıyarak varlıkların frontend sorunlarına odaklanmasını sağlar.
+
+</Aside>
+
+## İstemci Üreticilerini Kullanma \{#client-generators\}
+
+Backend'iniz bir OpenAPI spesifikasyonuna sahipse, [orval](https://orval.dev/) veya [openapi-typescript](https://openapi-ts.dev/) gibi araçlar sizin için API tiplerini ve istek işlevlerini üretebilir. Üretilen kodu örneğin `shared/api/openapi` içine yerleştirin. Bu tiplerin ne olduğunu ve nasıl üretileceğini belgelemek için `README.md` eklediğinizden emin olun.
+
+## Sunucu Durumu (Server State) Kütüphaneleriyle Entegrasyon \{#server-state-libraries\}
+
+[TanStack Query (React Query)](https://tanstack.com/query/latest) veya [Pinia Colada](https://pinia-colada.esm.dev/) gibi sunucu durumu kütüphaneleri kullanırken, tipleri veya önbellek anahtarlarını (cache keys) dilimler arasında paylaşmanız gerekebilir. Aşağıdakiler için `shared` katmanını kullanın:
+
+- API veri tipleri
+- Önbellek anahtarları
+- Yaygın sorgu/mutasyon (query/mutation) seçenekleri
+
+Sunucu durumu kütüphaneleriyle çalışma hakkında daha fazla ayrıntı için [React Query makalesine](/tr/docs/guides/tech/with-react-query) bakın.
