@@ -40,6 +40,7 @@ export default defineConfig({
             customCss: ["./src/styles/custom.css"],
             components: {
                 ThemeProvider: "./src/shared/ui/ThemeProvider.astro",
+                SiteTitle: "./src/shared/ui/SiteTitle.astro",
             },
             head: [
                 {
