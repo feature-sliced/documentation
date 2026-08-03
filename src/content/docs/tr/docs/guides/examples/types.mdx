@@ -372,7 +372,7 @@ Segment seçimi de kullanım konumlarına göre belirlenmelidir. Örneğin enum'
 
 Genel backend yanıt durumları veya tasarım sistemi token'ları gibi bazı enum'lar projenin tamamında gerçekten ortaktır. Bu durumda bunları Shared katmanına yerleştirebilir ve enum'ın temsil ettiği şeye göre segmenti seçebilirsiniz (yanıt durumları için `api`, tasarım token'ları için `ui` vb.).
 
-## Tip doğrulama şemaları ve Zod
+## Tip doğrulama şemaları ve Zod \{#type-validation-schemas-and-zod\}
 
 Verilerinizin belirli bir şekle veya kısıtlamalara uyup uymadığını doğrulamak istiyorsanız, bir doğrulama şeması (validation schema) tanımlayabilirsiniz. TypeScript'te bu iş için popüler bir kütüphane [Zod][ext-zod]'dur. Doğrulama şemaları da mümkün olduğunca onları kullanan kodla aynı yerde (colocated) bulunmalıdır.
 
