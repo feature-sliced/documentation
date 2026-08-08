@@ -8,7 +8,7 @@ import { FileTree, Aside } from '@astrojs/starlight/components';
 
 Bu kılavuz, özel (kendi geliştirdiğiniz) bir mimariden Feature-Sliced Design'a (FSD) geçiş yaparken yardımcı olabilecek bir yaklaşımı açıklamaktadır.
 
-İşte tipik bir özel mimarinin klasör yapısı. Bu kılavuzda bunu bir örnek olarak kullanacağız.  
+İşte tipik bir özel mimarinin klasör yapısı. Bu kılavuzda bunu bir örnek olarak kullanacağız.
 Klasörü açmak için mavi oka tıklayın.
 
 <FileTree>
@@ -44,7 +44,7 @@ Geçiş yapmayı düşünmek için bazı nedenler şunlardır:
 2. Kodun bir bölümünde değişiklik yapmak **sıklıkla** alakasız başka bir bölümün bozulmasına neden oluyorsa
 3. Düşünmeniz gereken şeylerin çokluğu nedeniyle yeni işlevsellik eklemek zorsa
 
-**Ekip arkadaşlarınızın isteği dışında FSD'ye geçmekten kaçının**, lider siz olsanız bile.  
+**Ekip arkadaşlarınızın isteği dışında FSD'ye geçmekten kaçının**, lider siz olsanız bile.
 Öncelikle ekip arkadaşlarınızı, geçişin maliyetinden ve kurulu olan yerine yeni bir mimari öğrenmenin maliyetinden daha fazla fayda sağladığına ikna edin.
 
 Ayrıca, her türlü mimari değişikliğin yönetim tarafından anında gözlemlenemeyeceğini de unutmayın. Başlamadan önce bu geçişi onayladıklarından emin olun ve bunun projeye neden fayda sağlayabileceğini açıklayın.
@@ -136,9 +136,9 @@ Sonuç olarak şöyle bir dosya yapısına sahip olmalısınız:
 Bir sayfanın diğerinden import edildiği tüm örnekleri bulun ve şu iki şeyden birini yapın:
 
 1. Bağımlılığı ortadan kaldırmak için import edilen kodu bağımlı sayfaya kopyalayıp yapıştırın (copy-paste).
-2. Kodu Shared içinde uygun bir segmente taşıyın: 
-      - eğer UI kitinin bir parçasıysa, onu `📁 shared/ui`'a taşıyın; 
-      - eğer bir yapılandırma sabitiyse (configuration constant), onu `📁 shared/config`'e taşıyın; 
+2. Kodu Shared içinde uygun bir segmente taşıyın:
+      - eğer UI kitinin bir parçasıysa, onu `📁 shared/ui`'a taşıyın;
+      - eğer bir yapılandırma sabitiyse (configuration constant), onu `📁 shared/config`'e taşıyın;
       - eğer bir backend etkileşimi ise, onu `📁 shared/api`'ye taşıyın.
 
 <Aside>
@@ -231,4 +231,4 @@ Eskiden `📁 components` ve `📁 containers` içinde bulunan UI bileşenlerini
 - [(Rusça Konuşma) Ilya Klimov — Крысиные бега бесконечного рефакторинга: как не дать техническому долгу убить мотивацию и продукт](https://youtu.be/aOiJ3k2UvO4)
 
 [ext-steiger]: https://github.com/feature-sliced/steiger
-[business-entities-cross-relations]: /tr/docs/guides/examples/types#iş-varlıkları-business-entities-ve-çapraz-referansları
+[business-entities-cross-relations]: /tr/docs/guides/examples/types#business-entities-and-their-cross-references
