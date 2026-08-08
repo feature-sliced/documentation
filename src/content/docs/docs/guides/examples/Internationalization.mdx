@@ -1,0 +1,285 @@
+---
+title: Internationalization (i18n)
+sidebar:
+  order: 6
+---
+
+import {
+FileTree,
+Aside,
+Steps,
+Tabs,
+TabItem,
+} from '@astrojs/starlight/components';
+
+Supporting multiple languages involves i18n setup, translation resources, locale management, and language switching.
+Feature-Sliced Design does not prescribe a particular i18n library or project structure. This guide shows where these concerns can live in an FSD project based on their responsibilities.
+
+## i18n setup \{#i18n-setup}
+
+Application-wide i18n code, including supported locales, the default locale, and the i18n instance, can live in `shared/i18n`.
+
+<FileTree>
+- src/
+  - app/
+    - i18n/
+      - I18nProvider.tsx
+      - index.ts
+  - shared/
+    - i18n/
+      - config.ts
+      - instance.ts
+      - index.ts
+</FileTree>
+
+`shared/i18n` is a segment for application-wide i18n code such as supported locales, the default locale, the i18n instance, and global translation resources.
+
+<Steps>
+
+1. Define the supported locales and default locale.
+
+   ```ts title="shared/i18n/config.ts"
+   export const supportedLocales = ["en", "ko"] as const;
+   export type Locale = (typeof supportedLocales)[number];
+
+   export const defaultLocale: Locale = "en";
+   ```
+
+2. Create the i18n instance.
+
+   ```ts title="shared/i18n/instance.ts"
+   // This is an example API. The actual initialization depends on the library you use.
+
+   import { defaultLocale } from "./config";
+
+   export const i18n = createI18n({
+     locale: defaultLocale,
+   });
+   ```
+
+3. Expose the APIs needed by other code through the public API.
+
+   ```ts title="shared/i18n/index.ts"
+   export { i18n } from "./instance";
+   export {
+     defaultLocale,
+     supportedLocales,
+     type Locale,
+   } from "./config";
+   ```
+
+</Steps>
+
+Common i18n APIs, such as translation functions or hooks, can also be exposed through the public API of `shared/i18n`. The exact API depends on the i18n library and the project's abstractions.
+
+<Aside type="note" title="Environment-specific public APIs">
+
+If the server and client require different i18n code, the public API can be split by execution environment. Server-only APIs, for example, can be exposed through a separate entry point such as `index.server.ts`.
+
+</Aside>
+
+Translations may be needed across multiple pages, features, and entities. Keeping common i18n code in the `shared` layer makes it available to higher layers.
+
+Placing the same code in an entity slice such as `entities/i18n`, however, can create dependencies between entity slices when another entity also needs translations.
+
+```ts title="entities/order/ui/OrderStatus.tsx"
+// ❌ This creates a dependency on another entity slice.
+import { i18n } from "@/entities/i18n";
+```
+
+<Aside type="caution" title="Dependencies between entity slices">
+
+FSD recommends avoiding these kinds of [cross-imports](/docs/guides/issues/cross-imports/) where possible. Keeping common i18n code in `shared/i18n` avoids this dependency.
+
+</Aside>
+
+Code that connects the i18n library to the application can live in `app/i18n`.
+
+```tsx title="app/i18n/I18nProvider.tsx"
+// This is an example API. The actual provider depends on the library you use.
+
+import { i18n } from "@/shared/i18n";
+
+export function I18nProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <SomeI18nProvider i18n={i18n}>
+      {children}
+    </SomeI18nProvider>
+  );
+}
+```
+
+```ts title="app/i18n/index.ts"
+export { I18nProvider } from "./I18nProvider";
+```
+
+With this structure, `shared/i18n` provides common i18n code, while `app/i18n` connects it to the application.
+
+## Translation resources \{#translation-resources}
+
+Translation resources contain the translated strings used by the application. Depending on the i18n library, they may also be called messages or catalogs.
+
+They can, for example, be stored as JSON files for each locale.
+
+```json title="shared/i18n/resources/ko.json"
+{
+  "common.cancel": "취소",
+  "checkout.pay": "결제하기"
+}
+```
+
+Translation resource formats and loading mechanisms vary by library. The examples below use locale-specific translation files.
+
+Translation resources can be managed in one place, colocated with a particular slice, or split between both approaches.
+
+<Tabs>
+<TabItem label="Shared resources">
+
+In a small application, or when resources are used across multiple areas, they can live under `shared/i18n`.
+
+<FileTree>
+- shared/
+  - i18n/
+    - resources/
+      - en.json
+      - ko.json
+</FileTree>
+
+This keeps translation files easy to find and manage in one place.
+
+As the application grows, however, translations for unrelated areas such as checkout and profile may start accumulating in the same files.
+
+</TabItem>
+
+<TabItem label="Slice-specific resources">
+
+Translation resources used only by a particular page or slice can live alongside the related code.
+
+<FileTree>
+- pages/
+  - checkout/
+    - ui/
+      - CheckoutPage.tsx
+    - i18n/
+      - en.json
+      - ko.json
+</FileTree>
+
+This keeps checkout code and translations close together and prevents checkout-specific translations from accumulating in shared translation files.
+
+<Aside type="note" title="Translation resources are not loaded automatically">
+
+Placing translation files inside a slice does not make them available at runtime automatically. They still need to be connected to the namespace, catalog, or resource-loading mechanism provided by the i18n library.
+
+</Aside>
+
+</TabItem>
+</Tabs>
+
+Translation resources can also be split and loaded by page or slice when needed. The exact registration and loading mechanism varies by library.
+
+<Aside type="tip" title="When there are only a few translations">
+
+A separate i18n segment may be unnecessary when there are only a few translations. In that case, keep them close to the related code.
+
+<FileTree>
+- pages/
+  - checkout/
+    - ui/
+      - CheckoutPage.tsx
+      - messages.ts
+</FileTree>
+
+</Aside>
+
+Splitting resources across multiple slices also raises additional questions: where shared translations should live, and how each slice registers or loads its resources.
+
+FSD does not require translation resources to be split by slice. Depending on the project size and i18n library, resources can stay in one place while only slice-specific translations are colocated with their respective slices.
+
+Translation resources shared across multiple areas can live in `shared/i18n`.
+
+## Locale \{#locale}
+
+A locale determines which language translations the application uses.
+
+Some i18n libraries represent the current translation language with a property such as `language`. This guide refers to that setting as the locale.
+
+When the current locale is an application-wide setting that determines the display language, it can live in `shared/i18n`.
+
+If the selected locale is stored on the server as part of the user profile, the user entity can own that value.
+
+```ts title="entities/user/model/user.ts"
+import type { Locale } from "@/shared/i18n";
+
+export interface User {
+  id: string;
+  name: string;
+  preferredLocale: Locale;
+}
+```
+
+In this case, `entities/user`, `shared/i18n`, and `app/i18n` have different responsibilities.
+
+| Location        | Responsibility                               |
+| --------------- | -------------------------------------------- |
+| `entities/user` | Stores which locale the user prefers         |
+| `shared/i18n`   | Provides translations for the current locale |
+| `app/i18n`      | Connects the user preference with i18n       |
+
+Applying the locale stored in the user profile as the current locale can be handled in `app/i18n`. The synchronization mechanism depends on how the project manages user state and which i18n library it uses.
+
+Language can also be a business concept.
+
+In a language-learning application, for instance, the language a user is studying is business data and can be modeled as a separate entity. That responsibility is separate from `shared/i18n`, which handles application translations.
+
+A locale or language value does not make i18n itself an entity. Business data and common i18n code can live separately when they have different responsibilities.
+
+## Language switching \{#language-switching}
+
+Language switching is the action of changing the language used by the application.
+
+Where this behavior and its UI belong depends on where they are used.
+
+If the language-selection UI appears only on a settings screen, it can stay in that page.
+
+<FileTree>
+- pages/
+  - settings/
+    - ui/
+      - LanguageSelect.tsx
+</FileTree>
+
+If it appears only in an application-wide layout such as a header or sidebar, it can be composed in the `app` layer.
+
+<FileTree>
+- app/
+  - layouts/
+    - AppLayout.tsx
+</FileTree>
+
+A generic select component with no business context of its own can be extracted to `shared/ui`.
+
+<FileTree>
+- shared/
+  - ui/
+    - select/
+</FileTree>
+
+A language-switching capability might start on the settings page and later be needed in the header as well. Once the same behavior and UI are reused in multiple places, they can be extracted into `features/switch-language`.
+
+<FileTree>
+- features/
+  - switch-language/
+    - ui/
+      - LanguageSelect.tsx
+    - model/
+    - index.ts
+</FileTree>
+
+The settings page and app layout can then use the same feature through the public API of `features/switch-language`.
+
+Language switching does not need a specific layer from the start. Keep it where it is used, then extract it into a feature when the same user interaction is reused in multiple places.
