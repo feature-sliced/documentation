@@ -1,0 +1,234 @@
+---
+title: Özel bir mimariden
+sidebar:
+  order: 1
+---
+
+import { FileTree, Aside } from '@astrojs/starlight/components';
+
+Bu kılavuz, özel (kendi geliştirdiğiniz) bir mimariden Feature-Sliced Design'a (FSD) geçiş yaparken yardımcı olabilecek bir yaklaşımı açıklamaktadır.
+
+İşte tipik bir özel mimarinin klasör yapısı. Bu kılavuzda bunu bir örnek olarak kullanacağız.
+Klasörü açmak için mavi oka tıklayın.
+
+<FileTree>
+- src/
+  - actions/
+    - product/
+    - order/
+  - api/
+  - components/
+  - containers/
+  - constants/
+  - i18n/
+  - modules/
+  - helpers/
+  - routes/
+    - products.jsx
+    - products.[id].jsx
+  - utils/
+  - reducers/
+  - selectors/
+  - styles/
+  - App.jsx
+  - index.jsx
+</FileTree>
+
+## Başlamadan önce \{#before-you-start\}
+
+Feature-Sliced Design'a geçmeyi düşünürken ekibinize sormanız gereken en önemli soru şudur: _buna gerçekten ihtiyacınız var mı?_ Feature-Sliced Design'ı seviyoruz, ancak bazı projelerin onsuz da gayet iyi olduğunu kabul ediyoruz.
+
+Geçiş yapmayı düşünmek için bazı nedenler şunlardır:
+
+1. Yeni ekip üyeleri üretken bir seviyeye gelmenin zor olduğundan şikayet ediyorsa
+2. Kodun bir bölümünde değişiklik yapmak **sıklıkla** alakasız başka bir bölümün bozulmasına neden oluyorsa
+3. Düşünmeniz gereken şeylerin çokluğu nedeniyle yeni işlevsellik eklemek zorsa
+
+**Ekip arkadaşlarınızın isteği dışında FSD'ye geçmekten kaçının**, lider siz olsanız bile.
+Öncelikle ekip arkadaşlarınızı, geçişin maliyetinden ve kurulu olan yerine yeni bir mimari öğrenmenin maliyetinden daha fazla fayda sağladığına ikna edin.
+
+Ayrıca, her türlü mimari değişikliğin yönetim tarafından anında gözlemlenemeyeceğini de unutmayın. Başlamadan önce bu geçişi onayladıklarından emin olun ve bunun projeye neden fayda sağlayabileceğini açıklayın.
+
+<Aside type="tip">
+
+FSD'nin faydalı olduğu konusunda proje yöneticisini ikna etmek için yardıma ihtiyacınız varsa, şu noktaları göz önünde bulundurun:
+1. FSD'ye geçiş kademeli olarak gerçekleşebilir, bu nedenle yeni özelliklerin geliştirilmesini durdurmaz.
+2. İyi bir mimari, yeni bir geliştiricinin üretken hale gelmesi için gereken süreyi önemli ölçüde azaltabilir.
+3. FSD belgelenmiş bir mimaridir, bu nedenle ekip sürekli olarak kendi belgelerini korumak için zaman harcamak zorunda kalmaz.
+
+</Aside>
+
+---
+
+Geçiş yapmaya karar verdiyseniz, yapmak isteyeceğiniz ilk şey `📁 src` için bir takma ad (alias) ayarlamaktır. Daha sonra üst düzey klasörlere başvurmak faydalı olacaktır. Bu kılavuzun geri kalanında `@` işaretini `./src` için bir takma ad olarak kabul edeceğiz.
+
+## 1. Adım: Kodu sayfalara göre bölün \{#divide-code-by-pages\}
+
+Çoğu özel mimari, mantık olarak küçük veya büyük olsun, zaten sayfalara göre bir bölüme sahiptir. Zaten `📁 pages` klasörünüz varsa bu adımı atlayabilirsiniz.
+
+Yalnızca `📁 routes` klasörünüz varsa, `📁 pages` oluşturun ve mümkün olduğunca çok bileşen kodunu `📁 routes`'tan taşımaya çalışın. İdeal olarak, küçük bir rotanız (route) ve daha büyük bir sayfanız (page) olmalıdır. Kodu taşırken, her sayfa için bir klasör oluşturun ve bir index dosyası ekleyin:
+
+<Aside>
+
+Şimdilik sayfalarınızın birbirine referans vermesi sorun değil. Bunu daha sonra ele alabilirsiniz, ancak şimdilik sayfalara göre belirgin bir bölüm (division) oluşturmaya odaklanın.
+
+</Aside>
+
+Rota dosyası (Route file):
+
+```js title="src/routes/products.[id].js"
+export { ProductPage as default } from "@/pages/product"
+```
+
+Sayfa dizin dosyası (Page index file):
+
+```js title="src/pages/product/index.js"
+export { ProductPage } from "./ProductPage.jsx"
+```
+
+Sayfa bileşen dosyası (Page component file):
+
+```jsx title="src/pages/product/ProductPage.jsx"
+export function ProductPage(props) {
+  return <div />;
+}
+```
+
+## 2. Adım: Diğer her şeyi sayfalardan ayırın \{#separate-everything-else-from-pages\}
+
+Bir `📁 src/shared` klasörü oluşturun ve `📁 pages` veya `📁 routes`'tan import edilmeyen her şeyi oraya taşıyın. Bir `📁 src/app` klasörü oluşturun ve rotaların kendileri de dahil olmak üzere sayfaları veya rotaları import eden her şeyi oraya taşıyın.
+
+Shared katmanının dilimleri (slices) olmadığını unutmayın, bu nedenle segmentlerin birbirinden import etmesinde bir sakınca yoktur.
+
+Sonuç olarak şöyle bir dosya yapısına sahip olmalısınız:
+
+<FileTree>
+- src/
+  - app/
+    - routes/
+      - products.jsx
+      - products.[id].jsx
+    - App.jsx
+    - index.js
+  - pages/
+    - product/
+      - index.js
+      - ui/
+        - ProductPage.jsx
+    - catalog/
+  - shared/
+    - actions/
+    - api/
+    - components/
+    - containers/
+    - constants/
+    - i18n/
+    - modules/
+    - helpers/
+    - utils/
+    - reducers/
+    - selectors/
+    - styles/
+</FileTree>
+
+## 3. Adım: Sayfalar arasındaki çapraz import'ları (cross-imports) ele alın \{#tackle-cross-imports-between-pages\}
+
+Bir sayfanın diğerinden import edildiği tüm örnekleri bulun ve şu iki şeyden birini yapın:
+
+1. Bağımlılığı ortadan kaldırmak için import edilen kodu bağımlı sayfaya kopyalayıp yapıştırın (copy-paste).
+2. Kodu Shared içinde uygun bir segmente taşıyın:
+      - eğer UI kitinin bir parçasıysa, onu `📁 shared/ui`'a taşıyın;
+      - eğer bir yapılandırma sabitiyse (configuration constant), onu `📁 shared/config`'e taşıyın;
+      - eğer bir backend etkileşimi ise, onu `📁 shared/api`'ye taşıyın.
+
+<Aside>
+
+**Kopyala-yapıştır mimari açıdan yanlış değildir**, aslında bazen yeniden kullanılabilir yeni bir modül olarak soyutlamaktansa çoğaltmak daha doğru olabilir. Bunun nedeni, bazen sayfaların paylaşılan kısımlarının birbirinden uzaklaşmaya (drifting apart) başlamasıdır ve bu gibi durumlarda bağımlılıkların yolunuza çıkmasını istemezsiniz.
+
+Ancak, DRY ("kendini tekrar etme - don't repeat yourself") prensibinde hala bir mantık vardır, bu nedenle iş mantığını (business logic) kopyalayıp yapıştırmadığınızdan emin olun. Aksi takdirde, hataları aynı anda birkaç yerde düzeltmeyi hatırlamanız gerekecektir.
+
+</Aside>
+
+## 4. Adım: Shared katmanını açın (Unpack) \{#unpack-shared-layer\}
+
+Bu adımda Shared katmanında çok fazla şeyiniz olabilir ve genel olarak bundan kaçınmak istersiniz. Bunun nedeni, Shared katmanının kod tabanınızdaki (codebase) diğer herhangi bir katman için bir bağımlılık olabilmesidir, bu nedenle bu kodda değişiklik yapmak otomatik olarak istenmeyen sonuçlara (unintended consequences) daha yatkındır.
+
+Yalnızca bir sayfada kullanılan tüm nesneleri (objects) bulun ve onu o sayfanın dilimine (slice) taşıyın. Ve evet, _bu durum eylemler (actions), indirgeyiciler (reducers) ve seçiciler (selectors) için de geçerlidir_. Tüm eylemleri birlikte gruplandırmanın bir faydası yoktur, ancak ilgili eylemleri kullanımlarına yakın olacak şekilde (colocating) konumlandırmanın faydası vardır.
+
+Sonuç olarak şöyle bir dosya yapısına sahip olmalısınız:
+
+<FileTree>
+- src/
+  - app/
+    - ...
+  - pages/
+    - product/
+      - actions/
+      - reducers/
+      - selectors/
+      - ui/
+        - Component.jsx
+        - Container.jsx
+        - ProductPage.jsx
+      - index.js
+    - catalog/
+  - shared/ yalnızca yeniden kullanılan nesneler (only objects that are reused)
+    - actions/
+    - api/
+    - components/
+    - containers/
+    - constants/
+    - i18n/
+    - modules/
+    - helpers/
+    - utils/
+    - reducers/
+    - selectors/
+    - styles/
+</FileTree>
+
+## 5. Adım: Kodu teknik amacına göre düzenleyin \{#organize-by-technical-purpose\}
+
+FSD'de teknik amaca göre bölümleme _segmentler_ ile yapılır. Yaygın olanlardan birkaçı şunlardır:
+
+- `ui` — UI gösterimiyle ilgili her şey: UI bileşenleri, tarih biçimlendiricileri, stiller vb.
+- `api` — backend etkileşimleri: istek fonksiyonları, veri tipleri, eşleyiciler (mappers) vb.
+- `model` — veri modeli: şemalar, arayüzler (interfaces), depolar (stores) ve iş mantığı.
+- `lib` — bu dilimdeki diğer modüllerin ihtiyaç duyduğu kütüphane (library) kodu.
+- `config` — yapılandırma dosyaları ve özellik bayrakları (feature flags).
+
+İhtiyaç duyarsanız kendi segmentlerinizi de oluşturabilirsiniz. Kodu ne olduğuna göre gruplandıran `components`, `actions`, `types`, `utils` gibi segmentler oluşturmadığınızdan emin olun. Bunun yerine, kodu ne işe yaradığına göre gruplandırın.
+
+Kodu segmentlere ayırmak için sayfalarınızı yeniden düzenleyin. Zaten bir `ui` segmentiniz olmalı, şimdi eylemleriniz, indirgeyicileriniz ve seçicileriniz için `model` veya thunk'lar ve mutasyonlarınız için `api` gibi diğer segmentleri oluşturma zamanı.
+
+Ayrıca şu klasörleri kaldırmak için Shared katmanını da yeniden düzenleyin:
+- `📁 components`, `📁 containers` — bunların çoğu `📁 shared/ui` olmalıdır;
+- `📁 helpers`, `📁 utils` — eğer geride kalmış bazı yardımcılar varsa, bunları tarihler veya tip dönüşümleri (type conversions) gibi işlevlerine göre gruplayın ve bu grupları `📁 shared/lib` içine taşıyın;
+- `📁 constants` — yine işlevine göre gruplandırın ve `📁 shared/config` içine taşıyın.
+
+## İsteğe bağlı adımlar \{#optional-steps\}
+
+### 6. Adım: Birkaç sayfada kullanılan Redux dilimlerinden varlıklar/özellikler (entities/features) oluşturun \{#form-entities-features-from-redux\}
+
+Genellikle, bu yeniden kullanılan Redux dilimleri işletmeyle ilgili bir şeyi tanımlayacaktır, örneğin ürünler (products) veya kullanıcılar (users), bu nedenle bunlar her klasörde bir varlık (entity) olacak şekilde Entities katmanına taşınabilir. Redux dilimi, uygulamanızda kullanıcılarınızın yapmak istediği yorumlar gibi bir eylemle ilgiliyse, bunu Features katmanına taşıyabilirsiniz.
+
+Varlıkların (Entities) ve özelliklerin (features) birbirinden bağımsız olması amaçlanmıştır. İş alanınız (business domain) varlıklar arasında doğal bağlantılar içeriyorsa, bu bağlantıları nasıl organize edeceğiniz konusunda tavsiye için [iş varlıkları kılavuzuna][business-entities-cross-relations] başvurun.
+
+Bu dilimlerle ilgili API fonksiyonları `📁 shared/api` içinde kalabilir.
+
+### 7. Adım: Modüllerinizi yeniden düzenleyin (Refactor) \{#refactor-your-modules\}
+
+`📁 modules` klasörü genellikle iş mantığı (business logic) için kullanılır, bu nedenle doğası gereği FSD'deki Features katmanına oldukça benzerdir. Bazı modüller ayrıca uygulama başlığı (app header) gibi UI'ın büyük kısımlarını da tanımlayabilir. Bu durumda, onları Widgets katmanına taşımalısınız.
+
+### 8. Adım: `shared/ui` içinde temiz bir UI temeli oluşturun \{#form-clean-ui-foundation\}
+
+`📁 shared/ui`, ideal olarak içlerinde hiçbir iş mantığı kodlanmamış bir dizi UI öğesi içermelidir. Ayrıca son derece yeniden kullanılabilir olmalıdırlar.
+
+Eskiden `📁 components` ve `📁 containers` içinde bulunan UI bileşenlerini, iş mantığını ayırmak için yeniden düzenleyin (refactor). Bu iş mantığını daha üst katmanlara taşıyın. Eğer çok fazla yerde kullanılmıyorsa, kopyalayıp yapıştırmayı bile düşünebilirsiniz.
+
+## Ayrıca bakınız \{#see-also\}
+
+- [(Rusça Konuşma) Ilya Klimov — Крысиные бега бесконечного рефакторинга: как не дать техническому долгу убить мотивацию и продукт](https://youtu.be/aOiJ3k2UvO4)
+
+[ext-steiger]: https://github.com/feature-sliced/steiger
+[business-entities-cross-relations]: /tr/docs/guides/examples/types#business-entities-and-their-cross-references
