@@ -1,0 +1,34 @@
+---
+import Default from "@astrojs/starlight/components/Head.astro";
+
+import { PREVIEW_IMAGE_SIZE, getPreviewImage } from "@/shared/api";
+import { getBreadcrumbs } from "@/shared/lib";
+
+const { entry, siteTitle } = Astro.locals.starlightRoute;
+
+/*
+ * The preview follows `entry.id`, the document being rendered, rather than the
+ * route id it is served at. The two differ on an untranslated page, which shows
+ * the document of the default locale.
+ */
+const preview = await getPreviewImage(entry.id);
+const breadcrumbs = getBreadcrumbs(entry.id);
+
+const imageUrl = Astro.site
+    ? new URL(preview.path, Astro.site).href
+    : preview.path;
+
+const imageAlt = preview.title
+    ? [breadcrumbs, preview.title].filter(Boolean).join(" › ")
+    : siteTitle;
+---
+
+<Default />
+
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content={String(PREVIEW_IMAGE_SIZE.width)} />
+<meta property="og:image:height" content={String(PREVIEW_IMAGE_SIZE.height)} />
+<meta property="og:image:alt" content={imageAlt} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:image:alt" content={imageAlt} />

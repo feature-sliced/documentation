@@ -39,69 +39,10 @@ export default defineConfig({
             defaultLocale: "root",
             customCss: ["./src/styles/custom.css"],
             components: {
+                /* Adds the per-page social preview image, see `src/pages/og/[...path].ts`. */
+                Head: "./src/shared/ui/Head.astro",
                 ThemeProvider: "./src/shared/ui/ThemeProvider.astro",
             },
-            head: [
-                {
-                    tag: "meta",
-                    attrs: { property: "og:type", content: "website" },
-                },
-                {
-                    tag: "meta",
-                    attrs: {
-                        property: "og:title",
-                        content: "Feature-Sliced Design",
-                    },
-                },
-                {
-                    tag: "meta",
-                    attrs: {
-                        property: "og:description",
-                        content:
-                            "Architectural methodology for frontend projects",
-                    },
-                },
-                {
-                    tag: "meta",
-                    attrs: {
-                        property: "og:image",
-                        content: "https://fsd.how/img/preview.png",
-                    },
-                },
-                {
-                    tag: "meta",
-                    attrs: { property: "og:url", content: "https://fsd.how" },
-                },
-                {
-                    tag: "meta",
-                    attrs: {
-                        name: "twitter:card",
-                        content: "summary_large_image",
-                    },
-                },
-                {
-                    tag: "meta",
-                    attrs: {
-                        name: "twitter:title",
-                        content: "Feature-Sliced Design",
-                    },
-                },
-                {
-                    tag: "meta",
-                    attrs: {
-                        name: "twitter:description",
-                        content:
-                            "Architectural methodology for frontend projects",
-                    },
-                },
-                {
-                    tag: "meta",
-                    attrs: {
-                        name: "twitter:image",
-                        content: "https://fsd.how/img/preview.png",
-                    },
-                },
-            ],
             logo: {
                 src: "./static/img/brand/logo-primary.png",
                 replacesTitle: true,
