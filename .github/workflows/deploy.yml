@@ -3,7 +3,7 @@ name: Deploy Documentation
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -29,14 +29,15 @@ jobs:
         run: pnpm install
         working-directory: .
 
-      - name: Retrieve Docusaurus build cache
+      # Social preview images are rendered at build time and cached by content hash.
+      - name: Retrieve social preview cache
         uses: actions/cache@v4
         with:
-          path: node_modules/.cache/rspack
-          key: docusaurus-${{ github.ref_name }}
+          path: node_modules/.astro-og-canvas
+          key: og-images-${{ github.ref_name }}-${{ github.sha }}
           restore-keys: |
-            docusaurus-${{ github.ref_name }}
-            docusaurus-master
+            og-images-${{ github.ref_name }}-
+            og-images-master-
 
       - name: Build static
         run: pnpm build

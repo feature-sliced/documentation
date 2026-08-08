@@ -1,0 +1,111 @@
+---
+title: Varlıkları (Assets) Yönetme
+sidebar:
+  order: 5
+---
+
+import { FileTree, Aside } from '@astrojs/starlight/components';
+
+Varlıklar (assets), uygulamanızın kullandığı statik kaynaklardır. FSD'de varlıklar, kod ile aynı yerleştirme prensiplerini izler. Onları tiplerine göre değil, kullanım durumlarına göre gruplayın ve kullanan bileşenlere yakın tutun.
+
+<Aside type="caution">
+
+Tüm statik dosyalar için özel bir `assets` segmenti uygulamak yaygın bir pratik olsa da, bu model yüksek uyum (high cohesion) ve değişikliklerin yerelliği (locality of changes) şeklindeki FSD prensiplerini ihlal ettiği için genellikle önerilmez.
+
+Daha detaylı bir açıklamayla ilgileniyorsanız, [Bölümlendirmeyi Kaldırma (Desegmentation)](/tr/docs/guides/issues/desegmented/) ve [Dilimler ve segmentler](/tr/docs/reference/slices-segments/) hakkındaki makalelere göz atabilirsiniz.
+
+</Aside>
+
+## Dilim Özel Varlıklar \{#slice-specific-assets}
+
+Bir varlık yalnızca tek bir sayfa, widget veya özellik tarafından kullanılıyorsa, onu o dilimin içinde tutun. Bu, kapsüllemeyi (encapsulation) korur ve varlığın nereye ait olduğunu netleştirir:
+
+<FileTree>
+- pages/
+  - home/
+    - ui/
+      - hero-image.jpg
+      - HomePage.tsx
+    - index.ts
+</FileTree>
+
+Kullanıcı arayüzünüzde (UI) görseller gibi birçok statik varlık varsa, `ui` segmenti içinde bir alt klasör oluşturabilirsiniz:
+
+<FileTree>
+- pages/
+  - home/
+    - ui/
+      - previews/
+        - cake.jpg
+        - pizza.jpg
+        - ...
+      - HomePage.tsx
+    - index.ts
+</FileTree>
+
+### UI Dışı Varlıklar \{#non-ui-assets}
+
+Bazen bir varlık UI'ın bir parçası değildir ancak iş mantığının çok önemli bir parçasıdır. Şu örneği inceleyin:
+
+<FileTree>
+- features/
+  - billing/
+    - model/
+      - invoice-template.pdf
+      - create-invoice.ts
+    - index.ts
+</FileTree>
+
+Burada `invoice-template.pdf`, `create-invoice.ts` içindeki iş mantığı ile sıkı bir şekilde eşleşmiştir (tightly coupled). Bu gibi durumlarda, yüksek uyumu korumak ve değişiklikleri yerelleştirmek için dosyayı `model` segmentine yerleştirmek tercih edilir.
+
+## Paylaşılan Varlıklar \{#shared-assets}
+
+Statik bir varlık birden çok kez kullanılıyorsa, onu uygulamanın diğer her bölümünden erişilebilir olması için `shared/ui` içine taşıyabilirsiniz.
+
+<FileTree>
+- shared/
+  - ui/
+    - placeholders/
+      - cake.jpg
+      - pizza.jpg
+      - ...
+</FileTree>
+
+Aynı yaklaşım, paylaşılan bileşenler tarafından kullanılan statik varlıklar için de uygulanabilir:
+
+<FileTree>
+- shared/
+  - ui/
+    - Dropdown.tsx
+    - chevron.svg
+</FileTree>
+
+## Global Varlıklar \{#global-assets}
+
+Global varlıklar, global stil dosyaları (örneğin bir CSS sıfırlaması/reset) ve yazı tipleri (fonts) gibi şeyleri içerir. `app` katmanı, yalnızca uygulamanın giriş noktası (entrypoint) tarafından kullanıldıkları için bu dosyalar için doğru yerdir.
+
+<FileTree>
+- app/
+  - styles/
+    - reset.css
+    - global.css
+  - main.ts
+</FileTree>
+
+## Public Klasörü \{#public}
+
+Çoğu paketleyici (bundler) ve framework, projenizin kök dizininde bir `public` klasörü sağlar. Buradaki dosyalar hiçbir işleme tabi tutulmadan olduğu gibi sunulur.
+
+[Vite](https://vite.dev/config/shared-options#publicdir) gibi bazı derleme araçları public klasörünün konumunun değiştirilmesine izin verirken, [Astro](https://docs.astro.build/en/basics/project-structure/#public) gibi diğerlerinde bu seçenek yoktur. Derleme aracınız bu değişikliği desteklemiyorsa sorun değil. `public` klasörü FSD yapısının bir parçası değildir ve isimlendirme çakışmalarına (naming collisions) neden olmaz.
+
+## Özet \{#summary}
+
+| Varlık Tipi | Konum |
+|------------|----------|
+| Dilime özgü varlıklar | Dilimin içinde (örn. `pages/home/ui/`) |
+| Yeniden kullanılabilir ikonlar ve görseller | `shared/ui/` |
+| Global stiller | `app/styles/` |
+| Yazı tipleri (Fonts) | `app/fonts/`, `public/` veya `app/public` |
+| Statik dosyalar, favicon | `public/` veya `app/public` |
+
+FSD prensibini izleyin: varlıkları kullanıldıkları yere yerleştirin ve yalnızca dilimler arasında yeniden kullanılmaları gerektiğinde onları `shared` katmanına taşıyın.

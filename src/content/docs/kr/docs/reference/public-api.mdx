@@ -90,6 +90,16 @@ Cross-import는 **반드시 최소화**해야 하며, 허용한다면 **Entity L
 
 </Aside>
 
+## Environment-specific Public APIs
+
+Slice의 Public API는 일반적으로 `index.ts`로 표현하며, 이를 자유롭게 커스터마이즈하는 것은 권장하지 않습니다.
+
+다만 같은 Slice 안의 모듈이라도 서로 다른 환경에서 동작해야 하는 경우가 있습니다. 이런 모듈을 하나의 `index.ts`에서 함께 export하면 환경 간 경계가 깨지거나, 번들러가 함께 묶여서는 안 되는 코드까지 잘못 포함할 수 있습니다.
+
+실제로 이러한 문제가 발생한다면, 실행 환경에 맞는 파일을 추가하여 Public API를 분리합니다.
+
+예시는 [Usage with Next.js의 Server and client public APIs](/kr/docs/guides/tech/with-nextjs#server-and-client-public-apis)를 참고하세요.
+
 ## Index File 사용 시 주의사항
 
 ### Circular Import (순환 참조)

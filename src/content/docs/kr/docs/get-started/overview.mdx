@@ -7,21 +7,19 @@ sidebar:
 import { Aside, FileTree } from '@astrojs/starlight/components';
 
 Feature-Sliced Design (FSD) 는 프론트엔드 애플리케이션의 코드를 구조화하기 위한 아키텍처 방법론입니다.
-이 방법론의 목적은 **요구사항이 바뀌어도 코드 구조가 무너지지 않고, 새 기능을 쉽게 추가할 수 있는 프로젝트를 만드는 것**입니다.
-FSD는 코드를 **얼마나 많은 책임을 가지는지**와 **다른 모듈에 얼마나 의존하는지**에 따라 계층화합니다.
+이 방법론의 목적은 요구사항이 바뀌어도 코드 구조가 무너지지 않고, 새 기능을 쉽게 추가할 수 있는 프로젝트를 만드는 것입니다.
+FSD는 코드를 얼마나 많은 책임을 가지는지와 다른 모듈에 얼마나 의존하는지에 따라 계층화합니다.
 
 FSD는 단순한 폴더 규칙이 아닙니다.
 실제 개발 환경에서 구조를 설계하고 유지하기 위한 도구도 함께 제공합니다.
 
-- [Steiger][ext-steiger] — 프로젝트 구조가 FSD 기준에 맞는지 검사합니다.
-- [Awesome][ext-tools] — FSD 예제와 도구를 모아둔 참고 리스트입니다.
+- [Steiger][ext-steiger]: 프로젝트 구조가 FSD 기준에 맞는지 검사합니다.
+- [Awesome][ext-tools]: FSD 예제와 도구를 모아둔 참고 리스트입니다.
 
 ## 내 프로젝트에 적합할까요? \{#is-it-right-for-me}
 
-FSD는 웹, 모바일, 데스크톱 등 **프론트엔드 애플리케이션을 만드는 프로젝트에 잘 어울립니다.**
-단순한 라이브러리보다는 **애플리케이션**에 더 적합합니다.
-
-그리고 특정 언어나 프레임워크에 제한이 없고, Monorepo 환경에서도 단계적으로 적용할 수 있습니다.
+FSD는 웹, 모바일, 데스크톱 등 프론트엔드 애플리케이션을 만드는 프로젝트에 잘 어울립니다.
+단순한 라이브러리보다는 애플리케이션에 더 적합합니다. 그리고 특정 언어나 프레임워크에 제한이 없고, Monorepo 환경에서도 단계적으로 적용할 수 있습니다.
 
 > 지금 구조에 특별한 문제가 없다면 굳이 바꿀 필요는 없습니다.
 > 하지만 다음과 같은 상황이라면 FSD가 도움이 될 수 있습니다:
@@ -62,10 +60,7 @@ Layer는 표준화된 이름을 가지며, 각각 명확한 역할을 담당합�
   - api/
 </FileTree>
 
-📂 pages 내부의 *home*, *article-reader*, *settings*는 **Slice**입니다.
-Slice는 비즈니스 도메인(이 예시에서는 각 페이지) 단위로 코드를 구분합니다.
-
-각 Slice 안에는 ui, api, model 등의 **Segment**가 있습니다.
+`📂 pages` 내부의 *home*, *article-reader*, *settings*는 **Slice**입니다. Slice는 비즈니스 도메인(이 예시에서는 각 페이지) 단위로 코드를 구분합니다. 각 Slice 안에는 ui, api, model 등의 **Segment**가 있습니다.
 Segment는 코드의 역할이나 기능에 따라 분류됩니다.
 
 - **ui** - UI Components
@@ -91,6 +86,7 @@ FSD는 다음과 같은 3단계 계층 구조를 따릅니다:
       왼쪽의 Layer 블록에는 <code>app</code>, <code><s>processes</s></code>, <code>pages</code>, <code>widgets</code>,
       <code>features</code>, <code>entities</code>, <code>shared</code>가 포함됩니다.
     </p>
+
     <p>
       예를 들어, <code>entities</code> Layer 안에는 여러 개의 Slice가 존재하며,
       예시로는 <code>user</code>, <code>post</code>, <code>comment</code> 등이 있습니다.
@@ -109,12 +105,26 @@ Layer는 모든 FSD 프로젝트의 표준 최상위 폴더입니다.
 1. **App** - Routing, Entrypoint, Global Styles, Provider 등 앱을 실행하는 모든 요소
 2. **Processes** - 더 이상 사용되지 않음
 3. **Pages** - Route 기준으로 구성된 주요 화면 단위
-4. **Widgets** - 크고 독립적으로 동작하는 UI 구성 단위, 일반적으로 하나의 완결된 화면 기능(use case)을 제공합니다.
+4. **Widgets** - 여러 UI 요소를 조합해 구성한 독립적인 화면 영역
 5. **Features** - 사용자에게 비즈니스 가치를 제공하는 액션을 구현한 재사용 가능한 제품 기능 단위
 6. **Entities** - 프로젝트가 다루는 비즈니스 Entity
 7. **Shared** - 모든 Layer에서 재사용되는 코드(라이브러리, 유틸리티 등)
 
+<Aside type="caution" title="Widgets Layer 사용">
+
+이 가이드에서는 Widgets Layer의 사용을 권장하지 않습니다. 실제 애플리케이션에서는 Widgets가 구성하는 화면 영역에 사용자 액션과 관련된 로직이 함께 포함되면서 Features와 책임이 겹치고, 두 Layer의 경계가 모호해질 수 있기 때문입니다.
+
+자세한 내용은 [Widgets Layer 가이드](/kr/docs/reference/layers#widget)를 참고하세요.
+
+</Aside>
+
+
+<Aside type="note">
+
 **App/Shared** Layer는 Slice 없이 Segment로 구성됩니다.
+
+</Aside>
+
 상위 Layer는 자신보다 하위 Layer를 참조 할 수 있지만, 하위 Layer가 상위 Layer를 참조하는 것은 허용되지 않습니다.
 예를 들어 pages는 features나 entities의 모듈을 참조할 수 있지만, features가 pages를 참조하는 것은 금지됩니다.
 
@@ -140,7 +150,7 @@ Slice와 App/Shared Layer는 Segment로 세분화되어, 코드의 역할(예: U
 
 ## 장점 \{#advantages}
 
-FSD 구조를 사용하면 다음과 같은 장점을 얻을 수 있습니다:
+FSD 구조를 사용하면 다음과 같은 장점을 얻을 수 있습니다.
 
 **일관성**
   구조가 표준화되어 팀 간 협업과 신규 멤버 온보딩이 쉬워집니다.
@@ -159,8 +169,8 @@ FSD 구조를 사용하면 다음과 같은 장점을 얻을 수 있습니다:
 기존 프로젝트에 FSD를 도입하는 방법:
 
 1. `app`, `shared` Layer를 먼저 정리하며 기반을 다집니다.
-2. 기존 UI를 `widgets`, `pages` Layer로 분배합니다. 이 과정에서 FSD 규칙을 위반해도 괜찮습니다.
-3. Import 위반을 하나씩 해결하면서, 코드에서 로직을 분리해 `entities`와 `features`로 옮깁니다.
+2. Route를 기준으로 기존 화면을 pages Layer에 배치합니다. 화면에 종속된 UI와 로직은 우선 pages에 유지해도 됩니다.
+3. Import 위반을 하나씩 해결하면서 사용자 액션은 `features`로 분리하고 비즈니스 Entity와 관련된 로직은 `entities`로 분리합니다.
 
 > 도입 단계에서는 새로운 대규모 Entity나 복잡한 기능을 추가하지 않는 것이 좋습니다.
 > 구조를 안정적으로 정리하는 데 집중하는 것이 우선입니다.

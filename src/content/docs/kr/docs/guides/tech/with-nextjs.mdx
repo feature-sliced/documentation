@@ -52,6 +52,16 @@ App Router에서 `app` 폴더는 라우트 구조로 사용됩니다. 반면 FSD
 export { ExamplePage as default, metadata } from '@/pages/example';
 ```
 
+### Server and client public APIs \{#server-and-client-public-apis\}
+
+Next.js App Router에서는 하나의 Slice 안에 클라이언트에서 사용할 수 있는 모듈과 서버 전용 모듈이 함께 존재할 수 있습니다.
+
+서버 전용 모듈을 `index.ts`에서 export하면, Client Component가 해당 Slice를 import할 때 서버 전용 코드가 클라이언트 모듈 그래프에 포함되어 빌드 오류가 발생할 수 있습니다.
+
+이 문제가 발생하면 Public API에 `index.server.ts`를 추가합니다.
+
+* `index.server.ts`: Server Component나 `server-only`로 표시된 데이터 접근 함수처럼 서버에서만 import해야 하는 모듈
+
 ### Middleware \{#middleware\}
 
 middleware를 사용한다면 Next.js의 `app`, `pages` 폴더와 함께 프로젝트 루트에 둡니다.
