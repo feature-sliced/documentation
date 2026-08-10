@@ -3,7 +3,7 @@ name: Deploy Documentation
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -37,7 +37,7 @@ jobs:
           key: og-images-${{ github.ref_name }}-${{ github.sha }}
           restore-keys: |
             og-images-${{ github.ref_name }}-
-            og-images-master-
+            og-images-main-
 
       - name: Build static
         run: pnpm build
