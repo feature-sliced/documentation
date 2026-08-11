@@ -1,0 +1,45 @@
+---
+title: v2.0'dan v2.1'e Geçiş
+sidebar:
+  order: 3
+---
+
+v2.1'deki ana değişiklik, bir arayüzü bileşenlerine ayırma (decomposing) için yeni zihinsel modeldir — önce sayfalar (pages first).
+
+v2.0'da FSD, ayrıştırma için en küçük varlık temsili ve etkileşim parçalarını bile göz önünde bulundurarak arayüzünüzdeki varlıkları (entities) ve özellikleri (features) belirlemenizi önerirdi. Ardından varlıklar ve özelliklerden widget'lar ve sayfalar inşa ederdiniz. Bu ayrıştırma modelinde, mantığın çoğu varlıklar ve özelliklerdeydi ve sayfalar kendi başlarına pek bir önemi olmayan yalnızca bileşimsel (compositional) katmanlardı.
+
+v2.1'de, sayfalarla başlamanızı ve hatta muhtemelen orada durmanızı öneriyoruz. Çoğu kişi uygulamayı tekil sayfalara nasıl ayıracağını zaten bilir ve sayfalar aynı zamanda kod tabanında (codebase) bir bileşeni aramaya çalışırken yaygın bir başlangıç noktasıdır. Bu yeni ayrıştırma modelinde, UI ve mantığın çoğunu her bir bağımsız sayfada tutar ve Shared katmanında yeniden kullanılabilir bir temel sağlarsınız. İş mantığını birkaç sayfa arasında yeniden kullanma ihtiyacı doğarsa, bunu bir alt katmana taşıyabilirsiniz.
+
+Feature-Sliced Design'a yapılan bir diğer ekleme, varlıklar (entities) arasındaki çapraz içe aktarmaların (cross-imports) `@x`-notasyonu ile standartlaştırılmasıdır.
+
+## Nasıl geçilir \{#how-to-migrate\}
+
+v2.1'de kırıcı bir değişiklik (breaking change) yoktur; bu da FSD v2.0 ile yazılmış bir projenin FSD v2.1'de de geçerli bir proje olduğu anlamına gelir. Bununla birlikte, yeni zihinsel modelin ekipler ve özellikle yeni geliştiricilerin projeye dahil olması (onboarding) için daha faydalı olduğuna inanıyoruz, bu nedenle ayrıştırma yapınızda küçük ayarlamalar yapmanızı öneririz.
+
+### Dilimleri birleştirin
+
+Başlamanın basit bir yolu, projenizde linter'ımız olan [Steiger][steiger]'ı çalıştırmaktır. Steiger yeni zihinsel modelle inşa edilmiştir ve en yararlı kurallar şunlar olacaktır:
+
+- [`insignificant-slice`][insignificant-slice] — bir varlık (entity) veya özellik (feature) yalnızca tek bir sayfada kullanılıyorsa, bu kural o varlığı veya özelliği tamamen sayfanın içine birleştirmeyi önerir.
+- [`excessive-slicing`][excessive-slicing] — bir katmanda çok fazla dilim (slice) varsa, bu genellikle ayrıştırmanın aşırı ince taneli (fine-grained) olduğunun bir işaretidir. Bu kural, proje gezintisine yardımcı olmak için bazı dilimleri birleştirmeyi veya gruplandırmayı önerir.
+
+```bash
+npx steiger src
+```
+
+Bu, yalnızca bir kez kullanılan dilimleri tespit etmenize yardımcı olur, böylece bunların gerçekten gerekli olup olmadığını yeniden değerlendirebilirsiniz. Bu tür değerlendirmelerde, bir katmanın içindeki tüm dilimler için bir tür küresel ad alanı (global namespace) oluşturduğunu unutmayın. Küresel ad alanını yalnızca bir kez kullanılan değişkenlerle doldurmayacağınız gibi, bir katmanın ad alanındaki bir yeri de tutumlu kullanılacak değerli bir alan olarak görmelisiniz.
+
+### Çapraz içe aktarmaları standartlaştırın
+
+Projenizde önceden varlıklar arasında çapraz içe aktarmalar (cross-imports) varsa (yargılamıyoruz!), artık Feature-Sliced Design'da çapraz içe aktarma için yeni bir notasyon olan `@x`-notasyonundan yararlanabilirsiniz. Şöyle görünür:
+
+```ts title="entities/B/some/file.ts"
+import type { EntityA } from "entities/A/@x/B";
+```
+
+Daha fazla ayrıntı için referanstaki [Çapraz içe aktarmalar için Public API][public-api-for-cross-imports] bölümüne göz atın.
+
+[insignificant-slice]: https://github.com/feature-sliced/steiger/tree/master/packages/steiger-plugin-fsd/src/insignificant-slice
+[steiger]: https://github.com/feature-sliced/steiger
+[excessive-slicing]: https://github.com/feature-sliced/steiger/tree/master/packages/steiger-plugin-fsd/src/excessive-slicing
+[public-api-for-cross-imports]: /tr/docs/reference/public-api#public-api-for-cross-imports
