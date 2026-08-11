@@ -3,15 +3,12 @@ name: Deploy Documentation
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    env:
-      ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
-      ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +34,7 @@ jobs:
           key: og-images-${{ github.ref_name }}-${{ github.sha }}
           restore-keys: |
             og-images-${{ github.ref_name }}-
-            og-images-master-
+            og-images-main-
 
       - name: Build static
         run: pnpm build

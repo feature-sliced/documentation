@@ -1,0 +1,175 @@
+---
+title: v1'den v2'ye Geçiş
+sidebar:
+  order: 2
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+## Neden v2?
+
+**feature-slices** kavramının ilk duyurusu 2018 yılında [yapılmıştır][ext-tg-spb].
+
+O zamandan bu yana metodolojide birçok değişim gerçekleşti, ancak aynı zamanda **[temel ilkeler korundu][ext-v1]**:
+
+- Standartlaştırılmış bir frontend proje yapısı kullanmak
+- Uygulamayı öncelikle *iş mantığına (business logic)* göre bölmek
+- Örtük yan etkileri ve döngüsel bağımlılıkları önlemek için *izole özellikler (isolated features)* kullanmak
+- Modülün "iç aksamına" erişimi yasaklayarak *Public API* kullanmak
+
+Aynı zamanda, metodolojinin önceki sürümünde hâlâ bazı **zayıf noktalar** bulunmaktaydı:
+
+- Bazen boilerplate (kopyala-yapıştır) koda yol açması
+- Bazen kod tabanının aşırı karmaşıklaşmasına ve soyutlamalar arasında belirgin olmayan kurallara yol açması
+- Bazen projenin geliştirilmesini ve yeni kişilerin projeye dahil olmasını (onboarding) engelleyen örtük mimari kararlara yol açması
+
+Metodolojinin yeni sürümü ([v2][ext-v2]), bu yaklaşımın **mevcut avantajlarını korurken bu eksiklikleri gidermek** için tasarlanmıştır.
+
+2018'den bu yana, ilk kez [Oleg Isonen][ext-kof] tarafından duyurulan benzer bir metodoloji olan [**feature-driven**][ext-fdd] da [gelişme gösterdi][ext-fdd-issues].
+
+Bu iki yaklaşım birleştirildikten sonra, uygulamada daha fazla esneklik, netlik ve verimlilik yönünde **mevcut uygulamalarımızı geliştirdik ve iyileştirdik**.
+
+> Sonuç olarak bu durum metodolojinin adına bile yansıdı - *"feature-slice**d**"*
+
+## Projeyi v2'ye taşımak neden mantıklıdır?
+
+<Aside type="caution">
+Metodolojinin mevcut sürümü geliştirme aşamasındadır ve bazı ayrıntılar *değişebilir*
+</Aside>
+
+#### 🔍 Daha şeffaf ve basit mimari
+
+Metodoloji (v2), **geliştiriciler arasında mantığı bölmek için daha sezgisel ve daha yaygın soyutlamalar ve yollar** sunar.
+
+Tüm bunlar, projeye yeni kişilerin katılması, projenin mevcut durumunun incelenmesi ve uygulamanın iş mantığının dağıtılması üzerinde son derece olumlu bir etkiye sahiptir.
+
+#### 📦 Daha esnek ve dürüst modülerlik
+
+Metodoloji (v2), **mantığı daha esnek bir şekilde dağıtmaya** olanak tanır:
+
+- İzole edilmiş parçaları sıfırdan yeniden düzenleme (refactor) imkanı ile
+- Aynı soyutlamalara dayanabilme, ancak gereksiz bağımlılık karmaşası olmadan
+- Yeni modülün konumu için daha basit gereksinimler ile *(katman => dilim => segment)*
+
+#### 🚀 Daha fazla spesifikasyon, plan ve topluluk
+
+Şu anda `core-team`, metodolojinin en son (v2) sürümü üzerinde aktif olarak çalışmaktadır.
+
+Bu nedenle bu sürüm için:
+
+- daha fazla açıklanan senaryo / sorun olacak
+- kullanım üzerine daha fazla rehber olacak
+- daha fazla gerçek örnek olacak
+- genel olarak, yeni kişilerin uyum süreci (onboarding) ve metodoloji kavramlarını incelemesi için daha fazla dokümantasyon olacak
+- araç seti, gelecekte mimari kavram ve kurallarına uyacak şekilde geliştirilecek
+
+> Elbette ilk sürüm için de kullanıcı desteği devam edecektir - ancak en son sürüm bizim için hâlâ önceliklidir.
+>
+> Gelecekte, bir sonraki ana güncellemelerle birlikte, ekibiniz ve projeleriniz için **risk oluşturmadan** metodolojinin mevcut sürümüne (v2) erişmeye devam edeceksiniz.
+
+## Değişiklik Günlüğü (Changelog)
+
+### `BREAKING` Katmanlar (Layers)
+
+Artık metodoloji, katmanların en üst düzeyde açıkça ayrılmasını öngörmektedir:
+
+- `/app` > `/processes` > **`/pages`** > **`/features`** > `/entities` > `/shared`
+- *Yani artık her şey features/pages olarak değerlendirilmiyor*
+- Bu yaklaşım, [katmanlar için kuralları açıkça belirlemenizi][ext-tg-v2-draft] sağlar:
+- Modülün yer aldığı katman **ne kadar yüksekse**, sahip olduğu **bağlam (context)** o kadar fazladır
+  
+  *(başka bir deyişle, katmandaki her bir modül - yalnızca alt katmanların modüllerini içe aktarabilir, üst katmanları aktaramaz)*
+
+- Modülün yer aldığı katman **ne kadar düşükse**, üzerinde değişiklik yapmak o kadar **tehlikeli ve sorumluluk gerektiricidir**
+
+  *(çünkü genellikle alt katmanlar daha fazla yeniden kullanılır)*
+
+### `BREAKING` Shared
+
+Daha önce projenin src kökünde yer alan `/ui`, `/lib`, `/api` altyapı soyutlamaları artık ayrı bir `/src/shared` dizini ile ayrılmıştır:
+
+- `shared/ui` - Uygulamanın hâlâ aynı genel uikit bileşenleri (isteğe bağlı)
+  - *Aynı zamanda, kimse burada eskisi gibi `Atomic Design` kullanmanızı engellemez*
+- `shared/lib` - Mantığı uygulamak için bir dizi yardımcı kütüphane
+  - *Hâlâ - yardımcı kod çöplüğüne dönüştürülmeden*
+- `shared/api` - API'ye erişim için ortak bir giriş noktası
+  - *Her feature / page içinde yerel olarak da tanımlanabilir - ancak önerilmez*
+- Eskisi gibi - `shared` içinde iş mantığına açık bir bağımlılık olmamalıdır
+  - *Gerekirse bu ilişkiyi `entities` seviyesine veya daha yukarıya taşımanız gerekir*
+
+### `NEW` Entities, Processes
+
+v2'de, mantık karmaşıklığı ve yüksek bağımlılık sorunlarını ortadan kaldırmak için **diğer yeni soyutlamalar** eklenmiştir:
+
+- `/entities` - doğrudan iş modelleriyle ilgili dilimleri veya yalnızca frontend'de gerekli olan sentetik varlıkları içeren **iş varlıkları (business entities)** katmanı
+  - *Örnekler: `user`, `i18n`, `order`, `blog`*
+- `/processes` - uygulamaya nüfuz eden **iş süreçleri (business processes)** katmanı
+  - **Bu katman isteğe bağlıdır**, genellikle *mantık büyüdükçe ve birkaç sayfada bulanıklaşmaya başladığında* kullanılması önerilir
+  - *Örnekler: `payment`, `auth`, `quick-tour`*
+
+### `BREAKING` Soyutlamalar ve İsimlendirme
+
+Artık belirli soyutlamalar ve [bunları adlandırmak için net öneriler][refs-adaptability] tanımlanmıştır:
+
+[disc-process]: https://github.com/feature-sliced/documentation/discussions/20
+[disc-features]: https://github.com/feature-sliced/documentation/discussions/23
+[disc-entities]: https://github.com/feature-sliced/documentation/discussions/18#discussioncomment-422649
+[disc-shared]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-453020
+
+[disc-ui]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-453132
+[disc-model]: https://github.com/feature-sliced/documentation/discussions/31#discussioncomment-472645
+[disc-api]: https://github.com/feature-sliced/documentation/discussions/66
+
+#### Katmanlar (Layers)
+
+- `/app` — **uygulama başlatma katmanı**
+  - *Önceki sürümler: `app`, `core`, `init`, `src/index` (bunlar da olabiliyordu)*
+- `/processes` — [**iş süreçleri katmanı**][disc-process]
+  - *Önceki sürümler: `processes`, `flows`, `workflows`*
+- `/pages` — **uygulama sayfaları katmanı**
+  - *Önceki sürümler: `pages`, `screens`, `views`, `layouts`, `components`, `containers`*
+- `/features` — [**işlevsellik parçaları katmanı**][disc-features]
+  - *Önceki sürümler: `features`, `components`, `containers`*
+- `/entities` — [**iş varlıkları katmanı**][disc-entities]
+  - *Önceki sürümler: `entities`, `models`, `shared`*
+- `/shared` — [**yeniden kullanılan altyapı kodu katmanı**][disc-shared] 🔥
+  - *Önceki sürümler: `shared`, `common`, `lib`*
+
+#### Segmentler (Segments)
+
+- `/ui` — [**UI segmenti**][disc-ui] 🔥
+  - *Önceki sürümler: `ui`, `components`, `view`*
+- `/model` — [**İş mantığı (BL) segmenti**][disc-model] 🔥
+  - *Önceki sürümler: `model`, `store`, `state`, `services`, `controller`*
+- `/lib` — **yardımcı kod** segmenti
+  - *Önceki sürümler: `lib`, `libs`, `utils`, `helpers`*
+- `/api` — [**API segmenti**][disc-api]
+  - *Önceki sürümler: `api`, `service`, `requests`, `queries`*
+- `/config` — **uygulama konfigürasyonu segmenti**
+  - *Önceki sürümler: `config`, `env`, `get-env`*
+
+### `REFINED` Düşük bağımlılık (Low coupling)
+
+Yeni katmanlar sayesinde artık modüller arasında [düşük bağımlılık ilkesine uymak][refs-low-coupling] çok daha kolaydır.
+
+*Aynı zamanda, modülleri "bağımsızlaştırmanın" aşırı zor olduğu durumlardan mümkün olduğunca kaçınılması hâlâ tavsiye edilir.*
+
+## Ayrıca bakınız
+
+- ["React SPB Meetup #1" sunumundan notlar][ext-tg-spb]
+- [React Berlin Konuşması - Oleg Isonen "Feature Driven Architecture"][ext-kof-fdd]
+- [v1 ile karşılaştırma (community-chat)](https://t.me/feature_sliced/493)
+- [Açıklamalarla yeni fikirler v2 (atomicdesign-chat)][ext-tg-v2-draft]
+- [Metodolojinin yeni sürümü (v2) için soyutlama ve isimlendirme tartışmaları](https://github.com/feature-sliced/documentation/discussions/31)
+
+[refs-low-coupling]: /tr/docs/reference/slices-segments#zero-coupling-high-cohesion
+[refs-adaptability]: /tr/docs/about/understanding/naming
+
+[ext-v1]: https://feature-sliced.github.io/featureslices.dev/v1.0.html
+[ext-tg-spb]: https://t.me/feature_slices
+[ext-fdd]: https://github.com/feature-sliced/documentation/tree/rc/feature-driven
+[ext-fdd-issues]: https://github.com/kof/feature-driven-architecture/issues
+[ext-v2]: https://github.com/feature-sliced/documentation
+[ext-kof]: https://github.com/kof
+[ext-kof-fdd]: https://www.youtube.com/watch?v=BWAeYuWFHhs
+[ext-tg-v2-draft]: https://t.me/atomicdesign/18708
