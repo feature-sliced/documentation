@@ -1,0 +1,202 @@
+---
+title: Next.js ile Kullanım
+sidebar:
+  order: 1
+---
+
+import { Tabs, TabItem, FileTree, Aside } from '@astrojs/starlight/components';
+
+<Aside type="caution">
+Çakışmaları önlemek için, hangi yönlendiriciyi (router) kullanırsanız kullanın, **hem** `app` hem de `pages` FSD katmanlarını `_app` ve `_pages` olarak yeniden adlandırın.
+</Aside>
+
+## src Klasörü \{#src-folder\}
+
+Next.js, projenin kök dizininde (root) veya `src` klasöründe özel `app` veya `pages` klasörlerinin bulunmasını bekler. Genellikle, Next.js klasörlerini projenin kök dizinine yerleştirmek, `src` klasörünün yalnızca FSD kodunu içermesini sağladığı için daha kolaydır; ancak bu zorunlu değildir.
+
+## App Router \{#app-router\}
+
+Next.js, App Router için `app` klasörünü ve Pages Router için `pages` klasörünü kullanır; bu durum FSD katman adlarıyla çakışır. Bu çakışmayı çözmek için, `app` yerine `_app` ve `pages` yerine `_pages` gibi FSD katmanları için ön ek (prefix) içeren adlar kullanın. Bu yaklaşım resmi [linter](https://github.com/feature-sliced/steiger) ile de uyumludur.
+
+<FileTree>
+- app Next.js app klasörü
+    - api/
+        - get-example/
+            - route.ts
+    - example/
+        - page.tsx
+- src/
+    - _app/ FSD katmanı
+        - api-routes/ API rotaları
+    - _pages/ FSD katmanı
+        - example/
+            - index.ts
+            - ui/
+                - example.tsx
+    - widgets/
+    - features/
+    - entities/
+    - shared/
+</FileTree>
+
+Next.js `app` içinde `src/_pages` katmanından bir sayfanın yeniden dışa aktarılması (re-export) örneği:
+
+```tsx title="app/example/page.tsx"
+export { ExamplePage as default, metadata } from '@/_pages/example';
+```
+
+### Sunucu ve istemci public API'leri \{#server-and-client-public-apis\}
+
+Next.js App Router'da, istemcide kullanılabilecek modüller ve yalnızca sunucuya özel (server-only) modüller tek bir dilim (slice) içinde birlikte bulunabilir. Yalnızca sunucuya özel bir modül `index.ts` dosyasından dışa aktarılırsa, bir İstemci Bileşeni (Client Component) o dilimi içe aktardığında yalnızca sunucuya özel yan etkiler istemci modül grafiğine yayılabilir ve bu da derleme (build) hatalarına yol açabilir.
+
+Bu sorun ortaya çıktığında, public API'ye `index.server.ts` ekleyin.
+
+- `index.server.ts`: Sunucu Bileşenleri (Server Components) veya `server-only` ile işaretlenmiş veri erişim fonksiyonları gibi yalnızca sunucuda içe aktarılması gereken modüller.
+
+### Middleware \{#middleware\}
+
+Projenizde middleware kullanıyorsanız, Next.js `app` ve `pages` klasörlerinin yanı sıra projenin kök dizininde yer almalıdır.
+
+### Instrumentation \{#instrumentation\}
+
+`instrumentation.js` dosyası, uygulamanızın performansını ve davranışını izlemenizi sağlar. Eğer kullanıyorsanız, `middleware.js` dosyasına benzer şekilde projenin kök dizininde bulunmalıdır.
+
+## Pages Router \{#pages-router\}
+
+### pages katmanında FSD ve Next.js arasındaki çakışma \{#conflict-between-fsd-and-nextjs-in-the-pages-layer\}
+
+Rotalar, App Router için `app` klasörüne benzer şekilde projenin kök dizinindeki `pages` klasörüne yerleştirilmelidir. Katman klasörlerinin bulunduğu `src` içindeki yapı değişmeden kalır.
+
+<FileTree>
+- pages/ Pages klasörü (Next.js)
+  - _app.tsx
+  - api/
+    - example.ts API rotası yeniden dışa aktarımı
+  - example/
+    - index.tsx
+- src/
+  - _app/ FSD katmanı
+    - custom-app/
+      - custom-app.tsx Özel App bileşeni
+    - api-routes/
+      - get-example-data.ts API rotası
+  - _pages/ FSD katmanı
+    - example/
+      - index.ts
+      - ui/
+        - example.tsx
+  - widgets/
+  - features/
+  - entities/
+  - shared/
+</FileTree>
+
+Next.js `pages` içinde `src/_pages` katmanından bir sayfanın yeniden dışa aktarılması örneği:
+
+```tsx title="pages/example/index.tsx"
+export { Example as default } from '@/_pages/example';
+```
+
+### Özel `_app` bileşeni \{#custom-_app-component\}
+
+Özel App bileşeninizi `src/_app/_app` veya `src/_app/custom-app` içine yerleştirebilirsiniz:
+
+```tsx title="src/_app/custom-app/custom-app.tsx"
+import type { AppProps } from 'next/app';
+
+export const MyApp = ({ Component, pageProps }: AppProps) => {
+    return (
+        <>
+            <p>My Custom App component</p>
+            <Component { ...pageProps } />
+        </>
+    );
+};
+```
+
+```tsx title="pages/_app.tsx"
+export { App as default } from '@/_app/custom-app';
+```
+
+## Rota İşleyicileri (API rotaları) \{#route-handlers-api-routes\}
+
+Rota İşleyicileri (Route Handlers) ile çalışmak için `_app` katmanındaki `api-routes` segmentini kullanın.
+
+FSD yapısında backend kodu yazarken dikkatli olun — FSD öncelikle frontend için tasarlanmıştır, yani insanların bulmayı bekleyeceği şey budur.
+Çok sayıda endpoint'e ihtiyacınız varsa, bunları bir monorepo içinde farklı bir pakete ayırmayı düşünün.
+
+<Tabs>
+
+<TabItem value="app-router" label="App Router">
+
+```tsx title="src/_app/api-routes/get-example-data.ts"
+import { getExamplesList } from '@/shared/db';
+
+export const getExampleData = () => {
+    try {
+        const examplesList = getExamplesList();
+
+        return Response.json({ examplesList });
+    } catch {
+        return Response.json(null, {
+            status: 500,
+            statusText: 'Ouch, something went wrong',
+        });
+    }
+};
+```
+
+```tsx title="app/api/example/route.ts"
+export { getExampleData as GET } from '@/_app/api-routes';
+```
+
+</TabItem>
+
+<TabItem value="pages-router" label="Pages Router">
+
+```tsx title="src/_app/api-routes/get-example-data.ts"
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '1mb',
+        },
+    },
+    maxDuration: 5,
+};
+
+const handler = (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
+    res.status(200).json({ message: 'Hello from FSD' });
+};
+
+export const getExampleData = { config, handler } as const;
+```
+
+```tsx title="src/_app/api-routes/index.ts"
+export { getExampleData } from './get-example-data';
+```
+
+```tsx title="app/api/example.ts"
+import { getExampleData } from '@/_app/api-routes';
+
+export const config = getExampleData.config;
+export default getExampleData.handler;
+```
+
+</TabItem>
+
+</Tabs>
+
+## Ek öneriler \{#additional-recommendations\}
+
+- Veritabanı sorgularını ve bunların üst katmanlardaki sonraki kullanımlarını tanımlamak için `shared` katmanındaki `db` segmentini kullanın.
+- Sorguları önbelleğe alma (caching) ve yeniden doğrulama (revalidating) mantığını, sorguların kendisiyle aynı yerde tutmak daha iyidir.
+
+## Ayrıca bakınız \{#see-also\}
+
+- [Next.js Proje Yapısı](https://nextjs.org/docs/app/getting-started/project-structure)
+- [Next.js Sayfa Düzenleri](https://nextjs.org/docs/app/getting-started/layouts-and-pages)
+
+[project-knowledge]: /tr/docs/about/understanding/knowledge-types
+[ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md
