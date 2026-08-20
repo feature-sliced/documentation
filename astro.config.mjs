@@ -42,6 +42,7 @@ export default defineConfig({
                 /* Adds the per-page social preview image, see `src/pages/og/[...path].ts`. */
                 Head: "./src/shared/ui/Head.astro",
                 ThemeProvider: "./src/shared/ui/ThemeProvider.astro",
+                SiteTitle: "./src/shared/ui/SiteTitle.astro",
             },
             logo: {
                 src: "./static/img/brand/logo-primary.png",
