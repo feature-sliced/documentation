@@ -1,0 +1,333 @@
+# Authentication
+
+웹 애플리케이션에서의 **인증(Authentication)** 플로우는 보통 다음과 같은 세 단계로 진행됩니다.
+
+1. **Credential 입력 수집**: 아이디, 비밀번호(또는 OAuth redirect URL)를 사용자에게 입력받습니다.  
+2. **백엔드 Endpoint 호출**: `/login`, `/oauth/callback`, `/2fa` 등 로그인 관련 API endpoint로 request를 보냅니다.  
+3. **Token 저장**: 응답으로 받은 token을 **cookie** 또는 **store**에 저장해, 이후 request에 자동으로 포함되도록 합니다.
+
+## Credential 입력 수집
+
+이 단계에서는 사용자가 로그인에 필요한 정보를 입력할 수 있는 UI를 준비합니다.
+
+> OAuth 로그인만 사용한다면, **2단계(credential 전송)** 에서 별도로 아이디/비밀번호를 보내지 않습니다.  
+> 이 경우 바로 [token 저장](#how-to-store-the-token-for-authenticated-requests) 단계로 넘어갑니다.
+
+### 로그인 전용 페이지
+
+웹 애플리케이션에서는 일반적으로 **/login** 같은 로그인 Form 전용 페이지를 만들어, 사용자가 **사용자 이름/이메일, 비밀번호**를 입력하도록 합니다.
+이 페이지는 하는 일이 단순하기 때문에, 추가적인 **decomposition(구조 분할)** 이 크게 필요하지 않습니다.  
+대신, 로그인 폼과 회원가입 폼을 각각 **하나의 컴포넌트**로 만들어 두고 재사용하는 방식이 적합합니다.
+
+- pages/
+  - login/
+    - ui/
+      - LoginPage.tsx (or your framework's component file format)
+      - RegisterPage.tsx
+    - index.ts
+  - other pages...
+LoginPage와 RegisterPage 컴포넌트는 서로 **분리** 된 컴포넌트로 구현하고, 다른 곳에서 사용할 필요가 있다면 index.ts에서 export 합니다.
+각 컴포넌트는 form element와 form submit handler만 포함하도록 해서, 복잡한 비즈니스 로직은 다른 segment로 분리하고 UI는 단순하게 유지합니다.
+
+### 로그인 dialog 만들기
+
+여러 페이지에서 공통으로 사용할 수 있는 로그인 dialog가 필요하다면, 로그인이라는 사용자 액션과 흐름을 담당하는 **Feature**로 구현할 수 있습니다.
+로그인 dialog에는 일반적으로 폼 상태, 입력값 검증, 인증 요청, 오류 처리와 같은 로직이 포함됩니다. 이러한 책임은 사용자 행동과 흐름을 다루는 `features` Layer에 배치하는 것이 적절합니다.
+
+- features/
+  - login/
+    - ui/
+      - LoginDialog.tsx
+    - model/
+    - api/
+    - index.ts
+여러 Page에서 로그인 dialog가 필요한 경우 각 Page나 `app`의 Route 구성에서 해당 Feature를 import하여 사용할 수 있습니다.
+Dialog의 공통 UI와 기본적인 상호작용을 담당하는 컴포넌트는 `shared/ui`에 둘 수 있습니다. 이 컴포넌트는 로그인 요청, 입력값 검증, 인증 상태 관리와 같은 로그인 관련 로직을 포함하지 않습니다.
+로그인에 필요한 UI와 로직은 `features/login`에서 관리하고 필요한 경우 `shared/ui`의 Dialog 컴포넌트를 조합하여 LoginDialog를 구현할 수 있습니다.
+
+- shared/
+  - ui/
+    - modal/
+      - Modal.tsx
+      - index.ts
+- features/
+  - login/
+    - ui/
+      - LoginDialog.tsx
+    - model/
+    - api/
+    - index.ts
+> 이후 설명은 **로그인 전용 Page**를 기준으로 진행하지만 여기서 다루는 로그인 흐름의 구성 원칙은 로그인 dialog에도 동일하게 적용됩니다.
+
+### Client-side Validation
+
+회원가입 페이지에서 잘못된 입력을 즉시 알려주면 UX가 훨씬 좋아집니다.  
+이를 위해 client-side validation을 적용할 수 있습니다.
+
+검증 규칙은 `pages/login/model` segment에 schema 형태로 정의하고,`ui` segment에서는 이 schema를 불러와 재사용합니다.
+아래 예시는 [Zod][ext-zod]를 사용해 타입과 값을 동시에 검증하는 패턴입니다.
+
+```ts title="pages/login/model/registration-schema.ts"
+import { z } from "zod";
+
+export const registrationData = z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+    confirmPassword: z.string(),
+}).refine((data) => data.password === data.confirmPassword, {
+    message: "비밀번호가 일치하지 않습니다",
+    path: ["confirmPassword"],
+});
+```
+
+그런 다음, `ui` segment에서 이 schema를 사용해 form으로부터 받은 데이터를 검증할 수 있습니다:
+
+```tsx title="pages/login/ui/RegisterPage.tsx"
+import { registrationData } from "../model/registration-schema";
+
+function validate(formData: FormData) {
+    const data = Object.fromEntries(formData.entries());
+    try {
+        registrationData.parse(data);
+    } catch (error) {
+        // TODO: Show error message to the user
+    }
+}
+
+export function RegisterPage() {
+    return (
+        <form onSubmit={(e) => validate(new FormData(e.target))}>
+            <label htmlFor="email">이메일</label>
+            <input id="email" name="email" required />
+
+            <label htmlFor="password">비밀번호 (최소 6자)</label>
+            <input id="password" name="password" type="password" required />
+
+            <label htmlFor="confirmPassword">비밀번호 확인</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" required />
+        </form>
+    )
+}
+```
+
+## Send credentials
+
+이 단계에서는 사용자가 입력한 **credentials**(e-mail, password 등)를 백엔드 **endpoint**로 전송하는 **request 함수**를 만듭니다.
+
+이 함수는 다음과 같은 곳에서 호출할 수 있습니다.
+
+- Zustand  
+- Redux Toolkit  
+- TanStack Query의 useMutation  
+- 기타 state 관리/요청 로직  
+
+즉, **어디에서나 재사용 가능한 로그인 요청 함수** 를 만든다고 보면 됩니다.
+
+### 함수 placement
+
+| 목적        | 권장 위치         | 이유                       |
+| ----------- | ----------------- | -------------------------- |
+| 전역 재사용 | shared/api        | 모든 slice에서 import 가능 |
+| 로그인 전용 | pages/login/api   | slice 내부 capsule 유지    |
+
+#### shared/api에 저장하기
+
+로그인뿐 아니라 모든 API request를 shared/api에 모아두고, 각 요청을 endpoint별로 그룹화하는 방식입니다.
+
+- shared/
+  - api/
+    - endpoints/
+      - login.ts
+      - ...
+    - client.ts
+    - index.ts
+`📄 client.ts`는 원시 request 함수(`fetch` 등)를 감싼 공용 API client로, **기본 URL, 공통 헤더, request/response 직렬화** 등을 처리합니다.
+
+```ts title="shared/api/endpoints/login.ts"
+import { POST } from "../client";
+
+export function login({ email, password }: { email: string, password: string }) {
+    return POST("/login", { email, password });
+}
+```
+
+```ts title="shared/api/index.ts"
+export { login } from "./endpoints/login";
+```
+
+#### page의 api segment에 저장하기
+
+로그인 request가 로그인 페이지에서만 사용된다면,  
+해당 페이지의 api segment에 login 함수를 두는 것도 가능합니다.
+
+- pages/
+  - login/
+    - api/
+      - login.ts
+    - ui/
+      - LoginPage.tsx
+    - index.ts
+  - ...
+```ts title="pages/login/api/login.ts"
+import { POST } from "shared/api";
+
+export function login({ email, password }: { email: string, password: string }) {
+    return POST("/login", { email, password });
+}
+```
+
+> 이 함수는 로그인 페이지 내부에서만 사용하므로,  
+> index.ts에서 다시 export할 필요는 없습니다.
+
+### Two-Factor Auth (2FA)
+
+2단계 인증(2FA)을 사용하는 경우에는 로그인 플로우에 한 단계가 더 추가됩니다.
+
+1. `/login` 응답에 `has2FA` 플래그가 있으면, `/login/2fa` 페이지로 redirect 합니다.  
+2. 2FA 페이지와 관련 API들은 모두 `pages/login` slice에 함께 둡니다.  
+3. `/2fa/verify`와 같이 별도의 endpoint를 호출하는 함수는 `shared/api` 또는 `pages/login/api`에 배치합니다.
+
+이렇게 하면, 일반 로그인과 2FA 관련 로직을 **login slice 내부**에 모아둘 수 있습니다.
+
+## Authenticated Requests를 위한 token 저장 \{#how-to-store-the-token-for-authenticated-requests}
+
+로그인, 비밀번호 변경, OAuth, 2단계 인증 등 어떤 방법으로 인증을 하든, 인증 API 호출의 **응답(response)** 으로 보통 token이 함께 내려옵니다.
+이 token을 어딘가에 저장해 두면, 이후 **모든 인증이 필요한 API 요청(request)** 에 token을 자동으로 포함시켜 백엔드 인증을 통과할 수 있습니다.  
+
+웹 애플리케이션에서 token을 저장하는 방법 중 **가장 권장되는 방식은 cookie**입니다.
+
+cookie를 사용하면, 브라우저가 요청마다 token을 자동으로 넣어 주기 때문에 프론트엔드에서 token을 직접 관리할 필요가 거의 없습니다. 따라서 프론트엔드 아키텍처 차원에서 신경 쓸 부분이 크게 줄어듭니다.
+
+사용 중인 프레임워크가 서버 사이드 기능을 제공한다면(예: [Remix][ext-remix]), 서버 측 cookie 관련 로직을 shared/api에 두는 것을 권장합니다. Remix에서의 구현 예시는 [튜토리얼의 Authentication 섹션][tutorial-authentication]을 참고하면 됩니다.
+
+하지만 cookie를 사용할 수 없는 환경도 있습니다. 이 경우에는 token을 클라이언트에서 직접 저장하고, token 만료를 감지하고, refresh token을 사용해 새 token을 발급받고 기존 요청을 다시 실행하는 등의 로직을 함께 구현해야 합니다.
+
+FSD에서는 여기서 한 가지 추가 고민이 필요합니다. token을 **어느 layer 또는 어느 segment에** 저장할지, 그렇게 저장한 token을 앱 전역에서 **어떻게** 사용할 수 있게 할지에 따라 전체 구조가 달라지기 때문입니다.
+
+### Shared
+
+Shared layer에 token을 두는 방식은 shared/api에 정의된 **공용 API 클라이언트**와 자연스럽게 결합되는 패턴입니다.  
+token을 module scope나 어떤 reactive store에 저장해 두면, 인증이 필요한 다른 API 함수에서 이 token을 **그대로 참조**해 사용할 수 있습니다.
+token 자동 재발급(refresh)은 API client의 **middleware**에서 담당합니다.
+
+1. 로그인 시 **access token, refresh token**을 저장합니다.  
+2. 인증이 필요한 request를 보냅니다.  
+3. 응답에서 token 만료 코드를 받으면, refresh token으로 새 token을 발급해 저장한 뒤 실패한 request을 동일하게 다시 시도합니다.
+
+#### Token 관리 분리 전략
+
+- **전담 segment 부재**  
+  token 저장과 재발급 로직이 request 로직과 같은 파일에 뒤섞여 있으면, 코드가 많아질수록 유지보수가 점점 어려워집니다.  
+  이런 경우에는 request 함수와 client는 `shared/api`에 두고, token 관리 로직은 `shared/auth` segment로 분리하는 방식을 권장합니다.
+
+- **token과 사용자 정보를 함께 받는 경우**  
+  백엔드가 token과 동시에 **현재 사용자 정보**를 반환하는 API를 제공하는 경우도 있습니다.  
+  이때는 다음 두 가지 방식 중 하나로 처리할 수 있습니다.
+  1. 별도 store에 함께 저장하거나  
+  2. `/me`·`/users/current` 같은 endpoint를 따로 호출해 user 정보를 가져올 수 있습니다.
+
+### Entities
+
+FSD 프로젝트에서는 보통 **User entity**(또는 **Current User entity**)를 두는 경우가 많습니다.  
+두 entity를 하나로 합쳐서 사용하는 것도 전혀 문제 없습니다.
+
+**Note:** **Current User**는 `viewer` 또는 `me`라고 부르기도 합니다. 이는 권한과 개인 정보가 있는 **현재 로그인한 단일 사용자**와, 공개적으로 표시되는 **여러 사용자 목록**을 구분하기 위해 쓰는 이름입니다.
+
+#### Token을 User Entities에 저장하기
+
+User entity의 model segment에 **reactive store**를 만들고 이곳에 token과 user 객체를 함께 보관할 수 있습니다.
+이렇게 하면 **현재 로그인한 사용자 정보** 와 **그 사용자가 가진 token**을 한 곳에서 관리할 수 있어서, 인증과 관련된 비즈니스 로직을 작성할 때 구조를 이해하기 쉬워집니다.
+다만 API client는 보통 shared/api에 정의되거나 여러 entity에 분산되어 있는 경우가 많습니다. 따라서 layer의 import 규칙([import rule on layers][import-rule-on-layers])을 지키면서도 다른 request에서 이 token을 안전하게 사용할 수 있어야 합니다.
+
+> Layer 규칙 — Slice의 module은 **자기보다 아래 layer**의 Slice만 import할 수 있습니다.
+
+##### 해결 방법
+
+1. **request마다 token을 직접 넘기기**  
+   - 구현은 단순하지만 코드가 반복되기 쉽고, 타입 안전성이 없으면 실수 가능성이 커집니다.  
+   - shared/api에 middleware pattern을 적용하기도 어렵습니다.
+
+2. **앱 전역(Context / localStorage)에 노출**  
+   - token key는 shared/api에 두고, 실제 token 값이 담긴 store는 User entity에서 export 합니다.  
+   - Context Provider는 App layer에 배치합니다.  
+   - 설계 자유도가 높지만, 상위 layer에 **암묵적 의존성**이 생깁니다.  
+   ⇒ Context나 localStorage가 누락된 경우 **명확한 에러**를 내도록 처리하는 것이 좋습니다.
+
+3. **token이 바뀔 때마다 API 클라이언트에 업데이트**  
+   - store **subscription**으로 "token 변경 → 클라이언트 상태 업데이트”를 수행합니다.  
+   - 방법 2와 마찬가지로 암묵적 의존성이 있으나,  
+     - 방법 2는 필요할 때 값을 **가져오는(pull)** 방식이고,  
+     - 방법 3은 변경될 때 값을 **밀어넣는(push)** 방식입니다.
+
+token을 이렇게 외부에서 사용할 수 있도록 노출한 뒤에는 model segment에 **비즈니스 로직**을 더 추가할 수 있습니다.  
+예를 들면, token 만료 시간에 맞춰 자동으로 갱신하거나, 일정 시간이 지나면 token을 자동으로 무효화하도록 만들 수 있습니다.  
+실제 백엔드 호출은 **User entity의 api segment** 또는 shared/api에서 수행합니다.
+
+### `pages` / `features`: 권장하지 않음
+
+Token store를 `pages`나 특정 `features` Slice에 배치하는 것은 권장하지 않습니다.
+
+Token은 특정 Page나 하나의 사용자 액션에만 속하는 상태가 아니라, 인증이 필요한 여러 API request와 사용자 흐름에서 사용되는 애플리케이션 전반의 상태입니다.
+예를 들어 token store를 `features/login`에 배치하면 다른 Feature에서 이를 직접 import하기 어렵습니다. 같은 Layer에 있는 서로 다른 Feature Slice는 기본적으로 서로 독립적이어야 하기 때문입니다.
+
+또한 token store를 `pages`에 배치하면 더 낮은 Layer의 모듈에서 사용할 수 없으므로, 인증이 필요한 API request나 다른 사용자 흐름에서 재사용하기 어렵습니다.
+Token store는 앞에서 설명한 기준에 따라 `shared` 또는 현재 사용자나 세션을 나타내는 `entities` Slice에 배치하세요.
+
+## Logout & Token Invalidation
+
+### 로그아웃과 token 무효화
+
+대부분의 애플리케이션에서는 로그아웃만을 위한 별도의 Page를 만들지 않습니다. 대신 Header, 설정 화면, 사용자 메뉴 등 필요한 위치에서 로그아웃을 실행할 수 있도록 구성합니다.
+
+로그아웃은 일반적으로 다음 작업으로 구성됩니다.
+
+1. 백엔드에 인증된 로그아웃 request를 보냅니다.
+   예: `POST /logout`
+2. token store를 초기화합니다.
+   access token과 refresh token을 모두 제거합니다.
+3. 필요한 경우 현재 사용자 정보와 인증 상태를 초기화합니다.
+4. 필요한 경우 로그인 Page나 다른 화면으로 이동합니다.
+
+로그아웃 request의 위치는 프로젝트의 API 구성 방식과 재사용 범위에 따라 결정합니다. 모든 API endpoint를 `shared/api`에서 관리하고 있다면 로그인, 로그아웃, token 갱신과 같은 인증 관련 request도 함께 배치할 수 있습니다.
+
+- shared/
+  - api/
+    - client.ts
+    - endpoints/
+      - login.ts
+      - logout.ts
+      - refresh-token.ts
+    - index.ts
+반면 로그아웃이 여러 화면에서 재사용되고, token 초기화나 사용자 상태 초기화처럼 여러 작업을 하나의 사용자 흐름으로 조합해야 한다면 `features/logout`으로 분리할 수 있습니다.
+
+- features/
+  - logout/
+    - api/
+      - logout.ts
+    - ui/
+      - LogoutButton.tsx
+    - index.ts
+이 경우 `features/logout`은 로그아웃 request와 인증 상태 초기화 같은 작업을 조합하는 역할을 합니다. 실제 token store와 token 관리 로직은 앞에서 선택한 `shared` 또는 `entities`의 위치에 유지합니다.
+
+별도의 상태나 재사용 가능한 처리 로직이 필요하다면 `model` Segment를 추가할 수 있습니다. 단순한 로그아웃 기능을 위해 사용하지 않는 Segment를 미리 만들 필요는 없습니다.
+
+반대로 로그아웃 로직이 단순하고 한두 곳에서만 사용된다면 반드시 별도의 Feature로 추출할 필요는 없습니다. 해당 로그아웃 기능을 사용하는 Page나 Route 구성에서 직접 조합할 수 있습니다.
+
+> Slice 이름은 UI가 표시되는 위치보다 사용자 행동과 흐름을 기준으로 정하는 것이 좋습니다. 따라서 Header에서 로그아웃을 실행하더라도, 독립적인 사용자 흐름으로 분리한다면 `features/header`보다 `features/logout`이 적절합니다.
+
+### 자동 로그아웃
+
+다음과 같이 클라이언트의 인증 상태를 더 이상 유지할 수 없는 경우에는 token store와 현재 사용자 상태를 초기화해야 합니다.
+
+* 사용자가 로그아웃을 요청한 경우
+* refresh token이 만료되었거나 유효하지 않아 token 갱신 request가 거부된 경우
+
+인증 상태를 초기화하지 않으면 화면에서는 로그인된 것처럼 보이지만, 인증이 필요한 API request는 계속 실패하는 불일치가 발생할 수 있습니다.
+로그아웃 request가 실패하더라도 클라이언트에서는 token store와 현재 사용자 상태를 초기화할 수 있습니다. 다만 이 경우 서버 측 세션이나 refresh token의 무효화가 완료되지 않았을 수 있으므로, 백엔드의 인증 정책도 함께 고려해야 합니다.
+
+> Token을 현재 사용자나 세션을 나타내는 Entity에서 관리한다면 해당 Slice의 `model` Segment에 token 초기화 로직을 둘 수 있습니다. Shared Layer에서 token을 관리한다면 `shared/auth`처럼 인증 책임을 나타내는 모듈로 분리할 수 있습니다.
+
+[tutorial-authentication]: /kr/docs/get-started/tutorial#authentication  
+[import-rule-on-layers]: /kr/docs/reference/layers#import-rule-on-layers  
+[ext-remix]: https://remix.run  
+[ext-zod]: https://zod.dev

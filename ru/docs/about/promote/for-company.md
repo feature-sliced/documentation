@@ -1,0 +1,9 @@
+# Продвижение в компании
+
+## Нужна ли методология проекту и компании? \{#do-the-project-and-the-company-need-a-methodology}
+
+> Про оправданность применения и техдолг
+
+## Как подать методологию бизнесу? \{#how-can-i-submit-a-methodology-to-a-business}
+
+## Как подготовить и оправдать план по переезду на методологию? \{#how-to-prepare-and-justify-a-plan-to-move-to-the-methodology}

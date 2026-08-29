@@ -1,0 +1,176 @@
+# Usage with Next.js
+
+**Caution:** To avoid conflicts, rename **both** `app` and `pages` FSD layers to `_app` and `_pages`, regardless of which router you use.
+
+## src Folder
+
+Next.js expects special `app` or `pages` folders either in the root of the project or in the `src` folder. Generally, it is easier to place Next.js folders in the root of the project so that the `src` folder contains only FSD code, but it is not mandatory.
+
+## App Router \{#app-router\}
+
+Next.js uses the `app` folder for the App Router and the `pages` folder for the Pages Router, which conflicts with FSD layer names. To solve this conflict, use prefixed names for FSD layers, such as `_app` instead of `app` and `_pages` instead of `pages`. This approach is also compatible with the official [linter](https://github.com/feature-sliced/steiger).
+
+- app Next.js app folder
+    - api/
+        - get-example/
+            - route.ts
+    - example/
+        - page.tsx
+- src/
+    - _app/ FSD layer
+        - api-routes/ API routes
+    - _pages/ FSD layer
+        - example/
+            - index.ts
+            - ui/
+                - example.tsx
+    - widgets/
+    - features/
+    - entities/
+    - shared/
+Example of re-exporting a page from `src/_pages` in the Next.js `app`:
+
+```tsx title="app/example/page.tsx"
+export { ExamplePage as default, metadata } from '@/_pages/example';
+```
+
+### Server and client public APIs \{#server-and-client-public-apis\}
+
+In Next.js App Router, modules that can be used on the client and server-only modules may exist together within a single slice. If a server-only module is exported from `index.ts`, server-only side effects can propagate into the client module graph when a Client Component imports that slice, which can lead to build errors.
+
+When this problem occurs, add `index.server.ts` to the public API.
+
+- `index.server.ts`: Modules that must only be imported on the server, such as Server Components or data access functions marked with `server-only`
+
+### Middleware \{#middleware\}
+
+If you use middleware in your project, it must be located in the project root alongside the Next.js `app` and `pages` folders.
+
+### Instrumentation \{#instrumentation\}
+
+The `instrumentation.js` file allows you to monitor the performance and behavior of your application. If you use it, it must be located in the project root, similar to `middleware.js`.
+
+## Pages Router \{#pages-router\}
+
+### Conflict between FSD and Next.js in the `pages` layer \{#conflict-between-fsd-and-nextjs-in-the-pages-layer\}
+
+Routes should be placed in the `pages` folder in the root of the project, similar to `app` folder for the App Router. The structure inside `src` where the layer folders are located remains unchanged.
+
+- pages/ Pages folder (Next.js)
+  - _app.tsx
+  - api/
+    - example.ts API route re-export
+  - example/
+    - index.tsx
+- src/
+  - _app/ FSD layer
+    - custom-app/
+      - custom-app.tsx Custom App component
+    - api-routes/
+      - get-example-data.ts API route
+  - _pages/ FSD layer
+    - example/
+      - index.ts
+      - ui/
+        - example.tsx
+  - widgets/
+  - features/
+  - entities/
+  - shared/
+Example of re-exporting a page from `src/_pages` in the Next.js `pages`:
+
+```tsx title="pages/example/index.tsx"
+export { Example as default } from '@/_pages/example';
+```
+
+### Custom `_app` component \{#custom-_app-component\}
+
+You can place your Custom App component in `src/_app/_app` or `src/_app/custom-app`:
+
+```tsx title="src/_app/custom-app/custom-app.tsx"
+import type { AppProps } from 'next/app';
+
+export const MyApp = ({ Component, pageProps }: AppProps) => {
+    return (
+        <>
+            <p>My Custom App component</p>
+            <Component { ...pageProps } />
+        </>
+    );
+};
+```
+
+```tsx title="pages/_app.tsx"
+export { App as default } from '@/_app/custom-app';
+```
+
+## Route Handlers (API routes) \{#route-handlers-api-routes\}
+
+Use the `api-routes` segment in the `_app` layer to work with Route Handlers.
+
+Be mindful when writing backend code in the FSD structure — FSD is primarily intended for frontends, meaning that's what people will expect to find.
+If you need a lot of endpoints, consider separating them into a different package in a monorepo.
+
+```tsx title="src/_app/api-routes/get-example-data.ts"
+import { getExamplesList } from '@/shared/db';
+
+export const getExampleData = () => {
+    try {
+        const examplesList = getExamplesList();
+
+        return Response.json({ examplesList });
+    } catch {
+        return Response.json(null, {
+            status: 500,
+            statusText: 'Ouch, something went wrong',
+        });
+    }
+};
+```
+
+```tsx title="app/api/example/route.ts"
+export { getExampleData as GET } from '@/_app/api-routes';
+```
+
+```tsx title="src/_app/api-routes/get-example-data.ts"
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '1mb',
+        },
+    },
+    maxDuration: 5,
+};
+
+const handler = (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
+    res.status(200).json({ message: 'Hello from FSD' });
+};
+
+export const getExampleData = { config, handler } as const;
+```
+
+```tsx title="src/_app/api-routes/index.ts"
+export { getExampleData } from './get-example-data';
+```
+
+```tsx title="app/api/example.ts"
+import { getExampleData } from '@/_app/api-routes';
+
+export const config = getExampleData.config;
+export default getExampleData.handler;
+```
+
+## Additional recommendations \{#additional-recommendations\}
+
+- Use the `db` segment in the `shared` layer to describe database queries and their further use in higher layers.
+- Caching and revalidating queries logic is better kept in the same place as the queries themselves.
+
+## See also \{#see-also\}
+
+- [Next.js Project Structure](https://nextjs.org/docs/app/getting-started/project-structure)
+- [Next.js Page Layouts](https://nextjs.org/docs/app/getting-started/layouts-and-pages)
+
+[project-knowledge]: /docs/about/understanding/knowledge-types
+[ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md

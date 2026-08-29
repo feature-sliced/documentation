@@ -1,0 +1,176 @@
+# NextJSとの併用
+
+**Caution:** 競合を避けるため、使用するルーターに関わらず、`app`と`pages`の**両方**のFSD層を`_app`と`_pages`に名前変更してください。
+
+## srcフォルダー
+
+NextJSは、プロジェクトのルートまたは`src`フォルダーのいずれかに、特別な`app`または`pages`フォルダーを期待します。一般的には、`src`フォルダーにFSDコードのみが含まれるように、NextJSのフォルダーをプロジェクトのルートに配置する方が簡単ですが、必須ではありません。
+
+## App Router \{#app-router\}
+
+NextJSはApp Routerに`app`フォルダーを、Pages Routerに`pages`フォルダーを使用しますが、これはFSDの層名と競合します。この競合を解決するには、`app`の代わりに`_app`、`pages`の代わりに`_pages`のように、FSD層にプレフィックス付きの名前を使用してください。このアプローチは公式の[リンター](https://github.com/feature-sliced/steiger)とも互換性があります。
+
+- app NextJSのappフォルダー
+    - api/
+        - get-example/
+            - route.ts
+    - example/
+        - page.tsx
+- src/
+    - _app/ FSD層
+        - api-routes/ APIルート
+    - _pages/ FSD層
+        - example/
+            - index.ts
+            - ui/
+                - example.tsx
+    - widgets/
+    - features/
+    - entities/
+    - shared/
+NextJSの`app`内で`src/_pages`からページを再エクスポートする例：
+
+```tsx title="app/example/page.tsx"
+export { ExamplePage as default, metadata } from '@/_pages/example';
+```
+
+### サーバーとクライアントのパブリックAPI \{#server-and-client-public-apis\}
+
+NextJSのApp Routerでは、クライアントで使用できるモジュールとサーバー専用のモジュールが、1つのスライス内に共存することがあります。サーバー専用のモジュールが`index.ts`からエクスポートされている場合、クライアントコンポーネントがそのスライスをインポートすると、サーバー専用の副作用がクライアントのモジュールグラフに伝播し、ビルドエラーにつながる可能性があります。
+
+この問題が発生した場合は、パブリックAPIに`index.server.ts`を追加してください。
+
+- `index.server.ts`: サーバーコンポーネントや`server-only`でマークされたデータアクセス関数など、サーバーでのみインポートされる必要があるモジュール
+
+### Middleware \{#middleware\}
+
+プロジェクトでミドルウェアを使用する場合は、NextJSの`app`および`pages`フォルダーと並んでプロジェクトのルートに配置する必要があります。
+
+### Instrumentation \{#instrumentation\}
+
+`instrumentation.js`ファイルを使用すると、アプリケーションのパフォーマンスと動作を監視できます。使用する場合は、`middleware.js`と同様にプロジェクトのルートに配置する必要があります。
+
+## Pages Router \{#pages-router\}
+
+### `pages`層におけるFSDとNextJSの競合 \{#conflict-between-fsd-and-nextjs-in-the-pages-layer\}
+
+App Routerの`app`フォルダーと同様に、ルートはプロジェクトのルートにある`pages`フォルダーに配置する必要があります。層フォルダーが配置されている`src`内の構造は変わりません。
+
+- pages/ pagesフォルダー（NextJS）
+  - _app.tsx
+  - api/
+    - example.ts APIルートの再エクスポート
+  - example/
+    - index.tsx
+- src/
+  - _app/ FSD層
+    - custom-app/
+      - custom-app.tsx カスタムAppコンポーネント
+    - api-routes/
+      - get-example-data.ts APIルート
+  - _pages/ FSD層
+    - example/
+      - index.ts
+      - ui/
+        - example.tsx
+  - widgets/
+  - features/
+  - entities/
+  - shared/
+NextJSの`pages`内で`src/_pages`からページを再エクスポートする例：
+
+```tsx title="pages/example/index.tsx"
+export { Example as default } from '@/_pages/example';
+```
+
+### カスタム`_app`コンポーネント \{#custom-_app-component\}
+
+カスタムAppコンポーネントは`src/_app/_app`または`src/_app/custom-app`に配置できます：
+
+```tsx title="src/_app/custom-app/custom-app.tsx"
+import type { AppProps } from 'next/app';
+
+export const MyApp = ({ Component, pageProps }: AppProps) => {
+    return (
+        <>
+            <p>My Custom App component</p>
+            <Component { ...pageProps } />
+        </>
+    );
+};
+```
+
+```tsx title="pages/_app.tsx"
+export { App as default } from '@/_app/custom-app';
+```
+
+## ルートハンドラー（APIルート） \{#route-handlers-api-routes\}
+
+ルートハンドラーを扱うには、`_app`層の`api-routes`セグメントを使用します。
+
+FSD構造内でバックエンドのコードを書く際は注意してください。FSDは主にフロントエンドを対象としており、それが人々が見つけることを期待するものだからです。
+多くのエンドポイントが必要な場合は、モノレポ内の別のパッケージに分離することを検討してください。
+
+```tsx title="src/_app/api-routes/get-example-data.ts"
+import { getExamplesList } from '@/shared/db';
+
+export const getExampleData = () => {
+    try {
+        const examplesList = getExamplesList();
+
+        return Response.json({ examplesList });
+    } catch {
+        return Response.json(null, {
+            status: 500,
+            statusText: 'Ouch, something went wrong',
+        });
+    }
+};
+```
+
+```tsx title="app/api/example/route.ts"
+export { getExampleData as GET } from '@/_app/api-routes';
+```
+
+```tsx title="src/_app/api-routes/get-example-data.ts"
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '1mb',
+        },
+    },
+    maxDuration: 5,
+};
+
+const handler = (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
+    res.status(200).json({ message: 'Hello from FSD' });
+};
+
+export const getExampleData = { config, handler } as const;
+```
+
+```tsx title="src/_app/api-routes/index.ts"
+export { getExampleData } from './get-example-data';
+```
+
+```tsx title="app/api/example.ts"
+import { getExampleData } from '@/_app/api-routes';
+
+export const config = getExampleData.config;
+export default getExampleData.handler;
+```
+
+## 追加の推奨事項 \{#additional-recommendations\}
+
+- データベースクエリの記述と上位層でのその利用には、`shared`層の`db`セグメントを使用してください。
+- クエリのキャッシュと再検証のロジックは、クエリ自体と同じ場所に保持する方が良いでしょう。
+
+## 関連項目 \{#see-also\}
+
+- [NextJSのプロジェクト構造](https://nextjs.org/docs/app/getting-started/project-structure)
+- [NextJSのページレイアウト](https://nextjs.org/docs/app/getting-started/layouts-and-pages)
+
+[project-knowledge]: /ja/docs/about/understanding/knowledge-types
+[ext-app-router-stackblitz]: https://stackblitz.com/edit/stackblitz-starters-aiez55?file=README.md

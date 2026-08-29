@@ -1,0 +1,110 @@
+# Page Layouts
+
+This guide examines the abstraction of a _page layout_ — when several pages share the same overall structure, and differ only in the main content.
+
+**Note:** Is your question not covered by this guide? Post your question by leaving feedback on this article (blue button on the right) and we will consider expanding this guide!
+
+## Simple layout
+
+The simplest layout can be seen on this page. It has a header with site navigation, two sidebars, and a footer with external links. There is no complicated business logic, and the only dynamic parts are sidebars and the switchers on the right side of the header. Such a layout can be placed entirely in `shared/ui` or in `app/layouts`, with props filling in the content for the sidebars:
+
+```tsx title="shared/ui/layout/Layout.tsx"
+import { Link, Outlet } from "react-router-dom";
+import { useThemeSwitcher } from "./useThemeSwitcher";
+
+export function Layout({ siblingPages, headings }) {
+  const [theme, toggleTheme] = useThemeSwitcher();
+
+  return (
+    <div>
+      <header>
+        <nav>
+          <ul>
+            <li> <Link to="/">Home</Link> </li>
+            <li> <Link to="/docs">Docs</Link> </li>
+            <li> <Link to="/blog">Blog</Link> </li>
+          </ul>
+        </nav>
+        <button onClick={toggleTheme}>{theme}</button>
+      </header>
+      <main>
+        <SiblingPageSidebar siblingPages={siblingPages} />
+        <Outlet /> {/* This is where the main content goes */}
+        <HeadingsSidebar headings={headings} />
+      </main>
+      <footer>
+        <ul>
+          <li>GitHub</li>
+          <li>Twitter</li>
+        </ul>
+      </footer>
+    </div>
+  );
+}
+```
+
+```ts title="shared/ui/layout/useThemeSwitcher.ts"
+export function useThemeSwitcher() {
+  const [theme, setTheme] = useState("light");
+
+  function toggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
+  }
+
+  useEffect(() => {
+    document.body.classList.remove("light", "dark");
+    document.body.classList.add(theme);
+  }, [theme]);
+
+  return [theme, toggleTheme] as const;
+}
+```
+
+The code of sidebars is left as an exercise for the reader 😉.
+
+## Where should layouts be placed? \{#where-to-put-layouts\}
+
+Layout components often need to compose data handling, state management, access control and user actions that are shared across multiple routes.
+
+In [React Router][ext-react-router] nested child routes may share a common URL path such as `/users`, `/users/:id` and `/users/:id/settings`. Instead of repeating the same handling in each page you can use the router's nesting capabilities to apply a common layout and route-level logic in one place.
+
+The location of a layout should be determined based on its **scope and responsibility** rather than its structural complexity.
+
+* Layouts responsible for the entire application or routing structure should be placed in `app`.
+* Layouts specific to a particular page or route group should be placed in `pages`.
+* Layout UI that is reusable without business context can be placed in `shared/ui`.
+* Layouts centered around a specific user action or user flow and reused across multiple pages can be implemented in the corresponding `features` slice.
+
+A layout in `shared` that directly imports from `features`, `entities` or `pages` violates the [layer import rule][import-rule-on-layers]. Modules in `app` and `pages` can import modules from lower layers to compose a screen.
+
+> A module can only import modules from layers below the layer it belongs to.
+
+Before extracting a layout into a separate module consider the following:
+
+* Is this layout actually reused across multiple routes?
+* Is it specific to a particular page or route structure?
+* Is the layout itself the reusable unit or is it only the user action used within the layout?
+
+A layout used by only a small number of pages and tied to a particular screen structure may be simpler to define directly in the corresponding `page` or route configuration.
+
+1. **Configure a route layout in the App layer**  
+   You can group multiple routes with a common URL path using the router's nesting capabilities and assign a single layout in `app`.
+   A layout located in `app` can compose modules from `pages`, `features`, `entities` and `shared` without violating the layer import rule.
+
+2. **Pass feature UI through render props or slots**  
+   In React you can use the [render props][ext-render-props] pattern. In Vue you can use [slots][ext-vue-slots].
+   In this approach the layout in `shared` provides only the common UI structure while the required feature UI is passed from `app` or `pages`. This allows the layout to compose the required screen without directly depending on a specific feature.
+
+3. **Define it directly in a page**  
+   A layout used only by a specific page can be defined directly in the corresponding `page` without introducing a separate abstraction.
+   When there is little duplicated code and the layout is unlikely to change frequently there is no need to extract it into a shared module.
+
+## Further reading
+
+- There's an example of how to build a layout with authentication with React and Remix (equivalent to React Router) in the [tutorial][tutorial].
+
+[tutorial]: /docs/get-started/tutorial
+[import-rule-on-layers]: /docs/reference/layers#import-rule-on-layers
+[ext-react-router]: https://reactrouter.com/
+[ext-render-props]: https://www.patterns.dev/react/render-props-pattern/
+[ext-vue-slots]: https://vuejs.org/guide/components/slots
