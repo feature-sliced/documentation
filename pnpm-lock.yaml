@@ -50,6 +50,9 @@ importers:
       starlight-llms-txt:
         specifier: ^0.7.0
         version: 0.7.0(@astrojs/starlight@0.37.7(astro@5.18.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(rollup@4.59.0)(sass@1.98.0)(terser@5.46.0)(typescript@5.9.3)))(astro@5.18.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(rollup@4.59.0)(sass@1.98.0)(terser@5.46.0)(typescript@5.9.3))
+      starlight-page-context-action:
+        specifier: ^0.4.3
+        version: 0.4.3(@astrojs/starlight@0.37.7(astro@5.18.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(rollup@4.59.0)(sass@1.98.0)(terser@5.46.0)(typescript@5.9.3)))(astro@5.18.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(rollup@4.59.0)(sass@1.98.0)(terser@5.46.0)(typescript@5.9.3))(vite@6.4.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.98.0)(terser@5.46.0))
       typescript:
         specifier: ^5.9.2
         version: 5.9.3
@@ -1209,6 +1212,10 @@ packages:
   bcp-47@2.1.0:
     resolution: {integrity: sha512-9IIS3UPrvIa1Ej+lVDdDwO7zLehjqsaByECw0bu2RRGP73jALm6FYbzI5gWbgHLvNdkvfXB5YrSbocZdOS0c0w==}
 
+  binary-extensions@2.3.0:
+    resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
+    engines: {node: '>=8'}
+
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
@@ -1252,6 +1259,10 @@ packages:
 
   character-reference-invalid@2.0.1:
     resolution: {integrity: sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==}
+
+  chokidar@3.6.0:
+    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
+    engines: {node: '>= 8.10.0'}
 
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
@@ -1725,6 +1736,10 @@ packages:
   is-alphanumerical@2.0.1:
     resolution: {integrity: sha512-hmbYhX/9MUMF5uh7tOXyK/n0ZvWpad5caBA17GsC6vyuCqaWliRG5K1qS9inmUhEMaOBIW7/whAnSwveW/LtZw==}
 
+  is-binary-path@2.1.0:
+    resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
+    engines: {node: '>=8'}
+
   is-decimal@2.0.1:
     resolution: {integrity: sha512-AAB9hiomQs5DXWcRB1rqsxGUstbRroFOPPVAomNk/3XHR5JyEZChOyTWe2oayKnsSsr/kcGqF+z6yuH6HHpN0A==}
 
@@ -2151,6 +2166,10 @@ packages:
     resolution: {integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==}
     engines: {node: '>=10'}
 
+  p-map@7.0.6:
+    resolution: {integrity: sha512-I4Prw6ivkd6p8PiYR1tXASOAOBzIJwu0TB7fqaX0c/8c3QAehNYmX57EijyGGGBt3c/BIowGwV03RVBtXvHEVg==}
+    engines: {node: '>=18'}
+
   p-queue@8.1.1:
     resolution: {integrity: sha512-aNZ+VfjobsWryoiPnEApGGmf5WmNsCo9xu8dfaYamG5qaLP7ClhLN6NgsFe6SwJ2UbLEBK5dv9x8Mn5+RVhMWQ==}
     engines: {node: '>=18'}
@@ -2247,6 +2266,10 @@ packages:
 
   radix3@1.1.2:
     resolution: {integrity: sha512-b484I/7b8rDEdSDKckSSBA8knMpcdsXudlE/LNL639wFoHKwLbEkQFZHWEYwDC0wa0FKUcCY+GAF73Z7wxNVFA==}
+
+  readdirp@3.6.0:
+    resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
+    engines: {node: '>=8.10.0'}
 
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
@@ -2437,6 +2460,12 @@ packages:
     peerDependencies:
       '@astrojs/starlight': '>=0.31'
       astro: ^5.15.9
+
+  starlight-page-context-action@0.4.3:
+    resolution: {integrity: sha512-EqKEJCfSFxJmzZTFRi5MMQSGDrFCyPF+HczcAtd6sTQJ1vyqnUtcdXUCvmON1eCQtNOow3tWYCJY+GxlimkfBQ==}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.36.0'
+      astro: '>=5.0.0'
 
   stream-replace-string@2.0.0:
     resolution: {integrity: sha512-TlnjJ1C0QrmxRNrON00JvaFFlNh5TTG00APw23j74ET7gkQpTASi6/L2fuiav8pzK715HXtUeClpBTw2NPSn6w==}
@@ -2696,6 +2725,17 @@ packages:
 
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
+
+  vite-plugin-static-copy@3.4.0:
+    resolution: {integrity: sha512-ekryzCw0ouAOE8tw4RvVL/dfqguXzumsV3FBKoKso4MQ1MUUrUXtl5RI4KpJQUNGqFEsg9kxl4EvDl02YtA9VQ==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      vite: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+
+  vite-plugin-virtual@0.3.0:
+    resolution: {integrity: sha512-TOtrWw6jKrJNXfxhGRUiQzfAP1gRkYkVzMkJNjHUJ8idLuxf8eeeDKZKZHhdeYfaCc/87rv+KvWE2iCy1QInWA==}
+    peerDependencies:
+      vite: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
 
   vite@6.4.1:
     resolution: {integrity: sha512-+Oxm7q9hDoLMyJOYfUYBuHQo+dkAloi33apOPP56pzj+vsdJDzr+j1NISE5pyaAuKL4A3UD34qd0lx5+kfKp2g==}
@@ -3897,6 +3937,8 @@ snapshots:
       is-alphanumerical: 2.0.1
       is-decimal: 2.0.1
 
+  binary-extensions@2.3.0: {}
+
   boolbase@1.0.0: {}
 
   boxen@8.0.1:
@@ -3938,6 +3980,18 @@ snapshots:
   character-entities@2.0.2: {}
 
   character-reference-invalid@2.0.1: {}
+
+  chokidar@3.6.0:
+    dependencies:
+      anymatch: 3.1.3
+      braces: 3.0.3
+      glob-parent: 5.1.2
+      is-binary-path: 2.1.0
+      is-glob: 4.0.3
+      normalize-path: 3.0.0
+      readdirp: 3.6.0
+    optionalDependencies:
+      fsevents: 2.3.3
 
   chokidar@4.0.3:
     dependencies:
@@ -4591,6 +4645,10 @@ snapshots:
     dependencies:
       is-alphabetical: 2.0.1
       is-decimal: 2.0.1
+
+  is-binary-path@2.1.0:
+    dependencies:
+      binary-extensions: 2.3.0
 
   is-decimal@2.0.1: {}
 
@@ -5257,6 +5315,8 @@ snapshots:
     dependencies:
       p-limit: 3.1.0
 
+  p-map@7.0.6: {}
+
   p-queue@8.1.1:
     dependencies:
       eventemitter3: 5.0.4
@@ -5352,6 +5412,10 @@ snapshots:
   queue-microtask@1.2.3: {}
 
   radix3@1.1.2: {}
+
+  readdirp@3.6.0:
+    dependencies:
+      picomatch: 2.3.1
 
   readdirp@4.1.2:
     optional: true
@@ -5716,6 +5780,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  starlight-page-context-action@0.4.3(@astrojs/starlight@0.37.7(astro@5.18.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(rollup@4.59.0)(sass@1.98.0)(terser@5.46.0)(typescript@5.9.3)))(astro@5.18.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(rollup@4.59.0)(sass@1.98.0)(terser@5.46.0)(typescript@5.9.3))(vite@6.4.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.98.0)(terser@5.46.0)):
+    dependencies:
+      '@astrojs/starlight': 0.37.7(astro@5.18.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(rollup@4.59.0)(sass@1.98.0)(terser@5.46.0)(typescript@5.9.3))
+      astro: 5.18.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(rollup@4.59.0)(sass@1.98.0)(terser@5.46.0)(typescript@5.9.3)
+      vite-plugin-static-copy: 3.4.0(vite@6.4.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.98.0)(terser@5.46.0))
+      vite-plugin-virtual: 0.3.0(vite@6.4.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.98.0)(terser@5.46.0))
+    transitivePeerDependencies:
+      - vite
+
   stream-replace-string@2.0.0: {}
 
   string-width@4.2.3:
@@ -5955,6 +6028,18 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
+
+  vite-plugin-static-copy@3.4.0(vite@6.4.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.98.0)(terser@5.46.0)):
+    dependencies:
+      chokidar: 3.6.0
+      p-map: 7.0.6
+      picocolors: 1.1.1
+      tinyglobby: 0.2.15
+      vite: 6.4.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.98.0)(terser@5.46.0)
+
+  vite-plugin-virtual@0.3.0(vite@6.4.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.98.0)(terser@5.46.0)):
+    dependencies:
+      vite: 6.4.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.98.0)(terser@5.46.0)
 
   vite@6.4.1(@types/node@22.19.15)(jiti@1.21.7)(lightningcss@1.32.0)(sass@1.98.0)(terser@5.46.0):
     dependencies:

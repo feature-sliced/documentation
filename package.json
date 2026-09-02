@@ -32,6 +32,7 @@
         "sharp": "^0.34.5",
         "starlight-links-validator": "^0.19.2",
         "starlight-llms-txt": "^0.7.0",
+        "starlight-page-context-action": "^0.4.3",
         "typescript": "^5.9.2",
         "typescript-eslint": "^8.59.3"
     },

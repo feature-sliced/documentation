@@ -4,6 +4,7 @@ import starlight from "@astrojs/starlight";
 import remarkHeaderId from "remark-heading-id";
 import starlightLlmsTxt from "starlight-llms-txt";
 import starlightLinksValidator from "starlight-links-validator";
+import starlightPageContextAction from "starlight-page-context-action";
 import lunaria from "@lunariajs/starlight";
 
 // https://astro.build/config
@@ -17,15 +18,6 @@ export default defineConfig({
                 "@": new URL("./src", import.meta.url).pathname,
             },
         },
-    },
-    redirects: {
-        "/ru": "/ru/docs/get-started/overview",
-        "/uz": "/uz/docs/get-started/overview",
-        "/kr": "/kr/docs/get-started/overview",
-        "/ja": "/ja/docs/get-started/overview",
-        "/vi": "/vi/docs/get-started/overview",
-        "/zh": "/zh/docs/get-started/overview",
-        "/tr": "/tr/docs/get-started/overview",
     },
     markdown: {
         // @ts-ignore
@@ -49,6 +41,18 @@ export default defineConfig({
             },
             plugins: [
                 starlightLlmsTxt(),
+                starlightPageContextAction({
+                    position: "below-toc",
+                    sticky: true,
+                    actions: {
+                        copy: true,
+                        scrollTop: true,
+                        viewMarkdown: false,
+                        chatgpt: false,
+                        claude: false,
+                        t3chat: false,
+                    },
+                }),
                 starlightLinksValidator({
                     errorOnFallbackPages: false,
                     errorOnInconsistentLocale: true,

@@ -39,7 +39,7 @@
             "type": "universal",
             "location": "src/content/docs/**/*.{md,mdx}",
             "pattern": "src/content/docs/@lang/@path",
-            "ignore": []
+            "ignore": ["index.mdx"]
         }
     ],
     "outDir": "./static/translation-status",
