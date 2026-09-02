@@ -24,7 +24,7 @@ First of all, thank you for taking the time to contribute to the project! 👍
    > Some issues are difficult to reproduce
 - 🛡️ Provide a review for [**pull requests**][pr]
    > Share your opinion and help us with the processing of other people's proposals
-- ⚒️ Suggest  yur [own **pull-requests**!][pr-new]
+- ⚒️ Suggest your [own **pull-requests**!][pr-new]
    > Enhance the project with your own solutions
 
 ## Workflow
@@ -33,6 +33,7 @@ First of all, thank you for taking the time to contribute to the project! 👍
 
 1. [Fork][fork] the repository
 2. Make your changes
+   - If your change touches documentation content, keep the translations in sync — see [Synchronized documentation](#synchronized-documentation)
    - Make sure that **commits follow** the [Conventional Commits specification](https://www.conventionalcommits.org)
       > All this helps with the changelog formation and keeps the history of the project clean
       >
@@ -59,3 +60,17 @@ First of all, thank you for taking the time to contribute to the project! 👍
 
    - Make sure that the verification via **[CI][actions]** has passed for your PR
       > Our common goal is to reduce review costs and achieve consistency in the code base 🤙
+
+## Synchronized documentation
+
+The documentation is published in several languages. The English content in `src/content/docs/docs/` is the source of truth, and every translation mirrors its structure in a locale folder next to it (`ja/`, `kr/`, `ru/`, `tr/`, `uz/`, `vi/`, `zh/`).
+
+When you add or edit a documentation page, please keep the locales in sync:
+
+1. Apply your change to the English version first
+2. Mirror it in the locales you are comfortable writing in
+   > For example, if you speak Russian, update the same page under `src/content/docs/ru/docs/` in the same PR
+3. For the locales you cannot update yourself, [open an issue][issues-new] that links to your PR and lists the affected pages, so translators can pick it up
+   > This way no translation silently falls behind the original
+
+Fixes that only concern a single translation (typos, wording) can touch just that locale folder — no synchronization needed.
