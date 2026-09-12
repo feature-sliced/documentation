@@ -1,0 +1,140 @@
+---
+title: Electron ile Kullanım
+sidebar:
+  order: 10
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+Electron uygulamaları, farklı sorumluluklara sahip birden fazla süreçten (process) oluşan özel bir mimariye sahiptir. Böyle bir bağlamda FSD uygulamak, yapının Electron'un dinamiklerine uyarlanmasını gerektirir.
+
+<FileTree>
+- src
+  - app Ortak app katmanı
+    - main Main süreci
+      - index.ts Main süreci giriş noktası
+    - preload Preload betiği ve Context Bridge
+      - index.ts Preload giriş noktası
+    - renderer Renderer süreci
+      - index.html Renderer süreci giriş noktası
+  - main
+    - features
+      - user
+        - ipc
+          - get-user.ts
+          - send-user.ts
+    - entities
+    - shared
+  - renderer
+    - pages
+      - settings
+        - ipc
+          - get-user.ts
+          - save-user.ts
+        - ui
+          - user.tsx
+        - index.ts
+      - home
+        - ui
+          - home.tsx
+        - index.ts
+    - widgets
+    - features
+    - entities
+    - shared
+  - shared Main ve renderer arasındaki ortak kod
+    - ipc IPC tanımı (olay adları, sözleşmeler)
+</FileTree>
+
+## Public API kuralları \{#public-api-rules\}
+
+Her sürecin (process) kendi Public API'si olmalıdır. Örneğin, `main` sürecinden `renderer` sürecine doğrudan modül aktaramazsınız.
+Yalnızca `src/shared` klasörü her iki süreç için de genel kullanıma açıktır (public).
+Bu klasör ayrıca süreçler arası etkileşim sözleşmelerini (contracts) tanımlamak için de gereklidir.
+
+## Standart yapıya yapılan ek değişiklikler \{#additional-changes-to-the-standard-structure\}
+
+Süreçler arasındaki etkileşimin gerçekleştiği yeni bir `ipc` segmenti kullanılması önerilir.
+`pages` ve `widgets` katmanları, isimleri ve işlevleri gereği `src/main` içinde yer almamalıdır. Bunun yerine `features`, `entities` ve `shared` katmanlarını kullanabilirsiniz.
+`src` içerisindeki `app` katmanı, `main` ve `renderer` için giriş noktalarının yanı sıra IPC yapılandırmasını barındırır.
+`app` katmanındaki segmentlerin kesişim noktalarına sahip olması istenmez.
+
+## Etkileşim örneği \{#interaction-example\}
+
+```typescript title="src/shared/ipc/channels.ts"
+export const CHANNELS = {
+    GET_USER_DATA: 'GET_USER_DATA',
+    SAVE_USER: 'SAVE_USER',
+} as const;
+
+export type TChannelKeys = keyof typeof CHANNELS;
+```
+
+```typescript title="src/shared/ipc/events.ts"
+import { CHANNELS } from './channels';
+
+export interface IEvents {
+    [CHANNELS.GET_USER_DATA]: {
+        args: void,
+        response?: { name: string; email: string; };
+    };
+    [CHANNELS.SAVE_USER]: {
+        args: { name: string; };
+        response: void;
+    };
+}
+```
+
+```typescript title="src/shared/ipc/preload.ts"
+import { CHANNELS } from './channels';
+import type { IEvents } from './events';
+
+type TOptionalArgs<T> = T extends void ? [] : [args: T];
+
+export type TElectronAPI = {
+    [K in keyof typeof CHANNELS]: (...args: TOptionalArgs<IEvents[typeof CHANNELS[K]]['args']>) => IEvents[typeof CHANNELS[K]]['response'];
+};
+```
+
+```typescript title="src/app/preload/index.ts"
+import { contextBridge, ipcRenderer } from 'electron';
+import { CHANNELS, type TElectronAPI } from 'shared/ipc';
+
+const API: TElectronAPI = {
+    [CHANNELS.GET_USER_DATA]: () => ipcRenderer.sendSync(CHANNELS.GET_USER_DATA),
+    [CHANNELS.SAVE_USER]: args => ipcRenderer.invoke(CHANNELS.SAVE_USER, args),
+} as const;
+
+contextBridge.exposeInMainWorld('electron', API);
+```
+
+```typescript title="src/main/features/user/ipc/send-user.ts"
+import { ipcMain } from 'electron';
+import { CHANNELS } from 'shared/ipc';
+
+export const sendUser = () => {
+    ipcMain.on(CHANNELS.GET_USER_DATA, ev => {
+        ev.returnValue = {
+            name: 'John Doe',
+            email: 'john.doe@example.com',
+        };
+    });
+};
+```
+
+```typescript title="src/renderer/pages/user-settings/ipc/get-user.ts"
+import { CHANNELS } from 'shared/ipc';
+
+export const getUser = () => {
+    const user = window.electron[CHANNELS.GET_USER_DATA]();
+
+    return user ?? { name: 'John Donte', email: 'john.donte@example.com' };
+};
+```
+
+## Ayrıca bakınız \{#see-also\}
+
+- [Süreç Modeli Dokümantasyonu (Process Model)](https://www.electronjs.org/docs/latest/tutorial/process-model)
+- [Bağlam İzolasyonu Dokümantasyonu (Context Isolation)](https://www.electronjs.org/docs/latest/tutorial/context-isolation)
+- [Süreçler Arası İletişim Dokümantasyonu (IPC)](https://www.electronjs.org/docs/latest/tutorial/ipc)
+- [Örnek](https://github.com/feature-sliced/examples/tree/master/examples/electron)
