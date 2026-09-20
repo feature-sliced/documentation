@@ -7,10 +7,11 @@ Bắt đầu bằng cách đặt logic API request chung trong thư mục `share
 Cấu trúc file điển hình sẽ là:
 
 - shared/
-  - client.ts
-  - index.ts
-  - endpoints/
-    - login.ts
+  - api/
+    - client.ts
+    - index.ts
+    - endpoints/
+      - login.ts
 File `client.ts` tập trung thiết lập HTTP request của bạn. Nó bao bọc phương thức bạn chọn (như `fetch()` hoặc một instance `axios`) và xử lý các cấu hình chung, chẳng hạn như:
 
 - Backend base URL.

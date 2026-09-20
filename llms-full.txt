@@ -3847,13 +3847,15 @@ A typical file structure would be:
 
 * shared/
 
-  * client.ts
+  * api/
 
-  * index.ts
+    * client.ts
 
-  * endpoints/
+    * index.ts
 
-    * login.ts
+    * endpoints/
+
+      * login.ts
 
 The `client.ts` file centralizes your HTTP request setup. It wraps your chosen method (like `fetch()` or an `axios` instance) and handles common configurations, such as:
 

@@ -7,10 +7,11 @@ Start by placing common API request logic in the `shared/api` directory. This ma
 A typical file structure would be:
 
 - shared/
-  - client.ts
-  - index.ts
-  - endpoints/
-    - login.ts
+  - api/
+    - client.ts
+    - index.ts
+    - endpoints/
+      - login.ts
 The `client.ts` file centralizes your HTTP request setup. It wraps your chosen method (like `fetch()` or an `axios` instance) and handles common configurations, such as:
 
 - Backend base URL.

@@ -7,10 +7,11 @@
 典型的文件结构是：
 
 - shared/
-  - client.ts
-  - index.ts
-  - endpoints/
-    - login.ts
+  - api/
+    - client.ts
+    - index.ts
+    - endpoints/
+      - login.ts
 `client.ts` 文件集中了您的 HTTP 请求设置。它包装您选择的方法（如 `fetch()` 或 `axios` 实例）并处理常见配置，例如：
 
 - 后端基础 URL。
