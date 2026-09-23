@@ -1,0 +1,43 @@
+---
+/* Replaces Starlight's edit link so that both labels stay in English on every
+   locale. Starlight translates its own `page.editLink` string per locale. */
+import { Icon } from "@astrojs/starlight/components";
+
+const requestUrl =
+    "https://github.com/feature-sliced/documentation/discussions/new?category=ideas";
+
+const { editUrl, entry } = Astro.locals.starlightRoute;
+/* Neither link fits the landing page: it is built from the components in
+   `src/pages/_pages/ui/`, so its source file has nothing to edit. */
+const isSplash = entry.data.template === "splash";
+---
+
+{
+    !isSplash && (
+        <>
+            {editUrl && (
+                <a href={editUrl} class="print:hidden">
+                    <Icon name="pencil" size="1.2em" />
+                    Edit page
+                </a>
+            )}
+            <a href={requestUrl} class="print:hidden">
+                <Icon name="comment-alt" size="1.2em" />
+                Request an article
+            </a>
+        </>
+    )
+}
+
+<style>
+    a {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        text-decoration: none;
+        color: var(--sl-color-gray-3);
+    }
+    a:hover {
+        color: var(--sl-color-white);
+    }
+</style>

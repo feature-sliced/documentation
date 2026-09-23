@@ -30,10 +30,16 @@ export default defineConfig({
             description: "Architectural methodology for frontend projects",
             defaultLocale: "root",
             customCss: ["./src/styles/custom.css"],
+            editLink: {
+                baseUrl:
+                    "https://github.com/feature-sliced/documentation/edit/main/",
+            },
             components: {
                 /* Adds the per-page social preview image, see `src/pages/og/[...path].ts`. */
                 Head: "./src/shared/ui/Head.astro",
                 ThemeProvider: "./src/shared/ui/ThemeProvider.astro",
+                /* Replaces the edit link, see `src/shared/ui/EditLink.astro`. */
+                EditLink: "./src/shared/ui/EditLink.astro",
             },
             logo: {
                 src: "./static/img/brand/logo-primary.png",
