@@ -1,0 +1,72 @@
+---
+title: Использование с Astro
+sidebar:
+  order: 10
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+## Файловая маршрутизация
+
+Astro ожидает маршруты в `📁 src/pages`, но в FSD эта папка используется как слой для слайсов страниц. Использовать одну и ту же папку для обеих задач нельзя. Чтобы это исправить, используйте `📁 src/_pages` как слой `🥞 pages` по FSD, а `📁 src/pages` только для маршрутизации.
+
+<FileTree>
+- src
+  - pages маршрутизация Astro
+    - 404.astro встроенная страница ошибки 404
+    - index.astro
+  - _pages слой pages по FSD
+    - home
+      - ui
+        - HomePage.astro
+      - index.ts
+</FileTree>
+
+Файл маршрута только импортирует и рендерит страницу из слоя FSD.
+
+```astro title="src/pages/index.astro"
+---
+import { HomePage } from '@/_pages/home';
+---
+
+<HomePage />
+```
+
+## Настройка алиасов путей
+
+Добавьте алиас пути в `tsconfig.json`, чтобы импортировать файлы из `src` с помощью `@/`:
+
+```json title="tsconfig.json"
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+## Работа с интеграциями
+
+Некоторые интеграции Astro, например [Starlight](https://starlight.astro.build/), используют коллекции контента (content collections) для своего содержимого. Такие интеграции часто ожидают, что контент находится в определённых папках, например `📁 src/content/docs`.
+
+Если интеграция не позволяет изменить корневой путь, ничего страшного, оставьте как есть. Обычно папки коллекций контента не конфликтуют со слоями FSD, поэтому слои FSD (`🥞 _pages`, `🥞 shared` и т.д.) могут располагаться рядом с этими папками:
+
+<FileTree>
+- src
+  - _pages слой pages по FSD
+    - ...
+  - content контент интеграций (документация Starlight и т.д.)
+    - docs
+      - getting-started.md
+  - shared слой shared по FSD
+    - ...
+</FileTree>
+
+Пусть интеграция сама занимается своей маршрутизацией и рендерингом, а структура FSD управляет кодом, специфичным для приложения.
+
+## См. также
+
+- [Маршрутизация в Astro](https://docs.astro.build/en/guides/routing/)
+- [Структура проекта Astro](https://docs.astro.build/en/basics/project-structure/)
