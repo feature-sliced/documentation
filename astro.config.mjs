@@ -20,7 +20,6 @@ export default defineConfig({
         },
     },
     markdown: {
-        // @ts-ignore
         remarkPlugins: [remarkHeaderId],
     },
     integrations: [
