@@ -30,7 +30,7 @@
   Thank you for taking the time to contribute.
   We have a set of guidelines for contibutors that you might want to read:
 
-    https://github.com/feature-sliced/documentation/blob/master/CONTRIBUTING.md
+    https://github.com/feature-sliced/documentation/blob/main/CONTRIBUTING.md
 
   We encourage self-reviewing the changes before submitting a PR ✅. 
   Here's a nice article that has some pro-tips:
