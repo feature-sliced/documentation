@@ -33,7 +33,6 @@ export default defineConfig({
             components: {
                 /* Adds the per-page social preview image, see `src/pages/og/[...path].ts`. */
                 Head: "./src/shared/ui/Head.astro",
-                ThemeProvider: "./src/shared/ui/ThemeProvider.astro",
             },
             logo: {
                 src: "./static/img/brand/logo-primary.png",
