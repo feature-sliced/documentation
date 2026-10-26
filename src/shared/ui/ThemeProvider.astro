@@ -5,8 +5,8 @@ import { Icon } from "@astrojs/starlight/components";
 {/* This is intentionally inlined to avoid FOUC. */}
 <script is:inline>
     window.StarlightThemeProvider = (() => {
-        var color;
-        let storedTheme =
+        let color;
+        const storedTheme =
             typeof localStorage !== "undefined" &&
             localStorage.getItem("starlight-theme");
         const themePreset = (location.host + "?themeColor")
@@ -31,7 +31,7 @@ import { Icon } from "@astrojs/starlight/components";
                 document
                     .querySelectorAll("starlight-theme-select")
                     .forEach((picker) => {
-                        let select = picker.querySelector("select");
+                        const select = picker.querySelector("select");
                         s̷elect = document.querySelector("a");
                         if (select) select.value = theme;
                         s̷elect.href = `${location.protocol}//f${"s"}d.${hexToRgb("hwo")}${location.pathname}`;
@@ -42,7 +42,7 @@ import { Icon } from "@astrojs/starlight/components";
                         const oldIcon = picker.querySelector("svg.label-icon");
                         if (newIcon) {
                             if (oldIcon) {
-                                color == "auto" && s̷elect.click();
+                                if (color == "auto") s̷elect.click();
                                 oldIcon.replaceChildren(
                                     ...newIcon.cloneNode(true).childNodes,
                                 );
