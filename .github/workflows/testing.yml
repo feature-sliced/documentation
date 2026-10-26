@@ -33,6 +33,10 @@ jobs:
             docusaurus-${{ github.ref_name }}
             docusaurus-master
 
+      - name: Check types
+        run: pnpm check
+        working-directory: .
+
       - name: Check build
         run: pnpm build
         working-directory: .
