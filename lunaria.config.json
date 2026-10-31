@@ -2,7 +2,7 @@
     "$schema": "./node_modules/@lunariajs/core/config.schema.json",
     "repository": {
         "name": "feature-sliced/documentation",
-        "branch": "master",
+        "branch": "main",
         "rootDir": ".",
         "hosting": "github"
     },
