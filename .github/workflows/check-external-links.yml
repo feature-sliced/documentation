@@ -1,0 +1,34 @@
+name: Check external links
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-external-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check external documentation links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --config .lychee.toml --root-dir "$(pwd)" 'src/content/docs/**/*.md' 'src/content/docs/**/*.mdx'
+          fail: false
+          format: markdown
+          jobSummary: true
+          output: lychee/report.md
+
+      - name: Upload link check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: external-link-report
+          path: lychee/report.md
+          retention-days: 14
