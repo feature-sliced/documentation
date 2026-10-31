@@ -105,6 +105,64 @@ A layout used by only a small number of pages and tied to a particular screen st
    In React you can use the [render props][ext-render-props] pattern. In Vue you can use [slots][ext-vue-slots].
    In this approach the layout in `shared` provides only the common UI structure while the required feature UI is passed from `app` or `pages`. This allows the layout to compose the required screen without directly depending on a specific feature.
 
+   A common case is an app header that looks different on different pages: some routes need a search bar, others need navigation links, and the signed-in user menu (`UserPopup`) may only appear on a subset of screens. Put the shared shell in a reusable header module and pass optional feature UI from the page:
+
+   ```tsx title="widgets/header/ui.tsx"
+   import type { ReactNode } from "react";
+
+   import { Navigation } from "features/navigation";
+   import { SearchBar } from "features/search-bar";
+   import { Layout } from "shared/ui";
+
+   type HeaderProps = {
+     theme?: string;
+     withSearch?: boolean;
+     withNav?: boolean;
+     userPopup?: ReactNode;
+   };
+
+   export function Header({ theme, withSearch, withNav, userPopup }: HeaderProps) {
+     return (
+       <Layout.Header theme={theme}>
+         {withSearch && <SearchBar />}
+         {withNav && <Navigation />}
+         {userPopup}
+       </Layout.Header>
+     );
+   }
+   ```
+
+   ```tsx title="pages/home/ui.tsx"
+   import { UserPopup } from "features/user-popup";
+   import { Header } from "widgets/header";
+   import { Layout } from "shared/ui";
+
+   export function HomePage() {
+     return (
+       <Layout>
+         <Header withSearch withNav userPopup={<UserPopup />} />
+         <Layout.Content>{/* page content */}</Layout.Content>
+       </Layout>
+     );
+   }
+   ```
+
+   ```tsx title="pages/marketing/ui.tsx"
+   import { Header } from "widgets/header";
+   import { Layout } from "shared/ui";
+
+   export function MarketingPage() {
+     return (
+       <Layout>
+         <Header theme="light" withNav />
+         <Layout.Content>{/* page content */}</Layout.Content>
+       </Layout>
+     );
+   }
+   ```
+
+   `UserPopup` is passed from the page instead of being imported inside the header widget, so each route can decide whether the feature is shown and with which props, without the header knowing about every possible feature.
+
 3. **Define it directly in a page**  
    A layout used only by a specific page can be defined directly in the corresponding `page` without introducing a separate abstraction.
    When there is little duplicated code and the layout is unlikely to change frequently there is no need to extract it into a shared module.
