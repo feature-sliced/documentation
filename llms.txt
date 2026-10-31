@@ -1,13 +1,2 @@
-# Feature-Sliced Design
+This file is generated at build time. See /docs/llms for details.
 
-> Architectural methodology for frontend projects
-
-## Documentation Sets
-
-- [Abridged documentation](https://fsd.how/llms-small.txt): a compact version of the documentation for Feature-Sliced Design, with non-essential content removed
-- [Complete documentation](https://fsd.how/llms-full.txt): the full documentation for Feature-Sliced Design
-
-## Notes
-
-- The complete documentation includes all content from the official documentation
-- The content is automatically generated from the same source as the official documentation
