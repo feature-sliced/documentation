@@ -26,7 +26,6 @@ jobs:
           output: lychee/report.md
 
       - name: Upload link check report
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: external-link-report
