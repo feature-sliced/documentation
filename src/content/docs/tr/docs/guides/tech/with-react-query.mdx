@@ -1,0 +1,551 @@
+---
+title: TanStack Query ile Kullanım
+sidebar:
+  order: 2
+---
+
+import { Tabs, TabItem, FileTree } from '@astrojs/starlight/components';
+
+## Anahtarlar nerede saklanmalı \{#where-to-store-keys\}
+
+<Tabs>
+    <TabItem value="shared" label="shared içinde">
+
+        <FileTree>
+        - src/
+          - app/
+          - pages/
+          - widgets/
+          - features/
+          - entities/
+          - shared/
+            - api/
+              - queries/ Sorgu fabrikaları (Query factories)
+                - example.ts
+                - another-example.ts
+        </FileTree>
+
+        ```ts title="src/shared/api/index.ts"
+        export { exampleQueries } from './queries/example';
+        ```
+
+    </TabItem>
+
+    <TabItem value="shared-with-controllers" label="shared içinde kontrolcülere göre ayrılmış">
+
+        Endpoint sayısı yeterince fazla ise ve bunları yine de `shared` içinde saklamak istiyorsanız, her şeyi kontrolcülere (controllers) göre ayırmak ve her biri için kamuya açık bir API (public API) kullanmak daha iyidir.
+
+        <FileTree>
+        - src/
+          - app/
+          - pages/
+          - widgets/
+          - features/
+          - entities/
+          - shared/
+            - api/
+              - example/
+                - index.ts
+                - example.query.ts example kontrolcüsü için anahtarlar ve fonksiyonlar içeren sorgu fabrikası
+                - get-example.ts
+                - create-example.ts
+                - update-example.ts
+                - delete-example.ts
+              - another-example/
+                - index.ts
+                - another-example.query.ts another-example kontrolcüsü için anahtarlar ve fonksiyonlar içeren sorgu fabrikası
+                - get-another-example.ts
+                - create-another-example.ts
+                - update-another-example.ts
+                - delete-another-example.ts
+        </FileTree>
+
+        ```ts title="src/shared/api/example/index.ts"
+        export { exampleQueries } from "./example.query";
+        ```
+
+    </TabItem>
+
+    <TabItem value="entities" label="entities içinde">
+
+        *Projede zaten varlıklara (entities) bölünme varsa* ve her istek tek bir varlığa karşılık geliyorsa, en temiz yaklaşım varlığa göre bölmektir. Bu durumda aşağıdaki yapıyı kullanmanızı öneririz:
+
+        <FileTree>
+        - src/
+          - app/
+          - pages/
+          - widgets/
+          - features/
+          - entities/
+            - example/
+              - api/
+                - example.query.ts Anahtarlar ve fonksiyonlar içeren sorgu fabrikası
+                - get-example.ts
+                - create-example.ts
+                - update-example.ts
+                - delete-example.ts
+          - shared/
+        </FileTree>
+
+        Varlıklar arasında bağlantılar varsa (örneğin, Country varlığında bir City varlıkları listesi alanı varsa), [çapraz içe aktarımlar için public API'yi][public-api-for-cross-imports] kullanabilirsiniz.
+
+    </TabItem>
+
+</Tabs>
+
+## Mutasyonlar nerede saklanmalı \{#where-to-store-mutations\}
+
+Mutasyonları sorgularla (queries) karıştırmanız önerilmez. Birkaç seçenek mevcuttur:
+
+<Tabs>
+
+    <TabItem value="custom-hook" label="Kullanıldığı yerin yakınındaki api segmentinde">
+
+        ```tsx title="src/pages/example/api/use-update-example.ts"
+        export const useUpdateExample = () => {
+            const queryClient = useQueryClient();
+
+            return useMutation({
+                mutationFn: async ({ id, newTitle }) => {
+                    const { data } = await apiClient.patch(`/posts/${ id }`, { title: newTitle });
+
+                    return data;
+                },
+                onSuccess: newPost => {
+                    queryClient.setQueryData(postsQueries.ids(id), newPost);
+                },
+            });
+        };
+        ```
+
+    </TabItem>
+
+    <TabItem value="shared" label="mutationFn aracılığıyla shared veya entities içinde">
+
+        ```tsx title="src/pages/example/ui/example.tsx"
+        export const Example = () => {
+            const [title, setTitle] = useState('');
+
+            const { mutate, isPending } = useMutation({
+                mutationFn: mutations.createExample,
+            });
+
+            const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+                setTitle(value);
+            };
+
+            const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+                e.preventDefault();
+                mutate({ title, userId: DEFAULT_USER_ID });
+            };
+
+            return (
+                <form onSubmit={ handleSubmit }>
+                    <Input onChange={ handleChange } value={ title } />
+                    <Button type="submit" disabled={ isPending }>Oluştur</Button>
+                </form>
+            );
+        };
+        ```
+
+    </TabItem>
+
+</Tabs>
+
+## Sorguları organize etme \{#organizing-queries\}
+
+### Sorgu fabrikası (Query factory) \{#query-factory\}
+
+Sorgu fabrikası (query factory), anahtar değerlerinin sorgu anahtarlarının (query keys) bir listesini döndüren fonksiyonlar olduğu bir nesnedir.
+
+```ts
+const keyFactory = {
+    all: () => ["entity"],
+    lists: () => [...keyFactory.all(), "list"],
+};
+```
+
+:::info
+    `queryOptions` — react-query@v5 içindeki yerleşik bir yardımcı fonksiyon
+
+`queryKey` ve `queryFn` yapılarını birden fazla yerde paylaşmanın en iyi yollarından biri `queryOptions` yardımcı fonksiyonunu kullanmaktır [(daha fazla detay burada)](https://tanstack.com/query/latest/docs/framework/react/guides/query-options).
+
+```ts
+import { queryOptions } from '@tanstack/react-query';
+
+const groupOptions = (id: number) => queryOptions({
+    queryKey: ['groups', id],
+    queryFn: () => fetchGroups(id),
+    gcTime: 5 * 1000,
+});
+```
+:::
+
+### 1. Sorgu fabrikası oluşturma \{#creating-query-factory\}
+
+```tsx title="src/shared/api/post/post.queries.ts"
+import { queryOptions } from '@tanstack/react-query';
+import { getPosts } from './get-posts';
+import { getDetailPost, type DetailPostQuery } from './get-detail-post';
+
+export const POST_QUERIES = {
+    all: () => ['posts'],
+    lists: () => [...POST_QUERIES.all(), 'list'],
+    list: (page: number, limit: number) => queryOptions({
+        queryKey: [...POST_QUERIES.lists(), page, limit],
+        queryFn: () => getPosts(page, limit),
+        placeholderData: prev => prev,
+    }),
+    details: () => [...POST_QUERIES.all(), 'detail'],
+    detail: (query?: DetailPostQuery) => queryOptions({
+        queryKey: [...POST_QUERIES.details(), query?.id],
+        queryFn: () => getDetailPost({ id: query?.id }),
+    }),
+};
+```
+
+### 2. Uygulama kodunda sorgu fabrikasını kullanma \{#using-query-factory\}
+
+```tsx title="src/pages/post/ui/post.tsx"
+import { useParams } from 'react-router';
+import { postApi } from '@/shared/api/post';
+import { useQuery } from '@tanstack/react-query';
+
+interface Params {
+    postId: string;
+}
+
+export const Post = () => {
+    const { postId } = useParams<Params>();
+
+    const {
+        data: post,
+        error,
+        isLoading,
+        isError
+    } = useQuery(postApi.POST_QUERIES.detail({ id: parseInt(postId ?? '', 10) }));
+
+    if (isLoading) {
+        return (
+            <div>Yükleniyor...</div>
+        );
+    }
+
+    if (isError || !post) {
+        return (
+            <div>{ error?.message }</div>
+        );
+    }
+
+    return (
+        <div>
+            <p>Gönderi id: { post.id }</p>
+            <div>
+                <h1>{ post.title }</h1>
+                <div>
+                    <p>{ post.body }</p>
+                </div>
+            </div>
+            <div>Sahibi: { post.userId }</div>
+        </div>
+    );
+};
+```
+
+### Sorgu fabrikası kullanmanın avantajları \{#query-factory-benefits\}
+- **Yapılandırılmış istekler:** Fabrika, tüm API isteklerini tek bir yerde organize etmenizi sağlayarak kodunuzu daha okunabilir ve bakımı kolay hale getirir.
+- **Sorgulara ve anahtarlara kolay erişim:** Fabrika, farklı sorgu türlerine ve bunların anahtarlarına erişmek için pratik yöntemler sunar.
+- **Kolay yeniden çekme (refetching):** Fabrika, uygulamanın farklı yerlerindeki sorgu anahtarlarını değiştirmeye gerek kalmadan yeniden çekme işlemini kolaylaştırır.
+
+## Sayfalandırma (Pagination) \{#pagination\}
+
+Sayfalandırma, sayfalar arasında gezinirken kullanıcı arayüzünün (UI) titremesini önlemek için `placeholderData` eklenmesiyle yukarıdaki [sorguları organize etme](#organizing-queries) bölümündeki aynı sorgu fabrikasını kullanır.
+
+### Bir bileşende kullanımı \{#pagination-usage\}
+
+```tsx title="src/pages/home/ui/home.tsx"
+export const Home = () => {
+    const [page, setPage] = usePageParam(DEFAULT_PAGE);
+
+    const { data, isFetching, isLoading } = useQuery(postApi.POST_QUERIES.list(page, DEFAULT_ITEMS_ON_SCREEN));
+
+    return (
+        <>
+            <Pagination
+                onChange={ (_, page) => setPage(page) }
+                page={ page }
+                count={ data?.totalPages }
+                variant="outlined"
+                color="primary"
+            />
+            <Posts posts={ data?.posts } />
+        </>
+    );
+};
+```
+
+## Sonsuz kaydırma (Infinite scroll) \{#infinite-scroll\}
+
+`useInfiniteQuery`, "daha fazla yükle" veya sonsuz kaydırma desenlerini uygulamak için kullanılır.
+
+### 1. `infiniteQueryOptions` içeren sorgu fabrikası \{#infinite-query-factory\}
+
+```tsx title="src/shared/api/post/post.queries.ts"
+import { infiniteQueryOptions } from '@tanstack/react-query';
+import { getPosts } from './get-posts';
+
+export const POST_QUERIES = {
+    all: () => ['posts'],
+    lists: () => [...POST_QUERIES.all(), 'list'],
+    infinite: (limit: number) => infiniteQueryOptions({
+        queryKey: [...POST_QUERIES.lists(), 'infinite', limit],
+        queryFn: ({ pageParam }) => getPosts(pageParam, limit),
+        initialPageParam: 0,
+        getNextPageParam: (lastPage) =>
+            lastPage.skip + lastPage.limit < lastPage.total
+                ? lastPage.skip / lastPage.limit + 1
+                : undefined,
+    }),
+};
+```
+
+### 2. Bir bileşende kullanımı \{#infinite-query-usage\}
+
+```tsx title="src/pages/post-feed/ui/post-feed.tsx"
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { postApi } from '@/shared/api/post';
+
+export const PostFeed = () => {
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+        useInfiniteQuery(postApi.POST_QUERIES.infinite(10));
+
+    const posts = data?.pages.flatMap((page) => page.posts) ?? [];
+
+    return (
+        <>
+            <Posts posts={ posts } />
+            { hasNextPage && (
+                <button onClick={ () => fetchNextPage() } disabled={ isFetchingNextPage }>
+                    { isFetchingNextPage ? 'Yükleniyor...' : 'Daha fazla yükle' }
+                </button>
+            ) }
+        </>
+    );
+};
+```
+
+## Suspense modu \{#suspense-mode\}
+
+`useSuspenseQuery`, yükleme durumlarını yönetmek için React Suspense kullanmanıza olanak tanır ve `isLoading` durumunu manuel olarak kontrol etme ihtiyacını ortadan kaldırır.
+
+### 1. Sorgu fabrikası aynı kalır \{#suspense-query-factory\}
+
+`queryOptions` ve `useSuspenseQuery` birbiriyle uyumludur — fabrikada herhangi bir değişiklik yapılmasına gerek yoktur.
+
+### 2. Bir bileşende kullanımı \{#suspense-usage\}
+
+```tsx title="src/pages/post/ui/post.tsx"
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { postApi } from '@/shared/api/post';
+
+interface PostProps {
+    id: number;
+}
+
+// isLoading artık gerekli değildir — bileşen yalnızca veri hazır olduğunda işlenir (render edilir)
+export const Post = ({ id }: PostProps) => {
+    const { data: post } = useSuspenseQuery(postApi.POST_QUERIES.detail({ id }));
+
+    return (
+        <div>
+            <h1>{ post.title }</h1>
+            <p>{ post.body }</p>
+        </div>
+    );
+};
+```
+
+### 3. `app` katmanındaki sarmalayıcı (wrapper) \{#suspense-app-wrapper\}
+
+```tsx title="src/app/providers/suspense-provider.tsx"
+import { Suspense, type ReactNode } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+
+interface SuspenseProviderProps {
+    children: ReactNode;
+}
+
+export const SuspenseProvider = ({ children }: SuspenseProviderProps) => (
+    <ErrorBoundary fallback={ <div>Bir şeyler yanlış gitti</div> }>
+        <Suspense fallback={ <div>Yükleniyor...</div> }>
+            { children }
+        </Suspense>
+    </ErrorBoundary>
+);
+```
+
+## `useMutationState` \{#use-mutation-state\}
+
+`useMutationState`, props geçirmeden herhangi bir bileşenden mutasyonların durumunu okumanıza olanak tanır — bu, global yükleme göstergeleri veya bir işlemin durumunu görüntülemek için kullanışlıdır.
+
+### 1. Mutasyon anahtarlarını saklama \{#storing-mutation-keys\}
+
+Sorgu fabrikasına benzer şekilde, mutasyon anahtarları da fabrika ile birlikte tek bir yerde saklanmalıdır:
+
+```ts title="src/shared/api/post/post.queries.ts"
+export const POST_MUTATIONS = {
+    updateTitle: () => ['post', 'update-title'],
+    create: () => ['post', 'create'],
+};
+```
+
+### 2. `mutationKey` ile mutasyonları adlandırma \{#naming-mutations\}
+
+```tsx title="src/features/update-post/api/use-update-post-title.ts"
+import { POST_MUTATIONS } from '@/shared/api/post';
+
+interface UpdatePostTitle {
+    id: number;
+    newTitle: string;
+}
+
+export const useUpdatePostTitle = () =>
+    useMutation({
+        mutationKey: POST_MUTATIONS.updateTitle(),
+        mutationFn: ({ id, newTitle }: UpdatePostTitle) =>
+            apiClient.patch(`/posts/${id}`, { title: newTitle }),
+    });
+```
+
+### 3. Durumu başka bir bileşende okuma \{#reading-mutation-state\}
+
+```tsx title="src/widgets/save-indicator/ui/save-indicator.tsx"
+import { useMutationState } from '@tanstack/react-query';
+import { POST_MUTATIONS } from '@/shared/api/post';
+
+export const SaveIndicator = () => {
+    const isPending = useMutationState({
+        filters: { mutationKey: POST_MUTATIONS.updateTitle(), status: 'pending' },
+        select: mutation => mutation.state.status,
+    }).length > 0;
+
+    return isPending && (
+        <span>Kaydediliyor...</span>
+    );
+};
+```
+
+## `QueryProvider`'ı organize etme \{#query-provider\}
+
+```tsx title="src/app/providers/query-provider.tsx"
+import { type ReactNode } from 'react';
+import { QueryClient, QueryClientProvider, MutationCache, QueryCache } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { toast } from 'sonner';
+
+interface QueryProviderProps {
+    children: ReactNode;
+    client: QueryClient;
+}
+
+const queryClient = new QueryClient({
+    queryCache: new QueryCache({
+        onError: error => {
+            toast.error(error.message);
+        },
+    }),
+    mutationCache: new MutationCache({
+        onError: error => {
+            toast.error(error.message);
+        },
+    }),
+    defaultOptions: {
+        queries: {
+            staleTime: 5 * 60 * 1000,
+            gcTime: 5 * 60 * 1000,
+        },
+    },
+});
+
+export const QueryProvider = ({ client, children }: QueryProviderProps) => {
+    return (
+        <QueryClientProvider client={ client }>
+            { children }
+            <ReactQueryDevtools />
+        </QueryClientProvider>
+    );
+};
+```
+
+## Kod üretimi (Code generation) \{#code-generation\}
+
+Otomatik kod üretimi için yukarıda açıklanan manuel yaklaşımdan daha az esnek olan araçlar bulunmaktadır. Swagger dosyanız iyi yapılandırılmışsa ve bu araçlardan birini kullanıyorsanız, tüm kodu `@/shared/api` dizininde üretmek mantıklı olabilir.
+
+## API etkileşimi hakkında ek tavsiye \{#api-client\}
+
+`shared` katmanında özel bir API istemci (client) sınıfı kullanarak, yapılandırmayı ve API ile çalışmayı proje genelinde standartlaştırabilirsiniz. Bu, günlük kaydı (logging), üstbilgiler (headers) ve veri değişim biçimini (JSON veya XML gibi) tek bir yerden yönetmenize olanak tanır. Bu yaklaşım, API etkileşimlerindeki değişiklikleri ve güncellemeleri kolaylaştırarak bakımı ve geliştirmeyi sadeleştirir.
+
+```tsx title="src/shared/api/api-client.ts"
+import { API_URL } from "@/shared/config";
+
+export class ApiClient {
+    #baseUrl: string;
+
+    constructor(url: string) {
+        this.#baseUrl = url;
+    }
+
+    async handleResponse<TResult>(response: Response): Promise<TResult> {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${ response.status }`);
+        }
+
+        try {
+            return await response.json();
+        } catch (error) {
+            throw new Error("Error parsing JSON response");
+        }
+    }
+
+    public async get<TResult = unknown>(endpoint: string, queryParams?: Record<string, string | number>): Promise<TResult> {
+        const url = new URL(endpoint, this.#baseUrl);
+
+        if (queryParams) {
+            Object.entries(queryParams).forEach(([key, value]) => {
+                url.searchParams.append(key, value.toString());
+            });
+        }
+
+        const response = await fetch(url.toString(), {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        return this.handleResponse<TResult>(response);
+    }
+
+    public async post<TResult = unknown, TData = Record<string, unknown>>(endpoint: string, body: TData): Promise<TResult> {
+        const response = await fetch(`${ this.#baseUrl }${ endpoint }`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+
+        return this.handleResponse<TResult>(response);
+    }
+}
+
+export const apiClient = new ApiClient(API_URL);
+```
+
+## Ayrıca bakınız \{#see-also\}
+
+- [(GitHub) Örnek Proje](https://github.com/ruslan4432013/fsd-react-query-example)
+- [(CodeSandbox) Örnek Proje](https://codesandbox.io/p/github/ruslan4432013/fsd-react-query-example/main)
+- [Sorgu fabrikası hakkında](https://tkdodo.eu/blog/the-query-options-api)
+
+[public-api-for-cross-imports]: /tr/docs/reference/public-api#public-api-for-cross-imports

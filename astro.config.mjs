@@ -1,9 +1,11 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import { unified } from "@astrojs/markdown-remark";
 import remarkHeaderId from "remark-heading-id";
 import starlightLlmsTxt from "starlight-llms-txt";
 import starlightLinksValidator from "starlight-links-validator";
+import starlightPageContextAction from "starlight-page-context-action";
 import lunaria from "@lunariajs/starlight";
 
 // https://astro.build/config
@@ -18,18 +20,9 @@ export default defineConfig({
             },
         },
     },
-    redirects: {
-        "/ru": "/ru/docs/get-started/overview",
-        "/uz": "/uz/docs/get-started/overview",
-        "/kr": "/kr/docs/get-started/overview",
-        "/ja": "/ja/docs/get-started/overview",
-        "/vi": "/vi/docs/get-started/overview",
-        "/zh": "/zh/docs/get-started/overview",
-        "/tr": "/tr/docs/get-started/overview",
-    },
     markdown: {
         // @ts-ignore
-        remarkPlugins: [remarkHeaderId],
+        processor: unified({ remarkPlugins: [remarkHeaderId] }),
     },
     integrations: [
         starlight({
@@ -41,7 +34,6 @@ export default defineConfig({
             components: {
                 /* Adds the per-page social preview image, see `src/pages/og/[...path].ts`. */
                 Head: "./src/shared/ui/Head.astro",
-                ThemeProvider: "./src/shared/ui/ThemeProvider.astro",
             },
             logo: {
                 src: "./static/img/brand/logo-primary.png",
@@ -49,6 +41,18 @@ export default defineConfig({
             },
             plugins: [
                 starlightLlmsTxt(),
+                starlightPageContextAction({
+                    position: "below-toc",
+                    sticky: true,
+                    actions: {
+                        copy: true,
+                        scrollTop: true,
+                        viewMarkdown: false,
+                        chatgpt: false,
+                        claude: false,
+                        t3chat: false,
+                    },
+                }),
                 starlightLinksValidator({
                     errorOnFallbackPages: false,
                     errorOnInconsistentLocale: true,
@@ -90,6 +94,11 @@ export default defineConfig({
                     href: "https://github.com/feature-sliced/documentation",
                 },
                 {
+                    icon: "telegram",
+                    label: "Telegram",
+                    href: "https://t.me/feature_sliced",
+                },
+                {
                     icon: "discord",
                     label: "Discord",
                     href: "https://discord.gg/S8MzWTUsmp",
@@ -103,7 +112,9 @@ export default defineConfig({
                         ja: "はじめに",
                         tr: "Başlangıç",
                     },
-                    autogenerate: { directory: "docs/get-started" },
+                    items: [
+                        { autogenerate: { directory: "docs/get-started" } },
+                    ],
                 },
                 {
                     label: "Guides",
@@ -120,7 +131,13 @@ export default defineConfig({
                                 ja: "例",
                                 tr: "Örnekler",
                             },
-                            autogenerate: { directory: "docs/guides/examples" },
+                            items: [
+                                {
+                                    autogenerate: {
+                                        directory: "docs/guides/examples",
+                                    },
+                                },
+                            ],
                         },
                         {
                             label: "Migration",
@@ -130,9 +147,13 @@ export default defineConfig({
                                 uz: "Migratsiya",
                                 tr: "Geçiş",
                             },
-                            autogenerate: {
-                                directory: "docs/guides/migration",
-                            },
+                            items: [
+                                {
+                                    autogenerate: {
+                                        directory: "docs/guides/migration",
+                                    },
+                                },
+                            ],
                         },
                         {
                             label: "Tech",
@@ -142,7 +163,13 @@ export default defineConfig({
                                 uz: "Texnologiya",
                                 tr: "Teknolojiler",
                             },
-                            autogenerate: { directory: "docs/guides/tech" },
+                            items: [
+                                {
+                                    autogenerate: {
+                                        directory: "docs/guides/tech",
+                                    },
+                                },
+                            ],
                         },
                         {
                             label: "Code smells & Issues",
@@ -152,7 +179,13 @@ export default defineConfig({
                                 uz: "Muammolar",
                                 tr: "Bilinen Sorunlar",
                             },
-                            autogenerate: { directory: "docs/guides/issues" },
+                            items: [
+                                {
+                                    autogenerate: {
+                                        directory: "docs/guides/issues",
+                                    },
+                                },
+                            ],
                         },
                     ],
                 },
@@ -163,7 +196,7 @@ export default defineConfig({
                         ja: "参考書",
                         tr: "Referans",
                     },
-                    autogenerate: { directory: "docs/reference" },
+                    items: [{ autogenerate: { directory: "docs/reference" } }],
                 },
                 {
                     label: "Resources",
@@ -208,9 +241,13 @@ export default defineConfig({
                                 ja: "理解",
                                 tr: "Anlama",
                             },
-                            autogenerate: {
-                                directory: "docs/about/understanding",
-                            },
+                            items: [
+                                {
+                                    autogenerate: {
+                                        directory: "docs/about/understanding",
+                                    },
+                                },
+                            ],
                             collapsed: true,
                         },
                         {
@@ -220,7 +257,13 @@ export default defineConfig({
                                 ja: "プロモート",
                                 tr: "Tanıtım",
                             },
-                            autogenerate: { directory: "docs/about/promote" },
+                            items: [
+                                {
+                                    autogenerate: {
+                                        directory: "docs/about/promote",
+                                    },
+                                },
+                            ],
                             collapsed: true,
                         },
                     ],

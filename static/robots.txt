@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://feature-sliced.github.io/documentation/sitemap.xml
+Sitemap: https://fsd.how/sitemap-index.xml

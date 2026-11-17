@@ -1,0 +1,10 @@
+scheme = ["http", "https"]
+
+timeout = 20
+max_retries = 2
+retry_wait_time = 2
+max_concurrency = 4
+
+# Check pages, not external heading anchors.
+# ex) https://example.com#example-title
+include_fragments = "none"

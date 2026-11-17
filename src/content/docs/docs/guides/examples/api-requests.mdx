@@ -14,10 +14,11 @@ A typical file structure would be:
 
 <FileTree>
 - shared/
-  - client.ts
-  - index.ts
-  - endpoints/
-    - login.ts
+  - api/
+    - client.ts
+    - index.ts
+    - endpoints/
+      - login.ts
 </FileTree>
 
 The `client.ts` file centralizes your HTTP request setup. It wraps your chosen method (like `fetch()` or an `axios` instance) and handles common configurations, such as:
