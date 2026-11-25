@@ -1,0 +1,33 @@
+---
+title: LLM용 문서
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="caution">
+이 도구들은 AI 에이전트와 LLM이 Feature-Sliced Design 개념을 더 효과적으로 적용할 수 있도록 돕기 위한 것입니다. 하지만 모든 최종 아키텍처 결정은 반드시 개발자가 직접 내려야 합니다.
+</Aside>
+
+## llms.txt
+
+[llms.txt](https://llmstxt.org/)는 웹사이트에 대한 LLM 친화적인 정보를 제공합니다. 대규모 언어 모델이 사이트 콘텐츠를 더 정확하게 이해하고 활용할 수 있도록 돕습니다.
+
+이 사이트는 다음 파일들을 제공합니다:
+
+- [llms.txt](/llms.txt) — 사용 가능한 문서 세트 목록
+- [llms-small.txt](/llms-small.txt) — 부가적인 내용을 제외한 Feature-Sliced Design 문서 축약본
+- [llms-full.txt](/llms-full.txt) — Feature-Sliced Design 전체 문서
+
+모든 파일은 현재 페이지 경로와 무관하게 사이트 루트(`/`)에서 제공됩니다. 루트가 아닌 기본 URL(예: `/documentation/`)로 배포된 환경에서는 링크에 알맞은 접두사가 자동으로 붙습니다.
+
+## Skills
+
+[Skills](https://vercel.com/docs/agent-resources/skills)는 AI 코딩 에이전트(Codex, Claude Code, OpenCode 등)를 위해 설계된 재사용 가능한 지침 패키지입니다. 정적인 `llms.txt` 파일과 달리, Skill은 프로젝트에 직접 설치해서 필요한 시점에 활성화할 수 있습니다.
+
+- [Feature-Sliced Design Skill](https://skills.sh/feature-sliced/skills/feature-sliced-design) — 공식 FSD 문서를 기반으로 한 커뮤니티 주도의 공식 Skill입니다.
+
+`skills` CLI를 사용해 Skill을 설치할 수 있습니다:
+
+```bash
+npx skills add https://github.com/feature-sliced/skills --skill feature-sliced-design
+```
