@@ -1,0 +1,113 @@
+---
+title: Comparisons
+sidebar:
+  order: 3
+---
+
+import { FileTree, Aside } from '@astrojs/starlight/components';
+
+import StaticImage from '../../../../../shared/ui/static-image/StaticImage.astro';
+
+Feature-Sliced Design은 프론트엔드 개발에서 오랜 기간 쓰여 온 아키텍처 패턴에서 발전했습니다. 이 접근 방식들은 당시 상황에서는 어느 것도 틀리지 않았습니다. FSD는 이 접근 방식들의 아이디어를 가져와 프론트엔드 애플리케이션의 요구에 맞게 다듬었습니다. 이 역사와 관련 접근 방식을 살펴보면 FSD가 왜 지금과 같은 방식으로 코드를 구조화하는지 더 깊이 이해할 수 있습니다. 이 지식은 흔한 실수를 피하고, 더 나은 결정을 내리고, 프로젝트에 FSD를 더 효과적으로 적용하는 데 도움이 됩니다.
+
+<Aside>
+  이 문서는 개요이며, 간결성을 위해 일부 세부 사항이 생략되었을 수 있습니다.
+</Aside>
+
+## 프레임워크만으로 충분하지 않은 이유
+
+프레임워크와 라이브러리는 렌더링, 데이터 페칭 같은 기술적 세부 사항을 훌륭하게 처리하고, 컴포넌트처럼 재사용 가능하고 독립적인 구성 요소를 제공합니다. 하지만 이 기반만으로는 아키텍처상의 과제를 해결할 수 없습니다. 프로젝트 규모가 커질수록 이 구성 요소들을 효과적으로 조합해야 합니다. 그래야 늘어나는 복잡도를 관리하고, 팀 협업을 돕고, 지식을 원활하게 공유할 수 있습니다.
+
+## 수평 분할 (Horizontal slicing)
+
+프론트엔드 코드를 구성하는 가장 초기 방법 중 하나는 `components`, `pages`, `utils`, `stores`처럼 기술 계층별로 코드를 나누는 것입니다.
+
+<FileTree>
+- src/
+  - app/
+  - pages/
+  - components/
+  - utils/
+  - stores/
+</FileTree>
+
+이 구조는 Next.js, Nuxt, Astro 같은 프레임워크에서 여전히 널리 쓰입니다.
+
+애플리케이션의 주된 관심사가 기술적 책임의 분리이고 도메인이 단순하면 이 구조가 자연스럽게 맞습니다. 애플리케이션의 도메인이 복잡해질수록 코드를 비즈니스 영역별로 묶는 것이 더 가치 있어집니다. 또한 `components` 같은 폴더는 모듈 사이를 격리하지 못한 채 계속 커질 수 있습니다.
+
+FSD 용어로는, 코드가 비즈니스 영역별로 묶이지 않고 기술 폴더 여기저기에 흩어진 상태를 [desegmentation](/kr/docs/guides/issues/desegmented/)이라고 합니다. desegmentation은 FSD가 피하도록 돕는 code smell입니다. FSD는 layer라는 개념을 유지하지만, 순수하게 기술적인 분류가 아니라 논리적 책임을 기준으로 layer를 구성합니다.
+
+## Presentational 컴포넌트와 Container 컴포넌트
+
+React 초창기에 Dan Abramov에 의해 널리 알려진 이 패턴(smart 컴포넌트와 dumb 컴포넌트라고도 함)은 컴포넌트를 두 가지 범주로 나눕니다. presentational(dumb) 컴포넌트는 외형을 담당하고, container(smart) 컴포넌트는 기능을 관리합니다.
+
+| Presentational                  | Container                          |
+|---------------------------------|------------------------------------|
+| 일반적인 DOM과 스타일           | 최소한의 DOM, 스타일 없음          |
+| store에 의존하지 않음           | store와 상호작용하고 presentational 컴포넌트에 데이터와 콜백을 전달 |
+| 데이터 조회나 변경 없음         | presentational 컴포넌트의 데이터 소스 역할 |
+
+이 패턴은 클래스 컴포넌트 시대의 개발자에게 외형과 동작을 분리하는 명확한 멘털 모델을 제공했고, 상속 없이 로직을 재사용하는 좋은 방법이었습니다. 이 패턴의 경계는 컴포넌트 수준에 있었습니다. container가 동작을 담고, presentational 컴포넌트가 외형을 담았습니다.
+
+프레임워크가 성숙하면서 같은 분리를 컴포넌트 내부에서 더 유연하게 표현할 수 있게 되었습니다. React의 hook, Vue의 composable, Svelte의 rune, Angular의 signal을 사용하면 클래스 기반 container 없이도 도메인 로직을 UI와 함께 둘 수 있습니다. 그래서 이 패턴의 컴포넌트 수준 구분은 덜 필요해졌습니다. 이 패턴을 만든 사람도 이제는 이 패턴을 그 시대의 산물로 봅니다.
+
+FSD는 외형과 동작을 분리한다는 근본 목표를 유지하되, 이 분리를 컴포넌트 수준에서 아키텍처 수준으로 옮깁니다. `ui`, `model`, `api` segment는 개별 컴포넌트에 container/presentational 분리를 강제하지 않고도 UI, 비즈니스 로직, 데이터 처리를 분리합니다.
+
+- [(아티클) Dan Abramov - Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+## 설계 원칙
+
+지난 수십 년 동안 SOLID, GRASP, KISS, YAGNI, DRY 등 수많은 설계 원칙이 등장했습니다. GRASP 같은 일부 원칙은 객체 지향 설계에 맞춰져 있는 반면, KISS나 DRY 같은 다른 원칙들은 더 폭넓게 적용됩니다.
+
+이러한 원칙들은 여전히 그 가치를 인정받고 있으며, 다양한 배경을 가진 개발자들이 이를 받아들이고 있습니다.
+
+이 원칙들의 강점은 일반성에 있습니다. 즉, 특정 기능을 어떻게 구성해야 하는지보다는 무엇을 중시해야 하는지를 설명합니다. 이러한 폭넓은 적용 범위 때문에, 엄격한 DRY가 KISS나 YAGNI와 상충할 때처럼 때로는 서로 상반된 방향으로 이끌기도 합니다.
+
+FSD는 이 원칙들을 대체하지 않습니다. FSD는 이 원칙들을 프론트엔드에서 실행할 수 있는 형태로 만들어, 추상적인 지침을 구체적인 구조로 바꿉니다. 구체적인 구조란 기능을 어떻게 구성할지, 언제 분해할지, 무엇을 우선할지, 의존성이 어느 방향으로 흐를 수 있는지를 말합니다.
+
+- [(발표) Ilya Azin - Feature-Sliced Design (설계 원칙을 다룬 부분)](https://youtu.be/SnzPAr_FJ7w?t=380)
+
+## DDD, Onion, Clean Architecture
+
+<StaticImage path="/img/alternatives/080-explicit-architecture-svg.png" alt="explicit architecture" />
+
+MVC 같은 패턴과 달리, 이 접근 방식들은 비즈니스 도메인 모델링을 강조하고 인프라 코드와 UI 코드를 분리합니다.
+
+이 접근 방식들은 도메인 모델, 인프라, 애플리케이션 계층이 더 깔끔하게 분리되는 백엔드 시스템을 위해 설계되었습니다. FSD는 이 접근 방식들이 도입한 아이디어를 직접 가져왔습니다. 도메인 중심 모델링, 의존성이 안쪽으로 흐르는 동심원 계층, 바운디드 컨텍스트(Bounded Context)가 그 아이디어입니다.
+
+이 접근 방식들을 프론트엔드에 그대로 도입하기는 어렵습니다. 프론트엔드에서는 로직과 UI가 긴밀하게 얽혀 있기 때문입니다. 또한 이 패턴들은 제어의 역전(IoC), 특히 IoC 컨테이너에 크게 의존하는데, 프론트엔드 컴포넌트 모델은 IoC 컨테이너를 자연스럽게 제공하지 않습니다.
+
+Feature-Sliced Design은 이 아이디어들을 프론트엔드 맥락에 맞게 조정합니다. `entities` layer와 `model` segment는 DDD의 엔티티, 바운디드 컨텍스트와 비슷하게 비즈니스 엔티티와 규칙을 독립적으로 구조화하고, slice는 수직 모듈성을 제공합니다. layer 구조는 Onion Architecture와 Clean Architecture의 동심원 계층을 반영하며, `entities`와 `features` 같은 안쪽 layer가 핵심 도메인 로직과 유스케이스를 처리합니다. 의존성은 여전히 안쪽으로 흐르지만 무거운 IoC 컨테이너가 필요 없으므로, 컴포넌트 기반 프론트엔드 앱에서도 이 원칙들을 실용적으로 적용할 수 있습니다.
+
+- [(아티클) DDD, Hexagonal, Onion, Clean, CQRS... How I put it all together](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
+- [(발표) Ilya Azin - Feature-Sliced Design (Clean Architecture, DDD를 다룬 부분)](https://youtu.be/SnzPAr_FJ7w?t=528)
+- [(아티클) Alex Bespoyasov - Clean Architecture on frontend](https://bespoyasov.me/blog/clean-architecture-on-frontend/)
+
+## Atomic Design
+
+<StaticImage path="/img/alternatives/atomic-design-abstract-concrete.png" alt="atomic design" />
+
+Brad Frost가 만든 Atomic Design은 UI를 구성 요소의 계층 구조로 봅니다. 이 계층 구조는 atom(기본 요소), molecule(단순한 컴포넌트), organism(복잡한 모듈), template(레이아웃), page로 이어집니다.
+
+Atomic Design은 디자인 시스템을 위해 설계되었습니다. 디자인 시스템의 목표는 조합을 기준으로 구성한, 일관되고 재사용 가능한 UI 어휘입니다. Atomic Design은 이 맥락에서 여전히 널리 쓰이는 접근 방식이며, 의도적으로 UI와 UX에 초점을 둡니다.
+
+FSD는 재사용 가능한 UI 기본 요소를 두는 `shared/ui` segment에 Atomic Design의 조합 계층 구조를 적용하고, 같은 사고방식을 애플리케이션의 나머지 부분으로 확장합니다. Atomic Design이 UI 요소를 구조화하고 조합 가능하게 다루듯이, layer와 segment는 비즈니스 로직을 같은 방식으로 다룹니다.
+
+- [Atomic Design Methodology](https://atomicdesign.bradfrost.com/table-of-contents/)
+- [(발표) Ilya Azin - Feature-Sliced Design (Atomic Design을 다룬 부분)](https://youtu.be/SnzPAr_FJ7w?t=587)
+
+## Feature-driven architecture
+
+Feature-driven architecture(FDA)는 Feature-Sliced Design의 직접적인 전신이며, 도메인별 feature를 중심으로 코드를 구성하는 것을 강조합니다. 이 접근 방식은 UI 컴포넌트, 로직, 데이터 처리처럼 서로 관련된 기능을 자체 완결적인 feature 모듈로 묶는 것을 우선합니다. 이를 통해 확장되는 애플리케이션의 모듈성, 확장성, 유지보수성을 향상시키는 것을 목표로 합니다.
+
+FDA에서 feature는 보통 특정 비즈니스 기능에 필요한 모든 것을 캡슐화한 독립적인 단위입니다. 이로써 의존성이 줄어들고, 여러 팀이 애플리케이션의 서로 다른 부분을 독립적으로 작업하기 쉬워집니다. 여기에는 해당 feature 전용 컴포넌트, 서비스, 상태 관리 등이 포함될 수 있으며, 모두 사용자 스토리나 비즈니스 요구사항에 맞춰 구성됩니다.
+
+FDA는 도메인 중심 구성을 위한 탄탄한 기반을 제공하지만, FSD가 도입한 세분화된 계층 구분이 부족할 때가 있습니다. 공용 유틸리티, 엔티티, UI 관심사의 명시적 분리가 그 예입니다. FSD는 FDA를 기반으로 이러한 layer와 slice를 추가해, 분해와 재사용에 대한 더 정확한 지침을 제공합니다.
+
+- [(발표) Oleg Isonen - Feature Driven Architecture](https://youtu.be/BWAeYuWFHhs)
+- [Feature Driven-Short specification (FSD 관점에서)](https://github.com/feature-sliced/documentation/tree/rc/feature-driven)
+
+## 참고 자료
+
+- [(아티클) Oleg Isonen - Last words on UI architecture before an AI takes over](https://oleg008.medium.com/last-words-on-ui-architecture-before-an-ai-takes-over-468c78f18f0d)
+- [(발표) Julia Nikolaeva, iSpring - Big Ball of Mud and other problems of the monolith, we have handled](http://youtu.be/gna4Ynz1YNI)
